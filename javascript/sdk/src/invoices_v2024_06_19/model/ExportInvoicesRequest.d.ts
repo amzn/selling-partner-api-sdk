@@ -58,10 +58,10 @@ export class ExportInvoicesRequest {
     series: string;
     /**
      * A list of statuses that you can use to filter invoices. Use the `getInvoicesAttributes` operation to check invoice status options.  Min count: 1
-     * @member {[String]} statuses
-     * @type {[String]}
+     * @member {Array[]} statuses
+     * @type {Array[]}
      */
-    statuses: [string];
+    statuses: any[][];
     /**
      * @member {TransactionIdentifier} transactionIdentifier
      * @type {TransactionIdentifier}

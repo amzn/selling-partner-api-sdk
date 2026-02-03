@@ -60,14 +60,14 @@ export class RequestedUpdates {
 
 /**
  * A list of boxes that will be present in the shipment after the update.
- * @member {[BoxUpdateInput]} boxes
- * @type {[BoxUpdateInput]}
+ * @member {Array[]} boxes
+ * @type {Array[]}
  */
 RequestedUpdates.prototype.boxes = undefined
 
 /**
  * A list of all items that will be present in the shipment after the update.
- * @member {[ItemInput]} items
- * @type {[ItemInput]}
+ * @member {Array[]} items
+ * @type {Array[]}
  */
 RequestedUpdates.prototype.items = undefined

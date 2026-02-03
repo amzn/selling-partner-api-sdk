@@ -17,12 +17,11 @@ export class ProductTypeList {
      * A list of Amazon product types with definitions available.
      * @alias module:producttypedefinitions_v2020_09_01/model/ProductTypeList
      * @class
-     * @param productTypes {[ProductType]}
+     * @param productTypes {Array[]}
      * @param productTypeVersion {String} Amazon product type version identifier.
      */
-    constructor(productTypes: [ProductType], productTypeVersion: string);
-    productTypes: [ProductType];
+    constructor(productTypes: any[][], productTypeVersion: string);
+    productTypes: any[][];
     productTypeVersion: string;
 }
-import { ProductType } from './ProductType.js';
 //# sourceMappingURL=ProductTypeList.d.ts.map

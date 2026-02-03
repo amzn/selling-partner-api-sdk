@@ -17,13 +17,13 @@ export class CreateInboundPlanRequest {
      * The &#x60;createInboundPlan&#x60; request.
      * @alias module:fulfillmentinbound_v2024_03_20/model/CreateInboundPlanRequest
      * @class
-     * @param destinationMarketplaces {[String]} Marketplaces where the items need to be shipped to. Currently only one marketplace can be selected in this request.
-     * @param items {[ItemInput]} Items included in this plan.
+     * @param destinationMarketplaces {Array[]} Marketplaces where the items need to be shipped to. Currently only one marketplace can be selected in this request.
+     * @param items {Array[]} Items included in this plan.
      * @param sourceAddress {AddressInput}
      */
-    constructor(destinationMarketplaces: [string], items: [ItemInput], sourceAddress: AddressInput);
-    destinationMarketplaces: [string];
-    items: [ItemInput];
+    constructor(destinationMarketplaces: any[][], items: any[][], sourceAddress: AddressInput);
+    destinationMarketplaces: any[][];
+    items: any[][];
     sourceAddress: AddressInput;
     /**
      * Name for the Inbound Plan. If one isn't provided, a default name will be provided.
@@ -32,6 +32,5 @@ export class CreateInboundPlanRequest {
      */
     name: string;
 }
-import { ItemInput } from './ItemInput.js';
 import { AddressInput } from './AddressInput.js';
 //# sourceMappingURL=CreateInboundPlanRequest.d.ts.map

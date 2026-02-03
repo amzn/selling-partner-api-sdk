@@ -18,12 +18,11 @@ export class GetInventorySummariesResult {
      * @alias module:fbainventory_v1/model/GetInventorySummariesResult
      * @class
      * @param granularity {Granularity}
-     * @param inventorySummaries {[InventorySummary]} A list of inventory summaries.
+     * @param inventorySummaries {Array[]} A list of inventory summaries.
      */
-    constructor(granularity: Granularity, inventorySummaries: [InventorySummary]);
+    constructor(granularity: Granularity, inventorySummaries: any[][]);
     granularity: Granularity;
-    inventorySummaries: [InventorySummary];
+    inventorySummaries: any[][];
 }
 import { Granularity } from './Granularity.js';
-import { InventorySummary } from './InventorySummary.js';
 //# sourceMappingURL=GetInventorySummariesResult.d.ts.map

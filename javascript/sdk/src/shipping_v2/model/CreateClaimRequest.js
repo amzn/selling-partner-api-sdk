@@ -97,8 +97,8 @@ CreateClaimRequest.prototype.isReplacementPackageSent = undefined
 
 /**
  * A list of proof URLs for a claim. Basic URL validation will happen for each URLs present in the list
- * @member {[String]} proofs
- * @type {[String]}
+ * @member {Array[]} proofs
+ * @type {Array[]}
  */
 CreateClaimRequest.prototype.proofs = undefined
 

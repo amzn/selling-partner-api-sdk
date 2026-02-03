@@ -30,7 +30,7 @@ export class Containers {
    * @alias module:vendorshipments_v1/model/Containers
    * @class
    * @param containerType {String} The type of container.
-   * @param containerIdentifiers {[ContainerIdentification]} A list of carton identifiers.
+   * @param containerIdentifiers {Array[]} A list of carton identifiers.
    */
   constructor (containerType, containerIdentifiers) {
     this.containerType = containerType
@@ -108,8 +108,8 @@ Containers.prototype.containerSequenceNumber = undefined
 
 /**
  * A list of carton identifiers.
- * @member {[ContainerIdentification]} containerIdentifiers
- * @type {[ContainerIdentification]}
+ * @member {Array[]} containerIdentifiers
+ * @type {Array[]}
  */
 Containers.prototype.containerIdentifiers = undefined
 
@@ -154,7 +154,7 @@ Containers.prototype.innerContainersDetails = undefined
 
 /**
  * A list of packed items.
- * @member {[PackedItems]} packedItems
- * @type {[PackedItems]}
+ * @member {Array[]} packedItems
+ * @type {Array[]}
  */
 Containers.prototype.packedItems = undefined

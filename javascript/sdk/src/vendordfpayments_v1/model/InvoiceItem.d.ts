@@ -53,19 +53,17 @@ export class InvoiceItem {
     hsnCode: string;
     /**
      * Individual tax details per line item.
-     * @member {[TaxDetail]} taxDetails
-     * @type {[TaxDetail]}
+     * @member {Array[]} taxDetails
+     * @type {Array[]}
      */
-    taxDetails: [TaxDetail];
+    taxDetails: any[][];
     /**
      * Individual charge details per line item.
-     * @member {[ChargeDetails]} chargeDetails
-     * @type {[ChargeDetails]}
+     * @member {Array[]} chargeDetails
+     * @type {Array[]}
      */
-    chargeDetails: [ChargeDetails];
+    chargeDetails: any[][];
 }
 import { ItemQuantity } from './ItemQuantity.js';
 import { Money } from './Money.js';
-import { TaxDetail } from './TaxDetail.js';
-import { ChargeDetails } from './ChargeDetails.js';
 //# sourceMappingURL=InvoiceItem.d.ts.map

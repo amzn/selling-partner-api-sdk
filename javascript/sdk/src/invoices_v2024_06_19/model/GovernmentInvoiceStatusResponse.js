@@ -61,8 +61,8 @@ export class GovernmentInvoiceStatusResponse {
 
 /**
  * The errors that occurred during invoice creation.
- * @member {[InvoiceError]} invoiceErrors
- * @type {[InvoiceError]}
+ * @member {Array[]} invoiceErrors
+ * @type {Array[]}
  */
 GovernmentInvoiceStatusResponse.prototype.invoiceErrors = undefined
 

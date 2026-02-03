@@ -59,14 +59,14 @@ export class Benefits {
 
 /**
  * A list of included benefits.
- * @member {[String]} includedBenefits
- * @type {[String]}
+ * @member {Array[]} includedBenefits
+ * @type {Array[]}
  */
 Benefits.prototype.includedBenefits = undefined
 
 /**
  * A list of excluded benefits. Refer to the `ExcludeBenefit` object for further documentation.
- * @member {[ExcludedBenefit]} excludedBenefits
- * @type {[ExcludedBenefit]}
+ * @member {Array[]} excludedBenefits
+ * @type {Array[]}
  */
 Benefits.prototype.excludedBenefits = undefined

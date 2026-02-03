@@ -43,10 +43,10 @@ export class PayWithAmazonEvent {
     charge: ChargeComponent;
     /**
      * A list of fee component information.
-     * @member {[FeeComponent]} feeList
-     * @type {[FeeComponent]}
+     * @member {Array[]} feeList
+     * @type {Array[]}
      */
-    feeList: [FeeComponent];
+    feeList: any[][];
     /**
      * The type of payment.  Possible values:  * `Sales`
      * @member {String} paymentAmountType
@@ -73,5 +73,4 @@ export class PayWithAmazonEvent {
     storeName: string;
 }
 import { ChargeComponent } from './ChargeComponent.js';
-import { FeeComponent } from './FeeComponent.js';
 //# sourceMappingURL=PayWithAmazonEvent.d.ts.map

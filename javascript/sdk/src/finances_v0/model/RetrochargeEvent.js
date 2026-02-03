@@ -105,7 +105,7 @@ RetrochargeEvent.prototype.marketplaceName = undefined
 
 /**
  * A list of information about taxes withheld.
- * @member {[TaxWithheldComponent]} retrochargeTaxWithheldList
- * @type {[TaxWithheldComponent]}
+ * @member {Array[]} retrochargeTaxWithheldList
+ * @type {Array[]}
  */
 RetrochargeEvent.prototype.retrochargeTaxWithheldList = undefined

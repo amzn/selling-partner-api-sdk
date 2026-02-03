@@ -21,14 +21,14 @@ export class ShippingLabel {
      * @param sellingParty {PartyIdentification}
      * @param shipFromParty {PartyIdentification}
      * @param labelFormat {String} Format of the label.
-     * @param labelData {[LabelData]} Provides the details of the packages in this shipment.
+     * @param labelData {Array[]} Provides the details of the packages in this shipment.
      */
-    constructor(purchaseOrderNumber: string, sellingParty: PartyIdentification, shipFromParty: PartyIdentification, labelFormat: string, labelData: [LabelData]);
+    constructor(purchaseOrderNumber: string, sellingParty: PartyIdentification, shipFromParty: PartyIdentification, labelFormat: string, labelData: any[][]);
     purchaseOrderNumber: string;
     sellingParty: PartyIdentification;
     shipFromParty: PartyIdentification;
     labelFormat: string;
-    labelData: [LabelData];
+    labelData: any[][];
 }
 export namespace ShippingLabel {
     namespace LabelFormatEnum {
@@ -41,5 +41,4 @@ export namespace ShippingLabel {
     type LabelFormatEnum = string;
 }
 import { PartyIdentification } from './PartyIdentification.js';
-import { LabelData } from './LabelData.js';
 //# sourceMappingURL=ShippingLabel.d.ts.map

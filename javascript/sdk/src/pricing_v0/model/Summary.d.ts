@@ -23,22 +23,22 @@ export class Summary {
     totalOfferCount: number;
     /**
      * A list that contains the total number of offers information for given conditions and fulfillment channels.
-     * @member {[OfferCountType]} numberOfOffers
-     * @type {[OfferCountType]}
+     * @member {Array[]} numberOfOffers
+     * @type {Array[]}
      */
-    numberOfOffers: [OfferCountType];
+    numberOfOffers: any[][];
     /**
      * A list of the lowest prices.
-     * @member {[LowestPriceType]} lowestPrices
-     * @type {[LowestPriceType]}
+     * @member {Array[]} lowestPrices
+     * @type {Array[]}
      */
-    lowestPrices: [LowestPriceType];
+    lowestPrices: any[][];
     /**
      * A list of the Buy Box prices.
-     * @member {[BuyBoxPriceType]} buyBoxPrices
-     * @type {[BuyBoxPriceType]}
+     * @member {Array[]} buyBoxPrices
+     * @type {Array[]}
      */
-    buyBoxPrices: [BuyBoxPriceType];
+    buyBoxPrices: any[][];
     /**
      * @member {MoneyType} listPrice
      * @type {MoneyType}
@@ -56,16 +56,16 @@ export class Summary {
     suggestedLowerPricePlusShipping: MoneyType;
     /**
      * A list of sales rank information for the item, by category.
-     * @member {[SalesRankType]} salesRankings
-     * @type {[SalesRankType]}
+     * @member {Array[]} salesRankings
+     * @type {Array[]}
      */
-    salesRankings: [SalesRankType];
+    salesRankings: any[][];
     /**
      * A list that contains the total number of offers that are eligible for the Buy Box for the given conditions and fulfillment channels.
-     * @member {[OfferCountType]} buyBoxEligibleOffers
-     * @type {[OfferCountType]}
+     * @member {Array[]} buyBoxEligibleOffers
+     * @type {Array[]}
      */
-    buyBoxEligibleOffers: [OfferCountType];
+    buyBoxEligibleOffers: any[][];
     /**
      * When the status is ActiveButTooSoonForProcessing, this is the time when the offers will be available for processing.
      * @member {Date} offersAvailableTime
@@ -73,9 +73,5 @@ export class Summary {
      */
     offersAvailableTime: Date;
 }
-import { OfferCountType } from './OfferCountType.js';
-import { LowestPriceType } from './LowestPriceType.js';
-import { BuyBoxPriceType } from './BuyBoxPriceType.js';
 import { MoneyType } from './MoneyType.js';
-import { SalesRankType } from './SalesRankType.js';
 //# sourceMappingURL=Summary.d.ts.map

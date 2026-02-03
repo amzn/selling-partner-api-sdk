@@ -25,11 +25,10 @@ export class TransportLabel {
     shipmentInformation: ShipmentInformation;
     /**
      * Indicates the label data,format and type associated .
-     * @member {[LabelData]} labelData
-     * @type {[LabelData]}
+     * @member {Array[]} labelData
+     * @type {Array[]}
      */
-    labelData: [LabelData];
+    labelData: any[][];
 }
 import { ShipmentInformation } from './ShipmentInformation.js';
-import { LabelData } from './LabelData.js';
 //# sourceMappingURL=TransportLabel.d.ts.map

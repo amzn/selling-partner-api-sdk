@@ -34,7 +34,7 @@ export class ShipmentLineItem {
    * @param shipmentLineItemId {String} An identifier for a shipment's line item. This identifier is guaranteed to be unique within the scope of its containing shipment.
    * @param merchantSku {String} The seller SKU of a product (catalog item). A unique number assigned by the seller when listing an item.
    * @param numberOfUnits {Number} The number of items of the SKU in this line item.
-   * @param charges {[Charge]} The charges associated with the shipment.
+   * @param charges {Array[]} The charges associated with the shipment.
    * @param complianceAttributes {ComplianceAttributes}
    */
   constructor (shipmentLineItemId, merchantSku, numberOfUnits, charges, complianceAttributes) {
@@ -110,8 +110,8 @@ ShipmentLineItem.prototype.numberOfUnits = undefined
 
 /**
  * The serial numbers for each item in this line item.
- * @member {[String]} serialNumbers
- * @type {[String]}
+ * @member {Array[]} serialNumbers
+ * @type {Array[]}
  */
 ShipmentLineItem.prototype.serialNumbers = undefined
 
@@ -123,8 +123,8 @@ ShipmentLineItem.prototype.pieceType = undefined
 
 /**
  * A list of HAZMAT label identifiers that must be applied to the packages for this line item.
- * @member {[String]} hazmatLabels
- * @type {[String]}
+ * @member {Array[]} hazmatLabels
+ * @type {Array[]}
  */
 ShipmentLineItem.prototype.hazmatLabels = undefined
 
@@ -136,15 +136,15 @@ ShipmentLineItem.prototype.giftAttributes = undefined
 
 /**
  * The charges associated with the shipment.
- * @member {[Charge]} charges
- * @type {[Charge]}
+ * @member {Array[]} charges
+ * @type {Array[]}
  */
 ShipmentLineItem.prototype.charges = undefined
 
 /**
  * A list of cancellations for the given line item.  **Note:** Currently, SmartConnect does not support partial cancellation of a shipment or its line items. This list will contain a single value with all the cancellation details.
- * @member {[Cancellation]} cancellations
- * @type {[Cancellation]}
+ * @member {Array[]} cancellations
+ * @type {Array[]}
  */
 ShipmentLineItem.prototype.cancellations = undefined
 
@@ -190,7 +190,7 @@ ShipmentLineItem.prototype.complianceAttributes = undefined
 
 /**
  * A list of custom passthrough attributes. For details on these attributes, reach out to your respective program teams at Amazon.
- * @member {[CustomAttribute]} customAttributes
- * @type {[CustomAttribute]}
+ * @member {Array[]} customAttributes
+ * @type {Array[]}
  */
 ShipmentLineItem.prototype.customAttributes = undefined

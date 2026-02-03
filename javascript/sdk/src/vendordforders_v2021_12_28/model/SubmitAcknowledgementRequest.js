@@ -58,7 +58,7 @@ export class SubmitAcknowledgementRequest {
 
 /**
  * A list of one or more purchase orders.
- * @member {[OrderAcknowledgementItem]} orderAcknowledgements
- * @type {[OrderAcknowledgementItem]}
+ * @member {Array[]} orderAcknowledgements
+ * @type {Array[]}
  */
 SubmitAcknowledgementRequest.prototype.orderAcknowledgements = undefined

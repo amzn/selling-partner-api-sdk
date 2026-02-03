@@ -76,7 +76,7 @@ PartyIdentification.prototype.address = undefined
 
 /**
  * The tax registration details of the party.
- * @member {[TaxRegistrationDetails]} taxRegistrationDetails
- * @type {[TaxRegistrationDetails]}
+ * @member {Array[]} taxRegistrationDetails
+ * @type {Array[]}
  */
 PartyIdentification.prototype.taxRegistrationDetails = undefined

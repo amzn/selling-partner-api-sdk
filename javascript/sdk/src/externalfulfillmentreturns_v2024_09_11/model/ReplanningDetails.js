@@ -58,7 +58,7 @@ export class ReplanningDetails {
 
 /**
  * A list of all the previous tracking information for the return.
- * @member {[TrackingInfo]} previousTrackingInfo
- * @type {[TrackingInfo]}
+ * @member {Array[]} previousTrackingInfo
+ * @type {Array[]}
  */
 ReplanningDetails.prototype.previousTrackingInfo = undefined

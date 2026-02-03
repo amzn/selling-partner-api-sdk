@@ -17,16 +17,15 @@ export class VehiclesResponse {
      * Get paginated list of vehicle from Amazon&#39;s catalog
      * @alias module:vehicles_v2024_11_01/model/VehiclesResponse
      * @class
-     * @param vehicles {[Vehicle]} List of vehicles from Amazon's catalog.
+     * @param vehicles {Array[]} List of vehicles from Amazon's catalog.
      */
-    constructor(vehicles: [Vehicle]);
-    vehicles: [Vehicle];
+    constructor(vehicles: any[][]);
+    vehicles: any[][];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}
      */
     pagination: Pagination;
 }
-import { Vehicle } from './Vehicle.js';
 import { Pagination } from './Pagination.js';
 //# sourceMappingURL=VehiclesResponse.d.ts.map

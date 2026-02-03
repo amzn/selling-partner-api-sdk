@@ -52,10 +52,10 @@ export class ItemSummaryByMarketplace {
     color: string;
     /**
      * Individual contributors to the creation of the item, such as the authors or actors.
-     * @member {[ItemContributor]} contributors
-     * @type {[ItemContributor]}
+     * @member {Array[]} contributors
+     * @type {Array[]}
      */
-    contributors: [ItemContributor];
+    contributors: any[][];
     /**
      * Classification type that is associated with the Amazon catalog item.
      * @member {String} itemClassification
@@ -148,5 +148,4 @@ export namespace ItemSummaryByMarketplace {
     type ItemClassificationEnum = string;
 }
 import { ItemBrowseClassification } from './ItemBrowseClassification.js';
-import { ItemContributor } from './ItemContributor.js';
 //# sourceMappingURL=ItemSummaryByMarketplace.d.ts.map

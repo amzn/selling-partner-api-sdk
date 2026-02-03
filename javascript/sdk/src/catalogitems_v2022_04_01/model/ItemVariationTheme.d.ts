@@ -14,10 +14,10 @@ export class ItemVariationTheme {
     static constructFromObject(data: any, obj: ItemVariationTheme): ItemVariationTheme;
     /**
      * Names of the Amazon catalog item attributes that are associated with the variation theme.
-     * @member {[String]} attributes
-     * @type {[String]}
+     * @member {Array[]} attributes
+     * @type {Array[]}
      */
-    attributes: [string];
+    attributes: any[][];
     /**
      * Variation theme that indicates the combination of Amazon catalog item attributes that define the variation family.
      * @member {String} theme

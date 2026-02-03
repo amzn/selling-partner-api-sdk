@@ -19,11 +19,10 @@ export class GetShipmentDetailsResponse {
     payload: ShipmentDetail;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { ShipmentDetail } from './ShipmentDetail.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetShipmentDetailsResponse.d.ts.map

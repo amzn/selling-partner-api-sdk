@@ -29,7 +29,7 @@ export class SellerInputDefinition {
    * @class
    * @param isRequired {Boolean} When true, the additional input field is required.
    * @param dataType {String} The data type of the additional input field.
-   * @param constraints {[Constraint]} List of constraints.
+   * @param constraints {Array[]} List of constraints.
    * @param inputDisplayText {String} The display text for the additional input field.
    * @param storedValue {AdditionalSellerInput}
    */
@@ -90,8 +90,8 @@ SellerInputDefinition.prototype.dataType = undefined
 
 /**
  * List of constraints.
- * @member {[Constraint]} constraints
- * @type {[Constraint]}
+ * @member {Array[]} constraints
+ * @type {Array[]}
  */
 SellerInputDefinition.prototype.constraints = undefined
 
@@ -116,7 +116,7 @@ SellerInputDefinition.prototype.storedValue = undefined
 
 /**
  * The set of fixed values in an additional seller input.
- * @member {[String]} restrictedSetValues
- * @type {[String]}
+ * @member {Array[]} restrictedSetValues
+ * @type {Array[]}
  */
 SellerInputDefinition.prototype.restrictedSetValues = undefined

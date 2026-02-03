@@ -26,7 +26,7 @@ export class SearchOrdersResponse {
    * A list of orders.
    * @alias module:orders_v2026_01_01/model/SearchOrdersResponse
    * @class
-   * @param orders {[Order]} An array containing all orders that match the search criteria.
+   * @param orders {Array[]} An array containing all orders that match the search criteria.
    */
   constructor (orders) {
     this.orders = orders
@@ -64,8 +64,8 @@ export class SearchOrdersResponse {
 
 /**
  * An array containing all orders that match the search criteria.
- * @member {[Order]} orders
- * @type {[Order]}
+ * @member {Array[]} orders
+ * @type {Array[]}
  */
 SearchOrdersResponse.prototype.orders = undefined
 

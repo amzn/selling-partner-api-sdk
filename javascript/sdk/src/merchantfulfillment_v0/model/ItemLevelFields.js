@@ -26,7 +26,7 @@ export class ItemLevelFields {
    * @alias module:merchantfulfillment_v0/model/ItemLevelFields
    * @class
    * @param asin {String} The Amazon Standard Identification Number (ASIN) of the item.
-   * @param additionalInputs {[AdditionalInputs]} A list of additional inputs.
+   * @param additionalInputs {Array[]} A list of additional inputs.
    */
   constructor (asin, additionalInputs) {
     this.asin = asin
@@ -70,7 +70,7 @@ ItemLevelFields.prototype.asin = undefined
 
 /**
  * A list of additional inputs.
- * @member {[AdditionalInputs]} additionalInputs
- * @type {[AdditionalInputs]}
+ * @member {Array[]} additionalInputs
+ * @type {Array[]}
  */
 ItemLevelFields.prototype.additionalInputs = undefined

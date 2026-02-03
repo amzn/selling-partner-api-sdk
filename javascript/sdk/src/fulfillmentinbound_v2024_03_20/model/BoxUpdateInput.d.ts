@@ -29,10 +29,10 @@ export class BoxUpdateInput {
     weight: Weight;
     /**
      * The items and their quantity in the box. This must be empty if the box `contentInformationSource` is `BARCODE_2D` or `MANUAL_PROCESS`.
-     * @member {[ItemInput]} items
-     * @type {[ItemInput]}
+     * @member {Array[]} items
+     * @type {Array[]}
      */
-    items: [ItemInput];
+    items: any[][];
     /**
      * Primary key to uniquely identify a Box Package. PackageId must be provided if the intent is to update an existing box. Adding a new box will not require providing this value. Any existing PackageIds not provided will be treated as to-be-removed
      * @member {String} packageId
@@ -43,5 +43,4 @@ export class BoxUpdateInput {
 import { BoxContentInformationSource } from './BoxContentInformationSource.js';
 import { Dimensions } from './Dimensions.js';
 import { Weight } from './Weight.js';
-import { ItemInput } from './ItemInput.js';
 //# sourceMappingURL=BoxUpdateInput.d.ts.map

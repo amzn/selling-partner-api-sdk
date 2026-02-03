@@ -58,7 +58,7 @@ export class OrderChangeTypeFilter {
 
 /**
  * A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
- * @member {[OrderChangeTypeEnum]} orderChangeTypes
- * @type {[OrderChangeTypeEnum]}
+ * @member {Array[]} orderChangeTypes
+ * @type {Array[]}
  */
 OrderChangeTypeFilter.prototype.orderChangeTypes = undefined

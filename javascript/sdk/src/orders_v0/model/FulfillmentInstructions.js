@@ -61,8 +61,8 @@ export class FulfillmentInstructions {
 
 /**
  * List of all fulfillment plans for the given order id
- * @member {[FulfillmentPlan]} fulfillmentPlans
- * @type {[FulfillmentPlan]}
+ * @member {Array[]} fulfillmentPlans
+ * @type {Array[]}
  */
 FulfillmentInstructions.prototype.fulfillmentPlans = undefined
 

@@ -114,29 +114,29 @@ FulfillmentPreview.prototype.estimatedShippingWeight = undefined
 
 /**
  * An array of fee type and cost pairs.
- * @member {[Fee]} estimatedFees
- * @type {[Fee]}
+ * @member {Array[]} estimatedFees
+ * @type {Array[]}
  */
 FulfillmentPreview.prototype.estimatedFees = undefined
 
 /**
  * An array of fulfillment preview shipment information.
- * @member {[FulfillmentPreviewShipment]} fulfillmentPreviewShipments
- * @type {[FulfillmentPreviewShipment]}
+ * @member {Array[]} fulfillmentPreviewShipments
+ * @type {Array[]}
  */
 FulfillmentPreview.prototype.fulfillmentPreviewShipments = undefined
 
 /**
  * An array of unfulfillable preview item information.
- * @member {[UnfulfillablePreviewItem]} unfulfillablePreviewItems
- * @type {[UnfulfillablePreviewItem]}
+ * @member {Array[]} unfulfillablePreviewItems
+ * @type {Array[]}
  */
 FulfillmentPreview.prototype.unfulfillablePreviewItems = undefined
 
 /**
  * String list
- * @member {[String]} orderUnfulfillableReasons
- * @type {[String]}
+ * @member {Array[]} orderUnfulfillableReasons
+ * @type {Array[]}
  */
 FulfillmentPreview.prototype.orderUnfulfillableReasons = undefined
 
@@ -149,7 +149,7 @@ FulfillmentPreview.prototype.marketplaceId = undefined
 
 /**
  * A list of features and their fulfillment policies to apply to the order.
- * @member {[FeatureSettings]} featureConstraints
- * @type {[FeatureSettings]}
+ * @member {Array[]} featureConstraints
+ * @type {Array[]}
  */
 FulfillmentPreview.prototype.featureConstraints = undefined

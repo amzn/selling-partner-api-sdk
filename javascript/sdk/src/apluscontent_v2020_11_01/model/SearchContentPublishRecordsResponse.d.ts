@@ -17,16 +17,16 @@ export class SearchContentPublishRecordsResponse {
      * @alias module:apluscontent_v2020_11_01/model/SearchContentPublishRecordsResponse
      * @class
      * @implements module:apluscontent_v2020_11_01/model/AplusPaginatedResponse
-     * @param publishRecordList {[PublishRecord]} A list of A+ Content publishing records.
+     * @param publishRecordList {Array[]} A list of A+ Content publishing records.
      */
-    constructor(publishRecordList: [PublishRecord]);
-    publishRecordList: [PublishRecord];
+    constructor(publishRecordList: any[][]);
+    publishRecordList: any[][];
     /**
      * A set of messages to the user, such as warnings or comments.
-     * @member {[Error]} warnings
-     * @type {[Error]}
+     * @member {Array[]} warnings
+     * @type {Array[]}
      */
-    warnings: [Error];
+    warnings: any[][];
     /**
      * A token that you use to fetch a specific page when there are multiple pages of results.
      * @member {String} nextPageToken
@@ -34,6 +34,4 @@ export class SearchContentPublishRecordsResponse {
      */
     nextPageToken: string;
 }
-import { PublishRecord } from './PublishRecord.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=SearchContentPublishRecordsResponse.d.ts.map

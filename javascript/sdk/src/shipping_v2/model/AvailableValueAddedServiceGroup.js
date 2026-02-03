@@ -88,7 +88,7 @@ AvailableValueAddedServiceGroup.prototype.isRequired = undefined
 
 /**
  * A list of optional value-added services available for purchase with a shipping service offering.
- * @member {[ValueAddedService]} valueAddedServices
- * @type {[ValueAddedService]}
+ * @member {Array[]} valueAddedServices
+ * @type {Array[]}
  */
 AvailableValueAddedServiceGroup.prototype.valueAddedServices = undefined

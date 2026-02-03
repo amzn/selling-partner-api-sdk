@@ -19,11 +19,10 @@ export class GetFulfillmentPreviewResponse {
     payload: GetFulfillmentPreviewResult;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { GetFulfillmentPreviewResult } from './GetFulfillmentPreviewResult.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetFulfillmentPreviewResponse.d.ts.map

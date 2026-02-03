@@ -75,8 +75,8 @@ DeliveryPreferences.prototype.preferredDeliveryTime = undefined
 
 /**
  * Enumerated list of miscellaneous delivery attributes associated with the shipping address.
- * @member {[OtherDeliveryAttributes]} otherAttributes
- * @type {[OtherDeliveryAttributes]}
+ * @member {Array[]} otherAttributes
+ * @type {Array[]}
  */
 DeliveryPreferences.prototype.otherAttributes = undefined
 

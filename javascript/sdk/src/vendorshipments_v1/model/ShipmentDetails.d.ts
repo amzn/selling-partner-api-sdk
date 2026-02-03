@@ -19,11 +19,10 @@ export class ShipmentDetails {
     pagination: Pagination;
     /**
      * A list of one or more shipments with underlying details.
-     * @member {[Shipment]} shipments
-     * @type {[Shipment]}
+     * @member {Array[]} shipments
+     * @type {Array[]}
      */
-    shipments: [Shipment];
+    shipments: any[][];
 }
 import { Pagination } from './Pagination.js';
-import { Shipment } from './Shipment.js';
 //# sourceMappingURL=ShipmentDetails.d.ts.map

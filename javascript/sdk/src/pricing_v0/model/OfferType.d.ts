@@ -43,13 +43,12 @@ export class OfferType {
     businessPrice: MoneyType;
     /**
      * List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.
-     * @member {[QuantityDiscountPriceType]} quantityDiscountPrices
-     * @type {[QuantityDiscountPriceType]}
+     * @member {Array[]} quantityDiscountPrices
+     * @type {Array[]}
      */
-    quantityDiscountPrices: [QuantityDiscountPriceType];
+    quantityDiscountPrices: any[][];
 }
 import { PriceType } from './PriceType.js';
 import { MoneyType } from './MoneyType.js';
 import { OfferCustomerType } from './OfferCustomerType.js';
-import { QuantityDiscountPriceType } from './QuantityDiscountPriceType.js';
 //# sourceMappingURL=OfferType.d.ts.map

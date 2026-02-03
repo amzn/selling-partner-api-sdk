@@ -30,18 +30,16 @@ export class DebtRecoveryEvent {
     overPaymentCredit: Currency;
     /**
      * A list of debt recovery item information.
-     * @member {[DebtRecoveryItem]} debtRecoveryItemList
-     * @type {[DebtRecoveryItem]}
+     * @member {Array[]} debtRecoveryItemList
+     * @type {Array[]}
      */
-    debtRecoveryItemList: [DebtRecoveryItem];
+    debtRecoveryItemList: any[][];
     /**
      * A list of payment instruments.
-     * @member {[ChargeInstrument]} chargeInstrumentList
-     * @type {[ChargeInstrument]}
+     * @member {Array[]} chargeInstrumentList
+     * @type {Array[]}
      */
-    chargeInstrumentList: [ChargeInstrument];
+    chargeInstrumentList: any[][];
 }
 import { Currency } from './Currency.js';
-import { DebtRecoveryItem } from './DebtRecoveryItem.js';
-import { ChargeInstrument } from './ChargeInstrument.js';
 //# sourceMappingURL=DebtRecoveryEvent.d.ts.map

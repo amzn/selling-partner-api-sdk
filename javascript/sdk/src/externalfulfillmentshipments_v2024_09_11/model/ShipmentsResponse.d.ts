@@ -14,16 +14,15 @@ export class ShipmentsResponse {
     static constructFromObject(data: any, obj: ShipmentsResponse): ShipmentsResponse;
     /**
      * A list of shipments.
-     * @member {[Shipment]} shipments
-     * @type {[Shipment]}
+     * @member {Array[]} shipments
+     * @type {Array[]}
      */
-    shipments: [Shipment];
+    shipments: any[][];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}
      */
     pagination: Pagination;
 }
-import { Shipment } from './Shipment.js';
 import { Pagination } from './Pagination.js';
 //# sourceMappingURL=ShipmentsResponse.d.ts.map

@@ -83,14 +83,14 @@ DebtRecoveryEvent.prototype.overPaymentCredit = undefined
 
 /**
  * A list of debt recovery item information.
- * @member {[DebtRecoveryItem]} debtRecoveryItemList
- * @type {[DebtRecoveryItem]}
+ * @member {Array[]} debtRecoveryItemList
+ * @type {Array[]}
  */
 DebtRecoveryEvent.prototype.debtRecoveryItemList = undefined
 
 /**
  * A list of payment instruments.
- * @member {[ChargeInstrument]} chargeInstrumentList
- * @type {[ChargeInstrument]}
+ * @member {Array[]} chargeInstrumentList
+ * @type {Array[]}
  */
 DebtRecoveryEvent.prototype.chargeInstrumentList = undefined

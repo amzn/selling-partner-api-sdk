@@ -132,14 +132,14 @@ InvoiceItem.prototype.hsnCode = undefined
 
 /**
  * Individual tax details per line item.
- * @member {[TaxDetail]} taxDetails
- * @type {[TaxDetail]}
+ * @member {Array[]} taxDetails
+ * @type {Array[]}
  */
 InvoiceItem.prototype.taxDetails = undefined
 
 /**
  * Individual charge details per line item.
- * @member {[ChargeDetails]} chargeDetails
- * @type {[ChargeDetails]}
+ * @member {Array[]} chargeDetails
+ * @type {Array[]}
  */
 InvoiceItem.prototype.chargeDetails = undefined

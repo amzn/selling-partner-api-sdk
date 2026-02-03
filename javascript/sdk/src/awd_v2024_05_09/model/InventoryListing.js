@@ -25,7 +25,7 @@ export class InventoryListing {
    * AWD inventory payload.
    * @alias module:awd_v2024_05_09/model/InventoryListing
    * @class
-   * @param inventory {[InventorySummary]} List of inventory summaries.
+   * @param inventory {Array[]} List of inventory summaries.
    */
   constructor (inventory) {
     this.inventory = inventory
@@ -61,8 +61,8 @@ export class InventoryListing {
 
 /**
  * List of inventory summaries.
- * @member {[InventorySummary]} inventory
- * @type {[InventorySummary]}
+ * @member {Array[]} inventory
+ * @type {Array[]}
  */
 InventoryListing.prototype.inventory = undefined
 

@@ -36,16 +36,16 @@ export class Item {
     itemDescription: string;
     /**
      * A list of transparency codes.
-     * @member {[String]} transparencyCodeList
-     * @type {[String]}
+     * @member {Array[]} transparencyCodeList
+     * @type {Array[]}
      */
-    transparencyCodeList: [string];
+    transparencyCodeList: any[][];
     /**
      * A list of additional seller input pairs required to purchase shipping.
-     * @member {[AdditionalSellerInputs]} itemLevelSellerInputsList
-     * @type {[AdditionalSellerInputs]}
+     * @member {Array[]} itemLevelSellerInputsList
+     * @type {Array[]}
      */
-    itemLevelSellerInputsList: [AdditionalSellerInputs];
+    itemLevelSellerInputsList: any[][];
     /**
      * @member {LiquidVolume} liquidVolume
      * @type {LiquidVolume}
@@ -64,7 +64,6 @@ export class Item {
     dangerousGoodsDetails: DangerousGoodsDetails;
 }
 import { Weight } from './Weight.js';
-import { AdditionalSellerInputs } from './AdditionalSellerInputs.js';
 import { LiquidVolume } from './LiquidVolume.js';
 import { DangerousGoodsDetails } from './DangerousGoodsDetails.js';
 //# sourceMappingURL=Item.d.ts.map

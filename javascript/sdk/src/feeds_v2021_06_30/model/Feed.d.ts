@@ -29,10 +29,10 @@ export class Feed {
     processingStatus: string;
     /**
      * A list of identifiers for the marketplaces that the feed is applied to.
-     * @member {[String]} marketplaceIds
-     * @type {[String]}
+     * @member {Array[]} marketplaceIds
+     * @type {Array[]}
      */
-    marketplaceIds: [string];
+    marketplaceIds: any[][];
     /**
      * The date and time when feed processing started, in ISO 8601 date time format.
      * @member {Date} processingStartTime

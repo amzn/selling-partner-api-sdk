@@ -14,10 +14,10 @@ export class GovernmentInvoiceStatusResponse {
     static constructFromObject(data: any, obj: GovernmentInvoiceStatusResponse): GovernmentInvoiceStatusResponse;
     /**
      * The errors that occurred during invoice creation.
-     * @member {[InvoiceError]} invoiceErrors
-     * @type {[InvoiceError]}
+     * @member {Array[]} invoiceErrors
+     * @type {Array[]}
      */
-    invoiceErrors: [InvoiceError];
+    invoiceErrors: any[][];
     /**
      * Government Invoice ID of a successfully authorized invoice.
      * @member {String} invoiceExternalDocumentId
@@ -30,6 +30,5 @@ export class GovernmentInvoiceStatusResponse {
      */
     status: GovernmentInvoiceCreationStatus;
 }
-import { InvoiceError } from './InvoiceError.js';
 import { GovernmentInvoiceCreationStatus } from './GovernmentInvoiceCreationStatus.js';
 //# sourceMappingURL=GovernmentInvoiceStatusResponse.d.ts.map

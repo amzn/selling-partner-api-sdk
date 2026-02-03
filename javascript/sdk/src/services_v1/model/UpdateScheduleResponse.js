@@ -60,14 +60,14 @@ export class UpdateScheduleResponse {
 
 /**
  * Contains the `UpdateScheduleRecords` for which the error/warning has occurred.
- * @member {[UpdateScheduleRecord]} payload
- * @type {[UpdateScheduleRecord]}
+ * @member {Array[]} payload
+ * @type {Array[]}
  */
 UpdateScheduleResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Array[]} errors
+ * @type {Array[]}
  */
 UpdateScheduleResponse.prototype.errors = undefined

@@ -14,17 +14,15 @@ export class GetMarketplaceParticipationsResponse {
     static constructFromObject(data: any, obj: GetMarketplaceParticipationsResponse): GetMarketplaceParticipationsResponse;
     /**
      * List of marketplace participations.
-     * @member {[MarketplaceParticipation]} payload
-     * @type {[MarketplaceParticipation]}
+     * @member {Array[]} payload
+     * @type {Array[]}
      */
-    payload: [MarketplaceParticipation];
+    payload: any[][];
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
-import { MarketplaceParticipation } from './MarketplaceParticipation.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetMarketplaceParticipationsResponse.d.ts.map

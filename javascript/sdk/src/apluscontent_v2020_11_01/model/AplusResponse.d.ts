@@ -14,10 +14,9 @@ export class AplusResponse {
     static constructFromObject(data: any, obj: AplusResponse): AplusResponse;
     /**
      * A set of messages to the user, such as warnings or comments.
-     * @member {[Error]} warnings
-     * @type {[Error]}
+     * @member {Array[]} warnings
+     * @type {Array[]}
      */
-    warnings: [Error];
+    warnings: any[][];
 }
-import { Error } from './Error.js';
 //# sourceMappingURL=AplusResponse.d.ts.map

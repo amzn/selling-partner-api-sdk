@@ -18,11 +18,10 @@ export class ItemReviewTrend {
      * @alias module:customerFeedback_2024_06_01/model/ItemReviewTrend
      * @class
      * @param topic {String} The name of the item review topic.
-     * @param trendMetrics {[ItemReviewTrendPoint]} The item's review trend metrics for the past six months.
+     * @param trendMetrics {Array[]} The item's review trend metrics for the past six months.
      */
-    constructor(topic: string, trendMetrics: [ItemReviewTrendPoint]);
+    constructor(topic: string, trendMetrics: any[][]);
     topic: string;
-    trendMetrics: [ItemReviewTrendPoint];
+    trendMetrics: any[][];
 }
-import { ItemReviewTrendPoint } from './ItemReviewTrendPoint.js';
 //# sourceMappingURL=ItemReviewTrend.d.ts.map

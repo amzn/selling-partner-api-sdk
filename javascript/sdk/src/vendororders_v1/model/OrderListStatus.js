@@ -66,7 +66,7 @@ OrderListStatus.prototype.pagination = undefined
 
 /**
  * Represents an order status within the OrderListStatus.
- * @member {[OrderStatus]} ordersStatus
- * @type {[OrderStatus]}
+ * @member {Array[]} ordersStatus
+ * @type {Array[]}
  */
 OrderListStatus.prototype.ordersStatus = undefined

@@ -23,16 +23,16 @@ export class CreateFulfillmentOrderRequest {
      * @param displayableOrderComment {String} Order-specific text that appears in recipient-facing materials such as the outbound shipment packing slip.
      * @param shippingSpeedCategory {ShippingSpeedCategory}
      * @param destinationAddress {Address}
-     * @param items {[CreateFulfillmentOrderItem]} An array of item information for creating a fulfillment order.
+     * @param items {Array[]} An array of item information for creating a fulfillment order.
      */
-    constructor(sellerFulfillmentOrderId: string, displayableOrderId: string, displayableOrderDate: Date, displayableOrderComment: string, shippingSpeedCategory: ShippingSpeedCategory, destinationAddress: Address, items: [CreateFulfillmentOrderItem]);
+    constructor(sellerFulfillmentOrderId: string, displayableOrderId: string, displayableOrderDate: Date, displayableOrderComment: string, shippingSpeedCategory: ShippingSpeedCategory, destinationAddress: Address, items: any[][]);
     sellerFulfillmentOrderId: string;
     displayableOrderId: string;
     displayableOrderDate: Date;
     displayableOrderComment: string;
     shippingSpeedCategory: ShippingSpeedCategory;
     destinationAddress: Address;
-    items: [CreateFulfillmentOrderItem];
+    items: any[][];
     /**
      * The marketplace the fulfillment order is placed against.
      * @member {String} marketplaceId
@@ -72,31 +72,28 @@ export class CreateFulfillmentOrderRequest {
     shipFromCountryCode: string;
     /**
      * A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller.
-     * @member {[String]} notificationEmails
-     * @type {[String]}
+     * @member {Array[]} notificationEmails
+     * @type {Array[]}
      */
-    notificationEmails: [string];
+    notificationEmails: any[][];
     /**
      * A list of features and their fulfillment policies to apply to the order.
-     * @member {[FeatureSettings]} featureConstraints
-     * @type {[FeatureSettings]}
+     * @member {Array[]} featureConstraints
+     * @type {Array[]}
      */
-    featureConstraints: [FeatureSettings];
+    featureConstraints: any[][];
     /**
      * An array of various payment attributes related to this fulfillment order.
-     * @member {[PaymentInformation]} paymentInformation
-     * @type {[PaymentInformation]}
+     * @member {Array[]} paymentInformation
+     * @type {Array[]}
      */
-    paymentInformation: [PaymentInformation];
+    paymentInformation: any[][];
 }
 import { ShippingSpeedCategory } from './ShippingSpeedCategory.js';
 import { Address } from './Address.js';
-import { CreateFulfillmentOrderItem } from './CreateFulfillmentOrderItem.js';
 import { DeliveryWindow } from './DeliveryWindow.js';
 import { DeliveryPreferences } from './DeliveryPreferences.js';
 import { FulfillmentAction } from './FulfillmentAction.js';
 import { FulfillmentPolicy } from './FulfillmentPolicy.js';
 import { CODSettings } from './CODSettings.js';
-import { FeatureSettings } from './FeatureSettings.js';
-import { PaymentInformation } from './PaymentInformation.js';
 //# sourceMappingURL=CreateFulfillmentOrderRequest.d.ts.map

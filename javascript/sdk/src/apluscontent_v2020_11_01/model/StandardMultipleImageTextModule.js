@@ -57,7 +57,7 @@ export class StandardMultipleImageTextModule {
 }
 
 /**
- * @member {[StandardImageTextCaptionBlock]} blocks
- * @type {[StandardImageTextCaptionBlock]}
+ * @member {Array[]} blocks
+ * @type {Array[]}
  */
 StandardMultipleImageTextModule.prototype.blocks = undefined

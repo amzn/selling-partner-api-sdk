@@ -102,50 +102,50 @@ ShipmentItem.prototype.quantityShipped = undefined
 
 /**
  * A list of charge information on the seller's account.
- * @member {[ChargeComponent]} itemChargeList
- * @type {[ChargeComponent]}
+ * @member {Array[]} itemChargeList
+ * @type {Array[]}
  */
 ShipmentItem.prototype.itemChargeList = undefined
 
 /**
  * A list of charge information on the seller's account.
- * @member {[ChargeComponent]} itemChargeAdjustmentList
- * @type {[ChargeComponent]}
+ * @member {Array[]} itemChargeAdjustmentList
+ * @type {Array[]}
  */
 ShipmentItem.prototype.itemChargeAdjustmentList = undefined
 
 /**
  * A list of fee component information.
- * @member {[FeeComponent]} itemFeeList
- * @type {[FeeComponent]}
+ * @member {Array[]} itemFeeList
+ * @type {Array[]}
  */
 ShipmentItem.prototype.itemFeeList = undefined
 
 /**
  * A list of fee component information.
- * @member {[FeeComponent]} itemFeeAdjustmentList
- * @type {[FeeComponent]}
+ * @member {Array[]} itemFeeAdjustmentList
+ * @type {Array[]}
  */
 ShipmentItem.prototype.itemFeeAdjustmentList = undefined
 
 /**
  * A list of information about taxes withheld.
- * @member {[TaxWithheldComponent]} itemTaxWithheldList
- * @type {[TaxWithheldComponent]}
+ * @member {Array[]} itemTaxWithheldList
+ * @type {Array[]}
  */
 ShipmentItem.prototype.itemTaxWithheldList = undefined
 
 /**
  * A list of promotions.
- * @member {[Promotion]} promotionList
- * @type {[Promotion]}
+ * @member {Array[]} promotionList
+ * @type {Array[]}
  */
 ShipmentItem.prototype.promotionList = undefined
 
 /**
  * A list of promotions.
- * @member {[Promotion]} promotionAdjustmentList
- * @type {[Promotion]}
+ * @member {Array[]} promotionAdjustmentList
+ * @type {Array[]}
  */
 ShipmentItem.prototype.promotionAdjustmentList = undefined
 

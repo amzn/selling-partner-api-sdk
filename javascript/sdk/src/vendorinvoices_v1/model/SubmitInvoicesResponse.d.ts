@@ -19,11 +19,10 @@ export class SubmitInvoicesResponse {
     payload: TransactionId;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { TransactionId } from './TransactionId.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=SubmitInvoicesResponse.d.ts.map

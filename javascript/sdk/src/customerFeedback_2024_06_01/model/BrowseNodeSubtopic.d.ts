@@ -25,10 +25,10 @@ export class BrowseNodeSubtopic {
     metrics: BrowseNodeReviewSubtopicMetrics;
     /**
      * A list of up to three snippets from reviews that contain the topic. This value is `null` if there aren't enough review snippets for the subtopic.
-     * @member {[String]} reviewSnippets
-     * @type {[String]}
+     * @member {Array[]} reviewSnippets
+     * @type {Array[]}
      */
-    reviewSnippets: [string];
+    reviewSnippets: any[][];
 }
 import { BrowseNodeReviewSubtopicMetrics } from './BrowseNodeReviewSubtopicMetrics.js';
 //# sourceMappingURL=BrowseNodeSubtopic.d.ts.map

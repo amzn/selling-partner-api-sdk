@@ -68,7 +68,7 @@ ItemBrowseClassificationsByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Classifications (browse nodes) that are associated with the item in the Amazon catalog.
- * @member {[ItemBrowseClassification]} classifications
- * @type {[ItemBrowseClassification]}
+ * @member {Array[]} classifications
+ * @type {Array[]}
  */
 ItemBrowseClassificationsByMarketplace.prototype.classifications = undefined

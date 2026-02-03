@@ -25,10 +25,9 @@ export class DistributionProduct {
     sku: string;
     /**
      * Attributes for this instance of the product, i.e. already-prepped, or other attributes that distinguish the product beyond the SKU.
-     * @member {[ProductAttribute]} attributes
-     * @type {[ProductAttribute]}
+     * @member {Array[]} attributes
+     * @type {Array[]}
      */
-    attributes: [ProductAttribute];
+    attributes: any[][];
 }
-import { ProductAttribute } from './ProductAttribute.js';
 //# sourceMappingURL=DistributionProduct.d.ts.map

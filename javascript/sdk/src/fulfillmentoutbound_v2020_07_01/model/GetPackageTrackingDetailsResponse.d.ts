@@ -19,11 +19,10 @@ export class GetPackageTrackingDetailsResponse {
     payload: PackageTrackingDetails;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { PackageTrackingDetails } from './PackageTrackingDetails.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetPackageTrackingDetailsResponse.d.ts.map

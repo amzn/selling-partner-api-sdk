@@ -38,9 +38,9 @@ export class FeatureSku {
     skuCount: number;
     /**
      * Other seller SKUs that are shared across the same inventory.
-     * @member {[String]} overlappingSkus
-     * @type {[String]}
+     * @member {Array[]} overlappingSkus
+     * @type {Array[]}
      */
-    overlappingSkus: [string];
+    overlappingSkus: any[][];
 }
 //# sourceMappingURL=FeatureSku.d.ts.map

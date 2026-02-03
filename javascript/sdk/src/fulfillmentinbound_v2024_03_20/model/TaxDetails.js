@@ -74,7 +74,7 @@ TaxDetails.prototype.hsnCode = undefined
 
 /**
  * List of tax rates.
- * @member {[TaxRate]} taxRates
- * @type {[TaxRate]}
+ * @member {Array[]} taxRates
+ * @type {Array[]}
  */
 TaxDetails.prototype.taxRates = undefined

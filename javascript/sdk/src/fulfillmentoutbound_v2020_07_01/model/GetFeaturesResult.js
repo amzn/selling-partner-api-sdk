@@ -25,7 +25,7 @@ export class GetFeaturesResult {
    * The payload for the &#x60;getFeatures&#x60; operation.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/GetFeaturesResult
    * @class
-   * @param features {[Feature]} An array of features.
+   * @param features {Array[]} An array of features.
    */
   constructor (features) {
     this.features = features
@@ -60,7 +60,7 @@ export class GetFeaturesResult {
 
 /**
  * An array of features.
- * @member {[Feature]} features
- * @type {[Feature]}
+ * @member {Array[]} features
+ * @type {Array[]}
  */
 GetFeaturesResult.prototype.features = undefined

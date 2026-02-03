@@ -25,7 +25,7 @@ export class FulfillmentPreviewShipment {
    * Delivery and item information for a shipment in a fulfillment order preview.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewShipment
    * @class
-   * @param fulfillmentPreviewItems {[FulfillmentPreviewItem]} An array of fulfillment preview item information.
+   * @param fulfillmentPreviewItems {Array[]} An array of fulfillment preview item information.
    */
   constructor (fulfillmentPreviewItems) {
     this.fulfillmentPreviewItems = fulfillmentPreviewItems
@@ -93,14 +93,14 @@ FulfillmentPreviewShipment.prototype.latestArrivalDate = undefined
 
 /**
  * Provides additional insight into the shipment timeline when exact delivery dates are not able to be precomputed.
- * @member {[String]} shippingNotes
- * @type {[String]}
+ * @member {Array[]} shippingNotes
+ * @type {Array[]}
  */
 FulfillmentPreviewShipment.prototype.shippingNotes = undefined
 
 /**
  * An array of fulfillment preview item information.
- * @member {[FulfillmentPreviewItem]} fulfillmentPreviewItems
- * @type {[FulfillmentPreviewItem]}
+ * @member {Array[]} fulfillmentPreviewItems
+ * @type {Array[]}
  */
 FulfillmentPreviewShipment.prototype.fulfillmentPreviewItems = undefined

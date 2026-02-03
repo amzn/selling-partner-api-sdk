@@ -61,16 +61,16 @@ export class FulfillmentOrder {
     codSettings: CODSettings;
     /**
      * A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller.
-     * @member {[String]} notificationEmails
-     * @type {[String]}
+     * @member {Array[]} notificationEmails
+     * @type {Array[]}
      */
-    notificationEmails: [string];
+    notificationEmails: any[][];
     /**
      * A list of features and their fulfillment policies to apply to the order.
-     * @member {[FeatureSettings]} featureConstraints
-     * @type {[FeatureSettings]}
+     * @member {Array[]} featureConstraints
+     * @type {Array[]}
      */
-    featureConstraints: [FeatureSettings];
+    featureConstraints: any[][];
 }
 import { ShippingSpeedCategory } from './ShippingSpeedCategory.js';
 import { Address } from './Address.js';
@@ -79,5 +79,4 @@ import { DeliveryWindow } from './DeliveryWindow.js';
 import { FulfillmentAction } from './FulfillmentAction.js';
 import { FulfillmentPolicy } from './FulfillmentPolicy.js';
 import { CODSettings } from './CODSettings.js';
-import { FeatureSettings } from './FeatureSettings.js';
 //# sourceMappingURL=FulfillmentOrder.d.ts.map

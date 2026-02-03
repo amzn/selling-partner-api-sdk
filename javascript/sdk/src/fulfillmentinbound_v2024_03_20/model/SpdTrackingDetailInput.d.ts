@@ -17,10 +17,9 @@ export class SpdTrackingDetailInput {
      * Contains input information to update Small Parcel Delivery (SPD) tracking information.
      * @alias module:fulfillmentinbound_v2024_03_20/model/SpdTrackingDetailInput
      * @class
-     * @param spdTrackingItems {[SpdTrackingItemInput]} List of Small Parcel Delivery (SPD) tracking items input.
+     * @param spdTrackingItems {Array[]} List of Small Parcel Delivery (SPD) tracking items input.
      */
-    constructor(spdTrackingItems: [SpdTrackingItemInput]);
-    spdTrackingItems: [SpdTrackingItemInput];
+    constructor(spdTrackingItems: any[][]);
+    spdTrackingItems: any[][];
 }
-import { SpdTrackingItemInput } from './SpdTrackingItemInput.js';
 //# sourceMappingURL=SpdTrackingDetailInput.d.ts.map

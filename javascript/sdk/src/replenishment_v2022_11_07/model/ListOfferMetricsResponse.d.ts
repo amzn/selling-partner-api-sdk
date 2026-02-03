@@ -14,16 +14,15 @@ export class ListOfferMetricsResponse {
     static constructFromObject(data: any, obj: ListOfferMetricsResponse): ListOfferMetricsResponse;
     /**
      * A list of offers and associated metrics.
-     * @member {[ListOfferMetricsResponseOffer]} offers
-     * @type {[ListOfferMetricsResponseOffer]}
+     * @member {Array[]} offers
+     * @type {Array[]}
      */
-    offers: [ListOfferMetricsResponseOffer];
+    offers: any[][];
     /**
      * @member {PaginationResponse} pagination
      * @type {PaginationResponse}
      */
     pagination: PaginationResponse;
 }
-import { ListOfferMetricsResponseOffer } from './ListOfferMetricsResponseOffer.js';
 import { PaginationResponse } from './PaginationResponse.js';
 //# sourceMappingURL=ListOfferMetricsResponse.d.ts.map

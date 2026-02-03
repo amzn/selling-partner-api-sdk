@@ -19,11 +19,10 @@ export class CustomerInvoiceList {
     pagination: Pagination;
     /**
      * Represents a customer invoice within the `CustomerInvoiceList`.
-     * @member {[CustomerInvoice]} customerInvoices
-     * @type {[CustomerInvoice]}
+     * @member {Array[]} customerInvoices
+     * @type {Array[]}
      */
-    customerInvoices: [CustomerInvoice];
+    customerInvoices: any[][];
 }
 import { Pagination } from './Pagination.js';
-import { CustomerInvoice } from './CustomerInvoice.js';
 //# sourceMappingURL=CustomerInvoiceList.d.ts.map

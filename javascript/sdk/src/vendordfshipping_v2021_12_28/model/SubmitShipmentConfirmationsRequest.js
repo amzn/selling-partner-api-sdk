@@ -58,7 +58,7 @@ export class SubmitShipmentConfirmationsRequest {
 
 /**
  * Array of `ShipmentConfirmation` objects. Each `ShipmentConfirmation` object represents the confirmation details for a specific shipment.
- * @member {[ShipmentConfirmation]} shipmentConfirmations
- * @type {[ShipmentConfirmation]}
+ * @member {Array[]} shipmentConfirmations
+ * @type {Array[]}
  */
 SubmitShipmentConfirmationsRequest.prototype.shipmentConfirmations = undefined

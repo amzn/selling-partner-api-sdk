@@ -76,10 +76,10 @@ export class Order {
     numberOfItemsUnshipped: number;
     /**
      * A list of payment execution detail items.
-     * @member {[PaymentExecutionDetailItem]} paymentExecutionDetail
-     * @type {[PaymentExecutionDetailItem]}
+     * @member {Array[]} paymentExecutionDetail
+     * @type {Array[]}
      */
-    paymentExecutionDetail: [PaymentExecutionDetailItem];
+    paymentExecutionDetail: any[][];
     /**
      * The payment method for the order. This property is limited to COD and CVS payment methods. Unless you need the specific COD payment information provided by the `PaymentExecutionDetailItem` object, we recommend using the `PaymentMethodDetails` property to get payment method information.
      * @member {String} paymentMethod
@@ -88,10 +88,10 @@ export class Order {
     paymentMethod: string;
     /**
      * A list of payment method detail items.
-     * @member {[String]} paymentMethodDetails
-     * @type {[String]}
+     * @member {Array[]} paymentMethodDetails
+     * @type {Array[]}
      */
-    paymentMethodDetails: [string];
+    paymentMethodDetails: any[][];
     /**
      * The identifier for the marketplace where the order was placed.
      * @member {String} marketplaceId
@@ -329,7 +329,6 @@ export namespace Order {
     type BuyerInvoicePreferenceEnum = string;
 }
 import { Money } from './Money.js';
-import { PaymentExecutionDetailItem } from './PaymentExecutionDetailItem.js';
 import { EasyShipShipmentStatus } from './EasyShipShipmentStatus.js';
 import { Address } from './Address.js';
 import { BuyerTaxInformation } from './BuyerTaxInformation.js';

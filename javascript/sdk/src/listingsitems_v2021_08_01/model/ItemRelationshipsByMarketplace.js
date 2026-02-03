@@ -26,7 +26,7 @@ export class ItemRelationshipsByMarketplace {
    * @alias module:listingsitems_v2021_08_01/model/ItemRelationshipsByMarketplace
    * @class
    * @param marketplaceId {String} Amazon marketplace identifier.
-   * @param relationships {[ItemRelationship]} Relationships for the listing item.
+   * @param relationships {Array[]} Relationships for the listing item.
    */
   constructor (marketplaceId, relationships) {
     this.marketplaceId = marketplaceId
@@ -70,7 +70,7 @@ ItemRelationshipsByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Relationships for the listing item.
- * @member {[ItemRelationship]} relationships
- * @type {[ItemRelationship]}
+ * @member {Array[]} relationships
+ * @type {Array[]}
  */
 ItemRelationshipsByMarketplace.prototype.relationships = undefined

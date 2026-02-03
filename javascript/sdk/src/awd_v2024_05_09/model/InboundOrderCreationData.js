@@ -28,7 +28,7 @@ export class InboundOrderCreationData {
    * @alias module:awd_v2024_05_09/model/InboundOrderCreationData
    * @class
    * @param originAddress {Address}
-   * @param packagesToInbound {[DistributionPackageQuantity]} List of packages to be inbounded.
+   * @param packagesToInbound {Array[]} List of packages to be inbounded.
    */
   constructor (originAddress, packagesToInbound) {
     this.originAddress = originAddress
@@ -80,8 +80,8 @@ InboundOrderCreationData.prototype.originAddress = undefined
 
 /**
  * List of packages to be inbounded.
- * @member {[DistributionPackageQuantity]} packagesToInbound
- * @type {[DistributionPackageQuantity]}
+ * @member {Array[]} packagesToInbound
+ * @type {Array[]}
  */
 InboundOrderCreationData.prototype.packagesToInbound = undefined
 

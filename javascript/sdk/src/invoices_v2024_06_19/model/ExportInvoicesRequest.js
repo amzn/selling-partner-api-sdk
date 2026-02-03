@@ -118,8 +118,8 @@ ExportInvoicesRequest.prototype.series = undefined
 
 /**
  * A list of statuses that you can use to filter invoices. Use the `getInvoicesAttributes` operation to check invoice status options.  Min count: 1
- * @member {[String]} statuses
- * @type {[String]}
+ * @member {Array[]} statuses
+ * @type {Array[]}
  */
 ExportInvoicesRequest.prototype.statuses = undefined
 

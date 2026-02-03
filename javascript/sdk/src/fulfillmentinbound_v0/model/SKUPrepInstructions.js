@@ -92,14 +92,14 @@ SKUPrepInstructions.prototype.prepGuidance = undefined
 
 /**
  * A list of preparation instructions to help with item sourcing decisions.
- * @member {[PrepInstruction]} prepInstructionList
- * @type {[PrepInstruction]}
+ * @member {Array[]} prepInstructionList
+ * @type {Array[]}
  */
 SKUPrepInstructions.prototype.prepInstructionList = undefined
 
 /**
  * A list of preparation instructions and fees for Amazon to prep goods for shipment.
- * @member {[AmazonPrepFeesDetails]} amazonPrepFeesDetailsList
- * @type {[AmazonPrepFeesDetails]}
+ * @member {Array[]} amazonPrepFeesDetailsList
+ * @type {Array[]}
  */
 SKUPrepInstructions.prototype.amazonPrepFeesDetailsList = undefined

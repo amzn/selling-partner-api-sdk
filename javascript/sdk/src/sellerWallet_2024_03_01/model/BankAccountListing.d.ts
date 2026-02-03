@@ -17,10 +17,9 @@ export class BankAccountListing {
      * Struct that holds collection of accounts.
      * @alias module:sellerWallet_2024_03_01/model/BankAccountListing
      * @class
-     * @param accounts {[BankAccount]} Collection that holds BankAccount
+     * @param accounts {Array[]} Collection that holds BankAccount
      */
-    constructor(accounts: [BankAccount]);
-    accounts: [BankAccount];
+    constructor(accounts: any[][]);
+    accounts: any[][];
 }
-import { BankAccount } from './BankAccount.js';
 //# sourceMappingURL=BankAccountListing.d.ts.map

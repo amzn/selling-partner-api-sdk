@@ -59,8 +59,8 @@ export class ShippingOptionsResponse {
 
 /**
  * A list of shipping options.
- * @member {[ShippingOptions]} shippingOptions
- * @type {[ShippingOptions]}
+ * @member {Array[]} shippingOptions
+ * @type {Array[]}
  */
 ShippingOptionsResponse.prototype.shippingOptions = undefined
 

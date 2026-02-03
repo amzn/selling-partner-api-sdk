@@ -28,7 +28,7 @@ export class InventoryUpdate {
    * @class
    * @param sellingParty {PartyIdentification}
    * @param isFullUpdate {Boolean} When true, this request contains a full feed. Otherwise, this request contains a partial feed. When sending a full feed, you must send information about all items in the warehouse. Any items not in the full feed are updated as not available. When sending a partial feed, only include the items that need an update to inventory. The status of other items will remain unchanged.
-   * @param items {[ItemDetails]} A list of inventory items with updated details, including quantity available.
+   * @param items {Array[]} A list of inventory items with updated details, including quantity available.
    */
   constructor (sellingParty, isFullUpdate, items) {
     this.sellingParty = sellingParty
@@ -80,7 +80,7 @@ InventoryUpdate.prototype.isFullUpdate = undefined
 
 /**
  * A list of inventory items with updated details, including quantity available.
- * @member {[ItemDetails]} items
- * @type {[ItemDetails]}
+ * @member {Array[]} items
+ * @type {Array[]}
  */
 InventoryUpdate.prototype.items = undefined

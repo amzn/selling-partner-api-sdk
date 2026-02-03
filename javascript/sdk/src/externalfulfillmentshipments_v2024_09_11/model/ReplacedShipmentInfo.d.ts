@@ -27,11 +27,10 @@ export class ReplacedShipmentInfo {
     marketplaceAttributes: MarketplaceAttributes;
     /**
      * The line items from the original shipment that corresponds to this shipment.
-     * @member {[OriginalLineItem]} originalLineItems
-     * @type {[OriginalLineItem]}
+     * @member {Array[]} originalLineItems
+     * @type {Array[]}
      */
-    originalLineItems: [OriginalLineItem];
+    originalLineItems: any[][];
 }
 import { MarketplaceAttributes } from './MarketplaceAttributes.js';
-import { OriginalLineItem } from './OriginalLineItem.js';
 //# sourceMappingURL=ReplacedShipmentInfo.d.ts.map

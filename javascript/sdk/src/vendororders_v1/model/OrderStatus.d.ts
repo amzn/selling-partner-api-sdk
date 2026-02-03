@@ -22,15 +22,15 @@ export class OrderStatus {
      * @param purchaseOrderDate {Date} The date the purchase order was placed. Must be in ISO-8601 date/time format.
      * @param sellingParty {PartyIdentification}
      * @param shipToParty {PartyIdentification}
-     * @param itemStatus {[OrderItemStatus]} Detailed description of items order status.
+     * @param itemStatus {Array[]} Detailed description of items order status.
      */
-    constructor(purchaseOrderNumber: string, purchaseOrderStatus: string, purchaseOrderDate: Date, sellingParty: PartyIdentification, shipToParty: PartyIdentification, itemStatus: [OrderItemStatus]);
+    constructor(purchaseOrderNumber: string, purchaseOrderStatus: string, purchaseOrderDate: Date, sellingParty: PartyIdentification, shipToParty: PartyIdentification, itemStatus: any[][]);
     purchaseOrderNumber: string;
     purchaseOrderStatus: string;
     purchaseOrderDate: Date;
     sellingParty: PartyIdentification;
     shipToParty: PartyIdentification;
-    itemStatus: [OrderItemStatus];
+    itemStatus: any[][];
     /**
      * The date when the purchase order was last updated. Must be in ISO-8601 date/time format.
      * @member {Date} lastUpdatedDate
@@ -49,5 +49,4 @@ export namespace OrderStatus {
     type PurchaseOrderStatusEnum = string;
 }
 import { PartyIdentification } from './PartyIdentification.js';
-import { OrderItemStatus } from './OrderItemStatus.js';
 //# sourceMappingURL=OrderStatus.d.ts.map

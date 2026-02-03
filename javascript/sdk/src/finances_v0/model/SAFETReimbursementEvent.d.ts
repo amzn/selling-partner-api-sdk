@@ -37,11 +37,10 @@ export class SAFETReimbursementEvent {
     reasonCode: string;
     /**
      * A list of `SAFETReimbursementItem`.
-     * @member {[SAFETReimbursementItem]} sAFETReimbursementItemList
-     * @type {[SAFETReimbursementItem]}
+     * @member {Array[]} sAFETReimbursementItemList
+     * @type {Array[]}
      */
-    sAFETReimbursementItemList: [SAFETReimbursementItem];
+    sAFETReimbursementItemList: any[][];
 }
 import { Currency } from './Currency.js';
-import { SAFETReimbursementItem } from './SAFETReimbursementItem.js';
 //# sourceMappingURL=SAFETReimbursementEvent.d.ts.map

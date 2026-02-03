@@ -26,10 +26,9 @@ export class ExceptionDates {
     isOpen: boolean;
     /**
      * Time window during the day when the business is open.
-     * @member {[OpenInterval]} openIntervals
-     * @type {[OpenInterval]}
+     * @member {Array[]} openIntervals
+     * @type {Array[]}
      */
-    openIntervals: [OpenInterval];
+    openIntervals: any[][];
 }
-import { OpenInterval } from './OpenInterval.js';
 //# sourceMappingURL=ExceptionDates.d.ts.map

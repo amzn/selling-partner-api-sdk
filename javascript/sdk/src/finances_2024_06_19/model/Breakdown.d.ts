@@ -25,10 +25,10 @@ export class Breakdown {
     breakdownAmount: Currency;
     /**
      * A list of breakdowns that detail how the total amount is calculated for the transaction.
-     * @member {[Breakdown]} breakdowns
-     * @type {[Breakdown]}
+     * @member {Array[]} breakdowns
+     * @type {Array[]}
      */
-    breakdowns: [Breakdown];
+    breakdowns: any[][];
 }
 import { Currency } from './Currency.js';
 //# sourceMappingURL=Breakdown.d.ts.map

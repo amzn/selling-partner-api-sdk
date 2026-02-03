@@ -19,14 +19,13 @@ export class SupportedDocumentSpecification {
      * @class
      * @param format {DocumentFormat}
      * @param size {DocumentSize}
-     * @param printOptions {[PrintOption]} A list of the format options for a label.
+     * @param printOptions {Array[]} A list of the format options for a label.
      */
-    constructor(format: DocumentFormat, size: DocumentSize, printOptions: [PrintOption]);
+    constructor(format: DocumentFormat, size: DocumentSize, printOptions: any[][]);
     format: DocumentFormat;
     size: DocumentSize;
-    printOptions: [PrintOption];
+    printOptions: any[][];
 }
 import { DocumentFormat } from './DocumentFormat.js';
 import { DocumentSize } from './DocumentSize.js';
-import { PrintOption } from './PrintOption.js';
 //# sourceMappingURL=SupportedDocumentSpecification.d.ts.map

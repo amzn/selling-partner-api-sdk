@@ -62,10 +62,10 @@ export class Invoice {
     status: string;
     /**
      * List with identifiers for the transactions associated to the invoice.
-     * @member {[TransactionIdentifier]} transactionIds
-     * @type {[TransactionIdentifier]}
+     * @member {Array[]} transactionIds
+     * @type {Array[]}
      */
-    transactionIds: [TransactionIdentifier];
+    transactionIds: any[][];
     /**
      * Classification of the transaction that originated this invoice. Use the `getInvoicesAttributes` operation to check `transactionType` options.
      * @member {String} transactionType
@@ -73,5 +73,4 @@ export class Invoice {
      */
     transactionType: string;
 }
-import { TransactionIdentifier } from './TransactionIdentifier.js';
 //# sourceMappingURL=Invoice.d.ts.map

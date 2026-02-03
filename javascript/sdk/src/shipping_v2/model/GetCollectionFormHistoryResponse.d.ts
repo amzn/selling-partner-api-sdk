@@ -14,10 +14,10 @@ export class GetCollectionFormHistoryResponse {
     static constructFromObject(data: any, obj: GetCollectionFormHistoryResponse): GetCollectionFormHistoryResponse;
     /**
      * A list of CollectionFormsHistoryRecord
-     * @member {[CollectionFormsHistoryRecord]} collectionFormsHistoryRecordList
-     * @type {[CollectionFormsHistoryRecord]}
+     * @member {Array[]} collectionFormsHistoryRecordList
+     * @type {Array[]}
      */
-    collectionFormsHistoryRecordList: [CollectionFormsHistoryRecord];
+    collectionFormsHistoryRecordList: any[][];
     /**
      * Last Refereshed Date of collection
      * @member {String} lastRefreshedDate
@@ -25,5 +25,4 @@ export class GetCollectionFormHistoryResponse {
      */
     lastRefreshedDate: string;
 }
-import { CollectionFormsHistoryRecord } from './CollectionFormsHistoryRecord.js';
 //# sourceMappingURL=GetCollectionFormHistoryResponse.d.ts.map

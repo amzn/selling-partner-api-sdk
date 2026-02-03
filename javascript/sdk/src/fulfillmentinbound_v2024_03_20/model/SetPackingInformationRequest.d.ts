@@ -17,10 +17,9 @@ export class SetPackingInformationRequest {
      * The &#x60;setPackingInformation&#x60; request.
      * @alias module:fulfillmentinbound_v2024_03_20/model/SetPackingInformationRequest
      * @class
-     * @param packageGroupings {[PackageGroupingInput]} List of packing information for the inbound plan.
+     * @param packageGroupings {Array[]} List of packing information for the inbound plan.
      */
-    constructor(packageGroupings: [PackageGroupingInput]);
-    packageGroupings: [PackageGroupingInput];
+    constructor(packageGroupings: any[][]);
+    packageGroupings: any[][];
 }
-import { PackageGroupingInput } from './PackageGroupingInput.js';
 //# sourceMappingURL=SetPackingInformationRequest.d.ts.map

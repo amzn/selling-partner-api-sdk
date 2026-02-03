@@ -14,10 +14,9 @@ export class ListReturnReasonCodesResult {
     static constructFromObject(data: any, obj: ListReturnReasonCodesResult): ListReturnReasonCodesResult;
     /**
      * An array of return reason code details.
-     * @member {[ReasonCodeDetails]} reasonCodeDetails
-     * @type {[ReasonCodeDetails]}
+     * @member {Array[]} reasonCodeDetails
+     * @type {Array[]}
      */
-    reasonCodeDetails: [ReasonCodeDetails];
+    reasonCodeDetails: any[][];
 }
-import { ReasonCodeDetails } from './ReasonCodeDetails.js';
 //# sourceMappingURL=ListReturnReasonCodesResult.d.ts.map

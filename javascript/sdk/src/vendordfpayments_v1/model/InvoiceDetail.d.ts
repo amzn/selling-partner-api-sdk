@@ -22,15 +22,15 @@ export class InvoiceDetail {
      * @param remitToParty {PartyIdentification}
      * @param shipFromParty {PartyIdentification}
      * @param invoiceTotal {Money}
-     * @param items {[InvoiceItem]} Provides the details of the items in this invoice.
+     * @param items {Array[]} Provides the details of the items in this invoice.
      */
-    constructor(invoiceNumber: string, invoiceDate: Date, remitToParty: PartyIdentification, shipFromParty: PartyIdentification, invoiceTotal: Money, items: [InvoiceItem]);
+    constructor(invoiceNumber: string, invoiceDate: Date, remitToParty: PartyIdentification, shipFromParty: PartyIdentification, invoiceTotal: Money, items: any[][]);
     invoiceNumber: string;
     invoiceDate: Date;
     remitToParty: PartyIdentification;
     shipFromParty: PartyIdentification;
     invoiceTotal: Money;
-    items: [InvoiceItem];
+    items: any[][];
     /**
      * An additional unique reference number used for regulatory or other purposes.
      * @member {String} referenceNumber
@@ -56,27 +56,23 @@ export class InvoiceDetail {
     paymentTermsCode: string;
     /**
      * Individual tax details per line item.
-     * @member {[TaxDetail]} taxTotals
-     * @type {[TaxDetail]}
+     * @member {Array[]} taxTotals
+     * @type {Array[]}
      */
-    taxTotals: [TaxDetail];
+    taxTotals: any[][];
     /**
      * Additional details provided by the selling party, for tax-related or other purposes.
-     * @member {[AdditionalDetails]} additionalDetails
-     * @type {[AdditionalDetails]}
+     * @member {Array[]} additionalDetails
+     * @type {Array[]}
      */
-    additionalDetails: [AdditionalDetails];
+    additionalDetails: any[][];
     /**
      * Total charge amount details for all line items.
-     * @member {[ChargeDetails]} chargeDetails
-     * @type {[ChargeDetails]}
+     * @member {Array[]} chargeDetails
+     * @type {Array[]}
      */
-    chargeDetails: [ChargeDetails];
+    chargeDetails: any[][];
 }
 import { PartyIdentification } from './PartyIdentification.js';
 import { Money } from './Money.js';
-import { InvoiceItem } from './InvoiceItem.js';
-import { TaxDetail } from './TaxDetail.js';
-import { AdditionalDetails } from './AdditionalDetails.js';
-import { ChargeDetails } from './ChargeDetails.js';
 //# sourceMappingURL=InvoiceDetail.d.ts.map

@@ -47,16 +47,16 @@ export class ServiceJob {
     serviceJobProvider: ServiceJobProvider;
     /**
      * A list of appointment windows preferred by the buyer. Included only if the buyer selected appointment windows when creating the order.
-     * @member {[AppointmentTime]} preferredAppointmentTimes
-     * @type {[AppointmentTime]}
+     * @member {Array[]} preferredAppointmentTimes
+     * @type {Array[]}
      */
-    preferredAppointmentTimes: [AppointmentTime];
+    preferredAppointmentTimes: any[][];
     /**
      * A list of appointments.
-     * @member {[Appointment]} appointments
-     * @type {[Appointment]}
+     * @member {Array[]} appointments
+     * @type {Array[]}
      */
-    appointments: [Appointment];
+    appointments: any[][];
     /**
      * The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.
      * @member {String} serviceOrderId
@@ -82,10 +82,10 @@ export class ServiceJob {
     buyer: Buyer;
     /**
      * A list of items associated with the service job.
-     * @member {[AssociatedItem]} associatedItems
-     * @type {[AssociatedItem]}
+     * @member {Array[]} associatedItems
+     * @type {Array[]}
      */
-    associatedItems: [AssociatedItem];
+    associatedItems: any[][];
     /**
      * @member {ServiceLocation} serviceLocation
      * @type {ServiceLocation}
@@ -110,9 +110,6 @@ export namespace ServiceJob {
 import { ScopeOfWork } from './ScopeOfWork.js';
 import { Seller } from './Seller.js';
 import { ServiceJobProvider } from './ServiceJobProvider.js';
-import { AppointmentTime } from './AppointmentTime.js';
-import { Appointment } from './Appointment.js';
 import { Buyer } from './Buyer.js';
-import { AssociatedItem } from './AssociatedItem.js';
 import { ServiceLocation } from './ServiceLocation.js';
 //# sourceMappingURL=ServiceJob.d.ts.map

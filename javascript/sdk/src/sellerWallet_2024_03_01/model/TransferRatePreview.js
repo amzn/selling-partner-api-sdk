@@ -30,7 +30,7 @@ export class TransferRatePreview {
    * @param baseAmount {Currency}
    * @param fxRateDetails {FxRateDetails}
    * @param transferAmount {Currency}
-   * @param fees {[Fee]} List of fees
+   * @param fees {Array[]} List of fees
    */
   constructor (baseAmount, fxRateDetails, transferAmount, fees) {
     this.baseAmount = baseAmount
@@ -89,7 +89,7 @@ TransferRatePreview.prototype.transferAmount = undefined
 
 /**
  * List of fees
- * @member {[Fee]} fees
- * @type {[Fee]}
+ * @member {Array[]} fees
+ * @type {Array[]}
  */
 TransferRatePreview.prototype.fees = undefined

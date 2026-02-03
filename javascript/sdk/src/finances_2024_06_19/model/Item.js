@@ -72,8 +72,8 @@ Item.prototype.description = undefined
 
 /**
  * Related business identifiers of the item in the transaction.
- * @member {[ItemRelatedIdentifier]} relatedIdentifiers
- * @type {[ItemRelatedIdentifier]}
+ * @member {Array[]} relatedIdentifiers
+ * @type {Array[]}
  */
 Item.prototype.relatedIdentifiers = undefined
 
@@ -85,14 +85,14 @@ Item.prototype.totalAmount = undefined
 
 /**
  * A list of breakdowns that detail how the total amount is calculated for the transaction.
- * @member {[Breakdown]} breakdowns
- * @type {[Breakdown]}
+ * @member {Array[]} breakdowns
+ * @type {Array[]}
  */
 Item.prototype.breakdowns = undefined
 
 /**
  * A list of additional information about the item.
- * @member {[Context]} contexts
- * @type {[Context]}
+ * @member {Array[]} contexts
+ * @type {Array[]}
  */
 Item.prototype.contexts = undefined

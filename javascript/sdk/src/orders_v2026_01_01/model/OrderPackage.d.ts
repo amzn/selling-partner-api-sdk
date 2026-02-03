@@ -63,12 +63,11 @@ export class OrderPackage {
     shipFromAddress: MerchantAddress;
     /**
      * A list of all order items included in this specific package.
-     * @member {[PackageItem]} packageItems
-     * @type {[PackageItem]}
+     * @member {Array[]} packageItems
+     * @type {Array[]}
      */
-    packageItems: [PackageItem];
+    packageItems: any[][];
 }
 import { PackageStatus } from './PackageStatus.js';
 import { MerchantAddress } from './MerchantAddress.js';
-import { PackageItem } from './PackageItem.js';
 //# sourceMappingURL=OrderPackage.d.ts.map

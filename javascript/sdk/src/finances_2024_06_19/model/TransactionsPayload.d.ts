@@ -20,10 +20,9 @@ export class TransactionsPayload {
     nextToken: string;
     /**
      * A list of transactions within the specified time period.
-     * @member {[Transaction]} transactions
-     * @type {[Transaction]}
+     * @member {Array[]} transactions
+     * @type {Array[]}
      */
-    transactions: [Transaction];
+    transactions: any[][];
 }
-import { Transaction } from './Transaction.js';
 //# sourceMappingURL=TransactionsPayload.d.ts.map

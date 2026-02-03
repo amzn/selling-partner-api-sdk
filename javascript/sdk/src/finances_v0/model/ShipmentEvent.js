@@ -102,50 +102,50 @@ ShipmentEvent.prototype.storeName = undefined
 
 /**
  * A list of charge information on the seller's account.
- * @member {[ChargeComponent]} orderChargeList
- * @type {[ChargeComponent]}
+ * @member {Array[]} orderChargeList
+ * @type {Array[]}
  */
 ShipmentEvent.prototype.orderChargeList = undefined
 
 /**
  * A list of charge information on the seller's account.
- * @member {[ChargeComponent]} orderChargeAdjustmentList
- * @type {[ChargeComponent]}
+ * @member {Array[]} orderChargeAdjustmentList
+ * @type {Array[]}
  */
 ShipmentEvent.prototype.orderChargeAdjustmentList = undefined
 
 /**
  * A list of fee component information.
- * @member {[FeeComponent]} shipmentFeeList
- * @type {[FeeComponent]}
+ * @member {Array[]} shipmentFeeList
+ * @type {Array[]}
  */
 ShipmentEvent.prototype.shipmentFeeList = undefined
 
 /**
  * A list of fee component information.
- * @member {[FeeComponent]} shipmentFeeAdjustmentList
- * @type {[FeeComponent]}
+ * @member {Array[]} shipmentFeeAdjustmentList
+ * @type {Array[]}
  */
 ShipmentEvent.prototype.shipmentFeeAdjustmentList = undefined
 
 /**
  * A list of fee component information.
- * @member {[FeeComponent]} orderFeeList
- * @type {[FeeComponent]}
+ * @member {Array[]} orderFeeList
+ * @type {Array[]}
  */
 ShipmentEvent.prototype.orderFeeList = undefined
 
 /**
  * A list of fee component information.
- * @member {[FeeComponent]} orderFeeAdjustmentList
- * @type {[FeeComponent]}
+ * @member {Array[]} orderFeeAdjustmentList
+ * @type {Array[]}
  */
 ShipmentEvent.prototype.orderFeeAdjustmentList = undefined
 
 /**
  * A list of direct payment information.
- * @member {[DirectPayment]} directPaymentList
- * @type {[DirectPayment]}
+ * @member {Array[]} directPaymentList
+ * @type {Array[]}
  */
 ShipmentEvent.prototype.directPaymentList = undefined
 
@@ -158,14 +158,14 @@ ShipmentEvent.prototype.postedDate = undefined
 
 /**
  * A list of shipment items.
- * @member {[ShipmentItem]} shipmentItemList
- * @type {[ShipmentItem]}
+ * @member {Array[]} shipmentItemList
+ * @type {Array[]}
  */
 ShipmentEvent.prototype.shipmentItemList = undefined
 
 /**
  * A list of shipment items.
- * @member {[ShipmentItem]} shipmentItemAdjustmentList
- * @type {[ShipmentItem]}
+ * @member {Array[]} shipmentItemAdjustmentList
+ * @type {Array[]}
  */
 ShipmentEvent.prototype.shipmentItemAdjustmentList = undefined

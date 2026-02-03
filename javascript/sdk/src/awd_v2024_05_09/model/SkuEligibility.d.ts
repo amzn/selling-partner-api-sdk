@@ -25,12 +25,11 @@ export class SkuEligibility {
     status: InboundEligibilityStatus;
     /**
      * If not eligible, these are list of error codes and descriptions.
-     * @member {[SkuIneligibilityReason]} ineligibilityReasons
-     * @type {[SkuIneligibilityReason]}
+     * @member {Array[]} ineligibilityReasons
+     * @type {Array[]}
      */
-    ineligibilityReasons: [SkuIneligibilityReason];
+    ineligibilityReasons: any[][];
 }
 import { DistributionPackageQuantity } from './DistributionPackageQuantity.js';
 import { InboundEligibilityStatus } from './InboundEligibilityStatus.js';
-import { SkuIneligibilityReason } from './SkuIneligibilityReason.js';
 //# sourceMappingURL=SkuEligibility.d.ts.map

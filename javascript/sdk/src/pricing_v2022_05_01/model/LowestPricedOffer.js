@@ -27,7 +27,7 @@ export class LowestPricedOffer {
    * @alias module:pricing_v2022_05_01/model/LowestPricedOffer
    * @class
    * @param lowestPricedOffersInput {LowestPricedOffersInput}
-   * @param offers {[Offer]} A list of up to 20 lowest priced offers that match the criteria specified in `lowestPricedOffersInput`.
+   * @param offers {Array[]} A list of up to 20 lowest priced offers that match the criteria specified in `lowestPricedOffersInput`.
    */
   constructor (lowestPricedOffersInput, offers) {
     this.lowestPricedOffersInput = lowestPricedOffersInput
@@ -70,7 +70,7 @@ LowestPricedOffer.prototype.lowestPricedOffersInput = undefined
 
 /**
  * A list of up to 20 lowest priced offers that match the criteria specified in `lowestPricedOffersInput`.
- * @member {[Offer]} offers
- * @type {[Offer]}
+ * @member {Array[]} offers
+ * @type {Array[]}
  */
 LowestPricedOffer.prototype.offers = undefined

@@ -33,10 +33,10 @@ export class OrderItem {
     sellerSKU: string;
     /**
      * A list of associated items that a customer has purchased with a product. For example, a tire installation service purchased with tires.
-     * @member {[AssociatedItem]} associatedItems
-     * @type {[AssociatedItem]}
+     * @member {Array[]} associatedItems
+     * @type {Array[]}
      */
-    associatedItems: [AssociatedItem];
+    associatedItems: any[][];
     /**
      * The item's name.
      * @member {String} title
@@ -101,10 +101,10 @@ export class OrderItem {
     promotionDiscountTax: Money;
     /**
      * A list of promotion identifiers provided by the seller when the promotions were created.
-     * @member {[String]} promotionIds
-     * @type {[String]}
+     * @member {Array[]} promotionIds
+     * @type {Array[]}
      */
-    promotionIds: [string];
+    promotionIds: any[][];
     /**
      * @member {Money} cODFee
      * @type {Money}
@@ -204,10 +204,10 @@ export class OrderItem {
     buyerRequestedCancel: BuyerRequestedCancel;
     /**
      * A list of serial numbers for electronic products that are shipped to customers. Returned for FBA orders only.
-     * @member {[String]} serialNumbers
-     * @type {[String]}
+     * @member {Array[]} serialNumbers
+     * @type {Array[]}
      */
-    serialNumbers: [string];
+    serialNumbers: any[][];
     /**
      * @member {SubstitutionPreferences} substitutionPreferences
      * @type {SubstitutionPreferences}
@@ -244,7 +244,6 @@ export namespace OrderItem {
      */
     type DeemedResellerCategoryEnum = string;
 }
-import { AssociatedItem } from './AssociatedItem.js';
 import { ProductInfoDetail } from './ProductInfoDetail.js';
 import { PointsGrantedDetail } from './PointsGrantedDetail.js';
 import { Money } from './Money.js';

@@ -110,8 +110,8 @@ Appointment.prototype.appointmentTime = undefined
 
 /**
  * A list of technicians assigned to the service job.
- * @member {[Technician]} assignedTechnicians
- * @type {[Technician]}
+ * @member {Array[]} assignedTechnicians
+ * @type {Array[]}
  */
 Appointment.prototype.assignedTechnicians = undefined
 

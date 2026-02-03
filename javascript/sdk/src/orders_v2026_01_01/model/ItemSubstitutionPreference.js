@@ -93,7 +93,7 @@ ItemSubstitutionPreference.prototype.substitutionType = undefined
 
 /**
  * List of alternative products that can be substituted for the original item if it becomes unavailable.
- * @member {[ItemSubstitutionOption]} substitutionOptions
- * @type {[ItemSubstitutionOption]}
+ * @member {Array[]} substitutionOptions
+ * @type {Array[]}
  */
 ItemSubstitutionPreference.prototype.substitutionOptions = undefined

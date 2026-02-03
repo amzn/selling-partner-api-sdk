@@ -25,9 +25,9 @@ export class PackageItem {
     quantity: number;
     /**
      * The transparency codes associated with this item for product authentication.
-     * @member {[String]} transparencyCodes
-     * @type {[String]}
+     * @member {Array[]} transparencyCodes
+     * @type {Array[]}
      */
-    transparencyCodes: [string];
+    transparencyCodes: any[][];
 }
 //# sourceMappingURL=PackageItem.d.ts.map

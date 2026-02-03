@@ -59,8 +59,8 @@ export class GetCollectionFormHistoryResponse {
 
 /**
  * A list of CollectionFormsHistoryRecord
- * @member {[CollectionFormsHistoryRecord]} collectionFormsHistoryRecordList
- * @type {[CollectionFormsHistoryRecord]}
+ * @member {Array[]} collectionFormsHistoryRecordList
+ * @type {Array[]}
  */
 GetCollectionFormHistoryResponse.prototype.collectionFormsHistoryRecordList = undefined
 

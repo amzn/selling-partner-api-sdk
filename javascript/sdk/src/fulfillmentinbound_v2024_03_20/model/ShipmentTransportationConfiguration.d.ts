@@ -35,13 +35,12 @@ export class ShipmentTransportationConfiguration {
     freightInformation: FreightInformation;
     /**
      * List of pallet configuration inputs.
-     * @member {[PalletInput]} pallets
-     * @type {[PalletInput]}
+     * @member {Array[]} pallets
+     * @type {Array[]}
      */
-    pallets: [PalletInput];
+    pallets: any[][];
 }
 import { WindowInput } from './WindowInput.js';
 import { ContactInformation } from './ContactInformation.js';
 import { FreightInformation } from './FreightInformation.js';
-import { PalletInput } from './PalletInput.js';
 //# sourceMappingURL=ShipmentTransportationConfiguration.d.ts.map

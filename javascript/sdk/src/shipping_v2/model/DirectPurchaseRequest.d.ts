@@ -38,10 +38,10 @@ export class DirectPurchaseRequest {
     returnTo: Address;
     /**
      * A list of packages to be shipped through a shipping service offering.
-     * @member {[Package]} packages
-     * @type {[Package]}
+     * @member {Array[]} packages
+     * @type {Array[]}
      */
-    packages: [Package];
+    packages: any[][];
     /**
      * @member {RequestedDocumentSpecification} labelSpecifications
      * @type {RequestedDocumentSpecification}
@@ -50,6 +50,5 @@ export class DirectPurchaseRequest {
 }
 import { ChannelDetails } from './ChannelDetails.js';
 import { Address } from './Address.js';
-import { Package } from './Package.js';
 import { RequestedDocumentSpecification } from './RequestedDocumentSpecification.js';
 //# sourceMappingURL=DirectPurchaseRequest.d.ts.map

@@ -26,8 +26,8 @@ export class Refinements {
    * Optional fields that you can use to refine your search results.
    * @alias module:catalogitems_v2022_04_01/model/Refinements
    * @class
-   * @param brands {[BrandRefinement]} A list of brands you can use to refine your search.
-   * @param classifications {[ClassificationRefinement]} A list of classifications you can use to refine your search.
+   * @param brands {Array[]} A list of brands you can use to refine your search.
+   * @param classifications {Array[]} A list of classifications you can use to refine your search.
    */
   constructor (brands, classifications) {
     this.brands = brands
@@ -64,14 +64,14 @@ export class Refinements {
 
 /**
  * A list of brands you can use to refine your search.
- * @member {[BrandRefinement]} brands
- * @type {[BrandRefinement]}
+ * @member {Array[]} brands
+ * @type {Array[]}
  */
 Refinements.prototype.brands = undefined
 
 /**
  * A list of classifications you can use to refine your search.
- * @member {[ClassificationRefinement]} classifications
- * @type {[ClassificationRefinement]}
+ * @member {Array[]} classifications
+ * @type {Array[]}
  */
 Refinements.prototype.classifications = undefined

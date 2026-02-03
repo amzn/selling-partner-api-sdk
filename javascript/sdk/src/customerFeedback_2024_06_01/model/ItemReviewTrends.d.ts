@@ -14,16 +14,15 @@ export class ItemReviewTrends {
     static constructFromObject(data: any, obj: ItemReviewTrends): ItemReviewTrends;
     /**
      * A list of the most positive review topics. The percentage of reviews that contain the topic determines the topic's placement in the list. This value is `null` if there are not enough positive reviews for the specified ASIN.  **Max length:** 10
-     * @member {[ItemReviewTrend]} positiveTopics
-     * @type {[ItemReviewTrend]}
+     * @member {Array[]} positiveTopics
+     * @type {Array[]}
      */
-    positiveTopics: [ItemReviewTrend];
+    positiveTopics: any[][];
     /**
      * A list of the most negative review topics. The percentage of reviews that contain the topic determines the topic's placement in the list. This value is `null` if there are not enough negative reviews for the specified ASIN.  **Max length:** 10
-     * @member {[ItemReviewTrend]} negativeTopics
-     * @type {[ItemReviewTrend]}
+     * @member {Array[]} negativeTopics
+     * @type {Array[]}
      */
-    negativeTopics: [ItemReviewTrend];
+    negativeTopics: any[][];
 }
-import { ItemReviewTrend } from './ItemReviewTrend.js';
 //# sourceMappingURL=ItemReviewTrends.d.ts.map

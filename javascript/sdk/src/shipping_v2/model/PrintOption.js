@@ -25,9 +25,9 @@ export class PrintOption {
    * The format options available for a label.
    * @alias module:shipping_v2/model/PrintOption
    * @class
-   * @param supportedPageLayouts {[String]} A list of the supported page layout options for a document.
-   * @param supportedFileJoiningOptions {[Boolean]} A list of the supported needFileJoining boolean values for a document.
-   * @param supportedDocumentDetails {[SupportedDocumentDetail]} A list of the supported documented details.
+   * @param supportedPageLayouts {Array[]} A list of the supported page layout options for a document.
+   * @param supportedFileJoiningOptions {Array[]} A list of the supported needFileJoining boolean values for a document.
+   * @param supportedDocumentDetails {Array[]} A list of the supported documented details.
    */
   constructor (supportedPageLayouts, supportedFileJoiningOptions, supportedDocumentDetails) {
     this.supportedPageLayouts = supportedPageLayouts
@@ -67,28 +67,28 @@ export class PrintOption {
 
 /**
  * A list of the supported DPI options for a document.
- * @member {[Number]} supportedDPIs
- * @type {[Number]}
+ * @member {Array[]} supportedDPIs
+ * @type {Array[]}
  */
 PrintOption.prototype.supportedDPIs = undefined
 
 /**
  * A list of the supported page layout options for a document.
- * @member {[String]} supportedPageLayouts
- * @type {[String]}
+ * @member {Array[]} supportedPageLayouts
+ * @type {Array[]}
  */
 PrintOption.prototype.supportedPageLayouts = undefined
 
 /**
  * A list of the supported needFileJoining boolean values for a document.
- * @member {[Boolean]} supportedFileJoiningOptions
- * @type {[Boolean]}
+ * @member {Array[]} supportedFileJoiningOptions
+ * @type {Array[]}
  */
 PrintOption.prototype.supportedFileJoiningOptions = undefined
 
 /**
  * A list of the supported documented details.
- * @member {[SupportedDocumentDetail]} supportedDocumentDetails
- * @type {[SupportedDocumentDetail]}
+ * @member {Array[]} supportedDocumentDetails
+ * @type {Array[]}
  */
 PrintOption.prototype.supportedDocumentDetails = undefined

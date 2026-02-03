@@ -23,11 +23,10 @@ export class GetContentDocumentResponse {
     contentRecord: ContentRecord;
     /**
      * A set of messages to the user, such as warnings or comments.
-     * @member {[Error]} warnings
-     * @type {[Error]}
+     * @member {Array[]} warnings
+     * @type {Array[]}
      */
-    warnings: [Error];
+    warnings: any[][];
 }
 import { ContentRecord } from './ContentRecord.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetContentDocumentResponse.d.ts.map

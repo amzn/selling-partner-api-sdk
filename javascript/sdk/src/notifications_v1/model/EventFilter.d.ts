@@ -31,16 +31,16 @@ export class EventFilter {
     aggregationSettings: AggregationSettings;
     /**
      * A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
-     * @member {[String]} marketplaceIds
-     * @type {[String]}
+     * @member {Array[]} marketplaceIds
+     * @type {Array[]}
      */
-    marketplaceIds: [string];
+    marketplaceIds: any[][];
     /**
      * A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
-     * @member {[OrderChangeTypeEnum]} orderChangeTypes
-     * @type {[OrderChangeTypeEnum]}
+     * @member {Array[]} orderChangeTypes
+     * @type {Array[]}
      */
-    orderChangeTypes: [OrderChangeTypeEnum];
+    orderChangeTypes: any[][];
 }
 export namespace EventFilter {
     namespace EventFilterTypeEnum {
@@ -53,5 +53,4 @@ export namespace EventFilter {
     type EventFilterTypeEnum = string;
 }
 import { AggregationSettings } from './AggregationSettings.js';
-import { OrderChangeTypeEnum } from './OrderChangeTypeEnum.js';
 //# sourceMappingURL=EventFilter.d.ts.map

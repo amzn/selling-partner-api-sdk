@@ -17,13 +17,11 @@ export class AvailableShippingServiceOptions {
      * The available shipping service options.
      * @alias module:merchantfulfillment_v0/model/AvailableShippingServiceOptions
      * @class
-     * @param availableCarrierWillPickUpOptions {[AvailableCarrierWillPickUpOption]} List of available carrier pickup options.
-     * @param availableDeliveryExperienceOptions {[AvailableDeliveryExperienceOption]} List of available delivery experience options.
+     * @param availableCarrierWillPickUpOptions {Array[]} List of available carrier pickup options.
+     * @param availableDeliveryExperienceOptions {Array[]} List of available delivery experience options.
      */
-    constructor(availableCarrierWillPickUpOptions: [AvailableCarrierWillPickUpOption], availableDeliveryExperienceOptions: [AvailableDeliveryExperienceOption]);
-    availableCarrierWillPickUpOptions: [AvailableCarrierWillPickUpOption];
-    availableDeliveryExperienceOptions: [AvailableDeliveryExperienceOption];
+    constructor(availableCarrierWillPickUpOptions: any[][], availableDeliveryExperienceOptions: any[][]);
+    availableCarrierWillPickUpOptions: any[][];
+    availableDeliveryExperienceOptions: any[][];
 }
-import { AvailableCarrierWillPickUpOption } from './AvailableCarrierWillPickUpOption.js';
-import { AvailableDeliveryExperienceOption } from './AvailableDeliveryExperienceOption.js';
 //# sourceMappingURL=AvailableShippingServiceOptions.d.ts.map

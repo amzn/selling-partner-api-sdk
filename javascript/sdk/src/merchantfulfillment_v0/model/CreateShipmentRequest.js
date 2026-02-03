@@ -102,7 +102,7 @@ CreateShipmentRequest.prototype.labelFormatOption = undefined
 
 /**
  * A list of additional seller input pairs required to purchase shipping.
- * @member {[AdditionalSellerInputs]} shipmentLevelSellerInputsList
- * @type {[AdditionalSellerInputs]}
+ * @member {Array[]} shipmentLevelSellerInputsList
+ * @type {Array[]}
  */
 CreateShipmentRequest.prototype.shipmentLevelSellerInputsList = undefined

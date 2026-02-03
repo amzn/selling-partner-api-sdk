@@ -17,16 +17,16 @@ export class SearchContentDocumentsResponse {
      * @alias module:apluscontent_v2020_11_01/model/SearchContentDocumentsResponse
      * @class
      * @implements module:apluscontent_v2020_11_01/model/AplusPaginatedResponse
-     * @param contentMetadataRecords {[ContentMetadataRecord]} A list of A+ Content metadata records.
+     * @param contentMetadataRecords {Array[]} A list of A+ Content metadata records.
      */
-    constructor(contentMetadataRecords: [ContentMetadataRecord]);
-    contentMetadataRecords: [ContentMetadataRecord];
+    constructor(contentMetadataRecords: any[][]);
+    contentMetadataRecords: any[][];
     /**
      * A set of messages to the user, such as warnings or comments.
-     * @member {[Error]} warnings
-     * @type {[Error]}
+     * @member {Array[]} warnings
+     * @type {Array[]}
      */
-    warnings: [Error];
+    warnings: any[][];
     /**
      * A token that you use to fetch a specific page when there are multiple pages of results.
      * @member {String} nextPageToken
@@ -34,6 +34,4 @@ export class SearchContentDocumentsResponse {
      */
     nextPageToken: string;
 }
-import { ContentMetadataRecord } from './ContentMetadataRecord.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=SearchContentDocumentsResponse.d.ts.map

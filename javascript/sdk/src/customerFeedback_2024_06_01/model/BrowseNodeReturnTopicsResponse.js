@@ -31,7 +31,7 @@ export class BrowseNodeReturnTopicsResponse {
    * @param marketplaceId {String} The requested marketplace id.
    * @param countryCode {String} The two digit country code of requested marketplace id, in ISO 3166-1 alpha-2 format.
    * @param dateRange {DateRange}
-   * @param topics {[BrowseNodeReturnTopics]} The list of browse node return topics.
+   * @param topics {Array[]} The list of browse node return topics.
    */
   constructor (browseNodeId, displayName, marketplaceId, countryCode, dateRange, topics) {
     this.browseNodeId = browseNodeId
@@ -110,7 +110,7 @@ BrowseNodeReturnTopicsResponse.prototype.dateRange = undefined
 
 /**
  * The list of browse node return topics.
- * @member {[BrowseNodeReturnTopics]} topics
- * @type {[BrowseNodeReturnTopics]}
+ * @member {Array[]} topics
+ * @type {Array[]}
  */
 BrowseNodeReturnTopicsResponse.prototype.topics = undefined

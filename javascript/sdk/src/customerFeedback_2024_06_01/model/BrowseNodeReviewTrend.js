@@ -26,7 +26,7 @@ export class BrowseNodeReviewTrend {
    * @alias module:customerFeedback_2024_06_01/model/BrowseNodeReviewTrend
    * @class
    * @param topic {String} The name of the topic.
-   * @param trendMetrics {[BrowseNodeReviewTrendPoint]} The browse node's review trend metrics for the past six months.
+   * @param trendMetrics {Array[]} The browse node's review trend metrics for the past six months.
    */
   constructor (topic, trendMetrics) {
     this.topic = topic
@@ -70,7 +70,7 @@ BrowseNodeReviewTrend.prototype.topic = undefined
 
 /**
  * The browse node's review trend metrics for the past six months.
- * @member {[BrowseNodeReviewTrendPoint]} trendMetrics
- * @type {[BrowseNodeReviewTrendPoint]}
+ * @member {Array[]} trendMetrics
+ * @type {Array[]}
  */
 BrowseNodeReviewTrend.prototype.trendMetrics = undefined

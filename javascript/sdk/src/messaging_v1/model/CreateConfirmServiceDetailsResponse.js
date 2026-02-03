@@ -58,7 +58,7 @@ export class CreateConfirmServiceDetailsResponse {
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Array[]} errors
+ * @type {Array[]}
  */
 CreateConfirmServiceDetailsResponse.prototype.errors = undefined

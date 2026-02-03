@@ -19,11 +19,10 @@ export class OrderList {
     pagination: Pagination;
     /**
      * Represents a purchase order within the OrderList.
-     * @member {[Order]} orders
-     * @type {[Order]}
+     * @member {Array[]} orders
+     * @type {Array[]}
      */
-    orders: [Order];
+    orders: any[][];
 }
 import { Pagination } from './Pagination.js';
-import { Order } from './Order.js';
 //# sourceMappingURL=OrderList.d.ts.map

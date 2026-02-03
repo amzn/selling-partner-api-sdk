@@ -17,10 +17,9 @@ export class GetCarrierAccountsResponse {
      * The Response  for the GetCarrierAccountsResponse operation.
      * @alias module:shipping_v2/model/GetCarrierAccountsResponse
      * @class
-     * @param activeAccounts {[ActiveAccount]} A list of ActiveAccount
+     * @param activeAccounts {Array[]} A list of ActiveAccount
      */
-    constructor(activeAccounts: [ActiveAccount]);
-    activeAccounts: [ActiveAccount];
+    constructor(activeAccounts: any[][]);
+    activeAccounts: any[][];
 }
-import { ActiveAccount } from './ActiveAccount.js';
 //# sourceMappingURL=GetCarrierAccountsResponse.d.ts.map

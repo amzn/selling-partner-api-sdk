@@ -14,10 +14,9 @@ export class RequestedLabelCustomization {
     static constructFromObject(data: any, obj: RequestedLabelCustomization): RequestedLabelCustomization;
     /**
      * Specify the type of attributes to be added on a label.
-     * @member {[LabelAttribute]} requestAttributes
-     * @type {[LabelAttribute]}
+     * @member {Array[]} requestAttributes
+     * @type {Array[]}
      */
-    requestAttributes: [LabelAttribute];
+    requestAttributes: any[][];
 }
-import { LabelAttribute } from './LabelAttribute.js';
 //# sourceMappingURL=RequestedLabelCustomization.d.ts.map

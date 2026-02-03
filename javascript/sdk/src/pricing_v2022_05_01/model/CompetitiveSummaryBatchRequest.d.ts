@@ -17,10 +17,9 @@ export class CompetitiveSummaryBatchRequest {
      * The &#x60;competitiveSummary&#x60; batch request data.
      * @alias module:pricing_v2022_05_01/model/CompetitiveSummaryBatchRequest
      * @class
-     * @param requests {[CompetitiveSummaryRequest]} A batched list of `competitiveSummary` requests.
+     * @param requests {Array[]} A batched list of `competitiveSummary` requests.
      */
-    constructor(requests: [CompetitiveSummaryRequest]);
-    requests: [CompetitiveSummaryRequest];
+    constructor(requests: any[][]);
+    requests: any[][];
 }
-import { CompetitiveSummaryRequest } from './CompetitiveSummaryRequest.js';
 //# sourceMappingURL=CompetitiveSummaryBatchRequest.d.ts.map

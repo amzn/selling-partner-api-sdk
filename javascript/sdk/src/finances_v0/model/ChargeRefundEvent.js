@@ -82,7 +82,7 @@ ChargeRefundEvent.prototype.reasonCodeDescription = undefined
 
 /**
  * A list of `ChargeRefund` transactions
- * @member {[ChargeRefundTransaction]} chargeRefundTransactions
- * @type {[ChargeRefundTransaction]}
+ * @member {Array[]} chargeRefundTransactions
+ * @type {Array[]}
  */
 ChargeRefundEvent.prototype.chargeRefundTransactions = undefined

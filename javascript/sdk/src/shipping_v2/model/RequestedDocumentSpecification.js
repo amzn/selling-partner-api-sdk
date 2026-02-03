@@ -31,7 +31,7 @@ export class RequestedDocumentSpecification {
    * @param format {DocumentFormat}
    * @param size {DocumentSize}
    * @param needFileJoining {Boolean} When true, files should be stitched together. Otherwise, files should be returned separately. Defaults to false.
-   * @param requestedDocumentTypes {[DocumentType]} A list of the document types requested.
+   * @param requestedDocumentTypes {Array[]} A list of the document types requested.
    */
   constructor (format, size, needFileJoining, requestedDocumentTypes) {
     this.format = format
@@ -108,8 +108,8 @@ RequestedDocumentSpecification.prototype.needFileJoining = undefined
 
 /**
  * A list of the document types requested.
- * @member {[DocumentType]} requestedDocumentTypes
- * @type {[DocumentType]}
+ * @member {Array[]} requestedDocumentTypes
+ * @type {Array[]}
  */
 RequestedDocumentSpecification.prototype.requestedDocumentTypes = undefined
 

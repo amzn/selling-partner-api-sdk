@@ -44,10 +44,9 @@ export class RemovalShipmentAdjustmentEvent {
     transactionType: string;
     /**
      * A comma-delimited list of `RemovalShipmentItemAdjustment` details for FBA inventory.
-     * @member {[RemovalShipmentItemAdjustment]} removalShipmentItemAdjustmentList
-     * @type {[RemovalShipmentItemAdjustment]}
+     * @member {Array[]} removalShipmentItemAdjustmentList
+     * @type {Array[]}
      */
-    removalShipmentItemAdjustmentList: [RemovalShipmentItemAdjustment];
+    removalShipmentItemAdjustmentList: any[][];
 }
-import { RemovalShipmentItemAdjustment } from './RemovalShipmentItemAdjustment.js';
 //# sourceMappingURL=RemovalShipmentAdjustmentEvent.d.ts.map

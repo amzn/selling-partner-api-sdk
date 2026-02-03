@@ -25,7 +25,7 @@ export class TransferScheduleListing {
    * Struct that holds collection of transfer schedules.
    * @alias module:sellerWallet_2024_03_01/model/TransferScheduleListing
    * @class
-   * @param transferSchedules {[TransferSchedule]} Collection that holds list of Transfer Schedules
+   * @param transferSchedules {Array[]} Collection that holds list of Transfer Schedules
    */
   constructor (transferSchedules) {
     this.transferSchedules = transferSchedules
@@ -68,7 +68,7 @@ TransferScheduleListing.prototype.nextPageToken = undefined
 
 /**
  * Collection that holds list of Transfer Schedules
- * @member {[TransferSchedule]} transferSchedules
- * @type {[TransferSchedule]}
+ * @member {Array[]} transferSchedules
+ * @type {Array[]}
  */
 TransferScheduleListing.prototype.transferSchedules = undefined

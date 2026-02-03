@@ -14,10 +14,9 @@ export class SubmitShipmentConfirmationsRequest {
     static constructFromObject(data: any, obj: SubmitShipmentConfirmationsRequest): SubmitShipmentConfirmationsRequest;
     /**
      * A list of one or more shipment confirmations.
-     * @member {[ShipmentConfirmation]} shipmentConfirmations
-     * @type {[ShipmentConfirmation]}
+     * @member {Array[]} shipmentConfirmations
+     * @type {Array[]}
      */
-    shipmentConfirmations: [ShipmentConfirmation];
+    shipmentConfirmations: any[][];
 }
-import { ShipmentConfirmation } from './ShipmentConfirmation.js';
 //# sourceMappingURL=SubmitShipmentConfirmationsRequest.d.ts.map

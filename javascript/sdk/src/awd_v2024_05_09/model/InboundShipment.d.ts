@@ -20,15 +20,15 @@ export class InboundShipment {
      * @param destinationAddress {Address}
      * @param orderId {String} The AWD inbound order ID that this inbound shipment belongs to.
      * @param originAddress {Address}
-     * @param shipmentContainerQuantities {[DistributionPackageQuantity]} Packages that are part of this shipment.
+     * @param shipmentContainerQuantities {Array[]} Packages that are part of this shipment.
      * @param shipmentId {String} Unique shipment ID.
      * @param shipmentStatus {InboundShipmentStatus}
      */
-    constructor(destinationAddress: Address, orderId: string, originAddress: Address, shipmentContainerQuantities: [DistributionPackageQuantity], shipmentId: string, shipmentStatus: InboundShipmentStatus);
+    constructor(destinationAddress: Address, orderId: string, originAddress: Address, shipmentContainerQuantities: any[][], shipmentId: string, shipmentStatus: InboundShipmentStatus);
     destinationAddress: Address;
     orderId: string;
     originAddress: Address;
-    shipmentContainerQuantities: [DistributionPackageQuantity];
+    shipmentContainerQuantities: any[][];
     shipmentId: string;
     shipmentStatus: InboundShipmentStatus;
     /**
@@ -50,10 +50,10 @@ export class InboundShipment {
     externalReferenceId: string;
     /**
      * Quantity received (at the receiving end) as part of this shipment.
-     * @member {[InventoryQuantity]} receivedQuantity
-     * @type {[InventoryQuantity]}
+     * @member {Array[]} receivedQuantity
+     * @type {Array[]}
      */
-    receivedQuantity: [InventoryQuantity];
+    receivedQuantity: any[][];
     /**
      * Timestamp when the shipment will be shipped.
      * @member {Date} shipBy
@@ -62,10 +62,10 @@ export class InboundShipment {
     shipBy: Date;
     /**
      * Quantity details at SKU level for the shipment. This attribute will only appear if the skuQuantities parameter in the request is set to SHOW.
-     * @member {[SkuQuantity]} shipmentSkuQuantities
-     * @type {[SkuQuantity]}
+     * @member {Array[]} shipmentSkuQuantities
+     * @type {Array[]}
      */
-    shipmentSkuQuantities: [SkuQuantity];
+    shipmentSkuQuantities: any[][];
     /**
      * Assigned region where the order will be shipped. This can differ from what was passed as preference. AWD currently supports following region IDs: [us-west, us-east, us-southcentral, us-southeast]
      * @member {String} destinationRegion
@@ -92,9 +92,6 @@ export class InboundShipment {
     warehouseReferenceId: string;
 }
 import { Address } from './Address.js';
-import { DistributionPackageQuantity } from './DistributionPackageQuantity.js';
 import { InboundShipmentStatus } from './InboundShipmentStatus.js';
 import { CarrierCode } from './CarrierCode.js';
-import { InventoryQuantity } from './InventoryQuantity.js';
-import { SkuQuantity } from './SkuQuantity.js';
 //# sourceMappingURL=InboundShipment.d.ts.map

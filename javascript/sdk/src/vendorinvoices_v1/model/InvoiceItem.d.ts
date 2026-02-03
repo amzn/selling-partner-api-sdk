@@ -61,28 +61,25 @@ export class InvoiceItem {
     creditNoteDetails: CreditNoteDetails;
     /**
      * Individual tax details per line item.
-     * @member {[TaxDetails]} taxDetails
-     * @type {[TaxDetails]}
+     * @member {Array[]} taxDetails
+     * @type {Array[]}
      */
-    taxDetails: [TaxDetails];
+    taxDetails: any[][];
     /**
      * Individual charge details per line item.
-     * @member {[ChargeDetails]} chargeDetails
-     * @type {[ChargeDetails]}
+     * @member {Array[]} chargeDetails
+     * @type {Array[]}
      */
-    chargeDetails: [ChargeDetails];
+    chargeDetails: any[][];
     /**
      * Individual allowance details per line item.
-     * @member {[AllowanceDetails]} allowanceDetails
-     * @type {[AllowanceDetails]}
+     * @member {Array[]} allowanceDetails
+     * @type {Array[]}
      */
-    allowanceDetails: [AllowanceDetails];
+    allowanceDetails: any[][];
 }
 import { ItemQuantity } from './ItemQuantity.js';
 import { Money } from './Money.js';
 import { NetCostUnitOfMeasure } from './NetCostUnitOfMeasure.js';
 import { CreditNoteDetails } from './CreditNoteDetails.js';
-import { TaxDetails } from './TaxDetails.js';
-import { ChargeDetails } from './ChargeDetails.js';
-import { AllowanceDetails } from './AllowanceDetails.js';
 //# sourceMappingURL=InvoiceItem.d.ts.map

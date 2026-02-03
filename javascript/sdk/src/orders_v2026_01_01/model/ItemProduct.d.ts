@@ -42,10 +42,10 @@ export class ItemProduct {
     price: ItemPrice;
     /**
      * Unique serial numbers for products that require individual tracking, typically provided for FBA orders.
-     * @member {[String]} serialNumbers
-     * @type {[String]}
+     * @member {Array[]} serialNumbers
+     * @type {Array[]}
      */
-    serialNumbers: [string];
+    serialNumbers: any[][];
     /**
      * @member {ItemCustomization} customization
      * @type {ItemCustomization}

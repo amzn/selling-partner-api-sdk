@@ -17,16 +17,15 @@ export class ListInboundPlanBoxesResponse {
      * The &#x60;listInboundPlanBoxes&#x60; response.
      * @alias module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanBoxesResponse
      * @class
-     * @param boxes {[Box]} A list of boxes in an inbound plan.
+     * @param boxes {Array[]} A list of boxes in an inbound plan.
      */
-    constructor(boxes: [Box]);
-    boxes: [Box];
+    constructor(boxes: any[][]);
+    boxes: any[][];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}
      */
     pagination: Pagination;
 }
-import { Box } from './Box.js';
 import { Pagination } from './Pagination.js';
 //# sourceMappingURL=ListInboundPlanBoxesResponse.d.ts.map

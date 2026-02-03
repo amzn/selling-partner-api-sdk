@@ -29,7 +29,7 @@ export class IneligibleRate {
    * @param serviceName {String} The name of the shipping service.
    * @param carrierName {String} The carrier name for the offering.
    * @param carrierId {String} The carrier identifier for the offering, provided by the carrier.
-   * @param ineligibilityReasons {[IneligibilityReason]} A list of reasons why a shipping service offering is ineligible.
+   * @param ineligibilityReasons {Array[]} A list of reasons why a shipping service offering is ineligible.
    */
   constructor (serviceId, serviceName, carrierName, carrierId, ineligibilityReasons) {
     this.serviceId = serviceId
@@ -100,7 +100,7 @@ IneligibleRate.prototype.carrierId = undefined
 
 /**
  * A list of reasons why a shipping service offering is ineligible.
- * @member {[IneligibilityReason]} ineligibilityReasons
- * @type {[IneligibilityReason]}
+ * @member {Array[]} ineligibilityReasons
+ * @type {Array[]}
  */
 IneligibleRate.prototype.ineligibilityReasons = undefined

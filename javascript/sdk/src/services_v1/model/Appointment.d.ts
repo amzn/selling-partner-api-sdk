@@ -31,10 +31,10 @@ export class Appointment {
     appointmentTime: AppointmentTime;
     /**
      * A list of technicians assigned to the service job.
-     * @member {[Technician]} assignedTechnicians
-     * @type {[Technician]}
+     * @member {Array[]} assignedTechnicians
+     * @type {Array[]}
      */
-    assignedTechnicians: [Technician];
+    assignedTechnicians: any[][];
     /**
      * The appointment identifier.
      * @member {String} rescheduledAppointmentId
@@ -59,6 +59,5 @@ export namespace Appointment {
     type AppointmentStatusEnum = string;
 }
 import { AppointmentTime } from './AppointmentTime.js';
-import { Technician } from './Technician.js';
 import { Poa } from './Poa.js';
 //# sourceMappingURL=Appointment.d.ts.map

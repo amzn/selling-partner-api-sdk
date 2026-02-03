@@ -62,8 +62,8 @@ export class PackingConfiguration {
 
 /**
  * The box content information sources that are allowed.
- * @member {[BoxContentInformationSource]} boxPackingMethods
- * @type {[BoxContentInformationSource]}
+ * @member {Array[]} boxPackingMethods
+ * @type {Array[]}
  */
 PackingConfiguration.prototype.boxPackingMethods = undefined
 
@@ -75,7 +75,7 @@ PackingConfiguration.prototype.boxRequirements = undefined
 
 /**
  * A list of supported shipping requirements for this packing configuration.
- * @member {[ShippingRequirements]} shippingRequirements
- * @type {[ShippingRequirements]}
+ * @member {Array[]} shippingRequirements
+ * @type {Array[]}
  */
 PackingConfiguration.prototype.shippingRequirements = undefined

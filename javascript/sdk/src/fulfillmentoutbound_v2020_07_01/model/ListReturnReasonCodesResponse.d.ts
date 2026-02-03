@@ -19,11 +19,10 @@ export class ListReturnReasonCodesResponse {
     payload: ListReturnReasonCodesResult;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { ListReturnReasonCodesResult } from './ListReturnReasonCodesResult.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=ListReturnReasonCodesResponse.d.ts.map

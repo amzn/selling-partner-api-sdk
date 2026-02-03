@@ -19,11 +19,10 @@ export class GetItemEligibilityPreviewResponse {
     payload: ItemEligibilityPreview;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { ItemEligibilityPreview } from './ItemEligibilityPreview.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetItemEligibilityPreviewResponse.d.ts.map

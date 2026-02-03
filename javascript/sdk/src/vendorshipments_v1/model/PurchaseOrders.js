@@ -82,7 +82,7 @@ PurchaseOrders.prototype.shipWindow = undefined
 
 /**
  * A list of the items that are associated to the PO in this transport and their associated details.
- * @member {[PurchaseOrderItems]} items
- * @type {[PurchaseOrderItems]}
+ * @member {Array[]} items
+ * @type {Array[]}
  */
 PurchaseOrders.prototype.items = undefined

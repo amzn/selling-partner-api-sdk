@@ -19,12 +19,12 @@ export class Vehicle {
      * @class
      * @param make {String} Vehicle Brand.
      * @param model {String} Specific model of a vehicle.
-     * @param identifiers {[VehicleIdentifiers]} Identifiers that can be used to identify the vehicle uniquely
+     * @param identifiers {Array[]} Identifiers that can be used to identify the vehicle uniquely
      */
-    constructor(make: string, model: string, identifiers: [VehicleIdentifiers]);
+    constructor(make: string, model: string, identifiers: any[][]);
     make: string;
     model: string;
-    identifiers: [VehicleIdentifiers];
+    identifiers: any[][];
     /**
      * Name of the vehicle variant.
      * @member {String} variantName
@@ -51,10 +51,10 @@ export class Vehicle {
     energy: string;
     /**
      * Engine output of vehicle.
-     * @member {[EngineOutput]} engineOutput
-     * @type {[EngineOutput]}
+     * @member {Array[]} engineOutput
+     * @type {Array[]}
      */
-    engineOutput: [EngineOutput];
+    engineOutput: any[][];
     /**
      * @member {MonthAndYear} manufacturingStartDate
      * @type {MonthAndYear}
@@ -77,8 +77,6 @@ export class Vehicle {
      */
     status: VehicleStatusInCatalog;
 }
-import { VehicleIdentifiers } from './VehicleIdentifiers.js';
-import { EngineOutput } from './EngineOutput.js';
 import { MonthAndYear } from './MonthAndYear.js';
 import { VehicleStatusInCatalog } from './VehicleStatusInCatalog.js';
 //# sourceMappingURL=Vehicle.d.ts.map

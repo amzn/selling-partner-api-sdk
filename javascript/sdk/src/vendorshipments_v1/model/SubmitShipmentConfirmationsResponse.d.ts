@@ -19,11 +19,10 @@ export class SubmitShipmentConfirmationsResponse {
     payload: TransactionReference;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { TransactionReference } from './TransactionReference.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=SubmitShipmentConfirmationsResponse.d.ts.map

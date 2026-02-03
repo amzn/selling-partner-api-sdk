@@ -97,14 +97,13 @@ export class PackageTrackingDetails {
     additionalLocationInfo: AdditionalLocationInfo;
     /**
      * An array of tracking event information.
-     * @member {[TrackingEvent]} trackingEvents
-     * @type {[TrackingEvent]}
+     * @member {Array[]} trackingEvents
+     * @type {Array[]}
      */
-    trackingEvents: [TrackingEvent];
+    trackingEvents: any[][];
 }
 import { TrackingAddress } from './TrackingAddress.js';
 import { CurrentStatus } from './CurrentStatus.js';
 import { DateRange } from './DateRange.js';
 import { AdditionalLocationInfo } from './AdditionalLocationInfo.js';
-import { TrackingEvent } from './TrackingEvent.js';
 //# sourceMappingURL=PackageTrackingDetails.d.ts.map

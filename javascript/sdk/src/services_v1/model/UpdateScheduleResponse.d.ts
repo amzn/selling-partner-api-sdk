@@ -14,17 +14,15 @@ export class UpdateScheduleResponse {
     static constructFromObject(data: any, obj: UpdateScheduleResponse): UpdateScheduleResponse;
     /**
      * Contains the `UpdateScheduleRecords` for which the error/warning has occurred.
-     * @member {[UpdateScheduleRecord]} payload
-     * @type {[UpdateScheduleRecord]}
+     * @member {Array[]} payload
+     * @type {Array[]}
      */
-    payload: [UpdateScheduleRecord];
+    payload: any[][];
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
-import { UpdateScheduleRecord } from './UpdateScheduleRecord.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=UpdateScheduleResponse.d.ts.map

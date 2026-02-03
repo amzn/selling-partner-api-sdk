@@ -20,10 +20,10 @@ export class BusinessHours {
     dayOfWeek: string;
     /**
      * Time window during the day when the business is open.
-     * @member {[OpenInterval]} openIntervals
-     * @type {[OpenInterval]}
+     * @member {Array[]} openIntervals
+     * @type {Array[]}
      */
-    openIntervals: [OpenInterval];
+    openIntervals: any[][];
 }
 export namespace BusinessHours {
     namespace DayOfWeekEnum {
@@ -40,5 +40,4 @@ export namespace BusinessHours {
      */
     type DayOfWeekEnum = string;
 }
-import { OpenInterval } from './OpenInterval.js';
 //# sourceMappingURL=BusinessHours.d.ts.map

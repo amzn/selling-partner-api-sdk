@@ -29,10 +29,10 @@ export class Restriction {
     conditionType: string;
     /**
      * A list of reasons for the restriction.
-     * @member {[Reason]} reasons
-     * @type {[Reason]}
+     * @member {Array[]} reasons
+     * @type {Array[]}
      */
-    reasons: [Reason];
+    reasons: any[][];
 }
 export namespace Restriction {
     namespace ConditionTypeEnum {
@@ -55,5 +55,4 @@ export namespace Restriction {
      */
     type ConditionTypeEnum = string;
 }
-import { Reason } from './Reason.js';
 //# sourceMappingURL=Restriction.d.ts.map

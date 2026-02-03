@@ -17,10 +17,10 @@ export class TransactionListing {
      * Struct that holds collection of transactions.
      * @alias module:sellerWallet_2024_03_01/model/TransactionListing
      * @class
-     * @param transactions {[Transaction]} Collection that holds Transaction
+     * @param transactions {Array[]} Collection that holds Transaction
      */
-    constructor(transactions: [Transaction]);
-    transactions: [Transaction];
+    constructor(transactions: any[][]);
+    transactions: any[][];
     /**
      * If present, use this pagination token to retrieve the next page of supply sources, if not provided the API will return same response. The field will only be provided when the list is greater than 100.
      * @member {String} nextPageToken
@@ -28,5 +28,4 @@ export class TransactionListing {
      */
     nextPageToken: string;
 }
-import { Transaction } from './Transaction.js';
 //# sourceMappingURL=TransactionListing.d.ts.map

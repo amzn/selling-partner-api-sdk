@@ -21,14 +21,13 @@ export class IneligibleRate {
      * @param serviceName {String} The name of the shipping service.
      * @param carrierName {String} The carrier name for the offering.
      * @param carrierId {String} The carrier identifier for the offering, provided by the carrier.
-     * @param ineligibilityReasons {[IneligibilityReason]} A list of reasons why a shipping service offering is ineligible.
+     * @param ineligibilityReasons {Array[]} A list of reasons why a shipping service offering is ineligible.
      */
-    constructor(serviceId: string, serviceName: string, carrierName: string, carrierId: string, ineligibilityReasons: [IneligibilityReason]);
+    constructor(serviceId: string, serviceName: string, carrierName: string, carrierId: string, ineligibilityReasons: any[][]);
     serviceId: string;
     serviceName: string;
     carrierName: string;
     carrierId: string;
-    ineligibilityReasons: [IneligibilityReason];
+    ineligibilityReasons: any[][];
 }
-import { IneligibilityReason } from './IneligibilityReason.js';
 //# sourceMappingURL=IneligibleRate.d.ts.map

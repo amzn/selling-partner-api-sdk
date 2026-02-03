@@ -17,13 +17,12 @@ export class IssueEnforcements {
      * This field provides information about the enforcement actions taken by Amazon that affect the publishing or status of a listing. It also includes details about any associated exemptions.
      * @alias module:listingsitems_v2021_08_01/model/IssueEnforcements
      * @class
-     * @param actions {[IssueEnforcementAction]} List of enforcement actions taken by Amazon that affect the publishing or status of a listing.
+     * @param actions {Array[]} List of enforcement actions taken by Amazon that affect the publishing or status of a listing.
      * @param exemption {IssueExemption}
      */
-    constructor(actions: [IssueEnforcementAction], exemption: IssueExemption);
-    actions: [IssueEnforcementAction];
+    constructor(actions: any[][], exemption: IssueExemption);
+    actions: any[][];
     exemption: IssueExemption;
 }
-import { IssueEnforcementAction } from './IssueEnforcementAction.js';
 import { IssueExemption } from './IssueExemption.js';
 //# sourceMappingURL=IssueEnforcements.d.ts.map

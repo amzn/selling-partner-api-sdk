@@ -18,12 +18,12 @@ export class PurchaseShipmentResult {
      * @alias module:shipping_v2/model/PurchaseShipmentResult
      * @class
      * @param shipmentId {String} The unique shipment identifier provided by a shipping service.
-     * @param packageDocumentDetails {[PackageDocumentDetail]} A list of post-purchase details about a package that will be shipped using a shipping service.
+     * @param packageDocumentDetails {Array[]} A list of post-purchase details about a package that will be shipped using a shipping service.
      * @param promise {Promise}
      */
-    constructor(shipmentId: string, packageDocumentDetails: [PackageDocumentDetail], promise: Promise);
+    constructor(shipmentId: string, packageDocumentDetails: any[][], promise: Promise);
     shipmentId: string;
-    packageDocumentDetails: [PackageDocumentDetail];
+    packageDocumentDetails: any[][];
     promise: Promise;
     /**
      * @member {Benefits} benefits
@@ -31,7 +31,6 @@ export class PurchaseShipmentResult {
      */
     benefits: Benefits;
 }
-import { PackageDocumentDetail } from './PackageDocumentDetail.js';
 import { Promise } from './Promise.js';
 import { Benefits } from './Benefits.js';
 //# sourceMappingURL=PurchaseShipmentResult.d.ts.map

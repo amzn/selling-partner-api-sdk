@@ -136,8 +136,8 @@ OrderItem.prototype.orderItemId = undefined
 
 /**
  * A list of associated items that a customer has purchased with a product. For example, a tire installation service purchased with tires.
- * @member {[AssociatedItem]} associatedItems
- * @type {[AssociatedItem]}
+ * @member {Array[]} associatedItems
+ * @type {Array[]}
  */
 OrderItem.prototype.associatedItems = undefined
 
@@ -224,8 +224,8 @@ OrderItem.prototype.promotionDiscountTax = undefined
 
 /**
  * A list of promotion identifiers provided by the seller when the promotions were created.
- * @member {[String]} promotionIds
- * @type {[String]}
+ * @member {Array[]} promotionIds
+ * @type {Array[]}
  */
 OrderItem.prototype.promotionIds = undefined
 
@@ -364,8 +364,8 @@ OrderItem.prototype.buyerRequestedCancel = undefined
 
 /**
  * A list of serial numbers for electronic products that are shipped to customers. Returned for FBA orders only.
- * @member {[String]} serialNumbers
- * @type {[String]}
+ * @member {Array[]} serialNumbers
+ * @type {Array[]}
  */
 OrderItem.prototype.serialNumbers = undefined
 

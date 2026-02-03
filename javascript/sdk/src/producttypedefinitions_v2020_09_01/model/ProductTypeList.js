@@ -25,7 +25,7 @@ export class ProductTypeList {
    * A list of Amazon product types with definitions available.
    * @alias module:producttypedefinitions_v2020_09_01/model/ProductTypeList
    * @class
-   * @param productTypes {[ProductType]}
+   * @param productTypes {Array[]}
    * @param productTypeVersion {String} Amazon product type version identifier.
    */
   constructor (productTypes, productTypeVersion) {
@@ -62,8 +62,8 @@ export class ProductTypeList {
 }
 
 /**
- * @member {[ProductType]} productTypes
- * @type {[ProductType]}
+ * @member {Array[]} productTypes
+ * @type {Array[]}
  */
 ProductTypeList.prototype.productTypes = undefined
 

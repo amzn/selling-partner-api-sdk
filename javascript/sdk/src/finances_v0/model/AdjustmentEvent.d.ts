@@ -37,11 +37,10 @@ export class AdjustmentEvent {
     adjustmentAmount: Currency;
     /**
      * A list of information about items in an adjustment to the seller's account.
-     * @member {[AdjustmentItem]} adjustmentItemList
-     * @type {[AdjustmentItem]}
+     * @member {Array[]} adjustmentItemList
+     * @type {Array[]}
      */
-    adjustmentItemList: [AdjustmentItem];
+    adjustmentItemList: any[][];
 }
 import { Currency } from './Currency.js';
-import { AdjustmentItem } from './AdjustmentItem.js';
 //# sourceMappingURL=AdjustmentEvent.d.ts.map

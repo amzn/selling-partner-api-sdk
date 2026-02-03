@@ -1,1 +1,1 @@
-{"version":3,"file":"CreateLegalDisclosureRequest.d.ts","sourceRoot":"","sources":["CreateLegalDisclosureRequest.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,4BAA4B,GAC3B,4BAA4B,CAmBvC;IAGH;;;;OAIG;IACH,aAFU,CAAC,UAAU,CAAC,CAE4B;CAPjD;2BA1C0B,iBAAiB"}
+{"version":3,"file":"CreateLegalDisclosureRequest.d.ts","sourceRoot":"","sources":["CreateLegalDisclosureRequest.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,4BAA4B,GAC3B,4BAA4B,CAmBvC;IAGH;;;;OAIG;IACH,aAFU,OAAO,CAEiC;CAPjD"}

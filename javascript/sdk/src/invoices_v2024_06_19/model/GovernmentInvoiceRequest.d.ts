@@ -29,10 +29,10 @@ export class GovernmentInvoiceRequest {
     transactionType: string;
     /**
      * Object that contains additional invoice creation information
-     * @member {[CarrierDetailsContext]} contexts
-     * @type {[CarrierDetailsContext]}
+     * @member {Array[]} contexts
+     * @type {Array[]}
      */
-    contexts: [CarrierDetailsContext];
+    contexts: any[][];
     /**
      * The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
      * @member {String} inboundPlanId
@@ -40,5 +40,4 @@ export class GovernmentInvoiceRequest {
      */
     inboundPlanId: string;
 }
-import { CarrierDetailsContext } from './CarrierDetailsContext.js';
 //# sourceMappingURL=GovernmentInvoiceRequest.d.ts.map

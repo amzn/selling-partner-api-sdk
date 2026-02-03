@@ -73,7 +73,7 @@ Breakdown.prototype.breakdownAmount = undefined
 
 /**
  * A list of breakdowns that detail how the total amount is calculated for the transaction.
- * @member {[Breakdown]} breakdowns
- * @type {[Breakdown]}
+ * @member {Array[]} breakdowns
+ * @type {Array[]}
  */
 Breakdown.prototype.breakdowns = undefined

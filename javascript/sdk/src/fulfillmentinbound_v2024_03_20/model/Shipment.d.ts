@@ -67,10 +67,10 @@ export class Shipment {
     selectedTransportationOptionId: string;
     /**
      * List of self ship appointment details.
-     * @member {[SelfShipAppointmentDetails]} selfShipAppointmentDetails
-     * @type {[SelfShipAppointmentDetails]}
+     * @member {Array[]} selfShipAppointmentDetails
+     * @type {Array[]}
      */
-    selfShipAppointmentDetails: [SelfShipAppointmentDetails];
+    selfShipAppointmentDetails: any[][];
     /**
      * The confirmed shipment ID which shows up on labels (for example, `FBA1234ABCD`).
      * @member {String} shipmentConfirmationId
@@ -95,6 +95,5 @@ import { ContactInformation } from './ContactInformation.js';
 import { Dates } from './Dates.js';
 import { FreightInformation } from './FreightInformation.js';
 import { SelectedDeliveryWindow } from './SelectedDeliveryWindow.js';
-import { SelfShipAppointmentDetails } from './SelfShipAppointmentDetails.js';
 import { TrackingDetails } from './TrackingDetails.js';
 //# sourceMappingURL=Shipment.d.ts.map

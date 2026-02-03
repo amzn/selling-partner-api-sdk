@@ -14,10 +14,9 @@ export class SubmitShipmentStatusUpdatesRequest {
     static constructFromObject(data: any, obj: SubmitShipmentStatusUpdatesRequest): SubmitShipmentStatusUpdatesRequest;
     /**
      * Contains a list of one or more `ShipmentStatusUpdate` objects. Each `ShipmentStatusUpdate` object represents an update to the status of a specific shipment.
-     * @member {[ShipmentStatusUpdate]} shipmentStatusUpdates
-     * @type {[ShipmentStatusUpdate]}
+     * @member {Array[]} shipmentStatusUpdates
+     * @type {Array[]}
      */
-    shipmentStatusUpdates: [ShipmentStatusUpdate];
+    shipmentStatusUpdates: any[][];
 }
-import { ShipmentStatusUpdate } from './ShipmentStatusUpdate.js';
 //# sourceMappingURL=SubmitShipmentStatusUpdatesRequest.d.ts.map

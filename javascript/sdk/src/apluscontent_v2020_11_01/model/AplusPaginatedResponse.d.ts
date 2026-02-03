@@ -14,10 +14,10 @@ export class AplusPaginatedResponse {
     static constructFromObject(data: any, obj: AplusPaginatedResponse): AplusPaginatedResponse;
     /**
      * A set of messages to the user, such as warnings or comments.
-     * @member {[Error]} warnings
-     * @type {[Error]}
+     * @member {Array[]} warnings
+     * @type {Array[]}
      */
-    warnings: [Error];
+    warnings: any[][];
     /**
      * A token that you use to fetch a specific page when there are multiple pages of results.
      * @member {String} nextPageToken
@@ -25,5 +25,4 @@ export class AplusPaginatedResponse {
      */
     nextPageToken: string;
 }
-import { Error } from './Error.js';
 //# sourceMappingURL=AplusPaginatedResponse.d.ts.map

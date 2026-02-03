@@ -68,7 +68,7 @@ DirectPurchaseResult.prototype.shipmentId = undefined
 
 /**
  * A list of post-purchase details about a package that will be shipped using a shipping service.
- * @member {[PackageDocumentDetail]} packageDocumentDetailList
- * @type {[PackageDocumentDetail]}
+ * @member {Array[]} packageDocumentDetailList
+ * @type {Array[]}
  */
 DirectPurchaseResult.prototype.packageDocumentDetailList = undefined

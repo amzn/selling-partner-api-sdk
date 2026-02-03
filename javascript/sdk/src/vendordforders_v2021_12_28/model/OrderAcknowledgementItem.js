@@ -33,7 +33,7 @@ export class OrderAcknowledgementItem {
    * @param acknowledgementStatus {AcknowledgementStatus}
    * @param sellingParty {PartyIdentification}
    * @param shipFromParty {PartyIdentification}
-   * @param itemAcknowledgements {[OrderItemAcknowledgement]} Item details including acknowledged quantity.
+   * @param itemAcknowledgements {Array[]} Item details including acknowledged quantity.
    */
   constructor (purchaseOrderNumber, vendorOrderNumber, acknowledgementDate, acknowledgementStatus, sellingParty, shipFromParty, itemAcknowledgements) {
     this.purchaseOrderNumber = purchaseOrderNumber
@@ -119,7 +119,7 @@ OrderAcknowledgementItem.prototype.shipFromParty = undefined
 
 /**
  * Item details including acknowledged quantity.
- * @member {[OrderItemAcknowledgement]} itemAcknowledgements
- * @type {[OrderItemAcknowledgement]}
+ * @member {Array[]} itemAcknowledgements
+ * @type {Array[]}
  */
 OrderAcknowledgementItem.prototype.itemAcknowledgements = undefined

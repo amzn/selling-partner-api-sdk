@@ -1,1 +1,1 @@
-{"version":3,"file":"ParagraphComponent.d.ts","sourceRoot":"","sources":["ParagraphComponent.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,2CAHW,kBAAkB,GACjB,kBAAkB,CAmB7B;IAnCD;;;;;;OAMG;IACH,sBAFoB,CAAC,aAAa,CAAC,EAIlC;IADC,0BAAwB;CA4B3B;8BA5C6B,oBAAoB"}
+{"version":3,"file":"ParagraphComponent.d.ts","sourceRoot":"","sources":["ParagraphComponent.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,2CAHW,kBAAkB,GACjB,kBAAkB,CAmB7B;IAnCD;;;;;;OAMG;IACH,sBAFoB,OAAO,EAI1B;IADC,kBAAwB;CA4B3B"}

@@ -20,10 +20,10 @@ export class RangeSlotCapacity {
     resourceId: string;
     /**
      * Array of range capacities where each entry is for a specific capacity type.
-     * @member {[RangeCapacity]} capacities
-     * @type {[RangeCapacity]}
+     * @member {Array[]} capacities
+     * @type {Array[]}
      */
-    capacities: [RangeCapacity];
+    capacities: any[][];
     /**
      * Next page token, if there are more pages.
      * @member {String} nextPageToken
@@ -31,5 +31,4 @@ export class RangeSlotCapacity {
      */
     nextPageToken: string;
 }
-import { RangeCapacity } from './RangeCapacity.js';
 //# sourceMappingURL=RangeSlotCapacity.d.ts.map

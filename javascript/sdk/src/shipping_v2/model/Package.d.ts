@@ -21,14 +21,14 @@ export class Package {
      * @param weight {Weight}
      * @param insuredValue {Currency}
      * @param packageClientReferenceId {String} A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation.
-     * @param items {[Item]} A list of items.
+     * @param items {Array[]} A list of items.
      */
-    constructor(dimensions: Dimensions, weight: Weight, insuredValue: Currency, packageClientReferenceId: string, items: [Item]);
+    constructor(dimensions: Dimensions, weight: Weight, insuredValue: Currency, packageClientReferenceId: string, items: any[][]);
     dimensions: Dimensions;
     weight: Weight;
     insuredValue: Currency;
     packageClientReferenceId: string;
-    items: [Item];
+    items: any[][];
     /**
      * When true, the package contains hazardous materials. Defaults to false.
      * @member {Boolean} isHazmat
@@ -43,14 +43,12 @@ export class Package {
     sellerDisplayName: string;
     /**
      * A list of charges based on the shipping service charges applied on a package.
-     * @member {[ChargeComponent]} charges
-     * @type {[ChargeComponent]}
+     * @member {Array[]} charges
+     * @type {Array[]}
      */
-    charges: [ChargeComponent];
+    charges: any[][];
 }
 import { Dimensions } from './Dimensions.js';
 import { Weight } from './Weight.js';
 import { Currency } from './Currency.js';
-import { Item } from './Item.js';
-import { ChargeComponent } from './ChargeComponent.js';
 //# sourceMappingURL=Package.d.ts.map

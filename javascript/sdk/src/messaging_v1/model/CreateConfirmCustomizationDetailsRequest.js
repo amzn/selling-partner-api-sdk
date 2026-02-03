@@ -66,7 +66,7 @@ CreateConfirmCustomizationDetailsRequest.prototype.text = undefined
 
 /**
  * Attachments to include in the message to the buyer.
- * @member {[Attachment]} attachments
- * @type {[Attachment]}
+ * @member {Array[]} attachments
+ * @type {Array[]}
  */
 CreateConfirmCustomizationDetailsRequest.prototype.attachments = undefined

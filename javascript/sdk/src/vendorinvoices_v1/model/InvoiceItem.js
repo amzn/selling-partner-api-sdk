@@ -140,21 +140,21 @@ InvoiceItem.prototype.creditNoteDetails = undefined
 
 /**
  * Individual tax details per line item.
- * @member {[TaxDetails]} taxDetails
- * @type {[TaxDetails]}
+ * @member {Array[]} taxDetails
+ * @type {Array[]}
  */
 InvoiceItem.prototype.taxDetails = undefined
 
 /**
  * Individual charge details per line item.
- * @member {[ChargeDetails]} chargeDetails
- * @type {[ChargeDetails]}
+ * @member {Array[]} chargeDetails
+ * @type {Array[]}
  */
 InvoiceItem.prototype.chargeDetails = undefined
 
 /**
  * Individual allowance details per line item.
- * @member {[AllowanceDetails]} allowanceDetails
- * @type {[AllowanceDetails]}
+ * @member {Array[]} allowanceDetails
+ * @type {Array[]}
  */
 InvoiceItem.prototype.allowanceDetails = undefined

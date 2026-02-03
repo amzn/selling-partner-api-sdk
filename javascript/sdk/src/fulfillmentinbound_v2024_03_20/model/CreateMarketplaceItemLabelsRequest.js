@@ -29,7 +29,7 @@ export class CreateMarketplaceItemLabelsRequest {
    * @class
    * @param labelType {LabelPrintType}
    * @param marketplaceId {String} The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-   * @param mskuQuantities {[MskuQuantity]} Represents the quantity of an MSKU to print item labels for.
+   * @param mskuQuantities {Array[]} Represents the quantity of an MSKU to print item labels for.
    */
   constructor (labelType, marketplaceId, mskuQuantities) {
     this.labelType = labelType
@@ -100,8 +100,8 @@ CreateMarketplaceItemLabelsRequest.prototype.marketplaceId = undefined
 
 /**
  * Represents the quantity of an MSKU to print item labels for.
- * @member {[MskuQuantity]} mskuQuantities
- * @type {[MskuQuantity]}
+ * @member {Array[]} mskuQuantities
+ * @type {Array[]}
  */
 CreateMarketplaceItemLabelsRequest.prototype.mskuQuantities = undefined
 

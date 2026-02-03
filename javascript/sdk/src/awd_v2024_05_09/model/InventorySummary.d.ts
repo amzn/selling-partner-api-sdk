@@ -23,10 +23,10 @@ export class InventorySummary {
     sku: string;
     /**
      * The expiration details of the inventory. This object will only appear if the `details` parameter in the request is set to `SHOW`.
-     * @member {[ExpirationDetails]} expirationDetails
-     * @type {[ExpirationDetails]}
+     * @member {Array[]} expirationDetails
+     * @type {Array[]}
      */
-    expirationDetails: [ExpirationDetails];
+    expirationDetails: any[][];
     /**
      * @member {InventoryDetails} inventoryDetails
      * @type {InventoryDetails}
@@ -45,6 +45,5 @@ export class InventorySummary {
      */
     totalOnhandQuantity: number;
 }
-import { ExpirationDetails } from './ExpirationDetails.js';
 import { InventoryDetails } from './InventoryDetails.js';
 //# sourceMappingURL=InventorySummary.d.ts.map

@@ -27,11 +27,10 @@ export class GetSchemaResponse {
     };
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { GetSchemaResponseLinks } from './GetSchemaResponseLinks.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetSchemaResponse.d.ts.map

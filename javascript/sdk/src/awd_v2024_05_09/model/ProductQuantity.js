@@ -67,8 +67,8 @@ export class ProductQuantity {
 
 /**
  * Contains attributes for this instance of the product. For example, item color, or other attributes that distinguish the product beyond the SKU. This is metadata for the product and Amazon does not process this data.
- * @member {[ProductAttribute]} attributes
- * @type {[ProductAttribute]}
+ * @member {Array[]} attributes
+ * @type {Array[]}
  */
 ProductQuantity.prototype.attributes = undefined
 

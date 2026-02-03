@@ -23,10 +23,10 @@ export class PackageDetails {
     packageTimeSlot: TimeSlot;
     /**
      * A list of items contained in the package.
-     * @member {[Item]} packageItems
-     * @type {[Item]}
+     * @member {Array[]} packageItems
+     * @type {Array[]}
      */
-    packageItems: [Item];
+    packageItems: any[][];
     /**
      * Optional seller-created identifier that is printed on the shipping label to help the seller identify the package.
      * @member {String} packageIdentifier
@@ -35,5 +35,4 @@ export class PackageDetails {
     packageIdentifier: string;
 }
 import { TimeSlot } from './TimeSlot.js';
-import { Item } from './Item.js';
 //# sourceMappingURL=PackageDetails.d.ts.map

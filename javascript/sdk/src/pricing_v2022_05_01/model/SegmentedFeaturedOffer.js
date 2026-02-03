@@ -37,7 +37,7 @@ export class SegmentedFeaturedOffer {
    * @param condition {Condition}
    * @param fulfillmentType {FulfillmentType}
    * @param listingPrice {MoneyType}
-   * @param featuredOfferSegments {[FeaturedOfferSegment]} The list of segment information in which the offer is featured.
+   * @param featuredOfferSegments {Array[]} The list of segment information in which the offer is featured.
    */
   constructor (sellerId, condition, fulfillmentType, listingPrice, featuredOfferSegments) {
     Offer.call(this, sellerId, condition, fulfillmentType, listingPrice)
@@ -203,8 +203,8 @@ SegmentedFeaturedOffer.prototype.listingPrice = undefined
 
 /**
  * A list of shipping options associated with this offer
- * @member {[ShippingOption]} shippingOptions
- * @type {[ShippingOption]}
+ * @member {Array[]} shippingOptions
+ * @type {Array[]}
  */
 SegmentedFeaturedOffer.prototype.shippingOptions = undefined
 
@@ -222,8 +222,8 @@ SegmentedFeaturedOffer.prototype.primeDetails = undefined
 
 /**
  * The list of segment information in which the offer is featured.
- * @member {[FeaturedOfferSegment]} featuredOfferSegments
- * @type {[FeaturedOfferSegment]}
+ * @member {Array[]} featuredOfferSegments
+ * @type {Array[]}
  */
 SegmentedFeaturedOffer.prototype.featuredOfferSegments = undefined
 
@@ -262,8 +262,8 @@ Offer.prototype.listingPrice = undefined
 
 /**
  * A list of shipping options associated with this offer
- * @member {[ShippingOption]} shippingOptions
- * @type {[ShippingOption]}
+ * @member {Array[]} shippingOptions
+ * @type {Array[]}
  */
 Offer.prototype.shippingOptions = undefined
 

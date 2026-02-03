@@ -58,7 +58,7 @@ export class DeleteInventoryItemResponse {
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Array[]} errors
+ * @type {Array[]}
  */
 DeleteInventoryItemResponse.prototype.errors = undefined

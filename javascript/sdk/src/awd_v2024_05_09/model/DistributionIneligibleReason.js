@@ -25,7 +25,7 @@ export class DistributionIneligibleReason {
    * @alias module:awd_v2024_05_09/model/DistributionIneligibleReason
    * @class
    * @param failureCode {String} Failure code details of the error.
-   * @param failureReasons {[String]} Failure reasons of the error.
+   * @param failureReasons {Array[]} Failure reasons of the error.
    */
   constructor (failureCode, failureReasons) {
     this.failureCode = failureCode
@@ -70,8 +70,8 @@ DistributionIneligibleReason.prototype.failureCode = undefined
 
 /**
  * Failure reasons of the error.
- * @member {[String]} failureReasons
- * @type {[String]}
+ * @member {Array[]} failureReasons
+ * @type {Array[]}
  */
 DistributionIneligibleReason.prototype.failureReasons = undefined
 

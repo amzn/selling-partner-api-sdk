@@ -1,1 +1,1 @@
-{"version":3,"file":"GetListingOffersBatchRequest.d.ts","sourceRoot":"","sources":["GetListingOffersBatchRequest.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,4BAA4B,GAC3B,4BAA4B,CAmBvC;IAGH;;;;OAIG;IACH,UAFU,CAAC,oBAAoB,CAAC,CAEe;CAP9C;qCA1CoC,2BAA2B"}
+{"version":3,"file":"GetListingOffersBatchRequest.d.ts","sourceRoot":"","sources":["GetListingOffersBatchRequest.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,4BAA4B,GAC3B,4BAA4B,CAmBvC;IAGH;;;;OAIG;IACH,UAFU,OAAO,CAE8B;CAP9C"}

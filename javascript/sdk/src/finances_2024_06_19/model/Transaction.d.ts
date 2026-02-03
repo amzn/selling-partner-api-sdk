@@ -19,10 +19,10 @@ export class Transaction {
     sellingPartnerMetadata: SellingPartnerMetadata;
     /**
      * Related business identifiers of the transaction.
-     * @member {[RelatedIdentifier]} relatedIdentifiers
-     * @type {[RelatedIdentifier]}
+     * @member {Array[]} relatedIdentifiers
+     * @type {Array[]}
      */
-    relatedIdentifiers: [RelatedIdentifier];
+    relatedIdentifiers: any[][];
     /**
      * The type of transaction.  **Possible value:** `Shipment`
      * @member {String} transactionType
@@ -65,28 +65,24 @@ export class Transaction {
     marketplaceDetails: MarketplaceDetails;
     /**
      * A list of items in the transaction.
-     * @member {[Item]} items
-     * @type {[Item]}
+     * @member {Array[]} items
+     * @type {Array[]}
      */
-    items: [Item];
+    items: any[][];
     /**
      * A list of additional information about the item.
-     * @member {[Context]} contexts
-     * @type {[Context]}
+     * @member {Array[]} contexts
+     * @type {Array[]}
      */
-    contexts: [Context];
+    contexts: any[][];
     /**
      * A list of breakdowns that detail how the total amount is calculated for the transaction.
-     * @member {[Breakdown]} breakdowns
-     * @type {[Breakdown]}
+     * @member {Array[]} breakdowns
+     * @type {Array[]}
      */
-    breakdowns: [Breakdown];
+    breakdowns: any[][];
 }
 import { SellingPartnerMetadata } from './SellingPartnerMetadata.js';
-import { RelatedIdentifier } from './RelatedIdentifier.js';
 import { Currency } from './Currency.js';
 import { MarketplaceDetails } from './MarketplaceDetails.js';
-import { Item } from './Item.js';
-import { Context } from './Context.js';
-import { Breakdown } from './Breakdown.js';
 //# sourceMappingURL=Transaction.d.ts.map

@@ -29,7 +29,7 @@ export class FulfillmentShipment {
    * @param amazonShipmentId {String} A shipment identifier assigned by Amazon.
    * @param fulfillmentCenterId {String} An identifier for the fulfillment center from which the shipment is sent.
    * @param fulfillmentShipmentStatus {String} The current status of the shipment.
-   * @param fulfillmentShipmentItem {[FulfillmentShipmentItem]} An array of fulfillment shipment item information.
+   * @param fulfillmentShipmentItem {Array[]} An array of fulfillment shipment item information.
    */
   constructor (amazonShipmentId, fulfillmentCenterId, fulfillmentShipmentStatus, fulfillmentShipmentItem) {
     this.amazonShipmentId = amazonShipmentId
@@ -140,21 +140,21 @@ FulfillmentShipment.prototype.estimatedArrivalDate = undefined
 
 /**
  * Provides additional insight into shipment timeline. Primarily used to communicate that actual delivery dates aren't available.
- * @member {[String]} shippingNotes
- * @type {[String]}
+ * @member {Array[]} shippingNotes
+ * @type {Array[]}
  */
 FulfillmentShipment.prototype.shippingNotes = undefined
 
 /**
  * An array of fulfillment shipment item information.
- * @member {[FulfillmentShipmentItem]} fulfillmentShipmentItem
- * @type {[FulfillmentShipmentItem]}
+ * @member {Array[]} fulfillmentShipmentItem
+ * @type {Array[]}
  */
 FulfillmentShipment.prototype.fulfillmentShipmentItem = undefined
 
 /**
  * An array of fulfillment shipment package information.
- * @member {[FulfillmentShipmentPackage]} fulfillmentShipmentPackage
- * @type {[FulfillmentShipmentPackage]}
+ * @member {Array[]} fulfillmentShipmentPackage
+ * @type {Array[]}
  */
 FulfillmentShipment.prototype.fulfillmentShipmentPackage = undefined

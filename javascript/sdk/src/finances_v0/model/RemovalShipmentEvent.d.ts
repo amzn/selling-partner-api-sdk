@@ -44,10 +44,9 @@ export class RemovalShipmentEvent {
     storeName: string;
     /**
      * A list of `RemovalShipmentItem`.
-     * @member {[RemovalShipmentItem]} removalShipmentItemList
-     * @type {[RemovalShipmentItem]}
+     * @member {Array[]} removalShipmentItemList
+     * @type {Array[]}
      */
-    removalShipmentItemList: [RemovalShipmentItem];
+    removalShipmentItemList: any[][];
 }
-import { RemovalShipmentItem } from './RemovalShipmentItem.js';
 //# sourceMappingURL=RemovalShipmentEvent.d.ts.map

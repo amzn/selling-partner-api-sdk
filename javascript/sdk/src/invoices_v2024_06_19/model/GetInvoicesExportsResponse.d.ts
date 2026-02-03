@@ -14,10 +14,10 @@ export class GetInvoicesExportsResponse {
     static constructFromObject(data: any, obj: GetInvoicesExportsResponse): GetInvoicesExportsResponse;
     /**
      * A list of exports.
-     * @member {[Export]} exports
-     * @type {[Export]}
+     * @member {Array[]} exports
+     * @type {Array[]}
      */
-    exports: [Export];
+    exports: any[][];
     /**
      * This token is returned when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the `getInvoices` operation and include this token with the previous call parameters.
      * @member {String} nextToken
@@ -25,5 +25,4 @@ export class GetInvoicesExportsResponse {
      */
     nextToken: string;
 }
-import { Export } from './Export.js';
 //# sourceMappingURL=GetInvoicesExportsResponse.d.ts.map

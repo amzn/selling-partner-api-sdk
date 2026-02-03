@@ -18,11 +18,11 @@ export class PackageDocumentDetail {
      * @alias module:shipping_v2/model/PackageDocumentDetail
      * @class
      * @param packageClientReferenceId {String} A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation.
-     * @param packageDocuments {[PackageDocument]} A list of documents related to a package.
+     * @param packageDocuments {Array[]} A list of documents related to a package.
      */
-    constructor(packageClientReferenceId: string, packageDocuments: [PackageDocument]);
+    constructor(packageClientReferenceId: string, packageDocuments: any[][]);
     packageClientReferenceId: string;
-    packageDocuments: [PackageDocument];
+    packageDocuments: any[][];
     /**
      * The carrier generated identifier for a package in a purchased shipment.
      * @member {String} trackingId
@@ -30,5 +30,4 @@ export class PackageDocumentDetail {
      */
     trackingId: string;
 }
-import { PackageDocument } from './PackageDocument.js';
 //# sourceMappingURL=PackageDocumentDetail.d.ts.map

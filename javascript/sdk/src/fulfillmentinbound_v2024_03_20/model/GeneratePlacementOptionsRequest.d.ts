@@ -14,10 +14,9 @@ export class GeneratePlacementOptionsRequest {
     static constructFromObject(data: any, obj: GeneratePlacementOptionsRequest): GeneratePlacementOptionsRequest;
     /**
      * Custom placement options you want to add to the plan. This is only used for the India (IN - A21TJRUUN4KGV) marketplace.
-     * @member {[CustomPlacementInput]} customPlacement
-     * @type {[CustomPlacementInput]}
+     * @member {Array[]} customPlacement
+     * @type {Array[]}
      */
-    customPlacement: [CustomPlacementInput];
+    customPlacement: any[][];
 }
-import { CustomPlacementInput } from './CustomPlacementInput.js';
 //# sourceMappingURL=GeneratePlacementOptionsRequest.d.ts.map

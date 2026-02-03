@@ -29,7 +29,7 @@ export class ContentMetadata {
    * @param name {String} The A+ Content document's name.
    * @param marketplaceId {String} The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
    * @param status {ContentStatus}
-   * @param badgeSet {[ContentBadge]} The set of content badges.
+   * @param badgeSet {Array[]} The set of content badges.
    * @param updateTime {Date} The approximate age of the A+ Content document and metadata.
    */
   constructor (name, marketplaceId, status, badgeSet, updateTime) {
@@ -93,8 +93,8 @@ ContentMetadata.prototype.status = undefined
 
 /**
  * The set of content badges.
- * @member {[ContentBadge]} badgeSet
- * @type {[ContentBadge]}
+ * @member {Array[]} badgeSet
+ * @type {Array[]}
  */
 ContentMetadata.prototype.badgeSet = undefined
 

@@ -58,7 +58,7 @@ export class GetCarrierAccountFormInputsResponse {
 
 /**
  * A list of LinkableCarrier
- * @member {[LinkableCarrier]} linkableCarriersList
- * @type {[LinkableCarrier]}
+ * @member {Array[]} linkableCarriersList
+ * @type {Array[]}
  */
 GetCarrierAccountFormInputsResponse.prototype.linkableCarriersList = undefined

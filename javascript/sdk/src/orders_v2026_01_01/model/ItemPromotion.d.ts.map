@@ -1,1 +1,1 @@
-{"version":3,"file":"ItemPromotion.d.ts","sourceRoot":"","sources":["ItemPromotion.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,aAAa,GACZ,aAAa,CAmBxB;IAGH;;;;OAIG;IACH,YAFU,CAAC,sBAAsB,CAAC,CAEA;CAPjC;uCA1CsC,6BAA6B"}
+{"version":3,"file":"ItemPromotion.d.ts","sourceRoot":"","sources":["ItemPromotion.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,aAAa,GACZ,aAAa,CAmBxB;IAGH;;;;OAIG;IACH,YAFU,OAAO,CAEiB;CAPjC"}

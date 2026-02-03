@@ -28,7 +28,7 @@ export class InboundOperationStatus {
    * @class
    * @param operation {String} The name of the operation in the asynchronous API call.
    * @param operationId {String} The operation ID returned by the asynchronous API call.
-   * @param operationProblems {[OperationProblem]} The problems in the processing of the asynchronous operation.
+   * @param operationProblems {Array[]} The problems in the processing of the asynchronous operation.
    * @param operationStatus {OperationStatus}
    */
   constructor (operation, operationId, operationProblems, operationStatus) {
@@ -84,8 +84,8 @@ InboundOperationStatus.prototype.operationId = undefined
 
 /**
  * The problems in the processing of the asynchronous operation.
- * @member {[OperationProblem]} operationProblems
- * @type {[OperationProblem]}
+ * @member {Array[]} operationProblems
+ * @type {Array[]}
  */
 InboundOperationStatus.prototype.operationProblems = undefined
 

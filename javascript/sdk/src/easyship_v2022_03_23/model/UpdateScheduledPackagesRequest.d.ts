@@ -18,11 +18,10 @@ export class UpdateScheduledPackagesRequest {
      * @alias module:easyship_v2022_03_23/model/UpdateScheduledPackagesRequest
      * @class
      * @param marketplaceId {String} A string of up to 255 characters.
-     * @param updatePackageDetailsList {[UpdatePackageDetails]} A list of package update details.
+     * @param updatePackageDetailsList {Array[]} A list of package update details.
      */
-    constructor(marketplaceId: string, updatePackageDetailsList: [UpdatePackageDetails]);
+    constructor(marketplaceId: string, updatePackageDetailsList: any[][]);
     marketplaceId: string;
-    updatePackageDetailsList: [UpdatePackageDetails];
+    updatePackageDetailsList: any[][];
 }
-import { UpdatePackageDetails } from './UpdatePackageDetails.js';
 //# sourceMappingURL=UpdateScheduledPackagesRequest.d.ts.map

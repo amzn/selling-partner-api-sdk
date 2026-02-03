@@ -59,13 +59,13 @@ export class StandardComparisonTableModule {
 }
 
 /**
- * @member {[StandardComparisonProductBlock]} productColumns
- * @type {[StandardComparisonProductBlock]}
+ * @member {Array[]} productColumns
+ * @type {Array[]}
  */
 StandardComparisonTableModule.prototype.productColumns = undefined
 
 /**
- * @member {[PlainTextItem]} metricRowLabels
- * @type {[PlainTextItem]}
+ * @member {Array[]} metricRowLabels
+ * @type {Array[]}
  */
 StandardComparisonTableModule.prototype.metricRowLabels = undefined

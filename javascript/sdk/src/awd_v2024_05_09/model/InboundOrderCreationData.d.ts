@@ -18,11 +18,11 @@ export class InboundOrderCreationData {
      * @alias module:awd_v2024_05_09/model/InboundOrderCreationData
      * @class
      * @param originAddress {Address}
-     * @param packagesToInbound {[DistributionPackageQuantity]} List of packages to be inbounded.
+     * @param packagesToInbound {Array[]} List of packages to be inbounded.
      */
-    constructor(originAddress: Address, packagesToInbound: [DistributionPackageQuantity]);
+    constructor(originAddress: Address, packagesToInbound: any[][]);
     originAddress: Address;
-    packagesToInbound: [DistributionPackageQuantity];
+    packagesToInbound: any[][];
     /**
      * Reference ID that can be used to correlate the order with partner resources.
      * @member {String} externalReferenceId
@@ -36,6 +36,5 @@ export class InboundOrderCreationData {
     preferences: InboundPreferences;
 }
 import { Address } from './Address.js';
-import { DistributionPackageQuantity } from './DistributionPackageQuantity.js';
 import { InboundPreferences } from './InboundPreferences.js';
 //# sourceMappingURL=InboundOrderCreationData.d.ts.map

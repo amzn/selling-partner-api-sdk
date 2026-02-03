@@ -25,7 +25,7 @@ export class CreateFeedSpecification {
    * @alias module:feeds_v2021_06_30/model/CreateFeedSpecification
    * @class
    * @param feedType {String} The feed type.
-   * @param marketplaceIds {[String]} A list of identifiers for marketplaces that you want the feed to be applied to.
+   * @param marketplaceIds {Array[]} A list of identifiers for marketplaces that you want the feed to be applied to.
    * @param inputFeedDocumentId {String} The document identifier returned by the createFeedDocument operation. Upload the feed document contents before calling the createFeed operation.
    */
   constructor (feedType, marketplaceIds, inputFeedDocumentId) {
@@ -73,8 +73,8 @@ CreateFeedSpecification.prototype.feedType = undefined
 
 /**
  * A list of identifiers for marketplaces that you want the feed to be applied to.
- * @member {[String]} marketplaceIds
- * @type {[String]}
+ * @member {Array[]} marketplaceIds
+ * @type {Array[]}
  */
 CreateFeedSpecification.prototype.marketplaceIds = undefined
 

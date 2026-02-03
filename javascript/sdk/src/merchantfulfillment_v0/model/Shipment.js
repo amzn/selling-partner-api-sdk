@@ -34,7 +34,7 @@ export class Shipment {
    * @class
    * @param shipmentId {String} An Amazon-defined shipment identifier.
    * @param amazonOrderId {String} An Amazon-defined order identifier, in 3-7-7 format.
-   * @param itemList {[Item]} The list of items you want to include in a shipment.
+   * @param itemList {Array[]} The list of items you want to include in a shipment.
    * @param shipFromAddress {Address}
    * @param shipToAddress {Address}
    * @param packageDimensions {PackageDimensions}
@@ -124,8 +124,8 @@ Shipment.prototype.sellerOrderId = undefined
 
 /**
  * The list of items you want to include in a shipment.
- * @member {[Item]} itemList
- * @type {[Item]}
+ * @member {Array[]} itemList
+ * @type {Array[]}
  */
 Shipment.prototype.itemList = undefined
 

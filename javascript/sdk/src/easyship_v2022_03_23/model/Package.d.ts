@@ -29,10 +29,10 @@ export class Package {
     packageTimeSlot: TimeSlot;
     /**
      * A list of items contained in the package.
-     * @member {[Item]} packageItems
-     * @type {[Item]}
+     * @member {Array[]} packageItems
+     * @type {Array[]}
      */
-    packageItems: [Item];
+    packageItems: any[][];
     /**
      * Optional seller-created identifier that is printed on the shipping label to help the seller identify the package.
      * @member {String} packageIdentifier
@@ -59,7 +59,6 @@ import { ScheduledPackageId } from './ScheduledPackageId.js';
 import { Dimensions } from './Dimensions.js';
 import { Weight } from './Weight.js';
 import { TimeSlot } from './TimeSlot.js';
-import { Item } from './Item.js';
 import { InvoiceData } from './InvoiceData.js';
 import { PackageStatus } from './PackageStatus.js';
 import { TrackingDetails } from './TrackingDetails.js';

@@ -19,11 +19,10 @@ export class SubmitShipmentConfirmationResponse {
     payload: SubmitShipmentConfirmationResult;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { SubmitShipmentConfirmationResult } from './SubmitShipmentConfirmationResult.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=SubmitShipmentConfirmationResponse.d.ts.map

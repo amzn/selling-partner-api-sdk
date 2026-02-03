@@ -23,10 +23,9 @@ export class TextComponent {
     value: string;
     /**
      * A set of content decorators.
-     * @member {[Decorator]} decoratorSet
-     * @type {[Decorator]}
+     * @member {Array[]} decoratorSet
+     * @type {Array[]}
      */
-    decoratorSet: [Decorator];
+    decoratorSet: any[][];
 }
-import { Decorator } from './Decorator.js';
 //# sourceMappingURL=TextComponent.d.ts.map

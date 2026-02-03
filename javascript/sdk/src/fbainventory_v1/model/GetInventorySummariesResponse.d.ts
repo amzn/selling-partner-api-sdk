@@ -24,12 +24,11 @@ export class GetInventorySummariesResponse {
     pagination: Pagination;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { GetInventorySummariesResult } from './GetInventorySummariesResult.js';
 import { Pagination } from './Pagination.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetInventorySummariesResponse.d.ts.map

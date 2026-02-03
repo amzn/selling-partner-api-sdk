@@ -23,16 +23,16 @@ export class Product {
     identifiers: IdentifierType;
     /**
      * A list of product attributes if they are applicable to the product that is returned.
-     * @member {[Object]} attributeSets
-     * @type {[Object]}
+     * @member {Array[]} attributeSets
+     * @type {Array[]}
      */
-    attributeSets: [any];
+    attributeSets: any[][];
     /**
      * A list that contains product variation information, if applicable.
-     * @member {[Object]} relationships
-     * @type {[Object]}
+     * @member {Array[]} relationships
+     * @type {Array[]}
      */
-    relationships: [any];
+    relationships: any[][];
     /**
      * @member {CompetitivePricingType} competitivePricing
      * @type {CompetitivePricingType}
@@ -40,19 +40,17 @@ export class Product {
     competitivePricing: CompetitivePricingType;
     /**
      * A list of sales rank information for the item, by category.
-     * @member {[SalesRankType]} salesRankings
-     * @type {[SalesRankType]}
+     * @member {Array[]} salesRankings
+     * @type {Array[]}
      */
-    salesRankings: [SalesRankType];
+    salesRankings: any[][];
     /**
      * A list of offers.
-     * @member {[OfferType]} offers
-     * @type {[OfferType]}
+     * @member {Array[]} offers
+     * @type {Array[]}
      */
-    offers: [OfferType];
+    offers: any[][];
 }
 import { IdentifierType } from './IdentifierType.js';
 import { CompetitivePricingType } from './CompetitivePricingType.js';
-import { SalesRankType } from './SalesRankType.js';
-import { OfferType } from './OfferType.js';
 //# sourceMappingURL=Product.d.ts.map

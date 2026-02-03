@@ -27,7 +27,7 @@ export class GetRatesResult {
    * @alias module:shipping_v2/model/GetRatesResult
    * @class
    * @param requestToken {String} A unique token generated to identify a getRates operation.
-   * @param rates {[Rate]} A list of eligible shipping service offerings.
+   * @param rates {Array[]} A list of eligible shipping service offerings.
    */
   constructor (requestToken, rates) {
     this.requestToken = requestToken
@@ -72,14 +72,14 @@ GetRatesResult.prototype.requestToken = undefined
 
 /**
  * A list of eligible shipping service offerings.
- * @member {[Rate]} rates
- * @type {[Rate]}
+ * @member {Array[]} rates
+ * @type {Array[]}
  */
 GetRatesResult.prototype.rates = undefined
 
 /**
  * A list of ineligible shipping service offerings.
- * @member {[IneligibleRate]} ineligibleRates
- * @type {[IneligibleRate]}
+ * @member {Array[]} ineligibleRates
+ * @type {Array[]}
  */
 GetRatesResult.prototype.ineligibleRates = undefined

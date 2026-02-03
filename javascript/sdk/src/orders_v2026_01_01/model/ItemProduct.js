@@ -99,8 +99,8 @@ ItemProduct.prototype.price = undefined
 
 /**
  * Unique serial numbers for products that require individual tracking, typically provided for FBA orders.
- * @member {[String]} serialNumbers
- * @type {[String]}
+ * @member {Array[]} serialNumbers
+ * @type {Array[]}
  */
 ItemProduct.prototype.serialNumbers = undefined
 

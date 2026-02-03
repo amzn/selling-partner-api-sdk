@@ -17,16 +17,15 @@ export class ListPackingOptionsResponse {
      * The &#x60;listPlacementOptions&#x60; response.
      * @alias module:fulfillmentinbound_v2024_03_20/model/ListPackingOptionsResponse
      * @class
-     * @param packingOptions {[PackingOption]} List of packing options.
+     * @param packingOptions {Array[]} List of packing options.
      */
-    constructor(packingOptions: [PackingOption]);
-    packingOptions: [PackingOption];
+    constructor(packingOptions: any[][]);
+    packingOptions: any[][];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}
      */
     pagination: Pagination;
 }
-import { PackingOption } from './PackingOption.js';
 import { Pagination } from './Pagination.js';
 //# sourceMappingURL=ListPackingOptionsResponse.d.ts.map

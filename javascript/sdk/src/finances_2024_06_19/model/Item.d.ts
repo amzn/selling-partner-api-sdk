@@ -20,10 +20,10 @@ export class Item {
     description: string;
     /**
      * Related business identifiers of the item in the transaction.
-     * @member {[ItemRelatedIdentifier]} relatedIdentifiers
-     * @type {[ItemRelatedIdentifier]}
+     * @member {Array[]} relatedIdentifiers
+     * @type {Array[]}
      */
-    relatedIdentifiers: [ItemRelatedIdentifier];
+    relatedIdentifiers: any[][];
     /**
      * @member {Currency} totalAmount
      * @type {Currency}
@@ -31,19 +31,16 @@ export class Item {
     totalAmount: Currency;
     /**
      * A list of breakdowns that detail how the total amount is calculated for the transaction.
-     * @member {[Breakdown]} breakdowns
-     * @type {[Breakdown]}
+     * @member {Array[]} breakdowns
+     * @type {Array[]}
      */
-    breakdowns: [Breakdown];
+    breakdowns: any[][];
     /**
      * A list of additional information about the item.
-     * @member {[Context]} contexts
-     * @type {[Context]}
+     * @member {Array[]} contexts
+     * @type {Array[]}
      */
-    contexts: [Context];
+    contexts: any[][];
 }
-import { ItemRelatedIdentifier } from './ItemRelatedIdentifier.js';
 import { Currency } from './Currency.js';
-import { Breakdown } from './Breakdown.js';
-import { Context } from './Context.js';
 //# sourceMappingURL=Item.d.ts.map

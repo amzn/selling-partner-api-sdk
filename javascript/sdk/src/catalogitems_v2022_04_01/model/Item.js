@@ -92,63 +92,63 @@ Item.prototype.attributes = undefined
 
 /**
  * An array of classifications (browse nodes) that is associated with the item in the Amazon catalog, grouped by `marketplaceId`.
- * @member {[ItemBrowseClassificationsByMarketplace]} classifications
- * @type {[ItemBrowseClassificationsByMarketplace]}
+ * @member {Array[]} classifications
+ * @type {Array[]}
  */
 Item.prototype.classifications = undefined
 
 /**
  * An array of dimensions that are associated with the item in the Amazon catalog, grouped by `marketplaceId`.
- * @member {[ItemDimensionsByMarketplace]} dimensions
- * @type {[ItemDimensionsByMarketplace]}
+ * @member {Array[]} dimensions
+ * @type {Array[]}
  */
 Item.prototype.dimensions = undefined
 
 /**
  * Identifiers associated with the item in the Amazon catalog, such as UPC and EAN identifiers.
- * @member {[ItemIdentifiersByMarketplace]} identifiers
- * @type {[ItemIdentifiersByMarketplace]}
+ * @member {Array[]} identifiers
+ * @type {Array[]}
  */
 Item.prototype.identifiers = undefined
 
 /**
  * The images for an item in the Amazon catalog.
- * @member {[ItemImagesByMarketplace]} images
- * @type {[ItemImagesByMarketplace]}
+ * @member {Array[]} images
+ * @type {Array[]}
  */
 Item.prototype.images = undefined
 
 /**
  * Product types that are associated with the Amazon catalog item.
- * @member {[ItemProductTypeByMarketplace]} productTypes
- * @type {[ItemProductTypeByMarketplace]}
+ * @member {Array[]} productTypes
+ * @type {Array[]}
  */
 Item.prototype.productTypes = undefined
 
 /**
  * Relationships grouped by `marketplaceId` for an Amazon catalog item (for example, variations).
- * @member {[ItemRelationshipsByMarketplace]} relationships
- * @type {[ItemRelationshipsByMarketplace]}
+ * @member {Array[]} relationships
+ * @type {Array[]}
  */
 Item.prototype.relationships = undefined
 
 /**
  * Sales ranks of an Amazon catalog item.
- * @member {[ItemSalesRanksByMarketplace]} salesRanks
- * @type {[ItemSalesRanksByMarketplace]}
+ * @member {Array[]} salesRanks
+ * @type {Array[]}
  */
 Item.prototype.salesRanks = undefined
 
 /**
  * Summaries of Amazon catalog items.
- * @member {[ItemSummaryByMarketplace]} summaries
- * @type {[ItemSummaryByMarketplace]}
+ * @member {Array[]} summaries
+ * @type {Array[]}
  */
 Item.prototype.summaries = undefined
 
 /**
  * The vendor details that are associated with an Amazon catalog item. Vendor details are only available to vendors.
- * @member {[ItemVendorDetailsByMarketplace]} vendorDetails
- * @type {[ItemVendorDetailsByMarketplace]}
+ * @member {Array[]} vendorDetails
+ * @type {Array[]}
  */
 Item.prototype.vendorDetails = undefined

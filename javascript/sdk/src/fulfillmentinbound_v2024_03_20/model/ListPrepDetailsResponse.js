@@ -25,7 +25,7 @@ export class ListPrepDetailsResponse {
    * The response to the &#x60;listPrepDetails&#x60; operation.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListPrepDetailsResponse
    * @class
-   * @param mskuPrepDetails {[MskuPrepDetail]} A list of MSKUs and related prep details.
+   * @param mskuPrepDetails {Array[]} A list of MSKUs and related prep details.
    */
   constructor (mskuPrepDetails) {
     this.mskuPrepDetails = mskuPrepDetails
@@ -60,7 +60,7 @@ export class ListPrepDetailsResponse {
 
 /**
  * A list of MSKUs and related prep details.
- * @member {[MskuPrepDetail]} mskuPrepDetails
- * @type {[MskuPrepDetail]}
+ * @member {Array[]} mskuPrepDetails
+ * @type {Array[]}
  */
 ListPrepDetailsResponse.prototype.mskuPrepDetails = undefined

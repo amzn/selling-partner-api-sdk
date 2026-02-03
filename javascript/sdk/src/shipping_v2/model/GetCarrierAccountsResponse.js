@@ -25,7 +25,7 @@ export class GetCarrierAccountsResponse {
    * The Response  for the GetCarrierAccountsResponse operation.
    * @alias module:shipping_v2/model/GetCarrierAccountsResponse
    * @class
-   * @param activeAccounts {[ActiveAccount]} A list of ActiveAccount
+   * @param activeAccounts {Array[]} A list of ActiveAccount
    */
   constructor (activeAccounts) {
     this.activeAccounts = activeAccounts
@@ -60,7 +60,7 @@ export class GetCarrierAccountsResponse {
 
 /**
  * A list of ActiveAccount
- * @member {[ActiveAccount]} activeAccounts
- * @type {[ActiveAccount]}
+ * @member {Array[]} activeAccounts
+ * @type {Array[]}
  */
 GetCarrierAccountsResponse.prototype.activeAccounts = undefined

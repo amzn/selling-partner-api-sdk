@@ -18,11 +18,10 @@ export class BrowseNodeReturnTrend {
      * @alias module:customerFeedback_2024_06_01/model/BrowseNodeReturnTrend
      * @class
      * @param topic {String} The name of the topic.
-     * @param trendMetrics {[BrowseNodeReturnTrendPoint]} The browse node return trend metrics.
+     * @param trendMetrics {Array[]} The browse node return trend metrics.
      */
-    constructor(topic: string, trendMetrics: [BrowseNodeReturnTrendPoint]);
+    constructor(topic: string, trendMetrics: any[][]);
     topic: string;
-    trendMetrics: [BrowseNodeReturnTrendPoint];
+    trendMetrics: any[][];
 }
-import { BrowseNodeReturnTrendPoint } from './BrowseNodeReturnTrendPoint.js';
 //# sourceMappingURL=BrowseNodeReturnTrend.d.ts.map

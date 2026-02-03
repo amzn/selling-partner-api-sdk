@@ -77,7 +77,7 @@ ItemReviewSubtopic.prototype.metrics = undefined
 
 /**
  * A list of up to three snippets from reviews that contain the subtopic. This value is `null` if there aren't enough review snippets for the subtopic.
- * @member {[String]} reviewSnippets
- * @type {[String]}
+ * @member {Array[]} reviewSnippets
+ * @type {Array[]}
  */
 ItemReviewSubtopic.prototype.reviewSnippets = undefined

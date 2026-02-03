@@ -14,16 +14,15 @@ export class ListInboundPlansResponse {
     static constructFromObject(data: any, obj: ListInboundPlansResponse): ListInboundPlansResponse;
     /**
      * A list of inbound plans with minimal information.
-     * @member {[InboundPlanSummary]} inboundPlans
-     * @type {[InboundPlanSummary]}
+     * @member {Array[]} inboundPlans
+     * @type {Array[]}
      */
-    inboundPlans: [InboundPlanSummary];
+    inboundPlans: any[][];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}
      */
     pagination: Pagination;
 }
-import { InboundPlanSummary } from './InboundPlanSummary.js';
 import { Pagination } from './Pagination.js';
 //# sourceMappingURL=ListInboundPlansResponse.d.ts.map

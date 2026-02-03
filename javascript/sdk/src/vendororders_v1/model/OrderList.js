@@ -66,7 +66,7 @@ OrderList.prototype.pagination = undefined
 
 /**
  * Represents an individual order within the OrderList.
- * @member {[Order]} orders
- * @type {[Order]}
+ * @member {Array[]} orders
+ * @type {Array[]}
  */
 OrderList.prototype.orders = undefined

@@ -66,7 +66,7 @@ ReplenishmentOrderCreationData.prototype.preferences = undefined
 
 /**
  * Requested amount of single product units to be replenished.
- * @member {[DistributionProduct]} products
- * @type {[DistributionProduct]}
+ * @member {Array[]} products
+ * @type {Array[]}
  */
 ReplenishmentOrderCreationData.prototype.products = undefined

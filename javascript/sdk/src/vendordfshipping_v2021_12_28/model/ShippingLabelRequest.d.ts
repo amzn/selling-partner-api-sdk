@@ -27,11 +27,10 @@ export class ShippingLabelRequest {
     shipFromParty: PartyIdentification;
     /**
      * A list of the packages in this shipment.
-     * @member {[Container]} containers
-     * @type {[Container]}
+     * @member {Array[]} containers
+     * @type {Array[]}
      */
-    containers: [Container];
+    containers: any[][];
 }
 import { PartyIdentification } from './PartyIdentification.js';
-import { Container } from './Container.js';
 //# sourceMappingURL=ShippingLabelRequest.d.ts.map

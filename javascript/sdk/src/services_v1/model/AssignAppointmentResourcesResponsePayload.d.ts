@@ -14,10 +14,9 @@ export class AssignAppointmentResourcesResponsePayload {
     static constructFromObject(data: any, obj: AssignAppointmentResourcesResponsePayload): AssignAppointmentResourcesResponsePayload;
     /**
      * A list of warnings returned in the sucessful execution response of an API request.
-     * @member {[Warning]} warnings
-     * @type {[Warning]}
+     * @member {Array[]} warnings
+     * @type {Array[]}
      */
-    warnings: [Warning];
+    warnings: any[][];
 }
-import { Warning } from './Warning.js';
 //# sourceMappingURL=AssignAppointmentResourcesResponsePayload.d.ts.map

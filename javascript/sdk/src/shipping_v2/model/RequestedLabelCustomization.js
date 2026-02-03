@@ -58,7 +58,7 @@ export class RequestedLabelCustomization {
 
 /**
  * Specify the type of attributes to be added on a label.
- * @member {[LabelAttribute]} requestAttributes
- * @type {[LabelAttribute]}
+ * @member {Array[]} requestAttributes
+ * @type {Array[]}
  */
 RequestedLabelCustomization.prototype.requestAttributes = undefined

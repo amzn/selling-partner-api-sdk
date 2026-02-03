@@ -145,8 +145,8 @@ Shipment.prototype.selectedTransportationOptionId = undefined
 
 /**
  * List of self ship appointment details.
- * @member {[SelfShipAppointmentDetails]} selfShipAppointmentDetails
- * @type {[SelfShipAppointmentDetails]}
+ * @member {Array[]} selfShipAppointmentDetails
+ * @type {Array[]}
  */
 Shipment.prototype.selfShipAppointmentDetails = undefined
 

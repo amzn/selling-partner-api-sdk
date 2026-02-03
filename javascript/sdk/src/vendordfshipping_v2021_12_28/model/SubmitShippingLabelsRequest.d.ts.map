@@ -1,1 +1,1 @@
-{"version":3,"file":"SubmitShippingLabelsRequest.d.ts","sourceRoot":"","sources":["SubmitShippingLabelsRequest.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,2BAA2B,GAC1B,2BAA2B,CAmBtC;IAGH;;;;OAIG;IACH,uBAFU,CAAC,oBAAoB,CAAC,CAE2B;CAP1D;qCA1CoC,2BAA2B"}
+{"version":3,"file":"SubmitShippingLabelsRequest.d.ts","sourceRoot":"","sources":["SubmitShippingLabelsRequest.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,2BAA2B,GAC1B,2BAA2B,CAmBtC;IAGH;;;;OAIG;IACH,uBAFU,OAAO,CAE0C;CAP1D"}

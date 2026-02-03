@@ -49,11 +49,10 @@ export class InventoryResponseBody {
     marketplaceAttributes: MarketplaceAttributes;
     /**
      * Inventory operation errors that require seller action before retrying the inventory request.
-     * @member {[ActionableError]} actionableErrors
-     * @type {[ActionableError]}
+     * @member {Array[]} actionableErrors
+     * @type {Array[]}
      */
-    actionableErrors: [ActionableError];
+    actionableErrors: any[][];
 }
 import { MarketplaceAttributes } from './MarketplaceAttributes.js';
-import { ActionableError } from './ActionableError.js';
 //# sourceMappingURL=InventoryResponseBody.d.ts.map

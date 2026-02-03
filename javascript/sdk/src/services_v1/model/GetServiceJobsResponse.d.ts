@@ -19,11 +19,10 @@ export class GetServiceJobsResponse {
     payload: JobListing;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { JobListing } from './JobListing.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetServiceJobsResponse.d.ts.map

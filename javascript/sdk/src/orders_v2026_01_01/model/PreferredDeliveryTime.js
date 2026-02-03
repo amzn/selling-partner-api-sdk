@@ -60,14 +60,14 @@ export class PreferredDeliveryTime {
 
 /**
  * Business hours when the business is open for deliveries.
- * @member {[BusinessHour]} businessHours
- * @type {[BusinessHour]}
+ * @member {Array[]} businessHours
+ * @type {Array[]}
  */
 PreferredDeliveryTime.prototype.businessHours = undefined
 
 /**
  * Specific dates within the next 30 days when normal business hours do not apply.
- * @member {[ExceptionDate]} exceptionDates
- * @type {[ExceptionDate]}
+ * @member {Array[]} exceptionDates
+ * @type {Array[]}
  */
 PreferredDeliveryTime.prototype.exceptionDates = undefined

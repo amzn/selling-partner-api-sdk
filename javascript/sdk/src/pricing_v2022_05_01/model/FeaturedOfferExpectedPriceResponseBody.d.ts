@@ -19,18 +19,16 @@ export class FeaturedOfferExpectedPriceResponseBody {
     offerIdentifier: OfferIdentifier;
     /**
      * A list of FOEP results for the requested offer.
-     * @member {[FeaturedOfferExpectedPriceResult]} featuredOfferExpectedPriceResults
-     * @type {[FeaturedOfferExpectedPriceResult]}
+     * @member {Array[]} featuredOfferExpectedPriceResults
+     * @type {Array[]}
      */
-    featuredOfferExpectedPriceResults: [FeaturedOfferExpectedPriceResult];
+    featuredOfferExpectedPriceResults: any[][];
     /**
      * A list of error responses that are returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { OfferIdentifier } from './OfferIdentifier.js';
-import { FeaturedOfferExpectedPriceResult } from './FeaturedOfferExpectedPriceResult.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=FeaturedOfferExpectedPriceResponseBody.d.ts.map

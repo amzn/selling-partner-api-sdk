@@ -18,14 +18,14 @@ export class OneClickShipmentRequest {
      * @alias module:shipping_v2/model/OneClickShipmentRequest
      * @class
      * @param shipFrom {Address}
-     * @param packages {[Package]} A list of packages to be shipped through a shipping service offering.
+     * @param packages {Array[]} A list of packages to be shipped through a shipping service offering.
      * @param channelDetails {ChannelDetails}
      * @param labelSpecifications {RequestedDocumentSpecification}
      * @param serviceSelection {ServiceSelection}
      */
-    constructor(shipFrom: Address, packages: [Package], channelDetails: ChannelDetails, labelSpecifications: RequestedDocumentSpecification, serviceSelection: ServiceSelection);
+    constructor(shipFrom: Address, packages: any[][], channelDetails: ChannelDetails, labelSpecifications: RequestedDocumentSpecification, serviceSelection: ServiceSelection);
     shipFrom: Address;
-    packages: [Package];
+    packages: any[][];
     channelDetails: ChannelDetails;
     labelSpecifications: RequestedDocumentSpecification;
     serviceSelection: ServiceSelection;
@@ -52,16 +52,16 @@ export class OneClickShipmentRequest {
     goodsOwner: GoodsOwner;
     /**
      * The value-added services to be added to a shipping service purchase.
-     * @member {[OneClickShipmentValueAddedService]} valueAddedServicesDetails
-     * @type {[OneClickShipmentValueAddedService]}
+     * @member {Array[]} valueAddedServicesDetails
+     * @type {Array[]}
      */
-    valueAddedServicesDetails: [OneClickShipmentValueAddedService];
+    valueAddedServicesDetails: any[][];
     /**
      * A list of tax detail information.
-     * @member {[TaxDetail]} taxDetails
-     * @type {[TaxDetail]}
+     * @member {Array[]} taxDetails
+     * @type {Array[]}
      */
-    taxDetails: [TaxDetail];
+    taxDetails: any[][];
     /**
      * @member {ShipperInstruction} shipperInstruction
      * @type {ShipperInstruction}
@@ -74,13 +74,10 @@ export class OneClickShipmentRequest {
     destinationAccessPointDetails: AccessPointDetails;
 }
 import { Address } from './Address.js';
-import { Package } from './Package.js';
 import { ChannelDetails } from './ChannelDetails.js';
 import { RequestedDocumentSpecification } from './RequestedDocumentSpecification.js';
 import { ServiceSelection } from './ServiceSelection.js';
 import { GoodsOwner } from './GoodsOwner.js';
-import { OneClickShipmentValueAddedService } from './OneClickShipmentValueAddedService.js';
-import { TaxDetail } from './TaxDetail.js';
 import { ShipperInstruction } from './ShipperInstruction.js';
 import { AccessPointDetails } from './AccessPointDetails.js';
 //# sourceMappingURL=OneClickShipmentRequest.d.ts.map

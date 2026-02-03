@@ -18,11 +18,10 @@ export class ItemImagesByMarketplace {
      * @alias module:catalogitems_v2022_04_01/model/ItemImagesByMarketplace
      * @class
      * @param marketplaceId {String} Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @param images {[ItemImage]} Images for an item in the Amazon catalog, grouped by `marketplaceId`.
+     * @param images {Array[]} Images for an item in the Amazon catalog, grouped by `marketplaceId`.
      */
-    constructor(marketplaceId: string, images: [ItemImage]);
+    constructor(marketplaceId: string, images: any[][]);
     marketplaceId: string;
-    images: [ItemImage];
+    images: any[][];
 }
-import { ItemImage } from './ItemImage.js';
 //# sourceMappingURL=ItemImagesByMarketplace.d.ts.map

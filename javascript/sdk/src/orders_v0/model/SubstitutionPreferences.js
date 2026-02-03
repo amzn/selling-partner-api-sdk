@@ -93,7 +93,7 @@ SubstitutionPreferences.prototype.substitutionType = undefined
 
 /**
  * A collection of substitution options.
- * @member {[SubstitutionOption]} substitutionOptions
- * @type {[SubstitutionOption]}
+ * @member {Array[]} substitutionOptions
+ * @type {Array[]}
  */
 SubstitutionPreferences.prototype.substitutionOptions = undefined

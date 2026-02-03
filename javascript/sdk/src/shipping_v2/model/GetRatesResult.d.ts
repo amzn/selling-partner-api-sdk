@@ -18,18 +18,16 @@ export class GetRatesResult {
      * @alias module:shipping_v2/model/GetRatesResult
      * @class
      * @param requestToken {String} A unique token generated to identify a getRates operation.
-     * @param rates {[Rate]} A list of eligible shipping service offerings.
+     * @param rates {Array[]} A list of eligible shipping service offerings.
      */
-    constructor(requestToken: string, rates: [Rate]);
+    constructor(requestToken: string, rates: any[][]);
     requestToken: string;
-    rates: [Rate];
+    rates: any[][];
     /**
      * A list of ineligible shipping service offerings.
-     * @member {[IneligibleRate]} ineligibleRates
-     * @type {[IneligibleRate]}
+     * @member {Array[]} ineligibleRates
+     * @type {Array[]}
      */
-    ineligibleRates: [IneligibleRate];
+    ineligibleRates: any[][];
 }
-import { Rate } from './Rate.js';
-import { IneligibleRate } from './IneligibleRate.js';
 //# sourceMappingURL=GetRatesResult.d.ts.map

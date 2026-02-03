@@ -14,10 +14,9 @@ export class GetListingOffersBatchRequest {
     static constructFromObject(data: any, obj: GetListingOffersBatchRequest): GetListingOffersBatchRequest;
     /**
      * A list of `getListingOffers` batched requests to run.
-     * @member {[ListingOffersRequest]} requests
-     * @type {[ListingOffersRequest]}
+     * @member {Array[]} requests
+     * @type {Array[]}
      */
-    requests: [ListingOffersRequest];
+    requests: any[][];
 }
-import { ListingOffersRequest } from './ListingOffersRequest.js';
 //# sourceMappingURL=GetListingOffersBatchRequest.d.ts.map

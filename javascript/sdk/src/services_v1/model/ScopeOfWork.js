@@ -81,7 +81,7 @@ ScopeOfWork.prototype.quantity = undefined
 
 /**
  * A list of skills required to perform the job.
- * @member {[String]} requiredSkills
- * @type {[String]}
+ * @member {Array[]} requiredSkills
+ * @type {Array[]}
  */
 ScopeOfWork.prototype.requiredSkills = undefined

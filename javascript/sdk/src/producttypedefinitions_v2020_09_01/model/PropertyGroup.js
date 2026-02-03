@@ -73,7 +73,7 @@ PropertyGroup.prototype.description = undefined
 
 /**
  * The names of the schema properties for the property group.
- * @member {[String]} propertyNames
- * @type {[String]}
+ * @member {Array[]} propertyNames
+ * @type {Array[]}
  */
 PropertyGroup.prototype.propertyNames = undefined

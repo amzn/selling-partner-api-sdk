@@ -14,16 +14,16 @@ export class CreateScheduledPackagesResponse {
     static constructFromObject(data: any, obj: CreateScheduledPackagesResponse): CreateScheduledPackagesResponse;
     /**
      * A list of packages. Refer to the `Package` object.
-     * @member {[Package]} scheduledPackages
-     * @type {[Package]}
+     * @member {Array[]} scheduledPackages
+     * @type {Array[]}
      */
-    scheduledPackages: [Package];
+    scheduledPackages: any[][];
     /**
      * A list of orders we couldn't scheduled on your behalf. Each element contains the reason and details on the error.
-     * @member {[RejectedOrder]} rejectedOrders
-     * @type {[RejectedOrder]}
+     * @member {Array[]} rejectedOrders
+     * @type {Array[]}
      */
-    rejectedOrders: [RejectedOrder];
+    rejectedOrders: any[][];
     /**
      * A pre-signed URL for the zip document containing the shipping labels and the documents enabled for your marketplace.
      * @member {String} printableDocumentsUrl
@@ -31,6 +31,4 @@ export class CreateScheduledPackagesResponse {
      */
     printableDocumentsUrl: string;
 }
-import { Package } from './Package.js';
-import { RejectedOrder } from './RejectedOrder.js';
 //# sourceMappingURL=CreateScheduledPackagesResponse.d.ts.map

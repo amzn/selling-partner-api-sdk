@@ -26,7 +26,7 @@ export class ListDeliveryWindowOptionsResponse {
    * The &#x60;listDeliveryWindowOptions&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListDeliveryWindowOptionsResponse
    * @class
-   * @param deliveryWindowOptions {[DeliveryWindowOption]} Delivery window options generated for the placement option.
+   * @param deliveryWindowOptions {Array[]} Delivery window options generated for the placement option.
    */
   constructor (deliveryWindowOptions) {
     this.deliveryWindowOptions = deliveryWindowOptions
@@ -62,8 +62,8 @@ export class ListDeliveryWindowOptionsResponse {
 
 /**
  * Delivery window options generated for the placement option.
- * @member {[DeliveryWindowOption]} deliveryWindowOptions
- * @type {[DeliveryWindowOption]}
+ * @member {Array[]} deliveryWindowOptions
+ * @type {Array[]}
  */
 ListDeliveryWindowOptionsResponse.prototype.deliveryWindowOptions = undefined
 

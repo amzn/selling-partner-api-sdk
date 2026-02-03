@@ -72,10 +72,10 @@ export class Item {
     invoiceDetails: InvoiceDetails;
     /**
      * A list of unique serial numbers in an Amazon package that can be used to guarantee non-fraudulent items. The number of serial numbers in the list must be less than or equal to the quantity of items being shipped. Only applicable when channel source is Amazon.
-     * @member {[String]} serialNumbers
-     * @type {[String]}
+     * @member {Array[]} serialNumbers
+     * @type {Array[]}
      */
-    serialNumbers: [string];
+    serialNumbers: any[][];
     /**
      * @member {DirectFulfillmentItemIdentifiers} directFulfillmentItemIdentifiers
      * @type {DirectFulfillmentItemIdentifiers}

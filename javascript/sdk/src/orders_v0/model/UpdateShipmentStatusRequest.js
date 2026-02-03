@@ -78,7 +78,7 @@ UpdateShipmentStatusRequest.prototype.shipmentStatus = undefined
 
 /**
  * For partial shipment status updates, the list of order items and quantities to be updated.
- * @member {[OrderItemsInner]} orderItems
- * @type {[OrderItemsInner]}
+ * @member {Array[]} orderItems
+ * @type {Array[]}
  */
 UpdateShipmentStatusRequest.prototype.orderItems = undefined

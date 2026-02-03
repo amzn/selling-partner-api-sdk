@@ -149,8 +149,8 @@ Address.prototype.email = undefined
 
 /**
  * The email cc addresses of the contact associated with the address.
- * @member {[String]} copyEmails
- * @type {[String]}
+ * @member {Array[]} copyEmails
+ * @type {Array[]}
  */
 Address.prototype.copyEmails = undefined
 

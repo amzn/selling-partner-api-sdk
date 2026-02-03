@@ -19,11 +19,10 @@ export class CreateSubscriptionResponse {
     payload: Subscription;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { Subscription } from './Subscription.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=CreateSubscriptionResponse.d.ts.map

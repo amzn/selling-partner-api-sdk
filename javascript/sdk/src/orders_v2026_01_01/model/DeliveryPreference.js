@@ -81,7 +81,7 @@ DeliveryPreference.prototype.deliveryTime = undefined
 
 /**
  * A list of miscellaneous delivery capabilities associated with the shipping address.
- * @member {[String]} deliveryCapabilities
- * @type {[String]}
+ * @member {Array[]} deliveryCapabilities
+ * @type {Array[]}
  */
 DeliveryPreference.prototype.deliveryCapabilities = undefined

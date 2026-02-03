@@ -25,10 +25,10 @@ export class Transaction {
     status: string;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 export namespace Transaction {
     namespace StatusEnum {
@@ -41,5 +41,4 @@ export namespace Transaction {
      */
     type StatusEnum = string;
 }
-import { Error } from './Error.js';
 //# sourceMappingURL=Transaction.d.ts.map

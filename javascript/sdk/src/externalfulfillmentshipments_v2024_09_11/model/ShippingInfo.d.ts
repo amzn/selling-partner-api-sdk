@@ -40,10 +40,10 @@ export class ShippingInfo {
     shippingType: string;
     /**
      * Recommendations for the packages in an order.
-     * @member {[RecommendedPackage]} recommendedPackages
-     * @type {[RecommendedPackage]}
+     * @member {Array[]} recommendedPackages
+     * @type {Array[]}
      */
-    recommendedPackages: [RecommendedPackage];
+    recommendedPackages: any[][];
 }
 export namespace ShippingInfo {
     namespace ShippingTypeEnum {
@@ -56,5 +56,4 @@ export namespace ShippingInfo {
     type ShippingTypeEnum = string;
 }
 import { Address } from './Address.js';
-import { RecommendedPackage } from './RecommendedPackage.js';
 //# sourceMappingURL=ShippingInfo.d.ts.map

@@ -29,13 +29,12 @@ export class GetMessagingActionResponse {
     payload: MessagingAction;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { GetMessagingActionResponseLinks } from './GetMessagingActionResponseLinks.js';
 import { GetMessagingActionResponseEmbedded } from './GetMessagingActionResponseEmbedded.js';
 import { MessagingAction } from './MessagingAction.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetMessagingActionResponse.d.ts.map

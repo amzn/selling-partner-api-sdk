@@ -19,24 +19,22 @@ export class CompetitiveSummaryRequest {
      * @class
      * @param asin {String} The ASIN of the item.
      * @param marketplaceId {String} The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @param includedData {[CompetitiveSummaryIncludedData]} The list of requested competitive pricing data for the product.
+     * @param includedData {Array[]} The list of requested competitive pricing data for the product.
      * @param method {HttpMethod}
      * @param uri {String} The URI associated with the individual APIs that are called as part of the batch request.
      */
-    constructor(asin: string, marketplaceId: string, includedData: [CompetitiveSummaryIncludedData], method: HttpMethod, uri: string);
+    constructor(asin: string, marketplaceId: string, includedData: any[][], method: HttpMethod, uri: string);
     asin: string;
     marketplaceId: string;
-    includedData: [CompetitiveSummaryIncludedData];
+    includedData: any[][];
     method: HttpMethod;
     uri: string;
     /**
      * The list of `lowestPricedOffersInput` parameters that are used to build `lowestPricedOffers` in the response. This attribute is only valid if `lowestPricedOffers` is requested in `includedData`
-     * @member {[LowestPricedOffersInput]} lowestPricedOffersInputs
-     * @type {[LowestPricedOffersInput]}
+     * @member {Array[]} lowestPricedOffersInputs
+     * @type {Array[]}
      */
-    lowestPricedOffersInputs: [LowestPricedOffersInput];
+    lowestPricedOffersInputs: any[][];
 }
-import { CompetitiveSummaryIncludedData } from './CompetitiveSummaryIncludedData.js';
 import { HttpMethod } from './HttpMethod.js';
-import { LowestPricedOffersInput } from './LowestPricedOffersInput.js';
 //# sourceMappingURL=CompetitiveSummaryRequest.d.ts.map

@@ -25,11 +25,10 @@ export class TaxDetails {
     hsnCode: string;
     /**
      * List of tax rates.
-     * @member {[TaxRate]} taxRates
-     * @type {[TaxRate]}
+     * @member {Array[]} taxRates
+     * @type {Array[]}
      */
-    taxRates: [TaxRate];
+    taxRates: any[][];
 }
 import { Currency } from './Currency.js';
-import { TaxRate } from './TaxRate.js';
 //# sourceMappingURL=TaxDetails.d.ts.map

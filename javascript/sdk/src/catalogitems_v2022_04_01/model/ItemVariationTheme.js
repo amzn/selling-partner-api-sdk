@@ -58,8 +58,8 @@ export class ItemVariationTheme {
 
 /**
  * Names of the Amazon catalog item attributes that are associated with the variation theme.
- * @member {[String]} attributes
- * @type {[String]}
+ * @member {Array[]} attributes
+ * @type {Array[]}
  */
 ItemVariationTheme.prototype.attributes = undefined
 

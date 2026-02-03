@@ -31,10 +31,10 @@ export class ChargeDetails {
     description: string;
     /**
      * Tax amount details applied on this charge.
-     * @member {[TaxDetails]} taxDetails
-     * @type {[TaxDetails]}
+     * @member {Array[]} taxDetails
+     * @type {Array[]}
      */
-    taxDetails: [TaxDetails];
+    taxDetails: any[][];
 }
 export namespace ChargeDetails {
     namespace TypeEnum {
@@ -56,5 +56,4 @@ export namespace ChargeDetails {
     type TypeEnum = string;
 }
 import { Money } from './Money.js';
-import { TaxDetails } from './TaxDetails.js';
 //# sourceMappingURL=ChargeDetails.d.ts.map

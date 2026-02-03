@@ -19,11 +19,10 @@ export class OrderListStatus {
     pagination: Pagination;
     /**
      * Represents an order status within the OrderListStatus.
-     * @member {[OrderStatus]} ordersStatus
-     * @type {[OrderStatus]}
+     * @member {Array[]} ordersStatus
+     * @type {Array[]}
      */
-    ordersStatus: [OrderStatus];
+    ordersStatus: any[][];
 }
 import { Pagination } from './Pagination.js';
-import { OrderStatus } from './OrderStatus.js';
 //# sourceMappingURL=OrderListStatus.d.ts.map

@@ -14,28 +14,27 @@ export class InvoicesAttributes {
     static constructFromObject(data: any, obj: InvoicesAttributes): InvoicesAttributes;
     /**
      * A list of all the options that are available for the invoice status attribute.
-     * @member {[AttributeOption]} invoiceStatusOptions
-     * @type {[AttributeOption]}
+     * @member {Array[]} invoiceStatusOptions
+     * @type {Array[]}
      */
-    invoiceStatusOptions: [AttributeOption];
+    invoiceStatusOptions: any[][];
     /**
      * A list of all the options that are available for the invoice type attribute.
-     * @member {[AttributeOption]} invoiceTypeOptions
-     * @type {[AttributeOption]}
+     * @member {Array[]} invoiceTypeOptions
+     * @type {Array[]}
      */
-    invoiceTypeOptions: [AttributeOption];
+    invoiceTypeOptions: any[][];
     /**
      * A list of all the options that are available for the transaction identifier name attribute.
-     * @member {[AttributeOption]} transactionIdentifierNameOptions
-     * @type {[AttributeOption]}
+     * @member {Array[]} transactionIdentifierNameOptions
+     * @type {Array[]}
      */
-    transactionIdentifierNameOptions: [AttributeOption];
+    transactionIdentifierNameOptions: any[][];
     /**
      * A list of all the options that are available for the transaction type attribute.
-     * @member {[AttributeOption]} transactionTypeOptions
-     * @type {[AttributeOption]}
+     * @member {Array[]} transactionTypeOptions
+     * @type {Array[]}
      */
-    transactionTypeOptions: [AttributeOption];
+    transactionTypeOptions: any[][];
 }
-import { AttributeOption } from './AttributeOption.js';
 //# sourceMappingURL=InvoicesAttributes.d.ts.map

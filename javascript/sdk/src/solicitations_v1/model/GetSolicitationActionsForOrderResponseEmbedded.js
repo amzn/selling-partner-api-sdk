@@ -24,7 +24,7 @@ export class GetSolicitationActionsForOrderResponseEmbedded {
    * Constructs a new <code>GetSolicitationActionsForOrderResponseEmbedded</code>.
    * @alias module:solicitations_v1/model/GetSolicitationActionsForOrderResponseEmbedded
    * @class
-   * @param actions {[GetSolicitationActionResponse]}
+   * @param actions {Array[]}
    */
   constructor (actions) {
     this.actions = actions
@@ -58,7 +58,7 @@ export class GetSolicitationActionsForOrderResponseEmbedded {
 }
 
 /**
- * @member {[GetSolicitationActionResponse]} actions
- * @type {[GetSolicitationActionResponse]}
+ * @member {Array[]} actions
+ * @type {Array[]}
  */
 GetSolicitationActionsForOrderResponseEmbedded.prototype.actions = undefined

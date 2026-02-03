@@ -14,17 +14,15 @@ export class RequestedUpdates {
     static constructFromObject(data: any, obj: RequestedUpdates): RequestedUpdates;
     /**
      * A list of boxes that will be present in the shipment after the update.
-     * @member {[BoxUpdateInput]} boxes
-     * @type {[BoxUpdateInput]}
+     * @member {Array[]} boxes
+     * @type {Array[]}
      */
-    boxes: [BoxUpdateInput];
+    boxes: any[][];
     /**
      * A list of all items that will be present in the shipment after the update.
-     * @member {[ItemInput]} items
-     * @type {[ItemInput]}
+     * @member {Array[]} items
+     * @type {Array[]}
      */
-    items: [ItemInput];
+    items: any[][];
 }
-import { BoxUpdateInput } from './BoxUpdateInput.js';
-import { ItemInput } from './ItemInput.js';
 //# sourceMappingURL=RequestedUpdates.d.ts.map

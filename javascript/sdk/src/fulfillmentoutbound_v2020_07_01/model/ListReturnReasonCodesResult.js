@@ -58,7 +58,7 @@ export class ListReturnReasonCodesResult {
 
 /**
  * An array of return reason code details.
- * @member {[ReasonCodeDetails]} reasonCodeDetails
- * @type {[ReasonCodeDetails]}
+ * @member {Array[]} reasonCodeDetails
+ * @type {Array[]}
  */
 ListReturnReasonCodesResult.prototype.reasonCodeDetails = undefined

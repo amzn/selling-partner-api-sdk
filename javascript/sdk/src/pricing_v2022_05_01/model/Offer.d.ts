@@ -35,10 +35,10 @@ export class Offer {
     subCondition: string;
     /**
      * A list of shipping options associated with this offer
-     * @member {[ShippingOption]} shippingOptions
-     * @type {[ShippingOption]}
+     * @member {Array[]} shippingOptions
+     * @type {Array[]}
      */
-    shippingOptions: [ShippingOption];
+    shippingOptions: any[][];
     /**
      * @member {Points} points
      * @type {Points}
@@ -74,7 +74,6 @@ export namespace Offer {
 import { Condition } from './Condition.js';
 import { FulfillmentType } from './FulfillmentType.js';
 import { MoneyType } from './MoneyType.js';
-import { ShippingOption } from './ShippingOption.js';
 import { Points } from './Points.js';
 import { PrimeDetails } from './PrimeDetails.js';
 //# sourceMappingURL=Offer.d.ts.map

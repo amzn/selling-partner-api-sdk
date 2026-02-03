@@ -28,7 +28,7 @@ export class MskuPrepDetailInput {
    * @class
    * @param msku {String} The merchant SKU, a merchant-supplied identifier for a specific SKU.
    * @param prepCategory {PrepCategory}
-   * @param prepTypes {[PrepType]} A list of preparation types associated with a preparation category.
+   * @param prepTypes {Array[]} A list of preparation types associated with a preparation category.
    */
   constructor (msku, prepCategory, prepTypes) {
     this.msku = msku
@@ -80,7 +80,7 @@ MskuPrepDetailInput.prototype.prepCategory = undefined
 
 /**
  * A list of preparation types associated with a preparation category.
- * @member {[PrepType]} prepTypes
- * @type {[PrepType]}
+ * @member {Array[]} prepTypes
+ * @type {Array[]}
  */
 MskuPrepDetailInput.prototype.prepTypes = undefined

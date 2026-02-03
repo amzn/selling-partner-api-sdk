@@ -1,1 +1,1 @@
-{"version":3,"file":"CompetitiveSummaryBatchRequest.d.ts","sourceRoot":"","sources":["CompetitiveSummaryBatchRequest.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,2CAHW,8BAA8B,GAC7B,8BAA8B,CAmBzC;IAnCD;;;;;;OAMG;IACH,sBAFoB,CAAC,yBAAyB,CAAC,EAI9C;IADC,sCAAwB;CA4B3B;0CA5CyC,gCAAgC"}
+{"version":3,"file":"CompetitiveSummaryBatchRequest.d.ts","sourceRoot":"","sources":["CompetitiveSummaryBatchRequest.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,2CAHW,8BAA8B,GAC7B,8BAA8B,CAmBzC;IAnCD;;;;;;OAMG;IACH,sBAFoB,OAAO,EAI1B;IADC,kBAAwB;CA4B3B"}

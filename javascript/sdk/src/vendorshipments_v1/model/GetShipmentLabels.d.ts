@@ -19,11 +19,10 @@ export class GetShipmentLabels {
     payload: TransportationLabels;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { TransportationLabels } from './TransportationLabels.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetShipmentLabels.d.ts.map

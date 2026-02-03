@@ -67,8 +67,8 @@ RangeSlotCapacity.prototype.resourceId = undefined
 
 /**
  * Array of range capacities where each entry is for a specific capacity type.
- * @member {[RangeCapacity]} capacities
- * @type {[RangeCapacity]}
+ * @member {Array[]} capacities
+ * @type {Array[]}
  */
 RangeSlotCapacity.prototype.capacities = undefined
 

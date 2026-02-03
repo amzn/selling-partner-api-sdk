@@ -103,7 +103,7 @@ FulfillmentShipmentItem.prototype.serialNumber = undefined
 
 /**
  * String list
- * @member {[String]} manufacturerLotCodes
- * @type {[String]}
+ * @member {Array[]} manufacturerLotCodes
+ * @type {Array[]}
  */
 FulfillmentShipmentItem.prototype.manufacturerLotCodes = undefined

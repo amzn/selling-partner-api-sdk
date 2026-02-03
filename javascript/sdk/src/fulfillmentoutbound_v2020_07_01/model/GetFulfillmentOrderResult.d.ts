@@ -18,32 +18,27 @@ export class GetFulfillmentOrderResult {
      * @alias module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentOrderResult
      * @class
      * @param fulfillmentOrder {FulfillmentOrder}
-     * @param fulfillmentOrderItems {[FulfillmentOrderItem]} An array of fulfillment order item information.
-     * @param returnItems {[ReturnItem]} An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
-     * @param returnAuthorizations {[ReturnAuthorization]} An array of return authorization information.
+     * @param fulfillmentOrderItems {Array[]} An array of fulfillment order item information.
+     * @param returnItems {Array[]} An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
+     * @param returnAuthorizations {Array[]} An array of return authorization information.
      */
-    constructor(fulfillmentOrder: FulfillmentOrder, fulfillmentOrderItems: [FulfillmentOrderItem], returnItems: [ReturnItem], returnAuthorizations: [ReturnAuthorization]);
+    constructor(fulfillmentOrder: FulfillmentOrder, fulfillmentOrderItems: any[][], returnItems: any[][], returnAuthorizations: any[][]);
     fulfillmentOrder: FulfillmentOrder;
-    fulfillmentOrderItems: [FulfillmentOrderItem];
-    returnItems: [ReturnItem];
-    returnAuthorizations: [ReturnAuthorization];
+    fulfillmentOrderItems: any[][];
+    returnItems: any[][];
+    returnAuthorizations: any[][];
     /**
      * An array of fulfillment shipment information.
-     * @member {[FulfillmentShipment]} fulfillmentShipments
-     * @type {[FulfillmentShipment]}
+     * @member {Array[]} fulfillmentShipments
+     * @type {Array[]}
      */
-    fulfillmentShipments: [FulfillmentShipment];
+    fulfillmentShipments: any[][];
     /**
      * An array of various payment attributes related to this fulfillment order.
-     * @member {[PaymentInformation]} paymentInformation
-     * @type {[PaymentInformation]}
+     * @member {Array[]} paymentInformation
+     * @type {Array[]}
      */
-    paymentInformation: [PaymentInformation];
+    paymentInformation: any[][];
 }
 import { FulfillmentOrder } from './FulfillmentOrder.js';
-import { FulfillmentOrderItem } from './FulfillmentOrderItem.js';
-import { ReturnItem } from './ReturnItem.js';
-import { ReturnAuthorization } from './ReturnAuthorization.js';
-import { FulfillmentShipment } from './FulfillmentShipment.js';
-import { PaymentInformation } from './PaymentInformation.js';
 //# sourceMappingURL=GetFulfillmentOrderResult.d.ts.map

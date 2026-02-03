@@ -14,17 +14,15 @@ export class GetDestinationsResponse {
     static constructFromObject(data: any, obj: GetDestinationsResponse): GetDestinationsResponse;
     /**
      * A list of destinations.
-     * @member {[Destination]} payload
-     * @type {[Destination]}
+     * @member {Array[]} payload
+     * @type {Array[]}
      */
-    payload: [Destination];
+    payload: any[][];
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
-import { Destination } from './Destination.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetDestinationsResponse.d.ts.map

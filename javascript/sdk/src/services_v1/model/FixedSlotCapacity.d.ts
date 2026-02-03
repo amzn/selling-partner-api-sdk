@@ -26,10 +26,10 @@ export class FixedSlotCapacity {
     slotDuration: number;
     /**
      * Array of capacity slots in fixed slot format.
-     * @member {[FixedSlot]} capacities
-     * @type {[FixedSlot]}
+     * @member {Array[]} capacities
+     * @type {Array[]}
      */
-    capacities: [FixedSlot];
+    capacities: any[][];
     /**
      * Next page token, if there are more pages.
      * @member {String} nextPageToken
@@ -37,5 +37,4 @@ export class FixedSlotCapacity {
      */
     nextPageToken: string;
 }
-import { FixedSlot } from './FixedSlot.js';
 //# sourceMappingURL=FixedSlotCapacity.d.ts.map

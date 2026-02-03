@@ -17,10 +17,9 @@ export class ParagraphComponent {
      * A list of rich text content that is typically presented in a text box.
      * @alias module:apluscontent_v2020_11_01/model/ParagraphComponent
      * @class
-     * @param textList {[TextComponent]}
+     * @param textList {Array[]}
      */
-    constructor(textList: [TextComponent]);
-    textList: [TextComponent];
+    constructor(textList: any[][]);
+    textList: any[][];
 }
-import { TextComponent } from './TextComponent.js';
 //# sourceMappingURL=ParagraphComponent.d.ts.map

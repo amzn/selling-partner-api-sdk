@@ -14,10 +14,10 @@ export class PackingConfiguration {
     static constructFromObject(data: any, obj: PackingConfiguration): PackingConfiguration;
     /**
      * The box content information sources that are allowed.
-     * @member {[BoxContentInformationSource]} boxPackingMethods
-     * @type {[BoxContentInformationSource]}
+     * @member {Array[]} boxPackingMethods
+     * @type {Array[]}
      */
-    boxPackingMethods: [BoxContentInformationSource];
+    boxPackingMethods: any[][];
     /**
      * @member {BoxRequirements} boxRequirements
      * @type {BoxRequirements}
@@ -25,12 +25,10 @@ export class PackingConfiguration {
     boxRequirements: BoxRequirements;
     /**
      * A list of supported shipping requirements for this packing configuration.
-     * @member {[ShippingRequirements]} shippingRequirements
-     * @type {[ShippingRequirements]}
+     * @member {Array[]} shippingRequirements
+     * @type {Array[]}
      */
-    shippingRequirements: [ShippingRequirements];
+    shippingRequirements: any[][];
 }
-import { BoxContentInformationSource } from './BoxContentInformationSource.js';
 import { BoxRequirements } from './BoxRequirements.js';
-import { ShippingRequirements } from './ShippingRequirements.js';
 //# sourceMappingURL=PackingConfiguration.d.ts.map

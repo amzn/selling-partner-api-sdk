@@ -66,7 +66,7 @@ CreateReservationResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Array[]} errors
+ * @type {Array[]}
  */
 CreateReservationResponse.prototype.errors = undefined

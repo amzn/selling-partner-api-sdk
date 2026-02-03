@@ -20,10 +20,9 @@ export class ListFinancialEventGroupsPayload {
     nextToken: string;
     /**
      * A list of financial event group information.
-     * @member {[FinancialEventGroup]} financialEventGroupList
-     * @type {[FinancialEventGroup]}
+     * @member {Array[]} financialEventGroupList
+     * @type {Array[]}
      */
-    financialEventGroupList: [FinancialEventGroup];
+    financialEventGroupList: any[][];
 }
-import { FinancialEventGroup } from './FinancialEventGroup.js';
 //# sourceMappingURL=ListFinancialEventGroupsPayload.d.ts.map

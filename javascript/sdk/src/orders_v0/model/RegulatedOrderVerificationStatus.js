@@ -29,7 +29,7 @@ export class RegulatedOrderVerificationStatus {
    * @class
    * @param status {VerificationStatus}
    * @param requiresMerchantAction {Boolean} When true, the regulated information provided in the order requires a review by the merchant.
-   * @param validRejectionReasons {[RejectionReason]} A list of valid rejection reasons that may be used to reject the order's regulated information.
+   * @param validRejectionReasons {Array[]} A list of valid rejection reasons that may be used to reject the order's regulated information.
    */
   constructor (status, requiresMerchantAction, validRejectionReasons) {
     this.status = status
@@ -85,8 +85,8 @@ RegulatedOrderVerificationStatus.prototype.requiresMerchantAction = undefined
 
 /**
  * A list of valid rejection reasons that may be used to reject the order's regulated information.
- * @member {[RejectionReason]} validRejectionReasons
- * @type {[RejectionReason]}
+ * @member {Array[]} validRejectionReasons
+ * @type {Array[]}
  */
 RegulatedOrderVerificationStatus.prototype.validRejectionReasons = undefined
 
@@ -112,7 +112,7 @@ RegulatedOrderVerificationStatus.prototype.externalReviewerId = undefined
 
 /**
  * A list of valid verification details that may be provided and the criteria required for when the verification detail can be provided.
- * @member {[ValidVerificationDetail]} validVerificationDetails
- * @type {[ValidVerificationDetail]}
+ * @member {Array[]} validVerificationDetails
+ * @type {Array[]}
  */
 RegulatedOrderVerificationStatus.prototype.validVerificationDetails = undefined

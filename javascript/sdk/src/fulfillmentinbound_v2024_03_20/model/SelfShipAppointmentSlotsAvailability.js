@@ -66,7 +66,7 @@ SelfShipAppointmentSlotsAvailability.prototype.expiresAt = undefined
 
 /**
  * A list of appointment slots.
- * @member {[AppointmentSlot]} slots
- * @type {[AppointmentSlot]}
+ * @member {Array[]} slots
+ * @type {Array[]}
  */
 SelfShipAppointmentSlotsAvailability.prototype.slots = undefined

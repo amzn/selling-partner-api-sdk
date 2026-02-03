@@ -20,21 +20,21 @@ export class ShipmentLineItem {
      * @param shipmentLineItemId {String} An identifier for a shipment's line item. This identifier is guaranteed to be unique within the scope of its containing shipment.
      * @param merchantSku {String} The seller SKU of a product (catalog item). A unique number assigned by the seller when listing an item.
      * @param numberOfUnits {Number} The number of items of the SKU in this line item.
-     * @param charges {[Charge]} The charges associated with the shipment.
+     * @param charges {Array[]} The charges associated with the shipment.
      * @param complianceAttributes {ComplianceAttributes}
      */
-    constructor(shipmentLineItemId: string, merchantSku: string, numberOfUnits: number, charges: [Charge], complianceAttributes: ComplianceAttributes);
+    constructor(shipmentLineItemId: string, merchantSku: string, numberOfUnits: number, charges: any[][], complianceAttributes: ComplianceAttributes);
     shipmentLineItemId: string;
     merchantSku: string;
     numberOfUnits: number;
-    charges: [Charge];
+    charges: any[][];
     complianceAttributes: ComplianceAttributes;
     /**
      * The serial numbers for each item in this line item.
-     * @member {[String]} serialNumbers
-     * @type {[String]}
+     * @member {Array[]} serialNumbers
+     * @type {Array[]}
      */
-    serialNumbers: [string];
+    serialNumbers: any[][];
     /**
      * @member {PieceType} pieceType
      * @type {PieceType}
@@ -42,10 +42,10 @@ export class ShipmentLineItem {
     pieceType: PieceType;
     /**
      * A list of HAZMAT label identifiers that must be applied to the packages for this line item.
-     * @member {[String]} hazmatLabels
-     * @type {[String]}
+     * @member {Array[]} hazmatLabels
+     * @type {Array[]}
      */
-    hazmatLabels: [string];
+    hazmatLabels: any[][];
     /**
      * @member {GiftAttributes} giftAttributes
      * @type {GiftAttributes}
@@ -53,10 +53,10 @@ export class ShipmentLineItem {
     giftAttributes: GiftAttributes;
     /**
      * A list of cancellations for the given line item.  **Note:** Currently, SmartConnect does not support partial cancellation of a shipment or its line items. This list will contain a single value with all the cancellation details.
-     * @member {[Cancellation]} cancellations
-     * @type {[Cancellation]}
+     * @member {Array[]} cancellations
+     * @type {Array[]}
      */
-    cancellations: [Cancellation];
+    cancellations: any[][];
     /**
      * The HSN code of SKU in this line item.
      * @member {String} hsnCode
@@ -88,16 +88,13 @@ export class ShipmentLineItem {
     itemValue: Amount;
     /**
      * A list of custom passthrough attributes. For details on these attributes, reach out to your respective program teams at Amazon.
-     * @member {[CustomAttribute]} customAttributes
-     * @type {[CustomAttribute]}
+     * @member {Array[]} customAttributes
+     * @type {Array[]}
      */
-    customAttributes: [CustomAttribute];
+    customAttributes: any[][];
 }
-import { Charge } from './Charge.js';
 import { ComplianceAttributes } from './ComplianceAttributes.js';
 import { PieceType } from './PieceType.js';
 import { GiftAttributes } from './GiftAttributes.js';
-import { Cancellation } from './Cancellation.js';
 import { Amount } from './Amount.js';
-import { CustomAttribute } from './CustomAttribute.js';
 //# sourceMappingURL=ShipmentLineItem.d.ts.map

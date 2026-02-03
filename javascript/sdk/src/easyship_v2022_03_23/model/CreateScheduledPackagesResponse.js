@@ -61,15 +61,15 @@ export class CreateScheduledPackagesResponse {
 
 /**
  * A list of packages. Refer to the `Package` object.
- * @member {[Package]} scheduledPackages
- * @type {[Package]}
+ * @member {Array[]} scheduledPackages
+ * @type {Array[]}
  */
 CreateScheduledPackagesResponse.prototype.scheduledPackages = undefined
 
 /**
  * A list of orders we couldn't scheduled on your behalf. Each element contains the reason and details on the error.
- * @member {[RejectedOrder]} rejectedOrders
- * @type {[RejectedOrder]}
+ * @member {Array[]} rejectedOrders
+ * @type {Array[]}
  */
 CreateScheduledPackagesResponse.prototype.rejectedOrders = undefined
 

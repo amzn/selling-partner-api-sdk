@@ -28,7 +28,7 @@ export class InboundPlanSummary {
    * @param createdAt {Date} The time at which the inbound plan was created. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ssZ`.
    * @param inboundPlanId {String} Identifier of an inbound plan.
    * @param lastUpdatedAt {Date} The time at which the inbound plan was last updated. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ssZ`.
-   * @param marketplaceIds {[String]} A list of marketplace IDs.
+   * @param marketplaceIds {Array[]} A list of marketplace IDs.
    * @param name {String} Human-readable name of the inbound plan.
    * @param sourceAddress {Address}
    * @param status {String} The current status of the inbound plan. Possible values: `ACTIVE`, `VOIDED`, `SHIPPED`, `ERRORED`.
@@ -99,8 +99,8 @@ InboundPlanSummary.prototype.lastUpdatedAt = undefined
 
 /**
  * A list of marketplace IDs.
- * @member {[String]} marketplaceIds
- * @type {[String]}
+ * @member {Array[]} marketplaceIds
+ * @type {Array[]}
  */
 InboundPlanSummary.prototype.marketplaceIds = undefined
 

@@ -17,16 +17,15 @@ export class ListShipmentContentUpdatePreviewsResponse {
      * The &#x60;ListShipmentContentUpdatePreviews&#x60; response.
      * @alias module:fulfillmentinbound_v2024_03_20/model/ListShipmentContentUpdatePreviewsResponse
      * @class
-     * @param contentUpdatePreviews {[ContentUpdatePreview]} A list of content update previews in a shipment.
+     * @param contentUpdatePreviews {Array[]} A list of content update previews in a shipment.
      */
-    constructor(contentUpdatePreviews: [ContentUpdatePreview]);
-    contentUpdatePreviews: [ContentUpdatePreview];
+    constructor(contentUpdatePreviews: any[][]);
+    contentUpdatePreviews: any[][];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}
      */
     pagination: Pagination;
 }
-import { ContentUpdatePreview } from './ContentUpdatePreview.js';
 import { Pagination } from './Pagination.js';
 //# sourceMappingURL=ListShipmentContentUpdatePreviewsResponse.d.ts.map

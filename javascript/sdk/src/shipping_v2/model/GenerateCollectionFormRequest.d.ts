@@ -23,16 +23,15 @@ export class GenerateCollectionFormRequest {
     carrierId: string;
     /**
      * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
-     * @member {[ClientReferenceDetail]} clientReferenceDetails
-     * @type {[ClientReferenceDetail]}
+     * @member {Array[]} clientReferenceDetails
+     * @type {Array[]}
      */
-    clientReferenceDetails: [ClientReferenceDetail];
+    clientReferenceDetails: any[][];
     /**
      * @member {Address} shipFromAddress
      * @type {Address}
      */
     shipFromAddress: Address;
 }
-import { ClientReferenceDetail } from './ClientReferenceDetail.js';
 import { Address } from './Address.js';
 //# sourceMappingURL=GenerateCollectionFormRequest.d.ts.map

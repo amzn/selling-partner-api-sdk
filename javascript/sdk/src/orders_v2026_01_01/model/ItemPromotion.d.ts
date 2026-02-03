@@ -14,10 +14,9 @@ export class ItemPromotion {
     static constructFromObject(data: any, obj: ItemPromotion): ItemPromotion;
     /**
      * A list of promotions applied to the order item.
-     * @member {[ItemPromotionBreakdown]} breakdowns
-     * @type {[ItemPromotionBreakdown]}
+     * @member {Array[]} breakdowns
+     * @type {Array[]}
      */
-    breakdowns: [ItemPromotionBreakdown];
+    breakdowns: any[][];
 }
-import { ItemPromotionBreakdown } from './ItemPromotionBreakdown.js';
 //# sourceMappingURL=ItemPromotion.d.ts.map

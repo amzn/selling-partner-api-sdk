@@ -24,7 +24,7 @@ export class ItemVariationTheme {
    * A variation theme that indicates the combination of listing item attributes that define the variation family.
    * @alias module:listingsitems_v2021_08_01/model/ItemVariationTheme
    * @class
-   * @param attributes {[String]} The names of the listing item attributes that are associated with the variation theme.
+   * @param attributes {Array[]} The names of the listing item attributes that are associated with the variation theme.
    * @param theme {String} The variation theme that indicates the combination of listing item attributes that define the variation family.
    */
   constructor (attributes, theme) {
@@ -62,8 +62,8 @@ export class ItemVariationTheme {
 
 /**
  * The names of the listing item attributes that are associated with the variation theme.
- * @member {[String]} attributes
- * @type {[String]}
+ * @member {Array[]} attributes
+ * @type {Array[]}
  */
 ItemVariationTheme.prototype.attributes = undefined
 

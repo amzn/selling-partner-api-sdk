@@ -25,12 +25,10 @@ export class PatchOperation {
     path: string;
     /**
      * JSON value to `add`, `replace`, `merge` or `delete`.
-     * @member {[{String: Object}]} value
-     * @type {[{String: Object}]}
+     * @member {Array[]} value
+     * @type {Array[]}
      */
-    value: [{
-        String: any;
-    }];
+    value: any[][];
 }
 export namespace PatchOperation {
     namespace OpEnum {

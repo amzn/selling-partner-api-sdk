@@ -32,7 +32,7 @@ export class FulfillmentPlan {
    * @param fulfillmentType {String} Type of fulfillment
    * @param fulfillmentPlanStatus {String} The fulfillment plan status.
    * @param lastStatusUpdateDate {String} The time when the fulfillment plan's status was last updated in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
-   * @param fulfillmentPlanItems {[FulfillmentPlanItem]} The details of the order items that are included in the fulfillment plan.
+   * @param fulfillmentPlanItems {Array[]} The details of the order items that are included in the fulfillment plan.
    */
   constructor (fulfillmentPlanId, creationDate, fulfillmentType, fulfillmentPlanStatus, lastStatusUpdateDate, fulfillmentPlanItems) {
     this.fulfillmentPlanId = fulfillmentPlanId
@@ -182,7 +182,7 @@ FulfillmentPlan.prototype.shippingInstructions = undefined
 
 /**
  * The details of the order items that are included in the fulfillment plan.
- * @member {[FulfillmentPlanItem]} fulfillmentPlanItems
- * @type {[FulfillmentPlanItem]}
+ * @member {Array[]} fulfillmentPlanItems
+ * @type {Array[]}
  */
 FulfillmentPlan.prototype.fulfillmentPlanItems = undefined

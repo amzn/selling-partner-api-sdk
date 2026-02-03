@@ -14,10 +14,10 @@ export class ReturnsResponse {
     static constructFromObject(data: any, obj: ReturnsResponse): ReturnsResponse;
     /**
      * A list of returns.
-     * @member {[Return]} returns
-     * @type {[Return]}
+     * @member {Array[]} returns
+     * @type {Array[]}
      */
-    returns: [Return];
+    returns: any[][];
     /**
      * A token that you use to retrieve the next page of results. The response includes `nextToken` when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
      * @member {String} nextToken
@@ -25,5 +25,4 @@ export class ReturnsResponse {
      */
     nextToken: string;
 }
-import { Return } from './Return.js';
 //# sourceMappingURL=ReturnsResponse.d.ts.map

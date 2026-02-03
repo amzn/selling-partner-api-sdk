@@ -36,19 +36,17 @@ export class SKUPrepInstructions {
     prepGuidance: PrepGuidance;
     /**
      * A list of preparation instructions to help with item sourcing decisions.
-     * @member {[PrepInstruction]} prepInstructionList
-     * @type {[PrepInstruction]}
+     * @member {Array[]} prepInstructionList
+     * @type {Array[]}
      */
-    prepInstructionList: [PrepInstruction];
+    prepInstructionList: any[][];
     /**
      * A list of preparation instructions and fees for Amazon to prep goods for shipment.
-     * @member {[AmazonPrepFeesDetails]} amazonPrepFeesDetailsList
-     * @type {[AmazonPrepFeesDetails]}
+     * @member {Array[]} amazonPrepFeesDetailsList
+     * @type {Array[]}
      */
-    amazonPrepFeesDetailsList: [AmazonPrepFeesDetails];
+    amazonPrepFeesDetailsList: any[][];
 }
 import { BarcodeInstruction } from './BarcodeInstruction.js';
 import { PrepGuidance } from './PrepGuidance.js';
-import { PrepInstruction } from './PrepInstruction.js';
-import { AmazonPrepFeesDetails } from './AmazonPrepFeesDetails.js';
 //# sourceMappingURL=SKUPrepInstructions.d.ts.map

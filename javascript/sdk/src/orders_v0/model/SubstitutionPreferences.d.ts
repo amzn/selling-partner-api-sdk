@@ -23,10 +23,10 @@ export class SubstitutionPreferences {
     substitutionType: string;
     /**
      * A collection of substitution options.
-     * @member {[SubstitutionOption]} substitutionOptions
-     * @type {[SubstitutionOption]}
+     * @member {Array[]} substitutionOptions
+     * @type {Array[]}
      */
-    substitutionOptions: [SubstitutionOption];
+    substitutionOptions: any[][];
 }
 export namespace SubstitutionPreferences {
     namespace SubstitutionTypeEnum {
@@ -39,5 +39,4 @@ export namespace SubstitutionPreferences {
      */
     type SubstitutionTypeEnum = string;
 }
-import { SubstitutionOption } from './SubstitutionOption.js';
 //# sourceMappingURL=SubstitutionPreferences.d.ts.map

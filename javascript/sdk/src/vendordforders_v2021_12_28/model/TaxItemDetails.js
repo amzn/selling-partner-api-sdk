@@ -58,7 +58,7 @@ export class TaxItemDetails {
 
 /**
  * A list of tax line items.
- * @member {[TaxDetails]} taxLineItem
- * @type {[TaxDetails]}
+ * @member {Array[]} taxLineItem
+ * @type {Array[]}
  */
 TaxItemDetails.prototype.taxLineItem = undefined

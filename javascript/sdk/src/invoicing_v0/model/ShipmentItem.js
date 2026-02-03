@@ -133,7 +133,7 @@ ShipmentItem.prototype.promotionDiscount = undefined
 
 /**
  * The list of serial numbers.
- * @member {[String]} serialNumbers
- * @type {[String]}
+ * @member {Array[]} serialNumbers
+ * @type {Array[]}
  */
 ShipmentItem.prototype.serialNumbers = undefined

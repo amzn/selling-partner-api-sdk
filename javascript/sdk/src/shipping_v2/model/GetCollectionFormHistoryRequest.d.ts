@@ -14,10 +14,10 @@ export class GetCollectionFormHistoryRequest {
     static constructFromObject(data: any, obj: GetCollectionFormHistoryRequest): GetCollectionFormHistoryRequest;
     /**
      * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
-     * @member {[ClientReferenceDetail]} clientReferenceDetails
-     * @type {[ClientReferenceDetail]}
+     * @member {Array[]} clientReferenceDetails
+     * @type {Array[]}
      */
-    clientReferenceDetails: [ClientReferenceDetail];
+    clientReferenceDetails: any[][];
     /**
      * max Number of Results for query .
      * @member {Number} maxResults
@@ -41,7 +41,6 @@ export class GetCollectionFormHistoryRequest {
      */
     dateRange: DateRange;
 }
-import { ClientReferenceDetail } from './ClientReferenceDetail.js';
 import { Address } from './Address.js';
 import { DateRange } from './DateRange.js';
 //# sourceMappingURL=GetCollectionFormHistoryRequest.d.ts.map

@@ -1,1 +1,1 @@
-{"version":3,"file":"AmazonPrograms.d.ts","sourceRoot":"","sources":["AmazonPrograms.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,2CAHW,cAAc,GACb,cAAc,CAmBzB;IAnCD;;;;;;OAMG;IACH,sBAFoB,QAAQ,EAI3B;IADC,mBAAwB;CA4B3B"}
+{"version":3,"file":"AmazonPrograms.d.ts","sourceRoot":"","sources":["AmazonPrograms.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,2CAHW,cAAc,GACb,cAAc,CAmBzB;IAnCD;;;;;;OAMG;IACH,sBAFoB,OAAO,EAI1B;IADC,kBAAwB;CA4B3B"}

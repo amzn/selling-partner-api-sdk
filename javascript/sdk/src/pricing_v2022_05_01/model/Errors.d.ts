@@ -17,10 +17,9 @@ export class Errors {
      * A list of error responses returned when a request is unsuccessful.
      * @alias module:pricing_v2022_05_01/model/Errors
      * @class
-     * @param errors {[Error]} A list of error responses that are returned when a request is unsuccessful.
+     * @param errors {Array[]} A list of error responses that are returned when a request is unsuccessful.
      */
-    constructor(errors: [Error]);
-    errors: [Error];
+    constructor(errors: any[][]);
+    errors: any[][];
 }
-import { Error } from './Error.js';
 //# sourceMappingURL=Errors.d.ts.map

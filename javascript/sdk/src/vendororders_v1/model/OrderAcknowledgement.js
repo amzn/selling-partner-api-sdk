@@ -29,7 +29,7 @@ export class OrderAcknowledgement {
    * @param purchaseOrderNumber {String} The purchase order number. Formatting Notes: 8-character alpha-numeric code.
    * @param sellingParty {PartyIdentification}
    * @param acknowledgementDate {Date} The date and time when the purchase order is acknowledged, in ISO-8601 date/time format.
-   * @param items {[OrderAcknowledgementItem]} A list of the items being acknowledged with associated details.
+   * @param items {Array[]} A list of the items being acknowledged with associated details.
    */
   constructor (purchaseOrderNumber, sellingParty, acknowledgementDate, items) {
     this.purchaseOrderNumber = purchaseOrderNumber
@@ -90,7 +90,7 @@ OrderAcknowledgement.prototype.acknowledgementDate = undefined
 
 /**
  * A list of the items being acknowledged with associated details.
- * @member {[OrderAcknowledgementItem]} items
- * @type {[OrderAcknowledgementItem]}
+ * @member {Array[]} items
+ * @type {Array[]}
  */
 OrderAcknowledgement.prototype.items = undefined

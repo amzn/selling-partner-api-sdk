@@ -31,9 +31,9 @@ export class GetFulfillmentOrderResult {
    * @alias module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentOrderResult
    * @class
    * @param fulfillmentOrder {FulfillmentOrder}
-   * @param fulfillmentOrderItems {[FulfillmentOrderItem]} An array of fulfillment order item information.
-   * @param returnItems {[ReturnItem]} An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
-   * @param returnAuthorizations {[ReturnAuthorization]} An array of return authorization information.
+   * @param fulfillmentOrderItems {Array[]} An array of fulfillment order item information.
+   * @param returnItems {Array[]} An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
+   * @param returnAuthorizations {Array[]} An array of return authorization information.
    */
   constructor (fulfillmentOrder, fulfillmentOrderItems, returnItems, returnAuthorizations) {
     this.fulfillmentOrder = fulfillmentOrder
@@ -82,35 +82,35 @@ GetFulfillmentOrderResult.prototype.fulfillmentOrder = undefined
 
 /**
  * An array of fulfillment order item information.
- * @member {[FulfillmentOrderItem]} fulfillmentOrderItems
- * @type {[FulfillmentOrderItem]}
+ * @member {Array[]} fulfillmentOrderItems
+ * @type {Array[]}
  */
 GetFulfillmentOrderResult.prototype.fulfillmentOrderItems = undefined
 
 /**
  * An array of fulfillment shipment information.
- * @member {[FulfillmentShipment]} fulfillmentShipments
- * @type {[FulfillmentShipment]}
+ * @member {Array[]} fulfillmentShipments
+ * @type {Array[]}
  */
 GetFulfillmentOrderResult.prototype.fulfillmentShipments = undefined
 
 /**
  * An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
- * @member {[ReturnItem]} returnItems
- * @type {[ReturnItem]}
+ * @member {Array[]} returnItems
+ * @type {Array[]}
  */
 GetFulfillmentOrderResult.prototype.returnItems = undefined
 
 /**
  * An array of return authorization information.
- * @member {[ReturnAuthorization]} returnAuthorizations
- * @type {[ReturnAuthorization]}
+ * @member {Array[]} returnAuthorizations
+ * @type {Array[]}
  */
 GetFulfillmentOrderResult.prototype.returnAuthorizations = undefined
 
 /**
  * An array of various payment attributes related to this fulfillment order.
- * @member {[PaymentInformation]} paymentInformation
- * @type {[PaymentInformation]}
+ * @member {Array[]} paymentInformation
+ * @type {Array[]}
  */
 GetFulfillmentOrderResult.prototype.paymentInformation = undefined

@@ -24,10 +24,10 @@ export class PrepDetails {
     prepCategory: PrepCategory;
     /**
      * Contains information about the preparation of the inbound products. The system auto-generates this field with the use of the `prepCategory`, and if you attempt to pass a value for this field, the system will ignore it.
-     * @member {[PrepInstruction]} prepInstructions
-     * @type {[PrepInstruction]}
+     * @member {Array[]} prepInstructions
+     * @type {Array[]}
      */
-    prepInstructions: [PrepInstruction];
+    prepInstructions: any[][];
     /**
      * @member {PrepOwner} prepOwner
      * @type {PrepOwner}
@@ -36,6 +36,5 @@ export class PrepDetails {
 }
 import { LabelOwner } from './LabelOwner.js';
 import { PrepCategory } from './PrepCategory.js';
-import { PrepInstruction } from './PrepInstruction.js';
 import { PrepOwner } from './PrepOwner.js';
 //# sourceMappingURL=PrepDetails.d.ts.map

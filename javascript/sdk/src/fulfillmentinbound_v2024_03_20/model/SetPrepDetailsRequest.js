@@ -26,7 +26,7 @@ export class SetPrepDetailsRequest {
    * @alias module:fulfillmentinbound_v2024_03_20/model/SetPrepDetailsRequest
    * @class
    * @param marketplaceId {String} The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-   * @param mskuPrepDetails {[MskuPrepDetailInput]} A list of MSKUs and related prep details.
+   * @param mskuPrepDetails {Array[]} A list of MSKUs and related prep details.
    */
   constructor (marketplaceId, mskuPrepDetails) {
     this.marketplaceId = marketplaceId
@@ -70,7 +70,7 @@ SetPrepDetailsRequest.prototype.marketplaceId = undefined
 
 /**
  * A list of MSKUs and related prep details.
- * @member {[MskuPrepDetailInput]} mskuPrepDetails
- * @type {[MskuPrepDetailInput]}
+ * @member {Array[]} mskuPrepDetails
+ * @type {Array[]}
  */
 SetPrepDetailsRequest.prototype.mskuPrepDetails = undefined

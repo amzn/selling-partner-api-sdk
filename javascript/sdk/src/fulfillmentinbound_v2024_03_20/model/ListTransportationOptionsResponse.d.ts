@@ -17,16 +17,15 @@ export class ListTransportationOptionsResponse {
      * The &#x60;listTransportationOptions&#x60; response.
      * @alias module:fulfillmentinbound_v2024_03_20/model/ListTransportationOptionsResponse
      * @class
-     * @param transportationOptions {[TransportationOption]} Transportation options generated for the placement option.
+     * @param transportationOptions {Array[]} Transportation options generated for the placement option.
      */
-    constructor(transportationOptions: [TransportationOption]);
-    transportationOptions: [TransportationOption];
+    constructor(transportationOptions: any[][]);
+    transportationOptions: any[][];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}
      */
     pagination: Pagination;
 }
-import { TransportationOption } from './TransportationOption.js';
 import { Pagination } from './Pagination.js';
 //# sourceMappingURL=ListTransportationOptionsResponse.d.ts.map

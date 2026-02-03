@@ -26,7 +26,7 @@ export class ItemIdentifiersByMarketplace {
    * @alias module:catalogitems_v2022_04_01/model/ItemIdentifiersByMarketplace
    * @class
    * @param marketplaceId {String} Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).identifier.
-   * @param identifiers {[ItemIdentifier]} Identifiers associated with the item in the Amazon catalog for the indicated `marketplaceId`.
+   * @param identifiers {Array[]} Identifiers associated with the item in the Amazon catalog for the indicated `marketplaceId`.
    */
   constructor (marketplaceId, identifiers) {
     this.marketplaceId = marketplaceId
@@ -70,7 +70,7 @@ ItemIdentifiersByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Identifiers associated with the item in the Amazon catalog for the indicated `marketplaceId`.
- * @member {[ItemIdentifier]} identifiers
- * @type {[ItemIdentifier]}
+ * @member {Array[]} identifiers
+ * @type {Array[]}
  */
 ItemIdentifiersByMarketplace.prototype.identifiers = undefined

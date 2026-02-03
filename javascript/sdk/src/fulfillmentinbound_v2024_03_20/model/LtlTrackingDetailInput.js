@@ -24,7 +24,7 @@ export class LtlTrackingDetailInput {
    * Contains input information to update Less-Than-Truckload (LTL) tracking information.
    * @alias module:fulfillmentinbound_v2024_03_20/model/LtlTrackingDetailInput
    * @class
-   * @param freightBillNumber {[String]} Number associated with the freight bill.
+   * @param freightBillNumber {Array[]} Number associated with the freight bill.
    */
   constructor (freightBillNumber) {
     this.freightBillNumber = freightBillNumber
@@ -67,7 +67,7 @@ LtlTrackingDetailInput.prototype.billOfLadingNumber = undefined
 
 /**
  * Number associated with the freight bill.
- * @member {[String]} freightBillNumber
- * @type {[String]}
+ * @member {Array[]} freightBillNumber
+ * @type {Array[]}
  */
 LtlTrackingDetailInput.prototype.freightBillNumber = undefined

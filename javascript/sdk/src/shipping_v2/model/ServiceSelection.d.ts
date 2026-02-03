@@ -17,9 +17,9 @@ export class ServiceSelection {
      * Service Selection Criteria.
      * @alias module:shipping_v2/model/ServiceSelection
      * @class
-     * @param serviceId {[String]} A list of ServiceId.
+     * @param serviceId {Array[]} A list of ServiceId.
      */
-    constructor(serviceId: [string]);
-    serviceId: [string];
+    constructor(serviceId: any[][]);
+    serviceId: any[][];
 }
 //# sourceMappingURL=ServiceSelection.d.ts.map

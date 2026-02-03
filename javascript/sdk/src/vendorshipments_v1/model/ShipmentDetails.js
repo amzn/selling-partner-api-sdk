@@ -66,7 +66,7 @@ ShipmentDetails.prototype.pagination = undefined
 
 /**
  * A list of one or more shipments with underlying details.
- * @member {[Shipment]} shipments
- * @type {[Shipment]}
+ * @member {Array[]} shipments
+ * @type {Array[]}
  */
 ShipmentDetails.prototype.shipments = undefined

@@ -14,17 +14,15 @@ export class GetAdditionalSellerInputsResult {
     static constructFromObject(data: any, obj: GetAdditionalSellerInputsResult): GetAdditionalSellerInputsResult;
     /**
      * A list of additional inputs.
-     * @member {[AdditionalInputs]} shipmentLevelFields
-     * @type {[AdditionalInputs]}
+     * @member {Array[]} shipmentLevelFields
+     * @type {Array[]}
      */
-    shipmentLevelFields: [AdditionalInputs];
+    shipmentLevelFields: any[][];
     /**
      * A list of item level fields.
-     * @member {[ItemLevelFields]} itemLevelFieldsList
-     * @type {[ItemLevelFields]}
+     * @member {Array[]} itemLevelFieldsList
+     * @type {Array[]}
      */
-    itemLevelFieldsList: [ItemLevelFields];
+    itemLevelFieldsList: any[][];
 }
-import { AdditionalInputs } from './AdditionalInputs.js';
-import { ItemLevelFields } from './ItemLevelFields.js';
 //# sourceMappingURL=GetAdditionalSellerInputsResult.d.ts.map

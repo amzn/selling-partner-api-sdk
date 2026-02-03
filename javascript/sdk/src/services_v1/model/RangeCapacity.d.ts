@@ -19,11 +19,10 @@ export class RangeCapacity {
     capacityType: CapacityType;
     /**
      * Array of capacity slots in range slot format.
-     * @member {[RangeSlot]} slots
-     * @type {[RangeSlot]}
+     * @member {Array[]} slots
+     * @type {Array[]}
      */
-    slots: [RangeSlot];
+    slots: any[][];
 }
 import { CapacityType } from './CapacityType.js';
-import { RangeSlot } from './RangeSlot.js';
 //# sourceMappingURL=RangeCapacity.d.ts.map

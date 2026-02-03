@@ -101,7 +101,7 @@ Reason.prototype.reasonCode = undefined
 
 /**
  * A list of path forward links that may allow Selling Partners to remove the restriction.
- * @member {[Link]} links
- * @type {[Link]}
+ * @member {Array[]} links
+ * @type {Array[]}
  */
 Reason.prototype.links = undefined

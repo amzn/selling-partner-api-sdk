@@ -14,10 +14,10 @@ export class GetShipmentItemsResult {
     static constructFromObject(data: any, obj: GetShipmentItemsResult): GetShipmentItemsResult;
     /**
      * A list of inbound shipment item information.
-     * @member {[InboundShipmentItem]} itemData
-     * @type {[InboundShipmentItem]}
+     * @member {Array[]} itemData
+     * @type {Array[]}
      */
-    itemData: [InboundShipmentItem];
+    itemData: any[][];
     /**
      * When present and not empty, pass this string token in the next request to return the next response page.
      * @member {String} nextToken
@@ -25,5 +25,4 @@ export class GetShipmentItemsResult {
      */
     nextToken: string;
 }
-import { InboundShipmentItem } from './InboundShipmentItem.js';
 //# sourceMappingURL=GetShipmentItemsResult.d.ts.map

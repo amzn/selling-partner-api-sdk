@@ -90,7 +90,7 @@ SAFETReimbursementEvent.prototype.reasonCode = undefined
 
 /**
  * A list of `SAFETReimbursementItem`.
- * @member {[SAFETReimbursementItem]} sAFETReimbursementItemList
- * @type {[SAFETReimbursementItem]}
+ * @member {Array[]} sAFETReimbursementItemList
+ * @type {Array[]}
  */
 SAFETReimbursementEvent.prototype.sAFETReimbursementItemList = undefined

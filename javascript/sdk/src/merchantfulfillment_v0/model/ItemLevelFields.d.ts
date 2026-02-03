@@ -18,11 +18,10 @@ export class ItemLevelFields {
      * @alias module:merchantfulfillment_v0/model/ItemLevelFields
      * @class
      * @param asin {String} The Amazon Standard Identification Number (ASIN) of the item.
-     * @param additionalInputs {[AdditionalInputs]} A list of additional inputs.
+     * @param additionalInputs {Array[]} A list of additional inputs.
      */
-    constructor(asin: string, additionalInputs: [AdditionalInputs]);
+    constructor(asin: string, additionalInputs: any[][]);
     asin: string;
-    additionalInputs: [AdditionalInputs];
+    additionalInputs: any[][];
 }
-import { AdditionalInputs } from './AdditionalInputs.js';
 //# sourceMappingURL=ItemLevelFields.d.ts.map

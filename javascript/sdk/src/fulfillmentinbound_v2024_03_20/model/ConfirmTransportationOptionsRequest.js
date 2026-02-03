@@ -25,7 +25,7 @@ export class ConfirmTransportationOptionsRequest {
    * The &#x60;confirmTransportationOptions&#x60; request.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ConfirmTransportationOptionsRequest
    * @class
-   * @param transportationSelections {[TransportationSelection]} Information needed to confirm one of the available transportation options.
+   * @param transportationSelections {Array[]} Information needed to confirm one of the available transportation options.
    */
   constructor (transportationSelections) {
     this.transportationSelections = transportationSelections
@@ -60,7 +60,7 @@ export class ConfirmTransportationOptionsRequest {
 
 /**
  * Information needed to confirm one of the available transportation options.
- * @member {[TransportationSelection]} transportationSelections
- * @type {[TransportationSelection]}
+ * @member {Array[]} transportationSelections
+ * @type {Array[]}
  */
 ConfirmTransportationOptionsRequest.prototype.transportationSelections = undefined

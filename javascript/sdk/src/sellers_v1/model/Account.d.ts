@@ -17,12 +17,12 @@ export class Account {
      * The response schema for the &#x60;getAccount&#x60; operation.
      * @alias module:sellers_v1/model/Account
      * @class
-     * @param marketplaceParticipationList {[MarketplaceParticipation]} List of marketplace participations.
+     * @param marketplaceParticipationList {Array[]} List of marketplace participations.
      * @param businessType {String} The type of business registered for the seller account.
      * @param sellingPlan {String} The selling plan details.
      */
-    constructor(marketplaceParticipationList: [MarketplaceParticipation], businessType: string, sellingPlan: string);
-    marketplaceParticipationList: [MarketplaceParticipation];
+    constructor(marketplaceParticipationList: any[][], businessType: string, sellingPlan: string);
+    marketplaceParticipationList: any[][];
     businessType: string;
     sellingPlan: string;
     /**
@@ -61,7 +61,6 @@ export namespace Account {
      */
     type SellingPlanEnum = string;
 }
-import { MarketplaceParticipation } from './MarketplaceParticipation.js';
 import { Business } from './Business.js';
 import { PrimaryContact } from './PrimaryContact.js';
 //# sourceMappingURL=Account.d.ts.map

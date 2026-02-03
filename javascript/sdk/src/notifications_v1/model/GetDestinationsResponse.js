@@ -60,14 +60,14 @@ export class GetDestinationsResponse {
 
 /**
  * A list of destinations.
- * @member {[Destination]} payload
- * @type {[Destination]}
+ * @member {Array[]} payload
+ * @type {Array[]}
  */
 GetDestinationsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Array[]} errors
+ * @type {Array[]}
  */
 GetDestinationsResponse.prototype.errors = undefined

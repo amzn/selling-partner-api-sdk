@@ -23,9 +23,9 @@ export class ExcludedBenefit {
     benefit: string;
     /**
      * List of reasons (eg. LATE_DELIVERY_RISK, etc.) indicating why a benefit is excluded for a shipping offer.
-     * @member {[String]} reasonCodes
-     * @type {[String]}
+     * @member {Array[]} reasonCodes
+     * @type {Array[]}
      */
-    reasonCodes: [string];
+    reasonCodes: any[][];
 }
 //# sourceMappingURL=ExcludedBenefit.d.ts.map

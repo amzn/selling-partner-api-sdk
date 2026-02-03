@@ -19,11 +19,11 @@ export class ProductType {
      * @class
      * @param name {String} The name of the Amazon product type.
      * @param displayName {String} The human-readable and localized description of the Amazon product type.
-     * @param marketplaceIds {[String]} The Amazon marketplace identifiers for which the product type definition is available.
+     * @param marketplaceIds {Array[]} The Amazon marketplace identifiers for which the product type definition is available.
      */
-    constructor(name: string, displayName: string, marketplaceIds: [string]);
+    constructor(name: string, displayName: string, marketplaceIds: any[][]);
     name: string;
     displayName: string;
-    marketplaceIds: [string];
+    marketplaceIds: any[][];
 }
 //# sourceMappingURL=ProductType.d.ts.map

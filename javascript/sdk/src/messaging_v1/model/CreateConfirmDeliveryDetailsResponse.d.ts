@@ -14,10 +14,9 @@ export class CreateConfirmDeliveryDetailsResponse {
     static constructFromObject(data: any, obj: CreateConfirmDeliveryDetailsResponse): CreateConfirmDeliveryDetailsResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
-import { Error } from './Error.js';
 //# sourceMappingURL=CreateConfirmDeliveryDetailsResponse.d.ts.map

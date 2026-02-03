@@ -1,1 +1,1 @@
-{"version":3,"file":"SetPackingInformationRequest.d.ts","sourceRoot":"","sources":["SetPackingInformationRequest.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,2CAHW,4BAA4B,GAC3B,4BAA4B,CAmBvC;IAnCD;;;;;;OAMG;IACH,8BAF4B,CAAC,oBAAoB,CAAC,EAIjD;IADC,yCAAwC;CA4B3C;qCA5CoC,2BAA2B"}
+{"version":3,"file":"SetPackingInformationRequest.d.ts","sourceRoot":"","sources":["SetPackingInformationRequest.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,2CAHW,4BAA4B,GAC3B,4BAA4B,CAmBvC;IAnCD;;;;;;OAMG;IACH,8BAF4B,OAAO,EAIlC;IADC,0BAAwC;CA4B3C"}

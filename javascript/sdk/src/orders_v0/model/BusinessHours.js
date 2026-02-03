@@ -115,7 +115,7 @@ BusinessHours.prototype.dayOfWeek = undefined
 
 /**
  * Time window during the day when the business is open.
- * @member {[OpenInterval]} openIntervals
- * @type {[OpenInterval]}
+ * @member {Array[]} openIntervals
+ * @type {Array[]}
  */
 BusinessHours.prototype.openIntervals = undefined

@@ -17,10 +17,10 @@ export class GetReportsResponse {
      * The response for the &#x60;getReports&#x60; operation.
      * @alias module:reports_v2021_06_30/model/GetReportsResponse
      * @class
-     * @param reports {[Report]} A list of reports.
+     * @param reports {Array[]} A list of reports.
      */
-    constructor(reports: [Report]);
-    reports: [Report];
+    constructor(reports: any[][]);
+    reports: any[][];
     /**
      * Returned when the number of results exceeds `pageSize`. To get the next page of results, call `getReports` with this token as the only parameter.
      * @member {String} nextToken
@@ -28,5 +28,4 @@ export class GetReportsResponse {
      */
     nextToken: string;
 }
-import { Report } from './Report.js';
 //# sourceMappingURL=GetReportsResponse.d.ts.map

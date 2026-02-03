@@ -19,11 +19,10 @@ export class GetInvoiceStatusResponse {
     payload: ShipmentInvoiceStatusResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { ShipmentInvoiceStatusResponse } from './ShipmentInvoiceStatusResponse.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetInvoiceStatusResponse.d.ts.map

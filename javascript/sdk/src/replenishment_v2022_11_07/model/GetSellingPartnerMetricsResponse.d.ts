@@ -14,10 +14,9 @@ export class GetSellingPartnerMetricsResponse {
     static constructFromObject(data: any, obj: GetSellingPartnerMetricsResponse): GetSellingPartnerMetricsResponse;
     /**
      * A list of metrics data for the selling partner.
-     * @member {[GetSellingPartnerMetricsResponseMetric]} metrics
-     * @type {[GetSellingPartnerMetricsResponseMetric]}
+     * @member {Array[]} metrics
+     * @type {Array[]}
      */
-    metrics: [GetSellingPartnerMetricsResponseMetric];
+    metrics: any[][];
 }
-import { GetSellingPartnerMetricsResponseMetric } from './GetSellingPartnerMetricsResponseMetric.js';
 //# sourceMappingURL=GetSellingPartnerMetricsResponse.d.ts.map

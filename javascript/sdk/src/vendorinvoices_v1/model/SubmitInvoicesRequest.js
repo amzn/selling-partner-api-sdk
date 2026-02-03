@@ -58,7 +58,7 @@ export class SubmitInvoicesRequest {
 
 /**
  * An array of Invoice objects representing the invoices or credit notes to be submitted.
- * @member {[Invoice]} invoices
- * @type {[Invoice]}
+ * @member {Array[]} invoices
+ * @type {Array[]}
  */
 SubmitInvoicesRequest.prototype.invoices = undefined

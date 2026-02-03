@@ -27,8 +27,8 @@ export class CompetitivePricingType {
    * Competitive pricing information for the item.
    * @alias module:pricing_v0/model/CompetitivePricingType
    * @class
-   * @param competitivePrices {[CompetitivePriceType]} A list of competitive pricing information.
-   * @param numberOfOfferListings {[OfferListingCountType]} The number of active offer listings for the item that was submitted. The listing count is returned by condition, one for each listing condition value that is returned.
+   * @param competitivePrices {Array[]} A list of competitive pricing information.
+   * @param numberOfOfferListings {Array[]} The number of active offer listings for the item that was submitted. The listing count is returned by condition, one for each listing condition value that is returned.
    */
   constructor (competitivePrices, numberOfOfferListings) {
     this.competitivePrices = competitivePrices
@@ -66,15 +66,15 @@ export class CompetitivePricingType {
 
 /**
  * A list of competitive pricing information.
- * @member {[CompetitivePriceType]} competitivePrices
- * @type {[CompetitivePriceType]}
+ * @member {Array[]} competitivePrices
+ * @type {Array[]}
  */
 CompetitivePricingType.prototype.competitivePrices = undefined
 
 /**
  * The number of active offer listings for the item that was submitted. The listing count is returned by condition, one for each listing condition value that is returned.
- * @member {[OfferListingCountType]} numberOfOfferListings
- * @type {[OfferListingCountType]}
+ * @member {Array[]} numberOfOfferListings
+ * @type {Array[]}
  */
 CompetitivePricingType.prototype.numberOfOfferListings = undefined
 

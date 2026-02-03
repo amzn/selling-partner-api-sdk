@@ -38,46 +38,46 @@ export class ShipmentItem {
     quantityShipped: number;
     /**
      * A list of charge information on the seller's account.
-     * @member {[ChargeComponent]} itemChargeList
-     * @type {[ChargeComponent]}
+     * @member {Array[]} itemChargeList
+     * @type {Array[]}
      */
-    itemChargeList: [ChargeComponent];
+    itemChargeList: any[][];
     /**
      * A list of charge information on the seller's account.
-     * @member {[ChargeComponent]} itemChargeAdjustmentList
-     * @type {[ChargeComponent]}
+     * @member {Array[]} itemChargeAdjustmentList
+     * @type {Array[]}
      */
-    itemChargeAdjustmentList: [ChargeComponent];
+    itemChargeAdjustmentList: any[][];
     /**
      * A list of fee component information.
-     * @member {[FeeComponent]} itemFeeList
-     * @type {[FeeComponent]}
+     * @member {Array[]} itemFeeList
+     * @type {Array[]}
      */
-    itemFeeList: [FeeComponent];
+    itemFeeList: any[][];
     /**
      * A list of fee component information.
-     * @member {[FeeComponent]} itemFeeAdjustmentList
-     * @type {[FeeComponent]}
+     * @member {Array[]} itemFeeAdjustmentList
+     * @type {Array[]}
      */
-    itemFeeAdjustmentList: [FeeComponent];
+    itemFeeAdjustmentList: any[][];
     /**
      * A list of information about taxes withheld.
-     * @member {[TaxWithheldComponent]} itemTaxWithheldList
-     * @type {[TaxWithheldComponent]}
+     * @member {Array[]} itemTaxWithheldList
+     * @type {Array[]}
      */
-    itemTaxWithheldList: [TaxWithheldComponent];
+    itemTaxWithheldList: any[][];
     /**
      * A list of promotions.
-     * @member {[Promotion]} promotionList
-     * @type {[Promotion]}
+     * @member {Array[]} promotionList
+     * @type {Array[]}
      */
-    promotionList: [Promotion];
+    promotionList: any[][];
     /**
      * A list of promotions.
-     * @member {[Promotion]} promotionAdjustmentList
-     * @type {[Promotion]}
+     * @member {Array[]} promotionAdjustmentList
+     * @type {Array[]}
      */
-    promotionAdjustmentList: [Promotion];
+    promotionAdjustmentList: any[][];
     /**
      * @member {Currency} costOfPointsGranted
      * @type {Currency}
@@ -89,9 +89,5 @@ export class ShipmentItem {
      */
     costOfPointsReturned: Currency;
 }
-import { ChargeComponent } from './ChargeComponent.js';
-import { FeeComponent } from './FeeComponent.js';
-import { TaxWithheldComponent } from './TaxWithheldComponent.js';
-import { Promotion } from './Promotion.js';
 import { Currency } from './Currency.js';
 //# sourceMappingURL=ShipmentItem.d.ts.map

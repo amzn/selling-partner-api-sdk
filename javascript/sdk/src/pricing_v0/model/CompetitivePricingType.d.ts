@@ -17,19 +17,17 @@ export class CompetitivePricingType {
      * Competitive pricing information for the item.
      * @alias module:pricing_v0/model/CompetitivePricingType
      * @class
-     * @param competitivePrices {[CompetitivePriceType]} A list of competitive pricing information.
-     * @param numberOfOfferListings {[OfferListingCountType]} The number of active offer listings for the item that was submitted. The listing count is returned by condition, one for each listing condition value that is returned.
+     * @param competitivePrices {Array[]} A list of competitive pricing information.
+     * @param numberOfOfferListings {Array[]} The number of active offer listings for the item that was submitted. The listing count is returned by condition, one for each listing condition value that is returned.
      */
-    constructor(competitivePrices: [CompetitivePriceType], numberOfOfferListings: [OfferListingCountType]);
-    competitivePrices: [CompetitivePriceType];
-    numberOfOfferListings: [OfferListingCountType];
+    constructor(competitivePrices: any[][], numberOfOfferListings: any[][]);
+    competitivePrices: any[][];
+    numberOfOfferListings: any[][];
     /**
      * @member {MoneyType} tradeInValue
      * @type {MoneyType}
      */
     tradeInValue: MoneyType;
 }
-import { CompetitivePriceType } from './CompetitivePriceType.js';
-import { OfferListingCountType } from './OfferListingCountType.js';
 import { MoneyType } from './MoneyType.js';
 //# sourceMappingURL=CompetitivePricingType.d.ts.map

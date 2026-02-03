@@ -41,13 +41,12 @@ export class CreateShipmentRequest {
     labelFormatOption: LabelFormatOptionRequest;
     /**
      * A list of additional seller input pairs required to purchase shipping.
-     * @member {[AdditionalSellerInputs]} shipmentLevelSellerInputsList
-     * @type {[AdditionalSellerInputs]}
+     * @member {Array[]} shipmentLevelSellerInputsList
+     * @type {Array[]}
      */
-    shipmentLevelSellerInputsList: [AdditionalSellerInputs];
+    shipmentLevelSellerInputsList: any[][];
 }
 import { ShipmentRequestDetails } from './ShipmentRequestDetails.js';
 import { HazmatType } from './HazmatType.js';
 import { LabelFormatOptionRequest } from './LabelFormatOptionRequest.js';
-import { AdditionalSellerInputs } from './AdditionalSellerInputs.js';
 //# sourceMappingURL=CreateShipmentRequest.d.ts.map

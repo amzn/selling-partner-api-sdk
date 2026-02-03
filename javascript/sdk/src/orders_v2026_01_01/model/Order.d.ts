@@ -21,32 +21,32 @@ export class Order {
      * @param createdTime {Date} The time when the customer placed the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      * @param lastUpdatedTime {Date} The most recent time when any aspect of this order was modified by Amazon or the seller. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      * @param salesChannel {SalesChannel}
-     * @param orderItems {[OrderItem]} The list of all order items included in this order.
+     * @param orderItems {Array[]} The list of all order items included in this order.
      */
-    constructor(orderId: string, createdTime: Date, lastUpdatedTime: Date, salesChannel: SalesChannel, orderItems: [OrderItem]);
+    constructor(orderId: string, createdTime: Date, lastUpdatedTime: Date, salesChannel: SalesChannel, orderItems: any[][]);
     orderId: string;
     createdTime: Date;
     lastUpdatedTime: Date;
     salesChannel: SalesChannel;
-    orderItems: [OrderItem];
+    orderItems: any[][];
     /**
      * Alternative identifiers that can be used to reference this order, such as seller-defined order numbers.
-     * @member {[Alias]} orderAliases
-     * @type {[Alias]}
+     * @member {Array[]} orderAliases
+     * @type {Array[]}
      */
-    orderAliases: [Alias];
+    orderAliases: any[][];
     /**
      * Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`,  `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`
-     * @member {[String]} programs
-     * @type {[String]}
+     * @member {Array[]} programs
+     * @type {Array[]}
      */
-    programs: [string];
+    programs: any[][];
     /**
      * Other orders that have a direct relationship to this order, such as replacement or exchange orders.
-     * @member {[AssociatedOrder]} associatedOrders
-     * @type {[AssociatedOrder]}
+     * @member {Array[]} associatedOrders
+     * @type {Array[]}
      */
-    associatedOrders: [AssociatedOrder];
+    associatedOrders: any[][];
     /**
      * @member {Buyer} buyer
      * @type {Buyer}
@@ -69,18 +69,14 @@ export class Order {
     fulfillment: OrderFulfillment;
     /**
      * Shipping packages created for this order, including tracking information. **Note:** Only available for merchant-fulfilled (FBM) orders.
-     * @member {[OrderPackage]} packages
-     * @type {[OrderPackage]}
+     * @member {Array[]} packages
+     * @type {Array[]}
      */
-    packages: [OrderPackage];
+    packages: any[][];
 }
 import { SalesChannel } from './SalesChannel.js';
-import { OrderItem } from './OrderItem.js';
-import { Alias } from './Alias.js';
-import { AssociatedOrder } from './AssociatedOrder.js';
 import { Buyer } from './Buyer.js';
 import { Recipient } from './Recipient.js';
 import { OrderProceeds } from './OrderProceeds.js';
 import { OrderFulfillment } from './OrderFulfillment.js';
-import { OrderPackage } from './OrderPackage.js';
 //# sourceMappingURL=Order.d.ts.map

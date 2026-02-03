@@ -66,7 +66,7 @@ ItemProceeds.prototype.proceedsTotal = undefined
 
 /**
  * The breakdown of proceeds.
- * @member {[ItemProceedsBreakdown]} breakdowns
- * @type {[ItemProceedsBreakdown]}
+ * @member {Array[]} breakdowns
+ * @type {Array[]}
  */
 ItemProceeds.prototype.breakdowns = undefined

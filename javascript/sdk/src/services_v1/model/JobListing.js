@@ -82,7 +82,7 @@ JobListing.prototype.previousPageToken = undefined
 
 /**
  * List of job details for the given input.
- * @member {[ServiceJob]} jobs
- * @type {[ServiceJob]}
+ * @member {Array[]} jobs
+ * @type {Array[]}
  */
 JobListing.prototype.jobs = undefined

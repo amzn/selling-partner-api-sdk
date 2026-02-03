@@ -58,7 +58,7 @@ export class GetFulfillmentPreviewResult {
 
 /**
  * An array of fulfillment preview information.
- * @member {[FulfillmentPreview]} fulfillmentPreviews
- * @type {[FulfillmentPreview]}
+ * @member {Array[]} fulfillmentPreviews
+ * @type {Array[]}
  */
 GetFulfillmentPreviewResult.prototype.fulfillmentPreviews = undefined

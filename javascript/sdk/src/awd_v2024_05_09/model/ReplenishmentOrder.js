@@ -30,7 +30,7 @@ export class ReplenishmentOrder {
    * @class
    * @param orderId {String} Order Id of the replenishment order.
    * @param status {ReplenishmentOrderStatus}
-   * @param outboundShipments {[OutboundShipmentSummary]} List of outbound shipments that are part of this order.
+   * @param outboundShipments {Array[]} List of outbound shipments that are part of this order.
    */
   constructor (orderId, status, outboundShipments) {
     this.orderId = orderId
@@ -90,15 +90,15 @@ ReplenishmentOrder.prototype.createdAt = undefined
 
 /**
  * Distribution errors associated with the order related to the products or packages to replenish. This field will be populated if the order has products or packages which failed validation.
- * @member {[DistributionIneligibleReason]} distributionIneligibleReasons
- * @type {[DistributionIneligibleReason]}
+ * @member {Array[]} distributionIneligibleReasons
+ * @type {Array[]}
  */
 ReplenishmentOrder.prototype.distributionIneligibleReasons = undefined
 
 /**
  * List of product units that are eligible for replenishment.
- * @member {[DistributionProduct]} eligibleProducts
- * @type {[DistributionProduct]}
+ * @member {Array[]} eligibleProducts
+ * @type {Array[]}
  */
 ReplenishmentOrder.prototype.eligibleProducts = undefined
 
@@ -117,22 +117,22 @@ ReplenishmentOrder.prototype.status = undefined
 
 /**
  * List of outbound shipments that are part of this order.
- * @member {[OutboundShipmentSummary]} outboundShipments
- * @type {[OutboundShipmentSummary]}
+ * @member {Array[]} outboundShipments
+ * @type {Array[]}
  */
 ReplenishmentOrder.prototype.outboundShipments = undefined
 
 /**
  * Requested amount of single product units to be replenished.
- * @member {[DistributionProduct]} products
- * @type {[DistributionProduct]}
+ * @member {Array[]} products
+ * @type {Array[]}
  */
 ReplenishmentOrder.prototype.products = undefined
 
 /**
  * Outbound product units that are shipped after the execution has completed post confirmation.
- * @member {[DistributionProduct]} shippedProducts
- * @type {[DistributionProduct]}
+ * @member {Array[]} shippedProducts
+ * @type {Array[]}
  */
 ReplenishmentOrder.prototype.shippedProducts = undefined
 

@@ -55,17 +55,17 @@ export class ServiceApi {
     /**
        * Cancel a reservation.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} reservationId Reservation Identifier
-       * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
+       * @param {String[]} marketplaceIds An identifier for the marketplace in which the resource operates.
        * @return {Promise<CancelReservationResponse>}
        */
-    cancelReservationWithHttpInfo(reservationId: string, marketplaceIds: [string]): Promise<CancelReservationResponse>;
+    cancelReservationWithHttpInfo(reservationId: string, marketplaceIds: string[]): Promise<CancelReservationResponse>;
     /**
        * Cancel a reservation.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} reservationId Reservation Identifier
-       * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
+       * @param {String[]} marketplaceIds An identifier for the marketplace in which the resource operates.
        * @return {Promise<CancelReservationResponse>}
        */
-    cancelReservation(reservationId: string, marketplaceIds: [string]): Promise<CancelReservationResponse>;
+    cancelReservation(reservationId: string, marketplaceIds: string[]): Promise<CancelReservationResponse>;
     /**
        * Cancels the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} serviceJobId An Amazon defined service job identifier.
@@ -94,18 +94,18 @@ export class ServiceApi {
     completeServiceJobByServiceJobId(serviceJobId: string): Promise<CompleteServiceJobByServiceJobIdResponse>;
     /**
        * Create a reservation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
-       * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
+       * @param {String[]} marketplaceIds An identifier for the marketplace in which the resource operates.
        * @param {CreateReservationRequest} body Reservation details
        * @return {Promise<CreateReservationResponse>}
        */
-    createReservationWithHttpInfo(marketplaceIds: [string], body: CreateReservationRequest): Promise<CreateReservationResponse>;
+    createReservationWithHttpInfo(marketplaceIds: string[], body: CreateReservationRequest): Promise<CreateReservationResponse>;
     /**
        * Create a reservation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
-       * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
+       * @param {String[]} marketplaceIds An identifier for the marketplace in which the resource operates.
        * @param {CreateReservationRequest} body Reservation details
        * @return {Promise<CreateReservationResponse>}
        */
-    createReservation(marketplaceIds: [string], body: CreateReservationRequest): Promise<CreateReservationResponse>;
+    createReservation(marketplaceIds: string[], body: CreateReservationRequest): Promise<CreateReservationResponse>;
     /**
        * Creates an upload destination.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {ServiceUploadDocument} body Upload document operation input details.
@@ -122,13 +122,13 @@ export class ServiceApi {
        * Gets appointment slots as per the service context specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 20 | 40 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} asin ASIN associated with the service.
        * @param {String} storeId Store identifier defining the region scope to retrive appointment slots.
-       * @param {[String]} marketplaceIds An identifier for the marketplace for which appointment slots are queried
+       * @param {String[]} marketplaceIds An identifier for the marketplace for which appointment slots are queried
        * @param {Object} [opts] Optional parameters
        * @param {String} [opts.startTime] A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
        * @param {String} [opts.endTime] A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
        * @return {Promise<GetAppointmentSlotsResponse>}
        */
-    getAppointmentSlotsWithHttpInfo(asin: string, storeId: string, marketplaceIds: [string], opts?: {
+    getAppointmentSlotsWithHttpInfo(asin: string, storeId: string, marketplaceIds: string[], opts?: {
         startTime?: string;
         endTime?: string;
     }): Promise<GetAppointmentSlotsResponse>;
@@ -136,88 +136,88 @@ export class ServiceApi {
        * Gets appointment slots as per the service context specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 20 | 40 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} asin ASIN associated with the service.
        * @param {String} storeId Store identifier defining the region scope to retrive appointment slots.
-       * @param {[String]} marketplaceIds An identifier for the marketplace for which appointment slots are queried
+       * @param {String[]} marketplaceIds An identifier for the marketplace for which appointment slots are queried
        * @param {Object} [opts] Optional parameters
        * @param {String} [opts.startTime] A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
        * @param {String} [opts.endTime] A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
        * @return {Promise<GetAppointmentSlotsResponse>}
        */
-    getAppointmentSlots(asin: string, storeId: string, marketplaceIds: [string], opts?: {
+    getAppointmentSlots(asin: string, storeId: string, marketplaceIds: string[], opts?: {
         startTime?: string;
         endTime?: string;
     }): Promise<GetAppointmentSlotsResponse>;
     /**
        * Gets appointment slots for the service associated with the service job id specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} serviceJobId A service job identifier to retrive appointment slots for associated service.
-       * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
+       * @param {String[]} marketplaceIds An identifier for the marketplace in which the resource operates.
        * @param {Object} [opts] Optional parameters
        * @param {String} [opts.startTime] A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
        * @param {String} [opts.endTime] A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
        * @return {Promise<GetAppointmentSlotsResponse>}
        */
-    getAppointmmentSlotsByJobIdWithHttpInfo(serviceJobId: string, marketplaceIds: [string], opts?: {
+    getAppointmmentSlotsByJobIdWithHttpInfo(serviceJobId: string, marketplaceIds: string[], opts?: {
         startTime?: string;
         endTime?: string;
     }): Promise<GetAppointmentSlotsResponse>;
     /**
        * Gets appointment slots for the service associated with the service job id specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} serviceJobId A service job identifier to retrive appointment slots for associated service.
-       * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
+       * @param {String[]} marketplaceIds An identifier for the marketplace in which the resource operates.
        * @param {Object} [opts] Optional parameters
        * @param {String} [opts.startTime] A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
        * @param {String} [opts.endTime] A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
        * @return {Promise<GetAppointmentSlotsResponse>}
        */
-    getAppointmmentSlotsByJobId(serviceJobId: string, marketplaceIds: [string], opts?: {
+    getAppointmmentSlotsByJobId(serviceJobId: string, marketplaceIds: string[], opts?: {
         startTime?: string;
         endTime?: string;
     }): Promise<GetAppointmentSlotsResponse>;
     /**
        * Provides capacity in fixed-size slots.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} resourceId Resource Identifier.
-       * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
+       * @param {String[]} marketplaceIds An identifier for the marketplace in which the resource operates.
        * @param {FixedSlotCapacityQuery} body Request body.
        * @param {Object} [opts] Optional parameters
        * @param {String} [opts.nextPageToken] Next page token returned in the response of your previous request.
        * @return {Promise<FixedSlotCapacity>}
        */
-    getFixedSlotCapacityWithHttpInfo(resourceId: string, marketplaceIds: [string], body: FixedSlotCapacityQuery, opts?: {
+    getFixedSlotCapacityWithHttpInfo(resourceId: string, marketplaceIds: string[], body: FixedSlotCapacityQuery, opts?: {
         nextPageToken?: string;
     }): Promise<FixedSlotCapacity>;
     /**
        * Provides capacity in fixed-size slots.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} resourceId Resource Identifier.
-       * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
+       * @param {String[]} marketplaceIds An identifier for the marketplace in which the resource operates.
        * @param {FixedSlotCapacityQuery} body Request body.
        * @param {Object} [opts] Optional parameters
        * @param {String} [opts.nextPageToken] Next page token returned in the response of your previous request.
        * @return {Promise<FixedSlotCapacity>}
        */
-    getFixedSlotCapacity(resourceId: string, marketplaceIds: [string], body: FixedSlotCapacityQuery, opts?: {
+    getFixedSlotCapacity(resourceId: string, marketplaceIds: string[], body: FixedSlotCapacityQuery, opts?: {
         nextPageToken?: string;
     }): Promise<FixedSlotCapacity>;
     /**
        * Provides capacity slots in a format similar to availability records.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} resourceId Resource Identifier.
-       * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
+       * @param {String[]} marketplaceIds An identifier for the marketplace in which the resource operates.
        * @param {RangeSlotCapacityQuery} body Request body.
        * @param {Object} [opts] Optional parameters
        * @param {String} [opts.nextPageToken] Next page token returned in the response of your previous request.
        * @return {Promise<RangeSlotCapacity>}
        */
-    getRangeSlotCapacityWithHttpInfo(resourceId: string, marketplaceIds: [string], body: RangeSlotCapacityQuery, opts?: {
+    getRangeSlotCapacityWithHttpInfo(resourceId: string, marketplaceIds: string[], body: RangeSlotCapacityQuery, opts?: {
         nextPageToken?: string;
     }): Promise<RangeSlotCapacity>;
     /**
        * Provides capacity slots in a format similar to availability records.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} resourceId Resource Identifier.
-       * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
+       * @param {String[]} marketplaceIds An identifier for the marketplace in which the resource operates.
        * @param {RangeSlotCapacityQuery} body Request body.
        * @param {Object} [opts] Optional parameters
        * @param {String} [opts.nextPageToken] Next page token returned in the response of your previous request.
        * @return {Promise<RangeSlotCapacity>}
        */
-    getRangeSlotCapacity(resourceId: string, marketplaceIds: [string], body: RangeSlotCapacityQuery, opts?: {
+    getRangeSlotCapacity(resourceId: string, marketplaceIds: string[], body: RangeSlotCapacityQuery, opts?: {
         nextPageToken?: string;
     }): Promise<RangeSlotCapacity>;
     /**
@@ -234,7 +234,7 @@ export class ServiceApi {
     getServiceJobByServiceJobId(serviceJobId: string): Promise<GetServiceJobByServiceJobIdResponse>;
     /**
        * Gets service job details for the specified filter query.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 40 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
-       * @param {[String]} marketplaceIds Used to select jobs that were placed in the specified marketplaces.
+       * @param {String[]} marketplaceIds Used to select jobs that were placed in the specified marketplaces.
        * @param {Object} [opts] Optional parameters
        * @param {[String]} [opts.serviceOrderIds] List of service order ids for the query you want to perform.Max values supported 20.
        * @param {[String]} [opts.serviceJobStatus] A list of one or more job status by which to filter the list of jobs.
@@ -253,7 +253,7 @@ export class ServiceApi {
        * @param {[String]} [opts.storeIds] List of Amazon-defined identifiers for the region scope. Max values supported is 50.
        * @return {Promise<GetServiceJobsResponse>}
        */
-    getServiceJobsWithHttpInfo(marketplaceIds: [string], opts?: {
+    getServiceJobsWithHttpInfo(marketplaceIds: string[], opts?: {
         serviceOrderIds?: [string];
         serviceJobStatus?: [string];
         pageToken?: string;
@@ -272,7 +272,7 @@ export class ServiceApi {
     }): Promise<GetServiceJobsResponse>;
     /**
        * Gets service job details for the specified filter query.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 40 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
-       * @param {[String]} marketplaceIds Used to select jobs that were placed in the specified marketplaces.
+       * @param {String[]} marketplaceIds Used to select jobs that were placed in the specified marketplaces.
        * @param {Object} [opts] Optional parameters
        * @param {[String]} [opts.serviceOrderIds] List of service order ids for the query you want to perform.Max values supported 20.
        * @param {[String]} [opts.serviceJobStatus] A list of one or more job status by which to filter the list of jobs.
@@ -291,7 +291,7 @@ export class ServiceApi {
        * @param {[String]} [opts.storeIds] List of Amazon-defined identifiers for the region scope. Max values supported is 50.
        * @return {Promise<GetServiceJobsResponse>}
        */
-    getServiceJobs(marketplaceIds: [string], opts?: {
+    getServiceJobs(marketplaceIds: string[], opts?: {
         serviceOrderIds?: [string];
         serviceJobStatus?: [string];
         pageToken?: string;
@@ -343,35 +343,35 @@ export class ServiceApi {
     /**
        * Update a reservation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} reservationId Reservation Identifier
-       * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
+       * @param {String[]} marketplaceIds An identifier for the marketplace in which the resource operates.
        * @param {UpdateReservationRequest} body Reservation details
        * @return {Promise<UpdateReservationResponse>}
        */
-    updateReservationWithHttpInfo(reservationId: string, marketplaceIds: [string], body: UpdateReservationRequest): Promise<UpdateReservationResponse>;
+    updateReservationWithHttpInfo(reservationId: string, marketplaceIds: string[], body: UpdateReservationRequest): Promise<UpdateReservationResponse>;
     /**
        * Update a reservation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} reservationId Reservation Identifier
-       * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
+       * @param {String[]} marketplaceIds An identifier for the marketplace in which the resource operates.
        * @param {UpdateReservationRequest} body Reservation details
        * @return {Promise<UpdateReservationResponse>}
        */
-    updateReservation(reservationId: string, marketplaceIds: [string], body: UpdateReservationRequest): Promise<UpdateReservationResponse>;
+    updateReservation(reservationId: string, marketplaceIds: string[], body: UpdateReservationRequest): Promise<UpdateReservationResponse>;
     /**
        * Update the schedule of the given resource.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} resourceId Resource (store) Identifier
-       * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
+       * @param {String[]} marketplaceIds An identifier for the marketplace in which the resource operates.
        * @param {UpdateScheduleRequest} body Schedule details
        * @return {Promise<UpdateScheduleResponse>}
        */
-    updateScheduleWithHttpInfo(resourceId: string, marketplaceIds: [string], body: UpdateScheduleRequest): Promise<UpdateScheduleResponse>;
+    updateScheduleWithHttpInfo(resourceId: string, marketplaceIds: string[], body: UpdateScheduleRequest): Promise<UpdateScheduleResponse>;
     /**
        * Update the schedule of the given resource.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} resourceId Resource (store) Identifier
-       * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
+       * @param {String[]} marketplaceIds An identifier for the marketplace in which the resource operates.
        * @param {UpdateScheduleRequest} body Schedule details
        * @return {Promise<UpdateScheduleResponse>}
        */
-    updateSchedule(resourceId: string, marketplaceIds: [string], body: UpdateScheduleRequest): Promise<UpdateScheduleResponse>;
+    updateSchedule(resourceId: string, marketplaceIds: string[], body: UpdateScheduleRequest): Promise<UpdateScheduleResponse>;
     #private;
 }
 import { AddAppointmentRequest } from '../model/AddAppointmentRequest.js';

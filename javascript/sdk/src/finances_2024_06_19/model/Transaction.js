@@ -81,8 +81,8 @@ Transaction.prototype.sellingPartnerMetadata = undefined
 
 /**
  * Related business identifiers of the transaction.
- * @member {[RelatedIdentifier]} relatedIdentifiers
- * @type {[RelatedIdentifier]}
+ * @member {Array[]} relatedIdentifiers
+ * @type {Array[]}
  */
 Transaction.prototype.relatedIdentifiers = undefined
 
@@ -135,21 +135,21 @@ Transaction.prototype.marketplaceDetails = undefined
 
 /**
  * A list of items in the transaction.
- * @member {[Item]} items
- * @type {[Item]}
+ * @member {Array[]} items
+ * @type {Array[]}
  */
 Transaction.prototype.items = undefined
 
 /**
  * A list of additional information about the item.
- * @member {[Context]} contexts
- * @type {[Context]}
+ * @member {Array[]} contexts
+ * @type {Array[]}
  */
 Transaction.prototype.contexts = undefined
 
 /**
  * A list of breakdowns that detail how the total amount is calculated for the transaction.
- * @member {[Breakdown]} breakdowns
- * @type {[Breakdown]}
+ * @member {Array[]} breakdowns
+ * @type {Array[]}
  */
 Transaction.prototype.breakdowns = undefined

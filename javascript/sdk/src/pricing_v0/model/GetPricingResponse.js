@@ -60,14 +60,14 @@ export class GetPricingResponse {
 
 /**
  * The payload for the `getPricing` and `getCompetitivePricing` operations.
- * @member {[Price]} payload
- * @type {[Price]}
+ * @member {Array[]} payload
+ * @type {Array[]}
  */
 GetPricingResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Array[]} errors
+ * @type {Array[]}
  */
 GetPricingResponse.prototype.errors = undefined

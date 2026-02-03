@@ -31,7 +31,7 @@ export class InboundPlan {
    * @param createdAt {Date} The time at which the inbound plan was created. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime with pattern `yyyy-MM-ddTHH:mm:ssZ`.
    * @param inboundPlanId {String} Identifier of an inbound plan.
    * @param lastUpdatedAt {Date} The time at which the inbound plan was last updated. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ssZ`.
-   * @param marketplaceIds {[String]} A list of marketplace IDs.
+   * @param marketplaceIds {Array[]} A list of marketplace IDs.
    * @param name {String} Human-readable name of the inbound plan.
    * @param sourceAddress {Address}
    * @param status {String} Current status of the inbound plan. Possible values: `ACTIVE`, `VOIDED`, `SHIPPED`, `ERRORED`.
@@ -105,8 +105,8 @@ InboundPlan.prototype.lastUpdatedAt = undefined
 
 /**
  * A list of marketplace IDs.
- * @member {[String]} marketplaceIds
- * @type {[String]}
+ * @member {Array[]} marketplaceIds
+ * @type {Array[]}
  */
 InboundPlan.prototype.marketplaceIds = undefined
 
@@ -119,22 +119,22 @@ InboundPlan.prototype.name = undefined
 
 /**
  * Packing options for the inbound plan. This property will be populated when it has been generated via the corresponding operation. If there is a chosen placement option, only packing options for that placement option will be returned. If there are confirmed shipments, only packing options for those shipments will be returned. Query the packing option for more details.
- * @member {[PackingOptionSummary]} packingOptions
- * @type {[PackingOptionSummary]}
+ * @member {Array[]} packingOptions
+ * @type {Array[]}
  */
 InboundPlan.prototype.packingOptions = undefined
 
 /**
  * Placement options for the inbound plan. This property will be populated when it has been generated via the corresponding operation. If there is a chosen placement option, that will be the only returned option. Query the placement option for more details.
- * @member {[PlacementOptionSummary]} placementOptions
- * @type {[PlacementOptionSummary]}
+ * @member {Array[]} placementOptions
+ * @type {Array[]}
  */
 InboundPlan.prototype.placementOptions = undefined
 
 /**
  * A list of shipment IDs for the inbound plan. This property is populated when it has been generated with the `confirmPlacementOptions` operation. Only shipments from the chosen placement option are returned. Query the shipment for more details.
- * @member {[ShipmentSummary]} shipments
- * @type {[ShipmentSummary]}
+ * @member {Array[]} shipments
+ * @type {Array[]}
  */
 InboundPlan.prototype.shipments = undefined
 

@@ -1,1 +1,1 @@
-{"version":3,"file":"FeesEstimateError.d.ts","sourceRoot":"","sources":["FeesEstimateError.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAkBE;;;;;;OAMG;IACH,2CAHW,iBAAiB,GAChB,iBAAiB,CAsB5B;IA5CD;;;;;;;;;OASG;IACH,iEAFkB,KAAQ,EAOzB;IAJC,aAAgB;IAChB,aAAgB;IAChB,gBAAsB;IACtB,cAAoB;CA+BvB"}
+{"version":3,"file":"FeesEstimateError.d.ts","sourceRoot":"","sources":["FeesEstimateError.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAkBE;;;;;;OAMG;IACH,2CAHW,iBAAiB,GAChB,iBAAiB,CAsB5B;IA5CD;;;;;;;;;OASG;IACH,iEAFkB,OAAO,EAOxB;IAJC,aAAgB;IAChB,aAAgB;IAChB,gBAAsB;IACtB,gBAAoB;CA+BvB"}

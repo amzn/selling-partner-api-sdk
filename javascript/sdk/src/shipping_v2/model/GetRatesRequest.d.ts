@@ -18,12 +18,12 @@ export class GetRatesRequest {
      * @alias module:shipping_v2/model/GetRatesRequest
      * @class
      * @param shipFrom {Address}
-     * @param packages {[Package]} A list of packages to be shipped through a shipping service offering.
+     * @param packages {Array[]} A list of packages to be shipped through a shipping service offering.
      * @param channelDetails {ChannelDetails}
      */
-    constructor(shipFrom: Address, packages: [Package], channelDetails: ChannelDetails);
+    constructor(shipFrom: Address, packages: any[][], channelDetails: ChannelDetails);
     shipFrom: Address;
-    packages: [Package];
+    packages: any[][];
     channelDetails: ChannelDetails;
     /**
      * @member {Address} shipTo
@@ -53,16 +53,16 @@ export class GetRatesRequest {
     valueAddedServices: ValueAddedServiceDetails;
     /**
      * A list of tax detail information.
-     * @member {[TaxDetail]} taxDetails
-     * @type {[TaxDetail]}
+     * @member {Array[]} taxDetails
+     * @type {Array[]}
      */
-    taxDetails: [TaxDetail];
+    taxDetails: any[][];
     /**
      * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
-     * @member {[ClientReferenceDetail]} clientReferenceDetails
-     * @type {[ClientReferenceDetail]}
+     * @member {Array[]} clientReferenceDetails
+     * @type {Array[]}
      */
-    clientReferenceDetails: [ClientReferenceDetail];
+    clientReferenceDetails: any[][];
     /**
      * @member {ShipmentType} shipmentType
      * @type {ShipmentType}
@@ -75,19 +75,15 @@ export class GetRatesRequest {
     destinationAccessPointDetails: AccessPointDetails;
     /**
      * A list of CarrierAccounts
-     * @member {[CarrierAccount]} carrierAccounts
-     * @type {[CarrierAccount]}
+     * @member {Array[]} carrierAccounts
+     * @type {Array[]}
      */
-    carrierAccounts: [CarrierAccount];
+    carrierAccounts: any[][];
 }
 import { Address } from './Address.js';
-import { Package } from './Package.js';
 import { ChannelDetails } from './ChannelDetails.js';
 import { ShipperInstruction } from './ShipperInstruction.js';
 import { ValueAddedServiceDetails } from './ValueAddedServiceDetails.js';
-import { TaxDetail } from './TaxDetail.js';
-import { ClientReferenceDetail } from './ClientReferenceDetail.js';
 import { ShipmentType } from './ShipmentType.js';
 import { AccessPointDetails } from './AccessPointDetails.js';
-import { CarrierAccount } from './CarrierAccount.js';
 //# sourceMappingURL=GetRatesRequest.d.ts.map

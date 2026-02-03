@@ -47,10 +47,10 @@ export class AccessPoint {
     address: Address;
     /**
      * Exception operating hours for Access Point
-     * @member {[ExceptionOperatingHours]} exceptionOperatingHours
-     * @type {[ExceptionOperatingHours]}
+     * @member {Array[]} exceptionOperatingHours
+     * @type {Array[]}
      */
-    exceptionOperatingHours: [ExceptionOperatingHours];
+    exceptionOperatingHours: any[][];
     /**
      * Assistance type enum for Access point i.e. STAFF_ASSISTED or SELF_ASSISTED
      * @member {String} assistanceType
@@ -85,6 +85,5 @@ export namespace AccessPoint {
 import { AccessPointType } from './AccessPointType.js';
 import { AccessibilityAttributes } from './AccessibilityAttributes.js';
 import { Address } from './Address.js';
-import { ExceptionOperatingHours } from './ExceptionOperatingHours.js';
 import { OperatingHours } from './OperatingHours.js';
 //# sourceMappingURL=AccessPoint.d.ts.map

@@ -27,7 +27,7 @@ export class OriginalLineItem {
    * @class
    * @param replacingSku {String} The SKU ID for this shipment
    * @param originalSku {String} The SKU ID for the original shipment.
-   * @param charges {[Charge]} The charges associated with the shipment.
+   * @param charges {Array[]} The charges associated with the shipment.
    */
   constructor (replacingSku, originalSku, charges) {
     this.replacingSku = replacingSku
@@ -80,7 +80,7 @@ OriginalLineItem.prototype.originalSku = undefined
 
 /**
  * The charges associated with the shipment.
- * @member {[Charge]} charges
- * @type {[Charge]}
+ * @member {Array[]} charges
+ * @type {Array[]}
  */
 OriginalLineItem.prototype.charges = undefined

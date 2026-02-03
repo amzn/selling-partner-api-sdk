@@ -26,7 +26,7 @@ export class VehiclesResponse {
    * Get paginated list of vehicle from Amazon&#39;s catalog
    * @alias module:vehicles_v2024_11_01/model/VehiclesResponse
    * @class
-   * @param vehicles {[Vehicle]} List of vehicles from Amazon's catalog.
+   * @param vehicles {Array[]} List of vehicles from Amazon's catalog.
    */
   constructor (vehicles) {
     this.vehicles = vehicles
@@ -68,7 +68,7 @@ VehiclesResponse.prototype.pagination = undefined
 
 /**
  * List of vehicles from Amazon's catalog.
- * @member {[Vehicle]} vehicles
- * @type {[Vehicle]}
+ * @member {Array[]} vehicles
+ * @type {Array[]}
  */
 VehiclesResponse.prototype.vehicles = undefined

@@ -28,11 +28,10 @@ export class PartyIdentification {
     address: Address;
     /**
      * Tax registration details of the entity.
-     * @member {[TaxRegistrationDetail]} taxRegistrationDetails
-     * @type {[TaxRegistrationDetail]}
+     * @member {Array[]} taxRegistrationDetails
+     * @type {Array[]}
      */
-    taxRegistrationDetails: [TaxRegistrationDetail];
+    taxRegistrationDetails: any[][];
 }
 import { Address } from './Address.js';
-import { TaxRegistrationDetail } from './TaxRegistrationDetail.js';
 //# sourceMappingURL=PartyIdentification.d.ts.map

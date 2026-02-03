@@ -18,29 +18,29 @@ export class ListOffersRequestFilters {
      * @alias module:replenishment_v2022_11_07/model/ListOffersRequestFilters
      * @class
      * @param marketplaceId {String} The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
-     * @param programTypes {[ProgramType]} A list of replenishment program types.
+     * @param programTypes {Array[]} A list of replenishment program types.
      */
-    constructor(marketplaceId: string, programTypes: [ProgramType]);
+    constructor(marketplaceId: string, programTypes: any[][]);
     marketplaceId: string;
-    programTypes: [ProgramType];
+    programTypes: any[][];
     /**
      * A list of SKUs to filter. This filter is only supported for sellers and not for vendors.
-     * @member {[String]} skus
-     * @type {[String]}
+     * @member {Array[]} skus
+     * @type {Array[]}
      */
-    skus: [string];
+    skus: any[][];
     /**
      * A list of Amazon Standard Identification Numbers (ASINs).
-     * @member {[String]} asins
-     * @type {[String]}
+     * @member {Array[]} asins
+     * @type {Array[]}
      */
-    asins: [string];
+    asins: any[][];
     /**
      * A list of eligibilities associated with an offer.
-     * @member {[EligibilityStatus]} eligibilities
-     * @type {[EligibilityStatus]}
+     * @member {Array[]} eligibilities
+     * @type {Array[]}
      */
-    eligibilities: [EligibilityStatus];
+    eligibilities: any[][];
     /**
      * @member {Preference} preferences
      * @type {Preference}
@@ -52,8 +52,6 @@ export class ListOffersRequestFilters {
      */
     promotions: Promotion;
 }
-import { ProgramType } from './ProgramType.js';
-import { EligibilityStatus } from './EligibilityStatus.js';
 import { Preference } from './Preference.js';
 import { Promotion } from './Promotion.js';
 //# sourceMappingURL=ListOffersRequestFilters.d.ts.map

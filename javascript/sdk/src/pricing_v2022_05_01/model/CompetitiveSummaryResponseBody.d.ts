@@ -25,31 +25,27 @@ export class CompetitiveSummaryResponseBody {
     marketplaceId: string;
     /**
      * A list of featured buying options for the specified ASIN `marketplaceId` combination.
-     * @member {[FeaturedBuyingOption]} featuredBuyingOptions
-     * @type {[FeaturedBuyingOption]}
+     * @member {Array[]} featuredBuyingOptions
+     * @type {Array[]}
      */
-    featuredBuyingOptions: [FeaturedBuyingOption];
+    featuredBuyingOptions: any[][];
     /**
      * A list of lowest priced offers for the specified ASIN `marketplaceId` combination.
-     * @member {[LowestPricedOffer]} lowestPricedOffers
-     * @type {[LowestPricedOffer]}
+     * @member {Array[]} lowestPricedOffers
+     * @type {Array[]}
      */
-    lowestPricedOffers: [LowestPricedOffer];
+    lowestPricedOffers: any[][];
     /**
      * A list of reference prices for the specified ASIN `marketplaceId` combination.
-     * @member {[ReferencePrice]} referencePrices
-     * @type {[ReferencePrice]}
+     * @member {Array[]} referencePrices
+     * @type {Array[]}
      */
-    referencePrices: [ReferencePrice];
+    referencePrices: any[][];
     /**
      * A list of error responses that are returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
-import { FeaturedBuyingOption } from './FeaturedBuyingOption.js';
-import { LowestPricedOffer } from './LowestPricedOffer.js';
-import { ReferencePrice } from './ReferencePrice.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=CompetitiveSummaryResponseBody.d.ts.map

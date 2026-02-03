@@ -26,8 +26,8 @@ export class CreateInboundPlanRequest {
    * The &#x60;createInboundPlan&#x60; request.
    * @alias module:fulfillmentinbound_v2024_03_20/model/CreateInboundPlanRequest
    * @class
-   * @param destinationMarketplaces {[String]} Marketplaces where the items need to be shipped to. Currently only one marketplace can be selected in this request.
-   * @param items {[ItemInput]} Items included in this plan.
+   * @param destinationMarketplaces {Array[]} Marketplaces where the items need to be shipped to. Currently only one marketplace can be selected in this request.
+   * @param items {Array[]} Items included in this plan.
    * @param sourceAddress {AddressInput}
    */
   constructor (destinationMarketplaces, items, sourceAddress) {
@@ -68,15 +68,15 @@ export class CreateInboundPlanRequest {
 
 /**
  * Marketplaces where the items need to be shipped to. Currently only one marketplace can be selected in this request.
- * @member {[String]} destinationMarketplaces
- * @type {[String]}
+ * @member {Array[]} destinationMarketplaces
+ * @type {Array[]}
  */
 CreateInboundPlanRequest.prototype.destinationMarketplaces = undefined
 
 /**
  * Items included in this plan.
- * @member {[ItemInput]} items
- * @type {[ItemInput]}
+ * @member {Array[]} items
+ * @type {Array[]}
  */
 CreateInboundPlanRequest.prototype.items = undefined
 

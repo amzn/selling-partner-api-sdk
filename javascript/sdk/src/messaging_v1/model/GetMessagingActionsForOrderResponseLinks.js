@@ -26,7 +26,7 @@ export class GetMessagingActionsForOrderResponseLinks {
    * @alias module:messaging_v1/model/GetMessagingActionsForOrderResponseLinks
    * @class
    * @param self {LinkObject}
-   * @param actions {[LinkObject]} Eligible actions for the specified amazonOrderId.
+   * @param actions {Array[]} Eligible actions for the specified amazonOrderId.
    */
   constructor (self, actions) {
     this.self = self
@@ -69,7 +69,7 @@ GetMessagingActionsForOrderResponseLinks.prototype.self = undefined
 
 /**
  * Eligible actions for the specified amazonOrderId.
- * @member {[LinkObject]} actions
- * @type {[LinkObject]}
+ * @member {Array[]} actions
+ * @type {Array[]}
  */
 GetMessagingActionsForOrderResponseLinks.prototype.actions = undefined

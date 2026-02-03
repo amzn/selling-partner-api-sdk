@@ -19,10 +19,10 @@ export class Poa {
     appointmentTime: AppointmentTime;
     /**
      * A list of technicians.
-     * @member {[Technician]} technicians
-     * @type {[Technician]}
+     * @member {Array[]} technicians
+     * @type {Array[]}
      */
-    technicians: [Technician];
+    technicians: any[][];
     /**
      * The identifier of the technician who uploaded the POA.
      * @member {String} uploadingTechnician
@@ -55,5 +55,4 @@ export namespace Poa {
     type PoaTypeEnum = string;
 }
 import { AppointmentTime } from './AppointmentTime.js';
-import { Technician } from './Technician.js';
 //# sourceMappingURL=Poa.d.ts.map

@@ -19,15 +19,14 @@ export class InboundOperationStatus {
      * @class
      * @param operation {String} The name of the operation in the asynchronous API call.
      * @param operationId {String} The operation ID returned by the asynchronous API call.
-     * @param operationProblems {[OperationProblem]} The problems in the processing of the asynchronous operation.
+     * @param operationProblems {Array[]} The problems in the processing of the asynchronous operation.
      * @param operationStatus {OperationStatus}
      */
-    constructor(operation: string, operationId: string, operationProblems: [OperationProblem], operationStatus: OperationStatus);
+    constructor(operation: string, operationId: string, operationProblems: any[][], operationStatus: OperationStatus);
     operation: string;
     operationId: string;
-    operationProblems: [OperationProblem];
+    operationProblems: any[][];
     operationStatus: OperationStatus;
 }
-import { OperationProblem } from './OperationProblem.js';
 import { OperationStatus } from './OperationStatus.js';
 //# sourceMappingURL=InboundOperationStatus.d.ts.map

@@ -68,7 +68,7 @@ TextComponent.prototype.value = undefined
 
 /**
  * A set of content decorators.
- * @member {[Decorator]} decoratorSet
- * @type {[Decorator]}
+ * @member {Array[]} decoratorSet
+ * @type {Array[]}
  */
 TextComponent.prototype.decoratorSet = undefined

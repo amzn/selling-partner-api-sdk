@@ -14,10 +14,9 @@ export class ListItemComplianceDetailsResponse {
     static constructFromObject(data: any, obj: ListItemComplianceDetailsResponse): ListItemComplianceDetailsResponse;
     /**
      * List of compliance details.
-     * @member {[ComplianceDetail]} complianceDetails
-     * @type {[ComplianceDetail]}
+     * @member {Array[]} complianceDetails
+     * @type {Array[]}
      */
-    complianceDetails: [ComplianceDetail];
+    complianceDetails: any[][];
 }
-import { ComplianceDetail } from './ComplianceDetail.js';
 //# sourceMappingURL=ListItemComplianceDetailsResponse.d.ts.map

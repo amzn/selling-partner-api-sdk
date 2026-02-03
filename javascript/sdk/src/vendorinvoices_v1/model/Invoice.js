@@ -172,35 +172,35 @@ Invoice.prototype.invoiceTotal = undefined
 
 /**
  * Total tax amount details for all line items.
- * @member {[TaxDetails]} taxDetails
- * @type {[TaxDetails]}
+ * @member {Array[]} taxDetails
+ * @type {Array[]}
  */
 Invoice.prototype.taxDetails = undefined
 
 /**
  * Additional details provided by the selling party, for tax related or other purposes.
- * @member {[AdditionalDetails]} additionalDetails
- * @type {[AdditionalDetails]}
+ * @member {Array[]} additionalDetails
+ * @type {Array[]}
  */
 Invoice.prototype.additionalDetails = undefined
 
 /**
  * Total charge amount details for all line items.
- * @member {[ChargeDetails]} chargeDetails
- * @type {[ChargeDetails]}
+ * @member {Array[]} chargeDetails
+ * @type {Array[]}
  */
 Invoice.prototype.chargeDetails = undefined
 
 /**
  * Total allowance amount details for all line items.
- * @member {[AllowanceDetails]} allowanceDetails
- * @type {[AllowanceDetails]}
+ * @member {Array[]} allowanceDetails
+ * @type {Array[]}
  */
 Invoice.prototype.allowanceDetails = undefined
 
 /**
  * The list of invoice items.
- * @member {[InvoiceItem]} items
- * @type {[InvoiceItem]}
+ * @member {Array[]} items
+ * @type {Array[]}
  */
 Invoice.prototype.items = undefined

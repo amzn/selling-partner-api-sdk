@@ -66,7 +66,7 @@ InnerContainersDetails.prototype.containerCount = undefined
 
 /**
  * Container sequence numbers that are involved in this shipment.
- * @member {[ContainerSequenceNumbers]} containerSequenceNumbers
- * @type {[ContainerSequenceNumbers]}
+ * @member {Array[]} containerSequenceNumbers
+ * @type {Array[]}
  */
 InnerContainersDetails.prototype.containerSequenceNumbers = undefined

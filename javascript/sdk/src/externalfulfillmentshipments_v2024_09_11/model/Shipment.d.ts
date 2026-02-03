@@ -22,22 +22,22 @@ export class Shipment {
      * @param marketplaceAttributes {MarketplaceAttributes}
      * @param shipmentInfo {ShipmentInfo}
      * @param shipmentRequirements {ShipmentRequirements}
-     * @param charges {[Charge]} The charges associated with the shipment.
+     * @param charges {Array[]} The charges associated with the shipment.
      * @param status {String} The current status of the shipment.
-     * @param lineItems {[ShipmentLineItem]} The line items in the shipment.
+     * @param lineItems {Array[]} The line items in the shipment.
      * @param shippingInfo {ShippingInfo}
      * @param creationDateTime {String} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      * @param lastUpdatedDateTime {String} A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      */
-    constructor(id: string, locationId: string, marketplaceAttributes: MarketplaceAttributes, shipmentInfo: ShipmentInfo, shipmentRequirements: ShipmentRequirements, charges: [Charge], status: string, lineItems: [ShipmentLineItem], shippingInfo: ShippingInfo, creationDateTime: string, lastUpdatedDateTime: string);
+    constructor(id: string, locationId: string, marketplaceAttributes: MarketplaceAttributes, shipmentInfo: ShipmentInfo, shipmentRequirements: ShipmentRequirements, charges: any[][], status: string, lineItems: any[][], shippingInfo: ShippingInfo, creationDateTime: string, lastUpdatedDateTime: string);
     id: string;
     locationId: string;
     marketplaceAttributes: MarketplaceAttributes;
     shipmentInfo: ShipmentInfo;
     shipmentRequirements: ShipmentRequirements;
-    charges: [Charge];
+    charges: any[][];
     status: string;
-    lineItems: [ShipmentLineItem];
+    lineItems: any[][];
     shippingInfo: ShippingInfo;
     creationDateTime: string;
     lastUpdatedDateTime: string;
@@ -48,10 +48,10 @@ export class Shipment {
     invoiceInfo: InvoiceInfo;
     /**
      * All involved party identification and metadata for the vendor, buyer, and seller. Applicable for direct-fulfillment sellers.
-     * @member {[PartyIdentificationInfo]} partyInfoList
-     * @type {[PartyIdentificationInfo]}
+     * @member {Array[]} partyInfoList
+     * @type {Array[]}
      */
-    partyInfoList: [PartyIdentificationInfo];
+    partyInfoList: any[][];
     /**
      * The sub status of the shipment.
      * @member {String} subStatus
@@ -66,10 +66,10 @@ export class Shipment {
     reason: string;
     /**
      * The list of packages in the shipment.
-     * @member {[Package]} packages
-     * @type {[Package]}
+     * @member {Array[]} packages
+     * @type {Array[]}
      */
-    packages: [Package];
+    packages: any[][];
     /**
      * A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      * @member {String} earliestPackDateTime
@@ -119,10 +119,6 @@ export namespace Shipment {
 import { MarketplaceAttributes } from './MarketplaceAttributes.js';
 import { ShipmentInfo } from './ShipmentInfo.js';
 import { ShipmentRequirements } from './ShipmentRequirements.js';
-import { Charge } from './Charge.js';
-import { ShipmentLineItem } from './ShipmentLineItem.js';
 import { ShippingInfo } from './ShippingInfo.js';
 import { InvoiceInfo } from './InvoiceInfo.js';
-import { PartyIdentificationInfo } from './PartyIdentificationInfo.js';
-import { Package } from './Package.js';
 //# sourceMappingURL=Shipment.d.ts.map

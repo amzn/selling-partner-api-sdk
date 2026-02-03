@@ -19,11 +19,10 @@ export class ListFinancialEventGroupsResponse {
     payload: ListFinancialEventGroupsPayload;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { ListFinancialEventGroupsPayload } from './ListFinancialEventGroupsPayload.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=ListFinancialEventGroupsResponse.d.ts.map

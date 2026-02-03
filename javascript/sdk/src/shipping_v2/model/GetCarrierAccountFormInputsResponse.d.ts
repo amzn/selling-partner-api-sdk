@@ -14,10 +14,9 @@ export class GetCarrierAccountFormInputsResponse {
     static constructFromObject(data: any, obj: GetCarrierAccountFormInputsResponse): GetCarrierAccountFormInputsResponse;
     /**
      * A list of LinkableCarrier
-     * @member {[LinkableCarrier]} linkableCarriersList
-     * @type {[LinkableCarrier]}
+     * @member {Array[]} linkableCarriersList
+     * @type {Array[]}
      */
-    linkableCarriersList: [LinkableCarrier];
+    linkableCarriersList: any[][];
 }
-import { LinkableCarrier } from './LinkableCarrier.js';
 //# sourceMappingURL=GetCarrierAccountFormInputsResponse.d.ts.map

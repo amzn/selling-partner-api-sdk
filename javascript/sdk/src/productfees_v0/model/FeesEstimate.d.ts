@@ -28,11 +28,10 @@ export class FeesEstimate {
     totalFeesEstimate: MoneyType;
     /**
      * A list of other fees that contribute to a given fee.
-     * @member {[FeeDetail]} feeDetailList
-     * @type {[FeeDetail]}
+     * @member {Array[]} feeDetailList
+     * @type {Array[]}
      */
-    feeDetailList: [FeeDetail];
+    feeDetailList: any[][];
 }
 import { MoneyType } from './MoneyType.js';
-import { FeeDetail } from './FeeDetail.js';
 //# sourceMappingURL=FeesEstimate.d.ts.map

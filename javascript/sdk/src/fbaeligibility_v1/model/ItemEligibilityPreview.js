@@ -361,7 +361,7 @@ ItemEligibilityPreview.IneligibilityReasonListEnum = {
 }
 /**
  * Potential Ineligibility Reason Codes.
- * @member {[String]} ineligibilityReasonList
- * @type {[String]}
+ * @member {Array[]} ineligibilityReasonList
+ * @type {Array[]}
  */
 ItemEligibilityPreview.prototype.ineligibilityReasonList = undefined

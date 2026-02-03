@@ -58,7 +58,7 @@ export class AddInventoryRequest {
 
 /**
  * List of Inventory to be added
- * @member {[InventoryItem]} inventoryItems
- * @type {[InventoryItem]}
+ * @member {Array[]} inventoryItems
+ * @type {Array[]}
  */
 AddInventoryRequest.prototype.inventoryItems = undefined

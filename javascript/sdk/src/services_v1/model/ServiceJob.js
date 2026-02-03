@@ -166,15 +166,15 @@ ServiceJob.prototype.serviceJobProvider = undefined
 
 /**
  * A list of appointment windows preferred by the buyer. Included only if the buyer selected appointment windows when creating the order.
- * @member {[AppointmentTime]} preferredAppointmentTimes
- * @type {[AppointmentTime]}
+ * @member {Array[]} preferredAppointmentTimes
+ * @type {Array[]}
  */
 ServiceJob.prototype.preferredAppointmentTimes = undefined
 
 /**
  * A list of appointments.
- * @member {[Appointment]} appointments
- * @type {[Appointment]}
+ * @member {Array[]} appointments
+ * @type {Array[]}
  */
 ServiceJob.prototype.appointments = undefined
 
@@ -207,8 +207,8 @@ ServiceJob.prototype.buyer = undefined
 
 /**
  * A list of items associated with the service job.
- * @member {[AssociatedItem]} associatedItems
- * @type {[AssociatedItem]}
+ * @member {Array[]} associatedItems
+ * @type {Array[]}
  */
 ServiceJob.prototype.associatedItems = undefined
 

@@ -20,10 +20,9 @@ export class InnerContainersDetails {
     containerCount: number;
     /**
      * Container sequence numbers that are involved in this shipment.
-     * @member {[ContainerSequenceNumbers]} containerSequenceNumbers
-     * @type {[ContainerSequenceNumbers]}
+     * @member {Array[]} containerSequenceNumbers
+     * @type {Array[]}
      */
-    containerSequenceNumbers: [ContainerSequenceNumbers];
+    containerSequenceNumbers: any[][];
 }
-import { ContainerSequenceNumbers } from './ContainerSequenceNumbers.js';
 //# sourceMappingURL=InnerContainersDetails.d.ts.map

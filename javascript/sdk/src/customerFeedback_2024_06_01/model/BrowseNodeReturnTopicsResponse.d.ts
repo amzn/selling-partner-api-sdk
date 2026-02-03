@@ -22,16 +22,15 @@ export class BrowseNodeReturnTopicsResponse {
      * @param marketplaceId {String} The requested marketplace id.
      * @param countryCode {String} The two digit country code of requested marketplace id, in ISO 3166-1 alpha-2 format.
      * @param dateRange {DateRange}
-     * @param topics {[BrowseNodeReturnTopics]} The list of browse node return topics.
+     * @param topics {Array[]} The list of browse node return topics.
      */
-    constructor(browseNodeId: string, displayName: string, marketplaceId: string, countryCode: string, dateRange: DateRange, topics: [BrowseNodeReturnTopics]);
+    constructor(browseNodeId: string, displayName: string, marketplaceId: string, countryCode: string, dateRange: DateRange, topics: any[][]);
     browseNodeId: string;
     displayName: string;
     marketplaceId: string;
     countryCode: string;
     dateRange: DateRange;
-    topics: [BrowseNodeReturnTopics];
+    topics: any[][];
 }
 import { DateRange } from './DateRange.js';
-import { BrowseNodeReturnTopics } from './BrowseNodeReturnTopics.js';
 //# sourceMappingURL=BrowseNodeReturnTopicsResponse.d.ts.map

@@ -56,10 +56,10 @@ export class Box {
     externalContainerIdentifierType: string;
     /**
      * Items contained within the box.
-     * @member {[Item]} items
-     * @type {[Item]}
+     * @member {Array[]} items
+     * @type {Array[]}
      */
-    items: [Item];
+    items: any[][];
     /**
      * The number of containers where all other properties like weight or dimensions are identical.
      * @member {Number} quantity
@@ -81,6 +81,5 @@ export class Box {
 import { BoxContentInformationSource } from './BoxContentInformationSource.js';
 import { Region } from './Region.js';
 import { Dimensions } from './Dimensions.js';
-import { Item } from './Item.js';
 import { Weight } from './Weight.js';
 //# sourceMappingURL=Box.d.ts.map

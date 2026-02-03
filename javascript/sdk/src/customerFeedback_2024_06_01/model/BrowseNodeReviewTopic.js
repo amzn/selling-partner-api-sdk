@@ -79,14 +79,14 @@ BrowseNodeReviewTopic.prototype.browseNodeMetrics = undefined
 
 /**
  * A list of up to three snippets from reviews that contain the topic. This value is `null` if there aren't enough review snippets for the topic.
- * @member {[String]} reviewSnippets
- * @type {[String]}
+ * @member {Array[]} reviewSnippets
+ * @type {Array[]}
  */
 BrowseNodeReviewTopic.prototype.reviewSnippets = undefined
 
 /**
  * A list of the five subtopics that occur most frequently. This value is `null` if there are no subtopics.
- * @member {[BrowseNodeSubtopic]} subtopics
- * @type {[BrowseNodeSubtopic]}
+ * @member {Array[]} subtopics
+ * @type {Array[]}
  */
 BrowseNodeReviewTopic.prototype.subtopics = undefined

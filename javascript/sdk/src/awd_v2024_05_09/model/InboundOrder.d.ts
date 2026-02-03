@@ -21,14 +21,14 @@ export class InboundOrder {
      * @param orderId {String} Inbound order ID.
      * @param orderStatus {InboundStatus}
      * @param originAddress {Address}
-     * @param packagesToInbound {[DistributionPackageQuantity]} List of packages to be inbounded.
+     * @param packagesToInbound {Array[]} List of packages to be inbounded.
      */
-    constructor(createdAt: Date, orderId: string, orderStatus: InboundStatus, originAddress: Address, packagesToInbound: [DistributionPackageQuantity]);
+    constructor(createdAt: Date, orderId: string, orderStatus: InboundStatus, originAddress: Address, packagesToInbound: any[][]);
     createdAt: Date;
     orderId: string;
     orderStatus: InboundStatus;
     originAddress: Address;
-    packagesToInbound: [DistributionPackageQuantity];
+    packagesToInbound: any[][];
     /**
      * @member {DestinationDetails} destinationDetails
      * @type {DestinationDetails}
@@ -54,7 +54,6 @@ export class InboundOrder {
 }
 import { InboundStatus } from './InboundStatus.js';
 import { Address } from './Address.js';
-import { DistributionPackageQuantity } from './DistributionPackageQuantity.js';
 import { DestinationDetails } from './DestinationDetails.js';
 import { InboundPreferences } from './InboundPreferences.js';
 //# sourceMappingURL=InboundOrder.d.ts.map

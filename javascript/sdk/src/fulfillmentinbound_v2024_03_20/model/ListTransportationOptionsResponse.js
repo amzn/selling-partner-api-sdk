@@ -26,7 +26,7 @@ export class ListTransportationOptionsResponse {
    * The &#x60;listTransportationOptions&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListTransportationOptionsResponse
    * @class
-   * @param transportationOptions {[TransportationOption]} Transportation options generated for the placement option.
+   * @param transportationOptions {Array[]} Transportation options generated for the placement option.
    */
   constructor (transportationOptions) {
     this.transportationOptions = transportationOptions
@@ -68,7 +68,7 @@ ListTransportationOptionsResponse.prototype.pagination = undefined
 
 /**
  * Transportation options generated for the placement option.
- * @member {[TransportationOption]} transportationOptions
- * @type {[TransportationOption]}
+ * @member {Array[]} transportationOptions
+ * @type {Array[]}
  */
 ListTransportationOptionsResponse.prototype.transportationOptions = undefined

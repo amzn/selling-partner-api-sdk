@@ -25,7 +25,7 @@ export class ErrorList {
    * A list of error responses returned when a request is unsuccessful.
    * @alias module:datakiosk_v2023_11_15/model/ErrorList
    * @class
-   * @param errors {[Error]} Error response returned when the request is unsuccessful.
+   * @param errors {Array[]} Error response returned when the request is unsuccessful.
    */
   constructor (errors) {
     this.errors = errors
@@ -60,7 +60,7 @@ export class ErrorList {
 
 /**
  * Error response returned when the request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Array[]} errors
+ * @type {Array[]}
  */
 ErrorList.prototype.errors = undefined

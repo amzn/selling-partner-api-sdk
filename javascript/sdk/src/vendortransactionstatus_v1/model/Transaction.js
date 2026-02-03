@@ -103,7 +103,7 @@ Transaction.prototype.status = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Array[]} errors
+ * @type {Array[]}
  */
 Transaction.prototype.errors = undefined

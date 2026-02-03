@@ -17,10 +17,9 @@ export class UpdateScheduleRequest {
      * Request schema for the &#x60;updateSchedule&#x60; operation.
      * @alias module:services_v1/model/UpdateScheduleRequest
      * @class
-     * @param schedules {[AvailabilityRecord]} List of `AvailabilityRecord`s to represent the capacity of a resource over a time range.
+     * @param schedules {Array[]} List of `AvailabilityRecord`s to represent the capacity of a resource over a time range.
      */
-    constructor(schedules: [AvailabilityRecord]);
-    schedules: [AvailabilityRecord];
+    constructor(schedules: any[][]);
+    schedules: any[][];
 }
-import { AvailabilityRecord } from './AvailabilityRecord.js';
 //# sourceMappingURL=UpdateScheduleRequest.d.ts.map

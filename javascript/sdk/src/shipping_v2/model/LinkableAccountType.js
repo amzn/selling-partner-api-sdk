@@ -66,7 +66,7 @@ LinkableAccountType.prototype.accountType = undefined
 
 /**
  * A list of CarrierAccountInput
- * @member {[CarrierAccountInput]} carrierAccountInputs
- * @type {[CarrierAccountInput]}
+ * @member {Array[]} carrierAccountInputs
+ * @type {Array[]}
  */
 LinkableAccountType.prototype.carrierAccountInputs = undefined

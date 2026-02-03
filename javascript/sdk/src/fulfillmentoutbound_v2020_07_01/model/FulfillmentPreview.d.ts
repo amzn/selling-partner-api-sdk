@@ -39,40 +39,36 @@ export class FulfillmentPreview {
     estimatedShippingWeight: Weight;
     /**
      * An array of fee type and cost pairs.
-     * @member {[Fee]} estimatedFees
-     * @type {[Fee]}
+     * @member {Array[]} estimatedFees
+     * @type {Array[]}
      */
-    estimatedFees: [Fee];
+    estimatedFees: any[][];
     /**
      * An array of fulfillment preview shipment information.
-     * @member {[FulfillmentPreviewShipment]} fulfillmentPreviewShipments
-     * @type {[FulfillmentPreviewShipment]}
+     * @member {Array[]} fulfillmentPreviewShipments
+     * @type {Array[]}
      */
-    fulfillmentPreviewShipments: [FulfillmentPreviewShipment];
+    fulfillmentPreviewShipments: any[][];
     /**
      * An array of unfulfillable preview item information.
-     * @member {[UnfulfillablePreviewItem]} unfulfillablePreviewItems
-     * @type {[UnfulfillablePreviewItem]}
+     * @member {Array[]} unfulfillablePreviewItems
+     * @type {Array[]}
      */
-    unfulfillablePreviewItems: [UnfulfillablePreviewItem];
+    unfulfillablePreviewItems: any[][];
     /**
      * String list
-     * @member {[String]} orderUnfulfillableReasons
-     * @type {[String]}
+     * @member {Array[]} orderUnfulfillableReasons
+     * @type {Array[]}
      */
-    orderUnfulfillableReasons: [string];
+    orderUnfulfillableReasons: any[][];
     /**
      * A list of features and their fulfillment policies to apply to the order.
-     * @member {[FeatureSettings]} featureConstraints
-     * @type {[FeatureSettings]}
+     * @member {Array[]} featureConstraints
+     * @type {Array[]}
      */
-    featureConstraints: [FeatureSettings];
+    featureConstraints: any[][];
 }
 import { ShippingSpeedCategory } from './ShippingSpeedCategory.js';
 import { ScheduledDeliveryInfo } from './ScheduledDeliveryInfo.js';
 import { Weight } from './Weight.js';
-import { Fee } from './Fee.js';
-import { FulfillmentPreviewShipment } from './FulfillmentPreviewShipment.js';
-import { UnfulfillablePreviewItem } from './UnfulfillablePreviewItem.js';
-import { FeatureSettings } from './FeatureSettings.js';
 //# sourceMappingURL=FulfillmentPreview.d.ts.map

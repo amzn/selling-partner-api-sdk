@@ -25,11 +25,10 @@ export class ItemProceedsBreakdown {
     subtotal: Money;
     /**
      * Further granular breakdown of the subtotal.
-     * @member {[ItemProceedsDetailedBreakdown]} detailedBreakdowns
-     * @type {[ItemProceedsDetailedBreakdown]}
+     * @member {Array[]} detailedBreakdowns
+     * @type {Array[]}
      */
-    detailedBreakdowns: [ItemProceedsDetailedBreakdown];
+    detailedBreakdowns: any[][];
 }
 import { Money } from './Money.js';
-import { ItemProceedsDetailedBreakdown } from './ItemProceedsDetailedBreakdown.js';
 //# sourceMappingURL=ItemProceedsBreakdown.d.ts.map

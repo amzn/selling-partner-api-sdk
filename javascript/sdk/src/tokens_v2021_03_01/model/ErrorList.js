@@ -57,7 +57,7 @@ export class ErrorList {
 }
 
 /**
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Array[]} errors
+ * @type {Array[]}
  */
 ErrorList.prototype.errors = undefined

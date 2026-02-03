@@ -29,10 +29,10 @@ export class Charge {
     totalTax: Tax;
     /**
      * The tax charge details.
-     * @member {[Tax]} taxBreakup
-     * @type {[Tax]}
+     * @member {Array[]} taxBreakup
+     * @type {Array[]}
      */
-    taxBreakup: [Tax];
+    taxBreakup: any[][];
 }
 export namespace Charge {
     namespace ChargeTypeEnum {

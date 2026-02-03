@@ -17,31 +17,27 @@ export class GetEligibleShipmentServicesResult {
      * The payload for the &#x60;getEligibleShipmentServices&#x60; operation.
      * @alias module:merchantfulfillment_v0/model/GetEligibleShipmentServicesResult
      * @class
-     * @param shippingServiceList {[ShippingService]} A list of shipping services offers.
+     * @param shippingServiceList {Array[]} A list of shipping services offers.
      */
-    constructor(shippingServiceList: [ShippingService]);
-    shippingServiceList: [ShippingService];
+    constructor(shippingServiceList: any[][]);
+    shippingServiceList: any[][];
     /**
      * List of services that are for some reason unavailable for this request
-     * @member {[RejectedShippingService]} rejectedShippingServiceList
-     * @type {[RejectedShippingService]}
+     * @member {Array[]} rejectedShippingServiceList
+     * @type {Array[]}
      */
-    rejectedShippingServiceList: [RejectedShippingService];
+    rejectedShippingServiceList: any[][];
     /**
      * A list of temporarily unavailable carriers.
-     * @member {[TemporarilyUnavailableCarrier]} temporarilyUnavailableCarrierList
-     * @type {[TemporarilyUnavailableCarrier]}
+     * @member {Array[]} temporarilyUnavailableCarrierList
+     * @type {Array[]}
      */
-    temporarilyUnavailableCarrierList: [TemporarilyUnavailableCarrier];
+    temporarilyUnavailableCarrierList: any[][];
     /**
      * List of carriers whose terms and conditions were not accepted by the seller.
-     * @member {[TermsAndConditionsNotAcceptedCarrier]} termsAndConditionsNotAcceptedCarrierList
-     * @type {[TermsAndConditionsNotAcceptedCarrier]}
+     * @member {Array[]} termsAndConditionsNotAcceptedCarrierList
+     * @type {Array[]}
      */
-    termsAndConditionsNotAcceptedCarrierList: [TermsAndConditionsNotAcceptedCarrier];
+    termsAndConditionsNotAcceptedCarrierList: any[][];
 }
-import { ShippingService } from './ShippingService.js';
-import { RejectedShippingService } from './RejectedShippingService.js';
-import { TemporarilyUnavailableCarrier } from './TemporarilyUnavailableCarrier.js';
-import { TermsAndConditionsNotAcceptedCarrier } from './TermsAndConditionsNotAcceptedCarrier.js';
 //# sourceMappingURL=GetEligibleShipmentServicesResult.d.ts.map

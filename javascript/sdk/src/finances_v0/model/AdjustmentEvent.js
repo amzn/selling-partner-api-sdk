@@ -90,7 +90,7 @@ AdjustmentEvent.prototype.adjustmentAmount = undefined
 
 /**
  * A list of information about items in an adjustment to the seller's account.
- * @member {[AdjustmentItem]} adjustmentItemList
- * @type {[AdjustmentItem]}
+ * @member {Array[]} adjustmentItemList
+ * @type {Array[]}
  */
 AdjustmentEvent.prototype.adjustmentItemList = undefined

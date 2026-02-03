@@ -123,8 +123,8 @@ Invoice.prototype.status = undefined
 
 /**
  * List with identifiers for the transactions associated to the invoice.
- * @member {[TransactionIdentifier]} transactionIds
- * @type {[TransactionIdentifier]}
+ * @member {Array[]} transactionIds
+ * @type {Array[]}
  */
 Invoice.prototype.transactionIds = undefined
 

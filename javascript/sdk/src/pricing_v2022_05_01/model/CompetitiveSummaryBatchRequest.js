@@ -25,7 +25,7 @@ export class CompetitiveSummaryBatchRequest {
    * The &#x60;competitiveSummary&#x60; batch request data.
    * @alias module:pricing_v2022_05_01/model/CompetitiveSummaryBatchRequest
    * @class
-   * @param requests {[CompetitiveSummaryRequest]} A batched list of `competitiveSummary` requests.
+   * @param requests {Array[]} A batched list of `competitiveSummary` requests.
    */
   constructor (requests) {
     this.requests = requests
@@ -60,7 +60,7 @@ export class CompetitiveSummaryBatchRequest {
 
 /**
  * A batched list of `competitiveSummary` requests.
- * @member {[CompetitiveSummaryRequest]} requests
- * @type {[CompetitiveSummaryRequest]}
+ * @member {Array[]} requests
+ * @type {Array[]}
  */
 CompetitiveSummaryBatchRequest.prototype.requests = undefined

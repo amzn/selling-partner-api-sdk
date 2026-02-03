@@ -19,7 +19,7 @@ export class Shipment {
      * @class
      * @param shipmentId {String} An Amazon-defined shipment identifier.
      * @param amazonOrderId {String} An Amazon-defined order identifier, in 3-7-7 format.
-     * @param itemList {[Item]} The list of items you want to include in a shipment.
+     * @param itemList {Array[]} The list of items you want to include in a shipment.
      * @param shipFromAddress {Address}
      * @param shipToAddress {Address}
      * @param packageDimensions {PackageDimensions}
@@ -30,10 +30,10 @@ export class Shipment {
      * @param status {ShipmentStatus}
      * @param createdDate {Date} Date-time formatted timestamp.
      */
-    constructor(shipmentId: string, amazonOrderId: string, itemList: [Item], shipFromAddress: Address, shipToAddress: Address, packageDimensions: PackageDimensions, weight: Weight, insurance: CurrencyAmount, shippingService: ShippingService, label: Label, status: ShipmentStatus, createdDate: Date);
+    constructor(shipmentId: string, amazonOrderId: string, itemList: any[][], shipFromAddress: Address, shipToAddress: Address, packageDimensions: PackageDimensions, weight: Weight, insurance: CurrencyAmount, shippingService: ShippingService, label: Label, status: ShipmentStatus, createdDate: Date);
     shipmentId: string;
     amazonOrderId: string;
-    itemList: [Item];
+    itemList: any[][];
     shipFromAddress: Address;
     shipToAddress: Address;
     packageDimensions: PackageDimensions;
@@ -62,7 +62,6 @@ export class Shipment {
      */
     lastUpdatedDate: Date;
 }
-import { Item } from './Item.js';
 import { Address } from './Address.js';
 import { PackageDimensions } from './PackageDimensions.js';
 import { Weight } from './Weight.js';

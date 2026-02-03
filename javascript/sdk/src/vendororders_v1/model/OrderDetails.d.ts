@@ -19,12 +19,12 @@ export class OrderDetails {
      * @class
      * @param purchaseOrderDate {Date} The date the purchase order was placed. Must be in ISO-8601 date/time format.
      * @param purchaseOrderStateChangedDate {Date} The date when current purchase order state was changed. Current purchase order state is available in the field 'purchaseOrderState'. Must be in ISO-8601 date/time format.
-     * @param items {[OrderItem]} A list of items in this purchase order.
+     * @param items {Array[]} A list of items in this purchase order.
      */
-    constructor(purchaseOrderDate: Date, purchaseOrderStateChangedDate: Date, items: [OrderItem]);
+    constructor(purchaseOrderDate: Date, purchaseOrderStateChangedDate: Date, items: any[][]);
     purchaseOrderDate: Date;
     purchaseOrderStateChangedDate: Date;
-    items: [OrderItem];
+    items: any[][];
     /**
      * The date when purchase order was last changed by Amazon after the order was placed. This date will be greater than 'purchaseOrderDate'. This means the PO data was changed on that date and vendors are required to fulfill the  updated PO. The PO changes can be related to Item Quantity, Ship to Location, Ship Window etc. This field will not be present in orders that have not changed after creation. Must be in ISO-8601 date/time format.
      * @member {Date} purchaseOrderChangedDate
@@ -109,7 +109,6 @@ export namespace OrderDetails {
      */
     type PaymentMethodEnum = string;
 }
-import { OrderItem } from './OrderItem.js';
 import { ImportDetails } from './ImportDetails.js';
 import { PartyIdentification } from './PartyIdentification.js';
 //# sourceMappingURL=OrderDetails.d.ts.map

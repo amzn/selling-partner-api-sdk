@@ -1,1 +1,1 @@
-{"version":3,"file":"RestrictedResource.d.ts","sourceRoot":"","sources":["RestrictedResource.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAcE;;;;;;OAMG;IACH,2CAHW,kBAAkB,GACjB,kBAAkB,CAqB7B;IAvCD;;;;;;;OAOG;IACH,0CAGC;IAFC,eAAoB;IACpB,aAAgB;IA6EpB;;;;OAIG;IACH,cAFU,QAAQ,CAEuB;CApDxC"}
+{"version":3,"file":"RestrictedResource.d.ts","sourceRoot":"","sources":["RestrictedResource.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAcE;;;;;;OAMG;IACH,2CAHW,kBAAkB,GACjB,kBAAkB,CAqB7B;IAvCD;;;;;;;OAOG;IACH,0CAGC;IAFC,eAAoB;IACpB,aAAgB;IA6EpB;;;;OAIG;IACH,cAFU,OAAO,CAEwB;CApDxC"}

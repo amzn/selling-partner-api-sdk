@@ -20,10 +20,9 @@ export class ListAllFulfillmentOrdersResult {
     nextToken: string;
     /**
      * An array of fulfillment order information.
-     * @member {[FulfillmentOrder]} fulfillmentOrders
-     * @type {[FulfillmentOrder]}
+     * @member {Array[]} fulfillmentOrders
+     * @type {Array[]}
      */
-    fulfillmentOrders: [FulfillmentOrder];
+    fulfillmentOrders: any[][];
 }
-import { FulfillmentOrder } from './FulfillmentOrder.js';
 //# sourceMappingURL=ListAllFulfillmentOrdersResult.d.ts.map

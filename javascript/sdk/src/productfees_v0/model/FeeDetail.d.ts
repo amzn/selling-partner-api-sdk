@@ -37,11 +37,10 @@ export class FeeDetail {
     taxAmount: MoneyType;
     /**
      * A list of other fees that contribute to a given fee.
-     * @member {[IncludedFeeDetail]} includedFeeDetailList
-     * @type {[IncludedFeeDetail]}
+     * @member {Array[]} includedFeeDetailList
+     * @type {Array[]}
      */
-    includedFeeDetailList: [IncludedFeeDetail];
+    includedFeeDetailList: any[][];
 }
 import { MoneyType } from './MoneyType.js';
-import { IncludedFeeDetail } from './IncludedFeeDetail.js';
 //# sourceMappingURL=FeeDetail.d.ts.map

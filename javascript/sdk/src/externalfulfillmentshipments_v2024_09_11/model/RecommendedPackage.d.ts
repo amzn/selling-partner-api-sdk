@@ -19,14 +19,13 @@ export class RecommendedPackage {
      * @class
      * @param dimensions {PackageDimensions}
      * @param weight {Weight}
-     * @param lineItems {[RecommendedPackageLineItem]} A list of line items to be contained in a recommended package. This attribute is only for orders that come with specific recommendations for line-item distribution.
+     * @param lineItems {Array[]} A list of line items to be contained in a recommended package. This attribute is only for orders that come with specific recommendations for line-item distribution.
      */
-    constructor(dimensions: PackageDimensions, weight: Weight, lineItems: [RecommendedPackageLineItem]);
+    constructor(dimensions: PackageDimensions, weight: Weight, lineItems: any[][]);
     dimensions: PackageDimensions;
     weight: Weight;
-    lineItems: [RecommendedPackageLineItem];
+    lineItems: any[][];
 }
 import { PackageDimensions } from './PackageDimensions.js';
 import { Weight } from './Weight.js';
-import { RecommendedPackageLineItem } from './RecommendedPackageLineItem.js';
 //# sourceMappingURL=RecommendedPackage.d.ts.map

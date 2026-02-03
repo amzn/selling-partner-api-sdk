@@ -27,7 +27,7 @@ export class LinkCarrierAccountRequest {
    * @alias module:shipping_v2/model/LinkCarrierAccountRequest
    * @class
    * @param carrierAccountType {String} CarrierAccountType  associated with account.
-   * @param carrierAccountAttributes {[CarrierAccountAttribute]} A list of all attributes required by the carrier in order to successfully link the merchant's account
+   * @param carrierAccountAttributes {Array[]} A list of all attributes required by the carrier in order to successfully link the merchant's account
    */
   constructor (carrierAccountType, carrierAccountAttributes) {
     this.carrierAccountType = carrierAccountType
@@ -66,8 +66,8 @@ export class LinkCarrierAccountRequest {
 
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
- * @member {[ClientReferenceDetail]} clientReferenceDetails
- * @type {[ClientReferenceDetail]}
+ * @member {Array[]} clientReferenceDetails
+ * @type {Array[]}
  */
 LinkCarrierAccountRequest.prototype.clientReferenceDetails = undefined
 
@@ -80,14 +80,14 @@ LinkCarrierAccountRequest.prototype.carrierAccountType = undefined
 
 /**
  * A list of all attributes required by the carrier in order to successfully link the merchant's account
- * @member {[CarrierAccountAttribute]} carrierAccountAttributes
- * @type {[CarrierAccountAttribute]}
+ * @member {Array[]} carrierAccountAttributes
+ * @type {Array[]}
  */
 LinkCarrierAccountRequest.prototype.carrierAccountAttributes = undefined
 
 /**
  * A list of all attributes required by the carrier in order to successfully link the merchant's account
- * @member {[CarrierAccountAttribute]} encryptedCarrierAccountAttributes
- * @type {[CarrierAccountAttribute]}
+ * @member {Array[]} encryptedCarrierAccountAttributes
+ * @type {Array[]}
  */
 LinkCarrierAccountRequest.prototype.encryptedCarrierAccountAttributes = undefined

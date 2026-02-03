@@ -19,12 +19,12 @@ export class ReplenishmentOrder {
      * @class
      * @param orderId {String} Order Id of the replenishment order.
      * @param status {ReplenishmentOrderStatus}
-     * @param outboundShipments {[OutboundShipmentSummary]} List of outbound shipments that are part of this order.
+     * @param outboundShipments {Array[]} List of outbound shipments that are part of this order.
      */
-    constructor(orderId: string, status: ReplenishmentOrderStatus, outboundShipments: [OutboundShipmentSummary]);
+    constructor(orderId: string, status: ReplenishmentOrderStatus, outboundShipments: any[][]);
     orderId: string;
     status: ReplenishmentOrderStatus;
-    outboundShipments: [OutboundShipmentSummary];
+    outboundShipments: any[][];
     /**
      * Date on which this replenishment order was confirmed.
      * @member {Date} confirmedOn
@@ -39,28 +39,28 @@ export class ReplenishmentOrder {
     createdAt: Date;
     /**
      * Distribution errors associated with the order related to the products or packages to replenish. This field will be populated if the order has products or packages which failed validation.
-     * @member {[DistributionIneligibleReason]} distributionIneligibleReasons
-     * @type {[DistributionIneligibleReason]}
+     * @member {Array[]} distributionIneligibleReasons
+     * @type {Array[]}
      */
-    distributionIneligibleReasons: [DistributionIneligibleReason];
+    distributionIneligibleReasons: any[][];
     /**
      * List of product units that are eligible for replenishment.
-     * @member {[DistributionProduct]} eligibleProducts
-     * @type {[DistributionProduct]}
+     * @member {Array[]} eligibleProducts
+     * @type {Array[]}
      */
-    eligibleProducts: [DistributionProduct];
+    eligibleProducts: any[][];
     /**
      * Requested amount of single product units to be replenished.
-     * @member {[DistributionProduct]} products
-     * @type {[DistributionProduct]}
+     * @member {Array[]} products
+     * @type {Array[]}
      */
-    products: [DistributionProduct];
+    products: any[][];
     /**
      * Outbound product units that are shipped after the execution has completed post confirmation.
-     * @member {[DistributionProduct]} shippedProducts
-     * @type {[DistributionProduct]}
+     * @member {Array[]} shippedProducts
+     * @type {Array[]}
      */
-    shippedProducts: [DistributionProduct];
+    shippedProducts: any[][];
     /**
      * Date on which this replenishment order was last updated.
      * @member {Date} updatedAt
@@ -69,7 +69,4 @@ export class ReplenishmentOrder {
     updatedAt: Date;
 }
 import { ReplenishmentOrderStatus } from './ReplenishmentOrderStatus.js';
-import { OutboundShipmentSummary } from './OutboundShipmentSummary.js';
-import { DistributionIneligibleReason } from './DistributionIneligibleReason.js';
-import { DistributionProduct } from './DistributionProduct.js';
 //# sourceMappingURL=ReplenishmentOrder.d.ts.map

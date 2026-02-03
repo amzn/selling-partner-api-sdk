@@ -51,10 +51,10 @@ export class ShippingService {
     latestEstimatedDeliveryDate: Date;
     /**
      * List of adjustments.
-     * @member {[RateItem]} adjustmentItemList
-     * @type {[RateItem]}
+     * @member {Array[]} adjustmentItemList
+     * @type {Array[]}
      */
-    adjustmentItemList: [RateItem];
+    adjustmentItemList: any[][];
     /**
      * @member {AvailableShippingServiceOptions} availableShippingServiceOptions
      * @type {AvailableShippingServiceOptions}
@@ -62,16 +62,16 @@ export class ShippingService {
     availableShippingServiceOptions: AvailableShippingServiceOptions;
     /**
      * List of label formats.
-     * @member {[LabelFormat]} availableLabelFormats
-     * @type {[LabelFormat]}
+     * @member {Array[]} availableLabelFormats
+     * @type {Array[]}
      */
-    availableLabelFormats: [LabelFormat];
+    availableLabelFormats: any[][];
     /**
      * The available label formats.
-     * @member {[LabelFormatOption]} availableFormatOptionsForLabel
-     * @type {[LabelFormatOption]}
+     * @member {Array[]} availableFormatOptionsForLabel
+     * @type {Array[]}
      */
-    availableFormatOptionsForLabel: [LabelFormatOption];
+    availableFormatOptionsForLabel: any[][];
     /**
      * @member {Benefits} benefits
      * @type {Benefits}
@@ -80,9 +80,6 @@ export class ShippingService {
 }
 import { CurrencyAmount } from './CurrencyAmount.js';
 import { ShippingServiceOptions } from './ShippingServiceOptions.js';
-import { RateItem } from './RateItem.js';
 import { AvailableShippingServiceOptions } from './AvailableShippingServiceOptions.js';
-import { LabelFormat } from './LabelFormat.js';
-import { LabelFormatOption } from './LabelFormatOption.js';
 import { Benefits } from './Benefits.js';
 //# sourceMappingURL=ShippingService.d.ts.map

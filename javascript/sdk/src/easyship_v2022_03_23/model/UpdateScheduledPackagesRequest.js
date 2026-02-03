@@ -26,7 +26,7 @@ export class UpdateScheduledPackagesRequest {
    * @alias module:easyship_v2022_03_23/model/UpdateScheduledPackagesRequest
    * @class
    * @param marketplaceId {String} A string of up to 255 characters.
-   * @param updatePackageDetailsList {[UpdatePackageDetails]} A list of package update details.
+   * @param updatePackageDetailsList {Array[]} A list of package update details.
    */
   constructor (marketplaceId, updatePackageDetailsList) {
     this.marketplaceId = marketplaceId
@@ -70,7 +70,7 @@ UpdateScheduledPackagesRequest.prototype.marketplaceId = undefined
 
 /**
  * A list of package update details.
- * @member {[UpdatePackageDetails]} updatePackageDetailsList
- * @type {[UpdatePackageDetails]}
+ * @member {Array[]} updatePackageDetailsList
+ * @type {Array[]}
  */
 UpdateScheduledPackagesRequest.prototype.updatePackageDetailsList = undefined

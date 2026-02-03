@@ -25,7 +25,7 @@ export class PackageGroupingInput {
    * Packing information for the inbound plan.
    * @alias module:fulfillmentinbound_v2024_03_20/model/PackageGroupingInput
    * @class
-   * @param boxes {[BoxInput]} Box level information being provided.
+   * @param boxes {Array[]} Box level information being provided.
    */
   constructor (boxes) {
     this.boxes = boxes
@@ -62,8 +62,8 @@ export class PackageGroupingInput {
 
 /**
  * Box level information being provided.
- * @member {[BoxInput]} boxes
- * @type {[BoxInput]}
+ * @member {Array[]} boxes
+ * @type {Array[]}
  */
 PackageGroupingInput.prototype.boxes = undefined
 

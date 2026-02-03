@@ -17,10 +17,10 @@ export class InventoryListing {
      * AWD inventory payload.
      * @alias module:awd_v2024_05_09/model/InventoryListing
      * @class
-     * @param inventory {[InventorySummary]} List of inventory summaries.
+     * @param inventory {Array[]} List of inventory summaries.
      */
-    constructor(inventory: [InventorySummary]);
-    inventory: [InventorySummary];
+    constructor(inventory: any[][]);
+    inventory: any[][];
     /**
      * A token that is used to retrieve the next page of results. The response includes `nextToken` when the number of results exceeds the specified `maxResults` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
      * @member {String} nextToken
@@ -28,5 +28,4 @@ export class InventoryListing {
      */
     nextToken: string;
 }
-import { InventorySummary } from './InventorySummary.js';
 //# sourceMappingURL=InventoryListing.d.ts.map

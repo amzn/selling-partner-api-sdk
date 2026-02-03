@@ -18,16 +18,15 @@ export class ValidateContentDocumentAsinRelationsResponse {
      * @class
      * @implements module:apluscontent_v2020_11_01/model/AplusResponse
      * @implements module:apluscontent_v2020_11_01/model/ErrorList
-     * @param errors {[Error]} A list of error responses that are returned when a request is unsuccessful.
+     * @param errors {Array[]} A list of error responses that are returned when a request is unsuccessful.
      */
-    constructor(errors: [Error]);
-    errors: [Error];
+    constructor(errors: any[][]);
+    errors: any[][];
     /**
      * A set of messages to the user, such as warnings or comments.
-     * @member {[Error]} warnings
-     * @type {[Error]}
+     * @member {Array[]} warnings
+     * @type {Array[]}
      */
-    warnings: [Error];
+    warnings: any[][];
 }
-import { Error } from './Error.js';
 //# sourceMappingURL=ValidateContentDocumentAsinRelationsResponse.d.ts.map

@@ -25,10 +25,10 @@ export class PackageLineItem {
     quantity: number;
     /**
      * The list of serial numbers of items in the package, if required to be provided.
-     * @member {[String]} serialNumbers
-     * @type {[String]}
+     * @member {Array[]} serialNumbers
+     * @type {Array[]}
      */
-    serialNumbers: [string];
+    serialNumbers: any[][];
     /**
      * The number of pieces of a multi-piece item that are in this package. This is applicable only for items that are shipped in multiple pieces.
      * @member {Number} pieces

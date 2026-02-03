@@ -22,15 +22,15 @@ export class FulfillmentPlan {
      * @param fulfillmentType {String} Type of fulfillment
      * @param fulfillmentPlanStatus {String} The fulfillment plan status.
      * @param lastStatusUpdateDate {String} The time when the fulfillment plan's status was last updated in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
-     * @param fulfillmentPlanItems {[FulfillmentPlanItem]} The details of the order items that are included in the fulfillment plan.
+     * @param fulfillmentPlanItems {Array[]} The details of the order items that are included in the fulfillment plan.
      */
-    constructor(fulfillmentPlanId: string, creationDate: string, fulfillmentType: string, fulfillmentPlanStatus: string, lastStatusUpdateDate: string, fulfillmentPlanItems: [FulfillmentPlanItem]);
+    constructor(fulfillmentPlanId: string, creationDate: string, fulfillmentType: string, fulfillmentPlanStatus: string, lastStatusUpdateDate: string, fulfillmentPlanItems: any[][]);
     fulfillmentPlanId: string;
     creationDate: string;
     fulfillmentType: string;
     fulfillmentPlanStatus: string;
     lastStatusUpdateDate: string;
-    fulfillmentPlanItems: [FulfillmentPlanItem];
+    fulfillmentPlanItems: any[][];
     /**
      * @member {FulfillmentLocation} fulfillmentLocation
      * @type {FulfillmentLocation}
@@ -63,7 +63,6 @@ export namespace FulfillmentPlan {
      */
     type FulfillmentPlanStatusEnum = string;
 }
-import { FulfillmentPlanItem } from './FulfillmentPlanItem.js';
 import { FulfillmentLocation } from './FulfillmentLocation.js';
 import { ShippingInstructions } from './ShippingInstructions.js';
 //# sourceMappingURL=FulfillmentPlan.d.ts.map

@@ -46,11 +46,10 @@ export class StandardComparisonProductBlock {
     highlight: boolean;
     /**
      * Comparison metrics for the product.
-     * @member {[PlainTextItem]} metrics
-     * @type {[PlainTextItem]}
+     * @member {Array[]} metrics
+     * @type {Array[]}
      */
-    metrics: [PlainTextItem];
+    metrics: any[][];
 }
 import { ImageComponent } from './ImageComponent.js';
-import { PlainTextItem } from './PlainTextItem.js';
 //# sourceMappingURL=StandardComparisonProductBlock.d.ts.map

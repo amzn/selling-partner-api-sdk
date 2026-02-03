@@ -17,12 +17,11 @@ export class CustomPlacementInput {
      * Provide units going to the warehouse.
      * @alias module:fulfillmentinbound_v2024_03_20/model/CustomPlacementInput
      * @class
-     * @param items {[ItemInput]} Items included while creating Inbound Plan.
+     * @param items {Array[]} Items included while creating Inbound Plan.
      * @param warehouseId {String} Warehouse Id.
      */
-    constructor(items: [ItemInput], warehouseId: string);
-    items: [ItemInput];
+    constructor(items: any[][], warehouseId: string);
+    items: any[][];
     warehouseId: string;
 }
-import { ItemInput } from './ItemInput.js';
 //# sourceMappingURL=CustomPlacementInput.d.ts.map

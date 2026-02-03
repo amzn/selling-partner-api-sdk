@@ -19,11 +19,10 @@ export class GetOffersResponse {
     payload: GetOffersResult;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { GetOffersResult } from './GetOffersResult.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetOffersResponse.d.ts.map

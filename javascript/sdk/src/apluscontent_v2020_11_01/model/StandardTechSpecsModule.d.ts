@@ -17,10 +17,10 @@ export class StandardTechSpecsModule {
      * The standard table of technical feature names and definitions.
      * @alias module:apluscontent_v2020_11_01/model/StandardTechSpecsModule
      * @class
-     * @param specificationList {[StandardTextPairBlock]} The specification list.
+     * @param specificationList {Array[]} The specification list.
      */
-    constructor(specificationList: [StandardTextPairBlock]);
-    specificationList: [StandardTextPairBlock];
+    constructor(specificationList: any[][]);
+    specificationList: any[][];
     /**
      * @member {TextComponent} headline
      * @type {TextComponent}
@@ -33,6 +33,5 @@ export class StandardTechSpecsModule {
      */
     tableCount: number;
 }
-import { StandardTextPairBlock } from './StandardTextPairBlock.js';
 import { TextComponent } from './TextComponent.js';
 //# sourceMappingURL=StandardTechSpecsModule.d.ts.map

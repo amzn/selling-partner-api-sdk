@@ -81,8 +81,8 @@ Item.prototype.sku = undefined
 
 /**
  * Summary details of a listings item.
- * @member {[ItemSummaryByMarketplace]} summaries
- * @type {[ItemSummaryByMarketplace]}
+ * @member {Array[]} summaries
+ * @type {Array[]}
  */
 Item.prototype.summaries = undefined
 
@@ -95,42 +95,42 @@ Item.prototype.attributes = undefined
 
 /**
  * The issues associated with the listings item.
- * @member {[Issue]} issues
- * @type {[Issue]}
+ * @member {Array[]} issues
+ * @type {Array[]}
  */
 Item.prototype.issues = undefined
 
 /**
  * Offer details for the listings item.
- * @member {[ItemOfferByMarketplace]} offers
- * @type {[ItemOfferByMarketplace]}
+ * @member {Array[]} offers
+ * @type {Array[]}
  */
 Item.prototype.offers = undefined
 
 /**
  * The fulfillment availability for the listings item.
- * @member {[FulfillmentAvailability]} fulfillmentAvailability
- * @type {[FulfillmentAvailability]}
+ * @member {Array[]} fulfillmentAvailability
+ * @type {Array[]}
  */
 Item.prototype.fulfillmentAvailability = undefined
 
 /**
  * The vendor procurement information for the listings item.
- * @member {[ItemProcurement]} procurement
- * @type {[ItemProcurement]}
+ * @member {Array[]} procurement
+ * @type {Array[]}
  */
 Item.prototype.procurement = undefined
 
 /**
  * Relationships for a listing item, by marketplace (for example, variations).
- * @member {[ItemRelationshipsByMarketplace]} relationships
- * @type {[ItemRelationshipsByMarketplace]}
+ * @member {Array[]} relationships
+ * @type {Array[]}
  */
 Item.prototype.relationships = undefined
 
 /**
  * Product types for a listing item, by marketplace.
- * @member {[ItemProductTypeByMarketplace]} productTypes
- * @type {[ItemProductTypeByMarketplace]}
+ * @member {Array[]} productTypes
+ * @type {Array[]}
  */
 Item.prototype.productTypes = undefined

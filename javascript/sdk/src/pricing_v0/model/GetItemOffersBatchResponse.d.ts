@@ -14,10 +14,9 @@ export class GetItemOffersBatchResponse {
     static constructFromObject(data: any, obj: GetItemOffersBatchResponse): GetItemOffersBatchResponse;
     /**
      * A list of `getItemOffers` batched responses.
-     * @member {[ItemOffersResponse]} responses
-     * @type {[ItemOffersResponse]}
+     * @member {Array[]} responses
+     * @type {Array[]}
      */
-    responses: [ItemOffersResponse];
+    responses: any[][];
 }
-import { ItemOffersResponse } from './ItemOffersResponse.js';
 //# sourceMappingURL=GetItemOffersBatchResponse.d.ts.map

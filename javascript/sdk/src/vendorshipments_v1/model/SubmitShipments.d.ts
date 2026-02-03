@@ -14,10 +14,9 @@ export class SubmitShipments {
     static constructFromObject(data: any, obj: SubmitShipments): SubmitShipments;
     /**
      * A list of one or more shipments with underlying details.
-     * @member {[Shipment]} shipments
-     * @type {[Shipment]}
+     * @member {Array[]} shipments
+     * @type {Array[]}
      */
-    shipments: [Shipment];
+    shipments: any[][];
 }
-import { Shipment } from './Shipment.js';
 //# sourceMappingURL=SubmitShipments.d.ts.map

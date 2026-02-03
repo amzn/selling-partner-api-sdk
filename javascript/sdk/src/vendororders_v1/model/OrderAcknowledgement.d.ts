@@ -20,14 +20,13 @@ export class OrderAcknowledgement {
      * @param purchaseOrderNumber {String} The purchase order number. Formatting Notes: 8-character alpha-numeric code.
      * @param sellingParty {PartyIdentification}
      * @param acknowledgementDate {Date} The date and time when the purchase order is acknowledged, in ISO-8601 date/time format.
-     * @param items {[OrderAcknowledgementItem]} A list of the items being acknowledged with associated details.
+     * @param items {Array[]} A list of the items being acknowledged with associated details.
      */
-    constructor(purchaseOrderNumber: string, sellingParty: PartyIdentification, acknowledgementDate: Date, items: [OrderAcknowledgementItem]);
+    constructor(purchaseOrderNumber: string, sellingParty: PartyIdentification, acknowledgementDate: Date, items: any[][]);
     purchaseOrderNumber: string;
     sellingParty: PartyIdentification;
     acknowledgementDate: Date;
-    items: [OrderAcknowledgementItem];
+    items: any[][];
 }
 import { PartyIdentification } from './PartyIdentification.js';
-import { OrderAcknowledgementItem } from './OrderAcknowledgementItem.js';
 //# sourceMappingURL=OrderAcknowledgement.d.ts.map

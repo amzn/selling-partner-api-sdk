@@ -14,10 +14,9 @@ export class GetFulfillmentPreviewResult {
     static constructFromObject(data: any, obj: GetFulfillmentPreviewResult): GetFulfillmentPreviewResult;
     /**
      * An array of fulfillment preview information.
-     * @member {[FulfillmentPreview]} fulfillmentPreviews
-     * @type {[FulfillmentPreview]}
+     * @member {Array[]} fulfillmentPreviews
+     * @type {Array[]}
      */
-    fulfillmentPreviews: [FulfillmentPreview];
+    fulfillmentPreviews: any[][];
 }
-import { FulfillmentPreview } from './FulfillmentPreview.js';
 //# sourceMappingURL=GetFulfillmentPreviewResult.d.ts.map

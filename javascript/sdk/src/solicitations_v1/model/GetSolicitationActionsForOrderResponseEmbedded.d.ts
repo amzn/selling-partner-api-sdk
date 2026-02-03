@@ -16,10 +16,9 @@ export class GetSolicitationActionsForOrderResponseEmbedded {
      * Constructs a new <code>GetSolicitationActionsForOrderResponseEmbedded</code>.
      * @alias module:solicitations_v1/model/GetSolicitationActionsForOrderResponseEmbedded
      * @class
-     * @param actions {[GetSolicitationActionResponse]}
+     * @param actions {Array[]}
      */
-    constructor(actions: [GetSolicitationActionResponse]);
-    actions: [GetSolicitationActionResponse];
+    constructor(actions: any[][]);
+    actions: any[][];
 }
-import { GetSolicitationActionResponse } from './GetSolicitationActionResponse.js';
 //# sourceMappingURL=GetSolicitationActionsForOrderResponseEmbedded.d.ts.map

@@ -20,10 +20,9 @@ export class SelfShipAppointmentSlotsAvailability {
     expiresAt: Date;
     /**
      * A list of appointment slots.
-     * @member {[AppointmentSlot]} slots
-     * @type {[AppointmentSlot]}
+     * @member {Array[]} slots
+     * @type {Array[]}
      */
-    slots: [AppointmentSlot];
+    slots: any[][];
 }
-import { AppointmentSlot } from './AppointmentSlot.js';
 //# sourceMappingURL=SelfShipAppointmentSlotsAvailability.d.ts.map

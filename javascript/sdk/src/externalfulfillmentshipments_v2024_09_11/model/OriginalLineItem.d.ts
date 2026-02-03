@@ -19,12 +19,11 @@ export class OriginalLineItem {
      * @class
      * @param replacingSku {String} The SKU ID for this shipment
      * @param originalSku {String} The SKU ID for the original shipment.
-     * @param charges {[Charge]} The charges associated with the shipment.
+     * @param charges {Array[]} The charges associated with the shipment.
      */
-    constructor(replacingSku: string, originalSku: string, charges: [Charge]);
+    constructor(replacingSku: string, originalSku: string, charges: any[][]);
     replacingSku: string;
     originalSku: string;
-    charges: [Charge];
+    charges: any[][];
 }
-import { Charge } from './Charge.js';
 //# sourceMappingURL=OriginalLineItem.d.ts.map

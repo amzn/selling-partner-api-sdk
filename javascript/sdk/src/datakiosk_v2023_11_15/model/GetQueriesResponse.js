@@ -26,7 +26,7 @@ export class GetQueriesResponse {
    * The response for the &#x60;getQueries&#x60; operation.
    * @alias module:datakiosk_v2023_11_15/model/GetQueriesResponse
    * @class
-   * @param queries {[Query]} A list of queries.
+   * @param queries {Array[]} A list of queries.
    */
   constructor (queries) {
     this.queries = queries
@@ -62,8 +62,8 @@ export class GetQueriesResponse {
 
 /**
  * A list of queries.
- * @member {[Query]} queries
- * @type {[Query]}
+ * @member {Array[]} queries
+ * @type {Array[]}
  */
 GetQueriesResponse.prototype.queries = undefined
 

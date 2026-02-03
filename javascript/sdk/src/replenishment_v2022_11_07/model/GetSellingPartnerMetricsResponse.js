@@ -58,7 +58,7 @@ export class GetSellingPartnerMetricsResponse {
 
 /**
  * A list of metrics data for the selling partner.
- * @member {[GetSellingPartnerMetricsResponseMetric]} metrics
- * @type {[GetSellingPartnerMetricsResponseMetric]}
+ * @member {Array[]} metrics
+ * @type {Array[]}
  */
 GetSellingPartnerMetricsResponse.prototype.metrics = undefined

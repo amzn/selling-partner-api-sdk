@@ -17,16 +17,15 @@ export class ListPlacementOptionsResponse {
      * The &#x60;listPlacementOptions&#x60; response.
      * @alias module:fulfillmentinbound_v2024_03_20/model/ListPlacementOptionsResponse
      * @class
-     * @param placementOptions {[PlacementOption]} Placement options generated for the inbound plan.
+     * @param placementOptions {Array[]} Placement options generated for the inbound plan.
      */
-    constructor(placementOptions: [PlacementOption]);
-    placementOptions: [PlacementOption];
+    constructor(placementOptions: any[][]);
+    placementOptions: any[][];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}
      */
     pagination: Pagination;
 }
-import { PlacementOption } from './PlacementOption.js';
 import { Pagination } from './Pagination.js';
 //# sourceMappingURL=ListPlacementOptionsResponse.d.ts.map

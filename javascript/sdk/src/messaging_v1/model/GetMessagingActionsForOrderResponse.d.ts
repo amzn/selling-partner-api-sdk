@@ -24,12 +24,11 @@ export class GetMessagingActionsForOrderResponse {
     embedded: GetMessagingActionsForOrderResponseEmbedded;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { GetMessagingActionsForOrderResponseLinks } from './GetMessagingActionsForOrderResponseLinks.js';
 import { GetMessagingActionsForOrderResponseEmbedded } from './GetMessagingActionsForOrderResponseEmbedded.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetMessagingActionsForOrderResponse.d.ts.map

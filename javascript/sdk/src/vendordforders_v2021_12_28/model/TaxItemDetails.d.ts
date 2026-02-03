@@ -14,10 +14,9 @@ export class TaxItemDetails {
     static constructFromObject(data: any, obj: TaxItemDetails): TaxItemDetails;
     /**
      * A list of tax line items.
-     * @member {[TaxDetails]} taxLineItem
-     * @type {[TaxDetails]}
+     * @member {Array[]} taxLineItem
+     * @type {Array[]}
      */
-    taxLineItem: [TaxDetails];
+    taxLineItem: any[][];
 }
-import { TaxDetails } from './TaxDetails.js';
 //# sourceMappingURL=TaxItemDetails.d.ts.map

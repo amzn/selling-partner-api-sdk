@@ -32,10 +32,10 @@ export class AppointmentSlotReport {
     endTime: Date;
     /**
      * A list of time windows along with associated capacity in which the service can be performed.
-     * @member {[AppointmentSlot]} appointmentSlots
-     * @type {[AppointmentSlot]}
+     * @member {Array[]} appointmentSlots
+     * @type {Array[]}
      */
-    appointmentSlots: [AppointmentSlot];
+    appointmentSlots: any[][];
 }
 export namespace AppointmentSlotReport {
     namespace SchedulingTypeEnum {
@@ -47,5 +47,4 @@ export namespace AppointmentSlotReport {
      */
     type SchedulingTypeEnum = string;
 }
-import { AppointmentSlot } from './AppointmentSlot.js';
 //# sourceMappingURL=AppointmentSlotReport.d.ts.map

@@ -19,11 +19,10 @@ export class GetOrderResponse {
     payload: Order;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { Order } from './Order.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetOrderResponse.d.ts.map

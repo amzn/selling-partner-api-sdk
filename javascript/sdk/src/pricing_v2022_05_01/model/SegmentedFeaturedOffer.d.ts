@@ -22,14 +22,14 @@ export class SegmentedFeaturedOffer {
      * @param condition {Condition}
      * @param fulfillmentType {FulfillmentType}
      * @param listingPrice {MoneyType}
-     * @param featuredOfferSegments {[FeaturedOfferSegment]} The list of segment information in which the offer is featured.
+     * @param featuredOfferSegments {Array[]} The list of segment information in which the offer is featured.
      */
-    constructor(sellerId: string, condition: Condition, fulfillmentType: FulfillmentType, listingPrice: MoneyType, featuredOfferSegments: [FeaturedOfferSegment]);
+    constructor(sellerId: string, condition: Condition, fulfillmentType: FulfillmentType, listingPrice: MoneyType, featuredOfferSegments: any[][]);
     sellerId: string;
     condition: Condition;
     fulfillmentType: FulfillmentType;
     listingPrice: MoneyType;
-    featuredOfferSegments: [FeaturedOfferSegment];
+    featuredOfferSegments: any[][];
     /**
      * The item subcondition of the offer.
      * @member {String} subCondition
@@ -38,10 +38,10 @@ export class SegmentedFeaturedOffer {
     subCondition: string;
     /**
      * A list of shipping options associated with this offer
-     * @member {[ShippingOption]} shippingOptions
-     * @type {[ShippingOption]}
+     * @member {Array[]} shippingOptions
+     * @type {Array[]}
      */
-    shippingOptions: [ShippingOption];
+    shippingOptions: any[][];
     /**
      * @member {Points} points
      * @type {Points}
@@ -77,8 +77,6 @@ export namespace SegmentedFeaturedOffer {
 import { Condition } from './Condition.js';
 import { FulfillmentType } from './FulfillmentType.js';
 import { MoneyType } from './MoneyType.js';
-import { FeaturedOfferSegment } from './FeaturedOfferSegment.js';
-import { ShippingOption } from './ShippingOption.js';
 import { Points } from './Points.js';
 import { PrimeDetails } from './PrimeDetails.js';
 //# sourceMappingURL=SegmentedFeaturedOffer.d.ts.map

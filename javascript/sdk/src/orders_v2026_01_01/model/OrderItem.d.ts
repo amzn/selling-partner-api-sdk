@@ -32,10 +32,10 @@ export class OrderItem {
     measurement: Measurement;
     /**
      * Special programs that apply specifically to this item within the order.  **Possible values**: `TRANSPARENCY`, `SUBSCRIBE_AND_SAVE`
-     * @member {[String]} programs
-     * @type {[String]}
+     * @member {Array[]} programs
+     * @type {Array[]}
      */
-    programs: [string];
+    programs: any[][];
     /**
      * @member {ItemProceeds} proceeds
      * @type {ItemProceeds}

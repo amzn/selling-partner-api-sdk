@@ -69,10 +69,10 @@ export class ShipmentItem {
     promotionDiscount: Money;
     /**
      * The list of serial numbers.
-     * @member {[String]} serialNumbers
-     * @type {[String]}
+     * @member {Array[]} serialNumbers
+     * @type {Array[]}
      */
-    serialNumbers: [string];
+    serialNumbers: any[][];
 }
 import { Money } from './Money.js';
 //# sourceMappingURL=ShipmentItem.d.ts.map

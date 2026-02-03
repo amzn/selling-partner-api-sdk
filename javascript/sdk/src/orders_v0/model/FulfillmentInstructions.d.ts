@@ -23,10 +23,9 @@ export class FulfillmentInstructions {
     amazonOrderId: string;
     /**
      * List of all fulfillment plans for the given order id
-     * @member {[FulfillmentPlan]} fulfillmentPlans
-     * @type {[FulfillmentPlan]}
+     * @member {Array[]} fulfillmentPlans
+     * @type {Array[]}
      */
-    fulfillmentPlans: [FulfillmentPlan];
+    fulfillmentPlans: any[][];
 }
-import { FulfillmentPlan } from './FulfillmentPlan.js';
 //# sourceMappingURL=FulfillmentInstructions.d.ts.map

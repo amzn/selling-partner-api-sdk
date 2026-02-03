@@ -17,16 +17,16 @@ export class ListContentDocumentAsinRelationsResponse {
      * @alias module:apluscontent_v2020_11_01/model/ListContentDocumentAsinRelationsResponse
      * @class
      * @implements module:apluscontent_v2020_11_01/model/AplusPaginatedResponse
-     * @param asinMetadataSet {[AsinMetadata]} The set of ASIN metadata.
+     * @param asinMetadataSet {Array[]} The set of ASIN metadata.
      */
-    constructor(asinMetadataSet: [AsinMetadata]);
-    asinMetadataSet: [AsinMetadata];
+    constructor(asinMetadataSet: any[][]);
+    asinMetadataSet: any[][];
     /**
      * A set of messages to the user, such as warnings or comments.
-     * @member {[Error]} warnings
-     * @type {[Error]}
+     * @member {Array[]} warnings
+     * @type {Array[]}
      */
-    warnings: [Error];
+    warnings: any[][];
     /**
      * A token that you use to fetch a specific page when there are multiple pages of results.
      * @member {String} nextPageToken
@@ -34,6 +34,4 @@ export class ListContentDocumentAsinRelationsResponse {
      */
     nextPageToken: string;
 }
-import { AsinMetadata } from './AsinMetadata.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=ListContentDocumentAsinRelationsResponse.d.ts.map

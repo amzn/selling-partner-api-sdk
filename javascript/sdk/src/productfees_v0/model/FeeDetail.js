@@ -101,7 +101,7 @@ FeeDetail.prototype.finalFee = undefined
 
 /**
  * A list of other fees that contribute to a given fee.
- * @member {[IncludedFeeDetail]} includedFeeDetailList
- * @type {[IncludedFeeDetail]}
+ * @member {Array[]} includedFeeDetailList
+ * @type {Array[]}
  */
 FeeDetail.prototype.includedFeeDetailList = undefined

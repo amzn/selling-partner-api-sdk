@@ -25,10 +25,10 @@ export class DeliveryPreferences {
     preferredDeliveryTime: PreferredDeliveryTime;
     /**
      * Enumerated list of miscellaneous delivery attributes associated with the shipping address.
-     * @member {[OtherDeliveryAttributes]} otherAttributes
-     * @type {[OtherDeliveryAttributes]}
+     * @member {Array[]} otherAttributes
+     * @type {Array[]}
      */
-    otherAttributes: [OtherDeliveryAttributes];
+    otherAttributes: any[][];
     /**
      * Building instructions, nearby landmark or navigation instructions.
      * @member {String} addressInstructions
@@ -37,5 +37,4 @@ export class DeliveryPreferences {
     addressInstructions: string;
 }
 import { PreferredDeliveryTime } from './PreferredDeliveryTime.js';
-import { OtherDeliveryAttributes } from './OtherDeliveryAttributes.js';
 //# sourceMappingURL=DeliveryPreferences.d.ts.map

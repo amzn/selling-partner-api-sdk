@@ -98,15 +98,15 @@ RentalTransactionEvent.prototype.postedDate = undefined
 
 /**
  * A list of charge information on the seller's account.
- * @member {[ChargeComponent]} rentalChargeList
- * @type {[ChargeComponent]}
+ * @member {Array[]} rentalChargeList
+ * @type {Array[]}
  */
 RentalTransactionEvent.prototype.rentalChargeList = undefined
 
 /**
  * A list of fee component information.
- * @member {[FeeComponent]} rentalFeeList
- * @type {[FeeComponent]}
+ * @member {Array[]} rentalFeeList
+ * @type {Array[]}
  */
 RentalTransactionEvent.prototype.rentalFeeList = undefined
 
@@ -131,7 +131,7 @@ RentalTransactionEvent.prototype.rentalReimbursement = undefined
 
 /**
  * A list of information about taxes withheld.
- * @member {[TaxWithheldComponent]} rentalTaxWithheldList
- * @type {[TaxWithheldComponent]}
+ * @member {Array[]} rentalTaxWithheldList
+ * @type {Array[]}
  */
 RentalTransactionEvent.prototype.rentalTaxWithheldList = undefined

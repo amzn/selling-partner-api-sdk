@@ -58,7 +58,7 @@ export class ListItemComplianceDetailsResponse {
 
 /**
  * List of compliance details.
- * @member {[ComplianceDetail]} complianceDetails
- * @type {[ComplianceDetail]}
+ * @member {Array[]} complianceDetails
+ * @type {Array[]}
  */
 ListItemComplianceDetailsResponse.prototype.complianceDetails = undefined

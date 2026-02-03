@@ -37,7 +37,7 @@ export class Order {
    * @param createdTime {Date} The time when the customer placed the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
    * @param lastUpdatedTime {Date} The most recent time when any aspect of this order was modified by Amazon or the seller. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
    * @param salesChannel {SalesChannel}
-   * @param orderItems {[OrderItem]} The list of all order items included in this order.
+   * @param orderItems {Array[]} The list of all order items included in this order.
    */
   constructor (orderId, createdTime, lastUpdatedTime, salesChannel, orderItems) {
     this.orderId = orderId
@@ -95,8 +95,8 @@ Order.prototype.orderId = undefined
 
 /**
  * Alternative identifiers that can be used to reference this order, such as seller-defined order numbers.
- * @member {[Alias]} orderAliases
- * @type {[Alias]}
+ * @member {Array[]} orderAliases
+ * @type {Array[]}
  */
 Order.prototype.orderAliases = undefined
 
@@ -116,15 +116,15 @@ Order.prototype.lastUpdatedTime = undefined
 
 /**
  * Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`,  `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`
- * @member {[String]} programs
- * @type {[String]}
+ * @member {Array[]} programs
+ * @type {Array[]}
  */
 Order.prototype.programs = undefined
 
 /**
  * Other orders that have a direct relationship to this order, such as replacement or exchange orders.
- * @member {[AssociatedOrder]} associatedOrders
- * @type {[AssociatedOrder]}
+ * @member {Array[]} associatedOrders
+ * @type {Array[]}
  */
 Order.prototype.associatedOrders = undefined
 
@@ -160,14 +160,14 @@ Order.prototype.fulfillment = undefined
 
 /**
  * The list of all order items included in this order.
- * @member {[OrderItem]} orderItems
- * @type {[OrderItem]}
+ * @member {Array[]} orderItems
+ * @type {Array[]}
  */
 Order.prototype.orderItems = undefined
 
 /**
  * Shipping packages created for this order, including tracking information. **Note:** Only available for merchant-fulfilled (FBM) orders.
- * @member {[OrderPackage]} packages
- * @type {[OrderPackage]}
+ * @member {Array[]} packages
+ * @type {Array[]}
  */
 Order.prototype.packages = undefined

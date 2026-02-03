@@ -17,10 +17,9 @@ export class CompetitiveSummaryBatchResponse {
      * The response schema for the &#x60;competitiveSummaryBatch&#x60; operation.
      * @alias module:pricing_v2022_05_01/model/CompetitiveSummaryBatchResponse
      * @class
-     * @param responses {[CompetitiveSummaryResponse]} The response list for the `competitiveSummaryBatch` operation.
+     * @param responses {Array[]} The response list for the `competitiveSummaryBatch` operation.
      */
-    constructor(responses: [CompetitiveSummaryResponse]);
-    responses: [CompetitiveSummaryResponse];
+    constructor(responses: any[][]);
+    responses: any[][];
 }
-import { CompetitiveSummaryResponse } from './CompetitiveSummaryResponse.js';
 //# sourceMappingURL=CompetitiveSummaryBatchResponse.d.ts.map

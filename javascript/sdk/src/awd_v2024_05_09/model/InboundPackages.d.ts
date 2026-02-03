@@ -17,10 +17,9 @@ export class InboundPackages {
      * Represents the packages to inbound.
      * @alias module:awd_v2024_05_09/model/InboundPackages
      * @class
-     * @param packagesToInbound {[DistributionPackageQuantity]} List of packages to be inbounded.
+     * @param packagesToInbound {Array[]} List of packages to be inbounded.
      */
-    constructor(packagesToInbound: [DistributionPackageQuantity]);
-    packagesToInbound: [DistributionPackageQuantity];
+    constructor(packagesToInbound: any[][]);
+    packagesToInbound: any[][];
 }
-import { DistributionPackageQuantity } from './DistributionPackageQuantity.js';
 //# sourceMappingURL=InboundPackages.d.ts.map

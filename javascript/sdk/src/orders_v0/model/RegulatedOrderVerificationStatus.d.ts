@@ -19,12 +19,12 @@ export class RegulatedOrderVerificationStatus {
      * @class
      * @param status {VerificationStatus}
      * @param requiresMerchantAction {Boolean} When true, the regulated information provided in the order requires a review by the merchant.
-     * @param validRejectionReasons {[RejectionReason]} A list of valid rejection reasons that may be used to reject the order's regulated information.
+     * @param validRejectionReasons {Array[]} A list of valid rejection reasons that may be used to reject the order's regulated information.
      */
-    constructor(status: VerificationStatus, requiresMerchantAction: boolean, validRejectionReasons: [RejectionReason]);
+    constructor(status: VerificationStatus, requiresMerchantAction: boolean, validRejectionReasons: any[][]);
     status: VerificationStatus;
     requiresMerchantAction: boolean;
-    validRejectionReasons: [RejectionReason];
+    validRejectionReasons: any[][];
     /**
      * @member {RejectionReason} rejectionReason
      * @type {RejectionReason}
@@ -44,12 +44,11 @@ export class RegulatedOrderVerificationStatus {
     externalReviewerId: string;
     /**
      * A list of valid verification details that may be provided and the criteria required for when the verification detail can be provided.
-     * @member {[ValidVerificationDetail]} validVerificationDetails
-     * @type {[ValidVerificationDetail]}
+     * @member {Array[]} validVerificationDetails
+     * @type {Array[]}
      */
-    validVerificationDetails: [ValidVerificationDetail];
+    validVerificationDetails: any[][];
 }
 import { VerificationStatus } from './VerificationStatus.js';
 import { RejectionReason } from './RejectionReason.js';
-import { ValidVerificationDetail } from './ValidVerificationDetail.js';
 //# sourceMappingURL=RegulatedOrderVerificationStatus.d.ts.map

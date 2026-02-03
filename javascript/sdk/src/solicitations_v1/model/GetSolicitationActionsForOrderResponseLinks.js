@@ -25,7 +25,7 @@ export class GetSolicitationActionsForOrderResponseLinks {
    * @alias module:solicitations_v1/model/GetSolicitationActionsForOrderResponseLinks
    * @class
    * @param self {LinkObject}
-   * @param actions {[LinkObject]} Eligible actions for the specified amazonOrderId.
+   * @param actions {Array[]} Eligible actions for the specified amazonOrderId.
    */
   constructor (self, actions) {
     this.self = self
@@ -68,7 +68,7 @@ GetSolicitationActionsForOrderResponseLinks.prototype.self = undefined
 
 /**
  * Eligible actions for the specified amazonOrderId.
- * @member {[LinkObject]} actions
- * @type {[LinkObject]}
+ * @member {Array[]} actions
+ * @type {Array[]}
  */
 GetSolicitationActionsForOrderResponseLinks.prototype.actions = undefined

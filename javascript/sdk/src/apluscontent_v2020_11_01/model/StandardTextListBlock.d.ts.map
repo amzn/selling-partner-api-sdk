@@ -1,1 +1,1 @@
-{"version":3,"file":"StandardTextListBlock.d.ts","sourceRoot":"","sources":["StandardTextListBlock.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,2CAHW,qBAAqB,GACpB,qBAAqB,CAmBhC;IAnCD;;;;;;OAMG;IACH,sBAFoB,CAAC,QAAQ,CAAC,EAI7B;IADC,qBAAwB;CA4B3B;yBA5CwB,eAAe"}
+{"version":3,"file":"StandardTextListBlock.d.ts","sourceRoot":"","sources":["StandardTextListBlock.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,2CAHW,qBAAqB,GACpB,qBAAqB,CAmBhC;IAnCD;;;;;;OAMG;IACH,sBAFoB,OAAO,EAI1B;IADC,kBAAwB;CA4B3B"}

@@ -74,7 +74,7 @@ BuyerTaxInfo.prototype.taxingRegion = undefined
 
 /**
  * A list of tax classifications that apply to the order.
- * @member {[TaxClassification]} taxClassifications
- * @type {[TaxClassification]}
+ * @member {Array[]} taxClassifications
+ * @type {Array[]}
  */
 BuyerTaxInfo.prototype.taxClassifications = undefined

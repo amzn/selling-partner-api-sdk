@@ -25,7 +25,7 @@ export class GetMessagingActionsForOrderResponseEmbedded {
    * The messaging actions response that is associated with the specified &#x60;amazonOrderId&#x60;.
    * @alias module:messaging_v1/model/GetMessagingActionsForOrderResponseEmbedded
    * @class
-   * @param actions {[GetMessagingActionResponse]}
+   * @param actions {Array[]}
    */
   constructor (actions) {
     this.actions = actions
@@ -59,7 +59,7 @@ export class GetMessagingActionsForOrderResponseEmbedded {
 }
 
 /**
- * @member {[GetMessagingActionResponse]} actions
- * @type {[GetMessagingActionResponse]}
+ * @member {Array[]} actions
+ * @type {Array[]}
  */
 GetMessagingActionsForOrderResponseEmbedded.prototype.actions = undefined

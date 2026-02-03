@@ -25,11 +25,10 @@ export class UpdateShipmentStatusRequest {
     shipmentStatus: ShipmentStatus;
     /**
      * For partial shipment status updates, the list of order items and quantities to be updated.
-     * @member {[OrderItemsInner]} orderItems
-     * @type {[OrderItemsInner]}
+     * @member {Array[]} orderItems
+     * @type {Array[]}
      */
-    orderItems: [OrderItemsInner];
+    orderItems: any[][];
 }
 import { ShipmentStatus } from './ShipmentStatus.js';
-import { OrderItemsInner } from './OrderItemsInner.js';
 //# sourceMappingURL=UpdateShipmentStatusRequest.d.ts.map

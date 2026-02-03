@@ -14,10 +14,9 @@ export class GetPaymentMethodsResponse {
     static constructFromObject(data: any, obj: GetPaymentMethodsResponse): GetPaymentMethodsResponse;
     /**
      * The list of payment methods with payment method details.
-     * @member {[PaymentMethodDetails]} paymentMethods
-     * @type {[PaymentMethodDetails]}
+     * @member {Array[]} paymentMethods
+     * @type {Array[]}
      */
-    paymentMethods: [PaymentMethodDetails];
+    paymentMethods: any[][];
 }
-import { PaymentMethodDetails } from './PaymentMethodDetails.js';
 //# sourceMappingURL=GetPaymentMethodsResponse.d.ts.map

@@ -20,10 +20,9 @@ export class CreateConfirmCustomizationDetailsRequest {
     text: string;
     /**
      * Attachments to include in the message to the buyer.
-     * @member {[Attachment]} attachments
-     * @type {[Attachment]}
+     * @member {Array[]} attachments
+     * @type {Array[]}
      */
-    attachments: [Attachment];
+    attachments: any[][];
 }
-import { Attachment } from './Attachment.js';
 //# sourceMappingURL=CreateConfirmCustomizationDetailsRequest.d.ts.map

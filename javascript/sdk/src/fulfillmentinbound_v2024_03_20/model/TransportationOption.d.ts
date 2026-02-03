@@ -18,15 +18,15 @@ export class TransportationOption {
      * @alias module:fulfillmentinbound_v2024_03_20/model/TransportationOption
      * @class
      * @param carrier {Carrier}
-     * @param preconditions {[String]} Identifies a list of preconditions for confirming the transportation option.
+     * @param preconditions {Array[]} Identifies a list of preconditions for confirming the transportation option.
      * @param shipmentId {String} Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param shippingMode {String} Mode of shipment transportation that this option will provide.  Possible values: `GROUND_SMALL_PARCEL`, `FREIGHT_LTL`, `FREIGHT_FTL_PALLET`, `FREIGHT_FTL_NONPALLET`, `OCEAN_LCL`, `OCEAN_FCL`, `AIR_SMALL_PARCEL`, `AIR_SMALL_PARCEL_EXPRESS`.
      * @param shippingSolution {String} Shipping program for the option. Possible values: `AMAZON_PARTNERED_CARRIER`, `USE_YOUR_OWN_CARRIER`.
      * @param transportationOptionId {String} Identifier of a transportation option. A transportation option represent one option for how to send a shipment.
      */
-    constructor(carrier: Carrier, preconditions: [string], shipmentId: string, shippingMode: string, shippingSolution: string, transportationOptionId: string);
+    constructor(carrier: Carrier, preconditions: any[][], shipmentId: string, shippingMode: string, shippingSolution: string, transportationOptionId: string);
     carrier: Carrier;
-    preconditions: [string];
+    preconditions: any[][];
     shipmentId: string;
     shippingMode: string;
     shippingSolution: string;

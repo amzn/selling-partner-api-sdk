@@ -19,11 +19,10 @@ export class GetTransactionResponse {
     payload: TransactionStatus;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { TransactionStatus } from './TransactionStatus.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetTransactionResponse.d.ts.map

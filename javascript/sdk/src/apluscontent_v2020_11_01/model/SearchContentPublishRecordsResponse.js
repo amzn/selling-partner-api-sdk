@@ -27,7 +27,7 @@ export class SearchContentPublishRecordsResponse {
    * @alias module:apluscontent_v2020_11_01/model/SearchContentPublishRecordsResponse
    * @class
    * @implements module:apluscontent_v2020_11_01/model/AplusPaginatedResponse
-   * @param publishRecordList {[PublishRecord]} A list of A+ Content publishing records.
+   * @param publishRecordList {Array[]} A list of A+ Content publishing records.
    */
   constructor (publishRecordList) {
     AplusPaginatedResponse.call(this)
@@ -66,8 +66,8 @@ export class SearchContentPublishRecordsResponse {
 
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {[Error]} warnings
- * @type {[Error]}
+ * @member {Array[]} warnings
+ * @type {Array[]}
  */
 SearchContentPublishRecordsResponse.prototype.warnings = undefined
 
@@ -80,16 +80,16 @@ SearchContentPublishRecordsResponse.prototype.nextPageToken = undefined
 
 /**
  * A list of A+ Content publishing records.
- * @member {[PublishRecord]} publishRecordList
- * @type {[PublishRecord]}
+ * @member {Array[]} publishRecordList
+ * @type {Array[]}
  */
 SearchContentPublishRecordsResponse.prototype.publishRecordList = undefined
 
 // Implement AplusPaginatedResponse interface:
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {[Error]} warnings
- * @type {[Error]}
+ * @member {Array[]} warnings
+ * @type {Array[]}
  */
 AplusPaginatedResponse.prototype.warnings = undefined
 

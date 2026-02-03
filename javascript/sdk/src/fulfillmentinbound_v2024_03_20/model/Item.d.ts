@@ -21,15 +21,15 @@ export class Item {
      * @param fnsku {String} A unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center.
      * @param labelOwner {String} Specifies who will label the items. Options include `AMAZON`, `SELLER`, and `NONE`.
      * @param msku {String} The merchant-defined SKU ID.
-     * @param prepInstructions {[PrepInstruction]} Special preparations that are required for an item.
+     * @param prepInstructions {Array[]} Special preparations that are required for an item.
      * @param quantity {Number} The number of the specified MSKU.
      */
-    constructor(asin: string, fnsku: string, labelOwner: string, msku: string, prepInstructions: [PrepInstruction], quantity: number);
+    constructor(asin: string, fnsku: string, labelOwner: string, msku: string, prepInstructions: any[][], quantity: number);
     asin: string;
     fnsku: string;
     labelOwner: string;
     msku: string;
-    prepInstructions: [PrepInstruction];
+    prepInstructions: any[][];
     quantity: number;
     /**
      * The expiration date of the MSKU. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern`YYYY-MM-DD`. The same MSKU with different expiration dates cannot go into the same box.
@@ -44,5 +44,4 @@ export class Item {
      */
     manufacturingLotCode: string;
 }
-import { PrepInstruction } from './PrepInstruction.js';
 //# sourceMappingURL=Item.d.ts.map

@@ -58,7 +58,7 @@ export class GetFeaturedOfferExpectedPriceBatchResponse {
 
 /**
  * A batched list of FOEP responses.
- * @member {[FeaturedOfferExpectedPriceResponse]} responses
- * @type {[FeaturedOfferExpectedPriceResponse]}
+ * @member {Array[]} responses
+ * @type {Array[]}
  */
 GetFeaturedOfferExpectedPriceBatchResponse.prototype.responses = undefined

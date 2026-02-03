@@ -25,7 +25,7 @@ export class ErrorList {
    * This exception is thrown when client inputs are invalid.
    * @alias module:awd_v2024_05_09/model/ErrorList
    * @class
-   * @param errors {[Error]} A list of errors describing the failures.
+   * @param errors {Array[]} A list of errors describing the failures.
    */
   constructor (errors) {
     this.errors = errors
@@ -60,7 +60,7 @@ export class ErrorList {
 
 /**
  * A list of errors describing the failures.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Array[]} errors
+ * @type {Array[]}
  */
 ErrorList.prototype.errors = undefined

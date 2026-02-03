@@ -24,19 +24,17 @@ export class SetAppointmentFulfillmentDataRequest {
     fulfillmentTime: FulfillmentTime;
     /**
      * List of resources that performs or performed job appointment fulfillment.
-     * @member {[AppointmentResource]} appointmentResources
-     * @type {[AppointmentResource]}
+     * @member {Array[]} appointmentResources
+     * @type {Array[]}
      */
-    appointmentResources: [AppointmentResource];
+    appointmentResources: any[][];
     /**
      * List of documents captured during service appointment fulfillment.
-     * @member {[FulfillmentDocument]} fulfillmentDocuments
-     * @type {[FulfillmentDocument]}
+     * @member {Array[]} fulfillmentDocuments
+     * @type {Array[]}
      */
-    fulfillmentDocuments: [FulfillmentDocument];
+    fulfillmentDocuments: any[][];
 }
 import { DateTimeRange } from './DateTimeRange.js';
 import { FulfillmentTime } from './FulfillmentTime.js';
-import { AppointmentResource } from './AppointmentResource.js';
-import { FulfillmentDocument } from './FulfillmentDocument.js';
 //# sourceMappingURL=SetAppointmentFulfillmentDataRequest.d.ts.map

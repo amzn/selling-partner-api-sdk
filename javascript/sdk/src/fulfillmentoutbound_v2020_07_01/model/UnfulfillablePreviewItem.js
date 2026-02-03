@@ -87,7 +87,7 @@ UnfulfillablePreviewItem.prototype.sellerFulfillmentOrderItemId = undefined
 
 /**
  * String list
- * @member {[String]} itemUnfulfillableReasons
- * @type {[String]}
+ * @member {Array[]} itemUnfulfillableReasons
+ * @type {Array[]}
  */
 UnfulfillablePreviewItem.prototype.itemUnfulfillableReasons = undefined

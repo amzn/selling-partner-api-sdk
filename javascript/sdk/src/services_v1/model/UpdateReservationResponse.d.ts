@@ -19,11 +19,10 @@ export class UpdateReservationResponse {
     payload: UpdateReservationRecord;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { UpdateReservationRecord } from './UpdateReservationRecord.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=UpdateReservationResponse.d.ts.map

@@ -27,9 +27,9 @@ export class UnfulfillablePreviewItem {
     sellerFulfillmentOrderItemId: string;
     /**
      * String list
-     * @member {[String]} itemUnfulfillableReasons
-     * @type {[String]}
+     * @member {Array[]} itemUnfulfillableReasons
+     * @type {Array[]}
      */
-    itemUnfulfillableReasons: [string];
+    itemUnfulfillableReasons: any[][];
 }
 //# sourceMappingURL=UnfulfillablePreviewItem.d.ts.map

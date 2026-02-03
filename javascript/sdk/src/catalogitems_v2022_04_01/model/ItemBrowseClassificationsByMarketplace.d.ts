@@ -23,10 +23,9 @@ export class ItemBrowseClassificationsByMarketplace {
     marketplaceId: string;
     /**
      * Classifications (browse nodes) that are associated with the item in the Amazon catalog.
-     * @member {[ItemBrowseClassification]} classifications
-     * @type {[ItemBrowseClassification]}
+     * @member {Array[]} classifications
+     * @type {Array[]}
      */
-    classifications: [ItemBrowseClassification];
+    classifications: any[][];
 }
-import { ItemBrowseClassification } from './ItemBrowseClassification.js';
 //# sourceMappingURL=ItemBrowseClassificationsByMarketplace.d.ts.map

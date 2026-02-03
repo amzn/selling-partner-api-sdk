@@ -14,17 +14,15 @@ export class PreferredDeliveryTime {
     static constructFromObject(data: any, obj: PreferredDeliveryTime): PreferredDeliveryTime;
     /**
      * Business hours when the business is open for deliveries.
-     * @member {[BusinessHour]} businessHours
-     * @type {[BusinessHour]}
+     * @member {Array[]} businessHours
+     * @type {Array[]}
      */
-    businessHours: [BusinessHour];
+    businessHours: any[][];
     /**
      * Specific dates within the next 30 days when normal business hours do not apply.
-     * @member {[ExceptionDate]} exceptionDates
-     * @type {[ExceptionDate]}
+     * @member {Array[]} exceptionDates
+     * @type {Array[]}
      */
-    exceptionDates: [ExceptionDate];
+    exceptionDates: any[][];
 }
-import { BusinessHour } from './BusinessHour.js';
-import { ExceptionDate } from './ExceptionDate.js';
 //# sourceMappingURL=PreferredDeliveryTime.d.ts.map

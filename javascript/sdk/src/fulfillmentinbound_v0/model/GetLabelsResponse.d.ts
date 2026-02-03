@@ -19,11 +19,10 @@ export class GetLabelsResponse {
     payload: LabelDownloadURL;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { LabelDownloadURL } from './LabelDownloadURL.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetLabelsResponse.d.ts.map

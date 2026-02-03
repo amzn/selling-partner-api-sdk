@@ -1,1 +1,1 @@
-{"version":3,"file":"TextComponent.d.ts","sourceRoot":"","sources":["TextComponent.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,2CAHW,aAAa,GACZ,aAAa,CAoBxB;IApCD;;;;;;OAMG;IACH,2BAEC;IADC,cAAkB;IAsCtB;;;;OAIG;IACH,cAFU,CAAC,SAAS,CAAC,CAEe;CAdnC;0BA7CyB,gBAAgB"}
+{"version":3,"file":"TextComponent.d.ts","sourceRoot":"","sources":["TextComponent.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,2CAHW,aAAa,GACZ,aAAa,CAoBxB;IApCD;;;;;;OAMG;IACH,2BAEC;IADC,cAAkB;IAsCtB;;;;OAIG;IACH,cAFU,OAAO,CAEmB;CAdnC"}

@@ -84,28 +84,28 @@ CompetitiveSummaryResponseBody.prototype.marketplaceId = undefined
 
 /**
  * A list of featured buying options for the specified ASIN `marketplaceId` combination.
- * @member {[FeaturedBuyingOption]} featuredBuyingOptions
- * @type {[FeaturedBuyingOption]}
+ * @member {Array[]} featuredBuyingOptions
+ * @type {Array[]}
  */
 CompetitiveSummaryResponseBody.prototype.featuredBuyingOptions = undefined
 
 /**
  * A list of lowest priced offers for the specified ASIN `marketplaceId` combination.
- * @member {[LowestPricedOffer]} lowestPricedOffers
- * @type {[LowestPricedOffer]}
+ * @member {Array[]} lowestPricedOffers
+ * @type {Array[]}
  */
 CompetitiveSummaryResponseBody.prototype.lowestPricedOffers = undefined
 
 /**
  * A list of reference prices for the specified ASIN `marketplaceId` combination.
- * @member {[ReferencePrice]} referencePrices
- * @type {[ReferencePrice]}
+ * @member {Array[]} referencePrices
+ * @type {Array[]}
  */
 CompetitiveSummaryResponseBody.prototype.referencePrices = undefined
 
 /**
  * A list of error responses that are returned when a request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Array[]} errors
+ * @type {Array[]}
  */
 CompetitiveSummaryResponseBody.prototype.errors = undefined

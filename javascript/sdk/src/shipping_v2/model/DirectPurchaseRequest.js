@@ -86,8 +86,8 @@ DirectPurchaseRequest.prototype.returnTo = undefined
 
 /**
  * A list of packages to be shipped through a shipping service offering.
- * @member {[Package]} packages
- * @type {[Package]}
+ * @member {Array[]} packages
+ * @type {Array[]}
  */
 DirectPurchaseRequest.prototype.packages = undefined
 

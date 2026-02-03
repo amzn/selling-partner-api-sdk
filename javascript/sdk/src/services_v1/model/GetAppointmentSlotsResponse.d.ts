@@ -19,11 +19,10 @@ export class GetAppointmentSlotsResponse {
     payload: AppointmentSlotReport;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { AppointmentSlotReport } from './AppointmentSlotReport.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetAppointmentSlotsResponse.d.ts.map

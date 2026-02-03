@@ -26,10 +26,10 @@ export class ExceptionDate {
     exceptionDateType: string;
     /**
      * Alternative operating hours that apply specifically to this exception date.
-     * @member {[TimeWindow]} timeWindows
-     * @type {[TimeWindow]}
+     * @member {Array[]} timeWindows
+     * @type {Array[]}
      */
-    timeWindows: [TimeWindow];
+    timeWindows: any[][];
 }
 export namespace ExceptionDate {
     namespace ExceptionDateTypeEnum {
@@ -41,5 +41,4 @@ export namespace ExceptionDate {
      */
     type ExceptionDateTypeEnum = string;
 }
-import { TimeWindow } from './TimeWindow.js';
 //# sourceMappingURL=ExceptionDate.d.ts.map

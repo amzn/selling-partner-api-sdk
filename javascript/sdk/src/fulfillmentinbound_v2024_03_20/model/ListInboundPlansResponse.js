@@ -60,8 +60,8 @@ export class ListInboundPlansResponse {
 
 /**
  * A list of inbound plans with minimal information.
- * @member {[InboundPlanSummary]} inboundPlans
- * @type {[InboundPlanSummary]}
+ * @member {Array[]} inboundPlans
+ * @type {Array[]}
  */
 ListInboundPlansResponse.prototype.inboundPlans = undefined
 

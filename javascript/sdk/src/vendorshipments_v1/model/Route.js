@@ -25,7 +25,7 @@ export class Route {
    * This is used only for direct import shipment confirmations.
    * @alias module:vendorshipments_v1/model/Route
    * @class
-   * @param stops {[Stop]} The port or location involved in transporting the cargo, as specified in transportation contracts or operational plans.
+   * @param stops {Array[]} The port or location involved in transporting the cargo, as specified in transportation contracts or operational plans.
    */
   constructor (stops) {
     this.stops = stops
@@ -60,7 +60,7 @@ export class Route {
 
 /**
  * The port or location involved in transporting the cargo, as specified in transportation contracts or operational plans.
- * @member {[Stop]} stops
- * @type {[Stop]}
+ * @member {Array[]} stops
+ * @type {Array[]}
  */
 Route.prototype.stops = undefined

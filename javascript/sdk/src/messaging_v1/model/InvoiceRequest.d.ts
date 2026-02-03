@@ -14,10 +14,9 @@ export class InvoiceRequest {
     static constructFromObject(data: any, obj: InvoiceRequest): InvoiceRequest;
     /**
      * Attachments to include in the message to the buyer.
-     * @member {[Attachment]} attachments
-     * @type {[Attachment]}
+     * @member {Array[]} attachments
+     * @type {Array[]}
      */
-    attachments: [Attachment];
+    attachments: any[][];
 }
-import { Attachment } from './Attachment.js';
 //# sourceMappingURL=InvoiceRequest.d.ts.map

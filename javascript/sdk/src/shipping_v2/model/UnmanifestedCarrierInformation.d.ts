@@ -26,10 +26,9 @@ export class UnmanifestedCarrierInformation {
     carrierName: string;
     /**
      * A list of UnmanifestedShipmentLocation
-     * @member {[UnmanifestedShipmentLocation]} unmanifestedShipmentLocationList
-     * @type {[UnmanifestedShipmentLocation]}
+     * @member {Array[]} unmanifestedShipmentLocationList
+     * @type {Array[]}
      */
-    unmanifestedShipmentLocationList: [UnmanifestedShipmentLocation];
+    unmanifestedShipmentLocationList: any[][];
 }
-import { UnmanifestedShipmentLocation } from './UnmanifestedShipmentLocation.js';
 //# sourceMappingURL=UnmanifestedCarrierInformation.d.ts.map

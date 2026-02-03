@@ -40,7 +40,7 @@ export class CreateFulfillmentOrderRequest {
    * @param displayableOrderComment {String} Order-specific text that appears in recipient-facing materials such as the outbound shipment packing slip.
    * @param shippingSpeedCategory {ShippingSpeedCategory}
    * @param destinationAddress {Address}
-   * @param items {[CreateFulfillmentOrderItem]} An array of item information for creating a fulfillment order.
+   * @param items {Array[]} An array of item information for creating a fulfillment order.
    */
   constructor (sellerFulfillmentOrderId, displayableOrderId, displayableOrderDate, displayableOrderComment, shippingSpeedCategory, destinationAddress, items) {
     this.sellerFulfillmentOrderId = sellerFulfillmentOrderId
@@ -181,28 +181,28 @@ CreateFulfillmentOrderRequest.prototype.shipFromCountryCode = undefined
 
 /**
  * A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller.
- * @member {[String]} notificationEmails
- * @type {[String]}
+ * @member {Array[]} notificationEmails
+ * @type {Array[]}
  */
 CreateFulfillmentOrderRequest.prototype.notificationEmails = undefined
 
 /**
  * A list of features and their fulfillment policies to apply to the order.
- * @member {[FeatureSettings]} featureConstraints
- * @type {[FeatureSettings]}
+ * @member {Array[]} featureConstraints
+ * @type {Array[]}
  */
 CreateFulfillmentOrderRequest.prototype.featureConstraints = undefined
 
 /**
  * An array of item information for creating a fulfillment order.
- * @member {[CreateFulfillmentOrderItem]} items
- * @type {[CreateFulfillmentOrderItem]}
+ * @member {Array[]} items
+ * @type {Array[]}
  */
 CreateFulfillmentOrderRequest.prototype.items = undefined
 
 /**
  * An array of various payment attributes related to this fulfillment order.
- * @member {[PaymentInformation]} paymentInformation
- * @type {[PaymentInformation]}
+ * @member {Array[]} paymentInformation
+ * @type {Array[]}
  */
 CreateFulfillmentOrderRequest.prototype.paymentInformation = undefined

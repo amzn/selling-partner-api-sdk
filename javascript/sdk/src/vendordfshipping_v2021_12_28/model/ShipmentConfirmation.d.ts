@@ -21,23 +21,21 @@ export class ShipmentConfirmation {
      * @param shipmentDetails {ShipmentDetails}
      * @param sellingParty {PartyIdentification}
      * @param shipFromParty {PartyIdentification}
-     * @param items {[Item]} Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
+     * @param items {Array[]} Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
      */
-    constructor(purchaseOrderNumber: string, shipmentDetails: ShipmentDetails, sellingParty: PartyIdentification, shipFromParty: PartyIdentification, items: [Item]);
+    constructor(purchaseOrderNumber: string, shipmentDetails: ShipmentDetails, sellingParty: PartyIdentification, shipFromParty: PartyIdentification, items: any[][]);
     purchaseOrderNumber: string;
     shipmentDetails: ShipmentDetails;
     sellingParty: PartyIdentification;
     shipFromParty: PartyIdentification;
-    items: [Item];
+    items: any[][];
     /**
      * Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
-     * @member {[Container]} containers
-     * @type {[Container]}
+     * @member {Array[]} containers
+     * @type {Array[]}
      */
-    containers: [Container];
+    containers: any[][];
 }
 import { ShipmentDetails } from './ShipmentDetails.js';
 import { PartyIdentification } from './PartyIdentification.js';
-import { Item } from './Item.js';
-import { Container } from './Container.js';
 //# sourceMappingURL=ShipmentConfirmation.d.ts.map

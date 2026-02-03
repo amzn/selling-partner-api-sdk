@@ -17,16 +17,15 @@ export class ListPackingGroupItemsResponse {
      * The &#x60;listPackingGroupItems&#x60; response.
      * @alias module:fulfillmentinbound_v2024_03_20/model/ListPackingGroupItemsResponse
      * @class
-     * @param items {[Item]} Provides the information about the list of items in the packing group.
+     * @param items {Array[]} Provides the information about the list of items in the packing group.
      */
-    constructor(items: [Item]);
-    items: [Item];
+    constructor(items: any[][]);
+    items: any[][];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}
      */
     pagination: Pagination;
 }
-import { Item } from './Item.js';
 import { Pagination } from './Pagination.js';
 //# sourceMappingURL=ListPackingGroupItemsResponse.d.ts.map

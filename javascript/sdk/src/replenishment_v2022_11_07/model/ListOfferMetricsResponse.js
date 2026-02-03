@@ -60,8 +60,8 @@ export class ListOfferMetricsResponse {
 
 /**
  * A list of offers and associated metrics.
- * @member {[ListOfferMetricsResponseOffer]} offers
- * @type {[ListOfferMetricsResponseOffer]}
+ * @member {Array[]} offers
+ * @type {Array[]}
  */
 ListOfferMetricsResponse.prototype.offers = undefined
 

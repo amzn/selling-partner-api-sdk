@@ -29,7 +29,7 @@ export class OrderDetails {
    * @class
    * @param purchaseOrderDate {Date} The date the purchase order was placed. Must be in ISO-8601 date/time format.
    * @param purchaseOrderStateChangedDate {Date} The date when current purchase order state was changed. Current purchase order state is available in the field 'purchaseOrderState'. Must be in ISO-8601 date/time format.
-   * @param items {[OrderItem]} A list of items in this purchase order.
+   * @param items {Array[]} A list of items in this purchase order.
    */
   constructor (purchaseOrderDate, purchaseOrderStateChangedDate, items) {
     this.purchaseOrderDate = purchaseOrderDate
@@ -227,7 +227,7 @@ OrderDetails.prototype.deliveryWindow = undefined
 
 /**
  * A list of items in this purchase order.
- * @member {[OrderItem]} items
- * @type {[OrderItem]}
+ * @member {Array[]} items
+ * @type {Array[]}
  */
 OrderDetails.prototype.items = undefined

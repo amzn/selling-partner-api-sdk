@@ -26,7 +26,7 @@ export class ListHandoverSlotsResponse {
    * @alias module:easyship_v2022_03_23/model/ListHandoverSlotsResponse
    * @class
    * @param amazonOrderId {String} An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.
-   * @param timeSlots {[TimeSlot]} A list of time slots.
+   * @param timeSlots {Array[]} A list of time slots.
    */
   constructor (amazonOrderId, timeSlots) {
     this.amazonOrderId = amazonOrderId
@@ -70,7 +70,7 @@ ListHandoverSlotsResponse.prototype.amazonOrderId = undefined
 
 /**
  * A list of time slots.
- * @member {[TimeSlot]} timeSlots
- * @type {[TimeSlot]}
+ * @member {Array[]} timeSlots
+ * @type {Array[]}
  */
 ListHandoverSlotsResponse.prototype.timeSlots = undefined

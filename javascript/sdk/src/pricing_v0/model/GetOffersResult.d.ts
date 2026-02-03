@@ -22,15 +22,15 @@ export class GetOffersResult {
      * @param status {String} The status of the operation.
      * @param identifier {ItemIdentifier}
      * @param summary {Summary}
-     * @param offers {[OfferDetail]} A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less.
+     * @param offers {Array[]} A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less.
      */
-    constructor(marketplaceID: string, itemCondition: ConditionType, status: string, identifier: ItemIdentifier, summary: Summary, offers: [OfferDetail]);
+    constructor(marketplaceID: string, itemCondition: ConditionType, status: string, identifier: ItemIdentifier, summary: Summary, offers: any[][]);
     marketplaceID: string;
     itemCondition: ConditionType;
     status: string;
     identifier: ItemIdentifier;
     summary: Summary;
-    offers: [OfferDetail];
+    offers: any[][];
     /**
      * The Amazon Standard Identification Number (ASIN) of the item.
      * @member {String} ASIN
@@ -47,5 +47,4 @@ export class GetOffersResult {
 import { ConditionType } from './ConditionType.js';
 import { ItemIdentifier } from './ItemIdentifier.js';
 import { Summary } from './Summary.js';
-import { OfferDetail } from './OfferDetail.js';
 //# sourceMappingURL=GetOffersResult.d.ts.map

@@ -19,11 +19,10 @@ export class OrderItemStatusOrderedQuantity {
     orderedQuantity: ItemQuantity;
     /**
      * Details of item quantity ordered.
-     * @member {[OrderedQuantityDetails]} orderedQuantityDetails
-     * @type {[OrderedQuantityDetails]}
+     * @member {Array[]} orderedQuantityDetails
+     * @type {Array[]}
      */
-    orderedQuantityDetails: [OrderedQuantityDetails];
+    orderedQuantityDetails: any[][];
 }
 import { ItemQuantity } from './ItemQuantity.js';
-import { OrderedQuantityDetails } from './OrderedQuantityDetails.js';
 //# sourceMappingURL=OrderItemStatusOrderedQuantity.d.ts.map

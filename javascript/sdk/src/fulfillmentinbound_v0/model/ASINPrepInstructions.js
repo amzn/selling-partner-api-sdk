@@ -82,7 +82,7 @@ ASINPrepInstructions.prototype.prepGuidance = undefined
 
 /**
  * A list of preparation instructions to help with item sourcing decisions.
- * @member {[PrepInstruction]} prepInstructionList
- * @type {[PrepInstruction]}
+ * @member {Array[]} prepInstructionList
+ * @type {Array[]}
  */
 ASINPrepInstructions.prototype.prepInstructionList = undefined

@@ -57,34 +57,34 @@ export class Invoice {
     paymentTerms: PaymentTerms;
     /**
      * Total tax amount details for all line items.
-     * @member {[TaxDetails]} taxDetails
-     * @type {[TaxDetails]}
+     * @member {Array[]} taxDetails
+     * @type {Array[]}
      */
-    taxDetails: [TaxDetails];
+    taxDetails: any[][];
     /**
      * Additional details provided by the selling party, for tax related or other purposes.
-     * @member {[AdditionalDetails]} additionalDetails
-     * @type {[AdditionalDetails]}
+     * @member {Array[]} additionalDetails
+     * @type {Array[]}
      */
-    additionalDetails: [AdditionalDetails];
+    additionalDetails: any[][];
     /**
      * Total charge amount details for all line items.
-     * @member {[ChargeDetails]} chargeDetails
-     * @type {[ChargeDetails]}
+     * @member {Array[]} chargeDetails
+     * @type {Array[]}
      */
-    chargeDetails: [ChargeDetails];
+    chargeDetails: any[][];
     /**
      * Total allowance amount details for all line items.
-     * @member {[AllowanceDetails]} allowanceDetails
-     * @type {[AllowanceDetails]}
+     * @member {Array[]} allowanceDetails
+     * @type {Array[]}
      */
-    allowanceDetails: [AllowanceDetails];
+    allowanceDetails: any[][];
     /**
      * The list of invoice items.
-     * @member {[InvoiceItem]} items
-     * @type {[InvoiceItem]}
+     * @member {Array[]} items
+     * @type {Array[]}
      */
-    items: [InvoiceItem];
+    items: any[][];
 }
 export namespace Invoice {
     namespace InvoiceTypeEnum {
@@ -99,9 +99,4 @@ export namespace Invoice {
 import { PartyIdentification } from './PartyIdentification.js';
 import { Money } from './Money.js';
 import { PaymentTerms } from './PaymentTerms.js';
-import { TaxDetails } from './TaxDetails.js';
-import { AdditionalDetails } from './AdditionalDetails.js';
-import { ChargeDetails } from './ChargeDetails.js';
-import { AllowanceDetails } from './AllowanceDetails.js';
-import { InvoiceItem } from './InvoiceItem.js';
 //# sourceMappingURL=Invoice.d.ts.map

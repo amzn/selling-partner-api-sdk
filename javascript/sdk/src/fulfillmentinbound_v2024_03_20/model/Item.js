@@ -29,7 +29,7 @@ export class Item {
    * @param fnsku {String} A unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center.
    * @param labelOwner {String} Specifies who will label the items. Options include `AMAZON`, `SELLER`, and `NONE`.
    * @param msku {String} The merchant-defined SKU ID.
-   * @param prepInstructions {[PrepInstruction]} Special preparations that are required for an item.
+   * @param prepInstructions {Array[]} Special preparations that are required for an item.
    * @param quantity {Number} The number of the specified MSKU.
    */
   constructor (asin, fnsku, labelOwner, msku, prepInstructions, quantity) {
@@ -119,8 +119,8 @@ Item.prototype.msku = undefined
 
 /**
  * Special preparations that are required for an item.
- * @member {[PrepInstruction]} prepInstructions
- * @type {[PrepInstruction]}
+ * @member {Array[]} prepInstructions
+ * @type {Array[]}
  */
 Item.prototype.prepInstructions = undefined
 

@@ -17,10 +17,10 @@ export class ShipLabelsInput {
      * Tracking details for multiple packages.
      * @alias module:externalfulfillmentshipments_v2024_09_11/model/ShipLabelsInput
      * @class
-     * @param packageIds {[String]} The subset of package IDs used to generate a label.
+     * @param packageIds {Array[]} The subset of package IDs used to generate a label.
      */
-    constructor(packageIds: [string]);
-    packageIds: [string];
+    constructor(packageIds: any[][]);
+    packageIds: any[][];
     /**
      * @member {CourierSupportedAttributes} courierSupportedAttributes
      * @type {CourierSupportedAttributes}

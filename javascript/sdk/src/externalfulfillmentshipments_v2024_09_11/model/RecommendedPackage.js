@@ -29,7 +29,7 @@ export class RecommendedPackage {
    * @class
    * @param dimensions {PackageDimensions}
    * @param weight {Weight}
-   * @param lineItems {[RecommendedPackageLineItem]} A list of line items to be contained in a recommended package. This attribute is only for orders that come with specific recommendations for line-item distribution.
+   * @param lineItems {Array[]} A list of line items to be contained in a recommended package. This attribute is only for orders that come with specific recommendations for line-item distribution.
    */
   constructor (dimensions, weight, lineItems) {
     this.dimensions = dimensions
@@ -80,7 +80,7 @@ RecommendedPackage.prototype.weight = undefined
 
 /**
  * A list of line items to be contained in a recommended package. This attribute is only for orders that come with specific recommendations for line-item distribution.
- * @member {[RecommendedPackageLineItem]} lineItems
- * @type {[RecommendedPackageLineItem]}
+ * @member {Array[]} lineItems
+ * @type {Array[]}
  */
 RecommendedPackage.prototype.lineItems = undefined

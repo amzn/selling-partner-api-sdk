@@ -1,1 +1,1 @@
-{"version":3,"file":"ShipmentDetails.d.ts","sourceRoot":"","sources":["ShipmentDetails.js"],"names":[],"mappings":"AAiBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,eAAe,GACd,eAAe,CAoB1B;IAGH;;;OAGG;IACH,YAFU,UAAU,CAEgB;IAEpC;;;;OAIG;IACH,WAFU,CAAC,QAAQ,CAAC,CAEe;CAblC;2BA5C0B,iBAAiB;yBACnB,eAAe"}
+{"version":3,"file":"ShipmentDetails.d.ts","sourceRoot":"","sources":["ShipmentDetails.js"],"names":[],"mappings":"AAiBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,eAAe,GACd,eAAe,CAoB1B;IAGH;;;OAGG;IACH,YAFU,UAAU,CAEgB;IAEpC;;;;OAIG;IACH,WAFU,OAAO,CAEkB;CAblC;2BA5C0B,iBAAiB"}

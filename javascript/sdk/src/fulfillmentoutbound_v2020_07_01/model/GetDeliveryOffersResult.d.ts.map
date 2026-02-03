@@ -1,1 +1,1 @@
-{"version":3,"file":"GetDeliveryOffersResult.d.ts","sourceRoot":"","sources":["GetDeliveryOffersResult.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,uBAAuB,GACtB,uBAAuB,CAmBlC;IAGH;;;;OAIG;IACH,gBAFU,CAAC,aAAa,CAAC,CAEuB;CAP/C;8BA1C6B,oBAAoB"}
+{"version":3,"file":"GetDeliveryOffersResult.d.ts","sourceRoot":"","sources":["GetDeliveryOffersResult.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,uBAAuB,GACtB,uBAAuB,CAmBlC;IAGH;;;;OAIG;IACH,gBAFU,OAAO,CAE+B;CAP/C"}

@@ -64,49 +64,49 @@ export class OperatingHoursByDay {
 
 /**
  * A list of Operating Hours.
- * @member {[OperatingHour]} monday
- * @type {[OperatingHour]}
+ * @member {Array[]} monday
+ * @type {Array[]}
  */
 OperatingHoursByDay.prototype.monday = undefined
 
 /**
  * A list of Operating Hours.
- * @member {[OperatingHour]} tuesday
- * @type {[OperatingHour]}
+ * @member {Array[]} tuesday
+ * @type {Array[]}
  */
 OperatingHoursByDay.prototype.tuesday = undefined
 
 /**
  * A list of Operating Hours.
- * @member {[OperatingHour]} wednesday
- * @type {[OperatingHour]}
+ * @member {Array[]} wednesday
+ * @type {Array[]}
  */
 OperatingHoursByDay.prototype.wednesday = undefined
 
 /**
  * A list of Operating Hours.
- * @member {[OperatingHour]} thursday
- * @type {[OperatingHour]}
+ * @member {Array[]} thursday
+ * @type {Array[]}
  */
 OperatingHoursByDay.prototype.thursday = undefined
 
 /**
  * A list of Operating Hours.
- * @member {[OperatingHour]} friday
- * @type {[OperatingHour]}
+ * @member {Array[]} friday
+ * @type {Array[]}
  */
 OperatingHoursByDay.prototype.friday = undefined
 
 /**
  * A list of Operating Hours.
- * @member {[OperatingHour]} saturday
- * @type {[OperatingHour]}
+ * @member {Array[]} saturday
+ * @type {Array[]}
  */
 OperatingHoursByDay.prototype.saturday = undefined
 
 /**
  * A list of Operating Hours.
- * @member {[OperatingHour]} sunday
- * @type {[OperatingHour]}
+ * @member {Array[]} sunday
+ * @type {Array[]}
  */
 OperatingHoursByDay.prototype.sunday = undefined

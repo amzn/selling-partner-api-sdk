@@ -19,12 +19,12 @@ export class MskuPrepDetail {
      * @class
      * @param msku {String} The merchant SKU, a merchant-supplied identifier for a specific SKU.
      * @param prepCategory {PrepCategory}
-     * @param prepTypes {[PrepType]} A list of preparation types associated with a preparation category.
+     * @param prepTypes {Array[]} A list of preparation types associated with a preparation category.
      */
-    constructor(msku: string, prepCategory: PrepCategory, prepTypes: [PrepType]);
+    constructor(msku: string, prepCategory: PrepCategory, prepTypes: any[][]);
     msku: string;
     prepCategory: PrepCategory;
-    prepTypes: [PrepType];
+    prepTypes: any[][];
     /**
      * @member {AllOwnersConstraint} allOwnersConstraint
      * @type {AllOwnersConstraint}
@@ -42,7 +42,6 @@ export class MskuPrepDetail {
     prepOwnerConstraint: OwnerConstraint;
 }
 import { PrepCategory } from './PrepCategory.js';
-import { PrepType } from './PrepType.js';
 import { AllOwnersConstraint } from './AllOwnersConstraint.js';
 import { OwnerConstraint } from './OwnerConstraint.js';
 //# sourceMappingURL=MskuPrepDetail.d.ts.map

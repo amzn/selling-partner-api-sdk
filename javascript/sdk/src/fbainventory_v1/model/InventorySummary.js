@@ -121,7 +121,7 @@ InventorySummary.prototype.totalQuantity = undefined
 
 /**
  * A list of seller-enrolled stores that apply to this seller SKU.
- * @member {[String]} stores
- * @type {[String]}
+ * @member {Array[]} stores
+ * @type {Array[]}
  */
 InventorySummary.prototype.stores = undefined

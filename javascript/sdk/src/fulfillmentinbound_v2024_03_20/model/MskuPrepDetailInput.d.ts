@@ -19,13 +19,12 @@ export class MskuPrepDetailInput {
      * @class
      * @param msku {String} The merchant SKU, a merchant-supplied identifier for a specific SKU.
      * @param prepCategory {PrepCategory}
-     * @param prepTypes {[PrepType]} A list of preparation types associated with a preparation category.
+     * @param prepTypes {Array[]} A list of preparation types associated with a preparation category.
      */
-    constructor(msku: string, prepCategory: PrepCategory, prepTypes: [PrepType]);
+    constructor(msku: string, prepCategory: PrepCategory, prepTypes: any[][]);
     msku: string;
     prepCategory: PrepCategory;
-    prepTypes: [PrepType];
+    prepTypes: any[][];
 }
 import { PrepCategory } from './PrepCategory.js';
-import { PrepType } from './PrepType.js';
 //# sourceMappingURL=MskuPrepDetailInput.d.ts.map

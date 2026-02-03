@@ -18,17 +18,17 @@ export class Carton {
      * @alias module:vendorshipments_v1/model/Carton
      * @class
      * @param cartonSequenceNumber {String} Carton sequence number for the carton. The first carton will be 001, the second 002, and so on. This number is used as a reference to refer to this carton from the pallet level.
-     * @param items {[ContainerItem]} A list of container item details.
+     * @param items {Array[]} A list of container item details.
      */
-    constructor(cartonSequenceNumber: string, items: [ContainerItem]);
+    constructor(cartonSequenceNumber: string, items: any[][]);
     cartonSequenceNumber: string;
-    items: [ContainerItem];
+    items: any[][];
     /**
      * A list of carton identifiers.
-     * @member {[ContainerIdentification]} cartonIdentifiers
-     * @type {[ContainerIdentification]}
+     * @member {Array[]} cartonIdentifiers
+     * @type {Array[]}
      */
-    cartonIdentifiers: [ContainerIdentification];
+    cartonIdentifiers: any[][];
     /**
      * @member {Dimensions} dimensions
      * @type {Dimensions}
@@ -46,8 +46,6 @@ export class Carton {
      */
     trackingNumber: string;
 }
-import { ContainerItem } from './ContainerItem.js';
-import { ContainerIdentification } from './ContainerIdentification.js';
 import { Dimensions } from './Dimensions.js';
 import { Weight } from './Weight.js';
 //# sourceMappingURL=Carton.d.ts.map

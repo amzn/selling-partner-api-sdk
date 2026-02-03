@@ -25,7 +25,7 @@ export class GetMyFeesEstimatesErrorList {
    * A list of error responses returned when a request is unsuccessful.
    * @alias module:productfees_v0/model/GetMyFeesEstimatesErrorList
    * @class
-   * @param errors {[Error]} A list of error responses returned when a request is unsuccessful.
+   * @param errors {Array[]} A list of error responses returned when a request is unsuccessful.
    */
   constructor (errors) {
     this.errors = errors
@@ -60,7 +60,7 @@ export class GetMyFeesEstimatesErrorList {
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Array[]} errors
+ * @type {Array[]}
  */
 GetMyFeesEstimatesErrorList.prototype.errors = undefined

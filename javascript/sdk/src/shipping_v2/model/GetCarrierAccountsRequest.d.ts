@@ -14,10 +14,9 @@ export class GetCarrierAccountsRequest {
     static constructFromObject(data: any, obj: GetCarrierAccountsRequest): GetCarrierAccountsRequest;
     /**
      * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
-     * @member {[ClientReferenceDetail]} clientReferenceDetails
-     * @type {[ClientReferenceDetail]}
+     * @member {Array[]} clientReferenceDetails
+     * @type {Array[]}
      */
-    clientReferenceDetails: [ClientReferenceDetail];
+    clientReferenceDetails: any[][];
 }
-import { ClientReferenceDetail } from './ClientReferenceDetail.js';
 //# sourceMappingURL=GetCarrierAccountsRequest.d.ts.map

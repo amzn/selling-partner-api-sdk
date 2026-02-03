@@ -19,14 +19,14 @@ export class SellerInputDefinition {
      * @class
      * @param isRequired {Boolean} When true, the additional input field is required.
      * @param dataType {String} The data type of the additional input field.
-     * @param constraints {[Constraint]} List of constraints.
+     * @param constraints {Array[]} List of constraints.
      * @param inputDisplayText {String} The display text for the additional input field.
      * @param storedValue {AdditionalSellerInput}
      */
-    constructor(isRequired: boolean, dataType: string, constraints: [Constraint], inputDisplayText: string, storedValue: AdditionalSellerInput);
+    constructor(isRequired: boolean, dataType: string, constraints: any[][], inputDisplayText: string, storedValue: AdditionalSellerInput);
     isRequired: boolean;
     dataType: string;
-    constraints: [Constraint];
+    constraints: any[][];
     inputDisplayText: string;
     storedValue: AdditionalSellerInput;
     /**
@@ -36,12 +36,11 @@ export class SellerInputDefinition {
     inputTarget: InputTargetType;
     /**
      * The set of fixed values in an additional seller input.
-     * @member {[String]} restrictedSetValues
-     * @type {[String]}
+     * @member {Array[]} restrictedSetValues
+     * @type {Array[]}
      */
-    restrictedSetValues: [string];
+    restrictedSetValues: any[][];
 }
-import { Constraint } from './Constraint.js';
 import { AdditionalSellerInput } from './AdditionalSellerInput.js';
 import { InputTargetType } from './InputTargetType.js';
 //# sourceMappingURL=SellerInputDefinition.d.ts.map

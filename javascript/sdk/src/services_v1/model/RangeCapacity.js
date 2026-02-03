@@ -66,7 +66,7 @@ RangeCapacity.prototype.capacityType = undefined
 
 /**
  * Array of capacity slots in range slot format.
- * @member {[RangeSlot]} slots
- * @type {[RangeSlot]}
+ * @member {Array[]} slots
+ * @type {Array[]}
  */
 RangeCapacity.prototype.slots = undefined

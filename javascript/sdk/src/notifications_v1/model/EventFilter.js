@@ -82,15 +82,15 @@ EventFilter.prototype.aggregationSettings = undefined
 
 /**
  * A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
- * @member {[String]} marketplaceIds
- * @type {[String]}
+ * @member {Array[]} marketplaceIds
+ * @type {Array[]}
  */
 EventFilter.prototype.marketplaceIds = undefined
 
 /**
  * A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
- * @member {[OrderChangeTypeEnum]} orderChangeTypes
- * @type {[OrderChangeTypeEnum]}
+ * @member {Array[]} orderChangeTypes
+ * @type {Array[]}
  */
 EventFilter.prototype.orderChangeTypes = undefined
 
@@ -130,15 +130,15 @@ AggregationFilter.prototype.aggregationSettings = undefined
 // Implement MarketplaceFilter interface:
 /**
  * A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
- * @member {[String]} marketplaceIds
- * @type {[String]}
+ * @member {Array[]} marketplaceIds
+ * @type {Array[]}
  */
 MarketplaceFilter.prototype.marketplaceIds = undefined
 
 // Implement OrderChangeTypeFilter interface:
 /**
  * A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
- * @member {[OrderChangeTypeEnum]} orderChangeTypes
- * @type {[OrderChangeTypeEnum]}
+ * @member {Array[]} orderChangeTypes
+ * @type {Array[]}
  */
 OrderChangeTypeFilter.prototype.orderChangeTypes = undefined

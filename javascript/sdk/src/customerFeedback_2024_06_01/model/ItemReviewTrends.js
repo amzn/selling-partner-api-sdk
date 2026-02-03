@@ -59,14 +59,14 @@ export class ItemReviewTrends {
 
 /**
  * A list of the most positive review topics. The percentage of reviews that contain the topic determines the topic's placement in the list. This value is `null` if there are not enough positive reviews for the specified ASIN.  **Max length:** 10
- * @member {[ItemReviewTrend]} positiveTopics
- * @type {[ItemReviewTrend]}
+ * @member {Array[]} positiveTopics
+ * @type {Array[]}
  */
 ItemReviewTrends.prototype.positiveTopics = undefined
 
 /**
  * A list of the most negative review topics. The percentage of reviews that contain the topic determines the topic's placement in the list. This value is `null` if there are not enough negative reviews for the specified ASIN.  **Max length:** 10
- * @member {[ItemReviewTrend]} negativeTopics
- * @type {[ItemReviewTrend]}
+ * @member {Array[]} negativeTopics
+ * @type {Array[]}
  */
 ItemReviewTrends.prototype.negativeTopics = undefined

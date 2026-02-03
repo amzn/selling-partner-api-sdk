@@ -26,8 +26,8 @@ export class GenerateShipmentContentUpdatePreviewsRequest {
    * The &#x60;GenerateShipmentContentUpdatePreviews&#x60; request.
    * @alias module:fulfillmentinbound_v2024_03_20/model/GenerateShipmentContentUpdatePreviewsRequest
    * @class
-   * @param boxes {[BoxUpdateInput]} A list of boxes that will be present in the shipment after the update.
-   * @param items {[ItemInput]} A list of all items that will be present in the shipment after the update.
+   * @param boxes {Array[]} A list of boxes that will be present in the shipment after the update.
+   * @param items {Array[]} A list of all items that will be present in the shipment after the update.
    */
   constructor (boxes, items) {
     this.boxes = boxes
@@ -64,14 +64,14 @@ export class GenerateShipmentContentUpdatePreviewsRequest {
 
 /**
  * A list of boxes that will be present in the shipment after the update.
- * @member {[BoxUpdateInput]} boxes
- * @type {[BoxUpdateInput]}
+ * @member {Array[]} boxes
+ * @type {Array[]}
  */
 GenerateShipmentContentUpdatePreviewsRequest.prototype.boxes = undefined
 
 /**
  * A list of all items that will be present in the shipment after the update.
- * @member {[ItemInput]} items
- * @type {[ItemInput]}
+ * @member {Array[]} items
+ * @type {Array[]}
  */
 GenerateShipmentContentUpdatePreviewsRequest.prototype.items = undefined

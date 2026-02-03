@@ -35,7 +35,7 @@ export class InvoiceDetail {
    * @param remitToParty {PartyIdentification}
    * @param shipFromParty {PartyIdentification}
    * @param invoiceTotal {Money}
-   * @param items {[InvoiceItem]} Provides the details of the items in this invoice.
+   * @param items {Array[]} Provides the details of the items in this invoice.
    */
   constructor (invoiceNumber, invoiceDate, remitToParty, shipFromParty, invoiceTotal, items) {
     this.invoiceNumber = invoiceNumber
@@ -146,28 +146,28 @@ InvoiceDetail.prototype.invoiceTotal = undefined
 
 /**
  * Individual tax details per line item.
- * @member {[TaxDetail]} taxTotals
- * @type {[TaxDetail]}
+ * @member {Array[]} taxTotals
+ * @type {Array[]}
  */
 InvoiceDetail.prototype.taxTotals = undefined
 
 /**
  * Additional details provided by the selling party, for tax-related or other purposes.
- * @member {[AdditionalDetails]} additionalDetails
- * @type {[AdditionalDetails]}
+ * @member {Array[]} additionalDetails
+ * @type {Array[]}
  */
 InvoiceDetail.prototype.additionalDetails = undefined
 
 /**
  * Total charge amount details for all line items.
- * @member {[ChargeDetails]} chargeDetails
- * @type {[ChargeDetails]}
+ * @member {Array[]} chargeDetails
+ * @type {Array[]}
  */
 InvoiceDetail.prototype.chargeDetails = undefined
 
 /**
  * Provides the details of the items in this invoice.
- * @member {[InvoiceItem]} items
- * @type {[InvoiceItem]}
+ * @member {Array[]} items
+ * @type {Array[]}
  */
 InvoiceDetail.prototype.items = undefined

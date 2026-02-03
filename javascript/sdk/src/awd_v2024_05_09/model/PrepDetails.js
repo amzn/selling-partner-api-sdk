@@ -76,8 +76,8 @@ PrepDetails.prototype.prepCategory = undefined
 
 /**
  * Contains information about the preparation of the inbound products. The system auto-generates this field with the use of the `prepCategory`, and if you attempt to pass a value for this field, the system will ignore it.
- * @member {[PrepInstruction]} prepInstructions
- * @type {[PrepInstruction]}
+ * @member {Array[]} prepInstructions
+ * @type {Array[]}
  */
 PrepDetails.prototype.prepInstructions = undefined
 

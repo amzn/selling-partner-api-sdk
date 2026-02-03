@@ -59,10 +59,10 @@ export class OfferDetail {
     sellerFeedbackRating: SellerFeedbackType;
     /**
      * List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.
-     * @member {[QuantityDiscountPriceType]} quantityDiscountPrices
-     * @type {[QuantityDiscountPriceType]}
+     * @member {Array[]} quantityDiscountPrices
+     * @type {Array[]}
      */
-    quantityDiscountPrices: [QuantityDiscountPriceType];
+    quantityDiscountPrices: any[][];
     /**
      * @member {Points} points
      * @type {Points}
@@ -95,7 +95,6 @@ import { DetailedShippingTimeType } from './DetailedShippingTimeType.js';
 import { MoneyType } from './MoneyType.js';
 import { OfferCustomerType } from './OfferCustomerType.js';
 import { SellerFeedbackType } from './SellerFeedbackType.js';
-import { QuantityDiscountPriceType } from './QuantityDiscountPriceType.js';
 import { Points } from './Points.js';
 import { ShipsFromType } from './ShipsFromType.js';
 import { PrimeInformationType } from './PrimeInformationType.js';

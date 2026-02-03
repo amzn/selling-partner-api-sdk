@@ -30,7 +30,7 @@ export class Container {
    * @param containerType {String} The type of container.
    * @param containerIdentifier {String} The container identifier.
    * @param weight {Weight}
-   * @param packedItems {[PackedItem]} A list of packed items.
+   * @param packedItems {Array[]} A list of packed items.
    */
   constructor (containerType, containerIdentifier, weight, packedItems) {
     this.containerType = containerType
@@ -173,7 +173,7 @@ Container.prototype.weight = undefined
 
 /**
  * A list of packed items.
- * @member {[PackedItem]} packedItems
- * @type {[PackedItem]}
+ * @member {Array[]} packedItems
+ * @type {Array[]}
  */
 Container.prototype.packedItems = undefined

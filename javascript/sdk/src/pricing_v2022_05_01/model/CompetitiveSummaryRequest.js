@@ -29,7 +29,7 @@ export class CompetitiveSummaryRequest {
    * @class
    * @param asin {String} The ASIN of the item.
    * @param marketplaceId {String} The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-   * @param includedData {[CompetitiveSummaryIncludedData]} The list of requested competitive pricing data for the product.
+   * @param includedData {Array[]} The list of requested competitive pricing data for the product.
    * @param method {HttpMethod}
    * @param uri {String} The URI associated with the individual APIs that are called as part of the batch request.
    */
@@ -89,15 +89,15 @@ CompetitiveSummaryRequest.prototype.marketplaceId = undefined
 
 /**
  * The list of requested competitive pricing data for the product.
- * @member {[CompetitiveSummaryIncludedData]} includedData
- * @type {[CompetitiveSummaryIncludedData]}
+ * @member {Array[]} includedData
+ * @type {Array[]}
  */
 CompetitiveSummaryRequest.prototype.includedData = undefined
 
 /**
  * The list of `lowestPricedOffersInput` parameters that are used to build `lowestPricedOffers` in the response. This attribute is only valid if `lowestPricedOffers` is requested in `includedData`
- * @member {[LowestPricedOffersInput]} lowestPricedOffersInputs
- * @type {[LowestPricedOffersInput]}
+ * @member {Array[]} lowestPricedOffersInputs
+ * @type {Array[]}
  */
 CompetitiveSummaryRequest.prototype.lowestPricedOffersInputs = undefined
 

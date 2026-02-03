@@ -23,18 +23,17 @@ export class OrderAcknowledgementItem {
      * @param acknowledgementStatus {AcknowledgementStatus}
      * @param sellingParty {PartyIdentification}
      * @param shipFromParty {PartyIdentification}
-     * @param itemAcknowledgements {[OrderItemAcknowledgement]} Item details including acknowledged quantity.
+     * @param itemAcknowledgements {Array[]} Item details including acknowledged quantity.
      */
-    constructor(purchaseOrderNumber: string, vendorOrderNumber: string, acknowledgementDate: Date, acknowledgementStatus: AcknowledgementStatus, sellingParty: PartyIdentification, shipFromParty: PartyIdentification, itemAcknowledgements: [OrderItemAcknowledgement]);
+    constructor(purchaseOrderNumber: string, vendorOrderNumber: string, acknowledgementDate: Date, acknowledgementStatus: AcknowledgementStatus, sellingParty: PartyIdentification, shipFromParty: PartyIdentification, itemAcknowledgements: any[][]);
     purchaseOrderNumber: string;
     vendorOrderNumber: string;
     acknowledgementDate: Date;
     acknowledgementStatus: AcknowledgementStatus;
     sellingParty: PartyIdentification;
     shipFromParty: PartyIdentification;
-    itemAcknowledgements: [OrderItemAcknowledgement];
+    itemAcknowledgements: any[][];
 }
 import { AcknowledgementStatus } from './AcknowledgementStatus.js';
 import { PartyIdentification } from './PartyIdentification.js';
-import { OrderItemAcknowledgement } from './OrderItemAcknowledgement.js';
 //# sourceMappingURL=OrderAcknowledgementItem.d.ts.map

@@ -60,14 +60,14 @@ export class GetAdditionalSellerInputsResult {
 
 /**
  * A list of additional inputs.
- * @member {[AdditionalInputs]} shipmentLevelFields
- * @type {[AdditionalInputs]}
+ * @member {Array[]} shipmentLevelFields
+ * @type {Array[]}
  */
 GetAdditionalSellerInputsResult.prototype.shipmentLevelFields = undefined
 
 /**
  * A list of item level fields.
- * @member {[ItemLevelFields]} itemLevelFieldsList
- * @type {[ItemLevelFields]}
+ * @member {Array[]} itemLevelFieldsList
+ * @type {Array[]}
  */
 GetAdditionalSellerInputsResult.prototype.itemLevelFieldsList = undefined

@@ -58,7 +58,7 @@ export class GetCarrierAccountsRequest {
 
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
- * @member {[ClientReferenceDetail]} clientReferenceDetails
- * @type {[ClientReferenceDetail]}
+ * @member {Array[]} clientReferenceDetails
+ * @type {Array[]}
  */
 GetCarrierAccountsRequest.prototype.clientReferenceDetails = undefined

@@ -20,10 +20,10 @@ export class BusinessHour {
     dayOfWeek: string;
     /**
      * Collection of time windows during which the location is available for deliveries on the specified day.
-     * @member {[TimeWindow]} timeWindows
-     * @type {[TimeWindow]}
+     * @member {Array[]} timeWindows
+     * @type {Array[]}
      */
-    timeWindows: [TimeWindow];
+    timeWindows: any[][];
 }
 export namespace BusinessHour {
     namespace DayOfWeekEnum {
@@ -40,5 +40,4 @@ export namespace BusinessHour {
      */
     type DayOfWeekEnum = string;
 }
-import { TimeWindow } from './TimeWindow.js';
 //# sourceMappingURL=BusinessHour.d.ts.map

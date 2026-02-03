@@ -72,7 +72,7 @@ OperatingHours.prototype.openingTime = undefined
 
 /**
  * midDayClosures operating hours array
- * @member {[TimeOfDay]} midDayClosures
- * @type {[TimeOfDay]}
+ * @member {Array[]} midDayClosures
+ * @type {Array[]}
  */
 OperatingHours.prototype.midDayClosures = undefined

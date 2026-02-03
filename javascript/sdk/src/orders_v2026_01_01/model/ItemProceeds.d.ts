@@ -19,11 +19,10 @@ export class ItemProceeds {
     proceedsTotal: Money;
     /**
      * The breakdown of proceeds.
-     * @member {[ItemProceedsBreakdown]} breakdowns
-     * @type {[ItemProceedsBreakdown]}
+     * @member {Array[]} breakdowns
+     * @type {Array[]}
      */
-    breakdowns: [ItemProceedsBreakdown];
+    breakdowns: any[][];
 }
 import { Money } from './Money.js';
-import { ItemProceedsBreakdown } from './ItemProceedsBreakdown.js';
 //# sourceMappingURL=ItemProceeds.d.ts.map

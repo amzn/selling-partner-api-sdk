@@ -59,8 +59,8 @@ export class ReturnsResponse {
 
 /**
  * A list of returns.
- * @member {[Return]} returns
- * @type {[Return]}
+ * @member {Array[]} returns
+ * @type {Array[]}
  */
 ReturnsResponse.prototype.returns = undefined
 

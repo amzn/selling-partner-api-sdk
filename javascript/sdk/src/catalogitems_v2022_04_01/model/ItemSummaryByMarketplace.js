@@ -121,8 +121,8 @@ ItemSummaryByMarketplace.prototype.color = undefined
 
 /**
  * Individual contributors to the creation of the item, such as the authors or actors.
- * @member {[ItemContributor]} contributors
- * @type {[ItemContributor]}
+ * @member {Array[]} contributors
+ * @type {Array[]}
  */
 ItemSummaryByMarketplace.prototype.contributors = undefined
 

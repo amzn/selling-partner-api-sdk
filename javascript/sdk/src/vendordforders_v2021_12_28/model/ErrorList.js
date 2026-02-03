@@ -25,7 +25,7 @@ export class ErrorList {
    * A list of error responses returned when a request is unsuccessful.
    * @alias module:vendordforders_v2021_12_28/model/ErrorList
    * @class
-   * @param errors {[Error]} An array of Error objects representing individual errors encountered during the request.
+   * @param errors {Array[]} An array of Error objects representing individual errors encountered during the request.
    */
   constructor (errors) {
     this.errors = errors
@@ -60,7 +60,7 @@ export class ErrorList {
 
 /**
  * An array of Error objects representing individual errors encountered during the request.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Array[]} errors
+ * @type {Array[]}
  */
 ErrorList.prototype.errors = undefined

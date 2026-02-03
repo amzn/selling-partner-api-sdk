@@ -23,10 +23,10 @@ export class ItemSubstitutionPreference {
     substitutionType: string;
     /**
      * List of alternative products that can be substituted for the original item if it becomes unavailable.
-     * @member {[ItemSubstitutionOption]} substitutionOptions
-     * @type {[ItemSubstitutionOption]}
+     * @member {Array[]} substitutionOptions
+     * @type {Array[]}
      */
-    substitutionOptions: [ItemSubstitutionOption];
+    substitutionOptions: any[][];
 }
 export namespace ItemSubstitutionPreference {
     namespace SubstitutionTypeEnum {
@@ -39,5 +39,4 @@ export namespace ItemSubstitutionPreference {
      */
     type SubstitutionTypeEnum = string;
 }
-import { ItemSubstitutionOption } from './ItemSubstitutionOption.js';
 //# sourceMappingURL=ItemSubstitutionPreference.d.ts.map

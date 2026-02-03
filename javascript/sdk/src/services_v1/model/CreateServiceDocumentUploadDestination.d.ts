@@ -19,11 +19,10 @@ export class CreateServiceDocumentUploadDestination {
     payload: ServiceDocumentUploadDestination;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { ServiceDocumentUploadDestination } from './ServiceDocumentUploadDestination.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=CreateServiceDocumentUploadDestination.d.ts.map

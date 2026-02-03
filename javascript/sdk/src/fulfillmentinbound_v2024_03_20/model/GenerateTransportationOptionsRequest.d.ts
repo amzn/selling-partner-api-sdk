@@ -18,11 +18,10 @@ export class GenerateTransportationOptionsRequest {
      * @alias module:fulfillmentinbound_v2024_03_20/model/GenerateTransportationOptionsRequest
      * @class
      * @param placementOptionId {String} The placement option to generate transportation options for.
-     * @param shipmentTransportationConfigurations {[ShipmentTransportationConfiguration]} List of shipment transportation configurations.
+     * @param shipmentTransportationConfigurations {Array[]} List of shipment transportation configurations.
      */
-    constructor(placementOptionId: string, shipmentTransportationConfigurations: [ShipmentTransportationConfiguration]);
+    constructor(placementOptionId: string, shipmentTransportationConfigurations: any[][]);
     placementOptionId: string;
-    shipmentTransportationConfigurations: [ShipmentTransportationConfiguration];
+    shipmentTransportationConfigurations: any[][];
 }
-import { ShipmentTransportationConfiguration } from './ShipmentTransportationConfiguration.js';
 //# sourceMappingURL=GenerateTransportationOptionsRequest.d.ts.map

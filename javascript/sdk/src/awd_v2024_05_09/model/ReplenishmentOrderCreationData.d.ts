@@ -19,11 +19,10 @@ export class ReplenishmentOrderCreationData {
     preferences: ReplenishmentPreferences;
     /**
      * Requested amount of single product units to be replenished.
-     * @member {[DistributionProduct]} products
-     * @type {[DistributionProduct]}
+     * @member {Array[]} products
+     * @type {Array[]}
      */
-    products: [DistributionProduct];
+    products: any[][];
 }
 import { ReplenishmentPreferences } from './ReplenishmentPreferences.js';
-import { DistributionProduct } from './DistributionProduct.js';
 //# sourceMappingURL=ReplenishmentOrderCreationData.d.ts.map

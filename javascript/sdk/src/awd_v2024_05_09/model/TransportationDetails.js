@@ -25,7 +25,7 @@ export class TransportationDetails {
    * Transportation details for the shipment.
    * @alias module:awd_v2024_05_09/model/TransportationDetails
    * @class
-   * @param trackingDetails {[TrackingDetails]} Tracking details for the shipment. If using SPD transportation, this can be for each case. If not using SPD transportation, this is a single tracking entry for the entire shipment.
+   * @param trackingDetails {Array[]} Tracking details for the shipment. If using SPD transportation, this can be for each case. If not using SPD transportation, this is a single tracking entry for the entire shipment.
    */
   constructor (trackingDetails) {
     this.trackingDetails = trackingDetails
@@ -60,7 +60,7 @@ export class TransportationDetails {
 
 /**
  * Tracking details for the shipment. If using SPD transportation, this can be for each case. If not using SPD transportation, this is a single tracking entry for the entire shipment.
- * @member {[TrackingDetails]} trackingDetails
- * @type {[TrackingDetails]}
+ * @member {Array[]} trackingDetails
+ * @type {Array[]}
  */
 TransportationDetails.prototype.trackingDetails = undefined

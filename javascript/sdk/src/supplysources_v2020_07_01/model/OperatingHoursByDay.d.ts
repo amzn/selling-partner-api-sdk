@@ -14,46 +14,45 @@ export class OperatingHoursByDay {
     static constructFromObject(data: any, obj: OperatingHoursByDay): OperatingHoursByDay;
     /**
      * A list of Operating Hours.
-     * @member {[OperatingHour]} monday
-     * @type {[OperatingHour]}
+     * @member {Array[]} monday
+     * @type {Array[]}
      */
-    monday: [OperatingHour];
+    monday: any[][];
     /**
      * A list of Operating Hours.
-     * @member {[OperatingHour]} tuesday
-     * @type {[OperatingHour]}
+     * @member {Array[]} tuesday
+     * @type {Array[]}
      */
-    tuesday: [OperatingHour];
+    tuesday: any[][];
     /**
      * A list of Operating Hours.
-     * @member {[OperatingHour]} wednesday
-     * @type {[OperatingHour]}
+     * @member {Array[]} wednesday
+     * @type {Array[]}
      */
-    wednesday: [OperatingHour];
+    wednesday: any[][];
     /**
      * A list of Operating Hours.
-     * @member {[OperatingHour]} thursday
-     * @type {[OperatingHour]}
+     * @member {Array[]} thursday
+     * @type {Array[]}
      */
-    thursday: [OperatingHour];
+    thursday: any[][];
     /**
      * A list of Operating Hours.
-     * @member {[OperatingHour]} friday
-     * @type {[OperatingHour]}
+     * @member {Array[]} friday
+     * @type {Array[]}
      */
-    friday: [OperatingHour];
+    friday: any[][];
     /**
      * A list of Operating Hours.
-     * @member {[OperatingHour]} saturday
-     * @type {[OperatingHour]}
+     * @member {Array[]} saturday
+     * @type {Array[]}
      */
-    saturday: [OperatingHour];
+    saturday: any[][];
     /**
      * A list of Operating Hours.
-     * @member {[OperatingHour]} sunday
-     * @type {[OperatingHour]}
+     * @member {Array[]} sunday
+     * @type {Array[]}
      */
-    sunday: [OperatingHour];
+    sunday: any[][];
 }
-import { OperatingHour } from './OperatingHour.js';
 //# sourceMappingURL=OperatingHoursByDay.d.ts.map

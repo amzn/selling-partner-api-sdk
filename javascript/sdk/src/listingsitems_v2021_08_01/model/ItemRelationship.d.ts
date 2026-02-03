@@ -23,16 +23,16 @@ export class ItemRelationship {
     type: string;
     /**
      * Identifiers (SKUs) of the related items that are children of this listing item.
-     * @member {[String]} childSkus
-     * @type {[String]}
+     * @member {Array[]} childSkus
+     * @type {Array[]}
      */
-    childSkus: [string];
+    childSkus: any[][];
     /**
      * Identifiers (SKUs) of the related items that are parents of this listing item.
-     * @member {[String]} parentSkus
-     * @type {[String]}
+     * @member {Array[]} parentSkus
+     * @type {Array[]}
      */
-    parentSkus: [string];
+    parentSkus: any[][];
     /**
      * @member {ItemVariationTheme} variationTheme
      * @type {ItemVariationTheme}

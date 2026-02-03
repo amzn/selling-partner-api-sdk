@@ -60,14 +60,14 @@ export class GetOrderMetricsResponse {
 
 /**
  * A set of order metrics, each scoped to a particular time interval.
- * @member {[OrderMetricsInterval]} payload
- * @type {[OrderMetricsInterval]}
+ * @member {Array[]} payload
+ * @type {Array[]}
  */
 GetOrderMetricsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Array[]} errors
+ * @type {Array[]}
  */
 GetOrderMetricsResponse.prototype.errors = undefined

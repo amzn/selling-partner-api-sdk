@@ -18,11 +18,11 @@ export class OrderAcknowledgementItem {
      * @alias module:vendororders_v1/model/OrderAcknowledgementItem
      * @class
      * @param orderedQuantity {ItemQuantity}
-     * @param itemAcknowledgements {[OrderItemAcknowledgement]} This is used to indicate acknowledged quantity.
+     * @param itemAcknowledgements {Array[]} This is used to indicate acknowledged quantity.
      */
-    constructor(orderedQuantity: ItemQuantity, itemAcknowledgements: [OrderItemAcknowledgement]);
+    constructor(orderedQuantity: ItemQuantity, itemAcknowledgements: any[][]);
     orderedQuantity: ItemQuantity;
-    itemAcknowledgements: [OrderItemAcknowledgement];
+    itemAcknowledgements: any[][];
     /**
      * Line item sequence number for the item.
      * @member {String} itemSequenceNumber
@@ -59,6 +59,5 @@ export class OrderAcknowledgementItem {
     discountMultiplier: string;
 }
 import { ItemQuantity } from './ItemQuantity.js';
-import { OrderItemAcknowledgement } from './OrderItemAcknowledgement.js';
 import { Money } from './Money.js';
 //# sourceMappingURL=OrderAcknowledgementItem.d.ts.map

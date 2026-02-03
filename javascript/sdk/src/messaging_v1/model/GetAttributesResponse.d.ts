@@ -19,11 +19,10 @@ export class GetAttributesResponse {
     buyer: GetAttributesResponseBuyer;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { GetAttributesResponseBuyer } from './GetAttributesResponseBuyer.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetAttributesResponse.d.ts.map

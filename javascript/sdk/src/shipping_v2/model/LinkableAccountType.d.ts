@@ -19,11 +19,10 @@ export class LinkableAccountType {
     accountType: AccountType;
     /**
      * A list of CarrierAccountInput
-     * @member {[CarrierAccountInput]} carrierAccountInputs
-     * @type {[CarrierAccountInput]}
+     * @member {Array[]} carrierAccountInputs
+     * @type {Array[]}
      */
-    carrierAccountInputs: [CarrierAccountInput];
+    carrierAccountInputs: any[][];
 }
 import { AccountType } from './AccountType.js';
-import { CarrierAccountInput } from './CarrierAccountInput.js';
 //# sourceMappingURL=LinkableAccountType.d.ts.map

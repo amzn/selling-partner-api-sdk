@@ -26,7 +26,7 @@ export class ItemRelationshipsByMarketplace {
    * @alias module:catalogitems_v2022_04_01/model/ItemRelationshipsByMarketplace
    * @class
    * @param marketplaceId {String} Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-   * @param relationships {[ItemRelationship]} Relationships for the item.
+   * @param relationships {Array[]} Relationships for the item.
    */
   constructor (marketplaceId, relationships) {
     this.marketplaceId = marketplaceId
@@ -70,7 +70,7 @@ ItemRelationshipsByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Relationships for the item.
- * @member {[ItemRelationship]} relationships
- * @type {[ItemRelationship]}
+ * @member {Array[]} relationships
+ * @type {Array[]}
  */
 ItemRelationshipsByMarketplace.prototype.relationships = undefined

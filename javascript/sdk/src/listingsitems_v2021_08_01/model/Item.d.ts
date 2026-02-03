@@ -23,10 +23,10 @@ export class Item {
     sku: string;
     /**
      * Summary details of a listings item.
-     * @member {[ItemSummaryByMarketplace]} summaries
-     * @type {[ItemSummaryByMarketplace]}
+     * @member {Array[]} summaries
+     * @type {Array[]}
      */
-    summaries: [ItemSummaryByMarketplace];
+    summaries: any[][];
     /**
      * A JSON object containing structured listings item attribute data keyed by attribute name.
      * @member {{String: Object}} attributes
@@ -37,46 +37,39 @@ export class Item {
     };
     /**
      * The issues associated with the listings item.
-     * @member {[Issue]} issues
-     * @type {[Issue]}
+     * @member {Array[]} issues
+     * @type {Array[]}
      */
-    issues: [Issue];
+    issues: any[][];
     /**
      * Offer details for the listings item.
-     * @member {[ItemOfferByMarketplace]} offers
-     * @type {[ItemOfferByMarketplace]}
+     * @member {Array[]} offers
+     * @type {Array[]}
      */
-    offers: [ItemOfferByMarketplace];
+    offers: any[][];
     /**
      * The fulfillment availability for the listings item.
-     * @member {[FulfillmentAvailability]} fulfillmentAvailability
-     * @type {[FulfillmentAvailability]}
+     * @member {Array[]} fulfillmentAvailability
+     * @type {Array[]}
      */
-    fulfillmentAvailability: [FulfillmentAvailability];
+    fulfillmentAvailability: any[][];
     /**
      * The vendor procurement information for the listings item.
-     * @member {[ItemProcurement]} procurement
-     * @type {[ItemProcurement]}
+     * @member {Array[]} procurement
+     * @type {Array[]}
      */
-    procurement: [ItemProcurement];
+    procurement: any[][];
     /**
      * Relationships for a listing item, by marketplace (for example, variations).
-     * @member {[ItemRelationshipsByMarketplace]} relationships
-     * @type {[ItemRelationshipsByMarketplace]}
+     * @member {Array[]} relationships
+     * @type {Array[]}
      */
-    relationships: [ItemRelationshipsByMarketplace];
+    relationships: any[][];
     /**
      * Product types for a listing item, by marketplace.
-     * @member {[ItemProductTypeByMarketplace]} productTypes
-     * @type {[ItemProductTypeByMarketplace]}
+     * @member {Array[]} productTypes
+     * @type {Array[]}
      */
-    productTypes: [ItemProductTypeByMarketplace];
+    productTypes: any[][];
 }
-import { ItemSummaryByMarketplace } from './ItemSummaryByMarketplace.js';
-import { Issue } from './Issue.js';
-import { ItemOfferByMarketplace } from './ItemOfferByMarketplace.js';
-import { FulfillmentAvailability } from './FulfillmentAvailability.js';
-import { ItemProcurement } from './ItemProcurement.js';
-import { ItemRelationshipsByMarketplace } from './ItemRelationshipsByMarketplace.js';
-import { ItemProductTypeByMarketplace } from './ItemProductTypeByMarketplace.js';
 //# sourceMappingURL=Item.d.ts.map

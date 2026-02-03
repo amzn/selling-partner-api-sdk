@@ -18,11 +18,11 @@ export class Containers {
      * @alias module:vendorshipments_v1/model/Containers
      * @class
      * @param containerType {String} The type of container.
-     * @param containerIdentifiers {[ContainerIdentification]} A list of carton identifiers.
+     * @param containerIdentifiers {Array[]} A list of carton identifiers.
      */
-    constructor(containerType: string, containerIdentifiers: [ContainerIdentification]);
+    constructor(containerType: string, containerIdentifiers: any[][]);
     containerType: string;
-    containerIdentifiers: [ContainerIdentification];
+    containerIdentifiers: any[][];
     /**
      * An integer that must be submitted for multi-box shipments only, where one item may come in separate packages.
      * @member {String} containerSequenceNumber
@@ -64,10 +64,10 @@ export class Containers {
     innerContainersDetails: InnerContainersDetails;
     /**
      * A list of packed items.
-     * @member {[PackedItems]} packedItems
-     * @type {[PackedItems]}
+     * @member {Array[]} packedItems
+     * @type {Array[]}
      */
-    packedItems: [PackedItems];
+    packedItems: any[][];
 }
 export namespace Containers {
     namespace ContainerTypeEnum {
@@ -79,9 +79,7 @@ export namespace Containers {
      */
     type ContainerTypeEnum = string;
 }
-import { ContainerIdentification } from './ContainerIdentification.js';
 import { Dimensions } from './Dimensions.js';
 import { Weight } from './Weight.js';
 import { InnerContainersDetails } from './InnerContainersDetails.js';
-import { PackedItems } from './PackedItems.js';
 //# sourceMappingURL=Containers.d.ts.map

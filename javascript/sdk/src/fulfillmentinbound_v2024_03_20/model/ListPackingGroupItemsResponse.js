@@ -26,7 +26,7 @@ export class ListPackingGroupItemsResponse {
    * The &#x60;listPackingGroupItems&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListPackingGroupItemsResponse
    * @class
-   * @param items {[Item]} Provides the information about the list of items in the packing group.
+   * @param items {Array[]} Provides the information about the list of items in the packing group.
    */
   constructor (items) {
     this.items = items
@@ -62,8 +62,8 @@ export class ListPackingGroupItemsResponse {
 
 /**
  * Provides the information about the list of items in the packing group.
- * @member {[Item]} items
- * @type {[Item]}
+ * @member {Array[]} items
+ * @type {Array[]}
  */
 ListPackingGroupItemsResponse.prototype.items = undefined
 

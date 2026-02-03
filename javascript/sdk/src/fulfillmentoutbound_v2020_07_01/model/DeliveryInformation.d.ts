@@ -14,16 +14,15 @@ export class DeliveryInformation {
     static constructFromObject(data: any, obj: DeliveryInformation): DeliveryInformation;
     /**
      * A list of delivery documents for a package.
-     * @member {[DeliveryDocument]} deliveryDocumentList
-     * @type {[DeliveryDocument]}
+     * @member {Array[]} deliveryDocumentList
+     * @type {Array[]}
      */
-    deliveryDocumentList: [DeliveryDocument];
+    deliveryDocumentList: any[][];
     /**
      * @member {DropOffLocation} dropOffLocation
      * @type {DropOffLocation}
      */
     dropOffLocation: DropOffLocation;
 }
-import { DeliveryDocument } from './DeliveryDocument.js';
 import { DropOffLocation } from './DropOffLocation.js';
 //# sourceMappingURL=DeliveryInformation.d.ts.map

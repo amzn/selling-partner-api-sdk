@@ -14,10 +14,9 @@ export class AddInventoryRequest {
     static constructFromObject(data: any, obj: AddInventoryRequest): AddInventoryRequest;
     /**
      * List of Inventory to be added
-     * @member {[InventoryItem]} inventoryItems
-     * @type {[InventoryItem]}
+     * @member {Array[]} inventoryItems
+     * @type {Array[]}
      */
-    inventoryItems: [InventoryItem];
+    inventoryItems: any[][];
 }
-import { InventoryItem } from './InventoryItem.js';
 //# sourceMappingURL=AddInventoryRequest.d.ts.map

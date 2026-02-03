@@ -55,11 +55,10 @@ export class CarrierAccountInput {
     isHidden: boolean;
     /**
      * A list of ValidationMetadata
-     * @member {[ValidationMetadata]} validationMetadata
-     * @type {[ValidationMetadata]}
+     * @member {Array[]} validationMetadata
+     * @type {Array[]}
      */
-    validationMetadata: [ValidationMetadata];
+    validationMetadata: any[][];
 }
 import { InputType } from './InputType.js';
-import { ValidationMetadata } from './ValidationMetadata.js';
 //# sourceMappingURL=CarrierAccountInput.d.ts.map

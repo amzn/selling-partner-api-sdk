@@ -14,10 +14,9 @@ export class MarketplaceTaxInfo {
     static constructFromObject(data: any, obj: MarketplaceTaxInfo): MarketplaceTaxInfo;
     /**
      * A list of tax classifications that apply to the order.
-     * @member {[TaxClassification]} taxClassifications
-     * @type {[TaxClassification]}
+     * @member {Array[]} taxClassifications
+     * @type {Array[]}
      */
-    taxClassifications: [TaxClassification];
+    taxClassifications: any[][];
 }
-import { TaxClassification } from './TaxClassification.js';
 //# sourceMappingURL=MarketplaceTaxInfo.d.ts.map

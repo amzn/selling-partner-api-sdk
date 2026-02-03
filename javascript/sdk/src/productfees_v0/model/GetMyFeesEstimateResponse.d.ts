@@ -19,11 +19,10 @@ export class GetMyFeesEstimateResponse {
     payload: GetMyFeesEstimateResult;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { GetMyFeesEstimateResult } from './GetMyFeesEstimateResult.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetMyFeesEstimateResponse.d.ts.map

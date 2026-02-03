@@ -18,11 +18,11 @@ export class GetFulfillmentPreviewRequest {
      * @alias module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentPreviewRequest
      * @class
      * @param address {Address}
-     * @param items {[GetFulfillmentPreviewItem]} An array of fulfillment preview item information.
+     * @param items {Array[]} An array of fulfillment preview item information.
      */
-    constructor(address: Address, items: [GetFulfillmentPreviewItem]);
+    constructor(address: Address, items: any[][]);
     address: Address;
-    items: [GetFulfillmentPreviewItem];
+    items: any[][];
     /**
      * The marketplace the fulfillment order is placed against.
      * @member {String} marketplaceId
@@ -31,10 +31,10 @@ export class GetFulfillmentPreviewRequest {
     marketplaceId: string;
     /**
      * List of shipping speed categories.
-     * @member {[ShippingSpeedCategory]} shippingSpeedCategories
-     * @type {[ShippingSpeedCategory]}
+     * @member {Array[]} shippingSpeedCategories
+     * @type {Array[]}
      */
-    shippingSpeedCategories: [ShippingSpeedCategory];
+    shippingSpeedCategories: any[][];
     /**
      * When true, returns all fulfillment order previews both for COD and not for COD. Otherwise, returns only fulfillment order previews that are not for COD.
      * @member {Boolean} includeCODFulfillmentPreview
@@ -49,13 +49,10 @@ export class GetFulfillmentPreviewRequest {
     includeDeliveryWindows: boolean;
     /**
      * A list of features and their fulfillment policies to apply to the order.
-     * @member {[FeatureSettings]} featureConstraints
-     * @type {[FeatureSettings]}
+     * @member {Array[]} featureConstraints
+     * @type {Array[]}
      */
-    featureConstraints: [FeatureSettings];
+    featureConstraints: any[][];
 }
 import { Address } from './Address.js';
-import { GetFulfillmentPreviewItem } from './GetFulfillmentPreviewItem.js';
-import { ShippingSpeedCategory } from './ShippingSpeedCategory.js';
-import { FeatureSettings } from './FeatureSettings.js';
 //# sourceMappingURL=GetFulfillmentPreviewRequest.d.ts.map

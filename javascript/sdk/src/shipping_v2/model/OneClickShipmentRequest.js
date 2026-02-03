@@ -35,7 +35,7 @@ export class OneClickShipmentRequest {
    * @alias module:shipping_v2/model/OneClickShipmentRequest
    * @class
    * @param shipFrom {Address}
-   * @param packages {[Package]} A list of packages to be shipped through a shipping service offering.
+   * @param packages {Array[]} A list of packages to be shipped through a shipping service offering.
    * @param channelDetails {ChannelDetails}
    * @param labelSpecifications {RequestedDocumentSpecification}
    * @param serviceSelection {ServiceSelection}
@@ -120,22 +120,22 @@ OneClickShipmentRequest.prototype.goodsOwner = undefined
 
 /**
  * A list of packages to be shipped through a shipping service offering.
- * @member {[Package]} packages
- * @type {[Package]}
+ * @member {Array[]} packages
+ * @type {Array[]}
  */
 OneClickShipmentRequest.prototype.packages = undefined
 
 /**
  * The value-added services to be added to a shipping service purchase.
- * @member {[OneClickShipmentValueAddedService]} valueAddedServicesDetails
- * @type {[OneClickShipmentValueAddedService]}
+ * @member {Array[]} valueAddedServicesDetails
+ * @type {Array[]}
  */
 OneClickShipmentRequest.prototype.valueAddedServicesDetails = undefined
 
 /**
  * A list of tax detail information.
- * @member {[TaxDetail]} taxDetails
- * @type {[TaxDetail]}
+ * @member {Array[]} taxDetails
+ * @type {Array[]}
  */
 OneClickShipmentRequest.prototype.taxDetails = undefined
 

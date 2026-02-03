@@ -19,11 +19,10 @@ export class GetFeaturesResponse {
     payload: GetFeaturesResult;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { GetFeaturesResult } from './GetFeaturesResult.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetFeaturesResponse.d.ts.map

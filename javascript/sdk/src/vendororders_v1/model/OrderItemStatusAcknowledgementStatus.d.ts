@@ -30,10 +30,10 @@ export class OrderItemStatusAcknowledgementStatus {
     rejectedQuantity: ItemQuantity;
     /**
      * Details of item quantity confirmed.
-     * @member {[AcknowledgementStatusDetails]} acknowledgementStatusDetails
-     * @type {[AcknowledgementStatusDetails]}
+     * @member {Array[]} acknowledgementStatusDetails
+     * @type {Array[]}
      */
-    acknowledgementStatusDetails: [AcknowledgementStatusDetails];
+    acknowledgementStatusDetails: any[][];
 }
 export namespace OrderItemStatusAcknowledgementStatus {
     namespace ConfirmationStatusEnum {
@@ -48,5 +48,4 @@ export namespace OrderItemStatusAcknowledgementStatus {
     type ConfirmationStatusEnum = string;
 }
 import { ItemQuantity } from './ItemQuantity.js';
-import { AcknowledgementStatusDetails } from './AcknowledgementStatusDetails.js';
 //# sourceMappingURL=OrderItemStatusAcknowledgementStatus.d.ts.map

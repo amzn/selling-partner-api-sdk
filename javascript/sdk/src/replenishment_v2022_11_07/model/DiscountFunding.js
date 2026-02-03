@@ -57,7 +57,7 @@ export class DiscountFunding {
 
 /**
  * Filters the results to only include offers with the percentage specified.
- * @member {[Number]} percentage
- * @type {[Number]}
+ * @member {Array[]} percentage
+ * @type {Array[]}
  */
 DiscountFunding.prototype.percentage = undefined

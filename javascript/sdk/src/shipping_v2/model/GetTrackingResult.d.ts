@@ -19,17 +19,16 @@ export class GetTrackingResult {
      * @class
      * @param trackingId {String} The carrier generated identifier for a package in a purchased shipment.
      * @param alternateLegTrackingId {String} The carrier generated reverse identifier for a returned package in a purchased shipment.
-     * @param eventHistory {[Event]} A list of tracking events.
+     * @param eventHistory {Array[]} A list of tracking events.
      * @param promisedDeliveryDate {Date} The date and time by which the shipment is promised to be delivered.
      * @param summary {TrackingSummary}
      */
-    constructor(trackingId: string, alternateLegTrackingId: string, eventHistory: [Event], promisedDeliveryDate: Date, summary: TrackingSummary);
+    constructor(trackingId: string, alternateLegTrackingId: string, eventHistory: any[][], promisedDeliveryDate: Date, summary: TrackingSummary);
     trackingId: string;
     alternateLegTrackingId: string;
-    eventHistory: [Event];
+    eventHistory: any[][];
     promisedDeliveryDate: Date;
     summary: TrackingSummary;
 }
-import { Event } from './Event.js';
 import { TrackingSummary } from './TrackingSummary.js';
 //# sourceMappingURL=GetTrackingResult.d.ts.map

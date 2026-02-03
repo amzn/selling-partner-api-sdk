@@ -1,1 +1,1 @@
-{"version":3,"file":"RegulatedInformation.d.ts","sourceRoot":"","sources":["RegulatedInformation.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,2CAHW,oBAAoB,GACnB,oBAAoB,CAmB/B;IAnCD;;;;;;OAMG;IACH,oBAFkB,CAAC,yBAAyB,CAAC,EAI5C;IADC,oCAAoB;CA4BvB;0CA5CyC,gCAAgC"}
+{"version":3,"file":"RegulatedInformation.d.ts","sourceRoot":"","sources":["RegulatedInformation.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,2CAHW,oBAAoB,GACnB,oBAAoB,CAmB/B;IAnCD;;;;;;OAMG;IACH,oBAFkB,OAAO,EAIxB;IADC,gBAAoB;CA4BvB"}

@@ -20,15 +20,14 @@ export class TransferRatePreview {
      * @param baseAmount {Currency}
      * @param fxRateDetails {FxRateDetails}
      * @param transferAmount {Currency}
-     * @param fees {[Fee]} List of fees
+     * @param fees {Array[]} List of fees
      */
-    constructor(baseAmount: Currency, fxRateDetails: FxRateDetails, transferAmount: Currency, fees: [Fee]);
+    constructor(baseAmount: Currency, fxRateDetails: FxRateDetails, transferAmount: Currency, fees: any[][]);
     baseAmount: Currency;
     fxRateDetails: FxRateDetails;
     transferAmount: Currency;
-    fees: [Fee];
+    fees: any[][];
 }
 import { Currency } from './Currency.js';
 import { FxRateDetails } from './FxRateDetails.js';
-import { Fee } from './Fee.js';
 //# sourceMappingURL=TransferRatePreview.d.ts.map

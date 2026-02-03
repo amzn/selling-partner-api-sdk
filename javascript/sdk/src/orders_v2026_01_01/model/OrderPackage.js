@@ -124,7 +124,7 @@ OrderPackage.prototype.shipFromAddress = undefined
 
 /**
  * A list of all order items included in this specific package.
- * @member {[PackageItem]} packageItems
- * @type {[PackageItem]}
+ * @member {Array[]} packageItems
+ * @type {Array[]}
  */
 OrderPackage.prototype.packageItems = undefined

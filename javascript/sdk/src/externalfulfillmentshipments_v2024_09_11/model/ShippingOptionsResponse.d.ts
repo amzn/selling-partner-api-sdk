@@ -14,10 +14,10 @@ export class ShippingOptionsResponse {
     static constructFromObject(data: any, obj: ShippingOptionsResponse): ShippingOptionsResponse;
     /**
      * A list of shipping options.
-     * @member {[ShippingOptions]} shippingOptions
-     * @type {[ShippingOptions]}
+     * @member {Array[]} shippingOptions
+     * @type {Array[]}
      */
-    shippingOptions: [ShippingOptions];
+    shippingOptions: any[][];
     /**
      * @member {ShippingOptions} recommendedShippingOption
      * @type {ShippingOptions}

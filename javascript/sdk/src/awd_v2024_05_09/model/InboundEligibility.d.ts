@@ -17,22 +17,20 @@ export class InboundEligibility {
      * Represents the eligibility status of the inbound packages.
      * @alias module:awd_v2024_05_09/model/InboundEligibility
      * @class
-     * @param packagesToInbound {[SkuEligibility]} Details on SKU eligibility for each inbound package.
+     * @param packagesToInbound {Array[]} Details on SKU eligibility for each inbound package.
      * @param previewedAt {Date} Timestamp when the eligibility check is performed.
      * @param status {InboundEligibilityStatus}
      */
-    constructor(packagesToInbound: [SkuEligibility], previewedAt: Date, status: InboundEligibilityStatus);
-    packagesToInbound: [SkuEligibility];
+    constructor(packagesToInbound: any[][], previewedAt: Date, status: InboundEligibilityStatus);
+    packagesToInbound: any[][];
     previewedAt: Date;
     status: InboundEligibilityStatus;
     /**
      * If there are order level eligibility issues, then this list will contain those error codes and descriptions.
-     * @member {[OrderIneligibilityReason]} ineligibilityReasons
-     * @type {[OrderIneligibilityReason]}
+     * @member {Array[]} ineligibilityReasons
+     * @type {Array[]}
      */
-    ineligibilityReasons: [OrderIneligibilityReason];
+    ineligibilityReasons: any[][];
 }
-import { SkuEligibility } from './SkuEligibility.js';
 import { InboundEligibilityStatus } from './InboundEligibilityStatus.js';
-import { OrderIneligibilityReason } from './OrderIneligibilityReason.js';
 //# sourceMappingURL=InboundEligibility.d.ts.map

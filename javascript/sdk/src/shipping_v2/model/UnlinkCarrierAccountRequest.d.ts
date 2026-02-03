@@ -14,10 +14,10 @@ export class UnlinkCarrierAccountRequest {
     static constructFromObject(data: any, obj: UnlinkCarrierAccountRequest): UnlinkCarrierAccountRequest;
     /**
      * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
-     * @member {[ClientReferenceDetail]} clientReferenceDetails
-     * @type {[ClientReferenceDetail]}
+     * @member {Array[]} clientReferenceDetails
+     * @type {Array[]}
      */
-    clientReferenceDetails: [ClientReferenceDetail];
+    clientReferenceDetails: any[][];
     /**
      * Identifier for the seller's carrier account.
      * @member {String} accountId
@@ -25,5 +25,4 @@ export class UnlinkCarrierAccountRequest {
      */
     accountId: string;
 }
-import { ClientReferenceDetail } from './ClientReferenceDetail.js';
 //# sourceMappingURL=UnlinkCarrierAccountRequest.d.ts.map

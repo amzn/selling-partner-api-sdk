@@ -59,8 +59,8 @@ export class GetShipmentsResult {
 
 /**
  * A list of inbound shipment information.
- * @member {[InboundShipmentInfo]} shipmentData
- * @type {[InboundShipmentInfo]}
+ * @member {Array[]} shipmentData
+ * @type {Array[]}
  */
 GetShipmentsResult.prototype.shipmentData = undefined
 

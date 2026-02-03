@@ -17,10 +17,10 @@ export class ShipmentAcknowledgementRequest {
      * Information about the shipment and its line items, used to confirm or reject line items.
      * @alias module:externalfulfillmentshipments_v2024_09_11/model/ShipmentAcknowledgementRequest
      * @class
-     * @param lineItems {[LineItemWithReason]} Details about the line items from the shipment that are being confirmed or rejected by the seller.
+     * @param lineItems {Array[]} Details about the line items from the shipment that are being confirmed or rejected by the seller.
      */
-    constructor(lineItems: [LineItemWithReason]);
-    lineItems: [LineItemWithReason];
+    constructor(lineItems: any[][]);
+    lineItems: any[][];
     /**
      * A unique identifier for every shipment rejection.
      * @member {String} referenceId
@@ -28,5 +28,4 @@ export class ShipmentAcknowledgementRequest {
      */
     referenceId: string;
 }
-import { LineItemWithReason } from './LineItemWithReason.js';
 //# sourceMappingURL=ShipmentAcknowledgementRequest.d.ts.map

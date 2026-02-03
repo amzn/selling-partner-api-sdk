@@ -65,7 +65,7 @@ ExcludedBenefit.prototype.benefit = undefined
 
 /**
  * List of reasons why a benefit is excluded for a shipping offer (for example, `LATE_DELIVERY_RISK`).
- * @member {[String]} reasonCodes
- * @type {[String]}
+ * @member {Array[]} reasonCodes
+ * @type {Array[]}
  */
 ExcludedBenefit.prototype.reasonCodes = undefined

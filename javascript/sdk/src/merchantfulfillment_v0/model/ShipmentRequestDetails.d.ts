@@ -18,15 +18,15 @@ export class ShipmentRequestDetails {
      * @alias module:merchantfulfillment_v0/model/ShipmentRequestDetails
      * @class
      * @param amazonOrderId {String} An Amazon-defined order identifier, in 3-7-7 format.
-     * @param itemList {[Item]} The list of items you want to include in a shipment.
+     * @param itemList {Array[]} The list of items you want to include in a shipment.
      * @param shipFromAddress {Address}
      * @param packageDimensions {PackageDimensions}
      * @param weight {Weight}
      * @param shippingServiceOptions {ShippingServiceOptions}
      */
-    constructor(amazonOrderId: string, itemList: [Item], shipFromAddress: Address, packageDimensions: PackageDimensions, weight: Weight, shippingServiceOptions: ShippingServiceOptions);
+    constructor(amazonOrderId: string, itemList: any[][], shipFromAddress: Address, packageDimensions: PackageDimensions, weight: Weight, shippingServiceOptions: ShippingServiceOptions);
     amazonOrderId: string;
-    itemList: [Item];
+    itemList: any[][];
     shipFromAddress: Address;
     packageDimensions: PackageDimensions;
     weight: Weight;
@@ -55,7 +55,6 @@ export class ShipmentRequestDetails {
      */
     labelCustomization: LabelCustomization;
 }
-import { Item } from './Item.js';
 import { Address } from './Address.js';
 import { PackageDimensions } from './PackageDimensions.js';
 import { Weight } from './Weight.js';

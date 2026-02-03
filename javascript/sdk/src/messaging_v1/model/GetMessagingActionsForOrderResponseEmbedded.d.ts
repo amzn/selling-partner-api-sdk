@@ -17,10 +17,9 @@ export class GetMessagingActionsForOrderResponseEmbedded {
      * The messaging actions response that is associated with the specified &#x60;amazonOrderId&#x60;.
      * @alias module:messaging_v1/model/GetMessagingActionsForOrderResponseEmbedded
      * @class
-     * @param actions {[GetMessagingActionResponse]}
+     * @param actions {Array[]}
      */
-    constructor(actions: [GetMessagingActionResponse]);
-    actions: [GetMessagingActionResponse];
+    constructor(actions: any[][]);
+    actions: any[][];
 }
-import { GetMessagingActionResponse } from './GetMessagingActionResponse.js';
 //# sourceMappingURL=GetMessagingActionsForOrderResponseEmbedded.d.ts.map

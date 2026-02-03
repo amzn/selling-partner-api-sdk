@@ -14,10 +14,9 @@ export class SubmitInvoiceRequest {
     static constructFromObject(data: any, obj: SubmitInvoiceRequest): SubmitInvoiceRequest;
     /**
      * An array of invoice details to be submitted.
-     * @member {[InvoiceDetail]} invoices
-     * @type {[InvoiceDetail]}
+     * @member {Array[]} invoices
+     * @type {Array[]}
      */
-    invoices: [InvoiceDetail];
+    invoices: any[][];
 }
-import { InvoiceDetail } from './InvoiceDetail.js';
 //# sourceMappingURL=SubmitInvoiceRequest.d.ts.map

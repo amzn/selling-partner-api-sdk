@@ -14,10 +14,10 @@ export class GetSupplySourcesResponse {
     static constructFromObject(data: any, obj: GetSupplySourcesResponse): GetSupplySourcesResponse;
     /**
      * The list of `SupplySource`s.
-     * @member {[SupplySourceListInner]} supplySources
-     * @type {[SupplySourceListInner]}
+     * @member {Array[]} supplySources
+     * @type {Array[]}
      */
-    supplySources: [SupplySourceListInner];
+    supplySources: any[][];
     /**
      * If present, use this pagination token to retrieve the next page of supply sources.
      * @member {String} nextPageToken
@@ -25,5 +25,4 @@ export class GetSupplySourcesResponse {
      */
     nextPageToken: string;
 }
-import { SupplySourceListInner } from './SupplySourceListInner.js';
 //# sourceMappingURL=GetSupplySourcesResponse.d.ts.map

@@ -24,10 +24,10 @@ export class Rate {
      * @param serviceName {String} The name of the shipping service.
      * @param totalCharge {Currency}
      * @param promise {Promise}
-     * @param supportedDocumentSpecifications {[SupportedDocumentSpecification]} A list of the document specifications supported for a shipment service offering.
+     * @param supportedDocumentSpecifications {Array[]} A list of the document specifications supported for a shipment service offering.
      * @param requiresAdditionalInputs {Boolean} When true, indicates that additional inputs are required to purchase this shipment service. You must then call the getAdditionalInputs operation to return the JSON schema to use when providing the additional inputs to the purchaseShipment operation.
      */
-    constructor(rateId: string, carrierId: string, carrierName: string, serviceId: string, serviceName: string, totalCharge: Currency, promise: Promise, supportedDocumentSpecifications: [SupportedDocumentSpecification], requiresAdditionalInputs: boolean);
+    constructor(rateId: string, carrierId: string, carrierName: string, serviceId: string, serviceName: string, totalCharge: Currency, promise: Promise, supportedDocumentSpecifications: any[][], requiresAdditionalInputs: boolean);
     rateId: string;
     carrierId: string;
     carrierName: string;
@@ -35,7 +35,7 @@ export class Rate {
     serviceName: string;
     totalCharge: Currency;
     promise: Promise;
-    supportedDocumentSpecifications: [SupportedDocumentSpecification];
+    supportedDocumentSpecifications: any[][];
     requiresAdditionalInputs: boolean;
     /**
      * @member {Weight} billedWeight
@@ -44,16 +44,16 @@ export class Rate {
     billedWeight: Weight;
     /**
      * A list of value-added services available for a shipping service offering.
-     * @member {[AvailableValueAddedServiceGroup]} availableValueAddedServiceGroups
-     * @type {[AvailableValueAddedServiceGroup]}
+     * @member {Array[]} availableValueAddedServiceGroups
+     * @type {Array[]}
      */
-    availableValueAddedServiceGroups: [AvailableValueAddedServiceGroup];
+    availableValueAddedServiceGroups: any[][];
     /**
      * A list of RateItem
-     * @member {[RateItem]} rateItemList
-     * @type {[RateItem]}
+     * @member {Array[]} rateItemList
+     * @type {Array[]}
      */
-    rateItemList: [RateItem];
+    rateItemList: any[][];
     /**
      * @member {PaymentType} paymentType
      * @type {PaymentType}
@@ -67,10 +67,7 @@ export class Rate {
 }
 import { Currency } from './Currency.js';
 import { Promise } from './Promise.js';
-import { SupportedDocumentSpecification } from './SupportedDocumentSpecification.js';
 import { Weight } from './Weight.js';
-import { AvailableValueAddedServiceGroup } from './AvailableValueAddedServiceGroup.js';
-import { RateItem } from './RateItem.js';
 import { PaymentType } from './PaymentType.js';
 import { Benefits } from './Benefits.js';
 //# sourceMappingURL=Rate.d.ts.map

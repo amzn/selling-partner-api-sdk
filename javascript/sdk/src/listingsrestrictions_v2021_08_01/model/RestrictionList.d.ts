@@ -17,10 +17,9 @@ export class RestrictionList {
      * A list of restrictions for the specified Amazon catalog item.
      * @alias module:listingsrestrictions_v2021_08_01/model/RestrictionList
      * @class
-     * @param restrictions {[Restriction]}
+     * @param restrictions {Array[]}
      */
-    constructor(restrictions: [Restriction]);
-    restrictions: [Restriction];
+    constructor(restrictions: any[][]);
+    restrictions: any[][];
 }
-import { Restriction } from './Restriction.js';
 //# sourceMappingURL=RestrictionList.d.ts.map

@@ -14,10 +14,9 @@ export class SubmitShippingLabelsRequest {
     static constructFromObject(data: any, obj: SubmitShippingLabelsRequest): SubmitShippingLabelsRequest;
     /**
      * An array of shipping label requests to be processed.
-     * @member {[ShippingLabelRequest]} shippingLabelRequests
-     * @type {[ShippingLabelRequest]}
+     * @member {Array[]} shippingLabelRequests
+     * @type {Array[]}
      */
-    shippingLabelRequests: [ShippingLabelRequest];
+    shippingLabelRequests: any[][];
 }
-import { ShippingLabelRequest } from './ShippingLabelRequest.js';
 //# sourceMappingURL=SubmitShippingLabelsRequest.d.ts.map

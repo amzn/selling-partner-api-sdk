@@ -99,8 +99,8 @@ Package.prototype.packageWeight = undefined
 
 /**
  * A list of items contained in the package.
- * @member {[Item]} packageItems
- * @type {[Item]}
+ * @member {Array[]} packageItems
+ * @type {Array[]}
  */
 Package.prototype.packageItems = undefined
 

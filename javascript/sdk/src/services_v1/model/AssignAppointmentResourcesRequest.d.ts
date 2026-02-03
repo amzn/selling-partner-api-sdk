@@ -17,10 +17,9 @@ export class AssignAppointmentResourcesRequest {
      * Request schema for the &#x60;assignAppointmentResources&#x60; operation.
      * @alias module:services_v1/model/AssignAppointmentResourcesRequest
      * @class
-     * @param resources {[AppointmentResource]} List of resources that performs or performed job appointment fulfillment.
+     * @param resources {Array[]} List of resources that performs or performed job appointment fulfillment.
      */
-    constructor(resources: [AppointmentResource]);
-    resources: [AppointmentResource];
+    constructor(resources: any[][]);
+    resources: any[][];
 }
-import { AppointmentResource } from './AppointmentResource.js';
 //# sourceMappingURL=AssignAppointmentResourcesRequest.d.ts.map

@@ -24,12 +24,11 @@ export class GetSolicitationActionsForOrderResponse {
     embedded: GetSolicitationActionsForOrderResponseEmbedded;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Array[]} errors
+     * @type {Array[]}
      */
-    errors: [Error];
+    errors: any[][];
 }
 import { GetSolicitationActionsForOrderResponseLinks } from './GetSolicitationActionsForOrderResponseLinks.js';
 import { GetSolicitationActionsForOrderResponseEmbedded } from './GetSolicitationActionsForOrderResponseEmbedded.js';
-import { Error } from './Error.js';
 //# sourceMappingURL=GetSolicitationActionsForOrderResponse.d.ts.map

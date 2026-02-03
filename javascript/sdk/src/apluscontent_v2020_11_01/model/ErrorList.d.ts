@@ -17,10 +17,9 @@ export class ErrorList {
      * The error response that is returned when a request is unsuccessful.
      * @alias module:apluscontent_v2020_11_01/model/ErrorList
      * @class
-     * @param errors {[Error]} A list of error responses that are returned when a request is unsuccessful.
+     * @param errors {Array[]} A list of error responses that are returned when a request is unsuccessful.
      */
-    constructor(errors: [Error]);
-    errors: [Error];
+    constructor(errors: any[][]);
+    errors: any[][];
 }
-import { Error } from './Error.js';
 //# sourceMappingURL=ErrorList.d.ts.map

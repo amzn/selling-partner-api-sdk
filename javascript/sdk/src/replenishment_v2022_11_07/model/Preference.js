@@ -58,7 +58,7 @@ export class Preference {
 
 /**
  * Filters the results to only include offers with the auto-enrollment preference specified.
- * @member {[AutoEnrollmentPreference]} autoEnrollment
- * @type {[AutoEnrollmentPreference]}
+ * @member {Array[]} autoEnrollment
+ * @type {Array[]}
  */
 Preference.prototype.autoEnrollment = undefined

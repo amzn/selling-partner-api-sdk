@@ -14,10 +14,9 @@ export class GetUnmanifestedShipmentsRequest {
     static constructFromObject(data: any, obj: GetUnmanifestedShipmentsRequest): GetUnmanifestedShipmentsRequest;
     /**
      * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
-     * @member {[ClientReferenceDetail]} clientReferenceDetails
-     * @type {[ClientReferenceDetail]}
+     * @member {Array[]} clientReferenceDetails
+     * @type {Array[]}
      */
-    clientReferenceDetails: [ClientReferenceDetail];
+    clientReferenceDetails: any[][];
 }
-import { ClientReferenceDetail } from './ClientReferenceDetail.js';
 //# sourceMappingURL=GetUnmanifestedShipmentsRequest.d.ts.map

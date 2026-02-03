@@ -62,21 +62,21 @@ export class CreateFulfillmentReturnResult {
 
 /**
  * An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
- * @member {[ReturnItem]} returnItems
- * @type {[ReturnItem]}
+ * @member {Array[]} returnItems
+ * @type {Array[]}
  */
 CreateFulfillmentReturnResult.prototype.returnItems = undefined
 
 /**
  * An array of invalid return item information.
- * @member {[InvalidReturnItem]} invalidReturnItems
- * @type {[InvalidReturnItem]}
+ * @member {Array[]} invalidReturnItems
+ * @type {Array[]}
  */
 CreateFulfillmentReturnResult.prototype.invalidReturnItems = undefined
 
 /**
  * An array of return authorization information.
- * @member {[ReturnAuthorization]} returnAuthorizations
- * @type {[ReturnAuthorization]}
+ * @member {Array[]} returnAuthorizations
+ * @type {Array[]}
  */
 CreateFulfillmentReturnResult.prototype.returnAuthorizations = undefined

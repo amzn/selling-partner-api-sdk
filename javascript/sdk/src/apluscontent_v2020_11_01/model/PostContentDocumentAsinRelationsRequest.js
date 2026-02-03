@@ -23,7 +23,7 @@ export class PostContentDocumentAsinRelationsRequest {
    * Constructs a new <code>PostContentDocumentAsinRelationsRequest</code>.
    * @alias module:apluscontent_v2020_11_01/model/PostContentDocumentAsinRelationsRequest
    * @class
-   * @param asinSet {[String]} The set of ASINs.
+   * @param asinSet {Array[]} The set of ASINs.
    */
   constructor (asinSet) {
     this.asinSet = asinSet
@@ -58,7 +58,7 @@ export class PostContentDocumentAsinRelationsRequest {
 
 /**
  * The set of ASINs.
- * @member {[String]} asinSet
- * @type {[String]}
+ * @member {Array[]} asinSet
+ * @type {Array[]}
  */
 PostContentDocumentAsinRelationsRequest.prototype.asinSet = undefined

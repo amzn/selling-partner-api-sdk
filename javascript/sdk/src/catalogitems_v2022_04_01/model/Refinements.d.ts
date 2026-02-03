@@ -17,13 +17,11 @@ export class Refinements {
      * Optional fields that you can use to refine your search results.
      * @alias module:catalogitems_v2022_04_01/model/Refinements
      * @class
-     * @param brands {[BrandRefinement]} A list of brands you can use to refine your search.
-     * @param classifications {[ClassificationRefinement]} A list of classifications you can use to refine your search.
+     * @param brands {Array[]} A list of brands you can use to refine your search.
+     * @param classifications {Array[]} A list of classifications you can use to refine your search.
      */
-    constructor(brands: [BrandRefinement], classifications: [ClassificationRefinement]);
-    brands: [BrandRefinement];
-    classifications: [ClassificationRefinement];
+    constructor(brands: any[][], classifications: any[][]);
+    brands: any[][];
+    classifications: any[][];
 }
-import { BrandRefinement } from './BrandRefinement.js';
-import { ClassificationRefinement } from './ClassificationRefinement.js';
 //# sourceMappingURL=Refinements.d.ts.map

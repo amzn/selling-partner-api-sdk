@@ -14,10 +14,10 @@ export class SAFETReimbursementItem {
     static constructFromObject(data: any, obj: SAFETReimbursementItem): SAFETReimbursementItem;
     /**
      * A list of charge information on the seller's account.
-     * @member {[ChargeComponent]} itemChargeList
-     * @type {[ChargeComponent]}
+     * @member {Array[]} itemChargeList
+     * @type {Array[]}
      */
-    itemChargeList: [ChargeComponent];
+    itemChargeList: any[][];
     /**
      * The description of the item as shown on the product detail page on the retail website.
      * @member {String} productDescription
@@ -31,5 +31,4 @@ export class SAFETReimbursementItem {
      */
     quantity: string;
 }
-import { ChargeComponent } from './ChargeComponent.js';
 //# sourceMappingURL=SAFETReimbursementItem.d.ts.map

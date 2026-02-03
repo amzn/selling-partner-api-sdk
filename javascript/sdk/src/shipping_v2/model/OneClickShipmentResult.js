@@ -30,7 +30,7 @@ export class OneClickShipmentResult {
    * @alias module:shipping_v2/model/OneClickShipmentResult
    * @class
    * @param shipmentId {String} The unique shipment identifier provided by a shipping service.
-   * @param packageDocumentDetails {[PackageDocumentDetail]} A list of post-purchase details about a package that will be shipped using a shipping service.
+   * @param packageDocumentDetails {Array[]} A list of post-purchase details about a package that will be shipped using a shipping service.
    * @param promise {Promise}
    * @param carrier {Carrier}
    * @param service {Service}
@@ -86,8 +86,8 @@ OneClickShipmentResult.prototype.shipmentId = undefined
 
 /**
  * A list of post-purchase details about a package that will be shipped using a shipping service.
- * @member {[PackageDocumentDetail]} packageDocumentDetails
- * @type {[PackageDocumentDetail]}
+ * @member {Array[]} packageDocumentDetails
+ * @type {Array[]}
  */
 OneClickShipmentResult.prototype.packageDocumentDetails = undefined
 

@@ -58,7 +58,7 @@ export class ItemPromotion {
 
 /**
  * A list of promotions applied to the order item.
- * @member {[ItemPromotionBreakdown]} breakdowns
- * @type {[ItemPromotionBreakdown]}
+ * @member {Array[]} breakdowns
+ * @type {Array[]}
  */
 ItemPromotion.prototype.breakdowns = undefined

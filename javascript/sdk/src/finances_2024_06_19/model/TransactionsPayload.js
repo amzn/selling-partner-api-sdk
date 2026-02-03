@@ -66,7 +66,7 @@ TransactionsPayload.prototype.nextToken = undefined
 
 /**
  * A list of transactions within the specified time period.
- * @member {[Transaction]} transactions
- * @type {[Transaction]}
+ * @member {Array[]} transactions
+ * @type {Array[]}
  */
 TransactionsPayload.prototype.transactions = undefined

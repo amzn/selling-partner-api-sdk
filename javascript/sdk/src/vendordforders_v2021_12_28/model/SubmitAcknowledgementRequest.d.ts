@@ -14,10 +14,9 @@ export class SubmitAcknowledgementRequest {
     static constructFromObject(data: any, obj: SubmitAcknowledgementRequest): SubmitAcknowledgementRequest;
     /**
      * A list of one or more purchase orders.
-     * @member {[OrderAcknowledgementItem]} orderAcknowledgements
-     * @type {[OrderAcknowledgementItem]}
+     * @member {Array[]} orderAcknowledgements
+     * @type {Array[]}
      */
-    orderAcknowledgements: [OrderAcknowledgementItem];
+    orderAcknowledgements: any[][];
 }
-import { OrderAcknowledgementItem } from './OrderAcknowledgementItem.js';
 //# sourceMappingURL=SubmitAcknowledgementRequest.d.ts.map

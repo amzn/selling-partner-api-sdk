@@ -32,10 +32,9 @@ export class ChargeRefundEvent {
     reasonCodeDescription: string;
     /**
      * A list of `ChargeRefund` transactions
-     * @member {[ChargeRefundTransaction]} chargeRefundTransactions
-     * @type {[ChargeRefundTransaction]}
+     * @member {Array[]} chargeRefundTransactions
+     * @type {Array[]}
      */
-    chargeRefundTransactions: [ChargeRefundTransaction];
+    chargeRefundTransactions: any[][];
 }
-import { ChargeRefundTransaction } from './ChargeRefundTransaction.js';
 //# sourceMappingURL=ChargeRefundEvent.d.ts.map

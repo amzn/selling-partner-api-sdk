@@ -21,14 +21,14 @@ export class PackageDetail {
      * @param carrierCode {String} Identifies the carrier that will deliver the package. This field is required for all marketplaces. For more information, refer to the [`CarrierCode` announcement](https://developer-docs.amazon.com/sp-api/changelog/carriercode-value-required-in-shipment-confirmations-for-br-mx-ca-sg-au-in-jp-marketplaces).
      * @param trackingNumber {String} The tracking number used to obtain tracking and delivery information.
      * @param shipDate {Date} The shipping date for the package. Must be in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date/time format.
-     * @param orderItems {[ConfirmShipmentOrderItem]} A list of order items.
+     * @param orderItems {Array[]} A list of order items.
      */
-    constructor(packageReferenceId: string, carrierCode: string, trackingNumber: string, shipDate: Date, orderItems: [ConfirmShipmentOrderItem]);
+    constructor(packageReferenceId: string, carrierCode: string, trackingNumber: string, shipDate: Date, orderItems: any[][]);
     packageReferenceId: string;
     carrierCode: string;
     trackingNumber: string;
     shipDate: Date;
-    orderItems: [ConfirmShipmentOrderItem];
+    orderItems: any[][];
     /**
      * Carrier name that will deliver the package. Required when `carrierCode` is \"Other\"
      * @member {String} carrierName
@@ -48,5 +48,4 @@ export class PackageDetail {
      */
     shipFromSupplySourceId: string;
 }
-import { ConfirmShipmentOrderItem } from './ConfirmShipmentOrderItem.js';
 //# sourceMappingURL=PackageDetail.d.ts.map

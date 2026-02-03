@@ -188,8 +188,8 @@ Shipment.prototype.currentshipmentStatusDate = undefined
 
 /**
  * Indicates the list of current shipment status details and when the last update was received from carrier this is available on shipment Details response.
- * @member {[ShipmentStatusDetails]} shipmentStatusDetails
- * @type {[ShipmentStatusDetails]}
+ * @member {Array[]} shipmentStatusDetails
+ * @type {Array[]}
  */
 Shipment.prototype.shipmentStatusDetails = undefined
 
@@ -272,8 +272,8 @@ Shipment.prototype.collectFreightPickupDetails = undefined
 
 /**
  * Indicates the purchase orders involved for the transportation request. This group is an array create 1 for each PO and list their corresponding items. This information is used for deciding the route,truck allocation and storage efficiently. This is a mandatory information for Buyer performing transportation from vendor warehouse (WePay/Collect)
- * @member {[PurchaseOrders]} purchaseOrders
- * @type {[PurchaseOrders]}
+ * @member {Array[]} purchaseOrders
+ * @type {Array[]}
  */
 Shipment.prototype.purchaseOrders = undefined
 
@@ -285,8 +285,8 @@ Shipment.prototype.importDetails = undefined
 
 /**
  * A list of the items in this transportation and their associated inner container details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.
- * @member {[Containers]} containers
- * @type {[Containers]}
+ * @member {Array[]} containers
+ * @type {Array[]}
  */
 Shipment.prototype.containers = undefined
 
