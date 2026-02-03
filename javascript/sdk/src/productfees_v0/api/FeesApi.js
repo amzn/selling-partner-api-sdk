@@ -175,7 +175,7 @@ export class FeesApi {
 
   /**
      * Returns the estimated fees for a list of products.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {[FeesEstimateByIdRequest]} body The request body schema for the getMyFeesEstimates operation
+     * @param {FeesEstimateByIdRequest[]} body The request body schema for the getMyFeesEstimates operation
      * @return {Promise<[FeesEstimateResult]>}
      */
   getMyFeesEstimatesWithHttpInfo (body) {
@@ -208,7 +208,7 @@ export class FeesApi {
 
   /**
      * Returns the estimated fees for a list of products.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {[FeesEstimateByIdRequest]} body The request body schema for the getMyFeesEstimates operation
+     * @param {FeesEstimateByIdRequest[]} body The request body schema for the getMyFeesEstimates operation
      * @return {Promise<[FeesEstimateResult]>}
      */
   getMyFeesEstimates (body) {

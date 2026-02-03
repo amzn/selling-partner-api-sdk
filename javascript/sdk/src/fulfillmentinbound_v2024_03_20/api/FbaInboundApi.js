@@ -1585,7 +1585,7 @@ export class FbaInboundApi {
 
   /**
      * List the inbound compliance details for MSKUs in a given marketplace.  **Note:** MSKUs that contain certain characters must be encoded. For more information, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  The following characters must be double percent encoded:  - &#x60;%&#x60; - &#x60;+&#x60; - &#x60;,&#x60;  **Examples:** An MSKU value of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is encoded as &#x60;test%252Cmsku&#x60;.
-     * @param {[String]} mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU.
+     * @param {String[]} mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU.
      * @param {String} marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @return {Promise<ListItemComplianceDetailsResponse>}
      */
@@ -1626,7 +1626,7 @@ export class FbaInboundApi {
 
   /**
      * List the inbound compliance details for MSKUs in a given marketplace.  **Note:** MSKUs that contain certain characters must be encoded. For more information, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  The following characters must be double percent encoded:  - &#x60;%&#x60; - &#x60;+&#x60; - &#x60;,&#x60;  **Examples:** An MSKU value of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is encoded as &#x60;test%252Cmsku&#x60;.
-     * @param {[String]} mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU.
+     * @param {String[]} mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU.
      * @param {String} marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @return {Promise<ListItemComplianceDetailsResponse>}
      */
@@ -1876,7 +1876,7 @@ export class FbaInboundApi {
   /**
      * Get preparation details for a list of MSKUs in a specified marketplace.\\n\\n**Note:** MSKUs that contain certain characters must be encoded. For more information, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is encoded as &#x60;test%252Cmsku&#x60;.
      * @param {String} marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @param {[String]} mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU.
+     * @param {String[]} mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU.
      * @return {Promise<ListPrepDetailsResponse>}
      */
   listPrepDetailsWithHttpInfo (marketplaceId, mskus) {
@@ -1917,7 +1917,7 @@ export class FbaInboundApi {
   /**
      * Get preparation details for a list of MSKUs in a specified marketplace.\\n\\n**Note:** MSKUs that contain certain characters must be encoded. For more information, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is encoded as &#x60;test%252Cmsku&#x60;.
      * @param {String} marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @param {[String]} mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU.
+     * @param {String[]} mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU.
      * @return {Promise<ListPrepDetailsResponse>}
      */
   listPrepDetails (marketplaceId, mskus) {

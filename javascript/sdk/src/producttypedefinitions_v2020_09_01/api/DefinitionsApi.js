@@ -67,7 +67,7 @@ export class DefinitionsApi {
   /**
      * Retrieve an Amazon product type definition.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 5 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} productType The Amazon product type name.
-     * @param {[String]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time.
+     * @param {String[]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time.
      * @param {Object} [opts] Optional parameters
      * @param {String} [opts.sellerId] A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner.
      * @param {String} [opts.productTypeVersion] The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (default to &#39;LATEST&#39;)
@@ -120,7 +120,7 @@ export class DefinitionsApi {
   /**
      * Retrieve an Amazon product type definition.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 5 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} productType The Amazon product type name.
-     * @param {[String]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time.
+     * @param {String[]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time.
      * @param {Object} [opts] Optional parameters
      * @param {String} [opts.sellerId] A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner.
      * @param {String} [opts.productTypeVersion] The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (default to &#39;LATEST&#39;)
@@ -138,7 +138,7 @@ export class DefinitionsApi {
 
   /**
      * Search for and return a list of Amazon product types that have definitions available.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 5 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {[String]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
+     * @param {String[]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
      * @param {Object} [opts] Optional parameters
      * @param {[String]} [opts.keywords] A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;.
      * @param {String} [opts.itemName] The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;.
@@ -182,7 +182,7 @@ export class DefinitionsApi {
 
   /**
      * Search for and return a list of Amazon product types that have definitions available.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 5 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {[String]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
+     * @param {String[]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
      * @param {Object} [opts] Optional parameters
      * @param {[String]} [opts.keywords] A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;.
      * @param {String} [opts.itemName] The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;.
