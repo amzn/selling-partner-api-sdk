@@ -16,7 +16,6 @@ import { ConfirmShipmentErrorResponse } from '../model/ConfirmShipmentErrorRespo
 import { ConfirmShipmentRequest } from '../model/ConfirmShipmentRequest.js'
 import { GetOrderAddressResponse } from '../model/GetOrderAddressResponse.js'
 import { GetOrderBuyerInfoResponse } from '../model/GetOrderBuyerInfoResponse.js'
-import { GetOrderFulfillmentInstructionsResponse } from '../model/GetOrderFulfillmentInstructionsResponse.js'
 import { GetOrderItemsBuyerInfoResponse } from '../model/GetOrderItemsBuyerInfoResponse.js'
 import { GetOrderItemsResponse } from '../model/GetOrderItemsResponse.js'
 import { GetOrderRegulatedInfoResponse } from '../model/GetOrderRegulatedInfoResponse.js'
@@ -59,7 +58,6 @@ export class OrdersV0Api {
       'OrdersV0Api-getOrder',
       'OrdersV0Api-getOrderAddress',
       'OrdersV0Api-getOrderBuyerInfo',
-      'OrdersV0Api-getOrderFulfillmentInstructions',
       'OrdersV0Api-getOrderItems',
       'OrdersV0Api-getOrderItemsBuyerInfo',
       'OrdersV0Api-getOrderRegulatedInfo',
@@ -267,52 +265,6 @@ export class OrdersV0Api {
      */
   getOrderBuyerInfo (orderId) {
     return this.getOrderBuyerInfoWithHttpInfo(orderId)
-      .then(function (response_and_data) {
-        return response_and_data.data
-      })
-  }
-
-  /**
-     * Returns the fulfillment instructions for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {String} orderId The Amazon order identifier in 3-7-7 format.
-     * @return {Promise<GetOrderFulfillmentInstructionsResponse>}
-     */
-  getOrderFulfillmentInstructionsWithHttpInfo (orderId) {
-    const postBody = null
-
-    // verify the required parameter 'orderId' is set
-    if (orderId === undefined || orderId === null) {
-      throw new Error("Missing the required parameter 'orderId' when calling getOrderFulfillmentInstructions")
-    }
-
-    const pathParams = {
-      orderId
-    }
-    const queryParams = {
-    }
-    const headerParams = {
-    }
-    const formParams = {
-    }
-
-    const contentTypes = []
-    const accepts = ['application/json']
-    const returnType = GetOrderFulfillmentInstructionsResponse
-
-    return this.apiClient.callApi('OrdersV0Api-getOrderFulfillmentInstructions',
-      '/orders/v0/orders/{orderId}/fulfillmentInstructions', 'GET',
-      pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-getOrderFulfillmentInstructions')
-    )
-  }
-
-  /**
-     * Returns the fulfillment instructions for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {String} orderId The Amazon order identifier in 3-7-7 format.
-     * @return {Promise<GetOrderFulfillmentInstructionsResponse>}
-     */
-  getOrderFulfillmentInstructions (orderId) {
-    return this.getOrderFulfillmentInstructionsWithHttpInfo(orderId)
       .then(function (response_and_data) {
         return response_and_data.data
       })

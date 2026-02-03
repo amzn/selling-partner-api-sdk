@@ -73,18 +73,6 @@ export class OrdersV0Api {
        */
     getOrderBuyerInfo(orderId: string): Promise<GetOrderBuyerInfoResponse>;
     /**
-       * Returns the fulfillment instructions for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-       * @param {String} orderId The Amazon order identifier in 3-7-7 format.
-       * @return {Promise<GetOrderFulfillmentInstructionsResponse>}
-       */
-    getOrderFulfillmentInstructionsWithHttpInfo(orderId: string): Promise<GetOrderFulfillmentInstructionsResponse>;
-    /**
-       * Returns the fulfillment instructions for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-       * @param {String} orderId The Amazon order identifier in 3-7-7 format.
-       * @return {Promise<GetOrderFulfillmentInstructionsResponse>}
-       */
-    getOrderFulfillmentInstructions(orderId: string): Promise<GetOrderFulfillmentInstructionsResponse>;
-    /**
        * Returns detailed order item information for the order that you specify. If &#x60;NextToken&#x60; is provided, it&#39;s used to retrieve the next page of order items.  __Note__: When an order is in the Pending state (the order has been placed but payment has not been authorized), the getOrderItems operation does not return information about pricing, taxes, shipping charges, gift status or promotions for the order items in the order. After an order leaves the Pending state (this occurs when payment has been authorized) and enters the Unshipped, Partially Shipped, or Shipped state, the getOrderItems operation returns information about pricing, taxes, shipping charges, gift status and promotions for the order items in the order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} orderId An Amazon-defined order identifier, in 3-7-7 format.
        * @param {Object} [opts] Optional parameters
@@ -252,7 +240,6 @@ import { ConfirmShipmentRequest } from '../model/ConfirmShipmentRequest.js';
 import { GetOrderResponse } from '../model/GetOrderResponse.js';
 import { GetOrderAddressResponse } from '../model/GetOrderAddressResponse.js';
 import { GetOrderBuyerInfoResponse } from '../model/GetOrderBuyerInfoResponse.js';
-import { GetOrderFulfillmentInstructionsResponse } from '../model/GetOrderFulfillmentInstructionsResponse.js';
 import { GetOrderItemsResponse } from '../model/GetOrderItemsResponse.js';
 import { GetOrderItemsBuyerInfoResponse } from '../model/GetOrderItemsBuyerInfoResponse.js';
 import { GetOrderRegulatedInfoResponse } from '../model/GetOrderRegulatedInfoResponse.js';

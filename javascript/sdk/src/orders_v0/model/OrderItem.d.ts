@@ -228,11 +228,6 @@ export class OrderItem {
      * @type {AmazonPrograms}
      */
     amazonPrograms: AmazonPrograms;
-    /**
-     * @member {ExportInfo} exportInfo
-     * @type {ExportInfo}
-     */
-    exportInfo: ExportInfo;
 }
 export namespace OrderItem {
     namespace DeemedResellerCategoryEnum {
@@ -255,5 +250,4 @@ import { SubstitutionPreferences } from './SubstitutionPreferences.js';
 import { Measurement } from './Measurement.js';
 import { ShippingConstraints } from './ShippingConstraints.js';
 import { AmazonPrograms } from './AmazonPrograms.js';
-import { ExportInfo } from './ExportInfo.js';
 //# sourceMappingURL=OrderItem.d.ts.map
