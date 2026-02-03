@@ -48,15 +48,6 @@ class TestVendorShipmentApi(unittest.TestCase):
         self.assert_valid_response_payload(200, response[0])
         pass
 
-    def test_submit_shipment_confirmation(self):
-        body = self._get_random_value("SubmitShipmentConfirmationRequest", None)
-        
-        self.instruct_backend_mock("vendorShipment".casefold().replace(' ', ''), self.to_camel_case("submit_shipment_confirmation"), "200")
-        response = self.api.submit_shipment_confirmation_with_http_info(body, )
-        self.assertEqual(200, response[1])
-        self.assert_valid_response_payload(200, response[0])
-        pass
-
     def test_submit_shipment_confirmations(self):
         body = self._get_random_value("SubmitShipmentConfirmationsRequest", None)
         
