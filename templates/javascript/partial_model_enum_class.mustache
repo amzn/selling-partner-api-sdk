@@ -1,24 +1,7 @@
-{{#emitJSDoc}}/**
-* Enum class {{classname}}.
-* @enum {{=< >=}}{<dataType>}<={{ }}=>
-* @readonly
-*/{{/emitJSDoc}}
-export class {{classname}} {
+/** @type {{ {{=< >=}}<#allowableValues><#enumVars><#lambda.camelcase><name></lambda.camelcase>: <={{ }}=>{{{value}}}{{=< >=}}<^-last>,</-last></enumVars></allowableValues><={{ }}=> }} */
+export const {{classname}} = {
     {{#allowableValues}}{{#enumVars}}
-        {{#emitJSDoc}}/**
-         * value: {{{value}}}
-         * @const
-         */{{/emitJSDoc}}
-        "{{name}}" = {{{value}}};
+        "{{name}}": {{{value}}},
 
     {{/enumVars}}{{/allowableValues}}
-
-    {{#emitJSDoc}}/**
-    * Returns a <code>{{classname}}</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {{=< >=}}{<classname>}<={{ }}=> The enum <code>{{classname}}</code> value.
-    */{{/emitJSDoc}}
-    static constructFromObject(object) {
-        return object;
-    }
 }
