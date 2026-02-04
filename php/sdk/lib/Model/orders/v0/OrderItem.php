@@ -103,8 +103,7 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'substitution_preferences' => '\SpApi\Model\orders\v0\SubstitutionPreferences',
         'measurement' => '\SpApi\Model\orders\v0\Measurement',
         'shipping_constraints' => '\SpApi\Model\orders\v0\ShippingConstraints',
-        'amazon_programs' => '\SpApi\Model\orders\v0\AmazonPrograms',
-        'export_info' => '\SpApi\Model\orders\v0\ExportInfo'];
+        'amazon_programs' => '\SpApi\Model\orders\v0\AmazonPrograms'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -155,8 +154,7 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'substitution_preferences' => null,
         'measurement' => null,
         'shipping_constraints' => null,
-        'amazon_programs' => null,
-        'export_info' => null];
+        'amazon_programs' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -204,7 +202,6 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'measurement' => true,
         'shipping_constraints' => true,
         'amazon_programs' => true,
-        'export_info' => true,
     ];
 
     /**
@@ -261,7 +258,6 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'measurement' => 'Measurement',
         'shipping_constraints' => 'ShippingConstraints',
         'amazon_programs' => 'AmazonPrograms',
-        'export_info' => 'ExportInfo',
     ];
 
     /**
@@ -310,7 +306,6 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'measurement' => 'setMeasurement',
         'shipping_constraints' => 'setShippingConstraints',
         'amazon_programs' => 'setAmazonPrograms',
-        'export_info' => 'setExportInfo',
     ];
 
     /**
@@ -359,7 +354,6 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'measurement' => 'getMeasurement',
         'shipping_constraints' => 'getShippingConstraints',
         'amazon_programs' => 'getAmazonPrograms',
-        'export_info' => 'getExportInfo',
     ];
 
     /**
@@ -415,7 +409,6 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('measurement', $data ?? [], null);
         $this->setIfExists('shipping_constraints', $data ?? [], null);
         $this->setIfExists('amazon_programs', $data ?? [], null);
-        $this->setIfExists('export_info', $data ?? [], null);
     }
 
     /**
@@ -1735,36 +1728,6 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
             }
         }
         $this->container['amazon_programs'] = $amazon_programs;
-
-        return $this;
-    }
-
-    /**
-     * Gets export_info.
-     */
-    public function getExportInfo(): ?ExportInfo
-    {
-        return $this->container['export_info'];
-    }
-
-    /**
-     * Sets export_info.
-     *
-     * @param null|ExportInfo $export_info export_info
-     */
-    public function setExportInfo(?ExportInfo $export_info): self
-    {
-        if (is_null($export_info)) {
-            array_push($this->openAPINullablesSetToNull, 'export_info');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('export_info', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['export_info'] = $export_info;
 
         return $this;
     }
