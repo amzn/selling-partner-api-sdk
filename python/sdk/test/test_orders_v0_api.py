@@ -67,15 +67,6 @@ class TestOrdersV0Api(unittest.TestCase):
         self.assert_valid_response_payload(200, response[0])
         pass
 
-    def test_get_order_fulfillment_instructions(self):
-        order_id = self._get_random_value("str", None)
-        
-        self.instruct_backend_mock("ordersV0".casefold().replace(' ', ''), self.to_camel_case("get_order_fulfillment_instructions"), "200")
-        response = self.api.get_order_fulfillment_instructions_with_http_info(order_id, )
-        self.assertEqual(200, response[1])
-        self.assert_valid_response_payload(200, response[0])
-        pass
-
     def test_get_order_items(self):
         order_id = self._get_random_value("str", None)
         
