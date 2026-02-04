@@ -97,16 +97,6 @@ const mockgetOrderBuyerInfoData = {
     headers: {}
   }
 };
-const mockgetOrderFulfillmentInstructionsData = {
-  request: {
-    'orderId': generateMockData('String')
-  },
-  response: {
-    data: generateMockData('GetOrderFulfillmentInstructionsResponse'),
-    statusCode: 200,
-    headers: {}
-  }
-};
 const mockgetOrderItemsData = {
   request: {
     'orderId': generateMockData('String'),
@@ -356,54 +346,6 @@ describe('OrdersV0Api', () => {
           mockgetOrderBuyerInfoData.request['orderId']
         ];
         await instance.getOrderBuyerInfo(...params);
-        throw new Error('Expected error to be thrown');
-      } catch (error) {
-        expect(error).to.exist;
-        expect(error.statusCode).to.equal(400);
-      }
-    });
-  });
-  describe('getOrderFulfillmentInstructions', () => {
-    it('should successfully call getOrderFulfillmentInstructions', async () => {
-      instance.apiClient.callApi.resolves(mockgetOrderFulfillmentInstructionsData.response);
-
-      const params = [
-        mockgetOrderFulfillmentInstructionsData.request['orderId']
-      ];
-      const data = await instance.getOrderFulfillmentInstructions(...params);
-
-      expect(data instanceof SellingPartnerApiForOrders.GetOrderFulfillmentInstructionsResponse).to.be.true;
-      expect(data).to.equal(mockgetOrderFulfillmentInstructionsData.response.data);
-    });
-
-    it('should successfully call getOrderFulfillmentInstructionsWithHttpInfo', async () => {
-      instance.apiClient.callApi.resolves(mockgetOrderFulfillmentInstructionsData.response);
-
-      const params = [
-        mockgetOrderFulfillmentInstructionsData.request['orderId']
-      ];
-      const response = await instance.getOrderFulfillmentInstructionsWithHttpInfo(...params);
-
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal(mockgetOrderFulfillmentInstructionsData.response.statusCode)
-      expect(response).to.have.property('headers');
-      expect(response).to.have.property('data');
-      expect(response.data).to.equal(mockgetOrderFulfillmentInstructionsData.response.data)
-    });
-
-    it('should handle API errors', async () => {
-      const errorResponse = {
-        errors: new Error('Expected error to be thrown'),
-        statusCode: 400,
-        headers: {}
-      };
-      instance.apiClient.callApi.rejects(errorResponse);
-
-      try {
-        const params = [
-          mockgetOrderFulfillmentInstructionsData.request['orderId']
-        ];
-        await instance.getOrderFulfillmentInstructions(...params);
         throw new Error('Expected error to be thrown');
       } catch (error) {
         expect(error).to.exist;

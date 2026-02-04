@@ -75,16 +75,6 @@ const mockgetShipmentLabelsData = {
     headers: {}
   }
 };
-const mocksubmitShipmentConfirmationData = {
-  request: {
-    'body': generateMockData('SubmitShipmentConfirmationRequest')
-  },
-  response: {
-    data: generateMockData('SubmitShipmentConfirmationResponse'),
-    statusCode: 200,
-    headers: {}
-  }
-};
 const mocksubmitShipmentConfirmationsData = {
   request: {
     'body': generateMockData('SubmitShipmentConfirmationsRequest')
@@ -202,54 +192,6 @@ describe('VendorShippingApi', () => {
         const params = [
         ];
         await instance.getShipmentLabels(...params);
-        throw new Error('Expected error to be thrown');
-      } catch (error) {
-        expect(error).to.exist;
-        expect(error.statusCode).to.equal(400);
-      }
-    });
-  });
-  describe('submitShipmentConfirmation', () => {
-    it('should successfully call submitShipmentConfirmation', async () => {
-      instance.apiClient.callApi.resolves(mocksubmitShipmentConfirmationData.response);
-
-      const params = [
-        mocksubmitShipmentConfirmationData.request['body']
-      ];
-      const data = await instance.submitShipmentConfirmation(...params);
-
-      expect(data instanceof SellingPartnerApiForRetailProcurementShipments.SubmitShipmentConfirmationResponse).to.be.true;
-      expect(data).to.equal(mocksubmitShipmentConfirmationData.response.data);
-    });
-
-    it('should successfully call submitShipmentConfirmationWithHttpInfo', async () => {
-      instance.apiClient.callApi.resolves(mocksubmitShipmentConfirmationData.response);
-
-      const params = [
-        mocksubmitShipmentConfirmationData.request['body']
-      ];
-      const response = await instance.submitShipmentConfirmationWithHttpInfo(...params);
-
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal(mocksubmitShipmentConfirmationData.response.statusCode)
-      expect(response).to.have.property('headers');
-      expect(response).to.have.property('data');
-      expect(response.data).to.equal(mocksubmitShipmentConfirmationData.response.data)
-    });
-
-    it('should handle API errors', async () => {
-      const errorResponse = {
-        errors: new Error('Expected error to be thrown'),
-        statusCode: 400,
-        headers: {}
-      };
-      instance.apiClient.callApi.rejects(errorResponse);
-
-      try {
-        const params = [
-          mocksubmitShipmentConfirmationData.request['body']
-        ];
-        await instance.submitShipmentConfirmation(...params);
         throw new Error('Expected error to be thrown');
       } catch (error) {
         expect(error).to.exist;
