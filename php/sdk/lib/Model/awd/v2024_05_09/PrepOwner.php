@@ -35,7 +35,7 @@ namespace SpApi\Model\awd\v2024_05_09;
  *
  * @category Class
  *
- * @description The owner of the preparations, if special preparations are required.
+ * @description The owner of the preparations, if special preparations are required. &#x60;AMAZON&#x60; is not an accepted value in the US marketplace.
  *
  * @author   OpenAPI Generator team
  *
