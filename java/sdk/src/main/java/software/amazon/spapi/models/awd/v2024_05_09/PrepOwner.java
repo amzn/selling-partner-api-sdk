@@ -19,7 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/** The owner of the preparations, if special preparations are required. */
+/**
+ * The owner of the preparations, if special preparations are required. &#x60;AMAZON&#x60; is not an accepted value in
+ * the US marketplace.
+ */
 @JsonAdapter(PrepOwner.Adapter.class)
 public enum PrepOwner {
     @SerializedName("AMAZON")
