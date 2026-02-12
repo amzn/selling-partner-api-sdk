@@ -26,9 +26,9 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.awd.v2024_05_09
 {
     /// <summary>
-    /// The owner of the preparations, if special preparations are required.
+    /// The owner of the preparations, if special preparations are required. &#x60;AMAZON&#x60; is not an accepted value in the US marketplace.
     /// </summary>
-    /// <value>The owner of the preparations, if special preparations are required.</value>
+    /// <value>The owner of the preparations, if special preparations are required. &#x60;AMAZON&#x60; is not an accepted value in the US marketplace.</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum PrepOwner
     {
