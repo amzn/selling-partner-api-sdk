@@ -19,7 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/** The entity that labels the products. */
+/** The entity that labels the products. &#x60;AMAZON&#x60; is not an accepted value in the US marketplace. */
 @JsonAdapter(LabelOwner.Adapter.class)
 public enum LabelOwner {
     @SerializedName("AMAZON")
