@@ -60,7 +60,7 @@ export class CompetitiveSummaryBatchResponse {
 
 /**
  * The response list for the `competitiveSummaryBatch` operation.
- * @member {[CompetitiveSummaryResponse]} responses
- * @type {[CompetitiveSummaryResponse]}
+ * @member {CompetitiveSummaryResponse[]} responses
+ * @type {CompetitiveSummaryResponse[]}
  */
 CompetitiveSummaryBatchResponse.prototype.responses = undefined

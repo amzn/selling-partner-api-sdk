@@ -21,8 +21,8 @@ export class AvailableShippingServiceOptions {
      * @param availableDeliveryExperienceOptions {[AvailableDeliveryExperienceOption]} List of available delivery experience options.
      */
     constructor(availableCarrierWillPickUpOptions: [AvailableCarrierWillPickUpOption], availableDeliveryExperienceOptions: [AvailableDeliveryExperienceOption]);
-    availableCarrierWillPickUpOptions: [AvailableCarrierWillPickUpOption];
-    availableDeliveryExperienceOptions: [AvailableDeliveryExperienceOption];
+    availableCarrierWillPickUpOptions: AvailableCarrierWillPickUpOption[];
+    availableDeliveryExperienceOptions: AvailableDeliveryExperienceOption[];
 }
 import { AvailableCarrierWillPickUpOption } from './AvailableCarrierWillPickUpOption.js';
 import { AvailableDeliveryExperienceOption } from './AvailableDeliveryExperienceOption.js';

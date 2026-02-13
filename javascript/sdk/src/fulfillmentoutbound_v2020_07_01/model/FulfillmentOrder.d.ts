@@ -61,16 +61,16 @@ export class FulfillmentOrder {
     codSettings: CODSettings;
     /**
      * A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller.
-     * @member {[String]} notificationEmails
-     * @type {[String]}
+     * @member {String[]} notificationEmails
+     * @type {String[]}
      */
-    notificationEmails: [string];
+    notificationEmails: string[];
     /**
      * A list of features and their fulfillment policies to apply to the order.
-     * @member {[FeatureSettings]} featureConstraints
-     * @type {[FeatureSettings]}
+     * @member {FeatureSettings[]} featureConstraints
+     * @type {FeatureSettings[]}
      */
-    featureConstraints: [FeatureSettings];
+    featureConstraints: FeatureSettings[];
 }
 import { ShippingSpeedCategory } from './ShippingSpeedCategory.js';
 import { Address } from './Address.js';

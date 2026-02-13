@@ -84,8 +84,8 @@ InboundOperationStatus.prototype.operationId = undefined
 
 /**
  * The problems in the processing of the asynchronous operation.
- * @member {[OperationProblem]} operationProblems
- * @type {[OperationProblem]}
+ * @member {OperationProblem[]} operationProblems
+ * @type {OperationProblem[]}
  */
 InboundOperationStatus.prototype.operationProblems = undefined
 

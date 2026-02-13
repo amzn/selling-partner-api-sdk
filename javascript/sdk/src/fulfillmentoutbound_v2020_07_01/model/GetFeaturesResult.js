@@ -60,7 +60,7 @@ export class GetFeaturesResult {
 
 /**
  * An array of features.
- * @member {[Feature]} features
- * @type {[Feature]}
+ * @member {Feature[]} features
+ * @type {Feature[]}
  */
 GetFeaturesResult.prototype.features = undefined

@@ -20,7 +20,7 @@ export class PackageGroupingInput {
      * @param boxes {[BoxInput]} Box level information being provided.
      */
     constructor(boxes: [BoxInput]);
-    boxes: [BoxInput];
+    boxes: BoxInput[];
     /**
      * The ID of the `packingGroup` that packages are grouped according to. The `PackingGroupId` can only be provided before placement confirmation, and it must belong to the confirmed `PackingOption`. One of `ShipmentId` or `PackingGroupId` must be provided with every request.
      * @member {String} packingGroupId

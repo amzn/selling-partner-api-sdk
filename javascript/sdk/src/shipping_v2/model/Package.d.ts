@@ -28,7 +28,7 @@ export class Package {
     weight: Weight;
     insuredValue: Currency;
     packageClientReferenceId: string;
-    items: [Item];
+    items: Item[];
     /**
      * When true, the package contains hazardous materials. Defaults to false.
      * @member {Boolean} isHazmat
@@ -43,10 +43,10 @@ export class Package {
     sellerDisplayName: string;
     /**
      * A list of charges based on the shipping service charges applied on a package.
-     * @member {[ChargeComponent]} charges
-     * @type {[ChargeComponent]}
+     * @member {ChargeComponent[]} charges
+     * @type {ChargeComponent[]}
      */
-    charges: [ChargeComponent];
+    charges: ChargeComponent[];
 }
 import { Dimensions } from './Dimensions.js';
 import { Weight } from './Weight.js';

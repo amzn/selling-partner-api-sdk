@@ -119,8 +119,8 @@ InboundOrder.prototype.originAddress = undefined
 
 /**
  * List of packages to be inbounded.
- * @member {[DistributionPackageQuantity]} packagesToInbound
- * @type {[DistributionPackageQuantity]}
+ * @member {DistributionPackageQuantity[]} packagesToInbound
+ * @type {DistributionPackageQuantity[]}
  */
 InboundOrder.prototype.packagesToInbound = undefined
 

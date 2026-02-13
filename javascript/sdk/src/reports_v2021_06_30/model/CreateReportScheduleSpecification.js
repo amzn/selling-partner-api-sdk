@@ -74,8 +74,8 @@ CreateReportScheduleSpecification.prototype.reportType = undefined
 
 /**
  * A list of marketplace identifiers for the report schedule.
- * @member {[String]} marketplaceIds
- * @type {[String]}
+ * @member {String[]} marketplaceIds
+ * @type {String[]}
  */
 CreateReportScheduleSpecification.prototype.marketplaceIds = undefined
 

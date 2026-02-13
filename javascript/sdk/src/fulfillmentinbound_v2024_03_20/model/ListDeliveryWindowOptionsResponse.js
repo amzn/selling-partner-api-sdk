@@ -62,8 +62,8 @@ export class ListDeliveryWindowOptionsResponse {
 
 /**
  * Delivery window options generated for the placement option.
- * @member {[DeliveryWindowOption]} deliveryWindowOptions
- * @type {[DeliveryWindowOption]}
+ * @member {DeliveryWindowOption[]} deliveryWindowOptions
+ * @type {DeliveryWindowOption[]}
  */
 ListDeliveryWindowOptionsResponse.prototype.deliveryWindowOptions = undefined
 

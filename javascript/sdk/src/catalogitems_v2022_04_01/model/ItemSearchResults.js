@@ -86,7 +86,7 @@ ItemSearchResults.prototype.refinements = undefined
 
 /**
  * A list of items from the Amazon catalog.
- * @member {[Item]} items
- * @type {[Item]}
+ * @member {Item[]} items
+ * @type {Item[]}
  */
 ItemSearchResults.prototype.items = undefined

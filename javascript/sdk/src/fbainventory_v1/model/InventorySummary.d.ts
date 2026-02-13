@@ -61,10 +61,10 @@ export class InventorySummary {
     totalQuantity: number;
     /**
      * A list of seller-enrolled stores that apply to this seller SKU.
-     * @member {[String]} stores
-     * @type {[String]}
+     * @member {String[]} stores
+     * @type {String[]}
      */
-    stores: [string];
+    stores: string[];
 }
 import { InventoryDetails } from './InventoryDetails.js';
 //# sourceMappingURL=InventorySummary.d.ts.map

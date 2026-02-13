@@ -136,8 +136,8 @@ Shipment.prototype.invoiceInfo = undefined
 
 /**
  * All involved party identification and metadata for the vendor, buyer, and seller. Applicable for direct-fulfillment sellers.
- * @member {[PartyIdentificationInfo]} partyInfoList
- * @type {[PartyIdentificationInfo]}
+ * @member {PartyIdentificationInfo[]} partyInfoList
+ * @type {PartyIdentificationInfo[]}
  */
 Shipment.prototype.partyInfoList = undefined
 
@@ -149,8 +149,8 @@ Shipment.prototype.shipmentRequirements = undefined
 
 /**
  * The charges associated with the shipment.
- * @member {[Charge]} charges
- * @type {[Charge]}
+ * @member {Charge[]} charges
+ * @type {Charge[]}
  */
 Shipment.prototype.charges = undefined
 
@@ -335,8 +335,8 @@ Shipment.prototype.reason = undefined
 
 /**
  * The line items in the shipment.
- * @member {[ShipmentLineItem]} lineItems
- * @type {[ShipmentLineItem]}
+ * @member {ShipmentLineItem[]} lineItems
+ * @type {ShipmentLineItem[]}
  */
 Shipment.prototype.lineItems = undefined
 
@@ -348,8 +348,8 @@ Shipment.prototype.shippingInfo = undefined
 
 /**
  * The list of packages in the shipment.
- * @member {[Package]} packages
- * @type {[Package]}
+ * @member {Package[]} packages
+ * @type {Package[]}
  */
 Shipment.prototype.packages = undefined
 

@@ -25,10 +25,10 @@ export class ItemProceedsBreakdown {
     subtotal: Money;
     /**
      * Further granular breakdown of the subtotal.
-     * @member {[ItemProceedsDetailedBreakdown]} detailedBreakdowns
-     * @type {[ItemProceedsDetailedBreakdown]}
+     * @member {ItemProceedsDetailedBreakdown[]} detailedBreakdowns
+     * @type {ItemProceedsDetailedBreakdown[]}
      */
-    detailedBreakdowns: [ItemProceedsDetailedBreakdown];
+    detailedBreakdowns: ItemProceedsDetailedBreakdown[];
 }
 import { Money } from './Money.js';
 import { ItemProceedsDetailedBreakdown } from './ItemProceedsDetailedBreakdown.js';

@@ -26,7 +26,7 @@ export class TransportationOption {
      */
     constructor(carrier: Carrier, preconditions: [string], shipmentId: string, shippingMode: string, shippingSolution: string, transportationOptionId: string);
     carrier: Carrier;
-    preconditions: [string];
+    preconditions: string[];
     shipmentId: string;
     shippingMode: string;
     shippingSolution: string;

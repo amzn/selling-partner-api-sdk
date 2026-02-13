@@ -60,7 +60,7 @@ export class UpdateScheduleRequest {
 
 /**
  * List of `AvailabilityRecord`s to represent the capacity of a resource over a time range.
- * @member {[AvailabilityRecord]} schedules
- * @type {[AvailabilityRecord]}
+ * @member {AvailabilityRecord[]} schedules
+ * @type {AvailabilityRecord[]}
  */
 UpdateScheduleRequest.prototype.schedules = undefined

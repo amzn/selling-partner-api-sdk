@@ -60,7 +60,7 @@ export class ReportScheduleList {
 
 /**
  * Detailed information about a report schedule.
- * @member {[ReportSchedule]} reportSchedules
- * @type {[ReportSchedule]}
+ * @member {ReportSchedule[]} reportSchedules
+ * @type {ReportSchedule[]}
  */
 ReportScheduleList.prototype.reportSchedules = undefined

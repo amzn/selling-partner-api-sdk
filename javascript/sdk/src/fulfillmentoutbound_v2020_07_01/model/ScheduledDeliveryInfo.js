@@ -70,7 +70,7 @@ ScheduledDeliveryInfo.prototype.deliveryTimeZone = undefined
 
 /**
  * An array of delivery windows.
- * @member {[DeliveryWindow]} deliveryWindows
- * @type {[DeliveryWindow]}
+ * @member {DeliveryWindow[]} deliveryWindows
+ * @type {DeliveryWindow[]}
  */
 ScheduledDeliveryInfo.prototype.deliveryWindows = undefined

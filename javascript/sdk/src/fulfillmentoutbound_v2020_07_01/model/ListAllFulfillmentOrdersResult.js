@@ -66,7 +66,7 @@ ListAllFulfillmentOrdersResult.prototype.nextToken = undefined
 
 /**
  * An array of fulfillment order information.
- * @member {[FulfillmentOrder]} fulfillmentOrders
- * @type {[FulfillmentOrder]}
+ * @member {FulfillmentOrder[]} fulfillmentOrders
+ * @type {FulfillmentOrder[]}
  */
 ListAllFulfillmentOrdersResult.prototype.fulfillmentOrders = undefined

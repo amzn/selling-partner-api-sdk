@@ -32,7 +32,7 @@ export class ShipmentConfirmation {
     sellingParty: PartyIdentification;
     shipFromParty: PartyIdentification;
     shipToParty: PartyIdentification;
-    shippedItems: [Item];
+    shippedItems: Item[];
     /**
      * The type of shipment.
      * @member {String} shipmentType
@@ -80,16 +80,16 @@ export class ShipmentConfirmation {
     importDetails: ImportDetails;
     /**
      * A list of the cartons in this shipment.
-     * @member {[Carton]} cartons
-     * @type {[Carton]}
+     * @member {Carton[]} cartons
+     * @type {Carton[]}
      */
-    cartons: [Carton];
+    cartons: Carton[];
     /**
      * A list of the pallets in this shipment.
-     * @member {[Pallet]} pallets
-     * @type {[Pallet]}
+     * @member {Pallet[]} pallets
+     * @type {Pallet[]}
      */
-    pallets: [Pallet];
+    pallets: Pallet[];
 }
 export namespace ShipmentConfirmation {
     namespace ShipmentConfirmationTypeEnum {

@@ -26,15 +26,15 @@ export class CompetitiveSummaryRequest {
     constructor(asin: string, marketplaceId: string, includedData: [CompetitiveSummaryIncludedData], method: HttpMethod, uri: string);
     asin: string;
     marketplaceId: string;
-    includedData: [CompetitiveSummaryIncludedData];
+    includedData: CompetitiveSummaryIncludedData[];
     method: HttpMethod;
     uri: string;
     /**
      * The list of `lowestPricedOffersInput` parameters that are used to build `lowestPricedOffers` in the response. This attribute is only valid if `lowestPricedOffers` is requested in `includedData`
-     * @member {[LowestPricedOffersInput]} lowestPricedOffersInputs
-     * @type {[LowestPricedOffersInput]}
+     * @member {LowestPricedOffersInput[]} lowestPricedOffersInputs
+     * @type {LowestPricedOffersInput[]}
      */
-    lowestPricedOffersInputs: [LowestPricedOffersInput];
+    lowestPricedOffersInputs: LowestPricedOffersInput[];
 }
 import { CompetitiveSummaryIncludedData } from './CompetitiveSummaryIncludedData.js';
 import { HttpMethod } from './HttpMethod.js';

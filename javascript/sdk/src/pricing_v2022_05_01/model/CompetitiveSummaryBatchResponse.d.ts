@@ -20,7 +20,7 @@ export class CompetitiveSummaryBatchResponse {
      * @param responses {[CompetitiveSummaryResponse]} The response list for the `competitiveSummaryBatch` operation.
      */
     constructor(responses: [CompetitiveSummaryResponse]);
-    responses: [CompetitiveSummaryResponse];
+    responses: CompetitiveSummaryResponse[];
 }
 import { CompetitiveSummaryResponse } from './CompetitiveSummaryResponse.js';
 //# sourceMappingURL=CompetitiveSummaryBatchResponse.d.ts.map

@@ -26,13 +26,13 @@ export class PackingOption {
      * @param supportedShippingConfigurations {[ShippingConfiguration]} **This field is deprecated**. Use the `shippingRequirements` property under `supportedConfigurations` instead. List of supported shipping modes.
      */
     constructor(discounts: [Incentive], fees: [Incentive], packingGroups: [string], packingOptionId: string, status: string, supportedConfigurations: [PackingConfiguration], supportedShippingConfigurations: [ShippingConfiguration]);
-    discounts: [Incentive];
-    fees: [Incentive];
-    packingGroups: [string];
+    discounts: Incentive[];
+    fees: Incentive[];
+    packingGroups: string[];
     packingOptionId: string;
     status: string;
-    supportedConfigurations: [PackingConfiguration];
-    supportedShippingConfigurations: [ShippingConfiguration];
+    supportedConfigurations: PackingConfiguration[];
+    supportedShippingConfigurations: ShippingConfiguration[];
     /**
      * The time at which this packing option is no longer valid. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.
      * @member {Date} expiration

@@ -68,7 +68,7 @@ ListShipmentPalletsResponse.prototype.pagination = undefined
 
 /**
  * The pallets in a shipment.
- * @member {[Pallet]} pallets
- * @type {[Pallet]}
+ * @member {Pallet[]} pallets
+ * @type {Pallet[]}
  */
 ListShipmentPalletsResponse.prototype.pallets = undefined

@@ -59,10 +59,10 @@ export class OfferDetail {
     sellerFeedbackRating: SellerFeedbackType;
     /**
      * List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.
-     * @member {[QuantityDiscountPriceType]} quantityDiscountPrices
-     * @type {[QuantityDiscountPriceType]}
+     * @member {QuantityDiscountPriceType[]} quantityDiscountPrices
+     * @type {QuantityDiscountPriceType[]}
      */
-    quantityDiscountPrices: [QuantityDiscountPriceType];
+    quantityDiscountPrices: QuantityDiscountPriceType[];
     /**
      * @member {Points} points
      * @type {Points}

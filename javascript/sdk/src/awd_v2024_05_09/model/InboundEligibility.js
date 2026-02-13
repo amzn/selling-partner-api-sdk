@@ -69,15 +69,15 @@ export class InboundEligibility {
 
 /**
  * If there are order level eligibility issues, then this list will contain those error codes and descriptions.
- * @member {[OrderIneligibilityReason]} ineligibilityReasons
- * @type {[OrderIneligibilityReason]}
+ * @member {OrderIneligibilityReason[]} ineligibilityReasons
+ * @type {OrderIneligibilityReason[]}
  */
 InboundEligibility.prototype.ineligibilityReasons = undefined
 
 /**
  * Details on SKU eligibility for each inbound package.
- * @member {[SkuEligibility]} packagesToInbound
- * @type {[SkuEligibility]}
+ * @member {SkuEligibility[]} packagesToInbound
+ * @type {SkuEligibility[]}
  */
 InboundEligibility.prototype.packagesToInbound = undefined
 

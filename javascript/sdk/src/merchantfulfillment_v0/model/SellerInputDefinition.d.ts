@@ -26,7 +26,7 @@ export class SellerInputDefinition {
     constructor(isRequired: boolean, dataType: string, constraints: [Constraint], inputDisplayText: string, storedValue: AdditionalSellerInput);
     isRequired: boolean;
     dataType: string;
-    constraints: [Constraint];
+    constraints: Constraint[];
     inputDisplayText: string;
     storedValue: AdditionalSellerInput;
     /**
@@ -36,10 +36,10 @@ export class SellerInputDefinition {
     inputTarget: InputTargetType;
     /**
      * The set of fixed values in an additional seller input.
-     * @member {[String]} restrictedSetValues
-     * @type {[String]}
+     * @member {String[]} restrictedSetValues
+     * @type {String[]}
      */
-    restrictedSetValues: [string];
+    restrictedSetValues: string[];
 }
 import { Constraint } from './Constraint.js';
 import { AdditionalSellerInput } from './AdditionalSellerInput.js';

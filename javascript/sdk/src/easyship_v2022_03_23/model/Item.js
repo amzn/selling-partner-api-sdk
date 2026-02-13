@@ -65,7 +65,7 @@ Item.prototype.orderItemId = undefined
 
 /**
  * A list of serial numbers for the items associated with the `OrderItemId` value.
- * @member {[String]} orderItemSerialNumbers
- * @type {[String]}
+ * @member {String[]} orderItemSerialNumbers
+ * @type {String[]}
  */
 Item.prototype.orderItemSerialNumbers = undefined

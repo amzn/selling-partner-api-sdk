@@ -22,13 +22,13 @@ export class Carton {
      */
     constructor(cartonSequenceNumber: string, items: [ContainerItem]);
     cartonSequenceNumber: string;
-    items: [ContainerItem];
+    items: ContainerItem[];
     /**
      * A list of carton identifiers.
-     * @member {[ContainerIdentification]} cartonIdentifiers
-     * @type {[ContainerIdentification]}
+     * @member {ContainerIdentification[]} cartonIdentifiers
+     * @type {ContainerIdentification[]}
      */
-    cartonIdentifiers: [ContainerIdentification];
+    cartonIdentifiers: ContainerIdentification[];
     /**
      * @member {Dimensions} dimensions
      * @type {Dimensions}

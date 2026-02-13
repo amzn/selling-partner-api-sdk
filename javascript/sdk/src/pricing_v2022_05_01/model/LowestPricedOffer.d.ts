@@ -22,7 +22,7 @@ export class LowestPricedOffer {
      */
     constructor(lowestPricedOffersInput: LowestPricedOffersInput, offers: [Offer]);
     lowestPricedOffersInput: LowestPricedOffersInput;
-    offers: [Offer];
+    offers: Offer[];
 }
 import { LowestPricedOffersInput } from './LowestPricedOffersInput.js';
 import { Offer } from './Offer.js';

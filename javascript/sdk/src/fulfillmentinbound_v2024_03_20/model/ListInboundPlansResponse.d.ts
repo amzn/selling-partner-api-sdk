@@ -14,10 +14,10 @@ export class ListInboundPlansResponse {
     static constructFromObject(data: any, obj: ListInboundPlansResponse): ListInboundPlansResponse;
     /**
      * A list of inbound plans with minimal information.
-     * @member {[InboundPlanSummary]} inboundPlans
-     * @type {[InboundPlanSummary]}
+     * @member {InboundPlanSummary[]} inboundPlans
+     * @type {InboundPlanSummary[]}
      */
-    inboundPlans: [InboundPlanSummary];
+    inboundPlans: InboundPlanSummary[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

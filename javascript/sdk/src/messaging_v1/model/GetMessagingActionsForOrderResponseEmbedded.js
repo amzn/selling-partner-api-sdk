@@ -59,7 +59,7 @@ export class GetMessagingActionsForOrderResponseEmbedded {
 }
 
 /**
- * @member {[GetMessagingActionResponse]} actions
- * @type {[GetMessagingActionResponse]}
+ * @member {GetMessagingActionResponse[]} actions
+ * @type {GetMessagingActionResponse[]}
  */
 GetMessagingActionsForOrderResponseEmbedded.prototype.actions = undefined

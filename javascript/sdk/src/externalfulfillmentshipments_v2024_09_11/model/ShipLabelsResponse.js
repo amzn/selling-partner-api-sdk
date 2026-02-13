@@ -60,7 +60,7 @@ export class ShipLabelsResponse {
 
 /**
  * A list of label documents for each package specified in the request. In case of partial failures when generating labels, the `isErrored` and `errorDetails` attributes detail the cause of failure.
- * @member {[PackageShipLabel]} packageShipLabelList
- * @type {[PackageShipLabel]}
+ * @member {PackageShipLabel[]} packageShipLabelList
+ * @type {PackageShipLabel[]}
  */
 ShipLabelsResponse.prototype.packageShipLabelList = undefined

@@ -26,13 +26,13 @@ export class Package {
     id: string;
     dimensions: PackageDimensions;
     weight: Weight;
-    packageLineItems: [PackageLineItem];
+    packageLineItems: PackageLineItem[];
     /**
      * The optional list of HAZMAT labels applied to the package.
-     * @member {[String]} hazmatLabels
-     * @type {[String]}
+     * @member {String[]} hazmatLabels
+     * @type {String[]}
      */
-    hazmatLabels: [string];
+    hazmatLabels: string[];
     /**
      * The current status of the package.
      * @member {String} status

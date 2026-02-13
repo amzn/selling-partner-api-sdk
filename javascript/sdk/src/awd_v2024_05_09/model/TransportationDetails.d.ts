@@ -20,7 +20,7 @@ export class TransportationDetails {
      * @param trackingDetails {[TrackingDetails]} Tracking details for the shipment. If using SPD transportation, this can be for each case. If not using SPD transportation, this is a single tracking entry for the entire shipment.
      */
     constructor(trackingDetails: [TrackingDetails]);
-    trackingDetails: [TrackingDetails];
+    trackingDetails: TrackingDetails[];
 }
 import { TrackingDetails } from './TrackingDetails.js';
 //# sourceMappingURL=TransportationDetails.d.ts.map

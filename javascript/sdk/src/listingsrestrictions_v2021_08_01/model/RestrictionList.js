@@ -59,7 +59,7 @@ export class RestrictionList {
 }
 
 /**
- * @member {[Restriction]} restrictions
- * @type {[Restriction]}
+ * @member {Restriction[]} restrictions
+ * @type {Restriction[]}
  */
 RestrictionList.prototype.restrictions = undefined

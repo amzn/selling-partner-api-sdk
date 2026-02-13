@@ -14,10 +14,10 @@ export class GetItemOffersBatchResponse {
     static constructFromObject(data: any, obj: GetItemOffersBatchResponse): GetItemOffersBatchResponse;
     /**
      * A list of `getItemOffers` batched responses.
-     * @member {[ItemOffersResponse]} responses
-     * @type {[ItemOffersResponse]}
+     * @member {ItemOffersResponse[]} responses
+     * @type {ItemOffersResponse[]}
      */
-    responses: [ItemOffersResponse];
+    responses: ItemOffersResponse[];
 }
 import { ItemOffersResponse } from './ItemOffersResponse.js';
 //# sourceMappingURL=GetItemOffersBatchResponse.d.ts.map

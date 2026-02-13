@@ -24,10 +24,10 @@ export class PlacementOption {
      * @param status {String} The status of a placement option. Possible values: `OFFERED`, `ACCEPTED`, `EXPIRED`.
      */
     constructor(discounts: [Incentive], fees: [Incentive], placementOptionId: string, shipmentIds: [string], status: string);
-    discounts: [Incentive];
-    fees: [Incentive];
+    discounts: Incentive[];
+    fees: Incentive[];
     placementOptionId: string;
-    shipmentIds: [string];
+    shipmentIds: string[];
     status: string;
     /**
      * The expiration date of the placement option. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.

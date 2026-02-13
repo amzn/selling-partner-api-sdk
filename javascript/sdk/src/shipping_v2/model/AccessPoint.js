@@ -110,8 +110,8 @@ AccessPoint.prototype.address = undefined
 
 /**
  * Exception operating hours for Access Point
- * @member {[ExceptionOperatingHours]} exceptionOperatingHours
- * @type {[ExceptionOperatingHours]}
+ * @member {ExceptionOperatingHours[]} exceptionOperatingHours
+ * @type {ExceptionOperatingHours[]}
  */
 AccessPoint.prototype.exceptionOperatingHours = undefined
 

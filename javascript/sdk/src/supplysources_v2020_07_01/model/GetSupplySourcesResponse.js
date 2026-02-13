@@ -59,8 +59,8 @@ export class GetSupplySourcesResponse {
 
 /**
  * The list of `SupplySource`s.
- * @member {[SupplySourceListInner]} supplySources
- * @type {[SupplySourceListInner]}
+ * @member {SupplySourceListInner[]} supplySources
+ * @type {SupplySourceListInner[]}
  */
 GetSupplySourcesResponse.prototype.supplySources = undefined
 

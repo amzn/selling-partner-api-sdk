@@ -60,7 +60,7 @@ export class CreateMarketplaceItemLabelsResponse {
 
 /**
  * Resources to download the requested document.
- * @member {[DocumentDownload]} documentDownloads
- * @type {[DocumentDownload]}
+ * @member {DocumentDownload[]} documentDownloads
+ * @type {DocumentDownload[]}
  */
 CreateMarketplaceItemLabelsResponse.prototype.documentDownloads = undefined

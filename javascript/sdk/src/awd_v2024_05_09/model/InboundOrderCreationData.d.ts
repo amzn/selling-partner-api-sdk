@@ -22,7 +22,7 @@ export class InboundOrderCreationData {
      */
     constructor(originAddress: Address, packagesToInbound: [DistributionPackageQuantity]);
     originAddress: Address;
-    packagesToInbound: [DistributionPackageQuantity];
+    packagesToInbound: DistributionPackageQuantity[];
     /**
      * Reference ID that can be used to correlate the order with partner resources.
      * @member {String} externalReferenceId

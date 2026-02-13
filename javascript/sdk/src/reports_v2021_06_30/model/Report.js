@@ -75,8 +75,8 @@ export class Report {
 
 /**
  * A list of marketplace identifiers for the report.
- * @member {[String]} marketplaceIds
- * @type {[String]}
+ * @member {String[]} marketplaceIds
+ * @type {String[]}
  */
 Report.prototype.marketplaceIds = undefined
 

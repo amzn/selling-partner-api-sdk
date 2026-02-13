@@ -60,7 +60,7 @@ export class CreateFulfillmentReturnRequest {
 
 /**
  * An array of items to be returned.
- * @member {[CreateReturnItem]} items
- * @type {[CreateReturnItem]}
+ * @member {CreateReturnItem[]} items
+ * @type {CreateReturnItem[]}
  */
 CreateFulfillmentReturnRequest.prototype.items = undefined

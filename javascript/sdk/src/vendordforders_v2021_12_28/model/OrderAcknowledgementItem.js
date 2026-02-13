@@ -119,7 +119,7 @@ OrderAcknowledgementItem.prototype.shipFromParty = undefined
 
 /**
  * Item details including acknowledged quantity.
- * @member {[OrderItemAcknowledgement]} itemAcknowledgements
- * @type {[OrderItemAcknowledgement]}
+ * @member {OrderItemAcknowledgement[]} itemAcknowledgements
+ * @type {OrderItemAcknowledgement[]}
  */
 OrderAcknowledgementItem.prototype.itemAcknowledgements = undefined

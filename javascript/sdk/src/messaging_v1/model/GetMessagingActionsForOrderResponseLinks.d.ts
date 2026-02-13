@@ -22,7 +22,7 @@ export class GetMessagingActionsForOrderResponseLinks {
      */
     constructor(self: LinkObject, actions: [LinkObject]);
     self: LinkObject;
-    actions: [LinkObject];
+    actions: LinkObject[];
 }
 import { LinkObject } from './LinkObject.js';
 //# sourceMappingURL=GetMessagingActionsForOrderResponseLinks.d.ts.map

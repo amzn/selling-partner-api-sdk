@@ -62,8 +62,8 @@ export class ListPackingGroupBoxesResponse {
 
 /**
  * Provides the information about the list of boxes in the packing group.
- * @member {[Box]} boxes
- * @type {[Box]}
+ * @member {Box[]} boxes
+ * @type {Box[]}
  */
 ListPackingGroupBoxesResponse.prototype.boxes = undefined
 

@@ -22,7 +22,7 @@ export class ListHandoverSlotsResponse {
      */
     constructor(amazonOrderId: string, timeSlots: [TimeSlot]);
     amazonOrderId: string;
-    timeSlots: [TimeSlot];
+    timeSlots: TimeSlot[];
 }
 import { TimeSlot } from './TimeSlot.js';
 //# sourceMappingURL=ListHandoverSlotsResponse.d.ts.map

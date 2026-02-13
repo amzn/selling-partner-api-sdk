@@ -59,7 +59,7 @@ export class ParagraphComponent {
 }
 
 /**
- * @member {[TextComponent]} textList
- * @type {[TextComponent]}
+ * @member {TextComponent[]} textList
+ * @type {TextComponent[]}
  */
 ParagraphComponent.prototype.textList = undefined

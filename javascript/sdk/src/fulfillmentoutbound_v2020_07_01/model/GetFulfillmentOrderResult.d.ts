@@ -24,21 +24,21 @@ export class GetFulfillmentOrderResult {
      */
     constructor(fulfillmentOrder: FulfillmentOrder, fulfillmentOrderItems: [FulfillmentOrderItem], returnItems: [ReturnItem], returnAuthorizations: [ReturnAuthorization]);
     fulfillmentOrder: FulfillmentOrder;
-    fulfillmentOrderItems: [FulfillmentOrderItem];
-    returnItems: [ReturnItem];
-    returnAuthorizations: [ReturnAuthorization];
+    fulfillmentOrderItems: FulfillmentOrderItem[];
+    returnItems: ReturnItem[];
+    returnAuthorizations: ReturnAuthorization[];
     /**
      * An array of fulfillment shipment information.
-     * @member {[FulfillmentShipment]} fulfillmentShipments
-     * @type {[FulfillmentShipment]}
+     * @member {FulfillmentShipment[]} fulfillmentShipments
+     * @type {FulfillmentShipment[]}
      */
-    fulfillmentShipments: [FulfillmentShipment];
+    fulfillmentShipments: FulfillmentShipment[];
     /**
      * An array of various payment attributes related to this fulfillment order.
-     * @member {[PaymentInformation]} paymentInformation
-     * @type {[PaymentInformation]}
+     * @member {PaymentInformation[]} paymentInformation
+     * @type {PaymentInformation[]}
      */
-    paymentInformation: [PaymentInformation];
+    paymentInformation: PaymentInformation[];
 }
 import { FulfillmentOrder } from './FulfillmentOrder.js';
 import { FulfillmentOrderItem } from './FulfillmentOrderItem.js';

@@ -60,7 +60,7 @@ export class AssignAppointmentResourcesRequest {
 
 /**
  * List of resources that performs or performed job appointment fulfillment.
- * @member {[AppointmentResource]} resources
- * @type {[AppointmentResource]}
+ * @member {AppointmentResource[]} resources
+ * @type {AppointmentResource[]}
  */
 AssignAppointmentResourcesRequest.prototype.resources = undefined

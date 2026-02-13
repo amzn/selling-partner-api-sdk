@@ -60,7 +60,7 @@ export class TransportationDetails {
 
 /**
  * Tracking details for the shipment. If using SPD transportation, this can be for each case. If not using SPD transportation, this is a single tracking entry for the entire shipment.
- * @member {[TrackingDetails]} trackingDetails
- * @type {[TrackingDetails]}
+ * @member {TrackingDetails[]} trackingDetails
+ * @type {TrackingDetails[]}
  */
 TransportationDetails.prototype.trackingDetails = undefined

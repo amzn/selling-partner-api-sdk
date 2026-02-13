@@ -98,7 +98,7 @@ ContentDocument.prototype.locale = undefined
 
 /**
  * A list of A+ Content modules.
- * @member {[ContentModule]} contentModuleList
- * @type {[ContentModule]}
+ * @member {ContentModule[]} contentModuleList
+ * @type {ContentModule[]}
  */
 ContentDocument.prototype.contentModuleList = undefined

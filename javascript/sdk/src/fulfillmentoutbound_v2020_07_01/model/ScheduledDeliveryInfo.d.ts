@@ -22,7 +22,7 @@ export class ScheduledDeliveryInfo {
      */
     constructor(deliveryTimeZone: string, deliveryWindows: [DeliveryWindow]);
     deliveryTimeZone: string;
-    deliveryWindows: [DeliveryWindow];
+    deliveryWindows: DeliveryWindow[];
 }
 import { DeliveryWindow } from './DeliveryWindow.js';
 //# sourceMappingURL=ScheduledDeliveryInfo.d.ts.map

@@ -99,8 +99,8 @@ InboundPlanSummary.prototype.lastUpdatedAt = undefined
 
 /**
  * A list of marketplace IDs.
- * @member {[String]} marketplaceIds
- * @type {[String]}
+ * @member {String[]} marketplaceIds
+ * @type {String[]}
  */
 InboundPlanSummary.prototype.marketplaceIds = undefined
 

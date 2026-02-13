@@ -70,7 +70,7 @@ ValidVerificationDetail.prototype.verificationDetailType = undefined
 
 /**
  * A list of valid verification statuses where the associated verification detail type may be provided. For example, if the value of this field is [\"Approved\"], calls to provide the associated verification detail will fail for orders with a `VerificationStatus` of `Pending`, `Rejected`, `Expired`, or `Cancelled`.
- * @member {[VerificationStatus]} validVerificationStatuses
- * @type {[VerificationStatus]}
+ * @member {VerificationStatus[]} validVerificationStatuses
+ * @type {VerificationStatus[]}
  */
 ValidVerificationDetail.prototype.validVerificationStatuses = undefined

@@ -64,14 +64,14 @@ export class GenerateShipmentContentUpdatePreviewsRequest {
 
 /**
  * A list of boxes that will be present in the shipment after the update.
- * @member {[BoxUpdateInput]} boxes
- * @type {[BoxUpdateInput]}
+ * @member {BoxUpdateInput[]} boxes
+ * @type {BoxUpdateInput[]}
  */
 GenerateShipmentContentUpdatePreviewsRequest.prototype.boxes = undefined
 
 /**
  * A list of all items that will be present in the shipment after the update.
- * @member {[ItemInput]} items
- * @type {[ItemInput]}
+ * @member {ItemInput[]} items
+ * @type {ItemInput[]}
  */
 GenerateShipmentContentUpdatePreviewsRequest.prototype.items = undefined

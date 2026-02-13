@@ -73,8 +73,8 @@ export class PlacementOption {
 
 /**
  * Discount for the offered option.
- * @member {[Incentive]} discounts
- * @type {[Incentive]}
+ * @member {Incentive[]} discounts
+ * @type {Incentive[]}
  */
 PlacementOption.prototype.discounts = undefined
 
@@ -87,8 +87,8 @@ PlacementOption.prototype.expiration = undefined
 
 /**
  * The fee for the offered option.
- * @member {[Incentive]} fees
- * @type {[Incentive]}
+ * @member {Incentive[]} fees
+ * @type {Incentive[]}
  */
 PlacementOption.prototype.fees = undefined
 
@@ -101,8 +101,8 @@ PlacementOption.prototype.placementOptionId = undefined
 
 /**
  * Shipment ids.
- * @member {[String]} shipmentIds
- * @type {[String]}
+ * @member {String[]} shipmentIds
+ * @type {String[]}
  */
 PlacementOption.prototype.shipmentIds = undefined
 

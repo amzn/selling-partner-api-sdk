@@ -22,7 +22,7 @@ export class CreateReportSpecification {
      */
     constructor(reportType: string, marketplaceIds: [string]);
     reportType: string;
-    marketplaceIds: [string];
+    marketplaceIds: string[];
     /**
      * Additional information passed to reports. This varies by report type.
      * @member {{String: String}} reportOptions

@@ -29,10 +29,10 @@ export class Reason {
     reasonCode: string;
     /**
      * A list of path forward links that may allow Selling Partners to remove the restriction.
-     * @member {[Link]} links
-     * @type {[Link]}
+     * @member {Link[]} links
+     * @type {Link[]}
      */
-    links: [Link];
+    links: Link[];
 }
 export namespace Reason {
     namespace ReasonCodeEnum {

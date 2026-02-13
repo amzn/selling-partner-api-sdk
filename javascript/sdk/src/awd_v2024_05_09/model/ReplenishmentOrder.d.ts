@@ -24,7 +24,7 @@ export class ReplenishmentOrder {
     constructor(orderId: string, status: ReplenishmentOrderStatus, outboundShipments: [OutboundShipmentSummary]);
     orderId: string;
     status: ReplenishmentOrderStatus;
-    outboundShipments: [OutboundShipmentSummary];
+    outboundShipments: OutboundShipmentSummary[];
     /**
      * Date on which this replenishment order was confirmed.
      * @member {Date} confirmedOn
@@ -39,28 +39,28 @@ export class ReplenishmentOrder {
     createdAt: Date;
     /**
      * Distribution errors associated with the order related to the products or packages to replenish. This field will be populated if the order has products or packages which failed validation.
-     * @member {[DistributionIneligibleReason]} distributionIneligibleReasons
-     * @type {[DistributionIneligibleReason]}
+     * @member {DistributionIneligibleReason[]} distributionIneligibleReasons
+     * @type {DistributionIneligibleReason[]}
      */
-    distributionIneligibleReasons: [DistributionIneligibleReason];
+    distributionIneligibleReasons: DistributionIneligibleReason[];
     /**
      * List of product units that are eligible for replenishment.
-     * @member {[DistributionProduct]} eligibleProducts
-     * @type {[DistributionProduct]}
+     * @member {DistributionProduct[]} eligibleProducts
+     * @type {DistributionProduct[]}
      */
-    eligibleProducts: [DistributionProduct];
+    eligibleProducts: DistributionProduct[];
     /**
      * Requested amount of single product units to be replenished.
-     * @member {[DistributionProduct]} products
-     * @type {[DistributionProduct]}
+     * @member {DistributionProduct[]} products
+     * @type {DistributionProduct[]}
      */
-    products: [DistributionProduct];
+    products: DistributionProduct[];
     /**
      * Outbound product units that are shipped after the execution has completed post confirmation.
-     * @member {[DistributionProduct]} shippedProducts
-     * @type {[DistributionProduct]}
+     * @member {DistributionProduct[]} shippedProducts
+     * @type {DistributionProduct[]}
      */
-    shippedProducts: [DistributionProduct];
+    shippedProducts: DistributionProduct[];
     /**
      * Date on which this replenishment order was last updated.
      * @member {Date} updatedAt

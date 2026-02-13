@@ -30,7 +30,7 @@ export class GetOffersResult {
     status: string;
     identifier: ItemIdentifier;
     summary: Summary;
-    offers: [OfferDetail];
+    offers: OfferDetail[];
     /**
      * The Amazon Standard Identification Number (ASIN) of the item.
      * @member {String} ASIN

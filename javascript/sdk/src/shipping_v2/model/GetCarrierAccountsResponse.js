@@ -60,7 +60,7 @@ export class GetCarrierAccountsResponse {
 
 /**
  * A list of ActiveAccount
- * @member {[ActiveAccount]} activeAccounts
- * @type {[ActiveAccount]}
+ * @member {ActiveAccount[]} activeAccounts
+ * @type {ActiveAccount[]}
  */
 GetCarrierAccountsResponse.prototype.activeAccounts = undefined

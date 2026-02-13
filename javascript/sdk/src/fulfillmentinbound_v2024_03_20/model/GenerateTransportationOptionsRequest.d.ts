@@ -22,7 +22,7 @@ export class GenerateTransportationOptionsRequest {
      */
     constructor(placementOptionId: string, shipmentTransportationConfigurations: [ShipmentTransportationConfiguration]);
     placementOptionId: string;
-    shipmentTransportationConfigurations: [ShipmentTransportationConfiguration];
+    shipmentTransportationConfigurations: ShipmentTransportationConfiguration[];
 }
 import { ShipmentTransportationConfiguration } from './ShipmentTransportationConfiguration.js';
 //# sourceMappingURL=GenerateTransportationOptionsRequest.d.ts.map

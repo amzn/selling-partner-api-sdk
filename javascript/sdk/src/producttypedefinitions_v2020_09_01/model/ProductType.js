@@ -79,7 +79,7 @@ ProductType.prototype.displayName = undefined
 
 /**
  * The Amazon marketplace identifiers for which the product type definition is available.
- * @member {[String]} marketplaceIds
- * @type {[String]}
+ * @member {String[]} marketplaceIds
+ * @type {String[]}
  */
 ProductType.prototype.marketplaceIds = undefined

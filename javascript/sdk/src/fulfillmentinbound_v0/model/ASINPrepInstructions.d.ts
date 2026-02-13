@@ -30,10 +30,10 @@ export class ASINPrepInstructions {
     prepGuidance: PrepGuidance;
     /**
      * A list of preparation instructions to help with item sourcing decisions.
-     * @member {[PrepInstruction]} prepInstructionList
-     * @type {[PrepInstruction]}
+     * @member {PrepInstruction[]} prepInstructionList
+     * @type {PrepInstruction[]}
      */
-    prepInstructionList: [PrepInstruction];
+    prepInstructionList: PrepInstruction[];
 }
 import { BarcodeInstruction } from './BarcodeInstruction.js';
 import { PrepGuidance } from './PrepGuidance.js';

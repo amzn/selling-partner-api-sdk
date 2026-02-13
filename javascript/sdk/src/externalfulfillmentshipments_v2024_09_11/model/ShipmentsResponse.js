@@ -60,8 +60,8 @@ export class ShipmentsResponse {
 
 /**
  * A list of shipments.
- * @member {[Shipment]} shipments
- * @type {[Shipment]}
+ * @member {Shipment[]} shipments
+ * @type {Shipment[]}
  */
 ShipmentsResponse.prototype.shipments = undefined
 

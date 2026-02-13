@@ -20,7 +20,7 @@ export class ParagraphComponent {
      * @param textList {[TextComponent]}
      */
     constructor(textList: [TextComponent]);
-    textList: [TextComponent];
+    textList: TextComponent[];
 }
 import { TextComponent } from './TextComponent.js';
 //# sourceMappingURL=ParagraphComponent.d.ts.map

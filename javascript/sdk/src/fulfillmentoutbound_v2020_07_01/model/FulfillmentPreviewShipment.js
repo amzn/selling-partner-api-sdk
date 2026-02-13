@@ -93,14 +93,14 @@ FulfillmentPreviewShipment.prototype.latestArrivalDate = undefined
 
 /**
  * Provides additional insight into the shipment timeline when exact delivery dates are not able to be precomputed.
- * @member {[String]} shippingNotes
- * @type {[String]}
+ * @member {String[]} shippingNotes
+ * @type {String[]}
  */
 FulfillmentPreviewShipment.prototype.shippingNotes = undefined
 
 /**
  * An array of fulfillment preview item information.
- * @member {[FulfillmentPreviewItem]} fulfillmentPreviewItems
- * @type {[FulfillmentPreviewItem]}
+ * @member {FulfillmentPreviewItem[]} fulfillmentPreviewItems
+ * @type {FulfillmentPreviewItem[]}
  */
 FulfillmentPreviewShipment.prototype.fulfillmentPreviewItems = undefined

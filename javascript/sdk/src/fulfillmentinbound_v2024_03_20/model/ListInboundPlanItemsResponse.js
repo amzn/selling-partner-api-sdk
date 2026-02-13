@@ -62,8 +62,8 @@ export class ListInboundPlanItemsResponse {
 
 /**
  * The items in an inbound plan.
- * @member {[Item]} items
- * @type {[Item]}
+ * @member {Item[]} items
+ * @type {Item[]}
  */
 ListInboundPlanItemsResponse.prototype.items = undefined
 

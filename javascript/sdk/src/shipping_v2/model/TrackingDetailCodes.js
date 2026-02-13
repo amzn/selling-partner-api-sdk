@@ -63,14 +63,14 @@ export class TrackingDetailCodes {
 
 /**
  * Contains detail codes that provide additional details related to the forward leg of the shipment.
- * @member {[DetailCodes]} forward
- * @type {[DetailCodes]}
+ * @member {DetailCodes[]} forward
+ * @type {DetailCodes[]}
  */
 TrackingDetailCodes.prototype.forward = undefined
 
 /**
  * Contains detail codes that provide additional details related to the return leg of the shipment.
- * @member {[DetailCodes]} returns
- * @type {[DetailCodes]}
+ * @member {DetailCodes[]} returns
+ * @type {DetailCodes[]}
  */
 TrackingDetailCodes.prototype.returns = undefined

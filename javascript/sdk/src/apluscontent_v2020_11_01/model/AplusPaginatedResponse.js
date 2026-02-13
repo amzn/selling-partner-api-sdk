@@ -63,8 +63,8 @@ export class AplusPaginatedResponse {
 
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {[Error]} warnings
- * @type {[Error]}
+ * @member {Error[]} warnings
+ * @type {Error[]}
  */
 AplusPaginatedResponse.prototype.warnings = undefined
 
@@ -78,7 +78,7 @@ AplusPaginatedResponse.prototype.nextPageToken = undefined
 // Implement AplusResponse interface:
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {[Error]} warnings
- * @type {[Error]}
+ * @member {Error[]} warnings
+ * @type {Error[]}
  */
 AplusResponse.prototype.warnings = undefined

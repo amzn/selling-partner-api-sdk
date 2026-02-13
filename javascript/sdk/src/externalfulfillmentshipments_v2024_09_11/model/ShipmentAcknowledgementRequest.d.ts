@@ -20,7 +20,7 @@ export class ShipmentAcknowledgementRequest {
      * @param lineItems {[LineItemWithReason]} Details about the line items from the shipment that are being confirmed or rejected by the seller.
      */
     constructor(lineItems: [LineItemWithReason]);
-    lineItems: [LineItemWithReason];
+    lineItems: LineItemWithReason[];
     /**
      * A unique identifier for every shipment rejection.
      * @member {String} referenceId

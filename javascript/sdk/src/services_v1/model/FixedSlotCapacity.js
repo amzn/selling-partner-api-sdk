@@ -75,8 +75,8 @@ FixedSlotCapacity.prototype.slotDuration = undefined
 
 /**
  * Array of capacity slots in fixed slot format.
- * @member {[FixedSlot]} capacities
- * @type {[FixedSlot]}
+ * @member {FixedSlot[]} capacities
+ * @type {FixedSlot[]}
  */
 FixedSlotCapacity.prototype.capacities = undefined
 

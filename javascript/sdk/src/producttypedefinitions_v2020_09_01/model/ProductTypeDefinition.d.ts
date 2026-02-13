@@ -37,7 +37,7 @@ export class ProductTypeDefinition {
         String: PropertyGroup;
     };
     locale: string;
-    marketplaceIds: [string];
+    marketplaceIds: string[];
     productType: string;
     displayName: string;
     productTypeVersion: ProductTypeVersion;

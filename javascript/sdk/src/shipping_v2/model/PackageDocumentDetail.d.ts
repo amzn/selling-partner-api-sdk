@@ -22,7 +22,7 @@ export class PackageDocumentDetail {
      */
     constructor(packageClientReferenceId: string, packageDocuments: [PackageDocument]);
     packageClientReferenceId: string;
-    packageDocuments: [PackageDocument];
+    packageDocuments: PackageDocument[];
     /**
      * The carrier generated identifier for a package in a purchased shipment.
      * @member {String} trackingId

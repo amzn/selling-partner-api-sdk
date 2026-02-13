@@ -20,7 +20,7 @@ export class ListPackingOptionsResponse {
      * @param packingOptions {[PackingOption]} List of packing options.
      */
     constructor(packingOptions: [PackingOption]);
-    packingOptions: [PackingOption];
+    packingOptions: PackingOption[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

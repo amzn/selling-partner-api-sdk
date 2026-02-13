@@ -23,7 +23,7 @@ export class PurchaseShipmentResult {
      */
     constructor(shipmentId: string, packageDocumentDetails: [PackageDocumentDetail], promise: Promise);
     shipmentId: string;
-    packageDocumentDetails: [PackageDocumentDetail];
+    packageDocumentDetails: PackageDocumentDetail[];
     promise: Promise;
     /**
      * @member {Benefits} benefits

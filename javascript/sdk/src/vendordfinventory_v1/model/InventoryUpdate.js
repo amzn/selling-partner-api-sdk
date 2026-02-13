@@ -80,7 +80,7 @@ InventoryUpdate.prototype.isFullUpdate = undefined
 
 /**
  * A list of inventory items with updated details, including quantity available.
- * @member {[ItemDetails]} items
- * @type {[ItemDetails]}
+ * @member {ItemDetails[]} items
+ * @type {ItemDetails[]}
  */
 InventoryUpdate.prototype.items = undefined

@@ -23,22 +23,22 @@ export class Summary {
     totalOfferCount: number;
     /**
      * A list that contains the total number of offers information for given conditions and fulfillment channels.
-     * @member {[OfferCountType]} numberOfOffers
-     * @type {[OfferCountType]}
+     * @member {OfferCountType[]} numberOfOffers
+     * @type {OfferCountType[]}
      */
-    numberOfOffers: [OfferCountType];
+    numberOfOffers: OfferCountType[];
     /**
      * A list of the lowest prices.
-     * @member {[LowestPriceType]} lowestPrices
-     * @type {[LowestPriceType]}
+     * @member {LowestPriceType[]} lowestPrices
+     * @type {LowestPriceType[]}
      */
-    lowestPrices: [LowestPriceType];
+    lowestPrices: LowestPriceType[];
     /**
      * A list of the Buy Box prices.
-     * @member {[BuyBoxPriceType]} buyBoxPrices
-     * @type {[BuyBoxPriceType]}
+     * @member {BuyBoxPriceType[]} buyBoxPrices
+     * @type {BuyBoxPriceType[]}
      */
-    buyBoxPrices: [BuyBoxPriceType];
+    buyBoxPrices: BuyBoxPriceType[];
     /**
      * @member {MoneyType} listPrice
      * @type {MoneyType}
@@ -56,16 +56,16 @@ export class Summary {
     suggestedLowerPricePlusShipping: MoneyType;
     /**
      * A list of sales rank information for the item, by category.
-     * @member {[SalesRankType]} salesRankings
-     * @type {[SalesRankType]}
+     * @member {SalesRankType[]} salesRankings
+     * @type {SalesRankType[]}
      */
-    salesRankings: [SalesRankType];
+    salesRankings: SalesRankType[];
     /**
      * A list that contains the total number of offers that are eligible for the Buy Box for the given conditions and fulfillment channels.
-     * @member {[OfferCountType]} buyBoxEligibleOffers
-     * @type {[OfferCountType]}
+     * @member {OfferCountType[]} buyBoxEligibleOffers
+     * @type {OfferCountType[]}
      */
-    buyBoxEligibleOffers: [OfferCountType];
+    buyBoxEligibleOffers: OfferCountType[];
     /**
      * When the status is ActiveButTooSoonForProcessing, this is the time when the offers will be available for processing.
      * @member {Date} offersAvailableTime

@@ -20,7 +20,7 @@ export class StandardTechSpecsModule {
      * @param specificationList {[StandardTextPairBlock]} The specification list.
      */
     constructor(specificationList: [StandardTextPairBlock]);
-    specificationList: [StandardTextPairBlock];
+    specificationList: StandardTextPairBlock[];
     /**
      * @member {TextComponent} headline
      * @type {TextComponent}

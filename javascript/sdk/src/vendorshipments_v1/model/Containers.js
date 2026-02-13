@@ -108,8 +108,8 @@ Containers.prototype.containerSequenceNumber = undefined
 
 /**
  * A list of carton identifiers.
- * @member {[ContainerIdentification]} containerIdentifiers
- * @type {[ContainerIdentification]}
+ * @member {ContainerIdentification[]} containerIdentifiers
+ * @type {ContainerIdentification[]}
  */
 Containers.prototype.containerIdentifiers = undefined
 
@@ -154,7 +154,7 @@ Containers.prototype.innerContainersDetails = undefined
 
 /**
  * A list of packed items.
- * @member {[PackedItems]} packedItems
- * @type {[PackedItems]}
+ * @member {PackedItems[]} packedItems
+ * @type {PackedItems[]}
  */
 Containers.prototype.packedItems = undefined

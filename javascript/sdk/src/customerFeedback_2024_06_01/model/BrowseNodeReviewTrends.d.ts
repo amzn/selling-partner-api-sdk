@@ -14,16 +14,16 @@ export class BrowseNodeReviewTrends {
     static constructFromObject(data: any, obj: BrowseNodeReviewTrends): BrowseNodeReviewTrends;
     /**
      * The trends of the most positive review topics. The percentage of reviews that contain the topic across all products in the requested browse node determine the topic's placement in the list. This value is `null` if there aren't enough positive reviews for the requested browse node.  **Max length:** 10
-     * @member {[BrowseNodeReviewTrend]} positiveTopics
-     * @type {[BrowseNodeReviewTrend]}
+     * @member {BrowseNodeReviewTrend[]} positiveTopics
+     * @type {BrowseNodeReviewTrend[]}
      */
-    positiveTopics: [BrowseNodeReviewTrend];
+    positiveTopics: BrowseNodeReviewTrend[];
     /**
      * The trends of the most negative review topics. The percentage of reviews that contain the topic across all products in the requested browse node determine the topic's placement in the list. This value is `null` if there aren't enough positive reviews for the requested browse node.  **Max length:** 10
-     * @member {[BrowseNodeReviewTrend]} negativeTopics
-     * @type {[BrowseNodeReviewTrend]}
+     * @member {BrowseNodeReviewTrend[]} negativeTopics
+     * @type {BrowseNodeReviewTrend[]}
      */
-    negativeTopics: [BrowseNodeReviewTrend];
+    negativeTopics: BrowseNodeReviewTrend[];
 }
 import { BrowseNodeReviewTrend } from './BrowseNodeReviewTrend.js';
 //# sourceMappingURL=BrowseNodeReviewTrends.d.ts.map

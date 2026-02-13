@@ -20,7 +20,7 @@ export class ListPackingGroupItemsResponse {
      * @param items {[Item]} Provides the information about the list of items in the packing group.
      */
     constructor(items: [Item]);
-    items: [Item];
+    items: Item[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

@@ -26,6 +26,6 @@ export class FeesEstimateError {
     type: string;
     code: string;
     message: string;
-    detail: [any];
+    detail: any[];
 }
 //# sourceMappingURL=FeesEstimateError.d.ts.map

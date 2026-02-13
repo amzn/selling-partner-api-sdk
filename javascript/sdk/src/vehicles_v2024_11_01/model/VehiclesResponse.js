@@ -68,7 +68,7 @@ VehiclesResponse.prototype.pagination = undefined
 
 /**
  * List of vehicles from Amazon's catalog.
- * @member {[Vehicle]} vehicles
- * @type {[Vehicle]}
+ * @member {Vehicle[]} vehicles
+ * @type {Vehicle[]}
  */
 VehiclesResponse.prototype.vehicles = undefined

@@ -62,8 +62,8 @@ export class ItemVariationTheme {
 
 /**
  * The names of the listing item attributes that are associated with the variation theme.
- * @member {[String]} attributes
- * @type {[String]}
+ * @member {String[]} attributes
+ * @type {String[]}
  */
 ItemVariationTheme.prototype.attributes = undefined
 

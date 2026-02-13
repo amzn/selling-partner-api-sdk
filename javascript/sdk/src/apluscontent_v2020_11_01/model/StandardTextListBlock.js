@@ -59,7 +59,7 @@ export class StandardTextListBlock {
 }
 
 /**
- * @member {[TextItem]} textList
- * @type {[TextItem]}
+ * @member {TextItem[]} textList
+ * @type {TextItem[]}
  */
 StandardTextListBlock.prototype.textList = undefined

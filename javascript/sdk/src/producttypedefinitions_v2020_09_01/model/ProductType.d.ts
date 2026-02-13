@@ -24,6 +24,6 @@ export class ProductType {
     constructor(name: string, displayName: string, marketplaceIds: [string]);
     name: string;
     displayName: string;
-    marketplaceIds: [string];
+    marketplaceIds: string[];
 }
 //# sourceMappingURL=ProductType.d.ts.map

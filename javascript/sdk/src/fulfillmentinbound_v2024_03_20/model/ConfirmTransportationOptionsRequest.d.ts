@@ -20,7 +20,7 @@ export class ConfirmTransportationOptionsRequest {
      * @param transportationSelections {[TransportationSelection]} Information needed to confirm one of the available transportation options.
      */
     constructor(transportationSelections: [TransportationSelection]);
-    transportationSelections: [TransportationSelection];
+    transportationSelections: TransportationSelection[];
 }
 import { TransportationSelection } from './TransportationSelection.js';
 //# sourceMappingURL=ConfirmTransportationOptionsRequest.d.ts.map

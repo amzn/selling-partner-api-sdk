@@ -20,7 +20,7 @@ export class ListTransportationOptionsResponse {
      * @param transportationOptions {[TransportationOption]} Transportation options generated for the placement option.
      */
     constructor(transportationOptions: [TransportationOption]);
-    transportationOptions: [TransportationOption];
+    transportationOptions: TransportationOption[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

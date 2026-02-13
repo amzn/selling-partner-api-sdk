@@ -62,8 +62,8 @@ export class ListShipmentBoxesResponse {
 
 /**
  * A list of boxes in a shipment.
- * @member {[Box]} boxes
- * @type {[Box]}
+ * @member {Box[]} boxes
+ * @type {Box[]}
  */
 ListShipmentBoxesResponse.prototype.boxes = undefined
 

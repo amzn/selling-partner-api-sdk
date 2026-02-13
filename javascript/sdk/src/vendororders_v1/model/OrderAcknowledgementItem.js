@@ -117,7 +117,7 @@ OrderAcknowledgementItem.prototype.discountMultiplier = undefined
 
 /**
  * This is used to indicate acknowledged quantity.
- * @member {[OrderItemAcknowledgement]} itemAcknowledgements
- * @type {[OrderItemAcknowledgement]}
+ * @member {OrderItemAcknowledgement[]} itemAcknowledgements
+ * @type {OrderItemAcknowledgement[]}
  */
 OrderAcknowledgementItem.prototype.itemAcknowledgements = undefined

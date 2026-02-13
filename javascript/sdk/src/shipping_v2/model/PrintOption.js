@@ -67,28 +67,28 @@ export class PrintOption {
 
 /**
  * A list of the supported DPI options for a document.
- * @member {[Number]} supportedDPIs
- * @type {[Number]}
+ * @member {Number[]} supportedDPIs
+ * @type {Number[]}
  */
 PrintOption.prototype.supportedDPIs = undefined
 
 /**
  * A list of the supported page layout options for a document.
- * @member {[String]} supportedPageLayouts
- * @type {[String]}
+ * @member {String[]} supportedPageLayouts
+ * @type {String[]}
  */
 PrintOption.prototype.supportedPageLayouts = undefined
 
 /**
  * A list of the supported needFileJoining boolean values for a document.
- * @member {[Boolean]} supportedFileJoiningOptions
- * @type {[Boolean]}
+ * @member {Boolean[]} supportedFileJoiningOptions
+ * @type {Boolean[]}
  */
 PrintOption.prototype.supportedFileJoiningOptions = undefined
 
 /**
  * A list of the supported documented details.
- * @member {[SupportedDocumentDetail]} supportedDocumentDetails
- * @type {[SupportedDocumentDetail]}
+ * @member {SupportedDocumentDetail[]} supportedDocumentDetails
+ * @type {SupportedDocumentDetail[]}
  */
 PrintOption.prototype.supportedDocumentDetails = undefined

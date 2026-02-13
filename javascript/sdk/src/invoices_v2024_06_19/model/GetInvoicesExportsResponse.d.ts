@@ -14,10 +14,10 @@ export class GetInvoicesExportsResponse {
     static constructFromObject(data: any, obj: GetInvoicesExportsResponse): GetInvoicesExportsResponse;
     /**
      * A list of exports.
-     * @member {[Export]} exports
-     * @type {[Export]}
+     * @member {Export[]} exports
+     * @type {Export[]}
      */
-    exports: [Export];
+    exports: Export[];
     /**
      * This token is returned when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the `getInvoices` operation and include this token with the previous call parameters.
      * @member {String} nextToken

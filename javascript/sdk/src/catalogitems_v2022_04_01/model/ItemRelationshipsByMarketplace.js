@@ -70,7 +70,7 @@ ItemRelationshipsByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Relationships for the item.
- * @member {[ItemRelationship]} relationships
- * @type {[ItemRelationship]}
+ * @member {ItemRelationship[]} relationships
+ * @type {ItemRelationship[]}
  */
 ItemRelationshipsByMarketplace.prototype.relationships = undefined

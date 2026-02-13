@@ -20,7 +20,7 @@ export class StandardTextListBlock {
      * @param textList {[TextItem]}
      */
     constructor(textList: [TextItem]);
-    textList: [TextItem];
+    textList: TextItem[];
 }
 import { TextItem } from './TextItem.js';
 //# sourceMappingURL=StandardTextListBlock.d.ts.map

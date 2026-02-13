@@ -80,7 +80,7 @@ RecommendedPackage.prototype.weight = undefined
 
 /**
  * A list of line items to be contained in a recommended package. This attribute is only for orders that come with specific recommendations for line-item distribution.
- * @member {[RecommendedPackageLineItem]} lineItems
- * @type {[RecommendedPackageLineItem]}
+ * @member {RecommendedPackageLineItem[]} lineItems
+ * @type {RecommendedPackageLineItem[]}
  */
 RecommendedPackage.prototype.lineItems = undefined

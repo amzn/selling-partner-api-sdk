@@ -76,8 +76,8 @@ PurchaseShipmentResult.prototype.shipmentId = undefined
 
 /**
  * A list of post-purchase details about a package that will be shipped using a shipping service.
- * @member {[PackageDocumentDetail]} packageDocumentDetails
- * @type {[PackageDocumentDetail]}
+ * @member {PackageDocumentDetail[]} packageDocumentDetails
+ * @type {PackageDocumentDetail[]}
  */
 PurchaseShipmentResult.prototype.packageDocumentDetails = undefined
 

@@ -136,7 +136,7 @@ OrderStatus.prototype.shipToParty = undefined
 
 /**
  * Detailed description of items order status.
- * @member {[OrderItemStatus]} itemStatus
- * @type {[OrderItemStatus]}
+ * @member {OrderItemStatus[]} itemStatus
+ * @type {OrderItemStatus[]}
  */
 OrderStatus.prototype.itemStatus = undefined

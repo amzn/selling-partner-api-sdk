@@ -64,14 +64,14 @@ export class Refinements {
 
 /**
  * A list of brands you can use to refine your search.
- * @member {[BrandRefinement]} brands
- * @type {[BrandRefinement]}
+ * @member {BrandRefinement[]} brands
+ * @type {BrandRefinement[]}
  */
 Refinements.prototype.brands = undefined
 
 /**
  * A list of classifications you can use to refine your search.
- * @member {[ClassificationRefinement]} classifications
- * @type {[ClassificationRefinement]}
+ * @member {ClassificationRefinement[]} classifications
+ * @type {ClassificationRefinement[]}
  */
 Refinements.prototype.classifications = undefined

@@ -145,7 +145,7 @@ export class ListingsApi {
      * @param {String[]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
      * @param {Object} [opts] Optional parameters
      * @param {String} [opts.issueLocale] A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale.
-     * @param {[String]} [opts.includedData] A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;.
+     * @param {String[]} [opts.includedData] A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;.
      * @return {Promise<Item>}
      */
   getListingsItemWithHttpInfo (sellerId, sku, marketplaceIds, opts) {
@@ -199,7 +199,7 @@ export class ListingsApi {
      * @param {String[]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
      * @param {Object} [opts] Optional parameters
      * @param {String} [opts.issueLocale] A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale.
-     * @param {[String]} [opts.includedData] A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;.
+     * @param {String[]} [opts.includedData] A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;.
      * @return {Promise<Item>}
      */
   getListingsItem (sellerId, sku, marketplaceIds, opts) {
@@ -216,7 +216,7 @@ export class ListingsApi {
      * @param {String[]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
      * @param {ListingsItemPatchRequest} body The request body schema for the &#x60;patchListingsItem&#x60; operation.
      * @param {Object} [opts] Optional parameters
-     * @param {[String]} [opts.includedData] A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
+     * @param {String[]} [opts.includedData] A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      * @param {String} [opts.mode] The mode of operation for the request.
      * @param {String} [opts.issueLocale] A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale.
      * @return {Promise<ListingsItemSubmissionResponse>}
@@ -278,7 +278,7 @@ export class ListingsApi {
      * @param {String[]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
      * @param {ListingsItemPatchRequest} body The request body schema for the &#x60;patchListingsItem&#x60; operation.
      * @param {Object} [opts] Optional parameters
-     * @param {[String]} [opts.includedData] A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
+     * @param {String[]} [opts.includedData] A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      * @param {String} [opts.mode] The mode of operation for the request.
      * @param {String} [opts.issueLocale] A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale.
      * @return {Promise<ListingsItemSubmissionResponse>}
@@ -297,7 +297,7 @@ export class ListingsApi {
      * @param {String[]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
      * @param {ListingsItemPutRequest} body The request body schema for the &#x60;putListingsItem&#x60; operation.
      * @param {Object} [opts] Optional parameters
-     * @param {[String]} [opts.includedData] A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
+     * @param {String[]} [opts.includedData] A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      * @param {String} [opts.mode] The mode of operation for the request.
      * @param {String} [opts.issueLocale] A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale.
      * @return {Promise<ListingsItemSubmissionResponse>}
@@ -359,7 +359,7 @@ export class ListingsApi {
      * @param {String[]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
      * @param {ListingsItemPutRequest} body The request body schema for the &#x60;putListingsItem&#x60; operation.
      * @param {Object} [opts] Optional parameters
-     * @param {[String]} [opts.includedData] A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
+     * @param {String[]} [opts.includedData] A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      * @param {String} [opts.mode] The mode of operation for the request.
      * @param {String} [opts.issueLocale] A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale.
      * @return {Promise<ListingsItemSubmissionResponse>}
@@ -377,8 +377,8 @@ export class ListingsApi {
      * @param {String[]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
      * @param {Object} [opts] Optional parameters
      * @param {String} [opts.issueLocale] A locale that is used to localize issues. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
-     * @param {[String]} [opts.includedData] A comma-delimited list of datasets that you want to include in the response. Default: &#x60;summaries&#x60;.
-     * @param {[String]} [opts.identifiers] A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;.
+     * @param {String[]} [opts.includedData] A comma-delimited list of datasets that you want to include in the response. Default: &#x60;summaries&#x60;.
+     * @param {String[]} [opts.identifiers] A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;.
      * @param {String} [opts.identifiersType] A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided.
      * @param {String} [opts.variationParentSku] Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request.
      * @param {String} [opts.packageHierarchySku] Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request.
@@ -386,9 +386,9 @@ export class ListingsApi {
      * @param {Date} [opts.createdBefore] A date-time that is used to filter listing items. The response includes listings items that were created at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @param {Date} [opts.lastUpdatedAfter] A date-time that is used to filter listing items. The response includes listings items that were last updated at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @param {Date} [opts.lastUpdatedBefore] A date-time that is used to filter listing items. The response includes listings items that were last updated at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
-     * @param {[String]} [opts.withIssueSeverity] Filter results to include only listing items that have issues that match one or more of the specified severity levels.
-     * @param {[String]} [opts.withStatus] Filter results to include only listing items that have the specified status.
-     * @param {[String]} [opts.withoutStatus] Filter results to include only listing items that don&#39;t contain the specified statuses.
+     * @param {String[]} [opts.withIssueSeverity] Filter results to include only listing items that have issues that match one or more of the specified severity levels.
+     * @param {String[]} [opts.withStatus] Filter results to include only listing items that have the specified status.
+     * @param {String[]} [opts.withoutStatus] Filter results to include only listing items that don&#39;t contain the specified statuses.
      * @param {String} [opts.sortBy] An attribute by which to sort the returned listing items. (default to &#39;lastUpdatedDate&#39;)
      * @param {String} [opts.sortOrder] The order in which to sort the result items. (default to &#39;DESC&#39;)
      * @param {Number} [opts.pageSize] The number of results that you want to include on each page. (default to 10)
@@ -454,8 +454,8 @@ export class ListingsApi {
      * @param {String[]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
      * @param {Object} [opts] Optional parameters
      * @param {String} [opts.issueLocale] A locale that is used to localize issues. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
-     * @param {[String]} [opts.includedData] A comma-delimited list of datasets that you want to include in the response. Default: &#x60;summaries&#x60;.
-     * @param {[String]} [opts.identifiers] A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;.
+     * @param {String[]} [opts.includedData] A comma-delimited list of datasets that you want to include in the response. Default: &#x60;summaries&#x60;.
+     * @param {String[]} [opts.identifiers] A comma-delimited list of product identifiers that you can use to search for listings items.   **Note**:  1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use &#39;identifiers&#39; if you specify &#x60;variationParentSku&#x60; or &#x60;packageHierarchySku&#x60;.
      * @param {String} [opts.identifiersType] A type of product identifiers that you can use to search for listings items.   **Note**:  This is required when &#x60;identifiers&#x60; is provided.
      * @param {String} [opts.variationParentSku] Filters results to include listing items that are variation children of the specified SKU.   **Note**: You cannot use &#x60;variationParentSku&#x60; if you include &#x60;identifiers&#x60; or &#x60;packageHierarchySku&#x60; in your request.
      * @param {String} [opts.packageHierarchySku] Filter results to include listing items that contain or are contained by the specified SKU.   **Note**: You cannot use &#x60;packageHierarchySku&#x60; if you include &#x60;identifiers&#x60; or &#x60;variationParentSku&#x60; in your request.
@@ -463,9 +463,9 @@ export class ListingsApi {
      * @param {Date} [opts.createdBefore] A date-time that is used to filter listing items. The response includes listings items that were created at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @param {Date} [opts.lastUpdatedAfter] A date-time that is used to filter listing items. The response includes listings items that were last updated at or after this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @param {Date} [opts.lastUpdatedBefore] A date-time that is used to filter listing items. The response includes listings items that were last updated at or before this time. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
-     * @param {[String]} [opts.withIssueSeverity] Filter results to include only listing items that have issues that match one or more of the specified severity levels.
-     * @param {[String]} [opts.withStatus] Filter results to include only listing items that have the specified status.
-     * @param {[String]} [opts.withoutStatus] Filter results to include only listing items that don&#39;t contain the specified statuses.
+     * @param {String[]} [opts.withIssueSeverity] Filter results to include only listing items that have issues that match one or more of the specified severity levels.
+     * @param {String[]} [opts.withStatus] Filter results to include only listing items that have the specified status.
+     * @param {String[]} [opts.withoutStatus] Filter results to include only listing items that don&#39;t contain the specified statuses.
      * @param {String} [opts.sortBy] An attribute by which to sort the returned listing items. (default to &#39;lastUpdatedDate&#39;)
      * @param {String} [opts.sortOrder] The order in which to sort the result items. (default to &#39;DESC&#39;)
      * @param {Number} [opts.pageSize] The number of results that you want to include on each page. (default to 10)

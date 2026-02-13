@@ -83,7 +83,7 @@ FeaturedBuyingOption.prototype.buyingOptionType = undefined
 
 /**
  * A list of segmented featured offers for the current buying option type. A segment can be considered as a group of regional contexts that all have the same featured offer. A regional context is a combination of factors such as customer type, region, or postal code and buying option.
- * @member {[SegmentedFeaturedOffer]} segmentedFeaturedOffers
- * @type {[SegmentedFeaturedOffer]}
+ * @member {SegmentedFeaturedOffer[]} segmentedFeaturedOffers
+ * @type {SegmentedFeaturedOffer[]}
  */
 FeaturedBuyingOption.prototype.segmentedFeaturedOffers = undefined

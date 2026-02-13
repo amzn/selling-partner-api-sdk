@@ -25,7 +25,7 @@ export class OneClickShipmentRequest {
      */
     constructor(shipFrom: Address, packages: [Package], channelDetails: ChannelDetails, labelSpecifications: RequestedDocumentSpecification, serviceSelection: ServiceSelection);
     shipFrom: Address;
-    packages: [Package];
+    packages: Package[];
     channelDetails: ChannelDetails;
     labelSpecifications: RequestedDocumentSpecification;
     serviceSelection: ServiceSelection;
@@ -52,16 +52,16 @@ export class OneClickShipmentRequest {
     goodsOwner: GoodsOwner;
     /**
      * The value-added services to be added to a shipping service purchase.
-     * @member {[OneClickShipmentValueAddedService]} valueAddedServicesDetails
-     * @type {[OneClickShipmentValueAddedService]}
+     * @member {OneClickShipmentValueAddedService[]} valueAddedServicesDetails
+     * @type {OneClickShipmentValueAddedService[]}
      */
-    valueAddedServicesDetails: [OneClickShipmentValueAddedService];
+    valueAddedServicesDetails: OneClickShipmentValueAddedService[];
     /**
      * A list of tax detail information.
-     * @member {[TaxDetail]} taxDetails
-     * @type {[TaxDetail]}
+     * @member {TaxDetail[]} taxDetails
+     * @type {TaxDetail[]}
      */
-    taxDetails: [TaxDetail];
+    taxDetails: TaxDetail[];
     /**
      * @member {ShipperInstruction} shipperInstruction
      * @type {ShipperInstruction}

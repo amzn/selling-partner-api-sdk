@@ -110,7 +110,7 @@ BrowseNodeReturnTopicsResponse.prototype.dateRange = undefined
 
 /**
  * The list of browse node return topics.
- * @member {[BrowseNodeReturnTopics]} topics
- * @type {[BrowseNodeReturnTopics]}
+ * @member {BrowseNodeReturnTopics[]} topics
+ * @type {BrowseNodeReturnTopics[]}
  */
 BrowseNodeReturnTopicsResponse.prototype.topics = undefined

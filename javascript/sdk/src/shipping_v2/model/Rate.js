@@ -149,15 +149,15 @@ Rate.prototype.promise = undefined
 
 /**
  * A list of the document specifications supported for a shipment service offering.
- * @member {[SupportedDocumentSpecification]} supportedDocumentSpecifications
- * @type {[SupportedDocumentSpecification]}
+ * @member {SupportedDocumentSpecification[]} supportedDocumentSpecifications
+ * @type {SupportedDocumentSpecification[]}
  */
 Rate.prototype.supportedDocumentSpecifications = undefined
 
 /**
  * A list of value-added services available for a shipping service offering.
- * @member {[AvailableValueAddedServiceGroup]} availableValueAddedServiceGroups
- * @type {[AvailableValueAddedServiceGroup]}
+ * @member {AvailableValueAddedServiceGroup[]} availableValueAddedServiceGroups
+ * @type {AvailableValueAddedServiceGroup[]}
  */
 Rate.prototype.availableValueAddedServiceGroups = undefined
 
@@ -170,8 +170,8 @@ Rate.prototype.requiresAdditionalInputs = undefined
 
 /**
  * A list of RateItem
- * @member {[RateItem]} rateItemList
- * @type {[RateItem]}
+ * @member {RateItem[]} rateItemList
+ * @type {RateItem[]}
  */
 Rate.prototype.rateItemList = undefined
 

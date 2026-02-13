@@ -20,9 +20,9 @@ export class LtlTrackingDetail {
     billOfLadingNumber: string;
     /**
      * The number associated with the freight bill.
-     * @member {[String]} freightBillNumber
-     * @type {[String]}
+     * @member {String[]} freightBillNumber
+     * @type {String[]}
      */
-    freightBillNumber: [string];
+    freightBillNumber: string[];
 }
 //# sourceMappingURL=LtlTrackingDetail.d.ts.map

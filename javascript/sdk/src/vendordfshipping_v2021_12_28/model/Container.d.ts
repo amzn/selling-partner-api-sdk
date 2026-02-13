@@ -26,7 +26,7 @@ export class Container {
     containerType: string;
     containerIdentifier: string;
     weight: Weight;
-    packedItems: [PackedItem];
+    packedItems: PackedItem[];
     /**
      * The tracking number.
      * @member {String} trackingNumber

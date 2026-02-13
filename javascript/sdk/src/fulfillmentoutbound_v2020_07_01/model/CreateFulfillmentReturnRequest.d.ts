@@ -20,7 +20,7 @@ export class CreateFulfillmentReturnRequest {
      * @param items {[CreateReturnItem]} An array of items to be returned.
      */
     constructor(items: [CreateReturnItem]);
-    items: [CreateReturnItem];
+    items: CreateReturnItem[];
 }
 import { CreateReturnItem } from './CreateReturnItem.js';
 //# sourceMappingURL=CreateFulfillmentReturnRequest.d.ts.map

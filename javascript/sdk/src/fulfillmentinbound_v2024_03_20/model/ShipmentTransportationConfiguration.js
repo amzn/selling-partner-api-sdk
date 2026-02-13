@@ -81,8 +81,8 @@ ShipmentTransportationConfiguration.prototype.freightInformation = undefined
 
 /**
  * List of pallet configuration inputs.
- * @member {[PalletInput]} pallets
- * @type {[PalletInput]}
+ * @member {PalletInput[]} pallets
+ * @type {PalletInput[]}
  */
 ShipmentTransportationConfiguration.prototype.pallets = undefined
 

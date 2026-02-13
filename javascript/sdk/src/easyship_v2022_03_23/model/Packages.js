@@ -60,7 +60,7 @@ export class Packages {
 
 /**
  * A list of packages.
- * @member {[Package]} packages
- * @type {[Package]}
+ * @member {Package[]} packages
+ * @type {Package[]}
  */
 Packages.prototype.packages = undefined

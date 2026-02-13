@@ -22,13 +22,13 @@ export class GetRatesResult {
      */
     constructor(requestToken: string, rates: [Rate]);
     requestToken: string;
-    rates: [Rate];
+    rates: Rate[];
     /**
      * A list of ineligible shipping service offerings.
-     * @member {[IneligibleRate]} ineligibleRates
-     * @type {[IneligibleRate]}
+     * @member {IneligibleRate[]} ineligibleRates
+     * @type {IneligibleRate[]}
      */
-    ineligibleRates: [IneligibleRate];
+    ineligibleRates: IneligibleRate[];
 }
 import { Rate } from './Rate.js';
 import { IneligibleRate } from './IneligibleRate.js';

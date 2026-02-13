@@ -21,7 +21,7 @@ export class ItemVariationTheme {
      * @param theme {String} The variation theme that indicates the combination of listing item attributes that define the variation family.
      */
     constructor(attributes: [string], theme: string);
-    attributes: [string];
+    attributes: string[];
     theme: string;
 }
 //# sourceMappingURL=ItemVariationTheme.d.ts.map

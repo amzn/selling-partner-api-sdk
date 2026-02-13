@@ -28,7 +28,7 @@ export class InboundOrder {
     orderId: string;
     orderStatus: InboundStatus;
     originAddress: Address;
-    packagesToInbound: [DistributionPackageQuantity];
+    packagesToInbound: DistributionPackageQuantity[];
     /**
      * @member {DestinationDetails} destinationDetails
      * @type {DestinationDetails}

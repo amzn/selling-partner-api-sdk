@@ -21,8 +21,8 @@ export class Benefits {
      * @param excludedBenefits {[ExcludedBenefit]} A list of excluded benefit. Refer to the ExcludeBenefit object for further documentation
      */
     constructor(includedBenefits: [string], excludedBenefits: [ExcludedBenefit]);
-    includedBenefits: [string];
-    excludedBenefits: [ExcludedBenefit];
+    includedBenefits: string[];
+    excludedBenefits: ExcludedBenefit[];
 }
 import { ExcludedBenefit } from './ExcludedBenefit.js';
 //# sourceMappingURL=Benefits.d.ts.map

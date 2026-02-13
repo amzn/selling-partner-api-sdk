@@ -20,7 +20,7 @@ export class LtlTrackingDetailInput {
      * @param freightBillNumber {[String]} Number associated with the freight bill.
      */
     constructor(freightBillNumber: [string]);
-    freightBillNumber: [string];
+    freightBillNumber: string[];
     /**
      * The number of the carrier shipment acknowledgement document.
      * @member {String} billOfLadingNumber

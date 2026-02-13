@@ -19,10 +19,10 @@ export class Poa {
     appointmentTime: AppointmentTime;
     /**
      * A list of technicians.
-     * @member {[Technician]} technicians
-     * @type {[Technician]}
+     * @member {Technician[]} technicians
+     * @type {Technician[]}
      */
-    technicians: [Technician];
+    technicians: Technician[];
     /**
      * The identifier of the technician who uploaded the POA.
      * @member {String} uploadingTechnician

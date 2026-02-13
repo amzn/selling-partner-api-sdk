@@ -26,7 +26,7 @@ export class ListOfferMetricsRequestFilters {
     timeInterval: TimeInterval;
     timePeriodType: TimePeriodType;
     marketplaceId: string;
-    programTypes: [ProgramType];
+    programTypes: ProgramType[];
     /**
      * @member {AggregationFrequency} aggregationFrequency
      * @type {AggregationFrequency}
@@ -34,10 +34,10 @@ export class ListOfferMetricsRequestFilters {
     aggregationFrequency: AggregationFrequency;
     /**
      * A list of Amazon Standard Identification Numbers (ASINs).
-     * @member {[String]} asins
-     * @type {[String]}
+     * @member {String[]} asins
+     * @type {String[]}
      */
-    asins: [string];
+    asins: string[];
 }
 import { TimeInterval } from './TimeInterval.js';
 import { TimePeriodType } from './TimePeriodType.js';

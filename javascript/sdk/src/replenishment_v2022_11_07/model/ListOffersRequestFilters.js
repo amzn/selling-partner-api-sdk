@@ -78,22 +78,22 @@ ListOffersRequestFilters.prototype.marketplaceId = undefined
 
 /**
  * A list of SKUs to filter. This filter is only supported for sellers and not for vendors.
- * @member {[String]} skus
- * @type {[String]}
+ * @member {String[]} skus
+ * @type {String[]}
  */
 ListOffersRequestFilters.prototype.skus = undefined
 
 /**
  * A list of Amazon Standard Identification Numbers (ASINs).
- * @member {[String]} asins
- * @type {[String]}
+ * @member {String[]} asins
+ * @type {String[]}
  */
 ListOffersRequestFilters.prototype.asins = undefined
 
 /**
  * A list of eligibilities associated with an offer.
- * @member {[EligibilityStatus]} eligibilities
- * @type {[EligibilityStatus]}
+ * @member {EligibilityStatus[]} eligibilities
+ * @type {EligibilityStatus[]}
  */
 ListOffersRequestFilters.prototype.eligibilities = undefined
 
@@ -111,7 +111,7 @@ ListOffersRequestFilters.prototype.promotions = undefined
 
 /**
  * A list of replenishment program types.
- * @member {[ProgramType]} programTypes
- * @type {[ProgramType]}
+ * @member {ProgramType[]} programTypes
+ * @type {ProgramType[]}
  */
 ListOffersRequestFilters.prototype.programTypes = undefined

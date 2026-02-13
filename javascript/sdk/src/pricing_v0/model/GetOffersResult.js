@@ -126,7 +126,7 @@ GetOffersResult.prototype.summary = undefined
 
 /**
  * A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less.
- * @member {[OfferDetail]} offers
- * @type {[OfferDetail]}
+ * @member {OfferDetail[]} offers
+ * @type {OfferDetail[]}
  */
 GetOffersResult.prototype.offers = undefined

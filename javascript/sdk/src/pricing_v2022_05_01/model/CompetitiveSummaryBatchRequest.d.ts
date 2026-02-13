@@ -20,7 +20,7 @@ export class CompetitiveSummaryBatchRequest {
      * @param requests {[CompetitiveSummaryRequest]} A batched list of `competitiveSummary` requests.
      */
     constructor(requests: [CompetitiveSummaryRequest]);
-    requests: [CompetitiveSummaryRequest];
+    requests: CompetitiveSummaryRequest[];
 }
 import { CompetitiveSummaryRequest } from './CompetitiveSummaryRequest.js';
 //# sourceMappingURL=CompetitiveSummaryBatchRequest.d.ts.map

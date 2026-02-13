@@ -21,7 +21,7 @@ export class IssueEnforcements {
      * @param exemption {IssueExemption}
      */
     constructor(actions: [IssueEnforcementAction], exemption: IssueExemption);
-    actions: [IssueEnforcementAction];
+    actions: IssueEnforcementAction[];
     exemption: IssueExemption;
 }
 import { IssueEnforcementAction } from './IssueEnforcementAction.js';

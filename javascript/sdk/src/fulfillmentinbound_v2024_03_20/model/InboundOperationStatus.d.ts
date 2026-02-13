@@ -25,7 +25,7 @@ export class InboundOperationStatus {
     constructor(operation: string, operationId: string, operationProblems: [OperationProblem], operationStatus: OperationStatus);
     operation: string;
     operationId: string;
-    operationProblems: [OperationProblem];
+    operationProblems: OperationProblem[];
     operationStatus: OperationStatus;
 }
 import { OperationProblem } from './OperationProblem.js';

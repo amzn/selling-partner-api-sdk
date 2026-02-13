@@ -14,10 +14,10 @@ export class ListOfferMetricsResponse {
     static constructFromObject(data: any, obj: ListOfferMetricsResponse): ListOfferMetricsResponse;
     /**
      * A list of offers and associated metrics.
-     * @member {[ListOfferMetricsResponseOffer]} offers
-     * @type {[ListOfferMetricsResponseOffer]}
+     * @member {ListOfferMetricsResponseOffer[]} offers
+     * @type {ListOfferMetricsResponseOffer[]}
      */
-    offers: [ListOfferMetricsResponseOffer];
+    offers: ListOfferMetricsResponseOffer[];
     /**
      * @member {PaginationResponse} pagination
      * @type {PaginationResponse}

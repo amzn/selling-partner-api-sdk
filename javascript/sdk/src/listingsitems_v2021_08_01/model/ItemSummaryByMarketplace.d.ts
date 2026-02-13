@@ -26,7 +26,7 @@ export class ItemSummaryByMarketplace {
     constructor(marketplaceId: string, productType: string, status: [string], createdDate: Date, lastUpdatedDate: Date);
     marketplaceId: string;
     productType: string;
-    status: [string];
+    status: string[];
     createdDate: Date;
     lastUpdatedDate: Date;
     /**

@@ -116,8 +116,8 @@ GetRatesRequest.prototype.shipperInstruction = undefined
 
 /**
  * A list of packages to be shipped through a shipping service offering.
- * @member {[Package]} packages
- * @type {[Package]}
+ * @member {Package[]} packages
+ * @type {Package[]}
  */
 GetRatesRequest.prototype.packages = undefined
 
@@ -129,8 +129,8 @@ GetRatesRequest.prototype.valueAddedServices = undefined
 
 /**
  * A list of tax detail information.
- * @member {[TaxDetail]} taxDetails
- * @type {[TaxDetail]}
+ * @member {TaxDetail[]} taxDetails
+ * @type {TaxDetail[]}
  */
 GetRatesRequest.prototype.taxDetails = undefined
 
@@ -142,8 +142,8 @@ GetRatesRequest.prototype.channelDetails = undefined
 
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
- * @member {[ClientReferenceDetail]} clientReferenceDetails
- * @type {[ClientReferenceDetail]}
+ * @member {ClientReferenceDetail[]} clientReferenceDetails
+ * @type {ClientReferenceDetail[]}
  */
 GetRatesRequest.prototype.clientReferenceDetails = undefined
 
@@ -161,7 +161,7 @@ GetRatesRequest.prototype.destinationAccessPointDetails = undefined
 
 /**
  * A list of CarrierAccounts
- * @member {[CarrierAccount]} carrierAccounts
- * @type {[CarrierAccount]}
+ * @member {CarrierAccount[]} carrierAccounts
+ * @type {CarrierAccount[]}
  */
 GetRatesRequest.prototype.carrierAccounts = undefined

@@ -30,7 +30,7 @@ export class OrderStatus {
     purchaseOrderDate: Date;
     sellingParty: PartyIdentification;
     shipToParty: PartyIdentification;
-    itemStatus: [OrderItemStatus];
+    itemStatus: OrderItemStatus[];
     /**
      * The date when the purchase order was last updated. Must be in ISO-8601 date/time format.
      * @member {Date} lastUpdatedDate

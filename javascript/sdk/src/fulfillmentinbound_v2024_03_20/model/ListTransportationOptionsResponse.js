@@ -68,7 +68,7 @@ ListTransportationOptionsResponse.prototype.pagination = undefined
 
 /**
  * Transportation options generated for the placement option.
- * @member {[TransportationOption]} transportationOptions
- * @type {[TransportationOption]}
+ * @member {TransportationOption[]} transportationOptions
+ * @type {TransportationOption[]}
  */
 ListTransportationOptionsResponse.prototype.transportationOptions = undefined

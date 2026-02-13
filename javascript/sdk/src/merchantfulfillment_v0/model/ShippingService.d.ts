@@ -51,10 +51,10 @@ export class ShippingService {
     latestEstimatedDeliveryDate: Date;
     /**
      * List of adjustments.
-     * @member {[RateItem]} adjustmentItemList
-     * @type {[RateItem]}
+     * @member {RateItem[]} adjustmentItemList
+     * @type {RateItem[]}
      */
-    adjustmentItemList: [RateItem];
+    adjustmentItemList: RateItem[];
     /**
      * @member {AvailableShippingServiceOptions} availableShippingServiceOptions
      * @type {AvailableShippingServiceOptions}
@@ -62,16 +62,16 @@ export class ShippingService {
     availableShippingServiceOptions: AvailableShippingServiceOptions;
     /**
      * List of label formats.
-     * @member {[LabelFormat]} availableLabelFormats
-     * @type {[LabelFormat]}
+     * @member {LabelFormat[]} availableLabelFormats
+     * @type {LabelFormat[]}
      */
-    availableLabelFormats: [LabelFormat];
+    availableLabelFormats: LabelFormat[];
     /**
      * The available label formats.
-     * @member {[LabelFormatOption]} availableFormatOptionsForLabel
-     * @type {[LabelFormatOption]}
+     * @member {LabelFormatOption[]} availableFormatOptionsForLabel
+     * @type {LabelFormatOption[]}
      */
-    availableFormatOptionsForLabel: [LabelFormatOption];
+    availableFormatOptionsForLabel: LabelFormatOption[];
     /**
      * @member {Benefits} benefits
      * @type {Benefits}

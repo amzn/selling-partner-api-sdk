@@ -20,7 +20,7 @@ export class CreateMarketplaceItemLabelsResponse {
      * @param documentDownloads {[DocumentDownload]} Resources to download the requested document.
      */
     constructor(documentDownloads: [DocumentDownload]);
-    documentDownloads: [DocumentDownload];
+    documentDownloads: DocumentDownload[];
 }
 import { DocumentDownload } from './DocumentDownload.js';
 //# sourceMappingURL=CreateMarketplaceItemLabelsResponse.d.ts.map

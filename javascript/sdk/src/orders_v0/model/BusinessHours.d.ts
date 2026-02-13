@@ -20,10 +20,10 @@ export class BusinessHours {
     dayOfWeek: string;
     /**
      * Time window during the day when the business is open.
-     * @member {[OpenInterval]} openIntervals
-     * @type {[OpenInterval]}
+     * @member {OpenInterval[]} openIntervals
+     * @type {OpenInterval[]}
      */
-    openIntervals: [OpenInterval];
+    openIntervals: OpenInterval[];
 }
 export namespace BusinessHours {
     namespace DayOfWeekEnum {

@@ -60,7 +60,7 @@ export class SetPackingInformationRequest {
 
 /**
  * List of packing information for the inbound plan.
- * @member {[PackageGroupingInput]} packageGroupings
- * @type {[PackageGroupingInput]}
+ * @member {PackageGroupingInput[]} packageGroupings
+ * @type {PackageGroupingInput[]}
  */
 SetPackingInformationRequest.prototype.packageGroupings = undefined

@@ -70,7 +70,7 @@ ListingsItemPatchRequest.prototype.productType = undefined
 
 /**
  * One or more JSON Patch operations to perform on the listings item.
- * @member {[PatchOperation]} patches
- * @type {[PatchOperation]}
+ * @member {PatchOperation[]} patches
+ * @type {PatchOperation[]}
  */
 ListingsItemPatchRequest.prototype.patches = undefined

@@ -20,7 +20,7 @@ export class AssignAppointmentResourcesRequest {
      * @param resources {[AppointmentResource]} List of resources that performs or performed job appointment fulfillment.
      */
     constructor(resources: [AppointmentResource]);
-    resources: [AppointmentResource];
+    resources: AppointmentResource[];
 }
 import { AppointmentResource } from './AppointmentResource.js';
 //# sourceMappingURL=AssignAppointmentResourcesRequest.d.ts.map

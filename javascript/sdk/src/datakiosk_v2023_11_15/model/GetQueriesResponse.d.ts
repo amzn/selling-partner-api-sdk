@@ -20,7 +20,7 @@ export class GetQueriesResponse {
      * @param queries {[Query]} A list of queries.
      */
     constructor(queries: [Query]);
-    queries: [Query];
+    queries: Query[];
     /**
      * @member {GetQueriesResponsePagination} pagination
      * @type {GetQueriesResponsePagination}

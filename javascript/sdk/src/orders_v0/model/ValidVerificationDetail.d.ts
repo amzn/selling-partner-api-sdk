@@ -22,7 +22,7 @@ export class ValidVerificationDetail {
      */
     constructor(verificationDetailType: string, validVerificationStatuses: [VerificationStatus]);
     verificationDetailType: string;
-    validVerificationStatuses: [VerificationStatus];
+    validVerificationStatuses: VerificationStatus[];
 }
 import { VerificationStatus } from './VerificationStatus.js';
 //# sourceMappingURL=ValidVerificationDetail.d.ts.map

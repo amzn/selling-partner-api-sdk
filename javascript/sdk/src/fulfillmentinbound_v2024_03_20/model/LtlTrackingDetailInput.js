@@ -67,7 +67,7 @@ LtlTrackingDetailInput.prototype.billOfLadingNumber = undefined
 
 /**
  * Number associated with the freight bill.
- * @member {[String]} freightBillNumber
- * @type {[String]}
+ * @member {String[]} freightBillNumber
+ * @type {String[]}
  */
 LtlTrackingDetailInput.prototype.freightBillNumber = undefined

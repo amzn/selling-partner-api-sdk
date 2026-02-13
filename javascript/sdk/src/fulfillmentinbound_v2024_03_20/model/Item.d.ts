@@ -29,7 +29,7 @@ export class Item {
     fnsku: string;
     labelOwner: string;
     msku: string;
-    prepInstructions: [PrepInstruction];
+    prepInstructions: PrepInstruction[];
     quantity: number;
     /**
      * The expiration date of the MSKU. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern`YYYY-MM-DD`. The same MSKU with different expiration dates cannot go into the same box.

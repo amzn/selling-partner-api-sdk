@@ -21,7 +21,7 @@ export class OrderItemsBuyerInfoList {
      * @param amazonOrderId {String} An Amazon-defined order identifier, in 3-7-7 format.
      */
     constructor(orderItems: [OrderItemBuyerInfo], amazonOrderId: string);
-    orderItems: [OrderItemBuyerInfo];
+    orderItems: OrderItemBuyerInfo[];
     amazonOrderId: string;
     /**
      * When present and not empty, pass this string token in the next request to return the next response page.

@@ -22,7 +22,7 @@ export class SetPrepDetailsRequest {
      */
     constructor(marketplaceId: string, mskuPrepDetails: [MskuPrepDetailInput]);
     marketplaceId: string;
-    mskuPrepDetails: [MskuPrepDetailInput];
+    mskuPrepDetails: MskuPrepDetailInput[];
 }
 import { MskuPrepDetailInput } from './MskuPrepDetailInput.js';
 //# sourceMappingURL=SetPrepDetailsRequest.d.ts.map

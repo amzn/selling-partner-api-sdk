@@ -70,8 +70,8 @@ DistributionIneligibleReason.prototype.failureCode = undefined
 
 /**
  * Failure reasons of the error.
- * @member {[String]} failureReasons
- * @type {[String]}
+ * @member {String[]} failureReasons
+ * @type {String[]}
  */
 DistributionIneligibleReason.prototype.failureReasons = undefined
 

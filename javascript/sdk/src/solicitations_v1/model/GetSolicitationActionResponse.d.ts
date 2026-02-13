@@ -29,10 +29,10 @@ export class GetSolicitationActionResponse {
     payload: SolicitationsAction;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Error[]} errors
+     * @type {Error[]}
      */
-    errors: [Error];
+    errors: Error[];
 }
 import { GetSolicitationActionResponseLinks } from './GetSolicitationActionResponseLinks.js';
 import { GetSolicitationActionResponseEmbedded } from './GetSolicitationActionResponseEmbedded.js';

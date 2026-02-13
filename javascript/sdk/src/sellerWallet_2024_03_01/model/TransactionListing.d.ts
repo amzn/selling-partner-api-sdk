@@ -20,7 +20,7 @@ export class TransactionListing {
      * @param transactions {[Transaction]} Collection that holds Transaction
      */
     constructor(transactions: [Transaction]);
-    transactions: [Transaction];
+    transactions: Transaction[];
     /**
      * If present, use this pagination token to retrieve the next page of supply sources, if not provided the API will return same response. The field will only be provided when the list is greater than 100.
      * @member {String} nextPageToken

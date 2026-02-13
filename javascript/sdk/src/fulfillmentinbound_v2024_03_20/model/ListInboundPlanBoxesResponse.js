@@ -62,8 +62,8 @@ export class ListInboundPlanBoxesResponse {
 
 /**
  * A list of boxes in an inbound plan.
- * @member {[Box]} boxes
- * @type {[Box]}
+ * @member {Box[]} boxes
+ * @type {Box[]}
  */
 ListInboundPlanBoxesResponse.prototype.boxes = undefined
 

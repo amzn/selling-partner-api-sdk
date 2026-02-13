@@ -63,8 +63,8 @@ export class PackageDetails {
 
 /**
  * A list of items contained in the package.
- * @member {[Item]} packageItems
- * @type {[Item]}
+ * @member {Item[]} packageItems
+ * @type {Item[]}
  */
 PackageDetails.prototype.packageItems = undefined
 

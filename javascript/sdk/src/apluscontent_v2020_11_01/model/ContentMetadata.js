@@ -93,8 +93,8 @@ ContentMetadata.prototype.status = undefined
 
 /**
  * The set of content badges.
- * @member {[ContentBadge]} badgeSet
- * @type {[ContentBadge]}
+ * @member {ContentBadge[]} badgeSet
+ * @type {ContentBadge[]}
  */
 ContentMetadata.prototype.badgeSet = undefined
 

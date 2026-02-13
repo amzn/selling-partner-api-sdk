@@ -64,8 +64,8 @@ export class SearchOrdersResponse {
 
 /**
  * An array containing all orders that match the search criteria.
- * @member {[Order]} orders
- * @type {[Order]}
+ * @member {Order[]} orders
+ * @type {Order[]}
  */
 SearchOrdersResponse.prototype.orders = undefined
 

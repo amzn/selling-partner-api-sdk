@@ -22,15 +22,15 @@ export class PrintOption {
      * @param supportedDocumentDetails {[SupportedDocumentDetail]} A list of the supported documented details.
      */
     constructor(supportedPageLayouts: [string], supportedFileJoiningOptions: [boolean], supportedDocumentDetails: [SupportedDocumentDetail]);
-    supportedPageLayouts: [string];
-    supportedFileJoiningOptions: [boolean];
-    supportedDocumentDetails: [SupportedDocumentDetail];
+    supportedPageLayouts: string[];
+    supportedFileJoiningOptions: boolean[];
+    supportedDocumentDetails: SupportedDocumentDetail[];
     /**
      * A list of the supported DPI options for a document.
-     * @member {[Number]} supportedDPIs
-     * @type {[Number]}
+     * @member {Number[]} supportedDPIs
+     * @type {Number[]}
      */
-    supportedDPIs: [number];
+    supportedDPIs: number[];
 }
 import { SupportedDocumentDetail } from './SupportedDocumentDetail.js';
 //# sourceMappingURL=PrintOption.d.ts.map

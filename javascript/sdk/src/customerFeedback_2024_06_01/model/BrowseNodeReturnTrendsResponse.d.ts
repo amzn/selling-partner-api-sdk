@@ -30,7 +30,7 @@ export class BrowseNodeReturnTrendsResponse {
     marketplaceId: string;
     countryCode: string;
     dateRange: DateRange;
-    returnTrends: [BrowseNodeReturnTrend];
+    returnTrends: BrowseNodeReturnTrend[];
 }
 import { DateRange } from './DateRange.js';
 import { BrowseNodeReturnTrend } from './BrowseNodeReturnTrend.js';

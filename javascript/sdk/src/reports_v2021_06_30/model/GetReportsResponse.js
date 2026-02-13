@@ -61,8 +61,8 @@ export class GetReportsResponse {
 
 /**
  * A list of reports.
- * @member {[Report]} reports
- * @type {[Report]}
+ * @member {Report[]} reports
+ * @type {Report[]}
  */
 GetReportsResponse.prototype.reports = undefined
 

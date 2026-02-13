@@ -64,8 +64,8 @@ export class IssueEnforcements {
 
 /**
  * List of enforcement actions taken by Amazon that affect the publishing or status of a listing.
- * @member {[IssueEnforcementAction]} actions
- * @type {[IssueEnforcementAction]}
+ * @member {IssueEnforcementAction[]} actions
+ * @type {IssueEnforcementAction[]}
  */
 IssueEnforcements.prototype.actions = undefined
 

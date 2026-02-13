@@ -37,10 +37,10 @@ export class SAFETReimbursementEvent {
     reasonCode: string;
     /**
      * A list of `SAFETReimbursementItem`.
-     * @member {[SAFETReimbursementItem]} sAFETReimbursementItemList
-     * @type {[SAFETReimbursementItem]}
+     * @member {SAFETReimbursementItem[]} sAFETReimbursementItemList
+     * @type {SAFETReimbursementItem[]}
      */
-    sAFETReimbursementItemList: [SAFETReimbursementItem];
+    sAFETReimbursementItemList: SAFETReimbursementItem[];
 }
 import { Currency } from './Currency.js';
 import { SAFETReimbursementItem } from './SAFETReimbursementItem.js';

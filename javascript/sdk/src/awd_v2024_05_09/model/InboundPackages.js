@@ -60,7 +60,7 @@ export class InboundPackages {
 
 /**
  * List of packages to be inbounded.
- * @member {[DistributionPackageQuantity]} packagesToInbound
- * @type {[DistributionPackageQuantity]}
+ * @member {DistributionPackageQuantity[]} packagesToInbound
+ * @type {DistributionPackageQuantity[]}
  */
 InboundPackages.prototype.packagesToInbound = undefined

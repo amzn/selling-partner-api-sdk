@@ -64,8 +64,8 @@ export class OrderItemsList {
 
 /**
  * A list of order items.
- * @member {[OrderItem]} orderItems
- * @type {[OrderItem]}
+ * @member {OrderItem[]} orderItems
+ * @type {OrderItem[]}
  */
 OrderItemsList.prototype.orderItems = undefined
 

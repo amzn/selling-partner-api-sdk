@@ -80,7 +80,7 @@ OriginalLineItem.prototype.originalSku = undefined
 
 /**
  * The charges associated with the shipment.
- * @member {[Charge]} charges
- * @type {[Charge]}
+ * @member {Charge[]} charges
+ * @type {Charge[]}
  */
 OriginalLineItem.prototype.charges = undefined

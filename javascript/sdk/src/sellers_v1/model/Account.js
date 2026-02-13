@@ -70,8 +70,8 @@ export class Account {
 
 /**
  * List of marketplace participations.
- * @member {[MarketplaceParticipation]} marketplaceParticipationList
- * @type {[MarketplaceParticipation]}
+ * @member {MarketplaceParticipation[]} marketplaceParticipationList
+ * @type {MarketplaceParticipation[]}
  */
 Account.prototype.marketplaceParticipationList = undefined
 

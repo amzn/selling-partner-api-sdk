@@ -20,7 +20,7 @@ export class GetFeaturesResult {
      * @param features {[Feature]} An array of features.
      */
     constructor(features: [Feature]);
-    features: [Feature];
+    features: Feature[];
 }
 import { Feature } from './Feature.js';
 //# sourceMappingURL=GetFeaturesResult.d.ts.map

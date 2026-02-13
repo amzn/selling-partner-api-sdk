@@ -22,7 +22,7 @@ export class ItemRelationshipsByMarketplace {
      */
     constructor(marketplaceId: string, relationships: [ItemRelationship]);
     marketplaceId: string;
-    relationships: [ItemRelationship];
+    relationships: ItemRelationship[];
 }
 import { ItemRelationship } from './ItemRelationship.js';
 //# sourceMappingURL=ItemRelationshipsByMarketplace.d.ts.map

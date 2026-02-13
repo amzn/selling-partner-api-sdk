@@ -26,13 +26,13 @@ export class Issue {
     code: string;
     message: string;
     severity: string;
-    categories: [string];
+    categories: string[];
     /**
      * The names of the attributes associated with the issue, if applicable.
-     * @member {[String]} attributeNames
-     * @type {[String]}
+     * @member {String[]} attributeNames
+     * @type {String[]}
      */
-    attributeNames: [string];
+    attributeNames: string[];
     /**
      * @member {IssueEnforcements} enforcements
      * @type {IssueEnforcements}

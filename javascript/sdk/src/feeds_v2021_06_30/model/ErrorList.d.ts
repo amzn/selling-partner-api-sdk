@@ -20,7 +20,7 @@ export class ErrorList {
      * @param errors {[Error]} An error response returned when the request is unsuccessful.
      */
     constructor(errors: [Error]);
-    errors: [Error];
+    errors: Error[];
 }
 import { Error } from './Error.js';
 //# sourceMappingURL=ErrorList.d.ts.map

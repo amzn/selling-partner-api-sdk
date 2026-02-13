@@ -20,7 +20,7 @@ export class VehiclesResponse {
      * @param vehicles {[Vehicle]} List of vehicles from Amazon's catalog.
      */
     constructor(vehicles: [Vehicle]);
-    vehicles: [Vehicle];
+    vehicles: Vehicle[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

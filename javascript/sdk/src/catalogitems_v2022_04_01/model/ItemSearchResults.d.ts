@@ -22,7 +22,7 @@ export class ItemSearchResults {
      */
     constructor(numberOfResults: number, items: [Item]);
     numberOfResults: number;
-    items: [Item];
+    items: Item[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

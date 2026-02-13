@@ -28,7 +28,7 @@ export class InboundShipment {
     destinationAddress: Address;
     orderId: string;
     originAddress: Address;
-    shipmentContainerQuantities: [DistributionPackageQuantity];
+    shipmentContainerQuantities: DistributionPackageQuantity[];
     shipmentId: string;
     shipmentStatus: InboundShipmentStatus;
     /**
@@ -50,10 +50,10 @@ export class InboundShipment {
     externalReferenceId: string;
     /**
      * Quantity received (at the receiving end) as part of this shipment.
-     * @member {[InventoryQuantity]} receivedQuantity
-     * @type {[InventoryQuantity]}
+     * @member {InventoryQuantity[]} receivedQuantity
+     * @type {InventoryQuantity[]}
      */
-    receivedQuantity: [InventoryQuantity];
+    receivedQuantity: InventoryQuantity[];
     /**
      * Timestamp when the shipment will be shipped.
      * @member {Date} shipBy
@@ -62,10 +62,10 @@ export class InboundShipment {
     shipBy: Date;
     /**
      * Quantity details at SKU level for the shipment. This attribute will only appear if the skuQuantities parameter in the request is set to SHOW.
-     * @member {[SkuQuantity]} shipmentSkuQuantities
-     * @type {[SkuQuantity]}
+     * @member {SkuQuantity[]} shipmentSkuQuantities
+     * @type {SkuQuantity[]}
      */
-    shipmentSkuQuantities: [SkuQuantity];
+    shipmentSkuQuantities: SkuQuantity[];
     /**
      * Assigned region where the order will be shipped. This can differ from what was passed as preference. AWD currently supports following region IDs: [us-west, us-east, us-southcentral, us-southeast]
      * @member {String} destinationRegion

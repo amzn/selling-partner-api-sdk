@@ -87,8 +87,8 @@ GetSellingPartnerMetricsRequest.prototype.timeInterval = undefined
 
 /**
  * The list of metrics requested. If no metric value is provided, data for all of the metrics will be returned.
- * @member {[Metric]} metrics
- * @type {[Metric]}
+ * @member {Metric[]} metrics
+ * @type {Metric[]}
  */
 GetSellingPartnerMetricsRequest.prototype.metrics = undefined
 
@@ -107,7 +107,7 @@ GetSellingPartnerMetricsRequest.prototype.marketplaceId = undefined
 
 /**
  * A list of replenishment program types.
- * @member {[ProgramType]} programTypes
- * @type {[ProgramType]}
+ * @member {ProgramType[]} programTypes
+ * @type {ProgramType[]}
  */
 GetSellingPartnerMetricsRequest.prototype.programTypes = undefined

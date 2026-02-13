@@ -20,7 +20,7 @@ export class RestrictionList {
      * @param restrictions {[Restriction]}
      */
     constructor(restrictions: [Restriction]);
-    restrictions: [Restriction];
+    restrictions: Restriction[];
 }
 import { Restriction } from './Restriction.js';
 //# sourceMappingURL=RestrictionList.d.ts.map

@@ -38,10 +38,10 @@ export class TrialShipmentEvent {
     SKU: string;
     /**
      * A list of fee component information.
-     * @member {[FeeComponent]} feeList
-     * @type {[FeeComponent]}
+     * @member {FeeComponent[]} feeList
+     * @type {FeeComponent[]}
      */
-    feeList: [FeeComponent];
+    feeList: FeeComponent[];
 }
 import { FeeComponent } from './FeeComponent.js';
 //# sourceMappingURL=TrialShipmentEvent.d.ts.map

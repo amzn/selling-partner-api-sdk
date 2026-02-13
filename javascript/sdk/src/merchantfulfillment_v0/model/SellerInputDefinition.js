@@ -90,8 +90,8 @@ SellerInputDefinition.prototype.dataType = undefined
 
 /**
  * List of constraints.
- * @member {[Constraint]} constraints
- * @type {[Constraint]}
+ * @member {Constraint[]} constraints
+ * @type {Constraint[]}
  */
 SellerInputDefinition.prototype.constraints = undefined
 
@@ -116,7 +116,7 @@ SellerInputDefinition.prototype.storedValue = undefined
 
 /**
  * The set of fixed values in an additional seller input.
- * @member {[String]} restrictedSetValues
- * @type {[String]}
+ * @member {String[]} restrictedSetValues
+ * @type {String[]}
  */
 SellerInputDefinition.prototype.restrictedSetValues = undefined

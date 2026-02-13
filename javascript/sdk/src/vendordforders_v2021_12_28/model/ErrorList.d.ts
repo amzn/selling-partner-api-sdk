@@ -20,7 +20,7 @@ export class ErrorList {
      * @param errors {[Error]} An array of Error objects representing individual errors encountered during the request.
      */
     constructor(errors: [Error]);
-    errors: [Error];
+    errors: Error[];
 }
 import { Error } from './Error.js';
 //# sourceMappingURL=ErrorList.d.ts.map

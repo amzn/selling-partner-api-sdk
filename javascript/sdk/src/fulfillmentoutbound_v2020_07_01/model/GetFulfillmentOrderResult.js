@@ -82,35 +82,35 @@ GetFulfillmentOrderResult.prototype.fulfillmentOrder = undefined
 
 /**
  * An array of fulfillment order item information.
- * @member {[FulfillmentOrderItem]} fulfillmentOrderItems
- * @type {[FulfillmentOrderItem]}
+ * @member {FulfillmentOrderItem[]} fulfillmentOrderItems
+ * @type {FulfillmentOrderItem[]}
  */
 GetFulfillmentOrderResult.prototype.fulfillmentOrderItems = undefined
 
 /**
  * An array of fulfillment shipment information.
- * @member {[FulfillmentShipment]} fulfillmentShipments
- * @type {[FulfillmentShipment]}
+ * @member {FulfillmentShipment[]} fulfillmentShipments
+ * @type {FulfillmentShipment[]}
  */
 GetFulfillmentOrderResult.prototype.fulfillmentShipments = undefined
 
 /**
  * An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
- * @member {[ReturnItem]} returnItems
- * @type {[ReturnItem]}
+ * @member {ReturnItem[]} returnItems
+ * @type {ReturnItem[]}
  */
 GetFulfillmentOrderResult.prototype.returnItems = undefined
 
 /**
  * An array of return authorization information.
- * @member {[ReturnAuthorization]} returnAuthorizations
- * @type {[ReturnAuthorization]}
+ * @member {ReturnAuthorization[]} returnAuthorizations
+ * @type {ReturnAuthorization[]}
  */
 GetFulfillmentOrderResult.prototype.returnAuthorizations = undefined
 
 /**
  * An array of various payment attributes related to this fulfillment order.
- * @member {[PaymentInformation]} paymentInformation
- * @type {[PaymentInformation]}
+ * @member {PaymentInformation[]} paymentInformation
+ * @type {PaymentInformation[]}
  */
 GetFulfillmentOrderResult.prototype.paymentInformation = undefined

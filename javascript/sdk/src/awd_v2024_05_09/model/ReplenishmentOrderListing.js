@@ -66,7 +66,7 @@ ReplenishmentOrderListing.prototype.nextToken = undefined
 
 /**
  * List of replenishment orders.
- * @member {[ReplenishmentOrder]} orders
- * @type {[ReplenishmentOrder]}
+ * @member {ReplenishmentOrder[]} orders
+ * @type {ReplenishmentOrder[]}
  */
 ReplenishmentOrderListing.prototype.orders = undefined

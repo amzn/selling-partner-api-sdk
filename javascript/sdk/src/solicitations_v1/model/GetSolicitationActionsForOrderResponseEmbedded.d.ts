@@ -19,7 +19,7 @@ export class GetSolicitationActionsForOrderResponseEmbedded {
      * @param actions {[GetSolicitationActionResponse]}
      */
     constructor(actions: [GetSolicitationActionResponse]);
-    actions: [GetSolicitationActionResponse];
+    actions: GetSolicitationActionResponse[];
 }
 import { GetSolicitationActionResponse } from './GetSolicitationActionResponse.js';
 //# sourceMappingURL=GetSolicitationActionsForOrderResponseEmbedded.d.ts.map

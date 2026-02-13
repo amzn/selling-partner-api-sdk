@@ -22,7 +22,7 @@ export class GetInventorySummariesResult {
      */
     constructor(granularity: Granularity, inventorySummaries: [InventorySummary]);
     granularity: Granularity;
-    inventorySummaries: [InventorySummary];
+    inventorySummaries: InventorySummary[];
 }
 import { Granularity } from './Granularity.js';
 import { InventorySummary } from './InventorySummary.js';

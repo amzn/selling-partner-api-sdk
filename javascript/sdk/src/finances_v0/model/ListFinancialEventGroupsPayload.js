@@ -66,7 +66,7 @@ ListFinancialEventGroupsPayload.prototype.nextToken = undefined
 
 /**
  * A list of financial event group information.
- * @member {[FinancialEventGroup]} financialEventGroupList
- * @type {[FinancialEventGroup]}
+ * @member {FinancialEventGroup[]} financialEventGroupList
+ * @type {FinancialEventGroup[]}
  */
 ListFinancialEventGroupsPayload.prototype.financialEventGroupList = undefined

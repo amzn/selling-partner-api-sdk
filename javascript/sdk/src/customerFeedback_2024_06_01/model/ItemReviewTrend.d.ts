@@ -22,7 +22,7 @@ export class ItemReviewTrend {
      */
     constructor(topic: string, trendMetrics: [ItemReviewTrendPoint]);
     topic: string;
-    trendMetrics: [ItemReviewTrendPoint];
+    trendMetrics: ItemReviewTrendPoint[];
 }
 import { ItemReviewTrendPoint } from './ItemReviewTrendPoint.js';
 //# sourceMappingURL=ItemReviewTrend.d.ts.map

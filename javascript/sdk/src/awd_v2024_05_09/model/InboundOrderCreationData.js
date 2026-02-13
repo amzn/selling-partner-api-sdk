@@ -80,8 +80,8 @@ InboundOrderCreationData.prototype.originAddress = undefined
 
 /**
  * List of packages to be inbounded.
- * @member {[DistributionPackageQuantity]} packagesToInbound
- * @type {[DistributionPackageQuantity]}
+ * @member {DistributionPackageQuantity[]} packagesToInbound
+ * @type {DistributionPackageQuantity[]}
  */
 InboundOrderCreationData.prototype.packagesToInbound = undefined
 

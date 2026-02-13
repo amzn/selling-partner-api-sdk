@@ -70,7 +70,7 @@ UpdateScheduledPackagesRequest.prototype.marketplaceId = undefined
 
 /**
  * A list of package update details.
- * @member {[UpdatePackageDetails]} updatePackageDetailsList
- * @type {[UpdatePackageDetails]}
+ * @member {UpdatePackageDetails[]} updatePackageDetailsList
+ * @type {UpdatePackageDetails[]}
  */
 UpdateScheduledPackagesRequest.prototype.updatePackageDetailsList = undefined

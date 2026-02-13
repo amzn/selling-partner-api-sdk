@@ -21,8 +21,8 @@ export class Refinements {
      * @param classifications {[ClassificationRefinement]} A list of classifications you can use to refine your search.
      */
     constructor(brands: [BrandRefinement], classifications: [ClassificationRefinement]);
-    brands: [BrandRefinement];
-    classifications: [ClassificationRefinement];
+    brands: BrandRefinement[];
+    classifications: ClassificationRefinement[];
 }
 import { BrandRefinement } from './BrandRefinement.js';
 import { ClassificationRefinement } from './ClassificationRefinement.js';

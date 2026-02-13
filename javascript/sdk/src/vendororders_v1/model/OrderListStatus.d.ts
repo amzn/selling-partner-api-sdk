@@ -19,10 +19,10 @@ export class OrderListStatus {
     pagination: Pagination;
     /**
      * Represents an order status within the OrderListStatus.
-     * @member {[OrderStatus]} ordersStatus
-     * @type {[OrderStatus]}
+     * @member {OrderStatus[]} ordersStatus
+     * @type {OrderStatus[]}
      */
-    ordersStatus: [OrderStatus];
+    ordersStatus: OrderStatus[];
 }
 import { Pagination } from './Pagination.js';
 import { OrderStatus } from './OrderStatus.js';

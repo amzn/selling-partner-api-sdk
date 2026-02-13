@@ -60,7 +60,7 @@ export class Route {
 
 /**
  * The port or location involved in transporting the cargo, as specified in transportation contracts or operational plans.
- * @member {[Stop]} stops
- * @type {[Stop]}
+ * @member {Stop[]} stops
+ * @type {Stop[]}
  */
 Route.prototype.stops = undefined

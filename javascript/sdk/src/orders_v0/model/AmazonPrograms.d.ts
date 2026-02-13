@@ -20,6 +20,6 @@ export class AmazonPrograms {
      * @param programs {[String]} A list of the programs that Amazon associates with the order item.  **Possible values**: `SUBSCRIBE_AND_SAVE`, `FBM_SHIP_PLUS`
      */
     constructor(programs: [string]);
-    programs: [string];
+    programs: string[];
 }
 //# sourceMappingURL=AmazonPrograms.d.ts.map

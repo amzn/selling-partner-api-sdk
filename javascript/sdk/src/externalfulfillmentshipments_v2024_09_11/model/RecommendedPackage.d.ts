@@ -24,7 +24,7 @@ export class RecommendedPackage {
     constructor(dimensions: PackageDimensions, weight: Weight, lineItems: [RecommendedPackageLineItem]);
     dimensions: PackageDimensions;
     weight: Weight;
-    lineItems: [RecommendedPackageLineItem];
+    lineItems: RecommendedPackageLineItem[];
 }
 import { PackageDimensions } from './PackageDimensions.js';
 import { Weight } from './Weight.js';

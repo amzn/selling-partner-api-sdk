@@ -64,14 +64,14 @@ export class AvailableShippingServiceOptions {
 
 /**
  * List of available carrier pickup options.
- * @member {[AvailableCarrierWillPickUpOption]} availableCarrierWillPickUpOptions
- * @type {[AvailableCarrierWillPickUpOption]}
+ * @member {AvailableCarrierWillPickUpOption[]} availableCarrierWillPickUpOptions
+ * @type {AvailableCarrierWillPickUpOption[]}
  */
 AvailableShippingServiceOptions.prototype.availableCarrierWillPickUpOptions = undefined
 
 /**
  * List of available delivery experience options.
- * @member {[AvailableDeliveryExperienceOption]} availableDeliveryExperienceOptions
- * @type {[AvailableDeliveryExperienceOption]}
+ * @member {AvailableDeliveryExperienceOption[]} availableDeliveryExperienceOptions
+ * @type {AvailableDeliveryExperienceOption[]}
  */
 AvailableShippingServiceOptions.prototype.availableDeliveryExperienceOptions = undefined

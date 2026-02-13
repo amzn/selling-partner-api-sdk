@@ -80,7 +80,7 @@ SupportedDocumentSpecification.prototype.size = undefined
 
 /**
  * A list of the format options for a label.
- * @member {[PrintOption]} printOptions
- * @type {[PrintOption]}
+ * @member {PrintOption[]} printOptions
+ * @type {PrintOption[]}
  */
 SupportedDocumentSpecification.prototype.printOptions = undefined

@@ -20,7 +20,7 @@ export class BankAccountListing {
      * @param accounts {[BankAccount]} Collection that holds BankAccount
      */
     constructor(accounts: [BankAccount]);
-    accounts: [BankAccount];
+    accounts: BankAccount[];
 }
 import { BankAccount } from './BankAccount.js';
 //# sourceMappingURL=BankAccountListing.d.ts.map

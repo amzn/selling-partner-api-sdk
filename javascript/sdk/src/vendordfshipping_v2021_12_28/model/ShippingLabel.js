@@ -118,7 +118,7 @@ ShippingLabel.prototype.labelFormat = undefined
 
 /**
  * Provides the details of the packages in this shipment.
- * @member {[LabelData]} labelData
- * @type {[LabelData]}
+ * @member {LabelData[]} labelData
+ * @type {LabelData[]}
  */
 ShippingLabel.prototype.labelData = undefined

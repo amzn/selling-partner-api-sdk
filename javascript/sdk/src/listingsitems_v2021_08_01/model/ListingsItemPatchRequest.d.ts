@@ -22,7 +22,7 @@ export class ListingsItemPatchRequest {
      */
     constructor(productType: string, patches: [PatchOperation]);
     productType: string;
-    patches: [PatchOperation];
+    patches: PatchOperation[];
 }
 import { PatchOperation } from './PatchOperation.js';
 //# sourceMappingURL=ListingsItemPatchRequest.d.ts.map

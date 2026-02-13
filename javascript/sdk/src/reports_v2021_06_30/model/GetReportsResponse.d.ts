@@ -20,7 +20,7 @@ export class GetReportsResponse {
      * @param reports {[Report]} A list of reports.
      */
     constructor(reports: [Report]);
-    reports: [Report];
+    reports: Report[];
     /**
      * Returned when the number of results exceeds `pageSize`. To get the next page of results, call `getReports` with this token as the only parameter.
      * @member {String} nextToken

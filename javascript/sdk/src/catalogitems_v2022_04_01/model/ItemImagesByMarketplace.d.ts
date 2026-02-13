@@ -22,7 +22,7 @@ export class ItemImagesByMarketplace {
      */
     constructor(marketplaceId: string, images: [ItemImage]);
     marketplaceId: string;
-    images: [ItemImage];
+    images: ItemImage[];
 }
 import { ItemImage } from './ItemImage.js';
 //# sourceMappingURL=ItemImagesByMarketplace.d.ts.map

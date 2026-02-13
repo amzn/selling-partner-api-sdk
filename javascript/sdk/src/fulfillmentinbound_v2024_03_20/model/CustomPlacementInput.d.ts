@@ -21,7 +21,7 @@ export class CustomPlacementInput {
      * @param warehouseId {String} Warehouse Id.
      */
     constructor(items: [ItemInput], warehouseId: string);
-    items: [ItemInput];
+    items: ItemInput[];
     warehouseId: string;
 }
 import { ItemInput } from './ItemInput.js';

@@ -22,7 +22,7 @@ export class ItemIdentifiersByMarketplace {
      */
     constructor(marketplaceId: string, identifiers: [ItemIdentifier]);
     marketplaceId: string;
-    identifiers: [ItemIdentifier];
+    identifiers: ItemIdentifier[];
 }
 import { ItemIdentifier } from './ItemIdentifier.js';
 //# sourceMappingURL=ItemIdentifiersByMarketplace.d.ts.map

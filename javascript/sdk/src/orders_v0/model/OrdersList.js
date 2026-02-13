@@ -63,8 +63,8 @@ export class OrdersList {
 
 /**
  * A list of orders.
- * @member {[Order]} orders
- * @type {[Order]}
+ * @member {Order[]} orders
+ * @type {Order[]}
  */
 OrdersList.prototype.orders = undefined
 

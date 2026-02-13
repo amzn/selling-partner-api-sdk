@@ -20,7 +20,7 @@ export class ListPlacementOptionsResponse {
      * @param placementOptions {[PlacementOption]} Placement options generated for the inbound plan.
      */
     constructor(placementOptions: [PlacementOption]);
-    placementOptions: [PlacementOption];
+    placementOptions: PlacementOption[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

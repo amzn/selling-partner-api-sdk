@@ -173,7 +173,7 @@ Container.prototype.weight = undefined
 
 /**
  * A list of packed items.
- * @member {[PackedItem]} packedItems
- * @type {[PackedItem]}
+ * @member {PackedItem[]} packedItems
+ * @type {PackedItem[]}
  */
 Container.prototype.packedItems = undefined

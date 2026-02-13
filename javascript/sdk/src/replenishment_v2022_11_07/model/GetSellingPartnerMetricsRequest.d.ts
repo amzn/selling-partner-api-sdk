@@ -26,7 +26,7 @@ export class GetSellingPartnerMetricsRequest {
     timeInterval: TimeInterval;
     timePeriodType: TimePeriodType;
     marketplaceId: string;
-    programTypes: [ProgramType];
+    programTypes: ProgramType[];
     /**
      * @member {AggregationFrequency} aggregationFrequency
      * @type {AggregationFrequency}
@@ -34,10 +34,10 @@ export class GetSellingPartnerMetricsRequest {
     aggregationFrequency: AggregationFrequency;
     /**
      * The list of metrics requested. If no metric value is provided, data for all of the metrics will be returned.
-     * @member {[Metric]} metrics
-     * @type {[Metric]}
+     * @member {Metric[]} metrics
+     * @type {Metric[]}
      */
-    metrics: [Metric];
+    metrics: Metric[];
 }
 import { TimeInterval } from './TimeInterval.js';
 import { TimePeriodType } from './TimePeriodType.js';

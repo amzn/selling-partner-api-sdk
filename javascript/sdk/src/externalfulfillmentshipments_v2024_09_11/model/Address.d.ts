@@ -83,10 +83,10 @@ export class Address {
     email: string;
     /**
      * The email cc addresses of the contact associated with the address.
-     * @member {[String]} copyEmails
-     * @type {[String]}
+     * @member {String[]} copyEmails
+     * @type {String[]}
      */
-    copyEmails: [string];
+    copyEmails: string[];
     /**
      * The phone number of the person, business, or institution located at the address.
      * @member {String} phoneNumber

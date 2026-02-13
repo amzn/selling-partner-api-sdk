@@ -14,10 +14,10 @@ export class ReplanningDetails {
     static constructFromObject(data: any, obj: ReplanningDetails): ReplanningDetails;
     /**
      * A list of all the previous tracking information for the return.
-     * @member {[TrackingInfo]} previousTrackingInfo
-     * @type {[TrackingInfo]}
+     * @member {TrackingInfo[]} previousTrackingInfo
+     * @type {TrackingInfo[]}
      */
-    previousTrackingInfo: [TrackingInfo];
+    previousTrackingInfo: TrackingInfo[];
 }
 import { TrackingInfo } from './TrackingInfo.js';
 //# sourceMappingURL=ReplanningDetails.d.ts.map

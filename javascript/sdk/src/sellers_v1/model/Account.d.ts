@@ -22,7 +22,7 @@ export class Account {
      * @param sellingPlan {String} The selling plan details.
      */
     constructor(marketplaceParticipationList: [MarketplaceParticipation], businessType: string, sellingPlan: string);
-    marketplaceParticipationList: [MarketplaceParticipation];
+    marketplaceParticipationList: MarketplaceParticipation[];
     businessType: string;
     sellingPlan: string;
     /**

@@ -24,7 +24,7 @@ export class SupportedDocumentSpecification {
     constructor(format: DocumentFormat, size: DocumentSize, printOptions: [PrintOption]);
     format: DocumentFormat;
     size: DocumentSize;
-    printOptions: [PrintOption];
+    printOptions: PrintOption[];
 }
 import { DocumentFormat } from './DocumentFormat.js';
 import { DocumentSize } from './DocumentSize.js';

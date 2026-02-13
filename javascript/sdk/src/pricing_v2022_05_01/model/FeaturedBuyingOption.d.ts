@@ -22,7 +22,7 @@ export class FeaturedBuyingOption {
      */
     constructor(buyingOptionType: string, segmentedFeaturedOffers: [SegmentedFeaturedOffer]);
     buyingOptionType: string;
-    segmentedFeaturedOffers: [SegmentedFeaturedOffer];
+    segmentedFeaturedOffers: SegmentedFeaturedOffer[];
 }
 export namespace FeaturedBuyingOption {
     namespace BuyingOptionTypeEnum {

@@ -110,7 +110,7 @@ BrowseNodeReturnTrendsResponse.prototype.dateRange = undefined
 
 /**
  * The browse node return trends.
- * @member {[BrowseNodeReturnTrend]} returnTrends
- * @type {[BrowseNodeReturnTrend]}
+ * @member {BrowseNodeReturnTrend[]} returnTrends
+ * @type {BrowseNodeReturnTrend[]}
  */
 BrowseNodeReturnTrendsResponse.prototype.returnTrends = undefined

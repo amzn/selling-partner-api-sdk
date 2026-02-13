@@ -89,7 +89,7 @@ TransferRatePreview.prototype.transferAmount = undefined
 
 /**
  * List of fees
- * @member {[Fee]} fees
- * @type {[Fee]}
+ * @member {Fee[]} fees
+ * @type {Fee[]}
  */
 TransferRatePreview.prototype.fees = undefined

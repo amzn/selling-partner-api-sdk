@@ -68,14 +68,14 @@ FeaturedOfferExpectedPriceResponseBody.prototype.offerIdentifier = undefined
 
 /**
  * A list of FOEP results for the requested offer.
- * @member {[FeaturedOfferExpectedPriceResult]} featuredOfferExpectedPriceResults
- * @type {[FeaturedOfferExpectedPriceResult]}
+ * @member {FeaturedOfferExpectedPriceResult[]} featuredOfferExpectedPriceResults
+ * @type {FeaturedOfferExpectedPriceResult[]}
  */
 FeaturedOfferExpectedPriceResponseBody.prototype.featuredOfferExpectedPriceResults = undefined
 
 /**
  * A list of error responses that are returned when a request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Error[]} errors
+ * @type {Error[]}
  */
 FeaturedOfferExpectedPriceResponseBody.prototype.errors = undefined

@@ -70,7 +70,7 @@ BrowseNodeReviewTrend.prototype.topic = undefined
 
 /**
  * The browse node's review trend metrics for the past six months.
- * @member {[BrowseNodeReviewTrendPoint]} trendMetrics
- * @type {[BrowseNodeReviewTrendPoint]}
+ * @member {BrowseNodeReviewTrendPoint[]} trendMetrics
+ * @type {BrowseNodeReviewTrendPoint[]}
  */
 BrowseNodeReviewTrend.prototype.trendMetrics = undefined

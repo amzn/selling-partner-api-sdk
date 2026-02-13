@@ -27,10 +27,10 @@ export class ReportSchedule {
     period: string;
     /**
      * A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.
-     * @member {[String]} marketplaceIds
-     * @type {[String]}
+     * @member {String[]} marketplaceIds
+     * @type {String[]}
      */
-    marketplaceIds: [string];
+    marketplaceIds: string[];
     /**
      * Additional information passed to reports. This varies by report type.
      * @member {{String: String}} reportOptions

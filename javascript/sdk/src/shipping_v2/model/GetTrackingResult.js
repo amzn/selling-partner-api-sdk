@@ -87,8 +87,8 @@ GetTrackingResult.prototype.alternateLegTrackingId = undefined
 
 /**
  * A list of tracking events.
- * @member {[Event]} eventHistory
- * @type {[Event]}
+ * @member {Event[]} eventHistory
+ * @type {Event[]}
  */
 GetTrackingResult.prototype.eventHistory = undefined
 

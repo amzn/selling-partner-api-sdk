@@ -24,16 +24,16 @@ export class SetAppointmentFulfillmentDataRequest {
     fulfillmentTime: FulfillmentTime;
     /**
      * List of resources that performs or performed job appointment fulfillment.
-     * @member {[AppointmentResource]} appointmentResources
-     * @type {[AppointmentResource]}
+     * @member {AppointmentResource[]} appointmentResources
+     * @type {AppointmentResource[]}
      */
-    appointmentResources: [AppointmentResource];
+    appointmentResources: AppointmentResource[];
     /**
      * List of documents captured during service appointment fulfillment.
-     * @member {[FulfillmentDocument]} fulfillmentDocuments
-     * @type {[FulfillmentDocument]}
+     * @member {FulfillmentDocument[]} fulfillmentDocuments
+     * @type {FulfillmentDocument[]}
      */
-    fulfillmentDocuments: [FulfillmentDocument];
+    fulfillmentDocuments: FulfillmentDocument[];
 }
 import { DateTimeRange } from './DateTimeRange.js';
 import { FulfillmentTime } from './FulfillmentTime.js';

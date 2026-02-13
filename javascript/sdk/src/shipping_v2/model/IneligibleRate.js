@@ -100,7 +100,7 @@ IneligibleRate.prototype.carrierId = undefined
 
 /**
  * A list of reasons why a shipping service offering is ineligible.
- * @member {[IneligibilityReason]} ineligibilityReasons
- * @type {[IneligibilityReason]}
+ * @member {IneligibilityReason[]} ineligibilityReasons
+ * @type {IneligibilityReason[]}
  */
 IneligibleRate.prototype.ineligibilityReasons = undefined

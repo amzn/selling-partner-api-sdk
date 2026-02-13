@@ -28,7 +28,7 @@ export class PackageDetail {
     carrierCode: string;
     trackingNumber: string;
     shipDate: Date;
-    orderItems: [ConfirmShipmentOrderItem];
+    orderItems: ConfirmShipmentOrderItem[];
     /**
      * Carrier name that will deliver the package. Required when `carrierCode` is \"Other\"
      * @member {String} carrierName

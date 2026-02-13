@@ -38,10 +38,10 @@ export class DirectPurchaseRequest {
     returnTo: Address;
     /**
      * A list of packages to be shipped through a shipping service offering.
-     * @member {[Package]} packages
-     * @type {[Package]}
+     * @member {Package[]} packages
+     * @type {Package[]}
      */
-    packages: [Package];
+    packages: Package[];
     /**
      * @member {RequestedDocumentSpecification} labelSpecifications
      * @type {RequestedDocumentSpecification}

@@ -20,25 +20,25 @@ export class GetEligibleShipmentServicesResult {
      * @param shippingServiceList {[ShippingService]} A list of shipping services offers.
      */
     constructor(shippingServiceList: [ShippingService]);
-    shippingServiceList: [ShippingService];
+    shippingServiceList: ShippingService[];
     /**
      * List of services that are for some reason unavailable for this request
-     * @member {[RejectedShippingService]} rejectedShippingServiceList
-     * @type {[RejectedShippingService]}
+     * @member {RejectedShippingService[]} rejectedShippingServiceList
+     * @type {RejectedShippingService[]}
      */
-    rejectedShippingServiceList: [RejectedShippingService];
+    rejectedShippingServiceList: RejectedShippingService[];
     /**
      * A list of temporarily unavailable carriers.
-     * @member {[TemporarilyUnavailableCarrier]} temporarilyUnavailableCarrierList
-     * @type {[TemporarilyUnavailableCarrier]}
+     * @member {TemporarilyUnavailableCarrier[]} temporarilyUnavailableCarrierList
+     * @type {TemporarilyUnavailableCarrier[]}
      */
-    temporarilyUnavailableCarrierList: [TemporarilyUnavailableCarrier];
+    temporarilyUnavailableCarrierList: TemporarilyUnavailableCarrier[];
     /**
      * List of carriers whose terms and conditions were not accepted by the seller.
-     * @member {[TermsAndConditionsNotAcceptedCarrier]} termsAndConditionsNotAcceptedCarrierList
-     * @type {[TermsAndConditionsNotAcceptedCarrier]}
+     * @member {TermsAndConditionsNotAcceptedCarrier[]} termsAndConditionsNotAcceptedCarrierList
+     * @type {TermsAndConditionsNotAcceptedCarrier[]}
      */
-    termsAndConditionsNotAcceptedCarrierList: [TermsAndConditionsNotAcceptedCarrier];
+    termsAndConditionsNotAcceptedCarrierList: TermsAndConditionsNotAcceptedCarrier[];
 }
 import { ShippingService } from './ShippingService.js';
 import { RejectedShippingService } from './RejectedShippingService.js';

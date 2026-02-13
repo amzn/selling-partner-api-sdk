@@ -70,7 +70,7 @@ SetPrepDetailsRequest.prototype.marketplaceId = undefined
 
 /**
  * A list of MSKUs and related prep details.
- * @member {[MskuPrepDetailInput]} mskuPrepDetails
- * @type {[MskuPrepDetailInput]}
+ * @member {MskuPrepDetailInput[]} mskuPrepDetails
+ * @type {MskuPrepDetailInput[]}
  */
 SetPrepDetailsRequest.prototype.mskuPrepDetails = undefined

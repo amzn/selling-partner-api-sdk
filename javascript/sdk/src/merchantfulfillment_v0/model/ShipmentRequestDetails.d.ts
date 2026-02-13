@@ -26,7 +26,7 @@ export class ShipmentRequestDetails {
      */
     constructor(amazonOrderId: string, itemList: [Item], shipFromAddress: Address, packageDimensions: PackageDimensions, weight: Weight, shippingServiceOptions: ShippingServiceOptions);
     amazonOrderId: string;
-    itemList: [Item];
+    itemList: Item[];
     shipFromAddress: Address;
     packageDimensions: PackageDimensions;
     weight: Weight;

@@ -24,7 +24,7 @@ export class Vehicle {
     constructor(make: string, model: string, identifiers: [VehicleIdentifiers]);
     make: string;
     model: string;
-    identifiers: [VehicleIdentifiers];
+    identifiers: VehicleIdentifiers[];
     /**
      * Name of the vehicle variant.
      * @member {String} variantName
@@ -51,10 +51,10 @@ export class Vehicle {
     energy: string;
     /**
      * Engine output of vehicle.
-     * @member {[EngineOutput]} engineOutput
-     * @type {[EngineOutput]}
+     * @member {EngineOutput[]} engineOutput
+     * @type {EngineOutput[]}
      */
-    engineOutput: [EngineOutput];
+    engineOutput: EngineOutput[];
     /**
      * @member {MonthAndYear} manufacturingStartDate
      * @type {MonthAndYear}

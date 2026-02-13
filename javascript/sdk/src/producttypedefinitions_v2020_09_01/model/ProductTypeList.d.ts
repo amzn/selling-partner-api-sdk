@@ -21,7 +21,7 @@ export class ProductTypeList {
      * @param productTypeVersion {String} Amazon product type version identifier.
      */
     constructor(productTypes: [ProductType], productTypeVersion: string);
-    productTypes: [ProductType];
+    productTypes: ProductType[];
     productTypeVersion: string;
 }
 import { ProductType } from './ProductType.js';

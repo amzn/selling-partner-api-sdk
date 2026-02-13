@@ -60,8 +60,8 @@ export class SAFETReimbursementItem {
 
 /**
  * A list of charge information on the seller's account.
- * @member {[ChargeComponent]} itemChargeList
- * @type {[ChargeComponent]}
+ * @member {ChargeComponent[]} itemChargeList
+ * @type {ChargeComponent[]}
  */
 SAFETReimbursementItem.prototype.itemChargeList = undefined
 

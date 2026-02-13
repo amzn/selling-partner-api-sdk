@@ -22,7 +22,7 @@ export class Containers {
      */
     constructor(containerType: string, containerIdentifiers: [ContainerIdentification]);
     containerType: string;
-    containerIdentifiers: [ContainerIdentification];
+    containerIdentifiers: ContainerIdentification[];
     /**
      * An integer that must be submitted for multi-box shipments only, where one item may come in separate packages.
      * @member {String} containerSequenceNumber
@@ -64,10 +64,10 @@ export class Containers {
     innerContainersDetails: InnerContainersDetails;
     /**
      * A list of packed items.
-     * @member {[PackedItems]} packedItems
-     * @type {[PackedItems]}
+     * @member {PackedItems[]} packedItems
+     * @type {PackedItems[]}
      */
-    packedItems: [PackedItems];
+    packedItems: PackedItems[];
 }
 export namespace Containers {
     namespace ContainerTypeEnum {

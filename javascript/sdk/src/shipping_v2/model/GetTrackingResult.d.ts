@@ -26,7 +26,7 @@ export class GetTrackingResult {
     constructor(trackingId: string, alternateLegTrackingId: string, eventHistory: [Event], promisedDeliveryDate: Date, summary: TrackingSummary);
     trackingId: string;
     alternateLegTrackingId: string;
-    eventHistory: [Event];
+    eventHistory: Event[];
     promisedDeliveryDate: Date;
     summary: TrackingSummary;
 }

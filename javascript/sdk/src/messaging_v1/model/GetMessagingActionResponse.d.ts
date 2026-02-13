@@ -29,10 +29,10 @@ export class GetMessagingActionResponse {
     payload: MessagingAction;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Error[]} errors
+     * @type {Error[]}
      */
-    errors: [Error];
+    errors: Error[];
 }
 import { GetMessagingActionResponseLinks } from './GetMessagingActionResponseLinks.js';
 import { GetMessagingActionResponseEmbedded } from './GetMessagingActionResponseEmbedded.js';

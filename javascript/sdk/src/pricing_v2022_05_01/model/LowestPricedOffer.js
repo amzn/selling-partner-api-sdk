@@ -70,7 +70,7 @@ LowestPricedOffer.prototype.lowestPricedOffersInput = undefined
 
 /**
  * A list of up to 20 lowest priced offers that match the criteria specified in `lowestPricedOffersInput`.
- * @member {[Offer]} offers
- * @type {[Offer]}
+ * @member {Offer[]} offers
+ * @type {Offer[]}
  */
 LowestPricedOffer.prototype.offers = undefined

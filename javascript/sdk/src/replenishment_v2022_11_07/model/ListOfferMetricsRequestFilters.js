@@ -99,14 +99,14 @@ ListOfferMetricsRequestFilters.prototype.marketplaceId = undefined
 
 /**
  * A list of replenishment program types.
- * @member {[ProgramType]} programTypes
- * @type {[ProgramType]}
+ * @member {ProgramType[]} programTypes
+ * @type {ProgramType[]}
  */
 ListOfferMetricsRequestFilters.prototype.programTypes = undefined
 
 /**
  * A list of Amazon Standard Identification Numbers (ASINs).
- * @member {[String]} asins
- * @type {[String]}
+ * @member {String[]} asins
+ * @type {String[]}
  */
 ListOfferMetricsRequestFilters.prototype.asins = undefined

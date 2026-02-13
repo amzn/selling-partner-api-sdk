@@ -64,8 +64,8 @@ export class OrderItemsBuyerInfoList {
 
 /**
  * A single order item's buyer information list.
- * @member {[OrderItemBuyerInfo]} orderItems
- * @type {[OrderItemBuyerInfo]}
+ * @member {OrderItemBuyerInfo[]} orderItems
+ * @type {OrderItemBuyerInfo[]}
  */
 OrderItemsBuyerInfoList.prototype.orderItems = undefined
 

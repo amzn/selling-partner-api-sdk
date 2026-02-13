@@ -74,7 +74,7 @@ UnmanifestedCarrierInformation.prototype.carrierName = undefined
 
 /**
  * A list of UnmanifestedShipmentLocation
- * @member {[UnmanifestedShipmentLocation]} unmanifestedShipmentLocationList
- * @type {[UnmanifestedShipmentLocation]}
+ * @member {UnmanifestedShipmentLocation[]} unmanifestedShipmentLocationList
+ * @type {UnmanifestedShipmentLocation[]}
  */
 UnmanifestedCarrierInformation.prototype.unmanifestedShipmentLocationList = undefined

@@ -129,7 +129,7 @@ AllowanceDetails.prototype.allowanceAmount = undefined
 
 /**
  * Tax amount details applied on this allowance.
- * @member {[TaxDetails]} taxDetails
- * @type {[TaxDetails]}
+ * @member {TaxDetails[]} taxDetails
+ * @type {TaxDetails[]}
  */
 AllowanceDetails.prototype.taxDetails = undefined

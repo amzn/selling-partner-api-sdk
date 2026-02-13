@@ -65,8 +65,8 @@ export class GetContentDocumentResponse {
 
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {[Error]} warnings
- * @type {[Error]}
+ * @member {Error[]} warnings
+ * @type {Error[]}
  */
 GetContentDocumentResponse.prototype.warnings = undefined
 
@@ -79,7 +79,7 @@ GetContentDocumentResponse.prototype.contentRecord = undefined
 // Implement AplusResponse interface:
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {[Error]} warnings
- * @type {[Error]}
+ * @member {Error[]} warnings
+ * @type {Error[]}
  */
 AplusResponse.prototype.warnings = undefined

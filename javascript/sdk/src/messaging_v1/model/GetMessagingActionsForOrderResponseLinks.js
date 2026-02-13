@@ -69,7 +69,7 @@ GetMessagingActionsForOrderResponseLinks.prototype.self = undefined
 
 /**
  * Eligible actions for the specified amazonOrderId.
- * @member {[LinkObject]} actions
- * @type {[LinkObject]}
+ * @member {LinkObject[]} actions
+ * @type {LinkObject[]}
  */
 GetMessagingActionsForOrderResponseLinks.prototype.actions = undefined

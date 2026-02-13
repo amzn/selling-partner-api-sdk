@@ -70,8 +70,8 @@ export class Carton {
 
 /**
  * A list of carton identifiers.
- * @member {[ContainerIdentification]} cartonIdentifiers
- * @type {[ContainerIdentification]}
+ * @member {ContainerIdentification[]} cartonIdentifiers
+ * @type {ContainerIdentification[]}
  */
 Carton.prototype.cartonIdentifiers = undefined
 
@@ -103,7 +103,7 @@ Carton.prototype.trackingNumber = undefined
 
 /**
  * A list of container item details.
- * @member {[ContainerItem]} items
- * @type {[ContainerItem]}
+ * @member {ContainerItem[]} items
+ * @type {ContainerItem[]}
  */
 Carton.prototype.items = undefined

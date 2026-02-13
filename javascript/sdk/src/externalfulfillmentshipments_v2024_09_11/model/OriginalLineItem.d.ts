@@ -24,7 +24,7 @@ export class OriginalLineItem {
     constructor(replacingSku: string, originalSku: string, charges: [Charge]);
     replacingSku: string;
     originalSku: string;
-    charges: [Charge];
+    charges: Charge[];
 }
 import { Charge } from './Charge.js';
 //# sourceMappingURL=OriginalLineItem.d.ts.map

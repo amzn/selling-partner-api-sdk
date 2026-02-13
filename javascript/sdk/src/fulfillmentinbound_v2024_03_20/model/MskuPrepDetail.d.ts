@@ -24,7 +24,7 @@ export class MskuPrepDetail {
     constructor(msku: string, prepCategory: PrepCategory, prepTypes: [PrepType]);
     msku: string;
     prepCategory: PrepCategory;
-    prepTypes: [PrepType];
+    prepTypes: PrepType[];
     /**
      * @member {AllOwnersConstraint} allOwnersConstraint
      * @type {AllOwnersConstraint}

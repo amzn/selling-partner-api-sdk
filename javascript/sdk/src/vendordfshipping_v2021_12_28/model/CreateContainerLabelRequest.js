@@ -99,7 +99,7 @@ CreateContainerLabelRequest.prototype.vendorContainerId = undefined
 
 /**
  * An array of package objects in a container.
- * @member {[Package]} packages
- * @type {[Package]}
+ * @member {Package[]} packages
+ * @type {Package[]}
  */
 CreateContainerLabelRequest.prototype.packages = undefined

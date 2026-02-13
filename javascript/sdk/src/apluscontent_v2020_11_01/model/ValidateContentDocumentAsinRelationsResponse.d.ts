@@ -21,13 +21,13 @@ export class ValidateContentDocumentAsinRelationsResponse {
      * @param errors {[Error]} A list of error responses that are returned when a request is unsuccessful.
      */
     constructor(errors: [Error]);
-    errors: [Error];
+    errors: Error[];
     /**
      * A set of messages to the user, such as warnings or comments.
-     * @member {[Error]} warnings
-     * @type {[Error]}
+     * @member {Error[]} warnings
+     * @type {Error[]}
      */
-    warnings: [Error];
+    warnings: Error[];
 }
 import { Error } from './Error.js';
 //# sourceMappingURL=ValidateContentDocumentAsinRelationsResponse.d.ts.map

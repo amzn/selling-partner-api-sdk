@@ -30,7 +30,7 @@ export class TransferSchedule {
     transactionDestinationAccount: TransactionAccount;
     transferScheduleStatus: TransferScheduleStatus;
     transferScheduleInformation: TransferScheduleInformation;
-    transferScheduleFailures: [TransferScheduleFailures];
+    transferScheduleFailures: TransferScheduleFailures[];
     /**
      * @member {TransactionAccount} transactionSourceAccount
      * @type {TransactionAccount}

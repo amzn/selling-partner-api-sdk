@@ -62,8 +62,8 @@ export class ShippingRequirements {
 
 /**
  * Available shipment modes for this shipping program.
- * @member {[String]} modes
- * @type {[String]}
+ * @member {String[]} modes
+ * @type {String[]}
  */
 ShippingRequirements.prototype.modes = undefined
 

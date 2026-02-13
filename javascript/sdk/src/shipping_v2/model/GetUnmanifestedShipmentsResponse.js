@@ -58,7 +58,7 @@ export class GetUnmanifestedShipmentsResponse {
 
 /**
  * A list of UnmanifestedCarrierInformation
- * @member {[UnmanifestedCarrierInformation]} unmanifestedCarrierInformationList
- * @type {[UnmanifestedCarrierInformation]}
+ * @member {UnmanifestedCarrierInformation[]} unmanifestedCarrierInformationList
+ * @type {UnmanifestedCarrierInformation[]}
  */
 GetUnmanifestedShipmentsResponse.prototype.unmanifestedCarrierInformationList = undefined

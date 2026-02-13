@@ -29,7 +29,7 @@ export class InboundPlanSummary {
     createdAt: Date;
     inboundPlanId: string;
     lastUpdatedAt: Date;
-    marketplaceIds: [string];
+    marketplaceIds: string[];
     name: string;
     sourceAddress: Address;
     status: string;

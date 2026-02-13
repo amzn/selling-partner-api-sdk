@@ -90,7 +90,7 @@ OrderAcknowledgement.prototype.acknowledgementDate = undefined
 
 /**
  * A list of the items being acknowledged with associated details.
- * @member {[OrderAcknowledgementItem]} items
- * @type {[OrderAcknowledgementItem]}
+ * @member {OrderAcknowledgementItem[]} items
+ * @type {OrderAcknowledgementItem[]}
  */
 OrderAcknowledgement.prototype.items = undefined

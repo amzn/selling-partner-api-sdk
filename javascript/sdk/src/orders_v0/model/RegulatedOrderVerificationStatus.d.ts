@@ -24,7 +24,7 @@ export class RegulatedOrderVerificationStatus {
     constructor(status: VerificationStatus, requiresMerchantAction: boolean, validRejectionReasons: [RejectionReason]);
     status: VerificationStatus;
     requiresMerchantAction: boolean;
-    validRejectionReasons: [RejectionReason];
+    validRejectionReasons: RejectionReason[];
     /**
      * @member {RejectionReason} rejectionReason
      * @type {RejectionReason}
@@ -44,10 +44,10 @@ export class RegulatedOrderVerificationStatus {
     externalReviewerId: string;
     /**
      * A list of valid verification details that may be provided and the criteria required for when the verification detail can be provided.
-     * @member {[ValidVerificationDetail]} validVerificationDetails
-     * @type {[ValidVerificationDetail]}
+     * @member {ValidVerificationDetail[]} validVerificationDetails
+     * @type {ValidVerificationDetail[]}
      */
-    validVerificationDetails: [ValidVerificationDetail];
+    validVerificationDetails: ValidVerificationDetail[];
 }
 import { VerificationStatus } from './VerificationStatus.js';
 import { RejectionReason } from './RejectionReason.js';

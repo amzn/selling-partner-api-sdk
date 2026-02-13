@@ -58,7 +58,7 @@ export class GetPaymentMethodsResponse {
 
 /**
  * The list of payment methods with payment method details.
- * @member {[PaymentMethodDetails]} paymentMethods
- * @type {[PaymentMethodDetails]}
+ * @member {PaymentMethodDetails[]} paymentMethods
+ * @type {PaymentMethodDetails[]}
  */
 GetPaymentMethodsResponse.prototype.paymentMethods = undefined

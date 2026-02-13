@@ -21,8 +21,8 @@ export class GenerateShipmentContentUpdatePreviewsRequest {
      * @param items {[ItemInput]} A list of all items that will be present in the shipment after the update.
      */
     constructor(boxes: [BoxUpdateInput], items: [ItemInput]);
-    boxes: [BoxUpdateInput];
-    items: [ItemInput];
+    boxes: BoxUpdateInput[];
+    items: ItemInput[];
 }
 import { BoxUpdateInput } from './BoxUpdateInput.js';
 import { ItemInput } from './ItemInput.js';

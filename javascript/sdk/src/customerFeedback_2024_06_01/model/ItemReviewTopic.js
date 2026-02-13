@@ -102,14 +102,14 @@ ItemReviewTopic.prototype.childAsinMetrics = undefined
 
 /**
  * A list of up to three snippets from reviews that contain the topic. This value is `null` if there aren't enough review snippets for the topic.
- * @member {[String]} reviewSnippets
- * @type {[String]}
+ * @member {String[]} reviewSnippets
+ * @type {String[]}
  */
 ItemReviewTopic.prototype.reviewSnippets = undefined
 
 /**
  * A list of up to five top subtopics for the topic. The percentage of customer reviews that mention the subtopic determine the topic's placement in the list. This value is `null` if there are no subtopics.
- * @member {[ItemReviewSubtopic]} subtopics
- * @type {[ItemReviewSubtopic]}
+ * @member {ItemReviewSubtopic[]} subtopics
+ * @type {ItemReviewSubtopic[]}
  */
 ItemReviewTopic.prototype.subtopics = undefined

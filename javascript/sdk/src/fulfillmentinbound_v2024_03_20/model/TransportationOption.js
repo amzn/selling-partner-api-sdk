@@ -91,8 +91,8 @@ TransportationOption.prototype.carrierAppointment = undefined
 
 /**
  * Identifies a list of preconditions for confirming the transportation option.
- * @member {[String]} preconditions
- * @type {[String]}
+ * @member {String[]} preconditions
+ * @type {String[]}
  */
 TransportationOption.prototype.preconditions = undefined
 

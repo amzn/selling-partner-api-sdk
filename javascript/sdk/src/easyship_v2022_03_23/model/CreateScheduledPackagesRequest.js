@@ -74,8 +74,8 @@ CreateScheduledPackagesRequest.prototype.marketplaceId = undefined
 
 /**
  * An array allowing users to specify orders to be scheduled.
- * @member {[OrderScheduleDetails]} orderScheduleDetailsList
- * @type {[OrderScheduleDetails]}
+ * @member {OrderScheduleDetails[]} orderScheduleDetailsList
+ * @type {OrderScheduleDetails[]}
  */
 CreateScheduledPackagesRequest.prototype.orderScheduleDetailsList = undefined
 

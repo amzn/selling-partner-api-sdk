@@ -26,9 +26,9 @@ export class PropertyGroup {
     description: string;
     /**
      * The names of the schema properties for the property group.
-     * @member {[String]} propertyNames
-     * @type {[String]}
+     * @member {String[]} propertyNames
+     * @type {String[]}
      */
-    propertyNames: [string];
+    propertyNames: string[];
 }
 //# sourceMappingURL=PropertyGroup.d.ts.map

@@ -85,8 +85,8 @@ RegulatedOrderVerificationStatus.prototype.requiresMerchantAction = undefined
 
 /**
  * A list of valid rejection reasons that may be used to reject the order's regulated information.
- * @member {[RejectionReason]} validRejectionReasons
- * @type {[RejectionReason]}
+ * @member {RejectionReason[]} validRejectionReasons
+ * @type {RejectionReason[]}
  */
 RegulatedOrderVerificationStatus.prototype.validRejectionReasons = undefined
 
@@ -112,7 +112,7 @@ RegulatedOrderVerificationStatus.prototype.externalReviewerId = undefined
 
 /**
  * A list of valid verification details that may be provided and the criteria required for when the verification detail can be provided.
- * @member {[ValidVerificationDetail]} validVerificationDetails
- * @type {[ValidVerificationDetail]}
+ * @member {ValidVerificationDetail[]} validVerificationDetails
+ * @type {ValidVerificationDetail[]}
  */
 RegulatedOrderVerificationStatus.prototype.validVerificationDetails = undefined

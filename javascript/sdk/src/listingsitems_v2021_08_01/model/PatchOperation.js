@@ -108,7 +108,7 @@ PatchOperation.prototype.path = undefined
 
 /**
  * JSON value to `add`, `replace`, `merge` or `delete`.
- * @member {[{String: Object}]} value
- * @type {[{String: Object}]}
+ * @member {{String: Object}[]} value
+ * @type {{String: Object}[]}
  */
 PatchOperation.prototype.value = undefined

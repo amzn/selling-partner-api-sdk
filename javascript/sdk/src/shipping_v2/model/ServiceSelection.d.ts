@@ -20,6 +20,6 @@ export class ServiceSelection {
      * @param serviceId {[String]} A list of ServiceId.
      */
     constructor(serviceId: [string]);
-    serviceId: [string];
+    serviceId: string[];
 }
 //# sourceMappingURL=ServiceSelection.d.ts.map

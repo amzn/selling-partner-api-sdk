@@ -68,15 +68,15 @@ export class CreateInboundPlanRequest {
 
 /**
  * Marketplaces where the items need to be shipped to. Currently only one marketplace can be selected in this request.
- * @member {[String]} destinationMarketplaces
- * @type {[String]}
+ * @member {String[]} destinationMarketplaces
+ * @type {String[]}
  */
 CreateInboundPlanRequest.prototype.destinationMarketplaces = undefined
 
 /**
  * Items included in this plan.
- * @member {[ItemInput]} items
- * @type {[ItemInput]}
+ * @member {ItemInput[]} items
+ * @type {ItemInput[]}
  */
 CreateInboundPlanRequest.prototype.items = undefined
 

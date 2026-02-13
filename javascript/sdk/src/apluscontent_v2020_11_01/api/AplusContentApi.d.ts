@@ -57,14 +57,14 @@ export class AplusContentApi {
        * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
        * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
        * @param {Object} [opts] Optional parameters
-       * @param {[String]} [opts.includedDataSet] The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata.
-       * @param {[String]} [opts.asinSet] The set of ASINs.
+       * @param {String[]} [opts.includedDataSet] The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata.
+       * @param {String[]} [opts.asinSet] The set of ASINs.
        * @param {String} [opts.pageToken] A token that you use to fetch a specific page when there are multiple pages of results.
        * @return {Promise<ListContentDocumentAsinRelationsResponse>}
        */
     listContentDocumentAsinRelationsWithHttpInfo(contentReferenceKey: string, marketplaceId: string, opts?: {
-        includedDataSet?: [string];
-        asinSet?: [string];
+        includedDataSet?: string[];
+        asinSet?: string[];
         pageToken?: string;
     }): Promise<ListContentDocumentAsinRelationsResponse>;
     /**
@@ -72,14 +72,14 @@ export class AplusContentApi {
        * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
        * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
        * @param {Object} [opts] Optional parameters
-       * @param {[String]} [opts.includedDataSet] The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata.
-       * @param {[String]} [opts.asinSet] The set of ASINs.
+       * @param {String[]} [opts.includedDataSet] The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata.
+       * @param {String[]} [opts.asinSet] The set of ASINs.
        * @param {String} [opts.pageToken] A token that you use to fetch a specific page when there are multiple pages of results.
        * @return {Promise<ListContentDocumentAsinRelationsResponse>}
        */
     listContentDocumentAsinRelations(contentReferenceKey: string, marketplaceId: string, opts?: {
-        includedDataSet?: [string];
-        asinSet?: [string];
+        includedDataSet?: string[];
+        asinSet?: string[];
         pageToken?: string;
     }): Promise<ListContentDocumentAsinRelationsResponse>;
     /**
@@ -189,22 +189,22 @@ export class AplusContentApi {
        * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
        * @param {PostContentDocumentRequest} postContentDocumentRequest The content document request details.
        * @param {Object} [opts] Optional parameters
-       * @param {[String]} [opts.asinSet] The set of ASINs.
+       * @param {String[]} [opts.asinSet] The set of ASINs.
        * @return {Promise<ValidateContentDocumentAsinRelationsResponse>}
        */
     validateContentDocumentAsinRelationsWithHttpInfo(marketplaceId: string, postContentDocumentRequest: PostContentDocumentRequest, opts?: {
-        asinSet?: [string];
+        asinSet?: string[];
     }): Promise<ValidateContentDocumentAsinRelationsResponse>;
     /**
        * Checks if the A+ Content document is valid for use on a set of ASINs.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
        * @param {PostContentDocumentRequest} postContentDocumentRequest The content document request details.
        * @param {Object} [opts] Optional parameters
-       * @param {[String]} [opts.asinSet] The set of ASINs.
+       * @param {String[]} [opts.asinSet] The set of ASINs.
        * @return {Promise<ValidateContentDocumentAsinRelationsResponse>}
        */
     validateContentDocumentAsinRelations(marketplaceId: string, postContentDocumentRequest: PostContentDocumentRequest, opts?: {
-        asinSet?: [string];
+        asinSet?: string[];
     }): Promise<ValidateContentDocumentAsinRelationsResponse>;
     #private;
 }

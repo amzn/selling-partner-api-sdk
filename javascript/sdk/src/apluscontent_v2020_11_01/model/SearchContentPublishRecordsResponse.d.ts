@@ -20,13 +20,13 @@ export class SearchContentPublishRecordsResponse {
      * @param publishRecordList {[PublishRecord]} A list of A+ Content publishing records.
      */
     constructor(publishRecordList: [PublishRecord]);
-    publishRecordList: [PublishRecord];
+    publishRecordList: PublishRecord[];
     /**
      * A set of messages to the user, such as warnings or comments.
-     * @member {[Error]} warnings
-     * @type {[Error]}
+     * @member {Error[]} warnings
+     * @type {Error[]}
      */
-    warnings: [Error];
+    warnings: Error[];
     /**
      * A token that you use to fetch a specific page when there are multiple pages of results.
      * @member {String} nextPageToken

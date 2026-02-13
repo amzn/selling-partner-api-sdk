@@ -70,14 +70,14 @@ ItemSalesRanksByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Sales ranks of an Amazon catalog item for a `marketplaceId`, grouped by classification.
- * @member {[ItemClassificationSalesRank]} classificationRanks
- * @type {[ItemClassificationSalesRank]}
+ * @member {ItemClassificationSalesRank[]} classificationRanks
+ * @type {ItemClassificationSalesRank[]}
  */
 ItemSalesRanksByMarketplace.prototype.classificationRanks = undefined
 
 /**
  * Sales ranks of an Amazon catalog item for a `marketplaceId`, grouped by website display group.
- * @member {[ItemDisplayGroupSalesRank]} displayGroupRanks
- * @type {[ItemDisplayGroupSalesRank]}
+ * @member {ItemDisplayGroupSalesRank[]} displayGroupRanks
+ * @type {ItemDisplayGroupSalesRank[]}
  */
 ItemSalesRanksByMarketplace.prototype.displayGroupRanks = undefined

@@ -20,7 +20,7 @@ export class ListInboundPlanBoxesResponse {
      * @param boxes {[Box]} A list of boxes in an inbound plan.
      */
     constructor(boxes: [Box]);
-    boxes: [Box];
+    boxes: Box[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

@@ -14,9 +14,9 @@ export class DiscountFunding {
     static constructFromObject(data: any, obj: DiscountFunding): DiscountFunding;
     /**
      * Filters the results to only include offers with the percentage specified.
-     * @member {[Number]} percentage
-     * @type {[Number]}
+     * @member {Number[]} percentage
+     * @type {Number[]}
      */
-    percentage: [number];
+    percentage: number[];
 }
 //# sourceMappingURL=DiscountFunding.d.ts.map

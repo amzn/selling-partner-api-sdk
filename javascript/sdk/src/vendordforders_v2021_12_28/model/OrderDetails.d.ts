@@ -34,7 +34,7 @@ export class OrderDetails {
     shipFromParty: PartyIdentification;
     shipToParty: Address;
     billToParty: PartyIdentification;
-    items: [OrderItem];
+    items: OrderItem[];
     /**
      * Current status of the order.
      * @member {String} orderStatus

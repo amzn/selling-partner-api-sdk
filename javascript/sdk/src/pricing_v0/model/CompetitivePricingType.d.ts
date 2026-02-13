@@ -21,8 +21,8 @@ export class CompetitivePricingType {
      * @param numberOfOfferListings {[OfferListingCountType]} The number of active offer listings for the item that was submitted. The listing count is returned by condition, one for each listing condition value that is returned.
      */
     constructor(competitivePrices: [CompetitivePriceType], numberOfOfferListings: [OfferListingCountType]);
-    competitivePrices: [CompetitivePriceType];
-    numberOfOfferListings: [OfferListingCountType];
+    competitivePrices: CompetitivePriceType[];
+    numberOfOfferListings: OfferListingCountType[];
     /**
      * @member {MoneyType} tradeInValue
      * @type {MoneyType}

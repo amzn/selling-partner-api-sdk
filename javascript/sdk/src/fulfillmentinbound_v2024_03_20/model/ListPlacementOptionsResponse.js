@@ -68,7 +68,7 @@ ListPlacementOptionsResponse.prototype.pagination = undefined
 
 /**
  * Placement options generated for the inbound plan.
- * @member {[PlacementOption]} placementOptions
- * @type {[PlacementOption]}
+ * @member {PlacementOption[]} placementOptions
+ * @type {PlacementOption[]}
  */
 ListPlacementOptionsResponse.prototype.placementOptions = undefined

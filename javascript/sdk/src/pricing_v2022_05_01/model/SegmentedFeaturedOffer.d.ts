@@ -29,7 +29,7 @@ export class SegmentedFeaturedOffer {
     condition: Condition;
     fulfillmentType: FulfillmentType;
     listingPrice: MoneyType;
-    featuredOfferSegments: [FeaturedOfferSegment];
+    featuredOfferSegments: FeaturedOfferSegment[];
     /**
      * The item subcondition of the offer.
      * @member {String} subCondition
@@ -38,10 +38,10 @@ export class SegmentedFeaturedOffer {
     subCondition: string;
     /**
      * A list of shipping options associated with this offer
-     * @member {[ShippingOption]} shippingOptions
-     * @type {[ShippingOption]}
+     * @member {ShippingOption[]} shippingOptions
+     * @type {ShippingOption[]}
      */
-    shippingOptions: [ShippingOption];
+    shippingOptions: ShippingOption[];
     /**
      * @member {Points} points
      * @type {Points}

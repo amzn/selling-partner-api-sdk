@@ -62,8 +62,8 @@ export class ProductTypeList {
 }
 
 /**
- * @member {[ProductType]} productTypes
- * @type {[ProductType]}
+ * @member {ProductType[]} productTypes
+ * @type {ProductType[]}
  */
 ProductTypeList.prototype.productTypes = undefined
 

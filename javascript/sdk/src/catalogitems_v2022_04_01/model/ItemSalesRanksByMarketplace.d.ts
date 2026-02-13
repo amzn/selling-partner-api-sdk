@@ -23,16 +23,16 @@ export class ItemSalesRanksByMarketplace {
     marketplaceId: string;
     /**
      * Sales ranks of an Amazon catalog item for a `marketplaceId`, grouped by classification.
-     * @member {[ItemClassificationSalesRank]} classificationRanks
-     * @type {[ItemClassificationSalesRank]}
+     * @member {ItemClassificationSalesRank[]} classificationRanks
+     * @type {ItemClassificationSalesRank[]}
      */
-    classificationRanks: [ItemClassificationSalesRank];
+    classificationRanks: ItemClassificationSalesRank[];
     /**
      * Sales ranks of an Amazon catalog item for a `marketplaceId`, grouped by website display group.
-     * @member {[ItemDisplayGroupSalesRank]} displayGroupRanks
-     * @type {[ItemDisplayGroupSalesRank]}
+     * @member {ItemDisplayGroupSalesRank[]} displayGroupRanks
+     * @type {ItemDisplayGroupSalesRank[]}
      */
-    displayGroupRanks: [ItemDisplayGroupSalesRank];
+    displayGroupRanks: ItemDisplayGroupSalesRank[];
 }
 import { ItemClassificationSalesRank } from './ItemClassificationSalesRank.js';
 import { ItemDisplayGroupSalesRank } from './ItemDisplayGroupSalesRank.js';

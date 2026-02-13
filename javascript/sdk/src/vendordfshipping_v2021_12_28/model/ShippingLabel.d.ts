@@ -28,7 +28,7 @@ export class ShippingLabel {
     sellingParty: PartyIdentification;
     shipFromParty: PartyIdentification;
     labelFormat: string;
-    labelData: [LabelData];
+    labelData: LabelData[];
 }
 export namespace ShippingLabel {
     namespace LabelFormatEnum {

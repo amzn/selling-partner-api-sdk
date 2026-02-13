@@ -66,15 +66,15 @@ export class CompetitivePricingType {
 
 /**
  * A list of competitive pricing information.
- * @member {[CompetitivePriceType]} competitivePrices
- * @type {[CompetitivePriceType]}
+ * @member {CompetitivePriceType[]} competitivePrices
+ * @type {CompetitivePriceType[]}
  */
 CompetitivePricingType.prototype.competitivePrices = undefined
 
 /**
  * The number of active offer listings for the item that was submitted. The listing count is returned by condition, one for each listing condition value that is returned.
- * @member {[OfferListingCountType]} numberOfOfferListings
- * @type {[OfferListingCountType]}
+ * @member {OfferListingCountType[]} numberOfOfferListings
+ * @type {OfferListingCountType[]}
  */
 CompetitivePricingType.prototype.numberOfOfferListings = undefined
 

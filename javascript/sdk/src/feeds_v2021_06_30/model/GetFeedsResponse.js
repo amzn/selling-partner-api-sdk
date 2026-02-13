@@ -61,8 +61,8 @@ export class GetFeedsResponse {
 
 /**
  * A list of feeds.
- * @member {[Feed]} feeds
- * @type {[Feed]}
+ * @member {Feed[]} feeds
+ * @type {Feed[]}
  */
 GetFeedsResponse.prototype.feeds = undefined
 

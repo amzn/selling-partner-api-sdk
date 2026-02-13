@@ -22,19 +22,19 @@ export class LinkCarrierAccountRequest {
      */
     constructor(carrierAccountType: string, carrierAccountAttributes: [CarrierAccountAttribute]);
     carrierAccountType: string;
-    carrierAccountAttributes: [CarrierAccountAttribute];
+    carrierAccountAttributes: CarrierAccountAttribute[];
     /**
      * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
-     * @member {[ClientReferenceDetail]} clientReferenceDetails
-     * @type {[ClientReferenceDetail]}
+     * @member {ClientReferenceDetail[]} clientReferenceDetails
+     * @type {ClientReferenceDetail[]}
      */
-    clientReferenceDetails: [ClientReferenceDetail];
+    clientReferenceDetails: ClientReferenceDetail[];
     /**
      * A list of all attributes required by the carrier in order to successfully link the merchant's account
-     * @member {[CarrierAccountAttribute]} encryptedCarrierAccountAttributes
-     * @type {[CarrierAccountAttribute]}
+     * @member {CarrierAccountAttribute[]} encryptedCarrierAccountAttributes
+     * @type {CarrierAccountAttribute[]}
      */
-    encryptedCarrierAccountAttributes: [CarrierAccountAttribute];
+    encryptedCarrierAccountAttributes: CarrierAccountAttribute[];
 }
 import { CarrierAccountAttribute } from './CarrierAccountAttribute.js';
 import { ClientReferenceDetail } from './ClientReferenceDetail.js';

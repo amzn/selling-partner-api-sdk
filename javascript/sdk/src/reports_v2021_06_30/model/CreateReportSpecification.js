@@ -93,7 +93,7 @@ CreateReportSpecification.prototype.dataEndTime = undefined
 
 /**
  * A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.
- * @member {[String]} marketplaceIds
- * @type {[String]}
+ * @member {String[]} marketplaceIds
+ * @type {String[]}
  */
 CreateReportSpecification.prototype.marketplaceIds = undefined

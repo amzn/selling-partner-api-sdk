@@ -20,7 +20,7 @@ export class Route {
      * @param stops {[Stop]} The port or location involved in transporting the cargo, as specified in transportation contracts or operational plans.
      */
     constructor(stops: [Stop]);
-    stops: [Stop];
+    stops: Stop[];
 }
 import { Stop } from './Stop.js';
 //# sourceMappingURL=Route.d.ts.map

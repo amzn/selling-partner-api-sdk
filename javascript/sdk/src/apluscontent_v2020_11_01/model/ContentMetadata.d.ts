@@ -27,7 +27,7 @@ export class ContentMetadata {
     name: string;
     marketplaceId: string;
     status: ContentStatus;
-    badgeSet: [ContentBadge];
+    badgeSet: ContentBadge[];
     updateTime: Date;
 }
 import { ContentStatus } from './ContentStatus.js';

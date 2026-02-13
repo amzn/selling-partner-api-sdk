@@ -20,7 +20,7 @@ export class ListShipmentPalletsResponse {
      * @param pallets {[Pallet]} The pallets in a shipment.
      */
     constructor(pallets: [Pallet]);
-    pallets: [Pallet];
+    pallets: Pallet[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

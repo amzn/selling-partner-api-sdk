@@ -209,8 +209,8 @@ ItemSummaryByMarketplace.StatusEnum = {
 }
 /**
  * Statuses that apply to the listings item.
- * @member {[String]} status
- * @type {[String]}
+ * @member {String[]} status
+ * @type {String[]}
  */
 ItemSummaryByMarketplace.prototype.status = undefined
 

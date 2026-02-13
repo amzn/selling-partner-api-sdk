@@ -70,7 +70,7 @@ GetInventorySummariesResult.prototype.granularity = undefined
 
 /**
  * A list of inventory summaries.
- * @member {[InventorySummary]} inventorySummaries
- * @type {[InventorySummary]}
+ * @member {InventorySummary[]} inventorySummaries
+ * @type {InventorySummary[]}
  */
 GetInventorySummariesResult.prototype.inventorySummaries = undefined

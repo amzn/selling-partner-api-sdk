@@ -70,7 +70,7 @@ ItemIdentifiersByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Identifiers associated with the item in the Amazon catalog for the indicated `marketplaceId`.
- * @member {[ItemIdentifier]} identifiers
- * @type {[ItemIdentifier]}
+ * @member {ItemIdentifier[]} identifiers
+ * @type {ItemIdentifier[]}
  */
 ItemIdentifiersByMarketplace.prototype.identifiers = undefined

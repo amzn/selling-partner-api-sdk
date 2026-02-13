@@ -28,25 +28,25 @@ export class Order {
     createdTime: Date;
     lastUpdatedTime: Date;
     salesChannel: SalesChannel;
-    orderItems: [OrderItem];
+    orderItems: OrderItem[];
     /**
      * Alternative identifiers that can be used to reference this order, such as seller-defined order numbers.
-     * @member {[Alias]} orderAliases
-     * @type {[Alias]}
+     * @member {Alias[]} orderAliases
+     * @type {Alias[]}
      */
-    orderAliases: [Alias];
+    orderAliases: Alias[];
     /**
      * Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`,  `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`
-     * @member {[String]} programs
-     * @type {[String]}
+     * @member {String[]} programs
+     * @type {String[]}
      */
-    programs: [string];
+    programs: string[];
     /**
      * Other orders that have a direct relationship to this order, such as replacement or exchange orders.
-     * @member {[AssociatedOrder]} associatedOrders
-     * @type {[AssociatedOrder]}
+     * @member {AssociatedOrder[]} associatedOrders
+     * @type {AssociatedOrder[]}
      */
-    associatedOrders: [AssociatedOrder];
+    associatedOrders: AssociatedOrder[];
     /**
      * @member {Buyer} buyer
      * @type {Buyer}
@@ -69,10 +69,10 @@ export class Order {
     fulfillment: OrderFulfillment;
     /**
      * Shipping packages created for this order, including tracking information. **Note:** Only available for merchant-fulfilled (FBM) orders.
-     * @member {[OrderPackage]} packages
-     * @type {[OrderPackage]}
+     * @member {OrderPackage[]} packages
+     * @type {OrderPackage[]}
      */
-    packages: [OrderPackage];
+    packages: OrderPackage[];
 }
 import { SalesChannel } from './SalesChannel.js';
 import { OrderItem } from './OrderItem.js';

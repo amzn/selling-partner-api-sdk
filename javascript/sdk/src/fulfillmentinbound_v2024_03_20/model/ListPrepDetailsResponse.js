@@ -60,7 +60,7 @@ export class ListPrepDetailsResponse {
 
 /**
  * A list of MSKUs and related prep details.
- * @member {[MskuPrepDetail]} mskuPrepDetails
- * @type {[MskuPrepDetail]}
+ * @member {MskuPrepDetail[]} mskuPrepDetails
+ * @type {MskuPrepDetail[]}
  */
 ListPrepDetailsResponse.prototype.mskuPrepDetails = undefined

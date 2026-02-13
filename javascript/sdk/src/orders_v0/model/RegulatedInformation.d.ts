@@ -20,7 +20,7 @@ export class RegulatedInformation {
      * @param fields {[RegulatedInformationField]} A list of regulated information fields as collected from the regulatory form.
      */
     constructor(fields: [RegulatedInformationField]);
-    fields: [RegulatedInformationField];
+    fields: RegulatedInformationField[];
 }
 import { RegulatedInformationField } from './RegulatedInformationField.js';
 //# sourceMappingURL=RegulatedInformation.d.ts.map

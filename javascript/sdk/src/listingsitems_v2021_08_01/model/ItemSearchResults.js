@@ -78,7 +78,7 @@ ItemSearchResults.prototype.pagination = undefined
 
 /**
  * A list of listings items.
- * @member {[Item]} items
- * @type {[Item]}
+ * @member {Item[]} items
+ * @type {Item[]}
  */
 ItemSearchResults.prototype.items = undefined

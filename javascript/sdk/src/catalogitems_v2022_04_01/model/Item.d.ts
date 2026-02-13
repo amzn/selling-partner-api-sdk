@@ -31,58 +31,58 @@ export class Item {
     };
     /**
      * An array of classifications (browse nodes) that is associated with the item in the Amazon catalog, grouped by `marketplaceId`.
-     * @member {[ItemBrowseClassificationsByMarketplace]} classifications
-     * @type {[ItemBrowseClassificationsByMarketplace]}
+     * @member {ItemBrowseClassificationsByMarketplace[]} classifications
+     * @type {ItemBrowseClassificationsByMarketplace[]}
      */
-    classifications: [ItemBrowseClassificationsByMarketplace];
+    classifications: ItemBrowseClassificationsByMarketplace[];
     /**
      * An array of dimensions that are associated with the item in the Amazon catalog, grouped by `marketplaceId`.
-     * @member {[ItemDimensionsByMarketplace]} dimensions
-     * @type {[ItemDimensionsByMarketplace]}
+     * @member {ItemDimensionsByMarketplace[]} dimensions
+     * @type {ItemDimensionsByMarketplace[]}
      */
-    dimensions: [ItemDimensionsByMarketplace];
+    dimensions: ItemDimensionsByMarketplace[];
     /**
      * Identifiers associated with the item in the Amazon catalog, such as UPC and EAN identifiers.
-     * @member {[ItemIdentifiersByMarketplace]} identifiers
-     * @type {[ItemIdentifiersByMarketplace]}
+     * @member {ItemIdentifiersByMarketplace[]} identifiers
+     * @type {ItemIdentifiersByMarketplace[]}
      */
-    identifiers: [ItemIdentifiersByMarketplace];
+    identifiers: ItemIdentifiersByMarketplace[];
     /**
      * The images for an item in the Amazon catalog.
-     * @member {[ItemImagesByMarketplace]} images
-     * @type {[ItemImagesByMarketplace]}
+     * @member {ItemImagesByMarketplace[]} images
+     * @type {ItemImagesByMarketplace[]}
      */
-    images: [ItemImagesByMarketplace];
+    images: ItemImagesByMarketplace[];
     /**
      * Product types that are associated with the Amazon catalog item.
-     * @member {[ItemProductTypeByMarketplace]} productTypes
-     * @type {[ItemProductTypeByMarketplace]}
+     * @member {ItemProductTypeByMarketplace[]} productTypes
+     * @type {ItemProductTypeByMarketplace[]}
      */
-    productTypes: [ItemProductTypeByMarketplace];
+    productTypes: ItemProductTypeByMarketplace[];
     /**
      * Relationships grouped by `marketplaceId` for an Amazon catalog item (for example, variations).
-     * @member {[ItemRelationshipsByMarketplace]} relationships
-     * @type {[ItemRelationshipsByMarketplace]}
+     * @member {ItemRelationshipsByMarketplace[]} relationships
+     * @type {ItemRelationshipsByMarketplace[]}
      */
-    relationships: [ItemRelationshipsByMarketplace];
+    relationships: ItemRelationshipsByMarketplace[];
     /**
      * Sales ranks of an Amazon catalog item.
-     * @member {[ItemSalesRanksByMarketplace]} salesRanks
-     * @type {[ItemSalesRanksByMarketplace]}
+     * @member {ItemSalesRanksByMarketplace[]} salesRanks
+     * @type {ItemSalesRanksByMarketplace[]}
      */
-    salesRanks: [ItemSalesRanksByMarketplace];
+    salesRanks: ItemSalesRanksByMarketplace[];
     /**
      * Summaries of Amazon catalog items.
-     * @member {[ItemSummaryByMarketplace]} summaries
-     * @type {[ItemSummaryByMarketplace]}
+     * @member {ItemSummaryByMarketplace[]} summaries
+     * @type {ItemSummaryByMarketplace[]}
      */
-    summaries: [ItemSummaryByMarketplace];
+    summaries: ItemSummaryByMarketplace[];
     /**
      * The vendor details that are associated with an Amazon catalog item. Vendor details are only available to vendors.
-     * @member {[ItemVendorDetailsByMarketplace]} vendorDetails
-     * @type {[ItemVendorDetailsByMarketplace]}
+     * @member {ItemVendorDetailsByMarketplace[]} vendorDetails
+     * @type {ItemVendorDetailsByMarketplace[]}
      */
-    vendorDetails: [ItemVendorDetailsByMarketplace];
+    vendorDetails: ItemVendorDetailsByMarketplace[];
 }
 import { ItemBrowseClassificationsByMarketplace } from './ItemBrowseClassificationsByMarketplace.js';
 import { ItemDimensionsByMarketplace } from './ItemDimensionsByMarketplace.js';

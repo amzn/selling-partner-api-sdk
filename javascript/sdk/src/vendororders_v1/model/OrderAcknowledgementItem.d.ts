@@ -22,7 +22,7 @@ export class OrderAcknowledgementItem {
      */
     constructor(orderedQuantity: ItemQuantity, itemAcknowledgements: [OrderItemAcknowledgement]);
     orderedQuantity: ItemQuantity;
-    itemAcknowledgements: [OrderItemAcknowledgement];
+    itemAcknowledgements: OrderItemAcknowledgement[];
     /**
      * Line item sequence number for the item.
      * @member {String} itemSequenceNumber

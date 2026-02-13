@@ -93,15 +93,15 @@ Package.prototype.weight = undefined
 
 /**
  * The optional list of HAZMAT labels applied to the package.
- * @member {[String]} hazmatLabels
- * @type {[String]}
+ * @member {String[]} hazmatLabels
+ * @type {String[]}
  */
 Package.prototype.hazmatLabels = undefined
 
 /**
  * The list of line items in a package.
- * @member {[PackageLineItem]} packageLineItems
- * @type {[PackageLineItem]}
+ * @member {PackageLineItem[]} packageLineItems
+ * @type {PackageLineItem[]}
  */
 Package.prototype.packageLineItems = undefined
 

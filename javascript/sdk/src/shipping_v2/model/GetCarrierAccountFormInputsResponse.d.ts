@@ -14,10 +14,10 @@ export class GetCarrierAccountFormInputsResponse {
     static constructFromObject(data: any, obj: GetCarrierAccountFormInputsResponse): GetCarrierAccountFormInputsResponse;
     /**
      * A list of LinkableCarrier
-     * @member {[LinkableCarrier]} linkableCarriersList
-     * @type {[LinkableCarrier]}
+     * @member {LinkableCarrier[]} linkableCarriersList
+     * @type {LinkableCarrier[]}
      */
-    linkableCarriersList: [LinkableCarrier];
+    linkableCarriersList: LinkableCarrier[];
 }
 import { LinkableCarrier } from './LinkableCarrier.js';
 //# sourceMappingURL=GetCarrierAccountFormInputsResponse.d.ts.map

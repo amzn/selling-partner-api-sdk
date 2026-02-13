@@ -20,7 +20,7 @@ export class InboundPackages {
      * @param packagesToInbound {[DistributionPackageQuantity]} List of packages to be inbounded.
      */
     constructor(packagesToInbound: [DistributionPackageQuantity]);
-    packagesToInbound: [DistributionPackageQuantity];
+    packagesToInbound: DistributionPackageQuantity[];
 }
 import { DistributionPackageQuantity } from './DistributionPackageQuantity.js';
 //# sourceMappingURL=InboundPackages.d.ts.map

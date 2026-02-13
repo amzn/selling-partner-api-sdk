@@ -60,7 +60,7 @@ export class CompetitiveSummaryBatchRequest {
 
 /**
  * A batched list of `competitiveSummary` requests.
- * @member {[CompetitiveSummaryRequest]} requests
- * @type {[CompetitiveSummaryRequest]}
+ * @member {CompetitiveSummaryRequest[]} requests
+ * @type {CompetitiveSummaryRequest[]}
  */
 CompetitiveSummaryBatchRequest.prototype.requests = undefined

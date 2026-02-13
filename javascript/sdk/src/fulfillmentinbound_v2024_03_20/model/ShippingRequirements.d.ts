@@ -21,7 +21,7 @@ export class ShippingRequirements {
      * @param solution {String} Shipping program for the option. Can be: `AMAZON_PARTNERED_CARRIER`, `USE_YOUR_OWN_CARRIER`.
      */
     constructor(modes: [string], solution: string);
-    modes: [string];
+    modes: string[];
     solution: string;
 }
 //# sourceMappingURL=ShippingRequirements.d.ts.map

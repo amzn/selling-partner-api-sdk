@@ -86,8 +86,8 @@ BoxUpdateInput.prototype.dimensions = undefined
 
 /**
  * The items and their quantity in the box. This must be empty if the box `contentInformationSource` is `BARCODE_2D` or `MANUAL_PROCESS`.
- * @member {[ItemInput]} items
- * @type {[ItemInput]}
+ * @member {ItemInput[]} items
+ * @type {ItemInput[]}
  */
 BoxUpdateInput.prototype.items = undefined
 

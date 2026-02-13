@@ -23,7 +23,7 @@ export class CreateFeedSpecification {
      */
     constructor(feedType: string, marketplaceIds: [string], inputFeedDocumentId: string);
     feedType: string;
-    marketplaceIds: [string];
+    marketplaceIds: string[];
     inputFeedDocumentId: string;
     /**
      * Additional options to control the feed. These vary by feed type.

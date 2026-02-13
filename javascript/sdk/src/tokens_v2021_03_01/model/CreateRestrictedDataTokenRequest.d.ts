@@ -20,7 +20,7 @@ export class CreateRestrictedDataTokenRequest {
      * @param restrictedResources {[RestrictedResource]} A list of restricted resources. Maximum: 50
      */
     constructor(restrictedResources: [RestrictedResource]);
-    restrictedResources: [RestrictedResource];
+    restrictedResources: RestrictedResource[];
     /**
      * The application ID for the target application to which access is being delegated.
      * @member {String} targetApplication

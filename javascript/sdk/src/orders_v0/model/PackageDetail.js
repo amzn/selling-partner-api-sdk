@@ -124,7 +124,7 @@ PackageDetail.prototype.shipFromSupplySourceId = undefined
 
 /**
  * A list of order items.
- * @member {[ConfirmShipmentOrderItem]} orderItems
- * @type {[ConfirmShipmentOrderItem]}
+ * @member {ConfirmShipmentOrderItem[]} orderItems
+ * @type {ConfirmShipmentOrderItem[]}
  */
 PackageDetail.prototype.orderItems = undefined

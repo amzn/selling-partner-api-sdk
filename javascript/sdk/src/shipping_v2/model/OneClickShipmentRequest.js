@@ -120,22 +120,22 @@ OneClickShipmentRequest.prototype.goodsOwner = undefined
 
 /**
  * A list of packages to be shipped through a shipping service offering.
- * @member {[Package]} packages
- * @type {[Package]}
+ * @member {Package[]} packages
+ * @type {Package[]}
  */
 OneClickShipmentRequest.prototype.packages = undefined
 
 /**
  * The value-added services to be added to a shipping service purchase.
- * @member {[OneClickShipmentValueAddedService]} valueAddedServicesDetails
- * @type {[OneClickShipmentValueAddedService]}
+ * @member {OneClickShipmentValueAddedService[]} valueAddedServicesDetails
+ * @type {OneClickShipmentValueAddedService[]}
  */
 OneClickShipmentRequest.prototype.valueAddedServicesDetails = undefined
 
 /**
  * A list of tax detail information.
- * @member {[TaxDetail]} taxDetails
- * @type {[TaxDetail]}
+ * @member {TaxDetail[]} taxDetails
+ * @type {TaxDetail[]}
  */
 OneClickShipmentRequest.prototype.taxDetails = undefined
 

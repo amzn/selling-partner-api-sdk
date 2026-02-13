@@ -100,8 +100,8 @@ CreateMarketplaceItemLabelsRequest.prototype.marketplaceId = undefined
 
 /**
  * Represents the quantity of an MSKU to print item labels for.
- * @member {[MskuQuantity]} mskuQuantities
- * @type {[MskuQuantity]}
+ * @member {MskuQuantity[]} mskuQuantities
+ * @type {MskuQuantity[]}
  */
 CreateMarketplaceItemLabelsRequest.prototype.mskuQuantities = undefined
 

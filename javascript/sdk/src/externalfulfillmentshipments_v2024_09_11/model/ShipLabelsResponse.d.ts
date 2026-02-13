@@ -20,7 +20,7 @@ export class ShipLabelsResponse {
      * @param packageShipLabelList {[PackageShipLabel]} A list of label documents for each package specified in the request. In case of partial failures when generating labels, the `isErrored` and `errorDetails` attributes detail the cause of failure.
      */
     constructor(packageShipLabelList: [PackageShipLabel]);
-    packageShipLabelList: [PackageShipLabel];
+    packageShipLabelList: PackageShipLabel[];
 }
 import { PackageShipLabel } from './PackageShipLabel.js';
 //# sourceMappingURL=ShipLabelsResponse.d.ts.map

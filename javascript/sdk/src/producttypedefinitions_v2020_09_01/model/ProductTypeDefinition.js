@@ -171,8 +171,8 @@ ProductTypeDefinition.prototype.locale = undefined
 
 /**
  * Amazon marketplace identifiers for which the product type definition is applicable.
- * @member {[String]} marketplaceIds
- * @type {[String]}
+ * @member {String[]} marketplaceIds
+ * @type {String[]}
  */
 ProductTypeDefinition.prototype.marketplaceIds = undefined
 

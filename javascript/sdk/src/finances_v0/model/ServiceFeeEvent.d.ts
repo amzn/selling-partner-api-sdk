@@ -26,10 +26,10 @@ export class ServiceFeeEvent {
     feeReason: string;
     /**
      * A list of fee component information.
-     * @member {[FeeComponent]} feeList
-     * @type {[FeeComponent]}
+     * @member {FeeComponent[]} feeList
+     * @type {FeeComponent[]}
      */
-    feeList: [FeeComponent];
+    feeList: FeeComponent[];
     /**
      * The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.
      * @member {String} sellerSKU

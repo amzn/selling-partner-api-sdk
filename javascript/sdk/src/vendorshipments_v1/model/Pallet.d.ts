@@ -20,7 +20,7 @@ export class Pallet {
      * @param palletIdentifiers {[ContainerIdentification]} A list of pallet identifiers.
      */
     constructor(palletIdentifiers: [ContainerIdentification]);
-    palletIdentifiers: [ContainerIdentification];
+    palletIdentifiers: ContainerIdentification[];
     /**
      * Number of layers per pallet. Only applicable to container type Pallet.
      * @member {Number} tier
@@ -50,10 +50,10 @@ export class Pallet {
     cartonReferenceDetails: CartonReferenceDetails;
     /**
      * A list of container item details.
-     * @member {[ContainerItem]} items
-     * @type {[ContainerItem]}
+     * @member {ContainerItem[]} items
+     * @type {ContainerItem[]}
      */
-    items: [ContainerItem];
+    items: ContainerItem[];
 }
 import { ContainerIdentification } from './ContainerIdentification.js';
 import { Dimensions } from './Dimensions.js';

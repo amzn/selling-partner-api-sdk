@@ -20,7 +20,7 @@ export class ListInboundPlanItemsResponse {
      * @param items {[Item]} The items in an inbound plan.
      */
     constructor(items: [Item]);
-    items: [Item];
+    items: Item[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

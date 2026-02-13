@@ -32,7 +32,7 @@ export class OrderAcknowledgementItem {
     acknowledgementStatus: AcknowledgementStatus;
     sellingParty: PartyIdentification;
     shipFromParty: PartyIdentification;
-    itemAcknowledgements: [OrderItemAcknowledgement];
+    itemAcknowledgements: OrderItemAcknowledgement[];
 }
 import { AcknowledgementStatus } from './AcknowledgementStatus.js';
 import { PartyIdentification } from './PartyIdentification.js';

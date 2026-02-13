@@ -61,8 +61,8 @@ export class InventoryListing {
 
 /**
  * List of inventory summaries.
- * @member {[InventorySummary]} inventory
- * @type {[InventorySummary]}
+ * @member {InventorySummary[]} inventory
+ * @type {InventorySummary[]}
  */
 InventoryListing.prototype.inventory = undefined
 

@@ -19,6 +19,6 @@ export class PostContentDocumentAsinRelationsRequest {
      * @param asinSet {[String]} The set of ASINs.
      */
     constructor(asinSet: [string]);
-    asinSet: [string];
+    asinSet: string[];
 }
 //# sourceMappingURL=PostContentDocumentAsinRelationsRequest.d.ts.map

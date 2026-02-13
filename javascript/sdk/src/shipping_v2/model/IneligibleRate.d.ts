@@ -28,7 +28,7 @@ export class IneligibleRate {
     serviceName: string;
     carrierName: string;
     carrierId: string;
-    ineligibilityReasons: [IneligibilityReason];
+    ineligibilityReasons: IneligibilityReason[];
 }
 import { IneligibilityReason } from './IneligibilityReason.js';
 //# sourceMappingURL=IneligibleRate.d.ts.map

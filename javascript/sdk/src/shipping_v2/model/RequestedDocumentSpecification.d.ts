@@ -26,7 +26,7 @@ export class RequestedDocumentSpecification {
     format: DocumentFormat;
     size: DocumentSize;
     needFileJoining: boolean;
-    requestedDocumentTypes: [DocumentType];
+    requestedDocumentTypes: DocumentType[];
     /**
      * The dots per inch (DPI) value used in printing. This value represents a measure of the resolution of the document.
      * @member {Number} dpi

@@ -20,7 +20,7 @@ export class ReportScheduleList {
      * @param reportSchedules {[ReportSchedule]} Detailed information about a report schedule.
      */
     constructor(reportSchedules: [ReportSchedule]);
-    reportSchedules: [ReportSchedule];
+    reportSchedules: ReportSchedule[];
 }
 import { ReportSchedule } from './ReportSchedule.js';
 //# sourceMappingURL=ReportScheduleList.d.ts.map

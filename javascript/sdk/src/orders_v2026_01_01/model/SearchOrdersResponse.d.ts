@@ -20,7 +20,7 @@ export class SearchOrdersResponse {
      * @param orders {[Order]} An array containing all orders that match the search criteria.
      */
     constructor(orders: [Order]);
-    orders: [Order];
+    orders: Order[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

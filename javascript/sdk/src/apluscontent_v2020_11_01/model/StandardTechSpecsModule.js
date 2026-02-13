@@ -69,8 +69,8 @@ StandardTechSpecsModule.prototype.headline = undefined
 
 /**
  * The specification list.
- * @member {[StandardTextPairBlock]} specificationList
- * @type {[StandardTextPairBlock]}
+ * @member {StandardTextPairBlock[]} specificationList
+ * @type {StandardTextPairBlock[]}
  */
 StandardTechSpecsModule.prototype.specificationList = undefined
 

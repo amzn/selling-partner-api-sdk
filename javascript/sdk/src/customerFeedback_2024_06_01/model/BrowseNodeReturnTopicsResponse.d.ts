@@ -30,7 +30,7 @@ export class BrowseNodeReturnTopicsResponse {
     marketplaceId: string;
     countryCode: string;
     dateRange: DateRange;
-    topics: [BrowseNodeReturnTopics];
+    topics: BrowseNodeReturnTopics[];
 }
 import { DateRange } from './DateRange.js';
 import { BrowseNodeReturnTopics } from './BrowseNodeReturnTopics.js';

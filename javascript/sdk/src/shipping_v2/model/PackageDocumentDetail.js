@@ -71,8 +71,8 @@ PackageDocumentDetail.prototype.packageClientReferenceId = undefined
 
 /**
  * A list of documents related to a package.
- * @member {[PackageDocument]} packageDocuments
- * @type {[PackageDocument]}
+ * @member {PackageDocument[]} packageDocuments
+ * @type {PackageDocument[]}
  */
 PackageDocumentDetail.prototype.packageDocuments = undefined
 

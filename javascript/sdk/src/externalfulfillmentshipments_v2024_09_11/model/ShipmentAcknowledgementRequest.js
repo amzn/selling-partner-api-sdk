@@ -68,7 +68,7 @@ ShipmentAcknowledgementRequest.prototype.referenceId = undefined
 
 /**
  * Details about the line items from the shipment that are being confirmed or rejected by the seller.
- * @member {[LineItemWithReason]} lineItems
- * @type {[LineItemWithReason]}
+ * @member {LineItemWithReason[]} lineItems
+ * @type {LineItemWithReason[]}
  */
 ShipmentAcknowledgementRequest.prototype.lineItems = undefined

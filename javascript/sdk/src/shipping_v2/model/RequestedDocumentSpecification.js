@@ -108,8 +108,8 @@ RequestedDocumentSpecification.prototype.needFileJoining = undefined
 
 /**
  * A list of the document types requested.
- * @member {[DocumentType]} requestedDocumentTypes
- * @type {[DocumentType]}
+ * @member {DocumentType[]} requestedDocumentTypes
+ * @type {DocumentType[]}
  */
 RequestedDocumentSpecification.prototype.requestedDocumentTypes = undefined
 

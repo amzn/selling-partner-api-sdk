@@ -81,8 +81,8 @@ export class PackingOption {
 
 /**
  * Discount for the offered option.
- * @member {[Incentive]} discounts
- * @type {[Incentive]}
+ * @member {Incentive[]} discounts
+ * @type {Incentive[]}
  */
 PackingOption.prototype.discounts = undefined
 
@@ -95,15 +95,15 @@ PackingOption.prototype.expiration = undefined
 
 /**
  * Fee for the offered option.
- * @member {[Incentive]} fees
- * @type {[Incentive]}
+ * @member {Incentive[]} fees
+ * @type {Incentive[]}
  */
 PackingOption.prototype.fees = undefined
 
 /**
  * Packing group IDs.
- * @member {[String]} packingGroups
- * @type {[String]}
+ * @member {String[]} packingGroups
+ * @type {String[]}
  */
 PackingOption.prototype.packingGroups = undefined
 
@@ -123,14 +123,14 @@ PackingOption.prototype.status = undefined
 
 /**
  * A list of possible configurations for this option.
- * @member {[PackingConfiguration]} supportedConfigurations
- * @type {[PackingConfiguration]}
+ * @member {PackingConfiguration[]} supportedConfigurations
+ * @type {PackingConfiguration[]}
  */
 PackingOption.prototype.supportedConfigurations = undefined
 
 /**
  * **This field is deprecated**. Use the `shippingRequirements` property under `supportedConfigurations` instead. List of supported shipping modes.
- * @member {[ShippingConfiguration]} supportedShippingConfigurations
- * @type {[ShippingConfiguration]}
+ * @member {ShippingConfiguration[]} supportedShippingConfigurations
+ * @type {ShippingConfiguration[]}
  */
 PackingOption.prototype.supportedShippingConfigurations = undefined

@@ -70,7 +70,7 @@ GenerateTransportationOptionsRequest.prototype.placementOptionId = undefined
 
 /**
  * List of shipment transportation configurations.
- * @member {[ShipmentTransportationConfiguration]} shipmentTransportationConfigurations
- * @type {[ShipmentTransportationConfiguration]}
+ * @member {ShipmentTransportationConfiguration[]} shipmentTransportationConfigurations
+ * @type {ShipmentTransportationConfiguration[]}
  */
 GenerateTransportationOptionsRequest.prototype.shipmentTransportationConfigurations = undefined

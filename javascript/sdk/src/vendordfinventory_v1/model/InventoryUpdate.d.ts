@@ -24,7 +24,7 @@ export class InventoryUpdate {
     constructor(sellingParty: PartyIdentification, isFullUpdate: boolean, items: [ItemDetails]);
     sellingParty: PartyIdentification;
     isFullUpdate: boolean;
-    items: [ItemDetails];
+    items: ItemDetails[];
 }
 import { PartyIdentification } from './PartyIdentification.js';
 import { ItemDetails } from './ItemDetails.js';

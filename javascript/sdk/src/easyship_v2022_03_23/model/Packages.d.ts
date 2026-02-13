@@ -20,7 +20,7 @@ export class Packages {
      * @param packages {[Package]} A list of packages.
      */
     constructor(packages: [Package]);
-    packages: [Package];
+    packages: Package[];
 }
 import { Package } from './Package.js';
 //# sourceMappingURL=Packages.d.ts.map

@@ -20,7 +20,7 @@ export class ListInboundPlanPalletsResponse {
      * @param pallets {[Pallet]} The pallets in an inbound plan.
      */
     constructor(pallets: [Pallet]);
-    pallets: [Pallet];
+    pallets: Pallet[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

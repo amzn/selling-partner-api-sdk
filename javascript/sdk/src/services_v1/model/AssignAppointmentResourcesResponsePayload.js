@@ -58,7 +58,7 @@ export class AssignAppointmentResourcesResponsePayload {
 
 /**
  * A list of warnings returned in the sucessful execution response of an API request.
- * @member {[Warning]} warnings
- * @type {[Warning]}
+ * @member {Warning[]} warnings
+ * @type {Warning[]}
  */
 AssignAppointmentResourcesResponsePayload.prototype.warnings = undefined

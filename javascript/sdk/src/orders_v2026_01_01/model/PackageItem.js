@@ -77,7 +77,7 @@ PackageItem.prototype.quantity = undefined
 
 /**
  * The transparency codes associated with this item for product authentication.
- * @member {[String]} transparencyCodes
- * @type {[String]}
+ * @member {String[]} transparencyCodes
+ * @type {String[]}
  */
 PackageItem.prototype.transparencyCodes = undefined

@@ -35,7 +35,7 @@ export class Rate {
     serviceName: string;
     totalCharge: Currency;
     promise: Promise;
-    supportedDocumentSpecifications: [SupportedDocumentSpecification];
+    supportedDocumentSpecifications: SupportedDocumentSpecification[];
     requiresAdditionalInputs: boolean;
     /**
      * @member {Weight} billedWeight
@@ -44,16 +44,16 @@ export class Rate {
     billedWeight: Weight;
     /**
      * A list of value-added services available for a shipping service offering.
-     * @member {[AvailableValueAddedServiceGroup]} availableValueAddedServiceGroups
-     * @type {[AvailableValueAddedServiceGroup]}
+     * @member {AvailableValueAddedServiceGroup[]} availableValueAddedServiceGroups
+     * @type {AvailableValueAddedServiceGroup[]}
      */
-    availableValueAddedServiceGroups: [AvailableValueAddedServiceGroup];
+    availableValueAddedServiceGroups: AvailableValueAddedServiceGroup[];
     /**
      * A list of RateItem
-     * @member {[RateItem]} rateItemList
-     * @type {[RateItem]}
+     * @member {RateItem[]} rateItemList
+     * @type {RateItem[]}
      */
-    rateItemList: [RateItem];
+    rateItemList: RateItem[];
     /**
      * @member {PaymentType} paymentType
      * @type {PaymentType}

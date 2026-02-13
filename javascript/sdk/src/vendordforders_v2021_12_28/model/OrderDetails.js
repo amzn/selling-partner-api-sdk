@@ -183,7 +183,7 @@ OrderDetails.prototype.hasCustomizableItems = undefined
 
 /**
  * A list of items in this purchase order.
- * @member {[OrderItem]} items
- * @type {[OrderItem]}
+ * @member {OrderItem[]} items
+ * @type {OrderItem[]}
  */
 OrderDetails.prototype.items = undefined

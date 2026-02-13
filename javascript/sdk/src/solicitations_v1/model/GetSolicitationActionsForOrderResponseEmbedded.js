@@ -58,7 +58,7 @@ export class GetSolicitationActionsForOrderResponseEmbedded {
 }
 
 /**
- * @member {[GetSolicitationActionResponse]} actions
- * @type {[GetSolicitationActionResponse]}
+ * @member {GetSolicitationActionResponse[]} actions
+ * @type {GetSolicitationActionResponse[]}
  */
 GetSolicitationActionsForOrderResponseEmbedded.prototype.actions = undefined

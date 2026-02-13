@@ -89,15 +89,15 @@ CompetitiveSummaryRequest.prototype.marketplaceId = undefined
 
 /**
  * The list of requested competitive pricing data for the product.
- * @member {[CompetitiveSummaryIncludedData]} includedData
- * @type {[CompetitiveSummaryIncludedData]}
+ * @member {CompetitiveSummaryIncludedData[]} includedData
+ * @type {CompetitiveSummaryIncludedData[]}
  */
 CompetitiveSummaryRequest.prototype.includedData = undefined
 
 /**
  * The list of `lowestPricedOffersInput` parameters that are used to build `lowestPricedOffers` in the response. This attribute is only valid if `lowestPricedOffers` is requested in `includedData`
- * @member {[LowestPricedOffersInput]} lowestPricedOffersInputs
- * @type {[LowestPricedOffersInput]}
+ * @member {LowestPricedOffersInput[]} lowestPricedOffersInputs
+ * @type {LowestPricedOffersInput[]}
  */
 CompetitiveSummaryRequest.prototype.lowestPricedOffersInputs = undefined
 

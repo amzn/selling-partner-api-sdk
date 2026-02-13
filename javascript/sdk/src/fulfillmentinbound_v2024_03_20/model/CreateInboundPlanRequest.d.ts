@@ -22,8 +22,8 @@ export class CreateInboundPlanRequest {
      * @param sourceAddress {AddressInput}
      */
     constructor(destinationMarketplaces: [string], items: [ItemInput], sourceAddress: AddressInput);
-    destinationMarketplaces: [string];
-    items: [ItemInput];
+    destinationMarketplaces: string[];
+    items: ItemInput[];
     sourceAddress: AddressInput;
     /**
      * Name for the Inbound Plan. If one isn't provided, a default name will be provided.

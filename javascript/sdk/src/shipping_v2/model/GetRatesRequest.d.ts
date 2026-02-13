@@ -23,7 +23,7 @@ export class GetRatesRequest {
      */
     constructor(shipFrom: Address, packages: [Package], channelDetails: ChannelDetails);
     shipFrom: Address;
-    packages: [Package];
+    packages: Package[];
     channelDetails: ChannelDetails;
     /**
      * @member {Address} shipTo
@@ -53,16 +53,16 @@ export class GetRatesRequest {
     valueAddedServices: ValueAddedServiceDetails;
     /**
      * A list of tax detail information.
-     * @member {[TaxDetail]} taxDetails
-     * @type {[TaxDetail]}
+     * @member {TaxDetail[]} taxDetails
+     * @type {TaxDetail[]}
      */
-    taxDetails: [TaxDetail];
+    taxDetails: TaxDetail[];
     /**
      * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
-     * @member {[ClientReferenceDetail]} clientReferenceDetails
-     * @type {[ClientReferenceDetail]}
+     * @member {ClientReferenceDetail[]} clientReferenceDetails
+     * @type {ClientReferenceDetail[]}
      */
-    clientReferenceDetails: [ClientReferenceDetail];
+    clientReferenceDetails: ClientReferenceDetail[];
     /**
      * @member {ShipmentType} shipmentType
      * @type {ShipmentType}
@@ -75,10 +75,10 @@ export class GetRatesRequest {
     destinationAccessPointDetails: AccessPointDetails;
     /**
      * A list of CarrierAccounts
-     * @member {[CarrierAccount]} carrierAccounts
-     * @type {[CarrierAccount]}
+     * @member {CarrierAccount[]} carrierAccounts
+     * @type {CarrierAccount[]}
      */
-    carrierAccounts: [CarrierAccount];
+    carrierAccounts: CarrierAccount[];
 }
 import { Address } from './Address.js';
 import { Package } from './Package.js';

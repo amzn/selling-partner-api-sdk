@@ -62,8 +62,8 @@ export class GetQueriesResponse {
 
 /**
  * A list of queries.
- * @member {[Query]} queries
- * @type {[Query]}
+ * @member {Query[]} queries
+ * @type {Query[]}
  */
 GetQueriesResponse.prototype.queries = undefined
 

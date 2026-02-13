@@ -90,15 +90,15 @@ ReplenishmentOrder.prototype.createdAt = undefined
 
 /**
  * Distribution errors associated with the order related to the products or packages to replenish. This field will be populated if the order has products or packages which failed validation.
- * @member {[DistributionIneligibleReason]} distributionIneligibleReasons
- * @type {[DistributionIneligibleReason]}
+ * @member {DistributionIneligibleReason[]} distributionIneligibleReasons
+ * @type {DistributionIneligibleReason[]}
  */
 ReplenishmentOrder.prototype.distributionIneligibleReasons = undefined
 
 /**
  * List of product units that are eligible for replenishment.
- * @member {[DistributionProduct]} eligibleProducts
- * @type {[DistributionProduct]}
+ * @member {DistributionProduct[]} eligibleProducts
+ * @type {DistributionProduct[]}
  */
 ReplenishmentOrder.prototype.eligibleProducts = undefined
 
@@ -117,22 +117,22 @@ ReplenishmentOrder.prototype.status = undefined
 
 /**
  * List of outbound shipments that are part of this order.
- * @member {[OutboundShipmentSummary]} outboundShipments
- * @type {[OutboundShipmentSummary]}
+ * @member {OutboundShipmentSummary[]} outboundShipments
+ * @type {OutboundShipmentSummary[]}
  */
 ReplenishmentOrder.prototype.outboundShipments = undefined
 
 /**
  * Requested amount of single product units to be replenished.
- * @member {[DistributionProduct]} products
- * @type {[DistributionProduct]}
+ * @member {DistributionProduct[]} products
+ * @type {DistributionProduct[]}
  */
 ReplenishmentOrder.prototype.products = undefined
 
 /**
  * Outbound product units that are shipped after the execution has completed post confirmation.
- * @member {[DistributionProduct]} shippedProducts
- * @type {[DistributionProduct]}
+ * @member {DistributionProduct[]} shippedProducts
+ * @type {DistributionProduct[]}
  */
 ReplenishmentOrder.prototype.shippedProducts = undefined
 

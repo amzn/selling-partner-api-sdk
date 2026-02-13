@@ -73,8 +73,8 @@ CreateFeedSpecification.prototype.feedType = undefined
 
 /**
  * A list of identifiers for marketplaces that you want the feed to be applied to.
- * @member {[String]} marketplaceIds
- * @type {[String]}
+ * @member {String[]} marketplaceIds
+ * @type {String[]}
  */
 CreateFeedSpecification.prototype.marketplaceIds = undefined
 

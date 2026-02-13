@@ -14,10 +14,10 @@ export class CancelServiceJobByServiceJobIdResponse {
     static constructFromObject(data: any, obj: CancelServiceJobByServiceJobIdResponse): CancelServiceJobByServiceJobIdResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Error[]} errors
+     * @type {Error[]}
      */
-    errors: [Error];
+    errors: Error[];
 }
 import { Error } from './Error.js';
 //# sourceMappingURL=CancelServiceJobByServiceJobIdResponse.d.ts.map

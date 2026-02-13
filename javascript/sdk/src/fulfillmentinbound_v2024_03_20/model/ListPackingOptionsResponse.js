@@ -62,8 +62,8 @@ export class ListPackingOptionsResponse {
 
 /**
  * List of packing options.
- * @member {[PackingOption]} packingOptions
- * @type {[PackingOption]}
+ * @member {PackingOption[]} packingOptions
+ * @type {PackingOption[]}
  */
 ListPackingOptionsResponse.prototype.packingOptions = undefined
 

@@ -62,8 +62,8 @@ export class ListShipmentContentUpdatePreviewsResponse {
 
 /**
  * A list of content update previews in a shipment.
- * @member {[ContentUpdatePreview]} contentUpdatePreviews
- * @type {[ContentUpdatePreview]}
+ * @member {ContentUpdatePreview[]} contentUpdatePreviews
+ * @type {ContentUpdatePreview[]}
  */
 ListShipmentContentUpdatePreviewsResponse.prototype.contentUpdatePreviews = undefined
 

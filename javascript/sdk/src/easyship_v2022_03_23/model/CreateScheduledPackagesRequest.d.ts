@@ -23,7 +23,7 @@ export class CreateScheduledPackagesRequest {
      */
     constructor(marketplaceId: string, orderScheduleDetailsList: [OrderScheduleDetails], labelFormat: LabelFormat);
     marketplaceId: string;
-    orderScheduleDetailsList: [OrderScheduleDetails];
+    orderScheduleDetailsList: OrderScheduleDetails[];
     labelFormat: LabelFormat;
 }
 import { OrderScheduleDetails } from './OrderScheduleDetails.js';

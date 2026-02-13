@@ -21,8 +21,8 @@ export class TrackingDetailCodes {
      * @param returns {[DetailCodes]} Contains detail codes that provide additional details related to the return leg of the shipment.
      */
     constructor(forward: [DetailCodes], returns: [DetailCodes]);
-    forward: [DetailCodes];
-    returns: [DetailCodes];
+    forward: DetailCodes[];
+    returns: DetailCodes[];
 }
 import { DetailCodes } from './DetailCodes.js';
 //# sourceMappingURL=TrackingDetailCodes.d.ts.map

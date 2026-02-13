@@ -20,7 +20,7 @@ export class ListShipmentBoxesResponse {
      * @param boxes {[Box]} A list of boxes in a shipment.
      */
     constructor(boxes: [Box]);
-    boxes: [Box];
+    boxes: Box[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

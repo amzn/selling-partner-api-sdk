@@ -22,15 +22,15 @@ export class InboundEligibility {
      * @param status {InboundEligibilityStatus}
      */
     constructor(packagesToInbound: [SkuEligibility], previewedAt: Date, status: InboundEligibilityStatus);
-    packagesToInbound: [SkuEligibility];
+    packagesToInbound: SkuEligibility[];
     previewedAt: Date;
     status: InboundEligibilityStatus;
     /**
      * If there are order level eligibility issues, then this list will contain those error codes and descriptions.
-     * @member {[OrderIneligibilityReason]} ineligibilityReasons
-     * @type {[OrderIneligibilityReason]}
+     * @member {OrderIneligibilityReason[]} ineligibilityReasons
+     * @type {OrderIneligibilityReason[]}
      */
-    ineligibilityReasons: [OrderIneligibilityReason];
+    ineligibilityReasons: OrderIneligibilityReason[];
 }
 import { SkuEligibility } from './SkuEligibility.js';
 import { InboundEligibilityStatus } from './InboundEligibilityStatus.js';

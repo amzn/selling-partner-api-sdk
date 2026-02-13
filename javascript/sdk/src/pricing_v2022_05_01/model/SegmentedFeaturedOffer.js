@@ -203,8 +203,8 @@ SegmentedFeaturedOffer.prototype.listingPrice = undefined
 
 /**
  * A list of shipping options associated with this offer
- * @member {[ShippingOption]} shippingOptions
- * @type {[ShippingOption]}
+ * @member {ShippingOption[]} shippingOptions
+ * @type {ShippingOption[]}
  */
 SegmentedFeaturedOffer.prototype.shippingOptions = undefined
 
@@ -222,8 +222,8 @@ SegmentedFeaturedOffer.prototype.primeDetails = undefined
 
 /**
  * The list of segment information in which the offer is featured.
- * @member {[FeaturedOfferSegment]} featuredOfferSegments
- * @type {[FeaturedOfferSegment]}
+ * @member {FeaturedOfferSegment[]} featuredOfferSegments
+ * @type {FeaturedOfferSegment[]}
  */
 SegmentedFeaturedOffer.prototype.featuredOfferSegments = undefined
 
@@ -262,8 +262,8 @@ Offer.prototype.listingPrice = undefined
 
 /**
  * A list of shipping options associated with this offer
- * @member {[ShippingOption]} shippingOptions
- * @type {[ShippingOption]}
+ * @member {ShippingOption[]} shippingOptions
+ * @type {ShippingOption[]}
  */
 Offer.prototype.shippingOptions = undefined
 

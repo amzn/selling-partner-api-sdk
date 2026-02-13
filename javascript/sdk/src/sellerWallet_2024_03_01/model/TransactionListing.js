@@ -68,7 +68,7 @@ TransactionListing.prototype.nextPageToken = undefined
 
 /**
  * Collection that holds Transaction
- * @member {[Transaction]} transactions
- * @type {[Transaction]}
+ * @member {Transaction[]} transactions
+ * @type {Transaction[]}
  */
 TransactionListing.prototype.transactions = undefined

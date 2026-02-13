@@ -95,8 +95,8 @@ Order.prototype.orderId = undefined
 
 /**
  * Alternative identifiers that can be used to reference this order, such as seller-defined order numbers.
- * @member {[Alias]} orderAliases
- * @type {[Alias]}
+ * @member {Alias[]} orderAliases
+ * @type {Alias[]}
  */
 Order.prototype.orderAliases = undefined
 
@@ -116,15 +116,15 @@ Order.prototype.lastUpdatedTime = undefined
 
 /**
  * Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`,  `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`
- * @member {[String]} programs
- * @type {[String]}
+ * @member {String[]} programs
+ * @type {String[]}
  */
 Order.prototype.programs = undefined
 
 /**
  * Other orders that have a direct relationship to this order, such as replacement or exchange orders.
- * @member {[AssociatedOrder]} associatedOrders
- * @type {[AssociatedOrder]}
+ * @member {AssociatedOrder[]} associatedOrders
+ * @type {AssociatedOrder[]}
  */
 Order.prototype.associatedOrders = undefined
 
@@ -160,14 +160,14 @@ Order.prototype.fulfillment = undefined
 
 /**
  * The list of all order items included in this order.
- * @member {[OrderItem]} orderItems
- * @type {[OrderItem]}
+ * @member {OrderItem[]} orderItems
+ * @type {OrderItem[]}
  */
 Order.prototype.orderItems = undefined
 
 /**
  * Shipping packages created for this order, including tracking information. **Note:** Only available for merchant-fulfilled (FBM) orders.
- * @member {[OrderPackage]} packages
- * @type {[OrderPackage]}
+ * @member {OrderPackage[]} packages
+ * @type {OrderPackage[]}
  */
 Order.prototype.packages = undefined

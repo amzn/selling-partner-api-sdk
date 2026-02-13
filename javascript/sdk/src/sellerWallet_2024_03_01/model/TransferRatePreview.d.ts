@@ -26,7 +26,7 @@ export class TransferRatePreview {
     baseAmount: Currency;
     fxRateDetails: FxRateDetails;
     transferAmount: Currency;
-    fees: [Fee];
+    fees: Fee[];
 }
 import { Currency } from './Currency.js';
 import { FxRateDetails } from './FxRateDetails.js';

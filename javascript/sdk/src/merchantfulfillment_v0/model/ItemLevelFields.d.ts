@@ -22,7 +22,7 @@ export class ItemLevelFields {
      */
     constructor(asin: string, additionalInputs: [AdditionalInputs]);
     asin: string;
-    additionalInputs: [AdditionalInputs];
+    additionalInputs: AdditionalInputs[];
 }
 import { AdditionalInputs } from './AdditionalInputs.js';
 //# sourceMappingURL=ItemLevelFields.d.ts.map

@@ -20,7 +20,7 @@ export class OrdersList {
      * @param orders {[Order]} A list of orders.
      */
     constructor(orders: [Order]);
-    orders: [Order];
+    orders: Order[];
     /**
      * When present and not empty, pass this string token in the next request to return the next response page.
      * @member {String} nextToken

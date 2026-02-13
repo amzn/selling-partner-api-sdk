@@ -68,7 +68,7 @@ CreateRestrictedDataTokenRequest.prototype.targetApplication = undefined
 
 /**
  * A list of restricted resources. Maximum: 50
- * @member {[RestrictedResource]} restrictedResources
- * @type {[RestrictedResource]}
+ * @member {RestrictedResource[]} restrictedResources
+ * @type {RestrictedResource[]}
  */
 CreateRestrictedDataTokenRequest.prototype.restrictedResources = undefined

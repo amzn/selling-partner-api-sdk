@@ -23,7 +23,7 @@ export class CreateReportScheduleSpecification {
      */
     constructor(reportType: string, marketplaceIds: [string], period: string);
     reportType: string;
-    marketplaceIds: [string];
+    marketplaceIds: string[];
     period: string;
     /**
      * Additional information passed to reports. This varies by report type.

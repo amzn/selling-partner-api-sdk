@@ -20,7 +20,7 @@ export class ListPrepDetailsResponse {
      * @param mskuPrepDetails {[MskuPrepDetail]} A list of MSKUs and related prep details.
      */
     constructor(mskuPrepDetails: [MskuPrepDetail]);
-    mskuPrepDetails: [MskuPrepDetail];
+    mskuPrepDetails: MskuPrepDetail[];
 }
 import { MskuPrepDetail } from './MskuPrepDetail.js';
 //# sourceMappingURL=ListPrepDetailsResponse.d.ts.map

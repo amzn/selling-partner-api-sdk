@@ -66,7 +66,7 @@ OrderItemStatusOrderedQuantity.prototype.orderedQuantity = undefined
 
 /**
  * Details of item quantity ordered.
- * @member {[OrderedQuantityDetails]} orderedQuantityDetails
- * @type {[OrderedQuantityDetails]}
+ * @member {OrderedQuantityDetails[]} orderedQuantityDetails
+ * @type {OrderedQuantityDetails[]}
  */
 OrderItemStatusOrderedQuantity.prototype.orderedQuantityDetails = undefined

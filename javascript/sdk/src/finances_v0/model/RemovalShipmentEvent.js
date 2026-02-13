@@ -98,7 +98,7 @@ RemovalShipmentEvent.prototype.storeName = undefined
 
 /**
  * A list of `RemovalShipmentItem`.
- * @member {[RemovalShipmentItem]} removalShipmentItemList
- * @type {[RemovalShipmentItem]}
+ * @member {RemovalShipmentItem[]} removalShipmentItemList
+ * @type {RemovalShipmentItem[]}
  */
 RemovalShipmentEvent.prototype.removalShipmentItemList = undefined

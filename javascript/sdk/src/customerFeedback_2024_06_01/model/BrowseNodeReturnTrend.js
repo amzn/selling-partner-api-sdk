@@ -70,7 +70,7 @@ BrowseNodeReturnTrend.prototype.topic = undefined
 
 /**
  * The browse node return trend metrics.
- * @member {[BrowseNodeReturnTrendPoint]} trendMetrics
- * @type {[BrowseNodeReturnTrendPoint]}
+ * @member {BrowseNodeReturnTrendPoint[]} trendMetrics
+ * @type {BrowseNodeReturnTrendPoint[]}
  */
 BrowseNodeReturnTrend.prototype.trendMetrics = undefined

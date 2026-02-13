@@ -70,7 +70,7 @@ ItemImagesByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Images for an item in the Amazon catalog, grouped by `marketplaceId`.
- * @member {[ItemImage]} images
- * @type {[ItemImage]}
+ * @member {ItemImage[]} images
+ * @type {ItemImage[]}
  */
 ItemImagesByMarketplace.prototype.images = undefined

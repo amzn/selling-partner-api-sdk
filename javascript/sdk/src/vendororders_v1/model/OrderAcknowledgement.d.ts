@@ -26,7 +26,7 @@ export class OrderAcknowledgement {
     purchaseOrderNumber: string;
     sellingParty: PartyIdentification;
     acknowledgementDate: Date;
-    items: [OrderAcknowledgementItem];
+    items: OrderAcknowledgementItem[];
 }
 import { PartyIdentification } from './PartyIdentification.js';
 import { OrderAcknowledgementItem } from './OrderAcknowledgementItem.js';

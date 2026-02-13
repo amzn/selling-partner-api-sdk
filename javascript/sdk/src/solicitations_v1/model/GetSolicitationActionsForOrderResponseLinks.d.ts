@@ -21,7 +21,7 @@ export class GetSolicitationActionsForOrderResponseLinks {
      */
     constructor(self: LinkObject, actions: [LinkObject]);
     self: LinkObject;
-    actions: [LinkObject];
+    actions: LinkObject[];
 }
 import { LinkObject } from './LinkObject.js';
 //# sourceMappingURL=GetSolicitationActionsForOrderResponseLinks.d.ts.map

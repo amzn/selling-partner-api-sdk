@@ -60,7 +60,7 @@ export class ConfirmTransportationOptionsRequest {
 
 /**
  * Information needed to confirm one of the available transportation options.
- * @member {[TransportationSelection]} transportationSelections
- * @type {[TransportationSelection]}
+ * @member {TransportationSelection[]} transportationSelections
+ * @type {TransportationSelection[]}
  */
 ConfirmTransportationOptionsRequest.prototype.transportationSelections = undefined

@@ -20,7 +20,7 @@ export class SpdTrackingDetailInput {
      * @param spdTrackingItems {[SpdTrackingItemInput]} List of Small Parcel Delivery (SPD) tracking items input.
      */
     constructor(spdTrackingItems: [SpdTrackingItemInput]);
-    spdTrackingItems: [SpdTrackingItemInput];
+    spdTrackingItems: SpdTrackingItemInput[];
 }
 import { SpdTrackingItemInput } from './SpdTrackingItemInput.js';
 //# sourceMappingURL=SpdTrackingDetailInput.d.ts.map

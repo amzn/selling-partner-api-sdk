@@ -24,7 +24,7 @@ export class CreateMarketplaceItemLabelsRequest {
     constructor(labelType: LabelPrintType, marketplaceId: string, mskuQuantities: [MskuQuantity]);
     labelType: LabelPrintType;
     marketplaceId: string;
-    mskuQuantities: [MskuQuantity];
+    mskuQuantities: MskuQuantity[];
     /**
      * The height of the item label.
      * @member {Number} height

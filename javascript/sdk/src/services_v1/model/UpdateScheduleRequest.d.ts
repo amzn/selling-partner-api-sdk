@@ -20,7 +20,7 @@ export class UpdateScheduleRequest {
      * @param schedules {[AvailabilityRecord]} List of `AvailabilityRecord`s to represent the capacity of a resource over a time range.
      */
     constructor(schedules: [AvailabilityRecord]);
-    schedules: [AvailabilityRecord];
+    schedules: AvailabilityRecord[];
 }
 import { AvailabilityRecord } from './AvailabilityRecord.js';
 //# sourceMappingURL=UpdateScheduleRequest.d.ts.map

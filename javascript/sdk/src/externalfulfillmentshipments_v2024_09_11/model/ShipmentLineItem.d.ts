@@ -27,14 +27,14 @@ export class ShipmentLineItem {
     shipmentLineItemId: string;
     merchantSku: string;
     numberOfUnits: number;
-    charges: [Charge];
+    charges: Charge[];
     complianceAttributes: ComplianceAttributes;
     /**
      * The serial numbers for each item in this line item.
-     * @member {[String]} serialNumbers
-     * @type {[String]}
+     * @member {String[]} serialNumbers
+     * @type {String[]}
      */
-    serialNumbers: [string];
+    serialNumbers: string[];
     /**
      * @member {PieceType} pieceType
      * @type {PieceType}
@@ -42,10 +42,10 @@ export class ShipmentLineItem {
     pieceType: PieceType;
     /**
      * A list of HAZMAT label identifiers that must be applied to the packages for this line item.
-     * @member {[String]} hazmatLabels
-     * @type {[String]}
+     * @member {String[]} hazmatLabels
+     * @type {String[]}
      */
-    hazmatLabels: [string];
+    hazmatLabels: string[];
     /**
      * @member {GiftAttributes} giftAttributes
      * @type {GiftAttributes}
@@ -53,10 +53,10 @@ export class ShipmentLineItem {
     giftAttributes: GiftAttributes;
     /**
      * A list of cancellations for the given line item.  **Note:** Currently, SmartConnect does not support partial cancellation of a shipment or its line items. This list will contain a single value with all the cancellation details.
-     * @member {[Cancellation]} cancellations
-     * @type {[Cancellation]}
+     * @member {Cancellation[]} cancellations
+     * @type {Cancellation[]}
      */
-    cancellations: [Cancellation];
+    cancellations: Cancellation[];
     /**
      * The HSN code of SKU in this line item.
      * @member {String} hsnCode
@@ -88,10 +88,10 @@ export class ShipmentLineItem {
     itemValue: Amount;
     /**
      * A list of custom passthrough attributes. For details on these attributes, reach out to your respective program teams at Amazon.
-     * @member {[CustomAttribute]} customAttributes
-     * @type {[CustomAttribute]}
+     * @member {CustomAttribute[]} customAttributes
+     * @type {CustomAttribute[]}
      */
-    customAttributes: [CustomAttribute];
+    customAttributes: CustomAttribute[];
 }
 import { Charge } from './Charge.js';
 import { ComplianceAttributes } from './ComplianceAttributes.js';

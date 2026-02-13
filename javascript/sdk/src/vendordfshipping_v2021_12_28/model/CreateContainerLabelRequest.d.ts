@@ -28,7 +28,7 @@ export class CreateContainerLabelRequest {
     shipFromParty: PartyIdentification;
     carrierId: CarrierId;
     vendorContainerId: string;
-    packages: [Package];
+    packages: Package[];
 }
 import { PartyIdentification } from './PartyIdentification.js';
 import { CarrierId } from './CarrierId.js';

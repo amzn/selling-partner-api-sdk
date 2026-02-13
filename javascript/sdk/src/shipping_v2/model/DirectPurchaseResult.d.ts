@@ -23,10 +23,10 @@ export class DirectPurchaseResult {
     shipmentId: string;
     /**
      * A list of post-purchase details about a package that will be shipped using a shipping service.
-     * @member {[PackageDocumentDetail]} packageDocumentDetailList
-     * @type {[PackageDocumentDetail]}
+     * @member {PackageDocumentDetail[]} packageDocumentDetailList
+     * @type {PackageDocumentDetail[]}
      */
-    packageDocumentDetailList: [PackageDocumentDetail];
+    packageDocumentDetailList: PackageDocumentDetail[];
 }
 import { PackageDocumentDetail } from './PackageDocumentDetail.js';
 //# sourceMappingURL=DirectPurchaseResult.d.ts.map

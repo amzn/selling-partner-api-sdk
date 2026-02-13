@@ -14,10 +14,10 @@ export class BatchInventoryResponse {
     static constructFromObject(data: any, obj: BatchInventoryResponse): BatchInventoryResponse;
     /**
      * A list of inventory request responses.
-     * @member {[InventoryResponse]} responses
-     * @type {[InventoryResponse]}
+     * @member {InventoryResponse[]} responses
+     * @type {InventoryResponse[]}
      */
-    responses: [InventoryResponse];
+    responses: InventoryResponse[];
 }
 import { InventoryResponse } from './InventoryResponse.js';
 //# sourceMappingURL=BatchInventoryResponse.d.ts.map

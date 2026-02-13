@@ -59,7 +59,7 @@ export class ServiceSelection {
 
 /**
  * A list of ServiceId.
- * @member {[String]} serviceId
- * @type {[String]}
+ * @member {String[]} serviceId
+ * @type {String[]}
  */
 ServiceSelection.prototype.serviceId = undefined

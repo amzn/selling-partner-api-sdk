@@ -70,7 +70,7 @@ ItemReviewTrend.prototype.topic = undefined
 
 /**
  * The item's review trend metrics for the past six months.
- * @member {[ItemReviewTrendPoint]} trendMetrics
- * @type {[ItemReviewTrendPoint]}
+ * @member {ItemReviewTrendPoint[]} trendMetrics
+ * @type {ItemReviewTrendPoint[]}
  */
 ItemReviewTrend.prototype.trendMetrics = undefined

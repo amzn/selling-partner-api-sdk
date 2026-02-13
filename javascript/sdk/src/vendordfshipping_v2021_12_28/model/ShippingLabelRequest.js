@@ -87,7 +87,7 @@ ShippingLabelRequest.prototype.shipFromParty = undefined
 
 /**
  * A list of the packages in this shipment.
- * @member {[Container]} containers
- * @type {[Container]}
+ * @member {Container[]} containers
+ * @type {Container[]}
  */
 ShippingLabelRequest.prototype.containers = undefined

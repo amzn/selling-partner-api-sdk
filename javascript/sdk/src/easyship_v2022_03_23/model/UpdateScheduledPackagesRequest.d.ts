@@ -22,7 +22,7 @@ export class UpdateScheduledPackagesRequest {
      */
     constructor(marketplaceId: string, updatePackageDetailsList: [UpdatePackageDetails]);
     marketplaceId: string;
-    updatePackageDetailsList: [UpdatePackageDetails];
+    updatePackageDetailsList: UpdatePackageDetails[];
 }
 import { UpdatePackageDetails } from './UpdatePackageDetails.js';
 //# sourceMappingURL=UpdateScheduledPackagesRequest.d.ts.map

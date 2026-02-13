@@ -29,28 +29,28 @@ export class InboundPlan {
     createdAt: Date;
     inboundPlanId: string;
     lastUpdatedAt: Date;
-    marketplaceIds: [string];
+    marketplaceIds: string[];
     name: string;
     sourceAddress: Address;
     status: string;
     /**
      * Packing options for the inbound plan. This property will be populated when it has been generated via the corresponding operation. If there is a chosen placement option, only packing options for that placement option will be returned. If there are confirmed shipments, only packing options for those shipments will be returned. Query the packing option for more details.
-     * @member {[PackingOptionSummary]} packingOptions
-     * @type {[PackingOptionSummary]}
+     * @member {PackingOptionSummary[]} packingOptions
+     * @type {PackingOptionSummary[]}
      */
-    packingOptions: [PackingOptionSummary];
+    packingOptions: PackingOptionSummary[];
     /**
      * Placement options for the inbound plan. This property will be populated when it has been generated via the corresponding operation. If there is a chosen placement option, that will be the only returned option. Query the placement option for more details.
-     * @member {[PlacementOptionSummary]} placementOptions
-     * @type {[PlacementOptionSummary]}
+     * @member {PlacementOptionSummary[]} placementOptions
+     * @type {PlacementOptionSummary[]}
      */
-    placementOptions: [PlacementOptionSummary];
+    placementOptions: PlacementOptionSummary[];
     /**
      * A list of shipment IDs for the inbound plan. This property is populated when it has been generated with the `confirmPlacementOptions` operation. Only shipments from the chosen placement option are returned. Query the shipment for more details.
-     * @member {[ShipmentSummary]} shipments
-     * @type {[ShipmentSummary]}
+     * @member {ShipmentSummary[]} shipments
+     * @type {ShipmentSummary[]}
      */
-    shipments: [ShipmentSummary];
+    shipments: ShipmentSummary[];
 }
 import { Address } from './Address.js';
 import { PackingOptionSummary } from './PackingOptionSummary.js';

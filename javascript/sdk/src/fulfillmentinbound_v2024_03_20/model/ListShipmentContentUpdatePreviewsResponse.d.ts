@@ -20,7 +20,7 @@ export class ListShipmentContentUpdatePreviewsResponse {
      * @param contentUpdatePreviews {[ContentUpdatePreview]} A list of content update previews in a shipment.
      */
     constructor(contentUpdatePreviews: [ContentUpdatePreview]);
-    contentUpdatePreviews: [ContentUpdatePreview];
+    contentUpdatePreviews: ContentUpdatePreview[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

@@ -20,7 +20,7 @@ export class GetMessagingActionsForOrderResponseEmbedded {
      * @param actions {[GetMessagingActionResponse]}
      */
     constructor(actions: [GetMessagingActionResponse]);
-    actions: [GetMessagingActionResponse];
+    actions: GetMessagingActionResponse[];
 }
 import { GetMessagingActionResponse } from './GetMessagingActionResponse.js';
 //# sourceMappingURL=GetMessagingActionsForOrderResponseEmbedded.d.ts.map

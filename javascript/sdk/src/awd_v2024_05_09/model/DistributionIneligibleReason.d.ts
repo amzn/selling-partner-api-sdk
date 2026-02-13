@@ -22,7 +22,7 @@ export class DistributionIneligibleReason {
      */
     constructor(failureCode: string, failureReasons: [string]);
     failureCode: string;
-    failureReasons: [string];
+    failureReasons: string[];
     /**
      * SKU associated with the error.
      * @member {String} sku

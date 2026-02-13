@@ -60,7 +60,7 @@ export class RegulatedInformation {
 
 /**
  * A list of regulated information fields as collected from the regulatory form.
- * @member {[RegulatedInformationField]} fields
- * @type {[RegulatedInformationField]}
+ * @member {RegulatedInformationField[]} fields
+ * @type {RegulatedInformationField[]}
  */
 RegulatedInformation.prototype.fields = undefined

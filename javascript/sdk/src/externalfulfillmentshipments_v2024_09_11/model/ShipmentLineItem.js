@@ -110,8 +110,8 @@ ShipmentLineItem.prototype.numberOfUnits = undefined
 
 /**
  * The serial numbers for each item in this line item.
- * @member {[String]} serialNumbers
- * @type {[String]}
+ * @member {String[]} serialNumbers
+ * @type {String[]}
  */
 ShipmentLineItem.prototype.serialNumbers = undefined
 
@@ -123,8 +123,8 @@ ShipmentLineItem.prototype.pieceType = undefined
 
 /**
  * A list of HAZMAT label identifiers that must be applied to the packages for this line item.
- * @member {[String]} hazmatLabels
- * @type {[String]}
+ * @member {String[]} hazmatLabels
+ * @type {String[]}
  */
 ShipmentLineItem.prototype.hazmatLabels = undefined
 
@@ -136,15 +136,15 @@ ShipmentLineItem.prototype.giftAttributes = undefined
 
 /**
  * The charges associated with the shipment.
- * @member {[Charge]} charges
- * @type {[Charge]}
+ * @member {Charge[]} charges
+ * @type {Charge[]}
  */
 ShipmentLineItem.prototype.charges = undefined
 
 /**
  * A list of cancellations for the given line item.  **Note:** Currently, SmartConnect does not support partial cancellation of a shipment or its line items. This list will contain a single value with all the cancellation details.
- * @member {[Cancellation]} cancellations
- * @type {[Cancellation]}
+ * @member {Cancellation[]} cancellations
+ * @type {Cancellation[]}
  */
 ShipmentLineItem.prototype.cancellations = undefined
 
@@ -190,7 +190,7 @@ ShipmentLineItem.prototype.complianceAttributes = undefined
 
 /**
  * A list of custom passthrough attributes. For details on these attributes, reach out to your respective program teams at Amazon.
- * @member {[CustomAttribute]} customAttributes
- * @type {[CustomAttribute]}
+ * @member {CustomAttribute[]} customAttributes
+ * @type {CustomAttribute[]}
  */
 ShipmentLineItem.prototype.customAttributes = undefined

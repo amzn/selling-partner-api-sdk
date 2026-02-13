@@ -20,7 +20,7 @@ export class ListDeliveryWindowOptionsResponse {
      * @param deliveryWindowOptions {[DeliveryWindowOption]} Delivery window options generated for the placement option.
      */
     constructor(deliveryWindowOptions: [DeliveryWindowOption]);
-    deliveryWindowOptions: [DeliveryWindowOption];
+    deliveryWindowOptions: DeliveryWindowOption[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

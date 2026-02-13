@@ -37,10 +37,10 @@ export class AdjustmentEvent {
     adjustmentAmount: Currency;
     /**
      * A list of information about items in an adjustment to the seller's account.
-     * @member {[AdjustmentItem]} adjustmentItemList
-     * @type {[AdjustmentItem]}
+     * @member {AdjustmentItem[]} adjustmentItemList
+     * @type {AdjustmentItem[]}
      */
-    adjustmentItemList: [AdjustmentItem];
+    adjustmentItemList: AdjustmentItem[];
 }
 import { Currency } from './Currency.js';
 import { AdjustmentItem } from './AdjustmentItem.js';

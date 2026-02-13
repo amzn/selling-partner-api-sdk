@@ -14,16 +14,16 @@ export class DistributionPackageContents {
     static constructFromObject(data: any, obj: DistributionPackageContents): DistributionPackageContents;
     /**
      * This is required only when `DistributionPackageType=PALLET`.
-     * @member {[DistributionPackageQuantity]} packages
-     * @type {[DistributionPackageQuantity]}
+     * @member {DistributionPackageQuantity[]} packages
+     * @type {DistributionPackageQuantity[]}
      */
-    packages: [DistributionPackageQuantity];
+    packages: DistributionPackageQuantity[];
     /**
      * This is required only when `DistributionPackageType=CASE`.
-     * @member {[ProductQuantity]} products
-     * @type {[ProductQuantity]}
+     * @member {ProductQuantity[]} products
+     * @type {ProductQuantity[]}
      */
-    products: [ProductQuantity];
+    products: ProductQuantity[];
 }
 import { DistributionPackageQuantity } from './DistributionPackageQuantity.js';
 import { ProductQuantity } from './ProductQuantity.js';

@@ -22,25 +22,25 @@ export class ListOffersRequestFilters {
      */
     constructor(marketplaceId: string, programTypes: [ProgramType]);
     marketplaceId: string;
-    programTypes: [ProgramType];
+    programTypes: ProgramType[];
     /**
      * A list of SKUs to filter. This filter is only supported for sellers and not for vendors.
-     * @member {[String]} skus
-     * @type {[String]}
+     * @member {String[]} skus
+     * @type {String[]}
      */
-    skus: [string];
+    skus: string[];
     /**
      * A list of Amazon Standard Identification Numbers (ASINs).
-     * @member {[String]} asins
-     * @type {[String]}
+     * @member {String[]} asins
+     * @type {String[]}
      */
-    asins: [string];
+    asins: string[];
     /**
      * A list of eligibilities associated with an offer.
-     * @member {[EligibilityStatus]} eligibilities
-     * @type {[EligibilityStatus]}
+     * @member {EligibilityStatus[]} eligibilities
+     * @type {EligibilityStatus[]}
      */
-    eligibilities: [EligibilityStatus];
+    eligibilities: EligibilityStatus[];
     /**
      * @member {Preference} preferences
      * @type {Preference}

@@ -119,8 +119,8 @@ Item.prototype.msku = undefined
 
 /**
  * Special preparations that are required for an item.
- * @member {[PrepInstruction]} prepInstructions
- * @type {[PrepInstruction]}
+ * @member {PrepInstruction[]} prepInstructions
+ * @type {PrepInstruction[]}
  */
 Item.prototype.prepInstructions = undefined
 

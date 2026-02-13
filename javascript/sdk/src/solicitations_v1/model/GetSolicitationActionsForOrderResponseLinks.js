@@ -68,7 +68,7 @@ GetSolicitationActionsForOrderResponseLinks.prototype.self = undefined
 
 /**
  * Eligible actions for the specified amazonOrderId.
- * @member {[LinkObject]} actions
- * @type {[LinkObject]}
+ * @member {LinkObject[]} actions
+ * @type {LinkObject[]}
  */
 GetSolicitationActionsForOrderResponseLinks.prototype.actions = undefined

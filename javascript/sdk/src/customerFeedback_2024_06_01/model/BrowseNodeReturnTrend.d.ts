@@ -22,7 +22,7 @@ export class BrowseNodeReturnTrend {
      */
     constructor(topic: string, trendMetrics: [BrowseNodeReturnTrendPoint]);
     topic: string;
-    trendMetrics: [BrowseNodeReturnTrendPoint];
+    trendMetrics: BrowseNodeReturnTrendPoint[];
 }
 import { BrowseNodeReturnTrendPoint } from './BrowseNodeReturnTrendPoint.js';
 //# sourceMappingURL=BrowseNodeReturnTrend.d.ts.map

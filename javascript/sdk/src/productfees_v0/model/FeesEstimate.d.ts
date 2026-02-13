@@ -28,10 +28,10 @@ export class FeesEstimate {
     totalFeesEstimate: MoneyType;
     /**
      * A list of other fees that contribute to a given fee.
-     * @member {[FeeDetail]} feeDetailList
-     * @type {[FeeDetail]}
+     * @member {FeeDetail[]} feeDetailList
+     * @type {FeeDetail[]}
      */
-    feeDetailList: [FeeDetail];
+    feeDetailList: FeeDetail[];
 }
 import { MoneyType } from './MoneyType.js';
 import { FeeDetail } from './FeeDetail.js';

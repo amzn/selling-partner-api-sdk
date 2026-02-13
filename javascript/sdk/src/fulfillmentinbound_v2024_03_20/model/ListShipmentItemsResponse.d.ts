@@ -20,7 +20,7 @@ export class ListShipmentItemsResponse {
      * @param items {[Item]} The items in a shipment.
      */
     constructor(items: [Item]);
-    items: [Item];
+    items: Item[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

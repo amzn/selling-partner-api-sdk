@@ -20,7 +20,7 @@ export class GetCarrierAccountsResponse {
      * @param activeAccounts {[ActiveAccount]} A list of ActiveAccount
      */
     constructor(activeAccounts: [ActiveAccount]);
-    activeAccounts: [ActiveAccount];
+    activeAccounts: ActiveAccount[];
 }
 import { ActiveAccount } from './ActiveAccount.js';
 //# sourceMappingURL=GetCarrierAccountsResponse.d.ts.map

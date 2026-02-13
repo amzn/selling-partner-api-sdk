@@ -62,8 +62,8 @@ export class PackageGroupingInput {
 
 /**
  * Box level information being provided.
- * @member {[BoxInput]} boxes
- * @type {[BoxInput]}
+ * @member {BoxInput[]} boxes
+ * @type {BoxInput[]}
  */
 PackageGroupingInput.prototype.boxes = undefined
 

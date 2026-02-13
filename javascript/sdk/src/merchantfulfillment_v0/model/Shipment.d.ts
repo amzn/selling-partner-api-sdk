@@ -33,7 +33,7 @@ export class Shipment {
     constructor(shipmentId: string, amazonOrderId: string, itemList: [Item], shipFromAddress: Address, shipToAddress: Address, packageDimensions: PackageDimensions, weight: Weight, insurance: CurrencyAmount, shippingService: ShippingService, label: Label, status: ShipmentStatus, createdDate: Date);
     shipmentId: string;
     amazonOrderId: string;
-    itemList: [Item];
+    itemList: Item[];
     shipFromAddress: Address;
     shipToAddress: Address;
     packageDimensions: PackageDimensions;

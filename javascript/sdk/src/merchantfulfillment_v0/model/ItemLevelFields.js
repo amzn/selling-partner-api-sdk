@@ -70,7 +70,7 @@ ItemLevelFields.prototype.asin = undefined
 
 /**
  * A list of additional inputs.
- * @member {[AdditionalInputs]} additionalInputs
- * @type {[AdditionalInputs]}
+ * @member {AdditionalInputs[]} additionalInputs
+ * @type {AdditionalInputs[]}
  */
 ItemLevelFields.prototype.additionalInputs = undefined

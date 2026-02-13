@@ -103,7 +103,7 @@ MskuPrepDetail.prototype.prepOwnerConstraint = undefined
 
 /**
  * A list of preparation types associated with a preparation category.
- * @member {[PrepType]} prepTypes
- * @type {[PrepType]}
+ * @member {PrepType[]} prepTypes
+ * @type {PrepType[]}
  */
 MskuPrepDetail.prototype.prepTypes = undefined

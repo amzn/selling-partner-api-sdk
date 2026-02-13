@@ -14,28 +14,28 @@ export class GetPrepInstructionsResult {
     static constructFromObject(data: any, obj: GetPrepInstructionsResult): GetPrepInstructionsResult;
     /**
      * A list of SKU labeling requirements and item preparation instructions.
-     * @member {[SKUPrepInstructions]} sKUPrepInstructionsList
-     * @type {[SKUPrepInstructions]}
+     * @member {SKUPrepInstructions[]} sKUPrepInstructionsList
+     * @type {SKUPrepInstructions[]}
      */
-    sKUPrepInstructionsList: [SKUPrepInstructions];
+    sKUPrepInstructionsList: SKUPrepInstructions[];
     /**
      * A list of invalid SKU values and the reason they are invalid.
-     * @member {[InvalidSKU]} invalidSKUList
-     * @type {[InvalidSKU]}
+     * @member {InvalidSKU[]} invalidSKUList
+     * @type {InvalidSKU[]}
      */
-    invalidSKUList: [InvalidSKU];
+    invalidSKUList: InvalidSKU[];
     /**
      * A list of item preparation instructions.
-     * @member {[ASINPrepInstructions]} aSINPrepInstructionsList
-     * @type {[ASINPrepInstructions]}
+     * @member {ASINPrepInstructions[]} aSINPrepInstructionsList
+     * @type {ASINPrepInstructions[]}
      */
-    aSINPrepInstructionsList: [ASINPrepInstructions];
+    aSINPrepInstructionsList: ASINPrepInstructions[];
     /**
      * A list of invalid ASIN values and the reasons they are invalid.
-     * @member {[InvalidASIN]} invalidASINList
-     * @type {[InvalidASIN]}
+     * @member {InvalidASIN[]} invalidASINList
+     * @type {InvalidASIN[]}
      */
-    invalidASINList: [InvalidASIN];
+    invalidASINList: InvalidASIN[];
 }
 import { SKUPrepInstructions } from './SKUPrepInstructions.js';
 import { InvalidSKU } from './InvalidSKU.js';

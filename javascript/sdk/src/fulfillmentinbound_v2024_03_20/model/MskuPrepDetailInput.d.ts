@@ -24,7 +24,7 @@ export class MskuPrepDetailInput {
     constructor(msku: string, prepCategory: PrepCategory, prepTypes: [PrepType]);
     msku: string;
     prepCategory: PrepCategory;
-    prepTypes: [PrepType];
+    prepTypes: PrepType[];
 }
 import { PrepCategory } from './PrepCategory.js';
 import { PrepType } from './PrepType.js';

@@ -60,7 +60,7 @@ export class BankAccountListing {
 
 /**
  * Collection that holds BankAccount
- * @member {[BankAccount]} accounts
- * @type {[BankAccount]}
+ * @member {BankAccount[]} accounts
+ * @type {BankAccount[]}
  */
 BankAccountListing.prototype.accounts = undefined

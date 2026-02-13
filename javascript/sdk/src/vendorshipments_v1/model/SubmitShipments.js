@@ -58,7 +58,7 @@ export class SubmitShipments {
 
 /**
  * A list of one or more shipments with underlying details.
- * @member {[Shipment]} shipments
- * @type {[Shipment]}
+ * @member {Shipment[]} shipments
+ * @type {Shipment[]}
  */
 SubmitShipments.prototype.shipments = undefined

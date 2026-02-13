@@ -68,7 +68,7 @@ ListInboundPlanPalletsResponse.prototype.pagination = undefined
 
 /**
  * The pallets in an inbound plan.
- * @member {[Pallet]} pallets
- * @type {[Pallet]}
+ * @member {Pallet[]} pallets
+ * @type {Pallet[]}
  */
 ListInboundPlanPalletsResponse.prototype.pallets = undefined

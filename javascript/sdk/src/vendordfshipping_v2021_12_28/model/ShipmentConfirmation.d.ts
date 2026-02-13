@@ -28,13 +28,13 @@ export class ShipmentConfirmation {
     shipmentDetails: ShipmentDetails;
     sellingParty: PartyIdentification;
     shipFromParty: PartyIdentification;
-    items: [Item];
+    items: Item[];
     /**
      * Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
-     * @member {[Container]} containers
-     * @type {[Container]}
+     * @member {Container[]} containers
+     * @type {Container[]}
      */
-    containers: [Container];
+    containers: Container[];
 }
 import { ShipmentDetails } from './ShipmentDetails.js';
 import { PartyIdentification } from './PartyIdentification.js';

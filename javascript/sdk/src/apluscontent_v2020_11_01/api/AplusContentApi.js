@@ -201,8 +201,8 @@ export class AplusContentApi {
      * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Object} [opts] Optional parameters
-     * @param {[String]} [opts.includedDataSet] The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata.
-     * @param {[String]} [opts.asinSet] The set of ASINs.
+     * @param {String[]} [opts.includedDataSet] The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata.
+     * @param {String[]} [opts.asinSet] The set of ASINs.
      * @param {String} [opts.pageToken] A token that you use to fetch a specific page when there are multiple pages of results.
      * @return {Promise<ListContentDocumentAsinRelationsResponse>}
      */
@@ -250,8 +250,8 @@ export class AplusContentApi {
      * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Object} [opts] Optional parameters
-     * @param {[String]} [opts.includedDataSet] The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata.
-     * @param {[String]} [opts.asinSet] The set of ASINs.
+     * @param {String[]} [opts.includedDataSet] The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata.
+     * @param {String[]} [opts.asinSet] The set of ASINs.
      * @param {String} [opts.pageToken] A token that you use to fetch a specific page when there are multiple pages of results.
      * @return {Promise<ListContentDocumentAsinRelationsResponse>}
      */
@@ -609,7 +609,7 @@ export class AplusContentApi {
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {PostContentDocumentRequest} postContentDocumentRequest The content document request details.
      * @param {Object} [opts] Optional parameters
-     * @param {[String]} [opts.asinSet] The set of ASINs.
+     * @param {String[]} [opts.asinSet] The set of ASINs.
      * @return {Promise<ValidateContentDocumentAsinRelationsResponse>}
      */
   validateContentDocumentAsinRelationsWithHttpInfo (marketplaceId, postContentDocumentRequest, opts) {
@@ -653,7 +653,7 @@ export class AplusContentApi {
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {PostContentDocumentRequest} postContentDocumentRequest The content document request details.
      * @param {Object} [opts] Optional parameters
-     * @param {[String]} [opts.asinSet] The set of ASINs.
+     * @param {String[]} [opts.asinSet] The set of ASINs.
      * @return {Promise<ValidateContentDocumentAsinRelationsResponse>}
      */
   validateContentDocumentAsinRelations (marketplaceId, postContentDocumentRequest, opts) {

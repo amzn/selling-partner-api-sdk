@@ -26,7 +26,7 @@ export class OneClickShipmentResult {
      */
     constructor(shipmentId: string, packageDocumentDetails: [PackageDocumentDetail], promise: Promise, carrier: Carrier, service: Service, totalCharge: Currency);
     shipmentId: string;
-    packageDocumentDetails: [PackageDocumentDetail];
+    packageDocumentDetails: PackageDocumentDetail[];
     promise: Promise;
     carrier: Carrier;
     service: Service;

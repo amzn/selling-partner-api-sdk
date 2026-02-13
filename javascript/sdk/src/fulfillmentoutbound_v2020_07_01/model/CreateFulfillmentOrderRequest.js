@@ -181,28 +181,28 @@ CreateFulfillmentOrderRequest.prototype.shipFromCountryCode = undefined
 
 /**
  * A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller.
- * @member {[String]} notificationEmails
- * @type {[String]}
+ * @member {String[]} notificationEmails
+ * @type {String[]}
  */
 CreateFulfillmentOrderRequest.prototype.notificationEmails = undefined
 
 /**
  * A list of features and their fulfillment policies to apply to the order.
- * @member {[FeatureSettings]} featureConstraints
- * @type {[FeatureSettings]}
+ * @member {FeatureSettings[]} featureConstraints
+ * @type {FeatureSettings[]}
  */
 CreateFulfillmentOrderRequest.prototype.featureConstraints = undefined
 
 /**
  * An array of item information for creating a fulfillment order.
- * @member {[CreateFulfillmentOrderItem]} items
- * @type {[CreateFulfillmentOrderItem]}
+ * @member {CreateFulfillmentOrderItem[]} items
+ * @type {CreateFulfillmentOrderItem[]}
  */
 CreateFulfillmentOrderRequest.prototype.items = undefined
 
 /**
  * An array of various payment attributes related to this fulfillment order.
- * @member {[PaymentInformation]} paymentInformation
- * @type {[PaymentInformation]}
+ * @member {PaymentInformation[]} paymentInformation
+ * @type {PaymentInformation[]}
  */
 CreateFulfillmentOrderRequest.prototype.paymentInformation = undefined

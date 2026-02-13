@@ -29,10 +29,10 @@ export class Package {
     packageTimeSlot: TimeSlot;
     /**
      * A list of items contained in the package.
-     * @member {[Item]} packageItems
-     * @type {[Item]}
+     * @member {Item[]} packageItems
+     * @type {Item[]}
      */
-    packageItems: [Item];
+    packageItems: Item[];
     /**
      * Optional seller-created identifier that is printed on the shipping label to help the seller identify the package.
      * @member {String} packageIdentifier

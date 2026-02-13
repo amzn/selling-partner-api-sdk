@@ -70,7 +70,7 @@ ListHandoverSlotsResponse.prototype.amazonOrderId = undefined
 
 /**
  * A list of time slots.
- * @member {[TimeSlot]} timeSlots
- * @type {[TimeSlot]}
+ * @member {TimeSlot[]} timeSlots
+ * @type {TimeSlot[]}
  */
 ListHandoverSlotsResponse.prototype.timeSlots = undefined

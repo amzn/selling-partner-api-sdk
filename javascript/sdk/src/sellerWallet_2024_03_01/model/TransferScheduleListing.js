@@ -68,7 +68,7 @@ TransferScheduleListing.prototype.nextPageToken = undefined
 
 /**
  * Collection that holds list of Transfer Schedules
- * @member {[TransferSchedule]} transferSchedules
- * @type {[TransferSchedule]}
+ * @member {TransferSchedule[]} transferSchedules
+ * @type {TransferSchedule[]}
  */
 TransferScheduleListing.prototype.transferSchedules = undefined

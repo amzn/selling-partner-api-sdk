@@ -98,8 +98,8 @@ ShipmentRequestDetails.prototype.sellerOrderId = undefined
 
 /**
  * The list of items you want to include in a shipment.
- * @member {[Item]} itemList
- * @type {[Item]}
+ * @member {Item[]} itemList
+ * @type {Item[]}
  */
 ShipmentRequestDetails.prototype.itemList = undefined
 

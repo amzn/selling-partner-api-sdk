@@ -20,7 +20,7 @@ export class ShipLabelsInput {
      * @param packageIds {[String]} The subset of package IDs used to generate a label.
      */
     constructor(packageIds: [string]);
-    packageIds: [string];
+    packageIds: string[];
     /**
      * @member {CourierSupportedAttributes} courierSupportedAttributes
      * @type {CourierSupportedAttributes}

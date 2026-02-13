@@ -20,7 +20,7 @@ export class FulfillmentPreviewShipment {
      * @param fulfillmentPreviewItems {[FulfillmentPreviewItem]} An array of fulfillment preview item information.
      */
     constructor(fulfillmentPreviewItems: [FulfillmentPreviewItem]);
-    fulfillmentPreviewItems: [FulfillmentPreviewItem];
+    fulfillmentPreviewItems: FulfillmentPreviewItem[];
     /**
      * Date timestamp
      * @member {Date} earliestShipDate
@@ -47,10 +47,10 @@ export class FulfillmentPreviewShipment {
     latestArrivalDate: Date;
     /**
      * Provides additional insight into the shipment timeline when exact delivery dates are not able to be precomputed.
-     * @member {[String]} shippingNotes
-     * @type {[String]}
+     * @member {String[]} shippingNotes
+     * @type {String[]}
      */
-    shippingNotes: [string];
+    shippingNotes: string[];
 }
 import { FulfillmentPreviewItem } from './FulfillmentPreviewItem.js';
 //# sourceMappingURL=FulfillmentPreviewShipment.d.ts.map

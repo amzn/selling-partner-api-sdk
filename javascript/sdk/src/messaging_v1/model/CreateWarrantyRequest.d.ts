@@ -14,10 +14,10 @@ export class CreateWarrantyRequest {
     static constructFromObject(data: any, obj: CreateWarrantyRequest): CreateWarrantyRequest;
     /**
      * Attachments to include in the message to the buyer. If any text is included in the attachment, the text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.
-     * @member {[Attachment]} attachments
-     * @type {[Attachment]}
+     * @member {Attachment[]} attachments
+     * @type {Attachment[]}
      */
-    attachments: [Attachment];
+    attachments: Attachment[];
     /**
      * The start date of the warranty coverage to include in the message to the buyer.
      * @member {Date} coverageStartDate

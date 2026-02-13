@@ -60,7 +60,7 @@ export class ErrorList {
 
 /**
  * The error responses that are returned when the request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Error[]} errors
+ * @type {Error[]}
  */
 ErrorList.prototype.errors = undefined

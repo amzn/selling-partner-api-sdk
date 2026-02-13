@@ -63,8 +63,8 @@ export class CustomPlacementInput {
 
 /**
  * Items included while creating Inbound Plan.
- * @member {[ItemInput]} items
- * @type {[ItemInput]}
+ * @member {ItemInput[]} items
+ * @type {ItemInput[]}
  */
 CustomPlacementInput.prototype.items = undefined
 

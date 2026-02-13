@@ -61,8 +61,8 @@ export class ShipLabelsInput {
 
 /**
  * The subset of package IDs used to generate a label.
- * @member {[String]} packageIds
- * @type {[String]}
+ * @member {String[]} packageIds
+ * @type {String[]}
  */
 ShipLabelsInput.prototype.packageIds = undefined
 

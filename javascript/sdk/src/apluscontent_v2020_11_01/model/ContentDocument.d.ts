@@ -26,7 +26,7 @@ export class ContentDocument {
     name: string;
     contentType: ContentType;
     locale: string;
-    contentModuleList: [ContentModule];
+    contentModuleList: ContentModule[];
     /**
      * The A+ Content document subtype. This represents a special-purpose type of an A+ Content document. Not every A+ Content document type has a subtype, and subtypes can change at any time.
      * @member {String} contentSubType

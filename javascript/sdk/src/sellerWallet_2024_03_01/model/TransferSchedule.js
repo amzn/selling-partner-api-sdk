@@ -125,7 +125,7 @@ TransferSchedule.prototype.paymentPreference = undefined
 
 /**
  * Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.
- * @member {[TransferScheduleFailures]} transferScheduleFailures
- * @type {[TransferScheduleFailures]}
+ * @member {TransferScheduleFailures[]} transferScheduleFailures
+ * @type {TransferScheduleFailures[]}
  */
 TransferSchedule.prototype.transferScheduleFailures = undefined
