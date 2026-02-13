@@ -14,10 +14,10 @@ export class GetSupplySourcesResponse {
     static constructFromObject(data: any, obj: GetSupplySourcesResponse): GetSupplySourcesResponse;
     /**
      * The list of `SupplySource`s.
-     * @member {[SupplySourceListInner]} supplySources
-     * @type {[SupplySourceListInner]}
+     * @member {SupplySourceListInner[]} supplySources
+     * @type {SupplySourceListInner[]}
      */
-    supplySources: [SupplySourceListInner];
+    supplySources: SupplySourceListInner[];
     /**
      * If present, use this pagination token to retrieve the next page of supply sources.
      * @member {String} nextPageToken

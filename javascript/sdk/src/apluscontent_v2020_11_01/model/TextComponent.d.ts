@@ -23,10 +23,10 @@ export class TextComponent {
     value: string;
     /**
      * A set of content decorators.
-     * @member {[Decorator]} decoratorSet
-     * @type {[Decorator]}
+     * @member {Decorator[]} decoratorSet
+     * @type {Decorator[]}
      */
-    decoratorSet: [Decorator];
+    decoratorSet: Decorator[];
 }
 import { Decorator } from './Decorator.js';
 //# sourceMappingURL=TextComponent.d.ts.map

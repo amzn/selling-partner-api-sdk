@@ -14,10 +14,10 @@ export class SpdTrackingDetail {
     static constructFromObject(data: any, obj: SpdTrackingDetail): SpdTrackingDetail;
     /**
      * List of Small Parcel Delivery (SPD) tracking items.
-     * @member {[SpdTrackingItem]} spdTrackingItems
-     * @type {[SpdTrackingItem]}
+     * @member {SpdTrackingItem[]} spdTrackingItems
+     * @type {SpdTrackingItem[]}
      */
-    spdTrackingItems: [SpdTrackingItem];
+    spdTrackingItems: SpdTrackingItem[];
 }
 import { SpdTrackingItem } from './SpdTrackingItem.js';
 //# sourceMappingURL=SpdTrackingDetail.d.ts.map

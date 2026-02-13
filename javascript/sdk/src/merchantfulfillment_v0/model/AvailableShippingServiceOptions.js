@@ -26,8 +26,8 @@ export class AvailableShippingServiceOptions {
    * The available shipping service options.
    * @alias module:merchantfulfillment_v0/model/AvailableShippingServiceOptions
    * @class
-   * @param availableCarrierWillPickUpOptions {[AvailableCarrierWillPickUpOption]} List of available carrier pickup options.
-   * @param availableDeliveryExperienceOptions {[AvailableDeliveryExperienceOption]} List of available delivery experience options.
+   * @param availableCarrierWillPickUpOptions {AvailableCarrierWillPickUpOption[]} List of available carrier pickup options.
+   * @param availableDeliveryExperienceOptions {AvailableDeliveryExperienceOption[]} List of available delivery experience options.
    */
   constructor (availableCarrierWillPickUpOptions, availableDeliveryExperienceOptions) {
     this.availableCarrierWillPickUpOptions = availableCarrierWillPickUpOptions
@@ -64,14 +64,14 @@ export class AvailableShippingServiceOptions {
 
 /**
  * List of available carrier pickup options.
- * @member {[AvailableCarrierWillPickUpOption]} availableCarrierWillPickUpOptions
- * @type {[AvailableCarrierWillPickUpOption]}
+ * @member {AvailableCarrierWillPickUpOption[]} availableCarrierWillPickUpOptions
+ * @type {AvailableCarrierWillPickUpOption[]}
  */
 AvailableShippingServiceOptions.prototype.availableCarrierWillPickUpOptions = undefined
 
 /**
  * List of available delivery experience options.
- * @member {[AvailableDeliveryExperienceOption]} availableDeliveryExperienceOptions
- * @type {[AvailableDeliveryExperienceOption]}
+ * @member {AvailableDeliveryExperienceOption[]} availableDeliveryExperienceOptions
+ * @type {AvailableDeliveryExperienceOption[]}
  */
 AvailableShippingServiceOptions.prototype.availableDeliveryExperienceOptions = undefined

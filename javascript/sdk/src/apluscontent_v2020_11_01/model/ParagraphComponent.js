@@ -25,7 +25,7 @@ export class ParagraphComponent {
    * A list of rich text content that is typically presented in a text box.
    * @alias module:apluscontent_v2020_11_01/model/ParagraphComponent
    * @class
-   * @param textList {[TextComponent]}
+   * @param textList {TextComponent[]}
    */
   constructor (textList) {
     this.textList = textList
@@ -59,7 +59,7 @@ export class ParagraphComponent {
 }
 
 /**
- * @member {[TextComponent]} textList
- * @type {[TextComponent]}
+ * @member {TextComponent[]} textList
+ * @type {TextComponent[]}
  */
 ParagraphComponent.prototype.textList = undefined

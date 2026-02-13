@@ -19,10 +19,10 @@ export class GetOrderRegulatedInfoResponse {
     payload: OrderRegulatedInfo;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Error[]} errors
+     * @type {Error[]}
      */
-    errors: [Error];
+    errors: Error[];
 }
 import { OrderRegulatedInfo } from './OrderRegulatedInfo.js';
 import { Error } from './Error.js';

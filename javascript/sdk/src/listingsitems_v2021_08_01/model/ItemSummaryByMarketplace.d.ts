@@ -19,14 +19,14 @@ export class ItemSummaryByMarketplace {
      * @class
      * @param marketplaceId {String} A marketplace identifier. Identifies the Amazon marketplace for the listings item.
      * @param productType {String} The Amazon product type of the listings item.
-     * @param status {[String]} Statuses that apply to the listings item.
+     * @param status {String[]} Statuses that apply to the listings item.
      * @param createdDate {Date} The date the listings item was created in ISO 8601 format.
      * @param lastUpdatedDate {Date} The date the listings item was last updated in ISO 8601 format.
      */
-    constructor(marketplaceId: string, productType: string, status: [string], createdDate: Date, lastUpdatedDate: Date);
+    constructor(marketplaceId: string, productType: string, status: string[], createdDate: Date, lastUpdatedDate: Date);
     marketplaceId: string;
     productType: string;
-    status: [string];
+    status: string[];
     createdDate: Date;
     lastUpdatedDate: Date;
     /**

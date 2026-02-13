@@ -38,10 +38,10 @@ export class CreateClaimRequest {
     isReplacementPackageSent: boolean;
     /**
      * A list of proof URLs for a claim. Basic URL validation will happen for each URLs present in the list
-     * @member {[String]} proofs
-     * @type {[String]}
+     * @member {String[]} proofs
+     * @type {String[]}
      */
-    proofs: [string];
+    proofs: string[];
 }
 import { ClaimReason } from './ClaimReason.js';
 import { SettlementType } from './SettlementType.js';

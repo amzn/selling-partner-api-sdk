@@ -14,10 +14,10 @@ export class TaxItemDetails {
     static constructFromObject(data: any, obj: TaxItemDetails): TaxItemDetails;
     /**
      * A list of tax line items.
-     * @member {[TaxDetails]} taxLineItem
-     * @type {[TaxDetails]}
+     * @member {TaxDetails[]} taxLineItem
+     * @type {TaxDetails[]}
      */
-    taxLineItem: [TaxDetails];
+    taxLineItem: TaxDetails[];
 }
 import { TaxDetails } from './TaxDetails.js';
 //# sourceMappingURL=TaxItemDetails.d.ts.map

@@ -34,10 +34,10 @@ export class ShipmentInfo {
     originalShipmentInfo: ReplacedShipmentInfo;
     /**
      * A list of order statuses for which the marketplace allows order rejection (seller cancellation). If the order has a status that does not belong to this list, then seller cancellation is not possible.
-     * @member {[String]} orderStatesEligibleForRejection
-     * @type {[String]}
+     * @member {String[]} orderStatesEligibleForRejection
+     * @type {String[]}
      */
-    orderStatesEligibleForRejection: [string];
+    orderStatesEligibleForRejection: string[];
     /**
      * The timestamp of when the order was placed, in UTC
      * @member {String} orderPlacedTimestamp

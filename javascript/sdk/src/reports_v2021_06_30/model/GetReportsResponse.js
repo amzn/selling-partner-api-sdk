@@ -25,7 +25,7 @@ export class GetReportsResponse {
    * The response for the &#x60;getReports&#x60; operation.
    * @alias module:reports_v2021_06_30/model/GetReportsResponse
    * @class
-   * @param reports {[Report]} A list of reports.
+   * @param reports {Report[]} A list of reports.
    */
   constructor (reports) {
     this.reports = reports
@@ -61,8 +61,8 @@ export class GetReportsResponse {
 
 /**
  * A list of reports.
- * @member {[Report]} reports
- * @type {[Report]}
+ * @member {Report[]} reports
+ * @type {Report[]}
  */
 GetReportsResponse.prototype.reports = undefined
 

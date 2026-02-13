@@ -27,7 +27,7 @@ export class ListContentDocumentAsinRelationsResponse {
    * @alias module:apluscontent_v2020_11_01/model/ListContentDocumentAsinRelationsResponse
    * @class
    * @implements module:apluscontent_v2020_11_01/model/AplusPaginatedResponse
-   * @param asinMetadataSet {[AsinMetadata]} The set of ASIN metadata.
+   * @param asinMetadataSet {AsinMetadata[]} The set of ASIN metadata.
    */
   constructor (asinMetadataSet) {
     AplusPaginatedResponse.call(this)
@@ -66,8 +66,8 @@ export class ListContentDocumentAsinRelationsResponse {
 
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {[Error]} warnings
- * @type {[Error]}
+ * @member {Error[]} warnings
+ * @type {Error[]}
  */
 ListContentDocumentAsinRelationsResponse.prototype.warnings = undefined
 
@@ -80,16 +80,16 @@ ListContentDocumentAsinRelationsResponse.prototype.nextPageToken = undefined
 
 /**
  * The set of ASIN metadata.
- * @member {[AsinMetadata]} asinMetadataSet
- * @type {[AsinMetadata]}
+ * @member {AsinMetadata[]} asinMetadataSet
+ * @type {AsinMetadata[]}
  */
 ListContentDocumentAsinRelationsResponse.prototype.asinMetadataSet = undefined
 
 // Implement AplusPaginatedResponse interface:
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {[Error]} warnings
- * @type {[Error]}
+ * @member {Error[]} warnings
+ * @type {Error[]}
  */
 AplusPaginatedResponse.prototype.warnings = undefined
 

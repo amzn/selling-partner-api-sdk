@@ -158,8 +158,8 @@ ShippingService.prototype.rateWithAdjustments = undefined
 
 /**
  * List of adjustments.
- * @member {[RateItem]} adjustmentItemList
- * @type {[RateItem]}
+ * @member {RateItem[]} adjustmentItemList
+ * @type {RateItem[]}
  */
 ShippingService.prototype.adjustmentItemList = undefined
 
@@ -177,15 +177,15 @@ ShippingService.prototype.availableShippingServiceOptions = undefined
 
 /**
  * List of label formats.
- * @member {[LabelFormat]} availableLabelFormats
- * @type {[LabelFormat]}
+ * @member {LabelFormat[]} availableLabelFormats
+ * @type {LabelFormat[]}
  */
 ShippingService.prototype.availableLabelFormats = undefined
 
 /**
  * The available label formats.
- * @member {[LabelFormatOption]} availableFormatOptionsForLabel
- * @type {[LabelFormatOption]}
+ * @member {LabelFormatOption[]} availableFormatOptionsForLabel
+ * @type {LabelFormatOption[]}
  */
 ShippingService.prototype.availableFormatOptionsForLabel = undefined
 

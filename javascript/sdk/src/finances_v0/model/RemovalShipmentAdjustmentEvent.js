@@ -98,7 +98,7 @@ RemovalShipmentAdjustmentEvent.prototype.transactionType = undefined
 
 /**
  * A comma-delimited list of `RemovalShipmentItemAdjustment` details for FBA inventory.
- * @member {[RemovalShipmentItemAdjustment]} removalShipmentItemAdjustmentList
- * @type {[RemovalShipmentItemAdjustment]}
+ * @member {RemovalShipmentItemAdjustment[]} removalShipmentItemAdjustmentList
+ * @type {RemovalShipmentItemAdjustment[]}
  */
 RemovalShipmentAdjustmentEvent.prototype.removalShipmentItemAdjustmentList = undefined

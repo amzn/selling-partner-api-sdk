@@ -66,7 +66,7 @@ TaxWithheldComponent.prototype.taxCollectionModel = undefined
 
 /**
  * A list of charge information on the seller's account.
- * @member {[ChargeComponent]} taxesWithheld
- * @type {[ChargeComponent]}
+ * @member {ChargeComponent[]} taxesWithheld
+ * @type {ChargeComponent[]}
  */
 TaxWithheldComponent.prototype.taxesWithheld = undefined

@@ -76,14 +76,14 @@ SetAppointmentFulfillmentDataRequest.prototype.fulfillmentTime = undefined
 
 /**
  * List of resources that performs or performed job appointment fulfillment.
- * @member {[AppointmentResource]} appointmentResources
- * @type {[AppointmentResource]}
+ * @member {AppointmentResource[]} appointmentResources
+ * @type {AppointmentResource[]}
  */
 SetAppointmentFulfillmentDataRequest.prototype.appointmentResources = undefined
 
 /**
  * List of documents captured during service appointment fulfillment.
- * @member {[FulfillmentDocument]} fulfillmentDocuments
- * @type {[FulfillmentDocument]}
+ * @member {FulfillmentDocument[]} fulfillmentDocuments
+ * @type {FulfillmentDocument[]}
  */
 SetAppointmentFulfillmentDataRequest.prototype.fulfillmentDocuments = undefined

@@ -72,8 +72,8 @@ AsinMetadata.prototype.asin = undefined
 
 /**
  * The set of ASIN badges.
- * @member {[AsinBadge]} badgeSet
- * @type {[AsinBadge]}
+ * @member {AsinBadge[]} badgeSet
+ * @type {AsinBadge[]}
  */
 AsinMetadata.prototype.badgeSet = undefined
 
@@ -100,7 +100,7 @@ AsinMetadata.prototype.imageUrl = undefined
 
 /**
  * A set of content reference keys.
- * @member {[String]} contentReferenceKeySet
- * @type {[String]}
+ * @member {String[]} contentReferenceKeySet
+ * @type {String[]}
  */
 AsinMetadata.prototype.contentReferenceKeySet = undefined

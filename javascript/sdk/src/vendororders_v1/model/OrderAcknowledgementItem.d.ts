@@ -18,11 +18,11 @@ export class OrderAcknowledgementItem {
      * @alias module:vendororders_v1/model/OrderAcknowledgementItem
      * @class
      * @param orderedQuantity {ItemQuantity}
-     * @param itemAcknowledgements {[OrderItemAcknowledgement]} This is used to indicate acknowledged quantity.
+     * @param itemAcknowledgements {OrderItemAcknowledgement[]} This is used to indicate acknowledged quantity.
      */
-    constructor(orderedQuantity: ItemQuantity, itemAcknowledgements: [OrderItemAcknowledgement]);
+    constructor(orderedQuantity: ItemQuantity, itemAcknowledgements: OrderItemAcknowledgement[]);
     orderedQuantity: ItemQuantity;
-    itemAcknowledgements: [OrderItemAcknowledgement];
+    itemAcknowledgements: OrderItemAcknowledgement[];
     /**
      * Line item sequence number for the item.
      * @member {String} itemSequenceNumber

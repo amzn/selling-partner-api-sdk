@@ -66,7 +66,7 @@ export class FbaInboundApi {
      * @param {String} asin The ASIN of the item for which you want an eligibility preview.
      * @param {String} program The program that you want to check eligibility against.
      * @param {Object} [opts] Optional parameters
-     * @param {[String]} [opts.marketplaceIds] The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND.
+     * @param {String[]} [opts.marketplaceIds] The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND.
      * @return {Promise<GetItemEligibilityPreviewResponse>}
      */
   getItemEligibilityPreviewWithHttpInfo (asin, program, opts) {
@@ -111,7 +111,7 @@ export class FbaInboundApi {
      * @param {String} asin The ASIN of the item for which you want an eligibility preview.
      * @param {String} program The program that you want to check eligibility against.
      * @param {Object} [opts] Optional parameters
-     * @param {[String]} [opts.marketplaceIds] The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND.
+     * @param {String[]} [opts.marketplaceIds] The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND.
      * @return {Promise<GetItemEligibilityPreviewResponse>}
      */
   getItemEligibilityPreview (asin, program, opts) {

@@ -26,21 +26,21 @@ export class GetOrderApi {
        * Returns the order that you specify.
        * @param {String} orderId An Amazon-defined order identifier.
        * @param {Object} [opts] Optional parameters
-       * @param {[String]} [opts.includedData] A list of datasets to include in the response.
+       * @param {String[]} [opts.includedData] A list of datasets to include in the response.
        * @return {Promise<GetOrderResponse>}
        */
     getOrderWithHttpInfo(orderId: string, opts?: {
-        includedData?: [string];
+        includedData?: string[];
     }): Promise<GetOrderResponse>;
     /**
        * Returns the order that you specify.
        * @param {String} orderId An Amazon-defined order identifier.
        * @param {Object} [opts] Optional parameters
-       * @param {[String]} [opts.includedData] A list of datasets to include in the response.
+       * @param {String[]} [opts.includedData] A list of datasets to include in the response.
        * @return {Promise<GetOrderResponse>}
        */
     getOrder(orderId: string, opts?: {
-        includedData?: [string];
+        includedData?: string[];
     }): Promise<GetOrderResponse>;
     #private;
 }

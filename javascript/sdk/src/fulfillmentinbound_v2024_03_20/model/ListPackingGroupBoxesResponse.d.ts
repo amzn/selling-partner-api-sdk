@@ -17,10 +17,10 @@ export class ListPackingGroupBoxesResponse {
      * The &#x60;listPackingGroupBoxes&#x60; response.
      * @alias module:fulfillmentinbound_v2024_03_20/model/ListPackingGroupBoxesResponse
      * @class
-     * @param boxes {[Box]} Provides the information about the list of boxes in the packing group.
+     * @param boxes {Box[]} Provides the information about the list of boxes in the packing group.
      */
-    constructor(boxes: [Box]);
-    boxes: [Box];
+    constructor(boxes: Box[]);
+    boxes: Box[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

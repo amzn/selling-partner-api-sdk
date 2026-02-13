@@ -66,7 +66,7 @@ TransportationLabels.prototype.pagination = undefined
 
 /**
  * A list of one or more ShipmentLabels.
- * @member {[TransportLabel]} transportLabels
- * @type {[TransportLabel]}
+ * @member {TransportLabel[]} transportLabels
+ * @type {TransportLabel[]}
  */
 TransportationLabels.prototype.transportLabels = undefined

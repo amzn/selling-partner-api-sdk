@@ -19,10 +19,10 @@ export class CustomerInvoiceList {
     pagination: Pagination;
     /**
      * Represents a customer invoice within the `CustomerInvoiceList`.
-     * @member {[CustomerInvoice]} customerInvoices
-     * @type {[CustomerInvoice]}
+     * @member {CustomerInvoice[]} customerInvoices
+     * @type {CustomerInvoice[]}
      */
-    customerInvoices: [CustomerInvoice];
+    customerInvoices: CustomerInvoice[];
 }
 import { Pagination } from './Pagination.js';
 import { CustomerInvoice } from './CustomerInvoice.js';

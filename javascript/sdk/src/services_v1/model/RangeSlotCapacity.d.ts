@@ -20,10 +20,10 @@ export class RangeSlotCapacity {
     resourceId: string;
     /**
      * Array of range capacities where each entry is for a specific capacity type.
-     * @member {[RangeCapacity]} capacities
-     * @type {[RangeCapacity]}
+     * @member {RangeCapacity[]} capacities
+     * @type {RangeCapacity[]}
      */
-    capacities: [RangeCapacity];
+    capacities: RangeCapacity[];
     /**
      * Next page token, if there are more pages.
      * @member {String} nextPageToken

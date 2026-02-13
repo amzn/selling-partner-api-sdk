@@ -161,7 +161,7 @@ Restriction.prototype.conditionType = undefined
 
 /**
  * A list of reasons for the restriction.
- * @member {[Reason]} reasons
- * @type {[Reason]}
+ * @member {Reason[]} reasons
+ * @type {Reason[]}
  */
 Restriction.prototype.reasons = undefined

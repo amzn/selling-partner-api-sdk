@@ -25,7 +25,7 @@ export class RegulatedInformation {
    * The regulated information collected during purchase and used to verify the order.
    * @alias module:orders_v0/model/RegulatedInformation
    * @class
-   * @param fields {[RegulatedInformationField]} A list of regulated information fields as collected from the regulatory form.
+   * @param fields {RegulatedInformationField[]} A list of regulated information fields as collected from the regulatory form.
    */
   constructor (fields) {
     this.fields = fields
@@ -60,7 +60,7 @@ export class RegulatedInformation {
 
 /**
  * A list of regulated information fields as collected from the regulatory form.
- * @member {[RegulatedInformationField]} fields
- * @type {[RegulatedInformationField]}
+ * @member {RegulatedInformationField[]} fields
+ * @type {RegulatedInformationField[]}
  */
 RegulatedInformation.prototype.fields = undefined

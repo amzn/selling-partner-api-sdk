@@ -89,8 +89,8 @@ PurchaseShipmentRequest.prototype.requestedDocumentSpecification = undefined
 
 /**
  * The value-added services to be added to a shipping service purchase.
- * @member {[RequestedValueAddedService]} requestedValueAddedServices
- * @type {[RequestedValueAddedService]}
+ * @member {RequestedValueAddedService[]} requestedValueAddedServices
+ * @type {RequestedValueAddedService[]}
  */
 PurchaseShipmentRequest.prototype.requestedValueAddedServices = undefined
 

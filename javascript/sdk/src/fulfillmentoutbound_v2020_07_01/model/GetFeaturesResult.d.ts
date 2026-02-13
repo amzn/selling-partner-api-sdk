@@ -17,10 +17,10 @@ export class GetFeaturesResult {
      * The payload for the &#x60;getFeatures&#x60; operation.
      * @alias module:fulfillmentoutbound_v2020_07_01/model/GetFeaturesResult
      * @class
-     * @param features {[Feature]} An array of features.
+     * @param features {Feature[]} An array of features.
      */
-    constructor(features: [Feature]);
-    features: [Feature];
+    constructor(features: Feature[]);
+    features: Feature[];
 }
 import { Feature } from './Feature.js';
 //# sourceMappingURL=GetFeaturesResult.d.ts.map

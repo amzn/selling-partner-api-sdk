@@ -35,7 +35,7 @@ export class TransferSchedule {
    * @param transactionDestinationAccount {TransactionAccount}
    * @param transferScheduleStatus {TransferScheduleStatus}
    * @param transferScheduleInformation {TransferScheduleInformation}
-   * @param transferScheduleFailures {[TransferScheduleFailures]} Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.
+   * @param transferScheduleFailures {TransferScheduleFailures[]} Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.
    */
   constructor (transferScheduleId, transactionType, transactionDestinationAccount, transferScheduleStatus, transferScheduleInformation, transferScheduleFailures) {
     this.transferScheduleId = transferScheduleId
@@ -125,7 +125,7 @@ TransferSchedule.prototype.paymentPreference = undefined
 
 /**
  * Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.
- * @member {[TransferScheduleFailures]} transferScheduleFailures
- * @type {[TransferScheduleFailures]}
+ * @member {TransferScheduleFailures[]} transferScheduleFailures
+ * @type {TransferScheduleFailures[]}
  */
 TransferSchedule.prototype.transferScheduleFailures = undefined

@@ -17,12 +17,12 @@ export class Account {
      * The response schema for the &#x60;getAccount&#x60; operation.
      * @alias module:sellers_v1/model/Account
      * @class
-     * @param marketplaceParticipationList {[MarketplaceParticipation]} List of marketplace participations.
+     * @param marketplaceParticipationList {MarketplaceParticipation[]} List of marketplace participations.
      * @param businessType {String} The type of business registered for the seller account.
      * @param sellingPlan {String} The selling plan details.
      */
-    constructor(marketplaceParticipationList: [MarketplaceParticipation], businessType: string, sellingPlan: string);
-    marketplaceParticipationList: [MarketplaceParticipation];
+    constructor(marketplaceParticipationList: MarketplaceParticipation[], businessType: string, sellingPlan: string);
+    marketplaceParticipationList: MarketplaceParticipation[];
     businessType: string;
     sellingPlan: string;
     /**

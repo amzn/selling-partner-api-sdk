@@ -19,10 +19,10 @@ export class TransportationLabels {
     pagination: Pagination;
     /**
      * A list of one or more ShipmentLabels.
-     * @member {[TransportLabel]} transportLabels
-     * @type {[TransportLabel]}
+     * @member {TransportLabel[]} transportLabels
+     * @type {TransportLabel[]}
      */
-    transportLabels: [TransportLabel];
+    transportLabels: TransportLabel[];
 }
 import { Pagination } from './Pagination.js';
 import { TransportLabel } from './TransportLabel.js';

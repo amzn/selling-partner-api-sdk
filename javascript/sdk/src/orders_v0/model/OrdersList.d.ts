@@ -17,10 +17,10 @@ export class OrdersList {
      * A list of orders along with additional information to make subsequent API calls.
      * @alias module:orders_v0/model/OrdersList
      * @class
-     * @param orders {[Order]} A list of orders.
+     * @param orders {Order[]} A list of orders.
      */
-    constructor(orders: [Order]);
-    orders: [Order];
+    constructor(orders: Order[]);
+    orders: Order[];
     /**
      * When present and not empty, pass this string token in the next request to return the next response page.
      * @member {String} nextToken

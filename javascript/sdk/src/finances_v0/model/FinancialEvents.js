@@ -119,238 +119,238 @@ export class FinancialEvents {
 
 /**
  * A list of shipment event information.
- * @member {[ShipmentEvent]} shipmentEventList
- * @type {[ShipmentEvent]}
+ * @member {ShipmentEvent[]} shipmentEventList
+ * @type {ShipmentEvent[]}
  */
 FinancialEvents.prototype.shipmentEventList = undefined
 
 /**
  * A list of `ShipmentEvent` items.
- * @member {[ShipmentEvent]} shipmentSettleEventList
- * @type {[ShipmentEvent]}
+ * @member {ShipmentEvent[]} shipmentSettleEventList
+ * @type {ShipmentEvent[]}
  */
 FinancialEvents.prototype.shipmentSettleEventList = undefined
 
 /**
  * A list of shipment event information.
- * @member {[ShipmentEvent]} refundEventList
- * @type {[ShipmentEvent]}
+ * @member {ShipmentEvent[]} refundEventList
+ * @type {ShipmentEvent[]}
  */
 FinancialEvents.prototype.refundEventList = undefined
 
 /**
  * A list of shipment event information.
- * @member {[ShipmentEvent]} guaranteeClaimEventList
- * @type {[ShipmentEvent]}
+ * @member {ShipmentEvent[]} guaranteeClaimEventList
+ * @type {ShipmentEvent[]}
  */
 FinancialEvents.prototype.guaranteeClaimEventList = undefined
 
 /**
  * A list of EBT refund reimbursement events.
- * @member {[EBTRefundReimbursementOnlyEvent]} eBTRefundReimbursementOnlyEventList
- * @type {[EBTRefundReimbursementOnlyEvent]}
+ * @member {EBTRefundReimbursementOnlyEvent[]} eBTRefundReimbursementOnlyEventList
+ * @type {EBTRefundReimbursementOnlyEvent[]}
  */
 FinancialEvents.prototype.eBTRefundReimbursementOnlyEventList = undefined
 
 /**
  * A list of shipment event information.
- * @member {[ShipmentEvent]} chargebackEventList
- * @type {[ShipmentEvent]}
+ * @member {ShipmentEvent[]} chargebackEventList
+ * @type {ShipmentEvent[]}
  */
 FinancialEvents.prototype.chargebackEventList = undefined
 
 /**
  * A list of events related to the seller's Pay with Amazon account.
- * @member {[PayWithAmazonEvent]} payWithAmazonEventList
- * @type {[PayWithAmazonEvent]}
+ * @member {PayWithAmazonEvent[]} payWithAmazonEventList
+ * @type {PayWithAmazonEvent[]}
  */
 FinancialEvents.prototype.payWithAmazonEventList = undefined
 
 /**
  * A list of `SolutionProviderCreditEvent`.
- * @member {[SolutionProviderCreditEvent]} serviceProviderCreditEventList
- * @type {[SolutionProviderCreditEvent]}
+ * @member {SolutionProviderCreditEvent[]} serviceProviderCreditEventList
+ * @type {SolutionProviderCreditEvent[]}
  */
 FinancialEvents.prototype.serviceProviderCreditEventList = undefined
 
 /**
  * A list of information about `Retrocharge` or `RetrochargeReversal` events.
- * @member {[RetrochargeEvent]} retrochargeEventList
- * @type {[RetrochargeEvent]}
+ * @member {RetrochargeEvent[]} retrochargeEventList
+ * @type {RetrochargeEvent[]}
  */
 FinancialEvents.prototype.retrochargeEventList = undefined
 
 /**
  * A list of rental transaction event information.
- * @member {[RentalTransactionEvent]} rentalTransactionEventList
- * @type {[RentalTransactionEvent]}
+ * @member {RentalTransactionEvent[]} rentalTransactionEventList
+ * @type {RentalTransactionEvent[]}
  */
 FinancialEvents.prototype.rentalTransactionEventList = undefined
 
 /**
  * A list of sponsored products payment events.
- * @member {[ProductAdsPaymentEvent]} productAdsPaymentEventList
- * @type {[ProductAdsPaymentEvent]}
+ * @member {ProductAdsPaymentEvent[]} productAdsPaymentEventList
+ * @type {ProductAdsPaymentEvent[]}
  */
 FinancialEvents.prototype.productAdsPaymentEventList = undefined
 
 /**
  * A list of information about service fee events.
- * @member {[ServiceFeeEvent]} serviceFeeEventList
- * @type {[ServiceFeeEvent]}
+ * @member {ServiceFeeEvent[]} serviceFeeEventList
+ * @type {ServiceFeeEvent[]}
  */
 FinancialEvents.prototype.serviceFeeEventList = undefined
 
 /**
  * A list of payment events for deal-related fees.
- * @member {[SellerDealPaymentEvent]} sellerDealPaymentEventList
- * @type {[SellerDealPaymentEvent]}
+ * @member {SellerDealPaymentEvent[]} sellerDealPaymentEventList
+ * @type {SellerDealPaymentEvent[]}
  */
 FinancialEvents.prototype.sellerDealPaymentEventList = undefined
 
 /**
  * A list of debt recovery event information.
- * @member {[DebtRecoveryEvent]} debtRecoveryEventList
- * @type {[DebtRecoveryEvent]}
+ * @member {DebtRecoveryEvent[]} debtRecoveryEventList
+ * @type {DebtRecoveryEvent[]}
  */
 FinancialEvents.prototype.debtRecoveryEventList = undefined
 
 /**
  * A list of loan servicing events.
- * @member {[LoanServicingEvent]} loanServicingEventList
- * @type {[LoanServicingEvent]}
+ * @member {LoanServicingEvent[]} loanServicingEventList
+ * @type {LoanServicingEvent[]}
  */
 FinancialEvents.prototype.loanServicingEventList = undefined
 
 /**
  * A list of adjustment event information for the seller's account.
- * @member {[AdjustmentEvent]} adjustmentEventList
- * @type {[AdjustmentEvent]}
+ * @member {AdjustmentEvent[]} adjustmentEventList
+ * @type {AdjustmentEvent[]}
  */
 FinancialEvents.prototype.adjustmentEventList = undefined
 
 /**
  * A list of `SAFETReimbursementEvent`.
- * @member {[SAFETReimbursementEvent]} sAFETReimbursementEventList
- * @type {[SAFETReimbursementEvent]}
+ * @member {SAFETReimbursementEvent[]} sAFETReimbursementEventList
+ * @type {SAFETReimbursementEvent[]}
  */
 FinancialEvents.prototype.sAFETReimbursementEventList = undefined
 
 /**
  * A list of information about fee events for the Early Reviewer Program.
- * @member {[SellerReviewEnrollmentPaymentEvent]} sellerReviewEnrollmentPaymentEventList
- * @type {[SellerReviewEnrollmentPaymentEvent]}
+ * @member {SellerReviewEnrollmentPaymentEvent[]} sellerReviewEnrollmentPaymentEventList
+ * @type {SellerReviewEnrollmentPaymentEvent[]}
  */
 FinancialEvents.prototype.sellerReviewEnrollmentPaymentEventList = undefined
 
 /**
  * A list of FBA inventory liquidation payment events.
- * @member {[FBALiquidationEvent]} fBALiquidationEventList
- * @type {[FBALiquidationEvent]}
+ * @member {FBALiquidationEvent[]} fBALiquidationEventList
+ * @type {FBALiquidationEvent[]}
  */
 FinancialEvents.prototype.fBALiquidationEventList = undefined
 
 /**
  * A list of coupon payment event information.
- * @member {[CouponPaymentEvent]} couponPaymentEventList
- * @type {[CouponPaymentEvent]}
+ * @member {CouponPaymentEvent[]} couponPaymentEventList
+ * @type {CouponPaymentEvent[]}
  */
 FinancialEvents.prototype.couponPaymentEventList = undefined
 
 /**
  * A list of fee events related to Amazon Imaging services.
- * @member {[ImagingServicesFeeEvent]} imagingServicesFeeEventList
- * @type {[ImagingServicesFeeEvent]}
+ * @member {ImagingServicesFeeEvent[]} imagingServicesFeeEventList
+ * @type {ImagingServicesFeeEvent[]}
  */
 FinancialEvents.prototype.imagingServicesFeeEventList = undefined
 
 /**
  * A list of network commingling transaction events.
- * @member {[NetworkComminglingTransactionEvent]} networkComminglingTransactionEventList
- * @type {[NetworkComminglingTransactionEvent]}
+ * @member {NetworkComminglingTransactionEvent[]} networkComminglingTransactionEventList
+ * @type {NetworkComminglingTransactionEvent[]}
  */
 FinancialEvents.prototype.networkComminglingTransactionEventList = undefined
 
 /**
  * A list of expense information related to an affordability promotion.
- * @member {[AffordabilityExpenseEvent]} affordabilityExpenseEventList
- * @type {[AffordabilityExpenseEvent]}
+ * @member {AffordabilityExpenseEvent[]} affordabilityExpenseEventList
+ * @type {AffordabilityExpenseEvent[]}
  */
 FinancialEvents.prototype.affordabilityExpenseEventList = undefined
 
 /**
  * A list of expense information related to an affordability promotion.
- * @member {[AffordabilityExpenseEvent]} affordabilityExpenseReversalEventList
- * @type {[AffordabilityExpenseEvent]}
+ * @member {AffordabilityExpenseEvent[]} affordabilityExpenseReversalEventList
+ * @type {AffordabilityExpenseEvent[]}
  */
 FinancialEvents.prototype.affordabilityExpenseReversalEventList = undefined
 
 /**
  * A list of removal shipment event information.
- * @member {[RemovalShipmentEvent]} removalShipmentEventList
- * @type {[RemovalShipmentEvent]}
+ * @member {RemovalShipmentEvent[]} removalShipmentEventList
+ * @type {RemovalShipmentEvent[]}
  */
 FinancialEvents.prototype.removalShipmentEventList = undefined
 
 /**
  * A comma-delimited list of `RemovalShipmentAdjustment` details for FBA inventory.
- * @member {[RemovalShipmentAdjustmentEvent]} removalShipmentAdjustmentEventList
- * @type {[RemovalShipmentAdjustmentEvent]}
+ * @member {RemovalShipmentAdjustmentEvent[]} removalShipmentAdjustmentEventList
+ * @type {RemovalShipmentAdjustmentEvent[]}
  */
 FinancialEvents.prototype.removalShipmentAdjustmentEventList = undefined
 
 /**
  * A list of information about trial shipment financial events.
- * @member {[TrialShipmentEvent]} trialShipmentEventList
- * @type {[TrialShipmentEvent]}
+ * @member {TrialShipmentEvent[]} trialShipmentEventList
+ * @type {TrialShipmentEvent[]}
  */
 FinancialEvents.prototype.trialShipmentEventList = undefined
 
 /**
  * A list of `TDSReimbursementEvent` items.
- * @member {[TDSReimbursementEvent]} tDSReimbursementEventList
- * @type {[TDSReimbursementEvent]}
+ * @member {TDSReimbursementEvent[]} tDSReimbursementEventList
+ * @type {TDSReimbursementEvent[]}
  */
 FinancialEvents.prototype.tDSReimbursementEventList = undefined
 
 /**
  * A list of `AdhocDisbursement` events.
- * @member {[AdhocDisbursementEvent]} adhocDisbursementEventList
- * @type {[AdhocDisbursementEvent]}
+ * @member {AdhocDisbursementEvent[]} adhocDisbursementEventList
+ * @type {AdhocDisbursementEvent[]}
  */
 FinancialEvents.prototype.adhocDisbursementEventList = undefined
 
 /**
  * A list of tax withholding events.
- * @member {[TaxWithholdingEvent]} taxWithholdingEventList
- * @type {[TaxWithholdingEvent]}
+ * @member {TaxWithholdingEvent[]} taxWithholdingEventList
+ * @type {TaxWithholdingEvent[]}
  */
 FinancialEvents.prototype.taxWithholdingEventList = undefined
 
 /**
  * A list of charge refund events.
- * @member {[ChargeRefundEvent]} chargeRefundEventList
- * @type {[ChargeRefundEvent]}
+ * @member {ChargeRefundEvent[]} chargeRefundEventList
+ * @type {ChargeRefundEvent[]}
  */
 FinancialEvents.prototype.chargeRefundEventList = undefined
 
 /**
  * A list of `FailedAdhocDisbursementEvent`.
- * @member {[FailedAdhocDisbursementEvent]} failedAdhocDisbursementEventList
- * @type {[FailedAdhocDisbursementEvent]}
+ * @member {FailedAdhocDisbursementEvent[]} failedAdhocDisbursementEventList
+ * @type {FailedAdhocDisbursementEvent[]}
  */
 FinancialEvents.prototype.failedAdhocDisbursementEventList = undefined
 
 /**
  * A list of `ValueAddedServiceCharge` events.
- * @member {[ValueAddedServiceChargeEvent]} valueAddedServiceChargeEventList
- * @type {[ValueAddedServiceChargeEvent]}
+ * @member {ValueAddedServiceChargeEvent[]} valueAddedServiceChargeEventList
+ * @type {ValueAddedServiceChargeEvent[]}
  */
 FinancialEvents.prototype.valueAddedServiceChargeEventList = undefined
 
 /**
  * A list of `CapacityReservationBillingEvent` events.
- * @member {[CapacityReservationBillingEvent]} capacityReservationBillingEventList
- * @type {[CapacityReservationBillingEvent]}
+ * @member {CapacityReservationBillingEvent[]} capacityReservationBillingEventList
+ * @type {CapacityReservationBillingEvent[]}
  */
 FinancialEvents.prototype.capacityReservationBillingEventList = undefined

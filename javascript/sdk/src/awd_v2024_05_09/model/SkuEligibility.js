@@ -66,8 +66,8 @@ export class SkuEligibility {
 
 /**
  * If not eligible, these are list of error codes and descriptions.
- * @member {[SkuIneligibilityReason]} ineligibilityReasons
- * @type {[SkuIneligibilityReason]}
+ * @member {SkuIneligibilityReason[]} ineligibilityReasons
+ * @type {SkuIneligibilityReason[]}
  */
 SkuEligibility.prototype.ineligibilityReasons = undefined
 

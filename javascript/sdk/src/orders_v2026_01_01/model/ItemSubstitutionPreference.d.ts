@@ -23,10 +23,10 @@ export class ItemSubstitutionPreference {
     substitutionType: string;
     /**
      * List of alternative products that can be substituted for the original item if it becomes unavailable.
-     * @member {[ItemSubstitutionOption]} substitutionOptions
-     * @type {[ItemSubstitutionOption]}
+     * @member {ItemSubstitutionOption[]} substitutionOptions
+     * @type {ItemSubstitutionOption[]}
      */
-    substitutionOptions: [ItemSubstitutionOption];
+    substitutionOptions: ItemSubstitutionOption[];
 }
 export namespace ItemSubstitutionPreference {
     namespace SubstitutionTypeEnum {

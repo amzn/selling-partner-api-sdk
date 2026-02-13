@@ -104,7 +104,7 @@ MarketplaceAttributes.CustomAttributesEnum = {
 }
 /**
  * Marketplace channel-specific attribute value.
- * @member {[String]} customAttributes
- * @type {[String]}
+ * @member {String[]} customAttributes
+ * @type {String[]}
  */
 MarketplaceAttributes.prototype.customAttributes = undefined

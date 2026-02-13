@@ -100,15 +100,15 @@ Item.prototype.itemDescription = undefined
 
 /**
  * A list of transparency codes.
- * @member {[String]} transparencyCodeList
- * @type {[String]}
+ * @member {String[]} transparencyCodeList
+ * @type {String[]}
  */
 Item.prototype.transparencyCodeList = undefined
 
 /**
  * A list of additional seller input pairs required to purchase shipping.
- * @member {[AdditionalSellerInputs]} itemLevelSellerInputsList
- * @type {[AdditionalSellerInputs]}
+ * @member {AdditionalSellerInputs[]} itemLevelSellerInputsList
+ * @type {AdditionalSellerInputs[]}
  */
 Item.prototype.itemLevelSellerInputsList = undefined
 

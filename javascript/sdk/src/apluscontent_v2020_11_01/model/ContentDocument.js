@@ -29,7 +29,7 @@ export class ContentDocument {
    * @param name {String} The A+ Content document name.
    * @param contentType {ContentType}
    * @param locale {String} The IETF language tag, which supports the primary language subtag and one secondary language subtag. The secondary language subtag is usually a regional designation. This doesn't support subtags other than the primary and secondary subtags. **Pattern:** ^[a-z]{2,}-[A-Z0-9]{2,}$
-   * @param contentModuleList {[ContentModule]} A list of A+ Content modules.
+   * @param contentModuleList {ContentModule[]} A list of A+ Content modules.
    */
   constructor (name, contentType, locale, contentModuleList) {
     this.name = name
@@ -98,7 +98,7 @@ ContentDocument.prototype.locale = undefined
 
 /**
  * A list of A+ Content modules.
- * @member {[ContentModule]} contentModuleList
- * @type {[ContentModule]}
+ * @member {ContentModule[]} contentModuleList
+ * @type {ContentModule[]}
  */
 ContentDocument.prototype.contentModuleList = undefined

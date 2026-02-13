@@ -17,10 +17,10 @@ export class ListInboundPlanItemsResponse {
      * The &#x60;listInboundPlanItems&#x60; response.
      * @alias module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanItemsResponse
      * @class
-     * @param items {[Item]} The items in an inbound plan.
+     * @param items {Item[]} The items in an inbound plan.
      */
-    constructor(items: [Item]);
-    items: [Item];
+    constructor(items: Item[]);
+    items: Item[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

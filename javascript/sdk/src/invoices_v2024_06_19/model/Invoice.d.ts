@@ -62,10 +62,10 @@ export class Invoice {
     status: string;
     /**
      * List with identifiers for the transactions associated to the invoice.
-     * @member {[TransactionIdentifier]} transactionIds
-     * @type {[TransactionIdentifier]}
+     * @member {TransactionIdentifier[]} transactionIds
+     * @type {TransactionIdentifier[]}
      */
-    transactionIds: [TransactionIdentifier];
+    transactionIds: TransactionIdentifier[];
     /**
      * Classification of the transaction that originated this invoice. Use the `getInvoicesAttributes` operation to check `transactionType` options.
      * @member {String} transactionType

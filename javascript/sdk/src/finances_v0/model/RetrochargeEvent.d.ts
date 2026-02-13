@@ -48,10 +48,10 @@ export class RetrochargeEvent {
     marketplaceName: string;
     /**
      * A list of information about taxes withheld.
-     * @member {[TaxWithheldComponent]} retrochargeTaxWithheldList
-     * @type {[TaxWithheldComponent]}
+     * @member {TaxWithheldComponent[]} retrochargeTaxWithheldList
+     * @type {TaxWithheldComponent[]}
      */
-    retrochargeTaxWithheldList: [TaxWithheldComponent];
+    retrochargeTaxWithheldList: TaxWithheldComponent[];
 }
 import { Currency } from './Currency.js';
 import { TaxWithheldComponent } from './TaxWithheldComponent.js';

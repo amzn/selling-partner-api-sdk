@@ -18,11 +18,11 @@ export class LowestPricedOffer {
      * @alias module:pricing_v2022_05_01/model/LowestPricedOffer
      * @class
      * @param lowestPricedOffersInput {LowestPricedOffersInput}
-     * @param offers {[Offer]} A list of up to 20 lowest priced offers that match the criteria specified in `lowestPricedOffersInput`.
+     * @param offers {Offer[]} A list of up to 20 lowest priced offers that match the criteria specified in `lowestPricedOffersInput`.
      */
-    constructor(lowestPricedOffersInput: LowestPricedOffersInput, offers: [Offer]);
+    constructor(lowestPricedOffersInput: LowestPricedOffersInput, offers: Offer[]);
     lowestPricedOffersInput: LowestPricedOffersInput;
-    offers: [Offer];
+    offers: Offer[];
 }
 import { LowestPricedOffersInput } from './LowestPricedOffersInput.js';
 import { Offer } from './Offer.js';

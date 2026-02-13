@@ -66,7 +66,7 @@ LinkableCarrier.prototype.carrierId = undefined
 
 /**
  * A list of LinkableAccountType
- * @member {[LinkableAccountType]} linkableAccountTypes
- * @type {[LinkableAccountType]}
+ * @member {LinkableAccountType[]} linkableAccountTypes
+ * @type {LinkableAccountType[]}
  */
 LinkableCarrier.prototype.linkableAccountTypes = undefined

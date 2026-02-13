@@ -56,10 +56,10 @@ export class Box {
     externalContainerIdentifierType: string;
     /**
      * Items contained within the box.
-     * @member {[Item]} items
-     * @type {[Item]}
+     * @member {Item[]} items
+     * @type {Item[]}
      */
-    items: [Item];
+    items: Item[];
     /**
      * The number of containers where all other properties like weight or dimensions are identical.
      * @member {Number} quantity

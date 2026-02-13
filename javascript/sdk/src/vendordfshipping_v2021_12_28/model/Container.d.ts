@@ -20,13 +20,13 @@ export class Container {
      * @param containerType {String} The type of container.
      * @param containerIdentifier {String} The container identifier.
      * @param weight {Weight}
-     * @param packedItems {[PackedItem]} A list of packed items.
+     * @param packedItems {PackedItem[]} A list of packed items.
      */
-    constructor(containerType: string, containerIdentifier: string, weight: Weight, packedItems: [PackedItem]);
+    constructor(containerType: string, containerIdentifier: string, weight: Weight, packedItems: PackedItem[]);
     containerType: string;
     containerIdentifier: string;
     weight: Weight;
-    packedItems: [PackedItem];
+    packedItems: PackedItem[];
     /**
      * The tracking number.
      * @member {String} trackingNumber

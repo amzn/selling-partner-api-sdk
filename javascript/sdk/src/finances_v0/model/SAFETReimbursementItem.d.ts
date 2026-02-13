@@ -14,10 +14,10 @@ export class SAFETReimbursementItem {
     static constructFromObject(data: any, obj: SAFETReimbursementItem): SAFETReimbursementItem;
     /**
      * A list of charge information on the seller's account.
-     * @member {[ChargeComponent]} itemChargeList
-     * @type {[ChargeComponent]}
+     * @member {ChargeComponent[]} itemChargeList
+     * @type {ChargeComponent[]}
      */
-    itemChargeList: [ChargeComponent];
+    itemChargeList: ChargeComponent[];
     /**
      * The description of the item as shown on the product detail page on the retail website.
      * @member {String} productDescription

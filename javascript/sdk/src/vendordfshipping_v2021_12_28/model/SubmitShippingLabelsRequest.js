@@ -58,7 +58,7 @@ export class SubmitShippingLabelsRequest {
 
 /**
  * An array of shipping label requests to be processed.
- * @member {[ShippingLabelRequest]} shippingLabelRequests
- * @type {[ShippingLabelRequest]}
+ * @member {ShippingLabelRequest[]} shippingLabelRequests
+ * @type {ShippingLabelRequest[]}
  */
 SubmitShippingLabelsRequest.prototype.shippingLabelRequests = undefined

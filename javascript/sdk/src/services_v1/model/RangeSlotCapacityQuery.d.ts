@@ -25,10 +25,10 @@ export class RangeSlotCapacityQuery {
     endDateTime: Date;
     /**
      * An array of capacity types which are being requested. Default value is `[SCHEDULED_CAPACITY]`.
-     * @member {[CapacityType]} capacityTypes
-     * @type {[CapacityType]}
+     * @member {CapacityType[]} capacityTypes
+     * @type {CapacityType[]}
      */
-    capacityTypes: [CapacityType];
+    capacityTypes: CapacityType[];
 }
 import { CapacityType } from './CapacityType.js';
 //# sourceMappingURL=RangeSlotCapacityQuery.d.ts.map

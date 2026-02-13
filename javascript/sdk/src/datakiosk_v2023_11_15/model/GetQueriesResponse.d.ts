@@ -17,10 +17,10 @@ export class GetQueriesResponse {
      * The response for the &#x60;getQueries&#x60; operation.
      * @alias module:datakiosk_v2023_11_15/model/GetQueriesResponse
      * @class
-     * @param queries {[Query]} A list of queries.
+     * @param queries {Query[]} A list of queries.
      */
-    constructor(queries: [Query]);
-    queries: [Query];
+    constructor(queries: Query[]);
+    queries: Query[];
     /**
      * @member {GetQueriesResponsePagination} pagination
      * @type {GetQueriesResponsePagination}

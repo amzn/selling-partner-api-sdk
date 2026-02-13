@@ -14,10 +14,10 @@ export class SubmitAcknowledgementRequest {
     static constructFromObject(data: any, obj: SubmitAcknowledgementRequest): SubmitAcknowledgementRequest;
     /**
      * An array of order acknowledgements to be submitted.
-     * @member {[OrderAcknowledgement]} acknowledgements
-     * @type {[OrderAcknowledgement]}
+     * @member {OrderAcknowledgement[]} acknowledgements
+     * @type {OrderAcknowledgement[]}
      */
-    acknowledgements: [OrderAcknowledgement];
+    acknowledgements: OrderAcknowledgement[];
 }
 import { OrderAcknowledgement } from './OrderAcknowledgement.js';
 //# sourceMappingURL=SubmitAcknowledgementRequest.d.ts.map

@@ -66,7 +66,7 @@ ShippingLabelList.prototype.pagination = undefined
 
 /**
  * An array containing the details of the generated shipping labels.
- * @member {[ShippingLabel]} shippingLabels
- * @type {[ShippingLabel]}
+ * @member {ShippingLabel[]} shippingLabels
+ * @type {ShippingLabel[]}
  */
 ShippingLabelList.prototype.shippingLabels = undefined

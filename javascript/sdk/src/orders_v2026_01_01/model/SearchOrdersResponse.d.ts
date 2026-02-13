@@ -17,10 +17,10 @@ export class SearchOrdersResponse {
      * A list of orders.
      * @alias module:orders_v2026_01_01/model/SearchOrdersResponse
      * @class
-     * @param orders {[Order]} An array containing all orders that match the search criteria.
+     * @param orders {Order[]} An array containing all orders that match the search criteria.
      */
-    constructor(orders: [Order]);
-    orders: [Order];
+    constructor(orders: Order[]);
+    orders: Order[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

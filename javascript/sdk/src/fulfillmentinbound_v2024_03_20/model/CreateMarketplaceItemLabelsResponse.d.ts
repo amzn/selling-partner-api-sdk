@@ -17,10 +17,10 @@ export class CreateMarketplaceItemLabelsResponse {
      * The &#x60;createMarketplaceItemLabels&#x60; response.
      * @alias module:fulfillmentinbound_v2024_03_20/model/CreateMarketplaceItemLabelsResponse
      * @class
-     * @param documentDownloads {[DocumentDownload]} Resources to download the requested document.
+     * @param documentDownloads {DocumentDownload[]} Resources to download the requested document.
      */
-    constructor(documentDownloads: [DocumentDownload]);
-    documentDownloads: [DocumentDownload];
+    constructor(documentDownloads: DocumentDownload[]);
+    documentDownloads: DocumentDownload[];
 }
 import { DocumentDownload } from './DocumentDownload.js';
 //# sourceMappingURL=CreateMarketplaceItemLabelsResponse.d.ts.map

@@ -21,14 +21,14 @@ export class CreateContainerLabelRequest {
      * @param shipFromParty {PartyIdentification}
      * @param carrierId {CarrierId}
      * @param vendorContainerId {String} The unique, vendor-provided identifier for the container.
-     * @param packages {[Package]} An array of package objects in a container.
+     * @param packages {Package[]} An array of package objects in a container.
      */
-    constructor(sellingParty: PartyIdentification, shipFromParty: PartyIdentification, carrierId: CarrierId, vendorContainerId: string, packages: [Package]);
+    constructor(sellingParty: PartyIdentification, shipFromParty: PartyIdentification, carrierId: CarrierId, vendorContainerId: string, packages: Package[]);
     sellingParty: PartyIdentification;
     shipFromParty: PartyIdentification;
     carrierId: CarrierId;
     vendorContainerId: string;
-    packages: [Package];
+    packages: Package[];
 }
 import { PartyIdentification } from './PartyIdentification.js';
 import { CarrierId } from './CarrierId.js';

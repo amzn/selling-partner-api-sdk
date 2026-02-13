@@ -20,10 +20,10 @@ export class LinkableCarrier {
     carrierId: string;
     /**
      * A list of LinkableAccountType
-     * @member {[LinkableAccountType]} linkableAccountTypes
-     * @type {[LinkableAccountType]}
+     * @member {LinkableAccountType[]} linkableAccountTypes
+     * @type {LinkableAccountType[]}
      */
-    linkableAccountTypes: [LinkableAccountType];
+    linkableAccountTypes: LinkableAccountType[];
 }
 import { LinkableAccountType } from './LinkableAccountType.js';
 //# sourceMappingURL=LinkableCarrier.d.ts.map

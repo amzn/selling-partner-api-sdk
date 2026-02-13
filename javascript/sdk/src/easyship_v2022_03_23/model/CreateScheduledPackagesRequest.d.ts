@@ -18,12 +18,12 @@ export class CreateScheduledPackagesRequest {
      * @alias module:easyship_v2022_03_23/model/CreateScheduledPackagesRequest
      * @class
      * @param marketplaceId {String} A string of up to 255 characters.
-     * @param orderScheduleDetailsList {[OrderScheduleDetails]} An array allowing users to specify orders to be scheduled.
+     * @param orderScheduleDetailsList {OrderScheduleDetails[]} An array allowing users to specify orders to be scheduled.
      * @param labelFormat {LabelFormat}
      */
-    constructor(marketplaceId: string, orderScheduleDetailsList: [OrderScheduleDetails], labelFormat: LabelFormat);
+    constructor(marketplaceId: string, orderScheduleDetailsList: OrderScheduleDetails[], labelFormat: LabelFormat);
     marketplaceId: string;
-    orderScheduleDetailsList: [OrderScheduleDetails];
+    orderScheduleDetailsList: OrderScheduleDetails[];
     labelFormat: LabelFormat;
 }
 import { OrderScheduleDetails } from './OrderScheduleDetails.js';

@@ -88,7 +88,7 @@ ReplacedShipmentInfo.prototype.marketplaceAttributes = undefined
 
 /**
  * The line items from the original shipment that corresponds to this shipment.
- * @member {[OriginalLineItem]} originalLineItems
- * @type {[OriginalLineItem]}
+ * @member {OriginalLineItem[]} originalLineItems
+ * @type {OriginalLineItem[]}
  */
 ReplacedShipmentInfo.prototype.originalLineItems = undefined

@@ -37,7 +37,7 @@ export class ShipmentConfirmation {
    * @param sellingParty {PartyIdentification}
    * @param shipFromParty {PartyIdentification}
    * @param shipToParty {PartyIdentification}
-   * @param shippedItems {[Item]} A list of the items in this shipment and their associated details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.
+   * @param shippedItems {Item[]} A list of the items in this shipment and their associated details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.
    */
   constructor (shipmentIdentifier, shipmentConfirmationType, shipmentConfirmationDate, sellingParty, shipFromParty, shipToParty, shippedItems) {
     this.shipmentIdentifier = shipmentIdentifier
@@ -279,21 +279,21 @@ ShipmentConfirmation.prototype.importDetails = undefined
 
 /**
  * A list of the items in this shipment and their associated details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.
- * @member {[Item]} shippedItems
- * @type {[Item]}
+ * @member {Item[]} shippedItems
+ * @type {Item[]}
  */
 ShipmentConfirmation.prototype.shippedItems = undefined
 
 /**
  * A list of the cartons in this shipment.
- * @member {[Carton]} cartons
- * @type {[Carton]}
+ * @member {Carton[]} cartons
+ * @type {Carton[]}
  */
 ShipmentConfirmation.prototype.cartons = undefined
 
 /**
  * A list of the pallets in this shipment.
- * @member {[Pallet]} pallets
- * @type {[Pallet]}
+ * @member {Pallet[]} pallets
+ * @type {Pallet[]}
  */
 ShipmentConfirmation.prototype.pallets = undefined

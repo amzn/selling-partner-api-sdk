@@ -29,10 +29,10 @@ export class GovernmentInvoiceRequest {
     transactionType: string;
     /**
      * Object that contains additional invoice creation information
-     * @member {[CarrierDetailsContext]} contexts
-     * @type {[CarrierDetailsContext]}
+     * @member {CarrierDetailsContext[]} contexts
+     * @type {CarrierDetailsContext[]}
      */
-    contexts: [CarrierDetailsContext];
+    contexts: CarrierDetailsContext[];
     /**
      * The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
      * @member {String} inboundPlanId

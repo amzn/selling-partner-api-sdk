@@ -30,7 +30,7 @@ export class Package {
    * @param id {String} An ID that uniquely identifies a package within a shipment.
    * @param dimensions {PackageDimensions}
    * @param weight {Weight}
-   * @param packageLineItems {[PackageLineItem]} The list of line items in a package.
+   * @param packageLineItems {PackageLineItem[]} The list of line items in a package.
    */
   constructor (id, dimensions, weight, packageLineItems) {
     this.id = id
@@ -93,15 +93,15 @@ Package.prototype.weight = undefined
 
 /**
  * The optional list of HAZMAT labels applied to the package.
- * @member {[String]} hazmatLabels
- * @type {[String]}
+ * @member {String[]} hazmatLabels
+ * @type {String[]}
  */
 Package.prototype.hazmatLabels = undefined
 
 /**
  * The list of line items in a package.
- * @member {[PackageLineItem]} packageLineItems
- * @type {[PackageLineItem]}
+ * @member {PackageLineItem[]} packageLineItems
+ * @type {PackageLineItem[]}
  */
 Package.prototype.packageLineItems = undefined
 

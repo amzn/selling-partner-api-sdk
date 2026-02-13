@@ -278,8 +278,8 @@ Order.prototype.numberOfItemsUnshipped = undefined
 
 /**
  * A list of payment execution detail items.
- * @member {[PaymentExecutionDetailItem]} paymentExecutionDetail
- * @type {[PaymentExecutionDetailItem]}
+ * @member {PaymentExecutionDetailItem[]} paymentExecutionDetail
+ * @type {PaymentExecutionDetailItem[]}
  */
 Order.prototype.paymentExecutionDetail = undefined
 
@@ -317,8 +317,8 @@ Order.prototype.paymentMethod = undefined
 
 /**
  * A list of payment method detail items.
- * @member {[String]} paymentMethodDetails
- * @type {[String]}
+ * @member {String[]} paymentMethodDetails
+ * @type {String[]}
  */
 Order.prototype.paymentMethodDetails = undefined
 

@@ -32,10 +32,10 @@ export class ImagingServicesFeeEvent {
     postedDate: Date;
     /**
      * A list of fee component information.
-     * @member {[FeeComponent]} feeList
-     * @type {[FeeComponent]}
+     * @member {FeeComponent[]} feeList
+     * @type {FeeComponent[]}
      */
-    feeList: [FeeComponent];
+    feeList: FeeComponent[];
 }
 import { FeeComponent } from './FeeComponent.js';
 //# sourceMappingURL=ImagingServicesFeeEvent.d.ts.map

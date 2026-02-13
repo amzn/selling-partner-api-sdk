@@ -31,10 +31,10 @@ export class ChargeDetails {
     description: string;
     /**
      * Tax amount details applied on this charge.
-     * @member {[TaxDetails]} taxDetails
-     * @type {[TaxDetails]}
+     * @member {TaxDetails[]} taxDetails
+     * @type {TaxDetails[]}
      */
-    taxDetails: [TaxDetails];
+    taxDetails: TaxDetails[];
 }
 export namespace ChargeDetails {
     namespace TypeEnum {

@@ -29,7 +29,7 @@ export class SupportedDocumentSpecification {
    * @class
    * @param format {DocumentFormat}
    * @param size {DocumentSize}
-   * @param printOptions {[PrintOption]} A list of the format options for a label.
+   * @param printOptions {PrintOption[]} A list of the format options for a label.
    */
   constructor (format, size, printOptions) {
     this.format = format
@@ -80,7 +80,7 @@ SupportedDocumentSpecification.prototype.size = undefined
 
 /**
  * A list of the format options for a label.
- * @member {[PrintOption]} printOptions
- * @type {[PrintOption]}
+ * @member {PrintOption[]} printOptions
+ * @type {PrintOption[]}
  */
 SupportedDocumentSpecification.prototype.printOptions = undefined

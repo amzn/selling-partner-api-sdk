@@ -17,12 +17,12 @@ export class GenerateShipmentContentUpdatePreviewsRequest {
      * The &#x60;GenerateShipmentContentUpdatePreviews&#x60; request.
      * @alias module:fulfillmentinbound_v2024_03_20/model/GenerateShipmentContentUpdatePreviewsRequest
      * @class
-     * @param boxes {[BoxUpdateInput]} A list of boxes that will be present in the shipment after the update.
-     * @param items {[ItemInput]} A list of all items that will be present in the shipment after the update.
+     * @param boxes {BoxUpdateInput[]} A list of boxes that will be present in the shipment after the update.
+     * @param items {ItemInput[]} A list of all items that will be present in the shipment after the update.
      */
-    constructor(boxes: [BoxUpdateInput], items: [ItemInput]);
-    boxes: [BoxUpdateInput];
-    items: [ItemInput];
+    constructor(boxes: BoxUpdateInput[], items: ItemInput[]);
+    boxes: BoxUpdateInput[];
+    items: ItemInput[];
 }
 import { BoxUpdateInput } from './BoxUpdateInput.js';
 import { ItemInput } from './ItemInput.js';

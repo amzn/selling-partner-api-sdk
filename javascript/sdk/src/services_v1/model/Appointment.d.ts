@@ -31,10 +31,10 @@ export class Appointment {
     appointmentTime: AppointmentTime;
     /**
      * A list of technicians assigned to the service job.
-     * @member {[Technician]} assignedTechnicians
-     * @type {[Technician]}
+     * @member {Technician[]} assignedTechnicians
+     * @type {Technician[]}
      */
-    assignedTechnicians: [Technician];
+    assignedTechnicians: Technician[];
     /**
      * The appointment identifier.
      * @member {String} rescheduledAppointmentId

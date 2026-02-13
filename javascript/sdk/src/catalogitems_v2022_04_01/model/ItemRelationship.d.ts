@@ -23,16 +23,16 @@ export class ItemRelationship {
     type: string;
     /**
      * ASINs of the related items that are children of this item.
-     * @member {[String]} childAsins
-     * @type {[String]}
+     * @member {String[]} childAsins
+     * @type {String[]}
      */
-    childAsins: [string];
+    childAsins: string[];
     /**
      * ASINs of the related items that are parents of this item.
-     * @member {[String]} parentAsins
-     * @type {[String]}
+     * @member {String[]} parentAsins
+     * @type {String[]}
      */
-    parentAsins: [string];
+    parentAsins: string[];
     /**
      * @member {ItemVariationTheme} variationTheme
      * @type {ItemVariationTheme}

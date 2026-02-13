@@ -52,10 +52,10 @@ export class ItemSummaryByMarketplace {
     color: string;
     /**
      * Individual contributors to the creation of the item, such as the authors or actors.
-     * @member {[ItemContributor]} contributors
-     * @type {[ItemContributor]}
+     * @member {ItemContributor[]} contributors
+     * @type {ItemContributor[]}
      */
-    contributors: [ItemContributor];
+    contributors: ItemContributor[];
     /**
      * Classification type that is associated with the Amazon catalog item.
      * @member {String} itemClassification

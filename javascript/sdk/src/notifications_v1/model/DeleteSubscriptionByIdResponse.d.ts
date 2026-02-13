@@ -14,10 +14,10 @@ export class DeleteSubscriptionByIdResponse {
     static constructFromObject(data: any, obj: DeleteSubscriptionByIdResponse): DeleteSubscriptionByIdResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Error[]} errors
+     * @type {Error[]}
      */
-    errors: [Error];
+    errors: Error[];
 }
 import { Error } from './Error.js';
 //# sourceMappingURL=DeleteSubscriptionByIdResponse.d.ts.map

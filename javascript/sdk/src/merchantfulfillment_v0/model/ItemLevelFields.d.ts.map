@@ -1,1 +1,1 @@
-{"version":3,"file":"ItemLevelFields.d.ts","sourceRoot":"","sources":["ItemLevelFields.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAcE;;;;;;OAMG;IACH,2CAHW,eAAe,GACd,eAAe,CAoB1B;IAtCD;;;;;;;OAOG;IACH,4CAF4B,CAAC,gBAAgB,CAAC,EAK7C;IAFC,aAAgB;IAChB,qCAAwC;CA6B3C;iCA/CgC,uBAAuB"}
+{"version":3,"file":"ItemLevelFields.d.ts","sourceRoot":"","sources":["ItemLevelFields.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAcE;;;;;;OAMG;IACH,2CAHW,eAAe,GACd,eAAe,CAoB1B;IAtCD;;;;;;;OAOG;IACH,4CAF4B,gBAAgB,EAAE,EAK7C;IAFC,aAAgB;IAChB,qCAAwC;CA6B3C;iCA/CgC,uBAAuB"}

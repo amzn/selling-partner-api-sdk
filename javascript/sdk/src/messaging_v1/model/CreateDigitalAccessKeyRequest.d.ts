@@ -20,10 +20,10 @@ export class CreateDigitalAccessKeyRequest {
     text: string;
     /**
      * Attachments that you want to include in the message to the buyer.
-     * @member {[Attachment]} attachments
-     * @type {[Attachment]}
+     * @member {Attachment[]} attachments
+     * @type {Attachment[]}
      */
-    attachments: [Attachment];
+    attachments: Attachment[];
 }
 import { Attachment } from './Attachment.js';
 //# sourceMappingURL=CreateDigitalAccessKeyRequest.d.ts.map

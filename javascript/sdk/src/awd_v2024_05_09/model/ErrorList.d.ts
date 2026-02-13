@@ -17,10 +17,10 @@ export class ErrorList {
      * This exception is thrown when client inputs are invalid.
      * @alias module:awd_v2024_05_09/model/ErrorList
      * @class
-     * @param errors {[Error]} A list of errors describing the failures.
+     * @param errors {Error[]} A list of errors describing the failures.
      */
-    constructor(errors: [Error]);
-    errors: [Error];
+    constructor(errors: Error[]);
+    errors: Error[];
 }
 import { Error } from './Error.js';
 //# sourceMappingURL=ErrorList.d.ts.map

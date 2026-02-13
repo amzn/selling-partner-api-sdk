@@ -25,7 +25,7 @@ export class TransactionListing {
    * Struct that holds collection of transactions.
    * @alias module:sellerWallet_2024_03_01/model/TransactionListing
    * @class
-   * @param transactions {[Transaction]} Collection that holds Transaction
+   * @param transactions {Transaction[]} Collection that holds Transaction
    */
   constructor (transactions) {
     this.transactions = transactions
@@ -68,7 +68,7 @@ TransactionListing.prototype.nextPageToken = undefined
 
 /**
  * Collection that holds Transaction
- * @member {[Transaction]} transactions
- * @type {[Transaction]}
+ * @member {Transaction[]} transactions
+ * @type {Transaction[]}
  */
 TransactionListing.prototype.transactions = undefined

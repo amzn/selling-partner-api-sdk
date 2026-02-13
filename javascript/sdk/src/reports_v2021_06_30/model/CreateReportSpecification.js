@@ -25,7 +25,7 @@ export class CreateReportSpecification {
    * @alias module:reports_v2021_06_30/model/CreateReportSpecification
    * @class
    * @param reportType {String} The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.
-   * @param marketplaceIds {[String]} A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.
+   * @param marketplaceIds {String[]} A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.
    */
   constructor (reportType, marketplaceIds) {
     this.reportType = reportType
@@ -93,7 +93,7 @@ CreateReportSpecification.prototype.dataEndTime = undefined
 
 /**
  * A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.
- * @member {[String]} marketplaceIds
- * @type {[String]}
+ * @member {String[]} marketplaceIds
+ * @type {String[]}
  */
 CreateReportSpecification.prototype.marketplaceIds = undefined

@@ -25,28 +25,28 @@ export class CompetitiveSummaryResponseBody {
     marketplaceId: string;
     /**
      * A list of featured buying options for the specified ASIN `marketplaceId` combination.
-     * @member {[FeaturedBuyingOption]} featuredBuyingOptions
-     * @type {[FeaturedBuyingOption]}
+     * @member {FeaturedBuyingOption[]} featuredBuyingOptions
+     * @type {FeaturedBuyingOption[]}
      */
-    featuredBuyingOptions: [FeaturedBuyingOption];
+    featuredBuyingOptions: FeaturedBuyingOption[];
     /**
      * A list of lowest priced offers for the specified ASIN `marketplaceId` combination.
-     * @member {[LowestPricedOffer]} lowestPricedOffers
-     * @type {[LowestPricedOffer]}
+     * @member {LowestPricedOffer[]} lowestPricedOffers
+     * @type {LowestPricedOffer[]}
      */
-    lowestPricedOffers: [LowestPricedOffer];
+    lowestPricedOffers: LowestPricedOffer[];
     /**
      * A list of reference prices for the specified ASIN `marketplaceId` combination.
-     * @member {[ReferencePrice]} referencePrices
-     * @type {[ReferencePrice]}
+     * @member {ReferencePrice[]} referencePrices
+     * @type {ReferencePrice[]}
      */
-    referencePrices: [ReferencePrice];
+    referencePrices: ReferencePrice[];
     /**
      * A list of error responses that are returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Error[]} errors
+     * @type {Error[]}
      */
-    errors: [Error];
+    errors: Error[];
 }
 import { FeaturedBuyingOption } from './FeaturedBuyingOption.js';
 import { LowestPricedOffer } from './LowestPricedOffer.js';

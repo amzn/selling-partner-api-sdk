@@ -66,7 +66,7 @@ ResearchingQuantity.prototype.totalResearchingQuantity = undefined
 
 /**
  * A list of quantity details for items currently being researched.
- * @member {[ResearchingQuantityEntry]} researchingQuantityBreakdown
- * @type {[ResearchingQuantityEntry]}
+ * @member {ResearchingQuantityEntry[]} researchingQuantityBreakdown
+ * @type {ResearchingQuantityEntry[]}
  */
 ResearchingQuantity.prototype.researchingQuantityBreakdown = undefined

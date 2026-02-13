@@ -17,10 +17,10 @@ export class GetFeedsResponse {
      * Response schema.
      * @alias module:feeds_v2021_06_30/model/GetFeedsResponse
      * @class
-     * @param feeds {[Feed]} A list of feeds.
+     * @param feeds {Feed[]} A list of feeds.
      */
-    constructor(feeds: [Feed]);
-    feeds: [Feed];
+    constructor(feeds: Feed[]);
+    feeds: Feed[];
     /**
      * Returned when the number of results exceeds pageSize. To get the next page of results, call the getFeeds operation with this token as the only parameter.
      * @member {String} nextToken

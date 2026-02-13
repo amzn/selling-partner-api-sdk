@@ -93,7 +93,7 @@ ExceptionDate.prototype.exceptionDateType = undefined
 
 /**
  * Alternative operating hours that apply specifically to this exception date.
- * @member {[TimeWindow]} timeWindows
- * @type {[TimeWindow]}
+ * @member {TimeWindow[]} timeWindows
+ * @type {TimeWindow[]}
  */
 ExceptionDate.prototype.timeWindows = undefined

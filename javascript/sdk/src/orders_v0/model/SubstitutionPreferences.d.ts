@@ -23,10 +23,10 @@ export class SubstitutionPreferences {
     substitutionType: string;
     /**
      * A collection of substitution options.
-     * @member {[SubstitutionOption]} substitutionOptions
-     * @type {[SubstitutionOption]}
+     * @member {SubstitutionOption[]} substitutionOptions
+     * @type {SubstitutionOption[]}
      */
-    substitutionOptions: [SubstitutionOption];
+    substitutionOptions: SubstitutionOption[];
 }
 export namespace SubstitutionPreferences {
     namespace SubstitutionTypeEnum {

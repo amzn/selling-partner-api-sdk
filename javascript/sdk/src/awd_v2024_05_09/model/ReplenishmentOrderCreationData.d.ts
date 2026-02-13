@@ -19,10 +19,10 @@ export class ReplenishmentOrderCreationData {
     preferences: ReplenishmentPreferences;
     /**
      * Requested amount of single product units to be replenished.
-     * @member {[DistributionProduct]} products
-     * @type {[DistributionProduct]}
+     * @member {DistributionProduct[]} products
+     * @type {DistributionProduct[]}
      */
-    products: [DistributionProduct];
+    products: DistributionProduct[];
 }
 import { ReplenishmentPreferences } from './ReplenishmentPreferences.js';
 import { DistributionProduct } from './DistributionProduct.js';

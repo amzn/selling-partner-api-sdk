@@ -18,14 +18,14 @@ export class OneClickShipmentRequest {
      * @alias module:shipping_v2/model/OneClickShipmentRequest
      * @class
      * @param shipFrom {Address}
-     * @param packages {[Package]} A list of packages to be shipped through a shipping service offering.
+     * @param packages {Package[]} A list of packages to be shipped through a shipping service offering.
      * @param channelDetails {ChannelDetails}
      * @param labelSpecifications {RequestedDocumentSpecification}
      * @param serviceSelection {ServiceSelection}
      */
-    constructor(shipFrom: Address, packages: [Package], channelDetails: ChannelDetails, labelSpecifications: RequestedDocumentSpecification, serviceSelection: ServiceSelection);
+    constructor(shipFrom: Address, packages: Package[], channelDetails: ChannelDetails, labelSpecifications: RequestedDocumentSpecification, serviceSelection: ServiceSelection);
     shipFrom: Address;
-    packages: [Package];
+    packages: Package[];
     channelDetails: ChannelDetails;
     labelSpecifications: RequestedDocumentSpecification;
     serviceSelection: ServiceSelection;
@@ -52,16 +52,16 @@ export class OneClickShipmentRequest {
     goodsOwner: GoodsOwner;
     /**
      * The value-added services to be added to a shipping service purchase.
-     * @member {[OneClickShipmentValueAddedService]} valueAddedServicesDetails
-     * @type {[OneClickShipmentValueAddedService]}
+     * @member {OneClickShipmentValueAddedService[]} valueAddedServicesDetails
+     * @type {OneClickShipmentValueAddedService[]}
      */
-    valueAddedServicesDetails: [OneClickShipmentValueAddedService];
+    valueAddedServicesDetails: OneClickShipmentValueAddedService[];
     /**
      * A list of tax detail information.
-     * @member {[TaxDetail]} taxDetails
-     * @type {[TaxDetail]}
+     * @member {TaxDetail[]} taxDetails
+     * @type {TaxDetail[]}
      */
-    taxDetails: [TaxDetail];
+    taxDetails: TaxDetail[];
     /**
      * @member {ShipperInstruction} shipperInstruction
      * @type {ShipperInstruction}

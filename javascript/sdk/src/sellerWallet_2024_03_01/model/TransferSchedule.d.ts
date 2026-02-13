@@ -22,15 +22,15 @@ export class TransferSchedule {
      * @param transactionDestinationAccount {TransactionAccount}
      * @param transferScheduleStatus {TransferScheduleStatus}
      * @param transferScheduleInformation {TransferScheduleInformation}
-     * @param transferScheduleFailures {[TransferScheduleFailures]} Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.
+     * @param transferScheduleFailures {TransferScheduleFailures[]} Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.
      */
-    constructor(transferScheduleId: string, transactionType: TransactionType, transactionDestinationAccount: TransactionAccount, transferScheduleStatus: TransferScheduleStatus, transferScheduleInformation: TransferScheduleInformation, transferScheduleFailures: [TransferScheduleFailures]);
+    constructor(transferScheduleId: string, transactionType: TransactionType, transactionDestinationAccount: TransactionAccount, transferScheduleStatus: TransferScheduleStatus, transferScheduleInformation: TransferScheduleInformation, transferScheduleFailures: TransferScheduleFailures[]);
     transferScheduleId: string;
     transactionType: TransactionType;
     transactionDestinationAccount: TransactionAccount;
     transferScheduleStatus: TransferScheduleStatus;
     transferScheduleInformation: TransferScheduleInformation;
-    transferScheduleFailures: [TransferScheduleFailures];
+    transferScheduleFailures: TransferScheduleFailures[];
     /**
      * @member {TransactionAccount} transactionSourceAccount
      * @type {TransactionAccount}

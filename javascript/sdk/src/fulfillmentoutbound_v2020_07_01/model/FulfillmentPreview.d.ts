@@ -39,34 +39,34 @@ export class FulfillmentPreview {
     estimatedShippingWeight: Weight;
     /**
      * An array of fee type and cost pairs.
-     * @member {[Fee]} estimatedFees
-     * @type {[Fee]}
+     * @member {Fee[]} estimatedFees
+     * @type {Fee[]}
      */
-    estimatedFees: [Fee];
+    estimatedFees: Fee[];
     /**
      * An array of fulfillment preview shipment information.
-     * @member {[FulfillmentPreviewShipment]} fulfillmentPreviewShipments
-     * @type {[FulfillmentPreviewShipment]}
+     * @member {FulfillmentPreviewShipment[]} fulfillmentPreviewShipments
+     * @type {FulfillmentPreviewShipment[]}
      */
-    fulfillmentPreviewShipments: [FulfillmentPreviewShipment];
+    fulfillmentPreviewShipments: FulfillmentPreviewShipment[];
     /**
      * An array of unfulfillable preview item information.
-     * @member {[UnfulfillablePreviewItem]} unfulfillablePreviewItems
-     * @type {[UnfulfillablePreviewItem]}
+     * @member {UnfulfillablePreviewItem[]} unfulfillablePreviewItems
+     * @type {UnfulfillablePreviewItem[]}
      */
-    unfulfillablePreviewItems: [UnfulfillablePreviewItem];
+    unfulfillablePreviewItems: UnfulfillablePreviewItem[];
     /**
      * String list
-     * @member {[String]} orderUnfulfillableReasons
-     * @type {[String]}
+     * @member {String[]} orderUnfulfillableReasons
+     * @type {String[]}
      */
-    orderUnfulfillableReasons: [string];
+    orderUnfulfillableReasons: string[];
     /**
      * A list of features and their fulfillment policies to apply to the order.
-     * @member {[FeatureSettings]} featureConstraints
-     * @type {[FeatureSettings]}
+     * @member {FeatureSettings[]} featureConstraints
+     * @type {FeatureSettings[]}
      */
-    featureConstraints: [FeatureSettings];
+    featureConstraints: FeatureSettings[];
 }
 import { ShippingSpeedCategory } from './ShippingSpeedCategory.js';
 import { ScheduledDeliveryInfo } from './ScheduledDeliveryInfo.js';

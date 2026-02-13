@@ -20,13 +20,13 @@ export class ListOfferMetricsRequestFilters {
      * @param timeInterval {TimeInterval}
      * @param timePeriodType {TimePeriodType}
      * @param marketplaceId {String} The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
-     * @param programTypes {[ProgramType]} A list of replenishment program types.
+     * @param programTypes {ProgramType[]} A list of replenishment program types.
      */
-    constructor(timeInterval: TimeInterval, timePeriodType: TimePeriodType, marketplaceId: string, programTypes: [ProgramType]);
+    constructor(timeInterval: TimeInterval, timePeriodType: TimePeriodType, marketplaceId: string, programTypes: ProgramType[]);
     timeInterval: TimeInterval;
     timePeriodType: TimePeriodType;
     marketplaceId: string;
-    programTypes: [ProgramType];
+    programTypes: ProgramType[];
     /**
      * @member {AggregationFrequency} aggregationFrequency
      * @type {AggregationFrequency}
@@ -34,10 +34,10 @@ export class ListOfferMetricsRequestFilters {
     aggregationFrequency: AggregationFrequency;
     /**
      * A list of Amazon Standard Identification Numbers (ASINs).
-     * @member {[String]} asins
-     * @type {[String]}
+     * @member {String[]} asins
+     * @type {String[]}
      */
-    asins: [string];
+    asins: string[];
 }
 import { TimeInterval } from './TimeInterval.js';
 import { TimePeriodType } from './TimePeriodType.js';

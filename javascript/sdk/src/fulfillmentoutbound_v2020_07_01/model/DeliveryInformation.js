@@ -60,8 +60,8 @@ export class DeliveryInformation {
 
 /**
  * A list of delivery documents for a package.
- * @member {[DeliveryDocument]} deliveryDocumentList
- * @type {[DeliveryDocument]}
+ * @member {DeliveryDocument[]} deliveryDocumentList
+ * @type {DeliveryDocument[]}
  */
 DeliveryInformation.prototype.deliveryDocumentList = undefined
 

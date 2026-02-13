@@ -18,12 +18,12 @@ export class CreateReportScheduleSpecification {
      * @alias module:reports_v2021_06_30/model/CreateReportScheduleSpecification
      * @class
      * @param reportType {String} The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.
-     * @param marketplaceIds {[String]} A list of marketplace identifiers for the report schedule.
+     * @param marketplaceIds {String[]} A list of marketplace identifiers for the report schedule.
      * @param period {String} One of a set of predefined <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> periods that specifies how often a report should be created.
      */
-    constructor(reportType: string, marketplaceIds: [string], period: string);
+    constructor(reportType: string, marketplaceIds: string[], period: string);
     reportType: string;
-    marketplaceIds: [string];
+    marketplaceIds: string[];
     period: string;
     /**
      * Additional information passed to reports. This varies by report type.

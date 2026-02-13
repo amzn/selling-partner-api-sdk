@@ -105,7 +105,7 @@ ListOffersResponseOffer.prototype.programType = undefined
 
 /**
  * A list of vendor codes associated with the offer.
- * @member {[String]} vendorCodes
- * @type {[String]}
+ * @member {String[]} vendorCodes
+ * @type {String[]}
  */
 ListOffersResponseOffer.prototype.vendorCodes = undefined

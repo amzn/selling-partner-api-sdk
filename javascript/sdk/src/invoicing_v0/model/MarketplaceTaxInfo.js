@@ -74,7 +74,7 @@ MarketplaceTaxInfo.prototype.taxingRegion = undefined
 
 /**
  * The list of tax classifications.
- * @member {[TaxClassification]} taxClassifications
- * @type {[TaxClassification]}
+ * @member {TaxClassification[]} taxClassifications
+ * @type {TaxClassification[]}
  */
 MarketplaceTaxInfo.prototype.taxClassifications = undefined

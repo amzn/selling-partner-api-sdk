@@ -17,10 +17,10 @@ export class ListTransportationOptionsResponse {
      * The &#x60;listTransportationOptions&#x60; response.
      * @alias module:fulfillmentinbound_v2024_03_20/model/ListTransportationOptionsResponse
      * @class
-     * @param transportationOptions {[TransportationOption]} Transportation options generated for the placement option.
+     * @param transportationOptions {TransportationOption[]} Transportation options generated for the placement option.
      */
-    constructor(transportationOptions: [TransportationOption]);
-    transportationOptions: [TransportationOption];
+    constructor(transportationOptions: TransportationOption[]);
+    transportationOptions: TransportationOption[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

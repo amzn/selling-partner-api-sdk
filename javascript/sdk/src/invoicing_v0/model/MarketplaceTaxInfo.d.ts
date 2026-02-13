@@ -26,10 +26,10 @@ export class MarketplaceTaxInfo {
     taxingRegion: string;
     /**
      * The list of tax classifications.
-     * @member {[TaxClassification]} taxClassifications
-     * @type {[TaxClassification]}
+     * @member {TaxClassification[]} taxClassifications
+     * @type {TaxClassification[]}
      */
-    taxClassifications: [TaxClassification];
+    taxClassifications: TaxClassification[];
 }
 import { TaxClassification } from './TaxClassification.js';
 //# sourceMappingURL=MarketplaceTaxInfo.d.ts.map

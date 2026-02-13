@@ -16,9 +16,9 @@ export class PostContentDocumentAsinRelationsRequest {
      * Constructs a new <code>PostContentDocumentAsinRelationsRequest</code>.
      * @alias module:apluscontent_v2020_11_01/model/PostContentDocumentAsinRelationsRequest
      * @class
-     * @param asinSet {[String]} The set of ASINs.
+     * @param asinSet {String[]} The set of ASINs.
      */
-    constructor(asinSet: [string]);
-    asinSet: [string];
+    constructor(asinSet: string[]);
+    asinSet: string[];
 }
 //# sourceMappingURL=PostContentDocumentAsinRelationsRequest.d.ts.map

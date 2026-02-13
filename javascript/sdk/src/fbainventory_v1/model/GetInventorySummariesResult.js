@@ -27,7 +27,7 @@ export class GetInventorySummariesResult {
    * @alias module:fbainventory_v1/model/GetInventorySummariesResult
    * @class
    * @param granularity {Granularity}
-   * @param inventorySummaries {[InventorySummary]} A list of inventory summaries.
+   * @param inventorySummaries {InventorySummary[]} A list of inventory summaries.
    */
   constructor (granularity, inventorySummaries) {
     this.granularity = granularity
@@ -70,7 +70,7 @@ GetInventorySummariesResult.prototype.granularity = undefined
 
 /**
  * A list of inventory summaries.
- * @member {[InventorySummary]} inventorySummaries
- * @type {[InventorySummary]}
+ * @member {InventorySummary[]} inventorySummaries
+ * @type {InventorySummary[]}
  */
 GetInventorySummariesResult.prototype.inventorySummaries = undefined

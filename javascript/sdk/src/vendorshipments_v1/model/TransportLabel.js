@@ -74,7 +74,7 @@ TransportLabel.prototype.shipmentInformation = undefined
 
 /**
  * Indicates the label data,format and type associated .
- * @member {[LabelData]} labelData
- * @type {[LabelData]}
+ * @member {LabelData[]} labelData
+ * @type {LabelData[]}
  */
 TransportLabel.prototype.labelData = undefined

@@ -86,7 +86,7 @@ GetFeatureInventoryResult.prototype.nextToken = undefined
 
 /**
  * An array of SKUs eligible for this feature and the quantity available.
- * @member {[FeatureSku]} featureSkus
- * @type {[FeatureSku]}
+ * @member {FeatureSku[]} featureSkus
+ * @type {FeatureSku[]}
  */
 GetFeatureInventoryResult.prototype.featureSkus = undefined

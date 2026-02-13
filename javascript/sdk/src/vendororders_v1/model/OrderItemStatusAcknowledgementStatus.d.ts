@@ -30,10 +30,10 @@ export class OrderItemStatusAcknowledgementStatus {
     rejectedQuantity: ItemQuantity;
     /**
      * Details of item quantity confirmed.
-     * @member {[AcknowledgementStatusDetails]} acknowledgementStatusDetails
-     * @type {[AcknowledgementStatusDetails]}
+     * @member {AcknowledgementStatusDetails[]} acknowledgementStatusDetails
+     * @type {AcknowledgementStatusDetails[]}
      */
-    acknowledgementStatusDetails: [AcknowledgementStatusDetails];
+    acknowledgementStatusDetails: AcknowledgementStatusDetails[];
 }
 export namespace OrderItemStatusAcknowledgementStatus {
     namespace ConfirmationStatusEnum {

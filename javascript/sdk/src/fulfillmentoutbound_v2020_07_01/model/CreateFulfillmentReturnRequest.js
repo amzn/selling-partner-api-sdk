@@ -25,7 +25,7 @@ export class CreateFulfillmentReturnRequest {
    * The &#x60;createFulfillmentReturn&#x60; operation creates a fulfillment return for items that were fulfilled using the &#x60;createFulfillmentOrder&#x60; operation. For calls to &#x60;createFulfillmentReturn&#x60;, you must include &#x60;returnReasonCode&#x60; values returned by a previous call to the &#x60;listReturnReasonCodes&#x60; operation.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentReturnRequest
    * @class
-   * @param items {[CreateReturnItem]} An array of items to be returned.
+   * @param items {CreateReturnItem[]} An array of items to be returned.
    */
   constructor (items) {
     this.items = items
@@ -60,7 +60,7 @@ export class CreateFulfillmentReturnRequest {
 
 /**
  * An array of items to be returned.
- * @member {[CreateReturnItem]} items
- * @type {[CreateReturnItem]}
+ * @member {CreateReturnItem[]} items
+ * @type {CreateReturnItem[]}
  */
 CreateFulfillmentReturnRequest.prototype.items = undefined

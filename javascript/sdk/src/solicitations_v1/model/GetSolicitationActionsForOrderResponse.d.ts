@@ -24,10 +24,10 @@ export class GetSolicitationActionsForOrderResponse {
     embedded: GetSolicitationActionsForOrderResponseEmbedded;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Error[]} errors
+     * @type {Error[]}
      */
-    errors: [Error];
+    errors: Error[];
 }
 import { GetSolicitationActionsForOrderResponseLinks } from './GetSolicitationActionsForOrderResponseLinks.js';
 import { GetSolicitationActionsForOrderResponseEmbedded } from './GetSolicitationActionsForOrderResponseEmbedded.js';

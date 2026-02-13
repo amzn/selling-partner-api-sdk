@@ -29,10 +29,10 @@ export class BoxInput {
     weight: Weight;
     /**
      * The items and their quantity in the box. This must be empty if the box `contentInformationSource` is `BARCODE_2D` or `MANUAL_PROCESS`.
-     * @member {[ItemInput]} items
-     * @type {[ItemInput]}
+     * @member {ItemInput[]} items
+     * @type {ItemInput[]}
      */
-    items: [ItemInput];
+    items: ItemInput[];
 }
 import { BoxContentInformationSource } from './BoxContentInformationSource.js';
 import { Dimensions } from './Dimensions.js';

@@ -40,16 +40,16 @@ export class ItemReviewTopic {
     childAsinMetrics: ChildAsinMetrics;
     /**
      * A list of up to three snippets from reviews that contain the topic. This value is `null` if there aren't enough review snippets for the topic.
-     * @member {[String]} reviewSnippets
-     * @type {[String]}
+     * @member {String[]} reviewSnippets
+     * @type {String[]}
      */
-    reviewSnippets: [string];
+    reviewSnippets: string[];
     /**
      * A list of up to five top subtopics for the topic. The percentage of customer reviews that mention the subtopic determine the topic's placement in the list. This value is `null` if there are no subtopics.
-     * @member {[ItemReviewSubtopic]} subtopics
-     * @type {[ItemReviewSubtopic]}
+     * @member {ItemReviewSubtopic[]} subtopics
+     * @type {ItemReviewSubtopic[]}
      */
-    subtopics: [ItemReviewSubtopic];
+    subtopics: ItemReviewSubtopic[];
 }
 import { ItemReviewTopicMetrics } from './ItemReviewTopicMetrics.js';
 import { ItemReviewBrowseNodeMetrics } from './ItemReviewBrowseNodeMetrics.js';

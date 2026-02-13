@@ -89,8 +89,8 @@ GetFeatureSkuResult.prototype.isEligible = undefined
 
 /**
  * A list of one or more reasons that the seller SKU is ineligible for the feature.  Possible values: * `MERCHANT_NOT_ENROLLED`: The merchant isn't enrolled for the feature. * `SKU_NOT_ELIGIBLE`: The SKU doesn't reside in a warehouse that supports the feature. * `INVALID_SKU`: There is an issue with the SKU provided.
- * @member {[String]} ineligibleReasons
- * @type {[String]}
+ * @member {String[]} ineligibleReasons
+ * @type {String[]}
  */
 GetFeatureSkuResult.prototype.ineligibleReasons = undefined
 

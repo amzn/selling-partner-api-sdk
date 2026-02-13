@@ -38,16 +38,16 @@ export class RentalTransactionEvent {
     postedDate: Date;
     /**
      * A list of charge information on the seller's account.
-     * @member {[ChargeComponent]} rentalChargeList
-     * @type {[ChargeComponent]}
+     * @member {ChargeComponent[]} rentalChargeList
+     * @type {ChargeComponent[]}
      */
-    rentalChargeList: [ChargeComponent];
+    rentalChargeList: ChargeComponent[];
     /**
      * A list of fee component information.
-     * @member {[FeeComponent]} rentalFeeList
-     * @type {[FeeComponent]}
+     * @member {FeeComponent[]} rentalFeeList
+     * @type {FeeComponent[]}
      */
-    rentalFeeList: [FeeComponent];
+    rentalFeeList: FeeComponent[];
     /**
      * The name of the marketplace.
      * @member {String} marketplaceName
@@ -66,10 +66,10 @@ export class RentalTransactionEvent {
     rentalReimbursement: Currency;
     /**
      * A list of information about taxes withheld.
-     * @member {[TaxWithheldComponent]} rentalTaxWithheldList
-     * @type {[TaxWithheldComponent]}
+     * @member {TaxWithheldComponent[]} rentalTaxWithheldList
+     * @type {TaxWithheldComponent[]}
      */
-    rentalTaxWithheldList: [TaxWithheldComponent];
+    rentalTaxWithheldList: TaxWithheldComponent[];
 }
 import { ChargeComponent } from './ChargeComponent.js';
 import { FeeComponent } from './FeeComponent.js';

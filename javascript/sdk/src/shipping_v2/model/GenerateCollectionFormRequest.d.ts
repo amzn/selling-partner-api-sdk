@@ -23,10 +23,10 @@ export class GenerateCollectionFormRequest {
     carrierId: string;
     /**
      * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
-     * @member {[ClientReferenceDetail]} clientReferenceDetails
-     * @type {[ClientReferenceDetail]}
+     * @member {ClientReferenceDetail[]} clientReferenceDetails
+     * @type {ClientReferenceDetail[]}
      */
-    clientReferenceDetails: [ClientReferenceDetail];
+    clientReferenceDetails: ClientReferenceDetail[];
     /**
      * @member {Address} shipFromAddress
      * @type {Address}

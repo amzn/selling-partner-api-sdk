@@ -27,7 +27,7 @@ export class FeesEstimateError {
    * @param type {String} An error type, identifying either the receiver or the sender as the originator of the error.
    * @param code {String} An error code that identifies the type of error that occurred.
    * @param message {String} A message that describes the error condition.
-   * @param detail {[Object]} Additional information that can help the caller understand or fix the issue.
+   * @param detail {Object[]} Additional information that can help the caller understand or fix the issue.
    */
   constructor (type, code, message, detail) {
     this.type = type
@@ -89,7 +89,7 @@ FeesEstimateError.prototype.message = undefined
 
 /**
  * Additional information that can help the caller understand or fix the issue.
- * @member {[Object]} detail
- * @type {[Object]}
+ * @member {Object[]} detail
+ * @type {Object[]}
  */
 FeesEstimateError.prototype.detail = undefined

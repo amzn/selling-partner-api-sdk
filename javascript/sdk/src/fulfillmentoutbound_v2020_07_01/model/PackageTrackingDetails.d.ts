@@ -97,10 +97,10 @@ export class PackageTrackingDetails {
     additionalLocationInfo: AdditionalLocationInfo;
     /**
      * An array of tracking event information.
-     * @member {[TrackingEvent]} trackingEvents
-     * @type {[TrackingEvent]}
+     * @member {TrackingEvent[]} trackingEvents
+     * @type {TrackingEvent[]}
      */
-    trackingEvents: [TrackingEvent];
+    trackingEvents: TrackingEvent[];
 }
 import { TrackingAddress } from './TrackingAddress.js';
 import { CurrentStatus } from './CurrentStatus.js';

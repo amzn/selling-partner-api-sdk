@@ -14,10 +14,10 @@ export class SubmitInvoicesRequest {
     static constructFromObject(data: any, obj: SubmitInvoicesRequest): SubmitInvoicesRequest;
     /**
      * An array of Invoice objects representing the invoices or credit notes to be submitted.
-     * @member {[Invoice]} invoices
-     * @type {[Invoice]}
+     * @member {Invoice[]} invoices
+     * @type {Invoice[]}
      */
-    invoices: [Invoice];
+    invoices: Invoice[];
 }
 import { Invoice } from './Invoice.js';
 //# sourceMappingURL=SubmitInvoicesRequest.d.ts.map

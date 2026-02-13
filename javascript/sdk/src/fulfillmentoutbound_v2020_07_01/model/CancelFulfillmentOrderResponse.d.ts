@@ -14,10 +14,10 @@ export class CancelFulfillmentOrderResponse {
     static constructFromObject(data: any, obj: CancelFulfillmentOrderResponse): CancelFulfillmentOrderResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Error[]} errors
+     * @type {Error[]}
      */
-    errors: [Error];
+    errors: Error[];
 }
 import { Error } from './Error.js';
 //# sourceMappingURL=CancelFulfillmentOrderResponse.d.ts.map

@@ -17,10 +17,10 @@ export class RegulatedInformation {
      * The regulated information collected during purchase and used to verify the order.
      * @alias module:orders_v0/model/RegulatedInformation
      * @class
-     * @param fields {[RegulatedInformationField]} A list of regulated information fields as collected from the regulatory form.
+     * @param fields {RegulatedInformationField[]} A list of regulated information fields as collected from the regulatory form.
      */
-    constructor(fields: [RegulatedInformationField]);
-    fields: [RegulatedInformationField];
+    constructor(fields: RegulatedInformationField[]);
+    fields: RegulatedInformationField[];
 }
 import { RegulatedInformationField } from './RegulatedInformationField.js';
 //# sourceMappingURL=RegulatedInformation.d.ts.map

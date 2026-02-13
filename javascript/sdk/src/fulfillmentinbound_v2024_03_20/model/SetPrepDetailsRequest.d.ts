@@ -18,11 +18,11 @@ export class SetPrepDetailsRequest {
      * @alias module:fulfillmentinbound_v2024_03_20/model/SetPrepDetailsRequest
      * @class
      * @param marketplaceId {String} The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @param mskuPrepDetails {[MskuPrepDetailInput]} A list of MSKUs and related prep details.
+     * @param mskuPrepDetails {MskuPrepDetailInput[]} A list of MSKUs and related prep details.
      */
-    constructor(marketplaceId: string, mskuPrepDetails: [MskuPrepDetailInput]);
+    constructor(marketplaceId: string, mskuPrepDetails: MskuPrepDetailInput[]);
     marketplaceId: string;
-    mskuPrepDetails: [MskuPrepDetailInput];
+    mskuPrepDetails: MskuPrepDetailInput[];
 }
 import { MskuPrepDetailInput } from './MskuPrepDetailInput.js';
 //# sourceMappingURL=SetPrepDetailsRequest.d.ts.map

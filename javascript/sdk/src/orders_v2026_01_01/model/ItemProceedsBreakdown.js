@@ -74,7 +74,7 @@ ItemProceedsBreakdown.prototype.subtotal = undefined
 
 /**
  * Further granular breakdown of the subtotal.
- * @member {[ItemProceedsDetailedBreakdown]} detailedBreakdowns
- * @type {[ItemProceedsDetailedBreakdown]}
+ * @member {ItemProceedsDetailedBreakdown[]} detailedBreakdowns
+ * @type {ItemProceedsDetailedBreakdown[]}
  */
 ItemProceedsBreakdown.prototype.detailedBreakdowns = undefined

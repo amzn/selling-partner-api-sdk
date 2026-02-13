@@ -1,1 +1,1 @@
-{"version":3,"file":"GeneratePlacementOptionsRequest.d.ts","sourceRoot":"","sources":["GeneratePlacementOptionsRequest.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,+BAA+B,GAC9B,+BAA+B,CAmB1C;IAGH;;;;OAIG;IACH,iBAFU,CAAC,oBAAoB,CAAC,CAEyB;CAPxD;qCA1CoC,2BAA2B"}
+{"version":3,"file":"GeneratePlacementOptionsRequest.d.ts","sourceRoot":"","sources":["GeneratePlacementOptionsRequest.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,+BAA+B,GAC9B,+BAA+B,CAmB1C;IAGH;;;;OAIG;IACH,iBAFU,oBAAoB,EAAE,CAEyB;CAPxD;qCA1CoC,2BAA2B"}

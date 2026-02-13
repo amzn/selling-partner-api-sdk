@@ -32,10 +32,10 @@ export class JobListing {
     previousPageToken: string;
     /**
      * List of job details for the given input.
-     * @member {[ServiceJob]} jobs
-     * @type {[ServiceJob]}
+     * @member {ServiceJob[]} jobs
+     * @type {ServiceJob[]}
      */
-    jobs: [ServiceJob];
+    jobs: ServiceJob[];
 }
 import { ServiceJob } from './ServiceJob.js';
 //# sourceMappingURL=JobListing.d.ts.map

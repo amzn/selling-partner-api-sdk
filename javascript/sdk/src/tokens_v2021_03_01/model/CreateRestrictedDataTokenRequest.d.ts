@@ -17,10 +17,10 @@ export class CreateRestrictedDataTokenRequest {
      * The request schema for the createRestrictedDataToken operation.
      * @alias module:tokens_v2021_03_01/model/CreateRestrictedDataTokenRequest
      * @class
-     * @param restrictedResources {[RestrictedResource]} A list of restricted resources. Maximum: 50
+     * @param restrictedResources {RestrictedResource[]} A list of restricted resources. Maximum: 50
      */
-    constructor(restrictedResources: [RestrictedResource]);
-    restrictedResources: [RestrictedResource];
+    constructor(restrictedResources: RestrictedResource[]);
+    restrictedResources: RestrictedResource[];
     /**
      * The application ID for the target application to which access is being delegated.
      * @member {String} targetApplication

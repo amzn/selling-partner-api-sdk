@@ -29,7 +29,7 @@ export class Carton {
    * @alias module:vendorshipments_v1/model/Carton
    * @class
    * @param cartonSequenceNumber {String} Carton sequence number for the carton. The first carton will be 001, the second 002, and so on. This number is used as a reference to refer to this carton from the pallet level.
-   * @param items {[ContainerItem]} A list of container item details.
+   * @param items {ContainerItem[]} A list of container item details.
    */
   constructor (cartonSequenceNumber, items) {
     this.cartonSequenceNumber = cartonSequenceNumber
@@ -70,8 +70,8 @@ export class Carton {
 
 /**
  * A list of carton identifiers.
- * @member {[ContainerIdentification]} cartonIdentifiers
- * @type {[ContainerIdentification]}
+ * @member {ContainerIdentification[]} cartonIdentifiers
+ * @type {ContainerIdentification[]}
  */
 Carton.prototype.cartonIdentifiers = undefined
 
@@ -103,7 +103,7 @@ Carton.prototype.trackingNumber = undefined
 
 /**
  * A list of container item details.
- * @member {[ContainerItem]} items
- * @type {[ContainerItem]}
+ * @member {ContainerItem[]} items
+ * @type {ContainerItem[]}
  */
 Carton.prototype.items = undefined

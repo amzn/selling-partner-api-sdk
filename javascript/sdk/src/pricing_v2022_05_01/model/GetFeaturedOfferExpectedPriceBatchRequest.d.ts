@@ -14,10 +14,10 @@ export class GetFeaturedOfferExpectedPriceBatchRequest {
     static constructFromObject(data: any, obj: GetFeaturedOfferExpectedPriceBatchRequest): GetFeaturedOfferExpectedPriceBatchRequest;
     /**
      * A batched list of FOEP requests.
-     * @member {[FeaturedOfferExpectedPriceRequest]} requests
-     * @type {[FeaturedOfferExpectedPriceRequest]}
+     * @member {FeaturedOfferExpectedPriceRequest[]} requests
+     * @type {FeaturedOfferExpectedPriceRequest[]}
      */
-    requests: [FeaturedOfferExpectedPriceRequest];
+    requests: FeaturedOfferExpectedPriceRequest[];
 }
 import { FeaturedOfferExpectedPriceRequest } from './FeaturedOfferExpectedPriceRequest.js';
 //# sourceMappingURL=GetFeaturedOfferExpectedPriceBatchRequest.d.ts.map

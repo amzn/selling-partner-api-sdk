@@ -18,17 +18,17 @@ export class GetRatesResult {
      * @alias module:shipping_v2/model/GetRatesResult
      * @class
      * @param requestToken {String} A unique token generated to identify a getRates operation.
-     * @param rates {[Rate]} A list of eligible shipping service offerings.
+     * @param rates {Rate[]} A list of eligible shipping service offerings.
      */
-    constructor(requestToken: string, rates: [Rate]);
+    constructor(requestToken: string, rates: Rate[]);
     requestToken: string;
-    rates: [Rate];
+    rates: Rate[];
     /**
      * A list of ineligible shipping service offerings.
-     * @member {[IneligibleRate]} ineligibleRates
-     * @type {[IneligibleRate]}
+     * @member {IneligibleRate[]} ineligibleRates
+     * @type {IneligibleRate[]}
      */
-    ineligibleRates: [IneligibleRate];
+    ineligibleRates: IneligibleRate[];
 }
 import { Rate } from './Rate.js';
 import { IneligibleRate } from './IneligibleRate.js';

@@ -26,7 +26,7 @@ export class ListShipmentContentUpdatePreviewsResponse {
    * The &#x60;ListShipmentContentUpdatePreviews&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListShipmentContentUpdatePreviewsResponse
    * @class
-   * @param contentUpdatePreviews {[ContentUpdatePreview]} A list of content update previews in a shipment.
+   * @param contentUpdatePreviews {ContentUpdatePreview[]} A list of content update previews in a shipment.
    */
   constructor (contentUpdatePreviews) {
     this.contentUpdatePreviews = contentUpdatePreviews
@@ -62,8 +62,8 @@ export class ListShipmentContentUpdatePreviewsResponse {
 
 /**
  * A list of content update previews in a shipment.
- * @member {[ContentUpdatePreview]} contentUpdatePreviews
- * @type {[ContentUpdatePreview]}
+ * @member {ContentUpdatePreview[]} contentUpdatePreviews
+ * @type {ContentUpdatePreview[]}
  */
 ListShipmentContentUpdatePreviewsResponse.prototype.contentUpdatePreviews = undefined
 

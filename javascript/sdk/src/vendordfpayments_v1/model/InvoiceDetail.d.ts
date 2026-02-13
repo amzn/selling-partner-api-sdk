@@ -22,15 +22,15 @@ export class InvoiceDetail {
      * @param remitToParty {PartyIdentification}
      * @param shipFromParty {PartyIdentification}
      * @param invoiceTotal {Money}
-     * @param items {[InvoiceItem]} Provides the details of the items in this invoice.
+     * @param items {InvoiceItem[]} Provides the details of the items in this invoice.
      */
-    constructor(invoiceNumber: string, invoiceDate: Date, remitToParty: PartyIdentification, shipFromParty: PartyIdentification, invoiceTotal: Money, items: [InvoiceItem]);
+    constructor(invoiceNumber: string, invoiceDate: Date, remitToParty: PartyIdentification, shipFromParty: PartyIdentification, invoiceTotal: Money, items: InvoiceItem[]);
     invoiceNumber: string;
     invoiceDate: Date;
     remitToParty: PartyIdentification;
     shipFromParty: PartyIdentification;
     invoiceTotal: Money;
-    items: [InvoiceItem];
+    items: InvoiceItem[];
     /**
      * An additional unique reference number used for regulatory or other purposes.
      * @member {String} referenceNumber
@@ -56,22 +56,22 @@ export class InvoiceDetail {
     paymentTermsCode: string;
     /**
      * Individual tax details per line item.
-     * @member {[TaxDetail]} taxTotals
-     * @type {[TaxDetail]}
+     * @member {TaxDetail[]} taxTotals
+     * @type {TaxDetail[]}
      */
-    taxTotals: [TaxDetail];
+    taxTotals: TaxDetail[];
     /**
      * Additional details provided by the selling party, for tax-related or other purposes.
-     * @member {[AdditionalDetails]} additionalDetails
-     * @type {[AdditionalDetails]}
+     * @member {AdditionalDetails[]} additionalDetails
+     * @type {AdditionalDetails[]}
      */
-    additionalDetails: [AdditionalDetails];
+    additionalDetails: AdditionalDetails[];
     /**
      * Total charge amount details for all line items.
-     * @member {[ChargeDetails]} chargeDetails
-     * @type {[ChargeDetails]}
+     * @member {ChargeDetails[]} chargeDetails
+     * @type {ChargeDetails[]}
      */
-    chargeDetails: [ChargeDetails];
+    chargeDetails: ChargeDetails[];
 }
 import { PartyIdentification } from './PartyIdentification.js';
 import { Money } from './Money.js';

@@ -32,7 +32,7 @@ export class ShipmentConfirmation {
    * @param shipmentDetails {ShipmentDetails}
    * @param sellingParty {PartyIdentification}
    * @param shipFromParty {PartyIdentification}
-   * @param items {[Item]} Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
+   * @param items {Item[]} Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
    */
   constructor (purchaseOrderNumber, shipmentDetails, sellingParty, shipFromParty, items) {
     this.purchaseOrderNumber = purchaseOrderNumber
@@ -101,14 +101,14 @@ ShipmentConfirmation.prototype.shipFromParty = undefined
 
 /**
  * Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
- * @member {[Item]} items
- * @type {[Item]}
+ * @member {Item[]} items
+ * @type {Item[]}
  */
 ShipmentConfirmation.prototype.items = undefined
 
 /**
  * Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
- * @member {[Container]} containers
- * @type {[Container]}
+ * @member {Container[]} containers
+ * @type {Container[]}
  */
 ShipmentConfirmation.prototype.containers = undefined

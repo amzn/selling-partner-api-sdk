@@ -36,16 +36,16 @@ export class Item {
     itemDescription: string;
     /**
      * A list of transparency codes.
-     * @member {[String]} transparencyCodeList
-     * @type {[String]}
+     * @member {String[]} transparencyCodeList
+     * @type {String[]}
      */
-    transparencyCodeList: [string];
+    transparencyCodeList: string[];
     /**
      * A list of additional seller input pairs required to purchase shipping.
-     * @member {[AdditionalSellerInputs]} itemLevelSellerInputsList
-     * @type {[AdditionalSellerInputs]}
+     * @member {AdditionalSellerInputs[]} itemLevelSellerInputsList
+     * @type {AdditionalSellerInputs[]}
      */
-    itemLevelSellerInputsList: [AdditionalSellerInputs];
+    itemLevelSellerInputsList: AdditionalSellerInputs[];
     /**
      * @member {LiquidVolume} liquidVolume
      * @type {LiquidVolume}

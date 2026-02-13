@@ -14,16 +14,16 @@ export class GetPricingResponse {
     static constructFromObject(data: any, obj: GetPricingResponse): GetPricingResponse;
     /**
      * The payload for the `getPricing` and `getCompetitivePricing` operations.
-     * @member {[Price]} payload
-     * @type {[Price]}
+     * @member {Price[]} payload
+     * @type {Price[]}
      */
-    payload: [Price];
+    payload: Price[];
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Error[]} errors
+     * @type {Error[]}
      */
-    errors: [Error];
+    errors: Error[];
 }
 import { Price } from './Price.js';
 import { Error } from './Error.js';
