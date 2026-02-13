@@ -66,7 +66,7 @@ CustomerInvoiceList.prototype.pagination = undefined
 
 /**
  * Represents a customer invoice within the `CustomerInvoiceList`.
- * @member {[CustomerInvoice]} customerInvoices
- * @type {[CustomerInvoice]}
+ * @member {CustomerInvoice[]} customerInvoices
+ * @type {CustomerInvoice[]}
  */
 CustomerInvoiceList.prototype.customerInvoices = undefined

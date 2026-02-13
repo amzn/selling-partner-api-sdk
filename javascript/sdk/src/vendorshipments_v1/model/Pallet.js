@@ -29,7 +29,7 @@ export class Pallet {
    * Details of the Pallet/Tare being shipped.
    * @alias module:vendorshipments_v1/model/Pallet
    * @class
-   * @param palletIdentifiers {[ContainerIdentification]} A list of pallet identifiers.
+   * @param palletIdentifiers {ContainerIdentification[]} A list of pallet identifiers.
    */
   constructor (palletIdentifiers) {
     this.palletIdentifiers = palletIdentifiers
@@ -70,8 +70,8 @@ export class Pallet {
 
 /**
  * A list of pallet identifiers.
- * @member {[ContainerIdentification]} palletIdentifiers
- * @type {[ContainerIdentification]}
+ * @member {ContainerIdentification[]} palletIdentifiers
+ * @type {ContainerIdentification[]}
  */
 Pallet.prototype.palletIdentifiers = undefined
 
@@ -109,7 +109,7 @@ Pallet.prototype.cartonReferenceDetails = undefined
 
 /**
  * A list of container item details.
- * @member {[ContainerItem]} items
- * @type {[ContainerItem]}
+ * @member {ContainerItem[]} items
+ * @type {ContainerItem[]}
  */
 Pallet.prototype.items = undefined

@@ -24,10 +24,10 @@ export class OperatingHours {
     openingTime: TimeOfDay;
     /**
      * midDayClosures operating hours array
-     * @member {[TimeOfDay]} midDayClosures
-     * @type {[TimeOfDay]}
+     * @member {TimeOfDay[]} midDayClosures
+     * @type {TimeOfDay[]}
      */
-    midDayClosures: [TimeOfDay];
+    midDayClosures: TimeOfDay[];
 }
 import { TimeOfDay } from './TimeOfDay.js';
 //# sourceMappingURL=OperatingHours.d.ts.map

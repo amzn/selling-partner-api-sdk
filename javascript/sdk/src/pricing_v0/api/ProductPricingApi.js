@@ -77,8 +77,8 @@ export class ProductPricingApi {
      * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
      * @param {String} itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku.
      * @param {Object} [opts] Optional parameters
-     * @param {[String]} [opts.asins] A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
-     * @param {[String]} [opts.skus] A list of up to twenty seller SKU values used to identify items in the given marketplace.
+     * @param {String[]} [opts.asins] A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
+     * @param {String[]} [opts.skus] A list of up to twenty seller SKU values used to identify items in the given marketplace.
      * @param {String} [opts.customerType] Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer.
      * @return {Promise<GetPricingResponse>}
      */
@@ -126,8 +126,8 @@ export class ProductPricingApi {
      * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
      * @param {String} itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku.
      * @param {Object} [opts] Optional parameters
-     * @param {[String]} [opts.asins] A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
-     * @param {[String]} [opts.skus] A list of up to twenty seller SKU values used to identify items in the given marketplace.
+     * @param {String[]} [opts.asins] A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
+     * @param {String[]} [opts.skus] A list of up to twenty seller SKU values used to identify items in the given marketplace.
      * @param {String} [opts.customerType] Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer.
      * @return {Promise<GetPricingResponse>}
      */
@@ -369,8 +369,8 @@ export class ProductPricingApi {
      * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
      * @param {String} itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter.
      * @param {Object} [opts] Optional parameters
-     * @param {[String]} [opts.asins] A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
-     * @param {[String]} [opts.skus] A list of up to twenty seller SKU values used to identify items in the given marketplace.
+     * @param {String[]} [opts.asins] A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
+     * @param {String[]} [opts.skus] A list of up to twenty seller SKU values used to identify items in the given marketplace.
      * @param {String} [opts.itemCondition] Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
      * @param {String} [opts.offerType] Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C.
      * @return {Promise<GetPricingResponse>}
@@ -420,8 +420,8 @@ export class ProductPricingApi {
      * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
      * @param {String} itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter.
      * @param {Object} [opts] Optional parameters
-     * @param {[String]} [opts.asins] A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
-     * @param {[String]} [opts.skus] A list of up to twenty seller SKU values used to identify items in the given marketplace.
+     * @param {String[]} [opts.asins] A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
+     * @param {String[]} [opts.skus] A list of up to twenty seller SKU values used to identify items in the given marketplace.
      * @param {String} [opts.itemCondition] Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
      * @param {String} [opts.offerType] Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C.
      * @return {Promise<GetPricingResponse>}

@@ -74,15 +74,15 @@ Product.prototype.identifiers = undefined
 
 /**
  * A list of product attributes if they are applicable to the product that is returned.
- * @member {[Object]} attributeSets
- * @type {[Object]}
+ * @member {Object[]} attributeSets
+ * @type {Object[]}
  */
 Product.prototype.attributeSets = undefined
 
 /**
  * A list that contains product variation information, if applicable.
- * @member {[Object]} relationships
- * @type {[Object]}
+ * @member {Object[]} relationships
+ * @type {Object[]}
  */
 Product.prototype.relationships = undefined
 
@@ -94,14 +94,14 @@ Product.prototype.competitivePricing = undefined
 
 /**
  * A list of sales rank information for the item, by category.
- * @member {[SalesRankType]} salesRankings
- * @type {[SalesRankType]}
+ * @member {SalesRankType[]} salesRankings
+ * @type {SalesRankType[]}
  */
 Product.prototype.salesRankings = undefined
 
 /**
  * A list of offers.
- * @member {[OfferType]} offers
- * @type {[OfferType]}
+ * @member {OfferType[]} offers
+ * @type {OfferType[]}
  */
 Product.prototype.offers = undefined

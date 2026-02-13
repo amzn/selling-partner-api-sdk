@@ -14,16 +14,16 @@ export class PreferredDeliveryTime {
     static constructFromObject(data: any, obj: PreferredDeliveryTime): PreferredDeliveryTime;
     /**
      * Business hours when the business is open for deliveries.
-     * @member {[BusinessHour]} businessHours
-     * @type {[BusinessHour]}
+     * @member {BusinessHour[]} businessHours
+     * @type {BusinessHour[]}
      */
-    businessHours: [BusinessHour];
+    businessHours: BusinessHour[];
     /**
      * Specific dates within the next 30 days when normal business hours do not apply.
-     * @member {[ExceptionDate]} exceptionDates
-     * @type {[ExceptionDate]}
+     * @member {ExceptionDate[]} exceptionDates
+     * @type {ExceptionDate[]}
      */
-    exceptionDates: [ExceptionDate];
+    exceptionDates: ExceptionDate[];
 }
 import { BusinessHour } from './BusinessHour.js';
 import { ExceptionDate } from './ExceptionDate.js';

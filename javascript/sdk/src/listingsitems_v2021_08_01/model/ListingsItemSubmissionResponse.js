@@ -115,14 +115,14 @@ ListingsItemSubmissionResponse.prototype.submissionId = undefined
 
 /**
  * Listings item issues related to the listings item submission.
- * @member {[Issue]} issues
- * @type {[Issue]}
+ * @member {Issue[]} issues
+ * @type {Issue[]}
  */
 ListingsItemSubmissionResponse.prototype.issues = undefined
 
 /**
  * Identity attributes associated with the item in the Amazon catalog, such as the ASIN.
- * @member {[ItemIdentifiersByMarketplace]} identifiers
- * @type {[ItemIdentifiersByMarketplace]}
+ * @member {ItemIdentifiersByMarketplace[]} identifiers
+ * @type {ItemIdentifiersByMarketplace[]}
  */
 ListingsItemSubmissionResponse.prototype.identifiers = undefined

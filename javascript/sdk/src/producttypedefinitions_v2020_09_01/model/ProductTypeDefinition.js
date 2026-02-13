@@ -32,7 +32,7 @@ export class ProductTypeDefinition {
    * @param requirementsEnforced {String} Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all of the required attributes being present (such as for partial updates).
    * @param propertyGroups {{String: PropertyGroup}} Mapping of property group names to property groups. Property groups represent logical groupings of schema properties that can be used for display or informational purposes.
    * @param locale {String} Locale of the display elements contained in the product type definition.
-   * @param marketplaceIds {[String]} Amazon marketplace identifiers for which the product type definition is applicable.
+   * @param marketplaceIds {String[]} Amazon marketplace identifiers for which the product type definition is applicable.
    * @param productType {String} The name of the Amazon product type that this product type definition applies to.
    * @param displayName {String} Human-readable and localized description of the Amazon product type.
    * @param productTypeVersion {ProductTypeVersion}
@@ -171,8 +171,8 @@ ProductTypeDefinition.prototype.locale = undefined
 
 /**
  * Amazon marketplace identifiers for which the product type definition is applicable.
- * @member {[String]} marketplaceIds
- * @type {[String]}
+ * @member {String[]} marketplaceIds
+ * @type {String[]}
  */
 ProductTypeDefinition.prototype.marketplaceIds = undefined
 

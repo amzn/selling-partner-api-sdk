@@ -26,7 +26,7 @@ export class BrowseNodeReturnTrend {
    * @alias module:customerFeedback_2024_06_01/model/BrowseNodeReturnTrend
    * @class
    * @param topic {String} The name of the topic.
-   * @param trendMetrics {[BrowseNodeReturnTrendPoint]} The browse node return trend metrics.
+   * @param trendMetrics {BrowseNodeReturnTrendPoint[]} The browse node return trend metrics.
    */
   constructor (topic, trendMetrics) {
     this.topic = topic
@@ -70,7 +70,7 @@ BrowseNodeReturnTrend.prototype.topic = undefined
 
 /**
  * The browse node return trend metrics.
- * @member {[BrowseNodeReturnTrendPoint]} trendMetrics
- * @type {[BrowseNodeReturnTrendPoint]}
+ * @member {BrowseNodeReturnTrendPoint[]} trendMetrics
+ * @type {BrowseNodeReturnTrendPoint[]}
  */
 BrowseNodeReturnTrend.prototype.trendMetrics = undefined

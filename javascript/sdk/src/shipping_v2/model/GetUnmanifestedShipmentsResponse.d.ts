@@ -14,10 +14,10 @@ export class GetUnmanifestedShipmentsResponse {
     static constructFromObject(data: any, obj: GetUnmanifestedShipmentsResponse): GetUnmanifestedShipmentsResponse;
     /**
      * A list of UnmanifestedCarrierInformation
-     * @member {[UnmanifestedCarrierInformation]} unmanifestedCarrierInformationList
-     * @type {[UnmanifestedCarrierInformation]}
+     * @member {UnmanifestedCarrierInformation[]} unmanifestedCarrierInformationList
+     * @type {UnmanifestedCarrierInformation[]}
      */
-    unmanifestedCarrierInformationList: [UnmanifestedCarrierInformation];
+    unmanifestedCarrierInformationList: UnmanifestedCarrierInformation[];
 }
 import { UnmanifestedCarrierInformation } from './UnmanifestedCarrierInformation.js';
 //# sourceMappingURL=GetUnmanifestedShipmentsResponse.d.ts.map

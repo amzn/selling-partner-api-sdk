@@ -26,10 +26,10 @@ export class ExceptionDate {
     exceptionDateType: string;
     /**
      * Alternative operating hours that apply specifically to this exception date.
-     * @member {[TimeWindow]} timeWindows
-     * @type {[TimeWindow]}
+     * @member {TimeWindow[]} timeWindows
+     * @type {TimeWindow[]}
      */
-    timeWindows: [TimeWindow];
+    timeWindows: TimeWindow[];
 }
 export namespace ExceptionDate {
     namespace ExceptionDateTypeEnum {

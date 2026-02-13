@@ -20,19 +20,19 @@ export class Package {
      * @param id {String} An ID that uniquely identifies a package within a shipment.
      * @param dimensions {PackageDimensions}
      * @param weight {Weight}
-     * @param packageLineItems {[PackageLineItem]} The list of line items in a package.
+     * @param packageLineItems {PackageLineItem[]} The list of line items in a package.
      */
-    constructor(id: string, dimensions: PackageDimensions, weight: Weight, packageLineItems: [PackageLineItem]);
+    constructor(id: string, dimensions: PackageDimensions, weight: Weight, packageLineItems: PackageLineItem[]);
     id: string;
     dimensions: PackageDimensions;
     weight: Weight;
-    packageLineItems: [PackageLineItem];
+    packageLineItems: PackageLineItem[];
     /**
      * The optional list of HAZMAT labels applied to the package.
-     * @member {[String]} hazmatLabels
-     * @type {[String]}
+     * @member {String[]} hazmatLabels
+     * @type {String[]}
      */
-    hazmatLabels: [string];
+    hazmatLabels: string[];
     /**
      * The current status of the package.
      * @member {String} status

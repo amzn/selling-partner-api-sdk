@@ -25,7 +25,7 @@ export class ReportScheduleList {
    * A list of report schedules.
    * @alias module:reports_v2021_06_30/model/ReportScheduleList
    * @class
-   * @param reportSchedules {[ReportSchedule]} Detailed information about a report schedule.
+   * @param reportSchedules {ReportSchedule[]} Detailed information about a report schedule.
    */
   constructor (reportSchedules) {
     this.reportSchedules = reportSchedules
@@ -60,7 +60,7 @@ export class ReportScheduleList {
 
 /**
  * Detailed information about a report schedule.
- * @member {[ReportSchedule]} reportSchedules
- * @type {[ReportSchedule]}
+ * @member {ReportSchedule[]} reportSchedules
+ * @type {ReportSchedule[]}
  */
 ReportScheduleList.prototype.reportSchedules = undefined

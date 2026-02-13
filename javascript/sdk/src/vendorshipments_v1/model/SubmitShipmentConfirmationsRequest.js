@@ -58,7 +58,7 @@ export class SubmitShipmentConfirmationsRequest {
 
 /**
  * A list of one or more shipment confirmations.
- * @member {[ShipmentConfirmation]} shipmentConfirmations
- * @type {[ShipmentConfirmation]}
+ * @member {ShipmentConfirmation[]} shipmentConfirmations
+ * @type {ShipmentConfirmation[]}
  */
 SubmitShipmentConfirmationsRequest.prototype.shipmentConfirmations = undefined

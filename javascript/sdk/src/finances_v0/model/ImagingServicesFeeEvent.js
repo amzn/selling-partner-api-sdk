@@ -82,7 +82,7 @@ ImagingServicesFeeEvent.prototype.postedDate = undefined
 
 /**
  * A list of fee component information.
- * @member {[FeeComponent]} feeList
- * @type {[FeeComponent]}
+ * @member {FeeComponent[]} feeList
+ * @type {FeeComponent[]}
  */
 ImagingServicesFeeEvent.prototype.feeList = undefined

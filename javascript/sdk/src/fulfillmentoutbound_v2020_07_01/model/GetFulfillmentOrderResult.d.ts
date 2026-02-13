@@ -18,27 +18,27 @@ export class GetFulfillmentOrderResult {
      * @alias module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentOrderResult
      * @class
      * @param fulfillmentOrder {FulfillmentOrder}
-     * @param fulfillmentOrderItems {[FulfillmentOrderItem]} An array of fulfillment order item information.
-     * @param returnItems {[ReturnItem]} An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
-     * @param returnAuthorizations {[ReturnAuthorization]} An array of return authorization information.
+     * @param fulfillmentOrderItems {FulfillmentOrderItem[]} An array of fulfillment order item information.
+     * @param returnItems {ReturnItem[]} An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
+     * @param returnAuthorizations {ReturnAuthorization[]} An array of return authorization information.
      */
-    constructor(fulfillmentOrder: FulfillmentOrder, fulfillmentOrderItems: [FulfillmentOrderItem], returnItems: [ReturnItem], returnAuthorizations: [ReturnAuthorization]);
+    constructor(fulfillmentOrder: FulfillmentOrder, fulfillmentOrderItems: FulfillmentOrderItem[], returnItems: ReturnItem[], returnAuthorizations: ReturnAuthorization[]);
     fulfillmentOrder: FulfillmentOrder;
-    fulfillmentOrderItems: [FulfillmentOrderItem];
-    returnItems: [ReturnItem];
-    returnAuthorizations: [ReturnAuthorization];
+    fulfillmentOrderItems: FulfillmentOrderItem[];
+    returnItems: ReturnItem[];
+    returnAuthorizations: ReturnAuthorization[];
     /**
      * An array of fulfillment shipment information.
-     * @member {[FulfillmentShipment]} fulfillmentShipments
-     * @type {[FulfillmentShipment]}
+     * @member {FulfillmentShipment[]} fulfillmentShipments
+     * @type {FulfillmentShipment[]}
      */
-    fulfillmentShipments: [FulfillmentShipment];
+    fulfillmentShipments: FulfillmentShipment[];
     /**
      * An array of various payment attributes related to this fulfillment order.
-     * @member {[PaymentInformation]} paymentInformation
-     * @type {[PaymentInformation]}
+     * @member {PaymentInformation[]} paymentInformation
+     * @type {PaymentInformation[]}
      */
-    paymentInformation: [PaymentInformation];
+    paymentInformation: PaymentInformation[];
 }
 import { FulfillmentOrder } from './FulfillmentOrder.js';
 import { FulfillmentOrderItem } from './FulfillmentOrderItem.js';

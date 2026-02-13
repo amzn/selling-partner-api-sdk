@@ -26,7 +26,7 @@ export class ListingsItemPatchRequest {
    * @alias module:listingsitems_v2021_08_01/model/ListingsItemPatchRequest
    * @class
    * @param productType {String} The Amazon product type of the listings item.
-   * @param patches {[PatchOperation]} One or more JSON Patch operations to perform on the listings item.
+   * @param patches {PatchOperation[]} One or more JSON Patch operations to perform on the listings item.
    */
   constructor (productType, patches) {
     this.productType = productType
@@ -70,7 +70,7 @@ ListingsItemPatchRequest.prototype.productType = undefined
 
 /**
  * One or more JSON Patch operations to perform on the listings item.
- * @member {[PatchOperation]} patches
- * @type {[PatchOperation]}
+ * @member {PatchOperation[]} patches
+ * @type {PatchOperation[]}
  */
 ListingsItemPatchRequest.prototype.patches = undefined

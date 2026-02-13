@@ -30,7 +30,7 @@ export class Vehicle {
    * @class
    * @param make {String} Vehicle Brand.
    * @param model {String} Specific model of a vehicle.
-   * @param identifiers {[VehicleIdentifiers]} Identifiers that can be used to identify the vehicle uniquely
+   * @param identifiers {VehicleIdentifiers[]} Identifiers that can be used to identify the vehicle uniquely
    */
   constructor (make, model, identifiers) {
     this.make = make
@@ -120,8 +120,8 @@ Vehicle.prototype.energy = undefined
 
 /**
  * Engine output of vehicle.
- * @member {[EngineOutput]} engineOutput
- * @type {[EngineOutput]}
+ * @member {EngineOutput[]} engineOutput
+ * @type {EngineOutput[]}
  */
 Vehicle.prototype.engineOutput = undefined
 
@@ -152,7 +152,7 @@ Vehicle.prototype.status = undefined
 
 /**
  * Identifiers that can be used to identify the vehicle uniquely
- * @member {[VehicleIdentifiers]} identifiers
- * @type {[VehicleIdentifiers]}
+ * @member {VehicleIdentifiers[]} identifiers
+ * @type {VehicleIdentifiers[]}
  */
 Vehicle.prototype.identifiers = undefined

@@ -24,9 +24,9 @@ export class OrderDetails {
      * @param shipFromParty {PartyIdentification}
      * @param shipToParty {Address}
      * @param billToParty {PartyIdentification}
-     * @param items {[OrderItem]} A list of items in this purchase order.
+     * @param items {OrderItem[]} A list of items in this purchase order.
      */
-    constructor(customerOrderNumber: string, orderDate: Date, shipmentDetails: ShipmentDetails, sellingParty: PartyIdentification, shipFromParty: PartyIdentification, shipToParty: Address, billToParty: PartyIdentification, items: [OrderItem]);
+    constructor(customerOrderNumber: string, orderDate: Date, shipmentDetails: ShipmentDetails, sellingParty: PartyIdentification, shipFromParty: PartyIdentification, shipToParty: Address, billToParty: PartyIdentification, items: OrderItem[]);
     customerOrderNumber: string;
     orderDate: Date;
     shipmentDetails: ShipmentDetails;
@@ -34,7 +34,7 @@ export class OrderDetails {
     shipFromParty: PartyIdentification;
     shipToParty: Address;
     billToParty: PartyIdentification;
-    items: [OrderItem];
+    items: OrderItem[];
     /**
      * Current status of the order.
      * @member {String} orderStatus

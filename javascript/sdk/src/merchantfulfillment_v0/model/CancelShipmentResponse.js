@@ -66,7 +66,7 @@ CancelShipmentResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Error[]} errors
+ * @type {Error[]}
  */
 CancelShipmentResponse.prototype.errors = undefined

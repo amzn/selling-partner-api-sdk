@@ -66,7 +66,7 @@ ShipmentListing.prototype.nextToken = undefined
 
 /**
  * List of inbound shipment summaries.
- * @member {[InboundShipmentSummary]} shipments
- * @type {[InboundShipmentSummary]}
+ * @member {InboundShipmentSummary[]} shipments
+ * @type {InboundShipmentSummary[]}
  */
 ShipmentListing.prototype.shipments = undefined

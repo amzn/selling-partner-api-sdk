@@ -33,7 +33,7 @@ export class InboundOrder {
    * @param orderId {String} Inbound order ID.
    * @param orderStatus {InboundStatus}
    * @param originAddress {Address}
-   * @param packagesToInbound {[DistributionPackageQuantity]} List of packages to be inbounded.
+   * @param packagesToInbound {DistributionPackageQuantity[]} List of packages to be inbounded.
    */
   constructor (createdAt, orderId, orderStatus, originAddress, packagesToInbound) {
     this.createdAt = createdAt
@@ -119,8 +119,8 @@ InboundOrder.prototype.originAddress = undefined
 
 /**
  * List of packages to be inbounded.
- * @member {[DistributionPackageQuantity]} packagesToInbound
- * @type {[DistributionPackageQuantity]}
+ * @member {DistributionPackageQuantity[]} packagesToInbound
+ * @type {DistributionPackageQuantity[]}
  */
 InboundOrder.prototype.packagesToInbound = undefined
 

@@ -32,10 +32,10 @@ export class PurchaseOrders {
     shipWindow: string;
     /**
      * A list of the items that are associated to the PO in this transport and their associated details.
-     * @member {[PurchaseOrderItems]} items
-     * @type {[PurchaseOrderItems]}
+     * @member {PurchaseOrderItems[]} items
+     * @type {PurchaseOrderItems[]}
      */
-    items: [PurchaseOrderItems];
+    items: PurchaseOrderItems[];
 }
 import { PurchaseOrderItems } from './PurchaseOrderItems.js';
 //# sourceMappingURL=PurchaseOrders.d.ts.map

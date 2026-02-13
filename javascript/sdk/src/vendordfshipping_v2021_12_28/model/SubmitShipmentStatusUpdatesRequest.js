@@ -58,7 +58,7 @@ export class SubmitShipmentStatusUpdatesRequest {
 
 /**
  * Contains a list of one or more `ShipmentStatusUpdate` objects. Each `ShipmentStatusUpdate` object represents an update to the status of a specific shipment.
- * @member {[ShipmentStatusUpdate]} shipmentStatusUpdates
- * @type {[ShipmentStatusUpdate]}
+ * @member {ShipmentStatusUpdate[]} shipmentStatusUpdates
+ * @type {ShipmentStatusUpdate[]}
  */
 SubmitShipmentStatusUpdatesRequest.prototype.shipmentStatusUpdates = undefined

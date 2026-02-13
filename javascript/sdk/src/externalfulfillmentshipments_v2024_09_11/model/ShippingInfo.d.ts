@@ -40,10 +40,10 @@ export class ShippingInfo {
     shippingType: string;
     /**
      * Recommendations for the packages in an order.
-     * @member {[RecommendedPackage]} recommendedPackages
-     * @type {[RecommendedPackage]}
+     * @member {RecommendedPackage[]} recommendedPackages
+     * @type {RecommendedPackage[]}
      */
-    recommendedPackages: [RecommendedPackage];
+    recommendedPackages: RecommendedPackage[];
 }
 export namespace ShippingInfo {
     namespace ShippingTypeEnum {

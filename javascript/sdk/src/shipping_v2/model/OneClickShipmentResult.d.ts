@@ -18,15 +18,15 @@ export class OneClickShipmentResult {
      * @alias module:shipping_v2/model/OneClickShipmentResult
      * @class
      * @param shipmentId {String} The unique shipment identifier provided by a shipping service.
-     * @param packageDocumentDetails {[PackageDocumentDetail]} A list of post-purchase details about a package that will be shipped using a shipping service.
+     * @param packageDocumentDetails {PackageDocumentDetail[]} A list of post-purchase details about a package that will be shipped using a shipping service.
      * @param promise {Promise}
      * @param carrier {Carrier}
      * @param service {Service}
      * @param totalCharge {Currency}
      */
-    constructor(shipmentId: string, packageDocumentDetails: [PackageDocumentDetail], promise: Promise, carrier: Carrier, service: Service, totalCharge: Currency);
+    constructor(shipmentId: string, packageDocumentDetails: PackageDocumentDetail[], promise: Promise, carrier: Carrier, service: Service, totalCharge: Currency);
     shipmentId: string;
-    packageDocumentDetails: [PackageDocumentDetail];
+    packageDocumentDetails: PackageDocumentDetail[];
     promise: Promise;
     carrier: Carrier;
     service: Service;

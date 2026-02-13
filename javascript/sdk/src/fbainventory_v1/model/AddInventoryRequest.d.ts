@@ -14,10 +14,10 @@ export class AddInventoryRequest {
     static constructFromObject(data: any, obj: AddInventoryRequest): AddInventoryRequest;
     /**
      * List of Inventory to be added
-     * @member {[InventoryItem]} inventoryItems
-     * @type {[InventoryItem]}
+     * @member {InventoryItem[]} inventoryItems
+     * @type {InventoryItem[]}
      */
-    inventoryItems: [InventoryItem];
+    inventoryItems: InventoryItem[];
 }
 import { InventoryItem } from './InventoryItem.js';
 //# sourceMappingURL=AddInventoryRequest.d.ts.map

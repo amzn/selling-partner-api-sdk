@@ -36,7 +36,7 @@ export class OrderDetails {
    * @param shipFromParty {PartyIdentification}
    * @param shipToParty {Address}
    * @param billToParty {PartyIdentification}
-   * @param items {[OrderItem]} A list of items in this purchase order.
+   * @param items {OrderItem[]} A list of items in this purchase order.
    */
   constructor (customerOrderNumber, orderDate, shipmentDetails, sellingParty, shipFromParty, shipToParty, billToParty, items) {
     this.customerOrderNumber = customerOrderNumber
@@ -183,7 +183,7 @@ OrderDetails.prototype.hasCustomizableItems = undefined
 
 /**
  * A list of items in this purchase order.
- * @member {[OrderItem]} items
- * @type {[OrderItem]}
+ * @member {OrderItem[]} items
+ * @type {OrderItem[]}
  */
 OrderDetails.prototype.items = undefined

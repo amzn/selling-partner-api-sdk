@@ -31,7 +31,7 @@ export class OrderStatus {
    * @param purchaseOrderDate {Date} The date the purchase order was placed. Must be in ISO-8601 date/time format.
    * @param sellingParty {PartyIdentification}
    * @param shipToParty {PartyIdentification}
-   * @param itemStatus {[OrderItemStatus]} Detailed description of items order status.
+   * @param itemStatus {OrderItemStatus[]} Detailed description of items order status.
    */
   constructor (purchaseOrderNumber, purchaseOrderStatus, purchaseOrderDate, sellingParty, shipToParty, itemStatus) {
     this.purchaseOrderNumber = purchaseOrderNumber
@@ -136,7 +136,7 @@ OrderStatus.prototype.shipToParty = undefined
 
 /**
  * Detailed description of items order status.
- * @member {[OrderItemStatus]} itemStatus
- * @type {[OrderItemStatus]}
+ * @member {OrderItemStatus[]} itemStatus
+ * @type {OrderItemStatus[]}
  */
 OrderStatus.prototype.itemStatus = undefined

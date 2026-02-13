@@ -58,7 +58,7 @@ export class SpdTrackingDetail {
 
 /**
  * List of Small Parcel Delivery (SPD) tracking items.
- * @member {[SpdTrackingItem]} spdTrackingItems
- * @type {[SpdTrackingItem]}
+ * @member {SpdTrackingItem[]} spdTrackingItems
+ * @type {SpdTrackingItem[]}
  */
 SpdTrackingDetail.prototype.spdTrackingItems = undefined

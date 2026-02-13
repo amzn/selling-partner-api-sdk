@@ -195,8 +195,8 @@ Offer.prototype.listingPrice = undefined
 
 /**
  * A list of shipping options associated with this offer
- * @member {[ShippingOption]} shippingOptions
- * @type {[ShippingOption]}
+ * @member {ShippingOption[]} shippingOptions
+ * @type {ShippingOption[]}
  */
 Offer.prototype.shippingOptions = undefined
 

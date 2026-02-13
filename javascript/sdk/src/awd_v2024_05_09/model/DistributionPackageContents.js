@@ -60,14 +60,14 @@ export class DistributionPackageContents {
 
 /**
  * This is required only when `DistributionPackageType=PALLET`.
- * @member {[DistributionPackageQuantity]} packages
- * @type {[DistributionPackageQuantity]}
+ * @member {DistributionPackageQuantity[]} packages
+ * @type {DistributionPackageQuantity[]}
  */
 DistributionPackageContents.prototype.packages = undefined
 
 /**
  * This is required only when `DistributionPackageType=CASE`.
- * @member {[ProductQuantity]} products
- * @type {[ProductQuantity]}
+ * @member {ProductQuantity[]} products
+ * @type {ProductQuantity[]}
  */
 DistributionPackageContents.prototype.products = undefined

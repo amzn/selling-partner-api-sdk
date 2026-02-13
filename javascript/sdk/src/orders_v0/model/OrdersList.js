@@ -25,7 +25,7 @@ export class OrdersList {
    * A list of orders along with additional information to make subsequent API calls.
    * @alias module:orders_v0/model/OrdersList
    * @class
-   * @param orders {[Order]} A list of orders.
+   * @param orders {Order[]} A list of orders.
    */
   constructor (orders) {
     this.orders = orders
@@ -63,8 +63,8 @@ export class OrdersList {
 
 /**
  * A list of orders.
- * @member {[Order]} orders
- * @type {[Order]}
+ * @member {Order[]} orders
+ * @type {Order[]}
  */
 OrdersList.prototype.orders = undefined
 

@@ -25,10 +25,10 @@ export class PlacementOption {
    * Contains information pertaining to the placement of the contents of an inbound plan and the related costs.
    * @alias module:fulfillmentinbound_v2024_03_20/model/PlacementOption
    * @class
-   * @param discounts {[Incentive]} Discount for the offered option.
-   * @param fees {[Incentive]} The fee for the offered option.
+   * @param discounts {Incentive[]} Discount for the offered option.
+   * @param fees {Incentive[]} The fee for the offered option.
    * @param placementOptionId {String} The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs.
-   * @param shipmentIds {[String]} Shipment ids.
+   * @param shipmentIds {String[]} Shipment ids.
    * @param status {String} The status of a placement option. Possible values: `OFFERED`, `ACCEPTED`, `EXPIRED`.
    */
   constructor (discounts, fees, placementOptionId, shipmentIds, status) {
@@ -73,8 +73,8 @@ export class PlacementOption {
 
 /**
  * Discount for the offered option.
- * @member {[Incentive]} discounts
- * @type {[Incentive]}
+ * @member {Incentive[]} discounts
+ * @type {Incentive[]}
  */
 PlacementOption.prototype.discounts = undefined
 
@@ -87,8 +87,8 @@ PlacementOption.prototype.expiration = undefined
 
 /**
  * The fee for the offered option.
- * @member {[Incentive]} fees
- * @type {[Incentive]}
+ * @member {Incentive[]} fees
+ * @type {Incentive[]}
  */
 PlacementOption.prototype.fees = undefined
 
@@ -101,8 +101,8 @@ PlacementOption.prototype.placementOptionId = undefined
 
 /**
  * Shipment ids.
- * @member {[String]} shipmentIds
- * @type {[String]}
+ * @member {String[]} shipmentIds
+ * @type {String[]}
  */
 PlacementOption.prototype.shipmentIds = undefined
 

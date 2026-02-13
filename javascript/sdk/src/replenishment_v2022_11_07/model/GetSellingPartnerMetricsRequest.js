@@ -32,7 +32,7 @@ export class GetSellingPartnerMetricsRequest {
    * @param timeInterval {TimeInterval}
    * @param timePeriodType {TimePeriodType}
    * @param marketplaceId {String} The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
-   * @param programTypes {[ProgramType]} A list of replenishment program types.
+   * @param programTypes {ProgramType[]} A list of replenishment program types.
    */
   constructor (timeInterval, timePeriodType, marketplaceId, programTypes) {
     this.timeInterval = timeInterval
@@ -87,8 +87,8 @@ GetSellingPartnerMetricsRequest.prototype.timeInterval = undefined
 
 /**
  * The list of metrics requested. If no metric value is provided, data for all of the metrics will be returned.
- * @member {[Metric]} metrics
- * @type {[Metric]}
+ * @member {Metric[]} metrics
+ * @type {Metric[]}
  */
 GetSellingPartnerMetricsRequest.prototype.metrics = undefined
 
@@ -107,7 +107,7 @@ GetSellingPartnerMetricsRequest.prototype.marketplaceId = undefined
 
 /**
  * A list of replenishment program types.
- * @member {[ProgramType]} programTypes
- * @type {[ProgramType]}
+ * @member {ProgramType[]} programTypes
+ * @type {ProgramType[]}
  */
 GetSellingPartnerMetricsRequest.prototype.programTypes = undefined

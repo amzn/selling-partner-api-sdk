@@ -113,8 +113,8 @@ Box.prototype.externalContainerIdentifierType = undefined
 
 /**
  * Items contained within the box.
- * @member {[Item]} items
- * @type {[Item]}
+ * @member {Item[]} items
+ * @type {Item[]}
  */
 Box.prototype.items = undefined
 

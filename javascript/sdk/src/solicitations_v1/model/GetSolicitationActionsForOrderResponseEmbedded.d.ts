@@ -16,10 +16,10 @@ export class GetSolicitationActionsForOrderResponseEmbedded {
      * Constructs a new <code>GetSolicitationActionsForOrderResponseEmbedded</code>.
      * @alias module:solicitations_v1/model/GetSolicitationActionsForOrderResponseEmbedded
      * @class
-     * @param actions {[GetSolicitationActionResponse]}
+     * @param actions {GetSolicitationActionResponse[]}
      */
-    constructor(actions: [GetSolicitationActionResponse]);
-    actions: [GetSolicitationActionResponse];
+    constructor(actions: GetSolicitationActionResponse[]);
+    actions: GetSolicitationActionResponse[];
 }
 import { GetSolicitationActionResponse } from './GetSolicitationActionResponse.js';
 //# sourceMappingURL=GetSolicitationActionsForOrderResponseEmbedded.d.ts.map

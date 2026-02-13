@@ -66,7 +66,7 @@ CreateDigitalAccessKeyRequest.prototype.text = undefined
 
 /**
  * Attachments that you want to include in the message to the buyer.
- * @member {[Attachment]} attachments
- * @type {[Attachment]}
+ * @member {Attachment[]} attachments
+ * @type {Attachment[]}
  */
 CreateDigitalAccessKeyRequest.prototype.attachments = undefined

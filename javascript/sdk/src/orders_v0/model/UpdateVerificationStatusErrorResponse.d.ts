@@ -14,10 +14,10 @@ export class UpdateVerificationStatusErrorResponse {
     static constructFromObject(data: any, obj: UpdateVerificationStatusErrorResponse): UpdateVerificationStatusErrorResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Error[]} errors
+     * @type {Error[]}
      */
-    errors: [Error];
+    errors: Error[];
 }
 import { Error } from './Error.js';
 //# sourceMappingURL=UpdateVerificationStatusErrorResponse.d.ts.map

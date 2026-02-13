@@ -17,9 +17,9 @@ export class AmazonPrograms {
      * Contains the list of programs that Amazon associates with an item.  Possible programs are:  - **Subscribe and Save**: Offers recurring, scheduled deliveries to Amazon customers and Amazon Business customers for their frequently ordered products. - **FBM Ship+**: Unlocks expedited shipping without the extra cost. Helps you to provide accurate and fast delivery dates to Amazon customers. You also receive protection from late deliveries, a discount on expedited shipping rates, and cash back when you ship.
      * @alias module:orders_v0/model/AmazonPrograms
      * @class
-     * @param programs {[String]} A list of the programs that Amazon associates with the order item.  **Possible values**: `SUBSCRIBE_AND_SAVE`, `FBM_SHIP_PLUS`
+     * @param programs {String[]} A list of the programs that Amazon associates with the order item.  **Possible values**: `SUBSCRIBE_AND_SAVE`, `FBM_SHIP_PLUS`
      */
-    constructor(programs: [string]);
-    programs: [string];
+    constructor(programs: string[]);
+    programs: string[];
 }
 //# sourceMappingURL=AmazonPrograms.d.ts.map

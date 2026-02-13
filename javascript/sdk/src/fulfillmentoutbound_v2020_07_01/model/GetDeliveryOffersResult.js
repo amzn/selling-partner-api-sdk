@@ -58,7 +58,7 @@ export class GetDeliveryOffersResult {
 
 /**
  * An array of delivery offer information.
- * @member {[DeliveryOffer]} deliveryOffers
- * @type {[DeliveryOffer]}
+ * @member {DeliveryOffer[]} deliveryOffers
+ * @type {DeliveryOffer[]}
  */
 GetDeliveryOffersResult.prototype.deliveryOffers = undefined

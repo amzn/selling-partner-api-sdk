@@ -59,8 +59,8 @@ export class GetInvoicesResponse {
 
 /**
  * A list of invoices.
- * @member {[Invoice]} invoices
- * @type {[Invoice]}
+ * @member {Invoice[]} invoices
+ * @type {Invoice[]}
  */
 GetInvoicesResponse.prototype.invoices = undefined
 

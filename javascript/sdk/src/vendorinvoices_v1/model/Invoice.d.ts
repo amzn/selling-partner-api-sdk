@@ -57,34 +57,34 @@ export class Invoice {
     paymentTerms: PaymentTerms;
     /**
      * Total tax amount details for all line items.
-     * @member {[TaxDetails]} taxDetails
-     * @type {[TaxDetails]}
+     * @member {TaxDetails[]} taxDetails
+     * @type {TaxDetails[]}
      */
-    taxDetails: [TaxDetails];
+    taxDetails: TaxDetails[];
     /**
      * Additional details provided by the selling party, for tax related or other purposes.
-     * @member {[AdditionalDetails]} additionalDetails
-     * @type {[AdditionalDetails]}
+     * @member {AdditionalDetails[]} additionalDetails
+     * @type {AdditionalDetails[]}
      */
-    additionalDetails: [AdditionalDetails];
+    additionalDetails: AdditionalDetails[];
     /**
      * Total charge amount details for all line items.
-     * @member {[ChargeDetails]} chargeDetails
-     * @type {[ChargeDetails]}
+     * @member {ChargeDetails[]} chargeDetails
+     * @type {ChargeDetails[]}
      */
-    chargeDetails: [ChargeDetails];
+    chargeDetails: ChargeDetails[];
     /**
      * Total allowance amount details for all line items.
-     * @member {[AllowanceDetails]} allowanceDetails
-     * @type {[AllowanceDetails]}
+     * @member {AllowanceDetails[]} allowanceDetails
+     * @type {AllowanceDetails[]}
      */
-    allowanceDetails: [AllowanceDetails];
+    allowanceDetails: AllowanceDetails[];
     /**
      * The list of invoice items.
-     * @member {[InvoiceItem]} items
-     * @type {[InvoiceItem]}
+     * @member {InvoiceItem[]} items
+     * @type {InvoiceItem[]}
      */
-    items: [InvoiceItem];
+    items: InvoiceItem[];
 }
 export namespace Invoice {
     namespace InvoiceTypeEnum {

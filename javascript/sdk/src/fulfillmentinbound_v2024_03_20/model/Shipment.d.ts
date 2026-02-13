@@ -67,10 +67,10 @@ export class Shipment {
     selectedTransportationOptionId: string;
     /**
      * List of self ship appointment details.
-     * @member {[SelfShipAppointmentDetails]} selfShipAppointmentDetails
-     * @type {[SelfShipAppointmentDetails]}
+     * @member {SelfShipAppointmentDetails[]} selfShipAppointmentDetails
+     * @type {SelfShipAppointmentDetails[]}
      */
-    selfShipAppointmentDetails: [SelfShipAppointmentDetails];
+    selfShipAppointmentDetails: SelfShipAppointmentDetails[];
     /**
      * The confirmed shipment ID which shows up on labels (for example, `FBA1234ABCD`).
      * @member {String} shipmentConfirmationId

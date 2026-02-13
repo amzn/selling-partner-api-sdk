@@ -20,10 +20,10 @@ export class TaxWithheldComponent {
     taxCollectionModel: string;
     /**
      * A list of charge information on the seller's account.
-     * @member {[ChargeComponent]} taxesWithheld
-     * @type {[ChargeComponent]}
+     * @member {ChargeComponent[]} taxesWithheld
+     * @type {ChargeComponent[]}
      */
-    taxesWithheld: [ChargeComponent];
+    taxesWithheld: ChargeComponent[];
 }
 import { ChargeComponent } from './ChargeComponent.js';
 //# sourceMappingURL=TaxWithheldComponent.d.ts.map

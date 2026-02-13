@@ -39,9 +39,9 @@ export class FulfillmentShipmentItem {
     serialNumber: string;
     /**
      * String list
-     * @member {[String]} manufacturerLotCodes
-     * @type {[String]}
+     * @member {String[]} manufacturerLotCodes
+     * @type {String[]}
      */
-    manufacturerLotCodes: [string];
+    manufacturerLotCodes: string[];
 }
 //# sourceMappingURL=FulfillmentShipmentItem.d.ts.map

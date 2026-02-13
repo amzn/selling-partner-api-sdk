@@ -18,11 +18,11 @@ export class ValidVerificationDetail {
      * @alias module:orders_v0/model/ValidVerificationDetail
      * @class
      * @param verificationDetailType {String} A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid value: `prescriptionDetail`.
-     * @param validVerificationStatuses {[VerificationStatus]} A list of valid verification statuses where the associated verification detail type may be provided. For example, if the value of this field is [\"Approved\"], calls to provide the associated verification detail will fail for orders with a `VerificationStatus` of `Pending`, `Rejected`, `Expired`, or `Cancelled`.
+     * @param validVerificationStatuses {VerificationStatus[]} A list of valid verification statuses where the associated verification detail type may be provided. For example, if the value of this field is [\"Approved\"], calls to provide the associated verification detail will fail for orders with a `VerificationStatus` of `Pending`, `Rejected`, `Expired`, or `Cancelled`.
      */
-    constructor(verificationDetailType: string, validVerificationStatuses: [VerificationStatus]);
+    constructor(verificationDetailType: string, validVerificationStatuses: VerificationStatus[]);
     verificationDetailType: string;
-    validVerificationStatuses: [VerificationStatus];
+    validVerificationStatuses: VerificationStatus[];
 }
 import { VerificationStatus } from './VerificationStatus.js';
 //# sourceMappingURL=ValidVerificationDetail.d.ts.map

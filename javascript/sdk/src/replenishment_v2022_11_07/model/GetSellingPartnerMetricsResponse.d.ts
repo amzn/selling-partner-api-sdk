@@ -14,10 +14,10 @@ export class GetSellingPartnerMetricsResponse {
     static constructFromObject(data: any, obj: GetSellingPartnerMetricsResponse): GetSellingPartnerMetricsResponse;
     /**
      * A list of metrics data for the selling partner.
-     * @member {[GetSellingPartnerMetricsResponseMetric]} metrics
-     * @type {[GetSellingPartnerMetricsResponseMetric]}
+     * @member {GetSellingPartnerMetricsResponseMetric[]} metrics
+     * @type {GetSellingPartnerMetricsResponseMetric[]}
      */
-    metrics: [GetSellingPartnerMetricsResponseMetric];
+    metrics: GetSellingPartnerMetricsResponseMetric[];
 }
 import { GetSellingPartnerMetricsResponseMetric } from './GetSellingPartnerMetricsResponseMetric.js';
 //# sourceMappingURL=GetSellingPartnerMetricsResponse.d.ts.map

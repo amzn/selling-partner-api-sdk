@@ -17,10 +17,10 @@ export class ReportScheduleList {
      * A list of report schedules.
      * @alias module:reports_v2021_06_30/model/ReportScheduleList
      * @class
-     * @param reportSchedules {[ReportSchedule]} Detailed information about a report schedule.
+     * @param reportSchedules {ReportSchedule[]} Detailed information about a report schedule.
      */
-    constructor(reportSchedules: [ReportSchedule]);
-    reportSchedules: [ReportSchedule];
+    constructor(reportSchedules: ReportSchedule[]);
+    reportSchedules: ReportSchedule[];
 }
 import { ReportSchedule } from './ReportSchedule.js';
 //# sourceMappingURL=ReportScheduleList.d.ts.map

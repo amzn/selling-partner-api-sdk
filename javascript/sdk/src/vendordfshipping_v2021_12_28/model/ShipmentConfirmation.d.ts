@@ -21,20 +21,20 @@ export class ShipmentConfirmation {
      * @param shipmentDetails {ShipmentDetails}
      * @param sellingParty {PartyIdentification}
      * @param shipFromParty {PartyIdentification}
-     * @param items {[Item]} Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
+     * @param items {Item[]} Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
      */
-    constructor(purchaseOrderNumber: string, shipmentDetails: ShipmentDetails, sellingParty: PartyIdentification, shipFromParty: PartyIdentification, items: [Item]);
+    constructor(purchaseOrderNumber: string, shipmentDetails: ShipmentDetails, sellingParty: PartyIdentification, shipFromParty: PartyIdentification, items: Item[]);
     purchaseOrderNumber: string;
     shipmentDetails: ShipmentDetails;
     sellingParty: PartyIdentification;
     shipFromParty: PartyIdentification;
-    items: [Item];
+    items: Item[];
     /**
      * Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
-     * @member {[Container]} containers
-     * @type {[Container]}
+     * @member {Container[]} containers
+     * @type {Container[]}
      */
-    containers: [Container];
+    containers: Container[];
 }
 import { ShipmentDetails } from './ShipmentDetails.js';
 import { PartyIdentification } from './PartyIdentification.js';

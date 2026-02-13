@@ -210,7 +210,7 @@ export class QueriesApi {
   /**
      * Returns details for the Data Kiosk queries that match the specified filters. See the &#x60;createQuery&#x60; operation for details about query retention.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} [opts] Optional parameters
-     * @param {[String]} [opts.processingStatuses] A list of processing statuses used to filter queries.
+     * @param {String[]} [opts.processingStatuses] A list of processing statuses used to filter queries.
      * @param {Number} [opts.pageSize] The maximum number of queries to return in a single call. (default to 10)
      * @param {Date} [opts.createdSince] The earliest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is 90 days ago.
      * @param {Date} [opts.createdUntil] The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the &#x60;getQueries&#x60; request.
@@ -249,7 +249,7 @@ export class QueriesApi {
   /**
      * Returns details for the Data Kiosk queries that match the specified filters. See the &#x60;createQuery&#x60; operation for details about query retention.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} [opts] Optional parameters
-     * @param {[String]} [opts.processingStatuses] A list of processing statuses used to filter queries.
+     * @param {String[]} [opts.processingStatuses] A list of processing statuses used to filter queries.
      * @param {Number} [opts.pageSize] The maximum number of queries to return in a single call. (default to 10)
      * @param {Date} [opts.createdSince] The earliest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is 90 days ago.
      * @param {Date} [opts.createdUntil] The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the &#x60;getQueries&#x60; request.

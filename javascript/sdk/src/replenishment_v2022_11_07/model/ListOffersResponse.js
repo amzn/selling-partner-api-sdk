@@ -60,8 +60,8 @@ export class ListOffersResponse {
 
 /**
  * A list of offers.
- * @member {[ListOffersResponseOffer]} offers
- * @type {[ListOffersResponseOffer]}
+ * @member {ListOffersResponseOffer[]} offers
+ * @type {ListOffersResponseOffer[]}
  */
 ListOffersResponse.prototype.offers = undefined
 

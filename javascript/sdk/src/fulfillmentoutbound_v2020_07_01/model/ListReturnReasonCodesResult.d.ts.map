@@ -1,1 +1,1 @@
-{"version":3,"file":"ListReturnReasonCodesResult.d.ts","sourceRoot":"","sources":["ListReturnReasonCodesResult.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,2BAA2B,GAC1B,2BAA2B,CAmBtC;IAGH;;;;OAIG;IACH,mBAFU,CAAC,iBAAiB,CAAC,CAE0B;CAPtD;kCA1CiC,wBAAwB"}
+{"version":3,"file":"ListReturnReasonCodesResult.d.ts","sourceRoot":"","sources":["ListReturnReasonCodesResult.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,2BAA2B,GAC1B,2BAA2B,CAmBtC;IAGH;;;;OAIG;IACH,mBAFU,iBAAiB,EAAE,CAE0B;CAPtD;kCA1CiC,wBAAwB"}

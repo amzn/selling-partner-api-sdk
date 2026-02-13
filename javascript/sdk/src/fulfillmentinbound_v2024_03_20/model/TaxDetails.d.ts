@@ -25,10 +25,10 @@ export class TaxDetails {
     hsnCode: string;
     /**
      * List of tax rates.
-     * @member {[TaxRate]} taxRates
-     * @type {[TaxRate]}
+     * @member {TaxRate[]} taxRates
+     * @type {TaxRate[]}
      */
-    taxRates: [TaxRate];
+    taxRates: TaxRate[];
 }
 import { Currency } from './Currency.js';
 import { TaxRate } from './TaxRate.js';

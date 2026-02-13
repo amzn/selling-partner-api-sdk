@@ -47,10 +47,10 @@ export class ListOffersResponseOffer {
     programType: ProgramType;
     /**
      * A list of vendor codes associated with the offer.
-     * @member {[String]} vendorCodes
-     * @type {[String]}
+     * @member {String[]} vendorCodes
+     * @type {String[]}
      */
-    vendorCodes: [string];
+    vendorCodes: string[];
 }
 import { EligibilityStatus } from './EligibilityStatus.js';
 import { OfferProgramConfiguration } from './OfferProgramConfiguration.js';

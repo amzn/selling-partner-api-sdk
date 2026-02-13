@@ -23,16 +23,16 @@ export class ShipmentConfirmation {
      * @param sellingParty {PartyIdentification}
      * @param shipFromParty {PartyIdentification}
      * @param shipToParty {PartyIdentification}
-     * @param shippedItems {[Item]} A list of the items in this shipment and their associated details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.
+     * @param shippedItems {Item[]} A list of the items in this shipment and their associated details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.
      */
-    constructor(shipmentIdentifier: string, shipmentConfirmationType: string, shipmentConfirmationDate: Date, sellingParty: PartyIdentification, shipFromParty: PartyIdentification, shipToParty: PartyIdentification, shippedItems: [Item]);
+    constructor(shipmentIdentifier: string, shipmentConfirmationType: string, shipmentConfirmationDate: Date, sellingParty: PartyIdentification, shipFromParty: PartyIdentification, shipToParty: PartyIdentification, shippedItems: Item[]);
     shipmentIdentifier: string;
     shipmentConfirmationType: string;
     shipmentConfirmationDate: Date;
     sellingParty: PartyIdentification;
     shipFromParty: PartyIdentification;
     shipToParty: PartyIdentification;
-    shippedItems: [Item];
+    shippedItems: Item[];
     /**
      * The type of shipment.
      * @member {String} shipmentType
@@ -80,16 +80,16 @@ export class ShipmentConfirmation {
     importDetails: ImportDetails;
     /**
      * A list of the cartons in this shipment.
-     * @member {[Carton]} cartons
-     * @type {[Carton]}
+     * @member {Carton[]} cartons
+     * @type {Carton[]}
      */
-    cartons: [Carton];
+    cartons: Carton[];
     /**
      * A list of the pallets in this shipment.
-     * @member {[Pallet]} pallets
-     * @type {[Pallet]}
+     * @member {Pallet[]} pallets
+     * @type {Pallet[]}
      */
-    pallets: [Pallet];
+    pallets: Pallet[];
 }
 export namespace ShipmentConfirmation {
     namespace ShipmentConfirmationTypeEnum {

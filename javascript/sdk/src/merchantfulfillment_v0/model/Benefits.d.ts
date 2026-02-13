@@ -14,16 +14,16 @@ export class Benefits {
     static constructFromObject(data: any, obj: Benefits): Benefits;
     /**
      * A list of included benefits.
-     * @member {[String]} includedBenefits
-     * @type {[String]}
+     * @member {String[]} includedBenefits
+     * @type {String[]}
      */
-    includedBenefits: [string];
+    includedBenefits: string[];
     /**
      * A list of excluded benefits. Refer to the `ExcludeBenefit` object for further documentation.
-     * @member {[ExcludedBenefit]} excludedBenefits
-     * @type {[ExcludedBenefit]}
+     * @member {ExcludedBenefit[]} excludedBenefits
+     * @type {ExcludedBenefit[]}
      */
-    excludedBenefits: [ExcludedBenefit];
+    excludedBenefits: ExcludedBenefit[];
 }
 import { ExcludedBenefit } from './ExcludedBenefit.js';
 //# sourceMappingURL=Benefits.d.ts.map

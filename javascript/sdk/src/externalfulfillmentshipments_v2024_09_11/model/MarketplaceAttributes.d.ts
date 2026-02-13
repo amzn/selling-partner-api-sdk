@@ -31,10 +31,10 @@ export class MarketplaceAttributes {
     merchantId: string;
     /**
      * Marketplace channel-specific attribute value.
-     * @member {[String]} customAttributes
-     * @type {[String]}
+     * @member {String[]} customAttributes
+     * @type {String[]}
      */
-    customAttributes: [string];
+    customAttributes: string[];
 }
 export namespace MarketplaceAttributes {
     namespace CustomAttributesEnum {

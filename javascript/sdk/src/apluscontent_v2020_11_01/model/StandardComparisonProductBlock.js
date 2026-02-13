@@ -100,7 +100,7 @@ StandardComparisonProductBlock.prototype.highlight = undefined
 
 /**
  * Comparison metrics for the product.
- * @member {[PlainTextItem]} metrics
- * @type {[PlainTextItem]}
+ * @member {PlainTextItem[]} metrics
+ * @type {PlainTextItem[]}
  */
 StandardComparisonProductBlock.prototype.metrics = undefined

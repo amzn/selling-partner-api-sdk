@@ -80,22 +80,22 @@ Summary.prototype.totalOfferCount = undefined
 
 /**
  * A list that contains the total number of offers information for given conditions and fulfillment channels.
- * @member {[OfferCountType]} numberOfOffers
- * @type {[OfferCountType]}
+ * @member {OfferCountType[]} numberOfOffers
+ * @type {OfferCountType[]}
  */
 Summary.prototype.numberOfOffers = undefined
 
 /**
  * A list of the lowest prices.
- * @member {[LowestPriceType]} lowestPrices
- * @type {[LowestPriceType]}
+ * @member {LowestPriceType[]} lowestPrices
+ * @type {LowestPriceType[]}
  */
 Summary.prototype.lowestPrices = undefined
 
 /**
  * A list of the Buy Box prices.
- * @member {[BuyBoxPriceType]} buyBoxPrices
- * @type {[BuyBoxPriceType]}
+ * @member {BuyBoxPriceType[]} buyBoxPrices
+ * @type {BuyBoxPriceType[]}
  */
 Summary.prototype.buyBoxPrices = undefined
 
@@ -119,15 +119,15 @@ Summary.prototype.suggestedLowerPricePlusShipping = undefined
 
 /**
  * A list of sales rank information for the item, by category.
- * @member {[SalesRankType]} salesRankings
- * @type {[SalesRankType]}
+ * @member {SalesRankType[]} salesRankings
+ * @type {SalesRankType[]}
  */
 Summary.prototype.salesRankings = undefined
 
 /**
  * A list that contains the total number of offers that are eligible for the Buy Box for the given conditions and fulfillment channels.
- * @member {[OfferCountType]} buyBoxEligibleOffers
- * @type {[OfferCountType]}
+ * @member {OfferCountType[]} buyBoxEligibleOffers
+ * @type {OfferCountType[]}
  */
 Summary.prototype.buyBoxEligibleOffers = undefined
 

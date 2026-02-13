@@ -17,10 +17,10 @@ export class VehiclesResponse {
      * Get paginated list of vehicle from Amazon&#39;s catalog
      * @alias module:vehicles_v2024_11_01/model/VehiclesResponse
      * @class
-     * @param vehicles {[Vehicle]} List of vehicles from Amazon's catalog.
+     * @param vehicles {Vehicle[]} List of vehicles from Amazon's catalog.
      */
-    constructor(vehicles: [Vehicle]);
-    vehicles: [Vehicle];
+    constructor(vehicles: Vehicle[]);
+    vehicles: Vehicle[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

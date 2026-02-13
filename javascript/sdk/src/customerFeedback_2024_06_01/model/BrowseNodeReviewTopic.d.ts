@@ -25,16 +25,16 @@ export class BrowseNodeReviewTopic {
     browseNodeMetrics: BrowseNodeReviewTopicMetrics;
     /**
      * A list of up to three snippets from reviews that contain the topic. This value is `null` if there aren't enough review snippets for the topic.
-     * @member {[String]} reviewSnippets
-     * @type {[String]}
+     * @member {String[]} reviewSnippets
+     * @type {String[]}
      */
-    reviewSnippets: [string];
+    reviewSnippets: string[];
     /**
      * A list of the five subtopics that occur most frequently. This value is `null` if there are no subtopics.
-     * @member {[BrowseNodeSubtopic]} subtopics
-     * @type {[BrowseNodeSubtopic]}
+     * @member {BrowseNodeSubtopic[]} subtopics
+     * @type {BrowseNodeSubtopic[]}
      */
-    subtopics: [BrowseNodeSubtopic];
+    subtopics: BrowseNodeSubtopic[];
 }
 import { BrowseNodeReviewTopicMetrics } from './BrowseNodeReviewTopicMetrics.js';
 import { BrowseNodeSubtopic } from './BrowseNodeSubtopic.js';

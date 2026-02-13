@@ -31,10 +31,10 @@ export class DeliveryPreference {
     deliveryTime: PreferredDeliveryTime;
     /**
      * A list of miscellaneous delivery capabilities associated with the shipping address.
-     * @member {[String]} deliveryCapabilities
-     * @type {[String]}
+     * @member {String[]} deliveryCapabilities
+     * @type {String[]}
      */
-    deliveryCapabilities: [string];
+    deliveryCapabilities: string[];
 }
 import { PreferredDeliveryTime } from './PreferredDeliveryTime.js';
 //# sourceMappingURL=DeliveryPreference.d.ts.map

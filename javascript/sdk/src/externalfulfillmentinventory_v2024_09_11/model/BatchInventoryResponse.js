@@ -58,7 +58,7 @@ export class BatchInventoryResponse {
 
 /**
  * A list of inventory request responses.
- * @member {[InventoryResponse]} responses
- * @type {[InventoryResponse]}
+ * @member {InventoryResponse[]} responses
+ * @type {InventoryResponse[]}
  */
 BatchInventoryResponse.prototype.responses = undefined

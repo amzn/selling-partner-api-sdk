@@ -23,10 +23,10 @@ export class GetContentDocumentResponse {
     contentRecord: ContentRecord;
     /**
      * A set of messages to the user, such as warnings or comments.
-     * @member {[Error]} warnings
-     * @type {[Error]}
+     * @member {Error[]} warnings
+     * @type {Error[]}
      */
-    warnings: [Error];
+    warnings: Error[];
 }
 import { ContentRecord } from './ContentRecord.js';
 import { Error } from './Error.js';

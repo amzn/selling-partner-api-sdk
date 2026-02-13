@@ -17,10 +17,10 @@ export class ErrorList {
      * A list of error responses returned when a request is unsuccessful.
      * @alias module:shipping_v2/model/ErrorList
      * @class
-     * @param errors {[Error]} Array of Errors
+     * @param errors {Error[]} Array of Errors
      */
-    constructor(errors: [Error]);
-    errors: [Error];
+    constructor(errors: Error[]);
+    errors: Error[];
 }
 import { Error } from './Error.js';
 //# sourceMappingURL=ErrorList.d.ts.map

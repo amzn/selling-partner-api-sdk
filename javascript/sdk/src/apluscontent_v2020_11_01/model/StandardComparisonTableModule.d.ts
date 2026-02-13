@@ -13,15 +13,15 @@ export class StandardComparisonTableModule {
      */
     static constructFromObject(data: any, obj: StandardComparisonTableModule): StandardComparisonTableModule;
     /**
-     * @member {[StandardComparisonProductBlock]} productColumns
-     * @type {[StandardComparisonProductBlock]}
+     * @member {StandardComparisonProductBlock[]} productColumns
+     * @type {StandardComparisonProductBlock[]}
      */
-    productColumns: [StandardComparisonProductBlock];
+    productColumns: StandardComparisonProductBlock[];
     /**
-     * @member {[PlainTextItem]} metricRowLabels
-     * @type {[PlainTextItem]}
+     * @member {PlainTextItem[]} metricRowLabels
+     * @type {PlainTextItem[]}
      */
-    metricRowLabels: [PlainTextItem];
+    metricRowLabels: PlainTextItem[];
 }
 import { StandardComparisonProductBlock } from './StandardComparisonProductBlock.js';
 import { PlainTextItem } from './PlainTextItem.js';

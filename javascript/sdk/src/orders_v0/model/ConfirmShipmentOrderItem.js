@@ -77,7 +77,7 @@ ConfirmShipmentOrderItem.prototype.quantity = undefined
 
 /**
  * A list of order items.
- * @member {[String]} transparencyCodes
- * @type {[String]}
+ * @member {String[]} transparencyCodes
+ * @type {String[]}
  */
 ConfirmShipmentOrderItem.prototype.transparencyCodes = undefined

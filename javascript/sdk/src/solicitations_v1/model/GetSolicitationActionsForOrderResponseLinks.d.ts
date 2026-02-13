@@ -17,11 +17,11 @@ export class GetSolicitationActionsForOrderResponseLinks {
      * @alias module:solicitations_v1/model/GetSolicitationActionsForOrderResponseLinks
      * @class
      * @param self {LinkObject}
-     * @param actions {[LinkObject]} Eligible actions for the specified amazonOrderId.
+     * @param actions {LinkObject[]} Eligible actions for the specified amazonOrderId.
      */
-    constructor(self: LinkObject, actions: [LinkObject]);
+    constructor(self: LinkObject, actions: LinkObject[]);
     self: LinkObject;
-    actions: [LinkObject];
+    actions: LinkObject[];
 }
 import { LinkObject } from './LinkObject.js';
 //# sourceMappingURL=GetSolicitationActionsForOrderResponseLinks.d.ts.map

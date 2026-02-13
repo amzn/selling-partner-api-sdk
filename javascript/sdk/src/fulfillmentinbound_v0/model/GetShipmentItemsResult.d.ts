@@ -14,10 +14,10 @@ export class GetShipmentItemsResult {
     static constructFromObject(data: any, obj: GetShipmentItemsResult): GetShipmentItemsResult;
     /**
      * A list of inbound shipment item information.
-     * @member {[InboundShipmentItem]} itemData
-     * @type {[InboundShipmentItem]}
+     * @member {InboundShipmentItem[]} itemData
+     * @type {InboundShipmentItem[]}
      */
-    itemData: [InboundShipmentItem];
+    itemData: InboundShipmentItem[];
     /**
      * When present and not empty, pass this string token in the next request to return the next response page.
      * @member {String} nextToken

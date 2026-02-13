@@ -17,11 +17,11 @@ export class OrderItemsBuyerInfoList {
      * A single order item&#39;s buyer information list with the order ID.
      * @alias module:orders_v0/model/OrderItemsBuyerInfoList
      * @class
-     * @param orderItems {[OrderItemBuyerInfo]} A single order item's buyer information list.
+     * @param orderItems {OrderItemBuyerInfo[]} A single order item's buyer information list.
      * @param amazonOrderId {String} An Amazon-defined order identifier, in 3-7-7 format.
      */
-    constructor(orderItems: [OrderItemBuyerInfo], amazonOrderId: string);
-    orderItems: [OrderItemBuyerInfo];
+    constructor(orderItems: OrderItemBuyerInfo[], amazonOrderId: string);
+    orderItems: OrderItemBuyerInfo[];
     amazonOrderId: string;
     /**
      * When present and not empty, pass this string token in the next request to return the next response page.

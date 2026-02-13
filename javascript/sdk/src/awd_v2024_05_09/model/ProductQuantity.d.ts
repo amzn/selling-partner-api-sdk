@@ -25,10 +25,10 @@ export class ProductQuantity {
     sku: string;
     /**
      * Contains attributes for this instance of the product. For example, item color, or other attributes that distinguish the product beyond the SKU. This is metadata for the product and Amazon does not process this data.
-     * @member {[ProductAttribute]} attributes
-     * @type {[ProductAttribute]}
+     * @member {ProductAttribute[]} attributes
+     * @type {ProductAttribute[]}
      */
-    attributes: [ProductAttribute];
+    attributes: ProductAttribute[];
     /**
      * The expiration date for the SKU. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} expiration

@@ -79,8 +79,8 @@ ServiceFeeEvent.prototype.feeReason = undefined
 
 /**
  * A list of fee component information.
- * @member {[FeeComponent]} feeList
- * @type {[FeeComponent]}
+ * @member {FeeComponent[]} feeList
+ * @type {FeeComponent[]}
  */
 ServiceFeeEvent.prototype.feeList = undefined
 

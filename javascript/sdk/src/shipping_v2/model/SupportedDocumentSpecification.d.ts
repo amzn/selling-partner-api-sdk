@@ -19,12 +19,12 @@ export class SupportedDocumentSpecification {
      * @class
      * @param format {DocumentFormat}
      * @param size {DocumentSize}
-     * @param printOptions {[PrintOption]} A list of the format options for a label.
+     * @param printOptions {PrintOption[]} A list of the format options for a label.
      */
-    constructor(format: DocumentFormat, size: DocumentSize, printOptions: [PrintOption]);
+    constructor(format: DocumentFormat, size: DocumentSize, printOptions: PrintOption[]);
     format: DocumentFormat;
     size: DocumentSize;
-    printOptions: [PrintOption];
+    printOptions: PrintOption[];
 }
 import { DocumentFormat } from './DocumentFormat.js';
 import { DocumentSize } from './DocumentSize.js';

@@ -25,7 +25,7 @@ export class RestrictionList {
    * A list of restrictions for the specified Amazon catalog item.
    * @alias module:listingsrestrictions_v2021_08_01/model/RestrictionList
    * @class
-   * @param restrictions {[Restriction]}
+   * @param restrictions {Restriction[]}
    */
   constructor (restrictions) {
     this.restrictions = restrictions
@@ -59,7 +59,7 @@ export class RestrictionList {
 }
 
 /**
- * @member {[Restriction]} restrictions
- * @type {[Restriction]}
+ * @member {Restriction[]} restrictions
+ * @type {Restriction[]}
  */
 RestrictionList.prototype.restrictions = undefined

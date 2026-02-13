@@ -25,7 +25,7 @@ export class StandardTextListBlock {
    * The A+ Content standard fixed-length list of text, usually presented as bullet points.
    * @alias module:apluscontent_v2020_11_01/model/StandardTextListBlock
    * @class
-   * @param textList {[TextItem]}
+   * @param textList {TextItem[]}
    */
   constructor (textList) {
     this.textList = textList
@@ -59,7 +59,7 @@ export class StandardTextListBlock {
 }
 
 /**
- * @member {[TextItem]} textList
- * @type {[TextItem]}
+ * @member {TextItem[]} textList
+ * @type {TextItem[]}
  */
 StandardTextListBlock.prototype.textList = undefined

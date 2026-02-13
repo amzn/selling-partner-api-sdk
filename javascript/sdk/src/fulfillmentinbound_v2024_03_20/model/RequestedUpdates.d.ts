@@ -14,16 +14,16 @@ export class RequestedUpdates {
     static constructFromObject(data: any, obj: RequestedUpdates): RequestedUpdates;
     /**
      * A list of boxes that will be present in the shipment after the update.
-     * @member {[BoxUpdateInput]} boxes
-     * @type {[BoxUpdateInput]}
+     * @member {BoxUpdateInput[]} boxes
+     * @type {BoxUpdateInput[]}
      */
-    boxes: [BoxUpdateInput];
+    boxes: BoxUpdateInput[];
     /**
      * A list of all items that will be present in the shipment after the update.
-     * @member {[ItemInput]} items
-     * @type {[ItemInput]}
+     * @member {ItemInput[]} items
+     * @type {ItemInput[]}
      */
-    items: [ItemInput];
+    items: ItemInput[];
 }
 import { BoxUpdateInput } from './BoxUpdateInput.js';
 import { ItemInput } from './ItemInput.js';

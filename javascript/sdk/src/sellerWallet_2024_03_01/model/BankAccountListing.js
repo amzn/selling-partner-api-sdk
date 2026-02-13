@@ -25,7 +25,7 @@ export class BankAccountListing {
    * Struct that holds collection of accounts.
    * @alias module:sellerWallet_2024_03_01/model/BankAccountListing
    * @class
-   * @param accounts {[BankAccount]} Collection that holds BankAccount
+   * @param accounts {BankAccount[]} Collection that holds BankAccount
    */
   constructor (accounts) {
     this.accounts = accounts
@@ -60,7 +60,7 @@ export class BankAccountListing {
 
 /**
  * Collection that holds BankAccount
- * @member {[BankAccount]} accounts
- * @type {[BankAccount]}
+ * @member {BankAccount[]} accounts
+ * @type {BankAccount[]}
  */
 BankAccountListing.prototype.accounts = undefined

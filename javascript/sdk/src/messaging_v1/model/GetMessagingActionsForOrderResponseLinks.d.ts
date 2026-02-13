@@ -18,11 +18,11 @@ export class GetMessagingActionsForOrderResponseLinks {
      * @alias module:messaging_v1/model/GetMessagingActionsForOrderResponseLinks
      * @class
      * @param self {LinkObject}
-     * @param actions {[LinkObject]} Eligible actions for the specified amazonOrderId.
+     * @param actions {LinkObject[]} Eligible actions for the specified amazonOrderId.
      */
-    constructor(self: LinkObject, actions: [LinkObject]);
+    constructor(self: LinkObject, actions: LinkObject[]);
     self: LinkObject;
-    actions: [LinkObject];
+    actions: LinkObject[];
 }
 import { LinkObject } from './LinkObject.js';
 //# sourceMappingURL=GetMessagingActionsForOrderResponseLinks.d.ts.map

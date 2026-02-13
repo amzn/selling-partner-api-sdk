@@ -19,16 +19,16 @@ export class CreateReservationRecord {
     reservation: Reservation;
     /**
      * A list of warnings returned in the sucessful execution response of an API request.
-     * @member {[Warning]} warnings
-     * @type {[Warning]}
+     * @member {Warning[]} warnings
+     * @type {Warning[]}
      */
-    warnings: [Warning];
+    warnings: Warning[];
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Error[]} errors
+     * @type {Error[]}
      */
-    errors: [Error];
+    errors: Error[];
 }
 import { Reservation } from './Reservation.js';
 import { Warning } from './Warning.js';

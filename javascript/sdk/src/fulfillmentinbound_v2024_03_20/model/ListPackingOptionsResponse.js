@@ -26,7 +26,7 @@ export class ListPackingOptionsResponse {
    * The &#x60;listPlacementOptions&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListPackingOptionsResponse
    * @class
-   * @param packingOptions {[PackingOption]} List of packing options.
+   * @param packingOptions {PackingOption[]} List of packing options.
    */
   constructor (packingOptions) {
     this.packingOptions = packingOptions
@@ -62,8 +62,8 @@ export class ListPackingOptionsResponse {
 
 /**
  * List of packing options.
- * @member {[PackingOption]} packingOptions
- * @type {[PackingOption]}
+ * @member {PackingOption[]} packingOptions
+ * @type {PackingOption[]}
  */
 ListPackingOptionsResponse.prototype.packingOptions = undefined
 

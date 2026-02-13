@@ -38,10 +38,10 @@ export class Export {
     generateExportStartedAt: Date;
     /**
      * The identifier for the export documents. To get the information required to retrieve the export document's contents, pass each ID in the `getInvoicesDocument` operation.  This list is empty until the status is `DONE`.
-     * @member {[String]} invoicesDocumentIds
-     * @type {[String]}
+     * @member {String[]} invoicesDocumentIds
+     * @type {String[]}
      */
-    invoicesDocumentIds: [string];
+    invoicesDocumentIds: string[];
     /**
      * @member {ExportStatus} status
      * @type {ExportStatus}

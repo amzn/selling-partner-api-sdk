@@ -14,46 +14,46 @@ export class OperatingHoursByDay {
     static constructFromObject(data: any, obj: OperatingHoursByDay): OperatingHoursByDay;
     /**
      * A list of Operating Hours.
-     * @member {[OperatingHour]} monday
-     * @type {[OperatingHour]}
+     * @member {OperatingHour[]} monday
+     * @type {OperatingHour[]}
      */
-    monday: [OperatingHour];
+    monday: OperatingHour[];
     /**
      * A list of Operating Hours.
-     * @member {[OperatingHour]} tuesday
-     * @type {[OperatingHour]}
+     * @member {OperatingHour[]} tuesday
+     * @type {OperatingHour[]}
      */
-    tuesday: [OperatingHour];
+    tuesday: OperatingHour[];
     /**
      * A list of Operating Hours.
-     * @member {[OperatingHour]} wednesday
-     * @type {[OperatingHour]}
+     * @member {OperatingHour[]} wednesday
+     * @type {OperatingHour[]}
      */
-    wednesday: [OperatingHour];
+    wednesday: OperatingHour[];
     /**
      * A list of Operating Hours.
-     * @member {[OperatingHour]} thursday
-     * @type {[OperatingHour]}
+     * @member {OperatingHour[]} thursday
+     * @type {OperatingHour[]}
      */
-    thursday: [OperatingHour];
+    thursday: OperatingHour[];
     /**
      * A list of Operating Hours.
-     * @member {[OperatingHour]} friday
-     * @type {[OperatingHour]}
+     * @member {OperatingHour[]} friday
+     * @type {OperatingHour[]}
      */
-    friday: [OperatingHour];
+    friday: OperatingHour[];
     /**
      * A list of Operating Hours.
-     * @member {[OperatingHour]} saturday
-     * @type {[OperatingHour]}
+     * @member {OperatingHour[]} saturday
+     * @type {OperatingHour[]}
      */
-    saturday: [OperatingHour];
+    saturday: OperatingHour[];
     /**
      * A list of Operating Hours.
-     * @member {[OperatingHour]} sunday
-     * @type {[OperatingHour]}
+     * @member {OperatingHour[]} sunday
+     * @type {OperatingHour[]}
      */
-    sunday: [OperatingHour];
+    sunday: OperatingHour[];
 }
 import { OperatingHour } from './OperatingHour.js';
 //# sourceMappingURL=OperatingHoursByDay.d.ts.map

@@ -20,9 +20,9 @@ export class Item {
     orderItemId: string;
     /**
      * A list of serial numbers for the items associated with the `OrderItemId` value.
-     * @member {[String]} orderItemSerialNumbers
-     * @type {[String]}
+     * @member {String[]} orderItemSerialNumbers
+     * @type {String[]}
      */
-    orderItemSerialNumbers: [string];
+    orderItemSerialNumbers: string[];
 }
 //# sourceMappingURL=Item.d.ts.map

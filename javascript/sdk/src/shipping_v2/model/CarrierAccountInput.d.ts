@@ -55,10 +55,10 @@ export class CarrierAccountInput {
     isHidden: boolean;
     /**
      * A list of ValidationMetadata
-     * @member {[ValidationMetadata]} validationMetadata
-     * @type {[ValidationMetadata]}
+     * @member {ValidationMetadata[]} validationMetadata
+     * @type {ValidationMetadata[]}
      */
-    validationMetadata: [ValidationMetadata];
+    validationMetadata: ValidationMetadata[];
 }
 import { InputType } from './InputType.js';
 import { ValidationMetadata } from './ValidationMetadata.js';

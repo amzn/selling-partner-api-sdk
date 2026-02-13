@@ -142,8 +142,8 @@ OfferDetail.prototype.listingPrice = undefined
 
 /**
  * List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.
- * @member {[QuantityDiscountPriceType]} quantityDiscountPrices
- * @type {[QuantityDiscountPriceType]}
+ * @member {QuantityDiscountPriceType[]} quantityDiscountPrices
+ * @type {QuantityDiscountPriceType[]}
  */
 OfferDetail.prototype.quantityDiscountPrices = undefined
 

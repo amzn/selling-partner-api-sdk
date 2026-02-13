@@ -31,10 +31,10 @@ export class GetFeatureInventoryResult {
     nextToken: string;
     /**
      * An array of SKUs eligible for this feature and the quantity available.
-     * @member {[FeatureSku]} featureSkus
-     * @type {[FeatureSku]}
+     * @member {FeatureSku[]} featureSkus
+     * @type {FeatureSku[]}
      */
-    featureSkus: [FeatureSku];
+    featureSkus: FeatureSku[];
 }
 import { FeatureSku } from './FeatureSku.js';
 //# sourceMappingURL=GetFeatureInventoryResult.d.ts.map

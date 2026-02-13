@@ -24,10 +24,10 @@ export class Rate {
      * @param serviceName {String} The name of the shipping service.
      * @param totalCharge {Currency}
      * @param promise {Promise}
-     * @param supportedDocumentSpecifications {[SupportedDocumentSpecification]} A list of the document specifications supported for a shipment service offering.
+     * @param supportedDocumentSpecifications {SupportedDocumentSpecification[]} A list of the document specifications supported for a shipment service offering.
      * @param requiresAdditionalInputs {Boolean} When true, indicates that additional inputs are required to purchase this shipment service. You must then call the getAdditionalInputs operation to return the JSON schema to use when providing the additional inputs to the purchaseShipment operation.
      */
-    constructor(rateId: string, carrierId: string, carrierName: string, serviceId: string, serviceName: string, totalCharge: Currency, promise: Promise, supportedDocumentSpecifications: [SupportedDocumentSpecification], requiresAdditionalInputs: boolean);
+    constructor(rateId: string, carrierId: string, carrierName: string, serviceId: string, serviceName: string, totalCharge: Currency, promise: Promise, supportedDocumentSpecifications: SupportedDocumentSpecification[], requiresAdditionalInputs: boolean);
     rateId: string;
     carrierId: string;
     carrierName: string;
@@ -35,7 +35,7 @@ export class Rate {
     serviceName: string;
     totalCharge: Currency;
     promise: Promise;
-    supportedDocumentSpecifications: [SupportedDocumentSpecification];
+    supportedDocumentSpecifications: SupportedDocumentSpecification[];
     requiresAdditionalInputs: boolean;
     /**
      * @member {Weight} billedWeight
@@ -44,16 +44,16 @@ export class Rate {
     billedWeight: Weight;
     /**
      * A list of value-added services available for a shipping service offering.
-     * @member {[AvailableValueAddedServiceGroup]} availableValueAddedServiceGroups
-     * @type {[AvailableValueAddedServiceGroup]}
+     * @member {AvailableValueAddedServiceGroup[]} availableValueAddedServiceGroups
+     * @type {AvailableValueAddedServiceGroup[]}
      */
-    availableValueAddedServiceGroups: [AvailableValueAddedServiceGroup];
+    availableValueAddedServiceGroups: AvailableValueAddedServiceGroup[];
     /**
      * A list of RateItem
-     * @member {[RateItem]} rateItemList
-     * @type {[RateItem]}
+     * @member {RateItem[]} rateItemList
+     * @type {RateItem[]}
      */
-    rateItemList: [RateItem];
+    rateItemList: RateItem[];
     /**
      * @member {PaymentType} paymentType
      * @type {PaymentType}

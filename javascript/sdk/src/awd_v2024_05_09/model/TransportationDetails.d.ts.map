@@ -1,1 +1,1 @@
-{"version":3,"file":"TransportationDetails.d.ts","sourceRoot":"","sources":["TransportationDetails.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,2CAHW,qBAAqB,GACpB,qBAAqB,CAmBhC;IAnCD;;;;;;OAMG;IACH,6BAF2B,CAAC,eAAe,CAAC,EAI3C;IADC,mCAAsC;CA4BzC;gCA5C+B,sBAAsB"}
+{"version":3,"file":"TransportationDetails.d.ts","sourceRoot":"","sources":["TransportationDetails.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,2CAHW,qBAAqB,GACpB,qBAAqB,CAmBhC;IAnCD;;;;;;OAMG;IACH,6BAF2B,eAAe,EAAE,EAI3C;IADC,mCAAsC;CA4BzC;gCA5C+B,sBAAsB"}

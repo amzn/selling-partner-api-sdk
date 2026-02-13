@@ -76,7 +76,7 @@ FeesEstimate.prototype.totalFeesEstimate = undefined
 
 /**
  * A list of other fees that contribute to a given fee.
- * @member {[FeeDetail]} feeDetailList
- * @type {[FeeDetail]}
+ * @member {FeeDetail[]} feeDetailList
+ * @type {FeeDetail[]}
  */
 FeesEstimate.prototype.feeDetailList = undefined

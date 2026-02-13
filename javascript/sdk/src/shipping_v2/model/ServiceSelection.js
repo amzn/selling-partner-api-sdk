@@ -24,7 +24,7 @@ export class ServiceSelection {
    * Service Selection Criteria.
    * @alias module:shipping_v2/model/ServiceSelection
    * @class
-   * @param serviceId {[String]} A list of ServiceId.
+   * @param serviceId {String[]} A list of ServiceId.
    */
   constructor (serviceId) {
     this.serviceId = serviceId
@@ -59,7 +59,7 @@ export class ServiceSelection {
 
 /**
  * A list of ServiceId.
- * @member {[String]} serviceId
- * @type {[String]}
+ * @member {String[]} serviceId
+ * @type {String[]}
  */
 ServiceSelection.prototype.serviceId = undefined

@@ -14,10 +14,10 @@ export class BalanceListing {
     static constructFromObject(data: any, obj: BalanceListing): BalanceListing;
     /**
      * Collection that holds list of balances on the account
-     * @member {[Balance]} balances
-     * @type {[Balance]}
+     * @member {Balance[]} balances
+     * @type {Balance[]}
      */
-    balances: [Balance];
+    balances: Balance[];
 }
 import { Balance } from './Balance.js';
 //# sourceMappingURL=BalanceListing.d.ts.map

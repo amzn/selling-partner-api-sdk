@@ -25,9 +25,9 @@ export class ConfirmShipmentOrderItem {
     quantity: number;
     /**
      * A list of order items.
-     * @member {[String]} transparencyCodes
-     * @type {[String]}
+     * @member {String[]} transparencyCodes
+     * @type {String[]}
      */
-    transparencyCodes: [string];
+    transparencyCodes: string[];
 }
 //# sourceMappingURL=ConfirmShipmentOrderItem.d.ts.map

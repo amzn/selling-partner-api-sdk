@@ -18,11 +18,11 @@ export class ItemRelationshipsByMarketplace {
      * @alias module:listingsitems_v2021_08_01/model/ItemRelationshipsByMarketplace
      * @class
      * @param marketplaceId {String} Amazon marketplace identifier.
-     * @param relationships {[ItemRelationship]} Relationships for the listing item.
+     * @param relationships {ItemRelationship[]} Relationships for the listing item.
      */
-    constructor(marketplaceId: string, relationships: [ItemRelationship]);
+    constructor(marketplaceId: string, relationships: ItemRelationship[]);
     marketplaceId: string;
-    relationships: [ItemRelationship];
+    relationships: ItemRelationship[];
 }
 import { ItemRelationship } from './ItemRelationship.js';
 //# sourceMappingURL=ItemRelationshipsByMarketplace.d.ts.map

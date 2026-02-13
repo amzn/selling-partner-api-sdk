@@ -14,10 +14,10 @@ export class GetCollectionFormHistoryRequest {
     static constructFromObject(data: any, obj: GetCollectionFormHistoryRequest): GetCollectionFormHistoryRequest;
     /**
      * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
-     * @member {[ClientReferenceDetail]} clientReferenceDetails
-     * @type {[ClientReferenceDetail]}
+     * @member {ClientReferenceDetail[]} clientReferenceDetails
+     * @type {ClientReferenceDetail[]}
      */
-    clientReferenceDetails: [ClientReferenceDetail];
+    clientReferenceDetails: ClientReferenceDetail[];
     /**
      * max Number of Results for query .
      * @member {Number} maxResults

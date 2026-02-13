@@ -25,8 +25,8 @@ export class Benefits {
    * Benefits that are included and excluded for each shipping offer. Benefits represents services provided by Amazon (eg. CLAIMS_PROTECTED, etc.) when sellers purchase shipping through Amazon. Benefit details will be made available for any shipment placed on or after January 1st 2024 00:00 UTC.
    * @alias module:shipping_v2/model/Benefits
    * @class
-   * @param includedBenefits {[String]} A list of included benefits.
-   * @param excludedBenefits {[ExcludedBenefit]} A list of excluded benefit. Refer to the ExcludeBenefit object for further documentation
+   * @param includedBenefits {String[]} A list of included benefits.
+   * @param excludedBenefits {ExcludedBenefit[]} A list of excluded benefit. Refer to the ExcludeBenefit object for further documentation
    */
   constructor (includedBenefits, excludedBenefits) {
     this.includedBenefits = includedBenefits
@@ -63,14 +63,14 @@ export class Benefits {
 
 /**
  * A list of included benefits.
- * @member {[String]} includedBenefits
- * @type {[String]}
+ * @member {String[]} includedBenefits
+ * @type {String[]}
  */
 Benefits.prototype.includedBenefits = undefined
 
 /**
  * A list of excluded benefit. Refer to the ExcludeBenefit object for further documentation
- * @member {[ExcludedBenefit]} excludedBenefits
- * @type {[ExcludedBenefit]}
+ * @member {ExcludedBenefit[]} excludedBenefits
+ * @type {ExcludedBenefit[]}
  */
 Benefits.prototype.excludedBenefits = undefined

@@ -74,7 +74,7 @@ ExceptionDates.prototype.isOpen = undefined
 
 /**
  * Time window during the day when the business is open.
- * @member {[OpenInterval]} openIntervals
- * @type {[OpenInterval]}
+ * @member {OpenInterval[]} openIntervals
+ * @type {OpenInterval[]}
  */
 ExceptionDates.prototype.openIntervals = undefined

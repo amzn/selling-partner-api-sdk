@@ -159,7 +159,7 @@ ChargeDetails.prototype.chargeAmount = undefined
 
 /**
  * Tax amount details applied on this charge.
- * @member {[TaxDetails]} taxDetails
- * @type {[TaxDetails]}
+ * @member {TaxDetails[]} taxDetails
+ * @type {TaxDetails[]}
  */
 ChargeDetails.prototype.taxDetails = undefined

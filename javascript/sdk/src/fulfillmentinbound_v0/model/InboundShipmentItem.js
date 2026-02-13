@@ -118,7 +118,7 @@ InboundShipmentItem.prototype.releaseDate = undefined
 
 /**
  * A list of preparation instructions and who is responsible for that preparation.
- * @member {[PrepDetails]} prepDetailsList
- * @type {[PrepDetails]}
+ * @member {PrepDetails[]} prepDetailsList
+ * @type {PrepDetails[]}
  */
 InboundShipmentItem.prototype.prepDetailsList = undefined

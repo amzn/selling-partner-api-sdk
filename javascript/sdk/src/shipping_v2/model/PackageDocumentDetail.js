@@ -26,7 +26,7 @@ export class PackageDocumentDetail {
    * @alias module:shipping_v2/model/PackageDocumentDetail
    * @class
    * @param packageClientReferenceId {String} A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation.
-   * @param packageDocuments {[PackageDocument]} A list of documents related to a package.
+   * @param packageDocuments {PackageDocument[]} A list of documents related to a package.
    */
   constructor (packageClientReferenceId, packageDocuments) {
     this.packageClientReferenceId = packageClientReferenceId
@@ -71,8 +71,8 @@ PackageDocumentDetail.prototype.packageClientReferenceId = undefined
 
 /**
  * A list of documents related to a package.
- * @member {[PackageDocument]} packageDocuments
- * @type {[PackageDocument]}
+ * @member {PackageDocument[]} packageDocuments
+ * @type {PackageDocument[]}
  */
 PackageDocumentDetail.prototype.packageDocuments = undefined
 

@@ -26,7 +26,7 @@ export class ListInboundPlanBoxesResponse {
    * The &#x60;listInboundPlanBoxes&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanBoxesResponse
    * @class
-   * @param boxes {[Box]} A list of boxes in an inbound plan.
+   * @param boxes {Box[]} A list of boxes in an inbound plan.
    */
   constructor (boxes) {
     this.boxes = boxes
@@ -62,8 +62,8 @@ export class ListInboundPlanBoxesResponse {
 
 /**
  * A list of boxes in an inbound plan.
- * @member {[Box]} boxes
- * @type {[Box]}
+ * @member {Box[]} boxes
+ * @type {Box[]}
  */
 ListInboundPlanBoxesResponse.prototype.boxes = undefined
 

@@ -18,11 +18,11 @@ export class BrowseNodeReviewTrend {
      * @alias module:customerFeedback_2024_06_01/model/BrowseNodeReviewTrend
      * @class
      * @param topic {String} The name of the topic.
-     * @param trendMetrics {[BrowseNodeReviewTrendPoint]} The browse node's review trend metrics for the past six months.
+     * @param trendMetrics {BrowseNodeReviewTrendPoint[]} The browse node's review trend metrics for the past six months.
      */
-    constructor(topic: string, trendMetrics: [BrowseNodeReviewTrendPoint]);
+    constructor(topic: string, trendMetrics: BrowseNodeReviewTrendPoint[]);
     topic: string;
-    trendMetrics: [BrowseNodeReviewTrendPoint];
+    trendMetrics: BrowseNodeReviewTrendPoint[];
 }
 import { BrowseNodeReviewTrendPoint } from './BrowseNodeReviewTrendPoint.js';
 //# sourceMappingURL=BrowseNodeReviewTrend.d.ts.map

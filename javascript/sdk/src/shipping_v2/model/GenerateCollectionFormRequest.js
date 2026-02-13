@@ -63,8 +63,8 @@ export class GenerateCollectionFormRequest {
 
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
- * @member {[ClientReferenceDetail]} clientReferenceDetails
- * @type {[ClientReferenceDetail]}
+ * @member {ClientReferenceDetail[]} clientReferenceDetails
+ * @type {ClientReferenceDetail[]}
  */
 GenerateCollectionFormRequest.prototype.clientReferenceDetails = undefined
 

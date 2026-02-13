@@ -25,7 +25,7 @@ export class AssignAppointmentResourcesRequest {
    * Request schema for the &#x60;assignAppointmentResources&#x60; operation.
    * @alias module:services_v1/model/AssignAppointmentResourcesRequest
    * @class
-   * @param resources {[AppointmentResource]} List of resources that performs or performed job appointment fulfillment.
+   * @param resources {AppointmentResource[]} List of resources that performs or performed job appointment fulfillment.
    */
   constructor (resources) {
     this.resources = resources
@@ -60,7 +60,7 @@ export class AssignAppointmentResourcesRequest {
 
 /**
  * List of resources that performs or performed job appointment fulfillment.
- * @member {[AppointmentResource]} resources
- * @type {[AppointmentResource]}
+ * @member {AppointmentResource[]} resources
+ * @type {AppointmentResource[]}
  */
 AssignAppointmentResourcesRequest.prototype.resources = undefined

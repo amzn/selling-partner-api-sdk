@@ -17,10 +17,10 @@ export class ListShipmentBoxesResponse {
      * The &#x60;listShipmentBoxes&#x60; response.
      * @alias module:fulfillmentinbound_v2024_03_20/model/ListShipmentBoxesResponse
      * @class
-     * @param boxes {[Box]} A list of boxes in a shipment.
+     * @param boxes {Box[]} A list of boxes in a shipment.
      */
-    constructor(boxes: [Box]);
-    boxes: [Box];
+    constructor(boxes: Box[]);
+    boxes: Box[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

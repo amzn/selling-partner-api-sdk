@@ -19,10 +19,10 @@ export class CreateFulfillmentReturnResponse {
     payload: CreateFulfillmentReturnResult;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Error[]} errors
+     * @type {Error[]}
      */
-    errors: [Error];
+    errors: Error[];
 }
 import { CreateFulfillmentReturnResult } from './CreateFulfillmentReturnResult.js';
 import { Error } from './Error.js';

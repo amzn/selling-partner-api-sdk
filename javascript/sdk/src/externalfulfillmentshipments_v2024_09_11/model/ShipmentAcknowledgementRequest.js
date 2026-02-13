@@ -25,7 +25,7 @@ export class ShipmentAcknowledgementRequest {
    * Information about the shipment and its line items, used to confirm or reject line items.
    * @alias module:externalfulfillmentshipments_v2024_09_11/model/ShipmentAcknowledgementRequest
    * @class
-   * @param lineItems {[LineItemWithReason]} Details about the line items from the shipment that are being confirmed or rejected by the seller.
+   * @param lineItems {LineItemWithReason[]} Details about the line items from the shipment that are being confirmed or rejected by the seller.
    */
   constructor (lineItems) {
     this.lineItems = lineItems
@@ -68,7 +68,7 @@ ShipmentAcknowledgementRequest.prototype.referenceId = undefined
 
 /**
  * Details about the line items from the shipment that are being confirmed or rejected by the seller.
- * @member {[LineItemWithReason]} lineItems
- * @type {[LineItemWithReason]}
+ * @member {LineItemWithReason[]} lineItems
+ * @type {LineItemWithReason[]}
  */
 ShipmentAcknowledgementRequest.prototype.lineItems = undefined

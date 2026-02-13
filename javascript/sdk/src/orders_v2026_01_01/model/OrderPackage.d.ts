@@ -63,10 +63,10 @@ export class OrderPackage {
     shipFromAddress: MerchantAddress;
     /**
      * A list of all order items included in this specific package.
-     * @member {[PackageItem]} packageItems
-     * @type {[PackageItem]}
+     * @member {PackageItem[]} packageItems
+     * @type {PackageItem[]}
      */
-    packageItems: [PackageItem];
+    packageItems: PackageItem[];
 }
 import { PackageStatus } from './PackageStatus.js';
 import { MerchantAddress } from './MerchantAddress.js';

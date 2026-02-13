@@ -20,13 +20,13 @@ export class RequestedDocumentSpecification {
      * @param format {DocumentFormat}
      * @param size {DocumentSize}
      * @param needFileJoining {Boolean} When true, files should be stitched together. Otherwise, files should be returned separately. Defaults to false.
-     * @param requestedDocumentTypes {[DocumentType]} A list of the document types requested.
+     * @param requestedDocumentTypes {DocumentType[]} A list of the document types requested.
      */
-    constructor(format: DocumentFormat, size: DocumentSize, needFileJoining: boolean, requestedDocumentTypes: [DocumentType]);
+    constructor(format: DocumentFormat, size: DocumentSize, needFileJoining: boolean, requestedDocumentTypes: DocumentType[]);
     format: DocumentFormat;
     size: DocumentSize;
     needFileJoining: boolean;
-    requestedDocumentTypes: [DocumentType];
+    requestedDocumentTypes: DocumentType[];
     /**
      * The dots per inch (DPI) value used in printing. This value represents a measure of the resolution of the document.
      * @member {Number} dpi

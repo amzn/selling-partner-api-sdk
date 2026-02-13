@@ -31,7 +31,7 @@ export class CreateContainerLabelRequest {
    * @param shipFromParty {PartyIdentification}
    * @param carrierId {CarrierId}
    * @param vendorContainerId {String} The unique, vendor-provided identifier for the container.
-   * @param packages {[Package]} An array of package objects in a container.
+   * @param packages {Package[]} An array of package objects in a container.
    */
   constructor (sellingParty, shipFromParty, carrierId, vendorContainerId, packages) {
     this.sellingParty = sellingParty
@@ -99,7 +99,7 @@ CreateContainerLabelRequest.prototype.vendorContainerId = undefined
 
 /**
  * An array of package objects in a container.
- * @member {[Package]} packages
- * @type {[Package]}
+ * @member {Package[]} packages
+ * @type {Package[]}
  */
 CreateContainerLabelRequest.prototype.packages = undefined

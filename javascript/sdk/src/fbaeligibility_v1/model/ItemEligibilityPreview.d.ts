@@ -33,10 +33,10 @@ export class ItemEligibilityPreview {
     marketplaceId: string;
     /**
      * Potential Ineligibility Reason Codes.
-     * @member {[String]} ineligibilityReasonList
-     * @type {[String]}
+     * @member {String[]} ineligibilityReasonList
+     * @type {String[]}
      */
-    ineligibilityReasonList: [string];
+    ineligibilityReasonList: string[];
 }
 export namespace ItemEligibilityPreview {
     namespace ProgramEnum {

@@ -46,10 +46,10 @@ export class StandardComparisonProductBlock {
     highlight: boolean;
     /**
      * Comparison metrics for the product.
-     * @member {[PlainTextItem]} metrics
-     * @type {[PlainTextItem]}
+     * @member {PlainTextItem[]} metrics
+     * @type {PlainTextItem[]}
      */
-    metrics: [PlainTextItem];
+    metrics: PlainTextItem[];
 }
 import { ImageComponent } from './ImageComponent.js';
 import { PlainTextItem } from './PlainTextItem.js';

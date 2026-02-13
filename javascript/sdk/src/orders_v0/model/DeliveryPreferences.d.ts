@@ -25,10 +25,10 @@ export class DeliveryPreferences {
     preferredDeliveryTime: PreferredDeliveryTime;
     /**
      * Enumerated list of miscellaneous delivery attributes associated with the shipping address.
-     * @member {[OtherDeliveryAttributes]} otherAttributes
-     * @type {[OtherDeliveryAttributes]}
+     * @member {OtherDeliveryAttributes[]} otherAttributes
+     * @type {OtherDeliveryAttributes[]}
      */
-    otherAttributes: [OtherDeliveryAttributes];
+    otherAttributes: OtherDeliveryAttributes[];
     /**
      * Building instructions, nearby landmark or navigation instructions.
      * @member {String} addressInstructions

@@ -20,10 +20,10 @@ export class BusinessHour {
     dayOfWeek: string;
     /**
      * Collection of time windows during which the location is available for deliveries on the specified day.
-     * @member {[TimeWindow]} timeWindows
-     * @type {[TimeWindow]}
+     * @member {TimeWindow[]} timeWindows
+     * @type {TimeWindow[]}
      */
-    timeWindows: [TimeWindow];
+    timeWindows: TimeWindow[];
 }
 export namespace BusinessHour {
     namespace DayOfWeekEnum {

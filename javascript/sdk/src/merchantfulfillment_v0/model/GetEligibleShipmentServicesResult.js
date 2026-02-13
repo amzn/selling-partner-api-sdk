@@ -28,7 +28,7 @@ export class GetEligibleShipmentServicesResult {
    * The payload for the &#x60;getEligibleShipmentServices&#x60; operation.
    * @alias module:merchantfulfillment_v0/model/GetEligibleShipmentServicesResult
    * @class
-   * @param shippingServiceList {[ShippingService]} A list of shipping services offers.
+   * @param shippingServiceList {ShippingService[]} A list of shipping services offers.
    */
   constructor (shippingServiceList) {
     this.shippingServiceList = shippingServiceList
@@ -66,28 +66,28 @@ export class GetEligibleShipmentServicesResult {
 
 /**
  * A list of shipping services offers.
- * @member {[ShippingService]} shippingServiceList
- * @type {[ShippingService]}
+ * @member {ShippingService[]} shippingServiceList
+ * @type {ShippingService[]}
  */
 GetEligibleShipmentServicesResult.prototype.shippingServiceList = undefined
 
 /**
  * List of services that are for some reason unavailable for this request
- * @member {[RejectedShippingService]} rejectedShippingServiceList
- * @type {[RejectedShippingService]}
+ * @member {RejectedShippingService[]} rejectedShippingServiceList
+ * @type {RejectedShippingService[]}
  */
 GetEligibleShipmentServicesResult.prototype.rejectedShippingServiceList = undefined
 
 /**
  * A list of temporarily unavailable carriers.
- * @member {[TemporarilyUnavailableCarrier]} temporarilyUnavailableCarrierList
- * @type {[TemporarilyUnavailableCarrier]}
+ * @member {TemporarilyUnavailableCarrier[]} temporarilyUnavailableCarrierList
+ * @type {TemporarilyUnavailableCarrier[]}
  */
 GetEligibleShipmentServicesResult.prototype.temporarilyUnavailableCarrierList = undefined
 
 /**
  * List of carriers whose terms and conditions were not accepted by the seller.
- * @member {[TermsAndConditionsNotAcceptedCarrier]} termsAndConditionsNotAcceptedCarrierList
- * @type {[TermsAndConditionsNotAcceptedCarrier]}
+ * @member {TermsAndConditionsNotAcceptedCarrier[]} termsAndConditionsNotAcceptedCarrierList
+ * @type {TermsAndConditionsNotAcceptedCarrier[]}
  */
 GetEligibleShipmentServicesResult.prototype.termsAndConditionsNotAcceptedCarrierList = undefined

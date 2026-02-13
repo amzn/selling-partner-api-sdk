@@ -25,10 +25,10 @@ export class SkuEligibility {
     status: InboundEligibilityStatus;
     /**
      * If not eligible, these are list of error codes and descriptions.
-     * @member {[SkuIneligibilityReason]} ineligibilityReasons
-     * @type {[SkuIneligibilityReason]}
+     * @member {SkuIneligibilityReason[]} ineligibilityReasons
+     * @type {SkuIneligibilityReason[]}
      */
-    ineligibilityReasons: [SkuIneligibilityReason];
+    ineligibilityReasons: SkuIneligibilityReason[];
 }
 import { DistributionPackageQuantity } from './DistributionPackageQuantity.js';
 import { InboundEligibilityStatus } from './InboundEligibilityStatus.js';

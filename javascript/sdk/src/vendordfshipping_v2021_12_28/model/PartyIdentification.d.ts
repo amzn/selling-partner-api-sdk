@@ -28,10 +28,10 @@ export class PartyIdentification {
     address: Address;
     /**
      * The tax registration details of the party.
-     * @member {[TaxRegistrationDetails]} taxRegistrationDetails
-     * @type {[TaxRegistrationDetails]}
+     * @member {TaxRegistrationDetails[]} taxRegistrationDetails
+     * @type {TaxRegistrationDetails[]}
      */
-    taxRegistrationDetails: [TaxRegistrationDetails];
+    taxRegistrationDetails: TaxRegistrationDetails[];
 }
 import { Address } from './Address.js';
 import { TaxRegistrationDetails } from './TaxRegistrationDetails.js';

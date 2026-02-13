@@ -14,10 +14,10 @@ export class SubmitInvoiceResponse {
     static constructFromObject(data: any, obj: SubmitInvoiceResponse): SubmitInvoiceResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Error[]} errors
+     * @type {Error[]}
      */
-    errors: [Error];
+    errors: Error[];
 }
 import { Error } from './Error.js';
 //# sourceMappingURL=SubmitInvoiceResponse.d.ts.map

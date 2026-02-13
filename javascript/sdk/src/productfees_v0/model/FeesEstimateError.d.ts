@@ -20,12 +20,12 @@ export class FeesEstimateError {
      * @param type {String} An error type, identifying either the receiver or the sender as the originator of the error.
      * @param code {String} An error code that identifies the type of error that occurred.
      * @param message {String} A message that describes the error condition.
-     * @param detail {[Object]} Additional information that can help the caller understand or fix the issue.
+     * @param detail {Object[]} Additional information that can help the caller understand or fix the issue.
      */
-    constructor(type: string, code: string, message: string, detail: [any]);
+    constructor(type: string, code: string, message: string, detail: any[]);
     type: string;
     code: string;
     message: string;
-    detail: [any];
+    detail: any[];
 }
 //# sourceMappingURL=FeesEstimateError.d.ts.map

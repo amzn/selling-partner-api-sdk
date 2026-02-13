@@ -29,7 +29,7 @@ export class GetFulfillmentPreviewRequest {
    * @alias module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentPreviewRequest
    * @class
    * @param address {Address}
-   * @param items {[GetFulfillmentPreviewItem]} An array of fulfillment preview item information.
+   * @param items {GetFulfillmentPreviewItem[]} An array of fulfillment preview item information.
    */
   constructor (address, items) {
     this.address = address
@@ -84,15 +84,15 @@ GetFulfillmentPreviewRequest.prototype.address = undefined
 
 /**
  * An array of fulfillment preview item information.
- * @member {[GetFulfillmentPreviewItem]} items
- * @type {[GetFulfillmentPreviewItem]}
+ * @member {GetFulfillmentPreviewItem[]} items
+ * @type {GetFulfillmentPreviewItem[]}
  */
 GetFulfillmentPreviewRequest.prototype.items = undefined
 
 /**
  * List of shipping speed categories.
- * @member {[ShippingSpeedCategory]} shippingSpeedCategories
- * @type {[ShippingSpeedCategory]}
+ * @member {ShippingSpeedCategory[]} shippingSpeedCategories
+ * @type {ShippingSpeedCategory[]}
  */
 GetFulfillmentPreviewRequest.prototype.shippingSpeedCategories = undefined
 
@@ -112,7 +112,7 @@ GetFulfillmentPreviewRequest.prototype.includeDeliveryWindows = undefined
 
 /**
  * A list of features and their fulfillment policies to apply to the order.
- * @member {[FeatureSettings]} featureConstraints
- * @type {[FeatureSettings]}
+ * @member {FeatureSettings[]} featureConstraints
+ * @type {FeatureSettings[]}
  */
 GetFulfillmentPreviewRequest.prototype.featureConstraints = undefined

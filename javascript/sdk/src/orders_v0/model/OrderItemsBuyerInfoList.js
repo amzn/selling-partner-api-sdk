@@ -25,7 +25,7 @@ export class OrderItemsBuyerInfoList {
    * A single order item&#39;s buyer information list with the order ID.
    * @alias module:orders_v0/model/OrderItemsBuyerInfoList
    * @class
-   * @param orderItems {[OrderItemBuyerInfo]} A single order item's buyer information list.
+   * @param orderItems {OrderItemBuyerInfo[]} A single order item's buyer information list.
    * @param amazonOrderId {String} An Amazon-defined order identifier, in 3-7-7 format.
    */
   constructor (orderItems, amazonOrderId) {
@@ -64,8 +64,8 @@ export class OrderItemsBuyerInfoList {
 
 /**
  * A single order item's buyer information list.
- * @member {[OrderItemBuyerInfo]} orderItems
- * @type {[OrderItemBuyerInfo]}
+ * @member {OrderItemBuyerInfo[]} orderItems
+ * @type {OrderItemBuyerInfo[]}
  */
 OrderItemsBuyerInfoList.prototype.orderItems = undefined
 

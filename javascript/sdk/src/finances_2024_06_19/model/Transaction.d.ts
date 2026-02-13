@@ -19,10 +19,10 @@ export class Transaction {
     sellingPartnerMetadata: SellingPartnerMetadata;
     /**
      * Related business identifiers of the transaction.
-     * @member {[RelatedIdentifier]} relatedIdentifiers
-     * @type {[RelatedIdentifier]}
+     * @member {RelatedIdentifier[]} relatedIdentifiers
+     * @type {RelatedIdentifier[]}
      */
-    relatedIdentifiers: [RelatedIdentifier];
+    relatedIdentifiers: RelatedIdentifier[];
     /**
      * The type of transaction.  **Possible value:** `Shipment`
      * @member {String} transactionType
@@ -65,22 +65,22 @@ export class Transaction {
     marketplaceDetails: MarketplaceDetails;
     /**
      * A list of items in the transaction.
-     * @member {[Item]} items
-     * @type {[Item]}
+     * @member {Item[]} items
+     * @type {Item[]}
      */
-    items: [Item];
+    items: Item[];
     /**
      * A list of additional information about the item.
-     * @member {[Context]} contexts
-     * @type {[Context]}
+     * @member {Context[]} contexts
+     * @type {Context[]}
      */
-    contexts: [Context];
+    contexts: Context[];
     /**
      * A list of breakdowns that detail how the total amount is calculated for the transaction.
-     * @member {[Breakdown]} breakdowns
-     * @type {[Breakdown]}
+     * @member {Breakdown[]} breakdowns
+     * @type {Breakdown[]}
      */
-    breakdowns: [Breakdown];
+    breakdowns: Breakdown[];
 }
 import { SellingPartnerMetadata } from './SellingPartnerMetadata.js';
 import { RelatedIdentifier } from './RelatedIdentifier.js';

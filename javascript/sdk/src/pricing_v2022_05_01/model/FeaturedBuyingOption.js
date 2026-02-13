@@ -26,7 +26,7 @@ export class FeaturedBuyingOption {
    * @alias module:pricing_v2022_05_01/model/FeaturedBuyingOption
    * @class
    * @param buyingOptionType {String} The buying option type for the featured offer. `buyingOptionType` represents the buying options that a customer receives on the detail page, such as `B2B`, `Fresh`, and `Subscribe n Save`. `buyingOptionType` currently supports `NEW` as a value.
-   * @param segmentedFeaturedOffers {[SegmentedFeaturedOffer]} A list of segmented featured offers for the current buying option type. A segment can be considered as a group of regional contexts that all have the same featured offer. A regional context is a combination of factors such as customer type, region, or postal code and buying option.
+   * @param segmentedFeaturedOffers {SegmentedFeaturedOffer[]} A list of segmented featured offers for the current buying option type. A segment can be considered as a group of regional contexts that all have the same featured offer. A regional context is a combination of factors such as customer type, region, or postal code and buying option.
    */
   constructor (buyingOptionType, segmentedFeaturedOffers) {
     this.buyingOptionType = buyingOptionType
@@ -83,7 +83,7 @@ FeaturedBuyingOption.prototype.buyingOptionType = undefined
 
 /**
  * A list of segmented featured offers for the current buying option type. A segment can be considered as a group of regional contexts that all have the same featured offer. A regional context is a combination of factors such as customer type, region, or postal code and buying option.
- * @member {[SegmentedFeaturedOffer]} segmentedFeaturedOffers
- * @type {[SegmentedFeaturedOffer]}
+ * @member {SegmentedFeaturedOffer[]} segmentedFeaturedOffers
+ * @type {SegmentedFeaturedOffer[]}
  */
 FeaturedBuyingOption.prototype.segmentedFeaturedOffers = undefined

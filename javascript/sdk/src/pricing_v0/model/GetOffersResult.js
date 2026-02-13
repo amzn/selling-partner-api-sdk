@@ -33,7 +33,7 @@ export class GetOffersResult {
    * @param status {String} The status of the operation.
    * @param identifier {ItemIdentifier}
    * @param summary {Summary}
-   * @param offers {[OfferDetail]} A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less.
+   * @param offers {OfferDetail[]} A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less.
    */
   constructor (marketplaceID, itemCondition, status, identifier, summary, offers) {
     this.marketplaceID = marketplaceID
@@ -126,7 +126,7 @@ GetOffersResult.prototype.summary = undefined
 
 /**
  * A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less.
- * @member {[OfferDetail]} offers
- * @type {[OfferDetail]}
+ * @member {OfferDetail[]} offers
+ * @type {OfferDetail[]}
  */
 GetOffersResult.prototype.offers = undefined

@@ -65,8 +65,8 @@ export class InventorySummary {
 
 /**
  * The expiration details of the inventory. This object will only appear if the `details` parameter in the request is set to `SHOW`.
- * @member {[ExpirationDetails]} expirationDetails
- * @type {[ExpirationDetails]}
+ * @member {ExpirationDetails[]} expirationDetails
+ * @type {ExpirationDetails[]}
  */
 InventorySummary.prototype.expirationDetails = undefined
 

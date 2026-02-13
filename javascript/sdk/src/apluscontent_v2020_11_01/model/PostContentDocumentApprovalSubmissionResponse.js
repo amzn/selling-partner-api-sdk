@@ -61,15 +61,15 @@ export class PostContentDocumentApprovalSubmissionResponse {
 
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {[Error]} warnings
- * @type {[Error]}
+ * @member {Error[]} warnings
+ * @type {Error[]}
  */
 PostContentDocumentApprovalSubmissionResponse.prototype.warnings = undefined
 
 // Implement AplusResponse interface:
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {[Error]} warnings
- * @type {[Error]}
+ * @member {Error[]} warnings
+ * @type {Error[]}
  */
 AplusResponse.prototype.warnings = undefined

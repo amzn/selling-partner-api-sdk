@@ -19,10 +19,10 @@ export class LinkableAccountType {
     accountType: AccountType;
     /**
      * A list of CarrierAccountInput
-     * @member {[CarrierAccountInput]} carrierAccountInputs
-     * @type {[CarrierAccountInput]}
+     * @member {CarrierAccountInput[]} carrierAccountInputs
+     * @type {CarrierAccountInput[]}
      */
-    carrierAccountInputs: [CarrierAccountInput];
+    carrierAccountInputs: CarrierAccountInput[];
 }
 import { AccountType } from './AccountType.js';
 import { CarrierAccountInput } from './CarrierAccountInput.js';

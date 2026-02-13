@@ -60,14 +60,14 @@ export class GetMarketplaceParticipationsResponse {
 
 /**
  * List of marketplace participations.
- * @member {[MarketplaceParticipation]} payload
- * @type {[MarketplaceParticipation]}
+ * @member {MarketplaceParticipation[]} payload
+ * @type {MarketplaceParticipation[]}
  */
 GetMarketplaceParticipationsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Error[]} errors
+ * @type {Error[]}
  */
 GetMarketplaceParticipationsResponse.prototype.errors = undefined

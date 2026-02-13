@@ -25,7 +25,7 @@ export class SetPackingInformationRequest {
    * The &#x60;setPackingInformation&#x60; request.
    * @alias module:fulfillmentinbound_v2024_03_20/model/SetPackingInformationRequest
    * @class
-   * @param packageGroupings {[PackageGroupingInput]} List of packing information for the inbound plan.
+   * @param packageGroupings {PackageGroupingInput[]} List of packing information for the inbound plan.
    */
   constructor (packageGroupings) {
     this.packageGroupings = packageGroupings
@@ -60,7 +60,7 @@ export class SetPackingInformationRequest {
 
 /**
  * List of packing information for the inbound plan.
- * @member {[PackageGroupingInput]} packageGroupings
- * @type {[PackageGroupingInput]}
+ * @member {PackageGroupingInput[]} packageGroupings
+ * @type {PackageGroupingInput[]}
  */
 SetPackingInformationRequest.prototype.packageGroupings = undefined

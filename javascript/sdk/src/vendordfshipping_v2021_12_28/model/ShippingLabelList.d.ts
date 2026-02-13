@@ -19,10 +19,10 @@ export class ShippingLabelList {
     pagination: Pagination;
     /**
      * An array containing the details of the generated shipping labels.
-     * @member {[ShippingLabel]} shippingLabels
-     * @type {[ShippingLabel]}
+     * @member {ShippingLabel[]} shippingLabels
+     * @type {ShippingLabel[]}
      */
-    shippingLabels: [ShippingLabel];
+    shippingLabels: ShippingLabel[];
 }
 import { Pagination } from './Pagination.js';
 import { ShippingLabel } from './ShippingLabel.js';

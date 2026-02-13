@@ -18,11 +18,11 @@ export class DistributionIneligibleReason {
      * @alias module:awd_v2024_05_09/model/DistributionIneligibleReason
      * @class
      * @param failureCode {String} Failure code details of the error.
-     * @param failureReasons {[String]} Failure reasons of the error.
+     * @param failureReasons {String[]} Failure reasons of the error.
      */
-    constructor(failureCode: string, failureReasons: [string]);
+    constructor(failureCode: string, failureReasons: string[]);
     failureCode: string;
-    failureReasons: [string];
+    failureReasons: string[];
     /**
      * SKU associated with the error.
      * @member {String} sku

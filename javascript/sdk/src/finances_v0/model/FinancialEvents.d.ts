@@ -14,208 +14,208 @@ export class FinancialEvents {
     static constructFromObject(data: any, obj: FinancialEvents): FinancialEvents;
     /**
      * A list of shipment event information.
-     * @member {[ShipmentEvent]} shipmentEventList
-     * @type {[ShipmentEvent]}
+     * @member {ShipmentEvent[]} shipmentEventList
+     * @type {ShipmentEvent[]}
      */
-    shipmentEventList: [ShipmentEvent];
+    shipmentEventList: ShipmentEvent[];
     /**
      * A list of `ShipmentEvent` items.
-     * @member {[ShipmentEvent]} shipmentSettleEventList
-     * @type {[ShipmentEvent]}
+     * @member {ShipmentEvent[]} shipmentSettleEventList
+     * @type {ShipmentEvent[]}
      */
-    shipmentSettleEventList: [ShipmentEvent];
+    shipmentSettleEventList: ShipmentEvent[];
     /**
      * A list of shipment event information.
-     * @member {[ShipmentEvent]} refundEventList
-     * @type {[ShipmentEvent]}
+     * @member {ShipmentEvent[]} refundEventList
+     * @type {ShipmentEvent[]}
      */
-    refundEventList: [ShipmentEvent];
+    refundEventList: ShipmentEvent[];
     /**
      * A list of shipment event information.
-     * @member {[ShipmentEvent]} guaranteeClaimEventList
-     * @type {[ShipmentEvent]}
+     * @member {ShipmentEvent[]} guaranteeClaimEventList
+     * @type {ShipmentEvent[]}
      */
-    guaranteeClaimEventList: [ShipmentEvent];
+    guaranteeClaimEventList: ShipmentEvent[];
     /**
      * A list of EBT refund reimbursement events.
-     * @member {[EBTRefundReimbursementOnlyEvent]} eBTRefundReimbursementOnlyEventList
-     * @type {[EBTRefundReimbursementOnlyEvent]}
+     * @member {EBTRefundReimbursementOnlyEvent[]} eBTRefundReimbursementOnlyEventList
+     * @type {EBTRefundReimbursementOnlyEvent[]}
      */
-    eBTRefundReimbursementOnlyEventList: [EBTRefundReimbursementOnlyEvent];
+    eBTRefundReimbursementOnlyEventList: EBTRefundReimbursementOnlyEvent[];
     /**
      * A list of shipment event information.
-     * @member {[ShipmentEvent]} chargebackEventList
-     * @type {[ShipmentEvent]}
+     * @member {ShipmentEvent[]} chargebackEventList
+     * @type {ShipmentEvent[]}
      */
-    chargebackEventList: [ShipmentEvent];
+    chargebackEventList: ShipmentEvent[];
     /**
      * A list of events related to the seller's Pay with Amazon account.
-     * @member {[PayWithAmazonEvent]} payWithAmazonEventList
-     * @type {[PayWithAmazonEvent]}
+     * @member {PayWithAmazonEvent[]} payWithAmazonEventList
+     * @type {PayWithAmazonEvent[]}
      */
-    payWithAmazonEventList: [PayWithAmazonEvent];
+    payWithAmazonEventList: PayWithAmazonEvent[];
     /**
      * A list of `SolutionProviderCreditEvent`.
-     * @member {[SolutionProviderCreditEvent]} serviceProviderCreditEventList
-     * @type {[SolutionProviderCreditEvent]}
+     * @member {SolutionProviderCreditEvent[]} serviceProviderCreditEventList
+     * @type {SolutionProviderCreditEvent[]}
      */
-    serviceProviderCreditEventList: [SolutionProviderCreditEvent];
+    serviceProviderCreditEventList: SolutionProviderCreditEvent[];
     /**
      * A list of information about `Retrocharge` or `RetrochargeReversal` events.
-     * @member {[RetrochargeEvent]} retrochargeEventList
-     * @type {[RetrochargeEvent]}
+     * @member {RetrochargeEvent[]} retrochargeEventList
+     * @type {RetrochargeEvent[]}
      */
-    retrochargeEventList: [RetrochargeEvent];
+    retrochargeEventList: RetrochargeEvent[];
     /**
      * A list of rental transaction event information.
-     * @member {[RentalTransactionEvent]} rentalTransactionEventList
-     * @type {[RentalTransactionEvent]}
+     * @member {RentalTransactionEvent[]} rentalTransactionEventList
+     * @type {RentalTransactionEvent[]}
      */
-    rentalTransactionEventList: [RentalTransactionEvent];
+    rentalTransactionEventList: RentalTransactionEvent[];
     /**
      * A list of sponsored products payment events.
-     * @member {[ProductAdsPaymentEvent]} productAdsPaymentEventList
-     * @type {[ProductAdsPaymentEvent]}
+     * @member {ProductAdsPaymentEvent[]} productAdsPaymentEventList
+     * @type {ProductAdsPaymentEvent[]}
      */
-    productAdsPaymentEventList: [ProductAdsPaymentEvent];
+    productAdsPaymentEventList: ProductAdsPaymentEvent[];
     /**
      * A list of information about service fee events.
-     * @member {[ServiceFeeEvent]} serviceFeeEventList
-     * @type {[ServiceFeeEvent]}
+     * @member {ServiceFeeEvent[]} serviceFeeEventList
+     * @type {ServiceFeeEvent[]}
      */
-    serviceFeeEventList: [ServiceFeeEvent];
+    serviceFeeEventList: ServiceFeeEvent[];
     /**
      * A list of payment events for deal-related fees.
-     * @member {[SellerDealPaymentEvent]} sellerDealPaymentEventList
-     * @type {[SellerDealPaymentEvent]}
+     * @member {SellerDealPaymentEvent[]} sellerDealPaymentEventList
+     * @type {SellerDealPaymentEvent[]}
      */
-    sellerDealPaymentEventList: [SellerDealPaymentEvent];
+    sellerDealPaymentEventList: SellerDealPaymentEvent[];
     /**
      * A list of debt recovery event information.
-     * @member {[DebtRecoveryEvent]} debtRecoveryEventList
-     * @type {[DebtRecoveryEvent]}
+     * @member {DebtRecoveryEvent[]} debtRecoveryEventList
+     * @type {DebtRecoveryEvent[]}
      */
-    debtRecoveryEventList: [DebtRecoveryEvent];
+    debtRecoveryEventList: DebtRecoveryEvent[];
     /**
      * A list of loan servicing events.
-     * @member {[LoanServicingEvent]} loanServicingEventList
-     * @type {[LoanServicingEvent]}
+     * @member {LoanServicingEvent[]} loanServicingEventList
+     * @type {LoanServicingEvent[]}
      */
-    loanServicingEventList: [LoanServicingEvent];
+    loanServicingEventList: LoanServicingEvent[];
     /**
      * A list of adjustment event information for the seller's account.
-     * @member {[AdjustmentEvent]} adjustmentEventList
-     * @type {[AdjustmentEvent]}
+     * @member {AdjustmentEvent[]} adjustmentEventList
+     * @type {AdjustmentEvent[]}
      */
-    adjustmentEventList: [AdjustmentEvent];
+    adjustmentEventList: AdjustmentEvent[];
     /**
      * A list of `SAFETReimbursementEvent`.
-     * @member {[SAFETReimbursementEvent]} sAFETReimbursementEventList
-     * @type {[SAFETReimbursementEvent]}
+     * @member {SAFETReimbursementEvent[]} sAFETReimbursementEventList
+     * @type {SAFETReimbursementEvent[]}
      */
-    sAFETReimbursementEventList: [SAFETReimbursementEvent];
+    sAFETReimbursementEventList: SAFETReimbursementEvent[];
     /**
      * A list of information about fee events for the Early Reviewer Program.
-     * @member {[SellerReviewEnrollmentPaymentEvent]} sellerReviewEnrollmentPaymentEventList
-     * @type {[SellerReviewEnrollmentPaymentEvent]}
+     * @member {SellerReviewEnrollmentPaymentEvent[]} sellerReviewEnrollmentPaymentEventList
+     * @type {SellerReviewEnrollmentPaymentEvent[]}
      */
-    sellerReviewEnrollmentPaymentEventList: [SellerReviewEnrollmentPaymentEvent];
+    sellerReviewEnrollmentPaymentEventList: SellerReviewEnrollmentPaymentEvent[];
     /**
      * A list of FBA inventory liquidation payment events.
-     * @member {[FBALiquidationEvent]} fBALiquidationEventList
-     * @type {[FBALiquidationEvent]}
+     * @member {FBALiquidationEvent[]} fBALiquidationEventList
+     * @type {FBALiquidationEvent[]}
      */
-    fBALiquidationEventList: [FBALiquidationEvent];
+    fBALiquidationEventList: FBALiquidationEvent[];
     /**
      * A list of coupon payment event information.
-     * @member {[CouponPaymentEvent]} couponPaymentEventList
-     * @type {[CouponPaymentEvent]}
+     * @member {CouponPaymentEvent[]} couponPaymentEventList
+     * @type {CouponPaymentEvent[]}
      */
-    couponPaymentEventList: [CouponPaymentEvent];
+    couponPaymentEventList: CouponPaymentEvent[];
     /**
      * A list of fee events related to Amazon Imaging services.
-     * @member {[ImagingServicesFeeEvent]} imagingServicesFeeEventList
-     * @type {[ImagingServicesFeeEvent]}
+     * @member {ImagingServicesFeeEvent[]} imagingServicesFeeEventList
+     * @type {ImagingServicesFeeEvent[]}
      */
-    imagingServicesFeeEventList: [ImagingServicesFeeEvent];
+    imagingServicesFeeEventList: ImagingServicesFeeEvent[];
     /**
      * A list of network commingling transaction events.
-     * @member {[NetworkComminglingTransactionEvent]} networkComminglingTransactionEventList
-     * @type {[NetworkComminglingTransactionEvent]}
+     * @member {NetworkComminglingTransactionEvent[]} networkComminglingTransactionEventList
+     * @type {NetworkComminglingTransactionEvent[]}
      */
-    networkComminglingTransactionEventList: [NetworkComminglingTransactionEvent];
+    networkComminglingTransactionEventList: NetworkComminglingTransactionEvent[];
     /**
      * A list of expense information related to an affordability promotion.
-     * @member {[AffordabilityExpenseEvent]} affordabilityExpenseEventList
-     * @type {[AffordabilityExpenseEvent]}
+     * @member {AffordabilityExpenseEvent[]} affordabilityExpenseEventList
+     * @type {AffordabilityExpenseEvent[]}
      */
-    affordabilityExpenseEventList: [AffordabilityExpenseEvent];
+    affordabilityExpenseEventList: AffordabilityExpenseEvent[];
     /**
      * A list of expense information related to an affordability promotion.
-     * @member {[AffordabilityExpenseEvent]} affordabilityExpenseReversalEventList
-     * @type {[AffordabilityExpenseEvent]}
+     * @member {AffordabilityExpenseEvent[]} affordabilityExpenseReversalEventList
+     * @type {AffordabilityExpenseEvent[]}
      */
-    affordabilityExpenseReversalEventList: [AffordabilityExpenseEvent];
+    affordabilityExpenseReversalEventList: AffordabilityExpenseEvent[];
     /**
      * A list of removal shipment event information.
-     * @member {[RemovalShipmentEvent]} removalShipmentEventList
-     * @type {[RemovalShipmentEvent]}
+     * @member {RemovalShipmentEvent[]} removalShipmentEventList
+     * @type {RemovalShipmentEvent[]}
      */
-    removalShipmentEventList: [RemovalShipmentEvent];
+    removalShipmentEventList: RemovalShipmentEvent[];
     /**
      * A comma-delimited list of `RemovalShipmentAdjustment` details for FBA inventory.
-     * @member {[RemovalShipmentAdjustmentEvent]} removalShipmentAdjustmentEventList
-     * @type {[RemovalShipmentAdjustmentEvent]}
+     * @member {RemovalShipmentAdjustmentEvent[]} removalShipmentAdjustmentEventList
+     * @type {RemovalShipmentAdjustmentEvent[]}
      */
-    removalShipmentAdjustmentEventList: [RemovalShipmentAdjustmentEvent];
+    removalShipmentAdjustmentEventList: RemovalShipmentAdjustmentEvent[];
     /**
      * A list of information about trial shipment financial events.
-     * @member {[TrialShipmentEvent]} trialShipmentEventList
-     * @type {[TrialShipmentEvent]}
+     * @member {TrialShipmentEvent[]} trialShipmentEventList
+     * @type {TrialShipmentEvent[]}
      */
-    trialShipmentEventList: [TrialShipmentEvent];
+    trialShipmentEventList: TrialShipmentEvent[];
     /**
      * A list of `TDSReimbursementEvent` items.
-     * @member {[TDSReimbursementEvent]} tDSReimbursementEventList
-     * @type {[TDSReimbursementEvent]}
+     * @member {TDSReimbursementEvent[]} tDSReimbursementEventList
+     * @type {TDSReimbursementEvent[]}
      */
-    tDSReimbursementEventList: [TDSReimbursementEvent];
+    tDSReimbursementEventList: TDSReimbursementEvent[];
     /**
      * A list of `AdhocDisbursement` events.
-     * @member {[AdhocDisbursementEvent]} adhocDisbursementEventList
-     * @type {[AdhocDisbursementEvent]}
+     * @member {AdhocDisbursementEvent[]} adhocDisbursementEventList
+     * @type {AdhocDisbursementEvent[]}
      */
-    adhocDisbursementEventList: [AdhocDisbursementEvent];
+    adhocDisbursementEventList: AdhocDisbursementEvent[];
     /**
      * A list of tax withholding events.
-     * @member {[TaxWithholdingEvent]} taxWithholdingEventList
-     * @type {[TaxWithholdingEvent]}
+     * @member {TaxWithholdingEvent[]} taxWithholdingEventList
+     * @type {TaxWithholdingEvent[]}
      */
-    taxWithholdingEventList: [TaxWithholdingEvent];
+    taxWithholdingEventList: TaxWithholdingEvent[];
     /**
      * A list of charge refund events.
-     * @member {[ChargeRefundEvent]} chargeRefundEventList
-     * @type {[ChargeRefundEvent]}
+     * @member {ChargeRefundEvent[]} chargeRefundEventList
+     * @type {ChargeRefundEvent[]}
      */
-    chargeRefundEventList: [ChargeRefundEvent];
+    chargeRefundEventList: ChargeRefundEvent[];
     /**
      * A list of `FailedAdhocDisbursementEvent`.
-     * @member {[FailedAdhocDisbursementEvent]} failedAdhocDisbursementEventList
-     * @type {[FailedAdhocDisbursementEvent]}
+     * @member {FailedAdhocDisbursementEvent[]} failedAdhocDisbursementEventList
+     * @type {FailedAdhocDisbursementEvent[]}
      */
-    failedAdhocDisbursementEventList: [FailedAdhocDisbursementEvent];
+    failedAdhocDisbursementEventList: FailedAdhocDisbursementEvent[];
     /**
      * A list of `ValueAddedServiceCharge` events.
-     * @member {[ValueAddedServiceChargeEvent]} valueAddedServiceChargeEventList
-     * @type {[ValueAddedServiceChargeEvent]}
+     * @member {ValueAddedServiceChargeEvent[]} valueAddedServiceChargeEventList
+     * @type {ValueAddedServiceChargeEvent[]}
      */
-    valueAddedServiceChargeEventList: [ValueAddedServiceChargeEvent];
+    valueAddedServiceChargeEventList: ValueAddedServiceChargeEvent[];
     /**
      * A list of `CapacityReservationBillingEvent` events.
-     * @member {[CapacityReservationBillingEvent]} capacityReservationBillingEventList
-     * @type {[CapacityReservationBillingEvent]}
+     * @member {CapacityReservationBillingEvent[]} capacityReservationBillingEventList
+     * @type {CapacityReservationBillingEvent[]}
      */
-    capacityReservationBillingEventList: [CapacityReservationBillingEvent];
+    capacityReservationBillingEventList: CapacityReservationBillingEvent[];
 }
 import { ShipmentEvent } from './ShipmentEvent.js';
 import { EBTRefundReimbursementOnlyEvent } from './EBTRefundReimbursementOnlyEvent.js';

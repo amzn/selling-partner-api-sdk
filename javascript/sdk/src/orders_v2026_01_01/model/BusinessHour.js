@@ -115,7 +115,7 @@ BusinessHour.prototype.dayOfWeek = undefined
 
 /**
  * Collection of time windows during which the location is available for deliveries on the specified day.
- * @member {[TimeWindow]} timeWindows
- * @type {[TimeWindow]}
+ * @member {TimeWindow[]} timeWindows
+ * @type {TimeWindow[]}
  */
 BusinessHour.prototype.timeWindows = undefined

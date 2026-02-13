@@ -21,14 +21,14 @@ export class InboundOrder {
      * @param orderId {String} Inbound order ID.
      * @param orderStatus {InboundStatus}
      * @param originAddress {Address}
-     * @param packagesToInbound {[DistributionPackageQuantity]} List of packages to be inbounded.
+     * @param packagesToInbound {DistributionPackageQuantity[]} List of packages to be inbounded.
      */
-    constructor(createdAt: Date, orderId: string, orderStatus: InboundStatus, originAddress: Address, packagesToInbound: [DistributionPackageQuantity]);
+    constructor(createdAt: Date, orderId: string, orderStatus: InboundStatus, originAddress: Address, packagesToInbound: DistributionPackageQuantity[]);
     createdAt: Date;
     orderId: string;
     orderStatus: InboundStatus;
     originAddress: Address;
-    packagesToInbound: [DistributionPackageQuantity];
+    packagesToInbound: DistributionPackageQuantity[];
     /**
      * @member {DestinationDetails} destinationDetails
      * @type {DestinationDetails}

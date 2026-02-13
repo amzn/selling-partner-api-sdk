@@ -14,16 +14,16 @@ export class CreateScheduledPackagesResponse {
     static constructFromObject(data: any, obj: CreateScheduledPackagesResponse): CreateScheduledPackagesResponse;
     /**
      * A list of packages. Refer to the `Package` object.
-     * @member {[Package]} scheduledPackages
-     * @type {[Package]}
+     * @member {Package[]} scheduledPackages
+     * @type {Package[]}
      */
-    scheduledPackages: [Package];
+    scheduledPackages: Package[];
     /**
      * A list of orders we couldn't scheduled on your behalf. Each element contains the reason and details on the error.
-     * @member {[RejectedOrder]} rejectedOrders
-     * @type {[RejectedOrder]}
+     * @member {RejectedOrder[]} rejectedOrders
+     * @type {RejectedOrder[]}
      */
-    rejectedOrders: [RejectedOrder];
+    rejectedOrders: RejectedOrder[];
     /**
      * A pre-signed URL for the zip document containing the shipping labels and the documents enabled for your marketplace.
      * @member {String} printableDocumentsUrl
