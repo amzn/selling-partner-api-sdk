@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class FulfillmentPolicy.
-* @enum {String}
-* @readonly
-*/
-export class FulfillmentPolicy {
-  /**
-         * value: "FillOrKill"
-         * @const
-         */
-  'FillOrKill' = 'FillOrKill'
-
-  /**
-         * value: "FillAll"
-         * @const
-         */
-  'FillAll' = 'FillAll'
-
-  /**
-         * value: "FillAllAvailable"
-         * @const
-         */
-  'FillAllAvailable' = 'FillAllAvailable'
-
-  /**
-    * Returns a <code>FulfillmentPolicy</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {FulfillmentPolicy} The enum <code>FulfillmentPolicy</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'FillOrKill'|'FillAll'|'FillAllAvailable'} FulfillmentPolicy
+ */
+export const FulfillmentPolicy = Object.freeze({
+  FillOrKill: 'FillOrKill',
+  FillAll: 'FillAll',
+  FillAllAvailable: 'FillAllAvailable'
+})

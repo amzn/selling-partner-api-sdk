@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class InvalidItemReasonCode.
-* @enum {String}
-* @readonly
-*/
-export class InvalidItemReasonCode {
-  /**
-         * value: "InvalidValues"
-         * @const
-         */
-  'InvalidValues' = 'InvalidValues'
-
-  /**
-         * value: "DuplicateRequest"
-         * @const
-         */
-  'DuplicateRequest' = 'DuplicateRequest'
-
-  /**
-         * value: "NoCompletedShipItems"
-         * @const
-         */
-  'NoCompletedShipItems' = 'NoCompletedShipItems'
-
-  /**
-         * value: "NoReturnableQuantity"
-         * @const
-         */
-  'NoReturnableQuantity' = 'NoReturnableQuantity'
-
-  /**
-    * Returns a <code>InvalidItemReasonCode</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {InvalidItemReasonCode} The enum <code>InvalidItemReasonCode</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'InvalidValues'|'DuplicateRequest'|'NoCompletedShipItems'|'NoReturnableQuantity'} InvalidItemReasonCode
+ */
+export const InvalidItemReasonCode = Object.freeze({
+  InvalidValues: 'InvalidValues',
+  DuplicateRequest: 'DuplicateRequest',
+  NoCompletedShipItems: 'NoCompletedShipItems',
+  NoReturnableQuantity: 'NoReturnableQuantity'
+})

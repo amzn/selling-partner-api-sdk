@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class GovernmentInvoiceCreationStatus.
-* @enum {String}
-* @readonly
-*/
-export class GovernmentInvoiceCreationStatus {
-  /**
-         * value: "PROCESSING"
-         * @const
-         */
-  'PROCESSING' = 'PROCESSING'
-
-  /**
-         * value: "SUCCESS"
-         * @const
-         */
-  'SUCCESS' = 'SUCCESS'
-
-  /**
-         * value: "ERROR"
-         * @const
-         */
-  'ERROR' = 'ERROR'
-
-  /**
-    * Returns a <code>GovernmentInvoiceCreationStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {GovernmentInvoiceCreationStatus} The enum <code>GovernmentInvoiceCreationStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'PROCESSING'|'SUCCESS'|'ERROR'} GovernmentInvoiceCreationStatus
+ */
+export const GovernmentInvoiceCreationStatus = Object.freeze({
+  PROCESSING: 'PROCESSING',
+  SUCCESS: 'SUCCESS',
+  ERROR: 'ERROR'
+})

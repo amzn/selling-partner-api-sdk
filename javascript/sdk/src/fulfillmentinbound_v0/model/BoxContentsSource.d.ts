@@ -1,34 +1,11 @@
+export type BoxContentsSource = "NONE" | "FEED" | "2D_BARCODE" | "INTERACTIVE";
 /**
-* Enum class BoxContentsSource.
-* @enum {String}
-* @readonly
-*/
-export class BoxContentsSource {
-    /**
-      * Returns a <code>BoxContentsSource</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {BoxContentsSource} The enum <code>BoxContentsSource</code> value.
-      */
-    static constructFromObject(object: any): BoxContentsSource;
-    /**
-           * value: "NONE"
-           * @const
-           */
-    NONE: string;
-    /**
-           * value: "FEED"
-           * @const
-           */
-    FEED: string;
-    /**
-           * value: "2D_BARCODE"
-           * @const
-           */
-    '2D_BARCODE': string;
-    /**
-           * value: "INTERACTIVE"
-           * @const
-           */
-    INTERACTIVE: string;
-}
+ * @typedef {'NONE'|'FEED'|'2D_BARCODE'|'INTERACTIVE'} BoxContentsSource
+ */
+export const BoxContentsSource: Readonly<{
+    NONE: "NONE";
+    FEED: "FEED";
+    '2D_BARCODE': "2D_BARCODE";
+    INTERACTIVE: "INTERACTIVE";
+}>;
 //# sourceMappingURL=BoxContentsSource.d.ts.map

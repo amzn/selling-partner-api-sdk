@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ContentStatus.
-* @enum {String}
-* @readonly
-*/
-export class ContentStatus {
-  /**
-         * value: "APPROVED"
-         * @const
-         */
-  'APPROVED' = 'APPROVED'
-
-  /**
-         * value: "DRAFT"
-         * @const
-         */
-  'DRAFT' = 'DRAFT'
-
-  /**
-         * value: "REJECTED"
-         * @const
-         */
-  'REJECTED' = 'REJECTED'
-
-  /**
-         * value: "SUBMITTED"
-         * @const
-         */
-  'SUBMITTED' = 'SUBMITTED'
-
-  /**
-    * Returns a <code>ContentStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ContentStatus} The enum <code>ContentStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'APPROVED'|'DRAFT'|'REJECTED'|'SUBMITTED'} ContentStatus
+ */
+export const ContentStatus = Object.freeze({
+  APPROVED: 'APPROVED',
+  DRAFT: 'DRAFT',
+  REJECTED: 'REJECTED',
+  SUBMITTED: 'SUBMITTED'
+})

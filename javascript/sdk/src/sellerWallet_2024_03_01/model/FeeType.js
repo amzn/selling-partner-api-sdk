@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class FeeType.
-* @enum {String}
-* @readonly
-*/
-export class FeeType {
-  /**
-         * value: "MISCELLANEOUS_FEE"
-         * @const
-         */
-  'MISCELLANEOUS_FEE' = 'MISCELLANEOUS_FEE'
-
-  /**
-         * value: "TAX"
-         * @const
-         */
-  'TAX' = 'TAX'
-
-  /**
-         * value: "TRANSACTION_FEE"
-         * @const
-         */
-  'TRANSACTION_FEE' = 'TRANSACTION_FEE'
-
-  /**
-    * Returns a <code>FeeType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {FeeType} The enum <code>FeeType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'MISCELLANEOUS_FEE'|'TAX'|'TRANSACTION_FEE'} FeeType
+ */
+export const FeeType = Object.freeze({
+  MISCELLANEOUS_FEE: 'MISCELLANEOUS_FEE',
+  TAX: 'TAX',
+  TRANSACTION_FEE: 'TRANSACTION_FEE'
+})

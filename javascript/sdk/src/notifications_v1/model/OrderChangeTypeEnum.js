@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class OrderChangeTypeEnum.
-* @enum {String}
-* @readonly
-*/
-export class OrderChangeTypeEnum {
-  /**
-         * value: "OrderStatusChange"
-         * @const
-         */
-  'OrderStatusChange' = 'OrderStatusChange'
-
-  /**
-         * value: "BuyerRequestedChange"
-         * @const
-         */
-  'BuyerRequestedChange' = 'BuyerRequestedChange'
-
-  /**
-    * Returns a <code>OrderChangeTypeEnum</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {OrderChangeTypeEnum} The enum <code>OrderChangeTypeEnum</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'OrderStatusChange'|'BuyerRequestedChange'} OrderChangeTypeEnum
+ */
+export const OrderChangeTypeEnum = Object.freeze({
+  OrderStatusChange: 'OrderStatusChange',
+  BuyerRequestedChange: 'BuyerRequestedChange'
+})

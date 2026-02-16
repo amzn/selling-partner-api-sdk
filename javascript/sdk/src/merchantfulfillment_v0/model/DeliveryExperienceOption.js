@@ -14,47 +14,12 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class DeliveryExperienceOption.
-* @enum {String}
-* @readonly
-*/
-export class DeliveryExperienceOption {
-  /**
-         * value: "DeliveryConfirmationWithAdultSignature"
-         * @const
-         */
-  'DeliveryConfirmationWithAdultSignature' = 'DeliveryConfirmationWithAdultSignature'
-
-  /**
-         * value: "DeliveryConfirmationWithSignature"
-         * @const
-         */
-  'DeliveryConfirmationWithSignature' = 'DeliveryConfirmationWithSignature'
-
-  /**
-         * value: "DeliveryConfirmationWithoutSignature"
-         * @const
-         */
-  'DeliveryConfirmationWithoutSignature' = 'DeliveryConfirmationWithoutSignature'
-
-  /**
-         * value: "NoTracking"
-         * @const
-         */
-  'NoTracking' = 'NoTracking'
-
-  /**
-         * value: "NoPreference"
-         * @const
-         */
-  'NoPreference' = 'NoPreference'
-
-  /**
-    * Returns a <code>DeliveryExperienceOption</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {DeliveryExperienceOption} The enum <code>DeliveryExperienceOption</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'DeliveryConfirmationWithAdultSignature'|'DeliveryConfirmationWithSignature'|'DeliveryConfirmationWithoutSignature'|'NoTracking'|'NoPreference'} DeliveryExperienceOption
+ */
+export const DeliveryExperienceOption = Object.freeze({
+  DeliveryConfirmationWithAdultSignature: 'DeliveryConfirmationWithAdultSignature',
+  DeliveryConfirmationWithSignature: 'DeliveryConfirmationWithSignature',
+  DeliveryConfirmationWithoutSignature: 'DeliveryConfirmationWithoutSignature',
+  NoTracking: 'NoTracking',
+  NoPreference: 'NoPreference'
+})

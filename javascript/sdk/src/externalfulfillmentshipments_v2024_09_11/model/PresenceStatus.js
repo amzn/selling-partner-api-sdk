@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class PresenceStatus.
-* @enum {String}
-* @readonly
-*/
-export class PresenceStatus {
-  /**
-         * value: "ABSENT"
-         * @const
-         */
-  'ABSENT' = 'ABSENT'
-
-  /**
-         * value: "PRESENT"
-         * @const
-         */
-  'PRESENT' = 'PRESENT'
-
-  /**
-    * Returns a <code>PresenceStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {PresenceStatus} The enum <code>PresenceStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'ABSENT'|'PRESENT'} PresenceStatus
+ */
+export const PresenceStatus = Object.freeze({
+  ABSENT: 'ABSENT',
+  PRESENT: 'PRESENT'
+})

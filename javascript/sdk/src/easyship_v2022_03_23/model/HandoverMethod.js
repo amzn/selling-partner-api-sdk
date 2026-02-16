@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class HandoverMethod.
-* @enum {String}
-* @readonly
-*/
-export class HandoverMethod {
-  /**
-         * value: "PICKUP"
-         * @const
-         */
-  'PICKUP' = 'PICKUP'
-
-  /**
-         * value: "DROPOFF"
-         * @const
-         */
-  'DROPOFF' = 'DROPOFF'
-
-  /**
-    * Returns a <code>HandoverMethod</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {HandoverMethod} The enum <code>HandoverMethod</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'PICKUP'|'DROPOFF'} HandoverMethod
+ */
+export const HandoverMethod = Object.freeze({
+  PICKUP: 'PICKUP',
+  DROPOFF: 'DROPOFF'
+})

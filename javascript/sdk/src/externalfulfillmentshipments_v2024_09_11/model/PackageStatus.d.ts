@@ -1,44 +1,13 @@
+export type PackageStatus = "CREATED" | "PICKUP_SLOT_RETRIEVED" | "INVOICE_GENERATED" | "SHIPLABEL_GENERATED" | "SHIPPED" | "DELIVERED";
 /**
-* Enum class PackageStatus.
-* @enum {String}
-* @readonly
-*/
-export class PackageStatus {
-    /**
-      * Returns a <code>PackageStatus</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {PackageStatus} The enum <code>PackageStatus</code> value.
-      */
-    static constructFromObject(object: any): PackageStatus;
-    /**
-           * value: "CREATED"
-           * @const
-           */
-    CREATED: string;
-    /**
-           * value: "PICKUP_SLOT_RETRIEVED"
-           * @const
-           */
-    PICKUP_SLOT_RETRIEVED: string;
-    /**
-           * value: "INVOICE_GENERATED"
-           * @const
-           */
-    INVOICE_GENERATED: string;
-    /**
-           * value: "SHIPLABEL_GENERATED"
-           * @const
-           */
-    SHIPLABEL_GENERATED: string;
-    /**
-           * value: "SHIPPED"
-           * @const
-           */
-    SHIPPED: string;
-    /**
-           * value: "DELIVERED"
-           * @const
-           */
-    DELIVERED: string;
-}
+ * @typedef {'CREATED'|'PICKUP_SLOT_RETRIEVED'|'INVOICE_GENERATED'|'SHIPLABEL_GENERATED'|'SHIPPED'|'DELIVERED'} PackageStatus
+ */
+export const PackageStatus: Readonly<{
+    CREATED: "CREATED";
+    PICKUP_SLOT_RETRIEVED: "PICKUP_SLOT_RETRIEVED";
+    INVOICE_GENERATED: "INVOICE_GENERATED";
+    SHIPLABEL_GENERATED: "SHIPLABEL_GENERATED";
+    SHIPPED: "SHIPPED";
+    DELIVERED: "DELIVERED";
+}>;
 //# sourceMappingURL=PackageStatus.d.ts.map

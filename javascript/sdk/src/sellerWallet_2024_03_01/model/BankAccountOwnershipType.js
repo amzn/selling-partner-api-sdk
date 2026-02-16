@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class BankAccountOwnershipType.
-* @enum {String}
-* @readonly
-*/
-export class BankAccountOwnershipType {
-  /**
-         * value: "THIRD_PARTY"
-         * @const
-         */
-  'THIRD_PARTY' = 'THIRD_PARTY'
-
-  /**
-         * value: "SELF"
-         * @const
-         */
-  'SELF' = 'SELF'
-
-  /**
-    * Returns a <code>BankAccountOwnershipType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {BankAccountOwnershipType} The enum <code>BankAccountOwnershipType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'THIRD_PARTY'|'SELF'} BankAccountOwnershipType
+ */
+export const BankAccountOwnershipType = Object.freeze({
+  THIRD_PARTY: 'THIRD_PARTY',
+  SELF: 'SELF'
+})

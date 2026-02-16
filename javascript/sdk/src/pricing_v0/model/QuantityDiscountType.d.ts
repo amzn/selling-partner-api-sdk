@@ -1,19 +1,8 @@
+export type QuantityDiscountType = "QUANTITY_DISCOUNT";
 /**
-* Enum class QuantityDiscountType.
-* @enum {String}
-* @readonly
-*/
-export class QuantityDiscountType {
-    /**
-      * Returns a <code>QuantityDiscountType</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {QuantityDiscountType} The enum <code>QuantityDiscountType</code> value.
-      */
-    static constructFromObject(object: any): QuantityDiscountType;
-    /**
-           * value: "QUANTITY_DISCOUNT"
-           * @const
-           */
-    QUANTITY_DISCOUNT: string;
-}
+ * @typedef {'QUANTITY_DISCOUNT'} QuantityDiscountType
+ */
+export const QuantityDiscountType: Readonly<{
+    QUANTITY_DISCOUNT: "QUANTITY_DISCOUNT";
+}>;
 //# sourceMappingURL=QuantityDiscountType.d.ts.map

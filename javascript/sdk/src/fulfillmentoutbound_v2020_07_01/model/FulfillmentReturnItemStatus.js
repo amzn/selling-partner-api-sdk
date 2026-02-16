@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class FulfillmentReturnItemStatus.
-* @enum {String}
-* @readonly
-*/
-export class FulfillmentReturnItemStatus {
-  /**
-         * value: "New"
-         * @const
-         */
-  'New' = 'New'
-
-  /**
-         * value: "Processed"
-         * @const
-         */
-  'Processed' = 'Processed'
-
-  /**
-    * Returns a <code>FulfillmentReturnItemStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {FulfillmentReturnItemStatus} The enum <code>FulfillmentReturnItemStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'New'|'Processed'} FulfillmentReturnItemStatus
+ */
+export const FulfillmentReturnItemStatus = Object.freeze({
+  New: 'New',
+  Processed: 'Processed'
+})

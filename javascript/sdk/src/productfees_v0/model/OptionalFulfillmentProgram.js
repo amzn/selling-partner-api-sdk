@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class OptionalFulfillmentProgram.
-* @enum {String}
-* @readonly
-*/
-export class OptionalFulfillmentProgram {
-  /**
-         * value: "FBA_CORE"
-         * @const
-         */
-  'FBA_CORE' = 'FBA_CORE'
-
-  /**
-         * value: "FBA_SNL"
-         * @const
-         */
-  'FBA_SNL' = 'FBA_SNL'
-
-  /**
-         * value: "FBA_EFN"
-         * @const
-         */
-  'FBA_EFN' = 'FBA_EFN'
-
-  /**
-    * Returns a <code>OptionalFulfillmentProgram</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {OptionalFulfillmentProgram} The enum <code>OptionalFulfillmentProgram</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'FBA_CORE'|'FBA_SNL'|'FBA_EFN'} OptionalFulfillmentProgram
+ */
+export const OptionalFulfillmentProgram = Object.freeze({
+  FBA_CORE: 'FBA_CORE',
+  FBA_SNL: 'FBA_SNL',
+  FBA_EFN: 'FBA_EFN'
+})

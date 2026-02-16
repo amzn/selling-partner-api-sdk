@@ -14,47 +14,12 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ClaimReason.
-* @enum {String}
-* @readonly
-*/
-export class ClaimReason {
-  /**
-         * value: "LOST_IN_TRANSIT"
-         * @const
-         */
-  'LOST_IN_TRANSIT' = 'LOST_IN_TRANSIT'
-
-  /**
-         * value: "DAMAGED_IN_TRANSIT"
-         * @const
-         */
-  'DAMAGED_IN_TRANSIT' = 'DAMAGED_IN_TRANSIT'
-
-  /**
-         * value: "DELIVERED_NOT_RECEIVED"
-         * @const
-         */
-  'DELIVERED_NOT_RECEIVED' = 'DELIVERED_NOT_RECEIVED'
-
-  /**
-         * value: "ITEM_MISSING_SWITCHEROO"
-         * @const
-         */
-  'ITEM_MISSING_SWITCHEROO' = 'ITEM_MISSING_SWITCHEROO'
-
-  /**
-         * value: "COD_ABUSE"
-         * @const
-         */
-  'COD_ABUSE' = 'COD_ABUSE'
-
-  /**
-    * Returns a <code>ClaimReason</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ClaimReason} The enum <code>ClaimReason</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'LOST_IN_TRANSIT'|'DAMAGED_IN_TRANSIT'|'DELIVERED_NOT_RECEIVED'|'ITEM_MISSING_SWITCHEROO'|'COD_ABUSE'} ClaimReason
+ */
+export const ClaimReason = Object.freeze({
+  LOST_IN_TRANSIT: 'LOST_IN_TRANSIT',
+  DAMAGED_IN_TRANSIT: 'DAMAGED_IN_TRANSIT',
+  DELIVERED_NOT_RECEIVED: 'DELIVERED_NOT_RECEIVED',
+  ITEM_MISSING_SWITCHEROO: 'ITEM_MISSING_SWITCHEROO',
+  COD_ABUSE: 'COD_ABUSE'
+})

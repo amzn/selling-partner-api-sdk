@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ShipmentStatus.
-* @enum {String}
-* @readonly
-*/
-export class ShipmentStatus {
-  /**
-         * value: "Purchased"
-         * @const
-         */
-  'Purchased' = 'Purchased'
-
-  /**
-         * value: "RefundPending"
-         * @const
-         */
-  'RefundPending' = 'RefundPending'
-
-  /**
-         * value: "RefundRejected"
-         * @const
-         */
-  'RefundRejected' = 'RefundRejected'
-
-  /**
-         * value: "RefundApplied"
-         * @const
-         */
-  'RefundApplied' = 'RefundApplied'
-
-  /**
-    * Returns a <code>ShipmentStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ShipmentStatus} The enum <code>ShipmentStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'Purchased'|'RefundPending'|'RefundRejected'|'RefundApplied'} ShipmentStatus
+ */
+export const ShipmentStatus = Object.freeze({
+  Purchased: 'Purchased',
+  RefundPending: 'RefundPending',
+  RefundRejected: 'RefundRejected',
+  RefundApplied: 'RefundApplied'
+})

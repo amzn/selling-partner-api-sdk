@@ -14,23 +14,8 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ThroughputUnit.
-* @enum {String}
-* @readonly
-*/
-export class ThroughputUnit {
-  /**
-         * value: "Order"
-         * @const
-         */
-  'Order' = 'Order'
-
-  /**
-    * Returns a <code>ThroughputUnit</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ThroughputUnit} The enum <code>ThroughputUnit</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'Order'} ThroughputUnit
+ */
+export const ThroughputUnit = Object.freeze({
+  Order: 'Order'
+})

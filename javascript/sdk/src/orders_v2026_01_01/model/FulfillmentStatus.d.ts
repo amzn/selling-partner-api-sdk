@@ -1,49 +1,14 @@
+export type FulfillmentStatus = "PENDING_AVAILABILITY" | "PENDING" | "UNSHIPPED" | "PARTIALLY_SHIPPED" | "SHIPPED" | "CANCELLED" | "UNFULFILLABLE";
 /**
-* Enum class FulfillmentStatus.
-* @enum {String}
-* @readonly
-*/
-export class FulfillmentStatus {
-    /**
-      * Returns a <code>FulfillmentStatus</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {FulfillmentStatus} The enum <code>FulfillmentStatus</code> value.
-      */
-    static constructFromObject(object: any): FulfillmentStatus;
-    /**
-           * value: "PENDING_AVAILABILITY"
-           * @const
-           */
-    PENDING_AVAILABILITY: string;
-    /**
-           * value: "PENDING"
-           * @const
-           */
-    PENDING: string;
-    /**
-           * value: "UNSHIPPED"
-           * @const
-           */
-    UNSHIPPED: string;
-    /**
-           * value: "PARTIALLY_SHIPPED"
-           * @const
-           */
-    PARTIALLY_SHIPPED: string;
-    /**
-           * value: "SHIPPED"
-           * @const
-           */
-    SHIPPED: string;
-    /**
-           * value: "CANCELLED"
-           * @const
-           */
-    CANCELLED: string;
-    /**
-           * value: "UNFULFILLABLE"
-           * @const
-           */
-    UNFULFILLABLE: string;
-}
+ * @typedef {'PENDING_AVAILABILITY'|'PENDING'|'UNSHIPPED'|'PARTIALLY_SHIPPED'|'SHIPPED'|'CANCELLED'|'UNFULFILLABLE'} FulfillmentStatus
+ */
+export const FulfillmentStatus: Readonly<{
+    PENDING_AVAILABILITY: "PENDING_AVAILABILITY";
+    PENDING: "PENDING";
+    UNSHIPPED: "UNSHIPPED";
+    PARTIALLY_SHIPPED: "PARTIALLY_SHIPPED";
+    SHIPPED: "SHIPPED";
+    CANCELLED: "CANCELLED";
+    UNFULFILLABLE: "UNFULFILLABLE";
+}>;
 //# sourceMappingURL=FulfillmentStatus.d.ts.map

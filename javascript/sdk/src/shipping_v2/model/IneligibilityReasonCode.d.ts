@@ -1,64 +1,17 @@
+export type IneligibilityReasonCode = "NO_COVERAGE" | "PICKUP_SLOT_RESTRICTION" | "UNSUPPORTED_VAS" | "VAS_COMBINATION_RESTRICTION" | "SIZE_RESTRICTIONS" | "WEIGHT_RESTRICTIONS" | "LATE_DELIVERY" | "PROGRAM_CONSTRAINTS" | "TERMS_AND_CONDITIONS_NOT_ACCEPTED" | "UNKNOWN";
 /**
-* Enum class IneligibilityReasonCode.
-* @enum {String}
-* @readonly
-*/
-export class IneligibilityReasonCode {
-    /**
-      * Returns a <code>IneligibilityReasonCode</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {IneligibilityReasonCode} The enum <code>IneligibilityReasonCode</code> value.
-      */
-    static constructFromObject(object: any): IneligibilityReasonCode;
-    /**
-           * value: "NO_COVERAGE"
-           * @const
-           */
-    NO_COVERAGE: string;
-    /**
-           * value: "PICKUP_SLOT_RESTRICTION"
-           * @const
-           */
-    PICKUP_SLOT_RESTRICTION: string;
-    /**
-           * value: "UNSUPPORTED_VAS"
-           * @const
-           */
-    UNSUPPORTED_VAS: string;
-    /**
-           * value: "VAS_COMBINATION_RESTRICTION"
-           * @const
-           */
-    VAS_COMBINATION_RESTRICTION: string;
-    /**
-           * value: "SIZE_RESTRICTIONS"
-           * @const
-           */
-    SIZE_RESTRICTIONS: string;
-    /**
-           * value: "WEIGHT_RESTRICTIONS"
-           * @const
-           */
-    WEIGHT_RESTRICTIONS: string;
-    /**
-           * value: "LATE_DELIVERY"
-           * @const
-           */
-    LATE_DELIVERY: string;
-    /**
-           * value: "PROGRAM_CONSTRAINTS"
-           * @const
-           */
-    PROGRAM_CONSTRAINTS: string;
-    /**
-           * value: "TERMS_AND_CONDITIONS_NOT_ACCEPTED"
-           * @const
-           */
-    TERMS_AND_CONDITIONS_NOT_ACCEPTED: string;
-    /**
-           * value: "UNKNOWN"
-           * @const
-           */
-    UNKNOWN: string;
-}
+ * @typedef {'NO_COVERAGE'|'PICKUP_SLOT_RESTRICTION'|'UNSUPPORTED_VAS'|'VAS_COMBINATION_RESTRICTION'|'SIZE_RESTRICTIONS'|'WEIGHT_RESTRICTIONS'|'LATE_DELIVERY'|'PROGRAM_CONSTRAINTS'|'TERMS_AND_CONDITIONS_NOT_ACCEPTED'|'UNKNOWN'} IneligibilityReasonCode
+ */
+export const IneligibilityReasonCode: Readonly<{
+    NO_COVERAGE: "NO_COVERAGE";
+    PICKUP_SLOT_RESTRICTION: "PICKUP_SLOT_RESTRICTION";
+    UNSUPPORTED_VAS: "UNSUPPORTED_VAS";
+    VAS_COMBINATION_RESTRICTION: "VAS_COMBINATION_RESTRICTION";
+    SIZE_RESTRICTIONS: "SIZE_RESTRICTIONS";
+    WEIGHT_RESTRICTIONS: "WEIGHT_RESTRICTIONS";
+    LATE_DELIVERY: "LATE_DELIVERY";
+    PROGRAM_CONSTRAINTS: "PROGRAM_CONSTRAINTS";
+    TERMS_AND_CONDITIONS_NOT_ACCEPTED: "TERMS_AND_CONDITIONS_NOT_ACCEPTED";
+    UNKNOWN: "UNKNOWN";
+}>;
 //# sourceMappingURL=IneligibilityReasonCode.d.ts.map

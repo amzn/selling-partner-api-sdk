@@ -26,7 +26,7 @@ export class GetSellingPartnerMetricsRequest {
     timeInterval: TimeInterval;
     timePeriodType: TimePeriodType;
     marketplaceId: string;
-    programTypes: ProgramType[];
+    programTypes: "SUBSCRIBE_AND_SAVE"[];
     /**
      * @member {AggregationFrequency} aggregationFrequency
      * @type {AggregationFrequency}
@@ -41,7 +41,7 @@ export class GetSellingPartnerMetricsRequest {
 }
 import { TimeInterval } from './TimeInterval.js';
 import { TimePeriodType } from './TimePeriodType.js';
-import { ProgramType } from './ProgramType.js';
 import { AggregationFrequency } from './AggregationFrequency.js';
 import { Metric } from './Metric.js';
+import { ProgramType } from './ProgramType.js';
 //# sourceMappingURL=GetSellingPartnerMetricsRequest.d.ts.map

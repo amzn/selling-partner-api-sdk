@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class AggregationTimePeriod.
-* @enum {String}
-* @readonly
-*/
-export class AggregationTimePeriod {
-  /**
-         * value: "FiveMinutes"
-         * @const
-         */
-  'FiveMinutes' = 'FiveMinutes'
-
-  /**
-         * value: "TenMinutes"
-         * @const
-         */
-  'TenMinutes' = 'TenMinutes'
-
-  /**
-    * Returns a <code>AggregationTimePeriod</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {AggregationTimePeriod} The enum <code>AggregationTimePeriod</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'FiveMinutes'|'TenMinutes'} AggregationTimePeriod
+ */
+export const AggregationTimePeriod = Object.freeze({
+  FiveMinutes: 'FiveMinutes',
+  TenMinutes: 'TenMinutes'
+})

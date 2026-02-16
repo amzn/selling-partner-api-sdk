@@ -14,47 +14,12 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ConditionType.
-* @enum {String}
-* @readonly
-*/
-export class ConditionType {
-  /**
-         * value: "New"
-         * @const
-         */
-  'New' = 'New'
-
-  /**
-         * value: "Used"
-         * @const
-         */
-  'Used' = 'Used'
-
-  /**
-         * value: "Collectible"
-         * @const
-         */
-  'Collectible' = 'Collectible'
-
-  /**
-         * value: "Refurbished"
-         * @const
-         */
-  'Refurbished' = 'Refurbished'
-
-  /**
-         * value: "Club"
-         * @const
-         */
-  'Club' = 'Club'
-
-  /**
-    * Returns a <code>ConditionType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ConditionType} The enum <code>ConditionType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'New'|'Used'|'Collectible'|'Refurbished'|'Club'} ConditionType
+ */
+export const ConditionType = Object.freeze({
+  New: 'New',
+  Used: 'Used',
+  Collectible: 'Collectible',
+  Refurbished: 'Refurbished',
+  Club: 'Club'
+})

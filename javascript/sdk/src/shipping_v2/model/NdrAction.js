@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class NdrAction.
-* @enum {String}
-* @readonly
-*/
-export class NdrAction {
-  /**
-         * value: "RESCHEDULE"
-         * @const
-         */
-  'RESCHEDULE' = 'RESCHEDULE'
-
-  /**
-         * value: "REATTEMPT"
-         * @const
-         */
-  'REATTEMPT' = 'REATTEMPT'
-
-  /**
-         * value: "RTO"
-         * @const
-         */
-  'RTO' = 'RTO'
-
-  /**
-    * Returns a <code>NdrAction</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {NdrAction} The enum <code>NdrAction</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'RESCHEDULE'|'REATTEMPT'|'RTO'} NdrAction
+ */
+export const NdrAction = Object.freeze({
+  RESCHEDULE: 'RESCHEDULE',
+  REATTEMPT: 'REATTEMPT',
+  RTO: 'RTO'
+})

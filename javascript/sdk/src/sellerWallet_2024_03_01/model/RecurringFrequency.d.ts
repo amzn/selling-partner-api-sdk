@@ -1,34 +1,11 @@
+export type RecurringFrequency = "DAILY" | "WEEKLY" | "BIWEEKLY" | "MONTHLY";
 /**
-* Enum class RecurringFrequency.
-* @enum {String}
-* @readonly
-*/
-export class RecurringFrequency {
-    /**
-      * Returns a <code>RecurringFrequency</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {RecurringFrequency} The enum <code>RecurringFrequency</code> value.
-      */
-    static constructFromObject(object: any): RecurringFrequency;
-    /**
-           * value: "DAILY"
-           * @const
-           */
-    DAILY: string;
-    /**
-           * value: "WEEKLY"
-           * @const
-           */
-    WEEKLY: string;
-    /**
-           * value: "BIWEEKLY"
-           * @const
-           */
-    BIWEEKLY: string;
-    /**
-           * value: "MONTHLY"
-           * @const
-           */
-    MONTHLY: string;
-}
+ * @typedef {'DAILY'|'WEEKLY'|'BIWEEKLY'|'MONTHLY'} RecurringFrequency
+ */
+export const RecurringFrequency: Readonly<{
+    DAILY: "DAILY";
+    WEEKLY: "WEEKLY";
+    BIWEEKLY: "BIWEEKLY";
+    MONTHLY: "MONTHLY";
+}>;
 //# sourceMappingURL=RecurringFrequency.d.ts.map

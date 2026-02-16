@@ -1,1 +1,1 @@
-{"version":3,"file":"ShippingSpeedCategory.d.ts","sourceRoot":"","sources":["ShippingSpeedCategory.js"],"names":[],"mappings":"AAeA;;;;EAIE;AACF;IAyBE;;;;QAII;IACJ,yCAFa,qBAAqB,CAIjC;IA/BD;;;aAGS;IACT,iBAAuB;IAEvB;;;aAGS;IACT,kBAAyB;IAEzB;;;aAGS;IACT,iBAAuB;IAEvB;;;aAGS;IACT,0BAAyC;CAU1C"}
+{"version":3,"file":"ShippingSpeedCategory.d.ts","sourceRoot":"","sources":["ShippingSpeedCategory.js"],"names":[],"mappings":"oCAgBa,UAAU,GAAC,WAAW,GAAC,UAAU,GAAC,mBAAmB;AADlE;;GAEG;AACH;;;;;GAKE"}

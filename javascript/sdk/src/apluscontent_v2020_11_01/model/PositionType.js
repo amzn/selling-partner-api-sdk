@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class PositionType.
-* @enum {String}
-* @readonly
-*/
-export class PositionType {
-  /**
-         * value: "LEFT"
-         * @const
-         */
-  'LEFT' = 'LEFT'
-
-  /**
-         * value: "RIGHT"
-         * @const
-         */
-  'RIGHT' = 'RIGHT'
-
-  /**
-    * Returns a <code>PositionType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {PositionType} The enum <code>PositionType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'LEFT'|'RIGHT'} PositionType
+ */
+export const PositionType = Object.freeze({
+  LEFT: 'LEFT',
+  RIGHT: 'RIGHT'
+})

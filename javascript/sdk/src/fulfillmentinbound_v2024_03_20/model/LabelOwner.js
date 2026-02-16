@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class LabelOwner.
-* @enum {String}
-* @readonly
-*/
-export class LabelOwner {
-  /**
-         * value: "AMAZON"
-         * @const
-         */
-  'AMAZON' = 'AMAZON'
-
-  /**
-         * value: "SELLER"
-         * @const
-         */
-  'SELLER' = 'SELLER'
-
-  /**
-         * value: "NONE"
-         * @const
-         */
-  'NONE' = 'NONE'
-
-  /**
-    * Returns a <code>LabelOwner</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {LabelOwner} The enum <code>LabelOwner</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'AMAZON'|'SELLER'|'NONE'} LabelOwner
+ */
+export const LabelOwner = Object.freeze({
+  AMAZON: 'AMAZON',
+  SELLER: 'SELLER',
+  NONE: 'NONE'
+})

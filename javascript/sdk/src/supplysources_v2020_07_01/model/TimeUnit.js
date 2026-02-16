@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class TimeUnit.
-* @enum {String}
-* @readonly
-*/
-export class TimeUnit {
-  /**
-         * value: "Hours"
-         * @const
-         */
-  'Hours' = 'Hours'
-
-  /**
-         * value: "Minutes"
-         * @const
-         */
-  'Minutes' = 'Minutes'
-
-  /**
-         * value: "Days"
-         * @const
-         */
-  'Days' = 'Days'
-
-  /**
-    * Returns a <code>TimeUnit</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {TimeUnit} The enum <code>TimeUnit</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'Hours'|'Minutes'|'Days'} TimeUnit
+ */
+export const TimeUnit = Object.freeze({
+  Hours: 'Hours',
+  Minutes: 'Minutes',
+  Days: 'Days'
+})

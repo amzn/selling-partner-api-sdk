@@ -1,29 +1,10 @@
+export type LabelAttribute = "PACKAGE_CLIENT_REFERENCE_ID" | "SELLER_DISPLAY_NAME" | "COLLECT_ON_DELIVERY_AMOUNT";
 /**
-* Enum class LabelAttribute.
-* @enum {String}
-* @readonly
-*/
-export class LabelAttribute {
-    /**
-      * Returns a <code>LabelAttribute</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {LabelAttribute} The enum <code>LabelAttribute</code> value.
-      */
-    static constructFromObject(object: any): LabelAttribute;
-    /**
-           * value: "PACKAGE_CLIENT_REFERENCE_ID"
-           * @const
-           */
-    PACKAGE_CLIENT_REFERENCE_ID: string;
-    /**
-           * value: "SELLER_DISPLAY_NAME"
-           * @const
-           */
-    SELLER_DISPLAY_NAME: string;
-    /**
-           * value: "COLLECT_ON_DELIVERY_AMOUNT"
-           * @const
-           */
-    COLLECT_ON_DELIVERY_AMOUNT: string;
-}
+ * @typedef {'PACKAGE_CLIENT_REFERENCE_ID'|'SELLER_DISPLAY_NAME'|'COLLECT_ON_DELIVERY_AMOUNT'} LabelAttribute
+ */
+export const LabelAttribute: Readonly<{
+    PACKAGE_CLIENT_REFERENCE_ID: "PACKAGE_CLIENT_REFERENCE_ID";
+    SELLER_DISPLAY_NAME: "SELLER_DISPLAY_NAME";
+    COLLECT_ON_DELIVERY_AMOUNT: "COLLECT_ON_DELIVERY_AMOUNT";
+}>;
 //# sourceMappingURL=LabelAttribute.d.ts.map

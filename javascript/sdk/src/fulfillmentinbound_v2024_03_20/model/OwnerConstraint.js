@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class OwnerConstraint.
-* @enum {String}
-* @readonly
-*/
-export class OwnerConstraint {
-  /**
-         * value: "AMAZON_ONLY"
-         * @const
-         */
-  'AMAZON_ONLY' = 'AMAZON_ONLY'
-
-  /**
-         * value: "NONE_ONLY"
-         * @const
-         */
-  'NONE_ONLY' = 'NONE_ONLY'
-
-  /**
-         * value: "SELLER_ONLY"
-         * @const
-         */
-  'SELLER_ONLY' = 'SELLER_ONLY'
-
-  /**
-    * Returns a <code>OwnerConstraint</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {OwnerConstraint} The enum <code>OwnerConstraint</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'AMAZON_ONLY'|'NONE_ONLY'|'SELLER_ONLY'} OwnerConstraint
+ */
+export const OwnerConstraint = Object.freeze({
+  AMAZON_ONLY: 'AMAZON_ONLY',
+  NONE_ONLY: 'NONE_ONLY',
+  SELLER_ONLY: 'SELLER_ONLY'
+})

@@ -14,47 +14,12 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ContentBadge.
-* @enum {String}
-* @readonly
-*/
-export class ContentBadge {
-  /**
-         * value: "BULK"
-         * @const
-         */
-  'BULK' = 'BULK'
-
-  /**
-         * value: "GENERATED"
-         * @const
-         */
-  'GENERATED' = 'GENERATED'
-
-  /**
-         * value: "LAUNCHPAD"
-         * @const
-         */
-  'LAUNCHPAD' = 'LAUNCHPAD'
-
-  /**
-         * value: "PREMIUM"
-         * @const
-         */
-  'PREMIUM' = 'PREMIUM'
-
-  /**
-         * value: "STANDARD"
-         * @const
-         */
-  'STANDARD' = 'STANDARD'
-
-  /**
-    * Returns a <code>ContentBadge</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ContentBadge} The enum <code>ContentBadge</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'BULK'|'GENERATED'|'LAUNCHPAD'|'PREMIUM'|'STANDARD'} ContentBadge
+ */
+export const ContentBadge = Object.freeze({
+  BULK: 'BULK',
+  GENERATED: 'GENERATED',
+  LAUNCHPAD: 'LAUNCHPAD',
+  PREMIUM: 'PREMIUM',
+  STANDARD: 'STANDARD'
+})

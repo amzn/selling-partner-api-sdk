@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class FileType.
-* @enum {String}
-* @readonly
-*/
-export class FileType {
-  /**
-         * value: "application/pdf"
-         * @const
-         */
-  'application/pdf' = 'application/pdf'
-
-  /**
-         * value: "application/zpl"
-         * @const
-         */
-  'application/zpl' = 'application/zpl'
-
-  /**
-         * value: "image/png"
-         * @const
-         */
-  'image/png' = 'image/png'
-
-  /**
-    * Returns a <code>FileType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {FileType} The enum <code>FileType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'application/pdf'|'application/zpl'|'image/png'} FileType
+ */
+export const FileType = Object.freeze({
+  'application/pdf': 'application/pdf',
+  'application/zpl': 'application/zpl',
+  'image/png': 'image/png'
+})

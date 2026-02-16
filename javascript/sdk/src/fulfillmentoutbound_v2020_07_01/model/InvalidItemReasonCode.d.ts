@@ -1,34 +1,11 @@
+export type InvalidItemReasonCode = "InvalidValues" | "DuplicateRequest" | "NoCompletedShipItems" | "NoReturnableQuantity";
 /**
-* Enum class InvalidItemReasonCode.
-* @enum {String}
-* @readonly
-*/
-export class InvalidItemReasonCode {
-    /**
-      * Returns a <code>InvalidItemReasonCode</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {InvalidItemReasonCode} The enum <code>InvalidItemReasonCode</code> value.
-      */
-    static constructFromObject(object: any): InvalidItemReasonCode;
-    /**
-           * value: "InvalidValues"
-           * @const
-           */
-    InvalidValues: string;
-    /**
-           * value: "DuplicateRequest"
-           * @const
-           */
-    DuplicateRequest: string;
-    /**
-           * value: "NoCompletedShipItems"
-           * @const
-           */
-    NoCompletedShipItems: string;
-    /**
-           * value: "NoReturnableQuantity"
-           * @const
-           */
-    NoReturnableQuantity: string;
-}
+ * @typedef {'InvalidValues'|'DuplicateRequest'|'NoCompletedShipItems'|'NoReturnableQuantity'} InvalidItemReasonCode
+ */
+export const InvalidItemReasonCode: Readonly<{
+    InvalidValues: "InvalidValues";
+    DuplicateRequest: "DuplicateRequest";
+    NoCompletedShipItems: "NoCompletedShipItems";
+    NoReturnableQuantity: "NoReturnableQuantity";
+}>;
 //# sourceMappingURL=InvalidItemReasonCode.d.ts.map

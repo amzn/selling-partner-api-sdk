@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ShippingSpeedCategory.
-* @enum {String}
-* @readonly
-*/
-export class ShippingSpeedCategory {
-  /**
-         * value: "Standard"
-         * @const
-         */
-  'Standard' = 'Standard'
-
-  /**
-         * value: "Expedited"
-         * @const
-         */
-  'Expedited' = 'Expedited'
-
-  /**
-         * value: "Priority"
-         * @const
-         */
-  'Priority' = 'Priority'
-
-  /**
-         * value: "ScheduledDelivery"
-         * @const
-         */
-  'ScheduledDelivery' = 'ScheduledDelivery'
-
-  /**
-    * Returns a <code>ShippingSpeedCategory</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ShippingSpeedCategory} The enum <code>ShippingSpeedCategory</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'Standard'|'Expedited'|'Priority'|'ScheduledDelivery'} ShippingSpeedCategory
+ */
+export const ShippingSpeedCategory = Object.freeze({
+  Standard: 'Standard',
+  Expedited: 'Expedited',
+  Priority: 'Priority',
+  ScheduledDelivery: 'ScheduledDelivery'
+})

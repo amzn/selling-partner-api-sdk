@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class UnitOfWeight.
-* @enum {String}
-* @readonly
-*/
-export class UnitOfWeight {
-  /**
-         * value: "grams"
-         * @const
-         */
-  'grams' = 'grams'
-
-  /**
-         * value: "g"
-         * @const
-         */
-  'g' = 'g'
-
-  /**
-    * Returns a <code>UnitOfWeight</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {UnitOfWeight} The enum <code>UnitOfWeight</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'grams'|'g'} UnitOfWeight
+ */
+export const UnitOfWeight = Object.freeze({
+  grams: 'grams',
+  g: 'g'
+})

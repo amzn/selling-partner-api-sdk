@@ -14,113 +14,23 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class EasyShipShipmentStatus.
-* @enum {String}
-* @readonly
-*/
-export class EasyShipShipmentStatus {
-  /**
-         * value: "PendingSchedule"
-         * @const
-         */
-  'PendingSchedule' = 'PendingSchedule'
-
-  /**
-         * value: "PendingPickUp"
-         * @const
-         */
-  'PendingPickUp' = 'PendingPickUp'
-
-  /**
-         * value: "PendingDropOff"
-         * @const
-         */
-  'PendingDropOff' = 'PendingDropOff'
-
-  /**
-         * value: "LabelCanceled"
-         * @const
-         */
-  'LabelCanceled' = 'LabelCanceled'
-
-  /**
-         * value: "PickedUp"
-         * @const
-         */
-  'PickedUp' = 'PickedUp'
-
-  /**
-         * value: "DroppedOff"
-         * @const
-         */
-  'DroppedOff' = 'DroppedOff'
-
-  /**
-         * value: "AtOriginFC"
-         * @const
-         */
-  'AtOriginFC' = 'AtOriginFC'
-
-  /**
-         * value: "AtDestinationFC"
-         * @const
-         */
-  'AtDestinationFC' = 'AtDestinationFC'
-
-  /**
-         * value: "Delivered"
-         * @const
-         */
-  'Delivered' = 'Delivered'
-
-  /**
-         * value: "RejectedByBuyer"
-         * @const
-         */
-  'RejectedByBuyer' = 'RejectedByBuyer'
-
-  /**
-         * value: "Undeliverable"
-         * @const
-         */
-  'Undeliverable' = 'Undeliverable'
-
-  /**
-         * value: "ReturningToSeller"
-         * @const
-         */
-  'ReturningToSeller' = 'ReturningToSeller'
-
-  /**
-         * value: "ReturnedToSeller"
-         * @const
-         */
-  'ReturnedToSeller' = 'ReturnedToSeller'
-
-  /**
-         * value: "Lost"
-         * @const
-         */
-  'Lost' = 'Lost'
-
-  /**
-         * value: "OutForDelivery"
-         * @const
-         */
-  'OutForDelivery' = 'OutForDelivery'
-
-  /**
-         * value: "Damaged"
-         * @const
-         */
-  'Damaged' = 'Damaged'
-
-  /**
-    * Returns a <code>EasyShipShipmentStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {EasyShipShipmentStatus} The enum <code>EasyShipShipmentStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'PendingSchedule'|'PendingPickUp'|'PendingDropOff'|'LabelCanceled'|'PickedUp'|'DroppedOff'|'AtOriginFC'|'AtDestinationFC'|'Delivered'|'RejectedByBuyer'|'Undeliverable'|'ReturningToSeller'|'ReturnedToSeller'|'Lost'|'OutForDelivery'|'Damaged'} EasyShipShipmentStatus
+ */
+export const EasyShipShipmentStatus = Object.freeze({
+  PendingSchedule: 'PendingSchedule',
+  PendingPickUp: 'PendingPickUp',
+  PendingDropOff: 'PendingDropOff',
+  LabelCanceled: 'LabelCanceled',
+  PickedUp: 'PickedUp',
+  DroppedOff: 'DroppedOff',
+  AtOriginFC: 'AtOriginFC',
+  AtDestinationFC: 'AtDestinationFC',
+  Delivered: 'Delivered',
+  RejectedByBuyer: 'RejectedByBuyer',
+  Undeliverable: 'Undeliverable',
+  ReturningToSeller: 'ReturningToSeller',
+  ReturnedToSeller: 'ReturnedToSeller',
+  Lost: 'Lost',
+  OutForDelivery: 'OutForDelivery',
+  Damaged: 'Damaged'
+})

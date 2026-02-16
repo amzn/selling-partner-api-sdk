@@ -1,94 +1,23 @@
+export type PrepType = "ITEM_BLACK_SHRINKWRAP" | "ITEM_BLANKSTK" | "ITEM_BOXING" | "ITEM_BUBBLEWRAP" | "ITEM_CAP_SEALING" | "ITEM_DEBUNDLE" | "ITEM_HANG_GARMENT" | "ITEM_LABELING" | "ITEM_NO_PREP" | "ITEM_POLYBAGGING" | "ITEM_RMOVHANG" | "ITEM_SETCREAT" | "ITEM_SETSTK" | "ITEM_SIOC" | "ITEM_SUFFOSTK" | "ITEM_TAPING";
 /**
-* Enum class PrepType.
-* @enum {String}
-* @readonly
-*/
-export class PrepType {
-    /**
-      * Returns a <code>PrepType</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {PrepType} The enum <code>PrepType</code> value.
-      */
-    static constructFromObject(object: any): PrepType;
-    /**
-           * value: "ITEM_BLACK_SHRINKWRAP"
-           * @const
-           */
-    ITEM_BLACK_SHRINKWRAP: string;
-    /**
-           * value: "ITEM_BLANKSTK"
-           * @const
-           */
-    ITEM_BLANKSTK: string;
-    /**
-           * value: "ITEM_BOXING"
-           * @const
-           */
-    ITEM_BOXING: string;
-    /**
-           * value: "ITEM_BUBBLEWRAP"
-           * @const
-           */
-    ITEM_BUBBLEWRAP: string;
-    /**
-           * value: "ITEM_CAP_SEALING"
-           * @const
-           */
-    ITEM_CAP_SEALING: string;
-    /**
-           * value: "ITEM_DEBUNDLE"
-           * @const
-           */
-    ITEM_DEBUNDLE: string;
-    /**
-           * value: "ITEM_HANG_GARMENT"
-           * @const
-           */
-    ITEM_HANG_GARMENT: string;
-    /**
-           * value: "ITEM_LABELING"
-           * @const
-           */
-    ITEM_LABELING: string;
-    /**
-           * value: "ITEM_NO_PREP"
-           * @const
-           */
-    ITEM_NO_PREP: string;
-    /**
-           * value: "ITEM_POLYBAGGING"
-           * @const
-           */
-    ITEM_POLYBAGGING: string;
-    /**
-           * value: "ITEM_RMOVHANG"
-           * @const
-           */
-    ITEM_RMOVHANG: string;
-    /**
-           * value: "ITEM_SETCREAT"
-           * @const
-           */
-    ITEM_SETCREAT: string;
-    /**
-           * value: "ITEM_SETSTK"
-           * @const
-           */
-    ITEM_SETSTK: string;
-    /**
-           * value: "ITEM_SIOC"
-           * @const
-           */
-    ITEM_SIOC: string;
-    /**
-           * value: "ITEM_SUFFOSTK"
-           * @const
-           */
-    ITEM_SUFFOSTK: string;
-    /**
-           * value: "ITEM_TAPING"
-           * @const
-           */
-    ITEM_TAPING: string;
-}
+ * @typedef {'ITEM_BLACK_SHRINKWRAP'|'ITEM_BLANKSTK'|'ITEM_BOXING'|'ITEM_BUBBLEWRAP'|'ITEM_CAP_SEALING'|'ITEM_DEBUNDLE'|'ITEM_HANG_GARMENT'|'ITEM_LABELING'|'ITEM_NO_PREP'|'ITEM_POLYBAGGING'|'ITEM_RMOVHANG'|'ITEM_SETCREAT'|'ITEM_SETSTK'|'ITEM_SIOC'|'ITEM_SUFFOSTK'|'ITEM_TAPING'} PrepType
+ */
+export const PrepType: Readonly<{
+    ITEM_BLACK_SHRINKWRAP: "ITEM_BLACK_SHRINKWRAP";
+    ITEM_BLANKSTK: "ITEM_BLANKSTK";
+    ITEM_BOXING: "ITEM_BOXING";
+    ITEM_BUBBLEWRAP: "ITEM_BUBBLEWRAP";
+    ITEM_CAP_SEALING: "ITEM_CAP_SEALING";
+    ITEM_DEBUNDLE: "ITEM_DEBUNDLE";
+    ITEM_HANG_GARMENT: "ITEM_HANG_GARMENT";
+    ITEM_LABELING: "ITEM_LABELING";
+    ITEM_NO_PREP: "ITEM_NO_PREP";
+    ITEM_POLYBAGGING: "ITEM_POLYBAGGING";
+    ITEM_RMOVHANG: "ITEM_RMOVHANG";
+    ITEM_SETCREAT: "ITEM_SETCREAT";
+    ITEM_SETSTK: "ITEM_SETSTK";
+    ITEM_SIOC: "ITEM_SIOC";
+    ITEM_SUFFOSTK: "ITEM_SUFFOSTK";
+    ITEM_TAPING: "ITEM_TAPING";
+}>;
 //# sourceMappingURL=PrepType.d.ts.map

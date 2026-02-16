@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class PrepOwner.
-* @enum {String}
-* @readonly
-*/
-export class PrepOwner {
-  /**
-         * value: "AMAZON"
-         * @const
-         */
-  'AMAZON' = 'AMAZON'
-
-  /**
-         * value: "SELLER"
-         * @const
-         */
-  'SELLER' = 'SELLER'
-
-  /**
-         * value: "NONE"
-         * @const
-         */
-  'NONE' = 'NONE'
-
-  /**
-    * Returns a <code>PrepOwner</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {PrepOwner} The enum <code>PrepOwner</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'AMAZON'|'SELLER'|'NONE'} PrepOwner
+ */
+export const PrepOwner = Object.freeze({
+  AMAZON: 'AMAZON',
+  SELLER: 'SELLER',
+  NONE: 'NONE'
+})

@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class RateItemType.
-* @enum {String}
-* @readonly
-*/
-export class RateItemType {
-  /**
-         * value: "MANDATORY"
-         * @const
-         */
-  'MANDATORY' = 'MANDATORY'
-
-  /**
-         * value: "OPTIONAL"
-         * @const
-         */
-  'OPTIONAL' = 'OPTIONAL'
-
-  /**
-         * value: "INCLUDED"
-         * @const
-         */
-  'INCLUDED' = 'INCLUDED'
-
-  /**
-    * Returns a <code>RateItemType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {RateItemType} The enum <code>RateItemType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'MANDATORY'|'OPTIONAL'|'INCLUDED'} RateItemType
+ */
+export const RateItemType = Object.freeze({
+  MANDATORY: 'MANDATORY',
+  OPTIONAL: 'OPTIONAL',
+  INCLUDED: 'INCLUDED'
+})

@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ContentType.
-* @enum {String}
-* @readonly
-*/
-export class ContentType {
-  /**
-         * value: "EBC"
-         * @const
-         */
-  'EBC' = 'EBC'
-
-  /**
-         * value: "EMC"
-         * @const
-         */
-  'EMC' = 'EMC'
-
-  /**
-    * Returns a <code>ContentType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ContentType} The enum <code>ContentType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'EBC'|'EMC'} ContentType
+ */
+export const ContentType = Object.freeze({
+  EBC: 'EBC',
+  EMC: 'EMC'
+})

@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class VehicleStatusInCatalog.
-* @enum {String}
-* @readonly
-*/
-export class VehicleStatusInCatalog {
-  /**
-         * value: "ACTIVE"
-         * @const
-         */
-  'ACTIVE' = 'ACTIVE'
-
-  /**
-         * value: "DELETED"
-         * @const
-         */
-  'DELETED' = 'DELETED'
-
-  /**
-    * Returns a <code>VehicleStatusInCatalog</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {VehicleStatusInCatalog} The enum <code>VehicleStatusInCatalog</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'ACTIVE'|'DELETED'} VehicleStatusInCatalog
+ */
+export const VehicleStatusInCatalog = Object.freeze({
+  ACTIVE: 'ACTIVE',
+  DELETED: 'DELETED'
+})

@@ -14,23 +14,8 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class StandardIdForLabel.
-* @enum {String}
-* @readonly
-*/
-export class StandardIdForLabel {
-  /**
-         * value: "AmazonOrderId"
-         * @const
-         */
-  'AmazonOrderId' = 'AmazonOrderId'
-
-  /**
-    * Returns a <code>StandardIdForLabel</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {StandardIdForLabel} The enum <code>StandardIdForLabel</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'AmazonOrderId'} StandardIdForLabel
+ */
+export const StandardIdForLabel = Object.freeze({
+  AmazonOrderId: 'AmazonOrderId'
+})

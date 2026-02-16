@@ -14,173 +14,33 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class AdditionalLocationInfo.
-* @enum {String}
-* @readonly
-*/
-export class AdditionalLocationInfo {
-  /**
-         * value: "AS_INSTRUCTED"
-         * @const
-         */
-  'AS_INSTRUCTED' = 'AS_INSTRUCTED'
-
-  /**
-         * value: "CARPORT"
-         * @const
-         */
-  'CARPORT' = 'CARPORT'
-
-  /**
-         * value: "CUSTOMER_PICKUP"
-         * @const
-         */
-  'CUSTOMER_PICKUP' = 'CUSTOMER_PICKUP'
-
-  /**
-         * value: "DECK"
-         * @const
-         */
-  'DECK' = 'DECK'
-
-  /**
-         * value: "DOOR_PERSON"
-         * @const
-         */
-  'DOOR_PERSON' = 'DOOR_PERSON'
-
-  /**
-         * value: "FRONT_DESK"
-         * @const
-         */
-  'FRONT_DESK' = 'FRONT_DESK'
-
-  /**
-         * value: "FRONT_DOOR"
-         * @const
-         */
-  'FRONT_DOOR' = 'FRONT_DOOR'
-
-  /**
-         * value: "GARAGE"
-         * @const
-         */
-  'GARAGE' = 'GARAGE'
-
-  /**
-         * value: "GUARD"
-         * @const
-         */
-  'GUARD' = 'GUARD'
-
-  /**
-         * value: "MAIL_ROOM"
-         * @const
-         */
-  'MAIL_ROOM' = 'MAIL_ROOM'
-
-  /**
-         * value: "MAIL_SLOT"
-         * @const
-         */
-  'MAIL_SLOT' = 'MAIL_SLOT'
-
-  /**
-         * value: "MAILBOX"
-         * @const
-         */
-  'MAILBOX' = 'MAILBOX'
-
-  /**
-         * value: "MC_BOY"
-         * @const
-         */
-  'MC_BOY' = 'MC_BOY'
-
-  /**
-         * value: "MC_GIRL"
-         * @const
-         */
-  'MC_GIRL' = 'MC_GIRL'
-
-  /**
-         * value: "MC_MAN"
-         * @const
-         */
-  'MC_MAN' = 'MC_MAN'
-
-  /**
-         * value: "MC_WOMAN"
-         * @const
-         */
-  'MC_WOMAN' = 'MC_WOMAN'
-
-  /**
-         * value: "NEIGHBOR"
-         * @const
-         */
-  'NEIGHBOR' = 'NEIGHBOR'
-
-  /**
-         * value: "OFFICE"
-         * @const
-         */
-  'OFFICE' = 'OFFICE'
-
-  /**
-         * value: "OUTBUILDING"
-         * @const
-         */
-  'OUTBUILDING' = 'OUTBUILDING'
-
-  /**
-         * value: "PATIO"
-         * @const
-         */
-  'PATIO' = 'PATIO'
-
-  /**
-         * value: "PORCH"
-         * @const
-         */
-  'PORCH' = 'PORCH'
-
-  /**
-         * value: "REAR_DOOR"
-         * @const
-         */
-  'REAR_DOOR' = 'REAR_DOOR'
-
-  /**
-         * value: "RECEPTIONIST"
-         * @const
-         */
-  'RECEPTIONIST' = 'RECEPTIONIST'
-
-  /**
-         * value: "RECEIVER"
-         * @const
-         */
-  'RECEIVER' = 'RECEIVER'
-
-  /**
-         * value: "SECURE_LOCATION"
-         * @const
-         */
-  'SECURE_LOCATION' = 'SECURE_LOCATION'
-
-  /**
-         * value: "SIDE_DOOR"
-         * @const
-         */
-  'SIDE_DOOR' = 'SIDE_DOOR'
-
-  /**
-    * Returns a <code>AdditionalLocationInfo</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {AdditionalLocationInfo} The enum <code>AdditionalLocationInfo</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'AS_INSTRUCTED'|'CARPORT'|'CUSTOMER_PICKUP'|'DECK'|'DOOR_PERSON'|'FRONT_DESK'|'FRONT_DOOR'|'GARAGE'|'GUARD'|'MAIL_ROOM'|'MAIL_SLOT'|'MAILBOX'|'MC_BOY'|'MC_GIRL'|'MC_MAN'|'MC_WOMAN'|'NEIGHBOR'|'OFFICE'|'OUTBUILDING'|'PATIO'|'PORCH'|'REAR_DOOR'|'RECEPTIONIST'|'RECEIVER'|'SECURE_LOCATION'|'SIDE_DOOR'} AdditionalLocationInfo
+ */
+export const AdditionalLocationInfo = Object.freeze({
+  AS_INSTRUCTED: 'AS_INSTRUCTED',
+  CARPORT: 'CARPORT',
+  CUSTOMER_PICKUP: 'CUSTOMER_PICKUP',
+  DECK: 'DECK',
+  DOOR_PERSON: 'DOOR_PERSON',
+  FRONT_DESK: 'FRONT_DESK',
+  FRONT_DOOR: 'FRONT_DOOR',
+  GARAGE: 'GARAGE',
+  GUARD: 'GUARD',
+  MAIL_ROOM: 'MAIL_ROOM',
+  MAIL_SLOT: 'MAIL_SLOT',
+  MAILBOX: 'MAILBOX',
+  MC_BOY: 'MC_BOY',
+  MC_GIRL: 'MC_GIRL',
+  MC_MAN: 'MC_MAN',
+  MC_WOMAN: 'MC_WOMAN',
+  NEIGHBOR: 'NEIGHBOR',
+  OFFICE: 'OFFICE',
+  OUTBUILDING: 'OUTBUILDING',
+  PATIO: 'PATIO',
+  PORCH: 'PORCH',
+  REAR_DOOR: 'REAR_DOOR',
+  RECEPTIONIST: 'RECEPTIONIST',
+  RECEIVER: 'RECEIVER',
+  SECURE_LOCATION: 'SECURE_LOCATION',
+  SIDE_DOOR: 'SIDE_DOOR'
+})

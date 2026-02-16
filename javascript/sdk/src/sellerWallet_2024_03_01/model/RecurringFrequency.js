@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class RecurringFrequency.
-* @enum {String}
-* @readonly
-*/
-export class RecurringFrequency {
-  /**
-         * value: "DAILY"
-         * @const
-         */
-  'DAILY' = 'DAILY'
-
-  /**
-         * value: "WEEKLY"
-         * @const
-         */
-  'WEEKLY' = 'WEEKLY'
-
-  /**
-         * value: "BIWEEKLY"
-         * @const
-         */
-  'BIWEEKLY' = 'BIWEEKLY'
-
-  /**
-         * value: "MONTHLY"
-         * @const
-         */
-  'MONTHLY' = 'MONTHLY'
-
-  /**
-    * Returns a <code>RecurringFrequency</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {RecurringFrequency} The enum <code>RecurringFrequency</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'DAILY'|'WEEKLY'|'BIWEEKLY'|'MONTHLY'} RecurringFrequency
+ */
+export const RecurringFrequency = Object.freeze({
+  DAILY: 'DAILY',
+  WEEKLY: 'WEEKLY',
+  BIWEEKLY: 'BIWEEKLY',
+  MONTHLY: 'MONTHLY'
+})

@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class InboundEligibilityStatus.
-* @enum {String}
-* @readonly
-*/
-export class InboundEligibilityStatus {
-  /**
-         * value: "ELIGIBLE"
-         * @const
-         */
-  'ELIGIBLE' = 'ELIGIBLE'
-
-  /**
-         * value: "INELIGIBLE"
-         * @const
-         */
-  'INELIGIBLE' = 'INELIGIBLE'
-
-  /**
-    * Returns a <code>InboundEligibilityStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {InboundEligibilityStatus} The enum <code>InboundEligibilityStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'ELIGIBLE'|'INELIGIBLE'} InboundEligibilityStatus
+ */
+export const InboundEligibilityStatus = Object.freeze({
+  ELIGIBLE: 'ELIGIBLE',
+  INELIGIBLE: 'INELIGIBLE'
+})

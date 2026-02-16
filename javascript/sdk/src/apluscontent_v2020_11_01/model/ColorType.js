@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ColorType.
-* @enum {String}
-* @readonly
-*/
-export class ColorType {
-  /**
-         * value: "DARK"
-         * @const
-         */
-  'DARK' = 'DARK'
-
-  /**
-         * value: "LIGHT"
-         * @const
-         */
-  'LIGHT' = 'LIGHT'
-
-  /**
-    * Returns a <code>ColorType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ColorType} The enum <code>ColorType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'DARK'|'LIGHT'} ColorType
+ */
+export const ColorType = Object.freeze({
+  DARK: 'DARK',
+  LIGHT: 'LIGHT'
+})

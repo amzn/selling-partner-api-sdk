@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ShipmentStatus.
-* @enum {String}
-* @readonly
-*/
-export class ShipmentStatus {
-  /**
-         * value: "ReadyForPickup"
-         * @const
-         */
-  'ReadyForPickup' = 'ReadyForPickup'
-
-  /**
-         * value: "PickedUp"
-         * @const
-         */
-  'PickedUp' = 'PickedUp'
-
-  /**
-         * value: "RefusedPickup"
-         * @const
-         */
-  'RefusedPickup' = 'RefusedPickup'
-
-  /**
-    * Returns a <code>ShipmentStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ShipmentStatus} The enum <code>ShipmentStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'ReadyForPickup'|'PickedUp'|'RefusedPickup'} ShipmentStatus
+ */
+export const ShipmentStatus = Object.freeze({
+  ReadyForPickup: 'ReadyForPickup',
+  PickedUp: 'PickedUp',
+  RefusedPickup: 'RefusedPickup'
+})

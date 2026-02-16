@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class EnrollmentMethod.
-* @enum {String}
-* @readonly
-*/
-export class EnrollmentMethod {
-  /**
-         * value: "MANUAL"
-         * @const
-         */
-  'MANUAL' = 'MANUAL'
-
-  /**
-         * value: "AUTOMATIC"
-         * @const
-         */
-  'AUTOMATIC' = 'AUTOMATIC'
-
-  /**
-    * Returns a <code>EnrollmentMethod</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {EnrollmentMethod} The enum <code>EnrollmentMethod</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'MANUAL'|'AUTOMATIC'} EnrollmentMethod
+ */
+export const EnrollmentMethod = Object.freeze({
+  MANUAL: 'MANUAL',
+  AUTOMATIC: 'AUTOMATIC'
+})
