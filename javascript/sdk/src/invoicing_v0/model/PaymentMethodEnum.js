@@ -14,53 +14,13 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class PaymentMethodEnum.
-* @enum {String}
-* @readonly
-*/
-export class PaymentMethodEnum {
-  /**
-         * value: "CreditCard"
-         * @const
-         */
-  'CreditCard' = 'CreditCard'
-
-  /**
-         * value: "DebitCard"
-         * @const
-         */
-  'DebitCard' = 'DebitCard'
-
-  /**
-         * value: "Pix"
-         * @const
-         */
-  'Pix' = 'Pix'
-
-  /**
-         * value: "BankSlip"
-         * @const
-         */
-  'BankSlip' = 'BankSlip'
-
-  /**
-         * value: "GiftCard"
-         * @const
-         */
-  'GiftCard' = 'GiftCard'
-
-  /**
-         * value: "Other"
-         * @const
-         */
-  'Other' = 'Other'
-
-  /**
-    * Returns a <code>PaymentMethodEnum</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {PaymentMethodEnum} The enum <code>PaymentMethodEnum</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'CreditCard'|'DebitCard'|'Pix'|'BankSlip'|'GiftCard'|'Other'} PaymentMethodEnum
+ */
+export const PaymentMethodEnum = Object.freeze({
+  CreditCard: 'CreditCard',
+  DebitCard: 'DebitCard',
+  Pix: 'Pix',
+  BankSlip: 'BankSlip',
+  GiftCard: 'GiftCard',
+  Other: 'Other'
+})

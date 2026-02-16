@@ -14,83 +14,18 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class Code.
-* @enum {String}
-* @readonly
-*/
-export class Code {
-  /**
-         * value: "InvalidInput"
-         * @const
-         */
-  'InvalidInput' = 'InvalidInput'
-
-  /**
-         * value: "InvalidTimeSlotId"
-         * @const
-         */
-  'InvalidTimeSlotId' = 'InvalidTimeSlotId'
-
-  /**
-         * value: "ScheduledPackageAlreadyExists"
-         * @const
-         */
-  'ScheduledPackageAlreadyExists' = 'ScheduledPackageAlreadyExists'
-
-  /**
-         * value: "ScheduleWindowExpired"
-         * @const
-         */
-  'ScheduleWindowExpired' = 'ScheduleWindowExpired'
-
-  /**
-         * value: "RetryableAfterGettingNewSlots"
-         * @const
-         */
-  'RetryableAfterGettingNewSlots' = 'RetryableAfterGettingNewSlots'
-
-  /**
-         * value: "TimeSlotNotAvailable"
-         * @const
-         */
-  'TimeSlotNotAvailable' = 'TimeSlotNotAvailable'
-
-  /**
-         * value: "ResourceNotFound"
-         * @const
-         */
-  'ResourceNotFound' = 'ResourceNotFound'
-
-  /**
-         * value: "InvalidOrderState"
-         * @const
-         */
-  'InvalidOrderState' = 'InvalidOrderState'
-
-  /**
-         * value: "RegionNotSupported"
-         * @const
-         */
-  'RegionNotSupported' = 'RegionNotSupported'
-
-  /**
-         * value: "OrderNotEligibleForRescheduling"
-         * @const
-         */
-  'OrderNotEligibleForRescheduling' = 'OrderNotEligibleForRescheduling'
-
-  /**
-         * value: "InternalServerError"
-         * @const
-         */
-  'InternalServerError' = 'InternalServerError'
-
-  /**
-    * Returns a <code>Code</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {Code} The enum <code>Code</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'InvalidInput'|'InvalidTimeSlotId'|'ScheduledPackageAlreadyExists'|'ScheduleWindowExpired'|'RetryableAfterGettingNewSlots'|'TimeSlotNotAvailable'|'ResourceNotFound'|'InvalidOrderState'|'RegionNotSupported'|'OrderNotEligibleForRescheduling'|'InternalServerError'} Code
+ */
+export const Code = Object.freeze({
+  InvalidInput: 'InvalidInput',
+  InvalidTimeSlotId: 'InvalidTimeSlotId',
+  ScheduledPackageAlreadyExists: 'ScheduledPackageAlreadyExists',
+  ScheduleWindowExpired: 'ScheduleWindowExpired',
+  RetryableAfterGettingNewSlots: 'RetryableAfterGettingNewSlots',
+  TimeSlotNotAvailable: 'TimeSlotNotAvailable',
+  ResourceNotFound: 'ResourceNotFound',
+  InvalidOrderState: 'InvalidOrderState',
+  RegionNotSupported: 'RegionNotSupported',
+  OrderNotEligibleForRescheduling: 'OrderNotEligibleForRescheduling',
+  InternalServerError: 'InternalServerError'
+})

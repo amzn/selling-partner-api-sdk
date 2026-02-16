@@ -14,65 +14,15 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class DecoratorType.
-* @enum {String}
-* @readonly
-*/
-export class DecoratorType {
-  /**
-         * value: "LIST_ITEM"
-         * @const
-         */
-  'LIST_ITEM' = 'LIST_ITEM'
-
-  /**
-         * value: "LIST_ORDERED"
-         * @const
-         */
-  'LIST_ORDERED' = 'LIST_ORDERED'
-
-  /**
-         * value: "LIST_UNORDERED"
-         * @const
-         */
-  'LIST_UNORDERED' = 'LIST_UNORDERED'
-
-  /**
-         * value: "STYLE_BOLD"
-         * @const
-         */
-  'STYLE_BOLD' = 'STYLE_BOLD'
-
-  /**
-         * value: "STYLE_ITALIC"
-         * @const
-         */
-  'STYLE_ITALIC' = 'STYLE_ITALIC'
-
-  /**
-         * value: "STYLE_LINEBREAK"
-         * @const
-         */
-  'STYLE_LINEBREAK' = 'STYLE_LINEBREAK'
-
-  /**
-         * value: "STYLE_PARAGRAPH"
-         * @const
-         */
-  'STYLE_PARAGRAPH' = 'STYLE_PARAGRAPH'
-
-  /**
-         * value: "STYLE_UNDERLINE"
-         * @const
-         */
-  'STYLE_UNDERLINE' = 'STYLE_UNDERLINE'
-
-  /**
-    * Returns a <code>DecoratorType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {DecoratorType} The enum <code>DecoratorType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'LIST_ITEM'|'LIST_ORDERED'|'LIST_UNORDERED'|'STYLE_BOLD'|'STYLE_ITALIC'|'STYLE_LINEBREAK'|'STYLE_PARAGRAPH'|'STYLE_UNDERLINE'} DecoratorType
+ */
+export const DecoratorType = Object.freeze({
+  LIST_ITEM: 'LIST_ITEM',
+  LIST_ORDERED: 'LIST_ORDERED',
+  LIST_UNORDERED: 'LIST_UNORDERED',
+  STYLE_BOLD: 'STYLE_BOLD',
+  STYLE_ITALIC: 'STYLE_ITALIC',
+  STYLE_LINEBREAK: 'STYLE_LINEBREAK',
+  STYLE_PARAGRAPH: 'STYLE_PARAGRAPH',
+  STYLE_UNDERLINE: 'STYLE_UNDERLINE'
+})

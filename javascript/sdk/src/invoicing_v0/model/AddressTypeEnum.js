@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class AddressTypeEnum.
-* @enum {String}
-* @readonly
-*/
-export class AddressTypeEnum {
-  /**
-         * value: "Residential"
-         * @const
-         */
-  'Residential' = 'Residential'
-
-  /**
-         * value: "Commercial"
-         * @const
-         */
-  'Commercial' = 'Commercial'
-
-  /**
-    * Returns a <code>AddressTypeEnum</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {AddressTypeEnum} The enum <code>AddressTypeEnum</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'Residential'|'Commercial'} AddressTypeEnum
+ */
+export const AddressTypeEnum = Object.freeze({
+  Residential: 'Residential',
+  Commercial: 'Commercial'
+})

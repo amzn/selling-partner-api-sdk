@@ -1,1 +1,1 @@
-{"version":3,"file":"VerificationStatus.d.ts","sourceRoot":"","sources":["VerificationStatus.js"],"names":[],"mappings":"AAeA;;;;EAIE;AACF;IA+BE;;;;QAII;IACJ,yCAFa,kBAAkB,CAI9B;IArCD;;;aAGS;IACT,gBAAqB;IAErB;;;aAGS;IACT,iBAAuB;IAEvB;;;aAGS;IACT,iBAAuB;IAEvB;;;aAGS;IACT,gBAAqB;IAErB;;;aAGS;IACT,kBAAyB;CAU1B"}
+{"version":3,"file":"VerificationStatus.d.ts","sourceRoot":"","sources":["VerificationStatus.js"],"names":[],"mappings":"iCAgBa,SAAS,GAAC,UAAU,GAAC,UAAU,GAAC,SAAS,GAAC,WAAW;AADlE;;GAEG;AACH;;;;;;GAME"}

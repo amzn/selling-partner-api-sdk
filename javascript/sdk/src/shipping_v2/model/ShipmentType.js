@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ShipmentType.
-* @enum {String}
-* @readonly
-*/
-export class ShipmentType {
-  /**
-         * value: "FORWARD"
-         * @const
-         */
-  'FORWARD' = 'FORWARD'
-
-  /**
-         * value: "RETURNS"
-         * @const
-         */
-  'RETURNS' = 'RETURNS'
-
-  /**
-    * Returns a <code>ShipmentType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ShipmentType} The enum <code>ShipmentType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'FORWARD'|'RETURNS'} ShipmentType
+ */
+export const ShipmentType = Object.freeze({
+  FORWARD: 'FORWARD',
+  RETURNS: 'RETURNS'
+})

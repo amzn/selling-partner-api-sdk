@@ -14,113 +14,23 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class PrepType.
-* @enum {String}
-* @readonly
-*/
-export class PrepType {
-  /**
-         * value: "ITEM_BLACK_SHRINKWRAP"
-         * @const
-         */
-  'ITEM_BLACK_SHRINKWRAP' = 'ITEM_BLACK_SHRINKWRAP'
-
-  /**
-         * value: "ITEM_BLANKSTK"
-         * @const
-         */
-  'ITEM_BLANKSTK' = 'ITEM_BLANKSTK'
-
-  /**
-         * value: "ITEM_BOXING"
-         * @const
-         */
-  'ITEM_BOXING' = 'ITEM_BOXING'
-
-  /**
-         * value: "ITEM_BUBBLEWRAP"
-         * @const
-         */
-  'ITEM_BUBBLEWRAP' = 'ITEM_BUBBLEWRAP'
-
-  /**
-         * value: "ITEM_CAP_SEALING"
-         * @const
-         */
-  'ITEM_CAP_SEALING' = 'ITEM_CAP_SEALING'
-
-  /**
-         * value: "ITEM_DEBUNDLE"
-         * @const
-         */
-  'ITEM_DEBUNDLE' = 'ITEM_DEBUNDLE'
-
-  /**
-         * value: "ITEM_HANG_GARMENT"
-         * @const
-         */
-  'ITEM_HANG_GARMENT' = 'ITEM_HANG_GARMENT'
-
-  /**
-         * value: "ITEM_LABELING"
-         * @const
-         */
-  'ITEM_LABELING' = 'ITEM_LABELING'
-
-  /**
-         * value: "ITEM_NO_PREP"
-         * @const
-         */
-  'ITEM_NO_PREP' = 'ITEM_NO_PREP'
-
-  /**
-         * value: "ITEM_POLYBAGGING"
-         * @const
-         */
-  'ITEM_POLYBAGGING' = 'ITEM_POLYBAGGING'
-
-  /**
-         * value: "ITEM_RMOVHANG"
-         * @const
-         */
-  'ITEM_RMOVHANG' = 'ITEM_RMOVHANG'
-
-  /**
-         * value: "ITEM_SETCREAT"
-         * @const
-         */
-  'ITEM_SETCREAT' = 'ITEM_SETCREAT'
-
-  /**
-         * value: "ITEM_SETSTK"
-         * @const
-         */
-  'ITEM_SETSTK' = 'ITEM_SETSTK'
-
-  /**
-         * value: "ITEM_SIOC"
-         * @const
-         */
-  'ITEM_SIOC' = 'ITEM_SIOC'
-
-  /**
-         * value: "ITEM_SUFFOSTK"
-         * @const
-         */
-  'ITEM_SUFFOSTK' = 'ITEM_SUFFOSTK'
-
-  /**
-         * value: "ITEM_TAPING"
-         * @const
-         */
-  'ITEM_TAPING' = 'ITEM_TAPING'
-
-  /**
-    * Returns a <code>PrepType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {PrepType} The enum <code>PrepType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'ITEM_BLACK_SHRINKWRAP'|'ITEM_BLANKSTK'|'ITEM_BOXING'|'ITEM_BUBBLEWRAP'|'ITEM_CAP_SEALING'|'ITEM_DEBUNDLE'|'ITEM_HANG_GARMENT'|'ITEM_LABELING'|'ITEM_NO_PREP'|'ITEM_POLYBAGGING'|'ITEM_RMOVHANG'|'ITEM_SETCREAT'|'ITEM_SETSTK'|'ITEM_SIOC'|'ITEM_SUFFOSTK'|'ITEM_TAPING'} PrepType
+ */
+export const PrepType = Object.freeze({
+  ITEM_BLACK_SHRINKWRAP: 'ITEM_BLACK_SHRINKWRAP',
+  ITEM_BLANKSTK: 'ITEM_BLANKSTK',
+  ITEM_BOXING: 'ITEM_BOXING',
+  ITEM_BUBBLEWRAP: 'ITEM_BUBBLEWRAP',
+  ITEM_CAP_SEALING: 'ITEM_CAP_SEALING',
+  ITEM_DEBUNDLE: 'ITEM_DEBUNDLE',
+  ITEM_HANG_GARMENT: 'ITEM_HANG_GARMENT',
+  ITEM_LABELING: 'ITEM_LABELING',
+  ITEM_NO_PREP: 'ITEM_NO_PREP',
+  ITEM_POLYBAGGING: 'ITEM_POLYBAGGING',
+  ITEM_RMOVHANG: 'ITEM_RMOVHANG',
+  ITEM_SETCREAT: 'ITEM_SETCREAT',
+  ITEM_SETSTK: 'ITEM_SETSTK',
+  ITEM_SIOC: 'ITEM_SIOC',
+  ITEM_SUFFOSTK: 'ITEM_SUFFOSTK',
+  ITEM_TAPING: 'ITEM_TAPING'
+})

@@ -1,24 +1,9 @@
+export type ErrorReason = "DoesNotExist" | "InvalidASIN";
 /**
-* Enum class ErrorReason.
-* @enum {String}
-* @readonly
-*/
-export class ErrorReason {
-    /**
-      * Returns a <code>ErrorReason</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {ErrorReason} The enum <code>ErrorReason</code> value.
-      */
-    static constructFromObject(object: any): ErrorReason;
-    /**
-           * value: "DoesNotExist"
-           * @const
-           */
-    DoesNotExist: string;
-    /**
-           * value: "InvalidASIN"
-           * @const
-           */
-    InvalidASIN: string;
-}
+ * @typedef {'DoesNotExist'|'InvalidASIN'} ErrorReason
+ */
+export const ErrorReason: Readonly<{
+    DoesNotExist: "DoesNotExist";
+    InvalidASIN: "InvalidASIN";
+}>;
 //# sourceMappingURL=ErrorReason.d.ts.map

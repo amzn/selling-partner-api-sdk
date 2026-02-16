@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ParkingCostType.
-* @enum {String}
-* @readonly
-*/
-export class ParkingCostType {
-  /**
-         * value: "Free"
-         * @const
-         */
-  'Free' = 'Free'
-
-  /**
-         * value: "Other"
-         * @const
-         */
-  'Other' = 'Other'
-
-  /**
-    * Returns a <code>ParkingCostType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ParkingCostType} The enum <code>ParkingCostType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'Free'|'Other'} ParkingCostType
+ */
+export const ParkingCostType = Object.freeze({
+  Free: 'Free',
+  Other: 'Other'
+})

@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class InventoryUnitOfMeasurement.
-* @enum {String}
-* @readonly
-*/
-export class InventoryUnitOfMeasurement {
-  /**
-         * value: "PRODUCT_UNITS"
-         * @const
-         */
-  'PRODUCT_UNITS' = 'PRODUCT_UNITS'
-
-  /**
-         * value: "CASES"
-         * @const
-         */
-  'CASES' = 'CASES'
-
-  /**
-         * value: "PALLETS"
-         * @const
-         */
-  'PALLETS' = 'PALLETS'
-
-  /**
-    * Returns a <code>InventoryUnitOfMeasurement</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {InventoryUnitOfMeasurement} The enum <code>InventoryUnitOfMeasurement</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'PRODUCT_UNITS'|'CASES'|'PALLETS'} InventoryUnitOfMeasurement
+ */
+export const InventoryUnitOfMeasurement = Object.freeze({
+  PRODUCT_UNITS: 'PRODUCT_UNITS',
+  CASES: 'CASES',
+  PALLETS: 'PALLETS'
+})

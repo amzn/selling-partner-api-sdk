@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class DocumentType.
-* @enum {String}
-* @readonly
-*/
-export class DocumentType {
-  /**
-         * value: "PACKSLIP"
-         * @const
-         */
-  'PACKSLIP' = 'PACKSLIP'
-
-  /**
-         * value: "LABEL"
-         * @const
-         */
-  'LABEL' = 'LABEL'
-
-  /**
-         * value: "RECEIPT"
-         * @const
-         */
-  'RECEIPT' = 'RECEIPT'
-
-  /**
-         * value: "CUSTOM_FORM"
-         * @const
-         */
-  'CUSTOM_FORM' = 'CUSTOM_FORM'
-
-  /**
-    * Returns a <code>DocumentType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {DocumentType} The enum <code>DocumentType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'PACKSLIP'|'LABEL'|'RECEIPT'|'CUSTOM_FORM'} DocumentType
+ */
+export const DocumentType = Object.freeze({
+  PACKSLIP: 'PACKSLIP',
+  LABEL: 'LABEL',
+  RECEIPT: 'RECEIPT',
+  CUSTOM_FORM: 'CUSTOM_FORM'
+})

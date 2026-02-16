@@ -14,101 +14,21 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class PrepCategory.
-* @enum {String}
-* @readonly
-*/
-export class PrepCategory {
-  /**
-         * value: "ADULT"
-         * @const
-         */
-  'ADULT' = 'ADULT'
-
-  /**
-         * value: "BABY"
-         * @const
-         */
-  'BABY' = 'BABY'
-
-  /**
-         * value: "FC_PROVIDED"
-         * @const
-         */
-  'FC_PROVIDED' = 'FC_PROVIDED'
-
-  /**
-         * value: "FRAGILE"
-         * @const
-         */
-  'FRAGILE' = 'FRAGILE'
-
-  /**
-         * value: "GRANULAR"
-         * @const
-         */
-  'GRANULAR' = 'GRANULAR'
-
-  /**
-         * value: "HANGER"
-         * @const
-         */
-  'HANGER' = 'HANGER'
-
-  /**
-         * value: "LIQUID"
-         * @const
-         */
-  'LIQUID' = 'LIQUID'
-
-  /**
-         * value: "PERFORATED"
-         * @const
-         */
-  'PERFORATED' = 'PERFORATED'
-
-  /**
-         * value: "SET"
-         * @const
-         */
-  'SET' = 'SET'
-
-  /**
-         * value: "SHARP"
-         * @const
-         */
-  'SHARP' = 'SHARP'
-
-  /**
-         * value: "SMALL"
-         * @const
-         */
-  'SMALL' = 'SMALL'
-
-  /**
-         * value: "TEXTILE"
-         * @const
-         */
-  'TEXTILE' = 'TEXTILE'
-
-  /**
-         * value: "NO_PREP"
-         * @const
-         */
-  'NO_PREP' = 'NO_PREP'
-
-  /**
-         * value: "UNKNOWN"
-         * @const
-         */
-  'UNKNOWN' = 'UNKNOWN'
-
-  /**
-    * Returns a <code>PrepCategory</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {PrepCategory} The enum <code>PrepCategory</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'ADULT'|'BABY'|'FC_PROVIDED'|'FRAGILE'|'GRANULAR'|'HANGER'|'LIQUID'|'PERFORATED'|'SET'|'SHARP'|'SMALL'|'TEXTILE'|'NO_PREP'|'UNKNOWN'} PrepCategory
+ */
+export const PrepCategory = Object.freeze({
+  ADULT: 'ADULT',
+  BABY: 'BABY',
+  FC_PROVIDED: 'FC_PROVIDED',
+  FRAGILE: 'FRAGILE',
+  GRANULAR: 'GRANULAR',
+  HANGER: 'HANGER',
+  LIQUID: 'LIQUID',
+  PERFORATED: 'PERFORATED',
+  SET: 'SET',
+  SHARP: 'SHARP',
+  SMALL: 'SMALL',
+  TEXTILE: 'TEXTILE',
+  NO_PREP: 'NO_PREP',
+  UNKNOWN: 'UNKNOWN'
+})

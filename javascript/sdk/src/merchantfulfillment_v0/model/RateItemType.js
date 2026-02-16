@@ -14,23 +14,8 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class RateItemType.
-* @enum {String}
-* @readonly
-*/
-export class RateItemType {
-  /**
-         * value: "INCLUDED"
-         * @const
-         */
-  'INCLUDED' = 'INCLUDED'
-
-  /**
-    * Returns a <code>RateItemType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {RateItemType} The enum <code>RateItemType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'INCLUDED'} RateItemType
+ */
+export const RateItemType = Object.freeze({
+  INCLUDED: 'INCLUDED'
+})

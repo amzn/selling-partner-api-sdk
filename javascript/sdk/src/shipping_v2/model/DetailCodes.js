@@ -14,197 +14,37 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class DetailCodes.
-* @enum {String}
-* @readonly
-*/
-export class DetailCodes {
-  /**
-         * value: "BusinessClosed"
-         * @const
-         */
-  'BusinessClosed' = 'BusinessClosed'
-
-  /**
-         * value: "CustomerUnavailable"
-         * @const
-         */
-  'CustomerUnavailable' = 'CustomerUnavailable'
-
-  /**
-         * value: "PaymentNotReady"
-         * @const
-         */
-  'PaymentNotReady' = 'PaymentNotReady'
-
-  /**
-         * value: "OtpNotAvailable"
-         * @const
-         */
-  'OtpNotAvailable' = 'OtpNotAvailable'
-
-  /**
-         * value: "DeliveryAttempted"
-         * @const
-         */
-  'DeliveryAttempted' = 'DeliveryAttempted'
-
-  /**
-         * value: "UnableToAccess"
-         * @const
-         */
-  'UnableToAccess' = 'UnableToAccess'
-
-  /**
-         * value: "UnableToContactRecipient"
-         * @const
-         */
-  'UnableToContactRecipient' = 'UnableToContactRecipient'
-
-  /**
-         * value: "DeliveredToBehindWheelieBin"
-         * @const
-         */
-  'DeliveredToBehindWheelieBin' = 'DeliveredToBehindWheelieBin'
-
-  /**
-         * value: "DeliveredToPorch"
-         * @const
-         */
-  'DeliveredToPorch' = 'DeliveredToPorch'
-
-  /**
-         * value: "DeliveredToGarage"
-         * @const
-         */
-  'DeliveredToGarage' = 'DeliveredToGarage'
-
-  /**
-         * value: "DeliveredToGarden"
-         * @const
-         */
-  'DeliveredToGarden' = 'DeliveredToGarden'
-
-  /**
-         * value: "DeliveredToGreenhouse"
-         * @const
-         */
-  'DeliveredToGreenhouse' = 'DeliveredToGreenhouse'
-
-  /**
-         * value: "DeliveredToMailSlot"
-         * @const
-         */
-  'DeliveredToMailSlot' = 'DeliveredToMailSlot'
-
-  /**
-         * value: "DeliveredToMailRoom"
-         * @const
-         */
-  'DeliveredToMailRoom' = 'DeliveredToMailRoom'
-
-  /**
-         * value: "DeliveredToNeighbor"
-         * @const
-         */
-  'DeliveredToNeighbor' = 'DeliveredToNeighbor'
-
-  /**
-         * value: "DeliveredToRearDoor"
-         * @const
-         */
-  'DeliveredToRearDoor' = 'DeliveredToRearDoor'
-
-  /**
-         * value: "DeliveredToReceptionist"
-         * @const
-         */
-  'DeliveredToReceptionist' = 'DeliveredToReceptionist'
-
-  /**
-         * value: "DeliveredToShed"
-         * @const
-         */
-  'DeliveredToShed' = 'DeliveredToShed'
-
-  /**
-         * value: "DeliveredWithOTP"
-         * @const
-         */
-  'DeliveredWithOTP' = 'DeliveredWithOTP'
-
-  /**
-         * value: "Signed"
-         * @const
-         */
-  'Signed' = 'Signed'
-
-  /**
-         * value: "Damaged"
-         * @const
-         */
-  'Damaged' = 'Damaged'
-
-  /**
-         * value: "IncorrectItems"
-         * @const
-         */
-  'IncorrectItems' = 'IncorrectItems'
-
-  /**
-         * value: "NotRequired"
-         * @const
-         */
-  'NotRequired' = 'NotRequired'
-
-  /**
-         * value: "Rejected"
-         * @const
-         */
-  'Rejected' = 'Rejected'
-
-  /**
-         * value: "RejectedByRecipientWithVerification"
-         * @const
-         */
-  'RejectedByRecipientWithVerification' = 'RejectedByRecipientWithVerification'
-
-  /**
-         * value: "CancelledByRecipient"
-         * @const
-         */
-  'CancelledByRecipient' = 'CancelledByRecipient'
-
-  /**
-         * value: "AddressNotFound"
-         * @const
-         */
-  'AddressNotFound' = 'AddressNotFound'
-
-  /**
-         * value: "HazmatShipment"
-         * @const
-         */
-  'HazmatShipment' = 'HazmatShipment'
-
-  /**
-         * value: "Undeliverable"
-         * @const
-         */
-  'Undeliverable' = 'Undeliverable'
-
-  /**
-         * value: "ArrivedAtLocalFacility"
-         * @const
-         */
-  'ArrivedAtLocalFacility' = 'ArrivedAtLocalFacility'
-
-  /**
-    * Returns a <code>DetailCodes</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {DetailCodes} The enum <code>DetailCodes</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'BusinessClosed'|'CustomerUnavailable'|'PaymentNotReady'|'OtpNotAvailable'|'DeliveryAttempted'|'UnableToAccess'|'UnableToContactRecipient'|'DeliveredToBehindWheelieBin'|'DeliveredToPorch'|'DeliveredToGarage'|'DeliveredToGarden'|'DeliveredToGreenhouse'|'DeliveredToMailSlot'|'DeliveredToMailRoom'|'DeliveredToNeighbor'|'DeliveredToRearDoor'|'DeliveredToReceptionist'|'DeliveredToShed'|'DeliveredWithOTP'|'Signed'|'Damaged'|'IncorrectItems'|'NotRequired'|'Rejected'|'RejectedByRecipientWithVerification'|'CancelledByRecipient'|'AddressNotFound'|'HazmatShipment'|'Undeliverable'|'ArrivedAtLocalFacility'} DetailCodes
+ */
+export const DetailCodes = Object.freeze({
+  BusinessClosed: 'BusinessClosed',
+  CustomerUnavailable: 'CustomerUnavailable',
+  PaymentNotReady: 'PaymentNotReady',
+  OtpNotAvailable: 'OtpNotAvailable',
+  DeliveryAttempted: 'DeliveryAttempted',
+  UnableToAccess: 'UnableToAccess',
+  UnableToContactRecipient: 'UnableToContactRecipient',
+  DeliveredToBehindWheelieBin: 'DeliveredToBehindWheelieBin',
+  DeliveredToPorch: 'DeliveredToPorch',
+  DeliveredToGarage: 'DeliveredToGarage',
+  DeliveredToGarden: 'DeliveredToGarden',
+  DeliveredToGreenhouse: 'DeliveredToGreenhouse',
+  DeliveredToMailSlot: 'DeliveredToMailSlot',
+  DeliveredToMailRoom: 'DeliveredToMailRoom',
+  DeliveredToNeighbor: 'DeliveredToNeighbor',
+  DeliveredToRearDoor: 'DeliveredToRearDoor',
+  DeliveredToReceptionist: 'DeliveredToReceptionist',
+  DeliveredToShed: 'DeliveredToShed',
+  DeliveredWithOTP: 'DeliveredWithOTP',
+  Signed: 'Signed',
+  Damaged: 'Damaged',
+  IncorrectItems: 'IncorrectItems',
+  NotRequired: 'NotRequired',
+  Rejected: 'Rejected',
+  RejectedByRecipientWithVerification: 'RejectedByRecipientWithVerification',
+  CancelledByRecipient: 'CancelledByRecipient',
+  AddressNotFound: 'AddressNotFound',
+  HazmatShipment: 'HazmatShipment',
+  Undeliverable: 'Undeliverable',
+  ArrivedAtLocalFacility: 'ArrivedAtLocalFacility'
+})

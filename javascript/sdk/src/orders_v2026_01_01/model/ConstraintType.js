@@ -14,23 +14,8 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ConstraintType.
-* @enum {String}
-* @readonly
-*/
-export class ConstraintType {
-  /**
-         * value: "MANDATORY"
-         * @const
-         */
-  'MANDATORY' = 'MANDATORY'
-
-  /**
-    * Returns a <code>ConstraintType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ConstraintType} The enum <code>ConstraintType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'MANDATORY'} ConstraintType
+ */
+export const ConstraintType = Object.freeze({
+  MANDATORY: 'MANDATORY'
+})

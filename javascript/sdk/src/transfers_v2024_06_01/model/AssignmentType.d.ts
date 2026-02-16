@@ -1,19 +1,8 @@
+export type AssignmentType = "DEFAULT_DEPOSIT_METHOD";
 /**
-* Enum class AssignmentType.
-* @enum {String}
-* @readonly
-*/
-export class AssignmentType {
-    /**
-      * Returns a <code>AssignmentType</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {AssignmentType} The enum <code>AssignmentType</code> value.
-      */
-    static constructFromObject(object: any): AssignmentType;
-    /**
-           * value: "DEFAULT_DEPOSIT_METHOD"
-           * @const
-           */
-    DEFAULT_DEPOSIT_METHOD: string;
-}
+ * @typedef {'DEFAULT_DEPOSIT_METHOD'} AssignmentType
+ */
+export const AssignmentType: Readonly<{
+    DEFAULT_DEPOSIT_METHOD: "DEFAULT_DEPOSIT_METHOD";
+}>;
 //# sourceMappingURL=AssignmentType.d.ts.map

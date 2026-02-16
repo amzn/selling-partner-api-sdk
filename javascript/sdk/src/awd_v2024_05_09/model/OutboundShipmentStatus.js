@@ -14,65 +14,15 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class OutboundShipmentStatus.
-* @enum {String}
-* @readonly
-*/
-export class OutboundShipmentStatus {
-  /**
-         * value: "CREATED"
-         * @const
-         */
-  'CREATED' = 'CREATED'
-
-  /**
-         * value: "IN_TRANSIT"
-         * @const
-         */
-  'IN_TRANSIT' = 'IN_TRANSIT'
-
-  /**
-         * value: "DELIVERED"
-         * @const
-         */
-  'DELIVERED' = 'DELIVERED'
-
-  /**
-         * value: "RECEIVING"
-         * @const
-         */
-  'RECEIVING' = 'RECEIVING'
-
-  /**
-         * value: "RECEIVED"
-         * @const
-         */
-  'RECEIVED' = 'RECEIVED'
-
-  /**
-         * value: "CLOSED"
-         * @const
-         */
-  'CLOSED' = 'CLOSED'
-
-  /**
-         * value: "CANCELLED"
-         * @const
-         */
-  'CANCELLED' = 'CANCELLED'
-
-  /**
-         * value: "FAILED"
-         * @const
-         */
-  'FAILED' = 'FAILED'
-
-  /**
-    * Returns a <code>OutboundShipmentStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {OutboundShipmentStatus} The enum <code>OutboundShipmentStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'CREATED'|'IN_TRANSIT'|'DELIVERED'|'RECEIVING'|'RECEIVED'|'CLOSED'|'CANCELLED'|'FAILED'} OutboundShipmentStatus
+ */
+export const OutboundShipmentStatus = Object.freeze({
+  CREATED: 'CREATED',
+  IN_TRANSIT: 'IN_TRANSIT',
+  DELIVERED: 'DELIVERED',
+  RECEIVING: 'RECEIVING',
+  RECEIVED: 'RECEIVED',
+  CLOSED: 'CLOSED',
+  CANCELLED: 'CANCELLED',
+  FAILED: 'FAILED'
+})

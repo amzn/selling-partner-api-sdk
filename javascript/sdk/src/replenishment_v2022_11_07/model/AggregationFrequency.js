@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class AggregationFrequency.
-* @enum {String}
-* @readonly
-*/
-export class AggregationFrequency {
-  /**
-         * value: "WEEK"
-         * @const
-         */
-  'WEEK' = 'WEEK'
-
-  /**
-         * value: "MONTH"
-         * @const
-         */
-  'MONTH' = 'MONTH'
-
-  /**
-         * value: "QUARTER"
-         * @const
-         */
-  'QUARTER' = 'QUARTER'
-
-  /**
-         * value: "YEAR"
-         * @const
-         */
-  'YEAR' = 'YEAR'
-
-  /**
-    * Returns a <code>AggregationFrequency</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {AggregationFrequency} The enum <code>AggregationFrequency</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'WEEK'|'MONTH'|'QUARTER'|'YEAR'} AggregationFrequency
+ */
+export const AggregationFrequency = Object.freeze({
+  WEEK: 'WEEK',
+  MONTH: 'MONTH',
+  QUARTER: 'QUARTER',
+  YEAR: 'YEAR'
+})

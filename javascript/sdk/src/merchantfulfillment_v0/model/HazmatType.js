@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class HazmatType.
-* @enum {String}
-* @readonly
-*/
-export class HazmatType {
-  /**
-         * value: "None"
-         * @const
-         */
-  'None' = 'None'
-
-  /**
-         * value: "LQHazmat"
-         * @const
-         */
-  'LQHazmat' = 'LQHazmat'
-
-  /**
-    * Returns a <code>HazmatType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {HazmatType} The enum <code>HazmatType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'None'|'LQHazmat'} HazmatType
+ */
+export const HazmatType = Object.freeze({
+  None: 'None',
+  LQHazmat: 'LQHazmat'
+})

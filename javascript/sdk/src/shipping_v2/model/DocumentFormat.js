@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class DocumentFormat.
-* @enum {String}
-* @readonly
-*/
-export class DocumentFormat {
-  /**
-         * value: "PDF"
-         * @const
-         */
-  'PDF' = 'PDF'
-
-  /**
-         * value: "PNG"
-         * @const
-         */
-  'PNG' = 'PNG'
-
-  /**
-         * value: "ZPL"
-         * @const
-         */
-  'ZPL' = 'ZPL'
-
-  /**
-    * Returns a <code>DocumentFormat</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {DocumentFormat} The enum <code>DocumentFormat</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'PDF'|'PNG'|'ZPL'} DocumentFormat
+ */
+export const DocumentFormat = Object.freeze({
+  PDF: 'PDF',
+  PNG: 'PNG',
+  ZPL: 'ZPL'
+})

@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class HttpMethod.
-* @enum {String}
-* @readonly
-*/
-export class HttpMethod {
-  /**
-         * value: "GET"
-         * @const
-         */
-  'GET' = 'GET'
-
-  /**
-         * value: "POST"
-         * @const
-         */
-  'POST' = 'POST'
-
-  /**
-    * Returns a <code>HttpMethod</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {HttpMethod} The enum <code>HttpMethod</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'GET'|'POST'} HttpMethod
+ */
+export const HttpMethod = Object.freeze({
+  GET: 'GET',
+  POST: 'POST'
+})

@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class BankNumberFormat.
-* @enum {String}
-* @readonly
-*/
-export class BankNumberFormat {
-  /**
-         * value: "BIC"
-         * @const
-         */
-  'BIC' = 'BIC'
-
-  /**
-         * value: "BASIC"
-         * @const
-         */
-  'BASIC' = 'BASIC'
-
-  /**
-    * Returns a <code>BankNumberFormat</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {BankNumberFormat} The enum <code>BankNumberFormat</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'BIC'|'BASIC'} BankNumberFormat
+ */
+export const BankNumberFormat = Object.freeze({
+  BIC: 'BIC',
+  BASIC: 'BASIC'
+})

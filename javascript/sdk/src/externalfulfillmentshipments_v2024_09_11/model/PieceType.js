@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class PieceType.
-* @enum {String}
-* @readonly
-*/
-export class PieceType {
-  /**
-         * value: "SINGLE"
-         * @const
-         */
-  'SINGLE' = 'SINGLE'
-
-  /**
-         * value: "MULTIPLE"
-         * @const
-         */
-  'MULTIPLE' = 'MULTIPLE'
-
-  /**
-    * Returns a <code>PieceType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {PieceType} The enum <code>PieceType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'SINGLE'|'MULTIPLE'} PieceType
+ */
+export const PieceType = Object.freeze({
+  SINGLE: 'SINGLE',
+  MULTIPLE: 'MULTIPLE'
+})

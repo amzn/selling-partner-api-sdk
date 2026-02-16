@@ -26,7 +26,7 @@ export class ListOfferMetricsRequestFilters {
     timeInterval: TimeInterval;
     timePeriodType: TimePeriodType;
     marketplaceId: string;
-    programTypes: ProgramType[];
+    programTypes: "SUBSCRIBE_AND_SAVE"[];
     /**
      * @member {AggregationFrequency} aggregationFrequency
      * @type {AggregationFrequency}
@@ -41,6 +41,6 @@ export class ListOfferMetricsRequestFilters {
 }
 import { TimeInterval } from './TimeInterval.js';
 import { TimePeriodType } from './TimePeriodType.js';
-import { ProgramType } from './ProgramType.js';
 import { AggregationFrequency } from './AggregationFrequency.js';
+import { ProgramType } from './ProgramType.js';
 //# sourceMappingURL=ListOfferMetricsRequestFilters.d.ts.map

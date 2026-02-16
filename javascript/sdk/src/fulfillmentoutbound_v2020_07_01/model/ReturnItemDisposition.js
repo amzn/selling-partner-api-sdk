@@ -14,47 +14,12 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ReturnItemDisposition.
-* @enum {String}
-* @readonly
-*/
-export class ReturnItemDisposition {
-  /**
-         * value: "Sellable"
-         * @const
-         */
-  'Sellable' = 'Sellable'
-
-  /**
-         * value: "Defective"
-         * @const
-         */
-  'Defective' = 'Defective'
-
-  /**
-         * value: "CustomerDamaged"
-         * @const
-         */
-  'CustomerDamaged' = 'CustomerDamaged'
-
-  /**
-         * value: "CarrierDamaged"
-         * @const
-         */
-  'CarrierDamaged' = 'CarrierDamaged'
-
-  /**
-         * value: "FulfillerDamaged"
-         * @const
-         */
-  'FulfillerDamaged' = 'FulfillerDamaged'
-
-  /**
-    * Returns a <code>ReturnItemDisposition</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ReturnItemDisposition} The enum <code>ReturnItemDisposition</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'Sellable'|'Defective'|'CustomerDamaged'|'CarrierDamaged'|'FulfillerDamaged'} ReturnItemDisposition
+ */
+export const ReturnItemDisposition = Object.freeze({
+  Sellable: 'Sellable',
+  Defective: 'Defective',
+  CustomerDamaged: 'CustomerDamaged',
+  CarrierDamaged: 'CarrierDamaged',
+  FulfillerDamaged: 'FulfillerDamaged'
+})

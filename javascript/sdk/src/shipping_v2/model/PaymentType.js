@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class PaymentType.
-* @enum {String}
-* @readonly
-*/
-export class PaymentType {
-  /**
-         * value: "PAY_THROUGH_AMAZON"
-         * @const
-         */
-  'PAY_THROUGH_AMAZON' = 'PAY_THROUGH_AMAZON'
-
-  /**
-         * value: "PAY_DIRECT_TO_CARRIER"
-         * @const
-         */
-  'PAY_DIRECT_TO_CARRIER' = 'PAY_DIRECT_TO_CARRIER'
-
-  /**
-    * Returns a <code>PaymentType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {PaymentType} The enum <code>PaymentType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'PAY_THROUGH_AMAZON'|'PAY_DIRECT_TO_CARRIER'} PaymentType
+ */
+export const PaymentType = Object.freeze({
+  PAY_THROUGH_AMAZON: 'PAY_THROUGH_AMAZON',
+  PAY_DIRECT_TO_CARRIER: 'PAY_DIRECT_TO_CARRIER'
+})

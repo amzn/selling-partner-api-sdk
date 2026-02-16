@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class TimePeriodType.
-* @enum {String}
-* @readonly
-*/
-export class TimePeriodType {
-  /**
-         * value: "PERFORMANCE"
-         * @const
-         */
-  'PERFORMANCE' = 'PERFORMANCE'
-
-  /**
-         * value: "FORECAST"
-         * @const
-         */
-  'FORECAST' = 'FORECAST'
-
-  /**
-    * Returns a <code>TimePeriodType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {TimePeriodType} The enum <code>TimePeriodType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'PERFORMANCE'|'FORECAST'} TimePeriodType
+ */
+export const TimePeriodType = Object.freeze({
+  PERFORMANCE: 'PERFORMANCE',
+  FORECAST: 'FORECAST'
+})

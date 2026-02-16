@@ -1,74 +1,19 @@
+export type PackageStatus = "ReadyForPickup" | "PickedUp" | "AtOriginFC" | "AtDestinationFC" | "Delivered" | "Rejected" | "Undeliverable" | "ReturnedToSeller" | "LostInTransit" | "LabelCanceled" | "DamagedInTransit" | "OutForDelivery";
 /**
-* Enum class PackageStatus.
-* @enum {String}
-* @readonly
-*/
-export class PackageStatus {
-    /**
-      * Returns a <code>PackageStatus</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {PackageStatus} The enum <code>PackageStatus</code> value.
-      */
-    static constructFromObject(object: any): PackageStatus;
-    /**
-           * value: "ReadyForPickup"
-           * @const
-           */
-    ReadyForPickup: string;
-    /**
-           * value: "PickedUp"
-           * @const
-           */
-    PickedUp: string;
-    /**
-           * value: "AtOriginFC"
-           * @const
-           */
-    AtOriginFC: string;
-    /**
-           * value: "AtDestinationFC"
-           * @const
-           */
-    AtDestinationFC: string;
-    /**
-           * value: "Delivered"
-           * @const
-           */
-    Delivered: string;
-    /**
-           * value: "Rejected"
-           * @const
-           */
-    Rejected: string;
-    /**
-           * value: "Undeliverable"
-           * @const
-           */
-    Undeliverable: string;
-    /**
-           * value: "ReturnedToSeller"
-           * @const
-           */
-    ReturnedToSeller: string;
-    /**
-           * value: "LostInTransit"
-           * @const
-           */
-    LostInTransit: string;
-    /**
-           * value: "LabelCanceled"
-           * @const
-           */
-    LabelCanceled: string;
-    /**
-           * value: "DamagedInTransit"
-           * @const
-           */
-    DamagedInTransit: string;
-    /**
-           * value: "OutForDelivery"
-           * @const
-           */
-    OutForDelivery: string;
-}
+ * @typedef {'ReadyForPickup'|'PickedUp'|'AtOriginFC'|'AtDestinationFC'|'Delivered'|'Rejected'|'Undeliverable'|'ReturnedToSeller'|'LostInTransit'|'LabelCanceled'|'DamagedInTransit'|'OutForDelivery'} PackageStatus
+ */
+export const PackageStatus: Readonly<{
+    ReadyForPickup: "ReadyForPickup";
+    PickedUp: "PickedUp";
+    AtOriginFC: "AtOriginFC";
+    AtDestinationFC: "AtDestinationFC";
+    Delivered: "Delivered";
+    Rejected: "Rejected";
+    Undeliverable: "Undeliverable";
+    ReturnedToSeller: "ReturnedToSeller";
+    LostInTransit: "LostInTransit";
+    LabelCanceled: "LabelCanceled";
+    DamagedInTransit: "DamagedInTransit";
+    OutForDelivery: "OutForDelivery";
+}>;
 //# sourceMappingURL=PackageStatus.d.ts.map

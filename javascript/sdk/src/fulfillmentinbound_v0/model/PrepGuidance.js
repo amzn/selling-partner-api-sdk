@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class PrepGuidance.
-* @enum {String}
-* @readonly
-*/
-export class PrepGuidance {
-  /**
-         * value: "ConsultHelpDocuments"
-         * @const
-         */
-  'ConsultHelpDocuments' = 'ConsultHelpDocuments'
-
-  /**
-         * value: "NoAdditionalPrepRequired"
-         * @const
-         */
-  'NoAdditionalPrepRequired' = 'NoAdditionalPrepRequired'
-
-  /**
-         * value: "SeePrepInstructionsList"
-         * @const
-         */
-  'SeePrepInstructionsList' = 'SeePrepInstructionsList'
-
-  /**
-    * Returns a <code>PrepGuidance</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {PrepGuidance} The enum <code>PrepGuidance</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'ConsultHelpDocuments'|'NoAdditionalPrepRequired'|'SeePrepInstructionsList'} PrepGuidance
+ */
+export const PrepGuidance = Object.freeze({
+  ConsultHelpDocuments: 'ConsultHelpDocuments',
+  NoAdditionalPrepRequired: 'NoAdditionalPrepRequired',
+  SeePrepInstructionsList: 'SeePrepInstructionsList'
+})

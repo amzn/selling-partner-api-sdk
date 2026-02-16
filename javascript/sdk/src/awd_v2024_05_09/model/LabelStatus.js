@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class LabelStatus.
-* @enum {String}
-* @readonly
-*/
-export class LabelStatus {
-  /**
-         * value: "GENERATING"
-         * @const
-         */
-  'GENERATING' = 'GENERATING'
-
-  /**
-         * value: "GENERATED"
-         * @const
-         */
-  'GENERATED' = 'GENERATED'
-
-  /**
-         * value: "GENERATION_FAILED"
-         * @const
-         */
-  'GENERATION_FAILED' = 'GENERATION_FAILED'
-
-  /**
-         * value: "NOT_READY"
-         * @const
-         */
-  'NOT_READY' = 'NOT_READY'
-
-  /**
-    * Returns a <code>LabelStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {LabelStatus} The enum <code>LabelStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'GENERATING'|'GENERATED'|'GENERATION_FAILED'|'NOT_READY'} LabelStatus
+ */
+export const LabelStatus = Object.freeze({
+  GENERATING: 'GENERATING',
+  GENERATED: 'GENERATED',
+  GENERATION_FAILED: 'GENERATION_FAILED',
+  NOT_READY: 'NOT_READY'
+})

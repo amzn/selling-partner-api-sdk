@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class BalanceType.
-* @enum {String}
-* @readonly
-*/
-export class BalanceType {
-  /**
-         * value: "AVAILABLE"
-         * @const
-         */
-  'AVAILABLE' = 'AVAILABLE'
-
-  /**
-         * value: "LOCKED_IN"
-         * @const
-         */
-  'LOCKED_IN' = 'LOCKED_IN'
-
-  /**
-         * value: "LOCKED_OUT"
-         * @const
-         */
-  'LOCKED_OUT' = 'LOCKED_OUT'
-
-  /**
-         * value: "TOTAL"
-         * @const
-         */
-  'TOTAL' = 'TOTAL'
-
-  /**
-    * Returns a <code>BalanceType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {BalanceType} The enum <code>BalanceType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'AVAILABLE'|'LOCKED_IN'|'LOCKED_OUT'|'TOTAL'} BalanceType
+ */
+export const BalanceType = Object.freeze({
+  AVAILABLE: 'AVAILABLE',
+  LOCKED_IN: 'LOCKED_IN',
+  LOCKED_OUT: 'LOCKED_OUT',
+  TOTAL: 'TOTAL'
+})

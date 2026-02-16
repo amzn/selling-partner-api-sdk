@@ -14,23 +14,8 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class RateItemID.
-* @enum {String}
-* @readonly
-*/
-export class RateItemID {
-  /**
-         * value: "FBM_SHIP_PLUS_CREDIT"
-         * @const
-         */
-  'FBM_SHIP_PLUS_CREDIT' = 'FBM_SHIP_PLUS_CREDIT'
-
-  /**
-    * Returns a <code>RateItemID</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {RateItemID} The enum <code>RateItemID</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'FBM_SHIP_PLUS_CREDIT'} RateItemID
+ */
+export const RateItemID = Object.freeze({
+  FBM_SHIP_PLUS_CREDIT: 'FBM_SHIP_PLUS_CREDIT'
+})

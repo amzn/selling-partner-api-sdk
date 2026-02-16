@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ChannelType.
-* @enum {String}
-* @readonly
-*/
-export class ChannelType {
-  /**
-         * value: "AMAZON"
-         * @const
-         */
-  'AMAZON' = 'AMAZON'
-
-  /**
-         * value: "EXTERNAL"
-         * @const
-         */
-  'EXTERNAL' = 'EXTERNAL'
-
-  /**
-    * Returns a <code>ChannelType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ChannelType} The enum <code>ChannelType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'AMAZON'|'EXTERNAL'} ChannelType
+ */
+export const ChannelType = Object.freeze({
+  AMAZON: 'AMAZON',
+  EXTERNAL: 'EXTERNAL'
+})

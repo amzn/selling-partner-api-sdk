@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class CarrierWillPickUpOption.
-* @enum {String}
-* @readonly
-*/
-export class CarrierWillPickUpOption {
-  /**
-         * value: "CarrierWillPickUp"
-         * @const
-         */
-  'CarrierWillPickUp' = 'CarrierWillPickUp'
-
-  /**
-         * value: "ShipperWillDropOff"
-         * @const
-         */
-  'ShipperWillDropOff' = 'ShipperWillDropOff'
-
-  /**
-         * value: "NoPreference"
-         * @const
-         */
-  'NoPreference' = 'NoPreference'
-
-  /**
-    * Returns a <code>CarrierWillPickUpOption</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {CarrierWillPickUpOption} The enum <code>CarrierWillPickUpOption</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'CarrierWillPickUp'|'ShipperWillDropOff'|'NoPreference'} CarrierWillPickUpOption
+ */
+export const CarrierWillPickUpOption = Object.freeze({
+  CarrierWillPickUp: 'CarrierWillPickUp',
+  ShipperWillDropOff: 'ShipperWillDropOff',
+  NoPreference: 'NoPreference'
+})

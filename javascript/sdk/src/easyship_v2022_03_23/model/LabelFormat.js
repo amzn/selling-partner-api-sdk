@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class LabelFormat.
-* @enum {String}
-* @readonly
-*/
-export class LabelFormat {
-  /**
-         * value: "PDF"
-         * @const
-         */
-  'PDF' = 'PDF'
-
-  /**
-         * value: "ZPL"
-         * @const
-         */
-  'ZPL' = 'ZPL'
-
-  /**
-    * Returns a <code>LabelFormat</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {LabelFormat} The enum <code>LabelFormat</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'PDF'|'ZPL'} LabelFormat
+ */
+export const LabelFormat = Object.freeze({
+  PDF: 'PDF',
+  ZPL: 'ZPL'
+})

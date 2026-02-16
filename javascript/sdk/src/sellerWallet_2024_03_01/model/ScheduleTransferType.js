@@ -14,23 +14,8 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ScheduleTransferType.
-* @enum {String}
-* @readonly
-*/
-export class ScheduleTransferType {
-  /**
-         * value: "TIME_BASED"
-         * @const
-         */
-  'TIME_BASED' = 'TIME_BASED'
-
-  /**
-    * Returns a <code>ScheduleTransferType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ScheduleTransferType} The enum <code>ScheduleTransferType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'TIME_BASED'} ScheduleTransferType
+ */
+export const ScheduleTransferType = Object.freeze({
+  TIME_BASED: 'TIME_BASED'
+})

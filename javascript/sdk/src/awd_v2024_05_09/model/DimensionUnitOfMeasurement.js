@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class DimensionUnitOfMeasurement.
-* @enum {String}
-* @readonly
-*/
-export class DimensionUnitOfMeasurement {
-  /**
-         * value: "INCHES"
-         * @const
-         */
-  'INCHES' = 'INCHES'
-
-  /**
-         * value: "CENTIMETERS"
-         * @const
-         */
-  'CENTIMETERS' = 'CENTIMETERS'
-
-  /**
-    * Returns a <code>DimensionUnitOfMeasurement</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {DimensionUnitOfMeasurement} The enum <code>DimensionUnitOfMeasurement</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'INCHES'|'CENTIMETERS'} DimensionUnitOfMeasurement
+ */
+export const DimensionUnitOfMeasurement = Object.freeze({
+  INCHES: 'INCHES',
+  CENTIMETERS: 'CENTIMETERS'
+})

@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class IdType.
-* @enum {String}
-* @readonly
-*/
-export class IdType {
-  /**
-         * value: "ASIN"
-         * @const
-         */
-  'ASIN' = 'ASIN'
-
-  /**
-         * value: "SellerSKU"
-         * @const
-         */
-  'SellerSKU' = 'SellerSKU'
-
-  /**
-    * Returns a <code>IdType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {IdType} The enum <code>IdType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'ASIN'|'SellerSKU'} IdType
+ */
+export const IdType = Object.freeze({
+  ASIN: 'ASIN',
+  SellerSKU: 'SellerSKU'
+})

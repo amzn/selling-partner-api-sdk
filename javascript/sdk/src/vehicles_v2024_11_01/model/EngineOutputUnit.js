@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class EngineOutputUnit.
-* @enum {String}
-* @readonly
-*/
-export class EngineOutputUnit {
-  /**
-         * value: "KILOWATT"
-         * @const
-         */
-  'KILOWATT' = 'KILOWATT'
-
-  /**
-         * value: "HORSEPOWER"
-         * @const
-         */
-  'HORSEPOWER' = 'HORSEPOWER'
-
-  /**
-    * Returns a <code>EngineOutputUnit</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {EngineOutputUnit} The enum <code>EngineOutputUnit</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'KILOWATT'|'HORSEPOWER'} EngineOutputUnit
+ */
+export const EngineOutputUnit = Object.freeze({
+  KILOWATT: 'KILOWATT',
+  HORSEPOWER: 'HORSEPOWER'
+})

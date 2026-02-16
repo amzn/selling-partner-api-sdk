@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class VehicleStandard.
-* @enum {String}
-* @readonly
-*/
-export class VehicleStandard {
-  /**
-         * value: "KTYPE"
-         * @const
-         */
-  'KTYPE' = 'KTYPE'
-
-  /**
-         * value: "AMAZON_ID"
-         * @const
-         */
-  'AMAZON_ID' = 'AMAZON_ID'
-
-  /**
-    * Returns a <code>VehicleStandard</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {VehicleStandard} The enum <code>VehicleStandard</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'KTYPE'|'AMAZON_ID'} VehicleStandard
+ */
+export const VehicleStandard = Object.freeze({
+  KTYPE: 'KTYPE',
+  AMAZON_ID: 'AMAZON_ID'
+})

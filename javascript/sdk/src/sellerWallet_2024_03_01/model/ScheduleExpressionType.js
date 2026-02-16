@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ScheduleExpressionType.
-* @enum {String}
-* @readonly
-*/
-export class ScheduleExpressionType {
-  /**
-         * value: "RECURRING"
-         * @const
-         */
-  'RECURRING' = 'RECURRING'
-
-  /**
-         * value: "ONE_TIME"
-         * @const
-         */
-  'ONE_TIME' = 'ONE_TIME'
-
-  /**
-    * Returns a <code>ScheduleExpressionType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ScheduleExpressionType} The enum <code>ScheduleExpressionType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'RECURRING'|'ONE_TIME'} ScheduleExpressionType
+ */
+export const ScheduleExpressionType = Object.freeze({
+  RECURRING: 'RECURRING',
+  ONE_TIME: 'ONE_TIME'
+})

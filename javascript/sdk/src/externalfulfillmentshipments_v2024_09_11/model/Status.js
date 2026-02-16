@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class Status.
-* @enum {String}
-* @readonly
-*/
-export class Status {
-  /**
-         * value: "SUCCESS"
-         * @const
-         */
-  'SUCCESS' = 'SUCCESS'
-
-  /**
-         * value: "FAILURE"
-         * @const
-         */
-  'FAILURE' = 'FAILURE'
-
-  /**
-    * Returns a <code>Status</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {Status} The enum <code>Status</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'SUCCESS'|'FAILURE'} Status
+ */
+export const Status = Object.freeze({
+  SUCCESS: 'SUCCESS',
+  FAILURE: 'FAILURE'
+})

@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class AsinBadge.
-* @enum {String}
-* @readonly
-*/
-export class AsinBadge {
-  /**
-         * value: "BRAND_NOT_ELIGIBLE"
-         * @const
-         */
-  'BRAND_NOT_ELIGIBLE' = 'BRAND_NOT_ELIGIBLE'
-
-  /**
-         * value: "CATALOG_NOT_FOUND"
-         * @const
-         */
-  'CATALOG_NOT_FOUND' = 'CATALOG_NOT_FOUND'
-
-  /**
-         * value: "CONTENT_NOT_PUBLISHED"
-         * @const
-         */
-  'CONTENT_NOT_PUBLISHED' = 'CONTENT_NOT_PUBLISHED'
-
-  /**
-         * value: "CONTENT_PUBLISHED"
-         * @const
-         */
-  'CONTENT_PUBLISHED' = 'CONTENT_PUBLISHED'
-
-  /**
-    * Returns a <code>AsinBadge</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {AsinBadge} The enum <code>AsinBadge</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'BRAND_NOT_ELIGIBLE'|'CATALOG_NOT_FOUND'|'CONTENT_NOT_PUBLISHED'|'CONTENT_PUBLISHED'} AsinBadge
+ */
+export const AsinBadge = Object.freeze({
+  BRAND_NOT_ELIGIBLE: 'BRAND_NOT_ELIGIBLE',
+  CATALOG_NOT_FOUND: 'CATALOG_NOT_FOUND',
+  CONTENT_NOT_PUBLISHED: 'CONTENT_NOT_PUBLISHED',
+  CONTENT_PUBLISHED: 'CONTENT_PUBLISHED'
+})

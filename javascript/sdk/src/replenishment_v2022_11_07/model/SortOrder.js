@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class SortOrder.
-* @enum {String}
-* @readonly
-*/
-export class SortOrder {
-  /**
-         * value: "ASC"
-         * @const
-         */
-  'ASC' = 'ASC'
-
-  /**
-         * value: "DESC"
-         * @const
-         */
-  'DESC' = 'DESC'
-
-  /**
-    * Returns a <code>SortOrder</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {SortOrder} The enum <code>SortOrder</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'ASC'|'DESC'} SortOrder
+ */
+export const SortOrder = Object.freeze({
+  ASC: 'ASC',
+  DESC: 'DESC'
+})

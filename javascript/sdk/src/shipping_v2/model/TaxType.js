@@ -14,23 +14,8 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class TaxType.
-* @enum {String}
-* @readonly
-*/
-export class TaxType {
-  /**
-         * value: "GST"
-         * @const
-         */
-  'GST' = 'GST'
-
-  /**
-    * Returns a <code>TaxType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {TaxType} The enum <code>TaxType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'GST'} TaxType
+ */
+export const TaxType = Object.freeze({
+  GST: 'GST'
+})

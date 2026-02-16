@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class WeightUnitOfMeasurement.
-* @enum {String}
-* @readonly
-*/
-export class WeightUnitOfMeasurement {
-  /**
-         * value: "POUNDS"
-         * @const
-         */
-  'POUNDS' = 'POUNDS'
-
-  /**
-         * value: "KILOGRAMS"
-         * @const
-         */
-  'KILOGRAMS' = 'KILOGRAMS'
-
-  /**
-    * Returns a <code>WeightUnitOfMeasurement</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {WeightUnitOfMeasurement} The enum <code>WeightUnitOfMeasurement</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'POUNDS'|'KILOGRAMS'} WeightUnitOfMeasurement
+ */
+export const WeightUnitOfMeasurement = Object.freeze({
+  POUNDS: 'POUNDS',
+  KILOGRAMS: 'KILOGRAMS'
+})

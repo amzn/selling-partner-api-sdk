@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class VolumeUnitOfMeasurement.
-* @enum {String}
-* @readonly
-*/
-export class VolumeUnitOfMeasurement {
-  /**
-         * value: "CU_IN"
-         * @const
-         */
-  'CU_IN' = 'CU_IN'
-
-  /**
-         * value: "CBM"
-         * @const
-         */
-  'CBM' = 'CBM'
-
-  /**
-         * value: "CC"
-         * @const
-         */
-  'CC' = 'CC'
-
-  /**
-    * Returns a <code>VolumeUnitOfMeasurement</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {VolumeUnitOfMeasurement} The enum <code>VolumeUnitOfMeasurement</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'CU_IN'|'CBM'|'CC'} VolumeUnitOfMeasurement
+ */
+export const VolumeUnitOfMeasurement = Object.freeze({
+  CU_IN: 'CU_IN',
+  CBM: 'CBM',
+  CC: 'CC'
+})

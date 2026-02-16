@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class TransactionType.
-* @enum {String}
-* @readonly
-*/
-export class TransactionType {
-  /**
-         * value: "CREDIT"
-         * @const
-         */
-  'CREDIT' = 'CREDIT'
-
-  /**
-         * value: "DEBIT"
-         * @const
-         */
-  'DEBIT' = 'DEBIT'
-
-  /**
-    * Returns a <code>TransactionType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {TransactionType} The enum <code>TransactionType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'CREDIT'|'DEBIT'} TransactionType
+ */
+export const TransactionType = Object.freeze({
+  CREDIT: 'CREDIT',
+  DEBIT: 'DEBIT'
+})

@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class BankAccountHolderStatus.
-* @enum {String}
-* @readonly
-*/
-export class BankAccountHolderStatus {
-  /**
-         * value: "ACTIVE"
-         * @const
-         */
-  'ACTIVE' = 'ACTIVE'
-
-  /**
-         * value: "INACTIVE"
-         * @const
-         */
-  'INACTIVE' = 'INACTIVE'
-
-  /**
-         * value: "UNDER_REVIEW"
-         * @const
-         */
-  'UNDER_REVIEW' = 'UNDER_REVIEW'
-
-  /**
-         * value: "VERIFICATION_FAILED"
-         * @const
-         */
-  'VERIFICATION_FAILED' = 'VERIFICATION_FAILED'
-
-  /**
-    * Returns a <code>BankAccountHolderStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {BankAccountHolderStatus} The enum <code>BankAccountHolderStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'ACTIVE'|'INACTIVE'|'UNDER_REVIEW'|'VERIFICATION_FAILED'} BankAccountHolderStatus
+ */
+export const BankAccountHolderStatus = Object.freeze({
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE',
+  UNDER_REVIEW: 'UNDER_REVIEW',
+  VERIFICATION_FAILED: 'VERIFICATION_FAILED'
+})

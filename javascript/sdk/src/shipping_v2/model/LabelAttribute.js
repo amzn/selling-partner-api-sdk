@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class LabelAttribute.
-* @enum {String}
-* @readonly
-*/
-export class LabelAttribute {
-  /**
-         * value: "PACKAGE_CLIENT_REFERENCE_ID"
-         * @const
-         */
-  'PACKAGE_CLIENT_REFERENCE_ID' = 'PACKAGE_CLIENT_REFERENCE_ID'
-
-  /**
-         * value: "SELLER_DISPLAY_NAME"
-         * @const
-         */
-  'SELLER_DISPLAY_NAME' = 'SELLER_DISPLAY_NAME'
-
-  /**
-         * value: "COLLECT_ON_DELIVERY_AMOUNT"
-         * @const
-         */
-  'COLLECT_ON_DELIVERY_AMOUNT' = 'COLLECT_ON_DELIVERY_AMOUNT'
-
-  /**
-    * Returns a <code>LabelAttribute</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {LabelAttribute} The enum <code>LabelAttribute</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'PACKAGE_CLIENT_REFERENCE_ID'|'SELLER_DISPLAY_NAME'|'COLLECT_ON_DELIVERY_AMOUNT'} LabelAttribute
+ */
+export const LabelAttribute = Object.freeze({
+  PACKAGE_CLIENT_REFERENCE_ID: 'PACKAGE_CLIENT_REFERENCE_ID',
+  SELLER_DISPLAY_NAME: 'SELLER_DISPLAY_NAME',
+  COLLECT_ON_DELIVERY_AMOUNT: 'COLLECT_ON_DELIVERY_AMOUNT'
+})

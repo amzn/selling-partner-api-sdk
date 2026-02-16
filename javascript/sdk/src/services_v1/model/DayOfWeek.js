@@ -14,59 +14,14 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class DayOfWeek.
-* @enum {String}
-* @readonly
-*/
-export class DayOfWeek {
-  /**
-         * value: "MONDAY"
-         * @const
-         */
-  'MONDAY' = 'MONDAY'
-
-  /**
-         * value: "TUESDAY"
-         * @const
-         */
-  'TUESDAY' = 'TUESDAY'
-
-  /**
-         * value: "WEDNESDAY"
-         * @const
-         */
-  'WEDNESDAY' = 'WEDNESDAY'
-
-  /**
-         * value: "THURSDAY"
-         * @const
-         */
-  'THURSDAY' = 'THURSDAY'
-
-  /**
-         * value: "FRIDAY"
-         * @const
-         */
-  'FRIDAY' = 'FRIDAY'
-
-  /**
-         * value: "SATURDAY"
-         * @const
-         */
-  'SATURDAY' = 'SATURDAY'
-
-  /**
-         * value: "SUNDAY"
-         * @const
-         */
-  'SUNDAY' = 'SUNDAY'
-
-  /**
-    * Returns a <code>DayOfWeek</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {DayOfWeek} The enum <code>DayOfWeek</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'MONDAY'|'TUESDAY'|'WEDNESDAY'|'THURSDAY'|'FRIDAY'|'SATURDAY'|'SUNDAY'} DayOfWeek
+ */
+export const DayOfWeek = Object.freeze({
+  MONDAY: 'MONDAY',
+  TUESDAY: 'TUESDAY',
+  WEDNESDAY: 'WEDNESDAY',
+  THURSDAY: 'THURSDAY',
+  FRIDAY: 'FRIDAY',
+  SATURDAY: 'SATURDAY',
+  SUNDAY: 'SUNDAY'
+})

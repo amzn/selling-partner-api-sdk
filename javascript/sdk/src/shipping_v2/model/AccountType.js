@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class AccountType.
-* @enum {String}
-* @readonly
-*/
-export class AccountType {
-  /**
-         * value: "SHIPPER_ACCOUNT"
-         * @const
-         */
-  'SHIPPER_ACCOUNT' = 'SHIPPER_ACCOUNT'
-
-  /**
-         * value: "SHIPPER_ACCOUNT_WITH_INVOICE"
-         * @const
-         */
-  'SHIPPER_ACCOUNT_WITH_INVOICE' = 'SHIPPER_ACCOUNT_WITH_INVOICE'
-
-  /**
-         * value: "AMAZON_ACCOUNT"
-         * @const
-         */
-  'AMAZON_ACCOUNT' = 'AMAZON_ACCOUNT'
-
-  /**
-    * Returns a <code>AccountType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {AccountType} The enum <code>AccountType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'SHIPPER_ACCOUNT'|'SHIPPER_ACCOUNT_WITH_INVOICE'|'AMAZON_ACCOUNT'} AccountType
+ */
+export const AccountType = Object.freeze({
+  SHIPPER_ACCOUNT: 'SHIPPER_ACCOUNT',
+  SHIPPER_ACCOUNT_WITH_INVOICE: 'SHIPPER_ACCOUNT_WITH_INVOICE',
+  AMAZON_ACCOUNT: 'AMAZON_ACCOUNT'
+})

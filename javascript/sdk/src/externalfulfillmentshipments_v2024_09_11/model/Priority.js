@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class Priority.
-* @enum {String}
-* @readonly
-*/
-export class Priority {
-  /**
-         * value: "HIGH"
-         * @const
-         */
-  'HIGH' = 'HIGH'
-
-  /**
-         * value: "LOW"
-         * @const
-         */
-  'LOW' = 'LOW'
-
-  /**
-    * Returns a <code>Priority</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {Priority} The enum <code>Priority</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'HIGH'|'LOW'} Priority
+ */
+export const Priority = Object.freeze({
+  HIGH: 'HIGH',
+  LOW: 'LOW'
+})

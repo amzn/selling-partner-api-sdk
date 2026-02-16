@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class GenerationStatus.
-* @enum {String}
-* @readonly
-*/
-export class GenerationStatus {
-  /**
-         * value: "Completed"
-         * @const
-         */
-  'Completed' = 'Completed'
-
-  /**
-         * value: "InProgress"
-         * @const
-         */
-  'InProgress' = 'InProgress'
-
-  /**
-    * Returns a <code>GenerationStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {GenerationStatus} The enum <code>GenerationStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'Completed'|'InProgress'} GenerationStatus
+ */
+export const GenerationStatus = Object.freeze({
+  Completed: 'Completed',
+  InProgress: 'InProgress'
+})

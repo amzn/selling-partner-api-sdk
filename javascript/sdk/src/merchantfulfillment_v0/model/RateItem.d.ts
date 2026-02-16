@@ -20,7 +20,7 @@ export class RateItem {
      * @param rateItemID {RateItemID}
      */
     constructor(rateItemID: RateItemID);
-    rateItemID: RateItemID;
+    rateItemID: "FBM_SHIP_PLUS_CREDIT";
     /**
      * @member {RateItemType} rateItemType
      * @type {RateItemType}
@@ -38,7 +38,7 @@ export class RateItem {
      */
     rateItemNameLocalization: string;
 }
-import { RateItemID } from './RateItemID.js';
 import { RateItemType } from './RateItemType.js';
 import { CurrencyAmount } from './CurrencyAmount.js';
+import { RateItemID } from './RateItemID.js';
 //# sourceMappingURL=RateItem.d.ts.map

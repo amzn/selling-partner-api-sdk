@@ -1,29 +1,10 @@
+export type OtherDeliveryAttributes = "HAS_ACCESS_POINT" | "PALLET_ENABLED" | "PALLET_DISABLED";
 /**
-* Enum class OtherDeliveryAttributes.
-* @enum {String}
-* @readonly
-*/
-export class OtherDeliveryAttributes {
-    /**
-      * Returns a <code>OtherDeliveryAttributes</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {OtherDeliveryAttributes} The enum <code>OtherDeliveryAttributes</code> value.
-      */
-    static constructFromObject(object: any): OtherDeliveryAttributes;
-    /**
-           * value: "HAS_ACCESS_POINT"
-           * @const
-           */
-    HAS_ACCESS_POINT: string;
-    /**
-           * value: "PALLET_ENABLED"
-           * @const
-           */
-    PALLET_ENABLED: string;
-    /**
-           * value: "PALLET_DISABLED"
-           * @const
-           */
-    PALLET_DISABLED: string;
-}
+ * @typedef {'HAS_ACCESS_POINT'|'PALLET_ENABLED'|'PALLET_DISABLED'} OtherDeliveryAttributes
+ */
+export const OtherDeliveryAttributes: Readonly<{
+    HAS_ACCESS_POINT: "HAS_ACCESS_POINT";
+    PALLET_ENABLED: "PALLET_ENABLED";
+    PALLET_DISABLED: "PALLET_DISABLED";
+}>;
 //# sourceMappingURL=OtherDeliveryAttributes.d.ts.map

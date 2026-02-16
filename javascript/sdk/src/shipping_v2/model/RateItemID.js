@@ -14,215 +14,40 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class RateItemID.
-* @enum {String}
-* @readonly
-*/
-export class RateItemID {
-  /**
-         * value: "BASE_RATE"
-         * @const
-         */
-  'BASE_RATE' = 'BASE_RATE'
-
-  /**
-         * value: "TRANSACTION_FEE"
-         * @const
-         */
-  'TRANSACTION_FEE' = 'TRANSACTION_FEE'
-
-  /**
-         * value: "ADULT_SIGNATURE_CONFIRMATION"
-         * @const
-         */
-  'ADULT_SIGNATURE_CONFIRMATION' = 'ADULT_SIGNATURE_CONFIRMATION'
-
-  /**
-         * value: "SIGNATURE_CONFIRMATION"
-         * @const
-         */
-  'SIGNATURE_CONFIRMATION' = 'SIGNATURE_CONFIRMATION'
-
-  /**
-         * value: "NO_CONFIRMATION"
-         * @const
-         */
-  'NO_CONFIRMATION' = 'NO_CONFIRMATION'
-
-  /**
-         * value: "WAIVE_SIGNATURE"
-         * @const
-         */
-  'WAIVE_SIGNATURE' = 'WAIVE_SIGNATURE'
-
-  /**
-         * value: "IMPLIED_LIABILITY"
-         * @const
-         */
-  'IMPLIED_LIABILITY' = 'IMPLIED_LIABILITY'
-
-  /**
-         * value: "HIDDEN_POSTAGE"
-         * @const
-         */
-  'HIDDEN_POSTAGE' = 'HIDDEN_POSTAGE'
-
-  /**
-         * value: "DECLARED_VALUE"
-         * @const
-         */
-  'DECLARED_VALUE' = 'DECLARED_VALUE'
-
-  /**
-         * value: "SUNDAY_HOLIDAY_DELIVERY"
-         * @const
-         */
-  'SUNDAY_HOLIDAY_DELIVERY' = 'SUNDAY_HOLIDAY_DELIVERY'
-
-  /**
-         * value: "DELIVERY_CONFIRMATION"
-         * @const
-         */
-  'DELIVERY_CONFIRMATION' = 'DELIVERY_CONFIRMATION'
-
-  /**
-         * value: "IMPORT_DUTY_CHARGE"
-         * @const
-         */
-  'IMPORT_DUTY_CHARGE' = 'IMPORT_DUTY_CHARGE'
-
-  /**
-         * value: "VAT"
-         * @const
-         */
-  'VAT' = 'VAT'
-
-  /**
-         * value: "NO_SATURDAY_DELIVERY"
-         * @const
-         */
-  'NO_SATURDAY_DELIVERY' = 'NO_SATURDAY_DELIVERY'
-
-  /**
-         * value: "INSURANCE"
-         * @const
-         */
-  'INSURANCE' = 'INSURANCE'
-
-  /**
-         * value: "COD"
-         * @const
-         */
-  'COD' = 'COD'
-
-  /**
-         * value: "FUEL_SURCHARGE"
-         * @const
-         */
-  'FUEL_SURCHARGE' = 'FUEL_SURCHARGE'
-
-  /**
-         * value: "INSPECTION_CHARGE"
-         * @const
-         */
-  'INSPECTION_CHARGE' = 'INSPECTION_CHARGE'
-
-  /**
-         * value: "DELIVERY_AREA_SURCHARGE"
-         * @const
-         */
-  'DELIVERY_AREA_SURCHARGE' = 'DELIVERY_AREA_SURCHARGE'
-
-  /**
-         * value: "WAYBILL_CHARGE"
-         * @const
-         */
-  'WAYBILL_CHARGE' = 'WAYBILL_CHARGE'
-
-  /**
-         * value: "AMAZON_SPONSORED_DISCOUNT"
-         * @const
-         */
-  'AMAZON_SPONSORED_DISCOUNT' = 'AMAZON_SPONSORED_DISCOUNT'
-
-  /**
-         * value: "INTEGRATOR_SPONSORED_DISCOUNT"
-         * @const
-         */
-  'INTEGRATOR_SPONSORED_DISCOUNT' = 'INTEGRATOR_SPONSORED_DISCOUNT'
-
-  /**
-         * value: "OVERSIZE_SURCHARGE"
-         * @const
-         */
-  'OVERSIZE_SURCHARGE' = 'OVERSIZE_SURCHARGE'
-
-  /**
-         * value: "CONGESTION_CHARGE"
-         * @const
-         */
-  'CONGESTION_CHARGE' = 'CONGESTION_CHARGE'
-
-  /**
-         * value: "RESIDENTIAL_SURCHARGE"
-         * @const
-         */
-  'RESIDENTIAL_SURCHARGE' = 'RESIDENTIAL_SURCHARGE'
-
-  /**
-         * value: "ADDITIONAL_SURCHARGE"
-         * @const
-         */
-  'ADDITIONAL_SURCHARGE' = 'ADDITIONAL_SURCHARGE'
-
-  /**
-         * value: "SURCHARGE"
-         * @const
-         */
-  'SURCHARGE' = 'SURCHARGE'
-
-  /**
-         * value: "REBATE"
-         * @const
-         */
-  'REBATE' = 'REBATE'
-
-  /**
-         * value: "HIGH_CUBE_SURCHARGE"
-         * @const
-         */
-  'HIGH_CUBE_SURCHARGE' = 'HIGH_CUBE_SURCHARGE'
-
-  /**
-         * value: "HIGH_LENGTH_SURCHARGE"
-         * @const
-         */
-  'HIGH_LENGTH_SURCHARGE' = 'HIGH_LENGTH_SURCHARGE'
-
-  /**
-         * value: "HIGH_WIDTH_SURCHARGE"
-         * @const
-         */
-  'HIGH_WIDTH_SURCHARGE' = 'HIGH_WIDTH_SURCHARGE'
-
-  /**
-         * value: "DEMAND_SURCHARGE"
-         * @const
-         */
-  'DEMAND_SURCHARGE' = 'DEMAND_SURCHARGE'
-
-  /**
-         * value: "NONSTANDARD_FEE"
-         * @const
-         */
-  'NONSTANDARD_FEE' = 'NONSTANDARD_FEE'
-
-  /**
-    * Returns a <code>RateItemID</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {RateItemID} The enum <code>RateItemID</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'BASE_RATE'|'TRANSACTION_FEE'|'ADULT_SIGNATURE_CONFIRMATION'|'SIGNATURE_CONFIRMATION'|'NO_CONFIRMATION'|'WAIVE_SIGNATURE'|'IMPLIED_LIABILITY'|'HIDDEN_POSTAGE'|'DECLARED_VALUE'|'SUNDAY_HOLIDAY_DELIVERY'|'DELIVERY_CONFIRMATION'|'IMPORT_DUTY_CHARGE'|'VAT'|'NO_SATURDAY_DELIVERY'|'INSURANCE'|'COD'|'FUEL_SURCHARGE'|'INSPECTION_CHARGE'|'DELIVERY_AREA_SURCHARGE'|'WAYBILL_CHARGE'|'AMAZON_SPONSORED_DISCOUNT'|'INTEGRATOR_SPONSORED_DISCOUNT'|'OVERSIZE_SURCHARGE'|'CONGESTION_CHARGE'|'RESIDENTIAL_SURCHARGE'|'ADDITIONAL_SURCHARGE'|'SURCHARGE'|'REBATE'|'HIGH_CUBE_SURCHARGE'|'HIGH_LENGTH_SURCHARGE'|'HIGH_WIDTH_SURCHARGE'|'DEMAND_SURCHARGE'|'NONSTANDARD_FEE'} RateItemID
+ */
+export const RateItemID = Object.freeze({
+  BASE_RATE: 'BASE_RATE',
+  TRANSACTION_FEE: 'TRANSACTION_FEE',
+  ADULT_SIGNATURE_CONFIRMATION: 'ADULT_SIGNATURE_CONFIRMATION',
+  SIGNATURE_CONFIRMATION: 'SIGNATURE_CONFIRMATION',
+  NO_CONFIRMATION: 'NO_CONFIRMATION',
+  WAIVE_SIGNATURE: 'WAIVE_SIGNATURE',
+  IMPLIED_LIABILITY: 'IMPLIED_LIABILITY',
+  HIDDEN_POSTAGE: 'HIDDEN_POSTAGE',
+  DECLARED_VALUE: 'DECLARED_VALUE',
+  SUNDAY_HOLIDAY_DELIVERY: 'SUNDAY_HOLIDAY_DELIVERY',
+  DELIVERY_CONFIRMATION: 'DELIVERY_CONFIRMATION',
+  IMPORT_DUTY_CHARGE: 'IMPORT_DUTY_CHARGE',
+  VAT: 'VAT',
+  NO_SATURDAY_DELIVERY: 'NO_SATURDAY_DELIVERY',
+  INSURANCE: 'INSURANCE',
+  COD: 'COD',
+  FUEL_SURCHARGE: 'FUEL_SURCHARGE',
+  INSPECTION_CHARGE: 'INSPECTION_CHARGE',
+  DELIVERY_AREA_SURCHARGE: 'DELIVERY_AREA_SURCHARGE',
+  WAYBILL_CHARGE: 'WAYBILL_CHARGE',
+  AMAZON_SPONSORED_DISCOUNT: 'AMAZON_SPONSORED_DISCOUNT',
+  INTEGRATOR_SPONSORED_DISCOUNT: 'INTEGRATOR_SPONSORED_DISCOUNT',
+  OVERSIZE_SURCHARGE: 'OVERSIZE_SURCHARGE',
+  CONGESTION_CHARGE: 'CONGESTION_CHARGE',
+  RESIDENTIAL_SURCHARGE: 'RESIDENTIAL_SURCHARGE',
+  ADDITIONAL_SURCHARGE: 'ADDITIONAL_SURCHARGE',
+  SURCHARGE: 'SURCHARGE',
+  REBATE: 'REBATE',
+  HIGH_CUBE_SURCHARGE: 'HIGH_CUBE_SURCHARGE',
+  HIGH_LENGTH_SURCHARGE: 'HIGH_LENGTH_SURCHARGE',
+  HIGH_WIDTH_SURCHARGE: 'HIGH_WIDTH_SURCHARGE',
+  DEMAND_SURCHARGE: 'DEMAND_SURCHARGE',
+  NONSTANDARD_FEE: 'NONSTANDARD_FEE'
+})

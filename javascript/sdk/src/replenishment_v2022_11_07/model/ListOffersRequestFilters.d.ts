@@ -22,7 +22,7 @@ export class ListOffersRequestFilters {
      */
     constructor(marketplaceId: string, programTypes: ProgramType[]);
     marketplaceId: string;
-    programTypes: ProgramType[];
+    programTypes: "SUBSCRIBE_AND_SAVE"[];
     /**
      * A list of SKUs to filter. This filter is only supported for sellers and not for vendors.
      * @member {String[]} skus
@@ -52,8 +52,8 @@ export class ListOffersRequestFilters {
      */
     promotions: Promotion;
 }
-import { ProgramType } from './ProgramType.js';
 import { EligibilityStatus } from './EligibilityStatus.js';
 import { Preference } from './Preference.js';
 import { Promotion } from './Promotion.js';
+import { ProgramType } from './ProgramType.js';
 //# sourceMappingURL=ListOffersRequestFilters.d.ts.map

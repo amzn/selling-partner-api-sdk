@@ -14,101 +14,21 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class EventCode.
-* @enum {String}
-* @readonly
-*/
-export class EventCode {
-  /**
-         * value: "ReadyForReceive"
-         * @const
-         */
-  'ReadyForReceive' = 'ReadyForReceive'
-
-  /**
-         * value: "PickupDone"
-         * @const
-         */
-  'PickupDone' = 'PickupDone'
-
-  /**
-         * value: "Delivered"
-         * @const
-         */
-  'Delivered' = 'Delivered'
-
-  /**
-         * value: "Departed"
-         * @const
-         */
-  'Departed' = 'Departed'
-
-  /**
-         * value: "DeliveryAttempted"
-         * @const
-         */
-  'DeliveryAttempted' = 'DeliveryAttempted'
-
-  /**
-         * value: "Lost"
-         * @const
-         */
-  'Lost' = 'Lost'
-
-  /**
-         * value: "OutForDelivery"
-         * @const
-         */
-  'OutForDelivery' = 'OutForDelivery'
-
-  /**
-         * value: "ArrivedAtCarrierFacility"
-         * @const
-         */
-  'ArrivedAtCarrierFacility' = 'ArrivedAtCarrierFacility'
-
-  /**
-         * value: "Rejected"
-         * @const
-         */
-  'Rejected' = 'Rejected'
-
-  /**
-         * value: "Undeliverable"
-         * @const
-         */
-  'Undeliverable' = 'Undeliverable'
-
-  /**
-         * value: "PickupCancelled"
-         * @const
-         */
-  'PickupCancelled' = 'PickupCancelled'
-
-  /**
-         * value: "ReturnInitiated"
-         * @const
-         */
-  'ReturnInitiated' = 'ReturnInitiated'
-
-  /**
-         * value: "AvailableForPickup"
-         * @const
-         */
-  'AvailableForPickup' = 'AvailableForPickup'
-
-  /**
-         * value: "RecipientRequestedAlternateDeliveryTiming"
-         * @const
-         */
-  'RecipientRequestedAlternateDeliveryTiming' = 'RecipientRequestedAlternateDeliveryTiming'
-
-  /**
-    * Returns a <code>EventCode</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {EventCode} The enum <code>EventCode</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'ReadyForReceive'|'PickupDone'|'Delivered'|'Departed'|'DeliveryAttempted'|'Lost'|'OutForDelivery'|'ArrivedAtCarrierFacility'|'Rejected'|'Undeliverable'|'PickupCancelled'|'ReturnInitiated'|'AvailableForPickup'|'RecipientRequestedAlternateDeliveryTiming'} EventCode
+ */
+export const EventCode = Object.freeze({
+  ReadyForReceive: 'ReadyForReceive',
+  PickupDone: 'PickupDone',
+  Delivered: 'Delivered',
+  Departed: 'Departed',
+  DeliveryAttempted: 'DeliveryAttempted',
+  Lost: 'Lost',
+  OutForDelivery: 'OutForDelivery',
+  ArrivedAtCarrierFacility: 'ArrivedAtCarrierFacility',
+  Rejected: 'Rejected',
+  Undeliverable: 'Undeliverable',
+  PickupCancelled: 'PickupCancelled',
+  ReturnInitiated: 'ReturnInitiated',
+  AvailableForPickup: 'AvailableForPickup',
+  RecipientRequestedAlternateDeliveryTiming: 'RecipientRequestedAlternateDeliveryTiming'
+})
