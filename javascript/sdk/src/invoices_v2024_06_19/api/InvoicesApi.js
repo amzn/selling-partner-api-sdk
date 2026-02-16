@@ -394,7 +394,7 @@ export class InvoicesApi {
      * @param {String} [opts.nextToken] The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
      * @param {String} [opts.sortOrder] Sort the invoices in the response in ascending or descending order.
      * @param {String} [opts.invoiceType] The marketplace-specific classification of the invoice type. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;invoiceType&#x60; options.
-     * @param {[String]} [opts.statuses] A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1
+     * @param {String[]} [opts.statuses] A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1
      * @param {String} [opts.externalInvoiceId] Return invoices that match this external ID. This is typically the Government Invoice ID.
      * @param {String} [opts.sortBy] The attribute by which you want to sort the invoices in the response.
      * @return {Promise<GetInvoicesResponse>}
@@ -456,7 +456,7 @@ export class InvoicesApi {
      * @param {String} [opts.nextToken] The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
      * @param {String} [opts.sortOrder] Sort the invoices in the response in ascending or descending order.
      * @param {String} [opts.invoiceType] The marketplace-specific classification of the invoice type. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;invoiceType&#x60; options.
-     * @param {[String]} [opts.statuses] A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1
+     * @param {String[]} [opts.statuses] A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1
      * @param {String} [opts.externalInvoiceId] Return invoices that match this external ID. This is typically the Government Invoice ID.
      * @param {String} [opts.sortBy] The attribute by which you want to sort the invoices in the response.
      * @return {Promise<GetInvoicesResponse>}

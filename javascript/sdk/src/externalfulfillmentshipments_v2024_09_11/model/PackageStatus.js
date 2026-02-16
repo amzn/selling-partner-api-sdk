@@ -14,53 +14,13 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class PackageStatus.
-* @enum {String}
-* @readonly
-*/
-export class PackageStatus {
-  /**
-         * value: "CREATED"
-         * @const
-         */
-  'CREATED' = 'CREATED'
-
-  /**
-         * value: "PICKUP_SLOT_RETRIEVED"
-         * @const
-         */
-  'PICKUP_SLOT_RETRIEVED' = 'PICKUP_SLOT_RETRIEVED'
-
-  /**
-         * value: "INVOICE_GENERATED"
-         * @const
-         */
-  'INVOICE_GENERATED' = 'INVOICE_GENERATED'
-
-  /**
-         * value: "SHIPLABEL_GENERATED"
-         * @const
-         */
-  'SHIPLABEL_GENERATED' = 'SHIPLABEL_GENERATED'
-
-  /**
-         * value: "SHIPPED"
-         * @const
-         */
-  'SHIPPED' = 'SHIPPED'
-
-  /**
-         * value: "DELIVERED"
-         * @const
-         */
-  'DELIVERED' = 'DELIVERED'
-
-  /**
-    * Returns a <code>PackageStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {PackageStatus} The enum <code>PackageStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'CREATED'|'PICKUP_SLOT_RETRIEVED'|'INVOICE_GENERATED'|'SHIPLABEL_GENERATED'|'SHIPPED'|'DELIVERED'} PackageStatus
+ */
+export const PackageStatus = Object.freeze({
+  CREATED: 'CREATED',
+  PICKUP_SLOT_RETRIEVED: 'PICKUP_SLOT_RETRIEVED',
+  INVOICE_GENERATED: 'INVOICE_GENERATED',
+  SHIPLABEL_GENERATED: 'SHIPLABEL_GENERATED',
+  SHIPPED: 'SHIPPED',
+  DELIVERED: 'DELIVERED'
+})

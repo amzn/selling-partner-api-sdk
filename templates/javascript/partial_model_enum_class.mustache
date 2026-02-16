@@ -1,24 +1,10 @@
-{{#emitJSDoc}}/**
-* Enum class {{classname}}.
-* @enum {{=< >=}}{<dataType>}<={{ }}=>
-* @readonly
-*/{{/emitJSDoc}}
-export class {{classname}} {
-    {{#allowableValues}}{{#enumVars}}
-        {{#emitJSDoc}}/**
-         * value: {{{value}}}
-         * @const
-         */{{/emitJSDoc}}
-        "{{name}}" = {{{value}}};
-
-    {{/enumVars}}{{/allowableValues}}
-
-    {{#emitJSDoc}}/**
-    * Returns a <code>{{classname}}</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {{=< >=}}{<classname>}<={{ }}=> The enum <code>{{classname}}</code> value.
-    */{{/emitJSDoc}}
-    static constructFromObject(object) {
-        return object;
-    }
-}
+/**
+ * @typedef {{=< >=}}{<#allowableValues><#enumVars>'<name>'<^-last>|</-last></enumVars></allowableValues>}<={{ }}=> {{classname}}
+ */
+export const {{classname}} = Object.freeze({
+{{#allowableValues}}
+{{#enumVars}}
+  "{{name}}": {{{value}}}{{^-last}},{{/-last}}
+{{/enumVars}}
+{{/allowableValues}}
+});

@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class EligibilityStatus.
-* @enum {String}
-* @readonly
-*/
-export class EligibilityStatus {
-  /**
-         * value: "ELIGIBLE"
-         * @const
-         */
-  'ELIGIBLE' = 'ELIGIBLE'
-
-  /**
-         * value: "INELIGIBLE"
-         * @const
-         */
-  'INELIGIBLE' = 'INELIGIBLE'
-
-  /**
-         * value: "SUSPENDED"
-         * @const
-         */
-  'SUSPENDED' = 'SUSPENDED'
-
-  /**
-         * value: "REPLENISHMENT_ONLY_ORDERING"
-         * @const
-         */
-  'REPLENISHMENT_ONLY_ORDERING' = 'REPLENISHMENT_ONLY_ORDERING'
-
-  /**
-    * Returns a <code>EligibilityStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {EligibilityStatus} The enum <code>EligibilityStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'ELIGIBLE'|'INELIGIBLE'|'SUSPENDED'|'REPLENISHMENT_ONLY_ORDERING'} EligibilityStatus
+ */
+export const EligibilityStatus = Object.freeze({
+  ELIGIBLE: 'ELIGIBLE',
+  INELIGIBLE: 'INELIGIBLE',
+  SUSPENDED: 'SUSPENDED',
+  REPLENISHMENT_ONLY_ORDERING: 'REPLENISHMENT_ONLY_ORDERING'
+})

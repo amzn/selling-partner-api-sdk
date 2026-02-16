@@ -19,12 +19,12 @@ export class MskuPrepDetail {
      * @class
      * @param msku {String} The merchant SKU, a merchant-supplied identifier for a specific SKU.
      * @param prepCategory {PrepCategory}
-     * @param prepTypes {[PrepType]} A list of preparation types associated with a preparation category.
+     * @param prepTypes {PrepType[]} A list of preparation types associated with a preparation category.
      */
-    constructor(msku: string, prepCategory: PrepCategory, prepTypes: [PrepType]);
+    constructor(msku: string, prepCategory: PrepCategory, prepTypes: PrepType[]);
     msku: string;
     prepCategory: PrepCategory;
-    prepTypes: [PrepType];
+    prepTypes: PrepType[];
     /**
      * @member {AllOwnersConstraint} allOwnersConstraint
      * @type {AllOwnersConstraint}

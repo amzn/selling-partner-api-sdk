@@ -43,10 +43,10 @@ export class PayWithAmazonEvent {
     charge: ChargeComponent;
     /**
      * A list of fee component information.
-     * @member {[FeeComponent]} feeList
-     * @type {[FeeComponent]}
+     * @member {FeeComponent[]} feeList
+     * @type {FeeComponent[]}
      */
-    feeList: [FeeComponent];
+    feeList: FeeComponent[];
     /**
      * The type of payment.  Possible values:  * `Sales`
      * @member {String} paymentAmountType

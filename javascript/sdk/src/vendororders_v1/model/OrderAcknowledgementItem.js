@@ -28,7 +28,7 @@ export class OrderAcknowledgementItem {
    * @alias module:vendororders_v1/model/OrderAcknowledgementItem
    * @class
    * @param orderedQuantity {ItemQuantity}
-   * @param itemAcknowledgements {[OrderItemAcknowledgement]} This is used to indicate acknowledged quantity.
+   * @param itemAcknowledgements {OrderItemAcknowledgement[]} This is used to indicate acknowledged quantity.
    */
   constructor (orderedQuantity, itemAcknowledgements) {
     this.orderedQuantity = orderedQuantity
@@ -117,7 +117,7 @@ OrderAcknowledgementItem.prototype.discountMultiplier = undefined
 
 /**
  * This is used to indicate acknowledged quantity.
- * @member {[OrderItemAcknowledgement]} itemAcknowledgements
- * @type {[OrderItemAcknowledgement]}
+ * @member {OrderItemAcknowledgement[]} itemAcknowledgements
+ * @type {OrderItemAcknowledgement[]}
  */
 OrderAcknowledgementItem.prototype.itemAcknowledgements = undefined

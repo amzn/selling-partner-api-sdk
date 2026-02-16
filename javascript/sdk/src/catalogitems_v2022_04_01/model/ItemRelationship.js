@@ -63,15 +63,15 @@ export class ItemRelationship {
 
 /**
  * ASINs of the related items that are children of this item.
- * @member {[String]} childAsins
- * @type {[String]}
+ * @member {String[]} childAsins
+ * @type {String[]}
  */
 ItemRelationship.prototype.childAsins = undefined
 
 /**
  * ASINs of the related items that are parents of this item.
- * @member {[String]} parentAsins
- * @type {[String]}
+ * @member {String[]} parentAsins
+ * @type {String[]}
  */
 ItemRelationship.prototype.parentAsins = undefined
 

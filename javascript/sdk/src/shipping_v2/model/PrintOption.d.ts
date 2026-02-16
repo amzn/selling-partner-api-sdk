@@ -17,20 +17,20 @@ export class PrintOption {
      * The format options available for a label.
      * @alias module:shipping_v2/model/PrintOption
      * @class
-     * @param supportedPageLayouts {[String]} A list of the supported page layout options for a document.
-     * @param supportedFileJoiningOptions {[Boolean]} A list of the supported needFileJoining boolean values for a document.
-     * @param supportedDocumentDetails {[SupportedDocumentDetail]} A list of the supported documented details.
+     * @param supportedPageLayouts {String[]} A list of the supported page layout options for a document.
+     * @param supportedFileJoiningOptions {Boolean[]} A list of the supported needFileJoining boolean values for a document.
+     * @param supportedDocumentDetails {SupportedDocumentDetail[]} A list of the supported documented details.
      */
-    constructor(supportedPageLayouts: [string], supportedFileJoiningOptions: [boolean], supportedDocumentDetails: [SupportedDocumentDetail]);
-    supportedPageLayouts: [string];
-    supportedFileJoiningOptions: [boolean];
-    supportedDocumentDetails: [SupportedDocumentDetail];
+    constructor(supportedPageLayouts: string[], supportedFileJoiningOptions: boolean[], supportedDocumentDetails: SupportedDocumentDetail[]);
+    supportedPageLayouts: string[];
+    supportedFileJoiningOptions: boolean[];
+    supportedDocumentDetails: SupportedDocumentDetail[];
     /**
      * A list of the supported DPI options for a document.
-     * @member {[Number]} supportedDPIs
-     * @type {[Number]}
+     * @member {Number[]} supportedDPIs
+     * @type {Number[]}
      */
-    supportedDPIs: [number];
+    supportedDPIs: number[];
 }
 import { SupportedDocumentDetail } from './SupportedDocumentDetail.js';
 //# sourceMappingURL=PrintOption.d.ts.map

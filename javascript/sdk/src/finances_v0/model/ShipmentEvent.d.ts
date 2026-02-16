@@ -38,46 +38,46 @@ export class ShipmentEvent {
     storeName: string;
     /**
      * A list of charge information on the seller's account.
-     * @member {[ChargeComponent]} orderChargeList
-     * @type {[ChargeComponent]}
+     * @member {ChargeComponent[]} orderChargeList
+     * @type {ChargeComponent[]}
      */
-    orderChargeList: [ChargeComponent];
+    orderChargeList: ChargeComponent[];
     /**
      * A list of charge information on the seller's account.
-     * @member {[ChargeComponent]} orderChargeAdjustmentList
-     * @type {[ChargeComponent]}
+     * @member {ChargeComponent[]} orderChargeAdjustmentList
+     * @type {ChargeComponent[]}
      */
-    orderChargeAdjustmentList: [ChargeComponent];
+    orderChargeAdjustmentList: ChargeComponent[];
     /**
      * A list of fee component information.
-     * @member {[FeeComponent]} shipmentFeeList
-     * @type {[FeeComponent]}
+     * @member {FeeComponent[]} shipmentFeeList
+     * @type {FeeComponent[]}
      */
-    shipmentFeeList: [FeeComponent];
+    shipmentFeeList: FeeComponent[];
     /**
      * A list of fee component information.
-     * @member {[FeeComponent]} shipmentFeeAdjustmentList
-     * @type {[FeeComponent]}
+     * @member {FeeComponent[]} shipmentFeeAdjustmentList
+     * @type {FeeComponent[]}
      */
-    shipmentFeeAdjustmentList: [FeeComponent];
+    shipmentFeeAdjustmentList: FeeComponent[];
     /**
      * A list of fee component information.
-     * @member {[FeeComponent]} orderFeeList
-     * @type {[FeeComponent]}
+     * @member {FeeComponent[]} orderFeeList
+     * @type {FeeComponent[]}
      */
-    orderFeeList: [FeeComponent];
+    orderFeeList: FeeComponent[];
     /**
      * A list of fee component information.
-     * @member {[FeeComponent]} orderFeeAdjustmentList
-     * @type {[FeeComponent]}
+     * @member {FeeComponent[]} orderFeeAdjustmentList
+     * @type {FeeComponent[]}
      */
-    orderFeeAdjustmentList: [FeeComponent];
+    orderFeeAdjustmentList: FeeComponent[];
     /**
      * A list of direct payment information.
-     * @member {[DirectPayment]} directPaymentList
-     * @type {[DirectPayment]}
+     * @member {DirectPayment[]} directPaymentList
+     * @type {DirectPayment[]}
      */
-    directPaymentList: [DirectPayment];
+    directPaymentList: DirectPayment[];
     /**
      * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate
@@ -86,16 +86,16 @@ export class ShipmentEvent {
     postedDate: Date;
     /**
      * A list of shipment items.
-     * @member {[ShipmentItem]} shipmentItemList
-     * @type {[ShipmentItem]}
+     * @member {ShipmentItem[]} shipmentItemList
+     * @type {ShipmentItem[]}
      */
-    shipmentItemList: [ShipmentItem];
+    shipmentItemList: ShipmentItem[];
     /**
      * A list of shipment items.
-     * @member {[ShipmentItem]} shipmentItemAdjustmentList
-     * @type {[ShipmentItem]}
+     * @member {ShipmentItem[]} shipmentItemAdjustmentList
+     * @type {ShipmentItem[]}
      */
-    shipmentItemAdjustmentList: [ShipmentItem];
+    shipmentItemAdjustmentList: ShipmentItem[];
 }
 import { ChargeComponent } from './ChargeComponent.js';
 import { FeeComponent } from './FeeComponent.js';

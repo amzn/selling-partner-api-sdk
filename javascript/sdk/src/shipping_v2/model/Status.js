@@ -14,77 +14,17 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class Status.
-* @enum {String}
-* @readonly
-*/
-export class Status {
-  /**
-         * value: "PreTransit"
-         * @const
-         */
-  'PreTransit' = 'PreTransit'
-
-  /**
-         * value: "InTransit"
-         * @const
-         */
-  'InTransit' = 'InTransit'
-
-  /**
-         * value: "Delivered"
-         * @const
-         */
-  'Delivered' = 'Delivered'
-
-  /**
-         * value: "Lost"
-         * @const
-         */
-  'Lost' = 'Lost'
-
-  /**
-         * value: "OutForDelivery"
-         * @const
-         */
-  'OutForDelivery' = 'OutForDelivery'
-
-  /**
-         * value: "Rejected"
-         * @const
-         */
-  'Rejected' = 'Rejected'
-
-  /**
-         * value: "Undeliverable"
-         * @const
-         */
-  'Undeliverable' = 'Undeliverable'
-
-  /**
-         * value: "DeliveryAttempted"
-         * @const
-         */
-  'DeliveryAttempted' = 'DeliveryAttempted'
-
-  /**
-         * value: "PickupCancelled"
-         * @const
-         */
-  'PickupCancelled' = 'PickupCancelled'
-
-  /**
-         * value: "AwaitingCustomerPickup"
-         * @const
-         */
-  'AwaitingCustomerPickup' = 'AwaitingCustomerPickup'
-
-  /**
-    * Returns a <code>Status</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {Status} The enum <code>Status</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'PreTransit'|'InTransit'|'Delivered'|'Lost'|'OutForDelivery'|'Rejected'|'Undeliverable'|'DeliveryAttempted'|'PickupCancelled'|'AwaitingCustomerPickup'} Status
+ */
+export const Status = Object.freeze({
+  PreTransit: 'PreTransit',
+  InTransit: 'InTransit',
+  Delivered: 'Delivered',
+  Lost: 'Lost',
+  OutForDelivery: 'OutForDelivery',
+  Rejected: 'Rejected',
+  Undeliverable: 'Undeliverable',
+  DeliveryAttempted: 'DeliveryAttempted',
+  PickupCancelled: 'PickupCancelled',
+  AwaitingCustomerPickup: 'AwaitingCustomerPickup'
+})

@@ -29,10 +29,10 @@ export class Restriction {
     conditionType: string;
     /**
      * A list of reasons for the restriction.
-     * @member {[Reason]} reasons
-     * @type {[Reason]}
+     * @member {Reason[]} reasons
+     * @type {Reason[]}
      */
-    reasons: [Reason];
+    reasons: Reason[];
 }
 export namespace Restriction {
     namespace ConditionTypeEnum {

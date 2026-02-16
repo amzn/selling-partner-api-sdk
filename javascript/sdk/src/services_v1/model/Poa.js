@@ -69,8 +69,8 @@ Poa.prototype.appointmentTime = undefined
 
 /**
  * A list of technicians.
- * @member {[Technician]} technicians
- * @type {[Technician]}
+ * @member {Technician[]} technicians
+ * @type {Technician[]}
  */
 Poa.prototype.technicians = undefined
 

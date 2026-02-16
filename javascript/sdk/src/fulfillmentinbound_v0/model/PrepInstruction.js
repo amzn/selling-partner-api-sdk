@@ -14,113 +14,23 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class PrepInstruction.
-* @enum {String}
-* @readonly
-*/
-export class PrepInstruction {
-  /**
-         * value: "Polybagging"
-         * @const
-         */
-  'Polybagging' = 'Polybagging'
-
-  /**
-         * value: "BubbleWrapping"
-         * @const
-         */
-  'BubbleWrapping' = 'BubbleWrapping'
-
-  /**
-         * value: "Taping"
-         * @const
-         */
-  'Taping' = 'Taping'
-
-  /**
-         * value: "BlackShrinkWrapping"
-         * @const
-         */
-  'BlackShrinkWrapping' = 'BlackShrinkWrapping'
-
-  /**
-         * value: "Labeling"
-         * @const
-         */
-  'Labeling' = 'Labeling'
-
-  /**
-         * value: "HangGarment"
-         * @const
-         */
-  'HangGarment' = 'HangGarment'
-
-  /**
-         * value: "SetCreation"
-         * @const
-         */
-  'SetCreation' = 'SetCreation'
-
-  /**
-         * value: "Boxing"
-         * @const
-         */
-  'Boxing' = 'Boxing'
-
-  /**
-         * value: "RemoveFromHanger"
-         * @const
-         */
-  'RemoveFromHanger' = 'RemoveFromHanger'
-
-  /**
-         * value: "Debundle"
-         * @const
-         */
-  'Debundle' = 'Debundle'
-
-  /**
-         * value: "SuffocationStickering"
-         * @const
-         */
-  'SuffocationStickering' = 'SuffocationStickering'
-
-  /**
-         * value: "CapSealing"
-         * @const
-         */
-  'CapSealing' = 'CapSealing'
-
-  /**
-         * value: "SetStickering"
-         * @const
-         */
-  'SetStickering' = 'SetStickering'
-
-  /**
-         * value: "BlankStickering"
-         * @const
-         */
-  'BlankStickering' = 'BlankStickering'
-
-  /**
-         * value: "ShipsInProductPackaging"
-         * @const
-         */
-  'ShipsInProductPackaging' = 'ShipsInProductPackaging'
-
-  /**
-         * value: "NoPrep"
-         * @const
-         */
-  'NoPrep' = 'NoPrep'
-
-  /**
-    * Returns a <code>PrepInstruction</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {PrepInstruction} The enum <code>PrepInstruction</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'Polybagging'|'BubbleWrapping'|'Taping'|'BlackShrinkWrapping'|'Labeling'|'HangGarment'|'SetCreation'|'Boxing'|'RemoveFromHanger'|'Debundle'|'SuffocationStickering'|'CapSealing'|'SetStickering'|'BlankStickering'|'ShipsInProductPackaging'|'NoPrep'} PrepInstruction
+ */
+export const PrepInstruction = Object.freeze({
+  Polybagging: 'Polybagging',
+  BubbleWrapping: 'BubbleWrapping',
+  Taping: 'Taping',
+  BlackShrinkWrapping: 'BlackShrinkWrapping',
+  Labeling: 'Labeling',
+  HangGarment: 'HangGarment',
+  SetCreation: 'SetCreation',
+  Boxing: 'Boxing',
+  RemoveFromHanger: 'RemoveFromHanger',
+  Debundle: 'Debundle',
+  SuffocationStickering: 'SuffocationStickering',
+  CapSealing: 'CapSealing',
+  SetStickering: 'SetStickering',
+  BlankStickering: 'BlankStickering',
+  ShipsInProductPackaging: 'ShipsInProductPackaging',
+  NoPrep: 'NoPrep'
+})

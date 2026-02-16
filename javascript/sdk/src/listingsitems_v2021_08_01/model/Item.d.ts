@@ -23,10 +23,10 @@ export class Item {
     sku: string;
     /**
      * Summary details of a listings item.
-     * @member {[ItemSummaryByMarketplace]} summaries
-     * @type {[ItemSummaryByMarketplace]}
+     * @member {ItemSummaryByMarketplace[]} summaries
+     * @type {ItemSummaryByMarketplace[]}
      */
-    summaries: [ItemSummaryByMarketplace];
+    summaries: ItemSummaryByMarketplace[];
     /**
      * A JSON object containing structured listings item attribute data keyed by attribute name.
      * @member {{String: Object}} attributes
@@ -37,40 +37,40 @@ export class Item {
     };
     /**
      * The issues associated with the listings item.
-     * @member {[Issue]} issues
-     * @type {[Issue]}
+     * @member {Issue[]} issues
+     * @type {Issue[]}
      */
-    issues: [Issue];
+    issues: Issue[];
     /**
      * Offer details for the listings item.
-     * @member {[ItemOfferByMarketplace]} offers
-     * @type {[ItemOfferByMarketplace]}
+     * @member {ItemOfferByMarketplace[]} offers
+     * @type {ItemOfferByMarketplace[]}
      */
-    offers: [ItemOfferByMarketplace];
+    offers: ItemOfferByMarketplace[];
     /**
      * The fulfillment availability for the listings item.
-     * @member {[FulfillmentAvailability]} fulfillmentAvailability
-     * @type {[FulfillmentAvailability]}
+     * @member {FulfillmentAvailability[]} fulfillmentAvailability
+     * @type {FulfillmentAvailability[]}
      */
-    fulfillmentAvailability: [FulfillmentAvailability];
+    fulfillmentAvailability: FulfillmentAvailability[];
     /**
      * The vendor procurement information for the listings item.
-     * @member {[ItemProcurement]} procurement
-     * @type {[ItemProcurement]}
+     * @member {ItemProcurement[]} procurement
+     * @type {ItemProcurement[]}
      */
-    procurement: [ItemProcurement];
+    procurement: ItemProcurement[];
     /**
      * Relationships for a listing item, by marketplace (for example, variations).
-     * @member {[ItemRelationshipsByMarketplace]} relationships
-     * @type {[ItemRelationshipsByMarketplace]}
+     * @member {ItemRelationshipsByMarketplace[]} relationships
+     * @type {ItemRelationshipsByMarketplace[]}
      */
-    relationships: [ItemRelationshipsByMarketplace];
+    relationships: ItemRelationshipsByMarketplace[];
     /**
      * Product types for a listing item, by marketplace.
-     * @member {[ItemProductTypeByMarketplace]} productTypes
-     * @type {[ItemProductTypeByMarketplace]}
+     * @member {ItemProductTypeByMarketplace[]} productTypes
+     * @type {ItemProductTypeByMarketplace[]}
      */
-    productTypes: [ItemProductTypeByMarketplace];
+    productTypes: ItemProductTypeByMarketplace[];
 }
 import { ItemSummaryByMarketplace } from './ItemSummaryByMarketplace.js';
 import { Issue } from './Issue.js';

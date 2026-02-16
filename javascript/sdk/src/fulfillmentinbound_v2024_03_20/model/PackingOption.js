@@ -27,13 +27,13 @@ export class PackingOption {
    * A packing option contains a set of pack groups plus additional information about the packing option, such as any discounts or fees if it&#39;s selected.
    * @alias module:fulfillmentinbound_v2024_03_20/model/PackingOption
    * @class
-   * @param discounts {[Incentive]} Discount for the offered option.
-   * @param fees {[Incentive]} Fee for the offered option.
-   * @param packingGroups {[String]} Packing group IDs.
+   * @param discounts {Incentive[]} Discount for the offered option.
+   * @param fees {Incentive[]} Fee for the offered option.
+   * @param packingGroups {String[]} Packing group IDs.
    * @param packingOptionId {String} Identifier of a packing option.
    * @param status {String} The status of the packing option. Possible values: `OFFERED`, `ACCEPTED`, `EXPIRED`.
-   * @param supportedConfigurations {[PackingConfiguration]} A list of possible configurations for this option.
-   * @param supportedShippingConfigurations {[ShippingConfiguration]} **This field is deprecated**. Use the `shippingRequirements` property under `supportedConfigurations` instead. List of supported shipping modes.
+   * @param supportedConfigurations {PackingConfiguration[]} A list of possible configurations for this option.
+   * @param supportedShippingConfigurations {ShippingConfiguration[]} **This field is deprecated**. Use the `shippingRequirements` property under `supportedConfigurations` instead. List of supported shipping modes.
    */
   constructor (discounts, fees, packingGroups, packingOptionId, status, supportedConfigurations, supportedShippingConfigurations) {
     this.discounts = discounts
@@ -81,8 +81,8 @@ export class PackingOption {
 
 /**
  * Discount for the offered option.
- * @member {[Incentive]} discounts
- * @type {[Incentive]}
+ * @member {Incentive[]} discounts
+ * @type {Incentive[]}
  */
 PackingOption.prototype.discounts = undefined
 
@@ -95,15 +95,15 @@ PackingOption.prototype.expiration = undefined
 
 /**
  * Fee for the offered option.
- * @member {[Incentive]} fees
- * @type {[Incentive]}
+ * @member {Incentive[]} fees
+ * @type {Incentive[]}
  */
 PackingOption.prototype.fees = undefined
 
 /**
  * Packing group IDs.
- * @member {[String]} packingGroups
- * @type {[String]}
+ * @member {String[]} packingGroups
+ * @type {String[]}
  */
 PackingOption.prototype.packingGroups = undefined
 
@@ -123,14 +123,14 @@ PackingOption.prototype.status = undefined
 
 /**
  * A list of possible configurations for this option.
- * @member {[PackingConfiguration]} supportedConfigurations
- * @type {[PackingConfiguration]}
+ * @member {PackingConfiguration[]} supportedConfigurations
+ * @type {PackingConfiguration[]}
  */
 PackingOption.prototype.supportedConfigurations = undefined
 
 /**
  * **This field is deprecated**. Use the `shippingRequirements` property under `supportedConfigurations` instead. List of supported shipping modes.
- * @member {[ShippingConfiguration]} supportedShippingConfigurations
- * @type {[ShippingConfiguration]}
+ * @member {ShippingConfiguration[]} supportedShippingConfigurations
+ * @type {ShippingConfiguration[]}
  */
 PackingOption.prototype.supportedShippingConfigurations = undefined

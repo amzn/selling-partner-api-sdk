@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class OtherDeliveryAttributes.
-* @enum {String}
-* @readonly
-*/
-export class OtherDeliveryAttributes {
-  /**
-         * value: "HAS_ACCESS_POINT"
-         * @const
-         */
-  'HAS_ACCESS_POINT' = 'HAS_ACCESS_POINT'
-
-  /**
-         * value: "PALLET_ENABLED"
-         * @const
-         */
-  'PALLET_ENABLED' = 'PALLET_ENABLED'
-
-  /**
-         * value: "PALLET_DISABLED"
-         * @const
-         */
-  'PALLET_DISABLED' = 'PALLET_DISABLED'
-
-  /**
-    * Returns a <code>OtherDeliveryAttributes</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {OtherDeliveryAttributes} The enum <code>OtherDeliveryAttributes</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'HAS_ACCESS_POINT'|'PALLET_ENABLED'|'PALLET_DISABLED'} OtherDeliveryAttributes
+ */
+export const OtherDeliveryAttributes = Object.freeze({
+  HAS_ACCESS_POINT: 'HAS_ACCESS_POINT',
+  PALLET_ENABLED: 'PALLET_ENABLED',
+  PALLET_DISABLED: 'PALLET_DISABLED'
+})

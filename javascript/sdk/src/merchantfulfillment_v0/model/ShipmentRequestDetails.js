@@ -31,7 +31,7 @@ export class ShipmentRequestDetails {
    * @alias module:merchantfulfillment_v0/model/ShipmentRequestDetails
    * @class
    * @param amazonOrderId {String} An Amazon-defined order identifier, in 3-7-7 format.
-   * @param itemList {[Item]} The list of items you want to include in a shipment.
+   * @param itemList {Item[]} The list of items you want to include in a shipment.
    * @param shipFromAddress {Address}
    * @param packageDimensions {PackageDimensions}
    * @param weight {Weight}
@@ -98,8 +98,8 @@ ShipmentRequestDetails.prototype.sellerOrderId = undefined
 
 /**
  * The list of items you want to include in a shipment.
- * @member {[Item]} itemList
- * @type {[Item]}
+ * @member {Item[]} itemList
+ * @type {Item[]}
  */
 ShipmentRequestDetails.prototype.itemList = undefined
 

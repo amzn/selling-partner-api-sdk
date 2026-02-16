@@ -26,7 +26,7 @@ export class ItemImagesByMarketplace {
    * @alias module:catalogitems_v2022_04_01/model/ItemImagesByMarketplace
    * @class
    * @param marketplaceId {String} Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-   * @param images {[ItemImage]} Images for an item in the Amazon catalog, grouped by `marketplaceId`.
+   * @param images {ItemImage[]} Images for an item in the Amazon catalog, grouped by `marketplaceId`.
    */
   constructor (marketplaceId, images) {
     this.marketplaceId = marketplaceId
@@ -70,7 +70,7 @@ ItemImagesByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Images for an item in the Amazon catalog, grouped by `marketplaceId`.
- * @member {[ItemImage]} images
- * @type {[ItemImage]}
+ * @member {ItemImage[]} images
+ * @type {ItemImage[]}
  */
 ItemImagesByMarketplace.prototype.images = undefined

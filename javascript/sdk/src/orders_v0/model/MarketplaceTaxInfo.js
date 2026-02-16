@@ -58,7 +58,7 @@ export class MarketplaceTaxInfo {
 
 /**
  * A list of tax classifications that apply to the order.
- * @member {[TaxClassification]} taxClassifications
- * @type {[TaxClassification]}
+ * @member {TaxClassification[]} taxClassifications
+ * @type {TaxClassification[]}
  */
 MarketplaceTaxInfo.prototype.taxClassifications = undefined

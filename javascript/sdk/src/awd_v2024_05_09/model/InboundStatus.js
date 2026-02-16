@@ -14,53 +14,13 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class InboundStatus.
-* @enum {String}
-* @readonly
-*/
-export class InboundStatus {
-  /**
-         * value: "DRAFT"
-         * @const
-         */
-  'DRAFT' = 'DRAFT'
-
-  /**
-         * value: "VALIDATING"
-         * @const
-         */
-  'VALIDATING' = 'VALIDATING'
-
-  /**
-         * value: "CONFIRMED"
-         * @const
-         */
-  'CONFIRMED' = 'CONFIRMED'
-
-  /**
-         * value: "CLOSED"
-         * @const
-         */
-  'CLOSED' = 'CLOSED'
-
-  /**
-         * value: "EXPIRED"
-         * @const
-         */
-  'EXPIRED' = 'EXPIRED'
-
-  /**
-         * value: "CANCELLED"
-         * @const
-         */
-  'CANCELLED' = 'CANCELLED'
-
-  /**
-    * Returns a <code>InboundStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {InboundStatus} The enum <code>InboundStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'DRAFT'|'VALIDATING'|'CONFIRMED'|'CLOSED'|'EXPIRED'|'CANCELLED'} InboundStatus
+ */
+export const InboundStatus = Object.freeze({
+  DRAFT: 'DRAFT',
+  VALIDATING: 'VALIDATING',
+  CONFIRMED: 'CONFIRMED',
+  CLOSED: 'CLOSED',
+  EXPIRED: 'EXPIRED',
+  CANCELLED: 'CANCELLED'
+})

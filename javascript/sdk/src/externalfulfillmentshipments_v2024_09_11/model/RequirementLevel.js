@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class RequirementLevel.
-* @enum {String}
-* @readonly
-*/
-export class RequirementLevel {
-  /**
-         * value: "REQUIRED"
-         * @const
-         */
-  'REQUIRED' = 'REQUIRED'
-
-  /**
-         * value: "DISALLOWED"
-         * @const
-         */
-  'DISALLOWED' = 'DISALLOWED'
-
-  /**
-    * Returns a <code>RequirementLevel</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {RequirementLevel} The enum <code>RequirementLevel</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'REQUIRED'|'DISALLOWED'} RequirementLevel
+ */
+export const RequirementLevel = Object.freeze({
+  REQUIRED: 'REQUIRED',
+  DISALLOWED: 'DISALLOWED'
+})

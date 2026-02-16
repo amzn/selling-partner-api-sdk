@@ -18,11 +18,11 @@ export class InboundOrderCreationData {
      * @alias module:awd_v2024_05_09/model/InboundOrderCreationData
      * @class
      * @param originAddress {Address}
-     * @param packagesToInbound {[DistributionPackageQuantity]} List of packages to be inbounded.
+     * @param packagesToInbound {DistributionPackageQuantity[]} List of packages to be inbounded.
      */
-    constructor(originAddress: Address, packagesToInbound: [DistributionPackageQuantity]);
+    constructor(originAddress: Address, packagesToInbound: DistributionPackageQuantity[]);
     originAddress: Address;
-    packagesToInbound: [DistributionPackageQuantity];
+    packagesToInbound: DistributionPackageQuantity[];
     /**
      * Reference ID that can be used to correlate the order with partner resources.
      * @member {String} externalReferenceId

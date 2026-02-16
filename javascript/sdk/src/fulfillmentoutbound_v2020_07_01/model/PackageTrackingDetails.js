@@ -172,7 +172,7 @@ PackageTrackingDetails.prototype.additionalLocationInfo = undefined
 
 /**
  * An array of tracking event information.
- * @member {[TrackingEvent]} trackingEvents
- * @type {[TrackingEvent]}
+ * @member {TrackingEvent[]} trackingEvents
+ * @type {TrackingEvent[]}
  */
 PackageTrackingDetails.prototype.trackingEvents = undefined

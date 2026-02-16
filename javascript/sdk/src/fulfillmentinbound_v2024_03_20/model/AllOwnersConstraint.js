@@ -14,23 +14,8 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class AllOwnersConstraint.
-* @enum {String}
-* @readonly
-*/
-export class AllOwnersConstraint {
-  /**
-         * value: "MUST_MATCH"
-         * @const
-         */
-  'MUST_MATCH' = 'MUST_MATCH'
-
-  /**
-    * Returns a <code>AllOwnersConstraint</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {AllOwnersConstraint} The enum <code>AllOwnersConstraint</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'MUST_MATCH'} AllOwnersConstraint
+ */
+export const AllOwnersConstraint = Object.freeze({
+  MUST_MATCH: 'MUST_MATCH'
+})

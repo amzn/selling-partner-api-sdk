@@ -19,10 +19,10 @@ export class RangeCapacity {
     capacityType: CapacityType;
     /**
      * Array of capacity slots in range slot format.
-     * @member {[RangeSlot]} slots
-     * @type {[RangeSlot]}
+     * @member {RangeSlot[]} slots
+     * @type {RangeSlot[]}
      */
-    slots: [RangeSlot];
+    slots: RangeSlot[];
 }
 import { CapacityType } from './CapacityType.js';
 import { RangeSlot } from './RangeSlot.js';

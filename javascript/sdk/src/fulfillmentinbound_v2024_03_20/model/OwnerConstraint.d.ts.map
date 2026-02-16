@@ -1,1 +1,1 @@
-{"version":3,"file":"OwnerConstraint.d.ts","sourceRoot":"","sources":["OwnerConstraint.js"],"names":[],"mappings":"AAeA;;;;EAIE;AACF;IAmBE;;;;QAII;IACJ,yCAFa,eAAe,CAI3B;IAzBD;;;aAGS;IACT,oBAA6B;IAE7B;;;aAGS;IACT,kBAAyB;IAEzB;;;aAGS;IACT,oBAA6B;CAU9B"}
+{"version":3,"file":"OwnerConstraint.d.ts","sourceRoot":"","sources":["OwnerConstraint.js"],"names":[],"mappings":"8BAgBa,aAAa,GAAC,WAAW,GAAC,aAAa;AADpD;;GAEG;AACH;;;;GAIE"}

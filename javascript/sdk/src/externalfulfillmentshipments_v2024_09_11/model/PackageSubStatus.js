@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class PackageSubStatus.
-* @enum {String}
-* @readonly
-*/
-export class PackageSubStatus {
-  /**
-         * value: "OUT_FOR_DELIVERY"
-         * @const
-         */
-  'OUT_FOR_DELIVERY' = 'OUT_FOR_DELIVERY'
-
-  /**
-         * value: "DELIVERED"
-         * @const
-         */
-  'DELIVERED' = 'DELIVERED'
-
-  /**
-         * value: "NOT_DELIVERED"
-         * @const
-         */
-  'NOT_DELIVERED' = 'NOT_DELIVERED'
-
-  /**
-         * value: "UNDELIVERABLE"
-         * @const
-         */
-  'UNDELIVERABLE' = 'UNDELIVERABLE'
-
-  /**
-    * Returns a <code>PackageSubStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {PackageSubStatus} The enum <code>PackageSubStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'OUT_FOR_DELIVERY'|'DELIVERED'|'NOT_DELIVERED'|'UNDELIVERABLE'} PackageSubStatus
+ */
+export const PackageSubStatus = Object.freeze({
+  OUT_FOR_DELIVERY: 'OUT_FOR_DELIVERY',
+  DELIVERED: 'DELIVERED',
+  NOT_DELIVERED: 'NOT_DELIVERED',
+  UNDELIVERABLE: 'UNDELIVERABLE'
+})

@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class PaymentPreferencePaymentType.
-* @enum {String}
-* @readonly
-*/
-export class PaymentPreferencePaymentType {
-  /**
-         * value: "PERCENTAGE"
-         * @const
-         */
-  'PERCENTAGE' = 'PERCENTAGE'
-
-  /**
-         * value: "AMOUNT"
-         * @const
-         */
-  'AMOUNT' = 'AMOUNT'
-
-  /**
-    * Returns a <code>PaymentPreferencePaymentType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {PaymentPreferencePaymentType} The enum <code>PaymentPreferencePaymentType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'PERCENTAGE'|'AMOUNT'} PaymentPreferencePaymentType
+ */
+export const PaymentPreferencePaymentType = Object.freeze({
+  PERCENTAGE: 'PERCENTAGE',
+  AMOUNT: 'AMOUNT'
+})

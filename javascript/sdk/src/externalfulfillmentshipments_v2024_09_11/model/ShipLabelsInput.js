@@ -25,7 +25,7 @@ export class ShipLabelsInput {
    * Tracking details for multiple packages.
    * @alias module:externalfulfillmentshipments_v2024_09_11/model/ShipLabelsInput
    * @class
-   * @param packageIds {[String]} The subset of package IDs used to generate a label.
+   * @param packageIds {String[]} The subset of package IDs used to generate a label.
    */
   constructor (packageIds) {
     this.packageIds = packageIds
@@ -61,8 +61,8 @@ export class ShipLabelsInput {
 
 /**
  * The subset of package IDs used to generate a label.
- * @member {[String]} packageIds
- * @type {[String]}
+ * @member {String[]} packageIds
+ * @type {String[]}
  */
 ShipLabelsInput.prototype.packageIds = undefined
 

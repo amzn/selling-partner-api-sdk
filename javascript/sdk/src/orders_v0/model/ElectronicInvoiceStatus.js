@@ -14,47 +14,12 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ElectronicInvoiceStatus.
-* @enum {String}
-* @readonly
-*/
-export class ElectronicInvoiceStatus {
-  /**
-         * value: "NotRequired"
-         * @const
-         */
-  'NotRequired' = 'NotRequired'
-
-  /**
-         * value: "NotFound"
-         * @const
-         */
-  'NotFound' = 'NotFound'
-
-  /**
-         * value: "Processing"
-         * @const
-         */
-  'Processing' = 'Processing'
-
-  /**
-         * value: "Errored"
-         * @const
-         */
-  'Errored' = 'Errored'
-
-  /**
-         * value: "Accepted"
-         * @const
-         */
-  'Accepted' = 'Accepted'
-
-  /**
-    * Returns a <code>ElectronicInvoiceStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ElectronicInvoiceStatus} The enum <code>ElectronicInvoiceStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'NotRequired'|'NotFound'|'Processing'|'Errored'|'Accepted'} ElectronicInvoiceStatus
+ */
+export const ElectronicInvoiceStatus = Object.freeze({
+  NotRequired: 'NotRequired',
+  NotFound: 'NotFound',
+  Processing: 'Processing',
+  Errored: 'Errored',
+  Accepted: 'Accepted'
+})

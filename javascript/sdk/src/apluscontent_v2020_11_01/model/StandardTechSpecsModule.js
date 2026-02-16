@@ -26,7 +26,7 @@ export class StandardTechSpecsModule {
    * The standard table of technical feature names and definitions.
    * @alias module:apluscontent_v2020_11_01/model/StandardTechSpecsModule
    * @class
-   * @param specificationList {[StandardTextPairBlock]} The specification list.
+   * @param specificationList {StandardTextPairBlock[]} The specification list.
    */
   constructor (specificationList) {
     this.specificationList = specificationList
@@ -69,8 +69,8 @@ StandardTechSpecsModule.prototype.headline = undefined
 
 /**
  * The specification list.
- * @member {[StandardTextPairBlock]} specificationList
- * @type {[StandardTextPairBlock]}
+ * @member {StandardTextPairBlock[]} specificationList
+ * @type {StandardTextPairBlock[]}
  */
 StandardTechSpecsModule.prototype.specificationList = undefined
 

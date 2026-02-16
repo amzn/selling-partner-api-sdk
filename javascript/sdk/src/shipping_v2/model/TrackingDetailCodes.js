@@ -25,8 +25,8 @@ export class TrackingDetailCodes {
    * Contains detail codes that provide additional details related to the forward and return leg of the shipment.
    * @alias module:shipping_v2/model/TrackingDetailCodes
    * @class
-   * @param forward {[DetailCodes]} Contains detail codes that provide additional details related to the forward leg of the shipment.
-   * @param returns {[DetailCodes]} Contains detail codes that provide additional details related to the return leg of the shipment.
+   * @param forward {DetailCodes[]} Contains detail codes that provide additional details related to the forward leg of the shipment.
+   * @param returns {DetailCodes[]} Contains detail codes that provide additional details related to the return leg of the shipment.
    */
   constructor (forward, returns) {
     this.forward = forward
@@ -63,14 +63,14 @@ export class TrackingDetailCodes {
 
 /**
  * Contains detail codes that provide additional details related to the forward leg of the shipment.
- * @member {[DetailCodes]} forward
- * @type {[DetailCodes]}
+ * @member {DetailCodes[]} forward
+ * @type {DetailCodes[]}
  */
 TrackingDetailCodes.prototype.forward = undefined
 
 /**
  * Contains detail codes that provide additional details related to the return leg of the shipment.
- * @member {[DetailCodes]} returns
- * @type {[DetailCodes]}
+ * @member {DetailCodes[]} returns
+ * @type {DetailCodes[]}
  */
 TrackingDetailCodes.prototype.returns = undefined

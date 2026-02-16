@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class LabelPrintType.
-* @enum {String}
-* @readonly
-*/
-export class LabelPrintType {
-  /**
-         * value: "STANDARD_FORMAT"
-         * @const
-         */
-  'STANDARD_FORMAT' = 'STANDARD_FORMAT'
-
-  /**
-         * value: "THERMAL_PRINTING"
-         * @const
-         */
-  'THERMAL_PRINTING' = 'THERMAL_PRINTING'
-
-  /**
-    * Returns a <code>LabelPrintType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {LabelPrintType} The enum <code>LabelPrintType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'STANDARD_FORMAT'|'THERMAL_PRINTING'} LabelPrintType
+ */
+export const LabelPrintType = Object.freeze({
+  STANDARD_FORMAT: 'STANDARD_FORMAT',
+  THERMAL_PRINTING: 'THERMAL_PRINTING'
+})

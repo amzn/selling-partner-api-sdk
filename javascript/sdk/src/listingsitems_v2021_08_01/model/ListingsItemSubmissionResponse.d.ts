@@ -27,16 +27,16 @@ export class ListingsItemSubmissionResponse {
     submissionId: string;
     /**
      * Listings item issues related to the listings item submission.
-     * @member {[Issue]} issues
-     * @type {[Issue]}
+     * @member {Issue[]} issues
+     * @type {Issue[]}
      */
-    issues: [Issue];
+    issues: Issue[];
     /**
      * Identity attributes associated with the item in the Amazon catalog, such as the ASIN.
-     * @member {[ItemIdentifiersByMarketplace]} identifiers
-     * @type {[ItemIdentifiersByMarketplace]}
+     * @member {ItemIdentifiersByMarketplace[]} identifiers
+     * @type {ItemIdentifiersByMarketplace[]}
      */
-    identifiers: [ItemIdentifiersByMarketplace];
+    identifiers: ItemIdentifiersByMarketplace[];
 }
 export namespace ListingsItemSubmissionResponse {
     namespace StatusEnum {

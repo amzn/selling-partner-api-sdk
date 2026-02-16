@@ -32,9 +32,9 @@ export class ScopeOfWork {
     quantity: number;
     /**
      * A list of skills required to perform the job.
-     * @member {[String]} requiredSkills
-     * @type {[String]}
+     * @member {String[]} requiredSkills
+     * @type {String[]}
      */
-    requiredSkills: [string];
+    requiredSkills: string[];
 }
 //# sourceMappingURL=ScopeOfWork.d.ts.map

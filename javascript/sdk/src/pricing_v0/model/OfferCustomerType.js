@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class OfferCustomerType.
-* @enum {String}
-* @readonly
-*/
-export class OfferCustomerType {
-  /**
-         * value: "B2C"
-         * @const
-         */
-  'B2C' = 'B2C'
-
-  /**
-         * value: "B2B"
-         * @const
-         */
-  'B2B' = 'B2B'
-
-  /**
-    * Returns a <code>OfferCustomerType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {OfferCustomerType} The enum <code>OfferCustomerType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'B2C'|'B2B'} OfferCustomerType
+ */
+export const OfferCustomerType = Object.freeze({
+  B2C: 'B2C',
+  B2B: 'B2B'
+})

@@ -86,8 +86,8 @@ Feed.prototype.feedType = undefined
 
 /**
  * A list of identifiers for the marketplaces that the feed is applied to.
- * @member {[String]} marketplaceIds
- * @type {[String]}
+ * @member {String[]} marketplaceIds
+ * @type {String[]}
  */
 Feed.prototype.marketplaceIds = undefined
 

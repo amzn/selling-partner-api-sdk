@@ -14,16 +14,16 @@ export class GetOrderMetricsResponse {
     static constructFromObject(data: any, obj: GetOrderMetricsResponse): GetOrderMetricsResponse;
     /**
      * A set of order metrics, each scoped to a particular time interval.
-     * @member {[OrderMetricsInterval]} payload
-     * @type {[OrderMetricsInterval]}
+     * @member {OrderMetricsInterval[]} payload
+     * @type {OrderMetricsInterval[]}
      */
-    payload: [OrderMetricsInterval];
+    payload: OrderMetricsInterval[];
     /**
      * A list of error responses returned when a request is unsuccessful.
-     * @member {[Error]} errors
-     * @type {[Error]}
+     * @member {Error[]} errors
+     * @type {Error[]}
      */
-    errors: [Error];
+    errors: Error[];
 }
 import { OrderMetricsInterval } from './OrderMetricsInterval.js';
 import { Error } from './Error.js';

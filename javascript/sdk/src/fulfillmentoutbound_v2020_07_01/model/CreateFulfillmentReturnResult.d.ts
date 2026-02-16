@@ -14,22 +14,22 @@ export class CreateFulfillmentReturnResult {
     static constructFromObject(data: any, obj: CreateFulfillmentReturnResult): CreateFulfillmentReturnResult;
     /**
      * An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
-     * @member {[ReturnItem]} returnItems
-     * @type {[ReturnItem]}
+     * @member {ReturnItem[]} returnItems
+     * @type {ReturnItem[]}
      */
-    returnItems: [ReturnItem];
+    returnItems: ReturnItem[];
     /**
      * An array of invalid return item information.
-     * @member {[InvalidReturnItem]} invalidReturnItems
-     * @type {[InvalidReturnItem]}
+     * @member {InvalidReturnItem[]} invalidReturnItems
+     * @type {InvalidReturnItem[]}
      */
-    invalidReturnItems: [InvalidReturnItem];
+    invalidReturnItems: InvalidReturnItem[];
     /**
      * An array of return authorization information.
-     * @member {[ReturnAuthorization]} returnAuthorizations
-     * @type {[ReturnAuthorization]}
+     * @member {ReturnAuthorization[]} returnAuthorizations
+     * @type {ReturnAuthorization[]}
      */
-    returnAuthorizations: [ReturnAuthorization];
+    returnAuthorizations: ReturnAuthorization[];
 }
 import { ReturnItem } from './ReturnItem.js';
 import { InvalidReturnItem } from './InvalidReturnItem.js';

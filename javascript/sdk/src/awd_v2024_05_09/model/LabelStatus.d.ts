@@ -1,34 +1,11 @@
+export type LabelStatus = "GENERATING" | "GENERATED" | "GENERATION_FAILED" | "NOT_READY";
 /**
-* Enum class LabelStatus.
-* @enum {String}
-* @readonly
-*/
-export class LabelStatus {
-    /**
-      * Returns a <code>LabelStatus</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {LabelStatus} The enum <code>LabelStatus</code> value.
-      */
-    static constructFromObject(object: any): LabelStatus;
-    /**
-           * value: "GENERATING"
-           * @const
-           */
-    GENERATING: string;
-    /**
-           * value: "GENERATED"
-           * @const
-           */
-    GENERATED: string;
-    /**
-           * value: "GENERATION_FAILED"
-           * @const
-           */
-    GENERATION_FAILED: string;
-    /**
-           * value: "NOT_READY"
-           * @const
-           */
-    NOT_READY: string;
-}
+ * @typedef {'GENERATING'|'GENERATED'|'GENERATION_FAILED'|'NOT_READY'} LabelStatus
+ */
+export const LabelStatus: Readonly<{
+    GENERATING: "GENERATING";
+    GENERATED: "GENERATED";
+    GENERATION_FAILED: "GENERATION_FAILED";
+    NOT_READY: "NOT_READY";
+}>;
 //# sourceMappingURL=LabelStatus.d.ts.map

@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class SettlementType.
-* @enum {String}
-* @readonly
-*/
-export class SettlementType {
-  /**
-         * value: "REFUND"
-         * @const
-         */
-  'REFUND' = 'REFUND'
-
-  /**
-         * value: "CERTIFICATE_OF_FACT"
-         * @const
-         */
-  'CERTIFICATE_OF_FACT' = 'CERTIFICATE_OF_FACT'
-
-  /**
-    * Returns a <code>SettlementType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {SettlementType} The enum <code>SettlementType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'REFUND'|'CERTIFICATE_OF_FACT'} SettlementType
+ */
+export const SettlementType = Object.freeze({
+  REFUND: 'REFUND',
+  CERTIFICATE_OF_FACT: 'CERTIFICATE_OF_FACT'
+})

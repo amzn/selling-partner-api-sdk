@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class AccountStatus.
-* @enum {String}
-* @readonly
-*/
-export class AccountStatus {
-  /**
-         * value: "ACTIVE"
-         * @const
-         */
-  'ACTIVE' = 'ACTIVE'
-
-  /**
-         * value: "INACTIVE"
-         * @const
-         */
-  'INACTIVE' = 'INACTIVE'
-
-  /**
-         * value: "PENDING"
-         * @const
-         */
-  'PENDING' = 'PENDING'
-
-  /**
-         * value: "SUSPENDED"
-         * @const
-         */
-  'SUSPENDED' = 'SUSPENDED'
-
-  /**
-    * Returns a <code>AccountStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {AccountStatus} The enum <code>AccountStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'ACTIVE'|'INACTIVE'|'PENDING'|'SUSPENDED'} AccountStatus
+ */
+export const AccountStatus = Object.freeze({
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE',
+  PENDING: 'PENDING',
+  SUSPENDED: 'SUSPENDED'
+})

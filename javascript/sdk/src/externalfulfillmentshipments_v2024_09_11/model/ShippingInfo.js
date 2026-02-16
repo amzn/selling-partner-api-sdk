@@ -111,7 +111,7 @@ ShippingInfo.prototype.shippingType = undefined
 
 /**
  * Recommendations for the packages in an order.
- * @member {[RecommendedPackage]} recommendedPackages
- * @type {[RecommendedPackage]}
+ * @member {RecommendedPackage[]} recommendedPackages
+ * @type {RecommendedPackage[]}
  */
 ShippingInfo.prototype.recommendedPackages = undefined

@@ -31,7 +31,7 @@ export class BrowseNodeReturnTrendsResponse {
    * @param marketplaceId {String} The requested marketplace id.
    * @param countryCode {String} The two digit country code of requested marketplace id, in ISO 3166-1 alpha-2 format.
    * @param dateRange {DateRange}
-   * @param returnTrends {[BrowseNodeReturnTrend]} The browse node return trends.
+   * @param returnTrends {BrowseNodeReturnTrend[]} The browse node return trends.
    */
   constructor (browseNodeId, displayName, marketplaceId, countryCode, dateRange, returnTrends) {
     this.browseNodeId = browseNodeId
@@ -110,7 +110,7 @@ BrowseNodeReturnTrendsResponse.prototype.dateRange = undefined
 
 /**
  * The browse node return trends.
- * @member {[BrowseNodeReturnTrend]} returnTrends
- * @type {[BrowseNodeReturnTrend]}
+ * @member {BrowseNodeReturnTrend[]} returnTrends
+ * @type {BrowseNodeReturnTrend[]}
  */
 BrowseNodeReturnTrendsResponse.prototype.returnTrends = undefined

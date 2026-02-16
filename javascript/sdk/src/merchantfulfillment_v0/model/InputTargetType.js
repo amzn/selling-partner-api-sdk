@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class InputTargetType.
-* @enum {String}
-* @readonly
-*/
-export class InputTargetType {
-  /**
-         * value: "SHIPMENT_LEVEL"
-         * @const
-         */
-  'SHIPMENT_LEVEL' = 'SHIPMENT_LEVEL'
-
-  /**
-         * value: "ITEM_LEVEL"
-         * @const
-         */
-  'ITEM_LEVEL' = 'ITEM_LEVEL'
-
-  /**
-    * Returns a <code>InputTargetType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {InputTargetType} The enum <code>InputTargetType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'SHIPMENT_LEVEL'|'ITEM_LEVEL'} InputTargetType
+ */
+export const InputTargetType = Object.freeze({
+  SHIPMENT_LEVEL: 'SHIPMENT_LEVEL',
+  ITEM_LEVEL: 'ITEM_LEVEL'
+})

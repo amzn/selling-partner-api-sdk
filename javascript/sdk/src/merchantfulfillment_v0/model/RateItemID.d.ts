@@ -1,19 +1,8 @@
+export type RateItemID = "FBM_SHIP_PLUS_CREDIT";
 /**
-* Enum class RateItemID.
-* @enum {String}
-* @readonly
-*/
-export class RateItemID {
-    /**
-      * Returns a <code>RateItemID</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {RateItemID} The enum <code>RateItemID</code> value.
-      */
-    static constructFromObject(object: any): RateItemID;
-    /**
-           * value: "FBM_SHIP_PLUS_CREDIT"
-           * @const
-           */
-    FBM_SHIP_PLUS_CREDIT: string;
-}
+ * @typedef {'FBM_SHIP_PLUS_CREDIT'} RateItemID
+ */
+export const RateItemID: Readonly<{
+    FBM_SHIP_PLUS_CREDIT: "FBM_SHIP_PLUS_CREDIT";
+}>;
 //# sourceMappingURL=RateItemID.d.ts.map

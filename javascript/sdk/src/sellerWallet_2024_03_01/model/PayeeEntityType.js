@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class PayeeEntityType.
-* @enum {String}
-* @readonly
-*/
-export class PayeeEntityType {
-  /**
-         * value: "INDIVIDUAL"
-         * @const
-         */
-  'INDIVIDUAL' = 'INDIVIDUAL'
-
-  /**
-         * value: "BUSINESS"
-         * @const
-         */
-  'BUSINESS' = 'BUSINESS'
-
-  /**
-         * value: "TAX_AUTHORITY"
-         * @const
-         */
-  'TAX_AUTHORITY' = 'TAX_AUTHORITY'
-
-  /**
-    * Returns a <code>PayeeEntityType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {PayeeEntityType} The enum <code>PayeeEntityType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'INDIVIDUAL'|'BUSINESS'|'TAX_AUTHORITY'} PayeeEntityType
+ */
+export const PayeeEntityType = Object.freeze({
+  INDIVIDUAL: 'INDIVIDUAL',
+  BUSINESS: 'BUSINESS',
+  TAX_AUTHORITY: 'TAX_AUTHORITY'
+})

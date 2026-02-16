@@ -19,10 +19,10 @@ export class OrderItemStatusOrderedQuantity {
     orderedQuantity: ItemQuantity;
     /**
      * Details of item quantity ordered.
-     * @member {[OrderedQuantityDetails]} orderedQuantityDetails
-     * @type {[OrderedQuantityDetails]}
+     * @member {OrderedQuantityDetails[]} orderedQuantityDetails
+     * @type {OrderedQuantityDetails[]}
      */
-    orderedQuantityDetails: [OrderedQuantityDetails];
+    orderedQuantityDetails: OrderedQuantityDetails[];
 }
 import { ItemQuantity } from './ItemQuantity.js';
 import { OrderedQuantityDetails } from './OrderedQuantityDetails.js';

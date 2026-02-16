@@ -66,7 +66,7 @@ PackingSlipList.prototype.pagination = undefined
 
 /**
  * An array of packing slip objects.
- * @member {[PackingSlip]} packingSlips
- * @type {[PackingSlip]}
+ * @member {PackingSlip[]} packingSlips
+ * @type {PackingSlip[]}
  */
 PackingSlipList.prototype.packingSlips = undefined

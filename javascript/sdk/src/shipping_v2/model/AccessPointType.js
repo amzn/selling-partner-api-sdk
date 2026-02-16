@@ -14,65 +14,15 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class AccessPointType.
-* @enum {String}
-* @readonly
-*/
-export class AccessPointType {
-  /**
-         * value: "HELIX"
-         * @const
-         */
-  'HELIX' = 'HELIX'
-
-  /**
-         * value: "CAMPUS_LOCKER"
-         * @const
-         */
-  'CAMPUS_LOCKER' = 'CAMPUS_LOCKER'
-
-  /**
-         * value: "OMNI_LOCKER"
-         * @const
-         */
-  'OMNI_LOCKER' = 'OMNI_LOCKER'
-
-  /**
-         * value: "ODIN_LOCKER"
-         * @const
-         */
-  'ODIN_LOCKER' = 'ODIN_LOCKER'
-
-  /**
-         * value: "DOBBY_LOCKER"
-         * @const
-         */
-  'DOBBY_LOCKER' = 'DOBBY_LOCKER'
-
-  /**
-         * value: "CORE_LOCKER"
-         * @const
-         */
-  'CORE_LOCKER' = 'CORE_LOCKER'
-
-  /**
-         * value: "3P"
-         * @const
-         */
-  '3P' = '3P'
-
-  /**
-         * value: "CAMPUS_ROOM"
-         * @const
-         */
-  'CAMPUS_ROOM' = 'CAMPUS_ROOM'
-
-  /**
-    * Returns a <code>AccessPointType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {AccessPointType} The enum <code>AccessPointType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'HELIX'|'CAMPUS_LOCKER'|'OMNI_LOCKER'|'ODIN_LOCKER'|'DOBBY_LOCKER'|'CORE_LOCKER'|'3P'|'CAMPUS_ROOM'} AccessPointType
+ */
+export const AccessPointType = Object.freeze({
+  HELIX: 'HELIX',
+  CAMPUS_LOCKER: 'CAMPUS_LOCKER',
+  OMNI_LOCKER: 'OMNI_LOCKER',
+  ODIN_LOCKER: 'ODIN_LOCKER',
+  DOBBY_LOCKER: 'DOBBY_LOCKER',
+  CORE_LOCKER: 'CORE_LOCKER',
+  '3P': '3P',
+  CAMPUS_ROOM: 'CAMPUS_ROOM'
+})

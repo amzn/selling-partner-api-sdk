@@ -27,10 +27,10 @@ export class ShippingLabelRequest {
     shipFromParty: PartyIdentification;
     /**
      * A list of the packages in this shipment.
-     * @member {[Container]} containers
-     * @type {[Container]}
+     * @member {Container[]} containers
+     * @type {Container[]}
      */
-    containers: [Container];
+    containers: Container[];
 }
 import { PartyIdentification } from './PartyIdentification.js';
 import { Container } from './Container.js';

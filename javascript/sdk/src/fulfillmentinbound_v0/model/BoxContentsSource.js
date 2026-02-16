@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class BoxContentsSource.
-* @enum {String}
-* @readonly
-*/
-export class BoxContentsSource {
-  /**
-         * value: "NONE"
-         * @const
-         */
-  'NONE' = 'NONE'
-
-  /**
-         * value: "FEED"
-         * @const
-         */
-  'FEED' = 'FEED'
-
-  /**
-         * value: "2D_BARCODE"
-         * @const
-         */
-  '2D_BARCODE' = '2D_BARCODE'
-
-  /**
-         * value: "INTERACTIVE"
-         * @const
-         */
-  'INTERACTIVE' = 'INTERACTIVE'
-
-  /**
-    * Returns a <code>BoxContentsSource</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {BoxContentsSource} The enum <code>BoxContentsSource</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'NONE'|'FEED'|'2D_BARCODE'|'INTERACTIVE'} BoxContentsSource
+ */
+export const BoxContentsSource = Object.freeze({
+  NONE: 'NONE',
+  FEED: 'FEED',
+  '2D_BARCODE': '2D_BARCODE',
+  INTERACTIVE: 'INTERACTIVE'
+})

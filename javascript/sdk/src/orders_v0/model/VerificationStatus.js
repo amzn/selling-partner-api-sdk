@@ -14,47 +14,12 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class VerificationStatus.
-* @enum {String}
-* @readonly
-*/
-export class VerificationStatus {
-  /**
-         * value: "Pending"
-         * @const
-         */
-  'Pending' = 'Pending'
-
-  /**
-         * value: "Approved"
-         * @const
-         */
-  'Approved' = 'Approved'
-
-  /**
-         * value: "Rejected"
-         * @const
-         */
-  'Rejected' = 'Rejected'
-
-  /**
-         * value: "Expired"
-         * @const
-         */
-  'Expired' = 'Expired'
-
-  /**
-         * value: "Cancelled"
-         * @const
-         */
-  'Cancelled' = 'Cancelled'
-
-  /**
-    * Returns a <code>VerificationStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {VerificationStatus} The enum <code>VerificationStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'Pending'|'Approved'|'Rejected'|'Expired'|'Cancelled'} VerificationStatus
+ */
+export const VerificationStatus = Object.freeze({
+  Pending: 'Pending',
+  Approved: 'Approved',
+  Rejected: 'Rejected',
+  Expired: 'Expired',
+  Cancelled: 'Cancelled'
+})

@@ -69,14 +69,14 @@ Recurrence.prototype.endTime = undefined
 
 /**
  * Days of the week when recurrence is valid. If the schedule is valid every Monday, input will only contain `MONDAY` in the list.
- * @member {[DayOfWeek]} daysOfWeek
- * @type {[DayOfWeek]}
+ * @member {DayOfWeek[]} daysOfWeek
+ * @type {DayOfWeek[]}
  */
 Recurrence.prototype.daysOfWeek = undefined
 
 /**
  * Days of the month when recurrence is valid.
- * @member {[Number]} daysOfMonth
- * @type {[Number]}
+ * @member {Number[]} daysOfMonth
+ * @type {Number[]}
  */
 Recurrence.prototype.daysOfMonth = undefined

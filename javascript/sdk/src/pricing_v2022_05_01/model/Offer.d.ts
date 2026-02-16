@@ -35,10 +35,10 @@ export class Offer {
     subCondition: string;
     /**
      * A list of shipping options associated with this offer
-     * @member {[ShippingOption]} shippingOptions
-     * @type {[ShippingOption]}
+     * @member {ShippingOption[]} shippingOptions
+     * @type {ShippingOption[]}
      */
-    shippingOptions: [ShippingOption];
+    shippingOptions: ShippingOption[];
     /**
      * @member {Points} points
      * @type {Points}

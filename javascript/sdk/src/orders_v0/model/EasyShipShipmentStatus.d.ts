@@ -1,94 +1,23 @@
+export type EasyShipShipmentStatus = "PendingSchedule" | "PendingPickUp" | "PendingDropOff" | "LabelCanceled" | "PickedUp" | "DroppedOff" | "AtOriginFC" | "AtDestinationFC" | "Delivered" | "RejectedByBuyer" | "Undeliverable" | "ReturningToSeller" | "ReturnedToSeller" | "Lost" | "OutForDelivery" | "Damaged";
 /**
-* Enum class EasyShipShipmentStatus.
-* @enum {String}
-* @readonly
-*/
-export class EasyShipShipmentStatus {
-    /**
-      * Returns a <code>EasyShipShipmentStatus</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {EasyShipShipmentStatus} The enum <code>EasyShipShipmentStatus</code> value.
-      */
-    static constructFromObject(object: any): EasyShipShipmentStatus;
-    /**
-           * value: "PendingSchedule"
-           * @const
-           */
-    PendingSchedule: string;
-    /**
-           * value: "PendingPickUp"
-           * @const
-           */
-    PendingPickUp: string;
-    /**
-           * value: "PendingDropOff"
-           * @const
-           */
-    PendingDropOff: string;
-    /**
-           * value: "LabelCanceled"
-           * @const
-           */
-    LabelCanceled: string;
-    /**
-           * value: "PickedUp"
-           * @const
-           */
-    PickedUp: string;
-    /**
-           * value: "DroppedOff"
-           * @const
-           */
-    DroppedOff: string;
-    /**
-           * value: "AtOriginFC"
-           * @const
-           */
-    AtOriginFC: string;
-    /**
-           * value: "AtDestinationFC"
-           * @const
-           */
-    AtDestinationFC: string;
-    /**
-           * value: "Delivered"
-           * @const
-           */
-    Delivered: string;
-    /**
-           * value: "RejectedByBuyer"
-           * @const
-           */
-    RejectedByBuyer: string;
-    /**
-           * value: "Undeliverable"
-           * @const
-           */
-    Undeliverable: string;
-    /**
-           * value: "ReturningToSeller"
-           * @const
-           */
-    ReturningToSeller: string;
-    /**
-           * value: "ReturnedToSeller"
-           * @const
-           */
-    ReturnedToSeller: string;
-    /**
-           * value: "Lost"
-           * @const
-           */
-    Lost: string;
-    /**
-           * value: "OutForDelivery"
-           * @const
-           */
-    OutForDelivery: string;
-    /**
-           * value: "Damaged"
-           * @const
-           */
-    Damaged: string;
-}
+ * @typedef {'PendingSchedule'|'PendingPickUp'|'PendingDropOff'|'LabelCanceled'|'PickedUp'|'DroppedOff'|'AtOriginFC'|'AtDestinationFC'|'Delivered'|'RejectedByBuyer'|'Undeliverable'|'ReturningToSeller'|'ReturnedToSeller'|'Lost'|'OutForDelivery'|'Damaged'} EasyShipShipmentStatus
+ */
+export const EasyShipShipmentStatus: Readonly<{
+    PendingSchedule: "PendingSchedule";
+    PendingPickUp: "PendingPickUp";
+    PendingDropOff: "PendingDropOff";
+    LabelCanceled: "LabelCanceled";
+    PickedUp: "PickedUp";
+    DroppedOff: "DroppedOff";
+    AtOriginFC: "AtOriginFC";
+    AtDestinationFC: "AtDestinationFC";
+    Delivered: "Delivered";
+    RejectedByBuyer: "RejectedByBuyer";
+    Undeliverable: "Undeliverable";
+    ReturningToSeller: "ReturningToSeller";
+    ReturnedToSeller: "ReturnedToSeller";
+    Lost: "Lost";
+    OutForDelivery: "OutForDelivery";
+    Damaged: "Damaged";
+}>;
 //# sourceMappingURL=EasyShipShipmentStatus.d.ts.map

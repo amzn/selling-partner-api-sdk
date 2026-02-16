@@ -32,10 +32,10 @@ export class AppointmentSlotReport {
     endTime: Date;
     /**
      * A list of time windows along with associated capacity in which the service can be performed.
-     * @member {[AppointmentSlot]} appointmentSlots
-     * @type {[AppointmentSlot]}
+     * @member {AppointmentSlot[]} appointmentSlots
+     * @type {AppointmentSlot[]}
      */
-    appointmentSlots: [AppointmentSlot];
+    appointmentSlots: AppointmentSlot[];
 }
 export namespace AppointmentSlotReport {
     namespace SchedulingTypeEnum {

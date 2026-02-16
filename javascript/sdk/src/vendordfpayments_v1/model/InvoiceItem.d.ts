@@ -53,16 +53,16 @@ export class InvoiceItem {
     hsnCode: string;
     /**
      * Individual tax details per line item.
-     * @member {[TaxDetail]} taxDetails
-     * @type {[TaxDetail]}
+     * @member {TaxDetail[]} taxDetails
+     * @type {TaxDetail[]}
      */
-    taxDetails: [TaxDetail];
+    taxDetails: TaxDetail[];
     /**
      * Individual charge details per line item.
-     * @member {[ChargeDetails]} chargeDetails
-     * @type {[ChargeDetails]}
+     * @member {ChargeDetails[]} chargeDetails
+     * @type {ChargeDetails[]}
      */
-    chargeDetails: [ChargeDetails];
+    chargeDetails: ChargeDetails[];
 }
 import { ItemQuantity } from './ItemQuantity.js';
 import { Money } from './Money.js';

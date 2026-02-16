@@ -25,7 +25,7 @@ export class ErrorList {
    * A list of error responses returned when a request is unsuccessful.
    * @alias module:finances_2024_06_19/model/ErrorList
    * @class
-   * @param errors {[Error]} The error responses that are returned when the request is unsuccessful.
+   * @param errors {Error[]} The error responses that are returned when the request is unsuccessful.
    */
   constructor (errors) {
     this.errors = errors
@@ -60,7 +60,7 @@ export class ErrorList {
 
 /**
  * The error responses that are returned when the request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Error[]} errors
+ * @type {Error[]}
  */
 ErrorList.prototype.errors = undefined

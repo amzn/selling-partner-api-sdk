@@ -18,11 +18,11 @@ export class ItemRelationshipsByMarketplace {
      * @alias module:catalogitems_v2022_04_01/model/ItemRelationshipsByMarketplace
      * @class
      * @param marketplaceId {String} Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @param relationships {[ItemRelationship]} Relationships for the item.
+     * @param relationships {ItemRelationship[]} Relationships for the item.
      */
-    constructor(marketplaceId: string, relationships: [ItemRelationship]);
+    constructor(marketplaceId: string, relationships: ItemRelationship[]);
     marketplaceId: string;
-    relationships: [ItemRelationship];
+    relationships: ItemRelationship[];
 }
 import { ItemRelationship } from './ItemRelationship.js';
 //# sourceMappingURL=ItemRelationshipsByMarketplace.d.ts.map

@@ -25,10 +25,10 @@ export class ItemReviewSubtopic {
     metrics: ItemReviewSubtopicMetrics;
     /**
      * A list of up to three snippets from reviews that contain the subtopic. This value is `null` if there aren't enough review snippets for the subtopic.
-     * @member {[String]} reviewSnippets
-     * @type {[String]}
+     * @member {String[]} reviewSnippets
+     * @type {String[]}
      */
-    reviewSnippets: [string];
+    reviewSnippets: string[];
 }
 import { ItemReviewSubtopicMetrics } from './ItemReviewSubtopicMetrics.js';
 //# sourceMappingURL=ItemReviewSubtopic.d.ts.map

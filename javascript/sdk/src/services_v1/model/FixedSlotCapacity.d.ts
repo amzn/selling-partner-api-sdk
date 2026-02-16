@@ -26,10 +26,10 @@ export class FixedSlotCapacity {
     slotDuration: number;
     /**
      * Array of capacity slots in fixed slot format.
-     * @member {[FixedSlot]} capacities
-     * @type {[FixedSlot]}
+     * @member {FixedSlot[]} capacities
+     * @type {FixedSlot[]}
      */
-    capacities: [FixedSlot];
+    capacities: FixedSlot[];
     /**
      * Next page token, if there are more pages.
      * @member {String} nextPageToken

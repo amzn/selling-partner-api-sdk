@@ -14,59 +14,14 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class FulfillmentStatus.
-* @enum {String}
-* @readonly
-*/
-export class FulfillmentStatus {
-  /**
-         * value: "PENDING_AVAILABILITY"
-         * @const
-         */
-  'PENDING_AVAILABILITY' = 'PENDING_AVAILABILITY'
-
-  /**
-         * value: "PENDING"
-         * @const
-         */
-  'PENDING' = 'PENDING'
-
-  /**
-         * value: "UNSHIPPED"
-         * @const
-         */
-  'UNSHIPPED' = 'UNSHIPPED'
-
-  /**
-         * value: "PARTIALLY_SHIPPED"
-         * @const
-         */
-  'PARTIALLY_SHIPPED' = 'PARTIALLY_SHIPPED'
-
-  /**
-         * value: "SHIPPED"
-         * @const
-         */
-  'SHIPPED' = 'SHIPPED'
-
-  /**
-         * value: "CANCELLED"
-         * @const
-         */
-  'CANCELLED' = 'CANCELLED'
-
-  /**
-         * value: "UNFULFILLABLE"
-         * @const
-         */
-  'UNFULFILLABLE' = 'UNFULFILLABLE'
-
-  /**
-    * Returns a <code>FulfillmentStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {FulfillmentStatus} The enum <code>FulfillmentStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'PENDING_AVAILABILITY'|'PENDING'|'UNSHIPPED'|'PARTIALLY_SHIPPED'|'SHIPPED'|'CANCELLED'|'UNFULFILLABLE'} FulfillmentStatus
+ */
+export const FulfillmentStatus = Object.freeze({
+  PENDING_AVAILABILITY: 'PENDING_AVAILABILITY',
+  PENDING: 'PENDING',
+  UNSHIPPED: 'UNSHIPPED',
+  PARTIALLY_SHIPPED: 'PARTIALLY_SHIPPED',
+  SHIPPED: 'SHIPPED',
+  CANCELLED: 'CANCELLED',
+  UNFULFILLABLE: 'UNFULFILLABLE'
+})

@@ -29,10 +29,10 @@ export class Report {
     processingStatus: string;
     /**
      * A list of marketplace identifiers for the report.
-     * @member {[String]} marketplaceIds
-     * @type {[String]}
+     * @member {String[]} marketplaceIds
+     * @type {String[]}
      */
-    marketplaceIds: [string];
+    marketplaceIds: string[];
     /**
      * The start of a date and time range used for selecting the data to report.
      * @member {Date} dataStartTime

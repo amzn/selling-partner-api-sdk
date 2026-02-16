@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class TransferScheduleStatus.
-* @enum {String}
-* @readonly
-*/
-export class TransferScheduleStatus {
-  /**
-         * value: "ENABLED"
-         * @const
-         */
-  'ENABLED' = 'ENABLED'
-
-  /**
-         * value: "DISABLED"
-         * @const
-         */
-  'DISABLED' = 'DISABLED'
-
-  /**
-         * value: "EXPIRED"
-         * @const
-         */
-  'EXPIRED' = 'EXPIRED'
-
-  /**
-         * value: "DELETED"
-         * @const
-         */
-  'DELETED' = 'DELETED'
-
-  /**
-    * Returns a <code>TransferScheduleStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {TransferScheduleStatus} The enum <code>TransferScheduleStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'ENABLED'|'DISABLED'|'EXPIRED'|'DELETED'} TransferScheduleStatus
+ */
+export const TransferScheduleStatus = Object.freeze({
+  ENABLED: 'ENABLED',
+  DISABLED: 'DISABLED',
+  EXPIRED: 'EXPIRED',
+  DELETED: 'DELETED'
+})

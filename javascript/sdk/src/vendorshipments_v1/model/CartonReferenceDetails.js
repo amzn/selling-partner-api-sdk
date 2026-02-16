@@ -24,7 +24,7 @@ export class CartonReferenceDetails {
    * Carton reference details.
    * @alias module:vendorshipments_v1/model/CartonReferenceDetails
    * @class
-   * @param cartonReferenceNumbers {[String]} Array of reference numbers for the carton that are part of this pallet/shipment. Please provide the cartonSequenceNumber from the 'cartons' segment to refer to that carton's details here.
+   * @param cartonReferenceNumbers {String[]} Array of reference numbers for the carton that are part of this pallet/shipment. Please provide the cartonSequenceNumber from the 'cartons' segment to refer to that carton's details here.
    */
   constructor (cartonReferenceNumbers) {
     this.cartonReferenceNumbers = cartonReferenceNumbers
@@ -67,7 +67,7 @@ CartonReferenceDetails.prototype.cartonCount = undefined
 
 /**
  * Array of reference numbers for the carton that are part of this pallet/shipment. Please provide the cartonSequenceNumber from the 'cartons' segment to refer to that carton's details here.
- * @member {[String]} cartonReferenceNumbers
- * @type {[String]}
+ * @member {String[]} cartonReferenceNumbers
+ * @type {String[]}
  */
 CartonReferenceDetails.prototype.cartonReferenceNumbers = undefined

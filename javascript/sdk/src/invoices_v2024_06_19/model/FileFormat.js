@@ -14,23 +14,8 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class FileFormat.
-* @enum {String}
-* @readonly
-*/
-export class FileFormat {
-  /**
-         * value: "XML"
-         * @const
-         */
-  'XML' = 'XML'
-
-  /**
-    * Returns a <code>FileFormat</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {FileFormat} The enum <code>FileFormat</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'XML'} FileFormat
+ */
+export const FileFormat = Object.freeze({
+  XML: 'XML'
+})

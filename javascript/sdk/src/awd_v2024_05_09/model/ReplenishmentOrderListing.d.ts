@@ -20,10 +20,10 @@ export class ReplenishmentOrderListing {
     nextToken: string;
     /**
      * List of replenishment orders.
-     * @member {[ReplenishmentOrder]} orders
-     * @type {[ReplenishmentOrder]}
+     * @member {ReplenishmentOrder[]} orders
+     * @type {ReplenishmentOrder[]}
      */
-    orders: [ReplenishmentOrder];
+    orders: ReplenishmentOrder[];
 }
 import { ReplenishmentOrder } from './ReplenishmentOrder.js';
 //# sourceMappingURL=ReplenishmentOrderListing.d.ts.map

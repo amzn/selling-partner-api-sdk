@@ -31,10 +31,10 @@ export class AllowanceDetails {
     description: string;
     /**
      * Tax amount details applied on this allowance.
-     * @member {[TaxDetails]} taxDetails
-     * @type {[TaxDetails]}
+     * @member {TaxDetails[]} taxDetails
+     * @type {TaxDetails[]}
      */
-    taxDetails: [TaxDetails];
+    taxDetails: TaxDetails[];
 }
 export namespace AllowanceDetails {
     namespace TypeEnum {

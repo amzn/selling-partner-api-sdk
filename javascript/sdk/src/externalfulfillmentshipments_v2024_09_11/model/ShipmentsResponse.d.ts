@@ -14,10 +14,10 @@ export class ShipmentsResponse {
     static constructFromObject(data: any, obj: ShipmentsResponse): ShipmentsResponse;
     /**
      * A list of shipments.
-     * @member {[Shipment]} shipments
-     * @type {[Shipment]}
+     * @member {Shipment[]} shipments
+     * @type {Shipment[]}
      */
-    shipments: [Shipment];
+    shipments: Shipment[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

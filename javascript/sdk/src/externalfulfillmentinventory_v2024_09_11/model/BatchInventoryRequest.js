@@ -58,7 +58,7 @@ export class BatchInventoryRequest {
 
 /**
  * A list of inventory requests.
- * @member {[InventoryRequest]} requests
- * @type {[InventoryRequest]}
+ * @member {InventoryRequest[]} requests
+ * @type {InventoryRequest[]}
  */
 BatchInventoryRequest.prototype.requests = undefined

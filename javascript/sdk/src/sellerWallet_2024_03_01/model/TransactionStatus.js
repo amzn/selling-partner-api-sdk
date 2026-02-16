@@ -14,53 +14,13 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class TransactionStatus.
-* @enum {String}
-* @readonly
-*/
-export class TransactionStatus {
-  /**
-         * value: "EXPIRED"
-         * @const
-         */
-  'EXPIRED' = 'EXPIRED'
-
-  /**
-         * value: "FAILED"
-         * @const
-         */
-  'FAILED' = 'FAILED'
-
-  /**
-         * value: "FAILED_CREDITS_APPLIED"
-         * @const
-         */
-  'FAILED_CREDITS_APPLIED' = 'FAILED_CREDITS_APPLIED'
-
-  /**
-         * value: "IN_PROGRESS"
-         * @const
-         */
-  'IN_PROGRESS' = 'IN_PROGRESS'
-
-  /**
-         * value: "PENDING_USER_APPROVAL"
-         * @const
-         */
-  'PENDING_USER_APPROVAL' = 'PENDING_USER_APPROVAL'
-
-  /**
-         * value: "SUCCESSFUL"
-         * @const
-         */
-  'SUCCESSFUL' = 'SUCCESSFUL'
-
-  /**
-    * Returns a <code>TransactionStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {TransactionStatus} The enum <code>TransactionStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'EXPIRED'|'FAILED'|'FAILED_CREDITS_APPLIED'|'IN_PROGRESS'|'PENDING_USER_APPROVAL'|'SUCCESSFUL'} TransactionStatus
+ */
+export const TransactionStatus = Object.freeze({
+  EXPIRED: 'EXPIRED',
+  FAILED: 'FAILED',
+  FAILED_CREDITS_APPLIED: 'FAILED_CREDITS_APPLIED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  PENDING_USER_APPROVAL: 'PENDING_USER_APPROVAL',
+  SUCCESSFUL: 'SUCCESSFUL'
+})

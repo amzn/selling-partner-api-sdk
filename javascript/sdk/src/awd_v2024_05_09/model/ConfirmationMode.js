@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ConfirmationMode.
-* @enum {String}
-* @readonly
-*/
-export class ConfirmationMode {
-  /**
-         * value: "AUTO"
-         * @const
-         */
-  'AUTO' = 'AUTO'
-
-  /**
-         * value: "MANUAL"
-         * @const
-         */
-  'MANUAL' = 'MANUAL'
-
-  /**
-    * Returns a <code>ConfirmationMode</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ConfirmationMode} The enum <code>ConfirmationMode</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'AUTO'|'MANUAL'} ConfirmationMode
+ */
+export const ConfirmationMode = Object.freeze({
+  AUTO: 'AUTO',
+  MANUAL: 'MANUAL'
+})

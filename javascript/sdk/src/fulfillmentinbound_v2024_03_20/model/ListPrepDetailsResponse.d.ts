@@ -17,10 +17,10 @@ export class ListPrepDetailsResponse {
      * The response to the &#x60;listPrepDetails&#x60; operation.
      * @alias module:fulfillmentinbound_v2024_03_20/model/ListPrepDetailsResponse
      * @class
-     * @param mskuPrepDetails {[MskuPrepDetail]} A list of MSKUs and related prep details.
+     * @param mskuPrepDetails {MskuPrepDetail[]} A list of MSKUs and related prep details.
      */
-    constructor(mskuPrepDetails: [MskuPrepDetail]);
-    mskuPrepDetails: [MskuPrepDetail];
+    constructor(mskuPrepDetails: MskuPrepDetail[]);
+    mskuPrepDetails: MskuPrepDetail[];
 }
 import { MskuPrepDetail } from './MskuPrepDetail.js';
 //# sourceMappingURL=ListPrepDetailsResponse.d.ts.map

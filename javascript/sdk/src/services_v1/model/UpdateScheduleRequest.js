@@ -25,7 +25,7 @@ export class UpdateScheduleRequest {
    * Request schema for the &#x60;updateSchedule&#x60; operation.
    * @alias module:services_v1/model/UpdateScheduleRequest
    * @class
-   * @param schedules {[AvailabilityRecord]} List of `AvailabilityRecord`s to represent the capacity of a resource over a time range.
+   * @param schedules {AvailabilityRecord[]} List of `AvailabilityRecord`s to represent the capacity of a resource over a time range.
    */
   constructor (schedules) {
     this.schedules = schedules
@@ -60,7 +60,7 @@ export class UpdateScheduleRequest {
 
 /**
  * List of `AvailabilityRecord`s to represent the capacity of a resource over a time range.
- * @member {[AvailabilityRecord]} schedules
- * @type {[AvailabilityRecord]}
+ * @member {AvailabilityRecord[]} schedules
+ * @type {AvailabilityRecord[]}
  */
 UpdateScheduleRequest.prototype.schedules = undefined

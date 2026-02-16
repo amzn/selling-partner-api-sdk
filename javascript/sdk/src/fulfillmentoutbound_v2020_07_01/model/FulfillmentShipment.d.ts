@@ -20,13 +20,13 @@ export class FulfillmentShipment {
      * @param amazonShipmentId {String} A shipment identifier assigned by Amazon.
      * @param fulfillmentCenterId {String} An identifier for the fulfillment center from which the shipment is sent.
      * @param fulfillmentShipmentStatus {String} The current status of the shipment.
-     * @param fulfillmentShipmentItem {[FulfillmentShipmentItem]} An array of fulfillment shipment item information.
+     * @param fulfillmentShipmentItem {FulfillmentShipmentItem[]} An array of fulfillment shipment item information.
      */
-    constructor(amazonShipmentId: string, fulfillmentCenterId: string, fulfillmentShipmentStatus: string, fulfillmentShipmentItem: [FulfillmentShipmentItem]);
+    constructor(amazonShipmentId: string, fulfillmentCenterId: string, fulfillmentShipmentStatus: string, fulfillmentShipmentItem: FulfillmentShipmentItem[]);
     amazonShipmentId: string;
     fulfillmentCenterId: string;
     fulfillmentShipmentStatus: string;
-    fulfillmentShipmentItem: [FulfillmentShipmentItem];
+    fulfillmentShipmentItem: FulfillmentShipmentItem[];
     /**
      * Date timestamp
      * @member {Date} shippingDate
@@ -41,16 +41,16 @@ export class FulfillmentShipment {
     estimatedArrivalDate: Date;
     /**
      * Provides additional insight into shipment timeline. Primarily used to communicate that actual delivery dates aren't available.
-     * @member {[String]} shippingNotes
-     * @type {[String]}
+     * @member {String[]} shippingNotes
+     * @type {String[]}
      */
-    shippingNotes: [string];
+    shippingNotes: string[];
     /**
      * An array of fulfillment shipment package information.
-     * @member {[FulfillmentShipmentPackage]} fulfillmentShipmentPackage
-     * @type {[FulfillmentShipmentPackage]}
+     * @member {FulfillmentShipmentPackage[]} fulfillmentShipmentPackage
+     * @type {FulfillmentShipmentPackage[]}
      */
-    fulfillmentShipmentPackage: [FulfillmentShipmentPackage];
+    fulfillmentShipmentPackage: FulfillmentShipmentPackage[];
 }
 export namespace FulfillmentShipment {
     namespace FulfillmentShipmentStatusEnum {

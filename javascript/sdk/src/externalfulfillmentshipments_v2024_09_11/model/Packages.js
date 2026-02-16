@@ -25,7 +25,7 @@ export class Packages {
    * The request schema of the &#x60;createPackages&#x60; operation.
    * @alias module:externalfulfillmentshipments_v2024_09_11/model/Packages
    * @class
-   * @param packages {[Package]} A list of packages.
+   * @param packages {Package[]} A list of packages.
    */
   constructor (packages) {
     this.packages = packages
@@ -60,7 +60,7 @@ export class Packages {
 
 /**
  * A list of packages.
- * @member {[Package]} packages
- * @type {[Package]}
+ * @member {Package[]} packages
+ * @type {Package[]}
  */
 Packages.prototype.packages = undefined

@@ -14,23 +14,8 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class CarrierCodeType.
-* @enum {String}
-* @readonly
-*/
-export class CarrierCodeType {
-  /**
-         * value: "SCAC"
-         * @const
-         */
-  'SCAC' = 'SCAC'
-
-  /**
-    * Returns a <code>CarrierCodeType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {CarrierCodeType} The enum <code>CarrierCodeType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'SCAC'} CarrierCodeType
+ */
+export const CarrierCodeType = Object.freeze({
+  SCAC: 'SCAC'
+})

@@ -90,7 +90,7 @@ TrialShipmentEvent.prototype.SKU = undefined
 
 /**
  * A list of fee component information.
- * @member {[FeeComponent]} feeList
- * @type {[FeeComponent]}
+ * @member {FeeComponent[]} feeList
+ * @type {FeeComponent[]}
  */
 TrialShipmentEvent.prototype.feeList = undefined

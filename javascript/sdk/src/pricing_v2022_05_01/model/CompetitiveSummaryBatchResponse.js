@@ -25,7 +25,7 @@ export class CompetitiveSummaryBatchResponse {
    * The response schema for the &#x60;competitiveSummaryBatch&#x60; operation.
    * @alias module:pricing_v2022_05_01/model/CompetitiveSummaryBatchResponse
    * @class
-   * @param responses {[CompetitiveSummaryResponse]} The response list for the `competitiveSummaryBatch` operation.
+   * @param responses {CompetitiveSummaryResponse[]} The response list for the `competitiveSummaryBatch` operation.
    */
   constructor (responses) {
     this.responses = responses
@@ -60,7 +60,7 @@ export class CompetitiveSummaryBatchResponse {
 
 /**
  * The response list for the `competitiveSummaryBatch` operation.
- * @member {[CompetitiveSummaryResponse]} responses
- * @type {[CompetitiveSummaryResponse]}
+ * @member {CompetitiveSummaryResponse[]} responses
+ * @type {CompetitiveSummaryResponse[]}
  */
 CompetitiveSummaryBatchResponse.prototype.responses = undefined

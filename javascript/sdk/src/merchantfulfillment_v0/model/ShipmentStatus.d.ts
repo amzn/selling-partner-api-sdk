@@ -1,34 +1,11 @@
+export type ShipmentStatus = "Purchased" | "RefundPending" | "RefundRejected" | "RefundApplied";
 /**
-* Enum class ShipmentStatus.
-* @enum {String}
-* @readonly
-*/
-export class ShipmentStatus {
-    /**
-      * Returns a <code>ShipmentStatus</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {ShipmentStatus} The enum <code>ShipmentStatus</code> value.
-      */
-    static constructFromObject(object: any): ShipmentStatus;
-    /**
-           * value: "Purchased"
-           * @const
-           */
-    Purchased: string;
-    /**
-           * value: "RefundPending"
-           * @const
-           */
-    RefundPending: string;
-    /**
-           * value: "RefundRejected"
-           * @const
-           */
-    RefundRejected: string;
-    /**
-           * value: "RefundApplied"
-           * @const
-           */
-    RefundApplied: string;
-}
+ * @typedef {'Purchased'|'RefundPending'|'RefundRejected'|'RefundApplied'} ShipmentStatus
+ */
+export const ShipmentStatus: Readonly<{
+    Purchased: "Purchased";
+    RefundPending: "RefundPending";
+    RefundRejected: "RefundRejected";
+    RefundApplied: "RefundApplied";
+}>;
 //# sourceMappingURL=ShipmentStatus.d.ts.map

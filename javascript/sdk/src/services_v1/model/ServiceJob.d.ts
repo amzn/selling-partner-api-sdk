@@ -47,16 +47,16 @@ export class ServiceJob {
     serviceJobProvider: ServiceJobProvider;
     /**
      * A list of appointment windows preferred by the buyer. Included only if the buyer selected appointment windows when creating the order.
-     * @member {[AppointmentTime]} preferredAppointmentTimes
-     * @type {[AppointmentTime]}
+     * @member {AppointmentTime[]} preferredAppointmentTimes
+     * @type {AppointmentTime[]}
      */
-    preferredAppointmentTimes: [AppointmentTime];
+    preferredAppointmentTimes: AppointmentTime[];
     /**
      * A list of appointments.
-     * @member {[Appointment]} appointments
-     * @type {[Appointment]}
+     * @member {Appointment[]} appointments
+     * @type {Appointment[]}
      */
-    appointments: [Appointment];
+    appointments: Appointment[];
     /**
      * The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.
      * @member {String} serviceOrderId
@@ -82,10 +82,10 @@ export class ServiceJob {
     buyer: Buyer;
     /**
      * A list of items associated with the service job.
-     * @member {[AssociatedItem]} associatedItems
-     * @type {[AssociatedItem]}
+     * @member {AssociatedItem[]} associatedItems
+     * @type {AssociatedItem[]}
      */
-    associatedItems: [AssociatedItem];
+    associatedItems: AssociatedItem[];
     /**
      * @member {ServiceLocation} serviceLocation
      * @type {ServiceLocation}

@@ -14,10 +14,10 @@ export class Preference {
     static constructFromObject(data: any, obj: Preference): Preference;
     /**
      * Filters the results to only include offers with the auto-enrollment preference specified.
-     * @member {[AutoEnrollmentPreference]} autoEnrollment
-     * @type {[AutoEnrollmentPreference]}
+     * @member {AutoEnrollmentPreference[]} autoEnrollment
+     * @type {AutoEnrollmentPreference[]}
      */
-    autoEnrollment: [AutoEnrollmentPreference];
+    autoEnrollment: AutoEnrollmentPreference[];
 }
 import { AutoEnrollmentPreference } from './AutoEnrollmentPreference.js';
 //# sourceMappingURL=Preference.d.ts.map

@@ -14,10 +14,10 @@ export class GetCollectionFormHistoryResponse {
     static constructFromObject(data: any, obj: GetCollectionFormHistoryResponse): GetCollectionFormHistoryResponse;
     /**
      * A list of CollectionFormsHistoryRecord
-     * @member {[CollectionFormsHistoryRecord]} collectionFormsHistoryRecordList
-     * @type {[CollectionFormsHistoryRecord]}
+     * @member {CollectionFormsHistoryRecord[]} collectionFormsHistoryRecordList
+     * @type {CollectionFormsHistoryRecord[]}
      */
-    collectionFormsHistoryRecordList: [CollectionFormsHistoryRecord];
+    collectionFormsHistoryRecordList: CollectionFormsHistoryRecord[];
     /**
      * Last Refereshed Date of collection
      * @member {String} lastRefreshedDate

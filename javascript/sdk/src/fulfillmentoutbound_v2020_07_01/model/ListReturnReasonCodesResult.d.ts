@@ -14,10 +14,10 @@ export class ListReturnReasonCodesResult {
     static constructFromObject(data: any, obj: ListReturnReasonCodesResult): ListReturnReasonCodesResult;
     /**
      * An array of return reason code details.
-     * @member {[ReasonCodeDetails]} reasonCodeDetails
-     * @type {[ReasonCodeDetails]}
+     * @member {ReasonCodeDetails[]} reasonCodeDetails
+     * @type {ReasonCodeDetails[]}
      */
-    reasonCodeDetails: [ReasonCodeDetails];
+    reasonCodeDetails: ReasonCodeDetails[];
 }
 import { ReasonCodeDetails } from './ReasonCodeDetails.js';
 //# sourceMappingURL=ListReturnReasonCodesResult.d.ts.map

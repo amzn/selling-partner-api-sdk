@@ -58,7 +58,7 @@ export class BalanceListing {
 
 /**
  * Collection that holds list of balances on the account
- * @member {[Balance]} balances
- * @type {[Balance]}
+ * @member {Balance[]} balances
+ * @type {Balance[]}
  */
 BalanceListing.prototype.balances = undefined

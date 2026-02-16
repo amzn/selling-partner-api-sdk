@@ -20,13 +20,13 @@ export class TransferRatePreview {
      * @param baseAmount {Currency}
      * @param fxRateDetails {FxRateDetails}
      * @param transferAmount {Currency}
-     * @param fees {[Fee]} List of fees
+     * @param fees {Fee[]} List of fees
      */
-    constructor(baseAmount: Currency, fxRateDetails: FxRateDetails, transferAmount: Currency, fees: [Fee]);
+    constructor(baseAmount: Currency, fxRateDetails: FxRateDetails, transferAmount: Currency, fees: Fee[]);
     baseAmount: Currency;
     fxRateDetails: FxRateDetails;
     transferAmount: Currency;
-    fees: [Fee];
+    fees: Fee[];
 }
 import { Currency } from './Currency.js';
 import { FxRateDetails } from './FxRateDetails.js';

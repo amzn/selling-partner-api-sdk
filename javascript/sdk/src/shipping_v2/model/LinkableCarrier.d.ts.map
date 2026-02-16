@@ -1,1 +1,1 @@
-{"version":3,"file":"LinkableCarrier.d.ts","sourceRoot":"","sources":["LinkableCarrier.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,eAAe,GACd,eAAe,CAoB1B;IAGH;;;;OAIG;IACH,kBAAmC;IAEnC;;;;OAIG;IACH,sBAFU,CAAC,mBAAmB,CAAC,CAEe;CAd7C;oCA3CmC,0BAA0B"}
+{"version":3,"file":"LinkableCarrier.d.ts","sourceRoot":"","sources":["LinkableCarrier.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,eAAe,GACd,eAAe,CAoB1B;IAGH;;;;OAIG;IACH,kBAAmC;IAEnC;;;;OAIG;IACH,sBAFU,mBAAmB,EAAE,CAEe;CAd7C;oCA3CmC,0BAA0B"}

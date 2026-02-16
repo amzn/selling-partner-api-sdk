@@ -81,8 +81,8 @@ PackageLineItem.prototype.quantity = undefined
 
 /**
  * The list of serial numbers of items in the package, if required to be provided.
- * @member {[String]} serialNumbers
- * @type {[String]}
+ * @member {String[]} serialNumbers
+ * @type {String[]}
  */
 PackageLineItem.prototype.serialNumbers = undefined
 

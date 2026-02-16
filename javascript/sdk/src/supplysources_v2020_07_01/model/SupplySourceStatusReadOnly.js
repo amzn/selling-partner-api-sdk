@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class SupplySourceStatusReadOnly.
-* @enum {String}
-* @readonly
-*/
-export class SupplySourceStatusReadOnly {
-  /**
-         * value: "Active"
-         * @const
-         */
-  'Active' = 'Active'
-
-  /**
-         * value: "Inactive"
-         * @const
-         */
-  'Inactive' = 'Inactive'
-
-  /**
-         * value: "Archived"
-         * @const
-         */
-  'Archived' = 'Archived'
-
-  /**
-    * Returns a <code>SupplySourceStatusReadOnly</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {SupplySourceStatusReadOnly} The enum <code>SupplySourceStatusReadOnly</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'Active'|'Inactive'|'Archived'} SupplySourceStatusReadOnly
+ */
+export const SupplySourceStatusReadOnly = Object.freeze({
+  Active: 'Active',
+  Inactive: 'Inactive',
+  Archived: 'Archived'
+})

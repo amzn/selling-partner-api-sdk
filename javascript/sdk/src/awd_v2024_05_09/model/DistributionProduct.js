@@ -64,8 +64,8 @@ export class DistributionProduct {
 
 /**
  * Attributes for this instance of the product, i.e. already-prepped, or other attributes that distinguish the product beyond the SKU.
- * @member {[ProductAttribute]} attributes
- * @type {[ProductAttribute]}
+ * @member {ProductAttribute[]} attributes
+ * @type {ProductAttribute[]}
  */
 DistributionProduct.prototype.attributes = undefined
 

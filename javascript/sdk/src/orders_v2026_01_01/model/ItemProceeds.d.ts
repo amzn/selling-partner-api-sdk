@@ -19,10 +19,10 @@ export class ItemProceeds {
     proceedsTotal: Money;
     /**
      * The breakdown of proceeds.
-     * @member {[ItemProceedsBreakdown]} breakdowns
-     * @type {[ItemProceedsBreakdown]}
+     * @member {ItemProceedsBreakdown[]} breakdowns
+     * @type {ItemProceedsBreakdown[]}
      */
-    breakdowns: [ItemProceedsBreakdown];
+    breakdowns: ItemProceedsBreakdown[];
 }
 import { Money } from './Money.js';
 import { ItemProceedsBreakdown } from './ItemProceedsBreakdown.js';

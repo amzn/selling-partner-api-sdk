@@ -14,47 +14,12 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ListOffersSortKey.
-* @enum {String}
-* @readonly
-*/
-export class ListOffersSortKey {
-  /**
-         * value: "ASIN"
-         * @const
-         */
-  'ASIN' = 'ASIN'
-
-  /**
-         * value: "SELLING_PARTNER_FUNDED_BASE_DISCOUNT_PERCENTAGE"
-         * @const
-         */
-  'SELLING_PARTNER_FUNDED_BASE_DISCOUNT_PERCENTAGE' = 'SELLING_PARTNER_FUNDED_BASE_DISCOUNT_PERCENTAGE'
-
-  /**
-         * value: "SELLING_PARTNER_FUNDED_TIERED_DISCOUNT_PERCENTAGE"
-         * @const
-         */
-  'SELLING_PARTNER_FUNDED_TIERED_DISCOUNT_PERCENTAGE' = 'SELLING_PARTNER_FUNDED_TIERED_DISCOUNT_PERCENTAGE'
-
-  /**
-         * value: "AMAZON_FUNDED_BASE_DISCOUNT_PERCENTAGE"
-         * @const
-         */
-  'AMAZON_FUNDED_BASE_DISCOUNT_PERCENTAGE' = 'AMAZON_FUNDED_BASE_DISCOUNT_PERCENTAGE'
-
-  /**
-         * value: "AMAZON_FUNDED_TIERED_DISCOUNT_PERCENTAGE"
-         * @const
-         */
-  'AMAZON_FUNDED_TIERED_DISCOUNT_PERCENTAGE' = 'AMAZON_FUNDED_TIERED_DISCOUNT_PERCENTAGE'
-
-  /**
-    * Returns a <code>ListOffersSortKey</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ListOffersSortKey} The enum <code>ListOffersSortKey</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'ASIN'|'SELLING_PARTNER_FUNDED_BASE_DISCOUNT_PERCENTAGE'|'SELLING_PARTNER_FUNDED_TIERED_DISCOUNT_PERCENTAGE'|'AMAZON_FUNDED_BASE_DISCOUNT_PERCENTAGE'|'AMAZON_FUNDED_TIERED_DISCOUNT_PERCENTAGE'} ListOffersSortKey
+ */
+export const ListOffersSortKey = Object.freeze({
+  ASIN: 'ASIN',
+  SELLING_PARTNER_FUNDED_BASE_DISCOUNT_PERCENTAGE: 'SELLING_PARTNER_FUNDED_BASE_DISCOUNT_PERCENTAGE',
+  SELLING_PARTNER_FUNDED_TIERED_DISCOUNT_PERCENTAGE: 'SELLING_PARTNER_FUNDED_TIERED_DISCOUNT_PERCENTAGE',
+  AMAZON_FUNDED_BASE_DISCOUNT_PERCENTAGE: 'AMAZON_FUNDED_BASE_DISCOUNT_PERCENTAGE',
+  AMAZON_FUNDED_TIERED_DISCOUNT_PERCENTAGE: 'AMAZON_FUNDED_TIERED_DISCOUNT_PERCENTAGE'
+})

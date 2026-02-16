@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class CompetitiveSummaryIncludedData.
-* @enum {String}
-* @readonly
-*/
-export class CompetitiveSummaryIncludedData {
-  /**
-         * value: "featuredBuyingOptions"
-         * @const
-         */
-  'featuredBuyingOptions' = 'featuredBuyingOptions'
-
-  /**
-         * value: "referencePrices"
-         * @const
-         */
-  'referencePrices' = 'referencePrices'
-
-  /**
-         * value: "lowestPricedOffers"
-         * @const
-         */
-  'lowestPricedOffers' = 'lowestPricedOffers'
-
-  /**
-    * Returns a <code>CompetitiveSummaryIncludedData</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {CompetitiveSummaryIncludedData} The enum <code>CompetitiveSummaryIncludedData</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'featuredBuyingOptions'|'referencePrices'|'lowestPricedOffers'} CompetitiveSummaryIncludedData
+ */
+export const CompetitiveSummaryIncludedData = Object.freeze({
+  featuredBuyingOptions: 'featuredBuyingOptions',
+  referencePrices: 'referencePrices',
+  lowestPricedOffers: 'lowestPricedOffers'
+})

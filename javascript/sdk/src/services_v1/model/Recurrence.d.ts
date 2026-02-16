@@ -23,16 +23,16 @@ export class Recurrence {
     endTime: Date;
     /**
      * Days of the week when recurrence is valid. If the schedule is valid every Monday, input will only contain `MONDAY` in the list.
-     * @member {[DayOfWeek]} daysOfWeek
-     * @type {[DayOfWeek]}
+     * @member {DayOfWeek[]} daysOfWeek
+     * @type {DayOfWeek[]}
      */
-    daysOfWeek: [DayOfWeek];
+    daysOfWeek: DayOfWeek[];
     /**
      * Days of the month when recurrence is valid.
-     * @member {[Number]} daysOfMonth
-     * @type {[Number]}
+     * @member {Number[]} daysOfMonth
+     * @type {Number[]}
      */
-    daysOfMonth: [number];
+    daysOfMonth: number[];
 }
 import { DayOfWeek } from './DayOfWeek.js';
 //# sourceMappingURL=Recurrence.d.ts.map

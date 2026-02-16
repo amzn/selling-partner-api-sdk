@@ -1,19 +1,8 @@
+export type AssociationType = "VALUE_ADD_SERVICE";
 /**
-* Enum class AssociationType.
-* @enum {String}
-* @readonly
-*/
-export class AssociationType {
-    /**
-      * Returns a <code>AssociationType</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {AssociationType} The enum <code>AssociationType</code> value.
-      */
-    static constructFromObject(object: any): AssociationType;
-    /**
-           * value: "VALUE_ADD_SERVICE"
-           * @const
-           */
-    VALUE_ADD_SERVICE: string;
-}
+ * @typedef {'VALUE_ADD_SERVICE'} AssociationType
+ */
+export const AssociationType: Readonly<{
+    VALUE_ADD_SERVICE: "VALUE_ADD_SERVICE";
+}>;
 //# sourceMappingURL=AssociationType.d.ts.map

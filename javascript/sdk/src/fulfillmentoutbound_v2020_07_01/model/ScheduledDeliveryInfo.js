@@ -26,7 +26,7 @@ export class ScheduledDeliveryInfo {
    * @alias module:fulfillmentoutbound_v2020_07_01/model/ScheduledDeliveryInfo
    * @class
    * @param deliveryTimeZone {String} The time zone of the destination address for the fulfillment order preview. Must be an IANA time zone name. Example: Asia/Tokyo.
-   * @param deliveryWindows {[DeliveryWindow]} An array of delivery windows.
+   * @param deliveryWindows {DeliveryWindow[]} An array of delivery windows.
    */
   constructor (deliveryTimeZone, deliveryWindows) {
     this.deliveryTimeZone = deliveryTimeZone
@@ -70,7 +70,7 @@ ScheduledDeliveryInfo.prototype.deliveryTimeZone = undefined
 
 /**
  * An array of delivery windows.
- * @member {[DeliveryWindow]} deliveryWindows
- * @type {[DeliveryWindow]}
+ * @member {DeliveryWindow[]} deliveryWindows
+ * @type {DeliveryWindow[]}
  */
 ScheduledDeliveryInfo.prototype.deliveryWindows = undefined

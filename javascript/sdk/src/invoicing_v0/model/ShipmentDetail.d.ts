@@ -43,16 +43,16 @@ export class ShipmentDetail {
     shippingAddress: Address;
     /**
      * The list of payment method details.
-     * @member {[String]} paymentMethodDetails
-     * @type {[String]}
+     * @member {String[]} paymentMethodDetails
+     * @type {String[]}
      */
-    paymentMethodDetails: [string];
+    paymentMethodDetails: string[];
     /**
      * List of payment transactions
-     * @member {[PaymentInformation]} payments
-     * @type {[PaymentInformation]}
+     * @member {PaymentInformation[]} payments
+     * @type {PaymentInformation[]}
      */
-    payments: [PaymentInformation];
+    payments: PaymentInformation[];
     /**
      * The identifier for the marketplace where the order was placed.
      * @member {String} marketplaceId
@@ -95,10 +95,10 @@ export class ShipmentDetail {
     sellerDisplayName: string;
     /**
      * A list of shipment items.
-     * @member {[ShipmentItem]} shipmentItems
-     * @type {[ShipmentItem]}
+     * @member {ShipmentItem[]} shipmentItems
+     * @type {ShipmentItem[]}
      */
-    shipmentItems: [ShipmentItem];
+    shipmentItems: ShipmentItem[];
 }
 import { Address } from './Address.js';
 import { PaymentInformation } from './PaymentInformation.js';

@@ -65,8 +65,8 @@ export class FixedSlotCapacityQuery {
 
 /**
  * An array of capacity types which are being requested. Default value is `[SCHEDULED_CAPACITY]`.
- * @member {[CapacityType]} capacityTypes
- * @type {[CapacityType]}
+ * @member {CapacityType[]} capacityTypes
+ * @type {CapacityType[]}
  */
 FixedSlotCapacityQuery.prototype.capacityTypes = undefined
 

@@ -28,7 +28,7 @@ export class ValidateContentDocumentAsinRelationsResponse {
    * @class
    * @implements module:apluscontent_v2020_11_01/model/AplusResponse
    * @implements module:apluscontent_v2020_11_01/model/ErrorList
-   * @param errors {[Error]} A list of error responses that are returned when a request is unsuccessful.
+   * @param errors {Error[]} A list of error responses that are returned when a request is unsuccessful.
    */
   constructor (errors) {
     AplusResponse.call(this)
@@ -68,30 +68,30 @@ export class ValidateContentDocumentAsinRelationsResponse {
 
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {[Error]} warnings
- * @type {[Error]}
+ * @member {Error[]} warnings
+ * @type {Error[]}
  */
 ValidateContentDocumentAsinRelationsResponse.prototype.warnings = undefined
 
 /**
  * A list of error responses that are returned when a request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Error[]} errors
+ * @type {Error[]}
  */
 ValidateContentDocumentAsinRelationsResponse.prototype.errors = undefined
 
 // Implement AplusResponse interface:
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {[Error]} warnings
- * @type {[Error]}
+ * @member {Error[]} warnings
+ * @type {Error[]}
  */
 AplusResponse.prototype.warnings = undefined
 
 // Implement ErrorList interface:
 /**
  * A list of error responses that are returned when a request is unsuccessful.
- * @member {[Error]} errors
- * @type {[Error]}
+ * @member {Error[]} errors
+ * @type {Error[]}
  */
 ErrorList.prototype.errors = undefined

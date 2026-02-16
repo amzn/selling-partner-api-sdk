@@ -23,10 +23,10 @@ export class InventorySummary {
     sku: string;
     /**
      * The expiration details of the inventory. This object will only appear if the `details` parameter in the request is set to `SHOW`.
-     * @member {[ExpirationDetails]} expirationDetails
-     * @type {[ExpirationDetails]}
+     * @member {ExpirationDetails[]} expirationDetails
+     * @type {ExpirationDetails[]}
      */
-    expirationDetails: [ExpirationDetails];
+    expirationDetails: ExpirationDetails[];
     /**
      * @member {InventoryDetails} inventoryDetails
      * @type {InventoryDetails}

@@ -20,10 +20,10 @@ export class ShipmentListing {
     nextToken: string;
     /**
      * List of inbound shipment summaries.
-     * @member {[InboundShipmentSummary]} shipments
-     * @type {[InboundShipmentSummary]}
+     * @member {InboundShipmentSummary[]} shipments
+     * @type {InboundShipmentSummary[]}
      */
-    shipments: [InboundShipmentSummary];
+    shipments: InboundShipmentSummary[];
 }
 import { InboundShipmentSummary } from './InboundShipmentSummary.js';
 //# sourceMappingURL=ShipmentListing.d.ts.map

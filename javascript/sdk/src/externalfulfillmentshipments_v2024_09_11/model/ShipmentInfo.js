@@ -132,8 +132,8 @@ ShipmentInfo.prototype.buyerOrderId = undefined
 
 /**
  * A list of order statuses for which the marketplace allows order rejection (seller cancellation). If the order has a status that does not belong to this list, then seller cancellation is not possible.
- * @member {[String]} orderStatesEligibleForRejection
- * @type {[String]}
+ * @member {String[]} orderStatesEligibleForRejection
+ * @type {String[]}
  */
 ShipmentInfo.prototype.orderStatesEligibleForRejection = undefined
 

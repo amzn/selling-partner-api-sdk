@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class FulfillmentChannelType.
-* @enum {String}
-* @readonly
-*/
-export class FulfillmentChannelType {
-  /**
-         * value: "Amazon"
-         * @const
-         */
-  'Amazon' = 'Amazon'
-
-  /**
-         * value: "Merchant"
-         * @const
-         */
-  'Merchant' = 'Merchant'
-
-  /**
-    * Returns a <code>FulfillmentChannelType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {FulfillmentChannelType} The enum <code>FulfillmentChannelType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'Amazon'|'Merchant'} FulfillmentChannelType
+ */
+export const FulfillmentChannelType = Object.freeze({
+  Amazon: 'Amazon',
+  Merchant: 'Merchant'
+})

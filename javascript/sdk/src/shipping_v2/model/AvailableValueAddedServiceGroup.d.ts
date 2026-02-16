@@ -27,10 +27,10 @@ export class AvailableValueAddedServiceGroup {
     isRequired: boolean;
     /**
      * A list of optional value-added services available for purchase with a shipping service offering.
-     * @member {[ValueAddedService]} valueAddedServices
-     * @type {[ValueAddedService]}
+     * @member {ValueAddedService[]} valueAddedServices
+     * @type {ValueAddedService[]}
      */
-    valueAddedServices: [ValueAddedService];
+    valueAddedServices: ValueAddedService[];
 }
 import { ValueAddedService } from './ValueAddedService.js';
 //# sourceMappingURL=AvailableValueAddedServiceGroup.d.ts.map

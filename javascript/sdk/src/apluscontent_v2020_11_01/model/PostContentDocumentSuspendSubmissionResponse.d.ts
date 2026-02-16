@@ -14,10 +14,10 @@ export class PostContentDocumentSuspendSubmissionResponse {
     static constructFromObject(data: any, obj: PostContentDocumentSuspendSubmissionResponse): PostContentDocumentSuspendSubmissionResponse;
     /**
      * A set of messages to the user, such as warnings or comments.
-     * @member {[Error]} warnings
-     * @type {[Error]}
+     * @member {Error[]} warnings
+     * @type {Error[]}
      */
-    warnings: [Error];
+    warnings: Error[];
 }
 import { Error } from './Error.js';
 //# sourceMappingURL=PostContentDocumentSuspendSubmissionResponse.d.ts.map

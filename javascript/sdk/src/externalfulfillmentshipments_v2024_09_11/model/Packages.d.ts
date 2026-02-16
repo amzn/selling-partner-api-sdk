@@ -17,10 +17,10 @@ export class Packages {
      * The request schema of the &#x60;createPackages&#x60; operation.
      * @alias module:externalfulfillmentshipments_v2024_09_11/model/Packages
      * @class
-     * @param packages {[Package]} A list of packages.
+     * @param packages {Package[]} A list of packages.
      */
-    constructor(packages: [Package]);
-    packages: [Package];
+    constructor(packages: Package[]);
+    packages: Package[];
 }
 import { Package } from './Package.js';
 //# sourceMappingURL=Packages.d.ts.map

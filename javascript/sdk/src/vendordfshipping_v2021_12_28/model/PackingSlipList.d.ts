@@ -19,10 +19,10 @@ export class PackingSlipList {
     pagination: Pagination;
     /**
      * An array of packing slip objects.
-     * @member {[PackingSlip]} packingSlips
-     * @type {[PackingSlip]}
+     * @member {PackingSlip[]} packingSlips
+     * @type {PackingSlip[]}
      */
-    packingSlips: [PackingSlip];
+    packingSlips: PackingSlip[];
 }
 import { Pagination } from './Pagination.js';
 import { PackingSlip } from './PackingSlip.js';

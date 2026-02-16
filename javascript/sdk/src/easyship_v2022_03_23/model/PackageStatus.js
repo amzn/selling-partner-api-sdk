@@ -14,89 +14,19 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class PackageStatus.
-* @enum {String}
-* @readonly
-*/
-export class PackageStatus {
-  /**
-         * value: "ReadyForPickup"
-         * @const
-         */
-  'ReadyForPickup' = 'ReadyForPickup'
-
-  /**
-         * value: "PickedUp"
-         * @const
-         */
-  'PickedUp' = 'PickedUp'
-
-  /**
-         * value: "AtOriginFC"
-         * @const
-         */
-  'AtOriginFC' = 'AtOriginFC'
-
-  /**
-         * value: "AtDestinationFC"
-         * @const
-         */
-  'AtDestinationFC' = 'AtDestinationFC'
-
-  /**
-         * value: "Delivered"
-         * @const
-         */
-  'Delivered' = 'Delivered'
-
-  /**
-         * value: "Rejected"
-         * @const
-         */
-  'Rejected' = 'Rejected'
-
-  /**
-         * value: "Undeliverable"
-         * @const
-         */
-  'Undeliverable' = 'Undeliverable'
-
-  /**
-         * value: "ReturnedToSeller"
-         * @const
-         */
-  'ReturnedToSeller' = 'ReturnedToSeller'
-
-  /**
-         * value: "LostInTransit"
-         * @const
-         */
-  'LostInTransit' = 'LostInTransit'
-
-  /**
-         * value: "LabelCanceled"
-         * @const
-         */
-  'LabelCanceled' = 'LabelCanceled'
-
-  /**
-         * value: "DamagedInTransit"
-         * @const
-         */
-  'DamagedInTransit' = 'DamagedInTransit'
-
-  /**
-         * value: "OutForDelivery"
-         * @const
-         */
-  'OutForDelivery' = 'OutForDelivery'
-
-  /**
-    * Returns a <code>PackageStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {PackageStatus} The enum <code>PackageStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'ReadyForPickup'|'PickedUp'|'AtOriginFC'|'AtDestinationFC'|'Delivered'|'Rejected'|'Undeliverable'|'ReturnedToSeller'|'LostInTransit'|'LabelCanceled'|'DamagedInTransit'|'OutForDelivery'} PackageStatus
+ */
+export const PackageStatus = Object.freeze({
+  ReadyForPickup: 'ReadyForPickup',
+  PickedUp: 'PickedUp',
+  AtOriginFC: 'AtOriginFC',
+  AtDestinationFC: 'AtDestinationFC',
+  Delivered: 'Delivered',
+  Rejected: 'Rejected',
+  Undeliverable: 'Undeliverable',
+  ReturnedToSeller: 'ReturnedToSeller',
+  LostInTransit: 'LostInTransit',
+  LabelCanceled: 'LabelCanceled',
+  DamagedInTransit: 'DamagedInTransit',
+  OutForDelivery: 'OutForDelivery'
+})

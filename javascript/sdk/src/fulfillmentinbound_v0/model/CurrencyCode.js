@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class CurrencyCode.
-* @enum {String}
-* @readonly
-*/
-export class CurrencyCode {
-  /**
-         * value: "USD"
-         * @const
-         */
-  'USD' = 'USD'
-
-  /**
-         * value: "GBP"
-         * @const
-         */
-  'GBP' = 'GBP'
-
-  /**
-    * Returns a <code>CurrencyCode</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {CurrencyCode} The enum <code>CurrencyCode</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'USD'|'GBP'} CurrencyCode
+ */
+export const CurrencyCode = Object.freeze({
+  USD: 'USD',
+  GBP: 'GBP'
+})

@@ -25,7 +25,7 @@ export class Packages {
    * A list of packages.
    * @alias module:easyship_v2022_03_23/model/Packages
    * @class
-   * @param packages {[Package]} A list of packages.
+   * @param packages {Package[]} A list of packages.
    */
   constructor (packages) {
     this.packages = packages
@@ -60,7 +60,7 @@ export class Packages {
 
 /**
  * A list of packages.
- * @member {[Package]} packages
- * @type {[Package]}
+ * @member {Package[]} packages
+ * @type {Package[]}
  */
 Packages.prototype.packages = undefined

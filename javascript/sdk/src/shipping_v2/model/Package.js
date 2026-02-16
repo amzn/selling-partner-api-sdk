@@ -33,7 +33,7 @@ export class Package {
    * @param weight {Weight}
    * @param insuredValue {Currency}
    * @param packageClientReferenceId {String} A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation.
-   * @param items {[Item]} A list of items.
+   * @param items {Item[]} A list of items.
    */
   constructor (dimensions, weight, insuredValue, packageClientReferenceId, items) {
     this.dimensions = dimensions
@@ -111,8 +111,8 @@ Package.prototype.sellerDisplayName = undefined
 
 /**
  * A list of charges based on the shipping service charges applied on a package.
- * @member {[ChargeComponent]} charges
- * @type {[ChargeComponent]}
+ * @member {ChargeComponent[]} charges
+ * @type {ChargeComponent[]}
  */
 Package.prototype.charges = undefined
 
@@ -125,7 +125,7 @@ Package.prototype.packageClientReferenceId = undefined
 
 /**
  * A list of items.
- * @member {[Item]} items
- * @type {[Item]}
+ * @member {Item[]} items
+ * @type {Item[]}
  */
 Package.prototype.items = undefined

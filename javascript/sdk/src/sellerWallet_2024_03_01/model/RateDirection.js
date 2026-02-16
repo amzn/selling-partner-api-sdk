@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class RateDirection.
-* @enum {String}
-* @readonly
-*/
-export class RateDirection {
-  /**
-         * value: "BUY"
-         * @const
-         */
-  'BUY' = 'BUY'
-
-  /**
-         * value: "SELL"
-         * @const
-         */
-  'SELL' = 'SELL'
-
-  /**
-    * Returns a <code>RateDirection</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {RateDirection} The enum <code>RateDirection</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'BUY'|'SELL'} RateDirection
+ */
+export const RateDirection = Object.freeze({
+  BUY: 'BUY',
+  SELL: 'SELL'
+})

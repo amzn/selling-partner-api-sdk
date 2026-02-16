@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class AutoEnrollmentPreference.
-* @enum {String}
-* @readonly
-*/
-export class AutoEnrollmentPreference {
-  /**
-         * value: "OPTED_IN"
-         * @const
-         */
-  'OPTED_IN' = 'OPTED_IN'
-
-  /**
-         * value: "OPTED_OUT"
-         * @const
-         */
-  'OPTED_OUT' = 'OPTED_OUT'
-
-  /**
-    * Returns a <code>AutoEnrollmentPreference</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {AutoEnrollmentPreference} The enum <code>AutoEnrollmentPreference</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'OPTED_IN'|'OPTED_OUT'} AutoEnrollmentPreference
+ */
+export const AutoEnrollmentPreference = Object.freeze({
+  OPTED_IN: 'OPTED_IN',
+  OPTED_OUT: 'OPTED_OUT'
+})

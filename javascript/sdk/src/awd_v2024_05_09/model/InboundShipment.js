@@ -33,7 +33,7 @@ export class InboundShipment {
    * @param destinationAddress {Address}
    * @param orderId {String} The AWD inbound order ID that this inbound shipment belongs to.
    * @param originAddress {Address}
-   * @param shipmentContainerQuantities {[DistributionPackageQuantity]} Packages that are part of this shipment.
+   * @param shipmentContainerQuantities {DistributionPackageQuantity[]} Packages that are part of this shipment.
    * @param shipmentId {String} Unique shipment ID.
    * @param shipmentStatus {InboundShipmentStatus}
    */
@@ -129,8 +129,8 @@ InboundShipment.prototype.originAddress = undefined
 
 /**
  * Quantity received (at the receiving end) as part of this shipment.
- * @member {[InventoryQuantity]} receivedQuantity
- * @type {[InventoryQuantity]}
+ * @member {InventoryQuantity[]} receivedQuantity
+ * @type {InventoryQuantity[]}
  */
 InboundShipment.prototype.receivedQuantity = undefined
 
@@ -143,8 +143,8 @@ InboundShipment.prototype.shipBy = undefined
 
 /**
  * Packages that are part of this shipment.
- * @member {[DistributionPackageQuantity]} shipmentContainerQuantities
- * @type {[DistributionPackageQuantity]}
+ * @member {DistributionPackageQuantity[]} shipmentContainerQuantities
+ * @type {DistributionPackageQuantity[]}
  */
 InboundShipment.prototype.shipmentContainerQuantities = undefined
 
@@ -157,8 +157,8 @@ InboundShipment.prototype.shipmentId = undefined
 
 /**
  * Quantity details at SKU level for the shipment. This attribute will only appear if the skuQuantities parameter in the request is set to SHOW.
- * @member {[SkuQuantity]} shipmentSkuQuantities
- * @type {[SkuQuantity]}
+ * @member {SkuQuantity[]} shipmentSkuQuantities
+ * @type {SkuQuantity[]}
  */
 InboundShipment.prototype.shipmentSkuQuantities = undefined
 

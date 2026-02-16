@@ -23,10 +23,10 @@ export class AsinMetadata {
     asin: string;
     /**
      * The set of ASIN badges.
-     * @member {[AsinBadge]} badgeSet
-     * @type {[AsinBadge]}
+     * @member {AsinBadge[]} badgeSet
+     * @type {AsinBadge[]}
      */
-    badgeSet: [AsinBadge];
+    badgeSet: AsinBadge[];
     /**
      * The Amazon Standard Identification Number (ASIN).
      * @member {String} parent
@@ -47,10 +47,10 @@ export class AsinMetadata {
     imageUrl: string;
     /**
      * A set of content reference keys.
-     * @member {[String]} contentReferenceKeySet
-     * @type {[String]}
+     * @member {String[]} contentReferenceKeySet
+     * @type {String[]}
      */
-    contentReferenceKeySet: [string];
+    contentReferenceKeySet: string[];
 }
 import { AsinBadge } from './AsinBadge.js';
 //# sourceMappingURL=AsinMetadata.d.ts.map

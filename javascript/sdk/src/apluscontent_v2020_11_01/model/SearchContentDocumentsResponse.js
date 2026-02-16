@@ -27,7 +27,7 @@ export class SearchContentDocumentsResponse {
    * @alias module:apluscontent_v2020_11_01/model/SearchContentDocumentsResponse
    * @class
    * @implements module:apluscontent_v2020_11_01/model/AplusPaginatedResponse
-   * @param contentMetadataRecords {[ContentMetadataRecord]} A list of A+ Content metadata records.
+   * @param contentMetadataRecords {ContentMetadataRecord[]} A list of A+ Content metadata records.
    */
   constructor (contentMetadataRecords) {
     AplusPaginatedResponse.call(this)
@@ -66,8 +66,8 @@ export class SearchContentDocumentsResponse {
 
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {[Error]} warnings
- * @type {[Error]}
+ * @member {Error[]} warnings
+ * @type {Error[]}
  */
 SearchContentDocumentsResponse.prototype.warnings = undefined
 
@@ -80,16 +80,16 @@ SearchContentDocumentsResponse.prototype.nextPageToken = undefined
 
 /**
  * A list of A+ Content metadata records.
- * @member {[ContentMetadataRecord]} contentMetadataRecords
- * @type {[ContentMetadataRecord]}
+ * @member {ContentMetadataRecord[]} contentMetadataRecords
+ * @type {ContentMetadataRecord[]}
  */
 SearchContentDocumentsResponse.prototype.contentMetadataRecords = undefined
 
 // Implement AplusPaginatedResponse interface:
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {[Error]} warnings
- * @type {[Error]}
+ * @member {Error[]} warnings
+ * @type {Error[]}
  */
 AplusPaginatedResponse.prototype.warnings = undefined
 

@@ -81,8 +81,8 @@ Item.prototype.sku = undefined
 
 /**
  * Summary details of a listings item.
- * @member {[ItemSummaryByMarketplace]} summaries
- * @type {[ItemSummaryByMarketplace]}
+ * @member {ItemSummaryByMarketplace[]} summaries
+ * @type {ItemSummaryByMarketplace[]}
  */
 Item.prototype.summaries = undefined
 
@@ -95,42 +95,42 @@ Item.prototype.attributes = undefined
 
 /**
  * The issues associated with the listings item.
- * @member {[Issue]} issues
- * @type {[Issue]}
+ * @member {Issue[]} issues
+ * @type {Issue[]}
  */
 Item.prototype.issues = undefined
 
 /**
  * Offer details for the listings item.
- * @member {[ItemOfferByMarketplace]} offers
- * @type {[ItemOfferByMarketplace]}
+ * @member {ItemOfferByMarketplace[]} offers
+ * @type {ItemOfferByMarketplace[]}
  */
 Item.prototype.offers = undefined
 
 /**
  * The fulfillment availability for the listings item.
- * @member {[FulfillmentAvailability]} fulfillmentAvailability
- * @type {[FulfillmentAvailability]}
+ * @member {FulfillmentAvailability[]} fulfillmentAvailability
+ * @type {FulfillmentAvailability[]}
  */
 Item.prototype.fulfillmentAvailability = undefined
 
 /**
  * The vendor procurement information for the listings item.
- * @member {[ItemProcurement]} procurement
- * @type {[ItemProcurement]}
+ * @member {ItemProcurement[]} procurement
+ * @type {ItemProcurement[]}
  */
 Item.prototype.procurement = undefined
 
 /**
  * Relationships for a listing item, by marketplace (for example, variations).
- * @member {[ItemRelationshipsByMarketplace]} relationships
- * @type {[ItemRelationshipsByMarketplace]}
+ * @member {ItemRelationshipsByMarketplace[]} relationships
+ * @type {ItemRelationshipsByMarketplace[]}
  */
 Item.prototype.relationships = undefined
 
 /**
  * Product types for a listing item, by marketplace.
- * @member {[ItemProductTypeByMarketplace]} productTypes
- * @type {[ItemProductTypeByMarketplace]}
+ * @member {ItemProductTypeByMarketplace[]} productTypes
+ * @type {ItemProductTypeByMarketplace[]}
  */
 Item.prototype.productTypes = undefined

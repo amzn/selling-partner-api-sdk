@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class BankAccountNumberFormat.
-* @enum {String}
-* @readonly
-*/
-export class BankAccountNumberFormat {
-  /**
-         * value: "IBAN"
-         * @const
-         */
-  'IBAN' = 'IBAN'
-
-  /**
-         * value: "BBAN"
-         * @const
-         */
-  'BBAN' = 'BBAN'
-
-  /**
-    * Returns a <code>BankAccountNumberFormat</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {BankAccountNumberFormat} The enum <code>BankAccountNumberFormat</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'IBAN'|'BBAN'} BankAccountNumberFormat
+ */
+export const BankAccountNumberFormat = Object.freeze({
+  IBAN: 'IBAN',
+  BBAN: 'BBAN'
+})

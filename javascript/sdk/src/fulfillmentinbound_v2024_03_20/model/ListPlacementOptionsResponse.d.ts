@@ -17,10 +17,10 @@ export class ListPlacementOptionsResponse {
      * The &#x60;listPlacementOptions&#x60; response.
      * @alias module:fulfillmentinbound_v2024_03_20/model/ListPlacementOptionsResponse
      * @class
-     * @param placementOptions {[PlacementOption]} Placement options generated for the inbound plan.
+     * @param placementOptions {PlacementOption[]} Placement options generated for the inbound plan.
      */
-    constructor(placementOptions: [PlacementOption]);
-    placementOptions: [PlacementOption];
+    constructor(placementOptions: PlacementOption[]);
+    placementOptions: PlacementOption[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

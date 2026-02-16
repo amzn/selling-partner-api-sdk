@@ -26,7 +26,7 @@ export class ItemReviewTrend {
    * @alias module:customerFeedback_2024_06_01/model/ItemReviewTrend
    * @class
    * @param topic {String} The name of the item review topic.
-   * @param trendMetrics {[ItemReviewTrendPoint]} The item's review trend metrics for the past six months.
+   * @param trendMetrics {ItemReviewTrendPoint[]} The item's review trend metrics for the past six months.
    */
   constructor (topic, trendMetrics) {
     this.topic = topic
@@ -70,7 +70,7 @@ ItemReviewTrend.prototype.topic = undefined
 
 /**
  * The item's review trend metrics for the past six months.
- * @member {[ItemReviewTrendPoint]} trendMetrics
- * @type {[ItemReviewTrendPoint]}
+ * @member {ItemReviewTrendPoint[]} trendMetrics
+ * @type {ItemReviewTrendPoint[]}
  */
 ItemReviewTrend.prototype.trendMetrics = undefined

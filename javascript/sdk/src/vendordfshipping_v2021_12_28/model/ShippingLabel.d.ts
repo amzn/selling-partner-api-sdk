@@ -21,14 +21,14 @@ export class ShippingLabel {
      * @param sellingParty {PartyIdentification}
      * @param shipFromParty {PartyIdentification}
      * @param labelFormat {String} Format of the label.
-     * @param labelData {[LabelData]} Provides the details of the packages in this shipment.
+     * @param labelData {LabelData[]} Provides the details of the packages in this shipment.
      */
-    constructor(purchaseOrderNumber: string, sellingParty: PartyIdentification, shipFromParty: PartyIdentification, labelFormat: string, labelData: [LabelData]);
+    constructor(purchaseOrderNumber: string, sellingParty: PartyIdentification, shipFromParty: PartyIdentification, labelFormat: string, labelData: LabelData[]);
     purchaseOrderNumber: string;
     sellingParty: PartyIdentification;
     shipFromParty: PartyIdentification;
     labelFormat: string;
-    labelData: [LabelData];
+    labelData: LabelData[];
 }
 export namespace ShippingLabel {
     namespace LabelFormatEnum {

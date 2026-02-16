@@ -55,10 +55,10 @@ export class InboundShipmentItem {
     releaseDate: Date;
     /**
      * A list of preparation instructions and who is responsible for that preparation.
-     * @member {[PrepDetails]} prepDetailsList
-     * @type {[PrepDetails]}
+     * @member {PrepDetails[]} prepDetailsList
+     * @type {PrepDetails[]}
      */
-    prepDetailsList: [PrepDetails];
+    prepDetailsList: PrepDetails[];
 }
 import { PrepDetails } from './PrepDetails.js';
 //# sourceMappingURL=InboundShipmentItem.d.ts.map

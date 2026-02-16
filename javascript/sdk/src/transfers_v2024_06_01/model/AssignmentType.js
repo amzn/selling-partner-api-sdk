@@ -14,23 +14,8 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class AssignmentType.
-* @enum {String}
-* @readonly
-*/
-export class AssignmentType {
-  /**
-         * value: "DEFAULT_DEPOSIT_METHOD"
-         * @const
-         */
-  'DEFAULT_DEPOSIT_METHOD' = 'DEFAULT_DEPOSIT_METHOD'
-
-  /**
-    * Returns a <code>AssignmentType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {AssignmentType} The enum <code>AssignmentType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'DEFAULT_DEPOSIT_METHOD'} AssignmentType
+ */
+export const AssignmentType = Object.freeze({
+  DEFAULT_DEPOSIT_METHOD: 'DEFAULT_DEPOSIT_METHOD'
+})

@@ -14,41 +14,11 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class NetCostUnitOfMeasure.
-* @enum {String}
-* @readonly
-*/
-export class NetCostUnitOfMeasure {
-  /**
-         * value: "POUNDS"
-         * @const
-         */
-  'POUNDS' = 'POUNDS'
-
-  /**
-         * value: "OUNCES"
-         * @const
-         */
-  'OUNCES' = 'OUNCES'
-
-  /**
-         * value: "GRAMS"
-         * @const
-         */
-  'GRAMS' = 'GRAMS'
-
-  /**
-         * value: "KILOGRAMS"
-         * @const
-         */
-  'KILOGRAMS' = 'KILOGRAMS'
-
-  /**
-    * Returns a <code>NetCostUnitOfMeasure</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {NetCostUnitOfMeasure} The enum <code>NetCostUnitOfMeasure</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'POUNDS'|'OUNCES'|'GRAMS'|'KILOGRAMS'} NetCostUnitOfMeasure
+ */
+export const NetCostUnitOfMeasure = Object.freeze({
+  POUNDS: 'POUNDS',
+  OUNCES: 'OUNCES',
+  GRAMS: 'GRAMS',
+  KILOGRAMS: 'KILOGRAMS'
+})

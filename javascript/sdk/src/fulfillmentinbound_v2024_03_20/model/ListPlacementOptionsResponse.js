@@ -26,7 +26,7 @@ export class ListPlacementOptionsResponse {
    * The &#x60;listPlacementOptions&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListPlacementOptionsResponse
    * @class
-   * @param placementOptions {[PlacementOption]} Placement options generated for the inbound plan.
+   * @param placementOptions {PlacementOption[]} Placement options generated for the inbound plan.
    */
   constructor (placementOptions) {
     this.placementOptions = placementOptions
@@ -68,7 +68,7 @@ ListPlacementOptionsResponse.prototype.pagination = undefined
 
 /**
  * Placement options generated for the inbound plan.
- * @member {[PlacementOption]} placementOptions
- * @type {[PlacementOption]}
+ * @member {PlacementOption[]} placementOptions
+ * @type {PlacementOption[]}
  */
 ListPlacementOptionsResponse.prototype.placementOptions = undefined

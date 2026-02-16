@@ -25,10 +25,10 @@ export class FixedSlotCapacityQuery {
     endDateTime: Date;
     /**
      * An array of capacity types which are being requested. Default value is `[SCHEDULED_CAPACITY]`.
-     * @member {[CapacityType]} capacityTypes
-     * @type {[CapacityType]}
+     * @member {CapacityType[]} capacityTypes
+     * @type {CapacityType[]}
      */
-    capacityTypes: [CapacityType];
+    capacityTypes: CapacityType[];
     /**
      * Size in which slots are being requested. This value should be a multiple of 5 and fall in the range: 5 <= `slotDuration` <= 360.
      * @member {Number} slotDuration

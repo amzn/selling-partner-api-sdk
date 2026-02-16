@@ -14,10 +14,10 @@ export class GetItemOffersBatchRequest {
     static constructFromObject(data: any, obj: GetItemOffersBatchRequest): GetItemOffersBatchRequest;
     /**
      * A list of `getListingOffers` batched requests to run.
-     * @member {[ItemOffersRequest]} requests
-     * @type {[ItemOffersRequest]}
+     * @member {ItemOffersRequest[]} requests
+     * @type {ItemOffersRequest[]}
      */
-    requests: [ItemOffersRequest];
+    requests: ItemOffersRequest[];
 }
 import { ItemOffersRequest } from './ItemOffersRequest.js';
 //# sourceMappingURL=GetItemOffersBatchRequest.d.ts.map

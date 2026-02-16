@@ -30,16 +30,16 @@ export class DebtRecoveryEvent {
     overPaymentCredit: Currency;
     /**
      * A list of debt recovery item information.
-     * @member {[DebtRecoveryItem]} debtRecoveryItemList
-     * @type {[DebtRecoveryItem]}
+     * @member {DebtRecoveryItem[]} debtRecoveryItemList
+     * @type {DebtRecoveryItem[]}
      */
-    debtRecoveryItemList: [DebtRecoveryItem];
+    debtRecoveryItemList: DebtRecoveryItem[];
     /**
      * A list of payment instruments.
-     * @member {[ChargeInstrument]} chargeInstrumentList
-     * @type {[ChargeInstrument]}
+     * @member {ChargeInstrument[]} chargeInstrumentList
+     * @type {ChargeInstrument[]}
      */
-    chargeInstrumentList: [ChargeInstrument];
+    chargeInstrumentList: ChargeInstrument[];
 }
 import { Currency } from './Currency.js';
 import { DebtRecoveryItem } from './DebtRecoveryItem.js';

@@ -14,10 +14,10 @@ export class GetDeliveryOffersResult {
     static constructFromObject(data: any, obj: GetDeliveryOffersResult): GetDeliveryOffersResult;
     /**
      * An array of delivery offer information.
-     * @member {[DeliveryOffer]} deliveryOffers
-     * @type {[DeliveryOffer]}
+     * @member {DeliveryOffer[]} deliveryOffers
+     * @type {DeliveryOffer[]}
      */
-    deliveryOffers: [DeliveryOffer];
+    deliveryOffers: DeliveryOffer[];
 }
 import { DeliveryOffer } from './DeliveryOffer.js';
 //# sourceMappingURL=GetDeliveryOffersResult.d.ts.map

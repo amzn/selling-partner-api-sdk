@@ -61,22 +61,22 @@ export class InvoiceItem {
     creditNoteDetails: CreditNoteDetails;
     /**
      * Individual tax details per line item.
-     * @member {[TaxDetails]} taxDetails
-     * @type {[TaxDetails]}
+     * @member {TaxDetails[]} taxDetails
+     * @type {TaxDetails[]}
      */
-    taxDetails: [TaxDetails];
+    taxDetails: TaxDetails[];
     /**
      * Individual charge details per line item.
-     * @member {[ChargeDetails]} chargeDetails
-     * @type {[ChargeDetails]}
+     * @member {ChargeDetails[]} chargeDetails
+     * @type {ChargeDetails[]}
      */
-    chargeDetails: [ChargeDetails];
+    chargeDetails: ChargeDetails[];
     /**
      * Individual allowance details per line item.
-     * @member {[AllowanceDetails]} allowanceDetails
-     * @type {[AllowanceDetails]}
+     * @member {AllowanceDetails[]} allowanceDetails
+     * @type {AllowanceDetails[]}
      */
-    allowanceDetails: [AllowanceDetails];
+    allowanceDetails: AllowanceDetails[];
 }
 import { ItemQuantity } from './ItemQuantity.js';
 import { Money } from './Money.js';

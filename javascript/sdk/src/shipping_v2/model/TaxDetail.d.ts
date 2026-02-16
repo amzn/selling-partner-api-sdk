@@ -21,7 +21,7 @@ export class TaxDetail {
      * @param taxRegistrationNumber {String} The shipper's tax registration number associated with the shipment for customs compliance purposes in certain regions.
      */
     constructor(taxType: TaxType, taxRegistrationNumber: string);
-    taxType: TaxType;
+    taxType: "GST";
     taxRegistrationNumber: string;
 }
 import { TaxType } from './TaxType.js';

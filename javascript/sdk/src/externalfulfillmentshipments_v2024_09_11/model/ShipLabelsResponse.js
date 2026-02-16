@@ -25,7 +25,7 @@ export class ShipLabelsResponse {
    * The response to the &#x60;generateShipLabels&#x60; operation.
    * @alias module:externalfulfillmentshipments_v2024_09_11/model/ShipLabelsResponse
    * @class
-   * @param packageShipLabelList {[PackageShipLabel]} A list of label documents for each package specified in the request. In case of partial failures when generating labels, the `isErrored` and `errorDetails` attributes detail the cause of failure.
+   * @param packageShipLabelList {PackageShipLabel[]} A list of label documents for each package specified in the request. In case of partial failures when generating labels, the `isErrored` and `errorDetails` attributes detail the cause of failure.
    */
   constructor (packageShipLabelList) {
     this.packageShipLabelList = packageShipLabelList
@@ -60,7 +60,7 @@ export class ShipLabelsResponse {
 
 /**
  * A list of label documents for each package specified in the request. In case of partial failures when generating labels, the `isErrored` and `errorDetails` attributes detail the cause of failure.
- * @member {[PackageShipLabel]} packageShipLabelList
- * @type {[PackageShipLabel]}
+ * @member {PackageShipLabel[]} packageShipLabelList
+ * @type {PackageShipLabel[]}
  */
 ShipLabelsResponse.prototype.packageShipLabelList = undefined

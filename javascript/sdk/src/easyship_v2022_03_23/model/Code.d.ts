@@ -1,69 +1,18 @@
+export type Code = "InvalidInput" | "InvalidTimeSlotId" | "ScheduledPackageAlreadyExists" | "ScheduleWindowExpired" | "RetryableAfterGettingNewSlots" | "TimeSlotNotAvailable" | "ResourceNotFound" | "InvalidOrderState" | "RegionNotSupported" | "OrderNotEligibleForRescheduling" | "InternalServerError";
 /**
-* Enum class Code.
-* @enum {String}
-* @readonly
-*/
-export class Code {
-    /**
-      * Returns a <code>Code</code> enum value from a Javascript object name.
-      * @param {Object} data The plain JavaScript object containing the name of the enum value.
-      * @return {Code} The enum <code>Code</code> value.
-      */
-    static constructFromObject(object: any): Code;
-    /**
-           * value: "InvalidInput"
-           * @const
-           */
-    InvalidInput: string;
-    /**
-           * value: "InvalidTimeSlotId"
-           * @const
-           */
-    InvalidTimeSlotId: string;
-    /**
-           * value: "ScheduledPackageAlreadyExists"
-           * @const
-           */
-    ScheduledPackageAlreadyExists: string;
-    /**
-           * value: "ScheduleWindowExpired"
-           * @const
-           */
-    ScheduleWindowExpired: string;
-    /**
-           * value: "RetryableAfterGettingNewSlots"
-           * @const
-           */
-    RetryableAfterGettingNewSlots: string;
-    /**
-           * value: "TimeSlotNotAvailable"
-           * @const
-           */
-    TimeSlotNotAvailable: string;
-    /**
-           * value: "ResourceNotFound"
-           * @const
-           */
-    ResourceNotFound: string;
-    /**
-           * value: "InvalidOrderState"
-           * @const
-           */
-    InvalidOrderState: string;
-    /**
-           * value: "RegionNotSupported"
-           * @const
-           */
-    RegionNotSupported: string;
-    /**
-           * value: "OrderNotEligibleForRescheduling"
-           * @const
-           */
-    OrderNotEligibleForRescheduling: string;
-    /**
-           * value: "InternalServerError"
-           * @const
-           */
-    InternalServerError: string;
-}
+ * @typedef {'InvalidInput'|'InvalidTimeSlotId'|'ScheduledPackageAlreadyExists'|'ScheduleWindowExpired'|'RetryableAfterGettingNewSlots'|'TimeSlotNotAvailable'|'ResourceNotFound'|'InvalidOrderState'|'RegionNotSupported'|'OrderNotEligibleForRescheduling'|'InternalServerError'} Code
+ */
+export const Code: Readonly<{
+    InvalidInput: "InvalidInput";
+    InvalidTimeSlotId: "InvalidTimeSlotId";
+    ScheduledPackageAlreadyExists: "ScheduledPackageAlreadyExists";
+    ScheduleWindowExpired: "ScheduleWindowExpired";
+    RetryableAfterGettingNewSlots: "RetryableAfterGettingNewSlots";
+    TimeSlotNotAvailable: "TimeSlotNotAvailable";
+    ResourceNotFound: "ResourceNotFound";
+    InvalidOrderState: "InvalidOrderState";
+    RegionNotSupported: "RegionNotSupported";
+    OrderNotEligibleForRescheduling: "OrderNotEligibleForRescheduling";
+    InternalServerError: "InternalServerError";
+}>;
 //# sourceMappingURL=Code.d.ts.map

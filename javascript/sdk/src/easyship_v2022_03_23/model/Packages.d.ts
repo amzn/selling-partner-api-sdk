@@ -17,10 +17,10 @@ export class Packages {
      * A list of packages.
      * @alias module:easyship_v2022_03_23/model/Packages
      * @class
-     * @param packages {[Package]} A list of packages.
+     * @param packages {Package[]} A list of packages.
      */
-    constructor(packages: [Package]);
-    packages: [Package];
+    constructor(packages: Package[]);
+    packages: Package[];
 }
 import { Package } from './Package.js';
 //# sourceMappingURL=Packages.d.ts.map

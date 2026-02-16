@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ContainerLabelFormat.
-* @enum {String}
-* @readonly
-*/
-export class ContainerLabelFormat {
-  /**
-         * value: "PNG"
-         * @const
-         */
-  'PNG' = 'PNG'
-
-  /**
-         * value: "ZPL"
-         * @const
-         */
-  'ZPL' = 'ZPL'
-
-  /**
-    * Returns a <code>ContainerLabelFormat</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ContainerLabelFormat} The enum <code>ContainerLabelFormat</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'PNG'|'ZPL'} ContainerLabelFormat
+ */
+export const ContainerLabelFormat = Object.freeze({
+  PNG: 'PNG',
+  ZPL: 'ZPL'
+})

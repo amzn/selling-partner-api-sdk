@@ -63,15 +63,15 @@ export class ItemRelationship {
 
 /**
  * Identifiers (SKUs) of the related items that are children of this listing item.
- * @member {[String]} childSkus
- * @type {[String]}
+ * @member {String[]} childSkus
+ * @type {String[]}
  */
 ItemRelationship.prototype.childSkus = undefined
 
 /**
  * Identifiers (SKUs) of the related items that are parents of this listing item.
- * @member {[String]} parentSkus
- * @type {[String]}
+ * @member {String[]} parentSkus
+ * @type {String[]}
  */
 ItemRelationship.prototype.parentSkus = undefined
 

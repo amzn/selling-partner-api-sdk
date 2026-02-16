@@ -58,7 +58,7 @@ export class GetItemOffersBatchResponse {
 
 /**
  * A list of `getItemOffers` batched responses.
- * @member {[ItemOffersResponse]} responses
- * @type {[ItemOffersResponse]}
+ * @member {ItemOffersResponse[]} responses
+ * @type {ItemOffersResponse[]}
  */
 GetItemOffersBatchResponse.prototype.responses = undefined

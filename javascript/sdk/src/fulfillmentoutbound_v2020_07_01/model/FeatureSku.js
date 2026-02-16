@@ -89,7 +89,7 @@ FeatureSku.prototype.skuCount = undefined
 
 /**
  * Other seller SKUs that are shared across the same inventory.
- * @member {[String]} overlappingSkus
- * @type {[String]}
+ * @member {String[]} overlappingSkus
+ * @type {String[]}
  */
 FeatureSku.prototype.overlappingSkus = undefined

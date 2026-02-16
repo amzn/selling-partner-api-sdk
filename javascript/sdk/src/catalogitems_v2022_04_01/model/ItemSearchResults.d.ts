@@ -18,11 +18,11 @@ export class ItemSearchResults {
      * @alias module:catalogitems_v2022_04_01/model/ItemSearchResults
      * @class
      * @param numberOfResults {Number} For searches that are based on `identifiers`, `numberOfResults` is the total number of Amazon catalog items found. For searches that are based on `keywords`, `numberOfResults` is the estimated total number of Amazon catalog items that are matched by the search query. Only results up to the page count limit are returned per request regardless of the number found.  **Note:** The maximum number of items (ASINs) that can be returned and paged through is 1,000.
-     * @param items {[Item]} A list of items from the Amazon catalog.
+     * @param items {Item[]} A list of items from the Amazon catalog.
      */
-    constructor(numberOfResults: number, items: [Item]);
+    constructor(numberOfResults: number, items: Item[]);
     numberOfResults: number;
-    items: [Item];
+    items: Item[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

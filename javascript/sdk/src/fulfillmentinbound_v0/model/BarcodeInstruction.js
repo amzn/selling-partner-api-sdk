@@ -14,35 +14,10 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class BarcodeInstruction.
-* @enum {String}
-* @readonly
-*/
-export class BarcodeInstruction {
-  /**
-         * value: "RequiresFNSKULabel"
-         * @const
-         */
-  'RequiresFNSKULabel' = 'RequiresFNSKULabel'
-
-  /**
-         * value: "CanUseOriginalBarcode"
-         * @const
-         */
-  'CanUseOriginalBarcode' = 'CanUseOriginalBarcode'
-
-  /**
-         * value: "MustProvideSellerSKU"
-         * @const
-         */
-  'MustProvideSellerSKU' = 'MustProvideSellerSKU'
-
-  /**
-    * Returns a <code>BarcodeInstruction</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {BarcodeInstruction} The enum <code>BarcodeInstruction</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'RequiresFNSKULabel'|'CanUseOriginalBarcode'|'MustProvideSellerSKU'} BarcodeInstruction
+ */
+export const BarcodeInstruction = Object.freeze({
+  RequiresFNSKULabel: 'RequiresFNSKULabel',
+  CanUseOriginalBarcode: 'CanUseOriginalBarcode',
+  MustProvideSellerSKU: 'MustProvideSellerSKU'
+})

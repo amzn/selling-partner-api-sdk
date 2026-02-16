@@ -71,8 +71,8 @@ export class GovernmentInvoiceRequest {
 
 /**
  * Object that contains additional invoice creation information
- * @member {[CarrierDetailsContext]} contexts
- * @type {[CarrierDetailsContext]}
+ * @member {CarrierDetailsContext[]} contexts
+ * @type {CarrierDetailsContext[]}
  */
 GovernmentInvoiceRequest.prototype.contexts = undefined
 

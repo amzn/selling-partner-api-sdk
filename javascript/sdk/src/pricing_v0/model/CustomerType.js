@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class CustomerType.
-* @enum {String}
-* @readonly
-*/
-export class CustomerType {
-  /**
-         * value: "Consumer"
-         * @const
-         */
-  'Consumer' = 'Consumer'
-
-  /**
-         * value: "Business"
-         * @const
-         */
-  'Business' = 'Business'
-
-  /**
-    * Returns a <code>CustomerType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {CustomerType} The enum <code>CustomerType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'Consumer'|'Business'} CustomerType
+ */
+export const CustomerType = Object.freeze({
+  Consumer: 'Consumer',
+  Business: 'Business'
+})

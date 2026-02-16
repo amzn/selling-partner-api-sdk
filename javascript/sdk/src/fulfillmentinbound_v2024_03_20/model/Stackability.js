@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class Stackability.
-* @enum {String}
-* @readonly
-*/
-export class Stackability {
-  /**
-         * value: "STACKABLE"
-         * @const
-         */
-  'STACKABLE' = 'STACKABLE'
-
-  /**
-         * value: "NON_STACKABLE"
-         * @const
-         */
-  'NON_STACKABLE' = 'NON_STACKABLE'
-
-  /**
-    * Returns a <code>Stackability</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {Stackability} The enum <code>Stackability</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'STACKABLE'|'NON_STACKABLE'} Stackability
+ */
+export const Stackability = Object.freeze({
+  STACKABLE: 'STACKABLE',
+  NON_STACKABLE: 'NON_STACKABLE'
+})

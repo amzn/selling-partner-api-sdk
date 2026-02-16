@@ -13,10 +13,10 @@ export class StandardMultipleImageTextModule {
      */
     static constructFromObject(data: any, obj: StandardMultipleImageTextModule): StandardMultipleImageTextModule;
     /**
-     * @member {[StandardImageTextCaptionBlock]} blocks
-     * @type {[StandardImageTextCaptionBlock]}
+     * @member {StandardImageTextCaptionBlock[]} blocks
+     * @type {StandardImageTextCaptionBlock[]}
      */
-    blocks: [StandardImageTextCaptionBlock];
+    blocks: StandardImageTextCaptionBlock[];
 }
 import { StandardImageTextCaptionBlock } from './StandardImageTextCaptionBlock.js';
 //# sourceMappingURL=StandardMultipleImageTextModule.d.ts.map

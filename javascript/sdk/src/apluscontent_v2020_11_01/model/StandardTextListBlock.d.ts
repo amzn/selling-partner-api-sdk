@@ -17,10 +17,10 @@ export class StandardTextListBlock {
      * The A+ Content standard fixed-length list of text, usually presented as bullet points.
      * @alias module:apluscontent_v2020_11_01/model/StandardTextListBlock
      * @class
-     * @param textList {[TextItem]}
+     * @param textList {TextItem[]}
      */
-    constructor(textList: [TextItem]);
-    textList: [TextItem];
+    constructor(textList: TextItem[]);
+    textList: TextItem[];
 }
 import { TextItem } from './TextItem.js';
 //# sourceMappingURL=StandardTextListBlock.d.ts.map

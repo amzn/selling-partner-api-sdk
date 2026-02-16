@@ -17,10 +17,10 @@ export class ListInboundPlanBoxesResponse {
      * The &#x60;listInboundPlanBoxes&#x60; response.
      * @alias module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanBoxesResponse
      * @class
-     * @param boxes {[Box]} A list of boxes in an inbound plan.
+     * @param boxes {Box[]} A list of boxes in an inbound plan.
      */
-    constructor(boxes: [Box]);
-    boxes: [Box];
+    constructor(boxes: Box[]);
+    boxes: Box[];
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

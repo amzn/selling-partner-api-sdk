@@ -14,23 +14,8 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class UnitOfLength.
-* @enum {String}
-* @readonly
-*/
-export class UnitOfLength {
-  /**
-         * value: "cm"
-         * @const
-         */
-  'cm' = 'cm'
-
-  /**
-    * Returns a <code>UnitOfLength</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {UnitOfLength} The enum <code>UnitOfLength</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'cm'} UnitOfLength
+ */
+export const UnitOfLength = Object.freeze({
+  cm: 'cm'
+})

@@ -17,10 +17,10 @@ export class Pallet {
      * Details of the Pallet/Tare being shipped.
      * @alias module:vendorshipments_v1/model/Pallet
      * @class
-     * @param palletIdentifiers {[ContainerIdentification]} A list of pallet identifiers.
+     * @param palletIdentifiers {ContainerIdentification[]} A list of pallet identifiers.
      */
-    constructor(palletIdentifiers: [ContainerIdentification]);
-    palletIdentifiers: [ContainerIdentification];
+    constructor(palletIdentifiers: ContainerIdentification[]);
+    palletIdentifiers: ContainerIdentification[];
     /**
      * Number of layers per pallet. Only applicable to container type Pallet.
      * @member {Number} tier
@@ -50,10 +50,10 @@ export class Pallet {
     cartonReferenceDetails: CartonReferenceDetails;
     /**
      * A list of container item details.
-     * @member {[ContainerItem]} items
-     * @type {[ContainerItem]}
+     * @member {ContainerItem[]} items
+     * @type {ContainerItem[]}
      */
-    items: [ContainerItem];
+    items: ContainerItem[];
 }
 import { ContainerIdentification } from './ContainerIdentification.js';
 import { Dimensions } from './Dimensions.js';

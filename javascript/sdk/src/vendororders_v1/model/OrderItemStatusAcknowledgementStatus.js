@@ -112,7 +112,7 @@ OrderItemStatusAcknowledgementStatus.prototype.rejectedQuantity = undefined
 
 /**
  * Details of item quantity confirmed.
- * @member {[AcknowledgementStatusDetails]} acknowledgementStatusDetails
- * @type {[AcknowledgementStatusDetails]}
+ * @member {AcknowledgementStatusDetails[]} acknowledgementStatusDetails
+ * @type {AcknowledgementStatusDetails[]}
  */
 OrderItemStatusAcknowledgementStatus.prototype.acknowledgementStatusDetails = undefined

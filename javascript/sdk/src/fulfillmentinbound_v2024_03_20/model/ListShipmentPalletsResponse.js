@@ -26,7 +26,7 @@ export class ListShipmentPalletsResponse {
    * The &#x60;listShipmentPallets&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListShipmentPalletsResponse
    * @class
-   * @param pallets {[Pallet]} The pallets in a shipment.
+   * @param pallets {Pallet[]} The pallets in a shipment.
    */
   constructor (pallets) {
     this.pallets = pallets
@@ -68,7 +68,7 @@ ListShipmentPalletsResponse.prototype.pagination = undefined
 
 /**
  * The pallets in a shipment.
- * @member {[Pallet]} pallets
- * @type {[Pallet]}
+ * @member {Pallet[]} pallets
+ * @type {Pallet[]}
  */
 ListShipmentPalletsResponse.prototype.pallets = undefined

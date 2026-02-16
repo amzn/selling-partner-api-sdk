@@ -38,46 +38,46 @@ export class ShipmentItem {
     quantityShipped: number;
     /**
      * A list of charge information on the seller's account.
-     * @member {[ChargeComponent]} itemChargeList
-     * @type {[ChargeComponent]}
+     * @member {ChargeComponent[]} itemChargeList
+     * @type {ChargeComponent[]}
      */
-    itemChargeList: [ChargeComponent];
+    itemChargeList: ChargeComponent[];
     /**
      * A list of charge information on the seller's account.
-     * @member {[ChargeComponent]} itemChargeAdjustmentList
-     * @type {[ChargeComponent]}
+     * @member {ChargeComponent[]} itemChargeAdjustmentList
+     * @type {ChargeComponent[]}
      */
-    itemChargeAdjustmentList: [ChargeComponent];
+    itemChargeAdjustmentList: ChargeComponent[];
     /**
      * A list of fee component information.
-     * @member {[FeeComponent]} itemFeeList
-     * @type {[FeeComponent]}
+     * @member {FeeComponent[]} itemFeeList
+     * @type {FeeComponent[]}
      */
-    itemFeeList: [FeeComponent];
+    itemFeeList: FeeComponent[];
     /**
      * A list of fee component information.
-     * @member {[FeeComponent]} itemFeeAdjustmentList
-     * @type {[FeeComponent]}
+     * @member {FeeComponent[]} itemFeeAdjustmentList
+     * @type {FeeComponent[]}
      */
-    itemFeeAdjustmentList: [FeeComponent];
+    itemFeeAdjustmentList: FeeComponent[];
     /**
      * A list of information about taxes withheld.
-     * @member {[TaxWithheldComponent]} itemTaxWithheldList
-     * @type {[TaxWithheldComponent]}
+     * @member {TaxWithheldComponent[]} itemTaxWithheldList
+     * @type {TaxWithheldComponent[]}
      */
-    itemTaxWithheldList: [TaxWithheldComponent];
+    itemTaxWithheldList: TaxWithheldComponent[];
     /**
      * A list of promotions.
-     * @member {[Promotion]} promotionList
-     * @type {[Promotion]}
+     * @member {Promotion[]} promotionList
+     * @type {Promotion[]}
      */
-    promotionList: [Promotion];
+    promotionList: Promotion[];
     /**
      * A list of promotions.
-     * @member {[Promotion]} promotionAdjustmentList
-     * @type {[Promotion]}
+     * @member {Promotion[]} promotionAdjustmentList
+     * @type {Promotion[]}
      */
-    promotionAdjustmentList: [Promotion];
+    promotionAdjustmentList: Promotion[];
     /**
      * @member {Currency} costOfPointsGranted
      * @type {Currency}

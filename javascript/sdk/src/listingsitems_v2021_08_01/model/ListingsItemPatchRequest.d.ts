@@ -18,11 +18,11 @@ export class ListingsItemPatchRequest {
      * @alias module:listingsitems_v2021_08_01/model/ListingsItemPatchRequest
      * @class
      * @param productType {String} The Amazon product type of the listings item.
-     * @param patches {[PatchOperation]} One or more JSON Patch operations to perform on the listings item.
+     * @param patches {PatchOperation[]} One or more JSON Patch operations to perform on the listings item.
      */
-    constructor(productType: string, patches: [PatchOperation]);
+    constructor(productType: string, patches: PatchOperation[]);
     productType: string;
-    patches: [PatchOperation];
+    patches: PatchOperation[];
 }
 import { PatchOperation } from './PatchOperation.js';
 //# sourceMappingURL=ListingsItemPatchRequest.d.ts.map

@@ -77,8 +77,8 @@ Charge.prototype.baseCharge = undefined
 
 /**
  * The tax charge details.
- * @member {[Tax]} taxBreakup
- * @type {[Tax]}
+ * @member {Tax[]} taxBreakup
+ * @type {Tax[]}
  */
 Charge.prototype.taxBreakup = undefined
 

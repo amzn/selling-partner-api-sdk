@@ -20,10 +20,10 @@ export class ResearchingQuantity {
     totalResearchingQuantity: number;
     /**
      * A list of quantity details for items currently being researched.
-     * @member {[ResearchingQuantityEntry]} researchingQuantityBreakdown
-     * @type {[ResearchingQuantityEntry]}
+     * @member {ResearchingQuantityEntry[]} researchingQuantityBreakdown
+     * @type {ResearchingQuantityEntry[]}
      */
-    researchingQuantityBreakdown: [ResearchingQuantityEntry];
+    researchingQuantityBreakdown: ResearchingQuantityEntry[];
 }
 import { ResearchingQuantityEntry } from './ResearchingQuantityEntry.js';
 //# sourceMappingURL=ResearchingQuantity.d.ts.map

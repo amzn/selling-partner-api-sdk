@@ -14,71 +14,16 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class ReplenishmentOrderStatus.
-* @enum {String}
-* @readonly
-*/
-export class ReplenishmentOrderStatus {
-  /**
-         * value: "CONFIRMED"
-         * @const
-         */
-  'CONFIRMED' = 'CONFIRMED'
-
-  /**
-         * value: "CREATED"
-         * @const
-         */
-  'CREATED' = 'CREATED'
-
-  /**
-         * value: "ELIGIBLE"
-         * @const
-         */
-  'ELIGIBLE' = 'ELIGIBLE'
-
-  /**
-         * value: "EXECUTING"
-         * @const
-         */
-  'EXECUTING' = 'EXECUTING'
-
-  /**
-         * value: "FAILURE"
-         * @const
-         */
-  'FAILURE' = 'FAILURE'
-
-  /**
-         * value: "INELIGIBLE"
-         * @const
-         */
-  'INELIGIBLE' = 'INELIGIBLE'
-
-  /**
-         * value: "INVENTORY_OUTBOUND"
-         * @const
-         */
-  'INVENTORY_OUTBOUND' = 'INVENTORY_OUTBOUND'
-
-  /**
-         * value: "SUCCESS"
-         * @const
-         */
-  'SUCCESS' = 'SUCCESS'
-
-  /**
-         * value: "VALIDATING"
-         * @const
-         */
-  'VALIDATING' = 'VALIDATING'
-
-  /**
-    * Returns a <code>ReplenishmentOrderStatus</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {ReplenishmentOrderStatus} The enum <code>ReplenishmentOrderStatus</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'CONFIRMED'|'CREATED'|'ELIGIBLE'|'EXECUTING'|'FAILURE'|'INELIGIBLE'|'INVENTORY_OUTBOUND'|'SUCCESS'|'VALIDATING'} ReplenishmentOrderStatus
+ */
+export const ReplenishmentOrderStatus = Object.freeze({
+  CONFIRMED: 'CONFIRMED',
+  CREATED: 'CREATED',
+  ELIGIBLE: 'ELIGIBLE',
+  EXECUTING: 'EXECUTING',
+  FAILURE: 'FAILURE',
+  INELIGIBLE: 'INELIGIBLE',
+  INVENTORY_OUTBOUND: 'INVENTORY_OUTBOUND',
+  SUCCESS: 'SUCCESS',
+  VALIDATING: 'VALIDATING'
+})

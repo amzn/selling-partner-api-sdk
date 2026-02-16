@@ -114,7 +114,7 @@ CarrierAccountInput.prototype.isHidden = undefined
 
 /**
  * A list of ValidationMetadata
- * @member {[ValidationMetadata]} validationMetadata
- * @type {[ValidationMetadata]}
+ * @member {ValidationMetadata[]} validationMetadata
+ * @type {ValidationMetadata[]}
  */
 CarrierAccountInput.prototype.validationMetadata = undefined

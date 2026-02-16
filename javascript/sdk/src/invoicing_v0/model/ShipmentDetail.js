@@ -110,15 +110,15 @@ ShipmentDetail.prototype.shippingAddress = undefined
 
 /**
  * The list of payment method details.
- * @member {[String]} paymentMethodDetails
- * @type {[String]}
+ * @member {String[]} paymentMethodDetails
+ * @type {String[]}
  */
 ShipmentDetail.prototype.paymentMethodDetails = undefined
 
 /**
  * List of payment transactions
- * @member {[PaymentInformation]} payments
- * @type {[PaymentInformation]}
+ * @member {PaymentInformation[]} payments
+ * @type {PaymentInformation[]}
  */
 ShipmentDetail.prototype.payments = undefined
 
@@ -171,7 +171,7 @@ ShipmentDetail.prototype.sellerDisplayName = undefined
 
 /**
  * A list of shipment items.
- * @member {[ShipmentItem]} shipmentItems
- * @type {[ShipmentItem]}
+ * @member {ShipmentItem[]} shipmentItems
+ * @type {ShipmentItem[]}
  */
 ShipmentDetail.prototype.shipmentItems = undefined

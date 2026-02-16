@@ -58,7 +58,7 @@ export class GetListingOffersBatchResponse {
 
 /**
  * A list of `getListingOffers` batched responses.
- * @member {[ListingOffersResponse]} responses
- * @type {[ListingOffersResponse]}
+ * @member {ListingOffersResponse[]} responses
+ * @type {ListingOffersResponse[]}
  */
 GetListingOffersBatchResponse.prototype.responses = undefined

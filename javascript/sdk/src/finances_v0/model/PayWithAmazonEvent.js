@@ -102,8 +102,8 @@ PayWithAmazonEvent.prototype.charge = undefined
 
 /**
  * A list of fee component information.
- * @member {[FeeComponent]} feeList
- * @type {[FeeComponent]}
+ * @member {FeeComponent[]} feeList
+ * @type {FeeComponent[]}
  */
 PayWithAmazonEvent.prototype.feeList = undefined
 

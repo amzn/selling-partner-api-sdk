@@ -35,10 +35,10 @@ export class ShipmentTransportationConfiguration {
     freightInformation: FreightInformation;
     /**
      * List of pallet configuration inputs.
-     * @member {[PalletInput]} pallets
-     * @type {[PalletInput]}
+     * @member {PalletInput[]} pallets
+     * @type {PalletInput[]}
      */
-    pallets: [PalletInput];
+    pallets: PalletInput[];
 }
 import { WindowInput } from './WindowInput.js';
 import { ContactInformation } from './ContactInformation.js';

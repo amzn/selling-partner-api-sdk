@@ -26,7 +26,7 @@ export class ListInboundPlanItemsResponse {
    * The &#x60;listInboundPlanItems&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanItemsResponse
    * @class
-   * @param items {[Item]} The items in an inbound plan.
+   * @param items {Item[]} The items in an inbound plan.
    */
   constructor (items) {
     this.items = items
@@ -62,8 +62,8 @@ export class ListInboundPlanItemsResponse {
 
 /**
  * The items in an inbound plan.
- * @member {[Item]} items
- * @type {[Item]}
+ * @member {Item[]} items
+ * @type {Item[]}
  */
 ListInboundPlanItemsResponse.prototype.items = undefined
 

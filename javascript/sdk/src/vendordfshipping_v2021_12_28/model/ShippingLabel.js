@@ -30,7 +30,7 @@ export class ShippingLabel {
    * @param sellingParty {PartyIdentification}
    * @param shipFromParty {PartyIdentification}
    * @param labelFormat {String} Format of the label.
-   * @param labelData {[LabelData]} Provides the details of the packages in this shipment.
+   * @param labelData {LabelData[]} Provides the details of the packages in this shipment.
    */
   constructor (purchaseOrderNumber, sellingParty, shipFromParty, labelFormat, labelData) {
     this.purchaseOrderNumber = purchaseOrderNumber
@@ -118,7 +118,7 @@ ShippingLabel.prototype.labelFormat = undefined
 
 /**
  * Provides the details of the packages in this shipment.
- * @member {[LabelData]} labelData
- * @type {[LabelData]}
+ * @member {LabelData[]} labelData
+ * @type {LabelData[]}
  */
 ShippingLabel.prototype.labelData = undefined

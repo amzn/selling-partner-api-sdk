@@ -14,29 +14,9 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
-* Enum class DistributionPackageType.
-* @enum {String}
-* @readonly
-*/
-export class DistributionPackageType {
-  /**
-         * value: "CASE"
-         * @const
-         */
-  'CASE' = 'CASE'
-
-  /**
-         * value: "PALLET"
-         * @const
-         */
-  'PALLET' = 'PALLET'
-
-  /**
-    * Returns a <code>DistributionPackageType</code> enum value from a Javascript object name.
-    * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {DistributionPackageType} The enum <code>DistributionPackageType</code> value.
-    */
-  static constructFromObject (object) {
-    return object
-  }
-}
+ * @typedef {'CASE'|'PALLET'} DistributionPackageType
+ */
+export const DistributionPackageType = Object.freeze({
+  CASE: 'CASE',
+  PALLET: 'PALLET'
+})

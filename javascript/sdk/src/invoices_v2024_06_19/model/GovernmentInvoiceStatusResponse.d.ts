@@ -14,10 +14,10 @@ export class GovernmentInvoiceStatusResponse {
     static constructFromObject(data: any, obj: GovernmentInvoiceStatusResponse): GovernmentInvoiceStatusResponse;
     /**
      * The errors that occurred during invoice creation.
-     * @member {[InvoiceError]} invoiceErrors
-     * @type {[InvoiceError]}
+     * @member {InvoiceError[]} invoiceErrors
+     * @type {InvoiceError[]}
      */
-    invoiceErrors: [InvoiceError];
+    invoiceErrors: InvoiceError[];
     /**
      * Government Invoice ID of a successfully authorized invoice.
      * @member {String} invoiceExternalDocumentId

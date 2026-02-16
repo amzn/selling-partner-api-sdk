@@ -26,7 +26,7 @@ export class ListInboundPlanPalletsResponse {
    * The &#x60;listInboundPlanPallets&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanPalletsResponse
    * @class
-   * @param pallets {[Pallet]} The pallets in an inbound plan.
+   * @param pallets {Pallet[]} The pallets in an inbound plan.
    */
   constructor (pallets) {
     this.pallets = pallets
@@ -68,7 +68,7 @@ ListInboundPlanPalletsResponse.prototype.pagination = undefined
 
 /**
  * The pallets in an inbound plan.
- * @member {[Pallet]} pallets
- * @type {[Pallet]}
+ * @member {Pallet[]} pallets
+ * @type {Pallet[]}
  */
 ListInboundPlanPalletsResponse.prototype.pallets = undefined

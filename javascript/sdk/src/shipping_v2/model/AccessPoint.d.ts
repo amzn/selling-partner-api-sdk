@@ -47,10 +47,10 @@ export class AccessPoint {
     address: Address;
     /**
      * Exception operating hours for Access Point
-     * @member {[ExceptionOperatingHours]} exceptionOperatingHours
-     * @type {[ExceptionOperatingHours]}
+     * @member {ExceptionOperatingHours[]} exceptionOperatingHours
+     * @type {ExceptionOperatingHours[]}
      */
-    exceptionOperatingHours: [ExceptionOperatingHours];
+    exceptionOperatingHours: ExceptionOperatingHours[];
     /**
      * Assistance type enum for Access point i.e. STAFF_ASSISTED or SELF_ASSISTED
      * @member {String} assistanceType

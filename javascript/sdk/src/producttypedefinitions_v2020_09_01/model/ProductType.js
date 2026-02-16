@@ -26,7 +26,7 @@ export class ProductType {
    * @class
    * @param name {String} The name of the Amazon product type.
    * @param displayName {String} The human-readable and localized description of the Amazon product type.
-   * @param marketplaceIds {[String]} The Amazon marketplace identifiers for which the product type definition is available.
+   * @param marketplaceIds {String[]} The Amazon marketplace identifiers for which the product type definition is available.
    */
   constructor (name, displayName, marketplaceIds) {
     this.name = name
@@ -79,7 +79,7 @@ ProductType.prototype.displayName = undefined
 
 /**
  * The Amazon marketplace identifiers for which the product type definition is available.
- * @member {[String]} marketplaceIds
- * @type {[String]}
+ * @member {String[]} marketplaceIds
+ * @type {String[]}
  */
 ProductType.prototype.marketplaceIds = undefined

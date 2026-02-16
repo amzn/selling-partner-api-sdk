@@ -25,7 +25,7 @@ export class GetFeedsResponse {
    * Response schema.
    * @alias module:feeds_v2021_06_30/model/GetFeedsResponse
    * @class
-   * @param feeds {[Feed]} A list of feeds.
+   * @param feeds {Feed[]} A list of feeds.
    */
   constructor (feeds) {
     this.feeds = feeds
@@ -61,8 +61,8 @@ export class GetFeedsResponse {
 
 /**
  * A list of feeds.
- * @member {[Feed]} feeds
- * @type {[Feed]}
+ * @member {Feed[]} feeds
+ * @type {Feed[]}
  */
 GetFeedsResponse.prototype.feeds = undefined
 

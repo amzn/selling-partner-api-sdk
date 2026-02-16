@@ -18,11 +18,11 @@ export class ListHandoverSlotsResponse {
      * @alias module:easyship_v2022_03_23/model/ListHandoverSlotsResponse
      * @class
      * @param amazonOrderId {String} An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.
-     * @param timeSlots {[TimeSlot]} A list of time slots.
+     * @param timeSlots {TimeSlot[]} A list of time slots.
      */
-    constructor(amazonOrderId: string, timeSlots: [TimeSlot]);
+    constructor(amazonOrderId: string, timeSlots: TimeSlot[]);
     amazonOrderId: string;
-    timeSlots: [TimeSlot];
+    timeSlots: TimeSlot[];
 }
 import { TimeSlot } from './TimeSlot.js';
 //# sourceMappingURL=ListHandoverSlotsResponse.d.ts.map
