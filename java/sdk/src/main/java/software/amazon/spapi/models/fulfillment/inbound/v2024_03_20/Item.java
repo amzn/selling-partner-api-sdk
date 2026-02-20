@@ -116,12 +116,14 @@ public class Item {
 
     /**
      * Specifies who will label the items. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60;, and &#x60;NONE&#x60;.
+     * &#x60;AMAZON&#x60; is not an accepted value in the US marketplace.
      *
      * @return labelOwner
      */
     @Schema(
             required = true,
-            description = "Specifies who will label the items. Options include `AMAZON`, `SELLER`, and `NONE`.")
+            description =
+                    "Specifies who will label the items. Options include `AMAZON`, `SELLER`, and `NONE`. `AMAZON` is not an accepted value in the US marketplace.")
     public String getLabelOwner() {
         return labelOwner;
     }
