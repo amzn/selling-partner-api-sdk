@@ -78,7 +78,7 @@ class DropOffLocation(object):
         """
         if self._configuration.client_side_validation and type is None:
             raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
-        allowed_values = ["FRONT_DOOR", "DELIVERY_BOX", "GAS_METER_BOX", "BICYCLE_BASKET", "GARAGE", "RECEPTIONIST", "FALLBACK_NEIGHBOR_DELIVERY", "DO_NOT_LEAVE_UNATTENDED"]  # noqa: E501
+        allowed_values = ["FRONT_DOOR", "DELIVERY_BOX", "GAS_METER_BOX", "BICYCLE_BASKET", "GARAGE", "RECEPTIONIST", "FALLBACK_NEIGHBOR_DELIVERY", "DO_NOT_LEAVE_UNATTENDED", "MAIL_ROOM_CLERK", "AS_INSTRUCTED"]  # noqa: E501
         if (self._configuration.client_side_validation and
                 type not in allowed_values):
             raise ValueError(
@@ -92,7 +92,7 @@ class DropOffLocation(object):
     def attributes(self):
         """Gets the attributes of this DropOffLocation.  # noqa: E501
 
-        Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the `type` field. If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object should include the exact keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.  # noqa: E501
+        Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the `type` field. If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object should include the exact keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.  For `RECEPTIONIST`, `MAIL_ROOM_CLERK`, and `AS_INSTRUCTED` types, the `attributes` object will include a `recipientName` field containing the name of the person who received the package.  # noqa: E501
 
         :return: The attributes of this DropOffLocation.  # noqa: E501
         :rtype: Dict[str, str]
@@ -103,7 +103,7 @@ class DropOffLocation(object):
     def attributes(self, attributes):
         """Sets the attributes of this DropOffLocation.
 
-        Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the `type` field. If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object should include the exact keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.  # noqa: E501
+        Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the `type` field. If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object should include the exact keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.  For `RECEPTIONIST`, `MAIL_ROOM_CLERK`, and `AS_INSTRUCTED` types, the `attributes` object will include a `recipientName` field containing the name of the person who received the package.  # noqa: E501
 
         :param attributes: The attributes of this DropOffLocation.  # noqa: E501
         :type: Dict[str, str]

@@ -44,7 +44,7 @@ class GetOffersResult(object):
     }
 
     attribute_map = {
-        'marketplace_id': 'MarketplaceID',
+        'marketplace_id': 'marketplaceId',
         'asin': 'ASIN',
         'sku': 'SKU',
         'item_condition': 'ItemCondition',

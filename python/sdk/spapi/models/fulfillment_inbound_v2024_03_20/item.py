@@ -173,7 +173,7 @@ class Item(object):
     def label_owner(self):
         """Gets the label_owner of this Item.  # noqa: E501
 
-        Specifies who will label the items. Options include `AMAZON`, `SELLER`, and `NONE`.  # noqa: E501
+        Specifies who will label the items. Options include `AMAZON`, `SELLER`, and `NONE`. `AMAZON` is not an accepted value in the US marketplace.  # noqa: E501
 
         :return: The label_owner of this Item.  # noqa: E501
         :rtype: str
@@ -184,7 +184,7 @@ class Item(object):
     def label_owner(self, label_owner):
         """Sets the label_owner of this Item.
 
-        Specifies who will label the items. Options include `AMAZON`, `SELLER`, and `NONE`.  # noqa: E501
+        Specifies who will label the items. Options include `AMAZON`, `SELLER`, and `NONE`. `AMAZON` is not an accepted value in the US marketplace.  # noqa: E501
 
         :param label_owner: The label_owner of this Item.  # noqa: E501
         :type: str
