@@ -44,7 +44,11 @@ public class DropOffLocation {
         @SerializedName("FALLBACK_NEIGHBOR_DELIVERY")
         FALLBACK_NEIGHBOR_DELIVERY("FALLBACK_NEIGHBOR_DELIVERY"),
         @SerializedName("DO_NOT_LEAVE_UNATTENDED")
-        DO_NOT_LEAVE_UNATTENDED("DO_NOT_LEAVE_UNATTENDED");
+        DO_NOT_LEAVE_UNATTENDED("DO_NOT_LEAVE_UNATTENDED"),
+        @SerializedName("MAIL_ROOM_CLERK")
+        MAIL_ROOM_CLERK("MAIL_ROOM_CLERK"),
+        @SerializedName("AS_INSTRUCTED")
+        AS_INSTRUCTED("AS_INSTRUCTED");
 
         private String value;
 
@@ -129,13 +133,15 @@ public class DropOffLocation {
      * specified in the &#x60;type&#x60; field. If the &#x60;type&#x60; is set to
      * &#x60;FALLBACK_NEIGHBOR_DELIVERY&#x60;, the &#x60;attributes&#x60; object should include the exact keys
      * &#x60;neighborName&#x60; and &#x60;houseNumber&#x60; to provide the name and house number of the designated
-     * neighbor.
+     * neighbor. For &#x60;RECEPTIONIST&#x60;, &#x60;MAIL_ROOM_CLERK&#x60;, and &#x60;AS_INSTRUCTED&#x60; types, the
+     * &#x60;attributes&#x60; object will include a &#x60;recipientName&#x60; field containing the name of the person
+     * who received the package.
      *
      * @return attributes
      */
     @Schema(
             description =
-                    "Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the `type` field. If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object should include the exact keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.")
+                    "Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the `type` field. If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object should include the exact keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.  For `RECEPTIONIST`, `MAIL_ROOM_CLERK`, and `AS_INSTRUCTED` types, the `attributes` object will include a `recipientName` field containing the name of the person who received the package.")
     public Map<String, String> getAttributes() {
         return attributes;
     }
