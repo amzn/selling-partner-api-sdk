@@ -17,15 +17,15 @@ export class GetOffersResult {
      * The payload for the getListingOffers and getItemOffers operations.
      * @alias module:pricing_v0/model/GetOffersResult
      * @class
-     * @param marketplaceID {String} A marketplace identifier.
+     * @param marketplaceId {String} A marketplace identifier.
      * @param itemCondition {ConditionType}
      * @param status {String} The status of the operation.
      * @param identifier {ItemIdentifier}
      * @param summary {Summary}
      * @param offers {OfferDetail[]} A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less.
      */
-    constructor(marketplaceID: string, itemCondition: ConditionType, status: string, identifier: ItemIdentifier, summary: Summary, offers: OfferDetail[]);
-    marketplaceID: string;
+    constructor(marketplaceId: string, itemCondition: ConditionType, status: string, identifier: ItemIdentifier, summary: Summary, offers: OfferDetail[]);
+    marketplaceId: string;
     itemCondition: ConditionType;
     status: string;
     identifier: ItemIdentifier;

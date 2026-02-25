@@ -28,15 +28,15 @@ export class GetOffersResult {
    * The payload for the getListingOffers and getItemOffers operations.
    * @alias module:pricing_v0/model/GetOffersResult
    * @class
-   * @param marketplaceID {String} A marketplace identifier.
+   * @param marketplaceId {String} A marketplace identifier.
    * @param itemCondition {ConditionType}
    * @param status {String} The status of the operation.
    * @param identifier {ItemIdentifier}
    * @param summary {Summary}
    * @param offers {OfferDetail[]} A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less.
    */
-  constructor (marketplaceID, itemCondition, status, identifier, summary, offers) {
-    this.marketplaceID = marketplaceID
+  constructor (marketplaceId, itemCondition, status, identifier, summary, offers) {
+    this.marketplaceId = marketplaceId
     this.itemCondition = itemCondition
     this.status = status
     this.identifier = identifier
@@ -65,7 +65,7 @@ export class GetOffersResult {
           break
       }
       obj = obj || new GetOffersResult()
-      if (data.hasOwnProperty('MarketplaceID')) { obj.marketplaceID = ApiClient.convertToType(data.MarketplaceID, 'String') }
+      if (data.hasOwnProperty('marketplaceId')) { obj.marketplaceId = ApiClient.convertToType(data.marketplaceId, 'String') }
       if (data.hasOwnProperty('ASIN')) { obj.ASIN = ApiClient.convertToType(data.ASIN, 'String') }
       if (data.hasOwnProperty('SKU')) { obj.SKU = ApiClient.convertToType(data.SKU, 'String') }
       if (data.hasOwnProperty('ItemCondition')) { obj.itemCondition = ConditionType.constructFromObject(data.ItemCondition) }
@@ -80,10 +80,10 @@ export class GetOffersResult {
 
 /**
  * A marketplace identifier.
- * @member {String} marketplaceID
+ * @member {String} marketplaceId
  * @type {String}
  */
-GetOffersResult.prototype.marketplaceID = undefined
+GetOffersResult.prototype.marketplaceId = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN) of the item.

@@ -111,7 +111,19 @@ DropOffLocation.TypeEnum = {
      * value: "DO_NOT_LEAVE_UNATTENDED"
      * @const
      */
-  DO_NOT_LEAVE_UNATTENDED: 'DO_NOT_LEAVE_UNATTENDED'
+  DO_NOT_LEAVE_UNATTENDED: 'DO_NOT_LEAVE_UNATTENDED',
+
+  /**
+     * value: "MAIL_ROOM_CLERK"
+     * @const
+     */
+  MAIL_ROOM_CLERK: 'MAIL_ROOM_CLERK',
+
+  /**
+     * value: "AS_INSTRUCTED"
+     * @const
+     */
+  AS_INSTRUCTED: 'AS_INSTRUCTED'
 }
 /**
  * Specifies the preferred location to leave the package at the destination address.
@@ -121,7 +133,7 @@ DropOffLocation.TypeEnum = {
 DropOffLocation.prototype.type = undefined
 
 /**
- * Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the `type` field. If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object should include the exact keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.
+ * Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the `type` field. If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object should include the exact keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.  For `RECEPTIONIST`, `MAIL_ROOM_CLERK`, and `AS_INSTRUCTED` types, the `attributes` object will include a `recipientName` field containing the name of the person who received the package.
  * @member {{String: String}} attributes
  * @type {{String: String}}
  */
