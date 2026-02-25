@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="asin">The Amazon Standard Identification Number (ASIN) of the item. (required).</param>
         /// <param name="expiration">The expiration date of the MSKU. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern&#x60;YYYY-MM-DD&#x60;. The same MSKU with different expiration dates cannot go into the same box..</param>
         /// <param name="fnsku">A unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center. (required).</param>
-        /// <param name="labelOwner">Specifies who will label the items. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60;, and &#x60;NONE&#x60;. (required).</param>
+        /// <param name="labelOwner">Specifies who will label the items. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60;, and &#x60;NONE&#x60;. &#x60;AMAZON&#x60; is not an accepted value in the US marketplace. (required).</param>
         /// <param name="manufacturingLotCode">The manufacturing lot code..</param>
         /// <param name="msku">The merchant-defined SKU ID. (required).</param>
         /// <param name="prepInstructions">Special preparations that are required for an item. (required).</param>
@@ -106,9 +106,9 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         public string Fnsku { get; set; }
 
         /// <summary>
-        /// Specifies who will label the items. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60;, and &#x60;NONE&#x60;.
+        /// Specifies who will label the items. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60;, and &#x60;NONE&#x60;. &#x60;AMAZON&#x60; is not an accepted value in the US marketplace.
         /// </summary>
-        /// <value>Specifies who will label the items. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60;, and &#x60;NONE&#x60;.</value>
+        /// <value>Specifies who will label the items. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60;, and &#x60;NONE&#x60;. &#x60;AMAZON&#x60; is not an accepted value in the US marketplace.</value>
         [DataMember(Name = "labelOwner", IsRequired = true, EmitDefaultValue = true)]
         public string LabelOwner { get; set; }
 
