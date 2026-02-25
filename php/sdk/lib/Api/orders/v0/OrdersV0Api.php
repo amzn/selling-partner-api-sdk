@@ -435,6 +435,8 @@ class OrdersV0Api
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrder(
         string $order_id,
@@ -456,6 +458,8 @@ class OrdersV0Api
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderWithHttpInfo(
         string $order_id,
@@ -539,6 +543,8 @@ class OrdersV0Api
      *                         An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderAsync(
         string $order_id
@@ -559,6 +565,8 @@ class OrdersV0Api
      *                         An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderAsyncWithHttpInfo(
         string $order_id,
@@ -620,6 +628,8 @@ class OrdersV0Api
      *                         An Amazon-defined order identifier, in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderRequest(
         string $order_id
@@ -706,6 +716,8 @@ class OrdersV0Api
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderAddress(
         string $order_id,
@@ -727,6 +739,8 @@ class OrdersV0Api
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderAddressWithHttpInfo(
         string $order_id,
@@ -810,6 +824,8 @@ class OrdersV0Api
      *                         The Amazon order identifier in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderAddressAsync(
         string $order_id
@@ -830,6 +846,8 @@ class OrdersV0Api
      *                         The Amazon order identifier in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderAddressAsyncWithHttpInfo(
         string $order_id,
@@ -891,6 +909,8 @@ class OrdersV0Api
      *                         The Amazon order identifier in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderAddressRequest(
         string $order_id
@@ -977,6 +997,8 @@ class OrdersV0Api
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderBuyerInfo(
         string $order_id,
@@ -998,6 +1020,8 @@ class OrdersV0Api
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderBuyerInfoWithHttpInfo(
         string $order_id,
@@ -1081,6 +1105,8 @@ class OrdersV0Api
      *                         The Amazon order identifier in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderBuyerInfoAsync(
         string $order_id
@@ -1101,6 +1127,8 @@ class OrdersV0Api
      *                         The Amazon order identifier in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderBuyerInfoAsyncWithHttpInfo(
         string $order_id,
@@ -1162,6 +1190,8 @@ class OrdersV0Api
      *                         The Amazon order identifier in 3-7-7 format. (required)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderBuyerInfoRequest(
         string $order_id
@@ -1250,6 +1280,8 @@ class OrdersV0Api
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderItems(
         string $order_id,
@@ -1274,6 +1306,8 @@ class OrdersV0Api
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderItemsWithHttpInfo(
         string $order_id,
@@ -1360,6 +1394,8 @@ class OrdersV0Api
      *                                A string token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderItemsAsync(
         string $order_id,
@@ -1383,6 +1419,8 @@ class OrdersV0Api
      *                                A string token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderItemsAsyncWithHttpInfo(
         string $order_id,
@@ -1447,6 +1485,8 @@ class OrdersV0Api
      *                                A string token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderItemsRequest(
         string $order_id,
@@ -1547,6 +1587,8 @@ class OrdersV0Api
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderItemsBuyerInfo(
         string $order_id,
@@ -1571,6 +1613,8 @@ class OrdersV0Api
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderItemsBuyerInfoWithHttpInfo(
         string $order_id,
@@ -1657,6 +1701,8 @@ class OrdersV0Api
      *                                A string token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderItemsBuyerInfoAsync(
         string $order_id,
@@ -1680,6 +1726,8 @@ class OrdersV0Api
      *                                A string token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderItemsBuyerInfoAsyncWithHttpInfo(
         string $order_id,
@@ -1744,6 +1792,8 @@ class OrdersV0Api
      *                                A string token returned in the response of your previous request. (optional)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrderItemsBuyerInfoRequest(
         string $order_id,
@@ -2153,6 +2203,8 @@ class OrdersV0Api
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrders(
         array $marketplace_ids,
@@ -2234,6 +2286,8 @@ class OrdersV0Api
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrdersWithHttpInfo(
         array $marketplace_ids,
@@ -2377,6 +2431,8 @@ class OrdersV0Api
      *                                                           Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrdersAsync(
         array $marketplace_ids,
@@ -2457,6 +2513,8 @@ class OrdersV0Api
      *                                                           Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrdersAsyncWithHttpInfo(
         array $marketplace_ids,
@@ -2578,6 +2636,8 @@ class OrdersV0Api
      *                                                           Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      *
      * @throws \InvalidArgumentException
+     *
+     * @deprecated
      */
     public function getOrdersRequest(
         array $marketplace_ids,
