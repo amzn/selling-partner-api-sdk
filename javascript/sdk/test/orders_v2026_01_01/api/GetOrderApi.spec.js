@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'orders_v2026_01_01', 'index.js');
 const TheSellingPartnerApiForOrders = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('GetOrderApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForOrders.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForOrders.GetOrderApi(apiClientInstance);
   });
 
   describe('getOrder', () => {
     it('should successfully call getOrderWithHttpInfo', async () => {
-      instructBackendMock("getOrder", "getOrder", "200")
+      await instructBackendMock("getOrder", "getOrder", "200")
       const params = [
         generateMockData('String'),
       ];

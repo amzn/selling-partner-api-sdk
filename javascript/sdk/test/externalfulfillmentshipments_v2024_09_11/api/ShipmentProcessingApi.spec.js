@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'externalfulfillmentshipments_v2024_09_11', 'index.js');
 const TheSellingPartnerApiForAmazonExternalFulfillmentShipmentsProcessing = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('ShipmentProcessingApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForAmazonExternalFulfillmentShipmentsProcessing.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForAmazonExternalFulfillmentShipmentsProcessing.ShipmentProcessingApi(apiClientInstance);
   });
 
   describe('createPackages', () => {
     it('should successfully call createPackagesWithHttpInfo', async () => {
-      instructBackendMock("shipmentProcessing", "createPackages", "204")
+      await instructBackendMock("shipmentProcessing", "createPackages", "204")
       const params = [
         generateMockData('String'),
         generateMockData('Packages')
@@ -30,7 +29,7 @@ describe('ShipmentProcessingApi', () => {
   });
   describe('generateInvoice', () => {
     it('should successfully call generateInvoiceWithHttpInfo', async () => {
-      instructBackendMock("shipmentProcessing", "generateInvoice", "200")
+      await instructBackendMock("shipmentProcessing", "generateInvoice", "200")
       const params = [
         generateMockData('String')
       ];
@@ -43,7 +42,7 @@ describe('ShipmentProcessingApi', () => {
   });
   describe('generateShipLabels', () => {
     it('should successfully call generateShipLabelsWithHttpInfo', async () => {
-      instructBackendMock("shipmentProcessing", "generateShipLabels", "200")
+      await instructBackendMock("shipmentProcessing", "generateShipLabels", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -57,7 +56,7 @@ describe('ShipmentProcessingApi', () => {
   });
   describe('processShipment', () => {
     it('should successfully call processShipmentWithHttpInfo', async () => {
-      instructBackendMock("shipmentProcessing", "processShipment", "204")
+      await instructBackendMock("shipmentProcessing", "processShipment", "204")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -70,7 +69,7 @@ describe('ShipmentProcessingApi', () => {
   });
   describe('retrieveInvoice', () => {
     it('should successfully call retrieveInvoiceWithHttpInfo', async () => {
-      instructBackendMock("shipmentProcessing", "retrieveInvoice", "200")
+      await instructBackendMock("shipmentProcessing", "retrieveInvoice", "200")
       const params = [
         generateMockData('String')
       ];
@@ -83,7 +82,7 @@ describe('ShipmentProcessingApi', () => {
   });
   describe('retrieveShippingOptions', () => {
     it('should successfully call retrieveShippingOptionsWithHttpInfo', async () => {
-      instructBackendMock("shipmentProcessing", "retrieveShippingOptions", "200")
+      await instructBackendMock("shipmentProcessing", "retrieveShippingOptions", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -97,7 +96,7 @@ describe('ShipmentProcessingApi', () => {
   });
   describe('updatePackage', () => {
     it('should successfully call updatePackageWithHttpInfo', async () => {
-      instructBackendMock("shipmentProcessing", "updatePackage", "204")
+      await instructBackendMock("shipmentProcessing", "updatePackage", "204")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -111,7 +110,7 @@ describe('ShipmentProcessingApi', () => {
   });
   describe('updatePackageStatus', () => {
     it('should successfully call updatePackageStatusWithHttpInfo', async () => {
-      instructBackendMock("shipmentProcessing", "updatePackageStatus", "204")
+      await instructBackendMock("shipmentProcessing", "updatePackageStatus", "204")
       const params = [
         generateMockData('String'),
         generateMockData('String'),

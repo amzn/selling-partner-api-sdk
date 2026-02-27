@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'productfees_v0', 'index.js');
 const SellingPartnerApiForProductFees = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('FeesApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForProductFees.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForProductFees.FeesApi(apiClientInstance);
   });
 
   describe('getMyFeesEstimateForASIN', () => {
     it('should successfully call getMyFeesEstimateForASINWithHttpInfo', async () => {
-      instructBackendMock("fees", "getMyFeesEstimateForASIN", "200")
+      await instructBackendMock("fees", "getMyFeesEstimateForASIN", "200")
       const params = [
         generateMockData('String'),
         generateMockData('GetMyFeesEstimateRequest')
@@ -31,7 +30,7 @@ describe('FeesApi', () => {
   });
   describe('getMyFeesEstimateForSKU', () => {
     it('should successfully call getMyFeesEstimateForSKUWithHttpInfo', async () => {
-      instructBackendMock("fees", "getMyFeesEstimateForSKU", "200")
+      await instructBackendMock("fees", "getMyFeesEstimateForSKU", "200")
       const params = [
         generateMockData('String'),
         generateMockData('GetMyFeesEstimateRequest')
@@ -45,7 +44,7 @@ describe('FeesApi', () => {
   });
   describe('getMyFeesEstimates', () => {
     it('should successfully call getMyFeesEstimatesWithHttpInfo', async () => {
-      instructBackendMock("fees", "getMyFeesEstimates", "200")
+      await instructBackendMock("fees", "getMyFeesEstimates", "200")
       const params = [
         generateMockData('[FeesEstimateByIdRequest]', true)
       ];

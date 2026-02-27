@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'producttypedefinitions_v2020_09_01', 'index.js');
 const SellingPartnerApiForProductTypeDefinitions = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('DefinitionsApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForProductTypeDefinitions.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForProductTypeDefinitions.DefinitionsApi(apiClientInstance);
   });
 
   describe('getDefinitionsProductType', () => {
     it('should successfully call getDefinitionsProductTypeWithHttpInfo', async () => {
-      instructBackendMock("definitions", "getDefinitionsProductType", "200")
+      await instructBackendMock("definitions", "getDefinitionsProductType", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),
@@ -31,7 +30,7 @@ describe('DefinitionsApi', () => {
   });
   describe('searchDefinitionsProductTypes', () => {
     it('should successfully call searchDefinitionsProductTypesWithHttpInfo', async () => {
-      instructBackendMock("definitions", "searchDefinitionsProductTypes", "200")
+      await instructBackendMock("definitions", "searchDefinitionsProductTypes", "200")
       const params = [
         generateMockData('String', true),
       ];

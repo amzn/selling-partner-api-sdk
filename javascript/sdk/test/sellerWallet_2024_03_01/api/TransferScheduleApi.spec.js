@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'sellerWallet_2024_03_01', 'index.js');
 const TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('TransferScheduleApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.TransferScheduleApi(apiClientInstance);
   });
 
   describe('createTransferSchedule', () => {
     it('should successfully call createTransferScheduleWithHttpInfo', async () => {
-      instructBackendMock("Transfer Schedule", "createTransferSchedule", "200")
+      await instructBackendMock("Transfer Schedule", "createTransferSchedule", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -33,7 +32,7 @@ describe('TransferScheduleApi', () => {
   });
   describe('deleteScheduleTransaction', () => {
     it('should successfully call deleteScheduleTransactionWithHttpInfo', async () => {
-      instructBackendMock("Transfer Schedule", "deleteScheduleTransaction", "200")
+      await instructBackendMock("Transfer Schedule", "deleteScheduleTransaction", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -47,7 +46,7 @@ describe('TransferScheduleApi', () => {
   });
   describe('getTransferSchedule', () => {
     it('should successfully call getTransferScheduleWithHttpInfo', async () => {
-      instructBackendMock("Transfer Schedule", "getTransferSchedule", "200")
+      await instructBackendMock("Transfer Schedule", "getTransferSchedule", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -61,7 +60,7 @@ describe('TransferScheduleApi', () => {
   });
   describe('listTransferSchedules', () => {
     it('should successfully call listTransferSchedulesWithHttpInfo', async () => {
-      instructBackendMock("Transfer Schedule", "listTransferSchedules", "200")
+      await instructBackendMock("Transfer Schedule", "listTransferSchedules", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -75,7 +74,7 @@ describe('TransferScheduleApi', () => {
   });
   describe('updateTransferSchedule', () => {
     it('should successfully call updateTransferScheduleWithHttpInfo', async () => {
-      instructBackendMock("Transfer Schedule", "updateTransferSchedule", "200")
+      await instructBackendMock("Transfer Schedule", "updateTransferSchedule", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),

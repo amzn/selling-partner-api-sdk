@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'awd_v2024_05_09', 'index.js');
 const TheSellingPartnerApiForAmazonWarehousingAndDistribution = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('AwdApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.AwdApi(apiClientInstance);
   });
 
   describe('cancelInbound', () => {
     it('should successfully call cancelInboundWithHttpInfo', async () => {
-      instructBackendMock("awd", "cancelInbound", "204")
+      await instructBackendMock("awd", "cancelInbound", "204")
       const params = [
         generateMockData('String')
       ];
@@ -29,7 +28,7 @@ describe('AwdApi', () => {
   });
   describe('checkInboundEligibility', () => {
     it('should successfully call checkInboundEligibilityWithHttpInfo', async () => {
-      instructBackendMock("awd", "checkInboundEligibility", "200")
+      await instructBackendMock("awd", "checkInboundEligibility", "200")
       const params = [
         generateMockData('InboundPackages')
       ];
@@ -42,7 +41,7 @@ describe('AwdApi', () => {
   });
   describe('confirmInbound', () => {
     it('should successfully call confirmInboundWithHttpInfo', async () => {
-      instructBackendMock("awd", "confirmInbound", "204")
+      await instructBackendMock("awd", "confirmInbound", "204")
       const params = [
         generateMockData('String')
       ];
@@ -54,7 +53,7 @@ describe('AwdApi', () => {
   });
   describe('confirmReplenishmentOrder', () => {
     it('should successfully call confirmReplenishmentOrderWithHttpInfo', async () => {
-      instructBackendMock("awd", "confirmReplenishmentOrder", "204")
+      await instructBackendMock("awd", "confirmReplenishmentOrder", "204")
       const params = [
         generateMockData('String')
       ];
@@ -66,7 +65,7 @@ describe('AwdApi', () => {
   });
   describe('createInbound', () => {
     it('should successfully call createInboundWithHttpInfo', async () => {
-      instructBackendMock("awd", "createInbound", "201")
+      await instructBackendMock("awd", "createInbound", "201")
       const params = [
         generateMockData('InboundOrderCreationData')
       ];
@@ -79,7 +78,7 @@ describe('AwdApi', () => {
   });
   describe('createReplenishmentOrder', () => {
     it('should successfully call createReplenishmentOrderWithHttpInfo', async () => {
-      instructBackendMock("awd", "createReplenishmentOrder", "201")
+      await instructBackendMock("awd", "createReplenishmentOrder", "201")
       const params = [
         generateMockData('ReplenishmentOrderCreationData')
       ];
@@ -92,7 +91,7 @@ describe('AwdApi', () => {
   });
   describe('getInbound', () => {
     it('should successfully call getInboundWithHttpInfo', async () => {
-      instructBackendMock("awd", "getInbound", "200")
+      await instructBackendMock("awd", "getInbound", "200")
       const params = [
         generateMockData('String')
       ];
@@ -105,7 +104,7 @@ describe('AwdApi', () => {
   });
   describe('getInboundShipment', () => {
     it('should successfully call getInboundShipmentWithHttpInfo', async () => {
-      instructBackendMock("awd", "getInboundShipment", "200")
+      await instructBackendMock("awd", "getInboundShipment", "200")
       const params = [
         generateMockData('String'),
       ];
@@ -118,7 +117,7 @@ describe('AwdApi', () => {
   });
   describe('getInboundShipmentLabels', () => {
     it('should successfully call getInboundShipmentLabelsWithHttpInfo', async () => {
-      instructBackendMock("awd", "getInboundShipmentLabels", "200")
+      await instructBackendMock("awd", "getInboundShipmentLabels", "200")
       const params = [
         generateMockData('String'),
       ];
@@ -131,7 +130,7 @@ describe('AwdApi', () => {
   });
   describe('getReplenishmentOrder', () => {
     it('should successfully call getReplenishmentOrderWithHttpInfo', async () => {
-      instructBackendMock("awd", "getReplenishmentOrder", "200")
+      await instructBackendMock("awd", "getReplenishmentOrder", "200")
       const params = [
         generateMockData('String')
       ];
@@ -144,7 +143,7 @@ describe('AwdApi', () => {
   });
   describe('listInboundShipments', () => {
     it('should successfully call listInboundShipmentsWithHttpInfo', async () => {
-      instructBackendMock("awd", "listInboundShipments", "200")
+      await instructBackendMock("awd", "listInboundShipments", "200")
       const params = [
       ];
       const response = await instance.listInboundShipmentsWithHttpInfo(...params);
@@ -156,7 +155,7 @@ describe('AwdApi', () => {
   });
   describe('listInventory', () => {
     it('should successfully call listInventoryWithHttpInfo', async () => {
-      instructBackendMock("awd", "listInventory", "200")
+      await instructBackendMock("awd", "listInventory", "200")
       const params = [
       ];
       const response = await instance.listInventoryWithHttpInfo(...params);
@@ -168,7 +167,7 @@ describe('AwdApi', () => {
   });
   describe('listReplenishmentOrders', () => {
     it('should successfully call listReplenishmentOrdersWithHttpInfo', async () => {
-      instructBackendMock("awd", "listReplenishmentOrders", "200")
+      await instructBackendMock("awd", "listReplenishmentOrders", "200")
       const params = [
       ];
       const response = await instance.listReplenishmentOrdersWithHttpInfo(...params);
@@ -180,7 +179,7 @@ describe('AwdApi', () => {
   });
   describe('updateInbound', () => {
     it('should successfully call updateInboundWithHttpInfo', async () => {
-      instructBackendMock("awd", "updateInbound", "204")
+      await instructBackendMock("awd", "updateInbound", "204")
       const params = [
         generateMockData('String'),
         generateMockData('InboundOrder')
@@ -193,7 +192,7 @@ describe('AwdApi', () => {
   });
   describe('updateInboundShipmentTransportDetails', () => {
     it('should successfully call updateInboundShipmentTransportDetailsWithHttpInfo', async () => {
-      instructBackendMock("awd", "updateInboundShipmentTransportDetails", "204")
+      await instructBackendMock("awd", "updateInboundShipmentTransportDetails", "204")
       const params = [
         generateMockData('String'),
         generateMockData('TransportationDetails')

@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'uploads_v2020_11_01', 'index.js');
 const SellingPartnerApiForUploads = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('UploadsApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForUploads.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForUploads.UploadsApi(apiClientInstance);
   });
 
   describe('createUploadDestinationForResource', () => {
     it('should successfully call createUploadDestinationForResourceWithHttpInfo', async () => {
-      instructBackendMock("uploads", "createUploadDestinationForResource", "201")
+      await instructBackendMock("uploads", "createUploadDestinationForResource", "201")
       const params = [
         generateMockData('String', true),
         generateMockData('String'),

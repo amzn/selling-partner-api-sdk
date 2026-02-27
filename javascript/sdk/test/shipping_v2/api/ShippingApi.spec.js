@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'shipping_v2', 'index.js');
 const AmazonShippingApi = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('ShippingApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new AmazonShippingApi.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new AmazonShippingApi.ShippingApi(apiClientInstance);
   });
 
   describe('cancelShipment', () => {
     it('should successfully call cancelShipmentWithHttpInfo', async () => {
-      instructBackendMock("shipping", "cancelShipment", "200")
+      await instructBackendMock("shipping", "cancelShipment", "200")
       const params = [
         generateMockData('String'),
       ];
@@ -30,7 +29,7 @@ describe('ShippingApi', () => {
   });
   describe('createClaim', () => {
     it('should successfully call createClaimWithHttpInfo', async () => {
-      instructBackendMock("shipping", "createClaim", "201")
+      await instructBackendMock("shipping", "createClaim", "201")
       const params = [
         generateMockData('CreateClaimRequest'),
       ];
@@ -43,7 +42,7 @@ describe('ShippingApi', () => {
   });
   describe('directPurchaseShipment', () => {
     it('should successfully call directPurchaseShipmentWithHttpInfo', async () => {
-      instructBackendMock("shipping", "directPurchaseShipment", "200")
+      await instructBackendMock("shipping", "directPurchaseShipment", "200")
       const params = [
         generateMockData('DirectPurchaseRequest'),
       ];
@@ -56,7 +55,7 @@ describe('ShippingApi', () => {
   });
   describe('generateCollectionForm', () => {
     it('should successfully call generateCollectionFormWithHttpInfo', async () => {
-      instructBackendMock("shipping", "generateCollectionForm", "200")
+      await instructBackendMock("shipping", "generateCollectionForm", "200")
       const params = [
         generateMockData('GenerateCollectionFormRequest'),
       ];
@@ -69,7 +68,7 @@ describe('ShippingApi', () => {
   });
   describe('getAccessPoints', () => {
     it('should successfully call getAccessPointsWithHttpInfo', async () => {
-      instructBackendMock("shipping", "getAccessPoints", "200")
+      await instructBackendMock("shipping", "getAccessPoints", "200")
       const params = [
         generateMockData('String', true),
         generateMockData('String'),
@@ -84,7 +83,7 @@ describe('ShippingApi', () => {
   });
   describe('getAdditionalInputs', () => {
     it('should successfully call getAdditionalInputsWithHttpInfo', async () => {
-      instructBackendMock("shipping", "getAdditionalInputs", "200")
+      await instructBackendMock("shipping", "getAdditionalInputs", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -98,7 +97,7 @@ describe('ShippingApi', () => {
   });
   describe('getCarrierAccountFormInputs', () => {
     it('should successfully call getCarrierAccountFormInputsWithHttpInfo', async () => {
-      instructBackendMock("shipping", "getCarrierAccountFormInputs", "200")
+      await instructBackendMock("shipping", "getCarrierAccountFormInputs", "200")
       const params = [
       ];
       const response = await instance.getCarrierAccountFormInputsWithHttpInfo(...params);
@@ -110,7 +109,7 @@ describe('ShippingApi', () => {
   });
   describe('getCarrierAccounts', () => {
     it('should successfully call getCarrierAccountsWithHttpInfo', async () => {
-      instructBackendMock("shipping", "getCarrierAccounts", "200")
+      await instructBackendMock("shipping", "getCarrierAccounts", "200")
       const params = [
         generateMockData('GetCarrierAccountsRequest'),
       ];
@@ -123,7 +122,7 @@ describe('ShippingApi', () => {
   });
   describe('getCollectionForm', () => {
     it('should successfully call getCollectionFormWithHttpInfo', async () => {
-      instructBackendMock("shipping", "getCollectionForm", "200")
+      await instructBackendMock("shipping", "getCollectionForm", "200")
       const params = [
         generateMockData('String'),
       ];
@@ -136,7 +135,7 @@ describe('ShippingApi', () => {
   });
   describe('getCollectionFormHistory', () => {
     it('should successfully call getCollectionFormHistoryWithHttpInfo', async () => {
-      instructBackendMock("shipping", "getCollectionFormHistory", "200")
+      await instructBackendMock("shipping", "getCollectionFormHistory", "200")
       const params = [
         generateMockData('GetCollectionFormHistoryRequest'),
       ];
@@ -149,7 +148,7 @@ describe('ShippingApi', () => {
   });
   describe('getRates', () => {
     it('should successfully call getRatesWithHttpInfo', async () => {
-      instructBackendMock("shipping", "getRates", "200")
+      await instructBackendMock("shipping", "getRates", "200")
       const params = [
         generateMockData('GetRatesRequest'),
       ];
@@ -162,7 +161,7 @@ describe('ShippingApi', () => {
   });
   describe('getShipmentDocuments', () => {
     it('should successfully call getShipmentDocumentsWithHttpInfo', async () => {
-      instructBackendMock("shipping", "getShipmentDocuments", "200")
+      await instructBackendMock("shipping", "getShipmentDocuments", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -176,7 +175,7 @@ describe('ShippingApi', () => {
   });
   describe('getTracking', () => {
     it('should successfully call getTrackingWithHttpInfo', async () => {
-      instructBackendMock("shipping", "getTracking", "200")
+      await instructBackendMock("shipping", "getTracking", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -190,7 +189,7 @@ describe('ShippingApi', () => {
   });
   describe('getUnmanifestedShipments', () => {
     it('should successfully call getUnmanifestedShipmentsWithHttpInfo', async () => {
-      instructBackendMock("shipping", "getUnmanifestedShipments", "200")
+      await instructBackendMock("shipping", "getUnmanifestedShipments", "200")
       const params = [
         generateMockData('GetUnmanifestedShipmentsRequest'),
       ];
@@ -203,7 +202,7 @@ describe('ShippingApi', () => {
   });
   describe('linkCarrierAccount', () => {
     it('should successfully call linkCarrierAccountWithHttpInfo', async () => {
-      instructBackendMock("shipping", "linkCarrierAccount", "200")
+      await instructBackendMock("shipping", "linkCarrierAccount", "200")
       const params = [
         generateMockData('String'),
         generateMockData('LinkCarrierAccountRequest'),
@@ -217,7 +216,7 @@ describe('ShippingApi', () => {
   });
   describe('linkCarrierAccount_0', () => {
     it('should successfully call linkCarrierAccount_0WithHttpInfo', async () => {
-      instructBackendMock("shipping", "linkCarrierAccount_0", "200")
+      await instructBackendMock("shipping", "linkCarrierAccount_0", "200")
       const params = [
         generateMockData('String'),
         generateMockData('LinkCarrierAccountRequest'),
@@ -231,7 +230,7 @@ describe('ShippingApi', () => {
   });
   describe('oneClickShipment', () => {
     it('should successfully call oneClickShipmentWithHttpInfo', async () => {
-      instructBackendMock("shipping", "oneClickShipment", "200")
+      await instructBackendMock("shipping", "oneClickShipment", "200")
       const params = [
         generateMockData('OneClickShipmentRequest'),
       ];
@@ -244,7 +243,7 @@ describe('ShippingApi', () => {
   });
   describe('purchaseShipment', () => {
     it('should successfully call purchaseShipmentWithHttpInfo', async () => {
-      instructBackendMock("shipping", "purchaseShipment", "200")
+      await instructBackendMock("shipping", "purchaseShipment", "200")
       const params = [
         generateMockData('PurchaseShipmentRequest'),
       ];
@@ -257,7 +256,7 @@ describe('ShippingApi', () => {
   });
   describe('submitNdrFeedback', () => {
     it('should successfully call submitNdrFeedbackWithHttpInfo', async () => {
-      instructBackendMock("shipping", "submitNdrFeedback", "204")
+      await instructBackendMock("shipping", "submitNdrFeedback", "204")
       const params = [
         generateMockData('SubmitNdrFeedbackRequest'),
       ];
@@ -269,7 +268,7 @@ describe('ShippingApi', () => {
   });
   describe('unlinkCarrierAccount', () => {
     it('should successfully call unlinkCarrierAccountWithHttpInfo', async () => {
-      instructBackendMock("shipping", "unlinkCarrierAccount", "200")
+      await instructBackendMock("shipping", "unlinkCarrierAccount", "200")
       const params = [
         generateMockData('String'),
         generateMockData('UnlinkCarrierAccountRequest'),

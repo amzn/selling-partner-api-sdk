@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'appintegrations_v2024_04_01', 'index.js');
 const TheSellingPartnerApiForThirdPartyApplicationIntegrations = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('AppIntegrationsApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.AppIntegrationsApi(apiClientInstance);
   });
 
   describe('createNotification', () => {
     it('should successfully call createNotificationWithHttpInfo', async () => {
-      instructBackendMock("appIntegrations", "createNotification", "200")
+      await instructBackendMock("appIntegrations", "createNotification", "200")
       const params = [
         generateMockData('CreateNotificationRequest')
       ];
@@ -30,7 +29,7 @@ describe('AppIntegrationsApi', () => {
   });
   describe('deleteNotifications', () => {
     it('should successfully call deleteNotificationsWithHttpInfo', async () => {
-      instructBackendMock("appIntegrations", "deleteNotifications", "204")
+      await instructBackendMock("appIntegrations", "deleteNotifications", "204")
       const params = [
         generateMockData('DeleteNotificationsRequest')
       ];
@@ -42,7 +41,7 @@ describe('AppIntegrationsApi', () => {
   });
   describe('recordActionFeedback', () => {
     it('should successfully call recordActionFeedbackWithHttpInfo', async () => {
-      instructBackendMock("appIntegrations", "recordActionFeedback", "204")
+      await instructBackendMock("appIntegrations", "recordActionFeedback", "204")
       const params = [
         generateMockData('String'),
         generateMockData('RecordActionFeedbackRequest')

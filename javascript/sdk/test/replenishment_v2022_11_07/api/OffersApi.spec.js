@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'replenishment_v2022_11_07', 'index.js');
 const SellingPartnerApiForReplenishment = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('OffersApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForReplenishment.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForReplenishment.OffersApi(apiClientInstance);
   });
 
   describe('listOfferMetrics', () => {
     it('should successfully call listOfferMetricsWithHttpInfo', async () => {
-      instructBackendMock("offers", "listOfferMetrics", "200")
+      await instructBackendMock("offers", "listOfferMetrics", "200")
       const params = [
       ];
       const response = await instance.listOfferMetricsWithHttpInfo(...params);
@@ -29,7 +28,7 @@ describe('OffersApi', () => {
   });
   describe('listOffers', () => {
     it('should successfully call listOffersWithHttpInfo', async () => {
-      instructBackendMock("offers", "listOffers", "200")
+      await instructBackendMock("offers", "listOffers", "200")
       const params = [
       ];
       const response = await instance.listOffersWithHttpInfo(...params);

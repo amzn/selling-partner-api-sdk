@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'sellerWallet_2024_03_01', 'index.js');
 const TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('AccountsApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.AccountsApi(apiClientInstance);
   });
 
   describe('getAccount', () => {
     it('should successfully call getAccountWithHttpInfo', async () => {
-      instructBackendMock("Accounts", "getAccount", "200")
+      await instructBackendMock("Accounts", "getAccount", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -31,7 +30,7 @@ describe('AccountsApi', () => {
   });
   describe('listAccountBalances', () => {
     it('should successfully call listAccountBalancesWithHttpInfo', async () => {
-      instructBackendMock("Accounts", "listAccountBalances", "200")
+      await instructBackendMock("Accounts", "listAccountBalances", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -45,7 +44,7 @@ describe('AccountsApi', () => {
   });
   describe('listAccounts', () => {
     it('should successfully call listAccountsWithHttpInfo', async () => {
-      instructBackendMock("Accounts", "listAccounts", "200")
+      await instructBackendMock("Accounts", "listAccounts", "200")
       const params = [
         generateMockData('String')
       ];

@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'datakiosk_v2023_11_15', 'index.js');
 const SellingPartnerApiForDataKiosk = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('QueriesApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForDataKiosk.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForDataKiosk.QueriesApi(apiClientInstance);
   });
 
   describe('cancelQuery', () => {
     it('should successfully call cancelQueryWithHttpInfo', async () => {
-      instructBackendMock("queries", "cancelQuery", "204")
+      await instructBackendMock("queries", "cancelQuery", "204")
       const params = [
         generateMockData('String')
       ];
@@ -29,7 +28,7 @@ describe('QueriesApi', () => {
   });
   describe('createQuery', () => {
     it('should successfully call createQueryWithHttpInfo', async () => {
-      instructBackendMock("queries", "createQuery", "202")
+      await instructBackendMock("queries", "createQuery", "202")
       const params = [
         generateMockData('CreateQuerySpecification')
       ];
@@ -42,7 +41,7 @@ describe('QueriesApi', () => {
   });
   describe('getDocument', () => {
     it('should successfully call getDocumentWithHttpInfo', async () => {
-      instructBackendMock("queries", "getDocument", "200")
+      await instructBackendMock("queries", "getDocument", "200")
       const params = [
         generateMockData('String')
       ];
@@ -55,7 +54,7 @@ describe('QueriesApi', () => {
   });
   describe('getQueries', () => {
     it('should successfully call getQueriesWithHttpInfo', async () => {
-      instructBackendMock("queries", "getQueries", "200")
+      await instructBackendMock("queries", "getQueries", "200")
       const params = [
       ];
       const response = await instance.getQueriesWithHttpInfo(...params);
@@ -67,7 +66,7 @@ describe('QueriesApi', () => {
   });
   describe('getQuery', () => {
     it('should successfully call getQueryWithHttpInfo', async () => {
-      instructBackendMock("queries", "getQuery", "200")
+      await instructBackendMock("queries", "getQuery", "200")
       const params = [
         generateMockData('String')
       ];

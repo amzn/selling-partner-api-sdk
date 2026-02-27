@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'easyship_v2022_03_23', 'index.js');
 const SellingPartnerApiForEasyShip = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('EasyShipApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForEasyShip.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForEasyShip.EasyShipApi(apiClientInstance);
   });
 
   describe('createScheduledPackage', () => {
     it('should successfully call createScheduledPackageWithHttpInfo', async () => {
-      instructBackendMock("easyShip", "createScheduledPackage", "200")
+      await instructBackendMock("easyShip", "createScheduledPackage", "200")
       const params = [
         generateMockData('CreateScheduledPackageRequest')
       ];
@@ -30,7 +29,7 @@ describe('EasyShipApi', () => {
   });
   describe('createScheduledPackageBulk', () => {
     it('should successfully call createScheduledPackageBulkWithHttpInfo', async () => {
-      instructBackendMock("easyShip", "createScheduledPackageBulk", "200")
+      await instructBackendMock("easyShip", "createScheduledPackageBulk", "200")
       const params = [
         generateMockData('CreateScheduledPackagesRequest')
       ];
@@ -43,7 +42,7 @@ describe('EasyShipApi', () => {
   });
   describe('getScheduledPackage', () => {
     it('should successfully call getScheduledPackageWithHttpInfo', async () => {
-      instructBackendMock("easyShip", "getScheduledPackage", "200")
+      await instructBackendMock("easyShip", "getScheduledPackage", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -57,7 +56,7 @@ describe('EasyShipApi', () => {
   });
   describe('listHandoverSlots', () => {
     it('should successfully call listHandoverSlotsWithHttpInfo', async () => {
-      instructBackendMock("easyShip", "listHandoverSlots", "200")
+      await instructBackendMock("easyShip", "listHandoverSlots", "200")
       const params = [
       ];
       const response = await instance.listHandoverSlotsWithHttpInfo(...params);
@@ -69,7 +68,7 @@ describe('EasyShipApi', () => {
   });
   describe('updateScheduledPackages', () => {
     it('should successfully call updateScheduledPackagesWithHttpInfo', async () => {
-      instructBackendMock("easyShip", "updateScheduledPackages", "200")
+      await instructBackendMock("easyShip", "updateScheduledPackages", "200")
       const params = [
       ];
       const response = await instance.updateScheduledPackagesWithHttpInfo(...params);

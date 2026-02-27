@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'pricing_v2022_05_01', 'index.js');
 const SellingPartnerApiForPricing = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('ProductPricingApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForPricing.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForPricing.ProductPricingApi(apiClientInstance);
   });
 
   describe('getCompetitiveSummary', () => {
     it('should successfully call getCompetitiveSummaryWithHttpInfo', async () => {
-      instructBackendMock("productPricing", "getCompetitiveSummary", "200")
+      await instructBackendMock("productPricing", "getCompetitiveSummary", "200")
       const params = [
         generateMockData('CompetitiveSummaryBatchRequest')
       ];
@@ -30,7 +29,7 @@ describe('ProductPricingApi', () => {
   });
   describe('getFeaturedOfferExpectedPriceBatch', () => {
     it('should successfully call getFeaturedOfferExpectedPriceBatchWithHttpInfo', async () => {
-      instructBackendMock("productPricing", "getFeaturedOfferExpectedPriceBatch", "200")
+      await instructBackendMock("productPricing", "getFeaturedOfferExpectedPriceBatch", "200")
       const params = [
         generateMockData('GetFeaturedOfferExpectedPriceBatchRequest')
       ];

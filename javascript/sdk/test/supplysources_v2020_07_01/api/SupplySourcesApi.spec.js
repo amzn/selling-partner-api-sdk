@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'supplysources_v2020_07_01', 'index.js');
 const SellingPartnerApiForSupplySources = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('SupplySourcesApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForSupplySources.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForSupplySources.SupplySourcesApi(apiClientInstance);
   });
 
   describe('archiveSupplySource', () => {
     it('should successfully call archiveSupplySourceWithHttpInfo', async () => {
-      instructBackendMock("supplySources", "archiveSupplySource", "204")
+      await instructBackendMock("supplySources", "archiveSupplySource", "204")
       const params = [
         generateMockData('String')
       ];
@@ -30,7 +29,7 @@ describe('SupplySourcesApi', () => {
   });
   describe('createSupplySource', () => {
     it('should successfully call createSupplySourceWithHttpInfo', async () => {
-      instructBackendMock("supplySources", "createSupplySource", "200")
+      await instructBackendMock("supplySources", "createSupplySource", "200")
       const params = [
         generateMockData('CreateSupplySourceRequest')
       ];
@@ -43,7 +42,7 @@ describe('SupplySourcesApi', () => {
   });
   describe('getSupplySource', () => {
     it('should successfully call getSupplySourceWithHttpInfo', async () => {
-      instructBackendMock("supplySources", "getSupplySource", "200")
+      await instructBackendMock("supplySources", "getSupplySource", "200")
       const params = [
         generateMockData('String')
       ];
@@ -56,7 +55,7 @@ describe('SupplySourcesApi', () => {
   });
   describe('getSupplySources', () => {
     it('should successfully call getSupplySourcesWithHttpInfo', async () => {
-      instructBackendMock("supplySources", "getSupplySources", "200")
+      await instructBackendMock("supplySources", "getSupplySources", "200")
       const params = [
       ];
       const response = await instance.getSupplySourcesWithHttpInfo(...params);
@@ -68,7 +67,7 @@ describe('SupplySourcesApi', () => {
   });
   describe('updateSupplySource', () => {
     it('should successfully call updateSupplySourceWithHttpInfo', async () => {
-      instructBackendMock("supplySources", "updateSupplySource", "204")
+      await instructBackendMock("supplySources", "updateSupplySource", "204")
       const params = [
         generateMockData('String'),
       ];
@@ -81,7 +80,7 @@ describe('SupplySourcesApi', () => {
   });
   describe('updateSupplySourceStatus', () => {
     it('should successfully call updateSupplySourceStatusWithHttpInfo', async () => {
-      instructBackendMock("supplySources", "updateSupplySourceStatus", "204")
+      await instructBackendMock("supplySources", "updateSupplySourceStatus", "204")
       const params = [
         generateMockData('String'),
       ];

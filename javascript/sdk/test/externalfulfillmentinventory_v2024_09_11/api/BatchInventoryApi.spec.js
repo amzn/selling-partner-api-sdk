@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'externalfulfillmentinventory_v2024_09_11', 'index.js');
 const TheSellingPartnerApiForExternalFulfillmentInventoryManagement = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('BatchInventoryApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForExternalFulfillmentInventoryManagement.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForExternalFulfillmentInventoryManagement.BatchInventoryApi(apiClientInstance);
   });
 
   describe('batchInventory', () => {
     it('should successfully call batchInventoryWithHttpInfo', async () => {
-      instructBackendMock("batchInventory", "batchInventory", "207")
+      await instructBackendMock("batchInventory", "batchInventory", "207")
       const params = [
         generateMockData('BatchInventoryRequest')
       ];

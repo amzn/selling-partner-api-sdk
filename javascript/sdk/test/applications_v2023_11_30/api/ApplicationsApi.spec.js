@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'applications_v2023_11_30', 'index.js');
 const SellingPartnerApiForApplicationManagement = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('ApplicationsApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForApplicationManagement.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForApplicationManagement.ApplicationsApi(apiClientInstance);
   });
 
   describe('rotateApplicationClientSecret', () => {
     it('should successfully call rotateApplicationClientSecretWithHttpInfo', async () => {
-      instructBackendMock("Applications", "rotateApplicationClientSecret", "204")
+      await instructBackendMock("Applications", "rotateApplicationClientSecret", "204")
       const response = await instance.rotateApplicationClientSecretWithHttpInfo();
 
       expect(response).to.have.property('statusCode');

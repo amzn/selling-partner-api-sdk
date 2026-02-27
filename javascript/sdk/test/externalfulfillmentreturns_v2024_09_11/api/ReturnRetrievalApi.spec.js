@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'externalfulfillmentreturns_v2024_09_11', 'index.js');
 const TheSellingPartnerApiForAmazonExternalFulfillmentReturnItemProcessing = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('ReturnRetrievalApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForAmazonExternalFulfillmentReturnItemProcessing.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForAmazonExternalFulfillmentReturnItemProcessing.ReturnRetrievalApi(apiClientInstance);
   });
 
   describe('getReturn', () => {
     it('should successfully call getReturnWithHttpInfo', async () => {
-      instructBackendMock("returnRetrieval", "getReturn", "200")
+      await instructBackendMock("returnRetrieval", "getReturn", "200")
       const params = [
         generateMockData('String')
       ];
@@ -30,7 +29,7 @@ describe('ReturnRetrievalApi', () => {
   });
   describe('listReturns', () => {
     it('should successfully call listReturnsWithHttpInfo', async () => {
-      instructBackendMock("returnRetrieval", "listReturns", "200")
+      await instructBackendMock("returnRetrieval", "listReturns", "200")
       const params = [
       ];
       const response = await instance.listReturnsWithHttpInfo(...params);

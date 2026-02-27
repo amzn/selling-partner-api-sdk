@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'fbaeligibility_v1', 'index.js');
 const SellingPartnerApiForFbaInboundEligibilty = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('FbaInboundApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForFbaInboundEligibilty.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForFbaInboundEligibilty.FbaInboundApi(apiClientInstance);
   });
 
   describe('getItemEligibilityPreview', () => {
     it('should successfully call getItemEligibilityPreviewWithHttpInfo', async () => {
-      instructBackendMock("fbaInbound", "getItemEligibilityPreview", "200")
+      await instructBackendMock("fbaInbound", "getItemEligibilityPreview", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),

@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'vendordfshipping_v2021_12_28', 'index.js');
 const SellingPartnerApiForDirectFulfillmentShipping = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('CreateContainerLabelApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForDirectFulfillmentShipping.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForDirectFulfillmentShipping.CreateContainerLabelApi(apiClientInstance);
   });
 
   describe('createContainerLabel', () => {
     it('should successfully call createContainerLabelWithHttpInfo', async () => {
-      instructBackendMock("createContainerLabel", "createContainerLabel", "200")
+      await instructBackendMock("createContainerLabel", "createContainerLabel", "200")
       const params = [
         generateMockData('CreateContainerLabelRequest')
       ];

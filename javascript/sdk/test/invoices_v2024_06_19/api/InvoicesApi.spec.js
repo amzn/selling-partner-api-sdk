@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'invoices_v2024_06_19', 'index.js');
 const TheSellingPartnerApiForInvoices = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('InvoicesApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForInvoices.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForInvoices.InvoicesApi(apiClientInstance);
   });
 
   describe('createGovernmentInvoice', () => {
     it('should successfully call createGovernmentInvoiceWithHttpInfo', async () => {
-      instructBackendMock("invoices", "createGovernmentInvoice", "204")
+      await instructBackendMock("invoices", "createGovernmentInvoice", "204")
       const params = [
         generateMockData('GovernmentInvoiceRequest')
       ];
@@ -29,7 +28,7 @@ describe('InvoicesApi', () => {
   });
   describe('createInvoicesExport', () => {
     it('should successfully call createInvoicesExportWithHttpInfo', async () => {
-      instructBackendMock("invoices", "createInvoicesExport", "202")
+      await instructBackendMock("invoices", "createInvoicesExport", "202")
       const params = [
         generateMockData('ExportInvoicesRequest')
       ];
@@ -42,7 +41,7 @@ describe('InvoicesApi', () => {
   });
   describe('getGovernmentInvoiceDocument', () => {
     it('should successfully call getGovernmentInvoiceDocumentWithHttpInfo', async () => {
-      instructBackendMock("invoices", "getGovernmentInvoiceDocument", "200")
+      await instructBackendMock("invoices", "getGovernmentInvoiceDocument", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -58,7 +57,7 @@ describe('InvoicesApi', () => {
   });
   describe('getGovernmentInvoiceStatus', () => {
     it('should successfully call getGovernmentInvoiceStatusWithHttpInfo', async () => {
-      instructBackendMock("invoices", "getGovernmentInvoiceStatus", "200")
+      await instructBackendMock("invoices", "getGovernmentInvoiceStatus", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -74,7 +73,7 @@ describe('InvoicesApi', () => {
   });
   describe('getInvoice', () => {
     it('should successfully call getInvoiceWithHttpInfo', async () => {
-      instructBackendMock("invoices", "getInvoice", "200")
+      await instructBackendMock("invoices", "getInvoice", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -88,7 +87,7 @@ describe('InvoicesApi', () => {
   });
   describe('getInvoices', () => {
     it('should successfully call getInvoicesWithHttpInfo', async () => {
-      instructBackendMock("invoices", "getInvoices", "200")
+      await instructBackendMock("invoices", "getInvoices", "200")
       const params = [
         generateMockData('String'),
       ];
@@ -101,7 +100,7 @@ describe('InvoicesApi', () => {
   });
   describe('getInvoicesAttributes', () => {
     it('should successfully call getInvoicesAttributesWithHttpInfo', async () => {
-      instructBackendMock("invoices", "getInvoicesAttributes", "200")
+      await instructBackendMock("invoices", "getInvoicesAttributes", "200")
       const params = [
         generateMockData('String')
       ];
@@ -114,7 +113,7 @@ describe('InvoicesApi', () => {
   });
   describe('getInvoicesDocument', () => {
     it('should successfully call getInvoicesDocumentWithHttpInfo', async () => {
-      instructBackendMock("invoices", "getInvoicesDocument", "200")
+      await instructBackendMock("invoices", "getInvoicesDocument", "200")
       const params = [
         generateMockData('String')
       ];
@@ -127,7 +126,7 @@ describe('InvoicesApi', () => {
   });
   describe('getInvoicesExport', () => {
     it('should successfully call getInvoicesExportWithHttpInfo', async () => {
-      instructBackendMock("invoices", "getInvoicesExport", "200")
+      await instructBackendMock("invoices", "getInvoicesExport", "200")
       const params = [
         generateMockData('String')
       ];
@@ -140,7 +139,7 @@ describe('InvoicesApi', () => {
   });
   describe('getInvoicesExports', () => {
     it('should successfully call getInvoicesExportsWithHttpInfo', async () => {
-      instructBackendMock("invoices", "getInvoicesExports", "200")
+      await instructBackendMock("invoices", "getInvoicesExports", "200")
       const params = [
         generateMockData('String'),
       ];

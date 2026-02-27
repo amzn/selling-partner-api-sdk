@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'merchantfulfillment_v0', 'index.js');
 const SellingPartnerApiForMerchantFulfillment = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('MerchantFulfillmentApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForMerchantFulfillment.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForMerchantFulfillment.MerchantFulfillmentApi(apiClientInstance);
   });
 
   describe('cancelShipment', () => {
     it('should successfully call cancelShipmentWithHttpInfo', async () => {
-      instructBackendMock("merchantFulfillment", "cancelShipment", "200")
+      await instructBackendMock("merchantFulfillment", "cancelShipment", "200")
       const params = [
         generateMockData('String')
       ];
@@ -30,7 +29,7 @@ describe('MerchantFulfillmentApi', () => {
   });
   describe('createShipment', () => {
     it('should successfully call createShipmentWithHttpInfo', async () => {
-      instructBackendMock("merchantFulfillment", "createShipment", "200")
+      await instructBackendMock("merchantFulfillment", "createShipment", "200")
       const params = [
         generateMockData('CreateShipmentRequest')
       ];
@@ -43,7 +42,7 @@ describe('MerchantFulfillmentApi', () => {
   });
   describe('getAdditionalSellerInputs', () => {
     it('should successfully call getAdditionalSellerInputsWithHttpInfo', async () => {
-      instructBackendMock("merchantFulfillment", "getAdditionalSellerInputs", "200")
+      await instructBackendMock("merchantFulfillment", "getAdditionalSellerInputs", "200")
       const params = [
         generateMockData('GetAdditionalSellerInputsRequest')
       ];
@@ -56,7 +55,7 @@ describe('MerchantFulfillmentApi', () => {
   });
   describe('getEligibleShipmentServices', () => {
     it('should successfully call getEligibleShipmentServicesWithHttpInfo', async () => {
-      instructBackendMock("merchantFulfillment", "getEligibleShipmentServices", "200")
+      await instructBackendMock("merchantFulfillment", "getEligibleShipmentServices", "200")
       const params = [
         generateMockData('GetEligibleShipmentServicesRequest')
       ];
@@ -69,7 +68,7 @@ describe('MerchantFulfillmentApi', () => {
   });
   describe('getShipment', () => {
     it('should successfully call getShipmentWithHttpInfo', async () => {
-      instructBackendMock("merchantFulfillment", "getShipment", "200")
+      await instructBackendMock("merchantFulfillment", "getShipment", "200")
       const params = [
         generateMockData('String')
       ];

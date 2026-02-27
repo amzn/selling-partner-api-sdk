@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'invoicing_v0', 'index.js');
 const SellingPartnerApiForShipmentInvoicing = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('ShipmentInvoiceApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForShipmentInvoicing.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForShipmentInvoicing.ShipmentInvoiceApi(apiClientInstance);
   });
 
   describe('getInvoiceStatus', () => {
     it('should successfully call getInvoiceStatusWithHttpInfo', async () => {
-      instructBackendMock("shipmentInvoice", "getInvoiceStatus", "200")
+      await instructBackendMock("shipmentInvoice", "getInvoiceStatus", "200")
       const params = [
         generateMockData('String')
       ];
@@ -30,7 +29,7 @@ describe('ShipmentInvoiceApi', () => {
   });
   describe('getShipmentDetails', () => {
     it('should successfully call getShipmentDetailsWithHttpInfo', async () => {
-      instructBackendMock("shipmentInvoice", "getShipmentDetails", "200")
+      await instructBackendMock("shipmentInvoice", "getShipmentDetails", "200")
       const params = [
         generateMockData('String')
       ];
@@ -43,7 +42,7 @@ describe('ShipmentInvoiceApi', () => {
   });
   describe('submitInvoice', () => {
     it('should successfully call submitInvoiceWithHttpInfo', async () => {
-      instructBackendMock("shipmentInvoice", "submitInvoice", "200")
+      await instructBackendMock("shipmentInvoice", "submitInvoice", "200")
       const params = [
         generateMockData('String'),
         generateMockData('SubmitInvoiceRequest')

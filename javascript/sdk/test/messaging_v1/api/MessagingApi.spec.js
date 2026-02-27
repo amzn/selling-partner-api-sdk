@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'messaging_v1', 'index.js');
 const SellingPartnerApiForMessaging = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('MessagingApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForMessaging.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForMessaging.MessagingApi(apiClientInstance);
   });
 
   describe('confirmCustomizationDetails', () => {
     it('should successfully call confirmCustomizationDetailsWithHttpInfo', async () => {
-      instructBackendMock("messaging", "confirmCustomizationDetails", "201")
+      await instructBackendMock("messaging", "confirmCustomizationDetails", "201")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),
@@ -32,7 +31,7 @@ describe('MessagingApi', () => {
   });
   describe('createConfirmDeliveryDetails', () => {
     it('should successfully call createConfirmDeliveryDetailsWithHttpInfo', async () => {
-      instructBackendMock("messaging", "createConfirmDeliveryDetails", "201")
+      await instructBackendMock("messaging", "createConfirmDeliveryDetails", "201")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),
@@ -47,7 +46,7 @@ describe('MessagingApi', () => {
   });
   describe('createConfirmOrderDetails', () => {
     it('should successfully call createConfirmOrderDetailsWithHttpInfo', async () => {
-      instructBackendMock("messaging", "createConfirmOrderDetails", "201")
+      await instructBackendMock("messaging", "createConfirmOrderDetails", "201")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),
@@ -62,7 +61,7 @@ describe('MessagingApi', () => {
   });
   describe('createConfirmServiceDetails', () => {
     it('should successfully call createConfirmServiceDetailsWithHttpInfo', async () => {
-      instructBackendMock("messaging", "createConfirmServiceDetails", "201")
+      await instructBackendMock("messaging", "createConfirmServiceDetails", "201")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),
@@ -77,7 +76,7 @@ describe('MessagingApi', () => {
   });
   describe('createDigitalAccessKey', () => {
     it('should successfully call createDigitalAccessKeyWithHttpInfo', async () => {
-      instructBackendMock("messaging", "createDigitalAccessKey", "201")
+      await instructBackendMock("messaging", "createDigitalAccessKey", "201")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),
@@ -92,7 +91,7 @@ describe('MessagingApi', () => {
   });
   describe('createLegalDisclosure', () => {
     it('should successfully call createLegalDisclosureWithHttpInfo', async () => {
-      instructBackendMock("messaging", "createLegalDisclosure", "201")
+      await instructBackendMock("messaging", "createLegalDisclosure", "201")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),
@@ -107,7 +106,7 @@ describe('MessagingApi', () => {
   });
   describe('createUnexpectedProblem', () => {
     it('should successfully call createUnexpectedProblemWithHttpInfo', async () => {
-      instructBackendMock("messaging", "createUnexpectedProblem", "201")
+      await instructBackendMock("messaging", "createUnexpectedProblem", "201")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),
@@ -122,7 +121,7 @@ describe('MessagingApi', () => {
   });
   describe('createWarranty', () => {
     it('should successfully call createWarrantyWithHttpInfo', async () => {
-      instructBackendMock("messaging", "createWarranty", "201")
+      await instructBackendMock("messaging", "createWarranty", "201")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),
@@ -137,7 +136,7 @@ describe('MessagingApi', () => {
   });
   describe('getAttributes', () => {
     it('should successfully call getAttributesWithHttpInfo', async () => {
-      instructBackendMock("messaging", "getAttributes", "200")
+      await instructBackendMock("messaging", "getAttributes", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String', true)
@@ -151,7 +150,7 @@ describe('MessagingApi', () => {
   });
   describe('getMessagingActionsForOrder', () => {
     it('should successfully call getMessagingActionsForOrderWithHttpInfo', async () => {
-      instructBackendMock("messaging", "getMessagingActionsForOrder", "200")
+      await instructBackendMock("messaging", "getMessagingActionsForOrder", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String', true)
@@ -165,7 +164,7 @@ describe('MessagingApi', () => {
   });
   describe('sendInvoice', () => {
     it('should successfully call sendInvoiceWithHttpInfo', async () => {
-      instructBackendMock("messaging", "sendInvoice", "201")
+      await instructBackendMock("messaging", "sendInvoice", "201")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),
