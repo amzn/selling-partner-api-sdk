@@ -22,7 +22,7 @@ export class DropOffLocation {
     constructor(type: string);
     type: string;
     /**
-     * Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the `type` field. If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object should include the exact keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.
+     * Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the `type` field. If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object should include the exact keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.  For `RECEPTIONIST`, `MAIL_ROOM_CLERK`, and `AS_INSTRUCTED` types, the `attributes` object will include a `recipientName` field containing the name of the person who received the package.
      * @member {{String: String}} attributes
      * @type {{String: String}}
      */
@@ -40,6 +40,8 @@ export namespace DropOffLocation {
         let RECEPTIONIST: string;
         let FALLBACK_NEIGHBOR_DELIVERY: string;
         let DO_NOT_LEAVE_UNATTENDED: string;
+        let MAIL_ROOM_CLERK: string;
+        let AS_INSTRUCTED: string;
     }
     /**
      * *
