@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'customerFeedback_2024_06_01', 'index.js');
 const TheSellingPartnerApiForCustomerFeedback = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('CustomerFeedbackApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForCustomerFeedback.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForCustomerFeedback.CustomerFeedbackApi(apiClientInstance);
   });
 
   describe('getBrowseNodeReturnTopics', () => {
     it('should successfully call getBrowseNodeReturnTopicsWithHttpInfo', async () => {
-      instructBackendMock("customerFeedback", "getBrowseNodeReturnTopics", "200")
+      await instructBackendMock("customerFeedback", "getBrowseNodeReturnTopics", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -31,7 +30,7 @@ describe('CustomerFeedbackApi', () => {
   });
   describe('getBrowseNodeReturnTrends', () => {
     it('should successfully call getBrowseNodeReturnTrendsWithHttpInfo', async () => {
-      instructBackendMock("customerFeedback", "getBrowseNodeReturnTrends", "200")
+      await instructBackendMock("customerFeedback", "getBrowseNodeReturnTrends", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -45,7 +44,7 @@ describe('CustomerFeedbackApi', () => {
   });
   describe('getBrowseNodeReviewTopics', () => {
     it('should successfully call getBrowseNodeReviewTopicsWithHttpInfo', async () => {
-      instructBackendMock("customerFeedback", "getBrowseNodeReviewTopics", "200")
+      await instructBackendMock("customerFeedback", "getBrowseNodeReviewTopics", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -60,7 +59,7 @@ describe('CustomerFeedbackApi', () => {
   });
   describe('getBrowseNodeReviewTrends', () => {
     it('should successfully call getBrowseNodeReviewTrendsWithHttpInfo', async () => {
-      instructBackendMock("customerFeedback", "getBrowseNodeReviewTrends", "200")
+      await instructBackendMock("customerFeedback", "getBrowseNodeReviewTrends", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -74,7 +73,7 @@ describe('CustomerFeedbackApi', () => {
   });
   describe('getItemBrowseNode', () => {
     it('should successfully call getItemBrowseNodeWithHttpInfo', async () => {
-      instructBackendMock("customerFeedback", "getItemBrowseNode", "200")
+      await instructBackendMock("customerFeedback", "getItemBrowseNode", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -88,7 +87,7 @@ describe('CustomerFeedbackApi', () => {
   });
   describe('getItemReviewTopics', () => {
     it('should successfully call getItemReviewTopicsWithHttpInfo', async () => {
-      instructBackendMock("customerFeedback", "getItemReviewTopics", "200")
+      await instructBackendMock("customerFeedback", "getItemReviewTopics", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -103,7 +102,7 @@ describe('CustomerFeedbackApi', () => {
   });
   describe('getItemReviewTrends', () => {
     it('should successfully call getItemReviewTrendsWithHttpInfo', async () => {
-      instructBackendMock("customerFeedback", "getItemReviewTrends", "200")
+      await instructBackendMock("customerFeedback", "getItemReviewTrends", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')

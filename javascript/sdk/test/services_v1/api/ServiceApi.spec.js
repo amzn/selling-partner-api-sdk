@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'services_v1', 'index.js');
 const SellingPartnerApiForServices = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('ServiceApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForServices.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForServices.ServiceApi(apiClientInstance);
   });
 
   describe('addAppointmentForServiceJobByServiceJobId', () => {
     it('should successfully call addAppointmentForServiceJobByServiceJobIdWithHttpInfo', async () => {
-      instructBackendMock("service", "addAppointmentForServiceJobByServiceJobId", "200")
+      await instructBackendMock("service", "addAppointmentForServiceJobByServiceJobId", "200")
       const params = [
         generateMockData('String'),
         generateMockData('AddAppointmentRequest')
@@ -31,7 +30,7 @@ describe('ServiceApi', () => {
   });
   describe('assignAppointmentResources', () => {
     it('should successfully call assignAppointmentResourcesWithHttpInfo', async () => {
-      instructBackendMock("service", "assignAppointmentResources", "200")
+      await instructBackendMock("service", "assignAppointmentResources", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -46,7 +45,7 @@ describe('ServiceApi', () => {
   });
   describe('cancelReservation', () => {
     it('should successfully call cancelReservationWithHttpInfo', async () => {
-      instructBackendMock("service", "cancelReservation", "204")
+      await instructBackendMock("service", "cancelReservation", "204")
       const params = [
         generateMockData('String'),
         generateMockData('String', true)
@@ -60,7 +59,7 @@ describe('ServiceApi', () => {
   });
   describe('cancelServiceJobByServiceJobId', () => {
     it('should successfully call cancelServiceJobByServiceJobIdWithHttpInfo', async () => {
-      instructBackendMock("service", "cancelServiceJobByServiceJobId", "200")
+      await instructBackendMock("service", "cancelServiceJobByServiceJobId", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -74,7 +73,7 @@ describe('ServiceApi', () => {
   });
   describe('completeServiceJobByServiceJobId', () => {
     it('should successfully call completeServiceJobByServiceJobIdWithHttpInfo', async () => {
-      instructBackendMock("service", "completeServiceJobByServiceJobId", "200")
+      await instructBackendMock("service", "completeServiceJobByServiceJobId", "200")
       const params = [
         generateMockData('String')
       ];
@@ -87,7 +86,7 @@ describe('ServiceApi', () => {
   });
   describe('createReservation', () => {
     it('should successfully call createReservationWithHttpInfo', async () => {
-      instructBackendMock("service", "createReservation", "200")
+      await instructBackendMock("service", "createReservation", "200")
       const params = [
         generateMockData('String', true),
         generateMockData('CreateReservationRequest')
@@ -101,7 +100,7 @@ describe('ServiceApi', () => {
   });
   describe('createServiceDocumentUploadDestination', () => {
     it('should successfully call createServiceDocumentUploadDestinationWithHttpInfo', async () => {
-      instructBackendMock("service", "createServiceDocumentUploadDestination", "200")
+      await instructBackendMock("service", "createServiceDocumentUploadDestination", "200")
       const params = [
         generateMockData('ServiceUploadDocument')
       ];
@@ -114,7 +113,7 @@ describe('ServiceApi', () => {
   });
   describe('getAppointmentSlots', () => {
     it('should successfully call getAppointmentSlotsWithHttpInfo', async () => {
-      instructBackendMock("service", "getAppointmentSlots", "200")
+      await instructBackendMock("service", "getAppointmentSlots", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -129,7 +128,7 @@ describe('ServiceApi', () => {
   });
   describe('getAppointmmentSlotsByJobId', () => {
     it('should successfully call getAppointmmentSlotsByJobIdWithHttpInfo', async () => {
-      instructBackendMock("service", "getAppointmmentSlotsByJobId", "200")
+      await instructBackendMock("service", "getAppointmmentSlotsByJobId", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),
@@ -143,7 +142,7 @@ describe('ServiceApi', () => {
   });
   describe('getFixedSlotCapacity', () => {
     it('should successfully call getFixedSlotCapacityWithHttpInfo', async () => {
-      instructBackendMock("service", "getFixedSlotCapacity", "200")
+      await instructBackendMock("service", "getFixedSlotCapacity", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),
@@ -158,7 +157,7 @@ describe('ServiceApi', () => {
   });
   describe('getRangeSlotCapacity', () => {
     it('should successfully call getRangeSlotCapacityWithHttpInfo', async () => {
-      instructBackendMock("service", "getRangeSlotCapacity", "200")
+      await instructBackendMock("service", "getRangeSlotCapacity", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),
@@ -173,7 +172,7 @@ describe('ServiceApi', () => {
   });
   describe('getServiceJobByServiceJobId', () => {
     it('should successfully call getServiceJobByServiceJobIdWithHttpInfo', async () => {
-      instructBackendMock("service", "getServiceJobByServiceJobId", "200")
+      await instructBackendMock("service", "getServiceJobByServiceJobId", "200")
       const params = [
         generateMockData('String')
       ];
@@ -186,7 +185,7 @@ describe('ServiceApi', () => {
   });
   describe('getServiceJobs', () => {
     it('should successfully call getServiceJobsWithHttpInfo', async () => {
-      instructBackendMock("service", "getServiceJobs", "200")
+      await instructBackendMock("service", "getServiceJobs", "200")
       const params = [
         generateMockData('String', true),
       ];
@@ -199,7 +198,7 @@ describe('ServiceApi', () => {
   });
   describe('rescheduleAppointmentForServiceJobByServiceJobId', () => {
     it('should successfully call rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo', async () => {
-      instructBackendMock("service", "rescheduleAppointmentForServiceJobByServiceJobId", "200")
+      await instructBackendMock("service", "rescheduleAppointmentForServiceJobByServiceJobId", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -214,7 +213,7 @@ describe('ServiceApi', () => {
   });
   describe('setAppointmentFulfillmentData', () => {
     it('should successfully call setAppointmentFulfillmentDataWithHttpInfo', async () => {
-      instructBackendMock("service", "setAppointmentFulfillmentData", "204")
+      await instructBackendMock("service", "setAppointmentFulfillmentData", "204")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -229,7 +228,7 @@ describe('ServiceApi', () => {
   });
   describe('updateReservation', () => {
     it('should successfully call updateReservationWithHttpInfo', async () => {
-      instructBackendMock("service", "updateReservation", "200")
+      await instructBackendMock("service", "updateReservation", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),
@@ -244,7 +243,7 @@ describe('ServiceApi', () => {
   });
   describe('updateSchedule', () => {
     it('should successfully call updateScheduleWithHttpInfo', async () => {
-      instructBackendMock("service", "updateSchedule", "200")
+      await instructBackendMock("service", "updateSchedule", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),

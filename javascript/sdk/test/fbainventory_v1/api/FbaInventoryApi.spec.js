@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'fbainventory_v1', 'index.js');
 const SellingPartnerApiForFbaInventory = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('FbaInventoryApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForFbaInventory.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForFbaInventory.FbaInventoryApi(apiClientInstance);
   });
 
   describe('addInventory', () => {
     it('should successfully call addInventoryWithHttpInfo', async () => {
-      instructBackendMock("fbaInventory", "addInventory", "200")
+      await instructBackendMock("fbaInventory", "addInventory", "200")
       const params = [
         generateMockData('String'),
         generateMockData('AddInventoryRequest')
@@ -31,7 +30,7 @@ describe('FbaInventoryApi', () => {
   });
   describe('createInventoryItem', () => {
     it('should successfully call createInventoryItemWithHttpInfo', async () => {
-      instructBackendMock("fbaInventory", "createInventoryItem", "200")
+      await instructBackendMock("fbaInventory", "createInventoryItem", "200")
       const params = [
         generateMockData('CreateInventoryItemRequest')
       ];
@@ -44,7 +43,7 @@ describe('FbaInventoryApi', () => {
   });
   describe('deleteInventoryItem', () => {
     it('should successfully call deleteInventoryItemWithHttpInfo', async () => {
-      instructBackendMock("fbaInventory", "deleteInventoryItem", "200")
+      await instructBackendMock("fbaInventory", "deleteInventoryItem", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -58,7 +57,7 @@ describe('FbaInventoryApi', () => {
   });
   describe('getInventorySummaries', () => {
     it('should successfully call getInventorySummariesWithHttpInfo', async () => {
-      instructBackendMock("fbaInventory", "getInventorySummaries", "200")
+      await instructBackendMock("fbaInventory", "getInventorySummaries", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),

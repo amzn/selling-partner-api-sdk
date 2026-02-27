@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'externalfulfillmentshipments_v2024_09_11', 'index.js');
 const TheSellingPartnerApiForAmazonExternalFulfillmentShipmentsProcessing = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('ShipmentRetrievalApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForAmazonExternalFulfillmentShipmentsProcessing.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForAmazonExternalFulfillmentShipmentsProcessing.ShipmentRetrievalApi(apiClientInstance);
   });
 
   describe('getShipment', () => {
     it('should successfully call getShipmentWithHttpInfo', async () => {
-      instructBackendMock("shipmentRetrieval", "getShipment", "200")
+      await instructBackendMock("shipmentRetrieval", "getShipment", "200")
       const params = [
         generateMockData('String')
       ];
@@ -30,7 +29,7 @@ describe('ShipmentRetrievalApi', () => {
   });
   describe('getShipments', () => {
     it('should successfully call getShipmentsWithHttpInfo', async () => {
-      instructBackendMock("shipmentRetrieval", "getShipments", "200")
+      await instructBackendMock("shipmentRetrieval", "getShipments", "200")
       const params = [
         generateMockData('String'),
       ];

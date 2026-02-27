@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'vendordfshipping_v2021_12_28', 'index.js');
 const SellingPartnerApiForDirectFulfillmentShipping = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('VendorShippingLabelsApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForDirectFulfillmentShipping.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForDirectFulfillmentShipping.VendorShippingLabelsApi(apiClientInstance);
   });
 
   describe('createShippingLabels', () => {
     it('should successfully call createShippingLabelsWithHttpInfo', async () => {
-      instructBackendMock("vendorShippingLabels", "createShippingLabels", "200")
+      await instructBackendMock("vendorShippingLabels", "createShippingLabels", "200")
       const params = [
         generateMockData('String'),
         generateMockData('CreateShippingLabelsRequest')
@@ -31,7 +30,7 @@ describe('VendorShippingLabelsApi', () => {
   });
   describe('getShippingLabel', () => {
     it('should successfully call getShippingLabelWithHttpInfo', async () => {
-      instructBackendMock("vendorShippingLabels", "getShippingLabel", "200")
+      await instructBackendMock("vendorShippingLabels", "getShippingLabel", "200")
       const params = [
         generateMockData('String')
       ];
@@ -44,7 +43,7 @@ describe('VendorShippingLabelsApi', () => {
   });
   describe('getShippingLabels', () => {
     it('should successfully call getShippingLabelsWithHttpInfo', async () => {
-      instructBackendMock("vendorShippingLabels", "getShippingLabels", "200")
+      await instructBackendMock("vendorShippingLabels", "getShippingLabels", "200")
       const params = [
         generateMockData('Date'),
         generateMockData('Date'),
@@ -58,7 +57,7 @@ describe('VendorShippingLabelsApi', () => {
   });
   describe('submitShippingLabelRequest', () => {
     it('should successfully call submitShippingLabelRequestWithHttpInfo', async () => {
-      instructBackendMock("vendorShippingLabels", "submitShippingLabelRequest", "202")
+      await instructBackendMock("vendorShippingLabels", "submitShippingLabelRequest", "202")
       const params = [
         generateMockData('SubmitShippingLabelsRequest')
       ];

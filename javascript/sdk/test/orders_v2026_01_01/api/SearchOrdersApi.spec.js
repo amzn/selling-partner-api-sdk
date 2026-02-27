@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'orders_v2026_01_01', 'index.js');
 const TheSellingPartnerApiForOrders = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('SearchOrdersApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForOrders.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForOrders.SearchOrdersApi(apiClientInstance);
   });
 
   describe('searchOrders', () => {
     it('should successfully call searchOrdersWithHttpInfo', async () => {
-      instructBackendMock("searchOrders", "searchOrders", "200")
+      await instructBackendMock("searchOrders", "searchOrders", "200")
       const params = [
       ];
       const response = await instance.searchOrdersWithHttpInfo(...params);

@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'notifications_v1', 'index.js');
 const SellingPartnerApiForNotifications = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('NotificationsApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForNotifications.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForNotifications.NotificationsApi(apiClientInstance);
   });
 
   describe('createDestination', () => {
     it('should successfully call createDestinationWithHttpInfo', async () => {
-      instructBackendMock("notifications", "createDestination", "200")
+      await instructBackendMock("notifications", "createDestination", "200")
       const params = [
         generateMockData('CreateDestinationRequest')
       ];
@@ -30,7 +29,7 @@ describe('NotificationsApi', () => {
   });
   describe('createSubscription', () => {
     it('should successfully call createSubscriptionWithHttpInfo', async () => {
-      instructBackendMock("notifications", "createSubscription", "200")
+      await instructBackendMock("notifications", "createSubscription", "200")
       const params = [
         generateMockData('String'),
         generateMockData('CreateSubscriptionRequest')
@@ -44,7 +43,7 @@ describe('NotificationsApi', () => {
   });
   describe('deleteDestination', () => {
     it('should successfully call deleteDestinationWithHttpInfo', async () => {
-      instructBackendMock("notifications", "deleteDestination", "200")
+      await instructBackendMock("notifications", "deleteDestination", "200")
       const params = [
         generateMockData('String')
       ];
@@ -57,7 +56,7 @@ describe('NotificationsApi', () => {
   });
   describe('deleteSubscriptionById', () => {
     it('should successfully call deleteSubscriptionByIdWithHttpInfo', async () => {
-      instructBackendMock("notifications", "deleteSubscriptionById", "200")
+      await instructBackendMock("notifications", "deleteSubscriptionById", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -71,7 +70,7 @@ describe('NotificationsApi', () => {
   });
   describe('getDestination', () => {
     it('should successfully call getDestinationWithHttpInfo', async () => {
-      instructBackendMock("notifications", "getDestination", "200")
+      await instructBackendMock("notifications", "getDestination", "200")
       const params = [
         generateMockData('String')
       ];
@@ -84,7 +83,7 @@ describe('NotificationsApi', () => {
   });
   describe('getDestinations', () => {
     it('should successfully call getDestinationsWithHttpInfo', async () => {
-      instructBackendMock("notifications", "getDestinations", "200")
+      await instructBackendMock("notifications", "getDestinations", "200")
       const response = await instance.getDestinationsWithHttpInfo();
 
       expect(response).to.have.property('statusCode');
@@ -94,7 +93,7 @@ describe('NotificationsApi', () => {
   });
   describe('getSubscription', () => {
     it('should successfully call getSubscriptionWithHttpInfo', async () => {
-      instructBackendMock("notifications", "getSubscription", "200")
+      await instructBackendMock("notifications", "getSubscription", "200")
       const params = [
         generateMockData('String'),
       ];
@@ -107,7 +106,7 @@ describe('NotificationsApi', () => {
   });
   describe('getSubscriptionById', () => {
     it('should successfully call getSubscriptionByIdWithHttpInfo', async () => {
-      instructBackendMock("notifications", "getSubscriptionById", "200")
+      await instructBackendMock("notifications", "getSubscriptionById", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')

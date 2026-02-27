@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'finances_v0', 'index.js');
 const SellingPartnerApiForFinances = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('DefaultApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForFinances.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForFinances.DefaultApi(apiClientInstance);
   });
 
   describe('listFinancialEventGroups', () => {
     it('should successfully call listFinancialEventGroupsWithHttpInfo', async () => {
-      instructBackendMock("default", "listFinancialEventGroups", "200")
+      await instructBackendMock("default", "listFinancialEventGroups", "200")
       const params = [
       ];
       const response = await instance.listFinancialEventGroupsWithHttpInfo(...params);
@@ -29,7 +28,7 @@ describe('DefaultApi', () => {
   });
   describe('listFinancialEvents', () => {
     it('should successfully call listFinancialEventsWithHttpInfo', async () => {
-      instructBackendMock("default", "listFinancialEvents", "200")
+      await instructBackendMock("default", "listFinancialEvents", "200")
       const params = [
       ];
       const response = await instance.listFinancialEventsWithHttpInfo(...params);
@@ -41,7 +40,7 @@ describe('DefaultApi', () => {
   });
   describe('listFinancialEventsByGroupId', () => {
     it('should successfully call listFinancialEventsByGroupIdWithHttpInfo', async () => {
-      instructBackendMock("default", "listFinancialEventsByGroupId", "200")
+      await instructBackendMock("default", "listFinancialEventsByGroupId", "200")
       const params = [
         generateMockData('String'),
       ];
@@ -54,7 +53,7 @@ describe('DefaultApi', () => {
   });
   describe('listFinancialEventsByOrderId', () => {
     it('should successfully call listFinancialEventsByOrderIdWithHttpInfo', async () => {
-      instructBackendMock("default", "listFinancialEventsByOrderId", "200")
+      await instructBackendMock("default", "listFinancialEventsByOrderId", "200")
       const params = [
         generateMockData('String'),
       ];

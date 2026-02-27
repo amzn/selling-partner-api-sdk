@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'apluscontent_v2020_11_01', 'index.js');
 const SellingPartnerApiForAContentManagement = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('AplusContentApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForAContentManagement.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForAContentManagement.AplusContentApi(apiClientInstance);
   });
 
   describe('createContentDocument', () => {
     it('should successfully call createContentDocumentWithHttpInfo', async () => {
-      instructBackendMock("aplusContent", "createContentDocument", "200")
+      await instructBackendMock("aplusContent", "createContentDocument", "200")
       const params = [
         generateMockData('String'),
         generateMockData('PostContentDocumentRequest')
@@ -31,7 +30,7 @@ describe('AplusContentApi', () => {
   });
   describe('getContentDocument', () => {
     it('should successfully call getContentDocumentWithHttpInfo', async () => {
-      instructBackendMock("aplusContent", "getContentDocument", "200")
+      await instructBackendMock("aplusContent", "getContentDocument", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -46,7 +45,7 @@ describe('AplusContentApi', () => {
   });
   describe('listContentDocumentAsinRelations', () => {
     it('should successfully call listContentDocumentAsinRelationsWithHttpInfo', async () => {
-      instructBackendMock("aplusContent", "listContentDocumentAsinRelations", "200")
+      await instructBackendMock("aplusContent", "listContentDocumentAsinRelations", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -60,7 +59,7 @@ describe('AplusContentApi', () => {
   });
   describe('postContentDocumentApprovalSubmission', () => {
     it('should successfully call postContentDocumentApprovalSubmissionWithHttpInfo', async () => {
-      instructBackendMock("aplusContent", "postContentDocumentApprovalSubmission", "200")
+      await instructBackendMock("aplusContent", "postContentDocumentApprovalSubmission", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -74,7 +73,7 @@ describe('AplusContentApi', () => {
   });
   describe('postContentDocumentAsinRelations', () => {
     it('should successfully call postContentDocumentAsinRelationsWithHttpInfo', async () => {
-      instructBackendMock("aplusContent", "postContentDocumentAsinRelations", "200")
+      await instructBackendMock("aplusContent", "postContentDocumentAsinRelations", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -89,7 +88,7 @@ describe('AplusContentApi', () => {
   });
   describe('postContentDocumentSuspendSubmission', () => {
     it('should successfully call postContentDocumentSuspendSubmissionWithHttpInfo', async () => {
-      instructBackendMock("aplusContent", "postContentDocumentSuspendSubmission", "200")
+      await instructBackendMock("aplusContent", "postContentDocumentSuspendSubmission", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -103,7 +102,7 @@ describe('AplusContentApi', () => {
   });
   describe('searchContentDocuments', () => {
     it('should successfully call searchContentDocumentsWithHttpInfo', async () => {
-      instructBackendMock("aplusContent", "searchContentDocuments", "200")
+      await instructBackendMock("aplusContent", "searchContentDocuments", "200")
       const params = [
         generateMockData('String'),
       ];
@@ -116,7 +115,7 @@ describe('AplusContentApi', () => {
   });
   describe('searchContentPublishRecords', () => {
     it('should successfully call searchContentPublishRecordsWithHttpInfo', async () => {
-      instructBackendMock("aplusContent", "searchContentPublishRecords", "200")
+      await instructBackendMock("aplusContent", "searchContentPublishRecords", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -130,7 +129,7 @@ describe('AplusContentApi', () => {
   });
   describe('updateContentDocument', () => {
     it('should successfully call updateContentDocumentWithHttpInfo', async () => {
-      instructBackendMock("aplusContent", "updateContentDocument", "200")
+      await instructBackendMock("aplusContent", "updateContentDocument", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -145,7 +144,7 @@ describe('AplusContentApi', () => {
   });
   describe('validateContentDocumentAsinRelations', () => {
     it('should successfully call validateContentDocumentAsinRelationsWithHttpInfo', async () => {
-      instructBackendMock("aplusContent", "validateContentDocumentAsinRelations", "200")
+      await instructBackendMock("aplusContent", "validateContentDocumentAsinRelations", "200")
       const params = [
         generateMockData('String'),
         generateMockData('PostContentDocumentRequest'),

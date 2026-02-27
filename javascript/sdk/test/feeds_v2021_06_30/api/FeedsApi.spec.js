@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'feeds_v2021_06_30', 'index.js');
 const SellingPartnerApiForFeeds = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('FeedsApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForFeeds.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForFeeds.FeedsApi(apiClientInstance);
   });
 
   describe('cancelFeed', () => {
     it('should successfully call cancelFeedWithHttpInfo', async () => {
-      instructBackendMock("feeds", "cancelFeed", "200")
+      await instructBackendMock("feeds", "cancelFeed", "200")
       const params = [
         generateMockData('String')
       ];
@@ -29,7 +28,7 @@ describe('FeedsApi', () => {
   });
   describe('createFeed', () => {
     it('should successfully call createFeedWithHttpInfo', async () => {
-      instructBackendMock("feeds", "createFeed", "202")
+      await instructBackendMock("feeds", "createFeed", "202")
       const params = [
         generateMockData('CreateFeedSpecification')
       ];
@@ -42,7 +41,7 @@ describe('FeedsApi', () => {
   });
   describe('createFeedDocument', () => {
     it('should successfully call createFeedDocumentWithHttpInfo', async () => {
-      instructBackendMock("feeds", "createFeedDocument", "201")
+      await instructBackendMock("feeds", "createFeedDocument", "201")
       const params = [
         generateMockData('CreateFeedDocumentSpecification')
       ];
@@ -55,7 +54,7 @@ describe('FeedsApi', () => {
   });
   describe('getFeed', () => {
     it('should successfully call getFeedWithHttpInfo', async () => {
-      instructBackendMock("feeds", "getFeed", "200")
+      await instructBackendMock("feeds", "getFeed", "200")
       const params = [
         generateMockData('String')
       ];
@@ -68,7 +67,7 @@ describe('FeedsApi', () => {
   });
   describe('getFeedDocument', () => {
     it('should successfully call getFeedDocumentWithHttpInfo', async () => {
-      instructBackendMock("feeds", "getFeedDocument", "200")
+      await instructBackendMock("feeds", "getFeedDocument", "200")
       const params = [
         generateMockData('String')
       ];
@@ -81,7 +80,7 @@ describe('FeedsApi', () => {
   });
   describe('getFeeds', () => {
     it('should successfully call getFeedsWithHttpInfo', async () => {
-      instructBackendMock("feeds", "getFeeds", "200")
+      await instructBackendMock("feeds", "getFeeds", "200")
       const params = [
       ];
       const response = await instance.getFeedsWithHttpInfo(...params);

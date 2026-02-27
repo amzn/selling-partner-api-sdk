@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'orders_v0', 'index.js');
 const SellingPartnerApiForOrders = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('OrdersV0Api', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForOrders.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForOrders.OrdersV0Api(apiClientInstance);
   });
 
   describe('confirmShipment', () => {
     it('should successfully call confirmShipmentWithHttpInfo', async () => {
-      instructBackendMock("ordersV0", "confirmShipment", "204")
+      await instructBackendMock("ordersV0", "confirmShipment", "204")
       const params = [
         generateMockData('String'),
         generateMockData('ConfirmShipmentRequest')
@@ -30,7 +29,7 @@ describe('OrdersV0Api', () => {
   });
   describe('getOrder', () => {
     it('should successfully call getOrderWithHttpInfo', async () => {
-      instructBackendMock("ordersV0", "getOrder", "200")
+      await instructBackendMock("ordersV0", "getOrder", "200")
       const params = [
         generateMockData('String')
       ];
@@ -43,7 +42,7 @@ describe('OrdersV0Api', () => {
   });
   describe('getOrderAddress', () => {
     it('should successfully call getOrderAddressWithHttpInfo', async () => {
-      instructBackendMock("ordersV0", "getOrderAddress", "200")
+      await instructBackendMock("ordersV0", "getOrderAddress", "200")
       const params = [
         generateMockData('String')
       ];
@@ -56,7 +55,7 @@ describe('OrdersV0Api', () => {
   });
   describe('getOrderBuyerInfo', () => {
     it('should successfully call getOrderBuyerInfoWithHttpInfo', async () => {
-      instructBackendMock("ordersV0", "getOrderBuyerInfo", "200")
+      await instructBackendMock("ordersV0", "getOrderBuyerInfo", "200")
       const params = [
         generateMockData('String')
       ];
@@ -69,7 +68,7 @@ describe('OrdersV0Api', () => {
   });
   describe('getOrderItems', () => {
     it('should successfully call getOrderItemsWithHttpInfo', async () => {
-      instructBackendMock("ordersV0", "getOrderItems", "200")
+      await instructBackendMock("ordersV0", "getOrderItems", "200")
       const params = [
         generateMockData('String'),
       ];
@@ -82,7 +81,7 @@ describe('OrdersV0Api', () => {
   });
   describe('getOrderItemsBuyerInfo', () => {
     it('should successfully call getOrderItemsBuyerInfoWithHttpInfo', async () => {
-      instructBackendMock("ordersV0", "getOrderItemsBuyerInfo", "200")
+      await instructBackendMock("ordersV0", "getOrderItemsBuyerInfo", "200")
       const params = [
         generateMockData('String'),
       ];
@@ -95,7 +94,7 @@ describe('OrdersV0Api', () => {
   });
   describe('getOrderRegulatedInfo', () => {
     it('should successfully call getOrderRegulatedInfoWithHttpInfo', async () => {
-      instructBackendMock("ordersV0", "getOrderRegulatedInfo", "200")
+      await instructBackendMock("ordersV0", "getOrderRegulatedInfo", "200")
       const params = [
         generateMockData('String')
       ];
@@ -108,7 +107,7 @@ describe('OrdersV0Api', () => {
   });
   describe('getOrders', () => {
     it('should successfully call getOrdersWithHttpInfo', async () => {
-      instructBackendMock("ordersV0", "getOrders", "200")
+      await instructBackendMock("ordersV0", "getOrders", "200")
       const params = [
         generateMockData('String', true),
       ];
@@ -121,7 +120,7 @@ describe('OrdersV0Api', () => {
   });
   describe('updateVerificationStatus', () => {
     it('should successfully call updateVerificationStatusWithHttpInfo', async () => {
-      instructBackendMock("ordersV0", "updateVerificationStatus", "204")
+      await instructBackendMock("ordersV0", "updateVerificationStatus", "204")
       const params = [
         generateMockData('String'),
         generateMockData('UpdateVerificationStatusRequest')

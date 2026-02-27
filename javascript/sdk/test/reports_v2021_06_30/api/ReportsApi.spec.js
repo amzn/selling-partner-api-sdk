@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'reports_v2021_06_30', 'index.js');
 const SellingPartnerApiForReports = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('ReportsApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForReports.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForReports.ReportsApi(apiClientInstance);
   });
 
   describe('cancelReport', () => {
     it('should successfully call cancelReportWithHttpInfo', async () => {
-      instructBackendMock("reports", "cancelReport", "200")
+      await instructBackendMock("reports", "cancelReport", "200")
       const params = [
         generateMockData('String')
       ];
@@ -29,7 +28,7 @@ describe('ReportsApi', () => {
   });
   describe('cancelReportSchedule', () => {
     it('should successfully call cancelReportScheduleWithHttpInfo', async () => {
-      instructBackendMock("reports", "cancelReportSchedule", "200")
+      await instructBackendMock("reports", "cancelReportSchedule", "200")
       const params = [
         generateMockData('String')
       ];
@@ -41,7 +40,7 @@ describe('ReportsApi', () => {
   });
   describe('createReport', () => {
     it('should successfully call createReportWithHttpInfo', async () => {
-      instructBackendMock("reports", "createReport", "202")
+      await instructBackendMock("reports", "createReport", "202")
       const params = [
         generateMockData('CreateReportSpecification')
       ];
@@ -54,7 +53,7 @@ describe('ReportsApi', () => {
   });
   describe('createReportSchedule', () => {
     it('should successfully call createReportScheduleWithHttpInfo', async () => {
-      instructBackendMock("reports", "createReportSchedule", "201")
+      await instructBackendMock("reports", "createReportSchedule", "201")
       const params = [
         generateMockData('CreateReportScheduleSpecification')
       ];
@@ -67,7 +66,7 @@ describe('ReportsApi', () => {
   });
   describe('getReport', () => {
     it('should successfully call getReportWithHttpInfo', async () => {
-      instructBackendMock("reports", "getReport", "200")
+      await instructBackendMock("reports", "getReport", "200")
       const params = [
         generateMockData('String')
       ];
@@ -80,7 +79,7 @@ describe('ReportsApi', () => {
   });
   describe('getReportDocument', () => {
     it('should successfully call getReportDocumentWithHttpInfo', async () => {
-      instructBackendMock("reports", "getReportDocument", "200")
+      await instructBackendMock("reports", "getReportDocument", "200")
       const params = [
         generateMockData('String')
       ];
@@ -93,7 +92,7 @@ describe('ReportsApi', () => {
   });
   describe('getReportSchedule', () => {
     it('should successfully call getReportScheduleWithHttpInfo', async () => {
-      instructBackendMock("reports", "getReportSchedule", "200")
+      await instructBackendMock("reports", "getReportSchedule", "200")
       const params = [
         generateMockData('String')
       ];
@@ -106,7 +105,7 @@ describe('ReportsApi', () => {
   });
   describe('getReportSchedules', () => {
     it('should successfully call getReportSchedulesWithHttpInfo', async () => {
-      instructBackendMock("reports", "getReportSchedules", "200")
+      await instructBackendMock("reports", "getReportSchedules", "200")
       const params = [
         generateMockData('String', true)
       ];
@@ -119,7 +118,7 @@ describe('ReportsApi', () => {
   });
   describe('getReports', () => {
     it('should successfully call getReportsWithHttpInfo', async () => {
-      instructBackendMock("reports", "getReports", "200")
+      await instructBackendMock("reports", "getReports", "200")
       const params = [
       ];
       const response = await instance.getReportsWithHttpInfo(...params);

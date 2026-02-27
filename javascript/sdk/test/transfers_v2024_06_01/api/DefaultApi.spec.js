@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'transfers_v2024_06_01', 'index.js');
 const TheSellingPartnerApiForTransfers = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('DefaultApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForTransfers.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForTransfers.DefaultApi(apiClientInstance);
   });
 
   describe('getPaymentMethods', () => {
     it('should successfully call getPaymentMethodsWithHttpInfo', async () => {
-      instructBackendMock("default", "getPaymentMethods", "200")
+      await instructBackendMock("default", "getPaymentMethods", "200")
       const params = [
         generateMockData('String'),
       ];
@@ -30,7 +29,7 @@ describe('DefaultApi', () => {
   });
   describe('initiatePayout', () => {
     it('should successfully call initiatePayoutWithHttpInfo', async () => {
-      instructBackendMock("default", "initiatePayout", "200")
+      await instructBackendMock("default", "initiatePayout", "200")
       const params = [
         generateMockData('InitiatePayoutRequest')
       ];

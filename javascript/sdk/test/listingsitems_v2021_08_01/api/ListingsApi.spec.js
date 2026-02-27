@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'listingsitems_v2021_08_01', 'index.js');
 const SellingPartnerApiForListingsItems = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('ListingsApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForListingsItems.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForListingsItems.ListingsApi(apiClientInstance);
   });
 
   describe('deleteListingsItem', () => {
     it('should successfully call deleteListingsItemWithHttpInfo', async () => {
-      instructBackendMock("listings", "deleteListingsItem", "200")
+      await instructBackendMock("listings", "deleteListingsItem", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -32,7 +31,7 @@ describe('ListingsApi', () => {
   });
   describe('getListingsItem', () => {
     it('should successfully call getListingsItemWithHttpInfo', async () => {
-      instructBackendMock("listings", "getListingsItem", "200")
+      await instructBackendMock("listings", "getListingsItem", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -47,7 +46,7 @@ describe('ListingsApi', () => {
   });
   describe('patchListingsItem', () => {
     it('should successfully call patchListingsItemWithHttpInfo', async () => {
-      instructBackendMock("listings", "patchListingsItem", "200")
+      await instructBackendMock("listings", "patchListingsItem", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -63,7 +62,7 @@ describe('ListingsApi', () => {
   });
   describe('putListingsItem', () => {
     it('should successfully call putListingsItemWithHttpInfo', async () => {
-      instructBackendMock("listings", "putListingsItem", "200")
+      await instructBackendMock("listings", "putListingsItem", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -79,7 +78,7 @@ describe('ListingsApi', () => {
   });
   describe('searchListingsItems', () => {
     it('should successfully call searchListingsItemsWithHttpInfo', async () => {
-      instructBackendMock("listings", "searchListingsItems", "200")
+      await instructBackendMock("listings", "searchListingsItems", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),

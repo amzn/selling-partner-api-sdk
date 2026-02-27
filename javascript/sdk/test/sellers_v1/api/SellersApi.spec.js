@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'sellers_v1', 'index.js');
 const TheSellingPartnerApiForSellers = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('SellersApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForSellers.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForSellers.SellersApi(apiClientInstance);
   });
 
   describe('getAccount', () => {
     it('should successfully call getAccountWithHttpInfo', async () => {
-      instructBackendMock("sellers", "getAccount", "200")
+      await instructBackendMock("sellers", "getAccount", "200")
       const response = await instance.getAccountWithHttpInfo();
 
       expect(response).to.have.property('statusCode');
@@ -27,7 +26,7 @@ describe('SellersApi', () => {
   });
   describe('getMarketplaceParticipations', () => {
     it('should successfully call getMarketplaceParticipationsWithHttpInfo', async () => {
-      instructBackendMock("sellers", "getMarketplaceParticipations", "200")
+      await instructBackendMock("sellers", "getMarketplaceParticipations", "200")
       const response = await instance.getMarketplaceParticipationsWithHttpInfo();
 
       expect(response).to.have.property('statusCode');

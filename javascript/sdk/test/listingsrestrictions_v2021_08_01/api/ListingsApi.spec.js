@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'listingsrestrictions_v2021_08_01', 'index.js');
 const SellingPartnerApiForListingsRestrictions = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('ListingsApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForListingsRestrictions.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForListingsRestrictions.ListingsApi(apiClientInstance);
   });
 
   describe('getListingsRestrictions', () => {
     it('should successfully call getListingsRestrictionsWithHttpInfo', async () => {
-      instructBackendMock("listings", "getListingsRestrictions", "200")
+      await instructBackendMock("listings", "getListingsRestrictions", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),

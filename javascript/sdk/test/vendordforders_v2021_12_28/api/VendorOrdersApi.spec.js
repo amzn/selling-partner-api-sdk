@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'vendordforders_v2021_12_28', 'index.js');
 const SellingPartnerApiForDirectFulfillmentOrders = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('VendorOrdersApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForDirectFulfillmentOrders.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForDirectFulfillmentOrders.VendorOrdersApi(apiClientInstance);
   });
 
   describe('getOrder', () => {
     it('should successfully call getOrderWithHttpInfo', async () => {
-      instructBackendMock("vendorOrders", "getOrder", "200")
+      await instructBackendMock("vendorOrders", "getOrder", "200")
       const params = [
         generateMockData('String')
       ];
@@ -30,7 +29,7 @@ describe('VendorOrdersApi', () => {
   });
   describe('getOrders', () => {
     it('should successfully call getOrdersWithHttpInfo', async () => {
-      instructBackendMock("vendorOrders", "getOrders", "200")
+      await instructBackendMock("vendorOrders", "getOrders", "200")
       const params = [
         generateMockData('Date'),
         generateMockData('Date'),
@@ -44,7 +43,7 @@ describe('VendorOrdersApi', () => {
   });
   describe('submitAcknowledgement', () => {
     it('should successfully call submitAcknowledgementWithHttpInfo', async () => {
-      instructBackendMock("vendorOrders", "submitAcknowledgement", "202")
+      await instructBackendMock("vendorOrders", "submitAcknowledgement", "202")
       const params = [
         generateMockData('SubmitAcknowledgementRequest')
       ];

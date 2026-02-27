@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'finances_2024_06_19', 'index.js');
 const TheSellingPartnerApiForFinances = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('DefaultApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForFinances.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForFinances.DefaultApi(apiClientInstance);
   });
 
   describe('listTransactions', () => {
     it('should successfully call listTransactionsWithHttpInfo', async () => {
-      instructBackendMock("default", "listTransactions", "200")
+      await instructBackendMock("default", "listTransactions", "200")
       const params = [
       ];
       const response = await instance.listTransactionsWithHttpInfo(...params);

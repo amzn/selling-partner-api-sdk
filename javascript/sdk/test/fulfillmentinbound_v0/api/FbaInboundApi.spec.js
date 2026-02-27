@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'fulfillmentinbound_v0', 'index.js');
 const SellingPartnerApiForFulfillmentInbound = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('FbaInboundApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForFulfillmentInbound.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForFulfillmentInbound.FbaInboundApi(apiClientInstance);
   });
 
   describe('getBillOfLading', () => {
     it('should successfully call getBillOfLadingWithHttpInfo', async () => {
-      instructBackendMock("fbaInbound", "getBillOfLading", "200")
+      await instructBackendMock("fbaInbound", "getBillOfLading", "200")
       const params = [
         generateMockData('String')
       ];
@@ -30,7 +29,7 @@ describe('FbaInboundApi', () => {
   });
   describe('getLabels', () => {
     it('should successfully call getLabelsWithHttpInfo', async () => {
-      instructBackendMock("fbaInbound", "getLabels", "200")
+      await instructBackendMock("fbaInbound", "getLabels", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -45,7 +44,7 @@ describe('FbaInboundApi', () => {
   });
   describe('getPrepInstructions', () => {
     it('should successfully call getPrepInstructionsWithHttpInfo', async () => {
-      instructBackendMock("fbaInbound", "getPrepInstructions", "200")
+      await instructBackendMock("fbaInbound", "getPrepInstructions", "200")
       const params = [
         generateMockData('String'),
       ];
@@ -58,7 +57,7 @@ describe('FbaInboundApi', () => {
   });
   describe('getShipmentItems', () => {
     it('should successfully call getShipmentItemsWithHttpInfo', async () => {
-      instructBackendMock("fbaInbound", "getShipmentItems", "200")
+      await instructBackendMock("fbaInbound", "getShipmentItems", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -72,7 +71,7 @@ describe('FbaInboundApi', () => {
   });
   describe('getShipmentItemsByShipmentId', () => {
     it('should successfully call getShipmentItemsByShipmentIdWithHttpInfo', async () => {
-      instructBackendMock("fbaInbound", "getShipmentItemsByShipmentId", "200")
+      await instructBackendMock("fbaInbound", "getShipmentItemsByShipmentId", "200")
       const params = [
         generateMockData('String'),
       ];
@@ -85,7 +84,7 @@ describe('FbaInboundApi', () => {
   });
   describe('getShipments', () => {
     it('should successfully call getShipmentsWithHttpInfo', async () => {
-      instructBackendMock("fbaInbound", "getShipments", "200")
+      await instructBackendMock("fbaInbound", "getShipments", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),

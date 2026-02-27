@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'vendordfpayments_v1', 'index.js');
 const SellingPartnerApiForDirectFulfillmentPayments = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('VendorInvoiceApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForDirectFulfillmentPayments.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForDirectFulfillmentPayments.VendorInvoiceApi(apiClientInstance);
   });
 
   describe('submitInvoice', () => {
     it('should successfully call submitInvoiceWithHttpInfo', async () => {
-      instructBackendMock("vendorInvoice", "submitInvoice", "202")
+      await instructBackendMock("vendorInvoice", "submitInvoice", "202")
       const params = [
         generateMockData('SubmitInvoiceRequest')
       ];

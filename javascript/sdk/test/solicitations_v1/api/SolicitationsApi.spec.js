@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'solicitations_v1', 'index.js');
 const SellingPartnerApiForSolicitations = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('SolicitationsApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForSolicitations.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForSolicitations.SolicitationsApi(apiClientInstance);
   });
 
   describe('createProductReviewAndSellerFeedbackSolicitation', () => {
     it('should successfully call createProductReviewAndSellerFeedbackSolicitationWithHttpInfo', async () => {
-      instructBackendMock("solicitations", "createProductReviewAndSellerFeedbackSolicitation", "201")
+      await instructBackendMock("solicitations", "createProductReviewAndSellerFeedbackSolicitation", "201")
       const params = [
         generateMockData('String'),
         generateMockData('String', true)
@@ -31,7 +30,7 @@ describe('SolicitationsApi', () => {
   });
   describe('getSolicitationActionsForOrder', () => {
     it('should successfully call getSolicitationActionsForOrderWithHttpInfo', async () => {
-      instructBackendMock("solicitations", "getSolicitationActionsForOrder", "200")
+      await instructBackendMock("solicitations", "getSolicitationActionsForOrder", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String', true)

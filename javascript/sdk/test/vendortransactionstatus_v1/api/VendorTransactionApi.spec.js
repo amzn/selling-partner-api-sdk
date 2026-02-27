@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'vendortransactionstatus_v1', 'index.js');
 const SellingPartnerApiForRetailProcurementTransactionStatus = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('VendorTransactionApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForRetailProcurementTransactionStatus.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForRetailProcurementTransactionStatus.VendorTransactionApi(apiClientInstance);
   });
 
   describe('getTransaction', () => {
     it('should successfully call getTransactionWithHttpInfo', async () => {
-      instructBackendMock("vendorTransaction", "getTransaction", "200")
+      await instructBackendMock("vendorTransaction", "getTransaction", "200")
       const params = [
         generateMockData('String')
       ];

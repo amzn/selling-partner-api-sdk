@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'tokens_v2021_03_01', 'index.js');
 const SellingPartnerApiForTokens = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('TokensApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForTokens.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForTokens.TokensApi(apiClientInstance);
   });
 
   describe('createRestrictedDataToken', () => {
     it('should successfully call createRestrictedDataTokenWithHttpInfo', async () => {
-      instructBackendMock("tokens", "createRestrictedDataToken", "200")
+      await instructBackendMock("tokens", "createRestrictedDataToken", "200")
       const params = [
         generateMockData('CreateRestrictedDataTokenRequest')
       ];

@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'pricing_v0', 'index.js');
 const SellingPartnerApiForPricing = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('ProductPricingApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForPricing.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForPricing.ProductPricingApi(apiClientInstance);
   });
 
   describe('getCompetitivePricing', () => {
     it('should successfully call getCompetitivePricingWithHttpInfo', async () => {
-      instructBackendMock("productPricing", "getCompetitivePricing", "200")
+      await instructBackendMock("productPricing", "getCompetitivePricing", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -31,7 +30,7 @@ describe('ProductPricingApi', () => {
   });
   describe('getItemOffers', () => {
     it('should successfully call getItemOffersWithHttpInfo', async () => {
-      instructBackendMock("productPricing", "getItemOffers", "200")
+      await instructBackendMock("productPricing", "getItemOffers", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -46,7 +45,7 @@ describe('ProductPricingApi', () => {
   });
   describe('getItemOffersBatch', () => {
     it('should successfully call getItemOffersBatchWithHttpInfo', async () => {
-      instructBackendMock("productPricing", "getItemOffersBatch", "200")
+      await instructBackendMock("productPricing", "getItemOffersBatch", "200")
       const params = [
         generateMockData('GetItemOffersBatchRequest')
       ];
@@ -59,7 +58,7 @@ describe('ProductPricingApi', () => {
   });
   describe('getListingOffers', () => {
     it('should successfully call getListingOffersWithHttpInfo', async () => {
-      instructBackendMock("productPricing", "getListingOffers", "200")
+      await instructBackendMock("productPricing", "getListingOffers", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -74,7 +73,7 @@ describe('ProductPricingApi', () => {
   });
   describe('getListingOffersBatch', () => {
     it('should successfully call getListingOffersBatchWithHttpInfo', async () => {
-      instructBackendMock("productPricing", "getListingOffersBatch", "200")
+      await instructBackendMock("productPricing", "getListingOffersBatch", "200")
       const params = [
         generateMockData('GetListingOffersBatchRequest')
       ];
@@ -87,7 +86,7 @@ describe('ProductPricingApi', () => {
   });
   describe('getPricing', () => {
     it('should successfully call getPricingWithHttpInfo', async () => {
-      instructBackendMock("productPricing", "getPricing", "200")
+      await instructBackendMock("productPricing", "getPricing", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),

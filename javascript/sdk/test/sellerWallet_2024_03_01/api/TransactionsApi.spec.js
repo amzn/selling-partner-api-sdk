@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'sellerWallet_2024_03_01', 'index.js');
 const TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('TransactionsApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.TransactionsApi(apiClientInstance);
   });
 
   describe('createTransaction', () => {
     it('should successfully call createTransactionWithHttpInfo', async () => {
-      instructBackendMock("Transactions", "createTransaction", "200")
+      await instructBackendMock("Transactions", "createTransaction", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
@@ -33,7 +32,7 @@ describe('TransactionsApi', () => {
   });
   describe('getTransaction', () => {
     it('should successfully call getTransactionWithHttpInfo', async () => {
-      instructBackendMock("Transactions", "getTransaction", "200")
+      await instructBackendMock("Transactions", "getTransaction", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String')
@@ -47,7 +46,7 @@ describe('TransactionsApi', () => {
   });
   describe('listAccountTransactions', () => {
     it('should successfully call listAccountTransactionsWithHttpInfo', async () => {
-      instructBackendMock("Transactions", "listAccountTransactions", "200")
+      await instructBackendMock("Transactions", "listAccountTransactions", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),

@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'catalogitems_v2022_04_01', 'index.js');
 const SellingPartnerApiForCatalogItems = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('CatalogApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForCatalogItems.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForCatalogItems.CatalogApi(apiClientInstance);
   });
 
   describe('getCatalogItem', () => {
     it('should successfully call getCatalogItemWithHttpInfo', async () => {
-      instructBackendMock("catalog", "getCatalogItem", "200")
+      await instructBackendMock("catalog", "getCatalogItem", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String', true),
@@ -31,7 +30,7 @@ describe('CatalogApi', () => {
   });
   describe('searchCatalogItems', () => {
     it('should successfully call searchCatalogItemsWithHttpInfo', async () => {
-      instructBackendMock("catalog", "searchCatalogItems", "200")
+      await instructBackendMock("catalog", "searchCatalogItems", "200")
       const params = [
         generateMockData('String', true),
       ];

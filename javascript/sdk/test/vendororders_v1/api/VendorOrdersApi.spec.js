@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'vendororders_v1', 'index.js');
 const SellingPartnerApiForRetailProcurementOrders = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('VendorOrdersApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForRetailProcurementOrders.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForRetailProcurementOrders.VendorOrdersApi(apiClientInstance);
   });
 
   describe('getPurchaseOrder', () => {
     it('should successfully call getPurchaseOrderWithHttpInfo', async () => {
-      instructBackendMock("vendorOrders", "getPurchaseOrder", "200")
+      await instructBackendMock("vendorOrders", "getPurchaseOrder", "200")
       const params = [
         generateMockData('String')
       ];
@@ -30,7 +29,7 @@ describe('VendorOrdersApi', () => {
   });
   describe('getPurchaseOrders', () => {
     it('should successfully call getPurchaseOrdersWithHttpInfo', async () => {
-      instructBackendMock("vendorOrders", "getPurchaseOrders", "200")
+      await instructBackendMock("vendorOrders", "getPurchaseOrders", "200")
       const params = [
       ];
       const response = await instance.getPurchaseOrdersWithHttpInfo(...params);
@@ -42,7 +41,7 @@ describe('VendorOrdersApi', () => {
   });
   describe('getPurchaseOrdersStatus', () => {
     it('should successfully call getPurchaseOrdersStatusWithHttpInfo', async () => {
-      instructBackendMock("vendorOrders", "getPurchaseOrdersStatus", "200")
+      await instructBackendMock("vendorOrders", "getPurchaseOrdersStatus", "200")
       const params = [
       ];
       const response = await instance.getPurchaseOrdersStatusWithHttpInfo(...params);
@@ -54,7 +53,7 @@ describe('VendorOrdersApi', () => {
   });
   describe('submitAcknowledgement', () => {
     it('should successfully call submitAcknowledgementWithHttpInfo', async () => {
-      instructBackendMock("vendorOrders", "submitAcknowledgement", "202")
+      await instructBackendMock("vendorOrders", "submitAcknowledgement", "202")
       const params = [
         generateMockData('SubmitAcknowledgementRequest')
       ];

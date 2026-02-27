@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'vendordfinventory_v1', 'index.js');
 const SellingPartnerApiForDirectFulfillmentInventoryUpdates = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('UpdateInventoryApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new SellingPartnerApiForDirectFulfillmentInventoryUpdates.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForDirectFulfillmentInventoryUpdates.UpdateInventoryApi(apiClientInstance);
   });
 
   describe('submitInventoryUpdate', () => {
     it('should successfully call submitInventoryUpdateWithHttpInfo', async () => {
-      instructBackendMock("updateInventory", "submitInventoryUpdate", "202")
+      await instructBackendMock("updateInventory", "submitInventoryUpdate", "202")
       const params = [
         generateMockData('String'),
         generateMockData('SubmitInventoryUpdateRequest')

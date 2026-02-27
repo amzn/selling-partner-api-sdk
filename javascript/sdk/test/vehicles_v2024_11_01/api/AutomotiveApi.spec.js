@@ -3,21 +3,20 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'vehicles_v2024_11_01', 'index.js');
 const TheSellingPartnerApiForAutomotive = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('AutomotiveApi', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new TheSellingPartnerApiForAutomotive.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForAutomotive.AutomotiveApi(apiClientInstance);
   });
 
   describe('getVehicles', () => {
     it('should successfully call getVehiclesWithHttpInfo', async () => {
-      instructBackendMock("vehicles", "getVehicles", "200")
+      await instructBackendMock("vehicles", "getVehicles", "200")
       const params = [
         generateMockData('String'),
         generateMockData('String'),
