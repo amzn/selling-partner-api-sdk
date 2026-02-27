@@ -119,7 +119,7 @@ class GetOffersResult implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'marketplace_id' => 'MarketplaceID',
+        'marketplace_id' => 'marketplaceId',
         'asin' => 'ASIN',
         'sku' => 'SKU',
         'item_condition' => 'ItemCondition',

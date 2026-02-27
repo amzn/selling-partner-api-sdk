@@ -461,7 +461,7 @@ class Item implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets label_owner.
      *
-     * @param string $label_owner Specifies who will label the items. Options include `AMAZON`, `SELLER`, and `NONE`.
+     * @param string $label_owner Specifies who will label the items. Options include `AMAZON`, `SELLER`, and `NONE`. `AMAZON` is not an accepted value in the US marketplace.
      */
     public function setLabelOwner(string $label_owner): self
     {
