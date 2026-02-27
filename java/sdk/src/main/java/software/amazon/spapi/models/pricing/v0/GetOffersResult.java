@@ -19,8 +19,8 @@ import java.util.Objects;
 /** The payload for the getListingOffers and getItemOffers operations. */
 @Schema(description = "The payload for the getListingOffers and getItemOffers operations.")
 public class GetOffersResult {
-    @SerializedName("MarketplaceID")
-    private String marketplaceID = null;
+    @SerializedName("marketplaceId")
+    private String marketplaceId = null;
 
     @SerializedName("ASIN")
     private String ASIN = null;
@@ -43,23 +43,23 @@ public class GetOffersResult {
     @SerializedName("Offers")
     private OfferDetailList offers = null;
 
-    public GetOffersResult marketplaceID(String marketplaceID) {
-        this.marketplaceID = marketplaceID;
+    public GetOffersResult marketplaceId(String marketplaceId) {
+        this.marketplaceId = marketplaceId;
         return this;
     }
 
     /**
      * A marketplace identifier.
      *
-     * @return marketplaceID
+     * @return marketplaceId
      */
     @Schema(required = true, description = "A marketplace identifier.")
-    public String getMarketplaceID() {
-        return marketplaceID;
+    public String getMarketplaceId() {
+        return marketplaceId;
     }
 
-    public void setMarketplaceID(String marketplaceID) {
-        this.marketplaceID = marketplaceID;
+    public void setMarketplaceId(String marketplaceId) {
+        this.marketplaceId = marketplaceId;
     }
 
     public GetOffersResult ASIN(String ASIN) {
@@ -204,7 +204,7 @@ public class GetOffersResult {
             return false;
         }
         GetOffersResult getOffersResult = (GetOffersResult) o;
-        return Objects.equals(this.marketplaceID, getOffersResult.marketplaceID)
+        return Objects.equals(this.marketplaceId, getOffersResult.marketplaceId)
                 && Objects.equals(this.ASIN, getOffersResult.ASIN)
                 && Objects.equals(this.SKU, getOffersResult.SKU)
                 && Objects.equals(this.itemCondition, getOffersResult.itemCondition)
@@ -216,7 +216,7 @@ public class GetOffersResult {
 
     @Override
     public int hashCode() {
-        return Objects.hash(marketplaceID, ASIN, SKU, itemCondition, status, identifier, summary, offers);
+        return Objects.hash(marketplaceId, ASIN, SKU, itemCondition, status, identifier, summary, offers);
     }
 
     @Override
@@ -224,7 +224,7 @@ public class GetOffersResult {
         StringBuilder sb = new StringBuilder();
         sb.append("class GetOffersResult {\n");
 
-        sb.append("    marketplaceID: ").append(toIndentedString(marketplaceID)).append("\n");
+        sb.append("    marketplaceId: ").append(toIndentedString(marketplaceId)).append("\n");
         sb.append("    ASIN: ").append(toIndentedString(ASIN)).append("\n");
         sb.append("    SKU: ").append(toIndentedString(SKU)).append("\n");
         sb.append("    itemCondition: ").append(toIndentedString(itemCondition)).append("\n");

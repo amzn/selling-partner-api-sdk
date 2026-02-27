@@ -311,7 +311,9 @@ public class OrdersV0Api {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     private okhttp3.Call getOrderCall(
             String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -353,6 +355,7 @@ public class OrdersV0Api {
                 progressRequestListener);
     }
 
+    @Deprecated
     private okhttp3.Call getOrderValidateBeforeCall(
             String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -377,7 +380,9 @@ public class OrdersV0Api {
      * @return GetOrderResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public GetOrderResponse getOrder(String orderId, String restrictedDataToken) throws ApiException, LWAException {
         ApiResponse<GetOrderResponse> resp = getOrderWithHttpInfo(orderId, restrictedDataToken);
         return resp.getData();
@@ -395,7 +400,9 @@ public class OrdersV0Api {
      * @return GetOrderResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public GetOrderResponse getOrder(String orderId) throws ApiException, LWAException {
         ApiResponse<GetOrderResponse> resp = getOrderWithHttpInfo(orderId, null);
         return resp.getData();
@@ -414,7 +421,9 @@ public class OrdersV0Api {
      * @return ApiResponse&lt;GetOrderResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetOrderResponse> getOrderWithHttpInfo(String orderId, String restrictedDataToken)
             throws ApiException, LWAException {
         okhttp3.Call call = getOrderValidateBeforeCall(orderId, null);
@@ -443,7 +452,9 @@ public class OrdersV0Api {
      * @return ApiResponse&lt;GetOrderResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetOrderResponse> getOrderWithHttpInfo(String orderId) throws ApiException, LWAException {
         return getOrderWithHttpInfo(orderId, null);
     }
@@ -461,7 +472,9 @@ public class OrdersV0Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getOrderAsync(String orderId, final ApiCallback<GetOrderResponse> callback)
             throws ApiException, LWAException {
         return getOrderAsync(orderId, callback, null);
@@ -480,7 +493,9 @@ public class OrdersV0Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getOrderAsync(
             String orderId, final ApiCallback<GetOrderResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
@@ -513,7 +528,9 @@ public class OrdersV0Api {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     private okhttp3.Call getOrderAddressCall(
             String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -556,6 +573,7 @@ public class OrdersV0Api {
                 progressRequestListener);
     }
 
+    @Deprecated
     private okhttp3.Call getOrderAddressValidateBeforeCall(
             String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -580,7 +598,9 @@ public class OrdersV0Api {
      * @return GetOrderAddressResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public GetOrderAddressResponse getOrderAddress(String orderId, String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<GetOrderAddressResponse> resp = getOrderAddressWithHttpInfo(orderId, restrictedDataToken);
@@ -599,7 +619,9 @@ public class OrdersV0Api {
      * @return GetOrderAddressResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public GetOrderAddressResponse getOrderAddress(String orderId) throws ApiException, LWAException {
         ApiResponse<GetOrderAddressResponse> resp = getOrderAddressWithHttpInfo(orderId, null);
         return resp.getData();
@@ -618,7 +640,9 @@ public class OrdersV0Api {
      * @return ApiResponse&lt;GetOrderAddressResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetOrderAddressResponse> getOrderAddressWithHttpInfo(String orderId, String restrictedDataToken)
             throws ApiException, LWAException {
         okhttp3.Call call = getOrderAddressValidateBeforeCall(orderId, null);
@@ -647,7 +671,9 @@ public class OrdersV0Api {
      * @return ApiResponse&lt;GetOrderAddressResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetOrderAddressResponse> getOrderAddressWithHttpInfo(String orderId)
             throws ApiException, LWAException {
         return getOrderAddressWithHttpInfo(orderId, null);
@@ -666,7 +692,9 @@ public class OrdersV0Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getOrderAddressAsync(String orderId, final ApiCallback<GetOrderAddressResponse> callback)
             throws ApiException, LWAException {
         return getOrderAddressAsync(orderId, callback, null);
@@ -685,7 +713,9 @@ public class OrdersV0Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getOrderAddressAsync(
             String orderId, final ApiCallback<GetOrderAddressResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
@@ -718,7 +748,9 @@ public class OrdersV0Api {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     private okhttp3.Call getOrderBuyerInfoCall(
             String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -761,6 +793,7 @@ public class OrdersV0Api {
                 progressRequestListener);
     }
 
+    @Deprecated
     private okhttp3.Call getOrderBuyerInfoValidateBeforeCall(
             String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -785,7 +818,9 @@ public class OrdersV0Api {
      * @return GetOrderBuyerInfoResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public GetOrderBuyerInfoResponse getOrderBuyerInfo(String orderId, String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<GetOrderBuyerInfoResponse> resp = getOrderBuyerInfoWithHttpInfo(orderId, restrictedDataToken);
@@ -804,7 +839,9 @@ public class OrdersV0Api {
      * @return GetOrderBuyerInfoResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public GetOrderBuyerInfoResponse getOrderBuyerInfo(String orderId) throws ApiException, LWAException {
         ApiResponse<GetOrderBuyerInfoResponse> resp = getOrderBuyerInfoWithHttpInfo(orderId, null);
         return resp.getData();
@@ -823,7 +860,9 @@ public class OrdersV0Api {
      * @return ApiResponse&lt;GetOrderBuyerInfoResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetOrderBuyerInfoResponse> getOrderBuyerInfoWithHttpInfo(
             String orderId, String restrictedDataToken) throws ApiException, LWAException {
         okhttp3.Call call = getOrderBuyerInfoValidateBeforeCall(orderId, null);
@@ -852,7 +891,9 @@ public class OrdersV0Api {
      * @return ApiResponse&lt;GetOrderBuyerInfoResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetOrderBuyerInfoResponse> getOrderBuyerInfoWithHttpInfo(String orderId)
             throws ApiException, LWAException {
         return getOrderBuyerInfoWithHttpInfo(orderId, null);
@@ -871,7 +912,9 @@ public class OrdersV0Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getOrderBuyerInfoAsync(String orderId, final ApiCallback<GetOrderBuyerInfoResponse> callback)
             throws ApiException, LWAException {
         return getOrderBuyerInfoAsync(orderId, callback, null);
@@ -890,7 +933,9 @@ public class OrdersV0Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getOrderBuyerInfoAsync(
             String orderId, final ApiCallback<GetOrderBuyerInfoResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
@@ -924,7 +969,9 @@ public class OrdersV0Api {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     private okhttp3.Call getOrderItemsCall(
             String orderId, String nextToken, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -968,6 +1015,7 @@ public class OrdersV0Api {
                 progressRequestListener);
     }
 
+    @Deprecated
     private okhttp3.Call getOrderItemsValidateBeforeCall(
             String orderId, String nextToken, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -999,7 +1047,9 @@ public class OrdersV0Api {
      * @return GetOrderItemsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public GetOrderItemsResponse getOrderItems(String orderId, String nextToken, String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<GetOrderItemsResponse> resp = getOrderItemsWithHttpInfo(orderId, nextToken, restrictedDataToken);
@@ -1025,7 +1075,9 @@ public class OrdersV0Api {
      * @return GetOrderItemsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public GetOrderItemsResponse getOrderItems(String orderId, String nextToken) throws ApiException, LWAException {
         ApiResponse<GetOrderItemsResponse> resp = getOrderItemsWithHttpInfo(orderId, nextToken, null);
         return resp.getData();
@@ -1051,7 +1103,9 @@ public class OrdersV0Api {
      * @return ApiResponse&lt;GetOrderItemsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetOrderItemsResponse> getOrderItemsWithHttpInfo(
             String orderId, String nextToken, String restrictedDataToken) throws ApiException, LWAException {
         okhttp3.Call call = getOrderItemsValidateBeforeCall(orderId, nextToken, null);
@@ -1087,7 +1141,9 @@ public class OrdersV0Api {
      * @return ApiResponse&lt;GetOrderItemsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetOrderItemsResponse> getOrderItemsWithHttpInfo(String orderId, String nextToken)
             throws ApiException, LWAException {
         return getOrderItemsWithHttpInfo(orderId, nextToken, null);
@@ -1113,7 +1169,9 @@ public class OrdersV0Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getOrderItemsAsync(
             String orderId, String nextToken, final ApiCallback<GetOrderItemsResponse> callback)
             throws ApiException, LWAException {
@@ -1140,7 +1198,9 @@ public class OrdersV0Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getOrderItemsAsync(
             String orderId,
             String nextToken,
@@ -1177,7 +1237,9 @@ public class OrdersV0Api {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     private okhttp3.Call getOrderItemsBuyerInfoCall(
             String orderId, String nextToken, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -1222,6 +1284,7 @@ public class OrdersV0Api {
                 progressRequestListener);
     }
 
+    @Deprecated
     private okhttp3.Call getOrderItemsBuyerInfoValidateBeforeCall(
             String orderId, String nextToken, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -1248,7 +1311,9 @@ public class OrdersV0Api {
      * @return GetOrderItemsBuyerInfoResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public GetOrderItemsBuyerInfoResponse getOrderItemsBuyerInfo(
             String orderId, String nextToken, String restrictedDataToken) throws ApiException, LWAException {
         ApiResponse<GetOrderItemsBuyerInfoResponse> resp =
@@ -1269,7 +1334,9 @@ public class OrdersV0Api {
      * @return GetOrderItemsBuyerInfoResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public GetOrderItemsBuyerInfoResponse getOrderItemsBuyerInfo(String orderId, String nextToken)
             throws ApiException, LWAException {
         ApiResponse<GetOrderItemsBuyerInfoResponse> resp = getOrderItemsBuyerInfoWithHttpInfo(orderId, nextToken, null);
@@ -1290,7 +1357,9 @@ public class OrdersV0Api {
      * @return ApiResponse&lt;GetOrderItemsBuyerInfoResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetOrderItemsBuyerInfoResponse> getOrderItemsBuyerInfoWithHttpInfo(
             String orderId, String nextToken, String restrictedDataToken) throws ApiException, LWAException {
         okhttp3.Call call = getOrderItemsBuyerInfoValidateBeforeCall(orderId, nextToken, null);
@@ -1321,7 +1390,9 @@ public class OrdersV0Api {
      * @return ApiResponse&lt;GetOrderItemsBuyerInfoResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetOrderItemsBuyerInfoResponse> getOrderItemsBuyerInfoWithHttpInfo(
             String orderId, String nextToken) throws ApiException, LWAException {
         return getOrderItemsBuyerInfoWithHttpInfo(orderId, nextToken, null);
@@ -1341,7 +1412,9 @@ public class OrdersV0Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getOrderItemsBuyerInfoAsync(
             String orderId, String nextToken, final ApiCallback<GetOrderItemsBuyerInfoResponse> callback)
             throws ApiException, LWAException {
@@ -1362,7 +1435,9 @@ public class OrdersV0Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getOrderItemsBuyerInfoAsync(
             String orderId,
             String nextToken,
@@ -1697,7 +1772,9 @@ public class OrdersV0Api {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     private okhttp3.Call getOrdersCall(
             List<String> marketplaceIds,
             String createdAfter,
@@ -1804,6 +1881,7 @@ public class OrdersV0Api {
                 progressRequestListener);
     }
 
+    @Deprecated
     private okhttp3.Call getOrdersValidateBeforeCall(
             List<String> marketplaceIds,
             String createdAfter,
@@ -1963,7 +2041,9 @@ public class OrdersV0Api {
      * @return GetOrdersResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public GetOrdersResponse getOrders(
             List<String> marketplaceIds,
             String createdAfter,
@@ -2118,7 +2198,9 @@ public class OrdersV0Api {
      * @return GetOrdersResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public GetOrdersResponse getOrders(
             List<String> marketplaceIds,
             String createdAfter,
@@ -2273,7 +2355,9 @@ public class OrdersV0Api {
      * @return ApiResponse&lt;GetOrdersResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetOrdersResponse> getOrdersWithHttpInfo(
             List<String> marketplaceIds,
             String createdAfter,
@@ -2438,7 +2522,9 @@ public class OrdersV0Api {
      * @return ApiResponse&lt;GetOrdersResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<GetOrdersResponse> getOrdersWithHttpInfo(
             List<String> marketplaceIds,
             String createdAfter,
@@ -2593,7 +2679,9 @@ public class OrdersV0Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getOrdersAsync(
             List<String> marketplaceIds,
             String createdAfter,
@@ -2750,7 +2838,9 @@ public class OrdersV0Api {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
+     * @deprecated
      */
+    @Deprecated
     public okhttp3.Call getOrdersAsync(
             List<String> marketplaceIds,
             String createdAfter,
