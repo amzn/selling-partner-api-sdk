@@ -9,7 +9,7 @@ describe('{{classname}}', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new {{moduleName}}.ApiClient(testEndpoint);
+    const apiClientInstance = new {{moduleName}}.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new {{moduleName}}.{{classname}}(apiClientInstance);
   });
