@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <summary>
         /// Initializes a new instance of the <see cref="GetOffersResult" /> class.
         /// </summary>
-        /// <param name="marketplaceID">A marketplace identifier. (required).</param>
+        /// <param name="marketplaceId">A marketplace identifier. (required).</param>
         /// <param name="aSIN">The Amazon Standard Identification Number (ASIN) of the item..</param>
         /// <param name="sKU">The stock keeping unit (SKU) of the item..</param>
         /// <param name="itemCondition">itemCondition (required).</param>
@@ -53,14 +53,14 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="identifier">identifier (required).</param>
         /// <param name="summary">summary (required).</param>
         /// <param name="offers">A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less. (required).</param>
-        public GetOffersResult(string marketplaceID = default(string), string? aSIN = default(string?), string? sKU = default(string?), ConditionType itemCondition = default(ConditionType), string status = default(string), ItemIdentifier identifier = default(ItemIdentifier), Summary summary = default(Summary), List<OfferDetail> offers = default(List<OfferDetail>))
+        public GetOffersResult(string marketplaceId = default(string), string? aSIN = default(string?), string? sKU = default(string?), ConditionType itemCondition = default(ConditionType), string status = default(string), ItemIdentifier identifier = default(ItemIdentifier), Summary summary = default(Summary), List<OfferDetail> offers = default(List<OfferDetail>))
         {
-            // to ensure "marketplaceID" is required (not null)
-            if (marketplaceID == null)
+            // to ensure "marketplaceId" is required (not null)
+            if (marketplaceId == null)
             {
-                throw new ArgumentNullException("marketplaceID is a required property for GetOffersResult and cannot be null");
+                throw new ArgumentNullException("marketplaceId is a required property for GetOffersResult and cannot be null");
             }
-            this.MarketplaceID = marketplaceID;
+            this.MarketplaceId = marketplaceId;
             this.ItemCondition = itemCondition;
             // to ensure "status" is required (not null)
             if (status == null)
@@ -94,8 +94,8 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// A marketplace identifier.
         /// </summary>
         /// <value>A marketplace identifier.</value>
-        [DataMember(Name = "MarketplaceID", IsRequired = true, EmitDefaultValue = true)]
-        public string MarketplaceID { get; set; }
+        [DataMember(Name = "marketplaceId", IsRequired = true, EmitDefaultValue = true)]
+        public string MarketplaceId { get; set; }
 
         /// <summary>
         /// The Amazon Standard Identification Number (ASIN) of the item.
@@ -145,7 +145,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetOffersResult {\n");
-            sb.Append("  MarketplaceID: ").Append(MarketplaceID).Append("\n");
+            sb.Append("  MarketplaceId: ").Append(MarketplaceId).Append("\n");
             sb.Append("  ASIN: ").Append(ASIN).Append("\n");
             sb.Append("  SKU: ").Append(SKU).Append("\n");
             sb.Append("  ItemCondition: ").Append(ItemCondition).Append("\n");
