@@ -258,7 +258,7 @@ class DeliveryPreferences implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Sets delivery_instructions.
      *
-     * @param null|string $delivery_instructions Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, 'Beware of dogs', etc.
+     * @param null|string $delivery_instructions Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, or `Beware of dogs`.
      */
     public function setDeliveryInstructions(?string $delivery_instructions): self
     {

@@ -281,7 +281,7 @@ class DeliveryDocument implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Sets url.
      *
-     * @param null|string $url A URL that you can use to download the document. This URL has a `Content-Type` header. Note that the URL expires after one hour. To get a new URL, you must call the API again.
+     * @param null|string $url A URL that is valid for one hour to download the document. In case of URL expiry, call the API again to get a new url. The URL will have a Content-Type header.
      */
     public function setUrl(?string $url): self
     {

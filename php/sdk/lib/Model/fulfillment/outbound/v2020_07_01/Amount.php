@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description A quantity based on unit of measure.
+ * @description A quantity based on the specified unit of measurement.
  *
  * @author   OpenAPI Generator team
  *

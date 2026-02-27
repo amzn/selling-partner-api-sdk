@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description The preferred location to leave packages at the destination address.
+ * @description The drop-off location at the destination address.
  *
  * @author   OpenAPI Generator team
  *
@@ -58,8 +58,6 @@ class DropOffLocation implements ModelInterface, \ArrayAccess, \JsonSerializable
     public const TYPE_RECEPTIONIST = 'RECEPTIONIST';
     public const TYPE_FALLBACK_NEIGHBOR_DELIVERY = 'FALLBACK_NEIGHBOR_DELIVERY';
     public const TYPE_DO_NOT_LEAVE_UNATTENDED = 'DO_NOT_LEAVE_UNATTENDED';
-    public const TYPE_MAIL_ROOM_CLERK = 'MAIL_ROOM_CLERK';
-    public const TYPE_AS_INSTRUCTED = 'AS_INSTRUCTED';
 
     /**
      * The original name of the model.
@@ -247,8 +245,6 @@ class DropOffLocation implements ModelInterface, \ArrayAccess, \JsonSerializable
             self::TYPE_RECEPTIONIST,
             self::TYPE_FALLBACK_NEIGHBOR_DELIVERY,
             self::TYPE_DO_NOT_LEAVE_UNATTENDED,
-            self::TYPE_MAIL_ROOM_CLERK,
-            self::TYPE_AS_INSTRUCTED,
         ];
     }
 
@@ -298,7 +294,7 @@ class DropOffLocation implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets type.
      *
-     * @param string $type specifies the preferred location to leave the package at the destination address
+     * @param string $type the drop-off location type at the destination address
      */
     public function setType(string $type): self
     {
@@ -333,7 +329,7 @@ class DropOffLocation implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets attributes.
      *
-     * @param null|array<string,string> $attributes Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the `type` field. If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object should include the exact keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.  For `RECEPTIONIST`, `MAIL_ROOM_CLERK`, and `AS_INSTRUCTED` types, the `attributes` object will include a `recipientName` field containing the name of the person who received the package.
+     * @param null|array<string,string> $attributes Additional information about the drop-off location. This information can vary depending on the type of drop-off location specified in the `type` field.  If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object must include the keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.  For `RECEPTIONIST` type, the `attributes` object may include a `recipientName` field that contains the name of the person who received or will receive the package.
      */
     public function setAttributes(?array $attributes): self
     {

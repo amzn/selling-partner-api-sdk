@@ -65,7 +65,10 @@ class GetFeatureSkuResult implements ModelInterface, \ArrayAccess, \JsonSerializ
         'feature_name' => 'string',
         'is_eligible' => 'bool',
         'ineligible_reasons' => 'string[]',
-        'sku_info' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\FeatureSku'];
+        'seller_sku' => 'string',
+        'fn_sku' => 'string',
+        'asin' => 'string',
+        'sku_count' => 'float'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -81,7 +84,10 @@ class GetFeatureSkuResult implements ModelInterface, \ArrayAccess, \JsonSerializ
         'feature_name' => null,
         'is_eligible' => null,
         'ineligible_reasons' => null,
-        'sku_info' => null];
+        'seller_sku' => null,
+        'fn_sku' => null,
+        'asin' => null,
+        'sku_count' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -93,7 +99,10 @@ class GetFeatureSkuResult implements ModelInterface, \ArrayAccess, \JsonSerializ
         'feature_name' => false,
         'is_eligible' => false,
         'ineligible_reasons' => true,
-        'sku_info' => true,
+        'seller_sku' => true,
+        'fn_sku' => true,
+        'asin' => true,
+        'sku_count' => true,
     ];
 
     /**
@@ -114,7 +123,10 @@ class GetFeatureSkuResult implements ModelInterface, \ArrayAccess, \JsonSerializ
         'feature_name' => 'featureName',
         'is_eligible' => 'isEligible',
         'ineligible_reasons' => 'ineligibleReasons',
-        'sku_info' => 'skuInfo',
+        'seller_sku' => 'sellerSku',
+        'fn_sku' => 'fnSku',
+        'asin' => 'asin',
+        'sku_count' => 'skuCount',
     ];
 
     /**
@@ -127,7 +139,10 @@ class GetFeatureSkuResult implements ModelInterface, \ArrayAccess, \JsonSerializ
         'feature_name' => 'setFeatureName',
         'is_eligible' => 'setIsEligible',
         'ineligible_reasons' => 'setIneligibleReasons',
-        'sku_info' => 'setSkuInfo',
+        'seller_sku' => 'setSellerSku',
+        'fn_sku' => 'setFnSku',
+        'asin' => 'setAsin',
+        'sku_count' => 'setSkuCount',
     ];
 
     /**
@@ -140,7 +155,10 @@ class GetFeatureSkuResult implements ModelInterface, \ArrayAccess, \JsonSerializ
         'feature_name' => 'getFeatureName',
         'is_eligible' => 'getIsEligible',
         'ineligible_reasons' => 'getIneligibleReasons',
-        'sku_info' => 'getSkuInfo',
+        'seller_sku' => 'getSellerSku',
+        'fn_sku' => 'getFnSku',
+        'asin' => 'getAsin',
+        'sku_count' => 'getSkuCount',
     ];
 
     /**
@@ -160,7 +178,10 @@ class GetFeatureSkuResult implements ModelInterface, \ArrayAccess, \JsonSerializ
         $this->setIfExists('feature_name', $data ?? [], null);
         $this->setIfExists('is_eligible', $data ?? [], null);
         $this->setIfExists('ineligible_reasons', $data ?? [], null);
-        $this->setIfExists('sku_info', $data ?? [], null);
+        $this->setIfExists('seller_sku', $data ?? [], null);
+        $this->setIfExists('fn_sku', $data ?? [], null);
+        $this->setIfExists('asin', $data ?? [], null);
+        $this->setIfExists('sku_count', $data ?? [], null);
     }
 
     /**
@@ -374,31 +395,121 @@ class GetFeatureSkuResult implements ModelInterface, \ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets sku_info.
+     * Gets seller_sku.
      */
-    public function getSkuInfo(): ?FeatureSku
+    public function getSellerSku(): ?string
     {
-        return $this->container['sku_info'];
+        return $this->container['seller_sku'];
     }
 
     /**
-     * Sets sku_info.
+     * Sets seller_sku.
      *
-     * @param null|FeatureSku $sku_info sku_info
+     * @param null|string $seller_sku Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.
      */
-    public function setSkuInfo(?FeatureSku $sku_info): self
+    public function setSellerSku(?string $seller_sku): self
     {
-        if (is_null($sku_info)) {
-            array_push($this->openAPINullablesSetToNull, 'sku_info');
+        if (is_null($seller_sku)) {
+            array_push($this->openAPINullablesSetToNull, 'seller_sku');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('sku_info', $nullablesSetToNull);
+            $index = array_search('seller_sku', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['sku_info'] = $sku_info;
+        $this->container['seller_sku'] = $seller_sku;
+
+        return $this;
+    }
+
+    /**
+     * Gets fn_sku.
+     */
+    public function getFnSku(): ?string
+    {
+        return $this->container['fn_sku'];
+    }
+
+    /**
+     * Sets fn_sku.
+     *
+     * @param null|string $fn_sku the unique SKU used by Amazon's fulfillment network
+     */
+    public function setFnSku(?string $fn_sku): self
+    {
+        if (is_null($fn_sku)) {
+            array_push($this->openAPINullablesSetToNull, 'fn_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fn_sku', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['fn_sku'] = $fn_sku;
+
+        return $this;
+    }
+
+    /**
+     * Gets asin.
+     */
+    public function getAsin(): ?string
+    {
+        return $this->container['asin'];
+    }
+
+    /**
+     * Sets asin.
+     *
+     * @param null|string $asin the Amazon Standard Identification Number (ASIN) of the item
+     */
+    public function setAsin(?string $asin): self
+    {
+        if (is_null($asin)) {
+            array_push($this->openAPINullablesSetToNull, 'asin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('asin', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['asin'] = $asin;
+
+        return $this;
+    }
+
+    /**
+     * Gets sku_count.
+     */
+    public function getSkuCount(): ?float
+    {
+        return $this->container['sku_count'];
+    }
+
+    /**
+     * Sets sku_count.
+     *
+     * @param null|float $sku_count the number of SKUs available for this service
+     */
+    public function setSkuCount(?float $sku_count): self
+    {
+        if (is_null($sku_count)) {
+            array_push($this->openAPINullablesSetToNull, 'sku_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku_count', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['sku_count'] = $sku_count;
 
         return $this;
     }
