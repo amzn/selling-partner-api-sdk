@@ -1127,7 +1127,7 @@ public class FbaOutboundApi {
      * above indicates the default rate and burst values for this operation. Selling partners whose business demands
      * require higher throughput may have higher rate and burst values than those shown here. For more information,
      * refer to [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)..
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace for which to return a list of the inventory that is eligible for the
      *     specified feature. (required)
@@ -1161,7 +1161,7 @@ public class FbaOutboundApi {
      * above indicates the default rate and burst values for this operation. Selling partners whose business demands
      * require higher throughput may have higher rate and burst values than those shown here. For more information,
      * refer to [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)..
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace for which to return a list of the inventory that is eligible for the
      *     specified feature. (required)
@@ -1190,7 +1190,7 @@ public class FbaOutboundApi {
      * above indicates the default rate and burst values for this operation. Selling partners whose business demands
      * require higher throughput may have higher rate and burst values than those shown here. For more information,
      * refer to [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)..
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace for which to return a list of the inventory that is eligible for the
      *     specified feature. (required)
@@ -1235,7 +1235,7 @@ public class FbaOutboundApi {
      * above indicates the default rate and burst values for this operation. Selling partners whose business demands
      * require higher throughput may have higher rate and burst values than those shown here. For more information,
      * refer to [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)..
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace for which to return a list of the inventory that is eligible for the
      *     specified feature. (required)
@@ -1262,7 +1262,7 @@ public class FbaOutboundApi {
      * requested operation, when available. The table above indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
      * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)..
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace for which to return a list of the inventory that is eligible for the
      *     specified feature. (required)
@@ -1293,7 +1293,7 @@ public class FbaOutboundApi {
      * requested operation, when available. The table above indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
      * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)..
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace for which to return a list of the inventory that is eligible for the
      *     specified feature. (required)

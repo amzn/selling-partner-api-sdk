@@ -23,10 +23,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-/** The preferred location to leave packages at the destination address. */
-@Schema(description = "The preferred location to leave packages at the destination address.")
+/** The drop-off location at the destination address. */
+@Schema(description = "The drop-off location at the destination address.")
 public class DropOffLocation {
-    /** Specifies the preferred location to leave the package at the destination address. */
+    /** The drop-off location type at the destination address. */
     @JsonAdapter(TypeEnum.Adapter.class)
     public enum TypeEnum {
         @SerializedName("FRONT_DOOR")
@@ -44,11 +44,7 @@ public class DropOffLocation {
         @SerializedName("FALLBACK_NEIGHBOR_DELIVERY")
         FALLBACK_NEIGHBOR_DELIVERY("FALLBACK_NEIGHBOR_DELIVERY"),
         @SerializedName("DO_NOT_LEAVE_UNATTENDED")
-        DO_NOT_LEAVE_UNATTENDED("DO_NOT_LEAVE_UNATTENDED"),
-        @SerializedName("MAIL_ROOM_CLERK")
-        MAIL_ROOM_CLERK("MAIL_ROOM_CLERK"),
-        @SerializedName("AS_INSTRUCTED")
-        AS_INSTRUCTED("AS_INSTRUCTED");
+        DO_NOT_LEAVE_UNATTENDED("DO_NOT_LEAVE_UNATTENDED");
 
         private String value;
 
@@ -100,13 +96,11 @@ public class DropOffLocation {
     }
 
     /**
-     * Specifies the preferred location to leave the package at the destination address.
+     * The drop-off location type at the destination address.
      *
      * @return type
      */
-    @Schema(
-            required = true,
-            description = "Specifies the preferred location to leave the package at the destination address.")
+    @Schema(required = true, description = "The drop-off location type at the destination address.")
     public TypeEnum getType() {
         return type;
     }
@@ -129,19 +123,18 @@ public class DropOffLocation {
     }
 
     /**
-     * Additional information about the drop-off location that can vary depending on the type of drop-off location
-     * specified in the &#x60;type&#x60; field. If the &#x60;type&#x60; is set to
-     * &#x60;FALLBACK_NEIGHBOR_DELIVERY&#x60;, the &#x60;attributes&#x60; object should include the exact keys
+     * Additional information about the drop-off location. This information can vary depending on the type of drop-off
+     * location specified in the &#x60;type&#x60; field. If the &#x60;type&#x60; is set to
+     * &#x60;FALLBACK_NEIGHBOR_DELIVERY&#x60;, the &#x60;attributes&#x60; object must include the keys
      * &#x60;neighborName&#x60; and &#x60;houseNumber&#x60; to provide the name and house number of the designated
-     * neighbor. For &#x60;RECEPTIONIST&#x60;, &#x60;MAIL_ROOM_CLERK&#x60;, and &#x60;AS_INSTRUCTED&#x60; types, the
-     * &#x60;attributes&#x60; object will include a &#x60;recipientName&#x60; field containing the name of the person
-     * who received the package.
+     * neighbor. For &#x60;RECEPTIONIST&#x60; type, the &#x60;attributes&#x60; object may include a
+     * &#x60;recipientName&#x60; field that contains the name of the person who received or will receive the package.
      *
      * @return attributes
      */
     @Schema(
             description =
-                    "Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the `type` field. If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object should include the exact keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.  For `RECEPTIONIST`, `MAIL_ROOM_CLERK`, and `AS_INSTRUCTED` types, the `attributes` object will include a `recipientName` field containing the name of the person who received the package.")
+                    "Additional information about the drop-off location. This information can vary depending on the type of drop-off location specified in the `type` field.  If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object must include the keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.  For `RECEPTIONIST` type, the `attributes` object may include a `recipientName` field that contains the name of the person who received or will receive the package.")
     public Map<String, String> getAttributes() {
         return attributes;
     }

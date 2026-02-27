@@ -39,13 +39,13 @@ public class DeliveryPreferences {
 
     /**
      * Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby
-     * landmark or navigation instructions, &#x27;Beware of dogs&#x27;, etc.
+     * landmark or navigation instructions, or &#x60;Beware of dogs&#x60;.
      *
      * @return deliveryInstructions
      */
     @Schema(
             description =
-                    "Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, 'Beware of dogs', etc.")
+                    "Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, or `Beware of dogs`.")
     public String getDeliveryInstructions() {
         return deliveryInstructions;
     }

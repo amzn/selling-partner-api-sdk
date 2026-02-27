@@ -16,10 +16,13 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** The delivery information for the package. This information is available after the package is delivered. */
+/**
+ * The delivery information of the package, this information is only available post package delivery to its intended
+ * destination.
+ */
 @Schema(
         description =
-                "The delivery information for the package. This information is available after the package is delivered.")
+                "The delivery information of the package, this information is only available post package delivery to its intended destination.")
 public class DeliveryInformation {
     @SerializedName("deliveryDocumentList")
     private DeliveryDocumentList deliveryDocumentList = null;
