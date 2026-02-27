@@ -18,10 +18,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Install dependencies in each API dir
+      - name: Install SDK dependencies
         working-directory: ./javascript/sdk
         run: |
           npm install
+      - name: Install backend mock dependencies
+        working-directory: ./test
+        run: npm install
+      - name: Start backend mock
+        working-directory: ./test
+        run: node src/index.js &
       - name: Run tests and generate reports
         working-directory: ./javascript/sdk
         run: |
