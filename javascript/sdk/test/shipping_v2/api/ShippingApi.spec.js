@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'shipping_v2', 'index.js');
 const AmazonShippingApi = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('ShippingApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new AmazonShippingApi.ApiClient(testEndpoint);
+    const apiClientInstance = new AmazonShippingApi.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new AmazonShippingApi.ShippingApi(apiClientInstance);
   });

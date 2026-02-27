@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'fbaeligibility_v1', 'index.js');
 const SellingPartnerApiForFbaInboundEligibilty = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('FbaInboundApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForFbaInboundEligibilty.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForFbaInboundEligibilty.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForFbaInboundEligibilty.FbaInboundApi(apiClientInstance);
   });

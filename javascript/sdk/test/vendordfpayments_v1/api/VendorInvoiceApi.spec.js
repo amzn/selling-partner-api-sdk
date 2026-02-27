@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'vendordfpayments_v1', 'index.js');
 const SellingPartnerApiForDirectFulfillmentPayments = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('VendorInvoiceApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForDirectFulfillmentPayments.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForDirectFulfillmentPayments.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForDirectFulfillmentPayments.VendorInvoiceApi(apiClientInstance);
   });

@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'replenishment_v2022_11_07', 'index.js');
 const SellingPartnerApiForReplenishment = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('OffersApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForReplenishment.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForReplenishment.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForReplenishment.OffersApi(apiClientInstance);
   });

@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'supplysources_v2020_07_01', 'index.js');
 const SellingPartnerApiForSupplySources = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('SupplySourcesApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForSupplySources.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForSupplySources.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForSupplySources.SupplySourcesApi(apiClientInstance);
   });

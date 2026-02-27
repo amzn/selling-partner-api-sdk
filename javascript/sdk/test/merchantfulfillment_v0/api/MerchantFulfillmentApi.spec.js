@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'merchantfulfillment_v0', 'index.js');
 const SellingPartnerApiForMerchantFulfillment = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('MerchantFulfillmentApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForMerchantFulfillment.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForMerchantFulfillment.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForMerchantFulfillment.MerchantFulfillmentApi(apiClientInstance);
   });

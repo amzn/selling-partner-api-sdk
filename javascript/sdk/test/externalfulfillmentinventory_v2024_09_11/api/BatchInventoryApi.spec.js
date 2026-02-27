@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'externalfulfillmentinventory_v2024_09_11', 'index.js');
 const TheSellingPartnerApiForExternalFulfillmentInventoryManagement = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('BatchInventoryApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new TheSellingPartnerApiForExternalFulfillmentInventoryManagement.ApiClient(testEndpoint);
+    const apiClientInstance = new TheSellingPartnerApiForExternalFulfillmentInventoryManagement.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForExternalFulfillmentInventoryManagement.BatchInventoryApi(apiClientInstance);
   });

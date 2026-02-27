@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'messaging_v1', 'index.js');
 const SellingPartnerApiForMessaging = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('MessagingApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForMessaging.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForMessaging.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForMessaging.MessagingApi(apiClientInstance);
   });

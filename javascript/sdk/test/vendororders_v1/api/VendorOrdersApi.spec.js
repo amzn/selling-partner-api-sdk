@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'vendororders_v1', 'index.js');
 const SellingPartnerApiForRetailProcurementOrders = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('VendorOrdersApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForRetailProcurementOrders.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForRetailProcurementOrders.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForRetailProcurementOrders.VendorOrdersApi(apiClientInstance);
   });

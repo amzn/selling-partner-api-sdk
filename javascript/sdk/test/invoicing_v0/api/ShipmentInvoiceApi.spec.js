@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'invoicing_v0', 'index.js');
 const SellingPartnerApiForShipmentInvoicing = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('ShipmentInvoiceApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForShipmentInvoicing.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForShipmentInvoicing.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForShipmentInvoicing.ShipmentInvoiceApi(apiClientInstance);
   });

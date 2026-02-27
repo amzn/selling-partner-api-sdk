@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'vendordfinventory_v1', 'index.js');
 const SellingPartnerApiForDirectFulfillmentInventoryUpdates = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('UpdateInventoryApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForDirectFulfillmentInventoryUpdates.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForDirectFulfillmentInventoryUpdates.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForDirectFulfillmentInventoryUpdates.UpdateInventoryApi(apiClientInstance);
   });

@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'producttypedefinitions_v2020_09_01', 'index.js');
 const SellingPartnerApiForProductTypeDefinitions = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('DefinitionsApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForProductTypeDefinitions.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForProductTypeDefinitions.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForProductTypeDefinitions.DefinitionsApi(apiClientInstance);
   });

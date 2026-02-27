@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'externalfulfillmentreturns_v2024_09_11', 'index.js');
 const TheSellingPartnerApiForAmazonExternalFulfillmentReturnItemProcessing = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('ReturnRetrievalApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new TheSellingPartnerApiForAmazonExternalFulfillmentReturnItemProcessing.ApiClient(testEndpoint);
+    const apiClientInstance = new TheSellingPartnerApiForAmazonExternalFulfillmentReturnItemProcessing.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForAmazonExternalFulfillmentReturnItemProcessing.ReturnRetrievalApi(apiClientInstance);
   });

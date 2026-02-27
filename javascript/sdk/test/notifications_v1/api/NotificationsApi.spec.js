@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'notifications_v1', 'index.js');
 const SellingPartnerApiForNotifications = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('NotificationsApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForNotifications.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForNotifications.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForNotifications.NotificationsApi(apiClientInstance);
   });

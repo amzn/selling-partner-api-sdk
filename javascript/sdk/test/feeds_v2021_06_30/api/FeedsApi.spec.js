@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'feeds_v2021_06_30', 'index.js');
 const SellingPartnerApiForFeeds = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('FeedsApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForFeeds.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForFeeds.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForFeeds.FeedsApi(apiClientInstance);
   });
