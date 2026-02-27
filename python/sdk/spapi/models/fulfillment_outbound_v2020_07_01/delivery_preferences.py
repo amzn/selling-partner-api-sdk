@@ -61,7 +61,7 @@ class DeliveryPreferences(object):
     def delivery_instructions(self):
         """Gets the delivery_instructions of this DeliveryPreferences.  # noqa: E501
 
-        Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, 'Beware of dogs', etc.  # noqa: E501
+        Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, or `Beware of dogs`.  # noqa: E501
 
         :return: The delivery_instructions of this DeliveryPreferences.  # noqa: E501
         :rtype: str
@@ -72,7 +72,7 @@ class DeliveryPreferences(object):
     def delivery_instructions(self, delivery_instructions):
         """Sets the delivery_instructions of this DeliveryPreferences.
 
-        Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, 'Beware of dogs', etc.  # noqa: E501
+        Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, or `Beware of dogs`.  # noqa: E501
 
         :param delivery_instructions: The delivery_instructions of this DeliveryPreferences.  # noqa: E501
         :type: str

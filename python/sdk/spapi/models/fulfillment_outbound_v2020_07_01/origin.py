@@ -55,7 +55,7 @@ class Origin(object):
     def country_code(self):
         """Gets the country_code of this Origin.  # noqa: E501
 
-        The two digit country code the items should ship from. In ISO 3166-1 alpha-2 format.  # noqa: E501
+        The two-digit country code (in ISO 3166-1 alpha-2 format) for the country where the items will ship from.  # noqa: E501
 
         :return: The country_code of this Origin.  # noqa: E501
         :rtype: str
@@ -66,7 +66,7 @@ class Origin(object):
     def country_code(self, country_code):
         """Sets the country_code of this Origin.
 
-        The two digit country code the items should ship from. In ISO 3166-1 alpha-2 format.  # noqa: E501
+        The two-digit country code (in ISO 3166-1 alpha-2 format) for the country where the items will ship from.  # noqa: E501
 
         :param country_code: The country_code of this Origin.  # noqa: E501
         :type: str

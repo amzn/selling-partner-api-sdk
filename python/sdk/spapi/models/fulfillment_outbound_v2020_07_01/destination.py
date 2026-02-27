@@ -82,7 +82,7 @@ class Destination(object):
     def ip_address(self):
         """Gets the ip_address of this Destination.  # noqa: E501
 
-        An IP Address.  # noqa: E501
+        An IP address.  # noqa: E501
 
         :return: The ip_address of this Destination.  # noqa: E501
         :rtype: str
@@ -93,7 +93,7 @@ class Destination(object):
     def ip_address(self, ip_address):
         """Sets the ip_address of this Destination.
 
-        An IP Address.  # noqa: E501
+        An IP address.  # noqa: E501
 
         :param ip_address: The ip_address of this Destination.  # noqa: E501
         :type: str

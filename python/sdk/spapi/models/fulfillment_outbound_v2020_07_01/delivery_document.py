@@ -85,7 +85,7 @@ class DeliveryDocument(object):
     def url(self):
         """Gets the url of this DeliveryDocument.  # noqa: E501
 
-        A URL that you can use to download the document. This URL has a `Content-Type` header. Note that the URL expires after one hour. To get a new URL, you must call the API again.  # noqa: E501
+        A URL that is valid for one hour to download the document. In case of URL expiry, call the API again to get a new url. The URL will have a Content-Type header.  # noqa: E501
 
         :return: The url of this DeliveryDocument.  # noqa: E501
         :rtype: str
@@ -96,7 +96,7 @@ class DeliveryDocument(object):
     def url(self, url):
         """Sets the url of this DeliveryDocument.
 
-        A URL that you can use to download the document. This URL has a `Content-Type` header. Note that the URL expires after one hour. To get a new URL, you must call the API again.  # noqa: E501
+        A URL that is valid for one hour to download the document. In case of URL expiry, call the API again to get a new url. The URL will have a Content-Type header.  # noqa: E501
 
         :param url: The url of this DeliveryDocument.  # noqa: E501
         :type: str
