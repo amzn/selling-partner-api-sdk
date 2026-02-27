@@ -9,7 +9,7 @@ describe('DefaultApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new TheSellingPartnerApiForTransfers.ApiClient(testEndpoint);
+    const apiClientInstance = new TheSellingPartnerApiForTransfers.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForTransfers.DefaultApi(apiClientInstance);
   });

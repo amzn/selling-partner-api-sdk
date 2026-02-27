@@ -9,7 +9,7 @@ describe('AwdApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.ApiClient(testEndpoint);
+    const apiClientInstance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.AwdApi(apiClientInstance);
   });

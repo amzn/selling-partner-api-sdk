@@ -9,7 +9,7 @@ describe('MerchantFulfillmentApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForMerchantFulfillment.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForMerchantFulfillment.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForMerchantFulfillment.MerchantFulfillmentApi(apiClientInstance);
   });

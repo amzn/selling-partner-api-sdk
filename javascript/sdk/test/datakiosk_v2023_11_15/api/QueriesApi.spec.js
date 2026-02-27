@@ -9,7 +9,7 @@ describe('QueriesApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForDataKiosk.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForDataKiosk.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForDataKiosk.QueriesApi(apiClientInstance);
   });

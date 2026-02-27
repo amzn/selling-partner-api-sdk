@@ -9,7 +9,7 @@ describe('AplusContentApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForAContentManagement.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForAContentManagement.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForAContentManagement.AplusContentApi(apiClientInstance);
   });

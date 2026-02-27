@@ -9,7 +9,7 @@ describe('CustomerFeedbackApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new TheSellingPartnerApiForCustomerFeedback.ApiClient(testEndpoint);
+    const apiClientInstance = new TheSellingPartnerApiForCustomerFeedback.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForCustomerFeedback.CustomerFeedbackApi(apiClientInstance);
   });

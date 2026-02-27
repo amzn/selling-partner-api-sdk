@@ -9,7 +9,7 @@ describe('ReturnRetrievalApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new TheSellingPartnerApiForAmazonExternalFulfillmentReturnItemProcessing.ApiClient(testEndpoint);
+    const apiClientInstance = new TheSellingPartnerApiForAmazonExternalFulfillmentReturnItemProcessing.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForAmazonExternalFulfillmentReturnItemProcessing.ReturnRetrievalApi(apiClientInstance);
   });

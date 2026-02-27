@@ -9,7 +9,7 @@ describe('ShippingApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new AmazonShippingApi.ApiClient(testEndpoint);
+    const apiClientInstance = new AmazonShippingApi.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new AmazonShippingApi.ShippingApi(apiClientInstance);
   });

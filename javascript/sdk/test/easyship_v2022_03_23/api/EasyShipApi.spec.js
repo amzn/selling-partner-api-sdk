@@ -9,7 +9,7 @@ describe('EasyShipApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForEasyShip.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForEasyShip.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForEasyShip.EasyShipApi(apiClientInstance);
   });

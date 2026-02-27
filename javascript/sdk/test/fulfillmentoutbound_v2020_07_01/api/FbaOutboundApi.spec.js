@@ -9,7 +9,7 @@ describe('FbaOutboundApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApisForFulfillmentOutbound.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApisForFulfillmentOutbound.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApisForFulfillmentOutbound.FbaOutboundApi(apiClientInstance);
   });

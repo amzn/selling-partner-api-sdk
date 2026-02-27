@@ -9,7 +9,7 @@ describe('UpdateInventoryApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForDirectFulfillmentInventoryUpdates.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForDirectFulfillmentInventoryUpdates.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForDirectFulfillmentInventoryUpdates.UpdateInventoryApi(apiClientInstance);
   });

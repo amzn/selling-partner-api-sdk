@@ -9,7 +9,7 @@ describe('BatchInventoryApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new TheSellingPartnerApiForExternalFulfillmentInventoryManagement.ApiClient(testEndpoint);
+    const apiClientInstance = new TheSellingPartnerApiForExternalFulfillmentInventoryManagement.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForExternalFulfillmentInventoryManagement.BatchInventoryApi(apiClientInstance);
   });
