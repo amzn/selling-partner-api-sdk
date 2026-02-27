@@ -3,15 +3,14 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', '{{invokerPackage}}', 'index.js');
 const {{moduleName}} = await import(modulePath);
+const endpoint = 'https://localhost:3000';
 
 describe('{{classname}}', () => {
   let instance;
-  const testEndpoint = 'https://localhost:3000';
-  const testAccessToken = "testAccessToken";
 
   beforeEach(() => {
     const apiClientInstance = new {{moduleName}}.ApiClient(testEndpoint);
-    apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
+    apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new {{moduleName}}.{{classname}}(apiClientInstance);
   });
 
@@ -19,7 +18,7 @@ describe('{{classname}}', () => {
   {{#operation}}
   describe('{{operationId}}', () => {
     it('should successfully call {{operationId}}WithHttpInfo', async () => {
-      instructBackendMock("{{tags.0.name}}", "{{operationId}}", "{{responses.0.code}}")
+      await instructBackendMock("{{tags.0.name}}", "{{operationId}}", "{{responses.0.code}}")
       {{#hasParams}}
       const params = [
         {{#allParams}}
