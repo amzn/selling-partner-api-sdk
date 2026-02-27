@@ -34,7 +34,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <summary>
         /// Initializes a new instance of the <see cref="DeliveryPreferences" /> class.
         /// </summary>
-        /// <param name="deliveryInstructions">Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, &#39;Beware of dogs&#39;, etc..</param>
+        /// <param name="deliveryInstructions">Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, or &#x60;Beware of dogs&#x60;..</param>
         /// <param name="dropOffLocation">dropOffLocation.</param>
         public DeliveryPreferences(string? deliveryInstructions = default(string?), DropOffLocation? dropOffLocation = default(DropOffLocation?))
         {
@@ -43,9 +43,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         }
 
         /// <summary>
-        /// Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, &#39;Beware of dogs&#39;, etc.
+        /// Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, or &#x60;Beware of dogs&#x60;.
         /// </summary>
-        /// <value>Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, &#39;Beware of dogs&#39;, etc.</value>
+        /// <value>Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, or &#x60;Beware of dogs&#x60;.</value>
         [DataMember(Name = "deliveryInstructions", EmitDefaultValue = false)]
         public string? DeliveryInstructions { get; set; }
 

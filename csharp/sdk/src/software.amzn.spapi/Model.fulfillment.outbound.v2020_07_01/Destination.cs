@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Initializes a new instance of the <see cref="Destination" /> class.
         /// </summary>
         /// <param name="deliveryAddress">deliveryAddress.</param>
-        /// <param name="ipAddress">An IP Address..</param>
+        /// <param name="ipAddress">An IP address..</param>
         public Destination(VariablePrecisionAddress? deliveryAddress = default(VariablePrecisionAddress?), string? ipAddress = default(string?))
         {
             this.DeliveryAddress = deliveryAddress;
@@ -49,9 +49,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         public VariablePrecisionAddress? DeliveryAddress { get; set; }
 
         /// <summary>
-        /// An IP Address.
+        /// An IP address.
         /// </summary>
-        /// <value>An IP Address.</value>
+        /// <value>An IP address.</value>
         [DataMember(Name = "ipAddress", EmitDefaultValue = false)]
         public string? IpAddress { get; set; }
 

@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Initializes a new instance of the <see cref="DeliveryDocument" /> class.
         /// </summary>
         /// <param name="documentType">The delivery document type. The only possible value is &#x60;DELIVERY_IMAGE&#x60;. (required).</param>
-        /// <param name="url">A URL that you can use to download the document. This URL has a &#x60;Content-Type&#x60; header. Note that the URL expires after one hour. To get a new URL, you must call the API again..</param>
+        /// <param name="url">A URL that is valid for one hour to download the document. In case of URL expiry, call the API again to get a new url. The URL will have a Content-Type header..</param>
         public DeliveryDocument(string documentType = default(string), string? url = default(string?))
         {
             // to ensure "documentType" is required (not null)
@@ -60,9 +60,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         public string DocumentType { get; set; }
 
         /// <summary>
-        /// A URL that you can use to download the document. This URL has a &#x60;Content-Type&#x60; header. Note that the URL expires after one hour. To get a new URL, you must call the API again.
+        /// A URL that is valid for one hour to download the document. In case of URL expiry, call the API again to get a new url. The URL will have a Content-Type header.
         /// </summary>
-        /// <value>A URL that you can use to download the document. This URL has a &#x60;Content-Type&#x60; header. Note that the URL expires after one hour. To get a new URL, you must call the API again.</value>
+        /// <value>A URL that is valid for one hour to download the document. In case of URL expiry, call the API again to get a new url. The URL will have a Content-Type header.</value>
         [DataMember(Name = "url", EmitDefaultValue = false)]
         public string? Url { get; set; }
 

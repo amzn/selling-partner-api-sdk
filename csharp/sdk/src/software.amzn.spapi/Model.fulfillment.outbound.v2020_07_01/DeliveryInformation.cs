@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
 {
     /// <summary>
-    /// The delivery information for the package. This information is available after the package is delivered.
+    /// The delivery information of the package, this information is only available post package delivery to its intended destination.
     /// </summary>
     [DataContract(Name = "DeliveryInformation")]
     public partial class DeliveryInformation : IValidatableObject

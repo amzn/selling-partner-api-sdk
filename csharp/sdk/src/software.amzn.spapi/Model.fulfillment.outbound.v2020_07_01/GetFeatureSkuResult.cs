@@ -43,8 +43,11 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="featureName">The name of the feature. (required).</param>
         /// <param name="isEligible">When true, the seller SKU is eligible for the requested feature. (required).</param>
         /// <param name="ineligibleReasons">A list of one or more reasons that the seller SKU is ineligible for the feature.  Possible values: * &#x60;MERCHANT_NOT_ENROLLED&#x60;: The merchant isn&#39;t enrolled for the feature. * &#x60;SKU_NOT_ELIGIBLE&#x60;: The SKU doesn&#39;t reside in a warehouse that supports the feature. * &#x60;INVALID_SKU&#x60;: There is an issue with the SKU provided..</param>
-        /// <param name="skuInfo">skuInfo.</param>
-        public GetFeatureSkuResult(string marketplaceId = default(string), string featureName = default(string), bool isEligible = default(bool), List<string>? ineligibleReasons = default(List<string>?), FeatureSku? skuInfo = default(FeatureSku?))
+        /// <param name="sellerSku">Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit..</param>
+        /// <param name="fnSku">The unique SKU used by Amazon&#39;s fulfillment network..</param>
+        /// <param name="asin">The Amazon Standard Identification Number (ASIN) of the item..</param>
+        /// <param name="skuCount">The number of SKUs available for this service..</param>
+        public GetFeatureSkuResult(string marketplaceId = default(string), string featureName = default(string), bool isEligible = default(bool), List<string>? ineligibleReasons = default(List<string>?), string? sellerSku = default(string?), string? fnSku = default(string?), string? asin = default(string?), decimal? skuCount = default(decimal?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -60,7 +63,10 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             this.FeatureName = featureName;
             this.IsEligible = isEligible;
             this.IneligibleReasons = ineligibleReasons;
-            this.SkuInfo = skuInfo;
+            this.SellerSku = sellerSku;
+            this.FnSku = fnSku;
+            this.Asin = asin;
+            this.SkuCount = skuCount;
         }
 
         /// <summary>
@@ -92,10 +98,32 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         public List<string>? IneligibleReasons { get; set; }
 
         /// <summary>
-        /// Gets or Sets SkuInfo
+        /// Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.
         /// </summary>
-        [DataMember(Name = "skuInfo", EmitDefaultValue = false)]
-        public FeatureSku? SkuInfo { get; set; }
+        /// <value>Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.</value>
+        [DataMember(Name = "sellerSku", EmitDefaultValue = false)]
+        public string? SellerSku { get; set; }
+
+        /// <summary>
+        /// The unique SKU used by Amazon&#39;s fulfillment network.
+        /// </summary>
+        /// <value>The unique SKU used by Amazon&#39;s fulfillment network.</value>
+        [DataMember(Name = "fnSku", EmitDefaultValue = false)]
+        public string? FnSku { get; set; }
+
+        /// <summary>
+        /// The Amazon Standard Identification Number (ASIN) of the item.
+        /// </summary>
+        /// <value>The Amazon Standard Identification Number (ASIN) of the item.</value>
+        [DataMember(Name = "asin", EmitDefaultValue = false)]
+        public string? Asin { get; set; }
+
+        /// <summary>
+        /// The number of SKUs available for this service.
+        /// </summary>
+        /// <value>The number of SKUs available for this service.</value>
+        [DataMember(Name = "skuCount", EmitDefaultValue = false)]
+        public decimal? SkuCount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,7 +137,10 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             sb.Append("  FeatureName: ").Append(FeatureName).Append("\n");
             sb.Append("  IsEligible: ").Append(IsEligible).Append("\n");
             sb.Append("  IneligibleReasons: ").Append(IneligibleReasons).Append("\n");
-            sb.Append("  SkuInfo: ").Append(SkuInfo).Append("\n");
+            sb.Append("  SellerSku: ").Append(SellerSku).Append("\n");
+            sb.Append("  FnSku: ").Append(FnSku).Append("\n");
+            sb.Append("  Asin: ").Append(Asin).Append("\n");
+            sb.Append("  SkuCount: ").Append(SkuCount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
