@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'appintegrations_v2024_04_01', 'index.js');
 const TheSellingPartnerApiForThirdPartyApplicationIntegrations = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('AppIntegrationsApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.ApiClient(testEndpoint);
+    const apiClientInstance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForThirdPartyApplicationIntegrations.AppIntegrationsApi(apiClientInstance);
   });

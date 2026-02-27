@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'easyship_v2022_03_23', 'index.js');
 const SellingPartnerApiForEasyShip = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('EasyShipApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForEasyShip.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForEasyShip.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForEasyShip.EasyShipApi(apiClientInstance);
   });

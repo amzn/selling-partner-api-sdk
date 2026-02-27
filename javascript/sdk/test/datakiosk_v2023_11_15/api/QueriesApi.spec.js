@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'datakiosk_v2023_11_15', 'index.js');
 const SellingPartnerApiForDataKiosk = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('QueriesApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForDataKiosk.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForDataKiosk.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForDataKiosk.QueriesApi(apiClientInstance);
   });

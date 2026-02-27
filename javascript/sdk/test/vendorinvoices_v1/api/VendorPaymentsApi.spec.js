@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'vendorinvoices_v1', 'index.js');
 const SellingPartnerApiForRetailProcurementPayments = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('VendorPaymentsApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForRetailProcurementPayments.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForRetailProcurementPayments.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForRetailProcurementPayments.VendorPaymentsApi(apiClientInstance);
   });

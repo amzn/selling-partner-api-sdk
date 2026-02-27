@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'awd_v2024_05_09', 'index.js');
 const TheSellingPartnerApiForAmazonWarehousingAndDistribution = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('AwdApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.ApiClient(testEndpoint);
+    const apiClientInstance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new TheSellingPartnerApiForAmazonWarehousingAndDistribution.AwdApi(apiClientInstance);
   });

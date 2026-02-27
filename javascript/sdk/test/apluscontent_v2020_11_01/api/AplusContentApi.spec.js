@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'apluscontent_v2020_11_01', 'index.js');
 const SellingPartnerApiForAContentManagement = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('AplusContentApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForAContentManagement.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForAContentManagement.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForAContentManagement.AplusContentApi(apiClientInstance);
   });

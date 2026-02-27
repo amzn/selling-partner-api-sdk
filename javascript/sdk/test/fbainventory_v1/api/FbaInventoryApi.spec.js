@@ -3,13 +3,13 @@ import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'fbainventory_v1', 'index.js');
 const SellingPartnerApiForFbaInventory = await import(modulePath);
-const endpoint = 'https://localhost:3000';
+const endpoint = 'http://localhost:3000';
 
 describe('FbaInventoryApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new SellingPartnerApiForFbaInventory.ApiClient(testEndpoint);
+    const apiClientInstance = new SellingPartnerApiForFbaInventory.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
     instance = new SellingPartnerApiForFbaInventory.FbaInventoryApi(apiClientInstance);
   });
