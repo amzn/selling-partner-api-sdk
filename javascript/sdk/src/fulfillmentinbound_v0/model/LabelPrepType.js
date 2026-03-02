@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const LabelPrepType = Object.freeze({
   NO_LABEL: 'NO_LABEL',
   SELLER_LABEL: 'SELLER_LABEL',
-  AMAZON_LABEL: 'AMAZON_LABEL'
+  AMAZON_LABEL: 'AMAZON_LABEL',
+  constructFromObject: function (object) {
+    return object
+  }
 })

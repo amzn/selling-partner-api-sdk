@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const ScheduleExpressionType = Object.freeze({
   RECURRING: 'RECURRING',
-  ONE_TIME: 'ONE_TIME'
+  ONE_TIME: 'ONE_TIME',
+  constructFromObject: function (object) {
+    return object
+  }
 })

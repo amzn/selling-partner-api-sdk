@@ -5,5 +5,6 @@ export type WeightUnitOfMeasurement = "POUNDS" | "KILOGRAMS";
 export const WeightUnitOfMeasurement: Readonly<{
     POUNDS: "POUNDS";
     KILOGRAMS: "KILOGRAMS";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=WeightUnitOfMeasurement.d.ts.map

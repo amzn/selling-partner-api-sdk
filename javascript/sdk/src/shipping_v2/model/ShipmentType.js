@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const ShipmentType = Object.freeze({
   FORWARD: 'FORWARD',
-  RETURNS: 'RETURNS'
+  RETURNS: 'RETURNS',
+  constructFromObject: function (object) {
+    return object
+  }
 })

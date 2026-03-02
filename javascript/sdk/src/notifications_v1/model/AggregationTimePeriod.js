@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const AggregationTimePeriod = Object.freeze({
   FiveMinutes: 'FiveMinutes',
-  TenMinutes: 'TenMinutes'
+  TenMinutes: 'TenMinutes',
+  constructFromObject: function (object) {
+    return object
+  }
 })

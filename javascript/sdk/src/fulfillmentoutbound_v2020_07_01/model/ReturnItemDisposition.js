@@ -21,5 +21,8 @@ export const ReturnItemDisposition = Object.freeze({
   Defective: 'Defective',
   CustomerDamaged: 'CustomerDamaged',
   CarrierDamaged: 'CarrierDamaged',
-  FulfillerDamaged: 'FulfillerDamaged'
+  FulfillerDamaged: 'FulfillerDamaged',
+  constructFromObject: function (object) {
+    return object
+  }
 })

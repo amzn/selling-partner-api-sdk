@@ -11,5 +11,6 @@ export const AccessPointType: Readonly<{
     CORE_LOCKER: "CORE_LOCKER";
     '3P': "3P";
     CAMPUS_ROOM: "CAMPUS_ROOM";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=AccessPointType.d.ts.map

@@ -29,5 +29,6 @@ export const AdditionalLocationInfo: Readonly<{
     RECEIVER: "RECEIVER";
     SECURE_LOCATION: "SECURE_LOCATION";
     SIDE_DOOR: "SIDE_DOOR";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=AdditionalLocationInfo.d.ts.map

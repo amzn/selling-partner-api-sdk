@@ -5,5 +5,6 @@ export type EngineOutputUnit = "KILOWATT" | "HORSEPOWER";
 export const EngineOutputUnit: Readonly<{
     KILOWATT: "KILOWATT";
     HORSEPOWER: "HORSEPOWER";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=EngineOutputUnit.d.ts.map

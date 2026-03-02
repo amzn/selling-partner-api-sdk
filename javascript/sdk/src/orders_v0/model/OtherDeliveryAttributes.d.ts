@@ -6,5 +6,6 @@ export const OtherDeliveryAttributes: Readonly<{
     HAS_ACCESS_POINT: "HAS_ACCESS_POINT";
     PALLET_ENABLED: "PALLET_ENABLED";
     PALLET_DISABLED: "PALLET_DISABLED";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=OtherDeliveryAttributes.d.ts.map

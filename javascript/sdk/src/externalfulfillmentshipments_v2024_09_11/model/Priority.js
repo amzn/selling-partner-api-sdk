@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const Priority = Object.freeze({
   HIGH: 'HIGH',
-  LOW: 'LOW'
+  LOW: 'LOW',
+  constructFromObject: function (object) {
+    return object
+  }
 })

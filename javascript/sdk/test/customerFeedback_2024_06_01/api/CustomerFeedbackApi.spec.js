@@ -25,7 +25,7 @@ describe('CustomerFeedbackApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getBrowseNodeReturnTrends', () => {
@@ -39,7 +39,7 @@ describe('CustomerFeedbackApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getBrowseNodeReviewTopics', () => {
@@ -54,7 +54,7 @@ describe('CustomerFeedbackApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getBrowseNodeReviewTrends', () => {
@@ -68,7 +68,7 @@ describe('CustomerFeedbackApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getItemBrowseNode', () => {
@@ -82,7 +82,7 @@ describe('CustomerFeedbackApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getItemReviewTopics', () => {
@@ -97,7 +97,7 @@ describe('CustomerFeedbackApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getItemReviewTrends', () => {
@@ -111,7 +111,7 @@ describe('CustomerFeedbackApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
 
@@ -130,7 +130,7 @@ describe('CustomerFeedbackApi', () => {
 });
 
 function assertValidResponsePayload(statusCode, payload) {
-  if (statusCode != 204) expect(payload).to.be.ok();
+  if (statusCode !== 204) expect(payload).to.be.ok();
 }
 
 async function instructBackendMock(basename, response, code) {

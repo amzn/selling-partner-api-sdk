@@ -24,7 +24,7 @@ describe('MerchantFulfillmentApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('createShipment', () => {
@@ -37,7 +37,7 @@ describe('MerchantFulfillmentApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getAdditionalSellerInputs', () => {
@@ -50,7 +50,7 @@ describe('MerchantFulfillmentApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getEligibleShipmentServices', () => {
@@ -63,7 +63,7 @@ describe('MerchantFulfillmentApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getShipment', () => {
@@ -76,7 +76,7 @@ describe('MerchantFulfillmentApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
 
@@ -95,7 +95,7 @@ describe('MerchantFulfillmentApi', () => {
 });
 
 function assertValidResponsePayload(statusCode, payload) {
-  if (statusCode != 204) expect(payload).to.be.ok();
+  if (statusCode !== 204) expect(payload).to.be.ok();
 }
 
 async function instructBackendMock(basename, response, code) {

@@ -11,5 +11,6 @@ export const DecoratorType: Readonly<{
     STYLE_LINEBREAK: "STYLE_LINEBREAK";
     STYLE_PARAGRAPH: "STYLE_PARAGRAPH";
     STYLE_UNDERLINE: "STYLE_UNDERLINE";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=DecoratorType.d.ts.map

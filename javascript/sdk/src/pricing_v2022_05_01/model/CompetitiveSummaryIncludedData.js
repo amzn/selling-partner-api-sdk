@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const CompetitiveSummaryIncludedData = Object.freeze({
   featuredBuyingOptions: 'featuredBuyingOptions',
   referencePrices: 'referencePrices',
-  lowestPricedOffers: 'lowestPricedOffers'
+  lowestPricedOffers: 'lowestPricedOffers',
+  constructFromObject: function (object) {
+    return object
+  }
 })

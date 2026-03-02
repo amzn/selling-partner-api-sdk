@@ -7,5 +7,6 @@ export const EligibilityStatus: Readonly<{
     INELIGIBLE: "INELIGIBLE";
     SUSPENDED: "SUSPENDED";
     REPLENISHMENT_ONLY_ORDERING: "REPLENISHMENT_ONLY_ORDERING";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=EligibilityStatus.d.ts.map

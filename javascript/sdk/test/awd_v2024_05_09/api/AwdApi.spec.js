@@ -36,7 +36,7 @@ describe('AwdApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('confirmInbound', () => {
@@ -73,7 +73,7 @@ describe('AwdApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(201)
-      assertValidResponsePayload(201, response.data.payload);
+      assertValidResponsePayload(201, response.data);
     });
   });
   describe('createReplenishmentOrder', () => {
@@ -86,7 +86,7 @@ describe('AwdApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(201)
-      assertValidResponsePayload(201, response.data.payload);
+      assertValidResponsePayload(201, response.data);
     });
   });
   describe('getInbound', () => {
@@ -99,7 +99,7 @@ describe('AwdApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getInboundShipment', () => {
@@ -112,7 +112,7 @@ describe('AwdApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getInboundShipmentLabels', () => {
@@ -125,7 +125,7 @@ describe('AwdApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getReplenishmentOrder', () => {
@@ -138,7 +138,7 @@ describe('AwdApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listInboundShipments', () => {
@@ -150,7 +150,7 @@ describe('AwdApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listInventory', () => {
@@ -162,7 +162,7 @@ describe('AwdApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listReplenishmentOrders', () => {
@@ -174,7 +174,7 @@ describe('AwdApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('updateInbound', () => {
@@ -219,7 +219,7 @@ describe('AwdApi', () => {
 });
 
 function assertValidResponsePayload(statusCode, payload) {
-  if (statusCode != 204) expect(payload).to.be.ok();
+  if (statusCode !== 204) expect(payload).to.be.ok();
 }
 
 async function instructBackendMock(basename, response, code) {

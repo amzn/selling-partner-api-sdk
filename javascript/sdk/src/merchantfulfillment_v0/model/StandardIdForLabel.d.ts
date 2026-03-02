@@ -4,5 +4,6 @@ export type StandardIdForLabel = "AmazonOrderId";
  */
 export const StandardIdForLabel: Readonly<{
     AmazonOrderId: "AmazonOrderId";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=StandardIdForLabel.d.ts.map

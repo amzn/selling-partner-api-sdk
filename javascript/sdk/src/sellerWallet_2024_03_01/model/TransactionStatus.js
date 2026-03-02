@@ -22,5 +22,8 @@ export const TransactionStatus = Object.freeze({
   FAILED_CREDITS_APPLIED: 'FAILED_CREDITS_APPLIED',
   IN_PROGRESS: 'IN_PROGRESS',
   PENDING_USER_APPROVAL: 'PENDING_USER_APPROVAL',
-  SUCCESSFUL: 'SUCCESSFUL'
+  SUCCESSFUL: 'SUCCESSFUL',
+  constructFromObject: function (object) {
+    return object
+  }
 })

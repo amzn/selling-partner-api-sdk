@@ -24,7 +24,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('cancelSelfShipAppointment', () => {
@@ -39,7 +39,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('confirmDeliveryWindowOptions', () => {
@@ -54,7 +54,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('confirmPackingOption', () => {
@@ -68,7 +68,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('confirmPlacementOption', () => {
@@ -82,7 +82,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('confirmShipmentContentUpdatePreview', () => {
@@ -97,7 +97,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('confirmTransportationOptions', () => {
@@ -111,7 +111,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('createInboundPlan', () => {
@@ -124,7 +124,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('createMarketplaceItemLabels', () => {
@@ -137,7 +137,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('generateDeliveryWindowOptions', () => {
@@ -151,7 +151,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('generatePackingOptions', () => {
@@ -164,7 +164,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('generatePlacementOptions', () => {
@@ -178,7 +178,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('generateSelfShipAppointmentSlots', () => {
@@ -193,7 +193,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(201)
-      assertValidResponsePayload(201, response.data.payload);
+      assertValidResponsePayload(201, response.data);
     });
   });
   describe('generateShipmentContentUpdatePreviews', () => {
@@ -208,7 +208,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('generateTransportationOptions', () => {
@@ -222,7 +222,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('getDeliveryChallanDocument', () => {
@@ -236,7 +236,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getInboundOperationStatus', () => {
@@ -249,7 +249,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getInboundPlan', () => {
@@ -262,7 +262,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getSelfShipAppointmentSlots', () => {
@@ -276,7 +276,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getShipment', () => {
@@ -290,7 +290,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getShipmentContentUpdatePreview', () => {
@@ -305,7 +305,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listDeliveryWindowOptions', () => {
@@ -319,7 +319,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listInboundPlanBoxes', () => {
@@ -332,7 +332,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listInboundPlanItems', () => {
@@ -345,7 +345,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listInboundPlanPallets', () => {
@@ -358,7 +358,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listInboundPlans', () => {
@@ -370,7 +370,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listItemComplianceDetails', () => {
@@ -384,7 +384,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listPackingGroupBoxes', () => {
@@ -398,7 +398,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listPackingGroupItems', () => {
@@ -412,7 +412,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listPackingOptions', () => {
@@ -425,7 +425,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listPlacementOptions', () => {
@@ -438,7 +438,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listPrepDetails', () => {
@@ -452,7 +452,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listShipmentBoxes', () => {
@@ -466,7 +466,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listShipmentContentUpdatePreviews', () => {
@@ -480,7 +480,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listShipmentItems', () => {
@@ -494,7 +494,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listShipmentPallets', () => {
@@ -508,7 +508,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listTransportationOptions', () => {
@@ -521,7 +521,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('scheduleSelfShipAppointment', () => {
@@ -537,7 +537,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('setPackingInformation', () => {
@@ -551,7 +551,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('setPrepDetails', () => {
@@ -564,7 +564,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('updateInboundPlanName', () => {
@@ -591,7 +591,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('updateShipmentName', () => {
@@ -620,7 +620,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('updateShipmentTrackingDetails', () => {
@@ -635,7 +635,7 @@ describe('FbaInboundApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
 
@@ -654,7 +654,7 @@ describe('FbaInboundApi', () => {
 });
 
 function assertValidResponsePayload(statusCode, payload) {
-  if (statusCode != 204) expect(payload).to.be.ok();
+  if (statusCode !== 204) expect(payload).to.be.ok();
 }
 
 async function instructBackendMock(basename, response, code) {

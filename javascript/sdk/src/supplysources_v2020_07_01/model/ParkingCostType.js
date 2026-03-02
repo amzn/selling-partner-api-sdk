@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const ParkingCostType = Object.freeze({
   Free: 'Free',
-  Other: 'Other'
+  Other: 'Other',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const UnitOfLength = Object.freeze({
   inches: 'inches',
-  centimeters: 'centimeters'
+  centimeters: 'centimeters',
+  constructFromObject: function (object) {
+    return object
+  }
 })

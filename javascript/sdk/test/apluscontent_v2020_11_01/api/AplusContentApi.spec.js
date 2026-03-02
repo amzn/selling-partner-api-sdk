@@ -25,7 +25,7 @@ describe('AplusContentApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getContentDocument', () => {
@@ -40,7 +40,7 @@ describe('AplusContentApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('listContentDocumentAsinRelations', () => {
@@ -54,7 +54,7 @@ describe('AplusContentApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('postContentDocumentApprovalSubmission', () => {
@@ -68,7 +68,7 @@ describe('AplusContentApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('postContentDocumentAsinRelations', () => {
@@ -83,7 +83,7 @@ describe('AplusContentApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('postContentDocumentSuspendSubmission', () => {
@@ -97,7 +97,7 @@ describe('AplusContentApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('searchContentDocuments', () => {
@@ -110,7 +110,7 @@ describe('AplusContentApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('searchContentPublishRecords', () => {
@@ -124,7 +124,7 @@ describe('AplusContentApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('updateContentDocument', () => {
@@ -139,7 +139,7 @@ describe('AplusContentApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('validateContentDocumentAsinRelations', () => {
@@ -153,7 +153,7 @@ describe('AplusContentApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
 
@@ -172,7 +172,7 @@ describe('AplusContentApi', () => {
 });
 
 function assertValidResponsePayload(statusCode, payload) {
-  if (statusCode != 204) expect(payload).to.be.ok();
+  if (statusCode !== 204) expect(payload).to.be.ok();
 }
 
 async function instructBackendMock(basename, response, code) {

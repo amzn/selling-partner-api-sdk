@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const DocumentFormat = Object.freeze({
   PDF: 'PDF',
   PNG: 'PNG',
-  ZPL: 'ZPL'
+  ZPL: 'ZPL',
+  constructFromObject: function (object) {
+    return object
+  }
 })

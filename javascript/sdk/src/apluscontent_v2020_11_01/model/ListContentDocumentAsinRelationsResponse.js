@@ -30,7 +30,6 @@ export class ListContentDocumentAsinRelationsResponse {
    * @param asinMetadataSet {AsinMetadata[]} The set of ASIN metadata.
    */
   constructor (asinMetadataSet) {
-    AplusPaginatedResponse.call(this)
     this.asinMetadataSet = asinMetadataSet
   }
 

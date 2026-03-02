@@ -20,5 +20,8 @@ export const TransferScheduleStatus = Object.freeze({
   ENABLED: 'ENABLED',
   DISABLED: 'DISABLED',
   EXPIRED: 'EXPIRED',
-  DELETED: 'DELETED'
+  DELETED: 'DELETED',
+  constructFromObject: function (object) {
+    return object
+  }
 })

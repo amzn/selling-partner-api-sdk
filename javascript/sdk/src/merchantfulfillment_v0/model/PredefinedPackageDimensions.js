@@ -66,5 +66,8 @@ export const PredefinedPackageDimensions = Object.freeze({
   USPS_RegionalRateBoxB2: 'USPS_RegionalRateBoxB2',
   USPS_RegionalRateBoxC: 'USPS_RegionalRateBoxC',
   USPS_SmallFlatRateBox: 'USPS_SmallFlatRateBox',
-  USPS_SmallFlatRateEnvelope: 'USPS_SmallFlatRateEnvelope'
+  USPS_SmallFlatRateEnvelope: 'USPS_SmallFlatRateEnvelope',
+  constructFromObject: function (object) {
+    return object
+  }
 })

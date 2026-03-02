@@ -12,5 +12,6 @@ export const ReasonComment: Readonly<{
     SHIPPING_PLAN_CHANGED: "SHIPPING_PLAN_CHANGED";
     INCREASED_QUANTITY: "INCREASED_QUANTITY";
     OTHER: "OTHER";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ReasonComment.d.ts.map

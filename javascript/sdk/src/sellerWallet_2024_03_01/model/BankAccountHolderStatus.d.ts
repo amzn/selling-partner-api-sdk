@@ -7,5 +7,6 @@ export const BankAccountHolderStatus: Readonly<{
     INACTIVE: "INACTIVE";
     UNDER_REVIEW: "UNDER_REVIEW";
     VERIFICATION_FAILED: "VERIFICATION_FAILED";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=BankAccountHolderStatus.d.ts.map

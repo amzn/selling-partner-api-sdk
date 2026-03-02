@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const FulfillmentChannelType = Object.freeze({
   Amazon: 'Amazon',
-  Merchant: 'Merchant'
+  Merchant: 'Merchant',
+  constructFromObject: function (object) {
+    return object
+  }
 })

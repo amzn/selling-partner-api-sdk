@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const HazmatType = Object.freeze({
   None: 'None',
-  LQHazmat: 'LQHazmat'
+  LQHazmat: 'LQHazmat',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -6,5 +6,6 @@ export const ShipmentStatus: Readonly<{
     ReadyForPickup: "ReadyForPickup";
     PickedUp: "PickedUp";
     RefusedPickup: "RefusedPickup";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ShipmentStatus.d.ts.map

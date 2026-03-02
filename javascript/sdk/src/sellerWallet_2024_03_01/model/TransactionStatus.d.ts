@@ -9,5 +9,6 @@ export const TransactionStatus: Readonly<{
     IN_PROGRESS: "IN_PROGRESS";
     PENDING_USER_APPROVAL: "PENDING_USER_APPROVAL";
     SUCCESSFUL: "SUCCESSFUL";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=TransactionStatus.d.ts.map

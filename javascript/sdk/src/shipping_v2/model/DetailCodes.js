@@ -46,5 +46,8 @@ export const DetailCodes = Object.freeze({
   AddressNotFound: 'AddressNotFound',
   HazmatShipment: 'HazmatShipment',
   Undeliverable: 'Undeliverable',
-  ArrivedAtLocalFacility: 'ArrivedAtLocalFacility'
+  ArrivedAtLocalFacility: 'ArrivedAtLocalFacility',
+  constructFromObject: function (object) {
+    return object
+  }
 })

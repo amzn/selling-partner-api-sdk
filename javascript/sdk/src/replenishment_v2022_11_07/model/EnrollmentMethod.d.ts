@@ -5,5 +5,6 @@ export type EnrollmentMethod = "MANUAL" | "AUTOMATIC";
 export const EnrollmentMethod: Readonly<{
     MANUAL: "MANUAL";
     AUTOMATIC: "AUTOMATIC";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=EnrollmentMethod.d.ts.map

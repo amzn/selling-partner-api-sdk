@@ -4,5 +4,6 @@ export type AssignmentType = "DEFAULT_DEPOSIT_METHOD";
  */
 export const AssignmentType: Readonly<{
     DEFAULT_DEPOSIT_METHOD: "DEFAULT_DEPOSIT_METHOD";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=AssignmentType.d.ts.map

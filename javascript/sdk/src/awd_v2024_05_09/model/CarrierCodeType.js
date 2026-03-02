@@ -17,5 +17,8 @@ import { ApiClient } from '../ApiClient.js'
  * @typedef {'SCAC'} CarrierCodeType
  */
 export const CarrierCodeType = Object.freeze({
-  SCAC: 'SCAC'
+  SCAC: 'SCAC',
+  constructFromObject: function (object) {
+    return object
+  }
 })

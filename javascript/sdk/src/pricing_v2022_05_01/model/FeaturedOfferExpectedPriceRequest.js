@@ -36,8 +36,6 @@ export class FeaturedOfferExpectedPriceRequest {
    * @param sku {String} The seller SKU of the item.
    */
   constructor (uri, method, marketplaceId, sku) {
-    BatchRequest.call(this, uri, method)
-    FeaturedOfferExpectedPriceRequestParams.call(this, marketplaceId, sku)
     this.uri = uri
     this.method = method
     this.marketplaceId = marketplaceId

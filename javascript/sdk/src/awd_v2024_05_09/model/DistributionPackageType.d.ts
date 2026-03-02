@@ -5,5 +5,6 @@ export type DistributionPackageType = "CASE" | "PALLET";
 export const DistributionPackageType: Readonly<{
     CASE: "CASE";
     PALLET: "PALLET";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=DistributionPackageType.d.ts.map

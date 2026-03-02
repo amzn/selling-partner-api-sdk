@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const RequirementLevel = Object.freeze({
   REQUIRED: 'REQUIRED',
-  DISALLOWED: 'DISALLOWED'
+  DISALLOWED: 'DISALLOWED',
+  constructFromObject: function (object) {
+    return object
+  }
 })

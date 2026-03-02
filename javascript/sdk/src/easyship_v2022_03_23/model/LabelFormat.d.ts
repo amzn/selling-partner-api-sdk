@@ -5,5 +5,6 @@ export type LabelFormat = "PDF" | "ZPL";
 export const LabelFormat: Readonly<{
     PDF: "PDF";
     ZPL: "ZPL";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=LabelFormat.d.ts.map

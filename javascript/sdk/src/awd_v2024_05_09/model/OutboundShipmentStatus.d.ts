@@ -11,5 +11,6 @@ export const OutboundShipmentStatus: Readonly<{
     CLOSED: "CLOSED";
     CANCELLED: "CANCELLED";
     FAILED: "FAILED";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=OutboundShipmentStatus.d.ts.map

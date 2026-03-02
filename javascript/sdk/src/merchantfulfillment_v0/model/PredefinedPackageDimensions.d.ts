@@ -53,5 +53,6 @@ export const PredefinedPackageDimensions: Readonly<{
     USPS_RegionalRateBoxC: "USPS_RegionalRateBoxC";
     USPS_SmallFlatRateBox: "USPS_SmallFlatRateBox";
     USPS_SmallFlatRateEnvelope: "USPS_SmallFlatRateEnvelope";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=PredefinedPackageDimensions.d.ts.map

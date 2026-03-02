@@ -21,5 +21,8 @@ export const VerificationStatus = Object.freeze({
   Approved: 'Approved',
   Rejected: 'Rejected',
   Expired: 'Expired',
-  Cancelled: 'Cancelled'
+  Cancelled: 'Cancelled',
+  constructFromObject: function (object) {
+    return object
+  }
 })

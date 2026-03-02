@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const TimeUnit = Object.freeze({
   Hours: 'Hours',
   Minutes: 'Minutes',
-  Days: 'Days'
+  Days: 'Days',
+  constructFromObject: function (object) {
+    return object
+  }
 })

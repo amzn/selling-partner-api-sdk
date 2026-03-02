@@ -4,5 +4,6 @@ export type TaxType = "GST";
  */
 export const TaxType: Readonly<{
     GST: "GST";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=TaxType.d.ts.map

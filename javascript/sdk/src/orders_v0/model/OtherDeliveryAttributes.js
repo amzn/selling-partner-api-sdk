@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const OtherDeliveryAttributes = Object.freeze({
   HAS_ACCESS_POINT: 'HAS_ACCESS_POINT',
   PALLET_ENABLED: 'PALLET_ENABLED',
-  PALLET_DISABLED: 'PALLET_DISABLED'
+  PALLET_DISABLED: 'PALLET_DISABLED',
+  constructFromObject: function (object) {
+    return object
+  }
 })

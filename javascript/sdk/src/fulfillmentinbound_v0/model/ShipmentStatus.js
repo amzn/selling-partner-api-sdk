@@ -26,5 +26,8 @@ export const ShipmentStatus = Object.freeze({
   ERROR: 'ERROR',
   IN_TRANSIT: 'IN_TRANSIT',
   DELIVERED: 'DELIVERED',
-  CHECKED_IN: 'CHECKED_IN'
+  CHECKED_IN: 'CHECKED_IN',
+  constructFromObject: function (object) {
+    return object
+  }
 })

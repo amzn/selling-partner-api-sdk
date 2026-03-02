@@ -25,5 +25,8 @@ export const ReasonComment = Object.freeze({
   PROCUREMENT_DELAY: 'PROCUREMENT_DELAY',
   SHIPPING_PLAN_CHANGED: 'SHIPPING_PLAN_CHANGED',
   INCREASED_QUANTITY: 'INCREASED_QUANTITY',
-  OTHER: 'OTHER'
+  OTHER: 'OTHER',
+  constructFromObject: function (object) {
+    return object
+  }
 })

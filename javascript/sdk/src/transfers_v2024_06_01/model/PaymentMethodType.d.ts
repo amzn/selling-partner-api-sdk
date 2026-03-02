@@ -6,5 +6,6 @@ export const PaymentMethodType: Readonly<{
     BANK_ACCOUNT: "BANK_ACCOUNT";
     CARD: "CARD";
     SELLER_WALLET: "SELLER_WALLET";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=PaymentMethodType.d.ts.map

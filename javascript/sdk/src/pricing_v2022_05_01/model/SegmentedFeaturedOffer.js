@@ -40,7 +40,6 @@ export class SegmentedFeaturedOffer {
    * @param featuredOfferSegments {FeaturedOfferSegment[]} The list of segment information in which the offer is featured.
    */
   constructor (sellerId, condition, fulfillmentType, listingPrice, featuredOfferSegments) {
-    Offer.call(this, sellerId, condition, fulfillmentType, listingPrice)
     this.sellerId = sellerId
     this.condition = condition
     this.fulfillmentType = fulfillmentType

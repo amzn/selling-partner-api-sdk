@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const FulfillmentPolicy = Object.freeze({
   FillOrKill: 'FillOrKill',
   FillAll: 'FillAll',
-  FillAllAvailable: 'FillAllAvailable'
+  FillAllAvailable: 'FillAllAvailable',
+  constructFromObject: function (object) {
+    return object
+  }
 })

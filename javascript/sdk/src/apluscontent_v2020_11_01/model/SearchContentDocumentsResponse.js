@@ -30,7 +30,6 @@ export class SearchContentDocumentsResponse {
    * @param contentMetadataRecords {ContentMetadataRecord[]} A list of A+ Content metadata records.
    */
   constructor (contentMetadataRecords) {
-    AplusPaginatedResponse.call(this)
     this.contentMetadataRecords = contentMetadataRecords
   }
 

@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const FeeType = Object.freeze({
   MISCELLANEOUS_FEE: 'MISCELLANEOUS_FEE',
   TAX: 'TAX',
-  TRANSACTION_FEE: 'TRANSACTION_FEE'
+  TRANSACTION_FEE: 'TRANSACTION_FEE',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -48,7 +48,7 @@ describe('ReportsApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
   describe('createReportSchedule', () => {
@@ -61,7 +61,7 @@ describe('ReportsApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(201)
-      assertValidResponsePayload(201, response.data.payload);
+      assertValidResponsePayload(201, response.data);
     });
   });
   describe('getReport', () => {
@@ -74,7 +74,7 @@ describe('ReportsApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getReportDocument', () => {
@@ -87,7 +87,7 @@ describe('ReportsApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getReportSchedule', () => {
@@ -100,7 +100,7 @@ describe('ReportsApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getReportSchedules', () => {
@@ -113,7 +113,7 @@ describe('ReportsApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getReports', () => {
@@ -125,7 +125,7 @@ describe('ReportsApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
 
@@ -144,7 +144,7 @@ describe('ReportsApi', () => {
 });
 
 function assertValidResponsePayload(statusCode, payload) {
-  if (statusCode != 204) expect(payload).to.be.ok();
+  if (statusCode !== 204) expect(payload).to.be.ok();
 }
 
 async function instructBackendMock(basename, response, code) {

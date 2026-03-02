@@ -20,5 +20,8 @@ export const AccountStatus = Object.freeze({
   ACTIVE: 'ACTIVE',
   INACTIVE: 'INACTIVE',
   PENDING: 'PENDING',
-  SUSPENDED: 'SUSPENDED'
+  SUSPENDED: 'SUSPENDED',
+  constructFromObject: function (object) {
+    return object
+  }
 })

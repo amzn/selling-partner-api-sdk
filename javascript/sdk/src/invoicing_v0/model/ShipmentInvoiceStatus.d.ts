@@ -7,5 +7,6 @@ export const ShipmentInvoiceStatus: Readonly<{
     Accepted: "Accepted";
     Errored: "Errored";
     NotFound: "NotFound";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ShipmentInvoiceStatus.d.ts.map

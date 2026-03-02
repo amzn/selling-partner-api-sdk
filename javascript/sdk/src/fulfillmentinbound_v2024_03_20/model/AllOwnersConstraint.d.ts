@@ -4,5 +4,6 @@ export type AllOwnersConstraint = "MUST_MATCH";
  */
 export const AllOwnersConstraint: Readonly<{
     MUST_MATCH: "MUST_MATCH";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=AllOwnersConstraint.d.ts.map

@@ -19,5 +19,6 @@ export const PrepInstruction: Readonly<{
     BlankStickering: "BlankStickering";
     ShipsInProductPackaging: "ShipsInProductPackaging";
     NoPrep: "NoPrep";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=PrepInstruction.d.ts.map

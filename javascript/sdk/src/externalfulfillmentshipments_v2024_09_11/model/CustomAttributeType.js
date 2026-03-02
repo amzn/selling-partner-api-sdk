@@ -21,5 +21,8 @@ export const CustomAttributeType = Object.freeze({
   BOOLEAN: 'BOOLEAN',
   INTEGER: 'INTEGER',
   DOUBLE: 'DOUBLE',
-  JSON_STRING: 'JSON_STRING'
+  JSON_STRING: 'JSON_STRING',
+  constructFromObject: function (object) {
+    return object
+  }
 })

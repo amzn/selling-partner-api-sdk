@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const SupplySourceStatus = Object.freeze({
   Active: 'Active',
-  Inactive: 'Inactive'
+  Inactive: 'Inactive',
+  constructFromObject: function (object) {
+    return object
+  }
 })

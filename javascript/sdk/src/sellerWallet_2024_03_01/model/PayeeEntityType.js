@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const PayeeEntityType = Object.freeze({
   INDIVIDUAL: 'INDIVIDUAL',
   BUSINESS: 'BUSINESS',
-  TAX_AUTHORITY: 'TAX_AUTHORITY'
+  TAX_AUTHORITY: 'TAX_AUTHORITY',
+  constructFromObject: function (object) {
+    return object
+  }
 })

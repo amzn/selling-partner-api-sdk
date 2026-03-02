@@ -5,5 +5,6 @@ export type SupplySourceStatus = "Active" | "Inactive";
 export const SupplySourceStatus: Readonly<{
     Active: "Active";
     Inactive: "Inactive";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=SupplySourceStatus.d.ts.map

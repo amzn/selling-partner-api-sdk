@@ -17,5 +17,8 @@ import { ApiClient } from '../ApiClient.js'
  * @typedef {'QUANTITY_DISCOUNT'} QuantityDiscountType
  */
 export const QuantityDiscountType = Object.freeze({
-  QUANTITY_DISCOUNT: 'QUANTITY_DISCOUNT'
+  QUANTITY_DISCOUNT: 'QUANTITY_DISCOUNT',
+  constructFromObject: function (object) {
+    return object
+  }
 })

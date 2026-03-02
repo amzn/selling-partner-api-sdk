@@ -10,5 +10,6 @@ export const FulfillmentStatus: Readonly<{
     SHIPPED: "SHIPPED";
     CANCELLED: "CANCELLED";
     UNFULFILLABLE: "UNFULFILLABLE";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=FulfillmentStatus.d.ts.map

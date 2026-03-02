@@ -5,5 +5,6 @@ export type PieceType = "SINGLE" | "MULTIPLE";
 export const PieceType: Readonly<{
     SINGLE: "SINGLE";
     MULTIPLE: "MULTIPLE";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=PieceType.d.ts.map

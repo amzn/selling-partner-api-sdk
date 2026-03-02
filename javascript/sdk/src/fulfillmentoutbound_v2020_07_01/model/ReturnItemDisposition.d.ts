@@ -8,5 +8,6 @@ export const ReturnItemDisposition: Readonly<{
     CustomerDamaged: "CustomerDamaged";
     CarrierDamaged: "CarrierDamaged";
     FulfillerDamaged: "FulfillerDamaged";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ReturnItemDisposition.d.ts.map

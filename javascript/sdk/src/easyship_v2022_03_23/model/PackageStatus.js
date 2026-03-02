@@ -28,5 +28,8 @@ export const PackageStatus = Object.freeze({
   LostInTransit: 'LostInTransit',
   LabelCanceled: 'LabelCanceled',
   DamagedInTransit: 'DamagedInTransit',
-  OutForDelivery: 'OutForDelivery'
+  OutForDelivery: 'OutForDelivery',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -7,5 +7,6 @@ export const ExportStatus: Readonly<{
     PROCESSING: "PROCESSING";
     DONE: "DONE";
     ERROR: "ERROR";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ExportStatus.d.ts.map

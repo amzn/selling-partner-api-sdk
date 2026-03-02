@@ -4,5 +4,6 @@ export type ConstraintType = "MANDATORY";
  */
 export const ConstraintType: Readonly<{
     MANDATORY: "MANDATORY";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ConstraintType.d.ts.map

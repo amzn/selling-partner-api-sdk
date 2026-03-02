@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const SortOrder = Object.freeze({
   ASC: 'ASC',
-  DESC: 'DESC'
+  DESC: 'DESC',
+  constructFromObject: function (object) {
+    return object
+  }
 })

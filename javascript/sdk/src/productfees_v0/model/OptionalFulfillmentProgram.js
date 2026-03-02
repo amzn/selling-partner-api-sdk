@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const OptionalFulfillmentProgram = Object.freeze({
   FBA_CORE: 'FBA_CORE',
   FBA_SNL: 'FBA_SNL',
-  FBA_EFN: 'FBA_EFN'
+  FBA_EFN: 'FBA_EFN',
+  constructFromObject: function (object) {
+    return object
+  }
 })

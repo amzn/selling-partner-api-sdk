@@ -21,5 +21,8 @@ export const ContentBadge = Object.freeze({
   GENERATED: 'GENERATED',
   LAUNCHPAD: 'LAUNCHPAD',
   PREMIUM: 'PREMIUM',
-  STANDARD: 'STANDARD'
+  STANDARD: 'STANDARD',
+  constructFromObject: function (object) {
+    return object
+  }
 })

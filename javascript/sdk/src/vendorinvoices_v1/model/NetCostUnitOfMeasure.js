@@ -20,5 +20,8 @@ export const NetCostUnitOfMeasure = Object.freeze({
   POUNDS: 'POUNDS',
   OUNCES: 'OUNCES',
   GRAMS: 'GRAMS',
-  KILOGRAMS: 'KILOGRAMS'
+  KILOGRAMS: 'KILOGRAMS',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -32,5 +32,8 @@ export const PrepType = Object.freeze({
   ITEM_SETSTK: 'ITEM_SETSTK',
   ITEM_SIOC: 'ITEM_SIOC',
   ITEM_SUFFOSTK: 'ITEM_SUFFOSTK',
-  ITEM_TAPING: 'ITEM_TAPING'
+  ITEM_TAPING: 'ITEM_TAPING',
+  constructFromObject: function (object) {
+    return object
+  }
 })

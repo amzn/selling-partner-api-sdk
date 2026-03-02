@@ -21,5 +21,8 @@ export const DeliveryExperienceOption = Object.freeze({
   DeliveryConfirmationWithSignature: 'DeliveryConfirmationWithSignature',
   DeliveryConfirmationWithoutSignature: 'DeliveryConfirmationWithoutSignature',
   NoTracking: 'NoTracking',
-  NoPreference: 'NoPreference'
+  NoPreference: 'NoPreference',
+  constructFromObject: function (object) {
+    return object
+  }
 })

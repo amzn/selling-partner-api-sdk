@@ -33,7 +33,6 @@ export class ListingOffersResponse {
    * @param body {GetOffersResponse}
    */
   constructor (body) {
-    BatchOffersResponse.call(this, body)
     this.body = body
   }
 

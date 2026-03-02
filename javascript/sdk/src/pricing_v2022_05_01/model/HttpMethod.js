@@ -21,5 +21,8 @@ export const HttpMethod = Object.freeze({
   PUT: 'PUT',
   PATCH: 'PATCH',
   DELETE: 'DELETE',
-  POST: 'POST'
+  POST: 'POST',
+  constructFromObject: function (object) {
+    return object
+  }
 })

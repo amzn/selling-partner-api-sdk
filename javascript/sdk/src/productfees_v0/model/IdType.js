@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const IdType = Object.freeze({
   ASIN: 'ASIN',
-  SellerSKU: 'SellerSKU'
+  SellerSKU: 'SellerSKU',
+  constructFromObject: function (object) {
+    return object
+  }
 })

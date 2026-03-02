@@ -20,5 +20,8 @@ export const EligibilityStatus = Object.freeze({
   ELIGIBLE: 'ELIGIBLE',
   INELIGIBLE: 'INELIGIBLE',
   SUSPENDED: 'SUSPENDED',
-  REPLENISHMENT_ONLY_ORDERING: 'REPLENISHMENT_ONLY_ORDERING'
+  REPLENISHMENT_ONLY_ORDERING: 'REPLENISHMENT_ONLY_ORDERING',
+  constructFromObject: function (object) {
+    return object
+  }
 })

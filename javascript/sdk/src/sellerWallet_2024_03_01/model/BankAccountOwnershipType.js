@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const BankAccountOwnershipType = Object.freeze({
   THIRD_PARTY: 'THIRD_PARTY',
-  SELF: 'SELF'
+  SELF: 'SELF',
+  constructFromObject: function (object) {
+    return object
+  }
 })

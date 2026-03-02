@@ -21,5 +21,8 @@ export const Condition = Object.freeze({
   Used: 'Used',
   Collectible: 'Collectible',
   Refurbished: 'Refurbished',
-  Club: 'Club'
+  Club: 'Club',
+  constructFromObject: function (object) {
+    return object
+  }
 })

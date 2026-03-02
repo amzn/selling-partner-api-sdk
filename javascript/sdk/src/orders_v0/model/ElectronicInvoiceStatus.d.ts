@@ -8,5 +8,6 @@ export const ElectronicInvoiceStatus: Readonly<{
     Processing: "Processing";
     Errored: "Errored";
     Accepted: "Accepted";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ElectronicInvoiceStatus.d.ts.map

@@ -6,5 +6,6 @@ export const RateItemType: Readonly<{
     MANDATORY: "MANDATORY";
     OPTIONAL: "OPTIONAL";
     INCLUDED: "INCLUDED";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=RateItemType.d.ts.map

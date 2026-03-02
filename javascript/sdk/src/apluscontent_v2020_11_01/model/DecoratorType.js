@@ -24,5 +24,8 @@ export const DecoratorType = Object.freeze({
   STYLE_ITALIC: 'STYLE_ITALIC',
   STYLE_LINEBREAK: 'STYLE_LINEBREAK',
   STYLE_PARAGRAPH: 'STYLE_PARAGRAPH',
-  STYLE_UNDERLINE: 'STYLE_UNDERLINE'
+  STYLE_UNDERLINE: 'STYLE_UNDERLINE',
+  constructFromObject: function (object) {
+    return object
+  }
 })

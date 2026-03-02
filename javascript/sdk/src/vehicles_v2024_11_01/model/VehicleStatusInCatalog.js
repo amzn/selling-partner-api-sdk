@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const VehicleStatusInCatalog = Object.freeze({
   ACTIVE: 'ACTIVE',
-  DELETED: 'DELETED'
+  DELETED: 'DELETED',
+  constructFromObject: function (object) {
+    return object
+  }
 })

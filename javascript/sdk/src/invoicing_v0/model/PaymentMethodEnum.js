@@ -22,5 +22,8 @@ export const PaymentMethodEnum = Object.freeze({
   Pix: 'Pix',
   BankSlip: 'BankSlip',
   GiftCard: 'GiftCard',
-  Other: 'Other'
+  Other: 'Other',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -5,5 +5,6 @@ export type ChannelType = "AMAZON" | "EXTERNAL";
 export const ChannelType: Readonly<{
     AMAZON: "AMAZON";
     EXTERNAL: "EXTERNAL";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ChannelType.d.ts.map
