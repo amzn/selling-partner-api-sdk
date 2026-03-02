@@ -4,5 +4,6 @@ export type ScheduleTransferType = "TIME_BASED";
  */
 export const ScheduleTransferType: Readonly<{
     TIME_BASED: "TIME_BASED";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ScheduleTransferType.d.ts.map

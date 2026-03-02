@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const TransactionType = Object.freeze({
   CREDIT: 'CREDIT',
-  DEBIT: 'DEBIT'
+  DEBIT: 'DEBIT',
+  constructFromObject: function (object) {
+    return object
+  }
 })

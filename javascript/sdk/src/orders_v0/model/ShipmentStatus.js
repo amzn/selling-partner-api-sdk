@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const ShipmentStatus = Object.freeze({
   ReadyForPickup: 'ReadyForPickup',
   PickedUp: 'PickedUp',
-  RefusedPickup: 'RefusedPickup'
+  RefusedPickup: 'RefusedPickup',
+  constructFromObject: function (object) {
+    return object
+  }
 })

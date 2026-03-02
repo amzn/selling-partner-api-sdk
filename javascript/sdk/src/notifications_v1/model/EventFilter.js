@@ -35,9 +35,6 @@ export class EventFilter {
    * @param eventFilterType {String} An `eventFilterType` value that is supported by the specific `notificationType`. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an `eventFilterType` is supported.
    */
   constructor (eventFilterType) {
-    AggregationFilter.call(this)
-    MarketplaceFilter.call(this)
-    OrderChangeTypeFilter.call(this)
     this.eventFilterType = eventFilterType
   }
 

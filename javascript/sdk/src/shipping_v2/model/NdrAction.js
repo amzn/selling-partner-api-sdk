@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const NdrAction = Object.freeze({
   RESCHEDULE: 'RESCHEDULE',
   REATTEMPT: 'REATTEMPT',
-  RTO: 'RTO'
+  RTO: 'RTO',
+  constructFromObject: function (object) {
+    return object
+  }
 })

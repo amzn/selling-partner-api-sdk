@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const OrderChangeTypeEnum = Object.freeze({
   OrderStatusChange: 'OrderStatusChange',
-  BuyerRequestedChange: 'BuyerRequestedChange'
+  BuyerRequestedChange: 'BuyerRequestedChange',
+  constructFromObject: function (object) {
+    return object
+  }
 })

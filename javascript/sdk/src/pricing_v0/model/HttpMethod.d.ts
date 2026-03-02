@@ -8,5 +8,6 @@ export const HttpMethod: Readonly<{
     PATCH: "PATCH";
     DELETE: "DELETE";
     POST: "POST";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=HttpMethod.d.ts.map

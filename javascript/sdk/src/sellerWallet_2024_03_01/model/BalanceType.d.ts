@@ -7,5 +7,6 @@ export const BalanceType: Readonly<{
     LOCKED_IN: "LOCKED_IN";
     LOCKED_OUT: "LOCKED_OUT";
     TOTAL: "TOTAL";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=BalanceType.d.ts.map

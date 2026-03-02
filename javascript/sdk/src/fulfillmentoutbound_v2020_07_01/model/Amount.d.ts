@@ -14,7 +14,7 @@ export class Amount {
     static constructFromObject(data: any, obj: Amount): Amount;
     /**
      * Constructs a new <code>Amount</code>.
-     * A quantity based on unit of measure.
+     * A quantity based on the specified unit of measurement.
      * @alias module:fulfillmentoutbound_v2020_07_01/model/Amount
      * @class
      * @param unitOfMeasure {String} The unit of measure for the amount.

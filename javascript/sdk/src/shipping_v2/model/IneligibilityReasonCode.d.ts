@@ -13,5 +13,6 @@ export const IneligibilityReasonCode: Readonly<{
     PROGRAM_CONSTRAINTS: "PROGRAM_CONSTRAINTS";
     TERMS_AND_CONDITIONS_NOT_ACCEPTED: "TERMS_AND_CONDITIONS_NOT_ACCEPTED";
     UNKNOWN: "UNKNOWN";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=IneligibilityReasonCode.d.ts.map

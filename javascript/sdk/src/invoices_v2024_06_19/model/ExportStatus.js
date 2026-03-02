@@ -20,5 +20,8 @@ export const ExportStatus = Object.freeze({
   REQUESTED: 'REQUESTED',
   PROCESSING: 'PROCESSING',
   DONE: 'DONE',
-  ERROR: 'ERROR'
+  ERROR: 'ERROR',
+  constructFromObject: function (object) {
+    return object
+  }
 })

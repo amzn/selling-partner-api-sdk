@@ -20,5 +20,8 @@ export const ShippingSpeedCategory = Object.freeze({
   Standard: 'Standard',
   Expedited: 'Expedited',
   Priority: 'Priority',
-  ScheduledDelivery: 'ScheduledDelivery'
+  ScheduledDelivery: 'ScheduledDelivery',
+  constructFromObject: function (object) {
+    return object
+  }
 })

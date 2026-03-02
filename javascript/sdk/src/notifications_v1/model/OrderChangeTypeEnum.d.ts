@@ -5,5 +5,6 @@ export type OrderChangeTypeEnum = "OrderStatusChange" | "BuyerRequestedChange";
 export const OrderChangeTypeEnum: Readonly<{
     OrderStatusChange: "OrderStatusChange";
     BuyerRequestedChange: "BuyerRequestedChange";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=OrderChangeTypeEnum.d.ts.map

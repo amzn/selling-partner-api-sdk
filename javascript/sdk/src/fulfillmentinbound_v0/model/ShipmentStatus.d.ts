@@ -13,5 +13,6 @@ export const ShipmentStatus: Readonly<{
     IN_TRANSIT: "IN_TRANSIT";
     DELIVERED: "DELIVERED";
     CHECKED_IN: "CHECKED_IN";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ShipmentStatus.d.ts.map

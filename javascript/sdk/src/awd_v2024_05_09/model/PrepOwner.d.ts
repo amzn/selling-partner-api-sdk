@@ -5,5 +5,6 @@ export type PrepOwner = "AMAZON" | "SELF";
 export const PrepOwner: Readonly<{
     AMAZON: "AMAZON";
     SELF: "SELF";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=PrepOwner.d.ts.map

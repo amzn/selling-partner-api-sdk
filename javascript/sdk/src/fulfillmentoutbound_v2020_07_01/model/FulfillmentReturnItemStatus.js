@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const FulfillmentReturnItemStatus = Object.freeze({
   New: 'New',
-  Processed: 'Processed'
+  Processed: 'Processed',
+  constructFromObject: function (object) {
+    return object
+  }
 })

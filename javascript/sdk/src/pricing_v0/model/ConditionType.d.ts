@@ -8,5 +8,6 @@ export const ConditionType: Readonly<{
     Collectible: "Collectible";
     Refurbished: "Refurbished";
     Club: "Club";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ConditionType.d.ts.map

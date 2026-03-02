@@ -7,5 +7,6 @@ export const AsinBadge: Readonly<{
     CATALOG_NOT_FOUND: "CATALOG_NOT_FOUND";
     CONTENT_NOT_PUBLISHED: "CONTENT_NOT_PUBLISHED";
     CONTENT_PUBLISHED: "CONTENT_PUBLISHED";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=AsinBadge.d.ts.map

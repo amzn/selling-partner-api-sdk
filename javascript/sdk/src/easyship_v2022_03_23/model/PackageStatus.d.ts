@@ -15,5 +15,6 @@ export const PackageStatus: Readonly<{
     LabelCanceled: "LabelCanceled";
     DamagedInTransit: "DamagedInTransit";
     OutForDelivery: "OutForDelivery";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=PackageStatus.d.ts.map

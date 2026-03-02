@@ -5,5 +5,6 @@ export type DimensionUnitOfMeasurement = "INCHES" | "CENTIMETERS";
 export const DimensionUnitOfMeasurement: Readonly<{
     INCHES: "INCHES";
     CENTIMETERS: "CENTIMETERS";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=DimensionUnitOfMeasurement.d.ts.map

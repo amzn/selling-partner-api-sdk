@@ -14,5 +14,6 @@ export const Code: Readonly<{
     RegionNotSupported: "RegionNotSupported";
     OrderNotEligibleForRescheduling: "OrderNotEligibleForRescheduling";
     InternalServerError: "InternalServerError";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=Code.d.ts.map

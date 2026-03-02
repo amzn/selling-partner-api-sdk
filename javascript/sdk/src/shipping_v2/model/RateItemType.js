@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const RateItemType = Object.freeze({
   MANDATORY: 'MANDATORY',
   OPTIONAL: 'OPTIONAL',
-  INCLUDED: 'INCLUDED'
+  INCLUDED: 'INCLUDED',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -20,5 +20,8 @@ export const InvalidItemReasonCode = Object.freeze({
   InvalidValues: 'InvalidValues',
   DuplicateRequest: 'DuplicateRequest',
   NoCompletedShipItems: 'NoCompletedShipItems',
-  NoReturnableQuantity: 'NoReturnableQuantity'
+  NoReturnableQuantity: 'NoReturnableQuantity',
+  constructFromObject: function (object) {
+    return object
+  }
 })

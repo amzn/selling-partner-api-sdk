@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const HttpMethod = Object.freeze({
   GET: 'GET',
-  POST: 'POST'
+  POST: 'POST',
+  constructFromObject: function (object) {
+    return object
+  }
 })

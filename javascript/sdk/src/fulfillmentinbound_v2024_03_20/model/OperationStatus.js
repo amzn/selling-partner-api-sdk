@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const OperationStatus = Object.freeze({
   SUCCESS: 'SUCCESS',
   FAILED: 'FAILED',
-  IN_PROGRESS: 'IN_PROGRESS'
+  IN_PROGRESS: 'IN_PROGRESS',
+  constructFromObject: function (object) {
+    return object
+  }
 })

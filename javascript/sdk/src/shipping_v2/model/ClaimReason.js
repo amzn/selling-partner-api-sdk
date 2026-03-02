@@ -21,5 +21,8 @@ export const ClaimReason = Object.freeze({
   DAMAGED_IN_TRANSIT: 'DAMAGED_IN_TRANSIT',
   DELIVERED_NOT_RECEIVED: 'DELIVERED_NOT_RECEIVED',
   ITEM_MISSING_SWITCHEROO: 'ITEM_MISSING_SWITCHEROO',
-  COD_ABUSE: 'COD_ABUSE'
+  COD_ABUSE: 'COD_ABUSE',
+  constructFromObject: function (object) {
+    return object
+  }
 })

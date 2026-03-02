@@ -6,5 +6,6 @@ export const LabelAttribute: Readonly<{
     PACKAGE_CLIENT_REFERENCE_ID: "PACKAGE_CLIENT_REFERENCE_ID";
     SELLER_DISPLAY_NAME: "SELLER_DISPLAY_NAME";
     COLLECT_ON_DELIVERY_AMOUNT: "COLLECT_ON_DELIVERY_AMOUNT";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=LabelAttribute.d.ts.map

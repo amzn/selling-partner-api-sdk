@@ -34,5 +34,8 @@ export const CurrentStatus = Object.freeze({
   PICKUP_SCHEDULED: 'PICKUP_SCHEDULED',
   RETURN_REQUEST_ACCEPTED: 'RETURN_REQUEST_ACCEPTED',
   REFUND_ISSUED: 'REFUND_ISSUED',
-  RETURN_RECEIVED_IN_FC: 'RETURN_RECEIVED_IN_FC'
+  RETURN_RECEIVED_IN_FC: 'RETURN_RECEIVED_IN_FC',
+  constructFromObject: function (object) {
+    return object
+  }
 })

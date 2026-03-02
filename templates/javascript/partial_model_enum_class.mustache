@@ -4,7 +4,10 @@
 export const {{classname}} = Object.freeze({
 {{#allowableValues}}
 {{#enumVars}}
-  "{{name}}": {{{value}}}{{^-last}},{{/-last}}
+  "{{name}}": {{{value}}},
 {{/enumVars}}
 {{/allowableValues}}
+  constructFromObject: function (object) {
+    return object;
+  }
 });

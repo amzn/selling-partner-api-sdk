@@ -37,8 +37,6 @@ export class ListingOffersRequest {
    * @param itemCondition {ItemCondition}
    */
   constructor (uri, method, marketplaceId, itemCondition) {
-    BatchRequest.call(this, uri, method)
-    BatchOffersRequestParams.call(this, marketplaceId, itemCondition)
     this.uri = uri
     this.method = method
     this.marketplaceId = marketplaceId

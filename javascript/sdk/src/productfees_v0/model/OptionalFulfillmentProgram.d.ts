@@ -6,5 +6,6 @@ export const OptionalFulfillmentProgram: Readonly<{
     FBA_CORE: "FBA_CORE";
     FBA_SNL: "FBA_SNL";
     FBA_EFN: "FBA_EFN";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=OptionalFulfillmentProgram.d.ts.map

@@ -12,5 +12,6 @@ export const ReplenishmentOrderStatus: Readonly<{
     INVENTORY_OUTBOUND: "INVENTORY_OUTBOUND";
     SUCCESS: "SUCCESS";
     VALIDATING: "VALIDATING";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ReplenishmentOrderStatus.d.ts.map

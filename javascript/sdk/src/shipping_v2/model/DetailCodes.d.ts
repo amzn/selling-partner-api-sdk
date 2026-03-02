@@ -33,5 +33,6 @@ export const DetailCodes: Readonly<{
     HazmatShipment: "HazmatShipment";
     Undeliverable: "Undeliverable";
     ArrivedAtLocalFacility: "ArrivedAtLocalFacility";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=DetailCodes.d.ts.map

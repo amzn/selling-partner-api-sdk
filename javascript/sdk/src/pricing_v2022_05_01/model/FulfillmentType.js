@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const FulfillmentType = Object.freeze({
   AFN: 'AFN',
-  MFN: 'MFN'
+  MFN: 'MFN',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const PrepOwner = Object.freeze({
   AMAZON: 'AMAZON',
   SELLER: 'SELLER',
-  NONE: 'NONE'
+  NONE: 'NONE',
+  constructFromObject: function (object) {
+    return object
+  }
 })

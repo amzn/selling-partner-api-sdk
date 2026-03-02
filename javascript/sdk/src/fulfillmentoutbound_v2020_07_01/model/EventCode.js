@@ -49,5 +49,8 @@ export const EventCode = Object.freeze({
   EVENT_416: 'EVENT_416',
   EVENT_417: 'EVENT_417',
   EVENT_418: 'EVENT_418',
-  EVENT_419: 'EVENT_419'
+  EVENT_419: 'EVENT_419',
+  constructFromObject: function (object) {
+    return object
+  }
 })

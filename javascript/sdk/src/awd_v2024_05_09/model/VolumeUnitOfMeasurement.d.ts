@@ -6,5 +6,6 @@ export const VolumeUnitOfMeasurement: Readonly<{
     CU_IN: "CU_IN";
     CBM: "CBM";
     CC: "CC";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=VolumeUnitOfMeasurement.d.ts.map

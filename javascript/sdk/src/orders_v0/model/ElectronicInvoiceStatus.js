@@ -21,5 +21,8 @@ export const ElectronicInvoiceStatus = Object.freeze({
   NotFound: 'NotFound',
   Processing: 'Processing',
   Errored: 'Errored',
-  Accepted: 'Accepted'
+  Accepted: 'Accepted',
+  constructFromObject: function (object) {
+    return object
+  }
 })

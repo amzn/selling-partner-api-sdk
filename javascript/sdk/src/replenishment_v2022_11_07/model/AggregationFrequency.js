@@ -20,5 +20,8 @@ export const AggregationFrequency = Object.freeze({
   WEEK: 'WEEK',
   MONTH: 'MONTH',
   QUARTER: 'QUARTER',
-  YEAR: 'YEAR'
+  YEAR: 'YEAR',
+  constructFromObject: function (object) {
+    return object
+  }
 })

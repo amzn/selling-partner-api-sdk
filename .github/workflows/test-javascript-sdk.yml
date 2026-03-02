@@ -18,28 +18,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Install dependencies in each API dir
+      - name: Install SDK dependencies
         working-directory: ./javascript/sdk
         run: |
           npm install
+      - name: Install backend mock dependencies
+        working-directory: ./test
+        run: npm install
+      - name: Start backend mock
+        working-directory: ./test
+        run: node src/index.js &
       - name: Run tests and generate reports
         working-directory: ./javascript/sdk
-        run: |
-          mkdir -p ../testreports
-          
-          for dir in test/*/; do
-              api_name=$(basename "$dir")
-              echo "🧪 Running tests for $api_name"
-              
-              if npx mocha --require @babel/register \
-                  --reporter spec \
-                  "test/${api_name}/**/*.js" 2>&1 | tee "../testreports/spec-${api_name}.txt"; then
-                  echo "✅ All tests for ${api_name} are passing"
-              else
-                  echo "❌ Tests for ${api_name} failed"
-                  exit 1
-              fi
-          done
+        run: npm run test
       - name: Archive reports
         if: always()
         uses: actions/upload-artifact@v4

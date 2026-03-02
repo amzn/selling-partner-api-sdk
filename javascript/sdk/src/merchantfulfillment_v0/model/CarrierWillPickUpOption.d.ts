@@ -6,5 +6,6 @@ export const CarrierWillPickUpOption: Readonly<{
     CarrierWillPickUp: "CarrierWillPickUp";
     ShipperWillDropOff: "ShipperWillDropOff";
     NoPreference: "NoPreference";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=CarrierWillPickUpOption.d.ts.map

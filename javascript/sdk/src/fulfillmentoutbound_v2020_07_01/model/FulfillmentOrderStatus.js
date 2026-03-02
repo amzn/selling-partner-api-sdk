@@ -25,5 +25,8 @@ export const FulfillmentOrderStatus = Object.freeze({
   Complete: 'Complete',
   CompletePartialled: 'CompletePartialled',
   Unfulfillable: 'Unfulfillable',
-  Invalid: 'Invalid'
+  Invalid: 'Invalid',
+  constructFromObject: function (object) {
+    return object
+  }
 })

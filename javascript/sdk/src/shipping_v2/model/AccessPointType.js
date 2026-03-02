@@ -24,5 +24,8 @@ export const AccessPointType = Object.freeze({
   DOBBY_LOCKER: 'DOBBY_LOCKER',
   CORE_LOCKER: 'CORE_LOCKER',
   '3P': '3P',
-  CAMPUS_ROOM: 'CAMPUS_ROOM'
+  CAMPUS_ROOM: 'CAMPUS_ROOM',
+  constructFromObject: function (object) {
+    return object
+  }
 })

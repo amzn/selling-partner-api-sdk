@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const OwnerConstraint = Object.freeze({
   AMAZON_ONLY: 'AMAZON_ONLY',
   NONE_ONLY: 'NONE_ONLY',
-  SELLER_ONLY: 'SELLER_ONLY'
+  SELLER_ONLY: 'SELLER_ONLY',
+  constructFromObject: function (object) {
+    return object
+  }
 })

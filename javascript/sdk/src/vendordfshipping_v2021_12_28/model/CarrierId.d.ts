@@ -4,5 +4,6 @@ export type CarrierId = "SWA";
  */
 export const CarrierId: Readonly<{
     SWA: "SWA";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=CarrierId.d.ts.map

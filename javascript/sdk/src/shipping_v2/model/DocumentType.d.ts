@@ -7,5 +7,6 @@ export const DocumentType: Readonly<{
     LABEL: "LABEL";
     RECEIPT: "RECEIPT";
     CUSTOM_FORM: "CUSTOM_FORM";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=DocumentType.d.ts.map

@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const VolumeUnitOfMeasurement = Object.freeze({
   CU_IN: 'CU_IN',
   CBM: 'CBM',
-  CC: 'CC'
+  CC: 'CC',
+  constructFromObject: function (object) {
+    return object
+  }
 })

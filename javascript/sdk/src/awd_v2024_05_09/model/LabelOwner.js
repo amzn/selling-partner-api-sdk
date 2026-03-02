@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const LabelOwner = Object.freeze({
   AMAZON: 'AMAZON',
-  SELF: 'SELF'
+  SELF: 'SELF',
+  constructFromObject: function (object) {
+    return object
+  }
 })

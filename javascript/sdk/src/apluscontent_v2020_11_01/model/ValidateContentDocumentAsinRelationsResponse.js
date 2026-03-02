@@ -31,8 +31,6 @@ export class ValidateContentDocumentAsinRelationsResponse {
    * @param errors {Error[]} A list of error responses that are returned when a request is unsuccessful.
    */
   constructor (errors) {
-    AplusResponse.call(this)
-    ErrorList.call(this, errors)
     this.errors = errors
   }
 

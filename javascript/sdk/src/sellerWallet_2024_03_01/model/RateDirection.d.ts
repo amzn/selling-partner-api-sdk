@@ -5,5 +5,6 @@ export type RateDirection = "BUY" | "SELL";
 export const RateDirection: Readonly<{
     BUY: "BUY";
     SELL: "SELL";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=RateDirection.d.ts.map

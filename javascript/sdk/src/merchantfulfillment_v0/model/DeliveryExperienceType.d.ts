@@ -7,5 +7,6 @@ export const DeliveryExperienceType: Readonly<{
     DeliveryConfirmationWithSignature: "DeliveryConfirmationWithSignature";
     DeliveryConfirmationWithoutSignature: "DeliveryConfirmationWithoutSignature";
     NoTracking: "NoTracking";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=DeliveryExperienceType.d.ts.map

@@ -19,5 +19,6 @@ export const PrepType: Readonly<{
     ITEM_SIOC: "ITEM_SIOC";
     ITEM_SUFFOSTK: "ITEM_SUFFOSTK";
     ITEM_TAPING: "ITEM_TAPING";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=PrepType.d.ts.map

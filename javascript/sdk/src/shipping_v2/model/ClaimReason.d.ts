@@ -8,5 +8,6 @@ export const ClaimReason: Readonly<{
     DELIVERED_NOT_RECEIVED: "DELIVERED_NOT_RECEIVED";
     ITEM_MISSING_SWITCHEROO: "ITEM_MISSING_SWITCHEROO";
     COD_ABUSE: "COD_ABUSE";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ClaimReason.d.ts.map

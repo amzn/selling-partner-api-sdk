@@ -14,5 +14,6 @@ export const ItemLabelPageType: Readonly<{
     A4_40_52x29: "A4_40_52x29";
     A4_44_48x25: "A4_44_48x25";
     Letter_30: "Letter_30";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ItemLabelPageType.d.ts.map

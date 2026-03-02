@@ -17,7 +17,7 @@ export class Origin {
      * The origin for the delivery offer.
      * @alias module:fulfillmentoutbound_v2020_07_01/model/Origin
      * @class
-     * @param countryCode {String} The two digit country code the items should ship from. In ISO 3166-1 alpha-2 format.
+     * @param countryCode {String} The two-digit country code (in ISO 3166-1 alpha-2 format) for the country where the items will ship from.
      */
     constructor(countryCode: string);
     countryCode: string;

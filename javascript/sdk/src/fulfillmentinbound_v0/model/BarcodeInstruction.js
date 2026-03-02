@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const BarcodeInstruction = Object.freeze({
   RequiresFNSKULabel: 'RequiresFNSKULabel',
   CanUseOriginalBarcode: 'CanUseOriginalBarcode',
-  MustProvideSellerSKU: 'MustProvideSellerSKU'
+  MustProvideSellerSKU: 'MustProvideSellerSKU',
+  constructFromObject: function (object) {
+    return object
+  }
 })

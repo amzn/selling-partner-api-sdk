@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const BankNumberFormat = Object.freeze({
   BIC: 'BIC',
-  BASIC: 'BASIC'
+  BASIC: 'BASIC',
+  constructFromObject: function (object) {
+    return object
+  }
 })

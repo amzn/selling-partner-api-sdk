@@ -5,5 +5,6 @@ export type IdType = "ASIN" | "SellerSKU";
 export const IdType: Readonly<{
     ASIN: "ASIN";
     SellerSKU: "SellerSKU";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=IdType.d.ts.map

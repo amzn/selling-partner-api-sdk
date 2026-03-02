@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const VehicleStandard = Object.freeze({
   KTYPE: 'KTYPE',
-  AMAZON_ID: 'AMAZON_ID'
+  AMAZON_ID: 'AMAZON_ID',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -31,7 +31,6 @@ export class ParkingWithAddressConfiguration {
    * @implements module:supplysources_v2020_07_01/model/ParkingConfiguration
    */
   constructor () {
-    ParkingConfiguration.call(this)
   }
 
   /**

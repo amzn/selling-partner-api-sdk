@@ -7,5 +7,6 @@ export const RecurringFrequency: Readonly<{
     WEEKLY: "WEEKLY";
     BIWEEKLY: "BIWEEKLY";
     MONTHLY: "MONTHLY";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=RecurringFrequency.d.ts.map

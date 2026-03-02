@@ -6,5 +6,6 @@ export const GovernmentInvoiceCreationStatus: Readonly<{
     PROCESSING: "PROCESSING";
     SUCCESS: "SUCCESS";
     ERROR: "ERROR";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=GovernmentInvoiceCreationStatus.d.ts.map

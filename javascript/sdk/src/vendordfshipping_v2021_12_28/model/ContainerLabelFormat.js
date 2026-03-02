@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const ContainerLabelFormat = Object.freeze({
   PNG: 'PNG',
-  ZPL: 'ZPL'
+  ZPL: 'ZPL',
+  constructFromObject: function (object) {
+    return object
+  }
 })

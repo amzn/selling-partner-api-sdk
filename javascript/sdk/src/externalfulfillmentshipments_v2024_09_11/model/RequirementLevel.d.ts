@@ -5,5 +5,6 @@ export type RequirementLevel = "REQUIRED" | "DISALLOWED";
 export const RequirementLevel: Readonly<{
     REQUIRED: "REQUIRED";
     DISALLOWED: "DISALLOWED";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=RequirementLevel.d.ts.map

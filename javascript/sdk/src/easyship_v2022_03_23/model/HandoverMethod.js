@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const HandoverMethod = Object.freeze({
   PICKUP: 'PICKUP',
-  DROPOFF: 'DROPOFF'
+  DROPOFF: 'DROPOFF',
+  constructFromObject: function (object) {
+    return object
+  }
 })

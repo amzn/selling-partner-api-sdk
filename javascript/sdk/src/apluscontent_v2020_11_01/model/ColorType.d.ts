@@ -5,5 +5,6 @@ export type ColorType = "DARK" | "LIGHT";
 export const ColorType: Readonly<{
     DARK: "DARK";
     LIGHT: "LIGHT";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ColorType.d.ts.map

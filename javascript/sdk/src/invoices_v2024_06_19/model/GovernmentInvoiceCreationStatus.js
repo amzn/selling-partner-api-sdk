@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const GovernmentInvoiceCreationStatus = Object.freeze({
   PROCESSING: 'PROCESSING',
   SUCCESS: 'SUCCESS',
-  ERROR: 'ERROR'
+  ERROR: 'ERROR',
+  constructFromObject: function (object) {
+    return object
+  }
 })

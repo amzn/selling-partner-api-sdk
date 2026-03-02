@@ -20,5 +20,8 @@ export const RecurringFrequency = Object.freeze({
   DAILY: 'DAILY',
   WEEKLY: 'WEEKLY',
   BIWEEKLY: 'BIWEEKLY',
-  MONTHLY: 'MONTHLY'
+  MONTHLY: 'MONTHLY',
+  constructFromObject: function (object) {
+    return object
+  }
 })

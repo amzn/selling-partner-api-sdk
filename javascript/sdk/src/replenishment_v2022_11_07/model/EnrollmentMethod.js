@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const EnrollmentMethod = Object.freeze({
   MANUAL: 'MANUAL',
-  AUTOMATIC: 'AUTOMATIC'
+  AUTOMATIC: 'AUTOMATIC',
+  constructFromObject: function (object) {
+    return object
+  }
 })

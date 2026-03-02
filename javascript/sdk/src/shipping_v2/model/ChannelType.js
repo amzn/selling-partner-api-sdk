@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const ChannelType = Object.freeze({
   AMAZON: 'AMAZON',
-  EXTERNAL: 'EXTERNAL'
+  EXTERNAL: 'EXTERNAL',
+  constructFromObject: function (object) {
+    return object
+  }
 })

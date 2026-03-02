@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const FulfillmentAction = Object.freeze({
   Ship: 'Ship',
-  Hold: 'Hold'
+  Hold: 'Hold',
+  constructFromObject: function (object) {
+    return object
+  }
 })

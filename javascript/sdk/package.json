@@ -6,7 +6,7 @@
   "type": "module",
   "repository": "github:amzn/selling-partner-api-sdk",
   "scripts": {
-    "test": "echo \"No test specified\" && exit 1"
+    "test": "mocha test/**/*.js"
   },
   "browser": {
     "fs": false

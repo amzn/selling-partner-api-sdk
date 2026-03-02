@@ -5,5 +5,6 @@ export type ContainerLabelFormat = "PNG" | "ZPL";
 export const ContainerLabelFormat: Readonly<{
     PNG: "PNG";
     ZPL: "ZPL";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ContainerLabelFormat.d.ts.map

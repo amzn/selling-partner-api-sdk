@@ -22,5 +22,8 @@ export const InboundStatus = Object.freeze({
   CONFIRMED: 'CONFIRMED',
   CLOSED: 'CLOSED',
   EXPIRED: 'EXPIRED',
-  CANCELLED: 'CANCELLED'
+  CANCELLED: 'CANCELLED',
+  constructFromObject: function (object) {
+    return object
+  }
 })

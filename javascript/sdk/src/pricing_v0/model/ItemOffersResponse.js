@@ -34,7 +34,6 @@ export class ItemOffersResponse {
    * @param request {ItemOffersRequestParams}
    */
   constructor (body, request) {
-    BatchOffersResponse.call(this, body)
     this.body = body
     this.request = request
   }

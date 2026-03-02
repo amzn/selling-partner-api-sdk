@@ -17,5 +17,8 @@ import { ApiClient } from '../ApiClient.js'
  * @typedef {'GST'} TaxType
  */
 export const TaxType = Object.freeze({
-  GST: 'GST'
+  GST: 'GST',
+  constructFromObject: function (object) {
+    return object
+  }
 })

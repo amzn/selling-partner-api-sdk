@@ -13,5 +13,6 @@ export const Status: Readonly<{
     DeliveryAttempted: "DeliveryAttempted";
     PickupCancelled: "PickupCancelled";
     AwaitingCustomerPickup: "AwaitingCustomerPickup";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=Status.d.ts.map

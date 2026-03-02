@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const ParkingSpotIdentificationType = Object.freeze({
   Numbered: 'Numbered',
-  Other: 'Other'
+  Other: 'Other',
+  constructFromObject: function (object) {
+    return object
+  }
 })

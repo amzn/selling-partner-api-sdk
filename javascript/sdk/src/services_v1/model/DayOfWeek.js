@@ -23,5 +23,8 @@ export const DayOfWeek = Object.freeze({
   THURSDAY: 'THURSDAY',
   FRIDAY: 'FRIDAY',
   SATURDAY: 'SATURDAY',
-  SUNDAY: 'SUNDAY'
+  SUNDAY: 'SUNDAY',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -5,5 +5,6 @@ export type ParkingCostType = "Free" | "Other";
 export const ParkingCostType: Readonly<{
     Free: "Free";
     Other: "Other";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ParkingCostType.d.ts.map

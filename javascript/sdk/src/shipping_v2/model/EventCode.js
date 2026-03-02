@@ -30,5 +30,8 @@ export const EventCode = Object.freeze({
   PickupCancelled: 'PickupCancelled',
   ReturnInitiated: 'ReturnInitiated',
   AvailableForPickup: 'AvailableForPickup',
-  RecipientRequestedAlternateDeliveryTiming: 'RecipientRequestedAlternateDeliveryTiming'
+  RecipientRequestedAlternateDeliveryTiming: 'RecipientRequestedAlternateDeliveryTiming',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const BankAccountNumberFormat = Object.freeze({
   IBAN: 'IBAN',
-  BBAN: 'BBAN'
+  BBAN: 'BBAN',
+  constructFromObject: function (object) {
+    return object
+  }
 })

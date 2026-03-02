@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const CustomerType = Object.freeze({
   Consumer: 'Consumer',
-  Business: 'Business'
+  Business: 'Business',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -20,5 +20,8 @@ export const ContentStatus = Object.freeze({
   APPROVED: 'APPROVED',
   DRAFT: 'DRAFT',
   REJECTED: 'REJECTED',
-  SUBMITTED: 'SUBMITTED'
+  SUBMITTED: 'SUBMITTED',
+  constructFromObject: function (object) {
+    return object
+  }
 })

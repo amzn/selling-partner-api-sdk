@@ -7,5 +7,6 @@ export const CapacityType: Readonly<{
     AVAILABLE_CAPACITY: "AVAILABLE_CAPACITY";
     ENCUMBERED_CAPACITY: "ENCUMBERED_CAPACITY";
     RESERVED_CAPACITY: "RESERVED_CAPACITY";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=CapacityType.d.ts.map

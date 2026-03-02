@@ -8,5 +8,6 @@ export const VerificationStatus: Readonly<{
     Rejected: "Rejected";
     Expired: "Expired";
     Cancelled: "Cancelled";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=VerificationStatus.d.ts.map

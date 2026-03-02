@@ -8,5 +8,6 @@ export const LabelFormat: Readonly<{
     ZPL203: "ZPL203";
     ZPL300: "ZPL300";
     ShippingServiceDefault: "ShippingServiceDefault";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=LabelFormat.d.ts.map

@@ -8,5 +8,6 @@ export const CustomAttributeType: Readonly<{
     INTEGER: "INTEGER";
     DOUBLE: "DOUBLE";
     JSON_STRING: "JSON_STRING";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=CustomAttributeType.d.ts.map

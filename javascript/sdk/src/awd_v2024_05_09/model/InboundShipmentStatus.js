@@ -23,5 +23,8 @@ export const InboundShipmentStatus = Object.freeze({
   RECEIVING: 'RECEIVING',
   DELIVERED: 'DELIVERED',
   CLOSED: 'CLOSED',
-  CANCELLED: 'CANCELLED'
+  CANCELLED: 'CANCELLED',
+  constructFromObject: function (object) {
+    return object
+  }
 })

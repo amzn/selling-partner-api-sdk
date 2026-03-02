@@ -42,5 +42,8 @@ export const AdditionalLocationInfo = Object.freeze({
   RECEPTIONIST: 'RECEPTIONIST',
   RECEIVER: 'RECEIVER',
   SECURE_LOCATION: 'SECURE_LOCATION',
-  SIDE_DOOR: 'SIDE_DOOR'
+  SIDE_DOOR: 'SIDE_DOOR',
+  constructFromObject: function (object) {
+    return object
+  }
 })

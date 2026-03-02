@@ -6,5 +6,6 @@ export const PayeeEntityType: Readonly<{
     INDIVIDUAL: "INDIVIDUAL";
     BUSINESS: "BUSINESS";
     TAX_AUTHORITY: "TAX_AUTHORITY";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=PayeeEntityType.d.ts.map

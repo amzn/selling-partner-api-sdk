@@ -7,5 +7,6 @@ export const InvalidItemReasonCode: Readonly<{
     DuplicateRequest: "DuplicateRequest";
     NoCompletedShipItems: "NoCompletedShipItems";
     NoReturnableQuantity: "NoReturnableQuantity";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=InvalidItemReasonCode.d.ts.map

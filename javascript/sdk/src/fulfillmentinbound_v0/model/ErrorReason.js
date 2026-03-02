@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const ErrorReason = Object.freeze({
   DoesNotExist: 'DoesNotExist',
-  InvalidASIN: 'InvalidASIN'
+  InvalidASIN: 'InvalidASIN',
+  constructFromObject: function (object) {
+    return object
+  }
 })

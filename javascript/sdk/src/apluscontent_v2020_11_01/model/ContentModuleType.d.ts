@@ -18,5 +18,6 @@ export const ContentModuleType: Readonly<{
     STANDARD_TECH_SPECS: "STANDARD_TECH_SPECS";
     STANDARD_TEXT: "STANDARD_TEXT";
     STANDARD_THREE_IMAGE_TEXT: "STANDARD_THREE_IMAGE_TEXT";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ContentModuleType.d.ts.map

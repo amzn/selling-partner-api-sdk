@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const PresenceStatus = Object.freeze({
   ABSENT: 'ABSENT',
-  PRESENT: 'PRESENT'
+  PRESENT: 'PRESENT',
+  constructFromObject: function (object) {
+    return object
+  }
 })

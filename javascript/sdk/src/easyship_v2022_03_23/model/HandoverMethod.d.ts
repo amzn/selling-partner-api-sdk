@@ -5,5 +5,6 @@ export type HandoverMethod = "PICKUP" | "DROPOFF";
 export const HandoverMethod: Readonly<{
     PICKUP: "PICKUP";
     DROPOFF: "DROPOFF";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=HandoverMethod.d.ts.map

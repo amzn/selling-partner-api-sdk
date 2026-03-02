@@ -17,5 +17,8 @@ import { ApiClient } from '../ApiClient.js'
  * @typedef {'Order'} ThroughputUnit
  */
 export const ThroughputUnit = Object.freeze({
-  Order: 'Order'
+  Order: 'Order',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -5,5 +5,6 @@ export type ContentType = "EBC" | "EMC";
 export const ContentType: Readonly<{
     EBC: "EBC";
     EMC: "EMC";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ContentType.d.ts.map

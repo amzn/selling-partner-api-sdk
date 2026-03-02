@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const LabelFormat = Object.freeze({
   PDF: 'PDF',
-  ZPL: 'ZPL'
+  ZPL: 'ZPL',
+  constructFromObject: function (object) {
+    return object
+  }
 })

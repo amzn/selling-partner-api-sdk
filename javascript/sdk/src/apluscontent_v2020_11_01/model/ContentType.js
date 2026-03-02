@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const ContentType = Object.freeze({
   EBC: 'EBC',
-  EMC: 'EMC'
+  EMC: 'EMC',
+  constructFromObject: function (object) {
+    return object
+  }
 })

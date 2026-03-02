@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const RateDirection = Object.freeze({
   BUY: 'BUY',
-  SELL: 'SELL'
+  SELL: 'SELL',
+  constructFromObject: function (object) {
+    return object
+  }
 })

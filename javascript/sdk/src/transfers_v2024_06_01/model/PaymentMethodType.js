@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const PaymentMethodType = Object.freeze({
   BANK_ACCOUNT: 'BANK_ACCOUNT',
   CARD: 'CARD',
-  SELLER_WALLET: 'SELLER_WALLET'
+  SELLER_WALLET: 'SELLER_WALLET',
+  constructFromObject: function (object) {
+    return object
+  }
 })

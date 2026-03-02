@@ -10,5 +10,6 @@ export const DayOfWeek: Readonly<{
     FRIDAY: "FRIDAY";
     SATURDAY: "SATURDAY";
     SUNDAY: "SUNDAY";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=DayOfWeek.d.ts.map

@@ -32,7 +32,6 @@ export class ItemOffersRequestParams {
    * @param itemCondition {ItemCondition}
    */
   constructor (marketplaceId, itemCondition) {
-    BatchOffersRequestParams.call(this, marketplaceId, itemCondition)
     this.marketplaceId = marketplaceId
     this.itemCondition = itemCondition
   }

@@ -20,5 +20,8 @@ export const BoxContentsSource = Object.freeze({
   NONE: 'NONE',
   FEED: 'FEED',
   '2D_BARCODE': '2D_BARCODE',
-  INTERACTIVE: 'INTERACTIVE'
+  INTERACTIVE: 'INTERACTIVE',
+  constructFromObject: function (object) {
+    return object
+  }
 })

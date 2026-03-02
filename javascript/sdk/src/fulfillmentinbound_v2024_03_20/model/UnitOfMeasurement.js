@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const UnitOfMeasurement = Object.freeze({
   IN: 'IN',
-  CM: 'CM'
+  CM: 'CM',
+  constructFromObject: function (object) {
+    return object
+  }
 })
