@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
 {
     /// <summary>
-    /// A quantity based on unit of measure.
+    /// A quantity based on the specified unit of measurement.
     /// </summary>
     [DataContract(Name = "Amount")]
     public partial class Amount : IValidatableObject

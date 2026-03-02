@@ -26,15 +26,15 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
 {
     /// <summary>
-    /// The preferred location to leave packages at the destination address.
+    /// The drop-off location at the destination address.
     /// </summary>
     [DataContract(Name = "DropOffLocation")]
     public partial class DropOffLocation : IValidatableObject
     {
         /// <summary>
-        /// Specifies the preferred location to leave the package at the destination address.
+        /// The drop-off location type at the destination address.
         /// </summary>
-        /// <value>Specifies the preferred location to leave the package at the destination address.</value>
+        /// <value>The drop-off location type at the destination address.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TypeEnum
         {
@@ -84,26 +84,14 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             /// Enum DONOTLEAVEUNATTENDED for value: DO_NOT_LEAVE_UNATTENDED
             /// </summary>
             [EnumMember(Value = "DO_NOT_LEAVE_UNATTENDED")]
-            DONOTLEAVEUNATTENDED = 8,
-
-            /// <summary>
-            /// Enum MAILROOMCLERK for value: MAIL_ROOM_CLERK
-            /// </summary>
-            [EnumMember(Value = "MAIL_ROOM_CLERK")]
-            MAILROOMCLERK = 9,
-
-            /// <summary>
-            /// Enum ASINSTRUCTED for value: AS_INSTRUCTED
-            /// </summary>
-            [EnumMember(Value = "AS_INSTRUCTED")]
-            ASINSTRUCTED = 10
+            DONOTLEAVEUNATTENDED = 8
         }
 
 
         /// <summary>
-        /// Specifies the preferred location to leave the package at the destination address.
+        /// The drop-off location type at the destination address.
         /// </summary>
-        /// <value>Specifies the preferred location to leave the package at the destination address.</value>
+        /// <value>The drop-off location type at the destination address.</value>
         [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
         public TypeEnum Type { get; set; }
         /// <summary>
@@ -114,8 +102,8 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <summary>
         /// Initializes a new instance of the <see cref="DropOffLocation" /> class.
         /// </summary>
-        /// <param name="type">Specifies the preferred location to leave the package at the destination address. (required).</param>
-        /// <param name="attributes">Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the &#x60;type&#x60; field. If the &#x60;type&#x60; is set to &#x60;FALLBACK_NEIGHBOR_DELIVERY&#x60;, the &#x60;attributes&#x60; object should include the exact keys &#x60;neighborName&#x60; and &#x60;houseNumber&#x60; to provide the name and house number of the designated neighbor.  For &#x60;RECEPTIONIST&#x60;, &#x60;MAIL_ROOM_CLERK&#x60;, and &#x60;AS_INSTRUCTED&#x60; types, the &#x60;attributes&#x60; object will include a &#x60;recipientName&#x60; field containing the name of the person who received the package..</param>
+        /// <param name="type">The drop-off location type at the destination address. (required).</param>
+        /// <param name="attributes">Additional information about the drop-off location. This information can vary depending on the type of drop-off location specified in the &#x60;type&#x60; field.  If the &#x60;type&#x60; is set to &#x60;FALLBACK_NEIGHBOR_DELIVERY&#x60;, the &#x60;attributes&#x60; object must include the keys &#x60;neighborName&#x60; and &#x60;houseNumber&#x60; to provide the name and house number of the designated neighbor.  For &#x60;RECEPTIONIST&#x60; type, the &#x60;attributes&#x60; object may include a &#x60;recipientName&#x60; field that contains the name of the person who received or will receive the package..</param>
         public DropOffLocation(TypeEnum type = default(TypeEnum), Dictionary<string, string>? attributes = default(Dictionary<string, string>?))
         {
             this.Type = type;
@@ -123,9 +111,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         }
 
         /// <summary>
-        /// Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the &#x60;type&#x60; field. If the &#x60;type&#x60; is set to &#x60;FALLBACK_NEIGHBOR_DELIVERY&#x60;, the &#x60;attributes&#x60; object should include the exact keys &#x60;neighborName&#x60; and &#x60;houseNumber&#x60; to provide the name and house number of the designated neighbor.  For &#x60;RECEPTIONIST&#x60;, &#x60;MAIL_ROOM_CLERK&#x60;, and &#x60;AS_INSTRUCTED&#x60; types, the &#x60;attributes&#x60; object will include a &#x60;recipientName&#x60; field containing the name of the person who received the package.
+        /// Additional information about the drop-off location. This information can vary depending on the type of drop-off location specified in the &#x60;type&#x60; field.  If the &#x60;type&#x60; is set to &#x60;FALLBACK_NEIGHBOR_DELIVERY&#x60;, the &#x60;attributes&#x60; object must include the keys &#x60;neighborName&#x60; and &#x60;houseNumber&#x60; to provide the name and house number of the designated neighbor.  For &#x60;RECEPTIONIST&#x60; type, the &#x60;attributes&#x60; object may include a &#x60;recipientName&#x60; field that contains the name of the person who received or will receive the package.
         /// </summary>
-        /// <value>Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the &#x60;type&#x60; field. If the &#x60;type&#x60; is set to &#x60;FALLBACK_NEIGHBOR_DELIVERY&#x60;, the &#x60;attributes&#x60; object should include the exact keys &#x60;neighborName&#x60; and &#x60;houseNumber&#x60; to provide the name and house number of the designated neighbor.  For &#x60;RECEPTIONIST&#x60;, &#x60;MAIL_ROOM_CLERK&#x60;, and &#x60;AS_INSTRUCTED&#x60; types, the &#x60;attributes&#x60; object will include a &#x60;recipientName&#x60; field containing the name of the person who received the package.</value>
+        /// <value>Additional information about the drop-off location. This information can vary depending on the type of drop-off location specified in the &#x60;type&#x60; field.  If the &#x60;type&#x60; is set to &#x60;FALLBACK_NEIGHBOR_DELIVERY&#x60;, the &#x60;attributes&#x60; object must include the keys &#x60;neighborName&#x60; and &#x60;houseNumber&#x60; to provide the name and house number of the designated neighbor.  For &#x60;RECEPTIONIST&#x60; type, the &#x60;attributes&#x60; object may include a &#x60;recipientName&#x60; field that contains the name of the person who received or will receive the package.</value>
         [DataMember(Name = "attributes", EmitDefaultValue = false)]
         public Dictionary<string, string>? Attributes { get; set; }
 

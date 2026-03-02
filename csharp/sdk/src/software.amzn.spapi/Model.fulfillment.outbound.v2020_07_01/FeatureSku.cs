@@ -34,7 +34,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <summary>
         /// Initializes a new instance of the <see cref="FeatureSku" /> class.
         /// </summary>
-        /// <param name="sellerSku">Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s SellerId, which is included with every operation that you submit..</param>
+        /// <param name="sellerSku">Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit..</param>
         /// <param name="fnSku">The unique SKU used by Amazon&#39;s fulfillment network..</param>
         /// <param name="asin">The Amazon Standard Identification Number (ASIN) of the item..</param>
         /// <param name="skuCount">The number of SKUs available for this service..</param>
@@ -49,9 +49,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         }
 
         /// <summary>
-        /// Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.
+        /// Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.
         /// </summary>
-        /// <value>Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.</value>
+        /// <value>Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.</value>
         [DataMember(Name = "sellerSku", EmitDefaultValue = false)]
         public string? SellerSku { get; set; }
 

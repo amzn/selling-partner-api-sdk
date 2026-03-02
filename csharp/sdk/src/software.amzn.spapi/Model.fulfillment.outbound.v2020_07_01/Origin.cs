@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <summary>
         /// Initializes a new instance of the <see cref="Origin" /> class.
         /// </summary>
-        /// <param name="countryCode">The two digit country code the items should ship from. In ISO 3166-1 alpha-2 format. (required).</param>
+        /// <param name="countryCode">The two-digit country code (in ISO 3166-1 alpha-2 format) for the country where the items will ship from. (required).</param>
         public Origin(string countryCode = default(string))
         {
             // to ensure "countryCode" is required (not null)
@@ -51,9 +51,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         }
 
         /// <summary>
-        /// The two digit country code the items should ship from. In ISO 3166-1 alpha-2 format.
+        /// The two-digit country code (in ISO 3166-1 alpha-2 format) for the country where the items will ship from.
         /// </summary>
-        /// <value>The two digit country code the items should ship from. In ISO 3166-1 alpha-2 format.</value>
+        /// <value>The two-digit country code (in ISO 3166-1 alpha-2 format) for the country where the items will ship from.</value>
         [DataMember(Name = "countryCode", IsRequired = true, EmitDefaultValue = true)]
         public string CountryCode { get; set; }
 
