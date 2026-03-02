@@ -48,14 +48,14 @@ public class FeatureSku {
     }
 
     /**
-     * Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#x27;s
-     * SellerId, which is included with every operation that you submit.
+     * Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s SellerId, which is
+     * included with every operation that you submit.
      *
      * @return sellerSku
      */
     @Schema(
             description =
-                    "Used to identify an item in the given marketplace. `SellerSKU` is qualified by the seller's SellerId, which is included with every operation that you submit.")
+                    "Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.")
     public String getSellerSku() {
         return sellerSku;
     }

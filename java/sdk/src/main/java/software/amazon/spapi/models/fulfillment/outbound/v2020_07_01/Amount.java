@@ -21,8 +21,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
-/** A quantity based on unit of measure. */
-@Schema(description = "A quantity based on unit of measure.")
+/** A quantity based on the specified unit of measurement. */
+@Schema(description = "A quantity based on the specified unit of measurement.")
 public class Amount {
     /** The unit of measure for the amount. */
     @JsonAdapter(UnitOfMeasureEnum.Adapter.class)

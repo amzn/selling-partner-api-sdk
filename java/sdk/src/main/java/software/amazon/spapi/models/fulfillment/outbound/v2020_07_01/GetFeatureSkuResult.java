@@ -14,6 +14,7 @@ package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -33,8 +34,17 @@ public class GetFeatureSkuResult {
     @SerializedName("ineligibleReasons")
     private List<String> ineligibleReasons = null;
 
-    @SerializedName("skuInfo")
-    private FeatureSku skuInfo = null;
+    @SerializedName("sellerSku")
+    private String sellerSku = null;
+
+    @SerializedName("fnSku")
+    private String fnSku = null;
+
+    @SerializedName("asin")
+    private String asin = null;
+
+    @SerializedName("skuCount")
+    private BigDecimal skuCount = null;
 
     public GetFeatureSkuResult marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -125,23 +135,83 @@ public class GetFeatureSkuResult {
         this.ineligibleReasons = ineligibleReasons;
     }
 
-    public GetFeatureSkuResult skuInfo(FeatureSku skuInfo) {
-        this.skuInfo = skuInfo;
+    public GetFeatureSkuResult sellerSku(String sellerSku) {
+        this.sellerSku = sellerSku;
         return this;
     }
 
     /**
-     * Get skuInfo
+     * Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s SellerId, which is
+     * included with every operation that you submit.
      *
-     * @return skuInfo
+     * @return sellerSku
      */
-    @Schema(description = "")
-    public FeatureSku getSkuInfo() {
-        return skuInfo;
+    @Schema(
+            description =
+                    "Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.")
+    public String getSellerSku() {
+        return sellerSku;
     }
 
-    public void setSkuInfo(FeatureSku skuInfo) {
-        this.skuInfo = skuInfo;
+    public void setSellerSku(String sellerSku) {
+        this.sellerSku = sellerSku;
+    }
+
+    public GetFeatureSkuResult fnSku(String fnSku) {
+        this.fnSku = fnSku;
+        return this;
+    }
+
+    /**
+     * The unique SKU used by Amazon&#x27;s fulfillment network.
+     *
+     * @return fnSku
+     */
+    @Schema(description = "The unique SKU used by Amazon's fulfillment network.")
+    public String getFnSku() {
+        return fnSku;
+    }
+
+    public void setFnSku(String fnSku) {
+        this.fnSku = fnSku;
+    }
+
+    public GetFeatureSkuResult asin(String asin) {
+        this.asin = asin;
+        return this;
+    }
+
+    /**
+     * The Amazon Standard Identification Number (ASIN) of the item.
+     *
+     * @return asin
+     */
+    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    public String getAsin() {
+        return asin;
+    }
+
+    public void setAsin(String asin) {
+        this.asin = asin;
+    }
+
+    public GetFeatureSkuResult skuCount(BigDecimal skuCount) {
+        this.skuCount = skuCount;
+        return this;
+    }
+
+    /**
+     * The number of SKUs available for this service.
+     *
+     * @return skuCount
+     */
+    @Schema(description = "The number of SKUs available for this service.")
+    public BigDecimal getSkuCount() {
+        return skuCount;
+    }
+
+    public void setSkuCount(BigDecimal skuCount) {
+        this.skuCount = skuCount;
     }
 
     @Override
@@ -157,12 +227,16 @@ public class GetFeatureSkuResult {
                 && Objects.equals(this.featureName, getFeatureSkuResult.featureName)
                 && Objects.equals(this.isEligible, getFeatureSkuResult.isEligible)
                 && Objects.equals(this.ineligibleReasons, getFeatureSkuResult.ineligibleReasons)
-                && Objects.equals(this.skuInfo, getFeatureSkuResult.skuInfo);
+                && Objects.equals(this.sellerSku, getFeatureSkuResult.sellerSku)
+                && Objects.equals(this.fnSku, getFeatureSkuResult.fnSku)
+                && Objects.equals(this.asin, getFeatureSkuResult.asin)
+                && Objects.equals(this.skuCount, getFeatureSkuResult.skuCount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(marketplaceId, featureName, isEligible, ineligibleReasons, skuInfo);
+        return Objects.hash(
+                marketplaceId, featureName, isEligible, ineligibleReasons, sellerSku, fnSku, asin, skuCount);
     }
 
     @Override
@@ -176,7 +250,10 @@ public class GetFeatureSkuResult {
         sb.append("    ineligibleReasons: ")
                 .append(toIndentedString(ineligibleReasons))
                 .append("\n");
-        sb.append("    skuInfo: ").append(toIndentedString(skuInfo)).append("\n");
+        sb.append("    sellerSku: ").append(toIndentedString(sellerSku)).append("\n");
+        sb.append("    fnSku: ").append(toIndentedString(fnSku)).append("\n");
+        sb.append("    asin: ").append(toIndentedString(asin)).append("\n");
+        sb.append("    skuCount: ").append(toIndentedString(skuCount)).append("\n");
         sb.append("}");
         return sb.toString();
     }
