@@ -33,12 +33,12 @@ describe('{{classname}}', () => {
       const response = await instance.{{operationId}}WithHttpInfo();
       {{/hasParams}}
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal({{code}})
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal({{responses.0.code}})
       {{#responses}}
       {{#-first}}
       {{#schema}}
-      expect(response).to.have.property('data');
+      assertValidResponsePayload({{code}}, response.data.payload);
       {{/schema}}
       {{/-first}}
       {{/responses}}
@@ -60,6 +60,10 @@ describe('{{classname}}', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();
