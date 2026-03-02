@@ -24,9 +24,9 @@ describe('UploadsApi', () => {
       ];
       const response = await instance.createUploadDestinationForResourceWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(201)
+      assertValidResponsePayload(201, response.data.payload);
     });
   });
 
@@ -43,6 +43,10 @@ describe('UploadsApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

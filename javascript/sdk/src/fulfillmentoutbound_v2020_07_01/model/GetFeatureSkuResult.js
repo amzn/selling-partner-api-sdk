@@ -12,7 +12,6 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
-import { FeatureSku } from './FeatureSku.js'
 
 /**
  * The GetFeatureSkuResult model module.
@@ -60,7 +59,10 @@ export class GetFeatureSkuResult {
       if (data.hasOwnProperty('featureName')) { obj.featureName = ApiClient.convertToType(data.featureName, 'String') }
       if (data.hasOwnProperty('isEligible')) { obj.isEligible = ApiClient.convertToType(data.isEligible, 'Boolean') }
       if (data.hasOwnProperty('ineligibleReasons')) { obj.ineligibleReasons = ApiClient.convertToType(data.ineligibleReasons, ['String']) }
-      if (data.hasOwnProperty('skuInfo')) { obj.skuInfo = FeatureSku.constructFromObject(data.skuInfo) }
+      if (data.hasOwnProperty('sellerSku')) { obj.sellerSku = ApiClient.convertToType(data.sellerSku, 'String') }
+      if (data.hasOwnProperty('fnSku')) { obj.fnSku = ApiClient.convertToType(data.fnSku, 'String') }
+      if (data.hasOwnProperty('asin')) { obj.asin = ApiClient.convertToType(data.asin, 'String') }
+      if (data.hasOwnProperty('skuCount')) { obj.skuCount = ApiClient.convertToType(data.skuCount, 'Number') }
     }
     return obj
   }
@@ -95,7 +97,29 @@ GetFeatureSkuResult.prototype.isEligible = undefined
 GetFeatureSkuResult.prototype.ineligibleReasons = undefined
 
 /**
- * @member {FeatureSku} skuInfo
- * @type {FeatureSku}
+ * Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.
+ * @member {String} sellerSku
+ * @type {String}
  */
-GetFeatureSkuResult.prototype.skuInfo = undefined
+GetFeatureSkuResult.prototype.sellerSku = undefined
+
+/**
+ * The unique SKU used by Amazon's fulfillment network.
+ * @member {String} fnSku
+ * @type {String}
+ */
+GetFeatureSkuResult.prototype.fnSku = undefined
+
+/**
+ * The Amazon Standard Identification Number (ASIN) of the item.
+ * @member {String} asin
+ * @type {String}
+ */
+GetFeatureSkuResult.prototype.asin = undefined
+
+/**
+ * The number of SKUs available for this service.
+ * @member {Number} skuCount
+ * @type {Number}
+ */
+GetFeatureSkuResult.prototype.skuCount = undefined

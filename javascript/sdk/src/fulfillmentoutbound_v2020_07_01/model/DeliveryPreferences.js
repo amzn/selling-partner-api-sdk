@@ -58,7 +58,7 @@ export class DeliveryPreferences {
 }
 
 /**
- * Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, 'Beware of dogs', etc.
+ * Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, or `Beware of dogs`.
  * @member {String} deliveryInstructions
  * @type {String}
  */

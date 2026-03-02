@@ -23,9 +23,9 @@ describe('ProductPricingApi', () => {
       ];
       const response = await instance.getCompetitivePricingWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getItemOffers', () => {
@@ -38,9 +38,9 @@ describe('ProductPricingApi', () => {
       ];
       const response = await instance.getItemOffersWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getItemOffersBatch', () => {
@@ -51,9 +51,9 @@ describe('ProductPricingApi', () => {
       ];
       const response = await instance.getItemOffersBatchWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getListingOffers', () => {
@@ -66,9 +66,9 @@ describe('ProductPricingApi', () => {
       ];
       const response = await instance.getListingOffersWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getListingOffersBatch', () => {
@@ -79,9 +79,9 @@ describe('ProductPricingApi', () => {
       ];
       const response = await instance.getListingOffersBatchWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getPricing', () => {
@@ -93,9 +93,9 @@ describe('ProductPricingApi', () => {
       ];
       const response = await instance.getPricingWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
 
@@ -112,6 +112,10 @@ describe('ProductPricingApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

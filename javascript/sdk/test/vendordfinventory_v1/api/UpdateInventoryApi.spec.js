@@ -23,9 +23,9 @@ describe('UpdateInventoryApi', () => {
       ];
       const response = await instance.submitInventoryUpdateWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(202)
+      assertValidResponsePayload(202, response.data.payload);
     });
   });
 
@@ -42,6 +42,10 @@ describe('UpdateInventoryApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

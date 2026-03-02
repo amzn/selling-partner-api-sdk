@@ -64,7 +64,7 @@ export class Destination {
 Destination.prototype.deliveryAddress = undefined
 
 /**
- * An IP Address.
+ * An IP address.
  * @member {String} ipAddress
  * @type {String}
  */

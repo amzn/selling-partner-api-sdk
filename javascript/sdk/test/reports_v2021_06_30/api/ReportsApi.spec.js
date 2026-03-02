@@ -22,8 +22,8 @@ describe('ReportsApi', () => {
       ];
       const response = await instance.cancelReportWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
     });
   });
   describe('cancelReportSchedule', () => {
@@ -34,8 +34,8 @@ describe('ReportsApi', () => {
       ];
       const response = await instance.cancelReportScheduleWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
     });
   });
   describe('createReport', () => {
@@ -46,9 +46,9 @@ describe('ReportsApi', () => {
       ];
       const response = await instance.createReportWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(202)
+      assertValidResponsePayload(202, response.data.payload);
     });
   });
   describe('createReportSchedule', () => {
@@ -59,9 +59,9 @@ describe('ReportsApi', () => {
       ];
       const response = await instance.createReportScheduleWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(201)
+      assertValidResponsePayload(201, response.data.payload);
     });
   });
   describe('getReport', () => {
@@ -72,9 +72,9 @@ describe('ReportsApi', () => {
       ];
       const response = await instance.getReportWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getReportDocument', () => {
@@ -85,9 +85,9 @@ describe('ReportsApi', () => {
       ];
       const response = await instance.getReportDocumentWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getReportSchedule', () => {
@@ -98,9 +98,9 @@ describe('ReportsApi', () => {
       ];
       const response = await instance.getReportScheduleWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getReportSchedules', () => {
@@ -111,9 +111,9 @@ describe('ReportsApi', () => {
       ];
       const response = await instance.getReportSchedulesWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getReports', () => {
@@ -123,9 +123,9 @@ describe('ReportsApi', () => {
       ];
       const response = await instance.getReportsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
 
@@ -142,6 +142,10 @@ describe('ReportsApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

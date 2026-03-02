@@ -23,8 +23,8 @@ describe('OrdersV0Api', () => {
       ];
       const response = await instance.confirmShipmentWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
     });
   });
   describe('getOrder', () => {
@@ -35,9 +35,9 @@ describe('OrdersV0Api', () => {
       ];
       const response = await instance.getOrderWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getOrderAddress', () => {
@@ -48,9 +48,9 @@ describe('OrdersV0Api', () => {
       ];
       const response = await instance.getOrderAddressWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getOrderBuyerInfo', () => {
@@ -61,9 +61,9 @@ describe('OrdersV0Api', () => {
       ];
       const response = await instance.getOrderBuyerInfoWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getOrderItems', () => {
@@ -74,9 +74,9 @@ describe('OrdersV0Api', () => {
       ];
       const response = await instance.getOrderItemsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getOrderItemsBuyerInfo', () => {
@@ -87,9 +87,9 @@ describe('OrdersV0Api', () => {
       ];
       const response = await instance.getOrderItemsBuyerInfoWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getOrderRegulatedInfo', () => {
@@ -100,9 +100,9 @@ describe('OrdersV0Api', () => {
       ];
       const response = await instance.getOrderRegulatedInfoWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getOrders', () => {
@@ -113,9 +113,9 @@ describe('OrdersV0Api', () => {
       ];
       const response = await instance.getOrdersWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('updateVerificationStatus', () => {
@@ -127,8 +127,8 @@ describe('OrdersV0Api', () => {
       ];
       const response = await instance.updateVerificationStatusWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
     });
   });
 
@@ -145,6 +145,10 @@ describe('OrdersV0Api', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

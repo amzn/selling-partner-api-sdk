@@ -23,9 +23,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.addAppointmentForServiceJobByServiceJobIdWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('assignAppointmentResources', () => {
@@ -38,9 +38,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.assignAppointmentResourcesWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('cancelReservation', () => {
@@ -52,9 +52,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.cancelReservationWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
+      assertValidResponsePayload(204, response.data.payload);
     });
   });
   describe('cancelServiceJobByServiceJobId', () => {
@@ -66,9 +66,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.cancelServiceJobByServiceJobIdWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('completeServiceJobByServiceJobId', () => {
@@ -79,9 +79,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.completeServiceJobByServiceJobIdWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('createReservation', () => {
@@ -93,9 +93,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.createReservationWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('createServiceDocumentUploadDestination', () => {
@@ -106,9 +106,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.createServiceDocumentUploadDestinationWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getAppointmentSlots', () => {
@@ -121,9 +121,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.getAppointmentSlotsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getAppointmmentSlotsByJobId', () => {
@@ -135,9 +135,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.getAppointmmentSlotsByJobIdWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getFixedSlotCapacity', () => {
@@ -150,9 +150,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.getFixedSlotCapacityWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getRangeSlotCapacity', () => {
@@ -165,9 +165,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.getRangeSlotCapacityWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getServiceJobByServiceJobId', () => {
@@ -178,9 +178,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.getServiceJobByServiceJobIdWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getServiceJobs', () => {
@@ -191,9 +191,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.getServiceJobsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('rescheduleAppointmentForServiceJobByServiceJobId', () => {
@@ -206,9 +206,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('setAppointmentFulfillmentData', () => {
@@ -221,9 +221,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.setAppointmentFulfillmentDataWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
+      assertValidResponsePayload(204, response.data.payload);
     });
   });
   describe('updateReservation', () => {
@@ -236,9 +236,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.updateReservationWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('updateSchedule', () => {
@@ -251,9 +251,9 @@ describe('ServiceApi', () => {
       ];
       const response = await instance.updateScheduleWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
 
@@ -270,6 +270,10 @@ describe('ServiceApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

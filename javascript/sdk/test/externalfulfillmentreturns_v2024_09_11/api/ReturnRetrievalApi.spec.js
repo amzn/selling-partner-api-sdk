@@ -22,9 +22,9 @@ describe('ReturnRetrievalApi', () => {
       ];
       const response = await instance.getReturnWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('listReturns', () => {
@@ -34,9 +34,9 @@ describe('ReturnRetrievalApi', () => {
       ];
       const response = await instance.listReturnsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
 
@@ -53,6 +53,10 @@ describe('ReturnRetrievalApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

@@ -22,8 +22,8 @@ describe('AwdApi', () => {
       ];
       const response = await instance.cancelInboundWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
     });
   });
   describe('checkInboundEligibility', () => {
@@ -34,9 +34,9 @@ describe('AwdApi', () => {
       ];
       const response = await instance.checkInboundEligibilityWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('confirmInbound', () => {
@@ -47,8 +47,8 @@ describe('AwdApi', () => {
       ];
       const response = await instance.confirmInboundWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
     });
   });
   describe('confirmReplenishmentOrder', () => {
@@ -59,8 +59,8 @@ describe('AwdApi', () => {
       ];
       const response = await instance.confirmReplenishmentOrderWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
     });
   });
   describe('createInbound', () => {
@@ -71,9 +71,9 @@ describe('AwdApi', () => {
       ];
       const response = await instance.createInboundWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(201)
+      assertValidResponsePayload(201, response.data.payload);
     });
   });
   describe('createReplenishmentOrder', () => {
@@ -84,9 +84,9 @@ describe('AwdApi', () => {
       ];
       const response = await instance.createReplenishmentOrderWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(201)
+      assertValidResponsePayload(201, response.data.payload);
     });
   });
   describe('getInbound', () => {
@@ -97,9 +97,9 @@ describe('AwdApi', () => {
       ];
       const response = await instance.getInboundWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getInboundShipment', () => {
@@ -110,9 +110,9 @@ describe('AwdApi', () => {
       ];
       const response = await instance.getInboundShipmentWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getInboundShipmentLabels', () => {
@@ -123,9 +123,9 @@ describe('AwdApi', () => {
       ];
       const response = await instance.getInboundShipmentLabelsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getReplenishmentOrder', () => {
@@ -136,9 +136,9 @@ describe('AwdApi', () => {
       ];
       const response = await instance.getReplenishmentOrderWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('listInboundShipments', () => {
@@ -148,9 +148,9 @@ describe('AwdApi', () => {
       ];
       const response = await instance.listInboundShipmentsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('listInventory', () => {
@@ -160,9 +160,9 @@ describe('AwdApi', () => {
       ];
       const response = await instance.listInventoryWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('listReplenishmentOrders', () => {
@@ -172,9 +172,9 @@ describe('AwdApi', () => {
       ];
       const response = await instance.listReplenishmentOrdersWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('updateInbound', () => {
@@ -186,8 +186,8 @@ describe('AwdApi', () => {
       ];
       const response = await instance.updateInboundWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
     });
   });
   describe('updateInboundShipmentTransportDetails', () => {
@@ -199,8 +199,8 @@ describe('AwdApi', () => {
       ];
       const response = await instance.updateInboundShipmentTransportDetailsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
     });
   });
 
@@ -217,6 +217,10 @@ describe('AwdApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

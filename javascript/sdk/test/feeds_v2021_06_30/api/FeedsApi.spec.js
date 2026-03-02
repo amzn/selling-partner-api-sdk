@@ -22,8 +22,8 @@ describe('FeedsApi', () => {
       ];
       const response = await instance.cancelFeedWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
     });
   });
   describe('createFeed', () => {
@@ -34,9 +34,9 @@ describe('FeedsApi', () => {
       ];
       const response = await instance.createFeedWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(202)
+      assertValidResponsePayload(202, response.data.payload);
     });
   });
   describe('createFeedDocument', () => {
@@ -47,9 +47,9 @@ describe('FeedsApi', () => {
       ];
       const response = await instance.createFeedDocumentWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(201)
+      assertValidResponsePayload(201, response.data.payload);
     });
   });
   describe('getFeed', () => {
@@ -60,9 +60,9 @@ describe('FeedsApi', () => {
       ];
       const response = await instance.getFeedWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getFeedDocument', () => {
@@ -73,9 +73,9 @@ describe('FeedsApi', () => {
       ];
       const response = await instance.getFeedDocumentWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getFeeds', () => {
@@ -85,9 +85,9 @@ describe('FeedsApi', () => {
       ];
       const response = await instance.getFeedsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
 
@@ -104,6 +104,10 @@ describe('FeedsApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

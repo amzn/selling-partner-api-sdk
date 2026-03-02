@@ -24,9 +24,9 @@ describe('MessagingApi', () => {
       ];
       const response = await instance.confirmCustomizationDetailsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(201)
+      assertValidResponsePayload(201, response.data.payload);
     });
   });
   describe('createConfirmDeliveryDetails', () => {
@@ -39,9 +39,9 @@ describe('MessagingApi', () => {
       ];
       const response = await instance.createConfirmDeliveryDetailsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(201)
+      assertValidResponsePayload(201, response.data.payload);
     });
   });
   describe('createConfirmOrderDetails', () => {
@@ -54,9 +54,9 @@ describe('MessagingApi', () => {
       ];
       const response = await instance.createConfirmOrderDetailsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(201)
+      assertValidResponsePayload(201, response.data.payload);
     });
   });
   describe('createConfirmServiceDetails', () => {
@@ -69,9 +69,9 @@ describe('MessagingApi', () => {
       ];
       const response = await instance.createConfirmServiceDetailsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(201)
+      assertValidResponsePayload(201, response.data.payload);
     });
   });
   describe('createDigitalAccessKey', () => {
@@ -84,9 +84,9 @@ describe('MessagingApi', () => {
       ];
       const response = await instance.createDigitalAccessKeyWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(201)
+      assertValidResponsePayload(201, response.data.payload);
     });
   });
   describe('createLegalDisclosure', () => {
@@ -99,9 +99,9 @@ describe('MessagingApi', () => {
       ];
       const response = await instance.createLegalDisclosureWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(201)
+      assertValidResponsePayload(201, response.data.payload);
     });
   });
   describe('createUnexpectedProblem', () => {
@@ -114,9 +114,9 @@ describe('MessagingApi', () => {
       ];
       const response = await instance.createUnexpectedProblemWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(201)
+      assertValidResponsePayload(201, response.data.payload);
     });
   });
   describe('createWarranty', () => {
@@ -129,9 +129,9 @@ describe('MessagingApi', () => {
       ];
       const response = await instance.createWarrantyWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(201)
+      assertValidResponsePayload(201, response.data.payload);
     });
   });
   describe('getAttributes', () => {
@@ -143,9 +143,9 @@ describe('MessagingApi', () => {
       ];
       const response = await instance.getAttributesWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getMessagingActionsForOrder', () => {
@@ -157,9 +157,9 @@ describe('MessagingApi', () => {
       ];
       const response = await instance.getMessagingActionsForOrderWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('sendInvoice', () => {
@@ -172,9 +172,9 @@ describe('MessagingApi', () => {
       ];
       const response = await instance.sendInvoiceWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(201)
+      assertValidResponsePayload(201, response.data.payload);
     });
   });
 
@@ -191,6 +191,10 @@ describe('MessagingApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

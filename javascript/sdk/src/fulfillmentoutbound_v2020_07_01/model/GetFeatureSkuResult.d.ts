@@ -32,10 +32,28 @@ export class GetFeatureSkuResult {
      */
     ineligibleReasons: string[];
     /**
-     * @member {FeatureSku} skuInfo
-     * @type {FeatureSku}
+     * Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.
+     * @member {String} sellerSku
+     * @type {String}
      */
-    skuInfo: FeatureSku;
+    sellerSku: string;
+    /**
+     * The unique SKU used by Amazon's fulfillment network.
+     * @member {String} fnSku
+     * @type {String}
+     */
+    fnSku: string;
+    /**
+     * The Amazon Standard Identification Number (ASIN) of the item.
+     * @member {String} asin
+     * @type {String}
+     */
+    asin: string;
+    /**
+     * The number of SKUs available for this service.
+     * @member {Number} skuCount
+     * @type {Number}
+     */
+    skuCount: number;
 }
-import { FeatureSku } from './FeatureSku.js';
 //# sourceMappingURL=GetFeatureSkuResult.d.ts.map

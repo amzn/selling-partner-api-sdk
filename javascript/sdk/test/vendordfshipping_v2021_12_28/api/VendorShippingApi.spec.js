@@ -22,9 +22,9 @@ describe('VendorShippingApi', () => {
       ];
       const response = await instance.getPackingSlipWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getPackingSlips', () => {
@@ -36,9 +36,9 @@ describe('VendorShippingApi', () => {
       ];
       const response = await instance.getPackingSlipsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('submitShipmentConfirmations', () => {
@@ -49,9 +49,9 @@ describe('VendorShippingApi', () => {
       ];
       const response = await instance.submitShipmentConfirmationsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(202)
+      assertValidResponsePayload(202, response.data.payload);
     });
   });
   describe('submitShipmentStatusUpdates', () => {
@@ -62,9 +62,9 @@ describe('VendorShippingApi', () => {
       ];
       const response = await instance.submitShipmentStatusUpdatesWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(202)
+      assertValidResponsePayload(202, response.data.payload);
     });
   });
 
@@ -81,6 +81,10 @@ describe('VendorShippingApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

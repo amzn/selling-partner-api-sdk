@@ -22,9 +22,9 @@ describe('SupplySourcesApi', () => {
       ];
       const response = await instance.archiveSupplySourceWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
+      assertValidResponsePayload(204, response.data.payload);
     });
   });
   describe('createSupplySource', () => {
@@ -35,9 +35,9 @@ describe('SupplySourcesApi', () => {
       ];
       const response = await instance.createSupplySourceWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getSupplySource', () => {
@@ -48,9 +48,9 @@ describe('SupplySourcesApi', () => {
       ];
       const response = await instance.getSupplySourceWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getSupplySources', () => {
@@ -60,9 +60,9 @@ describe('SupplySourcesApi', () => {
       ];
       const response = await instance.getSupplySourcesWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('updateSupplySource', () => {
@@ -73,9 +73,9 @@ describe('SupplySourcesApi', () => {
       ];
       const response = await instance.updateSupplySourceWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
+      assertValidResponsePayload(204, response.data.payload);
     });
   });
   describe('updateSupplySourceStatus', () => {
@@ -86,9 +86,9 @@ describe('SupplySourcesApi', () => {
       ];
       const response = await instance.updateSupplySourceStatusWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
+      assertValidResponsePayload(204, response.data.payload);
     });
   });
 
@@ -105,6 +105,10 @@ describe('SupplySourcesApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();
