@@ -5,5 +5,6 @@ export type ConfirmationMode = "AUTO" | "MANUAL";
 export const ConfirmationMode: Readonly<{
     AUTO: "AUTO";
     MANUAL: "MANUAL";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ConfirmationMode.d.ts.map

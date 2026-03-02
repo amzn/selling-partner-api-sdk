@@ -17,5 +17,6 @@ export const EventCode: Readonly<{
     ReturnInitiated: "ReturnInitiated";
     AvailableForPickup: "AvailableForPickup";
     RecipientRequestedAlternateDeliveryTiming: "RecipientRequestedAlternateDeliveryTiming";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=EventCode.d.ts.map

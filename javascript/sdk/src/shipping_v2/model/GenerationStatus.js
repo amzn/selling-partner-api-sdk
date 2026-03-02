@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const GenerationStatus = Object.freeze({
   Completed: 'Completed',
-  InProgress: 'InProgress'
+  InProgress: 'InProgress',
+  constructFromObject: function (object) {
+    return object
+  }
 })

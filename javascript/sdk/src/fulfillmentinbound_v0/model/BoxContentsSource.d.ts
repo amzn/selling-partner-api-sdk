@@ -7,5 +7,6 @@ export const BoxContentsSource: Readonly<{
     FEED: "FEED";
     '2D_BARCODE': "2D_BARCODE";
     INTERACTIVE: "INTERACTIVE";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=BoxContentsSource.d.ts.map

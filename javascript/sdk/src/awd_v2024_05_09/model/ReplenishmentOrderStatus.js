@@ -25,5 +25,8 @@ export const ReplenishmentOrderStatus = Object.freeze({
   INELIGIBLE: 'INELIGIBLE',
   INVENTORY_OUTBOUND: 'INVENTORY_OUTBOUND',
   SUCCESS: 'SUCCESS',
-  VALIDATING: 'VALIDATING'
+  VALIDATING: 'VALIDATING',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -21,5 +21,6 @@ export const CurrentStatus: Readonly<{
     RETURN_REQUEST_ACCEPTED: "RETURN_REQUEST_ACCEPTED";
     REFUND_ISSUED: "REFUND_ISSUED";
     RETURN_RECEIVED_IN_FC: "RETURN_RECEIVED_IN_FC";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=CurrentStatus.d.ts.map

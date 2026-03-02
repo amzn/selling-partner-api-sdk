@@ -5,5 +5,6 @@ export type InputTargetType = "SHIPMENT_LEVEL" | "ITEM_LEVEL";
 export const InputTargetType: Readonly<{
     SHIPMENT_LEVEL: "SHIPMENT_LEVEL";
     ITEM_LEVEL: "ITEM_LEVEL";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=InputTargetType.d.ts.map

@@ -8,5 +8,6 @@ export const ItemCondition: Readonly<{
     Collectible: "Collectible";
     Refurbished: "Refurbished";
     Club: "Club";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ItemCondition.d.ts.map

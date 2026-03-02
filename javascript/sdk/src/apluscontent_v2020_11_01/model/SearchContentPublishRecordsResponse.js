@@ -30,7 +30,6 @@ export class SearchContentPublishRecordsResponse {
    * @param publishRecordList {PublishRecord[]} A list of A+ Content publishing records.
    */
   constructor (publishRecordList) {
-    AplusPaginatedResponse.call(this)
     this.publishRecordList = publishRecordList
   }
 

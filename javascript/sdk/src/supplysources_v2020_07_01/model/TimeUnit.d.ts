@@ -6,5 +6,6 @@ export const TimeUnit: Readonly<{
     Hours: "Hours";
     Minutes: "Minutes";
     Days: "Days";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=TimeUnit.d.ts.map

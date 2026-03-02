@@ -5,5 +5,6 @@ export type PaymentPreferencePaymentType = "PERCENTAGE" | "AMOUNT";
 export const PaymentPreferencePaymentType: Readonly<{
     PERCENTAGE: "PERCENTAGE";
     AMOUNT: "AMOUNT";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=PaymentPreferencePaymentType.d.ts.map

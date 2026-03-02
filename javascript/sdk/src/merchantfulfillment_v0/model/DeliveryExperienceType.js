@@ -20,5 +20,8 @@ export const DeliveryExperienceType = Object.freeze({
   DeliveryConfirmationWithAdultSignature: 'DeliveryConfirmationWithAdultSignature',
   DeliveryConfirmationWithSignature: 'DeliveryConfirmationWithSignature',
   DeliveryConfirmationWithoutSignature: 'DeliveryConfirmationWithoutSignature',
-  NoTracking: 'NoTracking'
+  NoTracking: 'NoTracking',
+  constructFromObject: function (object) {
+    return object
+  }
 })

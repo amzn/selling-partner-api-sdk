@@ -19,5 +19,6 @@ export const EasyShipShipmentStatus: Readonly<{
     Lost: "Lost";
     OutForDelivery: "OutForDelivery";
     Damaged: "Damaged";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=EasyShipShipmentStatus.d.ts.map

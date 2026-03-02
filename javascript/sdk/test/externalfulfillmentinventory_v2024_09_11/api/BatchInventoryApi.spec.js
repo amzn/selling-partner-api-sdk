@@ -24,7 +24,7 @@ describe('BatchInventoryApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(207)
-      assertValidResponsePayload(207, response.data.payload);
+      assertValidResponsePayload(207, response.data);
     });
   });
 
@@ -43,7 +43,7 @@ describe('BatchInventoryApi', () => {
 });
 
 function assertValidResponsePayload(statusCode, payload) {
-  if (statusCode != 204) expect(payload).to.be.ok();
+  if (statusCode !== 204) expect(payload).to.be.ok();
 }
 
 async function instructBackendMock(basename, response, code) {

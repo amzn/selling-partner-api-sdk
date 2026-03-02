@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const InputType = Object.freeze({
   TEXTBOX: 'TEXTBOX',
-  PASSWORD: 'PASSWORD'
+  PASSWORD: 'PASSWORD',
+  constructFromObject: function (object) {
+    return object
+  }
 })

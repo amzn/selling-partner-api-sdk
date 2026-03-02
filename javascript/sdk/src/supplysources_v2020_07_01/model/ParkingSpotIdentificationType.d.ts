@@ -5,5 +5,6 @@ export type ParkingSpotIdentificationType = "Numbered" | "Other";
 export const ParkingSpotIdentificationType: Readonly<{
     Numbered: "Numbered";
     Other: "Other";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ParkingSpotIdentificationType.d.ts.map

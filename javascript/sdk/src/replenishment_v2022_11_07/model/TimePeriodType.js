@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const TimePeriodType = Object.freeze({
   PERFORMANCE: 'PERFORMANCE',
-  FORECAST: 'FORECAST'
+  FORECAST: 'FORECAST',
+  constructFromObject: function (object) {
+    return object
+  }
 })

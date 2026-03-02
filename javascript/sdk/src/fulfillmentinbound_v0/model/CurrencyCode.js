@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const CurrencyCode = Object.freeze({
   USD: 'USD',
-  GBP: 'GBP'
+  GBP: 'GBP',
+  constructFromObject: function (object) {
+    return object
+  }
 })

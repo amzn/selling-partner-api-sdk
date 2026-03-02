@@ -49,5 +49,8 @@ export const RateItemID = Object.freeze({
   HIGH_LENGTH_SURCHARGE: 'HIGH_LENGTH_SURCHARGE',
   HIGH_WIDTH_SURCHARGE: 'HIGH_WIDTH_SURCHARGE',
   DEMAND_SURCHARGE: 'DEMAND_SURCHARGE',
-  NONSTANDARD_FEE: 'NONSTANDARD_FEE'
+  NONSTANDARD_FEE: 'NONSTANDARD_FEE',
+  constructFromObject: function (object) {
+    return object
+  }
 })

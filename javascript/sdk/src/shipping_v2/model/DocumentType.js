@@ -20,5 +20,8 @@ export const DocumentType = Object.freeze({
   PACKSLIP: 'PACKSLIP',
   LABEL: 'LABEL',
   RECEIPT: 'RECEIPT',
-  CUSTOM_FORM: 'CUSTOM_FORM'
+  CUSTOM_FORM: 'CUSTOM_FORM',
+  constructFromObject: function (object) {
+    return object
+  }
 })

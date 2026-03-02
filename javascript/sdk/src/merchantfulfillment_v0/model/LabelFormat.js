@@ -21,5 +21,8 @@ export const LabelFormat = Object.freeze({
   PNG: 'PNG',
   ZPL203: 'ZPL203',
   ZPL300: 'ZPL300',
-  ShippingServiceDefault: 'ShippingServiceDefault'
+  ShippingServiceDefault: 'ShippingServiceDefault',
+  constructFromObject: function (object) {
+    return object
+  }
 })

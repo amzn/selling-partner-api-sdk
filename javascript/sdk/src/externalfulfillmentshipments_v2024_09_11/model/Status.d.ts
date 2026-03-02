@@ -5,5 +5,6 @@ export type Status = "SUCCESS" | "FAILURE";
 export const Status: Readonly<{
     SUCCESS: "SUCCESS";
     FAILURE: "FAILURE";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=Status.d.ts.map

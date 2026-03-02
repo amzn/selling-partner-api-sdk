@@ -9,5 +9,6 @@ export const PaymentMethodEnum: Readonly<{
     BankSlip: "BankSlip";
     GiftCard: "GiftCard";
     Other: "Other";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=PaymentMethodEnum.d.ts.map

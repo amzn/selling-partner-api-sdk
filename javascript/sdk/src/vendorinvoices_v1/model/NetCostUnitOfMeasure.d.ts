@@ -7,5 +7,6 @@ export const NetCostUnitOfMeasure: Readonly<{
     OUNCES: "OUNCES";
     GRAMS: "GRAMS";
     KILOGRAMS: "KILOGRAMS";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=NetCostUnitOfMeasure.d.ts.map

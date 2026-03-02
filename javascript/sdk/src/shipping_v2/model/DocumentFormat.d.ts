@@ -6,5 +6,6 @@ export const DocumentFormat: Readonly<{
     PDF: "PDF";
     PNG: "PNG";
     ZPL: "ZPL";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=DocumentFormat.d.ts.map

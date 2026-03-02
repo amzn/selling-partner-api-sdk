@@ -5,5 +5,6 @@ export type AddressTypeEnum = "Residential" | "Commercial";
 export const AddressTypeEnum: Readonly<{
     Residential: "Residential";
     Commercial: "Commercial";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=AddressTypeEnum.d.ts.map

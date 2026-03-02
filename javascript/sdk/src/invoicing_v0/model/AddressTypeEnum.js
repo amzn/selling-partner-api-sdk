@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const AddressTypeEnum = Object.freeze({
   Residential: 'Residential',
-  Commercial: 'Commercial'
+  Commercial: 'Commercial',
+  constructFromObject: function (object) {
+    return object
+  }
 })

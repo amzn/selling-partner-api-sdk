@@ -5,5 +5,6 @@ export type LabelOwner = "AMAZON" | "SELF";
 export const LabelOwner: Readonly<{
     AMAZON: "AMAZON";
     SELF: "SELF";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=LabelOwner.d.ts.map

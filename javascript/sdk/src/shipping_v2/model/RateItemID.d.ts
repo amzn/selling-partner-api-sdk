@@ -36,5 +36,6 @@ export const RateItemID: Readonly<{
     HIGH_WIDTH_SURCHARGE: "HIGH_WIDTH_SURCHARGE";
     DEMAND_SURCHARGE: "DEMAND_SURCHARGE";
     NONSTANDARD_FEE: "NONSTANDARD_FEE";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=RateItemID.d.ts.map

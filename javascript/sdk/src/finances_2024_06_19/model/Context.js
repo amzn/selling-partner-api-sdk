@@ -39,12 +39,6 @@ export class Context {
    * @param contextType {String}
    */
   constructor (contextType) {
-    AmazonPayContext.call(this)
-    ProductContext.call(this)
-    PaymentsContext.call(this)
-    DeferredContext.call(this)
-    BusinessContext.call(this)
-    TimeRangeContext.call(this)
     this.contextType = contextType
   }
 

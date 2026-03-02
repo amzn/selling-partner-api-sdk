@@ -4,5 +4,6 @@ export type RateItemType = "INCLUDED";
  */
 export const RateItemType: Readonly<{
     INCLUDED: "INCLUDED";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=RateItemType.d.ts.map

@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const CarrierWillPickUpOption = Object.freeze({
   CarrierWillPickUp: 'CarrierWillPickUp',
   ShipperWillDropOff: 'ShipperWillDropOff',
-  NoPreference: 'NoPreference'
+  NoPreference: 'NoPreference',
+  constructFromObject: function (object) {
+    return object
+  }
 })

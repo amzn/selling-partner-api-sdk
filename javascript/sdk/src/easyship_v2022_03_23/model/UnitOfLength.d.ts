@@ -4,5 +4,6 @@ export type UnitOfLength = "cm";
  */
 export const UnitOfLength: Readonly<{
     cm: "cm";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=UnitOfLength.d.ts.map

@@ -26,7 +26,7 @@ describe('MessagingApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(201)
-      assertValidResponsePayload(201, response.data.payload);
+      assertValidResponsePayload(201, response.data);
     });
   });
   describe('createConfirmDeliveryDetails', () => {
@@ -41,7 +41,7 @@ describe('MessagingApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(201)
-      assertValidResponsePayload(201, response.data.payload);
+      assertValidResponsePayload(201, response.data);
     });
   });
   describe('createConfirmOrderDetails', () => {
@@ -56,7 +56,7 @@ describe('MessagingApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(201)
-      assertValidResponsePayload(201, response.data.payload);
+      assertValidResponsePayload(201, response.data);
     });
   });
   describe('createConfirmServiceDetails', () => {
@@ -71,7 +71,7 @@ describe('MessagingApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(201)
-      assertValidResponsePayload(201, response.data.payload);
+      assertValidResponsePayload(201, response.data);
     });
   });
   describe('createDigitalAccessKey', () => {
@@ -86,7 +86,7 @@ describe('MessagingApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(201)
-      assertValidResponsePayload(201, response.data.payload);
+      assertValidResponsePayload(201, response.data);
     });
   });
   describe('createLegalDisclosure', () => {
@@ -101,7 +101,7 @@ describe('MessagingApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(201)
-      assertValidResponsePayload(201, response.data.payload);
+      assertValidResponsePayload(201, response.data);
     });
   });
   describe('createUnexpectedProblem', () => {
@@ -116,7 +116,7 @@ describe('MessagingApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(201)
-      assertValidResponsePayload(201, response.data.payload);
+      assertValidResponsePayload(201, response.data);
     });
   });
   describe('createWarranty', () => {
@@ -131,7 +131,7 @@ describe('MessagingApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(201)
-      assertValidResponsePayload(201, response.data.payload);
+      assertValidResponsePayload(201, response.data);
     });
   });
   describe('getAttributes', () => {
@@ -145,7 +145,7 @@ describe('MessagingApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getMessagingActionsForOrder', () => {
@@ -159,7 +159,7 @@ describe('MessagingApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('sendInvoice', () => {
@@ -174,7 +174,7 @@ describe('MessagingApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(201)
-      assertValidResponsePayload(201, response.data.payload);
+      assertValidResponsePayload(201, response.data);
     });
   });
 
@@ -193,7 +193,7 @@ describe('MessagingApi', () => {
 });
 
 function assertValidResponsePayload(statusCode, payload) {
-  if (statusCode != 204) expect(payload).to.be.ok();
+  if (statusCode !== 204) expect(payload).to.be.ok();
 }
 
 async function instructBackendMock(basename, response, code) {

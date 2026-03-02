@@ -24,7 +24,7 @@ describe('VendorOrdersApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getPurchaseOrders', () => {
@@ -36,7 +36,7 @@ describe('VendorOrdersApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getPurchaseOrdersStatus', () => {
@@ -48,7 +48,7 @@ describe('VendorOrdersApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('submitAcknowledgement', () => {
@@ -61,7 +61,7 @@ describe('VendorOrdersApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(202)
-      assertValidResponsePayload(202, response.data.payload);
+      assertValidResponsePayload(202, response.data);
     });
   });
 
@@ -80,7 +80,7 @@ describe('VendorOrdersApi', () => {
 });
 
 function assertValidResponsePayload(statusCode, payload) {
-  if (statusCode != 204) expect(payload).to.be.ok();
+  if (statusCode !== 204) expect(payload).to.be.ok();
 }
 
 async function instructBackendMock(basename, response, code) {

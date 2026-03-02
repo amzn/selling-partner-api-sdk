@@ -5,5 +5,6 @@ export type BankAccountOwnershipType = "THIRD_PARTY" | "SELF";
 export const BankAccountOwnershipType: Readonly<{
     THIRD_PARTY: "THIRD_PARTY";
     SELF: "SELF";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=BankAccountOwnershipType.d.ts.map

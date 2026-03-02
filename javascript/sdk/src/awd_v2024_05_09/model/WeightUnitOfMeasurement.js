@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const WeightUnitOfMeasurement = Object.freeze({
   POUNDS: 'POUNDS',
-  KILOGRAMS: 'KILOGRAMS'
+  KILOGRAMS: 'KILOGRAMS',
+  constructFromObject: function (object) {
+    return object
+  }
 })

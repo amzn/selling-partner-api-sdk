@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const DimensionUnitOfMeasurement = Object.freeze({
   INCHES: 'INCHES',
-  CENTIMETERS: 'CENTIMETERS'
+  CENTIMETERS: 'CENTIMETERS',
+  constructFromObject: function (object) {
+    return object
+  }
 })

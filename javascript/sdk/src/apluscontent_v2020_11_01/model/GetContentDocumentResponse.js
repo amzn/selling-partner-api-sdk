@@ -30,7 +30,6 @@ export class GetContentDocumentResponse {
    * @param contentRecord {ContentRecord}
    */
   constructor (contentRecord) {
-    AplusResponse.call(this)
     this.contentRecord = contentRecord
   }
 

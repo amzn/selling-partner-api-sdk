@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const ColorType = Object.freeze({
   DARK: 'DARK',
-  LIGHT: 'LIGHT'
+  LIGHT: 'LIGHT',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -12,5 +12,6 @@ export const FulfillmentOrderStatus: Readonly<{
     CompletePartialled: "CompletePartialled";
     Unfulfillable: "Unfulfillable";
     Invalid: "Invalid";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=FulfillmentOrderStatus.d.ts.map

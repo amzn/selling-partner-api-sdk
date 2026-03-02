@@ -5,5 +5,6 @@ export type SortOrder = "ASC" | "DESC";
 export const SortOrder: Readonly<{
     ASC: "ASC";
     DESC: "DESC";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=SortOrder.d.ts.map

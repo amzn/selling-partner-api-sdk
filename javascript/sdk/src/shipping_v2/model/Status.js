@@ -26,5 +26,8 @@ export const Status = Object.freeze({
   Undeliverable: 'Undeliverable',
   DeliveryAttempted: 'DeliveryAttempted',
   PickupCancelled: 'PickupCancelled',
-  AwaitingCustomerPickup: 'AwaitingCustomerPickup'
+  AwaitingCustomerPickup: 'AwaitingCustomerPickup',
+  constructFromObject: function (object) {
+    return object
+  }
 })

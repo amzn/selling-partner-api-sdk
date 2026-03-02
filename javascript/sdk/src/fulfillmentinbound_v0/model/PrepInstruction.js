@@ -32,5 +32,8 @@ export const PrepInstruction = Object.freeze({
   SetStickering: 'SetStickering',
   BlankStickering: 'BlankStickering',
   ShipsInProductPackaging: 'ShipsInProductPackaging',
-  NoPrep: 'NoPrep'
+  NoPrep: 'NoPrep',
+  constructFromObject: function (object) {
+    return object
+  }
 })

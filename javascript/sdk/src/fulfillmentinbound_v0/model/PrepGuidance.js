@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const PrepGuidance = Object.freeze({
   ConsultHelpDocuments: 'ConsultHelpDocuments',
   NoAdditionalPrepRequired: 'NoAdditionalPrepRequired',
-  SeePrepInstructionsList: 'SeePrepInstructionsList'
+  SeePrepInstructionsList: 'SeePrepInstructionsList',
+  constructFromObject: function (object) {
+    return object
+  }
 })

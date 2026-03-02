@@ -20,5 +20,8 @@ export const BankAccountHolderStatus = Object.freeze({
   ACTIVE: 'ACTIVE',
   INACTIVE: 'INACTIVE',
   UNDER_REVIEW: 'UNDER_REVIEW',
-  VERIFICATION_FAILED: 'VERIFICATION_FAILED'
+  VERIFICATION_FAILED: 'VERIFICATION_FAILED',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -7,5 +7,6 @@ export const ShippingSpeedCategory: Readonly<{
     Expedited: "Expedited";
     Priority: "Priority";
     ScheduledDelivery: "ScheduledDelivery";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ShippingSpeedCategory.d.ts.map

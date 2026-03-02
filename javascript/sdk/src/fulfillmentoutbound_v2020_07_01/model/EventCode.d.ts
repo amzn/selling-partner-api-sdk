@@ -36,5 +36,6 @@ export const EventCode: Readonly<{
     EVENT_417: "EVENT_417";
     EVENT_418: "EVENT_418";
     EVENT_419: "EVENT_419";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=EventCode.d.ts.map

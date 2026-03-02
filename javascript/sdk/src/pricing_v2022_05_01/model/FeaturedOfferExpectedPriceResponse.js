@@ -34,7 +34,6 @@ export class FeaturedOfferExpectedPriceResponse {
    * @param request {FeaturedOfferExpectedPriceRequestParams}
    */
   constructor (headers, status, request) {
-    BatchResponse.call(this, headers, status)
     this.headers = headers
     this.status = status
     this.request = request

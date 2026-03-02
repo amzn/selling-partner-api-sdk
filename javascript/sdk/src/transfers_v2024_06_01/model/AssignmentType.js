@@ -17,5 +17,8 @@ import { ApiClient } from '../ApiClient.js'
  * @typedef {'DEFAULT_DEPOSIT_METHOD'} AssignmentType
  */
 export const AssignmentType = Object.freeze({
-  DEFAULT_DEPOSIT_METHOD: 'DEFAULT_DEPOSIT_METHOD'
+  DEFAULT_DEPOSIT_METHOD: 'DEFAULT_DEPOSIT_METHOD',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const DistributionPackageType = Object.freeze({
   CASE: 'CASE',
-  PALLET: 'PALLET'
+  PALLET: 'PALLET',
+  constructFromObject: function (object) {
+    return object
+  }
 })

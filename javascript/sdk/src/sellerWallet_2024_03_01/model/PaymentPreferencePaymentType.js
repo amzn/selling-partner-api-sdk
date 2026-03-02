@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const PaymentPreferencePaymentType = Object.freeze({
   PERCENTAGE: 'PERCENTAGE',
-  AMOUNT: 'AMOUNT'
+  AMOUNT: 'AMOUNT',
+  constructFromObject: function (object) {
+    return object
+  }
 })

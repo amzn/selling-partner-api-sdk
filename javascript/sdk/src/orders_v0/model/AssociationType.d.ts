@@ -4,5 +4,6 @@ export type AssociationType = "VALUE_ADD_SERVICE";
  */
 export const AssociationType: Readonly<{
     VALUE_ADD_SERVICE: "VALUE_ADD_SERVICE";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=AssociationType.d.ts.map

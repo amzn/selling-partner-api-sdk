@@ -4,5 +4,6 @@ export type ThroughputUnit = "Order";
  */
 export const ThroughputUnit: Readonly<{
     Order: "Order";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ThroughputUnit.d.ts.map

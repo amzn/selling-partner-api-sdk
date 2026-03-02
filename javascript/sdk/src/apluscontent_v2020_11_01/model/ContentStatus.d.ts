@@ -7,5 +7,6 @@ export const ContentStatus: Readonly<{
     DRAFT: "DRAFT";
     REJECTED: "REJECTED";
     SUBMITTED: "SUBMITTED";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ContentStatus.d.ts.map

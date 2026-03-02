@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const PositionType = Object.freeze({
   LEFT: 'LEFT',
-  RIGHT: 'RIGHT'
+  RIGHT: 'RIGHT',
+  constructFromObject: function (object) {
+    return object
+  }
 })

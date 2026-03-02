@@ -20,5 +20,8 @@ export const ShipmentStatus = Object.freeze({
   Purchased: 'Purchased',
   RefundPending: 'RefundPending',
   RefundRejected: 'RefundRejected',
-  RefundApplied: 'RefundApplied'
+  RefundApplied: 'RefundApplied',
+  constructFromObject: function (object) {
+    return object
+  }
 })

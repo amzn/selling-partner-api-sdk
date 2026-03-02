@@ -6,5 +6,6 @@ export const CompetitiveSummaryIncludedData: Readonly<{
     featuredBuyingOptions: "featuredBuyingOptions";
     referencePrices: "referencePrices";
     lowestPricedOffers: "lowestPricedOffers";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=CompetitiveSummaryIncludedData.d.ts.map

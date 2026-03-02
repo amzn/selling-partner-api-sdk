@@ -7,5 +7,6 @@ export const ShipmentStatus: Readonly<{
     RefundPending: "RefundPending";
     RefundRejected: "RefundRejected";
     RefundApplied: "RefundApplied";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ShipmentStatus.d.ts.map

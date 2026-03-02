@@ -5,5 +5,6 @@ export type FulfillmentChannelType = "Amazon" | "Merchant";
 export const FulfillmentChannelType: Readonly<{
     Amazon: "Amazon";
     Merchant: "Merchant";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=FulfillmentChannelType.d.ts.map

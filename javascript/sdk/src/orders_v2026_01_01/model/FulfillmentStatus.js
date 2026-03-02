@@ -23,5 +23,8 @@ export const FulfillmentStatus = Object.freeze({
   PARTIALLY_SHIPPED: 'PARTIALLY_SHIPPED',
   SHIPPED: 'SHIPPED',
   CANCELLED: 'CANCELLED',
-  UNFULFILLABLE: 'UNFULFILLABLE'
+  UNFULFILLABLE: 'UNFULFILLABLE',
+  constructFromObject: function (object) {
+    return object
+  }
 })

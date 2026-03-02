@@ -10,5 +10,6 @@ export const InboundShipmentStatus: Readonly<{
     DELIVERED: "DELIVERED";
     CLOSED: "CLOSED";
     CANCELLED: "CANCELLED";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=InboundShipmentStatus.d.ts.map

@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const InputTargetType = Object.freeze({
   SHIPMENT_LEVEL: 'SHIPMENT_LEVEL',
-  ITEM_LEVEL: 'ITEM_LEVEL'
+  ITEM_LEVEL: 'ITEM_LEVEL',
+  constructFromObject: function (object) {
+    return object
+  }
 })

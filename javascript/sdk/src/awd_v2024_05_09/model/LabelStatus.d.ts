@@ -7,5 +7,6 @@ export const LabelStatus: Readonly<{
     GENERATED: "GENERATED";
     GENERATION_FAILED: "GENERATION_FAILED";
     NOT_READY: "NOT_READY";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=LabelStatus.d.ts.map

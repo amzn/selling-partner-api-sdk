@@ -27,5 +27,8 @@ export const Code = Object.freeze({
   InvalidOrderState: 'InvalidOrderState',
   RegionNotSupported: 'RegionNotSupported',
   OrderNotEligibleForRescheduling: 'OrderNotEligibleForRescheduling',
-  InternalServerError: 'InternalServerError'
+  InternalServerError: 'InternalServerError',
+  constructFromObject: function (object) {
+    return object
+  }
 })

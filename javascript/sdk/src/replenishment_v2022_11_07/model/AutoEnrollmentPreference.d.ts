@@ -5,5 +5,6 @@ export type AutoEnrollmentPreference = "OPTED_IN" | "OPTED_OUT";
 export const AutoEnrollmentPreference: Readonly<{
     OPTED_IN: "OPTED_IN";
     OPTED_OUT: "OPTED_OUT";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=AutoEnrollmentPreference.d.ts.map

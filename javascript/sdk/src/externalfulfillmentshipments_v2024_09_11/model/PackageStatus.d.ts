@@ -9,5 +9,6 @@ export const PackageStatus: Readonly<{
     SHIPLABEL_GENERATED: "SHIPLABEL_GENERATED";
     SHIPPED: "SHIPPED";
     DELIVERED: "DELIVERED";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=PackageStatus.d.ts.map

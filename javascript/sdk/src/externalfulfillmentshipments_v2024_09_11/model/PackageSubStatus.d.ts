@@ -7,5 +7,6 @@ export const PackageSubStatus: Readonly<{
     DELIVERED: "DELIVERED";
     NOT_DELIVERED: "NOT_DELIVERED";
     UNDELIVERABLE: "UNDELIVERABLE";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=PackageSubStatus.d.ts.map

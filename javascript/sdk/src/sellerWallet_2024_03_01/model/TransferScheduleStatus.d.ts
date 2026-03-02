@@ -7,5 +7,6 @@ export const TransferScheduleStatus: Readonly<{
     DISABLED: "DISABLED";
     EXPIRED: "EXPIRED";
     DELETED: "DELETED";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=TransferScheduleStatus.d.ts.map

@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const LabelPrintType = Object.freeze({
   STANDARD_FORMAT: 'STANDARD_FORMAT',
-  THERMAL_PRINTING: 'THERMAL_PRINTING'
+  THERMAL_PRINTING: 'THERMAL_PRINTING',
+  constructFromObject: function (object) {
+    return object
+  }
 })

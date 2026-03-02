@@ -8,5 +8,6 @@ export const DeliveryExperienceOption: Readonly<{
     DeliveryConfirmationWithoutSignature: "DeliveryConfirmationWithoutSignature";
     NoTracking: "NoTracking";
     NoPreference: "NoPreference";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=DeliveryExperienceOption.d.ts.map

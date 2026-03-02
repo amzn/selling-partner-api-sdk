@@ -7,5 +7,6 @@ export const AccountStatus: Readonly<{
     INACTIVE: "INACTIVE";
     PENDING: "PENDING";
     SUSPENDED: "SUSPENDED";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=AccountStatus.d.ts.map

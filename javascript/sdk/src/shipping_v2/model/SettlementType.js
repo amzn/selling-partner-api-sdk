@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const SettlementType = Object.freeze({
   REFUND: 'REFUND',
-  CERTIFICATE_OF_FACT: 'CERTIFICATE_OF_FACT'
+  CERTIFICATE_OF_FACT: 'CERTIFICATE_OF_FACT',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -20,5 +20,8 @@ export const ShipmentInvoiceStatus = Object.freeze({
   Processing: 'Processing',
   Accepted: 'Accepted',
   Errored: 'Errored',
-  NotFound: 'NotFound'
+  NotFound: 'NotFound',
+  constructFromObject: function (object) {
+    return object
+  }
 })

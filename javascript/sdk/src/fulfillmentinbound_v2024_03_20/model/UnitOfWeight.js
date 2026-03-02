@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const UnitOfWeight = Object.freeze({
   LB: 'LB',
-  KG: 'KG'
+  KG: 'KG',
+  constructFromObject: function (object) {
+    return object
+  }
 })

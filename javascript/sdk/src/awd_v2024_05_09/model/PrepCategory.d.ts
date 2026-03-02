@@ -17,5 +17,6 @@ export const PrepCategory: Readonly<{
     TEXTILE: "TEXTILE";
     NO_PREP: "NO_PREP";
     UNKNOWN: "UNKNOWN";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=PrepCategory.d.ts.map

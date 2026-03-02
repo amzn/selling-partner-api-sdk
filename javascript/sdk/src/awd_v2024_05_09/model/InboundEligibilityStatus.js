@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const InboundEligibilityStatus = Object.freeze({
   ELIGIBLE: 'ELIGIBLE',
-  INELIGIBLE: 'INELIGIBLE'
+  INELIGIBLE: 'INELIGIBLE',
+  constructFromObject: function (object) {
+    return object
+  }
 })

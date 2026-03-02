@@ -24,7 +24,7 @@ describe('SupplySourcesApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(204)
-      assertValidResponsePayload(204, response.data.payload);
+      assertValidResponsePayload(204, response.data);
     });
   });
   describe('createSupplySource', () => {
@@ -37,7 +37,7 @@ describe('SupplySourcesApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getSupplySource', () => {
@@ -50,7 +50,7 @@ describe('SupplySourcesApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getSupplySources', () => {
@@ -62,7 +62,7 @@ describe('SupplySourcesApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('updateSupplySource', () => {
@@ -75,7 +75,7 @@ describe('SupplySourcesApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(204)
-      assertValidResponsePayload(204, response.data.payload);
+      assertValidResponsePayload(204, response.data);
     });
   });
   describe('updateSupplySourceStatus', () => {
@@ -88,7 +88,7 @@ describe('SupplySourcesApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(204)
-      assertValidResponsePayload(204, response.data.payload);
+      assertValidResponsePayload(204, response.data);
     });
   });
 
@@ -107,7 +107,7 @@ describe('SupplySourcesApi', () => {
 });
 
 function assertValidResponsePayload(statusCode, payload) {
-  if (statusCode != 204) expect(payload).to.be.ok();
+  if (statusCode !== 204) expect(payload).to.be.ok();
 }
 
 async function instructBackendMock(basename, response, code) {

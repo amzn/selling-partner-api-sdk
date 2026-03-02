@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const EngineOutputUnit = Object.freeze({
   KILOWATT: 'KILOWATT',
-  HORSEPOWER: 'HORSEPOWER'
+  HORSEPOWER: 'HORSEPOWER',
+  constructFromObject: function (object) {
+    return object
+  }
 })

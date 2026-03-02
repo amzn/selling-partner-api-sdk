@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const Stackability = Object.freeze({
   STACKABLE: 'STACKABLE',
-  NON_STACKABLE: 'NON_STACKABLE'
+  NON_STACKABLE: 'NON_STACKABLE',
+  constructFromObject: function (object) {
+    return object
+  }
 })

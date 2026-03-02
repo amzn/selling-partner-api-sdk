@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const InventoryUnitOfMeasurement = Object.freeze({
   PRODUCT_UNITS: 'PRODUCT_UNITS',
   CASES: 'CASES',
-  PALLETS: 'PALLETS'
+  PALLETS: 'PALLETS',
+  constructFromObject: function (object) {
+    return object
+  }
 })

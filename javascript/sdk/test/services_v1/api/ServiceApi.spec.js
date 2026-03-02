@@ -25,7 +25,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('assignAppointmentResources', () => {
@@ -40,7 +40,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('cancelReservation', () => {
@@ -54,7 +54,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(204)
-      assertValidResponsePayload(204, response.data.payload);
+      assertValidResponsePayload(204, response.data);
     });
   });
   describe('cancelServiceJobByServiceJobId', () => {
@@ -68,7 +68,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('completeServiceJobByServiceJobId', () => {
@@ -81,7 +81,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('createReservation', () => {
@@ -95,7 +95,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('createServiceDocumentUploadDestination', () => {
@@ -108,7 +108,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getAppointmentSlots', () => {
@@ -123,7 +123,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getAppointmmentSlotsByJobId', () => {
@@ -137,7 +137,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getFixedSlotCapacity', () => {
@@ -152,7 +152,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getRangeSlotCapacity', () => {
@@ -167,7 +167,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getServiceJobByServiceJobId', () => {
@@ -180,7 +180,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('getServiceJobs', () => {
@@ -193,7 +193,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('rescheduleAppointmentForServiceJobByServiceJobId', () => {
@@ -208,7 +208,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('setAppointmentFulfillmentData', () => {
@@ -223,7 +223,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(204)
-      assertValidResponsePayload(204, response.data.payload);
+      assertValidResponsePayload(204, response.data);
     });
   });
   describe('updateReservation', () => {
@@ -238,7 +238,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
   describe('updateSchedule', () => {
@@ -253,7 +253,7 @@ describe('ServiceApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
-      assertValidResponsePayload(200, response.data.payload);
+      assertValidResponsePayload(200, response.data);
     });
   });
 
@@ -272,7 +272,7 @@ describe('ServiceApi', () => {
 });
 
 function assertValidResponsePayload(statusCode, payload) {
-  if (statusCode != 204) expect(payload).to.be.ok();
+  if (statusCode !== 204) expect(payload).to.be.ok();
 }
 
 async function instructBackendMock(basename, response, code) {

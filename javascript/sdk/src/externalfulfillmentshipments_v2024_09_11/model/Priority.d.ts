@@ -5,5 +5,6 @@ export type Priority = "HIGH" | "LOW";
 export const Priority: Readonly<{
     HIGH: "HIGH";
     LOW: "LOW";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=Priority.d.ts.map

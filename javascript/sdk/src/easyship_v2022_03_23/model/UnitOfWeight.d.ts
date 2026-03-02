@@ -5,5 +5,6 @@ export type UnitOfWeight = "grams" | "g";
 export const UnitOfWeight: Readonly<{
     grams: "grams";
     g: "g";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=UnitOfWeight.d.ts.map

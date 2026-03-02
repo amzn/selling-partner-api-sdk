@@ -5,5 +5,6 @@ export type ShipmentType = "FORWARD" | "RETURNS";
 export const ShipmentType: Readonly<{
     FORWARD: "FORWARD";
     RETURNS: "RETURNS";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ShipmentType.d.ts.map

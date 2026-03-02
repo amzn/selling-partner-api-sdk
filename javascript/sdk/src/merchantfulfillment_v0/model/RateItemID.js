@@ -17,5 +17,8 @@ import { ApiClient } from '../ApiClient.js'
  * @typedef {'FBM_SHIP_PLUS_CREDIT'} RateItemID
  */
 export const RateItemID = Object.freeze({
-  FBM_SHIP_PLUS_CREDIT: 'FBM_SHIP_PLUS_CREDIT'
+  FBM_SHIP_PLUS_CREDIT: 'FBM_SHIP_PLUS_CREDIT',
+  constructFromObject: function (object) {
+    return object
+  }
 })

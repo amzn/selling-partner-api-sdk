@@ -29,7 +29,6 @@ export class AplusPaginatedResponse {
    * @implements module:apluscontent_v2020_11_01/model/AplusResponse
    */
   constructor () {
-    AplusResponse.call(this)
   }
 
   /**

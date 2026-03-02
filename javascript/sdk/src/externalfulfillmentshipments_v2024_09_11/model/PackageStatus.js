@@ -22,5 +22,8 @@ export const PackageStatus = Object.freeze({
   INVOICE_GENERATED: 'INVOICE_GENERATED',
   SHIPLABEL_GENERATED: 'SHIPLABEL_GENERATED',
   SHIPPED: 'SHIPPED',
-  DELIVERED: 'DELIVERED'
+  DELIVERED: 'DELIVERED',
+  constructFromObject: function (object) {
+    return object
+  }
 })

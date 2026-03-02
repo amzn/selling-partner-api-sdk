@@ -30,5 +30,8 @@ export const PrepCategory = Object.freeze({
   SMALL: 'SMALL',
   TEXTILE: 'TEXTILE',
   UNKNOWN: 'UNKNOWN',
-  NONE: 'NONE'
+  NONE: 'NONE',
+  constructFromObject: function (object) {
+    return object
+  }
 })

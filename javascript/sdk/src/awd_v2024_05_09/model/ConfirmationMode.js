@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const ConfirmationMode = Object.freeze({
   AUTO: 'AUTO',
-  MANUAL: 'MANUAL'
+  MANUAL: 'MANUAL',
+  constructFromObject: function (object) {
+    return object
+  }
 })

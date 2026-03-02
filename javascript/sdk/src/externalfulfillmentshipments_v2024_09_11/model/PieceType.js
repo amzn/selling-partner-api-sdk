@@ -18,5 +18,8 @@ import { ApiClient } from '../ApiClient.js'
  */
 export const PieceType = Object.freeze({
   SINGLE: 'SINGLE',
-  MULTIPLE: 'MULTIPLE'
+  MULTIPLE: 'MULTIPLE',
+  constructFromObject: function (object) {
+    return object
+  }
 })

@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const FileType = Object.freeze({
   'application/pdf': 'application/pdf',
   'application/zpl': 'application/zpl',
-  'image/png': 'image/png'
+  'image/png': 'image/png',
+  constructFromObject: function (object) {
+    return object
+  }
 })

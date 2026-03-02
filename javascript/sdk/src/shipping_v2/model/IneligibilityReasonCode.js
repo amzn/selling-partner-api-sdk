@@ -26,5 +26,8 @@ export const IneligibilityReasonCode = Object.freeze({
   LATE_DELIVERY: 'LATE_DELIVERY',
   PROGRAM_CONSTRAINTS: 'PROGRAM_CONSTRAINTS',
   TERMS_AND_CONDITIONS_NOT_ACCEPTED: 'TERMS_AND_CONDITIONS_NOT_ACCEPTED',
-  UNKNOWN: 'UNKNOWN'
+  UNKNOWN: 'UNKNOWN',
+  constructFromObject: function (object) {
+    return object
+  }
 })

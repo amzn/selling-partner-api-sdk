@@ -5,5 +5,6 @@ export type LabelPrintType = "STANDARD_FORMAT" | "THERMAL_PRINTING";
 export const LabelPrintType: Readonly<{
     STANDARD_FORMAT: "STANDARD_FORMAT";
     THERMAL_PRINTING: "THERMAL_PRINTING";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=LabelPrintType.d.ts.map

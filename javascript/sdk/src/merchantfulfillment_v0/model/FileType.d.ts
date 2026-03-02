@@ -6,5 +6,6 @@ export const FileType: Readonly<{
     'application/pdf': "application/pdf";
     'application/zpl': "application/zpl";
     'image/png': "image/png";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=FileType.d.ts.map

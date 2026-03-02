@@ -20,5 +20,8 @@ export const PackageSubStatus = Object.freeze({
   OUT_FOR_DELIVERY: 'OUT_FOR_DELIVERY',
   DELIVERED: 'DELIVERED',
   NOT_DELIVERED: 'NOT_DELIVERED',
-  UNDELIVERABLE: 'UNDELIVERABLE'
+  UNDELIVERABLE: 'UNDELIVERABLE',
+  constructFromObject: function (object) {
+    return object
+  }
 })

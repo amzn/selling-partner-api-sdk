@@ -9,5 +9,6 @@ export const InboundStatus: Readonly<{
     CLOSED: "CLOSED";
     EXPIRED: "EXPIRED";
     CANCELLED: "CANCELLED";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=InboundStatus.d.ts.map

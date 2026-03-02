@@ -8,5 +8,6 @@ export const ContentBadge: Readonly<{
     LAUNCHPAD: "LAUNCHPAD";
     PREMIUM: "PREMIUM";
     STANDARD: "STANDARD";
+    constructFromObject: (object: any) => any;
 }>;
 //# sourceMappingURL=ContentBadge.d.ts.map

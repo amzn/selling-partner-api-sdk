@@ -19,5 +19,8 @@ import { ApiClient } from '../ApiClient.js'
 export const AccountType = Object.freeze({
   SHIPPER_ACCOUNT: 'SHIPPER_ACCOUNT',
   SHIPPER_ACCOUNT_WITH_INVOICE: 'SHIPPER_ACCOUNT_WITH_INVOICE',
-  AMAZON_ACCOUNT: 'AMAZON_ACCOUNT'
+  AMAZON_ACCOUNT: 'AMAZON_ACCOUNT',
+  constructFromObject: function (object) {
+    return object
+  }
 })

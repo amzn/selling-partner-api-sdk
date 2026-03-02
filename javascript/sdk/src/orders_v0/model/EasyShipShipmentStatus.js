@@ -32,5 +32,8 @@ export const EasyShipShipmentStatus = Object.freeze({
   ReturnedToSeller: 'ReturnedToSeller',
   Lost: 'Lost',
   OutForDelivery: 'OutForDelivery',
-  Damaged: 'Damaged'
+  Damaged: 'Damaged',
+  constructFromObject: function (object) {
+    return object
+  }
 })
