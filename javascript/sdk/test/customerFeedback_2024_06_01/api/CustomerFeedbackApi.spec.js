@@ -23,9 +23,9 @@ describe('CustomerFeedbackApi', () => {
       ];
       const response = await instance.getBrowseNodeReturnTopicsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getBrowseNodeReturnTrends', () => {
@@ -37,9 +37,9 @@ describe('CustomerFeedbackApi', () => {
       ];
       const response = await instance.getBrowseNodeReturnTrendsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getBrowseNodeReviewTopics', () => {
@@ -52,9 +52,9 @@ describe('CustomerFeedbackApi', () => {
       ];
       const response = await instance.getBrowseNodeReviewTopicsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getBrowseNodeReviewTrends', () => {
@@ -66,9 +66,9 @@ describe('CustomerFeedbackApi', () => {
       ];
       const response = await instance.getBrowseNodeReviewTrendsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getItemBrowseNode', () => {
@@ -80,9 +80,9 @@ describe('CustomerFeedbackApi', () => {
       ];
       const response = await instance.getItemBrowseNodeWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getItemReviewTopics', () => {
@@ -95,9 +95,9 @@ describe('CustomerFeedbackApi', () => {
       ];
       const response = await instance.getItemReviewTopicsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getItemReviewTrends', () => {
@@ -109,9 +109,9 @@ describe('CustomerFeedbackApi', () => {
       ];
       const response = await instance.getItemReviewTrendsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
 
@@ -128,6 +128,10 @@ describe('CustomerFeedbackApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

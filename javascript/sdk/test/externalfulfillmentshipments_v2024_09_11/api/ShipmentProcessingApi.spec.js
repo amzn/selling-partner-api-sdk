@@ -23,8 +23,8 @@ describe('ShipmentProcessingApi', () => {
       ];
       const response = await instance.createPackagesWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
     });
   });
   describe('generateInvoice', () => {
@@ -35,9 +35,9 @@ describe('ShipmentProcessingApi', () => {
       ];
       const response = await instance.generateInvoiceWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('generateShipLabels', () => {
@@ -49,9 +49,9 @@ describe('ShipmentProcessingApi', () => {
       ];
       const response = await instance.generateShipLabelsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('processShipment', () => {
@@ -63,8 +63,8 @@ describe('ShipmentProcessingApi', () => {
       ];
       const response = await instance.processShipmentWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
     });
   });
   describe('retrieveInvoice', () => {
@@ -75,9 +75,9 @@ describe('ShipmentProcessingApi', () => {
       ];
       const response = await instance.retrieveInvoiceWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('retrieveShippingOptions', () => {
@@ -89,9 +89,9 @@ describe('ShipmentProcessingApi', () => {
       ];
       const response = await instance.retrieveShippingOptionsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('updatePackage', () => {
@@ -104,8 +104,8 @@ describe('ShipmentProcessingApi', () => {
       ];
       const response = await instance.updatePackageWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
     });
   });
   describe('updatePackageStatus', () => {
@@ -117,8 +117,8 @@ describe('ShipmentProcessingApi', () => {
       ];
       const response = await instance.updatePackageStatusWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
     });
   });
 
@@ -135,6 +135,10 @@ describe('ShipmentProcessingApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

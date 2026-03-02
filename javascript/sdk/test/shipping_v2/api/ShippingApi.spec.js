@@ -22,9 +22,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.cancelShipmentWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('createClaim', () => {
@@ -35,9 +35,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.createClaimWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(201)
+      assertValidResponsePayload(201, response.data.payload);
     });
   });
   describe('directPurchaseShipment', () => {
@@ -48,9 +48,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.directPurchaseShipmentWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('generateCollectionForm', () => {
@@ -61,9 +61,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.generateCollectionFormWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getAccessPoints', () => {
@@ -76,9 +76,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.getAccessPointsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getAdditionalInputs', () => {
@@ -90,9 +90,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.getAdditionalInputsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getCarrierAccountFormInputs', () => {
@@ -102,9 +102,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.getCarrierAccountFormInputsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getCarrierAccounts', () => {
@@ -115,9 +115,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.getCarrierAccountsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getCollectionForm', () => {
@@ -128,9 +128,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.getCollectionFormWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getCollectionFormHistory', () => {
@@ -141,9 +141,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.getCollectionFormHistoryWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getRates', () => {
@@ -154,9 +154,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.getRatesWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getShipmentDocuments', () => {
@@ -168,9 +168,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.getShipmentDocumentsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getTracking', () => {
@@ -182,9 +182,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.getTrackingWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getUnmanifestedShipments', () => {
@@ -195,9 +195,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.getUnmanifestedShipmentsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('linkCarrierAccount', () => {
@@ -209,9 +209,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.linkCarrierAccountWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('linkCarrierAccount_0', () => {
@@ -223,9 +223,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.linkCarrierAccount_0WithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('oneClickShipment', () => {
@@ -236,9 +236,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.oneClickShipmentWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('purchaseShipment', () => {
@@ -249,9 +249,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.purchaseShipmentWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('submitNdrFeedback', () => {
@@ -262,8 +262,8 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.submitNdrFeedbackWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
     });
   });
   describe('unlinkCarrierAccount', () => {
@@ -275,9 +275,9 @@ describe('ShippingApi', () => {
       ];
       const response = await instance.unlinkCarrierAccountWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
 
@@ -294,6 +294,10 @@ describe('ShippingApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

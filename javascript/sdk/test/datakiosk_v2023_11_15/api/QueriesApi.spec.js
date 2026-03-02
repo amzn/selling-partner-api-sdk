@@ -22,8 +22,8 @@ describe('QueriesApi', () => {
       ];
       const response = await instance.cancelQueryWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
     });
   });
   describe('createQuery', () => {
@@ -34,9 +34,9 @@ describe('QueriesApi', () => {
       ];
       const response = await instance.createQueryWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(202)
+      assertValidResponsePayload(202, response.data.payload);
     });
   });
   describe('getDocument', () => {
@@ -47,9 +47,9 @@ describe('QueriesApi', () => {
       ];
       const response = await instance.getDocumentWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getQueries', () => {
@@ -59,9 +59,9 @@ describe('QueriesApi', () => {
       ];
       const response = await instance.getQueriesWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getQuery', () => {
@@ -72,9 +72,9 @@ describe('QueriesApi', () => {
       ];
       const response = await instance.getQueryWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
 
@@ -91,6 +91,10 @@ describe('QueriesApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

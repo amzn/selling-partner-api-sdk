@@ -22,9 +22,9 @@ describe('AppIntegrationsApi', () => {
       ];
       const response = await instance.createNotificationWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('deleteNotifications', () => {
@@ -35,8 +35,8 @@ describe('AppIntegrationsApi', () => {
       ];
       const response = await instance.deleteNotificationsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
     });
   });
   describe('recordActionFeedback', () => {
@@ -48,8 +48,8 @@ describe('AppIntegrationsApi', () => {
       ];
       const response = await instance.recordActionFeedbackWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
     });
   });
 
@@ -66,6 +66,10 @@ describe('AppIntegrationsApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

@@ -21,10 +21,10 @@ import { ApiClient } from '../ApiClient.js'
 export class DropOffLocation {
   /**
    * Constructs a new <code>DropOffLocation</code>.
-   * The preferred location to leave packages at the destination address.
+   * The drop-off location at the destination address.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation
    * @class
-   * @param type {String} Specifies the preferred location to leave the package at the destination address.
+   * @param type {String} The drop-off location type at the destination address.
    */
   constructor (type) {
     this.type = type
@@ -111,29 +111,17 @@ DropOffLocation.TypeEnum = {
      * value: "DO_NOT_LEAVE_UNATTENDED"
      * @const
      */
-  DO_NOT_LEAVE_UNATTENDED: 'DO_NOT_LEAVE_UNATTENDED',
-
-  /**
-     * value: "MAIL_ROOM_CLERK"
-     * @const
-     */
-  MAIL_ROOM_CLERK: 'MAIL_ROOM_CLERK',
-
-  /**
-     * value: "AS_INSTRUCTED"
-     * @const
-     */
-  AS_INSTRUCTED: 'AS_INSTRUCTED'
+  DO_NOT_LEAVE_UNATTENDED: 'DO_NOT_LEAVE_UNATTENDED'
 }
 /**
- * Specifies the preferred location to leave the package at the destination address.
+ * The drop-off location type at the destination address.
  * @member {String} type
  * @type {String}
  */
 DropOffLocation.prototype.type = undefined
 
 /**
- * Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the `type` field. If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object should include the exact keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.  For `RECEPTIONIST`, `MAIL_ROOM_CLERK`, and `AS_INSTRUCTED` types, the `attributes` object will include a `recipientName` field containing the name of the person who received the package.
+ * Additional information about the drop-off location. This information can vary depending on the type of drop-off location specified in the `type` field.  If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object must include the keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.  For `RECEPTIONIST` type, the `attributes` object may include a `recipientName` field that contains the name of the person who received or will receive the package.
  * @member {{String: String}} attributes
  * @type {{String: String}}
  */

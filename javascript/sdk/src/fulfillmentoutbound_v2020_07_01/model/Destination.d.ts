@@ -18,7 +18,7 @@ export class Destination {
      */
     deliveryAddress: VariablePrecisionAddress;
     /**
-     * An IP Address.
+     * An IP address.
      * @member {String} ipAddress
      * @type {String}
      */

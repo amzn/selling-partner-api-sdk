@@ -23,9 +23,9 @@ describe('AplusContentApi', () => {
       ];
       const response = await instance.createContentDocumentWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('getContentDocument', () => {
@@ -38,9 +38,9 @@ describe('AplusContentApi', () => {
       ];
       const response = await instance.getContentDocumentWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('listContentDocumentAsinRelations', () => {
@@ -52,9 +52,9 @@ describe('AplusContentApi', () => {
       ];
       const response = await instance.listContentDocumentAsinRelationsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('postContentDocumentApprovalSubmission', () => {
@@ -66,9 +66,9 @@ describe('AplusContentApi', () => {
       ];
       const response = await instance.postContentDocumentApprovalSubmissionWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('postContentDocumentAsinRelations', () => {
@@ -81,9 +81,9 @@ describe('AplusContentApi', () => {
       ];
       const response = await instance.postContentDocumentAsinRelationsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('postContentDocumentSuspendSubmission', () => {
@@ -95,9 +95,9 @@ describe('AplusContentApi', () => {
       ];
       const response = await instance.postContentDocumentSuspendSubmissionWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('searchContentDocuments', () => {
@@ -108,9 +108,9 @@ describe('AplusContentApi', () => {
       ];
       const response = await instance.searchContentDocumentsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('searchContentPublishRecords', () => {
@@ -122,9 +122,9 @@ describe('AplusContentApi', () => {
       ];
       const response = await instance.searchContentPublishRecordsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('updateContentDocument', () => {
@@ -137,9 +137,9 @@ describe('AplusContentApi', () => {
       ];
       const response = await instance.updateContentDocumentWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
   describe('validateContentDocumentAsinRelations', () => {
@@ -151,9 +151,9 @@ describe('AplusContentApi', () => {
       ];
       const response = await instance.validateContentDocumentAsinRelationsWithHttpInfo(...params);
 
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal()
-      expect(response).to.have.property('data');
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data.payload);
     });
   });
 
@@ -170,6 +170,10 @@ describe('AplusContentApi', () => {
     });
   });
 });
+
+function assertValidResponsePayload(statusCode, payload) {
+  if (statusCode != 204) expect(payload).to.be.ok();
+}
 
 async function instructBackendMock(basename, response, code) {
   const lowerCaseCompressedBasename = basename.replace(/[\W\s]/g, "").toLowerCase();

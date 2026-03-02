@@ -23,7 +23,7 @@ import { DropOffLocation } from './DropOffLocation.js'
 export class DeliveryInformation {
   /**
    * Constructs a new <code>DeliveryInformation</code>.
-   * The delivery information for the package. This information is available after the package is delivered.
+   * The delivery information of the package, this information is only available post package delivery to its intended destination.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/DeliveryInformation
    * @class
    */
