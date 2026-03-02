@@ -37,7 +37,10 @@ class GetFeatureSkuResult(object):
         'feature_name': 'str',
         'is_eligible': 'bool',
         'ineligible_reasons': 'List[str]',
-        'sku_info': 'FeatureSku',
+        'seller_sku': 'str',
+        'fn_sku': 'str',
+        'asin': 'str',
+        'sku_count': 'float',
     }
 
     attribute_map = {
@@ -45,10 +48,13 @@ class GetFeatureSkuResult(object):
         'feature_name': 'featureName',
         'is_eligible': 'isEligible',
         'ineligible_reasons': 'ineligibleReasons',
-        'sku_info': 'skuInfo',
+        'seller_sku': 'sellerSku',
+        'fn_sku': 'fnSku',
+        'asin': 'asin',
+        'sku_count': 'skuCount',
     }
 
-    def __init__(self, marketplace_id=None, feature_name=None, is_eligible=None, ineligible_reasons=None, sku_info=None, _configuration=None):  # noqa: E501
+    def __init__(self, marketplace_id=None, feature_name=None, is_eligible=None, ineligible_reasons=None, seller_sku=None, fn_sku=None, asin=None, sku_count=None, _configuration=None):  # noqa: E501
         """GetFeatureSkuResult - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -58,7 +64,10 @@ class GetFeatureSkuResult(object):
         self._feature_name = None
         self._is_eligible = None
         self._ineligible_reasons = None
-        self._sku_info = None
+        self._seller_sku = None
+        self._fn_sku = None
+        self._asin = None
+        self._sku_count = None
         self.discriminator = None
 
         self.marketplace_id = marketplace_id
@@ -66,8 +75,14 @@ class GetFeatureSkuResult(object):
         self.is_eligible = is_eligible
         if ineligible_reasons is not None:
             self.ineligible_reasons = ineligible_reasons
-        if sku_info is not None:
-            self.sku_info = sku_info
+        if seller_sku is not None:
+            self.seller_sku = seller_sku
+        if fn_sku is not None:
+            self.fn_sku = fn_sku
+        if asin is not None:
+            self.asin = asin
+        if sku_count is not None:
+            self.sku_count = sku_count
 
     @property
     def marketplace_id(self):
@@ -168,25 +183,96 @@ class GetFeatureSkuResult(object):
         self._ineligible_reasons = ineligible_reasons
 
     @property
-    def sku_info(self):
-        """Gets the sku_info of this GetFeatureSkuResult.  # noqa: E501
+    def seller_sku(self):
+        """Gets the seller_sku of this GetFeatureSkuResult.  # noqa: E501
 
+        Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.  # noqa: E501
 
-        :return: The sku_info of this GetFeatureSkuResult.  # noqa: E501
-        :rtype: FeatureSku
+        :return: The seller_sku of this GetFeatureSkuResult.  # noqa: E501
+        :rtype: str
         """
-        return self._sku_info
+        return self._seller_sku
 
-    @sku_info.setter
-    def sku_info(self, sku_info):
-        """Sets the sku_info of this GetFeatureSkuResult.
+    @seller_sku.setter
+    def seller_sku(self, seller_sku):
+        """Sets the seller_sku of this GetFeatureSkuResult.
 
+        Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.  # noqa: E501
 
-        :param sku_info: The sku_info of this GetFeatureSkuResult.  # noqa: E501
-        :type: FeatureSku
+        :param seller_sku: The seller_sku of this GetFeatureSkuResult.  # noqa: E501
+        :type: str
         """
 
-        self._sku_info = sku_info
+        self._seller_sku = seller_sku
+
+    @property
+    def fn_sku(self):
+        """Gets the fn_sku of this GetFeatureSkuResult.  # noqa: E501
+
+        The unique SKU used by Amazon's fulfillment network.  # noqa: E501
+
+        :return: The fn_sku of this GetFeatureSkuResult.  # noqa: E501
+        :rtype: str
+        """
+        return self._fn_sku
+
+    @fn_sku.setter
+    def fn_sku(self, fn_sku):
+        """Sets the fn_sku of this GetFeatureSkuResult.
+
+        The unique SKU used by Amazon's fulfillment network.  # noqa: E501
+
+        :param fn_sku: The fn_sku of this GetFeatureSkuResult.  # noqa: E501
+        :type: str
+        """
+
+        self._fn_sku = fn_sku
+
+    @property
+    def asin(self):
+        """Gets the asin of this GetFeatureSkuResult.  # noqa: E501
+
+        The Amazon Standard Identification Number (ASIN) of the item.  # noqa: E501
+
+        :return: The asin of this GetFeatureSkuResult.  # noqa: E501
+        :rtype: str
+        """
+        return self._asin
+
+    @asin.setter
+    def asin(self, asin):
+        """Sets the asin of this GetFeatureSkuResult.
+
+        The Amazon Standard Identification Number (ASIN) of the item.  # noqa: E501
+
+        :param asin: The asin of this GetFeatureSkuResult.  # noqa: E501
+        :type: str
+        """
+
+        self._asin = asin
+
+    @property
+    def sku_count(self):
+        """Gets the sku_count of this GetFeatureSkuResult.  # noqa: E501
+
+        The number of SKUs available for this service.  # noqa: E501
+
+        :return: The sku_count of this GetFeatureSkuResult.  # noqa: E501
+        :rtype: float
+        """
+        return self._sku_count
+
+    @sku_count.setter
+    def sku_count(self, sku_count):
+        """Sets the sku_count of this GetFeatureSkuResult.
+
+        The number of SKUs available for this service.  # noqa: E501
+
+        :param sku_count: The sku_count of this GetFeatureSkuResult.  # noqa: E501
+        :type: float
+        """
+
+        self._sku_count = sku_count
 
     def to_dict(self):
         """Returns the model properties as a dict"""

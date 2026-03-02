@@ -76,7 +76,7 @@ class FeatureSku(object):
     def seller_sku(self):
         """Gets the seller_sku of this FeatureSku.  # noqa: E501
 
-        Used to identify an item in the given marketplace. `SellerSKU` is qualified by the seller's SellerId, which is included with every operation that you submit.  # noqa: E501
+        Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.  # noqa: E501
 
         :return: The seller_sku of this FeatureSku.  # noqa: E501
         :rtype: str
@@ -87,7 +87,7 @@ class FeatureSku(object):
     def seller_sku(self, seller_sku):
         """Sets the seller_sku of this FeatureSku.
 
-        Used to identify an item in the given marketplace. `SellerSKU` is qualified by the seller's SellerId, which is included with every operation that you submit.  # noqa: E501
+        Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.  # noqa: E501
 
         :param seller_sku: The seller_sku of this FeatureSku.  # noqa: E501
         :type: str
