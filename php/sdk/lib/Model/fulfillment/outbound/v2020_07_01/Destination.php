@@ -282,7 +282,7 @@ class Destination implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets ip_address.
      *
-     * @param null|string $ip_address an IP Address
+     * @param null|string $ip_address an IP address
      */
     public function setIpAddress(?string $ip_address): self
     {
