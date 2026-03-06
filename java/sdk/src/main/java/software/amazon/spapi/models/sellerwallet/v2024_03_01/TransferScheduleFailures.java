@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -17,8 +17,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 import org.threeten.bp.OffsetDateTime;
 
-/** Specifies the balance amount in the Amazon SW bank account */
-@Schema(description = "Specifies the balance amount in the Amazon SW bank account")
+/** The time of and reason for the transfer schedule failure. */
+@Schema(description = "The time of and reason for the transfer schedule failure.")
 public class TransferScheduleFailures {
     @SerializedName("transferScheduleFailureDate")
     private OffsetDateTime transferScheduleFailureDate = null;
@@ -32,11 +32,11 @@ public class TransferScheduleFailures {
     }
 
     /**
-     * The transfer schedule cancellation date
+     * The transfer schedule failure date.
      *
      * @return transferScheduleFailureDate
      */
-    @Schema(required = true, description = "The transfer schedule cancellation date ")
+    @Schema(required = true, description = "The transfer schedule failure date.")
     public OffsetDateTime getTransferScheduleFailureDate() {
         return transferScheduleFailureDate;
     }
@@ -51,14 +51,14 @@ public class TransferScheduleFailures {
     }
 
     /**
-     * The statement/reasoning listed for the cancellation of the transfer schedule
+     * The reason listed for the failure of the transfer schedule.
      *
      * @return transferScheduleFailureReason
      */
     @Schema(
             example = "INSUFFICIENT_BALANCE",
             required = true,
-            description = "The statement/reasoning listed for the cancellation of the transfer schedule ")
+            description = "The reason listed for the failure of the transfer schedule.")
     public String getTransferScheduleFailureReason() {
         return transferScheduleFailureReason;
     }

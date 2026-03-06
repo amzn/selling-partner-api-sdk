@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -126,11 +126,11 @@ public class PayeeContactInformation {
     }
 
     /**
-     * Address Line 1 of the public address
+     * Address Line 1 of the public address.
      *
      * @return addressLine1
      */
-    @Schema(example = "678 JFK Street", required = true, description = "Address Line 1 of the public address ")
+    @Schema(example = "678 JFK Street", required = true, description = "Address Line 1 of the public address.")
     public String getAddressLine1() {
         return addressLine1;
     }
@@ -145,11 +145,11 @@ public class PayeeContactInformation {
     }
 
     /**
-     * Address Line 2 of the public address
+     * Address Line 2 of the public address.
      *
      * @return addressLine2
      */
-    @Schema(example = "Unit 415", description = "Address Line 2 of the public address ")
+    @Schema(example = "Unit 415", description = "Address Line 2 of the public address.")
     public String getAddressLine2() {
         return addressLine2;
     }
@@ -164,11 +164,11 @@ public class PayeeContactInformation {
     }
 
     /**
-     * City name of the public address
+     * City name of the public address.
      *
      * @return city
      */
-    @Schema(example = "Seattle", required = true, description = "City name of the public address ")
+    @Schema(example = "Seattle", required = true, description = "City name of the public address.")
     public String getCity() {
         return city;
     }
@@ -205,11 +205,11 @@ public class PayeeContactInformation {
     }
 
     /**
-     * Postal code of the public address
+     * Postal code of the public address.
      *
      * @return postalCode
      */
-    @Schema(example = "98109", required = true, description = "Postal code of the public address ")
+    @Schema(example = "98109", required = true, description = "Postal code of the public address.")
     public String getPostalCode() {
         return postalCode;
     }
@@ -224,11 +224,11 @@ public class PayeeContactInformation {
     }
 
     /**
-     * Country name of the public address
+     * Country name of the public address.
      *
      * @return country
      */
-    @Schema(example = "United States", description = "Country name of the public address ")
+    @Schema(example = "United States", description = "Country name of the public address.")
     public String getCountry() {
         return country;
     }
@@ -247,7 +247,7 @@ public class PayeeContactInformation {
      *
      * @return countryCode
      */
-    @Schema(example = "US", required = true, description = "The two digit country code, in ISO 3166 format. ")
+    @Schema(example = "US", required = true, description = "The two digit country code, in ISO 3166 format.")
     public String getCountryCode() {
         return countryCode;
     }

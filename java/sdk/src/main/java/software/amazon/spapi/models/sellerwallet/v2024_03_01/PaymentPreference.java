@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -17,8 +17,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-/** Payment preference type in which transfer is being scheduled */
-@Schema(description = "Payment preference type in which transfer is being scheduled ")
+/** The type of payment preference in which the transfer is being scheduled. */
+@Schema(description = "The type of payment preference in which the transfer is being scheduled.")
 public class PaymentPreference {
     @SerializedName("paymentPreferencePaymentType")
     private PaymentPreferencePaymentType paymentPreferencePaymentType = null;

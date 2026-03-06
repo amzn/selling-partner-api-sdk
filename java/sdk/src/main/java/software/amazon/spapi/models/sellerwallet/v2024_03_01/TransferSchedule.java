@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -51,11 +51,11 @@ public class TransferSchedule {
     }
 
     /**
-     * The unique identifier provided by Amazon to the scheduled transfer
+     * The unique identifier provided by Amazon to the scheduled transfer.
      *
      * @return transferScheduleId
      */
-    @Schema(required = true, description = "The unique identifier provided by Amazon to the scheduled transfer ")
+    @Schema(required = true, description = "The unique identifier provided by Amazon to the scheduled transfer.")
     public String getTransferScheduleId() {
         return transferScheduleId;
     }
@@ -189,14 +189,11 @@ public class TransferSchedule {
     }
 
     /**
-     * Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.
+     * A list of transfer schedule failures.
      *
      * @return transferScheduleFailures
      */
-    @Schema(
-            required = true,
-            description =
-                    "Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons. ")
+    @Schema(required = true, description = "A list of transfer schedule failures.")
     public List<TransferScheduleFailures> getTransferScheduleFailures() {
         return transferScheduleFailures;
     }

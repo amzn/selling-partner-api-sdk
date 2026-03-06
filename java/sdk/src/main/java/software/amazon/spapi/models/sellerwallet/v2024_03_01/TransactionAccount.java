@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -46,11 +46,11 @@ public class TransactionAccount {
     }
 
     /**
-     * The unique identifier provided by Amazon to identify the account
+     * The unique identifier provided by Amazon to identify the account.
      *
      * @return accountId
      */
-    @Schema(description = "The unique identifier provided by Amazon to identify the account ")
+    @Schema(description = "The unique identifier provided by Amazon to identify the account.")
     public String getAccountId() {
         return accountId;
     }
@@ -65,11 +65,11 @@ public class TransactionAccount {
     }
 
     /**
-     * BankAccount holder&#x27;s name
+     * The account holder&#x27;s name.
      *
      * @return bankAccountHolderName
      */
-    @Schema(description = "BankAccount holder's name ")
+    @Schema(description = "The account holder's name.")
     public String getBankAccountHolderName() {
         return bankAccountHolderName;
     }
@@ -84,11 +84,11 @@ public class TransactionAccount {
     }
 
     /**
-     * The name of the bank
+     * The name of the bank.
      *
      * @return bankName
      */
-    @Schema(required = true, description = "The name of the bank ")
+    @Schema(required = true, description = "The name of the bank.")
     public String getBankName() {
         return bankName;
     }
@@ -122,11 +122,11 @@ public class TransactionAccount {
     }
 
     /**
-     * Last 3 digit of the bank account number
+     * The last three digits of the bank account number.
      *
      * @return bankAccountNumberTail
      */
-    @Schema(description = "Last 3 digit of the bank account number ")
+    @Schema(description = "The last three digits of the bank account number.")
     public String getBankAccountNumberTail() {
         return bankAccountNumberTail;
     }
@@ -141,14 +141,14 @@ public class TransactionAccount {
     }
 
     /**
-     * The two digit country code, in ISO 3166 format. This field is OPTIONAL for transactionSourceAccount object but is
-     * MANDATORY field for transactionDestinationAccount
+     * The two-digit country code, in ISO 3166 format. This field is optional for &#x60;transactionSourceAccount&#x60;,
+     * but is mandatory for &#x60;transactionDestinationAccount&#x60;.
      *
      * @return bankAccountCountryCode
      */
     @Schema(
             description =
-                    "The two digit country code, in ISO 3166 format. This field is OPTIONAL for transactionSourceAccount object but is MANDATORY field for transactionDestinationAccount ")
+                    "The two-digit country code, in ISO 3166 format. This field is optional for `transactionSourceAccount`, but is mandatory for `transactionDestinationAccount`.")
     public String getBankAccountCountryCode() {
         return bankAccountCountryCode;
     }
@@ -163,11 +163,11 @@ public class TransactionAccount {
     }
 
     /**
-     * The currency code in ISO 4217 format
+     * The currency code in ISO 4217 format.
      *
      * @return bankAccountCurrency
      */
-    @Schema(required = true, description = "The currency code in ISO 4217 format ")
+    @Schema(required = true, description = "The currency code in ISO 4217 format.")
     public String getBankAccountCurrency() {
         return bankAccountCurrency;
     }

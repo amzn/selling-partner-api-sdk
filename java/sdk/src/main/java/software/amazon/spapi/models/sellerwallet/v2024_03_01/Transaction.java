@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -100,11 +100,11 @@ public class Transaction {
     }
 
     /**
-     * The unique identifier provided by Amazon to the transaction
+     * The unique identifier provided by Amazon to the transaction.
      *
      * @return transactionId
      */
-    @Schema(required = true, description = "The unique identifier provided by Amazon to the transaction ")
+    @Schema(required = true, description = "The unique identifier provided by Amazon to the transaction.")
     public String getTransactionId() {
         return transactionId;
     }
@@ -176,15 +176,11 @@ public class Transaction {
     }
 
     /**
-     * Expected completion date of a transaction, for existing active Payees (Trusted Beneficiaries) it will be 24 hours
-     * but for new destination bank accounts the value could go up to 5 days
+     * The expected completion date of the transaction.
      *
      * @return expectedCompletionDate
      */
-    @Schema(
-            example = "2023-09-26T02:32:59.787Z",
-            description =
-                    "Expected completion date of a transaction, for existing active Payees (Trusted Beneficiaries) it will be 24 hours but for new destination bank accounts the value could go up to 5 days ")
+    @Schema(example = "2023-09-26T02:32:59.787Z", description = "The expected completion date of the transaction.")
     public OffsetDateTime getExpectedCompletionDate() {
         return expectedCompletionDate;
     }
@@ -199,11 +195,11 @@ public class Transaction {
     }
 
     /**
-     * Transaction completion date
+     * The transaction&#x27;s completion date.
      *
      * @return transactionActualCompletionDate
      */
-    @Schema(description = "Transaction completion date ")
+    @Schema(description = "The transaction's completion date.")
     public OffsetDateTime getTransactionActualCompletionDate() {
         return transactionActualCompletionDate;
     }
@@ -218,11 +214,11 @@ public class Transaction {
     }
 
     /**
-     * The last update date on the transaction
+     * The date of the most recent account balance update.
      *
      * @return lastUpdateDate
      */
-    @Schema(required = true, description = "The last update date on the transaction ")
+    @Schema(required = true, description = "The date of the most recent account balance update.")
     public OffsetDateTime getLastUpdateDate() {
         return lastUpdateDate;
     }
@@ -237,11 +233,11 @@ public class Transaction {
     }
 
     /**
-     * Amazon SW customer who requested the transaction
+     * The Amazon Seller Wallet customer who requested the transaction.
      *
      * @return requesterName
      */
-    @Schema(example = "TPPOrgId", description = "Amazon SW customer who requested the transaction ")
+    @Schema(example = "TPPOrgId", description = "The Amazon Seller Wallet customer who requested the transaction.")
     public String getRequesterName() {
         return requesterName;
     }
@@ -396,13 +392,11 @@ public class Transaction {
     }
 
     /**
-     * Description in case the transaction fails before completion
+     * The reason the transaction failed, if applicable.
      *
      * @return transactionFailureReason
      */
-    @Schema(
-            example = "Insufficient Balance",
-            description = "Description in case the transaction fails before completion ")
+    @Schema(example = "Insufficient Balance", description = "The reason the transaction failed, if applicable.")
     public String getTransactionFailureReason() {
         return transactionFailureReason;
     }

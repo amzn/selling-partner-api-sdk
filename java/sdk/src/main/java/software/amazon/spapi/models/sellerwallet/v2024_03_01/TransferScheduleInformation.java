@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -17,8 +17,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 import org.threeten.bp.OffsetDateTime;
 
-/** Parameters containing information required for initiating a schedule transfer */
-@Schema(description = "Parameters containing information required for initiating a schedule transfer ")
+/** Mandatory information for initiating a schedule transfer. */
+@Schema(description = "Mandatory information for initiating a schedule transfer.")
 public class TransferScheduleInformation {
     @SerializedName("scheduleStartDate")
     private OffsetDateTime scheduleStartDate = null;
@@ -38,11 +38,11 @@ public class TransferScheduleInformation {
     }
 
     /**
-     * Field to specify start date of the scheduled transfer
+     * The start date of the scheduled transfer.
      *
      * @return scheduleStartDate
      */
-    @Schema(example = "2024-03-01T00:00Z", description = "Field to specify start date of the scheduled transfer ")
+    @Schema(example = "2024-03-01T00:00Z", description = "The start date of the scheduled transfer.")
     public OffsetDateTime getScheduleStartDate() {
         return scheduleStartDate;
     }
@@ -57,11 +57,11 @@ public class TransferScheduleInformation {
     }
 
     /**
-     * Field to specify end date of the scheduled transfer
+     * The end date of the scheduled transfer.
      *
      * @return scheduleEndDate
      */
-    @Schema(example = "2027-03-01T00:00Z", description = "Field to specify end date of the scheduled transfer ")
+    @Schema(example = "2027-03-01T00:00Z", description = "The end date of the scheduled transfer.")
     public OffsetDateTime getScheduleEndDate() {
         return scheduleEndDate;
     }
