@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
 {
     /// <summary>
-    /// If the fees is in baseAmount (sourceAccount) currency, effectiveRate &#x3D;  (baseAmount - sum(fees.feeAmount.currencyAmount)) * baseRate) / baseAmount. If the fees is in transferAmount (destinationAccount) currency, effectiveRate &#x3D;  (( baseAmount * baseRate ) -  sum(fees.feeAmount.currencyAmount )) / baseAmount 
+    /// Details of the fee.
     /// </summary>
     [DataContract(Name = "Fee")]
     public partial class Fee : IValidatableObject
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <summary>
         /// Initializes a new instance of the <see cref="Fee" /> class.
         /// </summary>
-        /// <param name="feeId">Unique identifier assigned to the Fee.  (required).</param>
+        /// <param name="feeId">The unique identifier assigned to the fee. (required).</param>
         /// <param name="feeType">feeType (required).</param>
         /// <param name="feeRateValue">The value of the fee in percentage format. (required).</param>
         /// <param name="feeAmount">feeAmount (required).</param>
@@ -73,9 +73,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Unique identifier assigned to the Fee. 
+        /// The unique identifier assigned to the fee.
         /// </summary>
-        /// <value>Unique identifier assigned to the Fee. </value>
+        /// <value>The unique identifier assigned to the fee.</value>
         [DataMember(Name = "feeId", IsRequired = true, EmitDefaultValue = true)]
         public string FeeId { get; set; }
 

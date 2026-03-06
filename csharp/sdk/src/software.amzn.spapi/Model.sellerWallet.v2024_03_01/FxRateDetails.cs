@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
 {
     /// <summary>
-    /// Foreign exchange rate details displayed when transfer preview is requested. 
+    /// Foreign exchange rate details.
     /// </summary>
     [DataContract(Name = "FxRateDetails")]
     public partial class FxRateDetails : IValidatableObject
@@ -45,9 +45,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <summary>
         /// Initializes a new instance of the <see cref="FxRateDetails" /> class.
         /// </summary>
-        /// <param name="fxRateId">Unique identifier assigned to the fees/foreign exchange Rate of a transaction.  (required).</param>
-        /// <param name="baseRate">A decimal number such as amount or FX rate. (required).</param>
-        /// <param name="effectiveFxRate">A decimal number such as amount or FX rate. (required).</param>
+        /// <param name="fxRateId">The unique identifier assigned to the fees / foreign exchange rate of a transaction. (required).</param>
+        /// <param name="baseRate">A decimal number, such as an amount or FX rate. (required).</param>
+        /// <param name="effectiveFxRate">A decimal number, such as an amount or FX rate. (required).</param>
         /// <param name="rateDirection">rateDirection (required).</param>
         public FxRateDetails(string fxRateId = default(string), decimal baseRate = default(decimal), decimal effectiveFxRate = default(decimal), RateDirection rateDirection = default(RateDirection))
         {
@@ -63,23 +63,23 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Unique identifier assigned to the fees/foreign exchange Rate of a transaction. 
+        /// The unique identifier assigned to the fees / foreign exchange rate of a transaction.
         /// </summary>
-        /// <value>Unique identifier assigned to the fees/foreign exchange Rate of a transaction. </value>
+        /// <value>The unique identifier assigned to the fees / foreign exchange rate of a transaction.</value>
         [DataMember(Name = "fxRateId", IsRequired = true, EmitDefaultValue = true)]
         public string FxRateId { get; set; }
 
         /// <summary>
-        /// A decimal number such as amount or FX rate.
+        /// A decimal number, such as an amount or FX rate.
         /// </summary>
-        /// <value>A decimal number such as amount or FX rate.</value>
+        /// <value>A decimal number, such as an amount or FX rate.</value>
         [DataMember(Name = "baseRate", IsRequired = true, EmitDefaultValue = true)]
         public decimal BaseRate { get; set; }
 
         /// <summary>
-        /// A decimal number such as amount or FX rate.
+        /// A decimal number, such as an amount or FX rate.
         /// </summary>
-        /// <value>A decimal number such as amount or FX rate.</value>
+        /// <value>A decimal number, such as an amount or FX rate.</value>
         [DataMember(Name = "effectiveFxRate", IsRequired = true, EmitDefaultValue = true)]
         public decimal EffectiveFxRate { get; set; }
 

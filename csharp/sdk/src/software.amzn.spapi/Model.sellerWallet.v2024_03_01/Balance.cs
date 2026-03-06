@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
 {
     /// <summary>
-    /// Specifies the balance amount in the Amazon SW bank account
+    /// The balance amount in the Amazon Seller Wallet bank account.
     /// </summary>
     [DataContract(Name = "Balance")]
     public partial class Balance : IValidatableObject
@@ -45,11 +45,11 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <summary>
         /// Initializes a new instance of the <see cref="Balance" /> class.
         /// </summary>
-        /// <param name="accountId">The unique identifier provided by Amazon to identify the account  (required).</param>
+        /// <param name="accountId">The unique identifier provided by Amazon to identify the account. (required).</param>
         /// <param name="balanceType">balanceType.</param>
-        /// <param name="balanceAmount">A decimal number such as amount or FX rate. (required).</param>
-        /// <param name="balanceCurrency">The Amazon SW bank account currency code in ISO 4217 format  (required).</param>
-        /// <param name="lastUpdateDate">The last update date on the account balance  (required).</param>
+        /// <param name="balanceAmount">A decimal number, such as an amount or FX rate. (required).</param>
+        /// <param name="balanceCurrency">The Amazon Seller Wallet bank account currency code in ISO 4217 format. (required).</param>
+        /// <param name="lastUpdateDate">The date of the most recent account balance update. (required).</param>
         public Balance(string accountId = default(string), BalanceType? balanceType = default(BalanceType?), decimal balanceAmount = default(decimal), string balanceCurrency = default(string), DateTime lastUpdateDate = default(DateTime))
         {
             // to ensure "accountId" is required (not null)
@@ -70,9 +70,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// The unique identifier provided by Amazon to identify the account 
+        /// The unique identifier provided by Amazon to identify the account.
         /// </summary>
-        /// <value>The unique identifier provided by Amazon to identify the account </value>
+        /// <value>The unique identifier provided by Amazon to identify the account.</value>
         /*
         <example>amzn1.account.AGUGL2EM3ZHYSRJWH2UCRPIM5JFQ</example>
         */
@@ -80,16 +80,16 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string AccountId { get; set; }
 
         /// <summary>
-        /// A decimal number such as amount or FX rate.
+        /// A decimal number, such as an amount or FX rate.
         /// </summary>
-        /// <value>A decimal number such as amount or FX rate.</value>
+        /// <value>A decimal number, such as an amount or FX rate.</value>
         [DataMember(Name = "balanceAmount", IsRequired = true, EmitDefaultValue = true)]
         public decimal BalanceAmount { get; set; }
 
         /// <summary>
-        /// The Amazon SW bank account currency code in ISO 4217 format 
+        /// The Amazon Seller Wallet bank account currency code in ISO 4217 format.
         /// </summary>
-        /// <value>The Amazon SW bank account currency code in ISO 4217 format </value>
+        /// <value>The Amazon Seller Wallet bank account currency code in ISO 4217 format.</value>
         /*
         <example>USD</example>
         */
@@ -97,9 +97,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string BalanceCurrency { get; set; }
 
         /// <summary>
-        /// The last update date on the account balance 
+        /// The date of the most recent account balance update.
         /// </summary>
-        /// <value>The last update date on the account balance </value>
+        /// <value>The date of the most recent account balance update.</value>
         [DataMember(Name = "lastUpdateDate", IsRequired = true, EmitDefaultValue = true)]
         public DateTime LastUpdateDate { get; set; }
 

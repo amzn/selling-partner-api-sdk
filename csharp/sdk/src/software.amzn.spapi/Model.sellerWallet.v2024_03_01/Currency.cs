@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// Initializes a new instance of the <see cref="Currency" /> class.
         /// </summary>
         /// <param name="currencyCode">The three-digit currency code in ISO 4217 format..</param>
-        /// <param name="currencyAmount">A decimal number such as amount or FX rate..</param>
+        /// <param name="currencyAmount">A decimal number, such as an amount or FX rate..</param>
         public Currency(string? currencyCode = default(string?), decimal? currencyAmount = default(decimal?))
         {
             this.CurrencyCode = currencyCode;
@@ -50,9 +50,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string? CurrencyCode { get; set; }
 
         /// <summary>
-        /// A decimal number such as amount or FX rate.
+        /// A decimal number, such as an amount or FX rate.
         /// </summary>
-        /// <value>A decimal number such as amount or FX rate.</value>
+        /// <value>A decimal number, such as an amount or FX rate.</value>
         [DataMember(Name = "currencyAmount", EmitDefaultValue = false)]
         public decimal? CurrencyAmount { get; set; }
 

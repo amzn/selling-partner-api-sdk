@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -26,7 +26,7 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
     {
         #region Synchronous Operations
         /// <summary>
-        /// Create a transaction request from Amazon SW account to another customer provided account
+        /// Create a transaction request from Amazon Seller Wallet account to another customer-provided account
         /// </summary>
         /// <remarks>
         /// Create a transaction request from a Seller Wallet account to another customer-provided account.
@@ -35,12 +35,12 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount. Sign in the order of the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the request</param>
+        /// <param name="body">The payload of the request</param>
         /// <returns>CreateTransactionResponse</returns>
         CreateTransactionResponse CreateTransaction (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransactionInitiationRequest body);
 
         /// <summary>
-        /// Create a transaction request from Amazon SW account to another customer provided account
+        /// Create a transaction request from Amazon Seller Wallet account to another customer-provided account
         /// </summary>
         /// <remarks>
         /// Create a transaction request from a Seller Wallet account to another customer-provided account.
@@ -49,61 +49,61 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount. Sign in the order of the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the request</param>
+        /// <param name="body">The payload of the request</param>
         /// <returns>ApiResponse of CreateTransactionResponse</returns>
         ApiResponse<CreateTransactionResponse> CreateTransactionWithHttpInfo (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransactionInitiationRequest body);
         /// <summary>
-        /// Find particular Amazon SW account transaction by Amazon transaction identifier
+        /// Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
         /// </summary>
         /// <remarks>
-        /// Returns a transaction
+        /// Find a transaction by the Amazon transaction identifier.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the Amazon SW transaction</param>
+        /// <param name="transactionId">The ID of the Amazon Seller Wallet transaction.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Transaction</returns>
         Transaction GetTransaction (string transactionId, string marketplaceId);
 
         /// <summary>
-        /// Find particular Amazon SW account transaction by Amazon transaction identifier
+        /// Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
         /// </summary>
         /// <remarks>
-        /// Returns a transaction
+        /// Find a transaction by the Amazon transaction identifier.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the Amazon SW transaction</param>
+        /// <param name="transactionId">The ID of the Amazon Seller Wallet transaction.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> GetTransactionWithHttpInfo (string transactionId, string marketplaceId);
         /// <summary>
-        /// The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
+        /// The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
         /// </summary>
         /// <remarks>
         /// Retrieve a list of transactions for a given Seller Wallet bank account.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="nextPageToken">Pagination token to retrieve a specific page of results. (optional)</param>
+        /// <param name="nextPageToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>TransactionListing</returns>
         TransactionListing ListAccountTransactions (string accountId, string marketplaceId, string? nextPageToken = null);
 
         /// <summary>
-        /// The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
+        /// The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
         /// </summary>
         /// <remarks>
         /// Retrieve a list of transactions for a given Seller Wallet bank account.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="nextPageToken">Pagination token to retrieve a specific page of results. (optional)</param>
+        /// <param name="nextPageToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>ApiResponse of TransactionListing</returns>
         ApiResponse<TransactionListing> ListAccountTransactionsWithHttpInfo (string accountId, string marketplaceId, string? nextPageToken = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Create a transaction request from Amazon SW account to another customer provided account
+        /// Create a transaction request from Amazon Seller Wallet account to another customer-provided account
         /// </summary>
         /// <remarks>
         /// Create a transaction request from a Seller Wallet account to another customer-provided account.
@@ -112,12 +112,12 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount. Sign in the order of the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the request</param>
+        /// <param name="body">The payload of the request</param>
         /// <returns>Task of CreateTransactionResponse</returns>
         System.Threading.Tasks.Task<CreateTransactionResponse> CreateTransactionAsync (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransactionInitiationRequest body);
 
         /// <summary>
-        /// Create a transaction request from Amazon SW account to another customer provided account
+        /// Create a transaction request from Amazon Seller Wallet account to another customer-provided account
         /// </summary>
         /// <remarks>
         /// Create a transaction request from a Seller Wallet account to another customer-provided account.
@@ -126,55 +126,55 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount. Sign in the order of the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the request</param>
+        /// <param name="body">The payload of the request</param>
         /// <returns>Task of ApiResponse (CreateTransactionResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateTransactionResponse>> CreateTransactionAsyncWithHttpInfo (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransactionInitiationRequest body);
         /// <summary>
-        /// Find particular Amazon SW account transaction by Amazon transaction identifier
+        /// Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
         /// </summary>
         /// <remarks>
-        /// Returns a transaction
+        /// Find a transaction by the Amazon transaction identifier.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the Amazon SW transaction</param>
+        /// <param name="transactionId">The ID of the Amazon Seller Wallet transaction.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Task of Transaction</returns>
         System.Threading.Tasks.Task<Transaction> GetTransactionAsync (string transactionId, string marketplaceId);
 
         /// <summary>
-        /// Find particular Amazon SW account transaction by Amazon transaction identifier
+        /// Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
         /// </summary>
         /// <remarks>
-        /// Returns a transaction
+        /// Find a transaction by the Amazon transaction identifier.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the Amazon SW transaction</param>
+        /// <param name="transactionId">The ID of the Amazon Seller Wallet transaction.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Task of ApiResponse (Transaction)</returns>
         System.Threading.Tasks.Task<ApiResponse<Transaction>> GetTransactionAsyncWithHttpInfo (string transactionId, string marketplaceId);
         /// <summary>
-        /// The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
+        /// The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
         /// </summary>
         /// <remarks>
         /// Retrieve a list of transactions for a given Seller Wallet bank account.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="nextPageToken">Pagination token to retrieve a specific page of results. (optional)</param>
+        /// <param name="nextPageToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of TransactionListing</returns>
         System.Threading.Tasks.Task<TransactionListing> ListAccountTransactionsAsync (string accountId, string marketplaceId, string? nextPageToken = null);
 
         /// <summary>
-        /// The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
+        /// The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
         /// </summary>
         /// <remarks>
         /// Retrieve a list of transactions for a given Seller Wallet bank account.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="nextPageToken">Pagination token to retrieve a specific page of results. (optional)</param>
+        /// <param name="nextPageToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of ApiResponse (TransactionListing)</returns>
         System.Threading.Tasks.Task<ApiResponse<TransactionListing>> ListAccountTransactionsAsyncWithHttpInfo (string accountId, string marketplaceId, string? nextPageToken = null);
         #endregion Asynchronous Operations
@@ -269,13 +269,13 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Create a transaction request from Amazon SW account to another customer provided account Create a transaction request from a Seller Wallet account to another customer-provided account.
+        /// Create a transaction request from Amazon Seller Wallet account to another customer-provided account Create a transaction request from a Seller Wallet account to another customer-provided account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount. Sign in the order of the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the request</param>
+        /// <param name="body">The payload of the request</param>
         /// <returns>CreateTransactionResponse</returns>
         public CreateTransactionResponse CreateTransaction (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransactionInitiationRequest body)
         {
@@ -284,13 +284,13 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Create a transaction request from Amazon SW account to another customer provided account Create a transaction request from a Seller Wallet account to another customer-provided account.
+        /// Create a transaction request from Amazon Seller Wallet account to another customer-provided account Create a transaction request from a Seller Wallet account to another customer-provided account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount. Sign in the order of the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the request</param>
+        /// <param name="body">The payload of the request</param>
         /// <returns>ApiResponse of CreateTransactionResponse</returns>
         public ApiResponse< CreateTransactionResponse > CreateTransactionWithHttpInfo (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransactionInitiationRequest body)
         {
@@ -359,13 +359,13 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Create a transaction request from Amazon SW account to another customer provided account Create a transaction request from a Seller Wallet account to another customer-provided account.
+        /// Create a transaction request from Amazon Seller Wallet account to another customer-provided account Create a transaction request from a Seller Wallet account to another customer-provided account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount. Sign in the order of the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the request</param>
+        /// <param name="body">The payload of the request</param>
         /// <returns>Task of CreateTransactionResponse</returns>
         public async System.Threading.Tasks.Task<CreateTransactionResponse> CreateTransactionAsync (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransactionInitiationRequest body)
         {
@@ -375,13 +375,13 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Create a transaction request from Amazon SW account to another customer provided account Create a transaction request from a Seller Wallet account to another customer-provided account.
+        /// Create a transaction request from Amazon Seller Wallet account to another customer-provided account Create a transaction request from a Seller Wallet account to another customer-provided account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount. Sign in the order of the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the request</param>
+        /// <param name="body">The payload of the request</param>
         /// <returns>Task of ApiResponse (CreateTransactionResponse)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<CreateTransactionResponse>> CreateTransactionAsyncWithHttpInfo (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransactionInitiationRequest body)
         {
@@ -449,10 +449,10 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Find particular Amazon SW account transaction by Amazon transaction identifier Returns a transaction
+        /// Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier Find a transaction by the Amazon transaction identifier.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the Amazon SW transaction</param>
+        /// <param name="transactionId">The ID of the Amazon Seller Wallet transaction.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Transaction</returns>
         public Transaction GetTransaction (string transactionId, string marketplaceId)
@@ -462,10 +462,10 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Find particular Amazon SW account transaction by Amazon transaction identifier Returns a transaction
+        /// Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier Find a transaction by the Amazon transaction identifier.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the Amazon SW transaction</param>
+        /// <param name="transactionId">The ID of the Amazon Seller Wallet transaction.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>ApiResponse of Transaction</returns>
         public ApiResponse< Transaction > GetTransactionWithHttpInfo (string transactionId, string marketplaceId)
@@ -519,10 +519,10 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Find particular Amazon SW account transaction by Amazon transaction identifier Returns a transaction
+        /// Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier Find a transaction by the Amazon transaction identifier.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the Amazon SW transaction</param>
+        /// <param name="transactionId">The ID of the Amazon Seller Wallet transaction.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Task of Transaction</returns>
         public async System.Threading.Tasks.Task<Transaction> GetTransactionAsync (string transactionId, string marketplaceId)
@@ -533,10 +533,10 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Find particular Amazon SW account transaction by Amazon transaction identifier Returns a transaction
+        /// Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier Find a transaction by the Amazon transaction identifier.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the Amazon SW transaction</param>
+        /// <param name="transactionId">The ID of the Amazon Seller Wallet transaction.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Task of ApiResponse (Transaction)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Transaction>> GetTransactionAsyncWithHttpInfo (string transactionId, string marketplaceId)
@@ -589,12 +589,12 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// The API will return all the transactions for a given Amazon SW account sorted by the transaction request date Retrieve a list of transactions for a given Seller Wallet bank account.
+        /// The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date Retrieve a list of transactions for a given Seller Wallet bank account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="nextPageToken">Pagination token to retrieve a specific page of results. (optional)</param>
+        /// <param name="nextPageToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>TransactionListing</returns>
         public TransactionListing ListAccountTransactions (string accountId, string marketplaceId, string? nextPageToken = null)
         {
@@ -603,12 +603,12 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// The API will return all the transactions for a given Amazon SW account sorted by the transaction request date Retrieve a list of transactions for a given Seller Wallet bank account.
+        /// The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date Retrieve a list of transactions for a given Seller Wallet bank account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="nextPageToken">Pagination token to retrieve a specific page of results. (optional)</param>
+        /// <param name="nextPageToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>ApiResponse of TransactionListing</returns>
         public ApiResponse< TransactionListing > ListAccountTransactionsWithHttpInfo (string accountId, string marketplaceId, string? nextPageToken = null)
         {
@@ -662,12 +662,12 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// The API will return all the transactions for a given Amazon SW account sorted by the transaction request date Retrieve a list of transactions for a given Seller Wallet bank account.
+        /// The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date Retrieve a list of transactions for a given Seller Wallet bank account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="nextPageToken">Pagination token to retrieve a specific page of results. (optional)</param>
+        /// <param name="nextPageToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of TransactionListing</returns>
         public async System.Threading.Tasks.Task<TransactionListing> ListAccountTransactionsAsync (string accountId, string marketplaceId, string? nextPageToken = null)
         {
@@ -677,12 +677,12 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// The API will return all the transactions for a given Amazon SW account sorted by the transaction request date Retrieve a list of transactions for a given Seller Wallet bank account.
+        /// The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date Retrieve a list of transactions for a given Seller Wallet bank account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="nextPageToken">Pagination token to retrieve a specific page of results. (optional)</param>
+        /// <param name="nextPageToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of ApiResponse (TransactionListing)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<TransactionListing>> ListAccountTransactionsAsyncWithHttpInfo (string accountId, string marketplaceId, string? nextPageToken = null)
         {

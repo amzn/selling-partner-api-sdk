@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <summary>
         /// Initializes a new instance of the <see cref="ErrorList" /> class.
         /// </summary>
-        /// <param name="errors">List of errors  (required).</param>
+        /// <param name="errors">List of errors (required).</param>
         public ErrorList(List<Error> errors = default(List<Error>))
         {
             // to ensure "errors" is required (not null)
@@ -51,9 +51,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// List of errors 
+        /// List of errors
         /// </summary>
-        /// <value>List of errors </value>
+        /// <value>List of errors</value>
         [DataMember(Name = "errors", IsRequired = true, EmitDefaultValue = true)]
         public List<Error> Errors { get; set; }
 

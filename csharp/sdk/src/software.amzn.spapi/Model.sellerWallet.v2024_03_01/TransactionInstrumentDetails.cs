@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
 {
     /// <summary>
-    /// Request body to create transaction instrument, Amazon performs validation and screening (anti-money laundering measuers) on all the transaction instruments before executing a transaction thus it requires transaction instrument holder&#39;s contact details as well 
+    /// Details of the destination bank account in the transaction request.
     /// </summary>
     [DataContract(Name = "TransactionInstrumentDetails")]
     public partial class TransactionInstrumentDetails : IValidatableObject
@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// Initializes a new instance of the <see cref="TransactionInstrumentDetails" /> class.
         /// </summary>
         /// <param name="bankAccount">bankAccount (required).</param>
-        /// <param name="bankAccountNumber">This field would be used to populate the bank account number of the destination payment method. The field is intentionally not included in any other Schemas since Amazon internal systems will never receive it in unencrypted format, so field won&#39;t be part of the request signature  (required).</param>
+        /// <param name="bankAccountNumber">The bank account number of the destination payment method.  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate &#x60;destAccountDigitalSignature&#x60;, and should not be included in the request signature. (required).</param>
         /// <param name="accountHolderName">The bank account holder&#39;s name (expected to be an Amazon customer).  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate &#x60;destAccountDigitalSignature&#x60;, and should not be included in the request signature. (required).</param>
         public TransactionInstrumentDetails(BankAccount bankAccount = default(BankAccount), string bankAccountNumber = default(string), string accountHolderName = default(string))
         {
@@ -71,9 +71,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public BankAccount BankAccount { get; set; }
 
         /// <summary>
-        /// This field would be used to populate the bank account number of the destination payment method. The field is intentionally not included in any other Schemas since Amazon internal systems will never receive it in unencrypted format, so field won&#39;t be part of the request signature 
+        /// The bank account number of the destination payment method.  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate &#x60;destAccountDigitalSignature&#x60;, and should not be included in the request signature.
         /// </summary>
-        /// <value>This field would be used to populate the bank account number of the destination payment method. The field is intentionally not included in any other Schemas since Amazon internal systems will never receive it in unencrypted format, so field won&#39;t be part of the request signature </value>
+        /// <value>The bank account number of the destination payment method.  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate &#x60;destAccountDigitalSignature&#x60;, and should not be included in the request signature.</value>
         /*
         <example>GB29RBOS60161331926819</example>
         */

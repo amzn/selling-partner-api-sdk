@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
 {
     /// <summary>
-    /// Specifies the balance amount in the Amazon SW bank account
+    /// The time of and reason for the transfer schedule failure.
     /// </summary>
     [DataContract(Name = "TransferScheduleFailures")]
     public partial class TransferScheduleFailures : IValidatableObject
@@ -39,8 +39,8 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <summary>
         /// Initializes a new instance of the <see cref="TransferScheduleFailures" /> class.
         /// </summary>
-        /// <param name="transferScheduleFailureDate">The transfer schedule cancellation date  (required).</param>
-        /// <param name="transferScheduleFailureReason">The statement/reasoning listed for the cancellation of the transfer schedule  (required).</param>
+        /// <param name="transferScheduleFailureDate">The transfer schedule failure date. (required).</param>
+        /// <param name="transferScheduleFailureReason">The reason listed for the failure of the transfer schedule. (required).</param>
         public TransferScheduleFailures(DateTime transferScheduleFailureDate = default(DateTime), string transferScheduleFailureReason = default(string))
         {
             this.TransferScheduleFailureDate = transferScheduleFailureDate;
@@ -53,16 +53,16 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// The transfer schedule cancellation date 
+        /// The transfer schedule failure date.
         /// </summary>
-        /// <value>The transfer schedule cancellation date </value>
+        /// <value>The transfer schedule failure date.</value>
         [DataMember(Name = "transferScheduleFailureDate", IsRequired = true, EmitDefaultValue = true)]
         public DateTime TransferScheduleFailureDate { get; set; }
 
         /// <summary>
-        /// The statement/reasoning listed for the cancellation of the transfer schedule 
+        /// The reason listed for the failure of the transfer schedule.
         /// </summary>
-        /// <value>The statement/reasoning listed for the cancellation of the transfer schedule </value>
+        /// <value>The reason listed for the failure of the transfer schedule.</value>
         /*
         <example>INSUFFICIENT_BALANCE</example>
         */

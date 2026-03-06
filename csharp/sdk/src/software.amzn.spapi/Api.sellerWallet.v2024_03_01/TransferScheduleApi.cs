@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -26,7 +26,7 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
     {
         #region Synchronous Operations
         /// <summary>
-        /// Create a transfer schedule request from Amazon SW account to another customer provided account
+        /// Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
         /// </summary>
         /// <remarks>
         /// Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
@@ -35,12 +35,12 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details.</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the request</param>
+        /// <param name="body">The payload of the request.</param>
         /// <returns>TransferSchedule</returns>
         TransferSchedule CreateTransferSchedule (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransferScheduleRequest body);
 
         /// <summary>
-        /// Create a transfer schedule request from Amazon SW account to another customer provided account
+        /// Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
         /// </summary>
         /// <remarks>
         /// Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details.</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the request</param>
+        /// <param name="body">The payload of the request.</param>
         /// <returns>ApiResponse of TransferSchedule</returns>
         ApiResponse<TransferSchedule> CreateTransferScheduleWithHttpInfo (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransferScheduleRequest body);
         /// <summary>
@@ -99,41 +99,41 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         /// <returns>ApiResponse of TransferSchedule</returns>
         ApiResponse<TransferSchedule> GetTransferScheduleWithHttpInfo (string transferScheduleId, string marketplaceId);
         /// <summary>
-        /// The API will return all the transfer schedules for a given Amazon SW account
+        /// The API will return all the transfer schedules for a given Amazon Seller Wallet account
         /// </summary>
         /// <remarks>
         /// Retrieve transfer schedules of a Seller Wallet bank account.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="nextPageToken">Pagination token to retrieve a specific page of results. (optional)</param>
+        /// <param name="nextPageToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>TransferScheduleListing</returns>
         TransferScheduleListing ListTransferSchedules (string accountId, string marketplaceId, string? nextPageToken = null);
 
         /// <summary>
-        /// The API will return all the transfer schedules for a given Amazon SW account
+        /// The API will return all the transfer schedules for a given Amazon Seller Wallet account
         /// </summary>
         /// <remarks>
         /// Retrieve transfer schedules of a Seller Wallet bank account.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="nextPageToken">Pagination token to retrieve a specific page of results. (optional)</param>
+        /// <param name="nextPageToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>ApiResponse of TransferScheduleListing</returns>
         ApiResponse<TransferScheduleListing> ListTransferSchedulesWithHttpInfo (string accountId, string marketplaceId, string? nextPageToken = null);
         /// <summary>
         /// Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.
         /// </summary>
         /// <remarks>
-        /// Returns a transfer belonging to the updated scheduled transfer request
+        /// Update transfer schedule information. Returns a transfer belonging to the updated scheduled transfer request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details.</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the scheduled transfer request that is to be updated. </param>
+        /// <param name="body">The payload of the scheduled transfer request that is to be updated.</param>
         /// <returns>TransferSchedule</returns>
         TransferSchedule UpdateTransferSchedule (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransferSchedule body);
 
@@ -141,19 +141,19 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         /// Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.
         /// </summary>
         /// <remarks>
-        /// Returns a transfer belonging to the updated scheduled transfer request
+        /// Update transfer schedule information. Returns a transfer belonging to the updated scheduled transfer request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details.</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the scheduled transfer request that is to be updated. </param>
+        /// <param name="body">The payload of the scheduled transfer request that is to be updated.</param>
         /// <returns>ApiResponse of TransferSchedule</returns>
         ApiResponse<TransferSchedule> UpdateTransferScheduleWithHttpInfo (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransferSchedule body);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Create a transfer schedule request from Amazon SW account to another customer provided account
+        /// Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
         /// </summary>
         /// <remarks>
         /// Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
@@ -162,12 +162,12 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details.</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the request</param>
+        /// <param name="body">The payload of the request.</param>
         /// <returns>Task of TransferSchedule</returns>
         System.Threading.Tasks.Task<TransferSchedule> CreateTransferScheduleAsync (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransferScheduleRequest body);
 
         /// <summary>
-        /// Create a transfer schedule request from Amazon SW account to another customer provided account
+        /// Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
         /// </summary>
         /// <remarks>
         /// Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
@@ -176,7 +176,7 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details.</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the request</param>
+        /// <param name="body">The payload of the request.</param>
         /// <returns>Task of ApiResponse (TransferSchedule)</returns>
         System.Threading.Tasks.Task<ApiResponse<TransferSchedule>> CreateTransferScheduleAsyncWithHttpInfo (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransferScheduleRequest body);
         /// <summary>
@@ -226,41 +226,41 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         /// <returns>Task of ApiResponse (TransferSchedule)</returns>
         System.Threading.Tasks.Task<ApiResponse<TransferSchedule>> GetTransferScheduleAsyncWithHttpInfo (string transferScheduleId, string marketplaceId);
         /// <summary>
-        /// The API will return all the transfer schedules for a given Amazon SW account
+        /// The API will return all the transfer schedules for a given Amazon Seller Wallet account
         /// </summary>
         /// <remarks>
         /// Retrieve transfer schedules of a Seller Wallet bank account.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="nextPageToken">Pagination token to retrieve a specific page of results. (optional)</param>
+        /// <param name="nextPageToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of TransferScheduleListing</returns>
         System.Threading.Tasks.Task<TransferScheduleListing> ListTransferSchedulesAsync (string accountId, string marketplaceId, string? nextPageToken = null);
 
         /// <summary>
-        /// The API will return all the transfer schedules for a given Amazon SW account
+        /// The API will return all the transfer schedules for a given Amazon Seller Wallet account
         /// </summary>
         /// <remarks>
         /// Retrieve transfer schedules of a Seller Wallet bank account.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="nextPageToken">Pagination token to retrieve a specific page of results. (optional)</param>
+        /// <param name="nextPageToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of ApiResponse (TransferScheduleListing)</returns>
         System.Threading.Tasks.Task<ApiResponse<TransferScheduleListing>> ListTransferSchedulesAsyncWithHttpInfo (string accountId, string marketplaceId, string? nextPageToken = null);
         /// <summary>
         /// Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.
         /// </summary>
         /// <remarks>
-        /// Returns a transfer belonging to the updated scheduled transfer request
+        /// Update transfer schedule information. Returns a transfer belonging to the updated scheduled transfer request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details.</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the scheduled transfer request that is to be updated. </param>
+        /// <param name="body">The payload of the scheduled transfer request that is to be updated.</param>
         /// <returns>Task of TransferSchedule</returns>
         System.Threading.Tasks.Task<TransferSchedule> UpdateTransferScheduleAsync (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransferSchedule body);
 
@@ -268,13 +268,13 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         /// Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.
         /// </summary>
         /// <remarks>
-        /// Returns a transfer belonging to the updated scheduled transfer request
+        /// Update transfer schedule information. Returns a transfer belonging to the updated scheduled transfer request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details.</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the scheduled transfer request that is to be updated. </param>
+        /// <param name="body">The payload of the scheduled transfer request that is to be updated.</param>
         /// <returns>Task of ApiResponse (TransferSchedule)</returns>
         System.Threading.Tasks.Task<ApiResponse<TransferSchedule>> UpdateTransferScheduleAsyncWithHttpInfo (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransferSchedule body);
         #endregion Asynchronous Operations
@@ -369,13 +369,13 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Create a transfer schedule request from Amazon SW account to another customer provided account Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
+        /// Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details.</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the request</param>
+        /// <param name="body">The payload of the request.</param>
         /// <returns>TransferSchedule</returns>
         public TransferSchedule CreateTransferSchedule (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransferScheduleRequest body)
         {
@@ -384,13 +384,13 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Create a transfer schedule request from Amazon SW account to another customer provided account Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
+        /// Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details.</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the request</param>
+        /// <param name="body">The payload of the request.</param>
         /// <returns>ApiResponse of TransferSchedule</returns>
         public ApiResponse< TransferSchedule > CreateTransferScheduleWithHttpInfo (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransferScheduleRequest body)
         {
@@ -459,13 +459,13 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Create a transfer schedule request from Amazon SW account to another customer provided account Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
+        /// Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details.</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the request</param>
+        /// <param name="body">The payload of the request.</param>
         /// <returns>Task of TransferSchedule</returns>
         public async System.Threading.Tasks.Task<TransferSchedule> CreateTransferScheduleAsync (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransferScheduleRequest body)
         {
@@ -475,13 +475,13 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Create a transfer schedule request from Amazon SW account to another customer provided account Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
+        /// Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details.</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the request</param>
+        /// <param name="body">The payload of the request.</param>
         /// <returns>Task of ApiResponse (TransferSchedule)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<TransferSchedule>> CreateTransferScheduleAsyncWithHttpInfo (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransferScheduleRequest body)
         {
@@ -829,12 +829,12 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// The API will return all the transfer schedules for a given Amazon SW account Retrieve transfer schedules of a Seller Wallet bank account.
+        /// The API will return all the transfer schedules for a given Amazon Seller Wallet account Retrieve transfer schedules of a Seller Wallet bank account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="nextPageToken">Pagination token to retrieve a specific page of results. (optional)</param>
+        /// <param name="nextPageToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>TransferScheduleListing</returns>
         public TransferScheduleListing ListTransferSchedules (string accountId, string marketplaceId, string? nextPageToken = null)
         {
@@ -843,12 +843,12 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// The API will return all the transfer schedules for a given Amazon SW account Retrieve transfer schedules of a Seller Wallet bank account.
+        /// The API will return all the transfer schedules for a given Amazon Seller Wallet account Retrieve transfer schedules of a Seller Wallet bank account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="nextPageToken">Pagination token to retrieve a specific page of results. (optional)</param>
+        /// <param name="nextPageToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>ApiResponse of TransferScheduleListing</returns>
         public ApiResponse< TransferScheduleListing > ListTransferSchedulesWithHttpInfo (string accountId, string marketplaceId, string? nextPageToken = null)
         {
@@ -902,12 +902,12 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// The API will return all the transfer schedules for a given Amazon SW account Retrieve transfer schedules of a Seller Wallet bank account.
+        /// The API will return all the transfer schedules for a given Amazon Seller Wallet account Retrieve transfer schedules of a Seller Wallet bank account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="nextPageToken">Pagination token to retrieve a specific page of results. (optional)</param>
+        /// <param name="nextPageToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of TransferScheduleListing</returns>
         public async System.Threading.Tasks.Task<TransferScheduleListing> ListTransferSchedulesAsync (string accountId, string marketplaceId, string? nextPageToken = null)
         {
@@ -917,12 +917,12 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// The API will return all the transfer schedules for a given Amazon SW account Retrieve transfer schedules of a Seller Wallet bank account.
+        /// The API will return all the transfer schedules for a given Amazon Seller Wallet account Retrieve transfer schedules of a Seller Wallet bank account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="nextPageToken">Pagination token to retrieve a specific page of results. (optional)</param>
+        /// <param name="nextPageToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of ApiResponse (TransferScheduleListing)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<TransferScheduleListing>> ListTransferSchedulesAsyncWithHttpInfo (string accountId, string marketplaceId, string? nextPageToken = null)
         {
@@ -975,13 +975,13 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated. Returns a transfer belonging to the updated scheduled transfer request
+        /// Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated. Update transfer schedule information. Returns a transfer belonging to the updated scheduled transfer request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details.</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the scheduled transfer request that is to be updated. </param>
+        /// <param name="body">The payload of the scheduled transfer request that is to be updated.</param>
         /// <returns>TransferSchedule</returns>
         public TransferSchedule UpdateTransferSchedule (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransferSchedule body)
         {
@@ -990,13 +990,13 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated. Returns a transfer belonging to the updated scheduled transfer request
+        /// Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated. Update transfer schedule information. Returns a transfer belonging to the updated scheduled transfer request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details.</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the scheduled transfer request that is to be updated. </param>
+        /// <param name="body">The payload of the scheduled transfer request that is to be updated.</param>
         /// <returns>ApiResponse of TransferSchedule</returns>
         public ApiResponse< TransferSchedule > UpdateTransferScheduleWithHttpInfo (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransferSchedule body)
         {
@@ -1065,13 +1065,13 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated. Returns a transfer belonging to the updated scheduled transfer request
+        /// Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated. Update transfer schedule information. Returns a transfer belonging to the updated scheduled transfer request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details.</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the scheduled transfer request that is to be updated. </param>
+        /// <param name="body">The payload of the scheduled transfer request that is to be updated.</param>
         /// <returns>Task of TransferSchedule</returns>
         public async System.Threading.Tasks.Task<TransferSchedule> UpdateTransferScheduleAsync (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransferSchedule body)
         {
@@ -1081,13 +1081,13 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated. Returns a transfer belonging to the updated scheduled transfer request
+        /// Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated. Update transfer schedule information. Returns a transfer belonging to the updated scheduled transfer request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="destAccountDigitalSignature">Digital signature for the destination bank account details.</param>
         /// <param name="amountDigitalSignature">Digital signature for the source currency transaction amount.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
-        /// <param name="body">Defines the actual payload of the scheduled transfer request that is to be updated. </param>
+        /// <param name="body">The payload of the scheduled transfer request that is to be updated.</param>
         /// <returns>Task of ApiResponse (TransferSchedule)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<TransferSchedule>> UpdateTransferScheduleAsyncWithHttpInfo (string destAccountDigitalSignature, string amountDigitalSignature, string marketplaceId, TransferSchedule body)
         {
