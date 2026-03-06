@@ -13,7 +13,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API.
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -416,7 +416,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets transaction_id.
      *
-     * @param string $transaction_id The unique identifier provided by Amazon to the transaction
+     * @param string $transaction_id the unique identifier provided by Amazon to the transaction
      */
     public function setTransactionId(string $transaction_id): self
     {
@@ -508,7 +508,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets expected_completion_date.
      *
-     * @param null|\DateTime $expected_completion_date Expected completion date of a transaction, for existing active Payees (Trusted Beneficiaries) it will be 24 hours but for new destination bank accounts the value could go up to 5 days
+     * @param null|\DateTime $expected_completion_date the expected completion date of the transaction
      */
     public function setExpectedCompletionDate(?\DateTime $expected_completion_date): self
     {
@@ -538,7 +538,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets transaction_actual_completion_date.
      *
-     * @param null|\DateTime $transaction_actual_completion_date Transaction completion date
+     * @param null|\DateTime $transaction_actual_completion_date the transaction's completion date
      */
     public function setTransactionActualCompletionDate(?\DateTime $transaction_actual_completion_date): self
     {
@@ -568,7 +568,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets last_update_date.
      *
-     * @param \DateTime $last_update_date The last update date on the transaction
+     * @param \DateTime $last_update_date the date of the most recent account balance update
      */
     public function setLastUpdateDate(\DateTime $last_update_date): self
     {
@@ -591,7 +591,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets requester_name.
      *
-     * @param null|string $requester_name Amazon SW customer who requested the transaction
+     * @param null|string $requester_name the Amazon Seller Wallet customer who requested the transaction
      */
     public function setRequesterName(?string $requester_name): self
     {
@@ -796,7 +796,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets transaction_failure_reason.
      *
-     * @param null|string $transaction_failure_reason Description in case the transaction fails before completion
+     * @param null|string $transaction_failure_reason the reason the transaction failed, if applicable
      */
     public function setTransactionFailureReason(?string $transaction_failure_reason): self
     {

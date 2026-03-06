@@ -13,7 +13,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API.
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Specifies the balance amount in the Amazon SW bank account
+ * @description The balance amount in the Amazon Seller Wallet bank account.
  *
  * @author   OpenAPI Generator team
  *
@@ -288,7 +288,7 @@ class Balance implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets account_id.
      *
-     * @param string $account_id The unique identifier provided by Amazon to identify the account
+     * @param string $account_id the unique identifier provided by Amazon to identify the account
      */
     public function setAccountId(string $account_id): self
     {
@@ -341,7 +341,7 @@ class Balance implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets balance_amount.
      *
-     * @param float $balance_amount a decimal number such as amount or FX rate
+     * @param float $balance_amount a decimal number, such as an amount or FX rate
      */
     public function setBalanceAmount(float $balance_amount): self
     {
@@ -364,7 +364,7 @@ class Balance implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets balance_currency.
      *
-     * @param string $balance_currency The Amazon SW bank account currency code in ISO 4217 format
+     * @param string $balance_currency the Amazon Seller Wallet bank account currency code in ISO 4217 format
      */
     public function setBalanceCurrency(string $balance_currency): self
     {
@@ -387,7 +387,7 @@ class Balance implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets last_update_date.
      *
-     * @param \DateTime $last_update_date The last update date on the account balance
+     * @param \DateTime $last_update_date the date of the most recent account balance update
      */
     public function setLastUpdateDate(\DateTime $last_update_date): self
     {

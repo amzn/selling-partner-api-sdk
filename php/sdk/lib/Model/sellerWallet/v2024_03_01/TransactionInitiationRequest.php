@@ -13,7 +13,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API.
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Request body to initiate a transaction from a SW bank account to another customer defined bank account
+ * @description Request body to initiate a transaction from a Seller Wallet bank account to another customer-defined bank account.
  *
  * @author   OpenAPI Generator team
  *
@@ -316,7 +316,7 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets source_account_id.
      *
-     * @param string $source_account_id The unique identifier of the source Amazon SW bank account from where the money needs to be debited
+     * @param string $source_account_id the unique identifier of the source Amazon Seller Wallet bank account from which the money is debited
      */
     public function setSourceAccountId(string $source_account_id): self
     {
@@ -339,7 +339,7 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets destination_account_id.
      *
-     * @param null|string $destination_account_id Optional field to specify the unique identifier of the destination bank account where the money needs to be deposited
+     * @param null|string $destination_account_id the unique identifier of the destination bank account where the money is deposited
      */
     public function setDestinationAccountId(?string $destination_account_id): self
     {
@@ -535,7 +535,7 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets request_time.
      *
-     * @param \DateTime $request_time The transaction initiation request time in date-time format
+     * @param \DateTime $request_time The time at which the transaction was initiated in [ISO 8601 date time format](https://developer-docs.amazon.com/sp-api/docs/iso-8601).
      */
     public function setRequestTime(\DateTime $request_time): self
     {

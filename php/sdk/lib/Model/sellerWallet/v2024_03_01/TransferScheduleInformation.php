@@ -13,7 +13,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API.
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Parameters containing information required for initiating a schedule transfer
+ * @description Mandatory information for initiating a schedule transfer.
  *
  * @author   OpenAPI Generator team
  *
@@ -266,7 +266,7 @@ class TransferScheduleInformation implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets schedule_start_date.
      *
-     * @param null|\DateTime $schedule_start_date Field to specify start date of the scheduled transfer
+     * @param null|\DateTime $schedule_start_date the start date of the scheduled transfer
      */
     public function setScheduleStartDate(?\DateTime $schedule_start_date): self
     {
@@ -296,7 +296,7 @@ class TransferScheduleInformation implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets schedule_end_date.
      *
-     * @param null|\DateTime $schedule_end_date Field to specify end date of the scheduled transfer
+     * @param null|\DateTime $schedule_end_date the end date of the scheduled transfer
      */
     public function setScheduleEndDate(?\DateTime $schedule_end_date): self
     {

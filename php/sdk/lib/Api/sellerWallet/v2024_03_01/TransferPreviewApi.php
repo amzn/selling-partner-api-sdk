@@ -12,7 +12,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API.
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -129,15 +129,15 @@ class TransferPreviewApi
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
      *
      * @param string      $source_country_code
-     *                                               Represents 2 character country code of source transaction account in ISO 3166 standard format. (required)
+     *                                               Country code of the source transaction account in ISO 3166 format. (required)
      * @param string      $source_currency_code
-     *                                               Represents 3 letter currency code in ISO 4217 standard format of the source transaction country. (required)
+     *                                               Currency code of the source transaction country in ISO 4217 format. (required)
      * @param string      $destination_country_code
-     *                                               Represents 2 character country code of destination transaction account in ISO 3166 standard format. (required)
+     *                                               Country code of the destination transaction account in ISO 3166 format. (required)
      * @param string      $destination_currency_code
-     *                                               Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
+     *                                               Currency code of the destination transaction country in ISO 4217 format. (required)
      * @param float       $base_amount
-     *                                               Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
+     *                                               The base transaction amount without any markup fees. (required)
      * @param string      $marketplace_id
      *                                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -165,15 +165,15 @@ class TransferPreviewApi
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
      *
      * @param string      $source_country_code
-     *                                               Represents 2 character country code of source transaction account in ISO 3166 standard format. (required)
+     *                                               Country code of the source transaction account in ISO 3166 format. (required)
      * @param string      $source_currency_code
-     *                                               Represents 3 letter currency code in ISO 4217 standard format of the source transaction country. (required)
+     *                                               Currency code of the source transaction country in ISO 4217 format. (required)
      * @param string      $destination_country_code
-     *                                               Represents 2 character country code of destination transaction account in ISO 3166 standard format. (required)
+     *                                               Country code of the destination transaction account in ISO 3166 format. (required)
      * @param string      $destination_currency_code
-     *                                               Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
+     *                                               Currency code of the destination transaction country in ISO 4217 format. (required)
      * @param float       $base_amount
-     *                                               Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
+     *                                               The base transaction amount without any markup fees. (required)
      * @param string      $marketplace_id
      *                                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -269,15 +269,15 @@ class TransferPreviewApi
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
      *
      * @param string $source_country_code
-     *                                          Represents 2 character country code of source transaction account in ISO 3166 standard format. (required)
+     *                                          Country code of the source transaction account in ISO 3166 format. (required)
      * @param string $source_currency_code
-     *                                          Represents 3 letter currency code in ISO 4217 standard format of the source transaction country. (required)
+     *                                          Currency code of the source transaction country in ISO 4217 format. (required)
      * @param string $destination_country_code
-     *                                          Represents 2 character country code of destination transaction account in ISO 3166 standard format. (required)
+     *                                          Country code of the destination transaction account in ISO 3166 format. (required)
      * @param string $destination_currency_code
-     *                                          Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
+     *                                          Currency code of the destination transaction country in ISO 4217 format. (required)
      * @param float  $base_amount
-     *                                          Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
+     *                                          The base transaction amount without any markup fees. (required)
      * @param string $marketplace_id
      *                                          The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
@@ -306,15 +306,15 @@ class TransferPreviewApi
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
      *
      * @param string $source_country_code
-     *                                          Represents 2 character country code of source transaction account in ISO 3166 standard format. (required)
+     *                                          Country code of the source transaction account in ISO 3166 format. (required)
      * @param string $source_currency_code
-     *                                          Represents 3 letter currency code in ISO 4217 standard format of the source transaction country. (required)
+     *                                          Currency code of the source transaction country in ISO 4217 format. (required)
      * @param string $destination_country_code
-     *                                          Represents 2 character country code of destination transaction account in ISO 3166 standard format. (required)
+     *                                          Country code of the destination transaction account in ISO 3166 format. (required)
      * @param string $destination_currency_code
-     *                                          Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
+     *                                          Currency code of the destination transaction country in ISO 4217 format. (required)
      * @param float  $base_amount
-     *                                          Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
+     *                                          The base transaction amount without any markup fees. (required)
      * @param string $marketplace_id
      *                                          The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
@@ -382,15 +382,15 @@ class TransferPreviewApi
      * Create request for operation 'getTransferPreview'.
      *
      * @param string $source_country_code
-     *                                          Represents 2 character country code of source transaction account in ISO 3166 standard format. (required)
+     *                                          Country code of the source transaction account in ISO 3166 format. (required)
      * @param string $source_currency_code
-     *                                          Represents 3 letter currency code in ISO 4217 standard format of the source transaction country. (required)
+     *                                          Currency code of the source transaction country in ISO 4217 format. (required)
      * @param string $destination_country_code
-     *                                          Represents 2 character country code of destination transaction account in ISO 3166 standard format. (required)
+     *                                          Country code of the destination transaction account in ISO 3166 format. (required)
      * @param string $destination_currency_code
-     *                                          Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
+     *                                          Currency code of the destination transaction country in ISO 4217 format. (required)
      * @param float  $base_amount
-     *                                          Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
+     *                                          The base transaction amount without any markup fees. (required)
      * @param string $marketplace_id
      *                                          The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
