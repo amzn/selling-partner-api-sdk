@@ -19,7 +19,7 @@ export class Currency {
      */
     currencyCode: string;
     /**
-     * A decimal number such as amount or FX rate.
+     * A decimal number, such as an amount or FX rate.
      * @member {Number} currencyAmount
      * @type {Number}
      */

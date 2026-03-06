@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -22,13 +22,13 @@ import { BalanceType } from './BalanceType.js'
 export class Balance {
   /**
    * Constructs a new <code>Balance</code>.
-   * Specifies the balance amount in the Amazon SW bank account
+   * The balance amount in the Amazon Seller Wallet bank account.
    * @alias module:sellerWallet_2024_03_01/model/Balance
    * @class
-   * @param accountId {String} The unique identifier provided by Amazon to identify the account
-   * @param balanceAmount {Number} A decimal number such as amount or FX rate.
-   * @param balanceCurrency {String} The Amazon SW bank account currency code in ISO 4217 format
-   * @param lastUpdateDate {Date} The last update date on the account balance
+   * @param accountId {String} The unique identifier provided by Amazon to identify the account.
+   * @param balanceAmount {Number} A decimal number, such as an amount or FX rate.
+   * @param balanceCurrency {String} The Amazon Seller Wallet bank account currency code in ISO 4217 format.
+   * @param lastUpdateDate {Date} The date of the most recent account balance update.
    */
   constructor (accountId, balanceAmount, balanceCurrency, lastUpdateDate) {
     this.accountId = accountId
@@ -69,7 +69,7 @@ export class Balance {
 }
 
 /**
- * The unique identifier provided by Amazon to identify the account
+ * The unique identifier provided by Amazon to identify the account.
  * @member {String} accountId
  * @type {String}
  */
@@ -82,21 +82,21 @@ Balance.prototype.accountId = undefined
 Balance.prototype.balanceType = undefined
 
 /**
- * A decimal number such as amount or FX rate.
+ * A decimal number, such as an amount or FX rate.
  * @member {Number} balanceAmount
  * @type {Number}
  */
 Balance.prototype.balanceAmount = undefined
 
 /**
- * The Amazon SW bank account currency code in ISO 4217 format
+ * The Amazon Seller Wallet bank account currency code in ISO 4217 format.
  * @member {String} balanceCurrency
  * @type {String}
  */
 Balance.prototype.balanceCurrency = undefined
 
 /**
- * The last update date on the account balance
+ * The date of the most recent account balance update.
  * @member {Date} lastUpdateDate
  * @type {Date}
  */

@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -30,11 +30,11 @@ export class Transaction {
    * @alias module:sellerWallet_2024_03_01/model/Transaction
    * @class
    * @param accountId {String} The unique identifier of the Amazon Seller Wallet bank account from which the money is debited.
-   * @param transactionId {String} The unique identifier provided by Amazon to the transaction
+   * @param transactionId {String} The unique identifier provided by Amazon to the transaction.
    * @param transactionType {TransactionType}
    * @param transactionStatus {TransactionStatus}
    * @param transactionRequestDate {Date} The date when the transaction was initiated.
-   * @param lastUpdateDate {Date} The last update date on the transaction
+   * @param lastUpdateDate {Date} The date of the most recent account balance update.
    * @param transactionRequesterSource {String} The transaction initiation source. This value is either the Amazon portal or PISP name that the customer used to start the transaction.
    * @param transactionDescription {String} A description of the transaction that the requester provides when they initiate the transaction.
    * @param transactionDestinationAccount {TransactionAccount}
@@ -106,7 +106,7 @@ export class Transaction {
 Transaction.prototype.accountId = undefined
 
 /**
- * The unique identifier provided by Amazon to the transaction
+ * The unique identifier provided by Amazon to the transaction.
  * @member {String} transactionId
  * @type {String}
  */
@@ -132,28 +132,28 @@ Transaction.prototype.transactionStatus = undefined
 Transaction.prototype.transactionRequestDate = undefined
 
 /**
- * Expected completion date of a transaction, for existing active Payees (Trusted Beneficiaries) it will be 24 hours but for new destination bank accounts the value could go up to 5 days
+ * The expected completion date of the transaction.
  * @member {Date} expectedCompletionDate
  * @type {Date}
  */
 Transaction.prototype.expectedCompletionDate = undefined
 
 /**
- * Transaction completion date
+ * The transaction's completion date.
  * @member {Date} transactionActualCompletionDate
  * @type {Date}
  */
 Transaction.prototype.transactionActualCompletionDate = undefined
 
 /**
- * The last update date on the transaction
+ * The date of the most recent account balance update.
  * @member {Date} lastUpdateDate
  * @type {Date}
  */
 Transaction.prototype.lastUpdateDate = undefined
 
 /**
- * Amazon SW customer who requested the transaction
+ * The Amazon Seller Wallet customer who requested the transaction.
  * @member {String} requesterName
  * @type {String}
  */
@@ -204,7 +204,7 @@ Transaction.prototype.transferRateDetails = undefined
 Transaction.prototype.transactionFinalAmount = undefined
 
 /**
- * Description in case the transaction fails before completion
+ * The reason the transaction failed, if applicable.
  * @member {String} transactionFailureReason
  * @type {String}
  */

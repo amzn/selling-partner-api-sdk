@@ -14,13 +14,13 @@ export class TransactionInitiationRequest {
     static constructFromObject(data: any, obj: TransactionInitiationRequest): TransactionInitiationRequest;
     /**
      * Constructs a new <code>TransactionInitiationRequest</code>.
-     * Request body to initiate a transaction from a SW bank account to another customer defined bank account
+     * Request body to initiate a transaction from a Seller Wallet bank account to another customer-defined bank account.
      * @alias module:sellerWallet_2024_03_01/model/TransactionInitiationRequest
      * @class
-     * @param sourceAccountId {String} The unique identifier of the source Amazon SW bank account from where the money needs to be debited
+     * @param sourceAccountId {String} The unique identifier of the source Amazon Seller Wallet bank account from which the money is debited.
      * @param destinationTransactionInstrument {TransactionInstrumentDetails}
      * @param sourceAmount {Currency}
-     * @param requestTime {Date} The transaction initiation request time in date-time format
+     * @param requestTime {Date} The time at which the transaction was initiated in [ISO 8601 date time format](https://developer-docs.amazon.com/sp-api/docs/iso-8601).
      */
     constructor(sourceAccountId: string, destinationTransactionInstrument: TransactionInstrumentDetails, sourceAmount: Currency, requestTime: Date);
     sourceAccountId: string;
@@ -28,7 +28,7 @@ export class TransactionInitiationRequest {
     sourceAmount: Currency;
     requestTime: Date;
     /**
-     * Optional field to specify the unique identifier of the destination bank account where the money needs to be deposited
+     * The unique identifier of the destination bank account where the money is deposited.
      * @member {String} destinationAccountId
      * @type {String}
      */

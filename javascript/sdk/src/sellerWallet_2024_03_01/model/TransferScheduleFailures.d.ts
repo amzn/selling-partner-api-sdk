@@ -14,11 +14,11 @@ export class TransferScheduleFailures {
     static constructFromObject(data: any, obj: TransferScheduleFailures): TransferScheduleFailures;
     /**
      * Constructs a new <code>TransferScheduleFailures</code>.
-     * Specifies the balance amount in the Amazon SW bank account
+     * The time of and reason for the transfer schedule failure.
      * @alias module:sellerWallet_2024_03_01/model/TransferScheduleFailures
      * @class
-     * @param transferScheduleFailureDate {Date} The transfer schedule cancellation date
-     * @param transferScheduleFailureReason {String} The statement/reasoning listed for the cancellation of the transfer schedule
+     * @param transferScheduleFailureDate {Date} The transfer schedule failure date.
+     * @param transferScheduleFailureReason {String} The reason listed for the failure of the transfer schedule.
      */
     constructor(transferScheduleFailureDate: Date, transferScheduleFailureReason: string);
     transferScheduleFailureDate: Date;

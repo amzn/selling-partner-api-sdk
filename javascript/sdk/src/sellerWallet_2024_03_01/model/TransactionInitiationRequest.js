@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -25,13 +25,13 @@ import { TransferRatePreview } from './TransferRatePreview.js'
 export class TransactionInitiationRequest {
   /**
    * Constructs a new <code>TransactionInitiationRequest</code>.
-   * Request body to initiate a transaction from a SW bank account to another customer defined bank account
+   * Request body to initiate a transaction from a Seller Wallet bank account to another customer-defined bank account.
    * @alias module:sellerWallet_2024_03_01/model/TransactionInitiationRequest
    * @class
-   * @param sourceAccountId {String} The unique identifier of the source Amazon SW bank account from where the money needs to be debited
+   * @param sourceAccountId {String} The unique identifier of the source Amazon Seller Wallet bank account from which the money is debited.
    * @param destinationTransactionInstrument {TransactionInstrumentDetails}
    * @param sourceAmount {Currency}
-   * @param requestTime {Date} The transaction initiation request time in date-time format
+   * @param requestTime {Date} The time at which the transaction was initiated in [ISO 8601 date time format](https://developer-docs.amazon.com/sp-api/docs/iso-8601).
    */
   constructor (sourceAccountId, destinationTransactionInstrument, sourceAmount, requestTime) {
     this.sourceAccountId = sourceAccountId
@@ -76,14 +76,14 @@ export class TransactionInitiationRequest {
 }
 
 /**
- * The unique identifier of the source Amazon SW bank account from where the money needs to be debited
+ * The unique identifier of the source Amazon Seller Wallet bank account from which the money is debited.
  * @member {String} sourceAccountId
  * @type {String}
  */
 TransactionInitiationRequest.prototype.sourceAccountId = undefined
 
 /**
- * Optional field to specify the unique identifier of the destination bank account where the money needs to be deposited
+ * The unique identifier of the destination bank account where the money is deposited.
  * @member {String} destinationAccountId
  * @type {String}
  */
@@ -128,7 +128,7 @@ TransactionInitiationRequest.prototype.sourceAmount = undefined
 TransactionInitiationRequest.prototype.transferRateDetails = undefined
 
 /**
- * The transaction initiation request time in date-time format
+ * The time at which the transaction was initiated in [ISO 8601 date time format](https://developer-docs.amazon.com/sp-api/docs/iso-8601).
  * @member {Date} requestTime
  * @type {Date}
  */

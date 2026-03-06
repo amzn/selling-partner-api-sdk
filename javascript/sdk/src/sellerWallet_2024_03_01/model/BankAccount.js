@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -29,9 +29,9 @@ export class BankAccount {
    * @alias module:sellerWallet_2024_03_01/model/BankAccount
    * @class
    * @param bankAccountOwnershipType {BankAccountOwnershipType}
-   * @param accountCountryCode {String} The two digit country code, in ISO 3166 format.
-   * @param accountCurrency {String} BankAccount currency code in ISO 4217 format
-   * @param bankAccountNumberTail {String} Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0's
+   * @param accountCountryCode {String} The two-digit country code in ISO 3166 format.
+   * @param accountCurrency {String} Bank account currency code in ISO 4217 format.
+   * @param bankAccountNumberTail {String} The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.
    */
   constructor (bankAccountOwnershipType, accountCountryCode, accountCurrency, bankAccountNumberTail) {
     this.bankAccountOwnershipType = bankAccountOwnershipType
@@ -124,21 +124,21 @@ BankAccount.prototype.routingNumber = undefined
 BankAccount.prototype.bankNumberFormat = undefined
 
 /**
- * The two digit country code, in ISO 3166 format.
+ * The two-digit country code in ISO 3166 format.
  * @member {String} accountCountryCode
  * @type {String}
  */
 BankAccount.prototype.accountCountryCode = undefined
 
 /**
- * BankAccount currency code in ISO 4217 format
+ * Bank account currency code in ISO 4217 format.
  * @member {String} accountCurrency
  * @type {String}
  */
 BankAccount.prototype.accountCurrency = undefined
 
 /**
- * Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0's
+ * The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.
  * @member {String} bankAccountNumberTail
  * @type {String}
  */

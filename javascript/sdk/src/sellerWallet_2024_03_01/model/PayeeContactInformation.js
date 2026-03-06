@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -27,10 +27,10 @@ export class PayeeContactInformation {
    * @class
    * @param payeeFirstName {String} First name of the payee. There is a 50 character limit.
    * @param payeeLastName {String} Last name of the payee. There is a 50 character limit.
-   * @param addressLine1 {String} Address Line 1 of the public address
-   * @param city {String} City name of the public address
+   * @param addressLine1 {String} Address Line 1 of the public address.
+   * @param city {String} City name of the public address.
    * @param state {String} State name of the public address. This is the state or region for China-based addresses.
-   * @param postalCode {String} Postal code of the public address
+   * @param postalCode {String} Postal code of the public address.
    * @param countryCode {String} The two digit country code, in ISO 3166 format.
    * @param emailAddress {String} Email address of the payee.
    * @param phoneNumber {String} Valid phone number of the payee.
@@ -110,21 +110,21 @@ PayeeContactInformation.prototype.payeeMiddleName = undefined
 PayeeContactInformation.prototype.payeeLastName = undefined
 
 /**
- * Address Line 1 of the public address
+ * Address Line 1 of the public address.
  * @member {String} addressLine1
  * @type {String}
  */
 PayeeContactInformation.prototype.addressLine1 = undefined
 
 /**
- * Address Line 2 of the public address
+ * Address Line 2 of the public address.
  * @member {String} addressLine2
  * @type {String}
  */
 PayeeContactInformation.prototype.addressLine2 = undefined
 
 /**
- * City name of the public address
+ * City name of the public address.
  * @member {String} city
  * @type {String}
  */
@@ -138,14 +138,14 @@ PayeeContactInformation.prototype.city = undefined
 PayeeContactInformation.prototype.state = undefined
 
 /**
- * Postal code of the public address
+ * Postal code of the public address.
  * @member {String} postalCode
  * @type {String}
  */
 PayeeContactInformation.prototype.postalCode = undefined
 
 /**
- * Country name of the public address
+ * Country name of the public address.
  * @member {String} country
  * @type {String}
  */

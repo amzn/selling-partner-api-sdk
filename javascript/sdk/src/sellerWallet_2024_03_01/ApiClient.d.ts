@@ -68,7 +68,7 @@ export class ApiClient {
     /**
          * The base URL against which to resolve every API call's (relative) path.
          * @type {String}
-         * @default https://sellingpartnerapi-eu.amazon.com
+         * @default https://sellingpartnerapi-na.amazon.com
          */
     basePath: string;
     /**

@@ -18,11 +18,11 @@ export class Transaction {
      * @alias module:sellerWallet_2024_03_01/model/Transaction
      * @class
      * @param accountId {String} The unique identifier of the Amazon Seller Wallet bank account from which the money is debited.
-     * @param transactionId {String} The unique identifier provided by Amazon to the transaction
+     * @param transactionId {String} The unique identifier provided by Amazon to the transaction.
      * @param transactionType {TransactionType}
      * @param transactionStatus {TransactionStatus}
      * @param transactionRequestDate {Date} The date when the transaction was initiated.
-     * @param lastUpdateDate {Date} The last update date on the transaction
+     * @param lastUpdateDate {Date} The date of the most recent account balance update.
      * @param transactionRequesterSource {String} The transaction initiation source. This value is either the Amazon portal or PISP name that the customer used to start the transaction.
      * @param transactionDescription {String} A description of the transaction that the requester provides when they initiate the transaction.
      * @param transactionDestinationAccount {TransactionAccount}
@@ -42,19 +42,19 @@ export class Transaction {
     transactionRequestAmount: Currency;
     transferRateDetails: TransferRatePreview;
     /**
-     * Expected completion date of a transaction, for existing active Payees (Trusted Beneficiaries) it will be 24 hours but for new destination bank accounts the value could go up to 5 days
+     * The expected completion date of the transaction.
      * @member {Date} expectedCompletionDate
      * @type {Date}
      */
     expectedCompletionDate: Date;
     /**
-     * Transaction completion date
+     * The transaction's completion date.
      * @member {Date} transactionActualCompletionDate
      * @type {Date}
      */
     transactionActualCompletionDate: Date;
     /**
-     * Amazon SW customer who requested the transaction
+     * The Amazon Seller Wallet customer who requested the transaction.
      * @member {String} requesterName
      * @type {String}
      */
@@ -70,7 +70,7 @@ export class Transaction {
      */
     transactionFinalAmount: Currency;
     /**
-     * Description in case the transaction fails before completion
+     * The reason the transaction failed, if applicable.
      * @member {String} transactionFailureReason
      * @type {String}
      */

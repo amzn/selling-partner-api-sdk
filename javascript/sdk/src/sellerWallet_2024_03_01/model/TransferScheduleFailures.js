@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -21,11 +21,11 @@ import { ApiClient } from '../ApiClient.js'
 export class TransferScheduleFailures {
   /**
    * Constructs a new <code>TransferScheduleFailures</code>.
-   * Specifies the balance amount in the Amazon SW bank account
+   * The time of and reason for the transfer schedule failure.
    * @alias module:sellerWallet_2024_03_01/model/TransferScheduleFailures
    * @class
-   * @param transferScheduleFailureDate {Date} The transfer schedule cancellation date
-   * @param transferScheduleFailureReason {String} The statement/reasoning listed for the cancellation of the transfer schedule
+   * @param transferScheduleFailureDate {Date} The transfer schedule failure date.
+   * @param transferScheduleFailureReason {String} The reason listed for the failure of the transfer schedule.
    */
   constructor (transferScheduleFailureDate, transferScheduleFailureReason) {
     this.transferScheduleFailureDate = transferScheduleFailureDate
@@ -61,14 +61,14 @@ export class TransferScheduleFailures {
 }
 
 /**
- * The transfer schedule cancellation date
+ * The transfer schedule failure date.
  * @member {Date} transferScheduleFailureDate
  * @type {Date}
  */
 TransferScheduleFailures.prototype.transferScheduleFailureDate = undefined
 
 /**
- * The statement/reasoning listed for the cancellation of the transfer schedule
+ * The reason listed for the failure of the transfer schedule.
  * @member {String} transferScheduleFailureReason
  * @type {String}
  */

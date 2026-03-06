@@ -23,48 +23,48 @@ export class AccountsApi {
        */
     getRateLimiter(operation: string): any;
     /**
-       * Find particular Amazon SW account by Amazon account identifier
+       * Find particular Amazon Seller Wallet account by Amazon account identifier
        * Retrieve a Seller Wallet bank account by Amazon account identifier.
-       * @param {String} accountId ID of the Amazon SW account
+       * @param {String} accountId The ID of the Amazon Seller Wallet account.
        * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
        * @return {Promise<BankAccount>}
        */
     getAccountWithHttpInfo(accountId: string, marketplaceId: string): Promise<BankAccount>;
     /**
-       * Find particular Amazon SW account by Amazon account identifier
+       * Find particular Amazon Seller Wallet account by Amazon account identifier
        * Retrieve a Seller Wallet bank account by Amazon account identifier.
-       * @param {String} accountId ID of the Amazon SW account
+       * @param {String} accountId The ID of the Amazon Seller Wallet account.
        * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
        * @return {Promise<BankAccount>}
        */
     getAccount(accountId: string, marketplaceId: string): Promise<BankAccount>;
     /**
-       * Find balance in particular Amazon SW account by Amazon account identifier
+       * Find balance in particular Amazon Seller Wallet account by Amazon account identifier
        * Retrieve the balance in a given Seller Wallet bank account.
-       * @param {String} accountId ID of the Amazon SW account
+       * @param {String} accountId The ID of the Amazon Seller Wallet account.
        * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
        * @return {Promise<BalanceListing>}
        */
     listAccountBalancesWithHttpInfo(accountId: string, marketplaceId: string): Promise<BalanceListing>;
     /**
-       * Find balance in particular Amazon SW account by Amazon account identifier
+       * Find balance in particular Amazon Seller Wallet account by Amazon account identifier
        * Retrieve the balance in a given Seller Wallet bank account.
-       * @param {String} accountId ID of the Amazon SW account
+       * @param {String} accountId The ID of the Amazon Seller Wallet account.
        * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
        * @return {Promise<BalanceListing>}
        */
     listAccountBalances(accountId: string, marketplaceId: string): Promise<BalanceListing>;
     /**
-       * Get all Amazon SW accounts for the seller
+       * Get all Amazon Seller Wallet accounts for the seller
        * Get Seller Wallet accounts for a seller.
-       * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which items are returned.
+       * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
        * @return {Promise<BankAccountListing>}
        */
     listAccountsWithHttpInfo(marketplaceId: string): Promise<BankAccountListing>;
     /**
-       * Get all Amazon SW accounts for the seller
+       * Get all Amazon Seller Wallet accounts for the seller
        * Get Seller Wallet accounts for a seller.
-       * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which items are returned.
+       * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
        * @return {Promise<BankAccountListing>}
        */
     listAccounts(marketplaceId: string): Promise<BankAccountListing>;

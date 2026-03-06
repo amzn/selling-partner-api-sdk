@@ -13,13 +13,13 @@ export class TransferScheduleInformation {
      */
     static constructFromObject(data: any, obj: TransferScheduleInformation): TransferScheduleInformation;
     /**
-     * Field to specify start date of the scheduled transfer
+     * The start date of the scheduled transfer.
      * @member {Date} scheduleStartDate
      * @type {Date}
      */
     scheduleStartDate: Date;
     /**
-     * Field to specify end date of the scheduled transfer
+     * The end date of the scheduled transfer.
      * @member {Date} scheduleEndDate
      * @type {Date}
      */

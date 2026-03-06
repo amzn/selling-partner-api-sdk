@@ -14,7 +14,7 @@ export class ScheduleExpression {
     static constructFromObject(data: any, obj: ScheduleExpression): ScheduleExpression;
     /**
      * Constructs a new <code>ScheduleExpression</code>.
-     * Parameters containing information of the expression that defines when the schedule runs. The following formats are supported.
+     * The configuration of the schedule.
      * @alias module:sellerWallet_2024_03_01/model/ScheduleExpression
      * @class
      * @param scheduleExpressionType {ScheduleExpressionType}

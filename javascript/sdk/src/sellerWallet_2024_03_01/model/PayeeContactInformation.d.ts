@@ -19,10 +19,10 @@ export class PayeeContactInformation {
      * @class
      * @param payeeFirstName {String} First name of the payee. There is a 50 character limit.
      * @param payeeLastName {String} Last name of the payee. There is a 50 character limit.
-     * @param addressLine1 {String} Address Line 1 of the public address
-     * @param city {String} City name of the public address
+     * @param addressLine1 {String} Address Line 1 of the public address.
+     * @param city {String} City name of the public address.
      * @param state {String} State name of the public address. This is the state or region for China-based addresses.
-     * @param postalCode {String} Postal code of the public address
+     * @param postalCode {String} Postal code of the public address.
      * @param countryCode {String} The two digit country code, in ISO 3166 format.
      * @param emailAddress {String} Email address of the payee.
      * @param phoneNumber {String} Valid phone number of the payee.
@@ -46,13 +46,13 @@ export class PayeeContactInformation {
      */
     payeeMiddleName: string;
     /**
-     * Address Line 2 of the public address
+     * Address Line 2 of the public address.
      * @member {String} addressLine2
      * @type {String}
      */
     addressLine2: string;
     /**
-     * Country name of the public address
+     * Country name of the public address.
      * @member {String} country
      * @type {String}
      */

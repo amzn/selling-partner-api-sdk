@@ -14,12 +14,12 @@ export class FxRateDetails {
     static constructFromObject(data: any, obj: FxRateDetails): FxRateDetails;
     /**
      * Constructs a new <code>FxRateDetails</code>.
-     * Foreign exchange rate details displayed when transfer preview is requested.
+     * Foreign exchange rate details.
      * @alias module:sellerWallet_2024_03_01/model/FxRateDetails
      * @class
-     * @param fxRateId {String} Unique identifier assigned to the fees/foreign exchange Rate of a transaction.
-     * @param baseRate {Number} A decimal number such as amount or FX rate.
-     * @param effectiveFxRate {Number} A decimal number such as amount or FX rate.
+     * @param fxRateId {String} The unique identifier assigned to the fees / foreign exchange rate of a transaction.
+     * @param baseRate {Number} A decimal number, such as an amount or FX rate.
+     * @param effectiveFxRate {Number} A decimal number, such as an amount or FX rate.
      * @param rateDirection {RateDirection}
      */
     constructor(fxRateId: string, baseRate: number, effectiveFxRate: number, rateDirection: RateDirection);

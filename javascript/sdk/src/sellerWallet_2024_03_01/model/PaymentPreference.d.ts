@@ -14,11 +14,11 @@ export class PaymentPreference {
     static constructFromObject(data: any, obj: PaymentPreference): PaymentPreference;
     /**
      * Constructs a new <code>PaymentPreference</code>.
-     * Payment preference type in which transfer is being scheduled
+     * The type of payment preference in which the transfer is being scheduled.
      * @alias module:sellerWallet_2024_03_01/model/PaymentPreference
      * @class
      * @param paymentPreferencePaymentType {PaymentPreferencePaymentType}
-     * @param value {Number} A decimal number such as amount or FX rate.
+     * @param value {Number} A decimal number, such as an amount or FX rate.
      */
     constructor(paymentPreferencePaymentType: PaymentPreferencePaymentType, value: number);
     paymentPreferencePaymentType: PaymentPreferencePaymentType;

@@ -17,12 +17,12 @@ export class TransferSchedule {
      * Transfer schedule details and related historical details.
      * @alias module:sellerWallet_2024_03_01/model/TransferSchedule
      * @class
-     * @param transferScheduleId {String} The unique identifier provided by Amazon to the scheduled transfer
+     * @param transferScheduleId {String} The unique identifier provided by Amazon to the scheduled transfer.
      * @param transactionType {TransactionType}
      * @param transactionDestinationAccount {TransactionAccount}
      * @param transferScheduleStatus {TransferScheduleStatus}
      * @param transferScheduleInformation {TransferScheduleInformation}
-     * @param transferScheduleFailures {TransferScheduleFailures[]} Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.
+     * @param transferScheduleFailures {TransferScheduleFailures[]} A list of transfer schedule failures.
      */
     constructor(transferScheduleId: string, transactionType: TransactionType, transactionDestinationAccount: TransactionAccount, transferScheduleStatus: TransferScheduleStatus, transferScheduleInformation: TransferScheduleInformation, transferScheduleFailures: TransferScheduleFailures[]);
     transferScheduleId: string;

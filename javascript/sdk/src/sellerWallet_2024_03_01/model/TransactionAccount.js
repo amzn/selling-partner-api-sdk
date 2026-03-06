@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -25,9 +25,9 @@ export class TransactionAccount {
    * Details of the bank account involved in the transaction.
    * @alias module:sellerWallet_2024_03_01/model/TransactionAccount
    * @class
-   * @param bankName {String} The name of the bank
+   * @param bankName {String} The name of the bank.
    * @param bankAccountNumberFormat {BankAccountNumberFormat}
-   * @param bankAccountCurrency {String} The currency code in ISO 4217 format
+   * @param bankAccountCurrency {String} The currency code in ISO 4217 format.
    */
   constructor (bankName, bankAccountNumberFormat, bankAccountCurrency) {
     this.bankName = bankName
@@ -69,21 +69,21 @@ export class TransactionAccount {
 }
 
 /**
- * The unique identifier provided by Amazon to identify the account
+ * The unique identifier provided by Amazon to identify the account.
  * @member {String} accountId
  * @type {String}
  */
 TransactionAccount.prototype.accountId = undefined
 
 /**
- * BankAccount holder's name
+ * The account holder's name.
  * @member {String} bankAccountHolderName
  * @type {String}
  */
 TransactionAccount.prototype.bankAccountHolderName = undefined
 
 /**
- * The name of the bank
+ * The name of the bank.
  * @member {String} bankName
  * @type {String}
  */
@@ -96,21 +96,21 @@ TransactionAccount.prototype.bankName = undefined
 TransactionAccount.prototype.bankAccountNumberFormat = undefined
 
 /**
- * Last 3 digit of the bank account number
+ * The last three digits of the bank account number.
  * @member {String} bankAccountNumberTail
  * @type {String}
  */
 TransactionAccount.prototype.bankAccountNumberTail = undefined
 
 /**
- * The two digit country code, in ISO 3166 format. This field is OPTIONAL for transactionSourceAccount object but is MANDATORY field for transactionDestinationAccount
+ * The two-digit country code, in ISO 3166 format. This field is optional for `transactionSourceAccount`, but is mandatory for `transactionDestinationAccount`.
  * @member {String} bankAccountCountryCode
  * @type {String}
  */
 TransactionAccount.prototype.bankAccountCountryCode = undefined
 
 /**
- * The currency code in ISO 4217 format
+ * The currency code in ISO 4217 format.
  * @member {String} bankAccountCurrency
  * @type {String}
  */
