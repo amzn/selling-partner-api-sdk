@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+    The Selling Partner API for Amazon Seller Wallet Open Banking API
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -150,7 +150,7 @@ class Transaction(object):
     def transaction_id(self):
         """Gets the transaction_id of this Transaction.  # noqa: E501
 
-        The unique identifier provided by Amazon to the transaction   # noqa: E501
+        The unique identifier provided by Amazon to the transaction.  # noqa: E501
 
         :return: The transaction_id of this Transaction.  # noqa: E501
         :rtype: str
@@ -161,7 +161,7 @@ class Transaction(object):
     def transaction_id(self, transaction_id):
         """Sets the transaction_id of this Transaction.
 
-        The unique identifier provided by Amazon to the transaction   # noqa: E501
+        The unique identifier provided by Amazon to the transaction.  # noqa: E501
 
         :param transaction_id: The transaction_id of this Transaction.  # noqa: E501
         :type: str
@@ -246,7 +246,7 @@ class Transaction(object):
     def expected_completion_date(self):
         """Gets the expected_completion_date of this Transaction.  # noqa: E501
 
-        Expected completion date of a transaction, for existing active Payees (Trusted Beneficiaries) it will be 24 hours but for new destination bank accounts the value could go up to 5 days   # noqa: E501
+        The expected completion date of the transaction.  # noqa: E501
 
         :return: The expected_completion_date of this Transaction.  # noqa: E501
         :rtype: datetime
@@ -257,7 +257,7 @@ class Transaction(object):
     def expected_completion_date(self, expected_completion_date):
         """Sets the expected_completion_date of this Transaction.
 
-        Expected completion date of a transaction, for existing active Payees (Trusted Beneficiaries) it will be 24 hours but for new destination bank accounts the value could go up to 5 days   # noqa: E501
+        The expected completion date of the transaction.  # noqa: E501
 
         :param expected_completion_date: The expected_completion_date of this Transaction.  # noqa: E501
         :type: datetime
@@ -269,7 +269,7 @@ class Transaction(object):
     def transaction_actual_completion_date(self):
         """Gets the transaction_actual_completion_date of this Transaction.  # noqa: E501
 
-        Transaction completion date   # noqa: E501
+        The transaction's completion date.  # noqa: E501
 
         :return: The transaction_actual_completion_date of this Transaction.  # noqa: E501
         :rtype: datetime
@@ -280,7 +280,7 @@ class Transaction(object):
     def transaction_actual_completion_date(self, transaction_actual_completion_date):
         """Sets the transaction_actual_completion_date of this Transaction.
 
-        Transaction completion date   # noqa: E501
+        The transaction's completion date.  # noqa: E501
 
         :param transaction_actual_completion_date: The transaction_actual_completion_date of this Transaction.  # noqa: E501
         :type: datetime
@@ -292,7 +292,7 @@ class Transaction(object):
     def last_update_date(self):
         """Gets the last_update_date of this Transaction.  # noqa: E501
 
-        The last update date on the transaction   # noqa: E501
+        The date of the most recent account balance update.  # noqa: E501
 
         :return: The last_update_date of this Transaction.  # noqa: E501
         :rtype: datetime
@@ -303,7 +303,7 @@ class Transaction(object):
     def last_update_date(self, last_update_date):
         """Sets the last_update_date of this Transaction.
 
-        The last update date on the transaction   # noqa: E501
+        The date of the most recent account balance update.  # noqa: E501
 
         :param last_update_date: The last_update_date of this Transaction.  # noqa: E501
         :type: datetime
@@ -317,7 +317,7 @@ class Transaction(object):
     def requester_name(self):
         """Gets the requester_name of this Transaction.  # noqa: E501
 
-        Amazon SW customer who requested the transaction   # noqa: E501
+        The Amazon Seller Wallet customer who requested the transaction.  # noqa: E501
 
         :return: The requester_name of this Transaction.  # noqa: E501
         :rtype: str
@@ -328,7 +328,7 @@ class Transaction(object):
     def requester_name(self, requester_name):
         """Sets the requester_name of this Transaction.
 
-        Amazon SW customer who requested the transaction   # noqa: E501
+        The Amazon Seller Wallet customer who requested the transaction.  # noqa: E501
 
         :param requester_name: The requester_name of this Transaction.  # noqa: E501
         :type: str
@@ -501,7 +501,7 @@ class Transaction(object):
     def transaction_failure_reason(self):
         """Gets the transaction_failure_reason of this Transaction.  # noqa: E501
 
-        Description in case the transaction fails before completion   # noqa: E501
+        The reason the transaction failed, if applicable.  # noqa: E501
 
         :return: The transaction_failure_reason of this Transaction.  # noqa: E501
         :rtype: str
@@ -512,7 +512,7 @@ class Transaction(object):
     def transaction_failure_reason(self, transaction_failure_reason):
         """Sets the transaction_failure_reason of this Transaction.
 
-        Description in case the transaction fails before completion   # noqa: E501
+        The reason the transaction failed, if applicable.  # noqa: E501
 
         :param transaction_failure_reason: The transaction_failure_reason of this Transaction.  # noqa: E501
         :type: str

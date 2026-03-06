@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+    The Selling Partner API for Amazon Seller Wallet Open Banking API
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -86,7 +86,7 @@ class TransactionInstrumentDetails(object):
     def bank_account_number(self):
         """Gets the bank_account_number of this TransactionInstrumentDetails.  # noqa: E501
 
-        This field would be used to populate the bank account number of the destination payment method. The field is intentionally not included in any other Schemas since Amazon internal systems will never receive it in unencrypted format, so field won't be part of the request signature   # noqa: E501
+        The bank account number of the destination payment method.  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate `destAccountDigitalSignature`, and should not be included in the request signature.  # noqa: E501
 
         :return: The bank_account_number of this TransactionInstrumentDetails.  # noqa: E501
         :rtype: str
@@ -97,7 +97,7 @@ class TransactionInstrumentDetails(object):
     def bank_account_number(self, bank_account_number):
         """Sets the bank_account_number of this TransactionInstrumentDetails.
 
-        This field would be used to populate the bank account number of the destination payment method. The field is intentionally not included in any other Schemas since Amazon internal systems will never receive it in unencrypted format, so field won't be part of the request signature   # noqa: E501
+        The bank account number of the destination payment method.  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate `destAccountDigitalSignature`, and should not be included in the request signature.  # noqa: E501
 
         :param bank_account_number: The bank_account_number of this TransactionInstrumentDetails.  # noqa: E501
         :type: str

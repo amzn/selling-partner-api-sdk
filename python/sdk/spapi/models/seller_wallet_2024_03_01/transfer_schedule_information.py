@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+    The Selling Partner API for Amazon Seller Wallet Open Banking API
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -71,7 +71,7 @@ class TransferScheduleInformation(object):
     def schedule_start_date(self):
         """Gets the schedule_start_date of this TransferScheduleInformation.  # noqa: E501
 
-        Field to specify start date of the scheduled transfer   # noqa: E501
+        The start date of the scheduled transfer.  # noqa: E501
 
         :return: The schedule_start_date of this TransferScheduleInformation.  # noqa: E501
         :rtype: datetime
@@ -82,7 +82,7 @@ class TransferScheduleInformation(object):
     def schedule_start_date(self, schedule_start_date):
         """Sets the schedule_start_date of this TransferScheduleInformation.
 
-        Field to specify start date of the scheduled transfer   # noqa: E501
+        The start date of the scheduled transfer.  # noqa: E501
 
         :param schedule_start_date: The schedule_start_date of this TransferScheduleInformation.  # noqa: E501
         :type: datetime
@@ -94,7 +94,7 @@ class TransferScheduleInformation(object):
     def schedule_end_date(self):
         """Gets the schedule_end_date of this TransferScheduleInformation.  # noqa: E501
 
-        Field to specify end date of the scheduled transfer   # noqa: E501
+        The end date of the scheduled transfer.  # noqa: E501
 
         :return: The schedule_end_date of this TransferScheduleInformation.  # noqa: E501
         :rtype: datetime
@@ -105,7 +105,7 @@ class TransferScheduleInformation(object):
     def schedule_end_date(self, schedule_end_date):
         """Sets the schedule_end_date of this TransferScheduleInformation.
 
-        Field to specify end date of the scheduled transfer   # noqa: E501
+        The end date of the scheduled transfer.  # noqa: E501
 
         :param schedule_end_date: The schedule_end_date of this TransferScheduleInformation.  # noqa: E501
         :type: datetime

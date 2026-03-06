@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+    The Selling Partner API for Amazon Seller Wallet Open Banking API
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -84,7 +84,7 @@ class TransferScheduleRequest(object):
     def source_account_id(self):
         """Gets the source_account_id of this TransferScheduleRequest.  # noqa: E501
 
-        The unique identifier of the source Amazon SW bank account from where the money needs to be debited   # noqa: E501
+        The unique identifier of the source Amazon Seller Wallet bank account from which money is debited.  # noqa: E501
 
         :return: The source_account_id of this TransferScheduleRequest.  # noqa: E501
         :rtype: str
@@ -95,7 +95,7 @@ class TransferScheduleRequest(object):
     def source_account_id(self, source_account_id):
         """Sets the source_account_id of this TransferScheduleRequest.
 
-        The unique identifier of the source Amazon SW bank account from where the money needs to be debited   # noqa: E501
+        The unique identifier of the source Amazon Seller Wallet bank account from which money is debited.  # noqa: E501
 
         :param source_account_id: The source_account_id of this TransferScheduleRequest.  # noqa: E501
         :type: str
@@ -109,7 +109,7 @@ class TransferScheduleRequest(object):
     def source_currency_code(self):
         """Gets the source_currency_code of this TransferScheduleRequest.  # noqa: E501
 
-        Represents 3 letter currency code in ISO 4217 standard format of the source payment method country   # noqa: E501
+        The three-letter currency code of the source payment method country, in ISO 4217 format.  # noqa: E501
 
         :return: The source_currency_code of this TransferScheduleRequest.  # noqa: E501
         :rtype: str
@@ -120,7 +120,7 @@ class TransferScheduleRequest(object):
     def source_currency_code(self, source_currency_code):
         """Sets the source_currency_code of this TransferScheduleRequest.
 
-        Represents 3 letter currency code in ISO 4217 standard format of the source payment method country   # noqa: E501
+        The three-letter currency code of the source payment method country, in ISO 4217 format.  # noqa: E501
 
         :param source_currency_code: The source_currency_code of this TransferScheduleRequest.  # noqa: E501
         :type: str
@@ -134,7 +134,7 @@ class TransferScheduleRequest(object):
     def destination_account_id(self):
         """Gets the destination_account_id of this TransferScheduleRequest.  # noqa: E501
 
-        Optional field to specify the unique identifier of the destination bank account where the money needs to be deposited   # noqa: E501
+        The unique identifier of the destination bank account where the money is deposited.  # noqa: E501
 
         :return: The destination_account_id of this TransferScheduleRequest.  # noqa: E501
         :rtype: str
@@ -145,7 +145,7 @@ class TransferScheduleRequest(object):
     def destination_account_id(self, destination_account_id):
         """Sets the destination_account_id of this TransferScheduleRequest.
 
-        Optional field to specify the unique identifier of the destination bank account where the money needs to be deposited   # noqa: E501
+        The unique identifier of the destination bank account where the money is deposited.  # noqa: E501
 
         :param destination_account_id: The destination_account_id of this TransferScheduleRequest.  # noqa: E501
         :type: str
