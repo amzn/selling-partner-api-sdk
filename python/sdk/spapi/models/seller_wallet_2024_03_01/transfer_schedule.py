@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+    The Selling Partner API for Amazon Seller Wallet Open Banking API
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -85,7 +85,7 @@ class TransferSchedule(object):
     def transfer_schedule_id(self):
         """Gets the transfer_schedule_id of this TransferSchedule.  # noqa: E501
 
-        The unique identifier provided by Amazon to the scheduled transfer   # noqa: E501
+        The unique identifier provided by Amazon to the scheduled transfer.  # noqa: E501
 
         :return: The transfer_schedule_id of this TransferSchedule.  # noqa: E501
         :rtype: str
@@ -96,7 +96,7 @@ class TransferSchedule(object):
     def transfer_schedule_id(self, transfer_schedule_id):
         """Sets the transfer_schedule_id of this TransferSchedule.
 
-        The unique identifier provided by Amazon to the scheduled transfer   # noqa: E501
+        The unique identifier provided by Amazon to the scheduled transfer.  # noqa: E501
 
         :param transfer_schedule_id: The transfer_schedule_id of this TransferSchedule.  # noqa: E501
         :type: str
@@ -244,7 +244,7 @@ class TransferSchedule(object):
     def transfer_schedule_failures(self):
         """Gets the transfer_schedule_failures of this TransferSchedule.  # noqa: E501
 
-        Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.   # noqa: E501
+        A list of transfer schedule failures.  # noqa: E501
 
         :return: The transfer_schedule_failures of this TransferSchedule.  # noqa: E501
         :rtype: List[TransferScheduleFailures]
@@ -255,7 +255,7 @@ class TransferSchedule(object):
     def transfer_schedule_failures(self, transfer_schedule_failures):
         """Sets the transfer_schedule_failures of this TransferSchedule.
 
-        Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.   # noqa: E501
+        A list of transfer schedule failures.  # noqa: E501
 
         :param transfer_schedule_failures: The transfer_schedule_failures of this TransferSchedule.  # noqa: E501
         :type: List[TransferScheduleFailures]

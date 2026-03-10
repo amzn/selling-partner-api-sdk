@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+    The Selling Partner API for Amazon Seller Wallet Open Banking API
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -36,7 +36,7 @@ class AccountsApi(object):
         self.classFileName = 'accounts_api'
 
     def get_account(self, account_id, marketplace_id, **kwargs):  # noqa: E501
-        """Find particular Amazon SW account by Amazon account identifier  # noqa: E501
+        """Find particular Amazon Seller Wallet account by Amazon account identifier  # noqa: E501
 
         Retrieve a Seller Wallet bank account by Amazon account identifier.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -45,7 +45,7 @@ class AccountsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str account_id: ID of the Amazon SW account (required)
+        :param str account_id: The ID of the Amazon Seller Wallet account. (required)
         :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :return: BankAccount
                  If the method is called asynchronously,
@@ -59,7 +59,7 @@ class AccountsApi(object):
             return data
 
     def get_account_with_http_info(self, account_id, marketplace_id, **kwargs):  # noqa: E501
-        """Find particular Amazon SW account by Amazon account identifier  # noqa: E501
+        """Find particular Amazon Seller Wallet account by Amazon account identifier  # noqa: E501
 
         Retrieve a Seller Wallet bank account by Amazon account identifier.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -68,7 +68,7 @@ class AccountsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str account_id: ID of the Amazon SW account (required)
+        :param str account_id: The ID of the Amazon Seller Wallet account. (required)
         :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :return: BankAccount
                  If the method is called asynchronously,
@@ -139,7 +139,7 @@ class AccountsApi(object):
             collection_formats=collection_formats, api_models_module=self.api_models_module)
 
     def list_account_balances(self, account_id, marketplace_id, **kwargs):  # noqa: E501
-        """Find balance in particular Amazon SW account by Amazon account identifier  # noqa: E501
+        """Find balance in particular Amazon Seller Wallet account by Amazon account identifier  # noqa: E501
 
         Retrieve the balance in a given Seller Wallet bank account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -148,7 +148,7 @@ class AccountsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str account_id: ID of the Amazon SW account (required)
+        :param str account_id: The ID of the Amazon Seller Wallet account. (required)
         :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :return: BalanceListing
                  If the method is called asynchronously,
@@ -162,7 +162,7 @@ class AccountsApi(object):
             return data
 
     def list_account_balances_with_http_info(self, account_id, marketplace_id, **kwargs):  # noqa: E501
-        """Find balance in particular Amazon SW account by Amazon account identifier  # noqa: E501
+        """Find balance in particular Amazon Seller Wallet account by Amazon account identifier  # noqa: E501
 
         Retrieve the balance in a given Seller Wallet bank account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -171,7 +171,7 @@ class AccountsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str account_id: ID of the Amazon SW account (required)
+        :param str account_id: The ID of the Amazon Seller Wallet account. (required)
         :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :return: BalanceListing
                  If the method is called asynchronously,
@@ -242,7 +242,7 @@ class AccountsApi(object):
             collection_formats=collection_formats, api_models_module=self.api_models_module)
 
     def list_accounts(self, marketplace_id, **kwargs):  # noqa: E501
-        """Get all Amazon SW accounts for the seller  # noqa: E501
+        """Get all Amazon Seller Wallet accounts for the seller  # noqa: E501
 
         Get Seller Wallet accounts for a seller.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -251,7 +251,7 @@ class AccountsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str marketplace_id: A marketplace identifier. Specifies the marketplace for which items are returned. (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :return: BankAccountListing
                  If the method is called asynchronously,
                  returns the request thread.
@@ -264,7 +264,7 @@ class AccountsApi(object):
             return data
 
     def list_accounts_with_http_info(self, marketplace_id, **kwargs):  # noqa: E501
-        """Get all Amazon SW accounts for the seller  # noqa: E501
+        """Get all Amazon Seller Wallet accounts for the seller  # noqa: E501
 
         Get Seller Wallet accounts for a seller.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -273,7 +273,7 @@ class AccountsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str marketplace_id: A marketplace identifier. Specifies the marketplace for which items are returned. (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :return: BankAccountListing
                  If the method is called asynchronously,
                  returns the request thread.

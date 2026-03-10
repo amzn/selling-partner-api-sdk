@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+    The Selling Partner API for Amazon Seller Wallet Open Banking API
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -67,7 +67,7 @@ class Fee(object):
     def fee_id(self):
         """Gets the fee_id of this Fee.  # noqa: E501
 
-        Unique identifier assigned to the Fee.   # noqa: E501
+        The unique identifier assigned to the fee.  # noqa: E501
 
         :return: The fee_id of this Fee.  # noqa: E501
         :rtype: str
@@ -78,7 +78,7 @@ class Fee(object):
     def fee_id(self, fee_id):
         """Sets the fee_id of this Fee.
 
-        Unique identifier assigned to the Fee.   # noqa: E501
+        The unique identifier assigned to the fee.  # noqa: E501
 
         :param fee_id: The fee_id of this Fee.  # noqa: E501
         :type: str

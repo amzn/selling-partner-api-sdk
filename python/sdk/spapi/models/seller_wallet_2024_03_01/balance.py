@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+    The Selling Partner API for Amazon Seller Wallet Open Banking API
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -72,7 +72,7 @@ class Balance(object):
     def account_id(self):
         """Gets the account_id of this Balance.  # noqa: E501
 
-        The unique identifier provided by Amazon to identify the account   # noqa: E501
+        The unique identifier provided by Amazon to identify the account.  # noqa: E501
 
         :return: The account_id of this Balance.  # noqa: E501
         :rtype: str
@@ -83,7 +83,7 @@ class Balance(object):
     def account_id(self, account_id):
         """Sets the account_id of this Balance.
 
-        The unique identifier provided by Amazon to identify the account   # noqa: E501
+        The unique identifier provided by Amazon to identify the account.  # noqa: E501
 
         :param account_id: The account_id of this Balance.  # noqa: E501
         :type: str
@@ -118,7 +118,7 @@ class Balance(object):
     def balance_amount(self):
         """Gets the balance_amount of this Balance.  # noqa: E501
 
-        A decimal number such as amount or FX rate.  # noqa: E501
+        A decimal number, such as an amount or FX rate.  # noqa: E501
 
         :return: The balance_amount of this Balance.  # noqa: E501
         :rtype: float
@@ -129,7 +129,7 @@ class Balance(object):
     def balance_amount(self, balance_amount):
         """Sets the balance_amount of this Balance.
 
-        A decimal number such as amount or FX rate.  # noqa: E501
+        A decimal number, such as an amount or FX rate.  # noqa: E501
 
         :param balance_amount: The balance_amount of this Balance.  # noqa: E501
         :type: float
@@ -143,7 +143,7 @@ class Balance(object):
     def balance_currency(self):
         """Gets the balance_currency of this Balance.  # noqa: E501
 
-        The Amazon SW bank account currency code in ISO 4217 format   # noqa: E501
+        The Amazon Seller Wallet bank account currency code in ISO 4217 format.  # noqa: E501
 
         :return: The balance_currency of this Balance.  # noqa: E501
         :rtype: str
@@ -154,7 +154,7 @@ class Balance(object):
     def balance_currency(self, balance_currency):
         """Sets the balance_currency of this Balance.
 
-        The Amazon SW bank account currency code in ISO 4217 format   # noqa: E501
+        The Amazon Seller Wallet bank account currency code in ISO 4217 format.  # noqa: E501
 
         :param balance_currency: The balance_currency of this Balance.  # noqa: E501
         :type: str
@@ -168,7 +168,7 @@ class Balance(object):
     def last_update_date(self):
         """Gets the last_update_date of this Balance.  # noqa: E501
 
-        The last update date on the account balance   # noqa: E501
+        The date of the most recent account balance update.  # noqa: E501
 
         :return: The last_update_date of this Balance.  # noqa: E501
         :rtype: datetime
@@ -179,7 +179,7 @@ class Balance(object):
     def last_update_date(self, last_update_date):
         """Sets the last_update_date of this Balance.
 
-        The last update date on the account balance   # noqa: E501
+        The date of the most recent account balance update.  # noqa: E501
 
         :param last_update_date: The last_update_date of this Balance.  # noqa: E501
         :type: datetime

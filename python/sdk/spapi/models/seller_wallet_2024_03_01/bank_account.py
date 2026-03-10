@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+    The Selling Partner API for Amazon Seller Wallet Open Banking API
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -259,7 +259,7 @@ class BankAccount(object):
     def account_country_code(self):
         """Gets the account_country_code of this BankAccount.  # noqa: E501
 
-        The two digit country code, in ISO 3166 format.   # noqa: E501
+        The two-digit country code in ISO 3166 format.  # noqa: E501
 
         :return: The account_country_code of this BankAccount.  # noqa: E501
         :rtype: str
@@ -270,7 +270,7 @@ class BankAccount(object):
     def account_country_code(self, account_country_code):
         """Sets the account_country_code of this BankAccount.
 
-        The two digit country code, in ISO 3166 format.   # noqa: E501
+        The two-digit country code in ISO 3166 format.  # noqa: E501
 
         :param account_country_code: The account_country_code of this BankAccount.  # noqa: E501
         :type: str
@@ -284,7 +284,7 @@ class BankAccount(object):
     def account_currency(self):
         """Gets the account_currency of this BankAccount.  # noqa: E501
 
-        BankAccount currency code in ISO 4217 format   # noqa: E501
+        Bank account currency code in ISO 4217 format.  # noqa: E501
 
         :return: The account_currency of this BankAccount.  # noqa: E501
         :rtype: str
@@ -295,7 +295,7 @@ class BankAccount(object):
     def account_currency(self, account_currency):
         """Sets the account_currency of this BankAccount.
 
-        BankAccount currency code in ISO 4217 format   # noqa: E501
+        Bank account currency code in ISO 4217 format.  # noqa: E501
 
         :param account_currency: The account_currency of this BankAccount.  # noqa: E501
         :type: str
@@ -309,7 +309,7 @@ class BankAccount(object):
     def bank_account_number_tail(self):
         """Gets the bank_account_number_tail of this BankAccount.  # noqa: E501
 
-        Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0's   # noqa: E501
+        The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.  # noqa: E501
 
         :return: The bank_account_number_tail of this BankAccount.  # noqa: E501
         :rtype: str
@@ -320,7 +320,7 @@ class BankAccount(object):
     def bank_account_number_tail(self, bank_account_number_tail):
         """Sets the bank_account_number_tail of this BankAccount.
 
-        Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0's   # noqa: E501
+        The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.  # noqa: E501
 
         :param bank_account_number_tail: The bank_account_number_tail of this BankAccount.  # noqa: E501
         :type: str

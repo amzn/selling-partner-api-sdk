@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+    The Selling Partner API for Amazon Seller Wallet Open Banking API
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -55,7 +55,7 @@ class BankAccountListing(object):
     def accounts(self):
         """Gets the accounts of this BankAccountListing.  # noqa: E501
 
-        Collection that holds BankAccount   # noqa: E501
+        A list of bank accounts.  # noqa: E501
 
         :return: The accounts of this BankAccountListing.  # noqa: E501
         :rtype: List[BankAccount]
@@ -66,7 +66,7 @@ class BankAccountListing(object):
     def accounts(self, accounts):
         """Sets the accounts of this BankAccountListing.
 
-        Collection that holds BankAccount   # noqa: E501
+        A list of bank accounts.  # noqa: E501
 
         :param accounts: The accounts of this BankAccountListing.  # noqa: E501
         :type: List[BankAccount]

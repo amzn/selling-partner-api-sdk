@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+    The Selling Partner API for Amazon Seller Wallet Open Banking API
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -179,7 +179,7 @@ class PayeeContactInformation(object):
     def address_line1(self):
         """Gets the address_line1 of this PayeeContactInformation.  # noqa: E501
 
-        Address Line 1 of the public address   # noqa: E501
+        Address Line 1 of the public address.  # noqa: E501
 
         :return: The address_line1 of this PayeeContactInformation.  # noqa: E501
         :rtype: str
@@ -190,7 +190,7 @@ class PayeeContactInformation(object):
     def address_line1(self, address_line1):
         """Sets the address_line1 of this PayeeContactInformation.
 
-        Address Line 1 of the public address   # noqa: E501
+        Address Line 1 of the public address.  # noqa: E501
 
         :param address_line1: The address_line1 of this PayeeContactInformation.  # noqa: E501
         :type: str
@@ -204,7 +204,7 @@ class PayeeContactInformation(object):
     def address_line2(self):
         """Gets the address_line2 of this PayeeContactInformation.  # noqa: E501
 
-        Address Line 2 of the public address   # noqa: E501
+        Address Line 2 of the public address.  # noqa: E501
 
         :return: The address_line2 of this PayeeContactInformation.  # noqa: E501
         :rtype: str
@@ -215,7 +215,7 @@ class PayeeContactInformation(object):
     def address_line2(self, address_line2):
         """Sets the address_line2 of this PayeeContactInformation.
 
-        Address Line 2 of the public address   # noqa: E501
+        Address Line 2 of the public address.  # noqa: E501
 
         :param address_line2: The address_line2 of this PayeeContactInformation.  # noqa: E501
         :type: str
@@ -227,7 +227,7 @@ class PayeeContactInformation(object):
     def city(self):
         """Gets the city of this PayeeContactInformation.  # noqa: E501
 
-        City name of the public address   # noqa: E501
+        City name of the public address.  # noqa: E501
 
         :return: The city of this PayeeContactInformation.  # noqa: E501
         :rtype: str
@@ -238,7 +238,7 @@ class PayeeContactInformation(object):
     def city(self, city):
         """Sets the city of this PayeeContactInformation.
 
-        City name of the public address   # noqa: E501
+        City name of the public address.  # noqa: E501
 
         :param city: The city of this PayeeContactInformation.  # noqa: E501
         :type: str
@@ -277,7 +277,7 @@ class PayeeContactInformation(object):
     def postal_code(self):
         """Gets the postal_code of this PayeeContactInformation.  # noqa: E501
 
-        Postal code of the public address   # noqa: E501
+        Postal code of the public address.  # noqa: E501
 
         :return: The postal_code of this PayeeContactInformation.  # noqa: E501
         :rtype: str
@@ -288,7 +288,7 @@ class PayeeContactInformation(object):
     def postal_code(self, postal_code):
         """Sets the postal_code of this PayeeContactInformation.
 
-        Postal code of the public address   # noqa: E501
+        Postal code of the public address.  # noqa: E501
 
         :param postal_code: The postal_code of this PayeeContactInformation.  # noqa: E501
         :type: str
@@ -302,7 +302,7 @@ class PayeeContactInformation(object):
     def country(self):
         """Gets the country of this PayeeContactInformation.  # noqa: E501
 
-        Country name of the public address   # noqa: E501
+        Country name of the public address.  # noqa: E501
 
         :return: The country of this PayeeContactInformation.  # noqa: E501
         :rtype: str
@@ -313,7 +313,7 @@ class PayeeContactInformation(object):
     def country(self, country):
         """Sets the country of this PayeeContactInformation.
 
-        Country name of the public address   # noqa: E501
+        Country name of the public address.  # noqa: E501
 
         :param country: The country of this PayeeContactInformation.  # noqa: E501
         :type: str
@@ -325,7 +325,7 @@ class PayeeContactInformation(object):
     def country_code(self):
         """Gets the country_code of this PayeeContactInformation.  # noqa: E501
 
-        The two digit country code, in ISO 3166 format.   # noqa: E501
+        The two digit country code, in ISO 3166 format.  # noqa: E501
 
         :return: The country_code of this PayeeContactInformation.  # noqa: E501
         :rtype: str
@@ -336,7 +336,7 @@ class PayeeContactInformation(object):
     def country_code(self, country_code):
         """Sets the country_code of this PayeeContactInformation.
 
-        The two digit country code, in ISO 3166 format.   # noqa: E501
+        The two digit country code, in ISO 3166 format.  # noqa: E501
 
         :param country_code: The country_code of this PayeeContactInformation.  # noqa: E501
         :type: str
