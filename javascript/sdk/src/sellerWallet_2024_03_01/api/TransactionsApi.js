@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -68,12 +68,12 @@ export class TransactionsApi {
   }
 
   /**
-     * Create a transaction request from Amazon SW account to another customer provided account
+     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account
      * Create a transaction request from a Seller Wallet account to another customer-provided account.
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount. Sign in the order of the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).
      * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @param {TransactionInitiationRequest} body Defines the actual payload of the request
+     * @param {TransactionInitiationRequest} body The payload of the request
      * @return {Promise<CreateTransactionResponse>}
      */
   createTransactionWithHttpInfo (destAccountDigitalSignature, amountDigitalSignature, marketplaceId, body) {
@@ -123,12 +123,12 @@ export class TransactionsApi {
   }
 
   /**
-     * Create a transaction request from Amazon SW account to another customer provided account
+     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account
      * Create a transaction request from a Seller Wallet account to another customer-provided account.
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount. Sign in the order of the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance).
      * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @param {TransactionInitiationRequest} body Defines the actual payload of the request
+     * @param {TransactionInitiationRequest} body The payload of the request
      * @return {Promise<CreateTransactionResponse>}
      */
   createTransaction (destAccountDigitalSignature, amountDigitalSignature, marketplaceId, body) {
@@ -139,9 +139,9 @@ export class TransactionsApi {
   }
 
   /**
-     * Find particular Amazon SW account transaction by Amazon transaction identifier
-     * Returns a transaction
-     * @param {String} transactionId ID of the Amazon SW transaction
+     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
+     * Find a transaction by the Amazon transaction identifier.
+     * @param {String} transactionId The ID of the Amazon Seller Wallet transaction.
      * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @return {Promise<Transaction>}
      */
@@ -181,9 +181,9 @@ export class TransactionsApi {
   }
 
   /**
-     * Find particular Amazon SW account transaction by Amazon transaction identifier
-     * Returns a transaction
-     * @param {String} transactionId ID of the Amazon SW transaction
+     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
+     * Find a transaction by the Amazon transaction identifier.
+     * @param {String} transactionId The ID of the Amazon Seller Wallet transaction.
      * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @return {Promise<Transaction>}
      */
@@ -195,12 +195,12 @@ export class TransactionsApi {
   }
 
   /**
-     * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
+     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
      * Retrieve a list of transactions for a given Seller Wallet bank account.
-     * @param {String} accountId ID of the Amazon SW account
+     * @param {String} accountId The ID of the Amazon Seller Wallet account.
      * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Object} [opts] Optional parameters
-     * @param {String} [opts.nextPageToken] Pagination token to retrieve a specific page of results.
+     * @param {String} [opts.nextPageToken] A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages.
      * @return {Promise<TransactionListing>}
      */
   listAccountTransactionsWithHttpInfo (accountId, marketplaceId, opts) {
@@ -241,12 +241,12 @@ export class TransactionsApi {
   }
 
   /**
-     * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
+     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
      * Retrieve a list of transactions for a given Seller Wallet bank account.
-     * @param {String} accountId ID of the Amazon SW account
+     * @param {String} accountId The ID of the Amazon Seller Wallet account.
      * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Object} [opts] Optional parameters
-     * @param {String} [opts.nextPageToken] Pagination token to retrieve a specific page of results.
+     * @param {String} [opts.nextPageToken] A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages.
      * @return {Promise<TransactionListing>}
      */
   listAccountTransactions (accountId, marketplaceId, opts) {

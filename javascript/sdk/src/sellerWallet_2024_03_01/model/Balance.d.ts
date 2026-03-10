@@ -14,13 +14,13 @@ export class Balance {
     static constructFromObject(data: any, obj: Balance): Balance;
     /**
      * Constructs a new <code>Balance</code>.
-     * Specifies the balance amount in the Amazon SW bank account
+     * The balance amount in the Amazon Seller Wallet bank account.
      * @alias module:sellerWallet_2024_03_01/model/Balance
      * @class
-     * @param accountId {String} The unique identifier provided by Amazon to identify the account
-     * @param balanceAmount {Number} A decimal number such as amount or FX rate.
-     * @param balanceCurrency {String} The Amazon SW bank account currency code in ISO 4217 format
-     * @param lastUpdateDate {Date} The last update date on the account balance
+     * @param accountId {String} The unique identifier provided by Amazon to identify the account.
+     * @param balanceAmount {Number} A decimal number, such as an amount or FX rate.
+     * @param balanceCurrency {String} The Amazon Seller Wallet bank account currency code in ISO 4217 format.
+     * @param lastUpdateDate {Date} The date of the most recent account balance update.
      */
     constructor(accountId: string, balanceAmount: number, balanceCurrency: string, lastUpdateDate: Date);
     accountId: string;

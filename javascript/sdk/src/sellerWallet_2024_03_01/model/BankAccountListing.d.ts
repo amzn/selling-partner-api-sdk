@@ -14,10 +14,10 @@ export class BankAccountListing {
     static constructFromObject(data: any, obj: BankAccountListing): BankAccountListing;
     /**
      * Constructs a new <code>BankAccountListing</code>.
-     * Struct that holds collection of accounts.
+     * A list of bank accounts.
      * @alias module:sellerWallet_2024_03_01/model/BankAccountListing
      * @class
-     * @param accounts {BankAccount[]} Collection that holds BankAccount
+     * @param accounts {BankAccount[]} A list of bank accounts.
      */
     constructor(accounts: BankAccount[]);
     accounts: BankAccount[];

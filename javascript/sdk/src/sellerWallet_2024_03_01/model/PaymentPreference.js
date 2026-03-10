@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -22,11 +22,11 @@ import { PaymentPreferencePaymentType } from './PaymentPreferencePaymentType.js'
 export class PaymentPreference {
   /**
    * Constructs a new <code>PaymentPreference</code>.
-   * Payment preference type in which transfer is being scheduled
+   * The type of payment preference in which the transfer is being scheduled.
    * @alias module:sellerWallet_2024_03_01/model/PaymentPreference
    * @class
    * @param paymentPreferencePaymentType {PaymentPreferencePaymentType}
-   * @param value {Number} A decimal number such as amount or FX rate.
+   * @param value {Number} A decimal number, such as an amount or FX rate.
    */
   constructor (paymentPreferencePaymentType, value) {
     this.paymentPreferencePaymentType = paymentPreferencePaymentType
@@ -68,7 +68,7 @@ export class PaymentPreference {
 PaymentPreference.prototype.paymentPreferencePaymentType = undefined
 
 /**
- * A decimal number such as amount or FX rate.
+ * A decimal number, such as an amount or FX rate.
  * @member {Number} value
  * @type {Number}
  */

@@ -2,16 +2,16 @@ import expect from 'expect.js';
 import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'sellerWallet_2024_03_01', 'index.js');
-const TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide = await import(modulePath);
+const TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi = await import(modulePath);
 const endpoint = 'http://localhost:3000';
 
 describe('TransferPreviewApi', () => {
   let instance;
 
   beforeEach(() => {
-    const apiClientInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.ApiClient(endpoint);
+    const apiClientInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.ApiClient(endpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest("testAccessToken");
-    instance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.TransferPreviewApi(apiClientInstance);
+    instance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.TransferPreviewApi(apiClientInstance);
   });
 
   describe('getTransferPreview', () => {
@@ -35,13 +35,13 @@ describe('TransferPreviewApi', () => {
 
   describe('constructor', () => {
     it('should use default ApiClient when none provided', () => {
-      const defaultInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.TransferPreviewApi();
-      expect(defaultInstance.apiClient).to.equal(TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.ApiClient.instance);
+      const defaultInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.TransferPreviewApi();
+      expect(defaultInstance.apiClient).to.equal(TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.ApiClient.instance);
     });
 
     it('should use provided ApiClient', () => {
-      const customClient = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.ApiClient();
-      const customInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.TransferPreviewApi(customClient);
+      const customClient = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.ApiClient();
+      const customInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.TransferPreviewApi(customClient);
       expect(customInstance.apiClient).to.equal(customClient);
     });
   });
@@ -84,7 +84,7 @@ function generateMockData(dataType, isArray = false) {
       return new Date().toISOString();
     default:
       try {
-        const ModelClass = TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide[dataType];
+        const ModelClass = TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi[dataType];
         if (ModelClass) {
           const instance = Object.create(ModelClass.prototype);
           return instance;

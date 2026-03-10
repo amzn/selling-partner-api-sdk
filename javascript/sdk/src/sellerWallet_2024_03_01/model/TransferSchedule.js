@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -30,12 +30,12 @@ export class TransferSchedule {
    * Transfer schedule details and related historical details.
    * @alias module:sellerWallet_2024_03_01/model/TransferSchedule
    * @class
-   * @param transferScheduleId {String} The unique identifier provided by Amazon to the scheduled transfer
+   * @param transferScheduleId {String} The unique identifier provided by Amazon to the scheduled transfer.
    * @param transactionType {TransactionType}
    * @param transactionDestinationAccount {TransactionAccount}
    * @param transferScheduleStatus {TransferScheduleStatus}
    * @param transferScheduleInformation {TransferScheduleInformation}
-   * @param transferScheduleFailures {TransferScheduleFailures[]} Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.
+   * @param transferScheduleFailures {TransferScheduleFailures[]} A list of transfer schedule failures.
    */
   constructor (transferScheduleId, transactionType, transactionDestinationAccount, transferScheduleStatus, transferScheduleInformation, transferScheduleFailures) {
     this.transferScheduleId = transferScheduleId
@@ -81,7 +81,7 @@ export class TransferSchedule {
 }
 
 /**
- * The unique identifier provided by Amazon to the scheduled transfer
+ * The unique identifier provided by Amazon to the scheduled transfer.
  * @member {String} transferScheduleId
  * @type {String}
  */
@@ -124,7 +124,7 @@ TransferSchedule.prototype.transferScheduleInformation = undefined
 TransferSchedule.prototype.paymentPreference = undefined
 
 /**
- * Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.
+ * A list of transfer schedule failures.
  * @member {TransferScheduleFailures[]} transferScheduleFailures
  * @type {TransferScheduleFailures[]}
  */

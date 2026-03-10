@@ -20,7 +20,7 @@ export class TransferRatePreview {
      * @param baseAmount {Currency}
      * @param fxRateDetails {FxRateDetails}
      * @param transferAmount {Currency}
-     * @param fees {Fee[]} List of fees
+     * @param fees {Fee[]} A list of fees.
      */
     constructor(baseAmount: Currency, fxRateDetails: FxRateDetails, transferAmount: Currency, fees: Fee[]);
     baseAmount: Currency;

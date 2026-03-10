@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -22,10 +22,10 @@ import { Transaction } from './Transaction.js'
 export class TransactionListing {
   /**
    * Constructs a new <code>TransactionListing</code>.
-   * Struct that holds collection of transactions.
+   * A list of transactions.
    * @alias module:sellerWallet_2024_03_01/model/TransactionListing
    * @class
-   * @param transactions {Transaction[]} Collection that holds Transaction
+   * @param transactions {Transaction[]} A list of transactions.
    */
   constructor (transactions) {
     this.transactions = transactions
@@ -60,14 +60,14 @@ export class TransactionListing {
 }
 
 /**
- * If present, use this pagination token to retrieve the next page of supply sources, if not provided the API will return same response. The field will only be provided when the list is greater than 100.
+ * A token that you use to retrieve the next page of results. The response includes `nextPageToken` when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextPageToken` is null. Note that this operation can return empty pages.
  * @member {String} nextPageToken
  * @type {String}
  */
 TransactionListing.prototype.nextPageToken = undefined
 
 /**
- * Collection that holds Transaction
+ * A list of transactions.
  * @member {Transaction[]} transactions
  * @type {Transaction[]}
  */

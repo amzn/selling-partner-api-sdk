@@ -18,9 +18,9 @@ export class BankAccount {
      * @alias module:sellerWallet_2024_03_01/model/BankAccount
      * @class
      * @param bankAccountOwnershipType {BankAccountOwnershipType}
-     * @param accountCountryCode {String} The two digit country code, in ISO 3166 format.
-     * @param accountCurrency {String} BankAccount currency code in ISO 4217 format
-     * @param bankAccountNumberTail {String} Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0's
+     * @param accountCountryCode {String} The two-digit country code in ISO 3166 format.
+     * @param accountCurrency {String} Bank account currency code in ISO 4217 format.
+     * @param bankAccountNumberTail {String} The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.
      */
     constructor(bankAccountOwnershipType: BankAccountOwnershipType, accountCountryCode: string, accountCurrency: string, bankAccountNumberTail: string);
     bankAccountOwnershipType: BankAccountOwnershipType;

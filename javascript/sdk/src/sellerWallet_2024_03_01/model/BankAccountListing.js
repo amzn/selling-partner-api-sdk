@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -22,10 +22,10 @@ import { BankAccount } from './BankAccount.js'
 export class BankAccountListing {
   /**
    * Constructs a new <code>BankAccountListing</code>.
-   * Struct that holds collection of accounts.
+   * A list of bank accounts.
    * @alias module:sellerWallet_2024_03_01/model/BankAccountListing
    * @class
-   * @param accounts {BankAccount[]} Collection that holds BankAccount
+   * @param accounts {BankAccount[]} A list of bank accounts.
    */
   constructor (accounts) {
     this.accounts = accounts
@@ -59,7 +59,7 @@ export class BankAccountListing {
 }
 
 /**
- * Collection that holds BankAccount
+ * A list of bank accounts.
  * @member {BankAccount[]} accounts
  * @type {BankAccount[]}
  */

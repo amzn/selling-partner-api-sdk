@@ -14,10 +14,10 @@ export class Fee {
     static constructFromObject(data: any, obj: Fee): Fee;
     /**
      * Constructs a new <code>Fee</code>.
-     * If the fees is in baseAmount (sourceAccount) currency, effectiveRate &#x3D;  (baseAmount - sum(fees.feeAmount.currencyAmount)) * baseRate) / baseAmount. If the fees is in transferAmount (destinationAccount) currency, effectiveRate &#x3D;  (( baseAmount * baseRate ) -  sum(fees.feeAmount.currencyAmount )) / baseAmount
+     * Details of the fee.
      * @alias module:sellerWallet_2024_03_01/model/Fee
      * @class
-     * @param feeId {String} Unique identifier assigned to the Fee.
+     * @param feeId {String} The unique identifier assigned to the fee.
      * @param feeType {FeeType}
      * @param feeRateValue {String} The value of the fee in percentage format.
      * @param feeAmount {Currency}

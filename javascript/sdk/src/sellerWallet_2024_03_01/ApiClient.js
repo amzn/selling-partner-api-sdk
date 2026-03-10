@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -204,9 +204,9 @@ export class ApiClient {
     /**
          * The base URL against which to resolve every API call's (relative) path.
          * @type {String}
-         * @default https://sellingpartnerapi-eu.amazon.com
+         * @default https://sellingpartnerapi-na.amazon.com
          */
-    this.basePath = baseUrl ? baseUrl.replace(/\/+$/, '') : 'https://sellingpartnerapi-eu.amazon.com'.replace(/\/+$/, '')
+    this.basePath = baseUrl ? baseUrl.replace(/\/+$/, '') : 'https://sellingpartnerapi-na.amazon.com'.replace(/\/+$/, '')
 
     /**
          * The authentication methods to be included for all API calls.

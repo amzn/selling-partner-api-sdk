@@ -13,7 +13,7 @@ export class BalanceListing {
      */
     static constructFromObject(data: any, obj: BalanceListing): BalanceListing;
     /**
-     * Collection that holds list of balances on the account
+     * A list of balances in the seller account.
      * @member {Balance[]} balances
      * @type {Balance[]}
      */

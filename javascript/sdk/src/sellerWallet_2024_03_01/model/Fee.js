@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -23,10 +23,10 @@ import { FeeType } from './FeeType.js'
 export class Fee {
   /**
    * Constructs a new <code>Fee</code>.
-   * If the fees is in baseAmount (sourceAccount) currency, effectiveRate &#x3D;  (baseAmount - sum(fees.feeAmount.currencyAmount)) * baseRate) / baseAmount. If the fees is in transferAmount (destinationAccount) currency, effectiveRate &#x3D;  (( baseAmount * baseRate ) -  sum(fees.feeAmount.currencyAmount )) / baseAmount
+   * Details of the fee.
    * @alias module:sellerWallet_2024_03_01/model/Fee
    * @class
-   * @param feeId {String} Unique identifier assigned to the Fee.
+   * @param feeId {String} The unique identifier assigned to the fee.
    * @param feeType {FeeType}
    * @param feeRateValue {String} The value of the fee in percentage format.
    * @param feeAmount {Currency}
@@ -69,7 +69,7 @@ export class Fee {
 }
 
 /**
- * Unique identifier assigned to the Fee.
+ * The unique identifier assigned to the fee.
  * @member {String} feeId
  * @type {String}
  */

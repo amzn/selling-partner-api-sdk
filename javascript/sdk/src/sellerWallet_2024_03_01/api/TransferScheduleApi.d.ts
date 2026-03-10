@@ -23,22 +23,22 @@ export class TransferScheduleApi {
        */
     getRateLimiter(operation: string): any;
     /**
-       * Create a transfer schedule request from Amazon SW account to another customer provided account
+       * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
        * Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
        * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
        * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
        * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-       * @param {TransferScheduleRequest} body Defines the actual payload of the request
+       * @param {TransferScheduleRequest} body The payload of the request.
        * @return {Promise<TransferSchedule>}
        */
     createTransferScheduleWithHttpInfo(destAccountDigitalSignature: string, amountDigitalSignature: string, marketplaceId: string, body: TransferScheduleRequest): Promise<TransferSchedule>;
     /**
-       * Create a transfer schedule request from Amazon SW account to another customer provided account
+       * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
        * Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
        * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
        * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
        * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-       * @param {TransferScheduleRequest} body Defines the actual payload of the request
+       * @param {TransferScheduleRequest} body The payload of the request.
        * @return {Promise<TransferSchedule>}
        */
     createTransferSchedule(destAccountDigitalSignature: string, amountDigitalSignature: string, marketplaceId: string, body: TransferScheduleRequest): Promise<TransferSchedule>;
@@ -75,24 +75,24 @@ export class TransferScheduleApi {
        */
     getTransferSchedule(transferScheduleId: string, marketplaceId: string): Promise<TransferSchedule>;
     /**
-       * The API will return all the transfer schedules for a given Amazon SW account
+       * The API will return all the transfer schedules for a given Amazon Seller Wallet account
        * Retrieve transfer schedules of a Seller Wallet bank account.
-       * @param {String} accountId ID of the Amazon SW account
+       * @param {String} accountId The ID of the Amazon Seller Wallet account.
        * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
        * @param {Object} [opts] Optional parameters
-       * @param {String} [opts.nextPageToken] Pagination token to retrieve a specific page of results.
+       * @param {String} [opts.nextPageToken] A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages.
        * @return {Promise<TransferScheduleListing>}
        */
     listTransferSchedulesWithHttpInfo(accountId: string, marketplaceId: string, opts?: {
         nextPageToken?: string;
     }): Promise<TransferScheduleListing>;
     /**
-       * The API will return all the transfer schedules for a given Amazon SW account
+       * The API will return all the transfer schedules for a given Amazon Seller Wallet account
        * Retrieve transfer schedules of a Seller Wallet bank account.
-       * @param {String} accountId ID of the Amazon SW account
+       * @param {String} accountId The ID of the Amazon Seller Wallet account.
        * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
        * @param {Object} [opts] Optional parameters
-       * @param {String} [opts.nextPageToken] Pagination token to retrieve a specific page of results.
+       * @param {String} [opts.nextPageToken] A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages.
        * @return {Promise<TransferScheduleListing>}
        */
     listTransferSchedules(accountId: string, marketplaceId: string, opts?: {
@@ -100,21 +100,21 @@ export class TransferScheduleApi {
     }): Promise<TransferScheduleListing>;
     /**
        * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.
-       * Returns a transfer belonging to the updated scheduled transfer request
+       * Update transfer schedule information. Returns a transfer belonging to the updated scheduled transfer request.
        * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
        * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
        * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-       * @param {TransferSchedule} body Defines the actual payload of the scheduled transfer request that is to be updated.
+       * @param {TransferSchedule} body The payload of the scheduled transfer request that is to be updated.
        * @return {Promise<TransferSchedule>}
        */
     updateTransferScheduleWithHttpInfo(destAccountDigitalSignature: string, amountDigitalSignature: string, marketplaceId: string, body: TransferSchedule): Promise<TransferSchedule>;
     /**
        * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.
-       * Returns a transfer belonging to the updated scheduled transfer request
+       * Update transfer schedule information. Returns a transfer belonging to the updated scheduled transfer request.
        * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
        * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
        * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-       * @param {TransferSchedule} body Defines the actual payload of the scheduled transfer request that is to be updated.
+       * @param {TransferSchedule} body The payload of the scheduled transfer request that is to be updated.
        * @return {Promise<TransferSchedule>}
        */
     updateTransferSchedule(destAccountDigitalSignature: string, amountDigitalSignature: string, marketplaceId: string, body: TransferSchedule): Promise<TransferSchedule>;
