@@ -1,13 +1,14 @@
 /**
  * @typedef {{=< >=}}{<#allowableValues><#enumVars>'<name>'<^-last>|</-last></enumVars></allowableValues>}<={{ }}=> {{classname}}
  */
-export const {{classname}} = Object.freeze({
+export class {{classname}} {
 {{#allowableValues}}
 {{#enumVars}}
-  "{{name}}": {{{value}}},
+  "{{name}}" = {{{value}}};
 {{/enumVars}}
 {{/allowableValues}}
-  constructFromObject: function (object) {
+
+  static constructFromObject(object) {
     return object;
   }
-});
+}
