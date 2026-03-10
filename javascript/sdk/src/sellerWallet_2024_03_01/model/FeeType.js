@@ -16,11 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'MISCELLANEOUS_FEE'|'TAX'|'TRANSACTION_FEE'} FeeType
  */
-export const FeeType = Object.freeze({
-  MISCELLANEOUS_FEE: 'MISCELLANEOUS_FEE',
-  TAX: 'TAX',
-  TRANSACTION_FEE: 'TRANSACTION_FEE',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const FeeType = Object.assign(
+  function () {},
+  {
+    MISCELLANEOUS_FEE: 'MISCELLANEOUS_FEE',
+    TAX: 'TAX',
+    TRANSACTION_FEE: 'TRANSACTION_FEE',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

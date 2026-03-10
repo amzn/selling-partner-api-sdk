@@ -16,16 +16,18 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'LIST_ITEM'|'LIST_ORDERED'|'LIST_UNORDERED'|'STYLE_BOLD'|'STYLE_ITALIC'|'STYLE_LINEBREAK'|'STYLE_PARAGRAPH'|'STYLE_UNDERLINE'} DecoratorType
  */
-export const DecoratorType = Object.freeze({
-  LIST_ITEM: 'LIST_ITEM',
-  LIST_ORDERED: 'LIST_ORDERED',
-  LIST_UNORDERED: 'LIST_UNORDERED',
-  STYLE_BOLD: 'STYLE_BOLD',
-  STYLE_ITALIC: 'STYLE_ITALIC',
-  STYLE_LINEBREAK: 'STYLE_LINEBREAK',
-  STYLE_PARAGRAPH: 'STYLE_PARAGRAPH',
-  STYLE_UNDERLINE: 'STYLE_UNDERLINE',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const DecoratorType = Object.assign(
+  function () {},
+  {
+    LIST_ITEM: 'LIST_ITEM',
+    LIST_ORDERED: 'LIST_ORDERED',
+    LIST_UNORDERED: 'LIST_UNORDERED',
+    STYLE_BOLD: 'STYLE_BOLD',
+    STYLE_ITALIC: 'STYLE_ITALIC',
+    STYLE_LINEBREAK: 'STYLE_LINEBREAK',
+    STYLE_PARAGRAPH: 'STYLE_PARAGRAPH',
+    STYLE_UNDERLINE: 'STYLE_UNDERLINE',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

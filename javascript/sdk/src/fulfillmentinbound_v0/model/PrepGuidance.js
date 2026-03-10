@@ -16,11 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'ConsultHelpDocuments'|'NoAdditionalPrepRequired'|'SeePrepInstructionsList'} PrepGuidance
  */
-export const PrepGuidance = Object.freeze({
-  ConsultHelpDocuments: 'ConsultHelpDocuments',
-  NoAdditionalPrepRequired: 'NoAdditionalPrepRequired',
-  SeePrepInstructionsList: 'SeePrepInstructionsList',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const PrepGuidance = Object.assign(
+  function () {},
+  {
+    ConsultHelpDocuments: 'ConsultHelpDocuments',
+    NoAdditionalPrepRequired: 'NoAdditionalPrepRequired',
+    SeePrepInstructionsList: 'SeePrepInstructionsList',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

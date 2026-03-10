@@ -2,13 +2,13 @@ export type PackageStatus = "CREATED" | "PICKUP_SLOT_RETRIEVED" | "INVOICE_GENER
 /**
  * @typedef {'CREATED'|'PICKUP_SLOT_RETRIEVED'|'INVOICE_GENERATED'|'SHIPLABEL_GENERATED'|'SHIPPED'|'DELIVERED'} PackageStatus
  */
-export const PackageStatus: Readonly<{
-    CREATED: "CREATED";
-    PICKUP_SLOT_RETRIEVED: "PICKUP_SLOT_RETRIEVED";
-    INVOICE_GENERATED: "INVOICE_GENERATED";
-    SHIPLABEL_GENERATED: "SHIPLABEL_GENERATED";
-    SHIPPED: "SHIPPED";
-    DELIVERED: "DELIVERED";
+export const PackageStatus: (() => void) & {
+    CREATED: string;
+    PICKUP_SLOT_RETRIEVED: string;
+    INVOICE_GENERATED: string;
+    SHIPLABEL_GENERATED: string;
+    SHIPPED: string;
+    DELIVERED: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=PackageStatus.d.ts.map

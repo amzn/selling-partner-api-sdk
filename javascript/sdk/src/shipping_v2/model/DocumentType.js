@@ -16,12 +16,14 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'PACKSLIP'|'LABEL'|'RECEIPT'|'CUSTOM_FORM'} DocumentType
  */
-export const DocumentType = Object.freeze({
-  PACKSLIP: 'PACKSLIP',
-  LABEL: 'LABEL',
-  RECEIPT: 'RECEIPT',
-  CUSTOM_FORM: 'CUSTOM_FORM',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const DocumentType = Object.assign(
+  function () {},
+  {
+    PACKSLIP: 'PACKSLIP',
+    LABEL: 'LABEL',
+    RECEIPT: 'RECEIPT',
+    CUSTOM_FORM: 'CUSTOM_FORM',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

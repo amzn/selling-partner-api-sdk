@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'TEXTBOX'|'PASSWORD'} InputType
  */
-export const InputType = Object.freeze({
-  TEXTBOX: 'TEXTBOX',
-  PASSWORD: 'PASSWORD',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const InputType = Object.assign(
+  function () {},
+  {
+    TEXTBOX: 'TEXTBOX',
+    PASSWORD: 'PASSWORD',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

@@ -2,12 +2,12 @@ export type ReturnItemDisposition = "Sellable" | "Defective" | "CustomerDamaged"
 /**
  * @typedef {'Sellable'|'Defective'|'CustomerDamaged'|'CarrierDamaged'|'FulfillerDamaged'} ReturnItemDisposition
  */
-export const ReturnItemDisposition: Readonly<{
-    Sellable: "Sellable";
-    Defective: "Defective";
-    CustomerDamaged: "CustomerDamaged";
-    CarrierDamaged: "CarrierDamaged";
-    FulfillerDamaged: "FulfillerDamaged";
+export const ReturnItemDisposition: (() => void) & {
+    Sellable: string;
+    Defective: string;
+    CustomerDamaged: string;
+    CarrierDamaged: string;
+    FulfillerDamaged: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=ReturnItemDisposition.d.ts.map

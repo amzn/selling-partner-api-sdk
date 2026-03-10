@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'REQUIRED'|'DISALLOWED'} RequirementLevel
  */
-export const RequirementLevel = Object.freeze({
-  REQUIRED: 'REQUIRED',
-  DISALLOWED: 'DISALLOWED',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const RequirementLevel = Object.assign(
+  function () {},
+  {
+    REQUIRED: 'REQUIRED',
+    DISALLOWED: 'DISALLOWED',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

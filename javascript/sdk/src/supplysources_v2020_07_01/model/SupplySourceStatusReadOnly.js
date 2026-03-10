@@ -16,11 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'Active'|'Inactive'|'Archived'} SupplySourceStatusReadOnly
  */
-export const SupplySourceStatusReadOnly = Object.freeze({
-  Active: 'Active',
-  Inactive: 'Inactive',
-  Archived: 'Archived',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const SupplySourceStatusReadOnly = Object.assign(
+  function () {},
+  {
+    Active: 'Active',
+    Inactive: 'Inactive',
+    Archived: 'Archived',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

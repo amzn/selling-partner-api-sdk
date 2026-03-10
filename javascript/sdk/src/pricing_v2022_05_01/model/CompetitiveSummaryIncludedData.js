@@ -16,11 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'featuredBuyingOptions'|'referencePrices'|'lowestPricedOffers'} CompetitiveSummaryIncludedData
  */
-export const CompetitiveSummaryIncludedData = Object.freeze({
-  featuredBuyingOptions: 'featuredBuyingOptions',
-  referencePrices: 'referencePrices',
-  lowestPricedOffers: 'lowestPricedOffers',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const CompetitiveSummaryIncludedData = Object.assign(
+  function () {},
+  {
+    featuredBuyingOptions: 'featuredBuyingOptions',
+    referencePrices: 'referencePrices',
+    lowestPricedOffers: 'lowestPricedOffers',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

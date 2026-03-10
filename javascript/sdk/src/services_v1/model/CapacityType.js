@@ -16,12 +16,14 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'SCHEDULED_CAPACITY'|'AVAILABLE_CAPACITY'|'ENCUMBERED_CAPACITY'|'RESERVED_CAPACITY'} CapacityType
  */
-export const CapacityType = Object.freeze({
-  SCHEDULED_CAPACITY: 'SCHEDULED_CAPACITY',
-  AVAILABLE_CAPACITY: 'AVAILABLE_CAPACITY',
-  ENCUMBERED_CAPACITY: 'ENCUMBERED_CAPACITY',
-  RESERVED_CAPACITY: 'RESERVED_CAPACITY',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const CapacityType = Object.assign(
+  function () {},
+  {
+    SCHEDULED_CAPACITY: 'SCHEDULED_CAPACITY',
+    AVAILABLE_CAPACITY: 'AVAILABLE_CAPACITY',
+    ENCUMBERED_CAPACITY: 'ENCUMBERED_CAPACITY',
+    RESERVED_CAPACITY: 'RESERVED_CAPACITY',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

@@ -16,13 +16,15 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'Sellable'|'Defective'|'CustomerDamaged'|'CarrierDamaged'|'FulfillerDamaged'} ReturnItemDisposition
  */
-export const ReturnItemDisposition = Object.freeze({
-  Sellable: 'Sellable',
-  Defective: 'Defective',
-  CustomerDamaged: 'CustomerDamaged',
-  CarrierDamaged: 'CarrierDamaged',
-  FulfillerDamaged: 'FulfillerDamaged',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const ReturnItemDisposition = Object.assign(
+  function () {},
+  {
+    Sellable: 'Sellable',
+    Defective: 'Defective',
+    CustomerDamaged: 'CustomerDamaged',
+    CarrierDamaged: 'CarrierDamaged',
+    FulfillerDamaged: 'FulfillerDamaged',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

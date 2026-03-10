@@ -16,16 +16,18 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'HELIX'|'CAMPUS_LOCKER'|'OMNI_LOCKER'|'ODIN_LOCKER'|'DOBBY_LOCKER'|'CORE_LOCKER'|'3P'|'CAMPUS_ROOM'} AccessPointType
  */
-export const AccessPointType = Object.freeze({
-  HELIX: 'HELIX',
-  CAMPUS_LOCKER: 'CAMPUS_LOCKER',
-  OMNI_LOCKER: 'OMNI_LOCKER',
-  ODIN_LOCKER: 'ODIN_LOCKER',
-  DOBBY_LOCKER: 'DOBBY_LOCKER',
-  CORE_LOCKER: 'CORE_LOCKER',
-  '3P': '3P',
-  CAMPUS_ROOM: 'CAMPUS_ROOM',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const AccessPointType = Object.assign(
+  function () {},
+  {
+    HELIX: 'HELIX',
+    CAMPUS_LOCKER: 'CAMPUS_LOCKER',
+    OMNI_LOCKER: 'OMNI_LOCKER',
+    ODIN_LOCKER: 'ODIN_LOCKER',
+    DOBBY_LOCKER: 'DOBBY_LOCKER',
+    CORE_LOCKER: 'CORE_LOCKER',
+    '3P': '3P',
+    CAMPUS_ROOM: 'CAMPUS_ROOM',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

@@ -2,11 +2,11 @@ export type InvalidItemReasonCode = "InvalidValues" | "DuplicateRequest" | "NoCo
 /**
  * @typedef {'InvalidValues'|'DuplicateRequest'|'NoCompletedShipItems'|'NoReturnableQuantity'} InvalidItemReasonCode
  */
-export const InvalidItemReasonCode: Readonly<{
-    InvalidValues: "InvalidValues";
-    DuplicateRequest: "DuplicateRequest";
-    NoCompletedShipItems: "NoCompletedShipItems";
-    NoReturnableQuantity: "NoReturnableQuantity";
+export const InvalidItemReasonCode: (() => void) & {
+    InvalidValues: string;
+    DuplicateRequest: string;
+    NoCompletedShipItems: string;
+    NoReturnableQuantity: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=InvalidItemReasonCode.d.ts.map

@@ -16,11 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'BANK_ACCOUNT'|'CARD'|'SELLER_WALLET'} PaymentMethodType
  */
-export const PaymentMethodType = Object.freeze({
-  BANK_ACCOUNT: 'BANK_ACCOUNT',
-  CARD: 'CARD',
-  SELLER_WALLET: 'SELLER_WALLET',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const PaymentMethodType = Object.assign(
+  function () {},
+  {
+    BANK_ACCOUNT: 'BANK_ACCOUNT',
+    CARD: 'CARD',
+    SELLER_WALLET: 'SELLER_WALLET',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

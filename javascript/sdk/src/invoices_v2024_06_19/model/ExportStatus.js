@@ -16,12 +16,14 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'REQUESTED'|'PROCESSING'|'DONE'|'ERROR'} ExportStatus
  */
-export const ExportStatus = Object.freeze({
-  REQUESTED: 'REQUESTED',
-  PROCESSING: 'PROCESSING',
-  DONE: 'DONE',
-  ERROR: 'ERROR',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const ExportStatus = Object.assign(
+  function () {},
+  {
+    REQUESTED: 'REQUESTED',
+    PROCESSING: 'PROCESSING',
+    DONE: 'DONE',
+    ERROR: 'ERROR',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

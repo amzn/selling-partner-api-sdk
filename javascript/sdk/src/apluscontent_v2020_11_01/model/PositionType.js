@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'LEFT'|'RIGHT'} PositionType
  */
-export const PositionType = Object.freeze({
-  LEFT: 'LEFT',
-  RIGHT: 'RIGHT',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const PositionType = Object.assign(
+  function () {},
+  {
+    LEFT: 'LEFT',
+    RIGHT: 'RIGHT',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

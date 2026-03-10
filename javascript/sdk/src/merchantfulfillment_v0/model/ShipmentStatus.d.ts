@@ -2,11 +2,11 @@ export type ShipmentStatus = "Purchased" | "RefundPending" | "RefundRejected" | 
 /**
  * @typedef {'Purchased'|'RefundPending'|'RefundRejected'|'RefundApplied'} ShipmentStatus
  */
-export const ShipmentStatus: Readonly<{
-    Purchased: "Purchased";
-    RefundPending: "RefundPending";
-    RefundRejected: "RefundRejected";
-    RefundApplied: "RefundApplied";
+export const ShipmentStatus: (() => void) & {
+    Purchased: string;
+    RefundPending: string;
+    RefundRejected: string;
+    RefundApplied: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=ShipmentStatus.d.ts.map

@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'BUY'|'SELL'} RateDirection
  */
-export const RateDirection = Object.freeze({
-  BUY: 'BUY',
-  SELL: 'SELL',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const RateDirection = Object.assign(
+  function () {},
+  {
+    BUY: 'BUY',
+    SELL: 'SELL',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

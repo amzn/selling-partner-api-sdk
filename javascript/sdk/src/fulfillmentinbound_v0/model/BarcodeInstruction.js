@@ -16,11 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'RequiresFNSKULabel'|'CanUseOriginalBarcode'|'MustProvideSellerSKU'} BarcodeInstruction
  */
-export const BarcodeInstruction = Object.freeze({
-  RequiresFNSKULabel: 'RequiresFNSKULabel',
-  CanUseOriginalBarcode: 'CanUseOriginalBarcode',
-  MustProvideSellerSKU: 'MustProvideSellerSKU',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const BarcodeInstruction = Object.assign(
+  function () {},
+  {
+    RequiresFNSKULabel: 'RequiresFNSKULabel',
+    CanUseOriginalBarcode: 'CanUseOriginalBarcode',
+    MustProvideSellerSKU: 'MustProvideSellerSKU',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

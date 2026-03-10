@@ -2,11 +2,11 @@ export type BankAccountHolderStatus = "ACTIVE" | "INACTIVE" | "UNDER_REVIEW" | "
 /**
  * @typedef {'ACTIVE'|'INACTIVE'|'UNDER_REVIEW'|'VERIFICATION_FAILED'} BankAccountHolderStatus
  */
-export const BankAccountHolderStatus: Readonly<{
-    ACTIVE: "ACTIVE";
-    INACTIVE: "INACTIVE";
-    UNDER_REVIEW: "UNDER_REVIEW";
-    VERIFICATION_FAILED: "VERIFICATION_FAILED";
+export const BankAccountHolderStatus: (() => void) & {
+    ACTIVE: string;
+    INACTIVE: string;
+    UNDER_REVIEW: string;
+    VERIFICATION_FAILED: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=BankAccountHolderStatus.d.ts.map

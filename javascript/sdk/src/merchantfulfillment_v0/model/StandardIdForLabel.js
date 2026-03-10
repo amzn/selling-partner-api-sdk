@@ -16,9 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'AmazonOrderId'} StandardIdForLabel
  */
-export const StandardIdForLabel = Object.freeze({
-  AmazonOrderId: 'AmazonOrderId',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const StandardIdForLabel = Object.assign(
+  function () {},
+  {
+    AmazonOrderId: 'AmazonOrderId',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

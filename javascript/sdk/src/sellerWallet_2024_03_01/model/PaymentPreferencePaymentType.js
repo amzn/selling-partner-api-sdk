@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'PERCENTAGE'|'AMOUNT'} PaymentPreferencePaymentType
  */
-export const PaymentPreferencePaymentType = Object.freeze({
-  PERCENTAGE: 'PERCENTAGE',
-  AMOUNT: 'AMOUNT',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const PaymentPreferencePaymentType = Object.assign(
+  function () {},
+  {
+    PERCENTAGE: 'PERCENTAGE',
+    AMOUNT: 'AMOUNT',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

@@ -2,11 +2,11 @@ export type ShippingSpeedCategory = "Standard" | "Expedited" | "Priority" | "Sch
 /**
  * @typedef {'Standard'|'Expedited'|'Priority'|'ScheduledDelivery'} ShippingSpeedCategory
  */
-export const ShippingSpeedCategory: Readonly<{
-    Standard: "Standard";
-    Expedited: "Expedited";
-    Priority: "Priority";
-    ScheduledDelivery: "ScheduledDelivery";
+export const ShippingSpeedCategory: (() => void) & {
+    Standard: string;
+    Expedited: string;
+    Priority: string;
+    ScheduledDelivery: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=ShippingSpeedCategory.d.ts.map

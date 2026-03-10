@@ -2,12 +2,12 @@ export type CustomAttributeType = "STRING" | "BOOLEAN" | "INTEGER" | "DOUBLE" | 
 /**
  * @typedef {'STRING'|'BOOLEAN'|'INTEGER'|'DOUBLE'|'JSON_STRING'} CustomAttributeType
  */
-export const CustomAttributeType: Readonly<{
-    STRING: "STRING";
-    BOOLEAN: "BOOLEAN";
-    INTEGER: "INTEGER";
-    DOUBLE: "DOUBLE";
-    JSON_STRING: "JSON_STRING";
+export const CustomAttributeType: (() => void) & {
+    STRING: string;
+    BOOLEAN: string;
+    INTEGER: string;
+    DOUBLE: string;
+    JSON_STRING: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=CustomAttributeType.d.ts.map

@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'ABSENT'|'PRESENT'} PresenceStatus
  */
-export const PresenceStatus = Object.freeze({
-  ABSENT: 'ABSENT',
-  PRESENT: 'PRESENT',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const PresenceStatus = Object.assign(
+  function () {},
+  {
+    ABSENT: 'ABSENT',
+    PRESENT: 'PRESENT',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

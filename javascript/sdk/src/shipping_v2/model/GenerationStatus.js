@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'Completed'|'InProgress'} GenerationStatus
  */
-export const GenerationStatus = Object.freeze({
-  Completed: 'Completed',
-  InProgress: 'InProgress',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const GenerationStatus = Object.assign(
+  function () {},
+  {
+    Completed: 'Completed',
+    InProgress: 'InProgress',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

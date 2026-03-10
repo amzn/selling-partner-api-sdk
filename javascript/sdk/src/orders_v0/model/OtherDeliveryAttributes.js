@@ -16,11 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'HAS_ACCESS_POINT'|'PALLET_ENABLED'|'PALLET_DISABLED'} OtherDeliveryAttributes
  */
-export const OtherDeliveryAttributes = Object.freeze({
-  HAS_ACCESS_POINT: 'HAS_ACCESS_POINT',
-  PALLET_ENABLED: 'PALLET_ENABLED',
-  PALLET_DISABLED: 'PALLET_DISABLED',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const OtherDeliveryAttributes = Object.assign(
+  function () {},
+  {
+    HAS_ACCESS_POINT: 'HAS_ACCESS_POINT',
+    PALLET_ENABLED: 'PALLET_ENABLED',
+    PALLET_DISABLED: 'PALLET_DISABLED',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

@@ -2,14 +2,14 @@ export type FulfillmentStatus = "PENDING_AVAILABILITY" | "PENDING" | "UNSHIPPED"
 /**
  * @typedef {'PENDING_AVAILABILITY'|'PENDING'|'UNSHIPPED'|'PARTIALLY_SHIPPED'|'SHIPPED'|'CANCELLED'|'UNFULFILLABLE'} FulfillmentStatus
  */
-export const FulfillmentStatus: Readonly<{
-    PENDING_AVAILABILITY: "PENDING_AVAILABILITY";
-    PENDING: "PENDING";
-    UNSHIPPED: "UNSHIPPED";
-    PARTIALLY_SHIPPED: "PARTIALLY_SHIPPED";
-    SHIPPED: "SHIPPED";
-    CANCELLED: "CANCELLED";
-    UNFULFILLABLE: "UNFULFILLABLE";
+export const FulfillmentStatus: (() => void) & {
+    PENDING_AVAILABILITY: string;
+    PENDING: string;
+    UNSHIPPED: string;
+    PARTIALLY_SHIPPED: string;
+    SHIPPED: string;
+    CANCELLED: string;
+    UNFULFILLABLE: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=FulfillmentStatus.d.ts.map

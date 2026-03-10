@@ -16,12 +16,14 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'BRAND_NOT_ELIGIBLE'|'CATALOG_NOT_FOUND'|'CONTENT_NOT_PUBLISHED'|'CONTENT_PUBLISHED'} AsinBadge
  */
-export const AsinBadge = Object.freeze({
-  BRAND_NOT_ELIGIBLE: 'BRAND_NOT_ELIGIBLE',
-  CATALOG_NOT_FOUND: 'CATALOG_NOT_FOUND',
-  CONTENT_NOT_PUBLISHED: 'CONTENT_NOT_PUBLISHED',
-  CONTENT_PUBLISHED: 'CONTENT_PUBLISHED',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const AsinBadge = Object.assign(
+  function () {},
+  {
+    BRAND_NOT_ELIGIBLE: 'BRAND_NOT_ELIGIBLE',
+    CATALOG_NOT_FOUND: 'CATALOG_NOT_FOUND',
+    CONTENT_NOT_PUBLISHED: 'CONTENT_NOT_PUBLISHED',
+    CONTENT_PUBLISHED: 'CONTENT_PUBLISHED',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

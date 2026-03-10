@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'New'|'Processed'} FulfillmentReturnItemStatus
  */
-export const FulfillmentReturnItemStatus = Object.freeze({
-  New: 'New',
-  Processed: 'Processed',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const FulfillmentReturnItemStatus = Object.assign(
+  function () {},
+  {
+    New: 'New',
+    Processed: 'Processed',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

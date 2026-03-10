@@ -16,9 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'SCAC'} CarrierCodeType
  */
-export const CarrierCodeType = Object.freeze({
-  SCAC: 'SCAC',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const CarrierCodeType = Object.assign(
+  function () {},
+  {
+    SCAC: 'SCAC',
+    constructFromObject: function (object) {
+      return object
+    }
+  })
