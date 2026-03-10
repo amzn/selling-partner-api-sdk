@@ -2,11 +2,11 @@ export type TransferScheduleStatus = "ENABLED" | "DISABLED" | "EXPIRED" | "DELET
 /**
  * @typedef {'ENABLED'|'DISABLED'|'EXPIRED'|'DELETED'} TransferScheduleStatus
  */
-export const TransferScheduleStatus: Readonly<{
-    ENABLED: "ENABLED";
-    DISABLED: "DISABLED";
-    EXPIRED: "EXPIRED";
-    DELETED: "DELETED";
+export const TransferScheduleStatus: (() => void) & {
+    ENABLED: string;
+    DISABLED: string;
+    EXPIRED: string;
+    DELETED: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=TransferScheduleStatus.d.ts.map

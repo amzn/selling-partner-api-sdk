@@ -16,11 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'FillOrKill'|'FillAll'|'FillAllAvailable'} FulfillmentPolicy
  */
-export const FulfillmentPolicy = Object.freeze({
-  FillOrKill: 'FillOrKill',
-  FillAll: 'FillAll',
-  FillAllAvailable: 'FillAllAvailable',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const FulfillmentPolicy = Object.assign(
+  function () {},
+  {
+    FillOrKill: 'FillOrKill',
+    FillAll: 'FillAll',
+    FillAllAvailable: 'FillAllAvailable',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

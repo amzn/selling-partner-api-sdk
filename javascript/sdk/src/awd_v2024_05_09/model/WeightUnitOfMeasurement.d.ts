@@ -2,9 +2,9 @@ export type WeightUnitOfMeasurement = "POUNDS" | "KILOGRAMS";
 /**
  * @typedef {'POUNDS'|'KILOGRAMS'} WeightUnitOfMeasurement
  */
-export const WeightUnitOfMeasurement: Readonly<{
-    POUNDS: "POUNDS";
-    KILOGRAMS: "KILOGRAMS";
+export const WeightUnitOfMeasurement: (() => void) & {
+    POUNDS: string;
+    KILOGRAMS: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=WeightUnitOfMeasurement.d.ts.map

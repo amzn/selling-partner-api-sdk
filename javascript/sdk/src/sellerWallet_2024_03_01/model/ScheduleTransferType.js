@@ -16,9 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'TIME_BASED'} ScheduleTransferType
  */
-export const ScheduleTransferType = Object.freeze({
-  TIME_BASED: 'TIME_BASED',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const ScheduleTransferType = Object.assign(
+  function () {},
+  {
+    TIME_BASED: 'TIME_BASED',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

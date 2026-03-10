@@ -2,12 +2,12 @@ export type ContentBadge = "BULK" | "GENERATED" | "LAUNCHPAD" | "PREMIUM" | "STA
 /**
  * @typedef {'BULK'|'GENERATED'|'LAUNCHPAD'|'PREMIUM'|'STANDARD'} ContentBadge
  */
-export const ContentBadge: Readonly<{
-    BULK: "BULK";
-    GENERATED: "GENERATED";
-    LAUNCHPAD: "LAUNCHPAD";
-    PREMIUM: "PREMIUM";
-    STANDARD: "STANDARD";
+export const ContentBadge: (() => void) & {
+    BULK: string;
+    GENERATED: string;
+    LAUNCHPAD: string;
+    PREMIUM: string;
+    STANDARD: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=ContentBadge.d.ts.map

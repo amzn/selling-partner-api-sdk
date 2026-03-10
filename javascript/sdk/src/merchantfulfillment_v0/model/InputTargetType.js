@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'SHIPMENT_LEVEL'|'ITEM_LEVEL'} InputTargetType
  */
-export const InputTargetType = Object.freeze({
-  SHIPMENT_LEVEL: 'SHIPMENT_LEVEL',
-  ITEM_LEVEL: 'ITEM_LEVEL',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const InputTargetType = Object.assign(
+  function () {},
+  {
+    SHIPMENT_LEVEL: 'SHIPMENT_LEVEL',
+    ITEM_LEVEL: 'ITEM_LEVEL',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

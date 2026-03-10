@@ -16,11 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'NO_LABEL'|'SELLER_LABEL'|'AMAZON_LABEL'} LabelPrepType
  */
-export const LabelPrepType = Object.freeze({
-  NO_LABEL: 'NO_LABEL',
-  SELLER_LABEL: 'SELLER_LABEL',
-  AMAZON_LABEL: 'AMAZON_LABEL',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const LabelPrepType = Object.assign(
+  function () {},
+  {
+    NO_LABEL: 'NO_LABEL',
+    SELLER_LABEL: 'SELLER_LABEL',
+    AMAZON_LABEL: 'AMAZON_LABEL',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

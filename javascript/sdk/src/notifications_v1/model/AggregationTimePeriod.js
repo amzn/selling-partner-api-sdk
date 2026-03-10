@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'FiveMinutes'|'TenMinutes'} AggregationTimePeriod
  */
-export const AggregationTimePeriod = Object.freeze({
-  FiveMinutes: 'FiveMinutes',
-  TenMinutes: 'TenMinutes',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const AggregationTimePeriod = Object.assign(
+  function () {},
+  {
+    FiveMinutes: 'FiveMinutes',
+    TenMinutes: 'TenMinutes',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

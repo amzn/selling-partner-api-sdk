@@ -16,12 +16,14 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'ACTIVE'|'INACTIVE'|'PENDING'|'SUSPENDED'} AccountStatus
  */
-export const AccountStatus = Object.freeze({
-  ACTIVE: 'ACTIVE',
-  INACTIVE: 'INACTIVE',
-  PENDING: 'PENDING',
-  SUSPENDED: 'SUSPENDED',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const AccountStatus = Object.assign(
+  function () {},
+  {
+    ACTIVE: 'ACTIVE',
+    INACTIVE: 'INACTIVE',
+    PENDING: 'PENDING',
+    SUSPENDED: 'SUSPENDED',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

@@ -16,9 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'INCLUDED'} RateItemType
  */
-export const RateItemType = Object.freeze({
-  INCLUDED: 'INCLUDED',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const RateItemType = Object.assign(
+  function () {},
+  {
+    INCLUDED: 'INCLUDED',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

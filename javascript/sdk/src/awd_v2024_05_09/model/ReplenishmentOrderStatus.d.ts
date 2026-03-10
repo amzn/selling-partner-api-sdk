@@ -2,16 +2,16 @@ export type ReplenishmentOrderStatus = "CONFIRMED" | "CREATED" | "ELIGIBLE" | "E
 /**
  * @typedef {'CONFIRMED'|'CREATED'|'ELIGIBLE'|'EXECUTING'|'FAILURE'|'INELIGIBLE'|'INVENTORY_OUTBOUND'|'SUCCESS'|'VALIDATING'} ReplenishmentOrderStatus
  */
-export const ReplenishmentOrderStatus: Readonly<{
-    CONFIRMED: "CONFIRMED";
-    CREATED: "CREATED";
-    ELIGIBLE: "ELIGIBLE";
-    EXECUTING: "EXECUTING";
-    FAILURE: "FAILURE";
-    INELIGIBLE: "INELIGIBLE";
-    INVENTORY_OUTBOUND: "INVENTORY_OUTBOUND";
-    SUCCESS: "SUCCESS";
-    VALIDATING: "VALIDATING";
+export const ReplenishmentOrderStatus: (() => void) & {
+    CONFIRMED: string;
+    CREATED: string;
+    ELIGIBLE: string;
+    EXECUTING: string;
+    FAILURE: string;
+    INELIGIBLE: string;
+    INVENTORY_OUTBOUND: string;
+    SUCCESS: string;
+    VALIDATING: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=ReplenishmentOrderStatus.d.ts.map

@@ -2,14 +2,14 @@ export type DayOfWeek = "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDA
 /**
  * @typedef {'MONDAY'|'TUESDAY'|'WEDNESDAY'|'THURSDAY'|'FRIDAY'|'SATURDAY'|'SUNDAY'} DayOfWeek
  */
-export const DayOfWeek: Readonly<{
-    MONDAY: "MONDAY";
-    TUESDAY: "TUESDAY";
-    WEDNESDAY: "WEDNESDAY";
-    THURSDAY: "THURSDAY";
-    FRIDAY: "FRIDAY";
-    SATURDAY: "SATURDAY";
-    SUNDAY: "SUNDAY";
+export const DayOfWeek: (() => void) & {
+    MONDAY: string;
+    TUESDAY: string;
+    WEDNESDAY: string;
+    THURSDAY: string;
+    FRIDAY: string;
+    SATURDAY: string;
+    SUNDAY: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=DayOfWeek.d.ts.map

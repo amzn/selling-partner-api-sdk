@@ -2,9 +2,9 @@ export type OfferCustomerType = "B2C" | "B2B";
 /**
  * @typedef {'B2C'|'B2B'} OfferCustomerType
  */
-export const OfferCustomerType: Readonly<{
-    B2C: "B2C";
-    B2B: "B2B";
+export const OfferCustomerType: (() => void) & {
+    B2C: string;
+    B2B: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=OfferCustomerType.d.ts.map

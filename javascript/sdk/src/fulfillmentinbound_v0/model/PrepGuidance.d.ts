@@ -2,10 +2,10 @@ export type PrepGuidance = "ConsultHelpDocuments" | "NoAdditionalPrepRequired" |
 /**
  * @typedef {'ConsultHelpDocuments'|'NoAdditionalPrepRequired'|'SeePrepInstructionsList'} PrepGuidance
  */
-export const PrepGuidance: Readonly<{
-    ConsultHelpDocuments: "ConsultHelpDocuments";
-    NoAdditionalPrepRequired: "NoAdditionalPrepRequired";
-    SeePrepInstructionsList: "SeePrepInstructionsList";
+export const PrepGuidance: (() => void) & {
+    ConsultHelpDocuments: string;
+    NoAdditionalPrepRequired: string;
+    SeePrepInstructionsList: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=PrepGuidance.d.ts.map

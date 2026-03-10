@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'AMAZON'|'EXTERNAL'} ChannelType
  */
-export const ChannelType = Object.freeze({
-  AMAZON: 'AMAZON',
-  EXTERNAL: 'EXTERNAL',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const ChannelType = Object.assign(
+  function () {},
+  {
+    AMAZON: 'AMAZON',
+    EXTERNAL: 'EXTERNAL',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

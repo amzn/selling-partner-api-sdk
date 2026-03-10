@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'AFN'|'MFN'} FulfillmentType
  */
-export const FulfillmentType = Object.freeze({
-  AFN: 'AFN',
-  MFN: 'MFN',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const FulfillmentType = Object.assign(
+  function () {},
+  {
+    AFN: 'AFN',
+    MFN: 'MFN',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

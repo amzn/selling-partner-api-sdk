@@ -2,10 +2,10 @@ export type CompetitiveSummaryIncludedData = "featuredBuyingOptions" | "referenc
 /**
  * @typedef {'featuredBuyingOptions'|'referencePrices'|'lowestPricedOffers'} CompetitiveSummaryIncludedData
  */
-export const CompetitiveSummaryIncludedData: Readonly<{
-    featuredBuyingOptions: "featuredBuyingOptions";
-    referencePrices: "referencePrices";
-    lowestPricedOffers: "lowestPricedOffers";
+export const CompetitiveSummaryIncludedData: (() => void) & {
+    featuredBuyingOptions: string;
+    referencePrices: string;
+    lowestPricedOffers: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=CompetitiveSummaryIncludedData.d.ts.map

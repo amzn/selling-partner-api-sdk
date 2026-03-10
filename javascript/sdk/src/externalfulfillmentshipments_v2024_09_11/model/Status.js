@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'SUCCESS'|'FAILURE'} Status
  */
-export const Status = Object.freeze({
-  SUCCESS: 'SUCCESS',
-  FAILURE: 'FAILURE',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const Status = Object.assign(
+  function () {},
+  {
+    SUCCESS: 'SUCCESS',
+    FAILURE: 'FAILURE',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

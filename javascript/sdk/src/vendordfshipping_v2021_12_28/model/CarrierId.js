@@ -16,9 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'SWA'} CarrierId
  */
-export const CarrierId = Object.freeze({
-  SWA: 'SWA',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const CarrierId = Object.assign(
+  function () {},
+  {
+    SWA: 'SWA',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

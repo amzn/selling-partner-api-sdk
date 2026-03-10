@@ -2,14 +2,14 @@ export type InboundShipmentStatus = "CREATED" | "SHIPPED" | "IN_TRANSIT" | "RECE
 /**
  * @typedef {'CREATED'|'SHIPPED'|'IN_TRANSIT'|'RECEIVING'|'DELIVERED'|'CLOSED'|'CANCELLED'} InboundShipmentStatus
  */
-export const InboundShipmentStatus: Readonly<{
-    CREATED: "CREATED";
-    SHIPPED: "SHIPPED";
-    IN_TRANSIT: "IN_TRANSIT";
-    RECEIVING: "RECEIVING";
-    DELIVERED: "DELIVERED";
-    CLOSED: "CLOSED";
-    CANCELLED: "CANCELLED";
+export const InboundShipmentStatus: (() => void) & {
+    CREATED: string;
+    SHIPPED: string;
+    IN_TRANSIT: string;
+    RECEIVING: string;
+    DELIVERED: string;
+    CLOSED: string;
+    CANCELLED: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=InboundShipmentStatus.d.ts.map

@@ -2,12 +2,12 @@ export type VerificationStatus = "Pending" | "Approved" | "Rejected" | "Expired"
 /**
  * @typedef {'Pending'|'Approved'|'Rejected'|'Expired'|'Cancelled'} VerificationStatus
  */
-export const VerificationStatus: Readonly<{
-    Pending: "Pending";
-    Approved: "Approved";
-    Rejected: "Rejected";
-    Expired: "Expired";
-    Cancelled: "Cancelled";
+export const VerificationStatus: (() => void) & {
+    Pending: string;
+    Approved: string;
+    Rejected: string;
+    Expired: string;
+    Cancelled: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=VerificationStatus.d.ts.map

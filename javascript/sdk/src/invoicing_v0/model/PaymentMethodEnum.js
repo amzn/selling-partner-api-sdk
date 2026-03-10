@@ -16,14 +16,16 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'CreditCard'|'DebitCard'|'Pix'|'BankSlip'|'GiftCard'|'Other'} PaymentMethodEnum
  */
-export const PaymentMethodEnum = Object.freeze({
-  CreditCard: 'CreditCard',
-  DebitCard: 'DebitCard',
-  Pix: 'Pix',
-  BankSlip: 'BankSlip',
-  GiftCard: 'GiftCard',
-  Other: 'Other',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const PaymentMethodEnum = Object.assign(
+  function () {},
+  {
+    CreditCard: 'CreditCard',
+    DebitCard: 'DebitCard',
+    Pix: 'Pix',
+    BankSlip: 'BankSlip',
+    GiftCard: 'GiftCard',
+    Other: 'Other',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

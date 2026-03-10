@@ -16,11 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'RESCHEDULE'|'REATTEMPT'|'RTO'} NdrAction
  */
-export const NdrAction = Object.freeze({
-  RESCHEDULE: 'RESCHEDULE',
-  REATTEMPT: 'REATTEMPT',
-  RTO: 'RTO',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const NdrAction = Object.assign(
+  function () {},
+  {
+    RESCHEDULE: 'RESCHEDULE',
+    REATTEMPT: 'REATTEMPT',
+    RTO: 'RTO',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'CASE'|'PALLET'} DistributionPackageType
  */
-export const DistributionPackageType = Object.freeze({
-  CASE: 'CASE',
-  PALLET: 'PALLET',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const DistributionPackageType = Object.assign(
+  function () {},
+  {
+    CASE: 'CASE',
+    PALLET: 'PALLET',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

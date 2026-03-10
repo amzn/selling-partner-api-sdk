@@ -2,12 +2,12 @@ export type ItemCondition = "New" | "Used" | "Collectible" | "Refurbished" | "Cl
 /**
  * @typedef {'New'|'Used'|'Collectible'|'Refurbished'|'Club'} ItemCondition
  */
-export const ItemCondition: Readonly<{
-    New: "New";
-    Used: "Used";
-    Collectible: "Collectible";
-    Refurbished: "Refurbished";
-    Club: "Club";
+export const ItemCondition: (() => void) & {
+    New: string;
+    Used: string;
+    Collectible: string;
+    Refurbished: string;
+    Club: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=ItemCondition.d.ts.map

@@ -16,11 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'MANDATORY'|'OPTIONAL'|'INCLUDED'} RateItemType
  */
-export const RateItemType = Object.freeze({
-  MANDATORY: 'MANDATORY',
-  OPTIONAL: 'OPTIONAL',
-  INCLUDED: 'INCLUDED',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const RateItemType = Object.assign(
+  function () {},
+  {
+    MANDATORY: 'MANDATORY',
+    OPTIONAL: 'OPTIONAL',
+    INCLUDED: 'INCLUDED',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'USD'|'GBP'} CurrencyCode
  */
-export const CurrencyCode = Object.freeze({
-  USD: 'USD',
-  GBP: 'GBP',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const CurrencyCode = Object.assign(
+  function () {},
+  {
+    USD: 'USD',
+    GBP: 'GBP',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

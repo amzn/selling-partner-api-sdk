@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'THIRD_PARTY'|'SELF'} BankAccountOwnershipType
  */
-export const BankAccountOwnershipType = Object.freeze({
-  THIRD_PARTY: 'THIRD_PARTY',
-  SELF: 'SELF',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const BankAccountOwnershipType = Object.assign(
+  function () {},
+  {
+    THIRD_PARTY: 'THIRD_PARTY',
+    SELF: 'SELF',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

@@ -16,12 +16,14 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'APPROVED'|'DRAFT'|'REJECTED'|'SUBMITTED'} ContentStatus
  */
-export const ContentStatus = Object.freeze({
-  APPROVED: 'APPROVED',
-  DRAFT: 'DRAFT',
-  REJECTED: 'REJECTED',
-  SUBMITTED: 'SUBMITTED',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const ContentStatus = Object.assign(
+  function () {},
+  {
+    APPROVED: 'APPROVED',
+    DRAFT: 'DRAFT',
+    REJECTED: 'REJECTED',
+    SUBMITTED: 'SUBMITTED',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

@@ -16,12 +16,14 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'GENERATING'|'GENERATED'|'GENERATION_FAILED'|'NOT_READY'} LabelStatus
  */
-export const LabelStatus = Object.freeze({
-  GENERATING: 'GENERATING',
-  GENERATED: 'GENERATED',
-  GENERATION_FAILED: 'GENERATION_FAILED',
-  NOT_READY: 'NOT_READY',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const LabelStatus = Object.assign(
+  function () {},
+  {
+    GENERATING: 'GENERATING',
+    GENERATED: 'GENERATED',
+    GENERATION_FAILED: 'GENERATION_FAILED',
+    NOT_READY: 'NOT_READY',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

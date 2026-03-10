@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'BIC'|'BASIC'} BankNumberFormat
  */
-export const BankNumberFormat = Object.freeze({
-  BIC: 'BIC',
-  BASIC: 'BASIC',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const BankNumberFormat = Object.assign(
+  function () {},
+  {
+    BIC: 'BIC',
+    BASIC: 'BASIC',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'ACTIVE'|'DELETED'} VehicleStatusInCatalog
  */
-export const VehicleStatusInCatalog = Object.freeze({
-  ACTIVE: 'ACTIVE',
-  DELETED: 'DELETED',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const VehicleStatusInCatalog = Object.assign(
+  function () {},
+  {
+    ACTIVE: 'ACTIVE',
+    DELETED: 'DELETED',
+    constructFromObject: function (object) {
+      return object
+    }
+  })
