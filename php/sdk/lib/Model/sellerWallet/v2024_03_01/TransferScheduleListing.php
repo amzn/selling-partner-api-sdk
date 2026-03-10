@@ -13,7 +13,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API.
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Struct that holds collection of transfer schedules.
+ * @description A list of transfer schedules.
  *
  * @author   OpenAPI Generator team
  *
@@ -258,7 +258,7 @@ class TransferScheduleListing implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Sets next_page_token.
      *
-     * @param null|string $next_page_token If present, use this pagination token to retrieve the next page of supply sources, if not provided the API will return same response. The field will only be provided when the list is greater than 100.
+     * @param null|string $next_page_token A token that you use to retrieve the next page of results. The response includes `nextPageToken` when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextPageToken` is null. Note that this operation can return empty pages.
      */
     public function setNextPageToken(?string $next_page_token): self
     {
@@ -288,7 +288,7 @@ class TransferScheduleListing implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Sets transfer_schedules.
      *
-     * @param array $transfer_schedules Collection that holds list of Transfer Schedules
+     * @param array $transfer_schedules a list of transfer schedules
      */
     public function setTransferSchedules(array $transfer_schedules): self
     {

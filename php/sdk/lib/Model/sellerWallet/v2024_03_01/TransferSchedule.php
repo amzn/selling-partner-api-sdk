@@ -13,7 +13,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API.
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -315,7 +315,7 @@ class TransferSchedule implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Sets transfer_schedule_id.
      *
-     * @param string $transfer_schedule_id The unique identifier provided by Amazon to the scheduled transfer
+     * @param string $transfer_schedule_id the unique identifier provided by Amazon to the scheduled transfer
      */
     public function setTransferScheduleId(string $transfer_schedule_id): self
     {
@@ -490,7 +490,7 @@ class TransferSchedule implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Sets transfer_schedule_failures.
      *
-     * @param array $transfer_schedule_failures collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons
+     * @param array $transfer_schedule_failures a list of transfer schedule failures
      */
     public function setTransferScheduleFailures(array $transfer_schedule_failures): self
     {

@@ -13,7 +13,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API.
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Response returned when the schedule transfer&#39;s delete request is successful.
+ * @description The response returned when the schedule transfer&#39;s delete request is successful.
  *
  * @author   OpenAPI Generator team
  *
@@ -268,7 +268,7 @@ class DeleteTransferSchedule implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets code.
      *
-     * @param string $code A success code that specifies the delete operation was successful. eg:HTTP 200.
+     * @param string $code A success code that specifies that the delete operation was successful. For example, HTTP 200.
      */
     public function setCode(string $code): self
     {

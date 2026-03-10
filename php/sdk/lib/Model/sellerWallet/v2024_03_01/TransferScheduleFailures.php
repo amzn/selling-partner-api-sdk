@@ -13,7 +13,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API.
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Specifies the balance amount in the Amazon SW bank account
+ * @description The time of and reason for the transfer schedule failure.
  *
  * @author   OpenAPI Generator team
  *
@@ -261,7 +261,7 @@ class TransferScheduleFailures implements ModelInterface, \ArrayAccess, \JsonSer
     /**
      * Sets transfer_schedule_failure_date.
      *
-     * @param \DateTime $transfer_schedule_failure_date The transfer schedule cancellation date
+     * @param \DateTime $transfer_schedule_failure_date the transfer schedule failure date
      */
     public function setTransferScheduleFailureDate(\DateTime $transfer_schedule_failure_date): self
     {
@@ -284,7 +284,7 @@ class TransferScheduleFailures implements ModelInterface, \ArrayAccess, \JsonSer
     /**
      * Sets transfer_schedule_failure_reason.
      *
-     * @param string $transfer_schedule_failure_reason The statement/reasoning listed for the cancellation of the transfer schedule
+     * @param string $transfer_schedule_failure_reason the reason listed for the failure of the transfer schedule
      */
     public function setTransferScheduleFailureReason(string $transfer_schedule_failure_reason): self
     {

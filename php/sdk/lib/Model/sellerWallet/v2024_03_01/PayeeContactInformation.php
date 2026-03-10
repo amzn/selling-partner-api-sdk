@@ -13,7 +13,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API.
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -438,7 +438,7 @@ class PayeeContactInformation implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Sets address_line1.
      *
-     * @param string $address_line1 Address Line 1 of the public address
+     * @param string $address_line1 address Line 1 of the public address
      */
     public function setAddressLine1(string $address_line1): self
     {
@@ -461,7 +461,7 @@ class PayeeContactInformation implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Sets address_line2.
      *
-     * @param null|string $address_line2 Address Line 2 of the public address
+     * @param null|string $address_line2 address Line 2 of the public address
      */
     public function setAddressLine2(?string $address_line2): self
     {
@@ -491,7 +491,7 @@ class PayeeContactInformation implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Sets city.
      *
-     * @param string $city City name of the public address
+     * @param string $city city name of the public address
      */
     public function setCity(string $city): self
     {
@@ -537,7 +537,7 @@ class PayeeContactInformation implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Sets postal_code.
      *
-     * @param string $postal_code Postal code of the public address
+     * @param string $postal_code postal code of the public address
      */
     public function setPostalCode(string $postal_code): self
     {
@@ -560,7 +560,7 @@ class PayeeContactInformation implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Sets country.
      *
-     * @param null|string $country Country name of the public address
+     * @param null|string $country country name of the public address
      */
     public function setCountry(?string $country): self
     {

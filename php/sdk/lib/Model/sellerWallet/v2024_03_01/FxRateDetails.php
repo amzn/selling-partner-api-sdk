@@ -13,7 +13,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API.
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Foreign exchange rate details displayed when transfer preview is requested.
+ * @description Foreign exchange rate details.
  *
  * @author   OpenAPI Generator team
  *
@@ -281,7 +281,7 @@ class FxRateDetails implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets fx_rate_id.
      *
-     * @param string $fx_rate_id unique identifier assigned to the fees/foreign exchange Rate of a transaction
+     * @param string $fx_rate_id the unique identifier assigned to the fees / foreign exchange rate of a transaction
      */
     public function setFxRateId(string $fx_rate_id): self
     {
@@ -304,7 +304,7 @@ class FxRateDetails implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets base_rate.
      *
-     * @param float $base_rate a decimal number such as amount or FX rate
+     * @param float $base_rate a decimal number, such as an amount or FX rate
      */
     public function setBaseRate(float $base_rate): self
     {
@@ -327,7 +327,7 @@ class FxRateDetails implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets effective_fx_rate.
      *
-     * @param float $effective_fx_rate a decimal number such as amount or FX rate
+     * @param float $effective_fx_rate a decimal number, such as an amount or FX rate
      */
     public function setEffectiveFxRate(float $effective_fx_rate): self
     {

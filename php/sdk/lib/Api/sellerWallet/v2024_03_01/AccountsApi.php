@@ -12,7 +12,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API.
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -134,10 +134,10 @@ class AccountsApi
     /**
      * Operation getAccount.
      *
-     * Find particular Amazon SW account by Amazon account identifier
+     * Find particular Amazon Seller Wallet account by Amazon account identifier
      *
      * @param string      $account_id
-     *                                         ID of the Amazon SW account (required)
+     *                                         The ID of the Amazon Seller Wallet account. (required)
      * @param string      $marketplace_id
      *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -158,10 +158,10 @@ class AccountsApi
     /**
      * Operation getAccountWithHttpInfo.
      *
-     * Find particular Amazon SW account by Amazon account identifier
+     * Find particular Amazon Seller Wallet account by Amazon account identifier
      *
      * @param string      $account_id
-     *                                         ID of the Amazon SW account (required)
+     *                                         The ID of the Amazon Seller Wallet account. (required)
      * @param string      $marketplace_id
      *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -250,10 +250,10 @@ class AccountsApi
     /**
      * Operation getAccountAsync.
      *
-     * Find particular Amazon SW account by Amazon account identifier
+     * Find particular Amazon Seller Wallet account by Amazon account identifier
      *
      * @param string $account_id
-     *                               ID of the Amazon SW account (required)
+     *                               The ID of the Amazon Seller Wallet account. (required)
      * @param string $marketplace_id
      *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
@@ -275,10 +275,10 @@ class AccountsApi
     /**
      * Operation getAccountAsyncWithHttpInfo.
      *
-     * Find particular Amazon SW account by Amazon account identifier
+     * Find particular Amazon Seller Wallet account by Amazon account identifier
      *
      * @param string $account_id
-     *                               ID of the Amazon SW account (required)
+     *                               The ID of the Amazon Seller Wallet account. (required)
      * @param string $marketplace_id
      *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
@@ -342,7 +342,7 @@ class AccountsApi
      * Create request for operation 'getAccount'.
      *
      * @param string $account_id
-     *                               ID of the Amazon SW account (required)
+     *                               The ID of the Amazon Seller Wallet account. (required)
      * @param string $marketplace_id
      *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
@@ -445,10 +445,10 @@ class AccountsApi
     /**
      * Operation listAccountBalances.
      *
-     * Find balance in particular Amazon SW account by Amazon account identifier
+     * Find balance in particular Amazon Seller Wallet account by Amazon account identifier
      *
      * @param string      $account_id
-     *                                         ID of the Amazon SW account (required)
+     *                                         The ID of the Amazon Seller Wallet account. (required)
      * @param string      $marketplace_id
      *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -469,10 +469,10 @@ class AccountsApi
     /**
      * Operation listAccountBalancesWithHttpInfo.
      *
-     * Find balance in particular Amazon SW account by Amazon account identifier
+     * Find balance in particular Amazon Seller Wallet account by Amazon account identifier
      *
      * @param string      $account_id
-     *                                         ID of the Amazon SW account (required)
+     *                                         The ID of the Amazon Seller Wallet account. (required)
      * @param string      $marketplace_id
      *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -561,10 +561,10 @@ class AccountsApi
     /**
      * Operation listAccountBalancesAsync.
      *
-     * Find balance in particular Amazon SW account by Amazon account identifier
+     * Find balance in particular Amazon Seller Wallet account by Amazon account identifier
      *
      * @param string $account_id
-     *                               ID of the Amazon SW account (required)
+     *                               The ID of the Amazon Seller Wallet account. (required)
      * @param string $marketplace_id
      *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
@@ -586,10 +586,10 @@ class AccountsApi
     /**
      * Operation listAccountBalancesAsyncWithHttpInfo.
      *
-     * Find balance in particular Amazon SW account by Amazon account identifier
+     * Find balance in particular Amazon Seller Wallet account by Amazon account identifier
      *
      * @param string $account_id
-     *                               ID of the Amazon SW account (required)
+     *                               The ID of the Amazon Seller Wallet account. (required)
      * @param string $marketplace_id
      *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
@@ -653,7 +653,7 @@ class AccountsApi
      * Create request for operation 'listAccountBalances'.
      *
      * @param string $account_id
-     *                               ID of the Amazon SW account (required)
+     *                               The ID of the Amazon Seller Wallet account. (required)
      * @param string $marketplace_id
      *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
@@ -756,10 +756,10 @@ class AccountsApi
     /**
      * Operation listAccounts.
      *
-     * Get all Amazon SW accounts for the seller
+     * Get all Amazon Seller Wallet accounts for the seller
      *
      * @param string      $marketplace_id
-     *                                         A marketplace identifier. Specifies the marketplace for which items are returned. (required)
+     *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -777,10 +777,10 @@ class AccountsApi
     /**
      * Operation listAccountsWithHttpInfo.
      *
-     * Get all Amazon SW accounts for the seller
+     * Get all Amazon Seller Wallet accounts for the seller
      *
      * @param string      $marketplace_id
-     *                                         A marketplace identifier. Specifies the marketplace for which items are returned. (required)
+     *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\BankAccountListing, HTTP status code, HTTP response headers (array of strings)
@@ -866,10 +866,10 @@ class AccountsApi
     /**
      * Operation listAccountsAsync.
      *
-     * Get all Amazon SW accounts for the seller
+     * Get all Amazon Seller Wallet accounts for the seller
      *
      * @param string $marketplace_id
-     *                               A marketplace identifier. Specifies the marketplace for which items are returned. (required)
+     *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -888,10 +888,10 @@ class AccountsApi
     /**
      * Operation listAccountsAsyncWithHttpInfo.
      *
-     * Get all Amazon SW accounts for the seller
+     * Get all Amazon Seller Wallet accounts for the seller
      *
      * @param string $marketplace_id
-     *                               A marketplace identifier. Specifies the marketplace for which items are returned. (required)
+     *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -952,7 +952,7 @@ class AccountsApi
      * Create request for operation 'listAccounts'.
      *
      * @param string $marketplace_id
-     *                               A marketplace identifier. Specifies the marketplace for which items are returned. (required)
+     *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
