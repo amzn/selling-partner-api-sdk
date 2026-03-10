@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'PICKUP'|'DROPOFF'} HandoverMethod
  */
-export const HandoverMethod = Object.freeze({
-  PICKUP: 'PICKUP',
-  DROPOFF: 'DROPOFF',
-  constructFromObject: function (object) {
+export class HandoverMethod {
+  'PICKUP' = 'PICKUP'
+  'DROPOFF' = 'DROPOFF'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

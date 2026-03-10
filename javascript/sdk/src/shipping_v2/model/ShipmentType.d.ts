@@ -1,10 +1,9 @@
-export type ShipmentType = "FORWARD" | "RETURNS";
 /**
  * @typedef {'FORWARD'|'RETURNS'} ShipmentType
  */
-export const ShipmentType: Readonly<{
-    FORWARD: "FORWARD";
-    RETURNS: "RETURNS";
-    constructFromObject: (object: any) => any;
-}>;
+export class ShipmentType {
+    static constructFromObject(object: any): any;
+    FORWARD: string;
+    RETURNS: string;
+}
 //# sourceMappingURL=ShipmentType.d.ts.map

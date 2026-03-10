@@ -1,9 +1,8 @@
-export type ScheduleTransferType = "TIME_BASED";
 /**
  * @typedef {'TIME_BASED'} ScheduleTransferType
  */
-export const ScheduleTransferType: Readonly<{
-    TIME_BASED: "TIME_BASED";
-    constructFromObject: (object: any) => any;
-}>;
+export class ScheduleTransferType {
+    static constructFromObject(object: any): any;
+    TIME_BASED: string;
+}
 //# sourceMappingURL=ScheduleTransferType.d.ts.map

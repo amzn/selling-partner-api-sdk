@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'DARK'|'LIGHT'} ColorType
  */
-export const ColorType = Object.freeze({
-  DARK: 'DARK',
-  LIGHT: 'LIGHT',
-  constructFromObject: function (object) {
+export class ColorType {
+  'DARK' = 'DARK'
+  'LIGHT' = 'LIGHT'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

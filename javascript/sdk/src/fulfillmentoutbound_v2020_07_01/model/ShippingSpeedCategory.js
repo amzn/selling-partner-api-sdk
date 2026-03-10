@@ -16,12 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'Standard'|'Expedited'|'Priority'|'ScheduledDelivery'} ShippingSpeedCategory
  */
-export const ShippingSpeedCategory = Object.freeze({
-  Standard: 'Standard',
-  Expedited: 'Expedited',
-  Priority: 'Priority',
-  ScheduledDelivery: 'ScheduledDelivery',
-  constructFromObject: function (object) {
+export class ShippingSpeedCategory {
+  'Standard' = 'Standard'
+  'Expedited' = 'Expedited'
+  'Priority' = 'Priority'
+  'ScheduledDelivery' = 'ScheduledDelivery'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

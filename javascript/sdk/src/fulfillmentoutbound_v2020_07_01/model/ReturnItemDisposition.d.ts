@@ -1,13 +1,12 @@
-export type ReturnItemDisposition = "Sellable" | "Defective" | "CustomerDamaged" | "CarrierDamaged" | "FulfillerDamaged";
 /**
  * @typedef {'Sellable'|'Defective'|'CustomerDamaged'|'CarrierDamaged'|'FulfillerDamaged'} ReturnItemDisposition
  */
-export const ReturnItemDisposition: Readonly<{
-    Sellable: "Sellable";
-    Defective: "Defective";
-    CustomerDamaged: "CustomerDamaged";
-    CarrierDamaged: "CarrierDamaged";
-    FulfillerDamaged: "FulfillerDamaged";
-    constructFromObject: (object: any) => any;
-}>;
+export class ReturnItemDisposition {
+    static constructFromObject(object: any): any;
+    Sellable: string;
+    Defective: string;
+    CustomerDamaged: string;
+    CarrierDamaged: string;
+    FulfillerDamaged: string;
+}
 //# sourceMappingURL=ReturnItemDisposition.d.ts.map

@@ -1,13 +1,12 @@
-export type HttpMethod = "GET" | "PUT" | "PATCH" | "DELETE" | "POST";
 /**
  * @typedef {'GET'|'PUT'|'PATCH'|'DELETE'|'POST'} HttpMethod
  */
-export const HttpMethod: Readonly<{
-    GET: "GET";
-    PUT: "PUT";
-    PATCH: "PATCH";
-    DELETE: "DELETE";
-    POST: "POST";
-    constructFromObject: (object: any) => any;
-}>;
+export class HttpMethod {
+    static constructFromObject(object: any): any;
+    GET: string;
+    PUT: string;
+    PATCH: string;
+    DELETE: string;
+    POST: string;
+}
 //# sourceMappingURL=HttpMethod.d.ts.map

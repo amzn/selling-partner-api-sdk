@@ -1,10 +1,9 @@
-export type EnrollmentMethod = "MANUAL" | "AUTOMATIC";
 /**
  * @typedef {'MANUAL'|'AUTOMATIC'} EnrollmentMethod
  */
-export const EnrollmentMethod: Readonly<{
-    MANUAL: "MANUAL";
-    AUTOMATIC: "AUTOMATIC";
-    constructFromObject: (object: any) => any;
-}>;
+export class EnrollmentMethod {
+    static constructFromObject(object: any): any;
+    MANUAL: string;
+    AUTOMATIC: string;
+}
 //# sourceMappingURL=EnrollmentMethod.d.ts.map

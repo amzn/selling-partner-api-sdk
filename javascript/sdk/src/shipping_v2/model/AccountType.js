@@ -16,11 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'SHIPPER_ACCOUNT'|'SHIPPER_ACCOUNT_WITH_INVOICE'|'AMAZON_ACCOUNT'} AccountType
  */
-export const AccountType = Object.freeze({
-  SHIPPER_ACCOUNT: 'SHIPPER_ACCOUNT',
-  SHIPPER_ACCOUNT_WITH_INVOICE: 'SHIPPER_ACCOUNT_WITH_INVOICE',
-  AMAZON_ACCOUNT: 'AMAZON_ACCOUNT',
-  constructFromObject: function (object) {
+export class AccountType {
+  'SHIPPER_ACCOUNT' = 'SHIPPER_ACCOUNT'
+  'SHIPPER_ACCOUNT_WITH_INVOICE' = 'SHIPPER_ACCOUNT_WITH_INVOICE'
+  'AMAZON_ACCOUNT' = 'AMAZON_ACCOUNT'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

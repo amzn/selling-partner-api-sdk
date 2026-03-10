@@ -1,12 +1,11 @@
-export type AccountStatus = "ACTIVE" | "INACTIVE" | "PENDING" | "SUSPENDED";
 /**
  * @typedef {'ACTIVE'|'INACTIVE'|'PENDING'|'SUSPENDED'} AccountStatus
  */
-export const AccountStatus: Readonly<{
-    ACTIVE: "ACTIVE";
-    INACTIVE: "INACTIVE";
-    PENDING: "PENDING";
-    SUSPENDED: "SUSPENDED";
-    constructFromObject: (object: any) => any;
-}>;
+export class AccountStatus {
+    static constructFromObject(object: any): any;
+    ACTIVE: string;
+    INACTIVE: string;
+    PENDING: string;
+    SUSPENDED: string;
+}
 //# sourceMappingURL=AccountStatus.d.ts.map

@@ -16,12 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'OUT_FOR_DELIVERY'|'DELIVERED'|'NOT_DELIVERED'|'UNDELIVERABLE'} PackageSubStatus
  */
-export const PackageSubStatus = Object.freeze({
-  OUT_FOR_DELIVERY: 'OUT_FOR_DELIVERY',
-  DELIVERED: 'DELIVERED',
-  NOT_DELIVERED: 'NOT_DELIVERED',
-  UNDELIVERABLE: 'UNDELIVERABLE',
-  constructFromObject: function (object) {
+export class PackageSubStatus {
+  'OUT_FOR_DELIVERY' = 'OUT_FOR_DELIVERY'
+  'DELIVERED' = 'DELIVERED'
+  'NOT_DELIVERED' = 'NOT_DELIVERED'
+  'UNDELIVERABLE' = 'UNDELIVERABLE'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

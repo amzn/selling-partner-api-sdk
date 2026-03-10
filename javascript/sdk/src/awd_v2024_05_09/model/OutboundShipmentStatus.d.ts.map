@@ -1,1 +1,1 @@
-{"version":3,"file":"OutboundShipmentStatus.d.ts","sourceRoot":"","sources":["OutboundShipmentStatus.js"],"names":[],"mappings":"qCAgBa,SAAS,GAAC,YAAY,GAAC,WAAW,GAAC,WAAW,GAAC,UAAU,GAAC,QAAQ,GAAC,WAAW,GAAC,QAAQ;AADpG;;GAEG;AACH;;;;;;;;;;GAYE"}
+{"version":3,"file":"OutboundShipmentStatus.d.ts","sourceRoot":"","sources":["OutboundShipmentStatus.js"],"names":[],"mappings":"AAeA;;GAEG;AACH;IAUE,6CAEC;IAXD,gBAAqB;IACrB,mBAA2B;IAC3B,kBAAyB;IACzB,kBAAyB;IACzB,iBAAuB;IACvB,eAAmB;IACnB,kBAAyB;IACzB,eAAmB;CAKpB"}

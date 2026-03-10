@@ -16,11 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'PDF'|'PNG'|'ZPL'} DocumentFormat
  */
-export const DocumentFormat = Object.freeze({
-  PDF: 'PDF',
-  PNG: 'PNG',
-  ZPL: 'ZPL',
-  constructFromObject: function (object) {
+export class DocumentFormat {
+  'PDF' = 'PDF'
+  'PNG' = 'PNG'
+  'ZPL' = 'ZPL'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

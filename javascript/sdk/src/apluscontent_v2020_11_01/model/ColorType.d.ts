@@ -1,10 +1,9 @@
-export type ColorType = "DARK" | "LIGHT";
 /**
  * @typedef {'DARK'|'LIGHT'} ColorType
  */
-export const ColorType: Readonly<{
-    DARK: "DARK";
-    LIGHT: "LIGHT";
-    constructFromObject: (object: any) => any;
-}>;
+export class ColorType {
+    static constructFromObject(object: any): any;
+    DARK: string;
+    LIGHT: string;
+}
 //# sourceMappingURL=ColorType.d.ts.map

@@ -16,11 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'AMAZON_ONLY'|'NONE_ONLY'|'SELLER_ONLY'} OwnerConstraint
  */
-export const OwnerConstraint = Object.freeze({
-  AMAZON_ONLY: 'AMAZON_ONLY',
-  NONE_ONLY: 'NONE_ONLY',
-  SELLER_ONLY: 'SELLER_ONLY',
-  constructFromObject: function (object) {
+export class OwnerConstraint {
+  'AMAZON_ONLY' = 'AMAZON_ONLY'
+  'NONE_ONLY' = 'NONE_ONLY'
+  'SELLER_ONLY' = 'SELLER_ONLY'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

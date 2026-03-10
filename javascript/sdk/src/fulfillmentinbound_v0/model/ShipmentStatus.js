@@ -16,18 +16,19 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'WORKING'|'SHIPPED'|'RECEIVING'|'CANCELLED'|'DELETED'|'CLOSED'|'ERROR'|'IN_TRANSIT'|'DELIVERED'|'CHECKED_IN'} ShipmentStatus
  */
-export const ShipmentStatus = Object.freeze({
-  WORKING: 'WORKING',
-  SHIPPED: 'SHIPPED',
-  RECEIVING: 'RECEIVING',
-  CANCELLED: 'CANCELLED',
-  DELETED: 'DELETED',
-  CLOSED: 'CLOSED',
-  ERROR: 'ERROR',
-  IN_TRANSIT: 'IN_TRANSIT',
-  DELIVERED: 'DELIVERED',
-  CHECKED_IN: 'CHECKED_IN',
-  constructFromObject: function (object) {
+export class ShipmentStatus {
+  'WORKING' = 'WORKING'
+  'SHIPPED' = 'SHIPPED'
+  'RECEIVING' = 'RECEIVING'
+  'CANCELLED' = 'CANCELLED'
+  'DELETED' = 'DELETED'
+  'CLOSED' = 'CLOSED'
+  'ERROR' = 'ERROR'
+  'IN_TRANSIT' = 'IN_TRANSIT'
+  'DELIVERED' = 'DELIVERED'
+  'CHECKED_IN' = 'CHECKED_IN'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

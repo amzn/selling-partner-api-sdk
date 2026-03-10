@@ -1,11 +1,10 @@
-export type DocumentFormat = "PDF" | "PNG" | "ZPL";
 /**
  * @typedef {'PDF'|'PNG'|'ZPL'} DocumentFormat
  */
-export const DocumentFormat: Readonly<{
-    PDF: "PDF";
-    PNG: "PNG";
-    ZPL: "ZPL";
-    constructFromObject: (object: any) => any;
-}>;
+export class DocumentFormat {
+    static constructFromObject(object: any): any;
+    PDF: string;
+    PNG: string;
+    ZPL: string;
+}
 //# sourceMappingURL=DocumentFormat.d.ts.map

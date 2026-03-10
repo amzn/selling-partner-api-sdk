@@ -1,1 +1,1 @@
-{"version":3,"file":"ClaimReason.d.ts","sourceRoot":"","sources":["ClaimReason.js"],"names":[],"mappings":"0BAgBa,iBAAiB,GAAC,oBAAoB,GAAC,wBAAwB,GAAC,yBAAyB,GAAC,WAAW;AADlH;;GAEG;AACH;;;;;;;GASE"}
+{"version":3,"file":"ClaimReason.d.ts","sourceRoot":"","sources":["ClaimReason.js"],"names":[],"mappings":"AAeA;;GAEG;AACH;IAOE,6CAEC;IARD,wBAAqC;IACrC,2BAA2C;IAC3C,+BAAmD;IACnD,gCAAqD;IACrD,kBAAyB;CAK1B"}

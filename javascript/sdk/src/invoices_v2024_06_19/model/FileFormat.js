@@ -16,9 +16,10 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'XML'} FileFormat
  */
-export const FileFormat = Object.freeze({
-  XML: 'XML',
-  constructFromObject: function (object) {
+export class FileFormat {
+  'XML' = 'XML'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

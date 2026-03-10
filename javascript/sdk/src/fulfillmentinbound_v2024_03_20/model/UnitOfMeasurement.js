@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'IN'|'CM'} UnitOfMeasurement
  */
-export const UnitOfMeasurement = Object.freeze({
-  IN: 'IN',
-  CM: 'CM',
-  constructFromObject: function (object) {
+export class UnitOfMeasurement {
+  'IN' = 'IN'
+  'CM' = 'CM'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

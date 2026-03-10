@@ -16,11 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'PRODUCT_UNITS'|'CASES'|'PALLETS'} InventoryUnitOfMeasurement
  */
-export const InventoryUnitOfMeasurement = Object.freeze({
-  PRODUCT_UNITS: 'PRODUCT_UNITS',
-  CASES: 'CASES',
-  PALLETS: 'PALLETS',
-  constructFromObject: function (object) {
+export class InventoryUnitOfMeasurement {
+  'PRODUCT_UNITS' = 'PRODUCT_UNITS'
+  'CASES' = 'CASES'
+  'PALLETS' = 'PALLETS'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

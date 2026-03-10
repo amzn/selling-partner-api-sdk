@@ -16,15 +16,16 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'MONDAY'|'TUESDAY'|'WEDNESDAY'|'THURSDAY'|'FRIDAY'|'SATURDAY'|'SUNDAY'} DayOfWeek
  */
-export const DayOfWeek = Object.freeze({
-  MONDAY: 'MONDAY',
-  TUESDAY: 'TUESDAY',
-  WEDNESDAY: 'WEDNESDAY',
-  THURSDAY: 'THURSDAY',
-  FRIDAY: 'FRIDAY',
-  SATURDAY: 'SATURDAY',
-  SUNDAY: 'SUNDAY',
-  constructFromObject: function (object) {
+export class DayOfWeek {
+  'MONDAY' = 'MONDAY'
+  'TUESDAY' = 'TUESDAY'
+  'WEDNESDAY' = 'WEDNESDAY'
+  'THURSDAY' = 'THURSDAY'
+  'FRIDAY' = 'FRIDAY'
+  'SATURDAY' = 'SATURDAY'
+  'SUNDAY' = 'SUNDAY'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

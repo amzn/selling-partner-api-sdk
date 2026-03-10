@@ -1,18 +1,17 @@
-export type Status = "PreTransit" | "InTransit" | "Delivered" | "Lost" | "OutForDelivery" | "Rejected" | "Undeliverable" | "DeliveryAttempted" | "PickupCancelled" | "AwaitingCustomerPickup";
 /**
  * @typedef {'PreTransit'|'InTransit'|'Delivered'|'Lost'|'OutForDelivery'|'Rejected'|'Undeliverable'|'DeliveryAttempted'|'PickupCancelled'|'AwaitingCustomerPickup'} Status
  */
-export const Status: Readonly<{
-    PreTransit: "PreTransit";
-    InTransit: "InTransit";
-    Delivered: "Delivered";
-    Lost: "Lost";
-    OutForDelivery: "OutForDelivery";
-    Rejected: "Rejected";
-    Undeliverable: "Undeliverable";
-    DeliveryAttempted: "DeliveryAttempted";
-    PickupCancelled: "PickupCancelled";
-    AwaitingCustomerPickup: "AwaitingCustomerPickup";
-    constructFromObject: (object: any) => any;
-}>;
+export class Status {
+    static constructFromObject(object: any): any;
+    PreTransit: string;
+    InTransit: string;
+    Delivered: string;
+    Lost: string;
+    OutForDelivery: string;
+    Rejected: string;
+    Undeliverable: string;
+    DeliveryAttempted: string;
+    PickupCancelled: string;
+    AwaitingCustomerPickup: string;
+}
 //# sourceMappingURL=Status.d.ts.map

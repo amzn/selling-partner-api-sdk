@@ -1,11 +1,10 @@
-export type LabelPrepType = "NO_LABEL" | "SELLER_LABEL" | "AMAZON_LABEL";
 /**
  * @typedef {'NO_LABEL'|'SELLER_LABEL'|'AMAZON_LABEL'} LabelPrepType
  */
-export const LabelPrepType: Readonly<{
-    NO_LABEL: "NO_LABEL";
-    SELLER_LABEL: "SELLER_LABEL";
-    AMAZON_LABEL: "AMAZON_LABEL";
-    constructFromObject: (object: any) => any;
-}>;
+export class LabelPrepType {
+    static constructFromObject(object: any): any;
+    NO_LABEL: string;
+    SELLER_LABEL: string;
+    AMAZON_LABEL: string;
+}
 //# sourceMappingURL=LabelPrepType.d.ts.map

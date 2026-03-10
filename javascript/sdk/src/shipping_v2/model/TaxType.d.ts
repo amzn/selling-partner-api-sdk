@@ -1,9 +1,8 @@
-export type TaxType = "GST";
 /**
  * @typedef {'GST'} TaxType
  */
-export const TaxType: Readonly<{
-    GST: "GST";
-    constructFromObject: (object: any) => any;
-}>;
+export class TaxType {
+    static constructFromObject(object: any): any;
+    GST: string;
+}
 //# sourceMappingURL=TaxType.d.ts.map

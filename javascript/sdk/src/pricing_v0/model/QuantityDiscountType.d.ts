@@ -1,9 +1,8 @@
-export type QuantityDiscountType = "QUANTITY_DISCOUNT";
 /**
  * @typedef {'QUANTITY_DISCOUNT'} QuantityDiscountType
  */
-export const QuantityDiscountType: Readonly<{
-    QUANTITY_DISCOUNT: "QUANTITY_DISCOUNT";
-    constructFromObject: (object: any) => any;
-}>;
+export class QuantityDiscountType {
+    static constructFromObject(object: any): any;
+    QUANTITY_DISCOUNT: string;
+}
 //# sourceMappingURL=QuantityDiscountType.d.ts.map

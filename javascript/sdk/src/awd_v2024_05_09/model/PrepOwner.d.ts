@@ -1,10 +1,9 @@
-export type PrepOwner = "AMAZON" | "SELF";
 /**
  * @typedef {'AMAZON'|'SELF'} PrepOwner
  */
-export const PrepOwner: Readonly<{
-    AMAZON: "AMAZON";
-    SELF: "SELF";
-    constructFromObject: (object: any) => any;
-}>;
+export class PrepOwner {
+    static constructFromObject(object: any): any;
+    AMAZON: string;
+    SELF: string;
+}
 //# sourceMappingURL=PrepOwner.d.ts.map

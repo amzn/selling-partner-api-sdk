@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'REFUND'|'CERTIFICATE_OF_FACT'} SettlementType
  */
-export const SettlementType = Object.freeze({
-  REFUND: 'REFUND',
-  CERTIFICATE_OF_FACT: 'CERTIFICATE_OF_FACT',
-  constructFromObject: function (object) {
+export class SettlementType {
+  'REFUND' = 'REFUND'
+  'CERTIFICATE_OF_FACT' = 'CERTIFICATE_OF_FACT'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

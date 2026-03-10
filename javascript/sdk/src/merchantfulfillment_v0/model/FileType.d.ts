@@ -1,11 +1,10 @@
-export type FileType = "application/pdf" | "application/zpl" | "image/png";
 /**
  * @typedef {'application/pdf'|'application/zpl'|'image/png'} FileType
  */
-export const FileType: Readonly<{
-    'application/pdf': "application/pdf";
-    'application/zpl': "application/zpl";
-    'image/png': "image/png";
-    constructFromObject: (object: any) => any;
-}>;
+export class FileType {
+    static constructFromObject(object: any): any;
+    'application/pdf': string;
+    'application/zpl': string;
+    'image/png': string;
+}
 //# sourceMappingURL=FileType.d.ts.map

@@ -16,9 +16,10 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'cm'} UnitOfLength
  */
-export const UnitOfLength = Object.freeze({
-  cm: 'cm',
-  constructFromObject: function (object) {
+export class UnitOfLength {
+  'cm' = 'cm'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

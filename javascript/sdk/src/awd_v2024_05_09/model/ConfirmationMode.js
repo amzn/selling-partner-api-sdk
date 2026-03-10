@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'AUTO'|'MANUAL'} ConfirmationMode
  */
-export const ConfirmationMode = Object.freeze({
-  AUTO: 'AUTO',
-  MANUAL: 'MANUAL',
-  constructFromObject: function (object) {
+export class ConfirmationMode {
+  'AUTO' = 'AUTO'
+  'MANUAL' = 'MANUAL'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

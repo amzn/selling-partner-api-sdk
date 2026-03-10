@@ -16,13 +16,14 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'LOST_IN_TRANSIT'|'DAMAGED_IN_TRANSIT'|'DELIVERED_NOT_RECEIVED'|'ITEM_MISSING_SWITCHEROO'|'COD_ABUSE'} ClaimReason
  */
-export const ClaimReason = Object.freeze({
-  LOST_IN_TRANSIT: 'LOST_IN_TRANSIT',
-  DAMAGED_IN_TRANSIT: 'DAMAGED_IN_TRANSIT',
-  DELIVERED_NOT_RECEIVED: 'DELIVERED_NOT_RECEIVED',
-  ITEM_MISSING_SWITCHEROO: 'ITEM_MISSING_SWITCHEROO',
-  COD_ABUSE: 'COD_ABUSE',
-  constructFromObject: function (object) {
+export class ClaimReason {
+  'LOST_IN_TRANSIT' = 'LOST_IN_TRANSIT'
+  'DAMAGED_IN_TRANSIT' = 'DAMAGED_IN_TRANSIT'
+  'DELIVERED_NOT_RECEIVED' = 'DELIVERED_NOT_RECEIVED'
+  'ITEM_MISSING_SWITCHEROO' = 'ITEM_MISSING_SWITCHEROO'
+  'COD_ABUSE' = 'COD_ABUSE'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

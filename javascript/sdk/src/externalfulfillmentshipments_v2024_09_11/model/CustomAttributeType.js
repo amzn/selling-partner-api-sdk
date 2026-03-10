@@ -16,13 +16,14 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'STRING'|'BOOLEAN'|'INTEGER'|'DOUBLE'|'JSON_STRING'} CustomAttributeType
  */
-export const CustomAttributeType = Object.freeze({
-  STRING: 'STRING',
-  BOOLEAN: 'BOOLEAN',
-  INTEGER: 'INTEGER',
-  DOUBLE: 'DOUBLE',
-  JSON_STRING: 'JSON_STRING',
-  constructFromObject: function (object) {
+export class CustomAttributeType {
+  'STRING' = 'STRING'
+  'BOOLEAN' = 'BOOLEAN'
+  'INTEGER' = 'INTEGER'
+  'DOUBLE' = 'DOUBLE'
+  'JSON_STRING' = 'JSON_STRING'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

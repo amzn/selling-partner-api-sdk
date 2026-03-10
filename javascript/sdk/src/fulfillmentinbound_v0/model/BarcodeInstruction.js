@@ -16,11 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'RequiresFNSKULabel'|'CanUseOriginalBarcode'|'MustProvideSellerSKU'} BarcodeInstruction
  */
-export const BarcodeInstruction = Object.freeze({
-  RequiresFNSKULabel: 'RequiresFNSKULabel',
-  CanUseOriginalBarcode: 'CanUseOriginalBarcode',
-  MustProvideSellerSKU: 'MustProvideSellerSKU',
-  constructFromObject: function (object) {
+export class BarcodeInstruction {
+  'RequiresFNSKULabel' = 'RequiresFNSKULabel'
+  'CanUseOriginalBarcode' = 'CanUseOriginalBarcode'
+  'MustProvideSellerSKU' = 'MustProvideSellerSKU'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

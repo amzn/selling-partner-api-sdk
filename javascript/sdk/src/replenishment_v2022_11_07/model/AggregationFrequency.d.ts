@@ -1,12 +1,11 @@
-export type AggregationFrequency = "WEEK" | "MONTH" | "QUARTER" | "YEAR";
 /**
  * @typedef {'WEEK'|'MONTH'|'QUARTER'|'YEAR'} AggregationFrequency
  */
-export const AggregationFrequency: Readonly<{
-    WEEK: "WEEK";
-    MONTH: "MONTH";
-    QUARTER: "QUARTER";
-    YEAR: "YEAR";
-    constructFromObject: (object: any) => any;
-}>;
+export class AggregationFrequency {
+    static constructFromObject(object: any): any;
+    WEEK: string;
+    MONTH: string;
+    QUARTER: string;
+    YEAR: string;
+}
 //# sourceMappingURL=AggregationFrequency.d.ts.map

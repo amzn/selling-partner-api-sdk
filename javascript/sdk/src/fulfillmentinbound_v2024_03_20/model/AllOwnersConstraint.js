@@ -16,9 +16,10 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'MUST_MATCH'} AllOwnersConstraint
  */
-export const AllOwnersConstraint = Object.freeze({
-  MUST_MATCH: 'MUST_MATCH',
-  constructFromObject: function (object) {
+export class AllOwnersConstraint {
+  'MUST_MATCH' = 'MUST_MATCH'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

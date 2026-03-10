@@ -1,10 +1,9 @@
-export type TimePeriodType = "PERFORMANCE" | "FORECAST";
 /**
  * @typedef {'PERFORMANCE'|'FORECAST'} TimePeriodType
  */
-export const TimePeriodType: Readonly<{
-    PERFORMANCE: "PERFORMANCE";
-    FORECAST: "FORECAST";
-    constructFromObject: (object: any) => any;
-}>;
+export class TimePeriodType {
+    static constructFromObject(object: any): any;
+    PERFORMANCE: string;
+    FORECAST: string;
+}
 //# sourceMappingURL=TimePeriodType.d.ts.map

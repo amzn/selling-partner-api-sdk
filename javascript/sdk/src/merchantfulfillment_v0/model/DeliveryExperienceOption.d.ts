@@ -1,13 +1,12 @@
-export type DeliveryExperienceOption = "DeliveryConfirmationWithAdultSignature" | "DeliveryConfirmationWithSignature" | "DeliveryConfirmationWithoutSignature" | "NoTracking" | "NoPreference";
 /**
  * @typedef {'DeliveryConfirmationWithAdultSignature'|'DeliveryConfirmationWithSignature'|'DeliveryConfirmationWithoutSignature'|'NoTracking'|'NoPreference'} DeliveryExperienceOption
  */
-export const DeliveryExperienceOption: Readonly<{
-    DeliveryConfirmationWithAdultSignature: "DeliveryConfirmationWithAdultSignature";
-    DeliveryConfirmationWithSignature: "DeliveryConfirmationWithSignature";
-    DeliveryConfirmationWithoutSignature: "DeliveryConfirmationWithoutSignature";
-    NoTracking: "NoTracking";
-    NoPreference: "NoPreference";
-    constructFromObject: (object: any) => any;
-}>;
+export class DeliveryExperienceOption {
+    static constructFromObject(object: any): any;
+    DeliveryConfirmationWithAdultSignature: string;
+    DeliveryConfirmationWithSignature: string;
+    DeliveryConfirmationWithoutSignature: string;
+    NoTracking: string;
+    NoPreference: string;
+}
 //# sourceMappingURL=DeliveryExperienceOption.d.ts.map

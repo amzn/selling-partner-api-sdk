@@ -1,10 +1,9 @@
-export type Priority = "HIGH" | "LOW";
 /**
  * @typedef {'HIGH'|'LOW'} Priority
  */
-export const Priority: Readonly<{
-    HIGH: "HIGH";
-    LOW: "LOW";
-    constructFromObject: (object: any) => any;
-}>;
+export class Priority {
+    static constructFromObject(object: any): any;
+    HIGH: string;
+    LOW: string;
+}
 //# sourceMappingURL=Priority.d.ts.map

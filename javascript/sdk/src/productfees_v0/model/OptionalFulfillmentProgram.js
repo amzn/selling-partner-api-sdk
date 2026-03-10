@@ -16,11 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'FBA_CORE'|'FBA_SNL'|'FBA_EFN'} OptionalFulfillmentProgram
  */
-export const OptionalFulfillmentProgram = Object.freeze({
-  FBA_CORE: 'FBA_CORE',
-  FBA_SNL: 'FBA_SNL',
-  FBA_EFN: 'FBA_EFN',
-  constructFromObject: function (object) {
+export class OptionalFulfillmentProgram {
+  'FBA_CORE' = 'FBA_CORE'
+  'FBA_SNL' = 'FBA_SNL'
+  'FBA_EFN' = 'FBA_EFN'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

@@ -1,9 +1,8 @@
-export type RateItemType = "INCLUDED";
 /**
  * @typedef {'INCLUDED'} RateItemType
  */
-export const RateItemType: Readonly<{
-    INCLUDED: "INCLUDED";
-    constructFromObject: (object: any) => any;
-}>;
+export class RateItemType {
+    static constructFromObject(object: any): any;
+    INCLUDED: string;
+}
 //# sourceMappingURL=RateItemType.d.ts.map

@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'AMAZON'|'SELLER'} PrepOwner
  */
-export const PrepOwner = Object.freeze({
-  AMAZON: 'AMAZON',
-  SELLER: 'SELLER',
-  constructFromObject: function (object) {
+export class PrepOwner {
+  'AMAZON' = 'AMAZON'
+  'SELLER' = 'SELLER'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

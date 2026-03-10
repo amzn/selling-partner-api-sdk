@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'HIGH'|'LOW'} Priority
  */
-export const Priority = Object.freeze({
-  HIGH: 'HIGH',
-  LOW: 'LOW',
-  constructFromObject: function (object) {
+export class Priority {
+  'HIGH' = 'HIGH'
+  'LOW' = 'LOW'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

@@ -16,20 +16,21 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'ReadyForPickup'|'PickedUp'|'AtOriginFC'|'AtDestinationFC'|'Delivered'|'Rejected'|'Undeliverable'|'ReturnedToSeller'|'LostInTransit'|'LabelCanceled'|'DamagedInTransit'|'OutForDelivery'} PackageStatus
  */
-export const PackageStatus = Object.freeze({
-  ReadyForPickup: 'ReadyForPickup',
-  PickedUp: 'PickedUp',
-  AtOriginFC: 'AtOriginFC',
-  AtDestinationFC: 'AtDestinationFC',
-  Delivered: 'Delivered',
-  Rejected: 'Rejected',
-  Undeliverable: 'Undeliverable',
-  ReturnedToSeller: 'ReturnedToSeller',
-  LostInTransit: 'LostInTransit',
-  LabelCanceled: 'LabelCanceled',
-  DamagedInTransit: 'DamagedInTransit',
-  OutForDelivery: 'OutForDelivery',
-  constructFromObject: function (object) {
+export class PackageStatus {
+  'ReadyForPickup' = 'ReadyForPickup'
+  'PickedUp' = 'PickedUp'
+  'AtOriginFC' = 'AtOriginFC'
+  'AtDestinationFC' = 'AtDestinationFC'
+  'Delivered' = 'Delivered'
+  'Rejected' = 'Rejected'
+  'Undeliverable' = 'Undeliverable'
+  'ReturnedToSeller' = 'ReturnedToSeller'
+  'LostInTransit' = 'LostInTransit'
+  'LabelCanceled' = 'LabelCanceled'
+  'DamagedInTransit' = 'DamagedInTransit'
+  'OutForDelivery' = 'OutForDelivery'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

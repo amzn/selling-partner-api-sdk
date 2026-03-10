@@ -23,9 +23,9 @@ export class QuantityDiscountPriceType {
      */
     constructor(quantityTier: number, quantityDiscountType: QuantityDiscountType, listingPrice: MoneyType);
     quantityTier: number;
-    quantityDiscountType: "QUANTITY_DISCOUNT";
+    quantityDiscountType: QuantityDiscountType;
     listingPrice: MoneyType;
 }
-import { MoneyType } from './MoneyType.js';
 import { QuantityDiscountType } from './QuantityDiscountType.js';
+import { MoneyType } from './MoneyType.js';
 //# sourceMappingURL=QuantityDiscountPriceType.d.ts.map

@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'CASE'|'PALLET'} DistributionPackageType
  */
-export const DistributionPackageType = Object.freeze({
-  CASE: 'CASE',
-  PALLET: 'PALLET',
-  constructFromObject: function (object) {
+export class DistributionPackageType {
+  'CASE' = 'CASE'
+  'PALLET' = 'PALLET'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

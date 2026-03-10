@@ -1,12 +1,11 @@
-export type NetCostUnitOfMeasure = "POUNDS" | "OUNCES" | "GRAMS" | "KILOGRAMS";
 /**
  * @typedef {'POUNDS'|'OUNCES'|'GRAMS'|'KILOGRAMS'} NetCostUnitOfMeasure
  */
-export const NetCostUnitOfMeasure: Readonly<{
-    POUNDS: "POUNDS";
-    OUNCES: "OUNCES";
-    GRAMS: "GRAMS";
-    KILOGRAMS: "KILOGRAMS";
-    constructFromObject: (object: any) => any;
-}>;
+export class NetCostUnitOfMeasure {
+    static constructFromObject(object: any): any;
+    POUNDS: string;
+    OUNCES: string;
+    GRAMS: string;
+    KILOGRAMS: string;
+}
 //# sourceMappingURL=NetCostUnitOfMeasure.d.ts.map

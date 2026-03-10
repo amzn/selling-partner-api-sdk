@@ -1,11 +1,10 @@
-export type CarrierWillPickUpOption = "CarrierWillPickUp" | "ShipperWillDropOff" | "NoPreference";
 /**
  * @typedef {'CarrierWillPickUp'|'ShipperWillDropOff'|'NoPreference'} CarrierWillPickUpOption
  */
-export const CarrierWillPickUpOption: Readonly<{
-    CarrierWillPickUp: "CarrierWillPickUp";
-    ShipperWillDropOff: "ShipperWillDropOff";
-    NoPreference: "NoPreference";
-    constructFromObject: (object: any) => any;
-}>;
+export class CarrierWillPickUpOption {
+    static constructFromObject(object: any): any;
+    CarrierWillPickUp: string;
+    ShipperWillDropOff: string;
+    NoPreference: string;
+}
 //# sourceMappingURL=CarrierWillPickUpOption.d.ts.map

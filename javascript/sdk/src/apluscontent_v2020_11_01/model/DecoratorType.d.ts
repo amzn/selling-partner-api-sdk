@@ -1,16 +1,15 @@
-export type DecoratorType = "LIST_ITEM" | "LIST_ORDERED" | "LIST_UNORDERED" | "STYLE_BOLD" | "STYLE_ITALIC" | "STYLE_LINEBREAK" | "STYLE_PARAGRAPH" | "STYLE_UNDERLINE";
 /**
  * @typedef {'LIST_ITEM'|'LIST_ORDERED'|'LIST_UNORDERED'|'STYLE_BOLD'|'STYLE_ITALIC'|'STYLE_LINEBREAK'|'STYLE_PARAGRAPH'|'STYLE_UNDERLINE'} DecoratorType
  */
-export const DecoratorType: Readonly<{
-    LIST_ITEM: "LIST_ITEM";
-    LIST_ORDERED: "LIST_ORDERED";
-    LIST_UNORDERED: "LIST_UNORDERED";
-    STYLE_BOLD: "STYLE_BOLD";
-    STYLE_ITALIC: "STYLE_ITALIC";
-    STYLE_LINEBREAK: "STYLE_LINEBREAK";
-    STYLE_PARAGRAPH: "STYLE_PARAGRAPH";
-    STYLE_UNDERLINE: "STYLE_UNDERLINE";
-    constructFromObject: (object: any) => any;
-}>;
+export class DecoratorType {
+    static constructFromObject(object: any): any;
+    LIST_ITEM: string;
+    LIST_ORDERED: string;
+    LIST_UNORDERED: string;
+    STYLE_BOLD: string;
+    STYLE_ITALIC: string;
+    STYLE_LINEBREAK: string;
+    STYLE_PARAGRAPH: string;
+    STYLE_UNDERLINE: string;
+}
 //# sourceMappingURL=DecoratorType.d.ts.map

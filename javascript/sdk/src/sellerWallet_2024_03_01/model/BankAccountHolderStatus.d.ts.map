@@ -1,1 +1,1 @@
-{"version":3,"file":"BankAccountHolderStatus.d.ts","sourceRoot":"","sources":["BankAccountHolderStatus.js"],"names":[],"mappings":"sCAgBa,QAAQ,GAAC,UAAU,GAAC,cAAc,GAAC,qBAAqB;AADrE;;GAEG;AACH;;;;;;GAQE"}
+{"version":3,"file":"BankAccountHolderStatus.d.ts","sourceRoot":"","sources":["BankAccountHolderStatus.js"],"names":[],"mappings":"AAeA;;GAEG;AACH;IAME,6CAEC;IAPD,eAAmB;IACnB,iBAAuB;IACvB,qBAA+B;IAC/B,4BAA6C;CAK9C"}

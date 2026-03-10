@@ -1,10 +1,9 @@
-export type GenerationStatus = "Completed" | "InProgress";
 /**
  * @typedef {'Completed'|'InProgress'} GenerationStatus
  */
-export const GenerationStatus: Readonly<{
-    Completed: "Completed";
-    InProgress: "InProgress";
-    constructFromObject: (object: any) => any;
-}>;
+export class GenerationStatus {
+    static constructFromObject(object: any): any;
+    Completed: string;
+    InProgress: string;
+}
 //# sourceMappingURL=GenerationStatus.d.ts.map

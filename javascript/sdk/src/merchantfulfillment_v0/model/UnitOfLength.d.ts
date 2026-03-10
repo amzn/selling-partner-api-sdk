@@ -1,10 +1,9 @@
-export type UnitOfLength = "inches" | "centimeters";
 /**
  * @typedef {'inches'|'centimeters'} UnitOfLength
  */
-export const UnitOfLength: Readonly<{
-    inches: "inches";
-    centimeters: "centimeters";
-    constructFromObject: (object: any) => any;
-}>;
+export class UnitOfLength {
+    static constructFromObject(object: any): any;
+    inches: string;
+    centimeters: string;
+}
 //# sourceMappingURL=UnitOfLength.d.ts.map

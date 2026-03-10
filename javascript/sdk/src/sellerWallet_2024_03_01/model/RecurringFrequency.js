@@ -16,12 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'DAILY'|'WEEKLY'|'BIWEEKLY'|'MONTHLY'} RecurringFrequency
  */
-export const RecurringFrequency = Object.freeze({
-  DAILY: 'DAILY',
-  WEEKLY: 'WEEKLY',
-  BIWEEKLY: 'BIWEEKLY',
-  MONTHLY: 'MONTHLY',
-  constructFromObject: function (object) {
+export class RecurringFrequency {
+  'DAILY' = 'DAILY'
+  'WEEKLY' = 'WEEKLY'
+  'BIWEEKLY' = 'BIWEEKLY'
+  'MONTHLY' = 'MONTHLY'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

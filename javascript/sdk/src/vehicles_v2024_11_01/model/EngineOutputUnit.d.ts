@@ -1,10 +1,9 @@
-export type EngineOutputUnit = "KILOWATT" | "HORSEPOWER";
 /**
  * @typedef {'KILOWATT'|'HORSEPOWER'} EngineOutputUnit
  */
-export const EngineOutputUnit: Readonly<{
-    KILOWATT: "KILOWATT";
-    HORSEPOWER: "HORSEPOWER";
-    constructFromObject: (object: any) => any;
-}>;
+export class EngineOutputUnit {
+    static constructFromObject(object: any): any;
+    KILOWATT: string;
+    HORSEPOWER: string;
+}
 //# sourceMappingURL=EngineOutputUnit.d.ts.map

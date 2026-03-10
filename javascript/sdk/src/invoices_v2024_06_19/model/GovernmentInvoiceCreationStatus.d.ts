@@ -1,11 +1,10 @@
-export type GovernmentInvoiceCreationStatus = "PROCESSING" | "SUCCESS" | "ERROR";
 /**
  * @typedef {'PROCESSING'|'SUCCESS'|'ERROR'} GovernmentInvoiceCreationStatus
  */
-export const GovernmentInvoiceCreationStatus: Readonly<{
-    PROCESSING: "PROCESSING";
-    SUCCESS: "SUCCESS";
-    ERROR: "ERROR";
-    constructFromObject: (object: any) => any;
-}>;
+export class GovernmentInvoiceCreationStatus {
+    static constructFromObject(object: any): any;
+    PROCESSING: string;
+    SUCCESS: string;
+    ERROR: string;
+}
 //# sourceMappingURL=GovernmentInvoiceCreationStatus.d.ts.map

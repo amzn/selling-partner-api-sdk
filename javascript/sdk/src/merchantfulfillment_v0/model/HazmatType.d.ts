@@ -1,10 +1,9 @@
-export type HazmatType = "None" | "LQHazmat";
 /**
  * @typedef {'None'|'LQHazmat'} HazmatType
  */
-export const HazmatType: Readonly<{
-    None: "None";
-    LQHazmat: "LQHazmat";
-    constructFromObject: (object: any) => any;
-}>;
+export class HazmatType {
+    static constructFromObject(object: any): any;
+    None: string;
+    LQHazmat: string;
+}
 //# sourceMappingURL=HazmatType.d.ts.map

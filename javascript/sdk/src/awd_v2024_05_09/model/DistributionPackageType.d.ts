@@ -1,10 +1,9 @@
-export type DistributionPackageType = "CASE" | "PALLET";
 /**
  * @typedef {'CASE'|'PALLET'} DistributionPackageType
  */
-export const DistributionPackageType: Readonly<{
-    CASE: "CASE";
-    PALLET: "PALLET";
-    constructFromObject: (object: any) => any;
-}>;
+export class DistributionPackageType {
+    static constructFromObject(object: any): any;
+    CASE: string;
+    PALLET: string;
+}
 //# sourceMappingURL=DistributionPackageType.d.ts.map

@@ -16,13 +16,14 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'Pending'|'Approved'|'Rejected'|'Expired'|'Cancelled'} VerificationStatus
  */
-export const VerificationStatus = Object.freeze({
-  Pending: 'Pending',
-  Approved: 'Approved',
-  Rejected: 'Rejected',
-  Expired: 'Expired',
-  Cancelled: 'Cancelled',
-  constructFromObject: function (object) {
+export class VerificationStatus {
+  'Pending' = 'Pending'
+  'Approved' = 'Approved'
+  'Rejected' = 'Rejected'
+  'Expired' = 'Expired'
+  'Cancelled' = 'Cancelled'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

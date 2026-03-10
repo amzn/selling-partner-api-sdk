@@ -1,9 +1,8 @@
-export type CarrierCodeType = "SCAC";
 /**
  * @typedef {'SCAC'} CarrierCodeType
  */
-export const CarrierCodeType: Readonly<{
-    SCAC: "SCAC";
-    constructFromObject: (object: any) => any;
-}>;
+export class CarrierCodeType {
+    static constructFromObject(object: any): any;
+    SCAC: string;
+}
 //# sourceMappingURL=CarrierCodeType.d.ts.map

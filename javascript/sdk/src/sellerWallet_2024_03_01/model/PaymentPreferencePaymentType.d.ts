@@ -1,10 +1,9 @@
-export type PaymentPreferencePaymentType = "PERCENTAGE" | "AMOUNT";
 /**
  * @typedef {'PERCENTAGE'|'AMOUNT'} PaymentPreferencePaymentType
  */
-export const PaymentPreferencePaymentType: Readonly<{
-    PERCENTAGE: "PERCENTAGE";
-    AMOUNT: "AMOUNT";
-    constructFromObject: (object: any) => any;
-}>;
+export class PaymentPreferencePaymentType {
+    static constructFromObject(object: any): any;
+    PERCENTAGE: string;
+    AMOUNT: string;
+}
 //# sourceMappingURL=PaymentPreferencePaymentType.d.ts.map

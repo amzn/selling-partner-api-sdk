@@ -16,11 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'FillOrKill'|'FillAll'|'FillAllAvailable'} FulfillmentPolicy
  */
-export const FulfillmentPolicy = Object.freeze({
-  FillOrKill: 'FillOrKill',
-  FillAll: 'FillAll',
-  FillAllAvailable: 'FillAllAvailable',
-  constructFromObject: function (object) {
+export class FulfillmentPolicy {
+  'FillOrKill' = 'FillOrKill'
+  'FillAll' = 'FillAll'
+  'FillAllAvailable' = 'FillAllAvailable'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

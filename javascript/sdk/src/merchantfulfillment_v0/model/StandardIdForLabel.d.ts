@@ -1,9 +1,8 @@
-export type StandardIdForLabel = "AmazonOrderId";
 /**
  * @typedef {'AmazonOrderId'} StandardIdForLabel
  */
-export const StandardIdForLabel: Readonly<{
-    AmazonOrderId: "AmazonOrderId";
-    constructFromObject: (object: any) => any;
-}>;
+export class StandardIdForLabel {
+    static constructFromObject(object: any): any;
+    AmazonOrderId: string;
+}
 //# sourceMappingURL=StandardIdForLabel.d.ts.map

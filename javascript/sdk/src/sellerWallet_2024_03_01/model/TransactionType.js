@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'CREDIT'|'DEBIT'} TransactionType
  */
-export const TransactionType = Object.freeze({
-  CREDIT: 'CREDIT',
-  DEBIT: 'DEBIT',
-  constructFromObject: function (object) {
+export class TransactionType {
+  'CREDIT' = 'CREDIT'
+  'DEBIT' = 'DEBIT'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

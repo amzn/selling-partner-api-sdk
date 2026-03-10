@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'PNG'|'ZPL'} ContainerLabelFormat
  */
-export const ContainerLabelFormat = Object.freeze({
-  PNG: 'PNG',
-  ZPL: 'ZPL',
-  constructFromObject: function (object) {
+export class ContainerLabelFormat {
+  'PNG' = 'PNG'
+  'ZPL' = 'ZPL'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

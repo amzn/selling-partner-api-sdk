@@ -16,22 +16,23 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'ADULT'|'BABY'|'FC_PROVIDED'|'FRAGILE'|'GRANULAR'|'HANGER'|'LIQUID'|'PERFORATED'|'SET'|'SHARP'|'SMALL'|'TEXTILE'|'NO_PREP'|'UNKNOWN'} PrepCategory
  */
-export const PrepCategory = Object.freeze({
-  ADULT: 'ADULT',
-  BABY: 'BABY',
-  FC_PROVIDED: 'FC_PROVIDED',
-  FRAGILE: 'FRAGILE',
-  GRANULAR: 'GRANULAR',
-  HANGER: 'HANGER',
-  LIQUID: 'LIQUID',
-  PERFORATED: 'PERFORATED',
-  SET: 'SET',
-  SHARP: 'SHARP',
-  SMALL: 'SMALL',
-  TEXTILE: 'TEXTILE',
-  NO_PREP: 'NO_PREP',
-  UNKNOWN: 'UNKNOWN',
-  constructFromObject: function (object) {
+export class PrepCategory {
+  'ADULT' = 'ADULT'
+  'BABY' = 'BABY'
+  'FC_PROVIDED' = 'FC_PROVIDED'
+  'FRAGILE' = 'FRAGILE'
+  'GRANULAR' = 'GRANULAR'
+  'HANGER' = 'HANGER'
+  'LIQUID' = 'LIQUID'
+  'PERFORATED' = 'PERFORATED'
+  'SET' = 'SET'
+  'SHARP' = 'SHARP'
+  'SMALL' = 'SMALL'
+  'TEXTILE' = 'TEXTILE'
+  'NO_PREP' = 'NO_PREP'
+  'UNKNOWN' = 'UNKNOWN'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

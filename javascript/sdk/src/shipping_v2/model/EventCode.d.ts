@@ -1,22 +1,21 @@
-export type EventCode = "ReadyForReceive" | "PickupDone" | "Delivered" | "Departed" | "DeliveryAttempted" | "Lost" | "OutForDelivery" | "ArrivedAtCarrierFacility" | "Rejected" | "Undeliverable" | "PickupCancelled" | "ReturnInitiated" | "AvailableForPickup" | "RecipientRequestedAlternateDeliveryTiming";
 /**
  * @typedef {'ReadyForReceive'|'PickupDone'|'Delivered'|'Departed'|'DeliveryAttempted'|'Lost'|'OutForDelivery'|'ArrivedAtCarrierFacility'|'Rejected'|'Undeliverable'|'PickupCancelled'|'ReturnInitiated'|'AvailableForPickup'|'RecipientRequestedAlternateDeliveryTiming'} EventCode
  */
-export const EventCode: Readonly<{
-    ReadyForReceive: "ReadyForReceive";
-    PickupDone: "PickupDone";
-    Delivered: "Delivered";
-    Departed: "Departed";
-    DeliveryAttempted: "DeliveryAttempted";
-    Lost: "Lost";
-    OutForDelivery: "OutForDelivery";
-    ArrivedAtCarrierFacility: "ArrivedAtCarrierFacility";
-    Rejected: "Rejected";
-    Undeliverable: "Undeliverable";
-    PickupCancelled: "PickupCancelled";
-    ReturnInitiated: "ReturnInitiated";
-    AvailableForPickup: "AvailableForPickup";
-    RecipientRequestedAlternateDeliveryTiming: "RecipientRequestedAlternateDeliveryTiming";
-    constructFromObject: (object: any) => any;
-}>;
+export class EventCode {
+    static constructFromObject(object: any): any;
+    ReadyForReceive: string;
+    PickupDone: string;
+    Delivered: string;
+    Departed: string;
+    DeliveryAttempted: string;
+    Lost: string;
+    OutForDelivery: string;
+    ArrivedAtCarrierFacility: string;
+    Rejected: string;
+    Undeliverable: string;
+    PickupCancelled: string;
+    ReturnInitiated: string;
+    AvailableForPickup: string;
+    RecipientRequestedAlternateDeliveryTiming: string;
+}
 //# sourceMappingURL=EventCode.d.ts.map

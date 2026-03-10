@@ -1,10 +1,9 @@
-export type ContentType = "EBC" | "EMC";
 /**
  * @typedef {'EBC'|'EMC'} ContentType
  */
-export const ContentType: Readonly<{
-    EBC: "EBC";
-    EMC: "EMC";
-    constructFromObject: (object: any) => any;
-}>;
+export class ContentType {
+    static constructFromObject(object: any): any;
+    EBC: string;
+    EMC: string;
+}
 //# sourceMappingURL=ContentType.d.ts.map

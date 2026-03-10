@@ -1,10 +1,9 @@
-export type PresenceStatus = "ABSENT" | "PRESENT";
 /**
  * @typedef {'ABSENT'|'PRESENT'} PresenceStatus
  */
-export const PresenceStatus: Readonly<{
-    ABSENT: "ABSENT";
-    PRESENT: "PRESENT";
-    constructFromObject: (object: any) => any;
-}>;
+export class PresenceStatus {
+    static constructFromObject(object: any): any;
+    ABSENT: string;
+    PRESENT: string;
+}
 //# sourceMappingURL=PresenceStatus.d.ts.map

@@ -16,13 +16,14 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'GET'|'PUT'|'PATCH'|'DELETE'|'POST'} HttpMethod
  */
-export const HttpMethod = Object.freeze({
-  GET: 'GET',
-  PUT: 'PUT',
-  PATCH: 'PATCH',
-  DELETE: 'DELETE',
-  POST: 'POST',
-  constructFromObject: function (object) {
+export class HttpMethod {
+  'GET' = 'GET'
+  'PUT' = 'PUT'
+  'PATCH' = 'PATCH'
+  'DELETE' = 'DELETE'
+  'POST' = 'POST'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

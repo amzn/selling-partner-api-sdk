@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'None'|'LQHazmat'} HazmatType
  */
-export const HazmatType = Object.freeze({
-  None: 'None',
-  LQHazmat: 'LQHazmat',
-  constructFromObject: function (object) {
+export class HazmatType {
+  'None' = 'None'
+  'LQHazmat' = 'LQHazmat'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

@@ -1,10 +1,9 @@
-export type ParkingCostType = "Free" | "Other";
 /**
  * @typedef {'Free'|'Other'} ParkingCostType
  */
-export const ParkingCostType: Readonly<{
-    Free: "Free";
-    Other: "Other";
-    constructFromObject: (object: any) => any;
-}>;
+export class ParkingCostType {
+    static constructFromObject(object: any): any;
+    Free: string;
+    Other: string;
+}
 //# sourceMappingURL=ParkingCostType.d.ts.map

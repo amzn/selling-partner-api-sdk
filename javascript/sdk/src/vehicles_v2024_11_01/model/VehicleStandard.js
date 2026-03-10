@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'KTYPE'|'AMAZON_ID'} VehicleStandard
  */
-export const VehicleStandard = Object.freeze({
-  KTYPE: 'KTYPE',
-  AMAZON_ID: 'AMAZON_ID',
-  constructFromObject: function (object) {
+export class VehicleStandard {
+  'KTYPE' = 'KTYPE'
+  'AMAZON_ID' = 'AMAZON_ID'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

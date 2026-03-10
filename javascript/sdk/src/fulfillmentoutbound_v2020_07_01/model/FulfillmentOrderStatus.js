@@ -16,17 +16,18 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'New'|'Received'|'Planning'|'Processing'|'Cancelled'|'Complete'|'CompletePartialled'|'Unfulfillable'|'Invalid'} FulfillmentOrderStatus
  */
-export const FulfillmentOrderStatus = Object.freeze({
-  New: 'New',
-  Received: 'Received',
-  Planning: 'Planning',
-  Processing: 'Processing',
-  Cancelled: 'Cancelled',
-  Complete: 'Complete',
-  CompletePartialled: 'CompletePartialled',
-  Unfulfillable: 'Unfulfillable',
-  Invalid: 'Invalid',
-  constructFromObject: function (object) {
+export class FulfillmentOrderStatus {
+  'New' = 'New'
+  'Received' = 'Received'
+  'Planning' = 'Planning'
+  'Processing' = 'Processing'
+  'Cancelled' = 'Cancelled'
+  'Complete' = 'Complete'
+  'CompletePartialled' = 'CompletePartialled'
+  'Unfulfillable' = 'Unfulfillable'
+  'Invalid' = 'Invalid'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

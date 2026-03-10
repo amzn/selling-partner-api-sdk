@@ -1,10 +1,9 @@
-export type UnitOfMeasurement = "IN" | "CM";
 /**
  * @typedef {'IN'|'CM'} UnitOfMeasurement
  */
-export const UnitOfMeasurement: Readonly<{
-    IN: "IN";
-    CM: "CM";
-    constructFromObject: (object: any) => any;
-}>;
+export class UnitOfMeasurement {
+    static constructFromObject(object: any): any;
+    IN: string;
+    CM: string;
+}
 //# sourceMappingURL=UnitOfMeasurement.d.ts.map

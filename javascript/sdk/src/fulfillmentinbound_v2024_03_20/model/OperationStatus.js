@@ -16,11 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'SUCCESS'|'FAILED'|'IN_PROGRESS'} OperationStatus
  */
-export const OperationStatus = Object.freeze({
-  SUCCESS: 'SUCCESS',
-  FAILED: 'FAILED',
-  IN_PROGRESS: 'IN_PROGRESS',
-  constructFromObject: function (object) {
+export class OperationStatus {
+  'SUCCESS' = 'SUCCESS'
+  'FAILED' = 'FAILED'
+  'IN_PROGRESS' = 'IN_PROGRESS'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

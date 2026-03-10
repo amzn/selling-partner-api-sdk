@@ -1,12 +1,11 @@
-export type PackageSubStatus = "OUT_FOR_DELIVERY" | "DELIVERED" | "NOT_DELIVERED" | "UNDELIVERABLE";
 /**
  * @typedef {'OUT_FOR_DELIVERY'|'DELIVERED'|'NOT_DELIVERED'|'UNDELIVERABLE'} PackageSubStatus
  */
-export const PackageSubStatus: Readonly<{
-    OUT_FOR_DELIVERY: "OUT_FOR_DELIVERY";
-    DELIVERED: "DELIVERED";
-    NOT_DELIVERED: "NOT_DELIVERED";
-    UNDELIVERABLE: "UNDELIVERABLE";
-    constructFromObject: (object: any) => any;
-}>;
+export class PackageSubStatus {
+    static constructFromObject(object: any): any;
+    OUT_FOR_DELIVERY: string;
+    DELIVERED: string;
+    NOT_DELIVERED: string;
+    UNDELIVERABLE: string;
+}
 //# sourceMappingURL=PackageSubStatus.d.ts.map

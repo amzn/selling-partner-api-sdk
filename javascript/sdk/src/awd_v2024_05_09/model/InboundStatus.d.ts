@@ -1,14 +1,13 @@
-export type InboundStatus = "DRAFT" | "VALIDATING" | "CONFIRMED" | "CLOSED" | "EXPIRED" | "CANCELLED";
 /**
  * @typedef {'DRAFT'|'VALIDATING'|'CONFIRMED'|'CLOSED'|'EXPIRED'|'CANCELLED'} InboundStatus
  */
-export const InboundStatus: Readonly<{
-    DRAFT: "DRAFT";
-    VALIDATING: "VALIDATING";
-    CONFIRMED: "CONFIRMED";
-    CLOSED: "CLOSED";
-    EXPIRED: "EXPIRED";
-    CANCELLED: "CANCELLED";
-    constructFromObject: (object: any) => any;
-}>;
+export class InboundStatus {
+    static constructFromObject(object: any): any;
+    DRAFT: string;
+    VALIDATING: string;
+    CONFIRMED: string;
+    CLOSED: string;
+    EXPIRED: string;
+    CANCELLED: string;
+}
 //# sourceMappingURL=InboundStatus.d.ts.map

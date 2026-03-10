@@ -1,22 +1,21 @@
-export type PrepCategory = "ADULT" | "BABY" | "FC_PROVIDED" | "FRAGILE" | "GRANULAR" | "HANGER" | "LIQUID" | "PERFORATED" | "SET" | "SHARP" | "SMALL" | "TEXTILE" | "UNKNOWN" | "NONE";
 /**
  * @typedef {'ADULT'|'BABY'|'FC_PROVIDED'|'FRAGILE'|'GRANULAR'|'HANGER'|'LIQUID'|'PERFORATED'|'SET'|'SHARP'|'SMALL'|'TEXTILE'|'UNKNOWN'|'NONE'} PrepCategory
  */
-export const PrepCategory: Readonly<{
-    ADULT: "ADULT";
-    BABY: "BABY";
-    FC_PROVIDED: "FC_PROVIDED";
-    FRAGILE: "FRAGILE";
-    GRANULAR: "GRANULAR";
-    HANGER: "HANGER";
-    LIQUID: "LIQUID";
-    PERFORATED: "PERFORATED";
-    SET: "SET";
-    SHARP: "SHARP";
-    SMALL: "SMALL";
-    TEXTILE: "TEXTILE";
-    UNKNOWN: "UNKNOWN";
-    NONE: "NONE";
-    constructFromObject: (object: any) => any;
-}>;
+export class PrepCategory {
+    static constructFromObject(object: any): any;
+    ADULT: string;
+    BABY: string;
+    FC_PROVIDED: string;
+    FRAGILE: string;
+    GRANULAR: string;
+    HANGER: string;
+    LIQUID: string;
+    PERFORATED: string;
+    SET: string;
+    SHARP: string;
+    SMALL: string;
+    TEXTILE: string;
+    UNKNOWN: string;
+    NONE: string;
+}
 //# sourceMappingURL=PrepCategory.d.ts.map

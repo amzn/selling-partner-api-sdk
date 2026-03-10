@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'oz'|'g'} UnitOfWeight
  */
-export const UnitOfWeight = Object.freeze({
-  oz: 'oz',
-  g: 'g',
-  constructFromObject: function (object) {
+export class UnitOfWeight {
+  'oz' = 'oz'
+  'g' = 'g'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

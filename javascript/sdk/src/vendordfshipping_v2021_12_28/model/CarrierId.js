@@ -16,9 +16,10 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'SWA'} CarrierId
  */
-export const CarrierId = Object.freeze({
-  SWA: 'SWA',
-  constructFromObject: function (object) {
+export class CarrierId {
+  'SWA' = 'SWA'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

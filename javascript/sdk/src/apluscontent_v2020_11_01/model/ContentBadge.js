@@ -16,13 +16,14 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'BULK'|'GENERATED'|'LAUNCHPAD'|'PREMIUM'|'STANDARD'} ContentBadge
  */
-export const ContentBadge = Object.freeze({
-  BULK: 'BULK',
-  GENERATED: 'GENERATED',
-  LAUNCHPAD: 'LAUNCHPAD',
-  PREMIUM: 'PREMIUM',
-  STANDARD: 'STANDARD',
-  constructFromObject: function (object) {
+export class ContentBadge {
+  'BULK' = 'BULK'
+  'GENERATED' = 'GENERATED'
+  'LAUNCHPAD' = 'LAUNCHPAD'
+  'PREMIUM' = 'PREMIUM'
+  'STANDARD' = 'STANDARD'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

@@ -16,11 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'ReadyForPickup'|'PickedUp'|'RefusedPickup'} ShipmentStatus
  */
-export const ShipmentStatus = Object.freeze({
-  ReadyForPickup: 'ReadyForPickup',
-  PickedUp: 'PickedUp',
-  RefusedPickup: 'RefusedPickup',
-  constructFromObject: function (object) {
+export class ShipmentStatus {
+  'ReadyForPickup' = 'ReadyForPickup'
+  'PickedUp' = 'PickedUp'
+  'RefusedPickup' = 'RefusedPickup'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

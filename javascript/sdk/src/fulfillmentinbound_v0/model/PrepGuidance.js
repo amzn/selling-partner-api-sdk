@@ -16,11 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'ConsultHelpDocuments'|'NoAdditionalPrepRequired'|'SeePrepInstructionsList'} PrepGuidance
  */
-export const PrepGuidance = Object.freeze({
-  ConsultHelpDocuments: 'ConsultHelpDocuments',
-  NoAdditionalPrepRequired: 'NoAdditionalPrepRequired',
-  SeePrepInstructionsList: 'SeePrepInstructionsList',
-  constructFromObject: function (object) {
+export class PrepGuidance {
+  'ConsultHelpDocuments' = 'ConsultHelpDocuments'
+  'NoAdditionalPrepRequired' = 'NoAdditionalPrepRequired'
+  'SeePrepInstructionsList' = 'SeePrepInstructionsList'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

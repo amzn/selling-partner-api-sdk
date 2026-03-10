@@ -1,10 +1,9 @@
-export type ErrorReason = "DoesNotExist" | "InvalidASIN";
 /**
  * @typedef {'DoesNotExist'|'InvalidASIN'} ErrorReason
  */
-export const ErrorReason: Readonly<{
-    DoesNotExist: "DoesNotExist";
-    InvalidASIN: "InvalidASIN";
-    constructFromObject: (object: any) => any;
-}>;
+export class ErrorReason {
+    static constructFromObject(object: any): any;
+    DoesNotExist: string;
+    InvalidASIN: string;
+}
 //# sourceMappingURL=ErrorReason.d.ts.map

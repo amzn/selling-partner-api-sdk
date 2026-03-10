@@ -16,12 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'AVAILABLE'|'LOCKED_IN'|'LOCKED_OUT'|'TOTAL'} BalanceType
  */
-export const BalanceType = Object.freeze({
-  AVAILABLE: 'AVAILABLE',
-  LOCKED_IN: 'LOCKED_IN',
-  LOCKED_OUT: 'LOCKED_OUT',
-  TOTAL: 'TOTAL',
-  constructFromObject: function (object) {
+export class BalanceType {
+  'AVAILABLE' = 'AVAILABLE'
+  'LOCKED_IN' = 'LOCKED_IN'
+  'LOCKED_OUT' = 'LOCKED_OUT'
+  'TOTAL' = 'TOTAL'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

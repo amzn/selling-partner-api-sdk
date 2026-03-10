@@ -1,12 +1,11 @@
-export type DocumentType = "PACKSLIP" | "LABEL" | "RECEIPT" | "CUSTOM_FORM";
 /**
  * @typedef {'PACKSLIP'|'LABEL'|'RECEIPT'|'CUSTOM_FORM'} DocumentType
  */
-export const DocumentType: Readonly<{
-    PACKSLIP: "PACKSLIP";
-    LABEL: "LABEL";
-    RECEIPT: "RECEIPT";
-    CUSTOM_FORM: "CUSTOM_FORM";
-    constructFromObject: (object: any) => any;
-}>;
+export class DocumentType {
+    static constructFromObject(object: any): any;
+    PACKSLIP: string;
+    LABEL: string;
+    RECEIPT: string;
+    CUSTOM_FORM: string;
+}
 //# sourceMappingURL=DocumentType.d.ts.map

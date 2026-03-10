@@ -1,24 +1,23 @@
-export type PrepInstruction = "Polybagging" | "BubbleWrapping" | "Taping" | "BlackShrinkWrapping" | "Labeling" | "HangGarment" | "SetCreation" | "Boxing" | "RemoveFromHanger" | "Debundle" | "SuffocationStickering" | "CapSealing" | "SetStickering" | "BlankStickering" | "ShipsInProductPackaging" | "NoPrep";
 /**
  * @typedef {'Polybagging'|'BubbleWrapping'|'Taping'|'BlackShrinkWrapping'|'Labeling'|'HangGarment'|'SetCreation'|'Boxing'|'RemoveFromHanger'|'Debundle'|'SuffocationStickering'|'CapSealing'|'SetStickering'|'BlankStickering'|'ShipsInProductPackaging'|'NoPrep'} PrepInstruction
  */
-export const PrepInstruction: Readonly<{
-    Polybagging: "Polybagging";
-    BubbleWrapping: "BubbleWrapping";
-    Taping: "Taping";
-    BlackShrinkWrapping: "BlackShrinkWrapping";
-    Labeling: "Labeling";
-    HangGarment: "HangGarment";
-    SetCreation: "SetCreation";
-    Boxing: "Boxing";
-    RemoveFromHanger: "RemoveFromHanger";
-    Debundle: "Debundle";
-    SuffocationStickering: "SuffocationStickering";
-    CapSealing: "CapSealing";
-    SetStickering: "SetStickering";
-    BlankStickering: "BlankStickering";
-    ShipsInProductPackaging: "ShipsInProductPackaging";
-    NoPrep: "NoPrep";
-    constructFromObject: (object: any) => any;
-}>;
+export class PrepInstruction {
+    static constructFromObject(object: any): any;
+    Polybagging: string;
+    BubbleWrapping: string;
+    Taping: string;
+    BlackShrinkWrapping: string;
+    Labeling: string;
+    HangGarment: string;
+    SetCreation: string;
+    Boxing: string;
+    RemoveFromHanger: string;
+    Debundle: string;
+    SuffocationStickering: string;
+    CapSealing: string;
+    SetStickering: string;
+    BlankStickering: string;
+    ShipsInProductPackaging: string;
+    NoPrep: string;
+}
 //# sourceMappingURL=PrepInstruction.d.ts.map

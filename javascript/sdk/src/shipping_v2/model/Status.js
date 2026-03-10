@@ -16,18 +16,19 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'PreTransit'|'InTransit'|'Delivered'|'Lost'|'OutForDelivery'|'Rejected'|'Undeliverable'|'DeliveryAttempted'|'PickupCancelled'|'AwaitingCustomerPickup'} Status
  */
-export const Status = Object.freeze({
-  PreTransit: 'PreTransit',
-  InTransit: 'InTransit',
-  Delivered: 'Delivered',
-  Lost: 'Lost',
-  OutForDelivery: 'OutForDelivery',
-  Rejected: 'Rejected',
-  Undeliverable: 'Undeliverable',
-  DeliveryAttempted: 'DeliveryAttempted',
-  PickupCancelled: 'PickupCancelled',
-  AwaitingCustomerPickup: 'AwaitingCustomerPickup',
-  constructFromObject: function (object) {
+export class Status {
+  'PreTransit' = 'PreTransit'
+  'InTransit' = 'InTransit'
+  'Delivered' = 'Delivered'
+  'Lost' = 'Lost'
+  'OutForDelivery' = 'OutForDelivery'
+  'Rejected' = 'Rejected'
+  'Undeliverable' = 'Undeliverable'
+  'DeliveryAttempted' = 'DeliveryAttempted'
+  'PickupCancelled' = 'PickupCancelled'
+  'AwaitingCustomerPickup' = 'AwaitingCustomerPickup'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

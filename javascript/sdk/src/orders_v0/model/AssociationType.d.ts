@@ -1,9 +1,8 @@
-export type AssociationType = "VALUE_ADD_SERVICE";
 /**
  * @typedef {'VALUE_ADD_SERVICE'} AssociationType
  */
-export const AssociationType: Readonly<{
-    VALUE_ADD_SERVICE: "VALUE_ADD_SERVICE";
-    constructFromObject: (object: any) => any;
-}>;
+export class AssociationType {
+    static constructFromObject(object: any): any;
+    VALUE_ADD_SERVICE: string;
+}
 //# sourceMappingURL=AssociationType.d.ts.map

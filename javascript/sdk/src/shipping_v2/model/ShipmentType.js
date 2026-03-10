@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'FORWARD'|'RETURNS'} ShipmentType
  */
-export const ShipmentType = Object.freeze({
-  FORWARD: 'FORWARD',
-  RETURNS: 'RETURNS',
-  constructFromObject: function (object) {
+export class ShipmentType {
+  'FORWARD' = 'FORWARD'
+  'RETURNS' = 'RETURNS'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

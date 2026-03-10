@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'GET'|'POST'} HttpMethod
  */
-export const HttpMethod = Object.freeze({
-  GET: 'GET',
-  POST: 'POST',
-  constructFromObject: function (object) {
+export class HttpMethod {
+  'GET' = 'GET'
+  'POST' = 'POST'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

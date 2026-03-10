@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'STANDARD_FORMAT'|'THERMAL_PRINTING'} LabelPrintType
  */
-export const LabelPrintType = Object.freeze({
-  STANDARD_FORMAT: 'STANDARD_FORMAT',
-  THERMAL_PRINTING: 'THERMAL_PRINTING',
-  constructFromObject: function (object) {
+export class LabelPrintType {
+  'STANDARD_FORMAT' = 'STANDARD_FORMAT'
+  'THERMAL_PRINTING' = 'THERMAL_PRINTING'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

@@ -1,1 +1,1 @@
-{"version":3,"file":"CustomAttributeType.d.ts","sourceRoot":"","sources":["CustomAttributeType.js"],"names":[],"mappings":"kCAgBa,QAAQ,GAAC,SAAS,GAAC,SAAS,GAAC,QAAQ,GAAC,aAAa;AADhE;;GAEG;AACH;;;;;;;GASE"}
+{"version":3,"file":"CustomAttributeType.d.ts","sourceRoot":"","sources":["CustomAttributeType.js"],"names":[],"mappings":"AAeA;;GAEG;AACH;IAOE,6CAEC;IARD,eAAmB;IACnB,gBAAqB;IACrB,gBAAqB;IACrB,eAAmB;IACnB,oBAA6B;CAK9B"}

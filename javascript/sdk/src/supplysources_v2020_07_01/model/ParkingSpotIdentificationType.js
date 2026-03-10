@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'Numbered'|'Other'} ParkingSpotIdentificationType
  */
-export const ParkingSpotIdentificationType = Object.freeze({
-  Numbered: 'Numbered',
-  Other: 'Other',
-  constructFromObject: function (object) {
+export class ParkingSpotIdentificationType {
+  'Numbered' = 'Numbered'
+  'Other' = 'Other'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

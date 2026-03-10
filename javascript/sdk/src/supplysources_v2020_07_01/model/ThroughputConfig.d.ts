@@ -20,13 +20,13 @@ export class ThroughputConfig {
      * @param throughputUnit {ThroughputUnit}
      */
     constructor(throughputUnit: ThroughputUnit);
-    throughputUnit: "Order";
+    throughputUnit: ThroughputUnit;
     /**
      * @member {ThroughputCap} throughputCap
      * @type {ThroughputCap}
      */
     throughputCap: ThroughputCap;
 }
-import { ThroughputCap } from './ThroughputCap.js';
 import { ThroughputUnit } from './ThroughputUnit.js';
+import { ThroughputCap } from './ThroughputCap.js';
 //# sourceMappingURL=ThroughputConfig.d.ts.map

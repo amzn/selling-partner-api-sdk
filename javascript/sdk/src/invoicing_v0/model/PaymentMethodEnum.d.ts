@@ -1,14 +1,13 @@
-export type PaymentMethodEnum = "CreditCard" | "DebitCard" | "Pix" | "BankSlip" | "GiftCard" | "Other";
 /**
  * @typedef {'CreditCard'|'DebitCard'|'Pix'|'BankSlip'|'GiftCard'|'Other'} PaymentMethodEnum
  */
-export const PaymentMethodEnum: Readonly<{
-    CreditCard: "CreditCard";
-    DebitCard: "DebitCard";
-    Pix: "Pix";
-    BankSlip: "BankSlip";
-    GiftCard: "GiftCard";
-    Other: "Other";
-    constructFromObject: (object: any) => any;
-}>;
+export class PaymentMethodEnum {
+    static constructFromObject(object: any): any;
+    CreditCard: string;
+    DebitCard: string;
+    Pix: string;
+    BankSlip: string;
+    GiftCard: string;
+    Other: string;
+}
 //# sourceMappingURL=PaymentMethodEnum.d.ts.map

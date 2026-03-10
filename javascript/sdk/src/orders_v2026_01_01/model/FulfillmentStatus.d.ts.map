@@ -1,1 +1,1 @@
-{"version":3,"file":"FulfillmentStatus.d.ts","sourceRoot":"","sources":["FulfillmentStatus.js"],"names":[],"mappings":"gCAgBa,sBAAsB,GAAC,SAAS,GAAC,WAAW,GAAC,mBAAmB,GAAC,SAAS,GAAC,WAAW,GAAC,eAAe;AADnH;;GAEG;AACH;;;;;;;;;GAWE"}
+{"version":3,"file":"FulfillmentStatus.d.ts","sourceRoot":"","sources":["FulfillmentStatus.js"],"names":[],"mappings":"AAeA;;GAEG;AACH;IASE,6CAEC;IAVD,6BAA+C;IAC/C,gBAAqB;IACrB,kBAAyB;IACzB,0BAAyC;IACzC,gBAAqB;IACrB,kBAAyB;IACzB,sBAAiC;CAKlC"}

@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'OrderStatusChange'|'BuyerRequestedChange'} OrderChangeTypeEnum
  */
-export const OrderChangeTypeEnum = Object.freeze({
-  OrderStatusChange: 'OrderStatusChange',
-  BuyerRequestedChange: 'BuyerRequestedChange',
-  constructFromObject: function (object) {
+export class OrderChangeTypeEnum {
+  'OrderStatusChange' = 'OrderStatusChange'
+  'BuyerRequestedChange' = 'BuyerRequestedChange'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

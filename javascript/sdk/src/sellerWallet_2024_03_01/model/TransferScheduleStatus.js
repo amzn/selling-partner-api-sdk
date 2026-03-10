@@ -16,12 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'ENABLED'|'DISABLED'|'EXPIRED'|'DELETED'} TransferScheduleStatus
  */
-export const TransferScheduleStatus = Object.freeze({
-  ENABLED: 'ENABLED',
-  DISABLED: 'DISABLED',
-  EXPIRED: 'EXPIRED',
-  DELETED: 'DELETED',
-  constructFromObject: function (object) {
+export class TransferScheduleStatus {
+  'ENABLED' = 'ENABLED'
+  'DISABLED' = 'DISABLED'
+  'EXPIRED' = 'EXPIRED'
+  'DELETED' = 'DELETED'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

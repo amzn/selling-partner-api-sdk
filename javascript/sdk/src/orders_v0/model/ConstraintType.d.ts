@@ -1,9 +1,8 @@
-export type ConstraintType = "MANDATORY";
 /**
  * @typedef {'MANDATORY'} ConstraintType
  */
-export const ConstraintType: Readonly<{
-    MANDATORY: "MANDATORY";
-    constructFromObject: (object: any) => any;
-}>;
+export class ConstraintType {
+    static constructFromObject(object: any): any;
+    MANDATORY: string;
+}
 //# sourceMappingURL=ConstraintType.d.ts.map

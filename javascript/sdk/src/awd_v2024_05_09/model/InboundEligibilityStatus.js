@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'ELIGIBLE'|'INELIGIBLE'} InboundEligibilityStatus
  */
-export const InboundEligibilityStatus = Object.freeze({
-  ELIGIBLE: 'ELIGIBLE',
-  INELIGIBLE: 'INELIGIBLE',
-  constructFromObject: function (object) {
+export class InboundEligibilityStatus {
+  'ELIGIBLE' = 'ELIGIBLE'
+  'INELIGIBLE' = 'INELIGIBLE'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

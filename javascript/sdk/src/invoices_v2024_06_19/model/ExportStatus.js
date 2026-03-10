@@ -16,12 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'REQUESTED'|'PROCESSING'|'DONE'|'ERROR'} ExportStatus
  */
-export const ExportStatus = Object.freeze({
-  REQUESTED: 'REQUESTED',
-  PROCESSING: 'PROCESSING',
-  DONE: 'DONE',
-  ERROR: 'ERROR',
-  constructFromObject: function (object) {
+export class ExportStatus {
+  'REQUESTED' = 'REQUESTED'
+  'PROCESSING' = 'PROCESSING'
+  'DONE' = 'DONE'
+  'ERROR' = 'ERROR'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

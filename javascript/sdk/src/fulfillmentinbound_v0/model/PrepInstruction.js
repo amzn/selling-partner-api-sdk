@@ -16,24 +16,25 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'Polybagging'|'BubbleWrapping'|'Taping'|'BlackShrinkWrapping'|'Labeling'|'HangGarment'|'SetCreation'|'Boxing'|'RemoveFromHanger'|'Debundle'|'SuffocationStickering'|'CapSealing'|'SetStickering'|'BlankStickering'|'ShipsInProductPackaging'|'NoPrep'} PrepInstruction
  */
-export const PrepInstruction = Object.freeze({
-  Polybagging: 'Polybagging',
-  BubbleWrapping: 'BubbleWrapping',
-  Taping: 'Taping',
-  BlackShrinkWrapping: 'BlackShrinkWrapping',
-  Labeling: 'Labeling',
-  HangGarment: 'HangGarment',
-  SetCreation: 'SetCreation',
-  Boxing: 'Boxing',
-  RemoveFromHanger: 'RemoveFromHanger',
-  Debundle: 'Debundle',
-  SuffocationStickering: 'SuffocationStickering',
-  CapSealing: 'CapSealing',
-  SetStickering: 'SetStickering',
-  BlankStickering: 'BlankStickering',
-  ShipsInProductPackaging: 'ShipsInProductPackaging',
-  NoPrep: 'NoPrep',
-  constructFromObject: function (object) {
+export class PrepInstruction {
+  'Polybagging' = 'Polybagging'
+  'BubbleWrapping' = 'BubbleWrapping'
+  'Taping' = 'Taping'
+  'BlackShrinkWrapping' = 'BlackShrinkWrapping'
+  'Labeling' = 'Labeling'
+  'HangGarment' = 'HangGarment'
+  'SetCreation' = 'SetCreation'
+  'Boxing' = 'Boxing'
+  'RemoveFromHanger' = 'RemoveFromHanger'
+  'Debundle' = 'Debundle'
+  'SuffocationStickering' = 'SuffocationStickering'
+  'CapSealing' = 'CapSealing'
+  'SetStickering' = 'SetStickering'
+  'BlankStickering' = 'BlankStickering'
+  'ShipsInProductPackaging' = 'ShipsInProductPackaging'
+  'NoPrep' = 'NoPrep'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

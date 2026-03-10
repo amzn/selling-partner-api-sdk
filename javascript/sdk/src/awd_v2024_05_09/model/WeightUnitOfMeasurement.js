@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'POUNDS'|'KILOGRAMS'} WeightUnitOfMeasurement
  */
-export const WeightUnitOfMeasurement = Object.freeze({
-  POUNDS: 'POUNDS',
-  KILOGRAMS: 'KILOGRAMS',
-  constructFromObject: function (object) {
+export class WeightUnitOfMeasurement {
+  'POUNDS' = 'POUNDS'
+  'KILOGRAMS' = 'KILOGRAMS'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

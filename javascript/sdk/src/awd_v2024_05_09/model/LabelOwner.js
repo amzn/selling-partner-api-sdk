@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'AMAZON'|'SELF'} LabelOwner
  */
-export const LabelOwner = Object.freeze({
-  AMAZON: 'AMAZON',
-  SELF: 'SELF',
-  constructFromObject: function (object) {
+export class LabelOwner {
+  'AMAZON' = 'AMAZON'
+  'SELF' = 'SELF'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

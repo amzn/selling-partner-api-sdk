@@ -1,1 +1,1 @@
-{"version":3,"file":"ReasonComment.d.ts","sourceRoot":"","sources":["ReasonComment.js"],"names":[],"mappings":"4BAgBa,kCAAkC,GAAC,eAAe,GAAC,mBAAmB,GAAC,gCAAgC,GAAC,kCAAkC,GAAC,mBAAmB,GAAC,uBAAuB,GAAC,oBAAoB,GAAC,OAAO;AADhO;;GAEG;AACH;;;;;;;;;;;GAaE"}
+{"version":3,"file":"ReasonComment.d.ts","sourceRoot":"","sources":["ReasonComment.js"],"names":[],"mappings":"AAeA;;GAEG;AACH;IAWE,6CAEC;IAZD,yCAAuE;IACvE,sBAAiC;IACjC,0BAAyC;IACzC,uCAAmE;IACnE,yCAAuE;IACvE,0BAAyC;IACzC,8BAAiD;IACjD,2BAA2C;IAC3C,cAAiB;CAKlB"}

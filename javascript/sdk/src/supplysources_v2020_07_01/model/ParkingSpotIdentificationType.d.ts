@@ -1,10 +1,9 @@
-export type ParkingSpotIdentificationType = "Numbered" | "Other";
 /**
  * @typedef {'Numbered'|'Other'} ParkingSpotIdentificationType
  */
-export const ParkingSpotIdentificationType: Readonly<{
-    Numbered: "Numbered";
-    Other: "Other";
-    constructFromObject: (object: any) => any;
-}>;
+export class ParkingSpotIdentificationType {
+    static constructFromObject(object: any): any;
+    Numbered: string;
+    Other: string;
+}
 //# sourceMappingURL=ParkingSpotIdentificationType.d.ts.map

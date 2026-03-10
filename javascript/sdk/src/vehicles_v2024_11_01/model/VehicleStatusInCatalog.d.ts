@@ -1,10 +1,9 @@
-export type VehicleStatusInCatalog = "ACTIVE" | "DELETED";
 /**
  * @typedef {'ACTIVE'|'DELETED'} VehicleStatusInCatalog
  */
-export const VehicleStatusInCatalog: Readonly<{
-    ACTIVE: "ACTIVE";
-    DELETED: "DELETED";
-    constructFromObject: (object: any) => any;
-}>;
+export class VehicleStatusInCatalog {
+    static constructFromObject(object: any): any;
+    ACTIVE: string;
+    DELETED: string;
+}
 //# sourceMappingURL=VehicleStatusInCatalog.d.ts.map

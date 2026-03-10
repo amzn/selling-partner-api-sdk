@@ -1,9 +1,8 @@
-export type FileFormat = "XML";
 /**
  * @typedef {'XML'} FileFormat
  */
-export const FileFormat: Readonly<{
-    XML: "XML";
-    constructFromObject: (object: any) => any;
-}>;
+export class FileFormat {
+    static constructFromObject(object: any): any;
+    XML: string;
+}
 //# sourceMappingURL=FileFormat.d.ts.map

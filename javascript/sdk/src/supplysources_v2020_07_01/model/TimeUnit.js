@@ -16,11 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'Hours'|'Minutes'|'Days'} TimeUnit
  */
-export const TimeUnit = Object.freeze({
-  Hours: 'Hours',
-  Minutes: 'Minutes',
-  Days: 'Days',
-  constructFromObject: function (object) {
+export class TimeUnit {
+  'Hours' = 'Hours'
+  'Minutes' = 'Minutes'
+  'Days' = 'Days'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

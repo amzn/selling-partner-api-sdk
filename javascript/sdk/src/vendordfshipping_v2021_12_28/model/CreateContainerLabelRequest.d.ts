@@ -26,11 +26,11 @@ export class CreateContainerLabelRequest {
     constructor(sellingParty: PartyIdentification, shipFromParty: PartyIdentification, carrierId: CarrierId, vendorContainerId: string, packages: Package[]);
     sellingParty: PartyIdentification;
     shipFromParty: PartyIdentification;
-    carrierId: "SWA";
+    carrierId: CarrierId;
     vendorContainerId: string;
     packages: Package[];
 }
 import { PartyIdentification } from './PartyIdentification.js';
-import { Package } from './Package.js';
 import { CarrierId } from './CarrierId.js';
+import { Package } from './Package.js';
 //# sourceMappingURL=CreateContainerLabelRequest.d.ts.map

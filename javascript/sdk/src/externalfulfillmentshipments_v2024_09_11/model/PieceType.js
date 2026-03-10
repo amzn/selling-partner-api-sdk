@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'SINGLE'|'MULTIPLE'} PieceType
  */
-export const PieceType = Object.freeze({
-  SINGLE: 'SINGLE',
-  MULTIPLE: 'MULTIPLE',
-  constructFromObject: function (object) {
+export class PieceType {
+  'SINGLE' = 'SINGLE'
+  'MULTIPLE' = 'MULTIPLE'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

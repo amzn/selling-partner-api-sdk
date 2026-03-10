@@ -1,12 +1,11 @@
-export type BoxContentsSource = "NONE" | "FEED" | "2D_BARCODE" | "INTERACTIVE";
 /**
  * @typedef {'NONE'|'FEED'|'2D_BARCODE'|'INTERACTIVE'} BoxContentsSource
  */
-export const BoxContentsSource: Readonly<{
-    NONE: "NONE";
-    FEED: "FEED";
-    '2D_BARCODE': "2D_BARCODE";
-    INTERACTIVE: "INTERACTIVE";
-    constructFromObject: (object: any) => any;
-}>;
+export class BoxContentsSource {
+    static constructFromObject(object: any): any;
+    NONE: string;
+    FEED: string;
+    '2D_BARCODE': string;
+    INTERACTIVE: string;
+}
 //# sourceMappingURL=BoxContentsSource.d.ts.map

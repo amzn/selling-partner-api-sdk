@@ -1,10 +1,9 @@
-export type UnitOfWeight = "LB" | "KG";
 /**
  * @typedef {'LB'|'KG'} UnitOfWeight
  */
-export const UnitOfWeight: Readonly<{
-    LB: "LB";
-    KG: "KG";
-    constructFromObject: (object: any) => any;
-}>;
+export class UnitOfWeight {
+    static constructFromObject(object: any): any;
+    LB: string;
+    KG: string;
+}
 //# sourceMappingURL=UnitOfWeight.d.ts.map

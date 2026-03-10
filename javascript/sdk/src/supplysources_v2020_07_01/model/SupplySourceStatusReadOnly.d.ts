@@ -1,11 +1,10 @@
-export type SupplySourceStatusReadOnly = "Active" | "Inactive" | "Archived";
 /**
  * @typedef {'Active'|'Inactive'|'Archived'} SupplySourceStatusReadOnly
  */
-export const SupplySourceStatusReadOnly: Readonly<{
-    Active: "Active";
-    Inactive: "Inactive";
-    Archived: "Archived";
-    constructFromObject: (object: any) => any;
-}>;
+export class SupplySourceStatusReadOnly {
+    static constructFromObject(object: any): any;
+    Active: string;
+    Inactive: string;
+    Archived: string;
+}
 //# sourceMappingURL=SupplySourceStatusReadOnly.d.ts.map

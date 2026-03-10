@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'EBC'|'EMC'} ContentType
  */
-export const ContentType = Object.freeze({
-  EBC: 'EBC',
-  EMC: 'EMC',
-  constructFromObject: function (object) {
+export class ContentType {
+  'EBC' = 'EBC'
+  'EMC' = 'EMC'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

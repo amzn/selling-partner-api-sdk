@@ -16,17 +16,18 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'CONFIRMED'|'CREATED'|'ELIGIBLE'|'EXECUTING'|'FAILURE'|'INELIGIBLE'|'INVENTORY_OUTBOUND'|'SUCCESS'|'VALIDATING'} ReplenishmentOrderStatus
  */
-export const ReplenishmentOrderStatus = Object.freeze({
-  CONFIRMED: 'CONFIRMED',
-  CREATED: 'CREATED',
-  ELIGIBLE: 'ELIGIBLE',
-  EXECUTING: 'EXECUTING',
-  FAILURE: 'FAILURE',
-  INELIGIBLE: 'INELIGIBLE',
-  INVENTORY_OUTBOUND: 'INVENTORY_OUTBOUND',
-  SUCCESS: 'SUCCESS',
-  VALIDATING: 'VALIDATING',
-  constructFromObject: function (object) {
+export class ReplenishmentOrderStatus {
+  'CONFIRMED' = 'CONFIRMED'
+  'CREATED' = 'CREATED'
+  'ELIGIBLE' = 'ELIGIBLE'
+  'EXECUTING' = 'EXECUTING'
+  'FAILURE' = 'FAILURE'
+  'INELIGIBLE' = 'INELIGIBLE'
+  'INVENTORY_OUTBOUND' = 'INVENTORY_OUTBOUND'
+  'SUCCESS' = 'SUCCESS'
+  'VALIDATING' = 'VALIDATING'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

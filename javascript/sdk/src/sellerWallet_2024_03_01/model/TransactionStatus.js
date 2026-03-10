@@ -16,14 +16,15 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'EXPIRED'|'FAILED'|'FAILED_CREDITS_APPLIED'|'IN_PROGRESS'|'PENDING_USER_APPROVAL'|'SUCCESSFUL'} TransactionStatus
  */
-export const TransactionStatus = Object.freeze({
-  EXPIRED: 'EXPIRED',
-  FAILED: 'FAILED',
-  FAILED_CREDITS_APPLIED: 'FAILED_CREDITS_APPLIED',
-  IN_PROGRESS: 'IN_PROGRESS',
-  PENDING_USER_APPROVAL: 'PENDING_USER_APPROVAL',
-  SUCCESSFUL: 'SUCCESSFUL',
-  constructFromObject: function (object) {
+export class TransactionStatus {
+  'EXPIRED' = 'EXPIRED'
+  'FAILED' = 'FAILED'
+  'FAILED_CREDITS_APPLIED' = 'FAILED_CREDITS_APPLIED'
+  'IN_PROGRESS' = 'IN_PROGRESS'
+  'PENDING_USER_APPROVAL' = 'PENDING_USER_APPROVAL'
+  'SUCCESSFUL' = 'SUCCESSFUL'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

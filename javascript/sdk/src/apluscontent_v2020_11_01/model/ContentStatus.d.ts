@@ -1,12 +1,11 @@
-export type ContentStatus = "APPROVED" | "DRAFT" | "REJECTED" | "SUBMITTED";
 /**
  * @typedef {'APPROVED'|'DRAFT'|'REJECTED'|'SUBMITTED'} ContentStatus
  */
-export const ContentStatus: Readonly<{
-    APPROVED: "APPROVED";
-    DRAFT: "DRAFT";
-    REJECTED: "REJECTED";
-    SUBMITTED: "SUBMITTED";
-    constructFromObject: (object: any) => any;
-}>;
+export class ContentStatus {
+    static constructFromObject(object: any): any;
+    APPROVED: string;
+    DRAFT: string;
+    REJECTED: string;
+    SUBMITTED: string;
+}
 //# sourceMappingURL=ContentStatus.d.ts.map

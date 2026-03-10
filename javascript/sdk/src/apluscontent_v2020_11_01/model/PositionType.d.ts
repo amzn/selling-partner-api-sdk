@@ -1,10 +1,9 @@
-export type PositionType = "LEFT" | "RIGHT";
 /**
  * @typedef {'LEFT'|'RIGHT'} PositionType
  */
-export const PositionType: Readonly<{
-    LEFT: "LEFT";
-    RIGHT: "RIGHT";
-    constructFromObject: (object: any) => any;
-}>;
+export class PositionType {
+    static constructFromObject(object: any): any;
+    LEFT: string;
+    RIGHT: string;
+}
 //# sourceMappingURL=PositionType.d.ts.map

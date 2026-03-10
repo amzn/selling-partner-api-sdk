@@ -16,12 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'WEEK'|'MONTH'|'QUARTER'|'YEAR'} AggregationFrequency
  */
-export const AggregationFrequency = Object.freeze({
-  WEEK: 'WEEK',
-  MONTH: 'MONTH',
-  QUARTER: 'QUARTER',
-  YEAR: 'YEAR',
-  constructFromObject: function (object) {
+export class AggregationFrequency {
+  'WEEK' = 'WEEK'
+  'MONTH' = 'MONTH'
+  'QUARTER' = 'QUARTER'
+  'YEAR' = 'YEAR'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

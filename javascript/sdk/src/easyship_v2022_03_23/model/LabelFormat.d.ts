@@ -1,10 +1,9 @@
-export type LabelFormat = "PDF" | "ZPL";
 /**
  * @typedef {'PDF'|'ZPL'} LabelFormat
  */
-export const LabelFormat: Readonly<{
-    PDF: "PDF";
-    ZPL: "ZPL";
-    constructFromObject: (object: any) => any;
-}>;
+export class LabelFormat {
+    static constructFromObject(object: any): any;
+    PDF: string;
+    ZPL: string;
+}
 //# sourceMappingURL=LabelFormat.d.ts.map

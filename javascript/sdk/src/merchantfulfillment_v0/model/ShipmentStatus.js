@@ -16,12 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'Purchased'|'RefundPending'|'RefundRejected'|'RefundApplied'} ShipmentStatus
  */
-export const ShipmentStatus = Object.freeze({
-  Purchased: 'Purchased',
-  RefundPending: 'RefundPending',
-  RefundRejected: 'RefundRejected',
-  RefundApplied: 'RefundApplied',
-  constructFromObject: function (object) {
+export class ShipmentStatus {
+  'Purchased' = 'Purchased'
+  'RefundPending' = 'RefundPending'
+  'RefundRejected' = 'RefundRejected'
+  'RefundApplied' = 'RefundApplied'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

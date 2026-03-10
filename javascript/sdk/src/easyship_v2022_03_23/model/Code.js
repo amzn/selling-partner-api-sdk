@@ -16,19 +16,20 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'InvalidInput'|'InvalidTimeSlotId'|'ScheduledPackageAlreadyExists'|'ScheduleWindowExpired'|'RetryableAfterGettingNewSlots'|'TimeSlotNotAvailable'|'ResourceNotFound'|'InvalidOrderState'|'RegionNotSupported'|'OrderNotEligibleForRescheduling'|'InternalServerError'} Code
  */
-export const Code = Object.freeze({
-  InvalidInput: 'InvalidInput',
-  InvalidTimeSlotId: 'InvalidTimeSlotId',
-  ScheduledPackageAlreadyExists: 'ScheduledPackageAlreadyExists',
-  ScheduleWindowExpired: 'ScheduleWindowExpired',
-  RetryableAfterGettingNewSlots: 'RetryableAfterGettingNewSlots',
-  TimeSlotNotAvailable: 'TimeSlotNotAvailable',
-  ResourceNotFound: 'ResourceNotFound',
-  InvalidOrderState: 'InvalidOrderState',
-  RegionNotSupported: 'RegionNotSupported',
-  OrderNotEligibleForRescheduling: 'OrderNotEligibleForRescheduling',
-  InternalServerError: 'InternalServerError',
-  constructFromObject: function (object) {
+export class Code {
+  'InvalidInput' = 'InvalidInput'
+  'InvalidTimeSlotId' = 'InvalidTimeSlotId'
+  'ScheduledPackageAlreadyExists' = 'ScheduledPackageAlreadyExists'
+  'ScheduleWindowExpired' = 'ScheduleWindowExpired'
+  'RetryableAfterGettingNewSlots' = 'RetryableAfterGettingNewSlots'
+  'TimeSlotNotAvailable' = 'TimeSlotNotAvailable'
+  'ResourceNotFound' = 'ResourceNotFound'
+  'InvalidOrderState' = 'InvalidOrderState'
+  'RegionNotSupported' = 'RegionNotSupported'
+  'OrderNotEligibleForRescheduling' = 'OrderNotEligibleForRescheduling'
+  'InternalServerError' = 'InternalServerError'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

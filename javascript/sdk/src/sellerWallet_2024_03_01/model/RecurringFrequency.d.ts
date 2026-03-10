@@ -1,12 +1,11 @@
-export type RecurringFrequency = "DAILY" | "WEEKLY" | "BIWEEKLY" | "MONTHLY";
 /**
  * @typedef {'DAILY'|'WEEKLY'|'BIWEEKLY'|'MONTHLY'} RecurringFrequency
  */
-export const RecurringFrequency: Readonly<{
-    DAILY: "DAILY";
-    WEEKLY: "WEEKLY";
-    BIWEEKLY: "BIWEEKLY";
-    MONTHLY: "MONTHLY";
-    constructFromObject: (object: any) => any;
-}>;
+export class RecurringFrequency {
+    static constructFromObject(object: any): any;
+    DAILY: string;
+    WEEKLY: string;
+    BIWEEKLY: string;
+    MONTHLY: string;
+}
 //# sourceMappingURL=RecurringFrequency.d.ts.map

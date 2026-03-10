@@ -1,11 +1,10 @@
-export type VolumeUnitOfMeasurement = "CU_IN" | "CBM" | "CC";
 /**
  * @typedef {'CU_IN'|'CBM'|'CC'} VolumeUnitOfMeasurement
  */
-export const VolumeUnitOfMeasurement: Readonly<{
-    CU_IN: "CU_IN";
-    CBM: "CBM";
-    CC: "CC";
-    constructFromObject: (object: any) => any;
-}>;
+export class VolumeUnitOfMeasurement {
+    static constructFromObject(object: any): any;
+    CU_IN: string;
+    CBM: string;
+    CC: string;
+}
 //# sourceMappingURL=VolumeUnitOfMeasurement.d.ts.map

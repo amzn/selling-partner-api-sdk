@@ -1,11 +1,10 @@
-export type RateItemType = "MANDATORY" | "OPTIONAL" | "INCLUDED";
 /**
  * @typedef {'MANDATORY'|'OPTIONAL'|'INCLUDED'} RateItemType
  */
-export const RateItemType: Readonly<{
-    MANDATORY: "MANDATORY";
-    OPTIONAL: "OPTIONAL";
-    INCLUDED: "INCLUDED";
-    constructFromObject: (object: any) => any;
-}>;
+export class RateItemType {
+    static constructFromObject(object: any): any;
+    MANDATORY: string;
+    OPTIONAL: string;
+    INCLUDED: string;
+}
 //# sourceMappingURL=RateItemType.d.ts.map

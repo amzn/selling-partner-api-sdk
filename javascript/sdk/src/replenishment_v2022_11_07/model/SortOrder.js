@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'ASC'|'DESC'} SortOrder
  */
-export const SortOrder = Object.freeze({
-  ASC: 'ASC',
-  DESC: 'DESC',
-  constructFromObject: function (object) {
+export class SortOrder {
+  'ASC' = 'ASC'
+  'DESC' = 'DESC'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

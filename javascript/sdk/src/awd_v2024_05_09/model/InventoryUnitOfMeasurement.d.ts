@@ -1,11 +1,10 @@
-export type InventoryUnitOfMeasurement = "PRODUCT_UNITS" | "CASES" | "PALLETS";
 /**
  * @typedef {'PRODUCT_UNITS'|'CASES'|'PALLETS'} InventoryUnitOfMeasurement
  */
-export const InventoryUnitOfMeasurement: Readonly<{
-    PRODUCT_UNITS: "PRODUCT_UNITS";
-    CASES: "CASES";
-    PALLETS: "PALLETS";
-    constructFromObject: (object: any) => any;
-}>;
+export class InventoryUnitOfMeasurement {
+    static constructFromObject(object: any): any;
+    PRODUCT_UNITS: string;
+    CASES: string;
+    PALLETS: string;
+}
 //# sourceMappingURL=InventoryUnitOfMeasurement.d.ts.map

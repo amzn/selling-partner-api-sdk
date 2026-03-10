@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'STACKABLE'|'NON_STACKABLE'} Stackability
  */
-export const Stackability = Object.freeze({
-  STACKABLE: 'STACKABLE',
-  NON_STACKABLE: 'NON_STACKABLE',
-  constructFromObject: function (object) {
+export class Stackability {
+  'STACKABLE' = 'STACKABLE'
+  'NON_STACKABLE' = 'NON_STACKABLE'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

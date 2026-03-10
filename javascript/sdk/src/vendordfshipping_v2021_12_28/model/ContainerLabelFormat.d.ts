@@ -1,10 +1,9 @@
-export type ContainerLabelFormat = "PNG" | "ZPL";
 /**
  * @typedef {'PNG'|'ZPL'} ContainerLabelFormat
  */
-export const ContainerLabelFormat: Readonly<{
-    PNG: "PNG";
-    ZPL: "ZPL";
-    constructFromObject: (object: any) => any;
-}>;
+export class ContainerLabelFormat {
+    static constructFromObject(object: any): any;
+    PNG: string;
+    ZPL: string;
+}
 //# sourceMappingURL=ContainerLabelFormat.d.ts.map

@@ -1,12 +1,11 @@
-export type LabelStatus = "GENERATING" | "GENERATED" | "GENERATION_FAILED" | "NOT_READY";
 /**
  * @typedef {'GENERATING'|'GENERATED'|'GENERATION_FAILED'|'NOT_READY'} LabelStatus
  */
-export const LabelStatus: Readonly<{
-    GENERATING: "GENERATING";
-    GENERATED: "GENERATED";
-    GENERATION_FAILED: "GENERATION_FAILED";
-    NOT_READY: "NOT_READY";
-    constructFromObject: (object: any) => any;
-}>;
+export class LabelStatus {
+    static constructFromObject(object: any): any;
+    GENERATING: string;
+    GENERATED: string;
+    GENERATION_FAILED: string;
+    NOT_READY: string;
+}
 //# sourceMappingURL=LabelStatus.d.ts.map

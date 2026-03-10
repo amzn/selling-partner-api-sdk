@@ -16,12 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'ACTIVE'|'INACTIVE'|'PENDING'|'SUSPENDED'} AccountStatus
  */
-export const AccountStatus = Object.freeze({
-  ACTIVE: 'ACTIVE',
-  INACTIVE: 'INACTIVE',
-  PENDING: 'PENDING',
-  SUSPENDED: 'SUSPENDED',
-  constructFromObject: function (object) {
+export class AccountStatus {
+  'ACTIVE' = 'ACTIVE'
+  'INACTIVE' = 'INACTIVE'
+  'PENDING' = 'PENDING'
+  'SUSPENDED' = 'SUSPENDED'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

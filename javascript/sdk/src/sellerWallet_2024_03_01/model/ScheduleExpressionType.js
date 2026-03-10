@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'RECURRING'|'ONE_TIME'} ScheduleExpressionType
  */
-export const ScheduleExpressionType = Object.freeze({
-  RECURRING: 'RECURRING',
-  ONE_TIME: 'ONE_TIME',
-  constructFromObject: function (object) {
+export class ScheduleExpressionType {
+  'RECURRING' = 'RECURRING'
+  'ONE_TIME' = 'ONE_TIME'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

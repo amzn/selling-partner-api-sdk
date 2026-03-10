@@ -1,10 +1,9 @@
-export type LabelPrintType = "STANDARD_FORMAT" | "THERMAL_PRINTING";
 /**
  * @typedef {'STANDARD_FORMAT'|'THERMAL_PRINTING'} LabelPrintType
  */
-export const LabelPrintType: Readonly<{
-    STANDARD_FORMAT: "STANDARD_FORMAT";
-    THERMAL_PRINTING: "THERMAL_PRINTING";
-    constructFromObject: (object: any) => any;
-}>;
+export class LabelPrintType {
+    static constructFromObject(object: any): any;
+    STANDARD_FORMAT: string;
+    THERMAL_PRINTING: string;
+}
 //# sourceMappingURL=LabelPrintType.d.ts.map

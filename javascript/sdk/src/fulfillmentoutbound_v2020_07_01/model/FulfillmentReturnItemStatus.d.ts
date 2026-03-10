@@ -1,10 +1,9 @@
-export type FulfillmentReturnItemStatus = "New" | "Processed";
 /**
  * @typedef {'New'|'Processed'} FulfillmentReturnItemStatus
  */
-export const FulfillmentReturnItemStatus: Readonly<{
-    New: "New";
-    Processed: "Processed";
-    constructFromObject: (object: any) => any;
-}>;
+export class FulfillmentReturnItemStatus {
+    static constructFromObject(object: any): any;
+    New: string;
+    Processed: string;
+}
 //# sourceMappingURL=FulfillmentReturnItemStatus.d.ts.map

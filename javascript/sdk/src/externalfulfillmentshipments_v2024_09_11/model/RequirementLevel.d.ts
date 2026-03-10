@@ -1,10 +1,9 @@
-export type RequirementLevel = "REQUIRED" | "DISALLOWED";
 /**
  * @typedef {'REQUIRED'|'DISALLOWED'} RequirementLevel
  */
-export const RequirementLevel: Readonly<{
-    REQUIRED: "REQUIRED";
-    DISALLOWED: "DISALLOWED";
-    constructFromObject: (object: any) => any;
-}>;
+export class RequirementLevel {
+    static constructFromObject(object: any): any;
+    REQUIRED: string;
+    DISALLOWED: string;
+}
 //# sourceMappingURL=RequirementLevel.d.ts.map

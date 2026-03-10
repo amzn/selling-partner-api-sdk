@@ -1,10 +1,9 @@
-export type UnitOfWeight = "grams" | "g";
 /**
  * @typedef {'grams'|'g'} UnitOfWeight
  */
-export const UnitOfWeight: Readonly<{
-    grams: "grams";
-    g: "g";
-    constructFromObject: (object: any) => any;
-}>;
+export class UnitOfWeight {
+    static constructFromObject(object: any): any;
+    grams: string;
+    g: string;
+}
 //# sourceMappingURL=UnitOfWeight.d.ts.map

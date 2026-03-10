@@ -16,10 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'OPTED_IN'|'OPTED_OUT'} AutoEnrollmentPreference
  */
-export const AutoEnrollmentPreference = Object.freeze({
-  OPTED_IN: 'OPTED_IN',
-  OPTED_OUT: 'OPTED_OUT',
-  constructFromObject: function (object) {
+export class AutoEnrollmentPreference {
+  'OPTED_IN' = 'OPTED_IN'
+  'OPTED_OUT' = 'OPTED_OUT'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

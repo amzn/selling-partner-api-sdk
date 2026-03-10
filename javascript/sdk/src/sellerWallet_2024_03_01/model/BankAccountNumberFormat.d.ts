@@ -1,10 +1,9 @@
-export type BankAccountNumberFormat = "IBAN" | "BBAN";
 /**
  * @typedef {'IBAN'|'BBAN'} BankAccountNumberFormat
  */
-export const BankAccountNumberFormat: Readonly<{
-    IBAN: "IBAN";
-    BBAN: "BBAN";
-    constructFromObject: (object: any) => any;
-}>;
+export class BankAccountNumberFormat {
+    static constructFromObject(object: any): any;
+    IBAN: string;
+    BBAN: string;
+}
 //# sourceMappingURL=BankAccountNumberFormat.d.ts.map

@@ -1,10 +1,9 @@
-export type CurrencyCode = "USD" | "GBP";
 /**
  * @typedef {'USD'|'GBP'} CurrencyCode
  */
-export const CurrencyCode: Readonly<{
-    USD: "USD";
-    GBP: "GBP";
-    constructFromObject: (object: any) => any;
-}>;
+export class CurrencyCode {
+    static constructFromObject(object: any): any;
+    USD: string;
+    GBP: string;
+}
 //# sourceMappingURL=CurrencyCode.d.ts.map

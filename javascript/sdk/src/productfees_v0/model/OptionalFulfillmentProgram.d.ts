@@ -1,11 +1,10 @@
-export type OptionalFulfillmentProgram = "FBA_CORE" | "FBA_SNL" | "FBA_EFN";
 /**
  * @typedef {'FBA_CORE'|'FBA_SNL'|'FBA_EFN'} OptionalFulfillmentProgram
  */
-export const OptionalFulfillmentProgram: Readonly<{
-    FBA_CORE: "FBA_CORE";
-    FBA_SNL: "FBA_SNL";
-    FBA_EFN: "FBA_EFN";
-    constructFromObject: (object: any) => any;
-}>;
+export class OptionalFulfillmentProgram {
+    static constructFromObject(object: any): any;
+    FBA_CORE: string;
+    FBA_SNL: string;
+    FBA_EFN: string;
+}
 //# sourceMappingURL=OptionalFulfillmentProgram.d.ts.map

@@ -1,9 +1,8 @@
-export type ProgramType = "SUBSCRIBE_AND_SAVE";
 /**
  * @typedef {'SUBSCRIBE_AND_SAVE'} ProgramType
  */
-export const ProgramType: Readonly<{
-    SUBSCRIBE_AND_SAVE: "SUBSCRIBE_AND_SAVE";
-    constructFromObject: (object: any) => any;
-}>;
+export class ProgramType {
+    static constructFromObject(object: any): any;
+    SUBSCRIBE_AND_SAVE: string;
+}
 //# sourceMappingURL=ProgramType.d.ts.map

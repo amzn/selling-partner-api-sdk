@@ -16,11 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'INDIVIDUAL'|'BUSINESS'|'TAX_AUTHORITY'} PayeeEntityType
  */
-export const PayeeEntityType = Object.freeze({
-  INDIVIDUAL: 'INDIVIDUAL',
-  BUSINESS: 'BUSINESS',
-  TAX_AUTHORITY: 'TAX_AUTHORITY',
-  constructFromObject: function (object) {
+export class PayeeEntityType {
+  'INDIVIDUAL' = 'INDIVIDUAL'
+  'BUSINESS' = 'BUSINESS'
+  'TAX_AUTHORITY' = 'TAX_AUTHORITY'
+
+  static constructFromObject (object) {
     return object
   }
-})
+}

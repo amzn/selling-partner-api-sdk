@@ -1,12 +1,11 @@
-export type BalanceType = "AVAILABLE" | "LOCKED_IN" | "LOCKED_OUT" | "TOTAL";
 /**
  * @typedef {'AVAILABLE'|'LOCKED_IN'|'LOCKED_OUT'|'TOTAL'} BalanceType
  */
-export const BalanceType: Readonly<{
-    AVAILABLE: "AVAILABLE";
-    LOCKED_IN: "LOCKED_IN";
-    LOCKED_OUT: "LOCKED_OUT";
-    TOTAL: "TOTAL";
-    constructFromObject: (object: any) => any;
-}>;
+export class BalanceType {
+    static constructFromObject(object: any): any;
+    AVAILABLE: string;
+    LOCKED_IN: string;
+    LOCKED_OUT: string;
+    TOTAL: string;
+}
 //# sourceMappingURL=BalanceType.d.ts.map

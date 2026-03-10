@@ -1,10 +1,9 @@
-export type TransactionType = "CREDIT" | "DEBIT";
 /**
  * @typedef {'CREDIT'|'DEBIT'} TransactionType
  */
-export const TransactionType: Readonly<{
-    CREDIT: "CREDIT";
-    DEBIT: "DEBIT";
-    constructFromObject: (object: any) => any;
-}>;
+export class TransactionType {
+    static constructFromObject(object: any): any;
+    CREDIT: string;
+    DEBIT: string;
+}
 //# sourceMappingURL=TransactionType.d.ts.map

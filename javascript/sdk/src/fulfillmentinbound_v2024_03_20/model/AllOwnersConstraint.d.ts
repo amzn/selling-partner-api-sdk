@@ -1,9 +1,8 @@
-export type AllOwnersConstraint = "MUST_MATCH";
 /**
  * @typedef {'MUST_MATCH'} AllOwnersConstraint
  */
-export const AllOwnersConstraint: Readonly<{
-    MUST_MATCH: "MUST_MATCH";
-    constructFromObject: (object: any) => any;
-}>;
+export class AllOwnersConstraint {
+    static constructFromObject(object: any): any;
+    MUST_MATCH: string;
+}
 //# sourceMappingURL=AllOwnersConstraint.d.ts.map

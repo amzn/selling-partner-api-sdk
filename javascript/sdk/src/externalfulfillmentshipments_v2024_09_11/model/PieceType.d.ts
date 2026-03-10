@@ -1,10 +1,9 @@
-export type PieceType = "SINGLE" | "MULTIPLE";
 /**
  * @typedef {'SINGLE'|'MULTIPLE'} PieceType
  */
-export const PieceType: Readonly<{
-    SINGLE: "SINGLE";
-    MULTIPLE: "MULTIPLE";
-    constructFromObject: (object: any) => any;
-}>;
+export class PieceType {
+    static constructFromObject(object: any): any;
+    SINGLE: string;
+    MULTIPLE: string;
+}
 //# sourceMappingURL=PieceType.d.ts.map

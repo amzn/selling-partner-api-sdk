@@ -1,10 +1,9 @@
-export type BankAccountOwnershipType = "THIRD_PARTY" | "SELF";
 /**
  * @typedef {'THIRD_PARTY'|'SELF'} BankAccountOwnershipType
  */
-export const BankAccountOwnershipType: Readonly<{
-    THIRD_PARTY: "THIRD_PARTY";
-    SELF: "SELF";
-    constructFromObject: (object: any) => any;
-}>;
+export class BankAccountOwnershipType {
+    static constructFromObject(object: any): any;
+    THIRD_PARTY: string;
+    SELF: string;
+}
 //# sourceMappingURL=BankAccountOwnershipType.d.ts.map

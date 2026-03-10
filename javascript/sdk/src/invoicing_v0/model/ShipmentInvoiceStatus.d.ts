@@ -1,12 +1,11 @@
-export type ShipmentInvoiceStatus = "Processing" | "Accepted" | "Errored" | "NotFound";
 /**
  * @typedef {'Processing'|'Accepted'|'Errored'|'NotFound'} ShipmentInvoiceStatus
  */
-export const ShipmentInvoiceStatus: Readonly<{
-    Processing: "Processing";
-    Accepted: "Accepted";
-    Errored: "Errored";
-    NotFound: "NotFound";
-    constructFromObject: (object: any) => any;
-}>;
+export class ShipmentInvoiceStatus {
+    static constructFromObject(object: any): any;
+    Processing: string;
+    Accepted: string;
+    Errored: string;
+    NotFound: string;
+}
 //# sourceMappingURL=ShipmentInvoiceStatus.d.ts.map

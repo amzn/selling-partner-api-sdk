@@ -1,10 +1,9 @@
-export type HandoverMethod = "PICKUP" | "DROPOFF";
 /**
  * @typedef {'PICKUP'|'DROPOFF'} HandoverMethod
  */
-export const HandoverMethod: Readonly<{
-    PICKUP: "PICKUP";
-    DROPOFF: "DROPOFF";
-    constructFromObject: (object: any) => any;
-}>;
+export class HandoverMethod {
+    static constructFromObject(object: any): any;
+    PICKUP: string;
+    DROPOFF: string;
+}
 //# sourceMappingURL=HandoverMethod.d.ts.map
