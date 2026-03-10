@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/** Struct that holds list of balances on the seller account. */
-@Schema(description = "Struct that holds list of balances on the seller account.")
+/** A list of balances in the seller account. */
+@Schema(description = "A list of balances in the seller account.")
 public class BalanceListing {
     @SerializedName("balances")
     private List<Balance> balances = null;
@@ -38,11 +38,11 @@ public class BalanceListing {
     }
 
     /**
-     * Collection that holds list of balances on the account
+     * A list of balances in the seller account.
      *
      * @return balances
      */
-    @Schema(description = "Collection that holds list of balances on the account ")
+    @Schema(description = "A list of balances in the seller account.")
     public List<Balance> getBalances() {
         return balances;
     }

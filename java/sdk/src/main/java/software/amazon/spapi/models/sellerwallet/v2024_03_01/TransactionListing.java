@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/** Struct that holds collection of transactions. */
-@Schema(description = "Struct that holds collection of transactions.")
+/** A list of transactions. */
+@Schema(description = "A list of transactions.")
 public class TransactionListing {
     @SerializedName("nextPageToken")
     private String nextPageToken = null;
@@ -33,15 +33,17 @@ public class TransactionListing {
     }
 
     /**
-     * If present, use this pagination token to retrieve the next page of supply sources, if not provided the API will
-     * return same response. The field will only be provided when the list is greater than 100.
+     * A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when
+     * the number of results exceeds 100. To get the next page of results, call the operation with this token and
+     * include the same arguments as the call that produced the token. To get a complete list, call this operation until
+     * &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages.
      *
      * @return nextPageToken
      */
     @Schema(
             example = "3493805734095308457308475",
             description =
-                    "If present, use this pagination token to retrieve the next page of supply sources, if not provided the API will return same response. The field will only be provided when the list is greater than 100.")
+                    "A token that you use to retrieve the next page of results. The response includes `nextPageToken` when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextPageToken` is null. Note that this operation can return empty pages.")
     public String getNextPageToken() {
         return nextPageToken;
     }
@@ -61,11 +63,11 @@ public class TransactionListing {
     }
 
     /**
-     * Collection that holds Transaction
+     * A list of transactions.
      *
      * @return transactions
      */
-    @Schema(required = true, description = "Collection that holds Transaction ")
+    @Schema(required = true, description = "A list of transactions.")
     public List<Transaction> getTransactions() {
         return transactions;
     }

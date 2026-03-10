@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -212,11 +212,11 @@ public class BankAccount {
     }
 
     /**
-     * The two digit country code, in ISO 3166 format.
+     * The two-digit country code in ISO 3166 format.
      *
      * @return accountCountryCode
      */
-    @Schema(example = "US", required = true, description = "The two digit country code, in ISO 3166 format. ")
+    @Schema(example = "US", required = true, description = "The two-digit country code in ISO 3166 format.")
     public String getAccountCountryCode() {
         return accountCountryCode;
     }
@@ -231,11 +231,11 @@ public class BankAccount {
     }
 
     /**
-     * BankAccount currency code in ISO 4217 format
+     * Bank account currency code in ISO 4217 format.
      *
      * @return accountCurrency
      */
-    @Schema(example = "USD", required = true, description = "BankAccount currency code in ISO 4217 format ")
+    @Schema(example = "USD", required = true, description = "Bank account currency code in ISO 4217 format.")
     public String getAccountCurrency() {
         return accountCurrency;
     }
@@ -250,16 +250,16 @@ public class BankAccount {
     }
 
     /**
-     * Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive
-     * 0&#x27;s
+     * The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet
+     * accounts.
      *
      * @return bankAccountNumberTail
      */
     @Schema(
-            example = "666",
+            example = "123",
             required = true,
             description =
-                    "Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0's ")
+                    "The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.")
     public String getBankAccountNumberTail() {
         return bankAccountNumberTail;
     }

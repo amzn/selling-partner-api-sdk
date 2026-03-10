@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -17,8 +17,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-/** Foreign exchange rate details displayed when transfer preview is requested. */
-@Schema(description = "Foreign exchange rate details displayed when transfer preview is requested. ")
+/** Foreign exchange rate details. */
+@Schema(description = "Foreign exchange rate details.")
 public class FxRateDetails {
     @SerializedName("fxRateId")
     private String fxRateId = null;
@@ -38,13 +38,13 @@ public class FxRateDetails {
     }
 
     /**
-     * Unique identifier assigned to the fees/foreign exchange Rate of a transaction.
+     * The unique identifier assigned to the fees / foreign exchange rate of a transaction.
      *
      * @return fxRateId
      */
     @Schema(
             required = true,
-            description = "Unique identifier assigned to the fees/foreign exchange Rate of a transaction. ")
+            description = "The unique identifier assigned to the fees / foreign exchange rate of a transaction.")
     public String getFxRateId() {
         return fxRateId;
     }

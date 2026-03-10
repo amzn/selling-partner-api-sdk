@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -16,14 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/**
- * If the fees is in baseAmount (sourceAccount) currency, effectiveRate &#x3D; (baseAmount -
- * sum(fees.feeAmount.currencyAmount)) * baseRate) / baseAmount. If the fees is in transferAmount (destinationAccount)
- * currency, effectiveRate &#x3D; (( baseAmount * baseRate ) - sum(fees.feeAmount.currencyAmount )) / baseAmount
- */
-@Schema(
-        description =
-                "If the fees is in baseAmount (sourceAccount) currency, effectiveRate =  (baseAmount - sum(fees.feeAmount.currencyAmount)) * baseRate) / baseAmount. If the fees is in transferAmount (destinationAccount) currency, effectiveRate =  (( baseAmount * baseRate ) -  sum(fees.feeAmount.currencyAmount )) / baseAmount ")
+/** Details of the fee. */
+@Schema(description = "Details of the fee.")
 public class Fee {
     @SerializedName("feeId")
     private String feeId = null;
@@ -43,11 +37,11 @@ public class Fee {
     }
 
     /**
-     * Unique identifier assigned to the Fee.
+     * The unique identifier assigned to the fee.
      *
      * @return feeId
      */
-    @Schema(required = true, description = "Unique identifier assigned to the Fee. ")
+    @Schema(required = true, description = "The unique identifier assigned to the fee.")
     public String getFeeId() {
         return feeId;
     }

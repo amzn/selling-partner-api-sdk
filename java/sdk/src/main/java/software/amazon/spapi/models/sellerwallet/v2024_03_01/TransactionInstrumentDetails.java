@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -16,14 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/**
- * Request body to create transaction instrument, Amazon performs validation and screening (anti-money laundering
- * measuers) on all the transaction instruments before executing a transaction thus it requires transaction instrument
- * holder&#x27;s contact details as well
- */
-@Schema(
-        description =
-                "Request body to create transaction instrument, Amazon performs validation and screening (anti-money laundering measuers) on all the transaction instruments before executing a transaction thus it requires transaction instrument holder's contact details as well ")
+/** Details of the destination bank account in the transaction request. */
+@Schema(description = "Details of the destination bank account in the transaction request.")
 public class TransactionInstrumentDetails {
     @SerializedName("bankAccount")
     private BankAccount bankAccount = null;
@@ -59,9 +53,9 @@ public class TransactionInstrumentDetails {
     }
 
     /**
-     * This field would be used to populate the bank account number of the destination payment method. The field is
-     * intentionally not included in any other Schemas since Amazon internal systems will never receive it in
-     * unencrypted format, so field won&#x27;t be part of the request signature
+     * The bank account number of the destination payment method. **Note:** This field is encrypted before Amazon
+     * receives it, so should not be used to generate &#x60;destAccountDigitalSignature&#x60;, and should not be
+     * included in the request signature.
      *
      * @return bankAccountNumber
      */
@@ -69,7 +63,7 @@ public class TransactionInstrumentDetails {
             example = "GB29RBOS60161331926819",
             required = true,
             description =
-                    "This field would be used to populate the bank account number of the destination payment method. The field is intentionally not included in any other Schemas since Amazon internal systems will never receive it in unencrypted format, so field won't be part of the request signature ")
+                    "The bank account number of the destination payment method.  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate `destAccountDigitalSignature`, and should not be included in the request signature.")
     public String getBankAccountNumber() {
         return bankAccountNumber;
     }
