@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
 {
     /// <summary>
-    /// Request body to initiate a scheduled transfer from a SW bank account to another customer defined bank account 
+    /// Request body to initiate a scheduled transfer from a Seller Wallet bank account to another customer-defined bank account.
     /// </summary>
     [DataContract(Name = "TransferScheduleRequest")]
     public partial class TransferScheduleRequest : IValidatableObject
@@ -51,9 +51,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <summary>
         /// Initializes a new instance of the <see cref="TransferScheduleRequest" /> class.
         /// </summary>
-        /// <param name="sourceAccountId">The unique identifier of the source Amazon SW bank account from where the money needs to be debited  (required).</param>
-        /// <param name="sourceCurrencyCode">Represents 3 letter currency code in ISO 4217 standard format of the source payment method country  (required).</param>
-        /// <param name="destinationAccountId">Optional field to specify the unique identifier of the destination bank account where the money needs to be deposited  (required).</param>
+        /// <param name="sourceAccountId">The unique identifier of the source Amazon Seller Wallet bank account from which money is debited. (required).</param>
+        /// <param name="sourceCurrencyCode">The three-letter currency code of the source payment method country, in ISO 4217 format. (required).</param>
+        /// <param name="destinationAccountId">The unique identifier of the destination bank account where the money is deposited. (required).</param>
         /// <param name="destinationTransactionInstrument">destinationTransactionInstrument (required).</param>
         /// <param name="transactionType">transactionType (required).</param>
         /// <param name="transferScheduleInformation">transferScheduleInformation (required).</param>
@@ -102,9 +102,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// The unique identifier of the source Amazon SW bank account from where the money needs to be debited 
+        /// The unique identifier of the source Amazon Seller Wallet bank account from which money is debited.
         /// </summary>
-        /// <value>The unique identifier of the source Amazon SW bank account from where the money needs to be debited </value>
+        /// <value>The unique identifier of the source Amazon Seller Wallet bank account from which money is debited.</value>
         /*
         <example>amzn1.account.SMUGN2EN3ZHWSRJKH2KCJPII5JEI</example>
         */
@@ -112,9 +112,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string SourceAccountId { get; set; }
 
         /// <summary>
-        /// Represents 3 letter currency code in ISO 4217 standard format of the source payment method country 
+        /// The three-letter currency code of the source payment method country, in ISO 4217 format.
         /// </summary>
-        /// <value>Represents 3 letter currency code in ISO 4217 standard format of the source payment method country </value>
+        /// <value>The three-letter currency code of the source payment method country, in ISO 4217 format.</value>
         /*
         <example>GBP</example>
         */
@@ -122,9 +122,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string SourceCurrencyCode { get; set; }
 
         /// <summary>
-        /// Optional field to specify the unique identifier of the destination bank account where the money needs to be deposited 
+        /// The unique identifier of the destination bank account where the money is deposited.
         /// </summary>
-        /// <value>Optional field to specify the unique identifier of the destination bank account where the money needs to be deposited </value>
+        /// <value>The unique identifier of the destination bank account where the money is deposited.</value>
         /*
         <example>amzn1.account.AJKBFWEJFBNH2KCJPII5FBN</example>
         */

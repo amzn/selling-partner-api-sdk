@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -26,139 +26,139 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
     {
         #region Synchronous Operations
         /// <summary>
-        /// Find particular Amazon SW account by Amazon account identifier
+        /// Find particular Amazon Seller Wallet account by Amazon account identifier
         /// </summary>
         /// <remarks>
         /// Retrieve a Seller Wallet bank account by Amazon account identifier.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>BankAccount</returns>
         BankAccount GetAccount (string accountId, string marketplaceId);
 
         /// <summary>
-        /// Find particular Amazon SW account by Amazon account identifier
+        /// Find particular Amazon Seller Wallet account by Amazon account identifier
         /// </summary>
         /// <remarks>
         /// Retrieve a Seller Wallet bank account by Amazon account identifier.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>ApiResponse of BankAccount</returns>
         ApiResponse<BankAccount> GetAccountWithHttpInfo (string accountId, string marketplaceId);
         /// <summary>
-        /// Find balance in particular Amazon SW account by Amazon account identifier
+        /// Find balance in particular Amazon Seller Wallet account by Amazon account identifier
         /// </summary>
         /// <remarks>
         /// Retrieve the balance in a given Seller Wallet bank account.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>BalanceListing</returns>
         BalanceListing ListAccountBalances (string accountId, string marketplaceId);
 
         /// <summary>
-        /// Find balance in particular Amazon SW account by Amazon account identifier
+        /// Find balance in particular Amazon Seller Wallet account by Amazon account identifier
         /// </summary>
         /// <remarks>
         /// Retrieve the balance in a given Seller Wallet bank account.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>ApiResponse of BalanceListing</returns>
         ApiResponse<BalanceListing> ListAccountBalancesWithHttpInfo (string accountId, string marketplaceId);
         /// <summary>
-        /// Get all Amazon SW accounts for the seller
+        /// Get all Amazon Seller Wallet accounts for the seller
         /// </summary>
         /// <remarks>
         /// Get Seller Wallet accounts for a seller.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">A marketplace identifier. Specifies the marketplace for which items are returned.</param>
+        /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>BankAccountListing</returns>
         BankAccountListing ListAccounts (string marketplaceId);
 
         /// <summary>
-        /// Get all Amazon SW accounts for the seller
+        /// Get all Amazon Seller Wallet accounts for the seller
         /// </summary>
         /// <remarks>
         /// Get Seller Wallet accounts for a seller.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">A marketplace identifier. Specifies the marketplace for which items are returned.</param>
+        /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>ApiResponse of BankAccountListing</returns>
         ApiResponse<BankAccountListing> ListAccountsWithHttpInfo (string marketplaceId);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Find particular Amazon SW account by Amazon account identifier
+        /// Find particular Amazon Seller Wallet account by Amazon account identifier
         /// </summary>
         /// <remarks>
         /// Retrieve a Seller Wallet bank account by Amazon account identifier.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Task of BankAccount</returns>
         System.Threading.Tasks.Task<BankAccount> GetAccountAsync (string accountId, string marketplaceId);
 
         /// <summary>
-        /// Find particular Amazon SW account by Amazon account identifier
+        /// Find particular Amazon Seller Wallet account by Amazon account identifier
         /// </summary>
         /// <remarks>
         /// Retrieve a Seller Wallet bank account by Amazon account identifier.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Task of ApiResponse (BankAccount)</returns>
         System.Threading.Tasks.Task<ApiResponse<BankAccount>> GetAccountAsyncWithHttpInfo (string accountId, string marketplaceId);
         /// <summary>
-        /// Find balance in particular Amazon SW account by Amazon account identifier
+        /// Find balance in particular Amazon Seller Wallet account by Amazon account identifier
         /// </summary>
         /// <remarks>
         /// Retrieve the balance in a given Seller Wallet bank account.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Task of BalanceListing</returns>
         System.Threading.Tasks.Task<BalanceListing> ListAccountBalancesAsync (string accountId, string marketplaceId);
 
         /// <summary>
-        /// Find balance in particular Amazon SW account by Amazon account identifier
+        /// Find balance in particular Amazon Seller Wallet account by Amazon account identifier
         /// </summary>
         /// <remarks>
         /// Retrieve the balance in a given Seller Wallet bank account.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Task of ApiResponse (BalanceListing)</returns>
         System.Threading.Tasks.Task<ApiResponse<BalanceListing>> ListAccountBalancesAsyncWithHttpInfo (string accountId, string marketplaceId);
         /// <summary>
-        /// Get all Amazon SW accounts for the seller
+        /// Get all Amazon Seller Wallet accounts for the seller
         /// </summary>
         /// <remarks>
         /// Get Seller Wallet accounts for a seller.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">A marketplace identifier. Specifies the marketplace for which items are returned.</param>
+        /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Task of BankAccountListing</returns>
         System.Threading.Tasks.Task<BankAccountListing> ListAccountsAsync (string marketplaceId);
 
         /// <summary>
-        /// Get all Amazon SW accounts for the seller
+        /// Get all Amazon Seller Wallet accounts for the seller
         /// </summary>
         /// <remarks>
         /// Get Seller Wallet accounts for a seller.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">A marketplace identifier. Specifies the marketplace for which items are returned.</param>
+        /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Task of ApiResponse (BankAccountListing)</returns>
         System.Threading.Tasks.Task<ApiResponse<BankAccountListing>> ListAccountsAsyncWithHttpInfo (string marketplaceId);
         #endregion Asynchronous Operations
@@ -253,10 +253,10 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Find particular Amazon SW account by Amazon account identifier Retrieve a Seller Wallet bank account by Amazon account identifier.
+        /// Find particular Amazon Seller Wallet account by Amazon account identifier Retrieve a Seller Wallet bank account by Amazon account identifier.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>BankAccount</returns>
         public BankAccount GetAccount (string accountId, string marketplaceId)
@@ -266,10 +266,10 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Find particular Amazon SW account by Amazon account identifier Retrieve a Seller Wallet bank account by Amazon account identifier.
+        /// Find particular Amazon Seller Wallet account by Amazon account identifier Retrieve a Seller Wallet bank account by Amazon account identifier.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>ApiResponse of BankAccount</returns>
         public ApiResponse< BankAccount > GetAccountWithHttpInfo (string accountId, string marketplaceId)
@@ -323,10 +323,10 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Find particular Amazon SW account by Amazon account identifier Retrieve a Seller Wallet bank account by Amazon account identifier.
+        /// Find particular Amazon Seller Wallet account by Amazon account identifier Retrieve a Seller Wallet bank account by Amazon account identifier.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Task of BankAccount</returns>
         public async System.Threading.Tasks.Task<BankAccount> GetAccountAsync (string accountId, string marketplaceId)
@@ -337,10 +337,10 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Find particular Amazon SW account by Amazon account identifier Retrieve a Seller Wallet bank account by Amazon account identifier.
+        /// Find particular Amazon Seller Wallet account by Amazon account identifier Retrieve a Seller Wallet bank account by Amazon account identifier.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Task of ApiResponse (BankAccount)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<BankAccount>> GetAccountAsyncWithHttpInfo (string accountId, string marketplaceId)
@@ -393,10 +393,10 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Find balance in particular Amazon SW account by Amazon account identifier Retrieve the balance in a given Seller Wallet bank account.
+        /// Find balance in particular Amazon Seller Wallet account by Amazon account identifier Retrieve the balance in a given Seller Wallet bank account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>BalanceListing</returns>
         public BalanceListing ListAccountBalances (string accountId, string marketplaceId)
@@ -406,10 +406,10 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Find balance in particular Amazon SW account by Amazon account identifier Retrieve the balance in a given Seller Wallet bank account.
+        /// Find balance in particular Amazon Seller Wallet account by Amazon account identifier Retrieve the balance in a given Seller Wallet bank account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>ApiResponse of BalanceListing</returns>
         public ApiResponse< BalanceListing > ListAccountBalancesWithHttpInfo (string accountId, string marketplaceId)
@@ -463,10 +463,10 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Find balance in particular Amazon SW account by Amazon account identifier Retrieve the balance in a given Seller Wallet bank account.
+        /// Find balance in particular Amazon Seller Wallet account by Amazon account identifier Retrieve the balance in a given Seller Wallet bank account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Task of BalanceListing</returns>
         public async System.Threading.Tasks.Task<BalanceListing> ListAccountBalancesAsync (string accountId, string marketplaceId)
@@ -477,10 +477,10 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Find balance in particular Amazon SW account by Amazon account identifier Retrieve the balance in a given Seller Wallet bank account.
+        /// Find balance in particular Amazon Seller Wallet account by Amazon account identifier Retrieve the balance in a given Seller Wallet bank account.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="accountId">ID of the Amazon SW account</param>
+        /// <param name="accountId">The ID of the Amazon Seller Wallet account.</param>
         /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Task of ApiResponse (BalanceListing)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<BalanceListing>> ListAccountBalancesAsyncWithHttpInfo (string accountId, string marketplaceId)
@@ -533,10 +533,10 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Get all Amazon SW accounts for the seller Get Seller Wallet accounts for a seller.
+        /// Get all Amazon Seller Wallet accounts for the seller Get Seller Wallet accounts for a seller.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">A marketplace identifier. Specifies the marketplace for which items are returned.</param>
+        /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>BankAccountListing</returns>
         public BankAccountListing ListAccounts (string marketplaceId)
         {
@@ -545,10 +545,10 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Get all Amazon SW accounts for the seller Get Seller Wallet accounts for a seller.
+        /// Get all Amazon Seller Wallet accounts for the seller Get Seller Wallet accounts for a seller.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">A marketplace identifier. Specifies the marketplace for which items are returned.</param>
+        /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>ApiResponse of BankAccountListing</returns>
         public ApiResponse< BankAccountListing > ListAccountsWithHttpInfo (string marketplaceId)
         {
@@ -597,10 +597,10 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Get all Amazon SW accounts for the seller Get Seller Wallet accounts for a seller.
+        /// Get all Amazon Seller Wallet accounts for the seller Get Seller Wallet accounts for a seller.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">A marketplace identifier. Specifies the marketplace for which items are returned.</param>
+        /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Task of BankAccountListing</returns>
         public async System.Threading.Tasks.Task<BankAccountListing> ListAccountsAsync (string marketplaceId)
         {
@@ -610,10 +610,10 @@ namespace software.amzn.spapi.Api.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Get all Amazon SW accounts for the seller Get Seller Wallet accounts for a seller.
+        /// Get all Amazon Seller Wallet accounts for the seller Get Seller Wallet accounts for a seller.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">A marketplace identifier. Specifies the marketplace for which items are returned.</param>
+        /// <param name="marketplaceId">The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <returns>Task of ApiResponse (BankAccountListing)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<BankAccountListing>> ListAccountsAsyncWithHttpInfo (string marketplaceId)
         {

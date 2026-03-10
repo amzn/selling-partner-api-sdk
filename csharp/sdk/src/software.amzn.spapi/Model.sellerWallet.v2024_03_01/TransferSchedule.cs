@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -51,14 +51,14 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <summary>
         /// Initializes a new instance of the <see cref="TransferSchedule" /> class.
         /// </summary>
-        /// <param name="transferScheduleId">The unique identifier provided by Amazon to the scheduled transfer  (required).</param>
+        /// <param name="transferScheduleId">The unique identifier provided by Amazon to the scheduled transfer. (required).</param>
         /// <param name="transactionType">transactionType (required).</param>
         /// <param name="transactionSourceAccount">transactionSourceAccount.</param>
         /// <param name="transactionDestinationAccount">transactionDestinationAccount (required).</param>
         /// <param name="transferScheduleStatus">transferScheduleStatus (required).</param>
         /// <param name="transferScheduleInformation">transferScheduleInformation (required).</param>
         /// <param name="paymentPreference">paymentPreference.</param>
-        /// <param name="transferScheduleFailures">Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.  (required).</param>
+        /// <param name="transferScheduleFailures">A list of transfer schedule failures. (required).</param>
         public TransferSchedule(string transferScheduleId = default(string), TransactionType transactionType = default(TransactionType), TransactionAccount? transactionSourceAccount = default(TransactionAccount?), TransactionAccount transactionDestinationAccount = default(TransactionAccount), TransferScheduleStatus transferScheduleStatus = default(TransferScheduleStatus), TransferScheduleInformation transferScheduleInformation = default(TransferScheduleInformation), PaymentPreference? paymentPreference = default(PaymentPreference?), List<TransferScheduleFailures> transferScheduleFailures = default(List<TransferScheduleFailures>))
         {
             // to ensure "transferScheduleId" is required (not null)
@@ -92,9 +92,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// The unique identifier provided by Amazon to the scheduled transfer 
+        /// The unique identifier provided by Amazon to the scheduled transfer.
         /// </summary>
-        /// <value>The unique identifier provided by Amazon to the scheduled transfer </value>
+        /// <value>The unique identifier provided by Amazon to the scheduled transfer.</value>
         [DataMember(Name = "transferScheduleId", IsRequired = true, EmitDefaultValue = true)]
         public string TransferScheduleId { get; set; }
 
@@ -123,9 +123,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public PaymentPreference? PaymentPreference { get; set; }
 
         /// <summary>
-        /// Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons. 
+        /// A list of transfer schedule failures.
         /// </summary>
-        /// <value>Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons. </value>
+        /// <value>A list of transfer schedule failures.</value>
         [DataMember(Name = "transferScheduleFailures", IsRequired = true, EmitDefaultValue = true)]
         public List<TransferScheduleFailures> TransferScheduleFailures { get; set; }
 

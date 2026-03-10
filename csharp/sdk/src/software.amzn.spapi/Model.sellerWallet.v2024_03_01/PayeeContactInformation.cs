@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -48,13 +48,13 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <param name="payeeFirstName">First name of the payee. There is a 50 character limit. (required).</param>
         /// <param name="payeeMiddleName">Middle name of the payee. There is a 50 character limit..</param>
         /// <param name="payeeLastName">Last name of the payee. There is a 50 character limit. (required).</param>
-        /// <param name="addressLine1">Address Line 1 of the public address  (required).</param>
-        /// <param name="addressLine2">Address Line 2 of the public address .</param>
-        /// <param name="city">City name of the public address  (required).</param>
+        /// <param name="addressLine1">Address Line 1 of the public address. (required).</param>
+        /// <param name="addressLine2">Address Line 2 of the public address..</param>
+        /// <param name="city">City name of the public address. (required).</param>
         /// <param name="state">State name of the public address. This is the state or region for China-based addresses. (required).</param>
-        /// <param name="postalCode">Postal code of the public address  (required).</param>
-        /// <param name="country">Country name of the public address .</param>
-        /// <param name="countryCode">The two digit country code, in ISO 3166 format.  (required).</param>
+        /// <param name="postalCode">Postal code of the public address. (required).</param>
+        /// <param name="country">Country name of the public address..</param>
+        /// <param name="countryCode">The two digit country code, in ISO 3166 format. (required).</param>
         /// <param name="emailAddress">Email address of the payee. (required).</param>
         /// <param name="phoneNumber">Valid phone number of the payee. (required).</param>
         /// <param name="payeeEntityType">payeeEntityType (required).</param>
@@ -151,9 +151,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string PayeeLastName { get; set; }
 
         /// <summary>
-        /// Address Line 1 of the public address 
+        /// Address Line 1 of the public address.
         /// </summary>
-        /// <value>Address Line 1 of the public address </value>
+        /// <value>Address Line 1 of the public address.</value>
         /*
         <example>678 JFK Street</example>
         */
@@ -161,9 +161,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string AddressLine1 { get; set; }
 
         /// <summary>
-        /// Address Line 2 of the public address 
+        /// Address Line 2 of the public address.
         /// </summary>
-        /// <value>Address Line 2 of the public address </value>
+        /// <value>Address Line 2 of the public address.</value>
         /*
         <example>Unit 415</example>
         */
@@ -171,9 +171,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string? AddressLine2 { get; set; }
 
         /// <summary>
-        /// City name of the public address 
+        /// City name of the public address.
         /// </summary>
-        /// <value>City name of the public address </value>
+        /// <value>City name of the public address.</value>
         /*
         <example>Seattle</example>
         */
@@ -191,9 +191,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string State { get; set; }
 
         /// <summary>
-        /// Postal code of the public address 
+        /// Postal code of the public address.
         /// </summary>
-        /// <value>Postal code of the public address </value>
+        /// <value>Postal code of the public address.</value>
         /*
         <example>98109</example>
         */
@@ -201,9 +201,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string PostalCode { get; set; }
 
         /// <summary>
-        /// Country name of the public address 
+        /// Country name of the public address.
         /// </summary>
-        /// <value>Country name of the public address </value>
+        /// <value>Country name of the public address.</value>
         /*
         <example>United States</example>
         */
@@ -211,9 +211,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string? Country { get; set; }
 
         /// <summary>
-        /// The two digit country code, in ISO 3166 format. 
+        /// The two digit country code, in ISO 3166 format.
         /// </summary>
-        /// <value>The two digit country code, in ISO 3166 format. </value>
+        /// <value>The two digit country code, in ISO 3166 format.</value>
         /*
         <example>US</example>
         */

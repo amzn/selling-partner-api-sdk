@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -70,9 +70,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <param name="bankAccountOwnershipType">bankAccountOwnershipType (required).</param>
         /// <param name="routingNumber">Routing number for automated clearing house transfers for &#x60;THIRD_PARTY&#x60; transaction requests. This value is nine consecutive zeros for Amazon Seller Wallet accounts..</param>
         /// <param name="bankNumberFormat">bankNumberFormat.</param>
-        /// <param name="accountCountryCode">The two digit country code, in ISO 3166 format.  (required).</param>
-        /// <param name="accountCurrency">BankAccount currency code in ISO 4217 format  (required).</param>
-        /// <param name="bankAccountNumberTail">Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0&#39;s  (required).</param>
+        /// <param name="accountCountryCode">The two-digit country code in ISO 3166 format. (required).</param>
+        /// <param name="accountCurrency">Bank account currency code in ISO 4217 format. (required).</param>
+        /// <param name="bankAccountNumberTail">The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts. (required).</param>
         /// <param name="bankAccountHolderStatus">bankAccountHolderStatus.</param>
         public BankAccount(string? accountId = default(string?), string? accountHolderName = default(string?), BankAccountNumberFormat? bankAccountNumberFormat = default(BankAccountNumberFormat?), string? bankName = default(string?), BankAccountOwnershipType bankAccountOwnershipType = default(BankAccountOwnershipType), string? routingNumber = default(string?), BankNumberFormat? bankNumberFormat = default(BankNumberFormat?), string accountCountryCode = default(string), string accountCurrency = default(string), string bankAccountNumberTail = default(string), BankAccountHolderStatus? bankAccountHolderStatus = default(BankAccountHolderStatus?))
         {
@@ -145,9 +145,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string? RoutingNumber { get; set; }
 
         /// <summary>
-        /// The two digit country code, in ISO 3166 format. 
+        /// The two-digit country code in ISO 3166 format.
         /// </summary>
-        /// <value>The two digit country code, in ISO 3166 format. </value>
+        /// <value>The two-digit country code in ISO 3166 format.</value>
         /*
         <example>US</example>
         */
@@ -155,9 +155,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string AccountCountryCode { get; set; }
 
         /// <summary>
-        /// BankAccount currency code in ISO 4217 format 
+        /// Bank account currency code in ISO 4217 format.
         /// </summary>
-        /// <value>BankAccount currency code in ISO 4217 format </value>
+        /// <value>Bank account currency code in ISO 4217 format.</value>
         /*
         <example>USD</example>
         */
@@ -165,11 +165,11 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string AccountCurrency { get; set; }
 
         /// <summary>
-        /// Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0&#39;s 
+        /// The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.
         /// </summary>
-        /// <value>Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0&#39;s </value>
+        /// <value>The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.</value>
         /*
-        <example>666</example>
+        <example>123</example>
         */
         [DataMember(Name = "bankAccountNumberTail", IsRequired = true, EmitDefaultValue = true)]
         public string BankAccountNumberTail { get; set; }

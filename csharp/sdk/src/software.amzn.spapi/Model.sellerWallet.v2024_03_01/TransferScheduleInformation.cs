@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
 {
     /// <summary>
-    /// Parameters containing information required for initiating a schedule transfer 
+    /// Mandatory information for initiating a schedule transfer.
     /// </summary>
     [DataContract(Name = "TransferScheduleInformation")]
     public partial class TransferScheduleInformation : IValidatableObject
@@ -40,8 +40,8 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <summary>
         /// Initializes a new instance of the <see cref="TransferScheduleInformation" /> class.
         /// </summary>
-        /// <param name="scheduleStartDate">Field to specify start date of the scheduled transfer .</param>
-        /// <param name="scheduleEndDate">Field to specify end date of the scheduled transfer .</param>
+        /// <param name="scheduleStartDate">The start date of the scheduled transfer..</param>
+        /// <param name="scheduleEndDate">The end date of the scheduled transfer..</param>
         /// <param name="scheduleExpression">scheduleExpression.</param>
         /// <param name="scheduleType">scheduleType.</param>
         public TransferScheduleInformation(DateTime? scheduleStartDate = default(DateTime?), DateTime? scheduleEndDate = default(DateTime?), ScheduleExpression? scheduleExpression = default(ScheduleExpression?), ScheduleTransferType? scheduleType = default(ScheduleTransferType?))
@@ -53,9 +53,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// Field to specify start date of the scheduled transfer 
+        /// The start date of the scheduled transfer.
         /// </summary>
-        /// <value>Field to specify start date of the scheduled transfer </value>
+        /// <value>The start date of the scheduled transfer.</value>
         /*
         <example>2024-03-01T00:00Z</example>
         */
@@ -63,9 +63,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public DateTime? ScheduleStartDate { get; set; }
 
         /// <summary>
-        /// Field to specify end date of the scheduled transfer 
+        /// The end date of the scheduled transfer.
         /// </summary>
-        /// <value>Field to specify end date of the scheduled transfer </value>
+        /// <value>The end date of the scheduled transfer.</value>
         /*
         <example>2027-03-01T00:00Z</example>
         */

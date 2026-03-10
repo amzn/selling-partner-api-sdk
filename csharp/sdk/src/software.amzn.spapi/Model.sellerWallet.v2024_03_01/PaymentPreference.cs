@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
 {
     /// <summary>
-    /// Payment preference type in which transfer is being scheduled 
+    /// The type of payment preference in which the transfer is being scheduled.
     /// </summary>
     [DataContract(Name = "PaymentPreference")]
     public partial class PaymentPreference : IValidatableObject
@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// Initializes a new instance of the <see cref="PaymentPreference" /> class.
         /// </summary>
         /// <param name="paymentPreferencePaymentType">paymentPreferencePaymentType (required).</param>
-        /// <param name="value">A decimal number such as amount or FX rate. (required).</param>
+        /// <param name="value">A decimal number, such as an amount or FX rate. (required).</param>
         public PaymentPreference(PaymentPreferencePaymentType paymentPreferencePaymentType = default(PaymentPreferencePaymentType), decimal value = default(decimal))
         {
             this.PaymentPreferencePaymentType = paymentPreferencePaymentType;
@@ -54,9 +54,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         }
 
         /// <summary>
-        /// A decimal number such as amount or FX rate.
+        /// A decimal number, such as an amount or FX rate.
         /// </summary>
-        /// <value>A decimal number such as amount or FX rate.</value>
+        /// <value>A decimal number, such as an amount or FX rate.</value>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
         public decimal Value { get; set; }
 

@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -52,14 +52,14 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// Initializes a new instance of the <see cref="Transaction" /> class.
         /// </summary>
         /// <param name="accountId">The unique identifier of the Amazon Seller Wallet bank account from which the money is debited. (required).</param>
-        /// <param name="transactionId">The unique identifier provided by Amazon to the transaction  (required).</param>
+        /// <param name="transactionId">The unique identifier provided by Amazon to the transaction. (required).</param>
         /// <param name="transactionType">transactionType (required).</param>
         /// <param name="transactionStatus">transactionStatus (required).</param>
         /// <param name="transactionRequestDate">The date when the transaction was initiated. (required).</param>
-        /// <param name="expectedCompletionDate">Expected completion date of a transaction, for existing active Payees (Trusted Beneficiaries) it will be 24 hours but for new destination bank accounts the value could go up to 5 days .</param>
-        /// <param name="transactionActualCompletionDate">Transaction completion date .</param>
-        /// <param name="lastUpdateDate">The last update date on the transaction  (required).</param>
-        /// <param name="requesterName">Amazon SW customer who requested the transaction .</param>
+        /// <param name="expectedCompletionDate">The expected completion date of the transaction..</param>
+        /// <param name="transactionActualCompletionDate">The transaction&#39;s completion date..</param>
+        /// <param name="lastUpdateDate">The date of the most recent account balance update. (required).</param>
+        /// <param name="requesterName">The Amazon Seller Wallet customer who requested the transaction..</param>
         /// <param name="transactionRequesterSource">The transaction initiation source. This value is either the Amazon portal or PISP name that the customer used to start the transaction. (required).</param>
         /// <param name="transactionDescription">A description of the transaction that the requester provides when they initiate the transaction. (required).</param>
         /// <param name="transactionSourceAccount">transactionSourceAccount.</param>
@@ -67,7 +67,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <param name="transactionRequestAmount">transactionRequestAmount (required).</param>
         /// <param name="transferRateDetails">transferRateDetails (required).</param>
         /// <param name="transactionFinalAmount">transactionFinalAmount.</param>
-        /// <param name="transactionFailureReason">Description in case the transaction fails before completion .</param>
+        /// <param name="transactionFailureReason">The reason the transaction failed, if applicable..</param>
         public Transaction(string accountId = default(string), string transactionId = default(string), TransactionType transactionType = default(TransactionType), TransactionStatus transactionStatus = default(TransactionStatus), DateTime transactionRequestDate = default(DateTime), DateTime? expectedCompletionDate = default(DateTime?), DateTime? transactionActualCompletionDate = default(DateTime?), DateTime lastUpdateDate = default(DateTime), string? requesterName = default(string?), string transactionRequesterSource = default(string), string transactionDescription = default(string), TransactionAccount? transactionSourceAccount = default(TransactionAccount?), TransactionAccount transactionDestinationAccount = default(TransactionAccount), Currency transactionRequestAmount = default(Currency), TransferRatePreview transferRateDetails = default(TransferRatePreview), Currency? transactionFinalAmount = default(Currency?), string? transactionFailureReason = default(string?))
         {
             // to ensure "accountId" is required (not null)
@@ -135,9 +135,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string AccountId { get; set; }
 
         /// <summary>
-        /// The unique identifier provided by Amazon to the transaction 
+        /// The unique identifier provided by Amazon to the transaction.
         /// </summary>
-        /// <value>The unique identifier provided by Amazon to the transaction </value>
+        /// <value>The unique identifier provided by Amazon to the transaction.</value>
         [DataMember(Name = "transactionId", IsRequired = true, EmitDefaultValue = true)]
         public string TransactionId { get; set; }
 
@@ -149,9 +149,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public DateTime TransactionRequestDate { get; set; }
 
         /// <summary>
-        /// Expected completion date of a transaction, for existing active Payees (Trusted Beneficiaries) it will be 24 hours but for new destination bank accounts the value could go up to 5 days 
+        /// The expected completion date of the transaction.
         /// </summary>
-        /// <value>Expected completion date of a transaction, for existing active Payees (Trusted Beneficiaries) it will be 24 hours but for new destination bank accounts the value could go up to 5 days </value>
+        /// <value>The expected completion date of the transaction.</value>
         /*
         <example>2023-09-26T02:32:59.787Z</example>
         */
@@ -159,23 +159,23 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public DateTime? ExpectedCompletionDate { get; set; }
 
         /// <summary>
-        /// Transaction completion date 
+        /// The transaction&#39;s completion date.
         /// </summary>
-        /// <value>Transaction completion date </value>
+        /// <value>The transaction&#39;s completion date.</value>
         [DataMember(Name = "transactionActualCompletionDate", EmitDefaultValue = false)]
         public DateTime? TransactionActualCompletionDate { get; set; }
 
         /// <summary>
-        /// The last update date on the transaction 
+        /// The date of the most recent account balance update.
         /// </summary>
-        /// <value>The last update date on the transaction </value>
+        /// <value>The date of the most recent account balance update.</value>
         [DataMember(Name = "lastUpdateDate", IsRequired = true, EmitDefaultValue = true)]
         public DateTime LastUpdateDate { get; set; }
 
         /// <summary>
-        /// Amazon SW customer who requested the transaction 
+        /// The Amazon Seller Wallet customer who requested the transaction.
         /// </summary>
-        /// <value>Amazon SW customer who requested the transaction </value>
+        /// <value>The Amazon Seller Wallet customer who requested the transaction.</value>
         /*
         <example>TPPOrgId</example>
         */
@@ -227,9 +227,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public Currency? TransactionFinalAmount { get; set; }
 
         /// <summary>
-        /// Description in case the transaction fails before completion 
+        /// The reason the transaction failed, if applicable.
         /// </summary>
-        /// <value>Description in case the transaction fails before completion </value>
+        /// <value>The reason the transaction failed, if applicable.</value>
         /*
         <example>Insufficient Balance</example>
         */
