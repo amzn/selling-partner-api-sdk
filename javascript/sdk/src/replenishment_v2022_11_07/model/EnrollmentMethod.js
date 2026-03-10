@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'MANUAL'|'AUTOMATIC'} EnrollmentMethod
  */
-export const EnrollmentMethod = Object.freeze({
-  MANUAL: 'MANUAL',
-  AUTOMATIC: 'AUTOMATIC',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const EnrollmentMethod = Object.assign(
+  function () {},
+  {
+    MANUAL: 'MANUAL',
+    AUTOMATIC: 'AUTOMATIC',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

@@ -2,10 +2,10 @@ export type FeeType = "MISCELLANEOUS_FEE" | "TAX" | "TRANSACTION_FEE";
 /**
  * @typedef {'MISCELLANEOUS_FEE'|'TAX'|'TRANSACTION_FEE'} FeeType
  */
-export const FeeType: Readonly<{
-    MISCELLANEOUS_FEE: "MISCELLANEOUS_FEE";
-    TAX: "TAX";
-    TRANSACTION_FEE: "TRANSACTION_FEE";
+export const FeeType: (() => void) & {
+    MISCELLANEOUS_FEE: string;
+    TAX: string;
+    TRANSACTION_FEE: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=FeeType.d.ts.map

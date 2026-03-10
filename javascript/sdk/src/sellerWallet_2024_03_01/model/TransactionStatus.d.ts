@@ -2,13 +2,13 @@ export type TransactionStatus = "EXPIRED" | "FAILED" | "FAILED_CREDITS_APPLIED" 
 /**
  * @typedef {'EXPIRED'|'FAILED'|'FAILED_CREDITS_APPLIED'|'IN_PROGRESS'|'PENDING_USER_APPROVAL'|'SUCCESSFUL'} TransactionStatus
  */
-export const TransactionStatus: Readonly<{
-    EXPIRED: "EXPIRED";
-    FAILED: "FAILED";
-    FAILED_CREDITS_APPLIED: "FAILED_CREDITS_APPLIED";
-    IN_PROGRESS: "IN_PROGRESS";
-    PENDING_USER_APPROVAL: "PENDING_USER_APPROVAL";
-    SUCCESSFUL: "SUCCESSFUL";
+export const TransactionStatus: (() => void) & {
+    EXPIRED: string;
+    FAILED: string;
+    FAILED_CREDITS_APPLIED: string;
+    IN_PROGRESS: string;
+    PENDING_USER_APPROVAL: string;
+    SUCCESSFUL: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=TransactionStatus.d.ts.map

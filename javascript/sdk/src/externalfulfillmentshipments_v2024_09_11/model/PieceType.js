@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'SINGLE'|'MULTIPLE'} PieceType
  */
-export const PieceType = Object.freeze({
-  SINGLE: 'SINGLE',
-  MULTIPLE: 'MULTIPLE',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const PieceType = Object.assign(
+  function () {},
+  {
+    SINGLE: 'SINGLE',
+    MULTIPLE: 'MULTIPLE',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

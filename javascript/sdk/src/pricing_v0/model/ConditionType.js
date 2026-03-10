@@ -16,13 +16,15 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'New'|'Used'|'Collectible'|'Refurbished'|'Club'} ConditionType
  */
-export const ConditionType = Object.freeze({
-  New: 'New',
-  Used: 'Used',
-  Collectible: 'Collectible',
-  Refurbished: 'Refurbished',
-  Club: 'Club',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const ConditionType = Object.assign(
+  function () {},
+  {
+    New: 'New',
+    Used: 'Used',
+    Collectible: 'Collectible',
+    Refurbished: 'Refurbished',
+    Club: 'Club',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

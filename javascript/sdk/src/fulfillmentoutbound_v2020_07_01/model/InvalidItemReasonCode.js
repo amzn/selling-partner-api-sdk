@@ -16,12 +16,14 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'InvalidValues'|'DuplicateRequest'|'NoCompletedShipItems'|'NoReturnableQuantity'} InvalidItemReasonCode
  */
-export const InvalidItemReasonCode = Object.freeze({
-  InvalidValues: 'InvalidValues',
-  DuplicateRequest: 'DuplicateRequest',
-  NoCompletedShipItems: 'NoCompletedShipItems',
-  NoReturnableQuantity: 'NoReturnableQuantity',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const InvalidItemReasonCode = Object.assign(
+  function () {},
+  {
+    InvalidValues: 'InvalidValues',
+    DuplicateRequest: 'DuplicateRequest',
+    NoCompletedShipItems: 'NoCompletedShipItems',
+    NoReturnableQuantity: 'NoReturnableQuantity',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

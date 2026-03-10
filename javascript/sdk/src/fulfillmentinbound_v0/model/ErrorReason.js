@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'DoesNotExist'|'InvalidASIN'} ErrorReason
  */
-export const ErrorReason = Object.freeze({
-  DoesNotExist: 'DoesNotExist',
-  InvalidASIN: 'InvalidASIN',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const ErrorReason = Object.assign(
+  function () {},
+  {
+    DoesNotExist: 'DoesNotExist',
+    InvalidASIN: 'InvalidASIN',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'KILOWATT'|'HORSEPOWER'} EngineOutputUnit
  */
-export const EngineOutputUnit = Object.freeze({
-  KILOWATT: 'KILOWATT',
-  HORSEPOWER: 'HORSEPOWER',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const EngineOutputUnit = Object.assign(
+  function () {},
+  {
+    KILOWATT: 'KILOWATT',
+    HORSEPOWER: 'HORSEPOWER',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

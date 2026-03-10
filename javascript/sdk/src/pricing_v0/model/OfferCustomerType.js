@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'B2C'|'B2B'} OfferCustomerType
  */
-export const OfferCustomerType = Object.freeze({
-  B2C: 'B2C',
-  B2B: 'B2B',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const OfferCustomerType = Object.assign(
+  function () {},
+  {
+    B2C: 'B2C',
+    B2B: 'B2B',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

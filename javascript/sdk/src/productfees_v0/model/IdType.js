@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'ASIN'|'SellerSKU'} IdType
  */
-export const IdType = Object.freeze({
-  ASIN: 'ASIN',
-  SellerSKU: 'SellerSKU',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const IdType = Object.assign(
+  function () {},
+  {
+    ASIN: 'ASIN',
+    SellerSKU: 'SellerSKU',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

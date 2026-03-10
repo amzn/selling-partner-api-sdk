@@ -16,9 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'VALUE_ADD_SERVICE'} AssociationType
  */
-export const AssociationType = Object.freeze({
-  VALUE_ADD_SERVICE: 'VALUE_ADD_SERVICE',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const AssociationType = Object.assign(
+  function () {},
+  {
+    VALUE_ADD_SERVICE: 'VALUE_ADD_SERVICE',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

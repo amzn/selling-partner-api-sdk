@@ -2,12 +2,12 @@ export type DeliveryExperienceOption = "DeliveryConfirmationWithAdultSignature" 
 /**
  * @typedef {'DeliveryConfirmationWithAdultSignature'|'DeliveryConfirmationWithSignature'|'DeliveryConfirmationWithoutSignature'|'NoTracking'|'NoPreference'} DeliveryExperienceOption
  */
-export const DeliveryExperienceOption: Readonly<{
-    DeliveryConfirmationWithAdultSignature: "DeliveryConfirmationWithAdultSignature";
-    DeliveryConfirmationWithSignature: "DeliveryConfirmationWithSignature";
-    DeliveryConfirmationWithoutSignature: "DeliveryConfirmationWithoutSignature";
-    NoTracking: "NoTracking";
-    NoPreference: "NoPreference";
+export const DeliveryExperienceOption: (() => void) & {
+    DeliveryConfirmationWithAdultSignature: string;
+    DeliveryConfirmationWithSignature: string;
+    DeliveryConfirmationWithoutSignature: string;
+    NoTracking: string;
+    NoPreference: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=DeliveryExperienceOption.d.ts.map

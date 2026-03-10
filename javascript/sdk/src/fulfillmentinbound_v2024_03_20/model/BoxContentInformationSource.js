@@ -16,11 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'BOX_CONTENT_PROVIDED'|'MANUAL_PROCESS'|'BARCODE_2D'} BoxContentInformationSource
  */
-export const BoxContentInformationSource = Object.freeze({
-  BOX_CONTENT_PROVIDED: 'BOX_CONTENT_PROVIDED',
-  MANUAL_PROCESS: 'MANUAL_PROCESS',
-  BARCODE_2D: 'BARCODE_2D',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const BoxContentInformationSource = Object.assign(
+  function () {},
+  {
+    BOX_CONTENT_PROVIDED: 'BOX_CONTENT_PROVIDED',
+    MANUAL_PROCESS: 'MANUAL_PROCESS',
+    BARCODE_2D: 'BARCODE_2D',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

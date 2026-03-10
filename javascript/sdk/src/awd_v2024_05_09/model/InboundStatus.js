@@ -16,14 +16,16 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'DRAFT'|'VALIDATING'|'CONFIRMED'|'CLOSED'|'EXPIRED'|'CANCELLED'} InboundStatus
  */
-export const InboundStatus = Object.freeze({
-  DRAFT: 'DRAFT',
-  VALIDATING: 'VALIDATING',
-  CONFIRMED: 'CONFIRMED',
-  CLOSED: 'CLOSED',
-  EXPIRED: 'EXPIRED',
-  CANCELLED: 'CANCELLED',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const InboundStatus = Object.assign(
+  function () {},
+  {
+    DRAFT: 'DRAFT',
+    VALIDATING: 'VALIDATING',
+    CONFIRMED: 'CONFIRMED',
+    CLOSED: 'CLOSED',
+    EXPIRED: 'EXPIRED',
+    CANCELLED: 'CANCELLED',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

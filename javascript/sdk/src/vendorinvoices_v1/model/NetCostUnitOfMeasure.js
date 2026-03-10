@@ -16,12 +16,14 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'POUNDS'|'OUNCES'|'GRAMS'|'KILOGRAMS'} NetCostUnitOfMeasure
  */
-export const NetCostUnitOfMeasure = Object.freeze({
-  POUNDS: 'POUNDS',
-  OUNCES: 'OUNCES',
-  GRAMS: 'GRAMS',
-  KILOGRAMS: 'KILOGRAMS',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const NetCostUnitOfMeasure = Object.assign(
+  function () {},
+  {
+    POUNDS: 'POUNDS',
+    OUNCES: 'OUNCES',
+    GRAMS: 'GRAMS',
+    KILOGRAMS: 'KILOGRAMS',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

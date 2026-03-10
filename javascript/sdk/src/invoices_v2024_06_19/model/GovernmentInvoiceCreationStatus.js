@@ -16,11 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'PROCESSING'|'SUCCESS'|'ERROR'} GovernmentInvoiceCreationStatus
  */
-export const GovernmentInvoiceCreationStatus = Object.freeze({
-  PROCESSING: 'PROCESSING',
-  SUCCESS: 'SUCCESS',
-  ERROR: 'ERROR',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const GovernmentInvoiceCreationStatus = Object.assign(
+  function () {},
+  {
+    PROCESSING: 'PROCESSING',
+    SUCCESS: 'SUCCESS',
+    ERROR: 'ERROR',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

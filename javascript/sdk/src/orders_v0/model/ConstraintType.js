@@ -16,9 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'MANDATORY'} ConstraintType
  */
-export const ConstraintType = Object.freeze({
-  MANDATORY: 'MANDATORY',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const ConstraintType = Object.assign(
+  function () {},
+  {
+    MANDATORY: 'MANDATORY',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

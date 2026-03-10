@@ -16,11 +16,13 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'PACKAGE_CLIENT_REFERENCE_ID'|'SELLER_DISPLAY_NAME'|'COLLECT_ON_DELIVERY_AMOUNT'} LabelAttribute
  */
-export const LabelAttribute = Object.freeze({
-  PACKAGE_CLIENT_REFERENCE_ID: 'PACKAGE_CLIENT_REFERENCE_ID',
-  SELLER_DISPLAY_NAME: 'SELLER_DISPLAY_NAME',
-  COLLECT_ON_DELIVERY_AMOUNT: 'COLLECT_ON_DELIVERY_AMOUNT',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const LabelAttribute = Object.assign(
+  function () {},
+  {
+    PACKAGE_CLIENT_REFERENCE_ID: 'PACKAGE_CLIENT_REFERENCE_ID',
+    SELLER_DISPLAY_NAME: 'SELLER_DISPLAY_NAME',
+    COLLECT_ON_DELIVERY_AMOUNT: 'COLLECT_ON_DELIVERY_AMOUNT',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

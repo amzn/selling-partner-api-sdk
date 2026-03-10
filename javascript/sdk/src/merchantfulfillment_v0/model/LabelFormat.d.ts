@@ -2,12 +2,12 @@ export type LabelFormat = "PDF" | "PNG" | "ZPL203" | "ZPL300" | "ShippingService
 /**
  * @typedef {'PDF'|'PNG'|'ZPL203'|'ZPL300'|'ShippingServiceDefault'} LabelFormat
  */
-export const LabelFormat: Readonly<{
-    PDF: "PDF";
-    PNG: "PNG";
-    ZPL203: "ZPL203";
-    ZPL300: "ZPL300";
-    ShippingServiceDefault: "ShippingServiceDefault";
+export const LabelFormat: (() => void) & {
+    PDF: string;
+    PNG: string;
+    ZPL203: string;
+    ZPL300: string;
+    ShippingServiceDefault: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=LabelFormat.d.ts.map

@@ -2,9 +2,9 @@ export type AggregationTimePeriod = "FiveMinutes" | "TenMinutes";
 /**
  * @typedef {'FiveMinutes'|'TenMinutes'} AggregationTimePeriod
  */
-export const AggregationTimePeriod: Readonly<{
-    FiveMinutes: "FiveMinutes";
-    TenMinutes: "TenMinutes";
+export const AggregationTimePeriod: (() => void) & {
+    FiveMinutes: string;
+    TenMinutes: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=AggregationTimePeriod.d.ts.map

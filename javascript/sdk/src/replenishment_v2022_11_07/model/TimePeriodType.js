@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'PERFORMANCE'|'FORECAST'} TimePeriodType
  */
-export const TimePeriodType = Object.freeze({
-  PERFORMANCE: 'PERFORMANCE',
-  FORECAST: 'FORECAST',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const TimePeriodType = Object.assign(
+  function () {},
+  {
+    PERFORMANCE: 'PERFORMANCE',
+    FORECAST: 'FORECAST',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

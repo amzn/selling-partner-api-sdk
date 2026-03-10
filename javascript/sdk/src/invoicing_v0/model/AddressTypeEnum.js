@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'Residential'|'Commercial'} AddressTypeEnum
  */
-export const AddressTypeEnum = Object.freeze({
-  Residential: 'Residential',
-  Commercial: 'Commercial',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const AddressTypeEnum = Object.assign(
+  function () {},
+  {
+    Residential: 'Residential',
+    Commercial: 'Commercial',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

@@ -2,9 +2,9 @@ export type InputType = "TEXTBOX" | "PASSWORD";
 /**
  * @typedef {'TEXTBOX'|'PASSWORD'} InputType
  */
-export const InputType: Readonly<{
-    TEXTBOX: "TEXTBOX";
-    PASSWORD: "PASSWORD";
+export const InputType: (() => void) & {
+    TEXTBOX: string;
+    PASSWORD: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=InputType.d.ts.map

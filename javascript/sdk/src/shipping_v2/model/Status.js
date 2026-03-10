@@ -16,18 +16,20 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'PreTransit'|'InTransit'|'Delivered'|'Lost'|'OutForDelivery'|'Rejected'|'Undeliverable'|'DeliveryAttempted'|'PickupCancelled'|'AwaitingCustomerPickup'} Status
  */
-export const Status = Object.freeze({
-  PreTransit: 'PreTransit',
-  InTransit: 'InTransit',
-  Delivered: 'Delivered',
-  Lost: 'Lost',
-  OutForDelivery: 'OutForDelivery',
-  Rejected: 'Rejected',
-  Undeliverable: 'Undeliverable',
-  DeliveryAttempted: 'DeliveryAttempted',
-  PickupCancelled: 'PickupCancelled',
-  AwaitingCustomerPickup: 'AwaitingCustomerPickup',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const Status = Object.assign(
+  function () {},
+  {
+    PreTransit: 'PreTransit',
+    InTransit: 'InTransit',
+    Delivered: 'Delivered',
+    Lost: 'Lost',
+    OutForDelivery: 'OutForDelivery',
+    Rejected: 'Rejected',
+    Undeliverable: 'Undeliverable',
+    DeliveryAttempted: 'DeliveryAttempted',
+    PickupCancelled: 'PickupCancelled',
+    AwaitingCustomerPickup: 'AwaitingCustomerPickup',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

@@ -16,38 +16,40 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'BusinessClosed'|'CustomerUnavailable'|'PaymentNotReady'|'OtpNotAvailable'|'DeliveryAttempted'|'UnableToAccess'|'UnableToContactRecipient'|'DeliveredToBehindWheelieBin'|'DeliveredToPorch'|'DeliveredToGarage'|'DeliveredToGarden'|'DeliveredToGreenhouse'|'DeliveredToMailSlot'|'DeliveredToMailRoom'|'DeliveredToNeighbor'|'DeliveredToRearDoor'|'DeliveredToReceptionist'|'DeliveredToShed'|'DeliveredWithOTP'|'Signed'|'Damaged'|'IncorrectItems'|'NotRequired'|'Rejected'|'RejectedByRecipientWithVerification'|'CancelledByRecipient'|'AddressNotFound'|'HazmatShipment'|'Undeliverable'|'ArrivedAtLocalFacility'} DetailCodes
  */
-export const DetailCodes = Object.freeze({
-  BusinessClosed: 'BusinessClosed',
-  CustomerUnavailable: 'CustomerUnavailable',
-  PaymentNotReady: 'PaymentNotReady',
-  OtpNotAvailable: 'OtpNotAvailable',
-  DeliveryAttempted: 'DeliveryAttempted',
-  UnableToAccess: 'UnableToAccess',
-  UnableToContactRecipient: 'UnableToContactRecipient',
-  DeliveredToBehindWheelieBin: 'DeliveredToBehindWheelieBin',
-  DeliveredToPorch: 'DeliveredToPorch',
-  DeliveredToGarage: 'DeliveredToGarage',
-  DeliveredToGarden: 'DeliveredToGarden',
-  DeliveredToGreenhouse: 'DeliveredToGreenhouse',
-  DeliveredToMailSlot: 'DeliveredToMailSlot',
-  DeliveredToMailRoom: 'DeliveredToMailRoom',
-  DeliveredToNeighbor: 'DeliveredToNeighbor',
-  DeliveredToRearDoor: 'DeliveredToRearDoor',
-  DeliveredToReceptionist: 'DeliveredToReceptionist',
-  DeliveredToShed: 'DeliveredToShed',
-  DeliveredWithOTP: 'DeliveredWithOTP',
-  Signed: 'Signed',
-  Damaged: 'Damaged',
-  IncorrectItems: 'IncorrectItems',
-  NotRequired: 'NotRequired',
-  Rejected: 'Rejected',
-  RejectedByRecipientWithVerification: 'RejectedByRecipientWithVerification',
-  CancelledByRecipient: 'CancelledByRecipient',
-  AddressNotFound: 'AddressNotFound',
-  HazmatShipment: 'HazmatShipment',
-  Undeliverable: 'Undeliverable',
-  ArrivedAtLocalFacility: 'ArrivedAtLocalFacility',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const DetailCodes = Object.assign(
+  function () {},
+  {
+    BusinessClosed: 'BusinessClosed',
+    CustomerUnavailable: 'CustomerUnavailable',
+    PaymentNotReady: 'PaymentNotReady',
+    OtpNotAvailable: 'OtpNotAvailable',
+    DeliveryAttempted: 'DeliveryAttempted',
+    UnableToAccess: 'UnableToAccess',
+    UnableToContactRecipient: 'UnableToContactRecipient',
+    DeliveredToBehindWheelieBin: 'DeliveredToBehindWheelieBin',
+    DeliveredToPorch: 'DeliveredToPorch',
+    DeliveredToGarage: 'DeliveredToGarage',
+    DeliveredToGarden: 'DeliveredToGarden',
+    DeliveredToGreenhouse: 'DeliveredToGreenhouse',
+    DeliveredToMailSlot: 'DeliveredToMailSlot',
+    DeliveredToMailRoom: 'DeliveredToMailRoom',
+    DeliveredToNeighbor: 'DeliveredToNeighbor',
+    DeliveredToRearDoor: 'DeliveredToRearDoor',
+    DeliveredToReceptionist: 'DeliveredToReceptionist',
+    DeliveredToShed: 'DeliveredToShed',
+    DeliveredWithOTP: 'DeliveredWithOTP',
+    Signed: 'Signed',
+    Damaged: 'Damaged',
+    IncorrectItems: 'IncorrectItems',
+    NotRequired: 'NotRequired',
+    Rejected: 'Rejected',
+    RejectedByRecipientWithVerification: 'RejectedByRecipientWithVerification',
+    CancelledByRecipient: 'CancelledByRecipient',
+    AddressNotFound: 'AddressNotFound',
+    HazmatShipment: 'HazmatShipment',
+    Undeliverable: 'Undeliverable',
+    ArrivedAtLocalFacility: 'ArrivedAtLocalFacility',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

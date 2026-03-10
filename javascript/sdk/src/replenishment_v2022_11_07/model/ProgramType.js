@@ -16,9 +16,11 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'SUBSCRIBE_AND_SAVE'} ProgramType
  */
-export const ProgramType = Object.freeze({
-  SUBSCRIBE_AND_SAVE: 'SUBSCRIBE_AND_SAVE',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const ProgramType = Object.assign(
+  function () {},
+  {
+    SUBSCRIBE_AND_SAVE: 'SUBSCRIBE_AND_SAVE',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

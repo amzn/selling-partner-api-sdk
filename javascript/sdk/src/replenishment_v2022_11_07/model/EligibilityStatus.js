@@ -16,12 +16,14 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'ELIGIBLE'|'INELIGIBLE'|'SUSPENDED'|'REPLENISHMENT_ONLY_ORDERING'} EligibilityStatus
  */
-export const EligibilityStatus = Object.freeze({
-  ELIGIBLE: 'ELIGIBLE',
-  INELIGIBLE: 'INELIGIBLE',
-  SUSPENDED: 'SUSPENDED',
-  REPLENISHMENT_ONLY_ORDERING: 'REPLENISHMENT_ONLY_ORDERING',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const EligibilityStatus = Object.assign(
+  function () {},
+  {
+    ELIGIBLE: 'ELIGIBLE',
+    INELIGIBLE: 'INELIGIBLE',
+    SUSPENDED: 'SUSPENDED',
+    REPLENISHMENT_ONLY_ORDERING: 'REPLENISHMENT_ONLY_ORDERING',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

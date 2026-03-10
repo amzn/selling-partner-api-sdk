@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'Numbered'|'Other'} ParkingSpotIdentificationType
  */
-export const ParkingSpotIdentificationType = Object.freeze({
-  Numbered: 'Numbered',
-  Other: 'Other',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const ParkingSpotIdentificationType = Object.assign(
+  function () {},
+  {
+    Numbered: 'Numbered',
+    Other: 'Other',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

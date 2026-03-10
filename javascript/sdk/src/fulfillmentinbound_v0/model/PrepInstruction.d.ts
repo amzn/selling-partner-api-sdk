@@ -2,23 +2,23 @@ export type PrepInstruction = "Polybagging" | "BubbleWrapping" | "Taping" | "Bla
 /**
  * @typedef {'Polybagging'|'BubbleWrapping'|'Taping'|'BlackShrinkWrapping'|'Labeling'|'HangGarment'|'SetCreation'|'Boxing'|'RemoveFromHanger'|'Debundle'|'SuffocationStickering'|'CapSealing'|'SetStickering'|'BlankStickering'|'ShipsInProductPackaging'|'NoPrep'} PrepInstruction
  */
-export const PrepInstruction: Readonly<{
-    Polybagging: "Polybagging";
-    BubbleWrapping: "BubbleWrapping";
-    Taping: "Taping";
-    BlackShrinkWrapping: "BlackShrinkWrapping";
-    Labeling: "Labeling";
-    HangGarment: "HangGarment";
-    SetCreation: "SetCreation";
-    Boxing: "Boxing";
-    RemoveFromHanger: "RemoveFromHanger";
-    Debundle: "Debundle";
-    SuffocationStickering: "SuffocationStickering";
-    CapSealing: "CapSealing";
-    SetStickering: "SetStickering";
-    BlankStickering: "BlankStickering";
-    ShipsInProductPackaging: "ShipsInProductPackaging";
-    NoPrep: "NoPrep";
+export const PrepInstruction: (() => void) & {
+    Polybagging: string;
+    BubbleWrapping: string;
+    Taping: string;
+    BlackShrinkWrapping: string;
+    Labeling: string;
+    HangGarment: string;
+    SetCreation: string;
+    Boxing: string;
+    RemoveFromHanger: string;
+    Debundle: string;
+    SuffocationStickering: string;
+    CapSealing: string;
+    SetStickering: string;
+    BlankStickering: string;
+    ShipsInProductPackaging: string;
+    NoPrep: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=PrepInstruction.d.ts.map

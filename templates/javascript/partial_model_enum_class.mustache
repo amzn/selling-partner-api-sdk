@@ -1,7 +1,9 @@
 /**
  * @typedef {{=< >=}}{<#allowableValues><#enumVars>'<name>'<^-last>|</-last></enumVars></allowableValues>}<={{ }}=> {{classname}}
  */
-export const {{classname}} = Object.freeze({
+export const {{classname}} = Object.assign(
+  function() {},
+{
 {{#allowableValues}}
 {{#enumVars}}
   "{{name}}": {{{value}}},

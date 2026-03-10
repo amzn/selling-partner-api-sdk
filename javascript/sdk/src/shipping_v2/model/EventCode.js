@@ -16,22 +16,24 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'ReadyForReceive'|'PickupDone'|'Delivered'|'Departed'|'DeliveryAttempted'|'Lost'|'OutForDelivery'|'ArrivedAtCarrierFacility'|'Rejected'|'Undeliverable'|'PickupCancelled'|'ReturnInitiated'|'AvailableForPickup'|'RecipientRequestedAlternateDeliveryTiming'} EventCode
  */
-export const EventCode = Object.freeze({
-  ReadyForReceive: 'ReadyForReceive',
-  PickupDone: 'PickupDone',
-  Delivered: 'Delivered',
-  Departed: 'Departed',
-  DeliveryAttempted: 'DeliveryAttempted',
-  Lost: 'Lost',
-  OutForDelivery: 'OutForDelivery',
-  ArrivedAtCarrierFacility: 'ArrivedAtCarrierFacility',
-  Rejected: 'Rejected',
-  Undeliverable: 'Undeliverable',
-  PickupCancelled: 'PickupCancelled',
-  ReturnInitiated: 'ReturnInitiated',
-  AvailableForPickup: 'AvailableForPickup',
-  RecipientRequestedAlternateDeliveryTiming: 'RecipientRequestedAlternateDeliveryTiming',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const EventCode = Object.assign(
+  function () {},
+  {
+    ReadyForReceive: 'ReadyForReceive',
+    PickupDone: 'PickupDone',
+    Delivered: 'Delivered',
+    Departed: 'Departed',
+    DeliveryAttempted: 'DeliveryAttempted',
+    Lost: 'Lost',
+    OutForDelivery: 'OutForDelivery',
+    ArrivedAtCarrierFacility: 'ArrivedAtCarrierFacility',
+    Rejected: 'Rejected',
+    Undeliverable: 'Undeliverable',
+    PickupCancelled: 'PickupCancelled',
+    ReturnInitiated: 'ReturnInitiated',
+    AvailableForPickup: 'AvailableForPickup',
+    RecipientRequestedAlternateDeliveryTiming: 'RecipientRequestedAlternateDeliveryTiming',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

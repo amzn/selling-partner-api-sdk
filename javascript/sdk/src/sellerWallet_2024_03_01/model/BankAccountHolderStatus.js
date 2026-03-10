@@ -16,12 +16,14 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'ACTIVE'|'INACTIVE'|'UNDER_REVIEW'|'VERIFICATION_FAILED'} BankAccountHolderStatus
  */
-export const BankAccountHolderStatus = Object.freeze({
-  ACTIVE: 'ACTIVE',
-  INACTIVE: 'INACTIVE',
-  UNDER_REVIEW: 'UNDER_REVIEW',
-  VERIFICATION_FAILED: 'VERIFICATION_FAILED',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const BankAccountHolderStatus = Object.assign(
+  function () {},
+  {
+    ACTIVE: 'ACTIVE',
+    INACTIVE: 'INACTIVE',
+    UNDER_REVIEW: 'UNDER_REVIEW',
+    VERIFICATION_FAILED: 'VERIFICATION_FAILED',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

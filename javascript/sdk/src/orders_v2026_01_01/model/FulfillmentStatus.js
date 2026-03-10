@@ -16,15 +16,17 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'PENDING_AVAILABILITY'|'PENDING'|'UNSHIPPED'|'PARTIALLY_SHIPPED'|'SHIPPED'|'CANCELLED'|'UNFULFILLABLE'} FulfillmentStatus
  */
-export const FulfillmentStatus = Object.freeze({
-  PENDING_AVAILABILITY: 'PENDING_AVAILABILITY',
-  PENDING: 'PENDING',
-  UNSHIPPED: 'UNSHIPPED',
-  PARTIALLY_SHIPPED: 'PARTIALLY_SHIPPED',
-  SHIPPED: 'SHIPPED',
-  CANCELLED: 'CANCELLED',
-  UNFULFILLABLE: 'UNFULFILLABLE',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const FulfillmentStatus = Object.assign(
+  function () {},
+  {
+    PENDING_AVAILABILITY: 'PENDING_AVAILABILITY',
+    PENDING: 'PENDING',
+    UNSHIPPED: 'UNSHIPPED',
+    PARTIALLY_SHIPPED: 'PARTIALLY_SHIPPED',
+    SHIPPED: 'SHIPPED',
+    CANCELLED: 'CANCELLED',
+    UNFULFILLABLE: 'UNFULFILLABLE',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

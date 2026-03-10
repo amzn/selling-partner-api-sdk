@@ -16,14 +16,16 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'CREATED'|'PICKUP_SLOT_RETRIEVED'|'INVOICE_GENERATED'|'SHIPLABEL_GENERATED'|'SHIPPED'|'DELIVERED'} PackageStatus
  */
-export const PackageStatus = Object.freeze({
-  CREATED: 'CREATED',
-  PICKUP_SLOT_RETRIEVED: 'PICKUP_SLOT_RETRIEVED',
-  INVOICE_GENERATED: 'INVOICE_GENERATED',
-  SHIPLABEL_GENERATED: 'SHIPLABEL_GENERATED',
-  SHIPPED: 'SHIPPED',
-  DELIVERED: 'DELIVERED',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const PackageStatus = Object.assign(
+  function () {},
+  {
+    CREATED: 'CREATED',
+    PICKUP_SLOT_RETRIEVED: 'PICKUP_SLOT_RETRIEVED',
+    INVOICE_GENERATED: 'INVOICE_GENERATED',
+    SHIPLABEL_GENERATED: 'SHIPLABEL_GENERATED',
+    SHIPPED: 'SHIPPED',
+    DELIVERED: 'DELIVERED',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

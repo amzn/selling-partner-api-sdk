@@ -2,10 +2,10 @@ export type AccountType = "SHIPPER_ACCOUNT" | "SHIPPER_ACCOUNT_WITH_INVOICE" | "
 /**
  * @typedef {'SHIPPER_ACCOUNT'|'SHIPPER_ACCOUNT_WITH_INVOICE'|'AMAZON_ACCOUNT'} AccountType
  */
-export const AccountType: Readonly<{
-    SHIPPER_ACCOUNT: "SHIPPER_ACCOUNT";
-    SHIPPER_ACCOUNT_WITH_INVOICE: "SHIPPER_ACCOUNT_WITH_INVOICE";
-    AMAZON_ACCOUNT: "AMAZON_ACCOUNT";
+export const AccountType: (() => void) & {
+    SHIPPER_ACCOUNT: string;
+    SHIPPER_ACCOUNT_WITH_INVOICE: string;
+    AMAZON_ACCOUNT: string;
     constructFromObject: (object: any) => any;
-}>;
+};
 //# sourceMappingURL=AccountType.d.ts.map

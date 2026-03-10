@@ -16,13 +16,15 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'NotRequired'|'NotFound'|'Processing'|'Errored'|'Accepted'} ElectronicInvoiceStatus
  */
-export const ElectronicInvoiceStatus = Object.freeze({
-  NotRequired: 'NotRequired',
-  NotFound: 'NotFound',
-  Processing: 'Processing',
-  Errored: 'Errored',
-  Accepted: 'Accepted',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const ElectronicInvoiceStatus = Object.assign(
+  function () {},
+  {
+    NotRequired: 'NotRequired',
+    NotFound: 'NotFound',
+    Processing: 'Processing',
+    Errored: 'Errored',
+    Accepted: 'Accepted',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'Amazon'|'Merchant'} FulfillmentChannelType
  */
-export const FulfillmentChannelType = Object.freeze({
-  Amazon: 'Amazon',
-  Merchant: 'Merchant',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const FulfillmentChannelType = Object.assign(
+  function () {},
+  {
+    Amazon: 'Amazon',
+    Merchant: 'Merchant',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

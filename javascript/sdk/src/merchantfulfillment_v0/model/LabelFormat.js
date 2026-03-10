@@ -16,13 +16,15 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'PDF'|'PNG'|'ZPL203'|'ZPL300'|'ShippingServiceDefault'} LabelFormat
  */
-export const LabelFormat = Object.freeze({
-  PDF: 'PDF',
-  PNG: 'PNG',
-  ZPL203: 'ZPL203',
-  ZPL300: 'ZPL300',
-  ShippingServiceDefault: 'ShippingServiceDefault',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const LabelFormat = Object.assign(
+  function () {},
+  {
+    PDF: 'PDF',
+    PNG: 'PNG',
+    ZPL203: 'ZPL203',
+    ZPL300: 'ZPL300',
+    ShippingServiceDefault: 'ShippingServiceDefault',
+    constructFromObject: function (object) {
+      return object
+    }
+  })

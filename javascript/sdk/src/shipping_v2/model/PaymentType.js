@@ -16,10 +16,12 @@ import { ApiClient } from '../ApiClient.js'
 /**
  * @typedef {'PAY_THROUGH_AMAZON'|'PAY_DIRECT_TO_CARRIER'} PaymentType
  */
-export const PaymentType = Object.freeze({
-  PAY_THROUGH_AMAZON: 'PAY_THROUGH_AMAZON',
-  PAY_DIRECT_TO_CARRIER: 'PAY_DIRECT_TO_CARRIER',
-  constructFromObject: function (object) {
-    return object
-  }
-})
+export const PaymentType = Object.assign(
+  function () {},
+  {
+    PAY_THROUGH_AMAZON: 'PAY_THROUGH_AMAZON',
+    PAY_DIRECT_TO_CARRIER: 'PAY_DIRECT_TO_CARRIER',
+    constructFromObject: function (object) {
+      return object
+    }
+  })
