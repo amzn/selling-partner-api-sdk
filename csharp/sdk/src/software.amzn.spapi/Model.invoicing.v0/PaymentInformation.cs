@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.invoicing.v0
 {
     /// <summary>
-    /// Payment transaction information
+    /// Information about a payment transaction.
     /// </summary>
     [DataContract(Name = "PaymentInformation")]
     public partial class PaymentInformation : IValidatableObject
@@ -41,10 +41,10 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// Initializes a new instance of the <see cref="PaymentInformation" /> class.
         /// </summary>
         /// <param name="paymentMethod">paymentMethod.</param>
-        /// <param name="acquirerId">Government ID of acquirer.</param>
-        /// <param name="cardBrand">Credit card brand (if payment method is CreditCard).</param>
+        /// <param name="acquirerId">The government ID of the acquirer..</param>
+        /// <param name="cardBrand">The credit card brand if the payment method is &#x60;CreditCard&#x60;..</param>
         /// <param name="paymentValue">paymentValue.</param>
-        /// <param name="authorizationCode">Authorization code for this payment.</param>
+        /// <param name="authorizationCode">The authorization code of this payment..</param>
         public PaymentInformation(PaymentMethodEnum? paymentMethod = default(PaymentMethodEnum?), string? acquirerId = default(string?), string? cardBrand = default(string?), Money? paymentValue = default(Money?), string? authorizationCode = default(string?))
         {
             this.PaymentMethod = paymentMethod;
@@ -55,16 +55,16 @@ namespace software.amzn.spapi.Model.invoicing.v0
         }
 
         /// <summary>
-        /// Government ID of acquirer
+        /// The government ID of the acquirer.
         /// </summary>
-        /// <value>Government ID of acquirer</value>
+        /// <value>The government ID of the acquirer.</value>
         [DataMember(Name = "AcquirerId", EmitDefaultValue = false)]
         public string? AcquirerId { get; set; }
 
         /// <summary>
-        /// Credit card brand (if payment method is CreditCard)
+        /// The credit card brand if the payment method is &#x60;CreditCard&#x60;.
         /// </summary>
-        /// <value>Credit card brand (if payment method is CreditCard)</value>
+        /// <value>The credit card brand if the payment method is &#x60;CreditCard&#x60;.</value>
         [DataMember(Name = "CardBrand", EmitDefaultValue = false)]
         public string? CardBrand { get; set; }
 
@@ -75,9 +75,9 @@ namespace software.amzn.spapi.Model.invoicing.v0
         public Money? PaymentValue { get; set; }
 
         /// <summary>
-        /// Authorization code for this payment
+        /// The authorization code of this payment.
         /// </summary>
-        /// <value>Authorization code for this payment</value>
+        /// <value>The authorization code of this payment.</value>
         [DataMember(Name = "AuthorizationCode", EmitDefaultValue = false)]
         public string? AuthorizationCode { get; set; }
 

@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// <param name="purchaseDate">The date and time when the order was created..</param>
         /// <param name="shippingAddress">shippingAddress.</param>
         /// <param name="paymentMethodDetails">The list of payment method details..</param>
-        /// <param name="payments">List of payment transactions.</param>
+        /// <param name="payments">A list of payment transactions..</param>
         /// <param name="marketplaceId">The identifier for the marketplace where the order was placed..</param>
         /// <param name="sellerId">The seller identifier..</param>
         /// <param name="buyerName">The name of the buyer..</param>
@@ -110,9 +110,9 @@ namespace software.amzn.spapi.Model.invoicing.v0
         public List<string>? PaymentMethodDetails { get; set; }
 
         /// <summary>
-        /// List of payment transactions
+        /// A list of payment transactions.
         /// </summary>
-        /// <value>List of payment transactions</value>
+        /// <value>A list of payment transactions.</value>
         [DataMember(Name = "Payments", EmitDefaultValue = false)]
         public List<PaymentInformation>? Payments { get; set; }
 
