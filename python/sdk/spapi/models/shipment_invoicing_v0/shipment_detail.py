@@ -262,7 +262,7 @@ class ShipmentDetail(object):
     def payments(self):
         """Gets the payments of this ShipmentDetail.  # noqa: E501
 
-        List of payment transactions  # noqa: E501
+        A list of payment transactions.  # noqa: E501
 
         :return: The payments of this ShipmentDetail.  # noqa: E501
         :rtype: List[PaymentInformation]
@@ -273,7 +273,7 @@ class ShipmentDetail(object):
     def payments(self, payments):
         """Sets the payments of this ShipmentDetail.
 
-        List of payment transactions  # noqa: E501
+        A list of payment transactions.  # noqa: E501
 
         :param payments: The payments of this ShipmentDetail.  # noqa: E501
         :type: List[PaymentInformation]

@@ -97,7 +97,7 @@ class PaymentInformation(object):
     def acquirer_id(self):
         """Gets the acquirer_id of this PaymentInformation.  # noqa: E501
 
-        Government ID of acquirer  # noqa: E501
+        The government ID of the acquirer.  # noqa: E501
 
         :return: The acquirer_id of this PaymentInformation.  # noqa: E501
         :rtype: str
@@ -108,7 +108,7 @@ class PaymentInformation(object):
     def acquirer_id(self, acquirer_id):
         """Sets the acquirer_id of this PaymentInformation.
 
-        Government ID of acquirer  # noqa: E501
+        The government ID of the acquirer.  # noqa: E501
 
         :param acquirer_id: The acquirer_id of this PaymentInformation.  # noqa: E501
         :type: str
@@ -120,7 +120,7 @@ class PaymentInformation(object):
     def card_brand(self):
         """Gets the card_brand of this PaymentInformation.  # noqa: E501
 
-        Credit card brand (if payment method is CreditCard)  # noqa: E501
+        The credit card brand if the payment method is `CreditCard`.  # noqa: E501
 
         :return: The card_brand of this PaymentInformation.  # noqa: E501
         :rtype: str
@@ -131,7 +131,7 @@ class PaymentInformation(object):
     def card_brand(self, card_brand):
         """Sets the card_brand of this PaymentInformation.
 
-        Credit card brand (if payment method is CreditCard)  # noqa: E501
+        The credit card brand if the payment method is `CreditCard`.  # noqa: E501
 
         :param card_brand: The card_brand of this PaymentInformation.  # noqa: E501
         :type: str
@@ -164,7 +164,7 @@ class PaymentInformation(object):
     def authorization_code(self):
         """Gets the authorization_code of this PaymentInformation.  # noqa: E501
 
-        Authorization code for this payment  # noqa: E501
+        The authorization code of this payment.  # noqa: E501
 
         :return: The authorization_code of this PaymentInformation.  # noqa: E501
         :rtype: str
@@ -175,7 +175,7 @@ class PaymentInformation(object):
     def authorization_code(self, authorization_code):
         """Sets the authorization_code of this PaymentInformation.
 
-        Authorization code for this payment  # noqa: E501
+        The authorization code of this payment.  # noqa: E501
 
         :param authorization_code: The authorization_code of this PaymentInformation.  # noqa: E501
         :type: str
