@@ -11,7 +11,7 @@ export class ItemCondition {
      * @param {ItemCondition} obj Optional instance to populate.
      * @return {ItemCondition} The populated <code>ItemCondition</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemCondition): ItemCondition;
+    static constructFromObject(data: Object, obj: ItemCondition): ItemCondition;
     /**
      * The primary condition category that broadly describes the item's state.  **Possible values**: `NEW`, `USED`, `COLLECTIBLE`, `REFURBISHED`, `PREORDER`, `CLUB`.
      * @member {String} conditionType

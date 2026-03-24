@@ -11,7 +11,7 @@ export class LabelDownloadURL {
      * @param {LabelDownloadURL} obj Optional instance to populate.
      * @return {LabelDownloadURL} The populated <code>LabelDownloadURL</code> instance.
      */
-    static constructFromObject(data: any, obj: LabelDownloadURL): LabelDownloadURL;
+    static constructFromObject(data: Object, obj: LabelDownloadURL): LabelDownloadURL;
     /**
      * URL to download the label for the package. Note: The URL will only be valid for 15 seconds
      * @member {String} downloadURL

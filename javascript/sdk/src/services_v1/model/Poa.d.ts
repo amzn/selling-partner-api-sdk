@@ -11,7 +11,7 @@ export class Poa {
      * @param {Poa} obj Optional instance to populate.
      * @return {Poa} The populated <code>Poa</code> instance.
      */
-    static constructFromObject(data: any, obj: Poa): Poa;
+    static constructFromObject(data: Object, obj: Poa): Poa;
     /**
      * @member {AppointmentTime} appointmentTime
      * @type {AppointmentTime}

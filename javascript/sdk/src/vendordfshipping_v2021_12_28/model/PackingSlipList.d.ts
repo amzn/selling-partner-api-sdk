@@ -11,7 +11,7 @@ export class PackingSlipList {
      * @param {PackingSlipList} obj Optional instance to populate.
      * @return {PackingSlipList} The populated <code>PackingSlipList</code> instance.
      */
-    static constructFromObject(data: any, obj: PackingSlipList): PackingSlipList;
+    static constructFromObject(data: Object, obj: PackingSlipList): PackingSlipList;
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

@@ -11,7 +11,7 @@ export class PackageVolume {
      * @param {PackageVolume} obj Optional instance to populate.
      * @return {PackageVolume} The populated <code>PackageVolume</code> instance.
      */
-    static constructFromObject(data: any, obj: PackageVolume): PackageVolume;
+    static constructFromObject(data: Object, obj: PackageVolume): PackageVolume;
     /**
      * Constructs a new <code>PackageVolume</code>.
      * Represents the volume of the package with a unit of measurement.

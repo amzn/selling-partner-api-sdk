@@ -11,7 +11,7 @@ export class ItemDetails {
      * @param {ItemDetails} obj Optional instance to populate.
      * @return {ItemDetails} The populated <code>ItemDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemDetails): ItemDetails;
+    static constructFromObject(data: Object, obj: ItemDetails): ItemDetails;
     /**
      * Constructs a new <code>ItemDetails</code>.
      * Updated inventory details for an item.

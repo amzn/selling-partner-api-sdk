@@ -11,7 +11,7 @@ export class SelfShipAppointmentSlotsAvailability {
      * @param {SelfShipAppointmentSlotsAvailability} obj Optional instance to populate.
      * @return {SelfShipAppointmentSlotsAvailability} The populated <code>SelfShipAppointmentSlotsAvailability</code> instance.
      */
-    static constructFromObject(data: any, obj: SelfShipAppointmentSlotsAvailability): SelfShipAppointmentSlotsAvailability;
+    static constructFromObject(data: Object, obj: SelfShipAppointmentSlotsAvailability): SelfShipAppointmentSlotsAvailability;
     /**
      * The time at which the self ship appointment slot expires. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.
      * @member {Date} expiresAt

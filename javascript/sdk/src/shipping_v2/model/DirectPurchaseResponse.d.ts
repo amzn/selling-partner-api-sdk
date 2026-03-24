@@ -11,7 +11,7 @@ export class DirectPurchaseResponse {
      * @param {DirectPurchaseResponse} obj Optional instance to populate.
      * @return {DirectPurchaseResponse} The populated <code>DirectPurchaseResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: DirectPurchaseResponse): DirectPurchaseResponse;
+    static constructFromObject(data: Object, obj: DirectPurchaseResponse): DirectPurchaseResponse;
     /**
      * @member {DirectPurchaseResult} payload
      * @type {DirectPurchaseResult}

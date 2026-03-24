@@ -11,7 +11,7 @@ export class DeliveryOffer {
      * @param {DeliveryOffer} obj Optional instance to populate.
      * @return {DeliveryOffer} The populated <code>DeliveryOffer</code> instance.
      */
-    static constructFromObject(data: any, obj: DeliveryOffer): DeliveryOffer;
+    static constructFromObject(data: Object, obj: DeliveryOffer): DeliveryOffer;
     /**
      * Date timestamp
      * @member {Date} expiresAt

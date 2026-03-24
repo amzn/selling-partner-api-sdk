@@ -11,7 +11,7 @@ export class CreateProductReviewAndSellerFeedbackSolicitationResponse {
      * @param {CreateProductReviewAndSellerFeedbackSolicitationResponse} obj Optional instance to populate.
      * @return {CreateProductReviewAndSellerFeedbackSolicitationResponse} The populated <code>CreateProductReviewAndSellerFeedbackSolicitationResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateProductReviewAndSellerFeedbackSolicitationResponse): CreateProductReviewAndSellerFeedbackSolicitationResponse;
+    static constructFromObject(data: Object, obj: CreateProductReviewAndSellerFeedbackSolicitationResponse): CreateProductReviewAndSellerFeedbackSolicitationResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

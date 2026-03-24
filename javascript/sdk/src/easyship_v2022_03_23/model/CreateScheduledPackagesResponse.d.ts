@@ -11,7 +11,7 @@ export class CreateScheduledPackagesResponse {
      * @param {CreateScheduledPackagesResponse} obj Optional instance to populate.
      * @return {CreateScheduledPackagesResponse} The populated <code>CreateScheduledPackagesResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateScheduledPackagesResponse): CreateScheduledPackagesResponse;
+    static constructFromObject(data: Object, obj: CreateScheduledPackagesResponse): CreateScheduledPackagesResponse;
     /**
      * A list of packages. Refer to the `Package` object.
      * @member {Package[]} scheduledPackages

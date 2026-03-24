@@ -11,7 +11,7 @@ export class MskuPrepDetailInput {
      * @param {MskuPrepDetailInput} obj Optional instance to populate.
      * @return {MskuPrepDetailInput} The populated <code>MskuPrepDetailInput</code> instance.
      */
-    static constructFromObject(data: any, obj: MskuPrepDetailInput): MskuPrepDetailInput;
+    static constructFromObject(data: Object, obj: MskuPrepDetailInput): MskuPrepDetailInput;
     /**
      * Constructs a new <code>MskuPrepDetailInput</code>.
      * An MSKU and its related prep details.

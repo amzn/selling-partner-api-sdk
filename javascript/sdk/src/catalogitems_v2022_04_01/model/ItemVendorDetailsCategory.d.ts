@@ -11,7 +11,7 @@ export class ItemVendorDetailsCategory {
      * @param {ItemVendorDetailsCategory} obj Optional instance to populate.
      * @return {ItemVendorDetailsCategory} The populated <code>ItemVendorDetailsCategory</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemVendorDetailsCategory): ItemVendorDetailsCategory;
+    static constructFromObject(data: Object, obj: ItemVendorDetailsCategory): ItemVendorDetailsCategory;
     /**
      * The display name of the product category or subcategory.
      * @member {String} displayName

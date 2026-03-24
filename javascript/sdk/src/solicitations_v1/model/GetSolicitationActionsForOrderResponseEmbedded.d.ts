@@ -11,7 +11,7 @@ export class GetSolicitationActionsForOrderResponseEmbedded {
      * @param {GetSolicitationActionsForOrderResponseEmbedded} obj Optional instance to populate.
      * @return {GetSolicitationActionsForOrderResponseEmbedded} The populated <code>GetSolicitationActionsForOrderResponseEmbedded</code> instance.
      */
-    static constructFromObject(data: any, obj: GetSolicitationActionsForOrderResponseEmbedded): GetSolicitationActionsForOrderResponseEmbedded;
+    static constructFromObject(data: Object, obj: GetSolicitationActionsForOrderResponseEmbedded): GetSolicitationActionsForOrderResponseEmbedded;
     /**
      * Constructs a new <code>GetSolicitationActionsForOrderResponseEmbedded</code>.
      * @alias module:solicitations_v1/model/GetSolicitationActionsForOrderResponseEmbedded

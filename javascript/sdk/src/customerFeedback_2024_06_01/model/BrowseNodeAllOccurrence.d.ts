@@ -11,7 +11,7 @@ export class BrowseNodeAllOccurrence {
      * @param {BrowseNodeAllOccurrence} obj Optional instance to populate.
      * @return {BrowseNodeAllOccurrence} The populated <code>BrowseNodeAllOccurrence</code> instance.
      */
-    static constructFromObject(data: any, obj: BrowseNodeAllOccurrence): BrowseNodeAllOccurrence;
+    static constructFromObject(data: Object, obj: BrowseNodeAllOccurrence): BrowseNodeAllOccurrence;
     /**
      * Constructs a new <code>BrowseNodeAllOccurrence</code>.
      * The browse node review occurrence metrics.

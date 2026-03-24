@@ -11,7 +11,7 @@ export class ItemSalesRanksByMarketplace {
      * @param {ItemSalesRanksByMarketplace} obj Optional instance to populate.
      * @return {ItemSalesRanksByMarketplace} The populated <code>ItemSalesRanksByMarketplace</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemSalesRanksByMarketplace): ItemSalesRanksByMarketplace;
+    static constructFromObject(data: Object, obj: ItemSalesRanksByMarketplace): ItemSalesRanksByMarketplace;
     /**
      * Constructs a new <code>ItemSalesRanksByMarketplace</code>.
      * Sales ranks of an Amazon catalog item, grouped by &#x60;marketplaceId&#x60;.

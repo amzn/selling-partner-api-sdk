@@ -11,7 +11,7 @@ export class AdditionalSellerInputs {
      * @param {AdditionalSellerInputs} obj Optional instance to populate.
      * @return {AdditionalSellerInputs} The populated <code>AdditionalSellerInputs</code> instance.
      */
-    static constructFromObject(data: any, obj: AdditionalSellerInputs): AdditionalSellerInputs;
+    static constructFromObject(data: Object, obj: AdditionalSellerInputs): AdditionalSellerInputs;
     /**
      * Constructs a new <code>AdditionalSellerInputs</code>.
      * An additional set of seller inputs required to purchase shipping.

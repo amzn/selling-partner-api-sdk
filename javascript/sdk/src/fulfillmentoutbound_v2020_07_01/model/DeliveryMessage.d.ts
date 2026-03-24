@@ -11,7 +11,7 @@ export class DeliveryMessage {
      * @param {DeliveryMessage} obj Optional instance to populate.
      * @return {DeliveryMessage} The populated <code>DeliveryMessage</code> instance.
      */
-    static constructFromObject(data: any, obj: DeliveryMessage): DeliveryMessage;
+    static constructFromObject(data: Object, obj: DeliveryMessage): DeliveryMessage;
     /**
      * The message content for a delivery offering.
      * @member {String} text

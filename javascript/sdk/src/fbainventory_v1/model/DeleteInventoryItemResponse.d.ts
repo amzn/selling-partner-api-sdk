@@ -11,7 +11,7 @@ export class DeleteInventoryItemResponse {
      * @param {DeleteInventoryItemResponse} obj Optional instance to populate.
      * @return {DeleteInventoryItemResponse} The populated <code>DeleteInventoryItemResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: DeleteInventoryItemResponse): DeleteInventoryItemResponse;
+    static constructFromObject(data: Object, obj: DeleteInventoryItemResponse): DeleteInventoryItemResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

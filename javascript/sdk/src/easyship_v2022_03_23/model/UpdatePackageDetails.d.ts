@@ -11,7 +11,7 @@ export class UpdatePackageDetails {
      * @param {UpdatePackageDetails} obj Optional instance to populate.
      * @return {UpdatePackageDetails} The populated <code>UpdatePackageDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: UpdatePackageDetails): UpdatePackageDetails;
+    static constructFromObject(data: Object, obj: UpdatePackageDetails): UpdatePackageDetails;
     /**
      * Constructs a new <code>UpdatePackageDetails</code>.
      * Request to update the time slot of a package.

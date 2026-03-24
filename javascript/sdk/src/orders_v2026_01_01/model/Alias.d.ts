@@ -11,7 +11,7 @@ export class Alias {
      * @param {Alias} obj Optional instance to populate.
      * @return {Alias} The populated <code>Alias</code> instance.
      */
-    static constructFromObject(data: any, obj: Alias): Alias;
+    static constructFromObject(data: Object, obj: Alias): Alias;
     /**
      * Constructs a new <code>Alias</code>.
      * An alternative identifier that provides a different way to reference the same order.

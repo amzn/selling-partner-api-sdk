@@ -11,7 +11,7 @@ export class TextComponent {
      * @param {TextComponent} obj Optional instance to populate.
      * @return {TextComponent} The populated <code>TextComponent</code> instance.
      */
-    static constructFromObject(data: any, obj: TextComponent): TextComponent;
+    static constructFromObject(data: Object, obj: TextComponent): TextComponent;
     /**
      * Constructs a new <code>TextComponent</code>.
      * Rich text content.

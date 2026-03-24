@@ -11,7 +11,7 @@ export class ListInboundPlanBoxesResponse {
      * @param {ListInboundPlanBoxesResponse} obj Optional instance to populate.
      * @return {ListInboundPlanBoxesResponse} The populated <code>ListInboundPlanBoxesResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ListInboundPlanBoxesResponse): ListInboundPlanBoxesResponse;
+    static constructFromObject(data: Object, obj: ListInboundPlanBoxesResponse): ListInboundPlanBoxesResponse;
     /**
      * Constructs a new <code>ListInboundPlanBoxesResponse</code>.
      * The &#x60;listInboundPlanBoxes&#x60; response.

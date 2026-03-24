@@ -11,7 +11,7 @@ export class BillOfLadingDownloadURL {
      * @param {BillOfLadingDownloadURL} obj Optional instance to populate.
      * @return {BillOfLadingDownloadURL} The populated <code>BillOfLadingDownloadURL</code> instance.
      */
-    static constructFromObject(data: any, obj: BillOfLadingDownloadURL): BillOfLadingDownloadURL;
+    static constructFromObject(data: Object, obj: BillOfLadingDownloadURL): BillOfLadingDownloadURL;
     /**
      * URL to download the bill of lading for the package. Note: The URL will only be valid for 15 seconds
      * @member {String} downloadURL

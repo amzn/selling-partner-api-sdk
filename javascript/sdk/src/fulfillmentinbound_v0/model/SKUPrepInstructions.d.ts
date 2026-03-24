@@ -11,7 +11,7 @@ export class SKUPrepInstructions {
      * @param {SKUPrepInstructions} obj Optional instance to populate.
      * @return {SKUPrepInstructions} The populated <code>SKUPrepInstructions</code> instance.
      */
-    static constructFromObject(data: any, obj: SKUPrepInstructions): SKUPrepInstructions;
+    static constructFromObject(data: Object, obj: SKUPrepInstructions): SKUPrepInstructions;
     /**
      * The seller SKU of the item.
      * @member {String} sellerSKU

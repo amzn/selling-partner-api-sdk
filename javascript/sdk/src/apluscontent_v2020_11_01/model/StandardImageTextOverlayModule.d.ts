@@ -11,7 +11,7 @@ export class StandardImageTextOverlayModule {
      * @param {StandardImageTextOverlayModule} obj Optional instance to populate.
      * @return {StandardImageTextOverlayModule} The populated <code>StandardImageTextOverlayModule</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardImageTextOverlayModule): StandardImageTextOverlayModule;
+    static constructFromObject(data: Object, obj: StandardImageTextOverlayModule): StandardImageTextOverlayModule;
     /**
      * Constructs a new <code>StandardImageTextOverlayModule</code>.
      * A standard background image with a floating text box.

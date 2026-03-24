@@ -11,7 +11,7 @@ export class SupplySource {
      * @param {SupplySource} obj Optional instance to populate.
      * @return {SupplySource} The populated <code>SupplySource</code> instance.
      */
-    static constructFromObject(data: any, obj: SupplySource): SupplySource;
+    static constructFromObject(data: Object, obj: SupplySource): SupplySource;
     /**
      * An Amazon generated unique supply source ID.
      * @member {String} supplySourceId

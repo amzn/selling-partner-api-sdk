@@ -11,7 +11,7 @@ export class MarketplaceParticipation {
      * @param {MarketplaceParticipation} obj Optional instance to populate.
      * @return {MarketplaceParticipation} The populated <code>MarketplaceParticipation</code> instance.
      */
-    static constructFromObject(data: any, obj: MarketplaceParticipation): MarketplaceParticipation;
+    static constructFromObject(data: Object, obj: MarketplaceParticipation): MarketplaceParticipation;
     /**
      * Constructs a new <code>MarketplaceParticipation</code>.
      * @alias module:sellers_v1/model/MarketplaceParticipation

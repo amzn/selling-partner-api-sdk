@@ -11,7 +11,7 @@ export class FailedAdhocDisbursementEvent {
      * @param {FailedAdhocDisbursementEvent} obj Optional instance to populate.
      * @return {FailedAdhocDisbursementEvent} The populated <code>FailedAdhocDisbursementEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: FailedAdhocDisbursementEvent): FailedAdhocDisbursementEvent;
+    static constructFromObject(data: Object, obj: FailedAdhocDisbursementEvent): FailedAdhocDisbursementEvent;
     /**
      * The type of fund transfer. For example, `Refund`.
      * @member {String} fundsTransfersType

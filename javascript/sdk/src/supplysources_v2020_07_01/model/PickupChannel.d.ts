@@ -11,7 +11,7 @@ export class PickupChannel {
      * @param {PickupChannel} obj Optional instance to populate.
      * @return {PickupChannel} The populated <code>PickupChannel</code> instance.
      */
-    static constructFromObject(data: any, obj: PickupChannel): PickupChannel;
+    static constructFromObject(data: Object, obj: PickupChannel): PickupChannel;
     /**
      * @member {Duration} inventoryHoldPeriod
      * @type {Duration}

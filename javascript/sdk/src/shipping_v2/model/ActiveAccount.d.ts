@@ -11,7 +11,7 @@ export class ActiveAccount {
      * @param {ActiveAccount} obj Optional instance to populate.
      * @return {ActiveAccount} The populated <code>ActiveAccount</code> instance.
      */
-    static constructFromObject(data: any, obj: ActiveAccount): ActiveAccount;
+    static constructFromObject(data: Object, obj: ActiveAccount): ActiveAccount;
     /**
      * Identifier for the seller's carrier account.
      * @member {String} accountId

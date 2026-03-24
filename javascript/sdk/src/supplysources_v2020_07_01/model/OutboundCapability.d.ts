@@ -11,7 +11,7 @@ export class OutboundCapability {
      * @param {OutboundCapability} obj Optional instance to populate.
      * @return {OutboundCapability} The populated <code>OutboundCapability</code> instance.
      */
-    static constructFromObject(data: any, obj: OutboundCapability): OutboundCapability;
+    static constructFromObject(data: Object, obj: OutboundCapability): OutboundCapability;
     /**
      * @member {Boolean} isSupported
      * @type {Boolean}

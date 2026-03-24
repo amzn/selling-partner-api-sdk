@@ -11,7 +11,7 @@ export class SegmentedFeaturedOffer {
      * @param {SegmentedFeaturedOffer} obj Optional instance to populate.
      * @return {SegmentedFeaturedOffer} The populated <code>SegmentedFeaturedOffer</code> instance.
      */
-    static constructFromObject(data: any, obj: SegmentedFeaturedOffer): SegmentedFeaturedOffer;
+    static constructFromObject(data: Object, obj: SegmentedFeaturedOffer): SegmentedFeaturedOffer;
     /**
      * Constructs a new <code>SegmentedFeaturedOffer</code>.
      * A product offer with segment information indicating where it&#39;s featured.

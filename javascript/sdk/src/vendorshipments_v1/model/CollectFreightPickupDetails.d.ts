@@ -11,7 +11,7 @@ export class CollectFreightPickupDetails {
      * @param {CollectFreightPickupDetails} obj Optional instance to populate.
      * @return {CollectFreightPickupDetails} The populated <code>CollectFreightPickupDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: CollectFreightPickupDetails): CollectFreightPickupDetails;
+    static constructFromObject(data: Object, obj: CollectFreightPickupDetails): CollectFreightPickupDetails;
     /**
      * Date on which the items can be picked up from vendor warehouse by Buyer used for WePay/Collect vendors.
      * @member {Date} requestedPickUp

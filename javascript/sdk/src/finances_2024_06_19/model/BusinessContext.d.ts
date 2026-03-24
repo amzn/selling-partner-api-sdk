@@ -11,7 +11,7 @@ export class BusinessContext {
      * @param {BusinessContext} obj Optional instance to populate.
      * @return {BusinessContext} The populated <code>BusinessContext</code> instance.
      */
-    static constructFromObject(data: any, obj: BusinessContext): BusinessContext;
+    static constructFromObject(data: Object, obj: BusinessContext): BusinessContext;
     /**
      * The store name associated with the transaction.
      * @member {String} storeName

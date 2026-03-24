@@ -11,7 +11,7 @@ export class PostContentDocumentSuspendSubmissionResponse {
      * @param {PostContentDocumentSuspendSubmissionResponse} obj Optional instance to populate.
      * @return {PostContentDocumentSuspendSubmissionResponse} The populated <code>PostContentDocumentSuspendSubmissionResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: PostContentDocumentSuspendSubmissionResponse): PostContentDocumentSuspendSubmissionResponse;
+    static constructFromObject(data: Object, obj: PostContentDocumentSuspendSubmissionResponse): PostContentDocumentSuspendSubmissionResponse;
     /**
      * A set of messages to the user, such as warnings or comments.
      * @member {Error[]} warnings

@@ -11,7 +11,7 @@ export class ConfirmShipmentContentUpdatePreviewResponse {
      * @param {ConfirmShipmentContentUpdatePreviewResponse} obj Optional instance to populate.
      * @return {ConfirmShipmentContentUpdatePreviewResponse} The populated <code>ConfirmShipmentContentUpdatePreviewResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ConfirmShipmentContentUpdatePreviewResponse): ConfirmShipmentContentUpdatePreviewResponse;
+    static constructFromObject(data: Object, obj: ConfirmShipmentContentUpdatePreviewResponse): ConfirmShipmentContentUpdatePreviewResponse;
     /**
      * Constructs a new <code>ConfirmShipmentContentUpdatePreviewResponse</code>.
      * The &#x60;confirmShipmentContentUpdatePreview&#x60; response.

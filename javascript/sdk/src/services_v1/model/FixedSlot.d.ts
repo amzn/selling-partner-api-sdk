@@ -11,7 +11,7 @@ export class FixedSlot {
      * @param {FixedSlot} obj Optional instance to populate.
      * @return {FixedSlot} The populated <code>FixedSlot</code> instance.
      */
-    static constructFromObject(data: any, obj: FixedSlot): FixedSlot;
+    static constructFromObject(data: Object, obj: FixedSlot): FixedSlot;
     /**
      * Start date time of slot in ISO 8601 format with precision of seconds.
      * @member {Date} startDateTime

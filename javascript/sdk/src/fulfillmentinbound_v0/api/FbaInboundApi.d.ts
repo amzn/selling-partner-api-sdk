@@ -48,11 +48,11 @@ export class FbaInboundApi {
        * @return {Promise<GetLabelsResponse>}
        */
     getLabelsWithHttpInfo(shipmentId: string, pageType: string, labelType: string, opts?: {
-        numberOfPackages?: number;
-        packageLabelsToPrint?: string[];
-        numberOfPallets?: number;
-        pageSize?: number;
-        pageStartIndex?: number;
+        numberOfPackages?: number | undefined;
+        packageLabelsToPrint?: string[] | undefined;
+        numberOfPallets?: number | undefined;
+        pageSize?: number | undefined;
+        pageStartIndex?: number | undefined;
     }): Promise<GetLabelsResponse>;
     /**
        * Returns package/pallet labels for faster and more accurate shipment processing at the Amazon fulfillment center.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -68,11 +68,11 @@ export class FbaInboundApi {
        * @return {Promise<GetLabelsResponse>}
        */
     getLabels(shipmentId: string, pageType: string, labelType: string, opts?: {
-        numberOfPackages?: number;
-        packageLabelsToPrint?: string[];
-        numberOfPallets?: number;
-        pageSize?: number;
-        pageStartIndex?: number;
+        numberOfPackages?: number | undefined;
+        packageLabelsToPrint?: string[] | undefined;
+        numberOfPallets?: number | undefined;
+        pageSize?: number | undefined;
+        pageStartIndex?: number | undefined;
     }): Promise<GetLabelsResponse>;
     /**
        * Returns labeling requirements and item preparation instructions to help prepare items for shipment to Amazon&#39;s fulfillment network.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -83,8 +83,8 @@ export class FbaInboundApi {
        * @return {Promise<GetPrepInstructionsResponse>}
        */
     getPrepInstructionsWithHttpInfo(shipToCountryCode: string, opts?: {
-        sellerSKUList?: string[];
-        aSINList?: string[];
+        sellerSKUList?: string[] | undefined;
+        aSINList?: string[] | undefined;
     }): Promise<GetPrepInstructionsResponse>;
     /**
        * Returns labeling requirements and item preparation instructions to help prepare items for shipment to Amazon&#39;s fulfillment network.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -95,8 +95,8 @@ export class FbaInboundApi {
        * @return {Promise<GetPrepInstructionsResponse>}
        */
     getPrepInstructions(shipToCountryCode: string, opts?: {
-        sellerSKUList?: string[];
-        aSINList?: string[];
+        sellerSKUList?: string[] | undefined;
+        aSINList?: string[] | undefined;
     }): Promise<GetPrepInstructionsResponse>;
     /**
        * Returns a list of items in a specified inbound shipment, or a list of items that were updated within a specified time frame.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -109,9 +109,9 @@ export class FbaInboundApi {
        * @return {Promise<GetShipmentItemsResponse>}
        */
     getShipmentItemsWithHttpInfo(queryType: string, marketplaceId: string, opts?: {
-        lastUpdatedAfter?: Date;
-        lastUpdatedBefore?: Date;
-        nextToken?: string;
+        lastUpdatedAfter?: Date | undefined;
+        lastUpdatedBefore?: Date | undefined;
+        nextToken?: string | undefined;
     }): Promise<GetShipmentItemsResponse>;
     /**
        * Returns a list of items in a specified inbound shipment, or a list of items that were updated within a specified time frame.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -124,9 +124,9 @@ export class FbaInboundApi {
        * @return {Promise<GetShipmentItemsResponse>}
        */
     getShipmentItems(queryType: string, marketplaceId: string, opts?: {
-        lastUpdatedAfter?: Date;
-        lastUpdatedBefore?: Date;
-        nextToken?: string;
+        lastUpdatedAfter?: Date | undefined;
+        lastUpdatedBefore?: Date | undefined;
+        nextToken?: string | undefined;
     }): Promise<GetShipmentItemsResponse>;
     /**
        * Returns a list of items in a specified inbound shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -136,7 +136,7 @@ export class FbaInboundApi {
        * @return {Promise<GetShipmentItemsResponse>}
        */
     getShipmentItemsByShipmentIdWithHttpInfo(shipmentId: string, opts?: {
-        marketplaceId?: string;
+        marketplaceId?: string | undefined;
     }): Promise<GetShipmentItemsResponse>;
     /**
        * Returns a list of items in a specified inbound shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -146,7 +146,7 @@ export class FbaInboundApi {
        * @return {Promise<GetShipmentItemsResponse>}
        */
     getShipmentItemsByShipmentId(shipmentId: string, opts?: {
-        marketplaceId?: string;
+        marketplaceId?: string | undefined;
     }): Promise<GetShipmentItemsResponse>;
     /**
        * Returns a list of inbound shipments based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -161,11 +161,11 @@ export class FbaInboundApi {
        * @return {Promise<GetShipmentsResponse>}
        */
     getShipmentsWithHttpInfo(queryType: string, marketplaceId: string, opts?: {
-        shipmentStatusList?: string[];
-        shipmentIdList?: string[];
-        lastUpdatedAfter?: Date;
-        lastUpdatedBefore?: Date;
-        nextToken?: string;
+        shipmentStatusList?: string[] | undefined;
+        shipmentIdList?: string[] | undefined;
+        lastUpdatedAfter?: Date | undefined;
+        lastUpdatedBefore?: Date | undefined;
+        nextToken?: string | undefined;
     }): Promise<GetShipmentsResponse>;
     /**
        * Returns a list of inbound shipments based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -180,11 +180,11 @@ export class FbaInboundApi {
        * @return {Promise<GetShipmentsResponse>}
        */
     getShipments(queryType: string, marketplaceId: string, opts?: {
-        shipmentStatusList?: string[];
-        shipmentIdList?: string[];
-        lastUpdatedAfter?: Date;
-        lastUpdatedBefore?: Date;
-        nextToken?: string;
+        shipmentStatusList?: string[] | undefined;
+        shipmentIdList?: string[] | undefined;
+        lastUpdatedAfter?: Date | undefined;
+        lastUpdatedBefore?: Date | undefined;
+        nextToken?: string | undefined;
     }): Promise<GetShipmentsResponse>;
     #private;
 }

@@ -11,7 +11,7 @@ export class LinkableCarrier {
      * @param {LinkableCarrier} obj Optional instance to populate.
      * @return {LinkableCarrier} The populated <code>LinkableCarrier</code> instance.
      */
-    static constructFromObject(data: any, obj: LinkableCarrier): LinkableCarrier;
+    static constructFromObject(data: Object, obj: LinkableCarrier): LinkableCarrier;
     /**
      * The carrier identifier for the offering, provided by the carrier.
      * @member {String} carrierId

@@ -11,7 +11,7 @@ export class StandardHeaderImageTextModule {
      * @param {StandardHeaderImageTextModule} obj Optional instance to populate.
      * @return {StandardHeaderImageTextModule} The populated <code>StandardHeaderImageTextModule</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardHeaderImageTextModule): StandardHeaderImageTextModule;
+    static constructFromObject(data: Object, obj: StandardHeaderImageTextModule): StandardHeaderImageTextModule;
     /**
      * @member {TextComponent} headline
      * @type {TextComponent}

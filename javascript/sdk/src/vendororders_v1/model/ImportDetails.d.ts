@@ -11,7 +11,7 @@ export class ImportDetails {
      * @param {ImportDetails} obj Optional instance to populate.
      * @return {ImportDetails} The populated <code>ImportDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: ImportDetails): ImportDetails;
+    static constructFromObject(data: Object, obj: ImportDetails): ImportDetails;
     /**
      * If the recipient requests, contains the shipment method of payment. This is for import PO's only.
      * @member {String} methodOfPayment

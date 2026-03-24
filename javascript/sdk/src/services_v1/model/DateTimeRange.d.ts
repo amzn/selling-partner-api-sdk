@@ -11,7 +11,7 @@ export class DateTimeRange {
      * @param {DateTimeRange} obj Optional instance to populate.
      * @return {DateTimeRange} The populated <code>DateTimeRange</code> instance.
      */
-    static constructFromObject(data: any, obj: DateTimeRange): DateTimeRange;
+    static constructFromObject(data: Object, obj: DateTimeRange): DateTimeRange;
     /**
      * Constructs a new <code>DateTimeRange</code>.
      * A range of time.

@@ -11,7 +11,7 @@ export class Buyer {
      * @param {Buyer} obj Optional instance to populate.
      * @return {Buyer} The populated <code>Buyer</code> instance.
      */
-    static constructFromObject(data: any, obj: Buyer): Buyer;
+    static constructFromObject(data: Object, obj: Buyer): Buyer;
     /**
      * The full name of the customer who placed the order.
      * @member {String} buyerName

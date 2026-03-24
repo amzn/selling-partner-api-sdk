@@ -11,7 +11,7 @@ export class GetOrderMetricsResponse {
      * @param {GetOrderMetricsResponse} obj Optional instance to populate.
      * @return {GetOrderMetricsResponse} The populated <code>GetOrderMetricsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetOrderMetricsResponse): GetOrderMetricsResponse;
+    static constructFromObject(data: Object, obj: GetOrderMetricsResponse): GetOrderMetricsResponse;
     /**
      * A set of order metrics, each scoped to a particular time interval.
      * @member {OrderMetricsInterval[]} payload

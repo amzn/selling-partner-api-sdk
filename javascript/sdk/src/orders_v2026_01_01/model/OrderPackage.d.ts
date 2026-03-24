@@ -11,7 +11,7 @@ export class OrderPackage {
      * @param {OrderPackage} obj Optional instance to populate.
      * @return {OrderPackage} The populated <code>OrderPackage</code> instance.
      */
-    static constructFromObject(data: any, obj: OrderPackage): OrderPackage;
+    static constructFromObject(data: Object, obj: OrderPackage): OrderPackage;
     /**
      * Constructs a new <code>OrderPackage</code>.
      * Information about a physical shipping package, including tracking details. **Note:** Only available for merchant-fulfilled (FBM) orders.

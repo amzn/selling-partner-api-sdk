@@ -11,7 +11,7 @@ export class RequestedDocumentSpecification {
      * @param {RequestedDocumentSpecification} obj Optional instance to populate.
      * @return {RequestedDocumentSpecification} The populated <code>RequestedDocumentSpecification</code> instance.
      */
-    static constructFromObject(data: any, obj: RequestedDocumentSpecification): RequestedDocumentSpecification;
+    static constructFromObject(data: Object, obj: RequestedDocumentSpecification): RequestedDocumentSpecification;
     /**
      * Constructs a new <code>RequestedDocumentSpecification</code>.
      * The document specifications requested. For calls to the purchaseShipment operation, the shipment purchase fails if the specified document specifications are not among those returned in the response to the getRates operation.

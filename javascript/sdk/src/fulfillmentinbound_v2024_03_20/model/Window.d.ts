@@ -11,7 +11,7 @@ export class Window {
      * @param {Window} obj Optional instance to populate.
      * @return {Window} The populated <code>Window</code> instance.
      */
-    static constructFromObject(data: any, obj: Window): Window;
+    static constructFromObject(data: Object, obj: Window): Window;
     /**
      * Constructs a new <code>Window</code>.
      * Contains a start and end DateTime representing a time range.

@@ -11,7 +11,7 @@ export class CreateDigitalAccessKeyResponse {
      * @param {CreateDigitalAccessKeyResponse} obj Optional instance to populate.
      * @return {CreateDigitalAccessKeyResponse} The populated <code>CreateDigitalAccessKeyResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateDigitalAccessKeyResponse): CreateDigitalAccessKeyResponse;
+    static constructFromObject(data: Object, obj: CreateDigitalAccessKeyResponse): CreateDigitalAccessKeyResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

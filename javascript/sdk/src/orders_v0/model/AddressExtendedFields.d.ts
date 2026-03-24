@@ -11,7 +11,7 @@ export class AddressExtendedFields {
      * @param {AddressExtendedFields} obj Optional instance to populate.
      * @return {AddressExtendedFields} The populated <code>AddressExtendedFields</code> instance.
      */
-    static constructFromObject(data: any, obj: AddressExtendedFields): AddressExtendedFields;
+    static constructFromObject(data: Object, obj: AddressExtendedFields): AddressExtendedFields;
     /**
      * The street name.
      * @member {String} streetName

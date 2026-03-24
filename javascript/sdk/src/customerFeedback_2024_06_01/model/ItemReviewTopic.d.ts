@@ -11,7 +11,7 @@ export class ItemReviewTopic {
      * @param {ItemReviewTopic} obj Optional instance to populate.
      * @return {ItemReviewTopic} The populated <code>ItemReviewTopic</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemReviewTopic): ItemReviewTopic;
+    static constructFromObject(data: Object, obj: ItemReviewTopic): ItemReviewTopic;
     /**
      * Constructs a new <code>ItemReviewTopic</code>.
      * Details of item review topic.

@@ -11,7 +11,7 @@ export class PackingSlip {
      * @param {PackingSlip} obj Optional instance to populate.
      * @return {PackingSlip} The populated <code>PackingSlip</code> instance.
      */
-    static constructFromObject(data: any, obj: PackingSlip): PackingSlip;
+    static constructFromObject(data: Object, obj: PackingSlip): PackingSlip;
     /**
      * Constructs a new <code>PackingSlip</code>.
      * Packing slip information.

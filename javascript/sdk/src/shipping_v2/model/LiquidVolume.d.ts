@@ -11,7 +11,7 @@ export class LiquidVolume {
      * @param {LiquidVolume} obj Optional instance to populate.
      * @return {LiquidVolume} The populated <code>LiquidVolume</code> instance.
      */
-    static constructFromObject(data: any, obj: LiquidVolume): LiquidVolume;
+    static constructFromObject(data: Object, obj: LiquidVolume): LiquidVolume;
     /**
      * Constructs a new <code>LiquidVolume</code>.
      * Liquid Volume.

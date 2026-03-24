@@ -11,7 +11,7 @@ export class DocumentSize {
      * @param {DocumentSize} obj Optional instance to populate.
      * @return {DocumentSize} The populated <code>DocumentSize</code> instance.
      */
-    static constructFromObject(data: any, obj: DocumentSize): DocumentSize;
+    static constructFromObject(data: Object, obj: DocumentSize): DocumentSize;
     /**
      * Constructs a new <code>DocumentSize</code>.
      * The size dimensions of the label.

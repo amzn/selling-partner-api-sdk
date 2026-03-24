@@ -11,7 +11,7 @@ export class ValidationMetadata {
      * @param {ValidationMetadata} obj Optional instance to populate.
      * @return {ValidationMetadata} The populated <code>ValidationMetadata</code> instance.
      */
-    static constructFromObject(data: any, obj: ValidationMetadata): ValidationMetadata;
+    static constructFromObject(data: Object, obj: ValidationMetadata): ValidationMetadata;
     /**
      * errorMessage for the error.
      * @member {String} errorMessage

@@ -11,7 +11,7 @@ export class CODSettings {
      * @param {CODSettings} obj Optional instance to populate.
      * @return {CODSettings} The populated <code>CODSettings</code> instance.
      */
-    static constructFromObject(data: any, obj: CODSettings): CODSettings;
+    static constructFromObject(data: Object, obj: CODSettings): CODSettings;
     /**
      * Constructs a new <code>CODSettings</code>.
      * The COD (Cash On Delivery) charges that you associate with a COD fulfillment order.

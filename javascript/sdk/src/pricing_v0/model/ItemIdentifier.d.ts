@@ -11,7 +11,7 @@ export class ItemIdentifier {
      * @param {ItemIdentifier} obj Optional instance to populate.
      * @return {ItemIdentifier} The populated <code>ItemIdentifier</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemIdentifier): ItemIdentifier;
+    static constructFromObject(data: Object, obj: ItemIdentifier): ItemIdentifier;
     /**
      * Constructs a new <code>ItemIdentifier</code>.
      * Information that identifies an item.

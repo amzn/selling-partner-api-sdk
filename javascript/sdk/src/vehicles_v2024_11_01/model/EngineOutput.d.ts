@@ -11,7 +11,7 @@ export class EngineOutput {
      * @param {EngineOutput} obj Optional instance to populate.
      * @return {EngineOutput} The populated <code>EngineOutput</code> instance.
      */
-    static constructFromObject(data: any, obj: EngineOutput): EngineOutput;
+    static constructFromObject(data: Object, obj: EngineOutput): EngineOutput;
     /**
      * Constructs a new <code>EngineOutput</code>.
      * Engine power output of vehicle.

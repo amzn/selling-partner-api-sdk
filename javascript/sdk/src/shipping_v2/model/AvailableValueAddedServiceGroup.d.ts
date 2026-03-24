@@ -11,7 +11,7 @@ export class AvailableValueAddedServiceGroup {
      * @param {AvailableValueAddedServiceGroup} obj Optional instance to populate.
      * @return {AvailableValueAddedServiceGroup} The populated <code>AvailableValueAddedServiceGroup</code> instance.
      */
-    static constructFromObject(data: any, obj: AvailableValueAddedServiceGroup): AvailableValueAddedServiceGroup;
+    static constructFromObject(data: Object, obj: AvailableValueAddedServiceGroup): AvailableValueAddedServiceGroup;
     /**
      * Constructs a new <code>AvailableValueAddedServiceGroup</code>.
      * The value-added services available for purchase with a shipping service offering.

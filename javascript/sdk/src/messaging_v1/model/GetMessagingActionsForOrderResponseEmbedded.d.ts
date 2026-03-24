@@ -11,7 +11,7 @@ export class GetMessagingActionsForOrderResponseEmbedded {
      * @param {GetMessagingActionsForOrderResponseEmbedded} obj Optional instance to populate.
      * @return {GetMessagingActionsForOrderResponseEmbedded} The populated <code>GetMessagingActionsForOrderResponseEmbedded</code> instance.
      */
-    static constructFromObject(data: any, obj: GetMessagingActionsForOrderResponseEmbedded): GetMessagingActionsForOrderResponseEmbedded;
+    static constructFromObject(data: Object, obj: GetMessagingActionsForOrderResponseEmbedded): GetMessagingActionsForOrderResponseEmbedded;
     /**
      * Constructs a new <code>GetMessagingActionsForOrderResponseEmbedded</code>.
      * The messaging actions response that is associated with the specified &#x60;amazonOrderId&#x60;.

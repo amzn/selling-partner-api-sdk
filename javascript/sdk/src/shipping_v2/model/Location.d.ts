@@ -11,7 +11,7 @@ export class Location {
      * @param {Location} obj Optional instance to populate.
      * @return {Location} The populated <code>Location</code> instance.
      */
-    static constructFromObject(data: any, obj: Location): Location;
+    static constructFromObject(data: Object, obj: Location): Location;
     /**
      * The state, county or region where the person, business or institution is located.
      * @member {String} stateOrRegion

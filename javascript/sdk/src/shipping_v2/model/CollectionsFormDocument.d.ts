@@ -11,7 +11,7 @@ export class CollectionsFormDocument {
      * @param {CollectionsFormDocument} obj Optional instance to populate.
      * @return {CollectionsFormDocument} The populated <code>CollectionsFormDocument</code> instance.
      */
-    static constructFromObject(data: any, obj: CollectionsFormDocument): CollectionsFormDocument;
+    static constructFromObject(data: Object, obj: CollectionsFormDocument): CollectionsFormDocument;
     /**
      * Base64 document Value of Collection.
      * @member {String} base64EncodedContent

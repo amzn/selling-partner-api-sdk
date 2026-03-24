@@ -11,7 +11,7 @@ export class BankAccountListing {
      * @param {BankAccountListing} obj Optional instance to populate.
      * @return {BankAccountListing} The populated <code>BankAccountListing</code> instance.
      */
-    static constructFromObject(data: any, obj: BankAccountListing): BankAccountListing;
+    static constructFromObject(data: Object, obj: BankAccountListing): BankAccountListing;
     /**
      * Constructs a new <code>BankAccountListing</code>.
      * A list of bank accounts.

@@ -11,7 +11,7 @@ export class CancelServiceJobByServiceJobIdResponse {
      * @param {CancelServiceJobByServiceJobIdResponse} obj Optional instance to populate.
      * @return {CancelServiceJobByServiceJobIdResponse} The populated <code>CancelServiceJobByServiceJobIdResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CancelServiceJobByServiceJobIdResponse): CancelServiceJobByServiceJobIdResponse;
+    static constructFromObject(data: Object, obj: CancelServiceJobByServiceJobIdResponse): CancelServiceJobByServiceJobIdResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

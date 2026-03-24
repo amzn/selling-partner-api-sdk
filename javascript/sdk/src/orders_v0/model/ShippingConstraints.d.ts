@@ -11,7 +11,7 @@ export class ShippingConstraints {
      * @param {ShippingConstraints} obj Optional instance to populate.
      * @return {ShippingConstraints} The populated <code>ShippingConstraints</code> instance.
      */
-    static constructFromObject(data: any, obj: ShippingConstraints): ShippingConstraints;
+    static constructFromObject(data: Object, obj: ShippingConstraints): ShippingConstraints;
     /**
      * @member {ConstraintType} palletDelivery
      * @type {ConstraintType}

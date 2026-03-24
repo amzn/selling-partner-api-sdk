@@ -11,7 +11,7 @@ export class UpdateScheduledPackagesRequest {
      * @param {UpdateScheduledPackagesRequest} obj Optional instance to populate.
      * @return {UpdateScheduledPackagesRequest} The populated <code>UpdateScheduledPackagesRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: UpdateScheduledPackagesRequest): UpdateScheduledPackagesRequest;
+    static constructFromObject(data: Object, obj: UpdateScheduledPackagesRequest): UpdateScheduledPackagesRequest;
     /**
      * Constructs a new <code>UpdateScheduledPackagesRequest</code>.
      * The request schema for the &#x60;updateScheduledPackages&#x60; operation.

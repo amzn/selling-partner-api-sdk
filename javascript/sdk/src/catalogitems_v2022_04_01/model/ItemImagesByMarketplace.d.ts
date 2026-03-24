@@ -11,7 +11,7 @@ export class ItemImagesByMarketplace {
      * @param {ItemImagesByMarketplace} obj Optional instance to populate.
      * @return {ItemImagesByMarketplace} The populated <code>ItemImagesByMarketplace</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemImagesByMarketplace): ItemImagesByMarketplace;
+    static constructFromObject(data: Object, obj: ItemImagesByMarketplace): ItemImagesByMarketplace;
     /**
      * Constructs a new <code>ItemImagesByMarketplace</code>.
      * Images for an item in the Amazon catalog, grouped by &#x60;marketplaceId&#x60;.

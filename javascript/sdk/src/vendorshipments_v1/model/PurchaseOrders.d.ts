@@ -11,7 +11,7 @@ export class PurchaseOrders {
      * @param {PurchaseOrders} obj Optional instance to populate.
      * @return {PurchaseOrders} The populated <code>PurchaseOrders</code> instance.
      */
-    static constructFromObject(data: any, obj: PurchaseOrders): PurchaseOrders;
+    static constructFromObject(data: Object, obj: PurchaseOrders): PurchaseOrders;
     /**
      * Purchase order numbers involved in this shipment, list all the PO that are involved as part of this shipment.
      * @member {String} purchaseOrderNumber

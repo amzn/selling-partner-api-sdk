@@ -11,7 +11,7 @@ export class ShipmentConfirmation {
      * @param {ShipmentConfirmation} obj Optional instance to populate.
      * @return {ShipmentConfirmation} The populated <code>ShipmentConfirmation</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipmentConfirmation): ShipmentConfirmation;
+    static constructFromObject(data: Object, obj: ShipmentConfirmation): ShipmentConfirmation;
     /**
      * Constructs a new <code>ShipmentConfirmation</code>.
      * A list of one or more shipment confirmations.

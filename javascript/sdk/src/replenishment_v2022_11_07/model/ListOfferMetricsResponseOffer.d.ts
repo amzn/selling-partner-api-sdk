@@ -11,7 +11,7 @@ export class ListOfferMetricsResponseOffer {
      * @param {ListOfferMetricsResponseOffer} obj Optional instance to populate.
      * @return {ListOfferMetricsResponseOffer} The populated <code>ListOfferMetricsResponseOffer</code> instance.
      */
-    static constructFromObject(data: any, obj: ListOfferMetricsResponseOffer): ListOfferMetricsResponseOffer;
+    static constructFromObject(data: Object, obj: ListOfferMetricsResponseOffer): ListOfferMetricsResponseOffer;
     /**
      * The Amazon Standard Identification Number (ASIN).
      * @member {String} asin

@@ -11,7 +11,7 @@ export class RequestedUpdates {
      * @param {RequestedUpdates} obj Optional instance to populate.
      * @return {RequestedUpdates} The populated <code>RequestedUpdates</code> instance.
      */
-    static constructFromObject(data: any, obj: RequestedUpdates): RequestedUpdates;
+    static constructFromObject(data: Object, obj: RequestedUpdates): RequestedUpdates;
     /**
      * A list of boxes that will be present in the shipment after the update.
      * @member {BoxUpdateInput[]} boxes

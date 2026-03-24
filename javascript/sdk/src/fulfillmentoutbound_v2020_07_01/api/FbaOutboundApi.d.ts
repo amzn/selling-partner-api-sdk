@@ -82,8 +82,8 @@ export class FbaOutboundApi {
        * @return {Promise<GetFeatureInventoryResponse>}
        */
     getFeatureInventoryWithHttpInfo(marketplaceId: string, featureName: string, opts?: {
-        nextToken?: string;
-        queryStartDate?: Date;
+        nextToken?: string | undefined;
+        queryStartDate?: Date | undefined;
     }): Promise<GetFeatureInventoryResponse>;
     /**
        * Returns a list of inventory items that are eligible for the fulfillment feature you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -95,8 +95,8 @@ export class FbaOutboundApi {
        * @return {Promise<GetFeatureInventoryResponse>}
        */
     getFeatureInventory(marketplaceId: string, featureName: string, opts?: {
-        nextToken?: string;
-        queryStartDate?: Date;
+        nextToken?: string | undefined;
+        queryStartDate?: Date | undefined;
     }): Promise<GetFeatureInventoryResponse>;
     /**
        * Returns the number of items with the &#x60;sellerSku&#x60; you specify that can have orders fulfilled using the specified feature. Note that if the &#x60;sellerSku&#x60; isn&#39;t eligible, the response will contain an empty &#x60;skuInfo&#x60; object. The parameters for this operation may contain special characters that require URL encoding. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -170,8 +170,8 @@ export class FbaOutboundApi {
        * @return {Promise<ListAllFulfillmentOrdersResponse>}
        */
     listAllFulfillmentOrdersWithHttpInfo(opts?: {
-        queryStartDate?: Date;
-        nextToken?: string;
+        queryStartDate?: Date | undefined;
+        nextToken?: string | undefined;
     }): Promise<ListAllFulfillmentOrdersResponse>;
     /**
        * Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated by the &#x60;nextToken&#x60; parameter.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
@@ -181,8 +181,8 @@ export class FbaOutboundApi {
        * @return {Promise<ListAllFulfillmentOrdersResponse>}
        */
     listAllFulfillmentOrders(opts?: {
-        queryStartDate?: Date;
-        nextToken?: string;
+        queryStartDate?: Date | undefined;
+        nextToken?: string | undefined;
     }): Promise<ListAllFulfillmentOrdersResponse>;
     /**
        * Returns a list of return reason codes for a seller SKU in a given marketplace. The parameters for this operation may contain special characters that require URL encoding. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -194,9 +194,9 @@ export class FbaOutboundApi {
        * @return {Promise<ListReturnReasonCodesResponse>}
        */
     listReturnReasonCodesWithHttpInfo(sellerSku: string, opts?: {
-        marketplaceId?: string;
-        sellerFulfillmentOrderId?: string;
-        language?: string;
+        marketplaceId?: string | undefined;
+        sellerFulfillmentOrderId?: string | undefined;
+        language?: string | undefined;
     }): Promise<ListReturnReasonCodesResponse>;
     /**
        * Returns a list of return reason codes for a seller SKU in a given marketplace. The parameters for this operation may contain special characters that require URL encoding. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -208,9 +208,9 @@ export class FbaOutboundApi {
        * @return {Promise<ListReturnReasonCodesResponse>}
        */
     listReturnReasonCodes(sellerSku: string, opts?: {
-        marketplaceId?: string;
-        sellerFulfillmentOrderId?: string;
-        language?: string;
+        marketplaceId?: string | undefined;
+        sellerFulfillmentOrderId?: string | undefined;
+        language?: string | undefined;
     }): Promise<ListReturnReasonCodesResponse>;
     /**
        * Requests that Amazon update the status of an order in the sandbox testing environment. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Fulfillment Outbound Dynamic Sandbox Guide](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-dynamic-sandbox-guide) and [Selling Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.

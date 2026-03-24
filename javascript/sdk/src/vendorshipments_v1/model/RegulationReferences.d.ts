@@ -11,7 +11,7 @@ export class RegulationReferences {
      * @param {RegulationReferences} obj Optional instance to populate.
      * @return {RegulationReferences} The populated <code>RegulationReferences</code> instance.
      */
-    static constructFromObject(data: any, obj: RegulationReferences): RegulationReferences;
+    static constructFromObject(data: Object, obj: RegulationReferences): RegulationReferences;
     /**
      * The reference number from the vendor's EUDR Due Diligence Statement (DDS) submitted to the EU Commission portal or provided to Amazon through ONIX feed.
      * @member {String} dueDiligenceReference

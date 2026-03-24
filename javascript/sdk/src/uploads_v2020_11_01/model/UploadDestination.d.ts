@@ -11,7 +11,7 @@ export class UploadDestination {
      * @param {UploadDestination} obj Optional instance to populate.
      * @return {UploadDestination} The populated <code>UploadDestination</code> instance.
      */
-    static constructFromObject(data: any, obj: UploadDestination): UploadDestination;
+    static constructFromObject(data: Object, obj: UploadDestination): UploadDestination;
     /**
      * The unique identifier for the upload destination.
      * @member {String} uploadDestinationId
@@ -29,6 +29,6 @@ export class UploadDestination {
      * @member {Object} headers
      * @type {Object}
      */
-    headers: any;
+    headers: Object;
 }
 //# sourceMappingURL=UploadDestination.d.ts.map

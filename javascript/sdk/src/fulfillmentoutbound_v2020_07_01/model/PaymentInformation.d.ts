@@ -11,7 +11,7 @@ export class PaymentInformation {
      * @param {PaymentInformation} obj Optional instance to populate.
      * @return {PaymentInformation} The populated <code>PaymentInformation</code> instance.
      */
-    static constructFromObject(data: any, obj: PaymentInformation): PaymentInformation;
+    static constructFromObject(data: Object, obj: PaymentInformation): PaymentInformation;
     /**
      * Constructs a new <code>PaymentInformation</code>.
      * The attributes related to the payment made from customer to seller for this order.

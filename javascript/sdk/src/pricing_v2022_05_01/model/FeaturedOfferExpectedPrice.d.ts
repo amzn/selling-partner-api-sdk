@@ -11,7 +11,7 @@ export class FeaturedOfferExpectedPrice {
      * @param {FeaturedOfferExpectedPrice} obj Optional instance to populate.
      * @return {FeaturedOfferExpectedPrice} The populated <code>FeaturedOfferExpectedPrice</code> instance.
      */
-    static constructFromObject(data: any, obj: FeaturedOfferExpectedPrice): FeaturedOfferExpectedPrice;
+    static constructFromObject(data: Object, obj: FeaturedOfferExpectedPrice): FeaturedOfferExpectedPrice;
     /**
      * Constructs a new <code>FeaturedOfferExpectedPrice</code>.
      * The item price at or below which the target offer may be featured.

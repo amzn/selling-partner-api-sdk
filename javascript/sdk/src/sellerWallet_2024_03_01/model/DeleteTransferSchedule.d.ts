@@ -11,7 +11,7 @@ export class DeleteTransferSchedule {
      * @param {DeleteTransferSchedule} obj Optional instance to populate.
      * @return {DeleteTransferSchedule} The populated <code>DeleteTransferSchedule</code> instance.
      */
-    static constructFromObject(data: any, obj: DeleteTransferSchedule): DeleteTransferSchedule;
+    static constructFromObject(data: Object, obj: DeleteTransferSchedule): DeleteTransferSchedule;
     /**
      * Constructs a new <code>DeleteTransferSchedule</code>.
      * The response returned when the schedule transfer&#39;s delete request is successful.

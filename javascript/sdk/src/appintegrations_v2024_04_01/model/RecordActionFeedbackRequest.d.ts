@@ -11,7 +11,7 @@ export class RecordActionFeedbackRequest {
      * @param {RecordActionFeedbackRequest} obj Optional instance to populate.
      * @return {RecordActionFeedbackRequest} The populated <code>RecordActionFeedbackRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: RecordActionFeedbackRequest): RecordActionFeedbackRequest;
+    static constructFromObject(data: Object, obj: RecordActionFeedbackRequest): RecordActionFeedbackRequest;
     /**
      * Constructs a new <code>RecordActionFeedbackRequest</code>.
      * The request for the &#x60;recordActionFeedback&#x60; operation.

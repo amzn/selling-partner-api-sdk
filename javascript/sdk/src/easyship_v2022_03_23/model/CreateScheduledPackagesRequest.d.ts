@@ -11,7 +11,7 @@ export class CreateScheduledPackagesRequest {
      * @param {CreateScheduledPackagesRequest} obj Optional instance to populate.
      * @return {CreateScheduledPackagesRequest} The populated <code>CreateScheduledPackagesRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateScheduledPackagesRequest): CreateScheduledPackagesRequest;
+    static constructFromObject(data: Object, obj: CreateScheduledPackagesRequest): CreateScheduledPackagesRequest;
     /**
      * Constructs a new <code>CreateScheduledPackagesRequest</code>.
      * The request body for the POST /easyShip/2022-03-23/packages/bulk API.

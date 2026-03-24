@@ -11,7 +11,7 @@ export class PostContentDocumentAsinRelationsResponse {
      * @param {PostContentDocumentAsinRelationsResponse} obj Optional instance to populate.
      * @return {PostContentDocumentAsinRelationsResponse} The populated <code>PostContentDocumentAsinRelationsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: PostContentDocumentAsinRelationsResponse): PostContentDocumentAsinRelationsResponse;
+    static constructFromObject(data: Object, obj: PostContentDocumentAsinRelationsResponse): PostContentDocumentAsinRelationsResponse;
     /**
      * A set of messages to the user, such as warnings or comments.
      * @member {Error[]} warnings

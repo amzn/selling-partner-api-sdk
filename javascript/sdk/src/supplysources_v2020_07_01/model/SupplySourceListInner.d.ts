@@ -11,7 +11,7 @@ export class SupplySourceListInner {
      * @param {SupplySourceListInner} obj Optional instance to populate.
      * @return {SupplySourceListInner} The populated <code>SupplySourceListInner</code> instance.
      */
-    static constructFromObject(data: any, obj: SupplySourceListInner): SupplySourceListInner;
+    static constructFromObject(data: Object, obj: SupplySourceListInner): SupplySourceListInner;
     /**
      * The custom alias for this supply source
      * @member {String} alias

@@ -11,7 +11,7 @@ export class GetDocumentResponse {
      * @param {GetDocumentResponse} obj Optional instance to populate.
      * @return {GetDocumentResponse} The populated <code>GetDocumentResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetDocumentResponse): GetDocumentResponse;
+    static constructFromObject(data: Object, obj: GetDocumentResponse): GetDocumentResponse;
     /**
      * Constructs a new <code>GetDocumentResponse</code>.
      * The response for the &#x60;getDocument&#x60; operation.

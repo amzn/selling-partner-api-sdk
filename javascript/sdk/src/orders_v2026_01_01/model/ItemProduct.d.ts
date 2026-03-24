@@ -11,7 +11,7 @@ export class ItemProduct {
      * @param {ItemProduct} obj Optional instance to populate.
      * @return {ItemProduct} The populated <code>ItemProduct</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemProduct): ItemProduct;
+    static constructFromObject(data: Object, obj: ItemProduct): ItemProduct;
     /**
      * The Amazon Standard Identification Number (ASIN), which uniquely identifies a product (catalog item).
      * @member {String} asin

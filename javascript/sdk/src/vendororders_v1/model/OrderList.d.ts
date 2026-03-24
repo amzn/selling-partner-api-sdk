@@ -11,7 +11,7 @@ export class OrderList {
      * @param {OrderList} obj Optional instance to populate.
      * @return {OrderList} The populated <code>OrderList</code> instance.
      */
-    static constructFromObject(data: any, obj: OrderList): OrderList;
+    static constructFromObject(data: Object, obj: OrderList): OrderList;
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

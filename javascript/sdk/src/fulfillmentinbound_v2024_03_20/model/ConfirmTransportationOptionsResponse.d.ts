@@ -11,7 +11,7 @@ export class ConfirmTransportationOptionsResponse {
      * @param {ConfirmTransportationOptionsResponse} obj Optional instance to populate.
      * @return {ConfirmTransportationOptionsResponse} The populated <code>ConfirmTransportationOptionsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ConfirmTransportationOptionsResponse): ConfirmTransportationOptionsResponse;
+    static constructFromObject(data: Object, obj: ConfirmTransportationOptionsResponse): ConfirmTransportationOptionsResponse;
     /**
      * Constructs a new <code>ConfirmTransportationOptionsResponse</code>.
      * The &#x60;confirmTransportationOptions&#x60; response.

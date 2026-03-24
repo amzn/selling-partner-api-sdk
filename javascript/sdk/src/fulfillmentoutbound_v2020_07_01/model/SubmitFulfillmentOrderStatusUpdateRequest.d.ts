@@ -11,7 +11,7 @@ export class SubmitFulfillmentOrderStatusUpdateRequest {
      * @param {SubmitFulfillmentOrderStatusUpdateRequest} obj Optional instance to populate.
      * @return {SubmitFulfillmentOrderStatusUpdateRequest} The populated <code>SubmitFulfillmentOrderStatusUpdateRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: SubmitFulfillmentOrderStatusUpdateRequest): SubmitFulfillmentOrderStatusUpdateRequest;
+    static constructFromObject(data: Object, obj: SubmitFulfillmentOrderStatusUpdateRequest): SubmitFulfillmentOrderStatusUpdateRequest;
     /**
      * @member {FulfillmentOrderStatus} fulfillmentOrderStatus
      * @type {FulfillmentOrderStatus}

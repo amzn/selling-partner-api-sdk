@@ -11,7 +11,7 @@ export class LowestPricedOffersInput {
      * @param {LowestPricedOffersInput} obj Optional instance to populate.
      * @return {LowestPricedOffersInput} The populated <code>LowestPricedOffersInput</code> instance.
      */
-    static constructFromObject(data: any, obj: LowestPricedOffersInput): LowestPricedOffersInput;
+    static constructFromObject(data: Object, obj: LowestPricedOffersInput): LowestPricedOffersInput;
     /**
      * Constructs a new <code>LowestPricedOffersInput</code>.
      * The input required for building &#x60;LowestPricedOffers&#x60; data in the response.

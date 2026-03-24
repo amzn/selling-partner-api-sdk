@@ -11,7 +11,7 @@ export class RemovalShipmentItem {
      * @param {RemovalShipmentItem} obj Optional instance to populate.
      * @return {RemovalShipmentItem} The populated <code>RemovalShipmentItem</code> instance.
      */
-    static constructFromObject(data: any, obj: RemovalShipmentItem): RemovalShipmentItem;
+    static constructFromObject(data: Object, obj: RemovalShipmentItem): RemovalShipmentItem;
     /**
      * An identifier for an item in a removal shipment.
      * @member {String} removalShipmentItemId

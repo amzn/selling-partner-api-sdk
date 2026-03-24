@@ -58,8 +58,8 @@ export class InvoicesApi {
        * @return {Promise<GovtInvoiceDocumentResponse>}
        */
     getGovernmentInvoiceDocumentWithHttpInfo(marketplaceId: string, transactionType: string, shipmentId: string, invoiceType: string, opts?: {
-        inboundPlanId?: string;
-        fileFormat?: string;
+        inboundPlanId?: string | undefined;
+        fileFormat?: string | undefined;
     }): Promise<GovtInvoiceDocumentResponse>;
     /**
        * Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
@@ -73,8 +73,8 @@ export class InvoicesApi {
        * @return {Promise<GovtInvoiceDocumentResponse>}
        */
     getGovernmentInvoiceDocument(marketplaceId: string, transactionType: string, shipmentId: string, invoiceType: string, opts?: {
-        inboundPlanId?: string;
-        fileFormat?: string;
+        inboundPlanId?: string | undefined;
+        fileFormat?: string | undefined;
     }): Promise<GovtInvoiceDocumentResponse>;
     /**
        * Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
@@ -87,7 +87,7 @@ export class InvoicesApi {
        * @return {Promise<GovernmentInvoiceStatusResponse>}
        */
     getGovernmentInvoiceStatusWithHttpInfo(marketplaceId: string, transactionType: string, shipmentId: string, invoiceType: string, opts?: {
-        inboundPlanId?: string;
+        inboundPlanId?: string | undefined;
     }): Promise<GovernmentInvoiceStatusResponse>;
     /**
        * Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
@@ -100,7 +100,7 @@ export class InvoicesApi {
        * @return {Promise<GovernmentInvoiceStatusResponse>}
        */
     getGovernmentInvoiceStatus(marketplaceId: string, transactionType: string, shipmentId: string, invoiceType: string, opts?: {
-        inboundPlanId?: string;
+        inboundPlanId?: string | undefined;
     }): Promise<GovernmentInvoiceStatusResponse>;
     /**
        * Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -136,19 +136,19 @@ export class InvoicesApi {
        * @return {Promise<GetInvoicesResponse>}
        */
     getInvoicesWithHttpInfo(marketplaceId: string, opts?: {
-        transactionIdentifierName?: string;
-        pageSize?: number;
-        dateEnd?: Date;
-        transactionType?: string;
-        transactionIdentifierId?: string;
-        dateStart?: Date;
-        series?: string;
-        nextToken?: string;
-        sortOrder?: string;
-        invoiceType?: string;
-        statuses?: string[];
-        externalInvoiceId?: string;
-        sortBy?: string;
+        transactionIdentifierName?: string | undefined;
+        pageSize?: number | undefined;
+        dateEnd?: Date | undefined;
+        transactionType?: string | undefined;
+        transactionIdentifierId?: string | undefined;
+        dateStart?: Date | undefined;
+        series?: string | undefined;
+        nextToken?: string | undefined;
+        sortOrder?: string | undefined;
+        invoiceType?: string | undefined;
+        statuses?: string[] | undefined;
+        externalInvoiceId?: string | undefined;
+        sortBy?: string | undefined;
     }): Promise<GetInvoicesResponse>;
     /**
        * Returns invoice details for the invoices that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -170,19 +170,19 @@ export class InvoicesApi {
        * @return {Promise<GetInvoicesResponse>}
        */
     getInvoices(marketplaceId: string, opts?: {
-        transactionIdentifierName?: string;
-        pageSize?: number;
-        dateEnd?: Date;
-        transactionType?: string;
-        transactionIdentifierId?: string;
-        dateStart?: Date;
-        series?: string;
-        nextToken?: string;
-        sortOrder?: string;
-        invoiceType?: string;
-        statuses?: string[];
-        externalInvoiceId?: string;
-        sortBy?: string;
+        transactionIdentifierName?: string | undefined;
+        pageSize?: number | undefined;
+        dateEnd?: Date | undefined;
+        transactionType?: string | undefined;
+        transactionIdentifierId?: string | undefined;
+        dateStart?: Date | undefined;
+        series?: string | undefined;
+        nextToken?: string | undefined;
+        sortOrder?: string | undefined;
+        invoiceType?: string | undefined;
+        statuses?: string[] | undefined;
+        externalInvoiceId?: string | undefined;
+        sortBy?: string | undefined;
     }): Promise<GetInvoicesResponse>;
     /**
        * Returns marketplace-dependent schemas and their respective set of possible values.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -232,11 +232,11 @@ export class InvoicesApi {
        * @return {Promise<GetInvoicesExportsResponse>}
        */
     getInvoicesExportsWithHttpInfo(marketplaceId: string, opts?: {
-        dateStart?: Date;
-        nextToken?: string;
-        pageSize?: number;
-        dateEnd?: Date;
-        status?: string;
+        dateStart?: Date | undefined;
+        nextToken?: string | undefined;
+        pageSize?: number | undefined;
+        dateEnd?: Date | undefined;
+        status?: string | undefined;
     }): Promise<GetInvoicesExportsResponse>;
     /**
        * Returns invoice exports details for exports that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -250,11 +250,11 @@ export class InvoicesApi {
        * @return {Promise<GetInvoicesExportsResponse>}
        */
     getInvoicesExports(marketplaceId: string, opts?: {
-        dateStart?: Date;
-        nextToken?: string;
-        pageSize?: number;
-        dateEnd?: Date;
-        status?: string;
+        dateStart?: Date | undefined;
+        nextToken?: string | undefined;
+        pageSize?: number | undefined;
+        dateEnd?: Date | undefined;
+        status?: string | undefined;
     }): Promise<GetInvoicesExportsResponse>;
     #private;
 }

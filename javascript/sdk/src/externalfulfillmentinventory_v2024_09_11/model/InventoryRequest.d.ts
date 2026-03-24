@@ -11,7 +11,7 @@ export class InventoryRequest {
      * @param {InventoryRequest} obj Optional instance to populate.
      * @return {InventoryRequest} The populated <code>InventoryRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: InventoryRequest): InventoryRequest;
+    static constructFromObject(data: Object, obj: InventoryRequest): InventoryRequest;
     /**
      * Constructs a new <code>InventoryRequest</code>.
      * An inventory request.

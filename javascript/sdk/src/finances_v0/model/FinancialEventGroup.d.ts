@@ -11,7 +11,7 @@ export class FinancialEventGroup {
      * @param {FinancialEventGroup} obj Optional instance to populate.
      * @return {FinancialEventGroup} The populated <code>FinancialEventGroup</code> instance.
      */
-    static constructFromObject(data: any, obj: FinancialEventGroup): FinancialEventGroup;
+    static constructFromObject(data: Object, obj: FinancialEventGroup): FinancialEventGroup;
     /**
      * A unique identifier for the financial event group.
      * @member {String} financialEventGroupId

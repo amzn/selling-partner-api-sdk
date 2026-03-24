@@ -11,7 +11,7 @@ export class CurrencyAmount {
      * @param {CurrencyAmount} obj Optional instance to populate.
      * @return {CurrencyAmount} The populated <code>CurrencyAmount</code> instance.
      */
-    static constructFromObject(data: any, obj: CurrencyAmount): CurrencyAmount;
+    static constructFromObject(data: Object, obj: CurrencyAmount): CurrencyAmount;
     /**
      * Constructs a new <code>CurrencyAmount</code>.
      * Currency type and amount.

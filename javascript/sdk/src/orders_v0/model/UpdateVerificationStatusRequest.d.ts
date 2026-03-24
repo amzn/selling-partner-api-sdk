@@ -11,7 +11,7 @@ export class UpdateVerificationStatusRequest {
      * @param {UpdateVerificationStatusRequest} obj Optional instance to populate.
      * @return {UpdateVerificationStatusRequest} The populated <code>UpdateVerificationStatusRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: UpdateVerificationStatusRequest): UpdateVerificationStatusRequest;
+    static constructFromObject(data: Object, obj: UpdateVerificationStatusRequest): UpdateVerificationStatusRequest;
     /**
      * Constructs a new <code>UpdateVerificationStatusRequest</code>.
      * The request body for the &#x60;updateVerificationStatus&#x60; operation.

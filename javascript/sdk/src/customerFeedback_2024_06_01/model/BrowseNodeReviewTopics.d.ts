@@ -11,7 +11,7 @@ export class BrowseNodeReviewTopics {
      * @param {BrowseNodeReviewTopics} obj Optional instance to populate.
      * @return {BrowseNodeReviewTopics} The populated <code>BrowseNodeReviewTopics</code> instance.
      */
-    static constructFromObject(data: any, obj: BrowseNodeReviewTopics): BrowseNodeReviewTopics;
+    static constructFromObject(data: Object, obj: BrowseNodeReviewTopics): BrowseNodeReviewTopics;
     /**
      * A list of the most positive review topics. When the `sortBy` query parameter is set to `MENTIONS`, the number of reviews of items within the requested browse node that mention the topic determine the topic's placement in the list. When `sortBy` is set to `STAR_RATING_IMPACT`, the effect that the topic has on the star rating of items within the requested browse node determine placement in the list. This value is `null` if there are not enough positive reviews for the requested browse node.  **Max length:** 10
      * @member {BrowseNodeReviewTopic[]} positiveTopics

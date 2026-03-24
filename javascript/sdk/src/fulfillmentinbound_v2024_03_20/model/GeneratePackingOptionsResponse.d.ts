@@ -11,7 +11,7 @@ export class GeneratePackingOptionsResponse {
      * @param {GeneratePackingOptionsResponse} obj Optional instance to populate.
      * @return {GeneratePackingOptionsResponse} The populated <code>GeneratePackingOptionsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GeneratePackingOptionsResponse): GeneratePackingOptionsResponse;
+    static constructFromObject(data: Object, obj: GeneratePackingOptionsResponse): GeneratePackingOptionsResponse;
     /**
      * Constructs a new <code>GeneratePackingOptionsResponse</code>.
      * The &#x60;generatePackingOptions&#x60; response.

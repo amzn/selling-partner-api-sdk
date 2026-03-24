@@ -11,7 +11,7 @@ export class StandardSingleSideImageModule {
      * @param {StandardSingleSideImageModule} obj Optional instance to populate.
      * @return {StandardSingleSideImageModule} The populated <code>StandardSingleSideImageModule</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardSingleSideImageModule): StandardSingleSideImageModule;
+    static constructFromObject(data: Object, obj: StandardSingleSideImageModule): StandardSingleSideImageModule;
     /**
      * Constructs a new <code>StandardSingleSideImageModule</code>.
      * A standard headline and body text with an image on the side.

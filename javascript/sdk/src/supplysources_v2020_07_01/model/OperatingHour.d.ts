@@ -11,7 +11,7 @@ export class OperatingHour {
      * @param {OperatingHour} obj Optional instance to populate.
      * @return {OperatingHour} The populated <code>OperatingHour</code> instance.
      */
-    static constructFromObject(data: any, obj: OperatingHour): OperatingHour;
+    static constructFromObject(data: Object, obj: OperatingHour): OperatingHour;
     /**
      * The opening time, ISO 8601 formatted timestamp without date, HH:mm.
      * @member {String} startTime

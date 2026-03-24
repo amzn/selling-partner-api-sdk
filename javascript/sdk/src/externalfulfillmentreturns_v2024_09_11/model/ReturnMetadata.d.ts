@@ -11,7 +11,7 @@ export class ReturnMetadata {
      * @param {ReturnMetadata} obj Optional instance to populate.
      * @return {ReturnMetadata} The populated <code>ReturnMetadata</code> instance.
      */
-    static constructFromObject(data: any, obj: ReturnMetadata): ReturnMetadata;
+    static constructFromObject(data: Object, obj: ReturnMetadata): ReturnMetadata;
     /**
      * Constructs a new <code>ReturnMetadata</code>.
      * Metadata about the return item.

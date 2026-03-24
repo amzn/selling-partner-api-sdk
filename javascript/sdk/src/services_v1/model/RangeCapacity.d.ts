@@ -11,7 +11,7 @@ export class RangeCapacity {
      * @param {RangeCapacity} obj Optional instance to populate.
      * @return {RangeCapacity} The populated <code>RangeCapacity</code> instance.
      */
-    static constructFromObject(data: any, obj: RangeCapacity): RangeCapacity;
+    static constructFromObject(data: Object, obj: RangeCapacity): RangeCapacity;
     /**
      * @member {CapacityType} capacityType
      * @type {CapacityType}

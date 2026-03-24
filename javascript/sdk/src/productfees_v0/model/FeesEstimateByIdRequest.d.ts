@@ -11,7 +11,7 @@ export class FeesEstimateByIdRequest {
      * @param {FeesEstimateByIdRequest} obj Optional instance to populate.
      * @return {FeesEstimateByIdRequest} The populated <code>FeesEstimateByIdRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: FeesEstimateByIdRequest): FeesEstimateByIdRequest;
+    static constructFromObject(data: Object, obj: FeesEstimateByIdRequest): FeesEstimateByIdRequest;
     /**
      * Constructs a new <code>FeesEstimateByIdRequest</code>.
      * A product, marketplace, and proposed price used to request estimated fees.

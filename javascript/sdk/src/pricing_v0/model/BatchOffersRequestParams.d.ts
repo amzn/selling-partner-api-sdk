@@ -11,7 +11,7 @@ export class BatchOffersRequestParams {
      * @param {BatchOffersRequestParams} obj Optional instance to populate.
      * @return {BatchOffersRequestParams} The populated <code>BatchOffersRequestParams</code> instance.
      */
-    static constructFromObject(data: any, obj: BatchOffersRequestParams): BatchOffersRequestParams;
+    static constructFromObject(data: Object, obj: BatchOffersRequestParams): BatchOffersRequestParams;
     /**
      * Constructs a new <code>BatchOffersRequestParams</code>.
      * Common request parameters that can be accepted by &#x60;ItemOffersRequest&#x60; and &#x60;ListingOffersRequest&#x60;

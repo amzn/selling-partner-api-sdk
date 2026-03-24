@@ -11,7 +11,7 @@ export class Label {
      * @param {Label} obj Optional instance to populate.
      * @return {Label} The populated <code>Label</code> instance.
      */
-    static constructFromObject(data: any, obj: Label): Label;
+    static constructFromObject(data: Object, obj: Label): Label;
     /**
      * Constructs a new <code>Label</code>.
      * Data for creating a shipping label and dimensions for printing the label.

@@ -11,7 +11,7 @@ export class GetSupplySourcesResponse {
      * @param {GetSupplySourcesResponse} obj Optional instance to populate.
      * @return {GetSupplySourcesResponse} The populated <code>GetSupplySourcesResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetSupplySourcesResponse): GetSupplySourcesResponse;
+    static constructFromObject(data: Object, obj: GetSupplySourcesResponse): GetSupplySourcesResponse;
     /**
      * The list of `SupplySource`s.
      * @member {SupplySourceListInner[]} supplySources

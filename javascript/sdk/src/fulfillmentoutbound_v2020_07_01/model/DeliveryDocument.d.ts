@@ -11,7 +11,7 @@ export class DeliveryDocument {
      * @param {DeliveryDocument} obj Optional instance to populate.
      * @return {DeliveryDocument} The populated <code>DeliveryDocument</code> instance.
      */
-    static constructFromObject(data: any, obj: DeliveryDocument): DeliveryDocument;
+    static constructFromObject(data: Object, obj: DeliveryDocument): DeliveryDocument;
     /**
      * Constructs a new <code>DeliveryDocument</code>.
      * A delivery document for a package.

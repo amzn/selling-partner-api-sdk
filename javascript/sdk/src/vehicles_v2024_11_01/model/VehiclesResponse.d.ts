@@ -11,7 +11,7 @@ export class VehiclesResponse {
      * @param {VehiclesResponse} obj Optional instance to populate.
      * @return {VehiclesResponse} The populated <code>VehiclesResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: VehiclesResponse): VehiclesResponse;
+    static constructFromObject(data: Object, obj: VehiclesResponse): VehiclesResponse;
     /**
      * Constructs a new <code>VehiclesResponse</code>.
      * Get paginated list of vehicle from Amazon&#39;s catalog

@@ -11,7 +11,7 @@ export class UpdateInboundPlanNameRequest {
      * @param {UpdateInboundPlanNameRequest} obj Optional instance to populate.
      * @return {UpdateInboundPlanNameRequest} The populated <code>UpdateInboundPlanNameRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: UpdateInboundPlanNameRequest): UpdateInboundPlanNameRequest;
+    static constructFromObject(data: Object, obj: UpdateInboundPlanNameRequest): UpdateInboundPlanNameRequest;
     /**
      * Constructs a new <code>UpdateInboundPlanNameRequest</code>.
      * The &#x60;updateInboundPlanName&#x60; request.

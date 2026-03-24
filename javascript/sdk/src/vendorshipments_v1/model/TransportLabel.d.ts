@@ -11,7 +11,7 @@ export class TransportLabel {
      * @param {TransportLabel} obj Optional instance to populate.
      * @return {TransportLabel} The populated <code>TransportLabel</code> instance.
      */
-    static constructFromObject(data: any, obj: TransportLabel): TransportLabel;
+    static constructFromObject(data: Object, obj: TransportLabel): TransportLabel;
     /**
      * Date on which label is created.
      * @member {Date} labelCreateDateTime

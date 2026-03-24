@@ -11,7 +11,7 @@ export class GenerateTransportationOptionsResponse {
      * @param {GenerateTransportationOptionsResponse} obj Optional instance to populate.
      * @return {GenerateTransportationOptionsResponse} The populated <code>GenerateTransportationOptionsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GenerateTransportationOptionsResponse): GenerateTransportationOptionsResponse;
+    static constructFromObject(data: Object, obj: GenerateTransportationOptionsResponse): GenerateTransportationOptionsResponse;
     /**
      * Constructs a new <code>GenerateTransportationOptionsResponse</code>.
      * The &#x60;generateTransportationOptions&#x60; response.

@@ -11,7 +11,7 @@ export class ClassificationRefinement {
      * @param {ClassificationRefinement} obj Optional instance to populate.
      * @return {ClassificationRefinement} The populated <code>ClassificationRefinement</code> instance.
      */
-    static constructFromObject(data: any, obj: ClassificationRefinement): ClassificationRefinement;
+    static constructFromObject(data: Object, obj: ClassificationRefinement): ClassificationRefinement;
     /**
      * Constructs a new <code>ClassificationRefinement</code>.
      * A classification that you can use to refine your search.

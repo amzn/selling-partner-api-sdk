@@ -11,7 +11,7 @@ export class Pallet {
      * @param {Pallet} obj Optional instance to populate.
      * @return {Pallet} The populated <code>Pallet</code> instance.
      */
-    static constructFromObject(data: any, obj: Pallet): Pallet;
+    static constructFromObject(data: Object, obj: Pallet): Pallet;
     /**
      * Constructs a new <code>Pallet</code>.
      * Details of the Pallet/Tare being shipped.

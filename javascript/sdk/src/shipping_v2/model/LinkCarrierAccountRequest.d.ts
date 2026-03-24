@@ -11,7 +11,7 @@ export class LinkCarrierAccountRequest {
      * @param {LinkCarrierAccountRequest} obj Optional instance to populate.
      * @return {LinkCarrierAccountRequest} The populated <code>LinkCarrierAccountRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: LinkCarrierAccountRequest): LinkCarrierAccountRequest;
+    static constructFromObject(data: Object, obj: LinkCarrierAccountRequest): LinkCarrierAccountRequest;
     /**
      * Constructs a new <code>LinkCarrierAccountRequest</code>.
      * The request schema for verify and add the merchant&#39;s account with a certain carrier.

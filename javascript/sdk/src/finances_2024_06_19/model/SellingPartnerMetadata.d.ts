@@ -11,7 +11,7 @@ export class SellingPartnerMetadata {
      * @param {SellingPartnerMetadata} obj Optional instance to populate.
      * @return {SellingPartnerMetadata} The populated <code>SellingPartnerMetadata</code> instance.
      */
-    static constructFromObject(data: any, obj: SellingPartnerMetadata): SellingPartnerMetadata;
+    static constructFromObject(data: Object, obj: SellingPartnerMetadata): SellingPartnerMetadata;
     /**
      * A unique seller identifier.
      * @member {String} sellingPartnerId

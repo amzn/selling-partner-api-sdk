@@ -11,7 +11,7 @@ export class ItemBrowseClassification {
      * @param {ItemBrowseClassification} obj Optional instance to populate.
      * @return {ItemBrowseClassification} The populated <code>ItemBrowseClassification</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemBrowseClassification): ItemBrowseClassification;
+    static constructFromObject(data: Object, obj: ItemBrowseClassification): ItemBrowseClassification;
     /**
      * Constructs a new <code>ItemBrowseClassification</code>.
      * Classification (browse node) for an Amazon catalog item.

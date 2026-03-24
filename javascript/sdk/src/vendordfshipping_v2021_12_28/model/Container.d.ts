@@ -11,7 +11,7 @@ export class Container {
      * @param {Container} obj Optional instance to populate.
      * @return {Container} The populated <code>Container</code> instance.
      */
-    static constructFromObject(data: any, obj: Container): Container;
+    static constructFromObject(data: Object, obj: Container): Container;
     /**
      * Constructs a new <code>Container</code>.
      * A container used for shipping and packing items.

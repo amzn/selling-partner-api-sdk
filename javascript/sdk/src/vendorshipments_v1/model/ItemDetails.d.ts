@@ -11,7 +11,7 @@ export class ItemDetails {
      * @param {ItemDetails} obj Optional instance to populate.
      * @return {ItemDetails} The populated <code>ItemDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemDetails): ItemDetails;
+    static constructFromObject(data: Object, obj: ItemDetails): ItemDetails;
     /**
      * The purchase order number for the shipment being confirmed. If the items in this shipment belong to multiple purchase order numbers that are in particular carton or pallet within the shipment, then provide the purchaseOrderNumber at the appropriate carton or pallet level. Formatting Notes: 8-character alpha-numeric code.
      * @member {String} purchaseOrderNumber

@@ -11,7 +11,7 @@ export class CreateServiceDocumentUploadDestination {
      * @param {CreateServiceDocumentUploadDestination} obj Optional instance to populate.
      * @return {CreateServiceDocumentUploadDestination} The populated <code>CreateServiceDocumentUploadDestination</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateServiceDocumentUploadDestination): CreateServiceDocumentUploadDestination;
+    static constructFromObject(data: Object, obj: CreateServiceDocumentUploadDestination): CreateServiceDocumentUploadDestination;
     /**
      * @member {ServiceDocumentUploadDestination} payload
      * @type {ServiceDocumentUploadDestination}

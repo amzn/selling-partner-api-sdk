@@ -11,7 +11,7 @@ export class EventFilter {
      * @param {EventFilter} obj Optional instance to populate.
      * @return {EventFilter} The populated <code>EventFilter</code> instance.
      */
-    static constructFromObject(data: any, obj: EventFilter): EventFilter;
+    static constructFromObject(data: Object, obj: EventFilter): EventFilter;
     /**
      * Constructs a new <code>EventFilter</code>.
      * A &#x60;notificationType&#x60; specific filter. This object contains all of the currently available filters and properties that you can use to define a &#x60;notificationType&#x60; specific filter.

@@ -11,7 +11,7 @@ export class CreateFulfillmentReturnResult {
      * @param {CreateFulfillmentReturnResult} obj Optional instance to populate.
      * @return {CreateFulfillmentReturnResult} The populated <code>CreateFulfillmentReturnResult</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateFulfillmentReturnResult): CreateFulfillmentReturnResult;
+    static constructFromObject(data: Object, obj: CreateFulfillmentReturnResult): CreateFulfillmentReturnResult;
     /**
      * An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
      * @member {ReturnItem[]} returnItems

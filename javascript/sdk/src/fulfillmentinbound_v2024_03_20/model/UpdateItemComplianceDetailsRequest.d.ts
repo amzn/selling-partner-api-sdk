@@ -11,7 +11,7 @@ export class UpdateItemComplianceDetailsRequest {
      * @param {UpdateItemComplianceDetailsRequest} obj Optional instance to populate.
      * @return {UpdateItemComplianceDetailsRequest} The populated <code>UpdateItemComplianceDetailsRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: UpdateItemComplianceDetailsRequest): UpdateItemComplianceDetailsRequest;
+    static constructFromObject(data: Object, obj: UpdateItemComplianceDetailsRequest): UpdateItemComplianceDetailsRequest;
     /**
      * Constructs a new <code>UpdateItemComplianceDetailsRequest</code>.
      * The &#x60;updateItemComplianceDetails&#x60; request.

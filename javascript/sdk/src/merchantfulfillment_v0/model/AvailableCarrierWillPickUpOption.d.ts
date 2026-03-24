@@ -11,7 +11,7 @@ export class AvailableCarrierWillPickUpOption {
      * @param {AvailableCarrierWillPickUpOption} obj Optional instance to populate.
      * @return {AvailableCarrierWillPickUpOption} The populated <code>AvailableCarrierWillPickUpOption</code> instance.
      */
-    static constructFromObject(data: any, obj: AvailableCarrierWillPickUpOption): AvailableCarrierWillPickUpOption;
+    static constructFromObject(data: Object, obj: AvailableCarrierWillPickUpOption): AvailableCarrierWillPickUpOption;
     /**
      * Constructs a new <code>AvailableCarrierWillPickUpOption</code>.
      * Indicates whether the carrier will pick up the package, and what fee is charged, if any.

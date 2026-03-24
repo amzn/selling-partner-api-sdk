@@ -11,7 +11,7 @@ export class GiftAttributes {
      * @param {GiftAttributes} obj Optional instance to populate.
      * @return {GiftAttributes} The populated <code>GiftAttributes</code> instance.
      */
-    static constructFromObject(data: any, obj: GiftAttributes): GiftAttributes;
+    static constructFromObject(data: Object, obj: GiftAttributes): GiftAttributes;
     /**
      * Constructs a new <code>GiftAttributes</code>.
      * Information about any gift wrapping that is needed for this line item.

@@ -11,7 +11,7 @@ export class Route {
      * @param {Route} obj Optional instance to populate.
      * @return {Route} The populated <code>Route</code> instance.
      */
-    static constructFromObject(data: any, obj: Route): Route;
+    static constructFromObject(data: Object, obj: Route): Route;
     /**
      * Constructs a new <code>Route</code>.
      * This is used only for direct import shipment confirmations.

@@ -11,7 +11,7 @@ export class ShipmentListing {
      * @param {ShipmentListing} obj Optional instance to populate.
      * @return {ShipmentListing} The populated <code>ShipmentListing</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipmentListing): ShipmentListing;
+    static constructFromObject(data: Object, obj: ShipmentListing): ShipmentListing;
     /**
      * A token that is used to retrieve the next page of results. The response includes `nextToken` when the number of results exceeds the specified `maxResults` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
      * @member {String} nextToken

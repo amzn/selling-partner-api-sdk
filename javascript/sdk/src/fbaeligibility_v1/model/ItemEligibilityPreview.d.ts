@@ -11,7 +11,7 @@ export class ItemEligibilityPreview {
      * @param {ItemEligibilityPreview} obj Optional instance to populate.
      * @return {ItemEligibilityPreview} The populated <code>ItemEligibilityPreview</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemEligibilityPreview): ItemEligibilityPreview;
+    static constructFromObject(data: Object, obj: ItemEligibilityPreview): ItemEligibilityPreview;
     /**
      * Constructs a new <code>ItemEligibilityPreview</code>.
      * The response object which contains the ASIN, marketplaceId if required, eligibility program, the eligibility status (boolean), and a list of ineligibility reason codes.

@@ -11,7 +11,7 @@ export class TimeSlot {
      * @param {TimeSlot} obj Optional instance to populate.
      * @return {TimeSlot} The populated <code>TimeSlot</code> instance.
      */
-    static constructFromObject(data: any, obj: TimeSlot): TimeSlot;
+    static constructFromObject(data: Object, obj: TimeSlot): TimeSlot;
     /**
      * Constructs a new <code>TimeSlot</code>.
      * A time window to hand over an Easy Ship package to Amazon Logistics.

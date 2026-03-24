@@ -11,7 +11,7 @@ export class CreateSupplySourceRequest {
      * @param {CreateSupplySourceRequest} obj Optional instance to populate.
      * @return {CreateSupplySourceRequest} The populated <code>CreateSupplySourceRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateSupplySourceRequest): CreateSupplySourceRequest;
+    static constructFromObject(data: Object, obj: CreateSupplySourceRequest): CreateSupplySourceRequest;
     /**
      * Constructs a new <code>CreateSupplySourceRequest</code>.
      * A request to create a supply source.

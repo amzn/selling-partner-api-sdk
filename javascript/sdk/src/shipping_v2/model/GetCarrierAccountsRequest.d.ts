@@ -11,7 +11,7 @@ export class GetCarrierAccountsRequest {
      * @param {GetCarrierAccountsRequest} obj Optional instance to populate.
      * @return {GetCarrierAccountsRequest} The populated <code>GetCarrierAccountsRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: GetCarrierAccountsRequest): GetCarrierAccountsRequest;
+    static constructFromObject(data: Object, obj: GetCarrierAccountsRequest): GetCarrierAccountsRequest;
     /**
      * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
      * @member {ClientReferenceDetail[]} clientReferenceDetails

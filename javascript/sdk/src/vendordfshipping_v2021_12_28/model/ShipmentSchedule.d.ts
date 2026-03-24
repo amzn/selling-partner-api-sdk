@@ -11,7 +11,7 @@ export class ShipmentSchedule {
      * @param {ShipmentSchedule} obj Optional instance to populate.
      * @return {ShipmentSchedule} The populated <code>ShipmentSchedule</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipmentSchedule): ShipmentSchedule;
+    static constructFromObject(data: Object, obj: ShipmentSchedule): ShipmentSchedule;
     /**
      * Date on which the shipment is expected to reach the customer delivery location. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00.
      * @member {Date} estimatedDeliveryDateTime

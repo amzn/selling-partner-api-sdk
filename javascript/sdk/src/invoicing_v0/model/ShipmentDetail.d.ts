@@ -11,7 +11,7 @@ export class ShipmentDetail {
      * @param {ShipmentDetail} obj Optional instance to populate.
      * @return {ShipmentDetail} The populated <code>ShipmentDetail</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipmentDetail): ShipmentDetail;
+    static constructFromObject(data: Object, obj: ShipmentDetail): ShipmentDetail;
     /**
      * The Amazon-defined identifier for the warehouse.
      * @member {String} warehouseId
@@ -48,7 +48,7 @@ export class ShipmentDetail {
      */
     paymentMethodDetails: string[];
     /**
-     * List of payment transactions
+     * A list of payment transactions.
      * @member {PaymentInformation[]} payments
      * @type {PaymentInformation[]}
      */

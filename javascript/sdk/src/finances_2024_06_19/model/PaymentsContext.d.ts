@@ -11,7 +11,7 @@ export class PaymentsContext {
      * @param {PaymentsContext} obj Optional instance to populate.
      * @return {PaymentsContext} The populated <code>PaymentsContext</code> instance.
      */
-    static constructFromObject(data: any, obj: PaymentsContext): PaymentsContext;
+    static constructFromObject(data: Object, obj: PaymentsContext): PaymentsContext;
     /**
      * The type of payment.
      * @member {String} paymentType

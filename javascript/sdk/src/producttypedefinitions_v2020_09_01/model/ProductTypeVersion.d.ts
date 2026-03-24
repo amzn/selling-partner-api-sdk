@@ -11,7 +11,7 @@ export class ProductTypeVersion {
      * @param {ProductTypeVersion} obj Optional instance to populate.
      * @return {ProductTypeVersion} The populated <code>ProductTypeVersion</code> instance.
      */
-    static constructFromObject(data: any, obj: ProductTypeVersion): ProductTypeVersion;
+    static constructFromObject(data: Object, obj: ProductTypeVersion): ProductTypeVersion;
     /**
      * Constructs a new <code>ProductTypeVersion</code>.
      * The version details for an Amazon product type.

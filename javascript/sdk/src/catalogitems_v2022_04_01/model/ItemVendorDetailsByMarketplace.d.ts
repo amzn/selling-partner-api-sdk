@@ -11,7 +11,7 @@ export class ItemVendorDetailsByMarketplace {
      * @param {ItemVendorDetailsByMarketplace} obj Optional instance to populate.
      * @return {ItemVendorDetailsByMarketplace} The populated <code>ItemVendorDetailsByMarketplace</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemVendorDetailsByMarketplace): ItemVendorDetailsByMarketplace;
+    static constructFromObject(data: Object, obj: ItemVendorDetailsByMarketplace): ItemVendorDetailsByMarketplace;
     /**
      * Constructs a new <code>ItemVendorDetailsByMarketplace</code>.
      * The vendor details that are associated with an Amazon catalog item for the specified &#x60;marketplaceId&#x60;.

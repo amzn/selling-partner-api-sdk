@@ -11,7 +11,7 @@ export class FixedSlotCapacityQuery {
      * @param {FixedSlotCapacityQuery} obj Optional instance to populate.
      * @return {FixedSlotCapacityQuery} The populated <code>FixedSlotCapacityQuery</code> instance.
      */
-    static constructFromObject(data: any, obj: FixedSlotCapacityQuery): FixedSlotCapacityQuery;
+    static constructFromObject(data: Object, obj: FixedSlotCapacityQuery): FixedSlotCapacityQuery;
     /**
      * Constructs a new <code>FixedSlotCapacityQuery</code>.
      * Request schema for the &#x60;getFixedSlotCapacity&#x60; operation. This schema is used to define the time range, capacity types and slot duration which are being queried.

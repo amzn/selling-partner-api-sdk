@@ -11,7 +11,7 @@ export class LoanServicingEvent {
      * @param {LoanServicingEvent} obj Optional instance to populate.
      * @return {LoanServicingEvent} The populated <code>LoanServicingEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: LoanServicingEvent): LoanServicingEvent;
+    static constructFromObject(data: Object, obj: LoanServicingEvent): LoanServicingEvent;
     /**
      * @member {Currency} loanAmount
      * @type {Currency}

@@ -11,7 +11,7 @@ export class TrackingDetails {
      * @param {TrackingDetails} obj Optional instance to populate.
      * @return {TrackingDetails} The populated <code>TrackingDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: TrackingDetails): TrackingDetails;
+    static constructFromObject(data: Object, obj: TrackingDetails): TrackingDetails;
     /**
      * A string of up to 255 characters.
      * @member {String} trackingId

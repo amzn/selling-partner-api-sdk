@@ -11,7 +11,7 @@ export class ExceptionDate {
      * @param {ExceptionDate} obj Optional instance to populate.
      * @return {ExceptionDate} The populated <code>ExceptionDate</code> instance.
      */
-    static constructFromObject(data: any, obj: ExceptionDate): ExceptionDate;
+    static constructFromObject(data: Object, obj: ExceptionDate): ExceptionDate;
     /**
      * Specific calendar date when normal operating hours do not apply. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format at day granularity.
      * @member {Date} exceptionDate

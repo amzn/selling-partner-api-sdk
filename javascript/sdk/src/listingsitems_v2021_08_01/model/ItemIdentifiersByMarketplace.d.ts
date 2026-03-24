@@ -11,7 +11,7 @@ export class ItemIdentifiersByMarketplace {
      * @param {ItemIdentifiersByMarketplace} obj Optional instance to populate.
      * @return {ItemIdentifiersByMarketplace} The populated <code>ItemIdentifiersByMarketplace</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemIdentifiersByMarketplace): ItemIdentifiersByMarketplace;
+    static constructFromObject(data: Object, obj: ItemIdentifiersByMarketplace): ItemIdentifiersByMarketplace;
     /**
      * A marketplace identifier. Identifies the Amazon marketplace for the listings item.
      * @member {String} marketplaceId

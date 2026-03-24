@@ -11,7 +11,7 @@ export class CreateDestinationRequest {
      * @param {CreateDestinationRequest} obj Optional instance to populate.
      * @return {CreateDestinationRequest} The populated <code>CreateDestinationRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateDestinationRequest): CreateDestinationRequest;
+    static constructFromObject(data: Object, obj: CreateDestinationRequest): CreateDestinationRequest;
     /**
      * Constructs a new <code>CreateDestinationRequest</code>.
      * The request schema for the &#x60;createDestination&#x60; operation.

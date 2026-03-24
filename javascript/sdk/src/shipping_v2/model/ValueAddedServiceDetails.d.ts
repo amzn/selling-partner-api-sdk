@@ -11,7 +11,7 @@ export class ValueAddedServiceDetails {
      * @param {ValueAddedServiceDetails} obj Optional instance to populate.
      * @return {ValueAddedServiceDetails} The populated <code>ValueAddedServiceDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: ValueAddedServiceDetails): ValueAddedServiceDetails;
+    static constructFromObject(data: Object, obj: ValueAddedServiceDetails): ValueAddedServiceDetails;
     /**
      * @member {CollectOnDelivery} collectOnDelivery
      * @type {CollectOnDelivery}

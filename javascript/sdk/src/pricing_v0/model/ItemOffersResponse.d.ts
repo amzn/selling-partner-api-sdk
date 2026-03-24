@@ -11,7 +11,7 @@ export class ItemOffersResponse {
      * @param {ItemOffersResponse} obj Optional instance to populate.
      * @return {ItemOffersResponse} The populated <code>ItemOffersResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemOffersResponse): ItemOffersResponse;
+    static constructFromObject(data: Object, obj: ItemOffersResponse): ItemOffersResponse;
     /**
      * Constructs a new <code>ItemOffersResponse</code>.
      * Schema for an individual &#x60;ItemOffersResponse&#x60;

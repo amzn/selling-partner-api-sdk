@@ -11,7 +11,7 @@ export class TransactionListing {
      * @param {TransactionListing} obj Optional instance to populate.
      * @return {TransactionListing} The populated <code>TransactionListing</code> instance.
      */
-    static constructFromObject(data: any, obj: TransactionListing): TransactionListing;
+    static constructFromObject(data: Object, obj: TransactionListing): TransactionListing;
     /**
      * Constructs a new <code>TransactionListing</code>.
      * A list of transactions.

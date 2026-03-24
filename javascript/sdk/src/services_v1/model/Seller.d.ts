@@ -11,7 +11,7 @@ export class Seller {
      * @param {Seller} obj Optional instance to populate.
      * @return {Seller} The populated <code>Seller</code> instance.
      */
-    static constructFromObject(data: any, obj: Seller): Seller;
+    static constructFromObject(data: Object, obj: Seller): Seller;
     /**
      * The identifier of the seller of the service job.
      * @member {String} sellerId

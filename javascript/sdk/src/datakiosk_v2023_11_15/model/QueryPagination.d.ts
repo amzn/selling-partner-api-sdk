@@ -11,7 +11,7 @@ export class QueryPagination {
      * @param {QueryPagination} obj Optional instance to populate.
      * @return {QueryPagination} The populated <code>QueryPagination</code> instance.
      */
-    static constructFromObject(data: any, obj: QueryPagination): QueryPagination;
+    static constructFromObject(data: Object, obj: QueryPagination): QueryPagination;
     /**
      * A token that can be used to fetch the next page of results.
      * @member {String} nextToken

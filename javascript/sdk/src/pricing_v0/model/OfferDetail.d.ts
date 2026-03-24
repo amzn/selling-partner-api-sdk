@@ -11,7 +11,7 @@ export class OfferDetail {
      * @param {OfferDetail} obj Optional instance to populate.
      * @return {OfferDetail} The populated <code>OfferDetail</code> instance.
      */
-    static constructFromObject(data: any, obj: OfferDetail): OfferDetail;
+    static constructFromObject(data: Object, obj: OfferDetail): OfferDetail;
     /**
      * Constructs a new <code>OfferDetail</code>.
      * Schema for an individual offer. Object in &#x60;OfferDetailList&#x60;.

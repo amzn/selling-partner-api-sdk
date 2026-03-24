@@ -11,7 +11,7 @@ export class ParagraphComponent {
      * @param {ParagraphComponent} obj Optional instance to populate.
      * @return {ParagraphComponent} The populated <code>ParagraphComponent</code> instance.
      */
-    static constructFromObject(data: any, obj: ParagraphComponent): ParagraphComponent;
+    static constructFromObject(data: Object, obj: ParagraphComponent): ParagraphComponent;
     /**
      * Constructs a new <code>ParagraphComponent</code>.
      * A list of rich text content that is typically presented in a text box.

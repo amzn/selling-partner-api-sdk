@@ -11,7 +11,7 @@ export class Charge {
      * @param {Charge} obj Optional instance to populate.
      * @return {Charge} The populated <code>Charge</code> instance.
      */
-    static constructFromObject(data: any, obj: Charge): Charge;
+    static constructFromObject(data: Object, obj: Charge): Charge;
     /**
      * Constructs a new <code>Charge</code>.
      * A shipment&#39;s charge with relevant tax information.

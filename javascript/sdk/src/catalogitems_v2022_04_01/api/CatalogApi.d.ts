@@ -32,8 +32,8 @@ export class CatalogApi {
        * @return {Promise<Item>}
        */
     getCatalogItemWithHttpInfo(asin: string, marketplaceIds: string[], opts?: {
-        includedData?: string[];
-        locale?: string;
+        includedData?: string[] | undefined;
+        locale?: string | undefined;
     }): Promise<Item>;
     /**
        * Retrieves details for an item in the Amazon catalog.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -45,8 +45,8 @@ export class CatalogApi {
        * @return {Promise<Item>}
        */
     getCatalogItem(asin: string, marketplaceIds: string[], opts?: {
-        includedData?: string[];
-        locale?: string;
+        includedData?: string[] | undefined;
+        locale?: string | undefined;
     }): Promise<Item>;
     /**
        * Search for a list of Amazon catalog items and item-related information. You can search by identifier or by keywords.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -66,17 +66,17 @@ export class CatalogApi {
        * @return {Promise<ItemSearchResults>}
        */
     searchCatalogItemsWithHttpInfo(marketplaceIds: string[], opts?: {
-        identifiers?: string[];
-        identifiersType?: string;
-        includedData?: string[];
-        locale?: string;
-        sellerId?: string;
-        keywords?: string[];
-        brandNames?: string[];
-        classificationIds?: string[];
-        pageSize?: number;
-        pageToken?: string;
-        keywordsLocale?: string;
+        identifiers?: string[] | undefined;
+        identifiersType?: string | undefined;
+        includedData?: string[] | undefined;
+        locale?: string | undefined;
+        sellerId?: string | undefined;
+        keywords?: string[] | undefined;
+        brandNames?: string[] | undefined;
+        classificationIds?: string[] | undefined;
+        pageSize?: number | undefined;
+        pageToken?: string | undefined;
+        keywordsLocale?: string | undefined;
     }): Promise<ItemSearchResults>;
     /**
        * Search for a list of Amazon catalog items and item-related information. You can search by identifier or by keywords.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -96,17 +96,17 @@ export class CatalogApi {
        * @return {Promise<ItemSearchResults>}
        */
     searchCatalogItems(marketplaceIds: string[], opts?: {
-        identifiers?: string[];
-        identifiersType?: string;
-        includedData?: string[];
-        locale?: string;
-        sellerId?: string;
-        keywords?: string[];
-        brandNames?: string[];
-        classificationIds?: string[];
-        pageSize?: number;
-        pageToken?: string;
-        keywordsLocale?: string;
+        identifiers?: string[] | undefined;
+        identifiersType?: string | undefined;
+        includedData?: string[] | undefined;
+        locale?: string | undefined;
+        sellerId?: string | undefined;
+        keywords?: string[] | undefined;
+        brandNames?: string[] | undefined;
+        classificationIds?: string[] | undefined;
+        pageSize?: number | undefined;
+        pageToken?: string | undefined;
+        keywordsLocale?: string | undefined;
     }): Promise<ItemSearchResults>;
     #private;
 }

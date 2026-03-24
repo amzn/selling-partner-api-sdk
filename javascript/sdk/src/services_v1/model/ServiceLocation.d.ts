@@ -11,7 +11,7 @@ export class ServiceLocation {
      * @param {ServiceLocation} obj Optional instance to populate.
      * @return {ServiceLocation} The populated <code>ServiceLocation</code> instance.
      */
-    static constructFromObject(data: any, obj: ServiceLocation): ServiceLocation;
+    static constructFromObject(data: Object, obj: ServiceLocation): ServiceLocation;
     /**
      * The location of the service job.
      * @member {String} serviceLocationType

@@ -11,7 +11,7 @@ export class MerchantAddress {
      * @param {MerchantAddress} obj Optional instance to populate.
      * @return {MerchantAddress} The populated <code>MerchantAddress</code> instance.
      */
-    static constructFromObject(data: any, obj: MerchantAddress): MerchantAddress;
+    static constructFromObject(data: Object, obj: MerchantAddress): MerchantAddress;
     /**
      * The name of the business or facility at this address.
      * @member {String} name

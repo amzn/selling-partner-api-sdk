@@ -11,7 +11,7 @@ export class ItemOffersRequest {
      * @param {ItemOffersRequest} obj Optional instance to populate.
      * @return {ItemOffersRequest} The populated <code>ItemOffersRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemOffersRequest): ItemOffersRequest;
+    static constructFromObject(data: Object, obj: ItemOffersRequest): ItemOffersRequest;
     /**
      * Constructs a new <code>ItemOffersRequest</code>.
      * List of request parameters can be accepted by &#x60;ItemOffersRequests&#x60; operation

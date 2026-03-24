@@ -11,7 +11,7 @@ export class GetMessagingActionsForOrderResponseLinks {
      * @param {GetMessagingActionsForOrderResponseLinks} obj Optional instance to populate.
      * @return {GetMessagingActionsForOrderResponseLinks} The populated <code>GetMessagingActionsForOrderResponseLinks</code> instance.
      */
-    static constructFromObject(data: any, obj: GetMessagingActionsForOrderResponseLinks): GetMessagingActionsForOrderResponseLinks;
+    static constructFromObject(data: Object, obj: GetMessagingActionsForOrderResponseLinks): GetMessagingActionsForOrderResponseLinks;
     /**
      * Constructs a new <code>GetMessagingActionsForOrderResponseLinks</code>.
      * The links response that is associated with the specified &#x60;amazonOrderId&#x60;.

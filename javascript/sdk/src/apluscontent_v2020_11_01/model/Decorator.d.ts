@@ -11,7 +11,7 @@ export class Decorator {
      * @param {Decorator} obj Optional instance to populate.
      * @return {Decorator} The populated <code>Decorator</code> instance.
      */
-    static constructFromObject(data: any, obj: Decorator): Decorator;
+    static constructFromObject(data: Object, obj: Decorator): Decorator;
     /**
      * @member {DecoratorType} type
      * @type {DecoratorType}

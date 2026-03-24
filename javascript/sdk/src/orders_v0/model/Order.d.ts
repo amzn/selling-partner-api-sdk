@@ -11,7 +11,7 @@ export class Order {
      * @param {Order} obj Optional instance to populate.
      * @return {Order} The populated <code>Order</code> instance.
      */
-    static constructFromObject(data: any, obj: Order): Order;
+    static constructFromObject(data: Object, obj: Order): Order;
     /**
      * Constructs a new <code>Order</code>.
      * Order information.

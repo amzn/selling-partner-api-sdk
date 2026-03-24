@@ -11,7 +11,7 @@ export class GetCollectionFormHistoryResponse {
      * @param {GetCollectionFormHistoryResponse} obj Optional instance to populate.
      * @return {GetCollectionFormHistoryResponse} The populated <code>GetCollectionFormHistoryResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetCollectionFormHistoryResponse): GetCollectionFormHistoryResponse;
+    static constructFromObject(data: Object, obj: GetCollectionFormHistoryResponse): GetCollectionFormHistoryResponse;
     /**
      * A list of CollectionFormsHistoryRecord
      * @member {CollectionFormsHistoryRecord[]} collectionFormsHistoryRecordList

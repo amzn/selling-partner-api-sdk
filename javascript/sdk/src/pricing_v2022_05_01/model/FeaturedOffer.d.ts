@@ -11,7 +11,7 @@ export class FeaturedOffer {
      * @param {FeaturedOffer} obj Optional instance to populate.
      * @return {FeaturedOffer} The populated <code>FeaturedOffer</code> instance.
      */
-    static constructFromObject(data: any, obj: FeaturedOffer): FeaturedOffer;
+    static constructFromObject(data: Object, obj: FeaturedOffer): FeaturedOffer;
     /**
      * Constructs a new <code>FeaturedOffer</code>.
      * Schema for &#x60;currentFeaturedOffer&#x60; or &#x60;competingFeaturedOffer&#x60;.

@@ -11,7 +11,7 @@ export class Balance {
      * @param {Balance} obj Optional instance to populate.
      * @return {Balance} The populated <code>Balance</code> instance.
      */
-    static constructFromObject(data: any, obj: Balance): Balance;
+    static constructFromObject(data: Object, obj: Balance): Balance;
     /**
      * Constructs a new <code>Balance</code>.
      * The balance amount in the Amazon Seller Wallet bank account.

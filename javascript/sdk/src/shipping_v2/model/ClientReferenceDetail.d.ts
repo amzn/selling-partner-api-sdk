@@ -11,7 +11,7 @@ export class ClientReferenceDetail {
      * @param {ClientReferenceDetail} obj Optional instance to populate.
      * @return {ClientReferenceDetail} The populated <code>ClientReferenceDetail</code> instance.
      */
-    static constructFromObject(data: any, obj: ClientReferenceDetail): ClientReferenceDetail;
+    static constructFromObject(data: Object, obj: ClientReferenceDetail): ClientReferenceDetail;
     /**
      * Constructs a new <code>ClientReferenceDetail</code>.
      * Client Reference Details

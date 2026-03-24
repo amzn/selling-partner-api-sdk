@@ -11,7 +11,7 @@ export class ListOfferMetricsRequestPagination {
      * @param {ListOfferMetricsRequestPagination} obj Optional instance to populate.
      * @return {ListOfferMetricsRequestPagination} The populated <code>ListOfferMetricsRequestPagination</code> instance.
      */
-    static constructFromObject(data: any, obj: ListOfferMetricsRequestPagination): ListOfferMetricsRequestPagination;
+    static constructFromObject(data: Object, obj: ListOfferMetricsRequestPagination): ListOfferMetricsRequestPagination;
     /**
      * Constructs a new <code>ListOfferMetricsRequestPagination</code>.
      * Use these parameters to paginate through the response.

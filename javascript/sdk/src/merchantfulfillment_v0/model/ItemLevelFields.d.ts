@@ -11,7 +11,7 @@ export class ItemLevelFields {
      * @param {ItemLevelFields} obj Optional instance to populate.
      * @return {ItemLevelFields} The populated <code>ItemLevelFields</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemLevelFields): ItemLevelFields;
+    static constructFromObject(data: Object, obj: ItemLevelFields): ItemLevelFields;
     /**
      * Constructs a new <code>ItemLevelFields</code>.
      * A list of item level fields.

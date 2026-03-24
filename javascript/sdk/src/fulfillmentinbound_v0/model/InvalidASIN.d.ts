@@ -11,7 +11,7 @@ export class InvalidASIN {
      * @param {InvalidASIN} obj Optional instance to populate.
      * @return {InvalidASIN} The populated <code>InvalidASIN</code> instance.
      */
-    static constructFromObject(data: any, obj: InvalidASIN): InvalidASIN;
+    static constructFromObject(data: Object, obj: InvalidASIN): InvalidASIN;
     /**
      * The Amazon Standard Identification Number (ASIN) of the item.
      * @member {String} ASIN

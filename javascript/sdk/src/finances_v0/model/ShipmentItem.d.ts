@@ -11,7 +11,7 @@ export class ShipmentItem {
      * @param {ShipmentItem} obj Optional instance to populate.
      * @return {ShipmentItem} The populated <code>ShipmentItem</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipmentItem): ShipmentItem;
+    static constructFromObject(data: Object, obj: ShipmentItem): ShipmentItem;
     /**
      * The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.
      * @member {String} sellerSKU

@@ -11,7 +11,7 @@ export class ShipLabelsResponse {
      * @param {ShipLabelsResponse} obj Optional instance to populate.
      * @return {ShipLabelsResponse} The populated <code>ShipLabelsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipLabelsResponse): ShipLabelsResponse;
+    static constructFromObject(data: Object, obj: ShipLabelsResponse): ShipLabelsResponse;
     /**
      * Constructs a new <code>ShipLabelsResponse</code>.
      * The response to the &#x60;generateShipLabels&#x60; operation.

@@ -11,7 +11,7 @@ export class DeliveryWindow {
      * @param {DeliveryWindow} obj Optional instance to populate.
      * @return {DeliveryWindow} The populated <code>DeliveryWindow</code> instance.
      */
-    static constructFromObject(data: any, obj: DeliveryWindow): DeliveryWindow;
+    static constructFromObject(data: Object, obj: DeliveryWindow): DeliveryWindow;
     /**
      * Constructs a new <code>DeliveryWindow</code>.
      * The time range within which a Scheduled Delivery fulfillment order should be delivered. This is only available in the JP marketplace.

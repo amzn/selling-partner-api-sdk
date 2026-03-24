@@ -11,7 +11,7 @@ export class TransportationDetailsForShipmentConfirmation {
      * @param {TransportationDetailsForShipmentConfirmation} obj Optional instance to populate.
      * @return {TransportationDetailsForShipmentConfirmation} The populated <code>TransportationDetailsForShipmentConfirmation</code> instance.
      */
-    static constructFromObject(data: any, obj: TransportationDetailsForShipmentConfirmation): TransportationDetailsForShipmentConfirmation;
+    static constructFromObject(data: Object, obj: TransportationDetailsForShipmentConfirmation): TransportationDetailsForShipmentConfirmation;
     /**
      * Code that identifies the carrier for the shipment. The Standard Carrier Alpha Code (SCAC) is a unique two to four letter code used to identify a carrier. Carrier SCAC codes are assigned and maintained by the NMFTA (National Motor Freight Association). This field is mandatory for US, CA, MX shipment confirmations.
      * @member {String} carrierScac

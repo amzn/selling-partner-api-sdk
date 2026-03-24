@@ -11,7 +11,7 @@ export class SAFETReimbursementItem {
      * @param {SAFETReimbursementItem} obj Optional instance to populate.
      * @return {SAFETReimbursementItem} The populated <code>SAFETReimbursementItem</code> instance.
      */
-    static constructFromObject(data: any, obj: SAFETReimbursementItem): SAFETReimbursementItem;
+    static constructFromObject(data: Object, obj: SAFETReimbursementItem): SAFETReimbursementItem;
     /**
      * A list of charge information on the seller's account.
      * @member {ChargeComponent[]} itemChargeList

@@ -11,7 +11,7 @@ export class ReviewTrendMetrics {
      * @param {ReviewTrendMetrics} obj Optional instance to populate.
      * @return {ReviewTrendMetrics} The populated <code>ReviewTrendMetrics</code> instance.
      */
-    static constructFromObject(data: any, obj: ReviewTrendMetrics): ReviewTrendMetrics;
+    static constructFromObject(data: Object, obj: ReviewTrendMetrics): ReviewTrendMetrics;
     /**
      * Constructs a new <code>ReviewTrendMetrics</code>.
      * The item review trend metrics.

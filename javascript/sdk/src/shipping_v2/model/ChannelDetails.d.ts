@@ -11,7 +11,7 @@ export class ChannelDetails {
      * @param {ChannelDetails} obj Optional instance to populate.
      * @return {ChannelDetails} The populated <code>ChannelDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: ChannelDetails): ChannelDetails;
+    static constructFromObject(data: Object, obj: ChannelDetails): ChannelDetails;
     /**
      * Constructs a new <code>ChannelDetails</code>.
      * Shipment source channel related information.

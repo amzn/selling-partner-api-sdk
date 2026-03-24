@@ -116,7 +116,7 @@ ShipmentDetail.prototype.shippingAddress = undefined
 ShipmentDetail.prototype.paymentMethodDetails = undefined
 
 /**
- * List of payment transactions
+ * A list of payment transactions.
  * @member {PaymentInformation[]} payments
  * @type {PaymentInformation[]}
  */

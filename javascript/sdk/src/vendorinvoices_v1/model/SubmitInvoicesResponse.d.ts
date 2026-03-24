@@ -11,7 +11,7 @@ export class SubmitInvoicesResponse {
      * @param {SubmitInvoicesResponse} obj Optional instance to populate.
      * @return {SubmitInvoicesResponse} The populated <code>SubmitInvoicesResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: SubmitInvoicesResponse): SubmitInvoicesResponse;
+    static constructFromObject(data: Object, obj: SubmitInvoicesResponse): SubmitInvoicesResponse;
     /**
      * @member {TransactionId} payload
      * @type {TransactionId}

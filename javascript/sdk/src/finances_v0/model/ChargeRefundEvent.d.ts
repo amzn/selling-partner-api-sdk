@@ -11,7 +11,7 @@ export class ChargeRefundEvent {
      * @param {ChargeRefundEvent} obj Optional instance to populate.
      * @return {ChargeRefundEvent} The populated <code>ChargeRefundEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: ChargeRefundEvent): ChargeRefundEvent;
+    static constructFromObject(data: Object, obj: ChargeRefundEvent): ChargeRefundEvent;
     /**
      * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate

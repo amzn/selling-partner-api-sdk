@@ -11,7 +11,7 @@ export class ShipmentDestination {
      * @param {ShipmentDestination} obj Optional instance to populate.
      * @return {ShipmentDestination} The populated <code>ShipmentDestination</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipmentDestination): ShipmentDestination;
+    static constructFromObject(data: Object, obj: ShipmentDestination): ShipmentDestination;
     /**
      * Constructs a new <code>ShipmentDestination</code>.
      * The Amazon fulfillment center address and warehouse ID.

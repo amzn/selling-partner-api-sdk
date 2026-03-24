@@ -11,7 +11,7 @@ export class GetSellingPartnerMetricsResponseMetric {
      * @param {GetSellingPartnerMetricsResponseMetric} obj Optional instance to populate.
      * @return {GetSellingPartnerMetricsResponseMetric} The populated <code>GetSellingPartnerMetricsResponseMetric</code> instance.
      */
-    static constructFromObject(data: any, obj: GetSellingPartnerMetricsResponseMetric): GetSellingPartnerMetricsResponseMetric;
+    static constructFromObject(data: Object, obj: GetSellingPartnerMetricsResponseMetric): GetSellingPartnerMetricsResponseMetric;
     /**
      * The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `PERFORMANCE` `timePeriodType`.
      * @member {Number} notDeliveredDueToOOS

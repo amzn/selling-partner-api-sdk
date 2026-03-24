@@ -11,7 +11,7 @@ export class PayeeContactInformation {
      * @param {PayeeContactInformation} obj Optional instance to populate.
      * @return {PayeeContactInformation} The populated <code>PayeeContactInformation</code> instance.
      */
-    static constructFromObject(data: any, obj: PayeeContactInformation): PayeeContactInformation;
+    static constructFromObject(data: Object, obj: PayeeContactInformation): PayeeContactInformation;
     /**
      * Constructs a new <code>PayeeContactInformation</code>.
      * The contact information of the payee. This field is required when the request &#x60;bankAccountOwnershipType&#x60; is &#x60;THIRD_PARTY&#x60;. The contact information is used for payee verification and registration purposes.

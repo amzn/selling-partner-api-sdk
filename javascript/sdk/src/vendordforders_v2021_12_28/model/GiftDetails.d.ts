@@ -11,7 +11,7 @@ export class GiftDetails {
      * @param {GiftDetails} obj Optional instance to populate.
      * @return {GiftDetails} The populated <code>GiftDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: GiftDetails): GiftDetails;
+    static constructFromObject(data: Object, obj: GiftDetails): GiftDetails;
     /**
      * Gift message to be printed in shipment.
      * @member {String} giftMessage

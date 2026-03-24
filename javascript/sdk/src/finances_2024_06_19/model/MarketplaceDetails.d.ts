@@ -11,7 +11,7 @@ export class MarketplaceDetails {
      * @param {MarketplaceDetails} obj Optional instance to populate.
      * @return {MarketplaceDetails} The populated <code>MarketplaceDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: MarketplaceDetails): MarketplaceDetails;
+    static constructFromObject(data: Object, obj: MarketplaceDetails): MarketplaceDetails;
     /**
      * The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @member {String} marketplaceId

@@ -11,7 +11,7 @@ export class Dates {
      * @param {Dates} obj Optional instance to populate.
      * @return {Dates} The populated <code>Dates</code> instance.
      */
-    static constructFromObject(data: any, obj: Dates): Dates;
+    static constructFromObject(data: Object, obj: Dates): Dates;
     /**
      * @member {Window} readyToShipWindow
      * @type {Window}

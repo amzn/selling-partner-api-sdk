@@ -11,7 +11,7 @@ export class InvoiceInformation {
      * @param {InvoiceInformation} obj Optional instance to populate.
      * @return {InvoiceInformation} The populated <code>InvoiceInformation</code> instance.
      */
-    static constructFromObject(data: any, obj: InvoiceInformation): InvoiceInformation;
+    static constructFromObject(data: Object, obj: InvoiceInformation): InvoiceInformation;
     /**
      * Constructs a new <code>InvoiceInformation</code>.
      * Invoice-related information for the return created for Amazon SmartConnect.

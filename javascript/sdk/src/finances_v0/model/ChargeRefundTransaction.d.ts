@@ -11,7 +11,7 @@ export class ChargeRefundTransaction {
      * @param {ChargeRefundTransaction} obj Optional instance to populate.
      * @return {ChargeRefundTransaction} The populated <code>ChargeRefundTransaction</code> instance.
      */
-    static constructFromObject(data: any, obj: ChargeRefundTransaction): ChargeRefundTransaction;
+    static constructFromObject(data: Object, obj: ChargeRefundTransaction): ChargeRefundTransaction;
     /**
      * @member {Currency} chargeAmount
      * @type {Currency}

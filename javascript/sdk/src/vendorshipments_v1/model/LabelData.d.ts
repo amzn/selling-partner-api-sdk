@@ -11,7 +11,7 @@ export class LabelData {
      * @param {LabelData} obj Optional instance to populate.
      * @return {LabelData} The populated <code>LabelData</code> instance.
      */
-    static constructFromObject(data: any, obj: LabelData): LabelData;
+    static constructFromObject(data: Object, obj: LabelData): LabelData;
     /**
      * A sequential number assigned to each label within a shipment.
      * @member {Number} labelSequenceNumber

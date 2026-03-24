@@ -11,7 +11,7 @@ export class TotalWeight {
      * @param {TotalWeight} obj Optional instance to populate.
      * @return {TotalWeight} The populated <code>TotalWeight</code> instance.
      */
-    static constructFromObject(data: any, obj: TotalWeight): TotalWeight;
+    static constructFromObject(data: Object, obj: TotalWeight): TotalWeight;
     /**
      * Constructs a new <code>TotalWeight</code>.
      * The total weight of units that are sold by weight in a shipment.

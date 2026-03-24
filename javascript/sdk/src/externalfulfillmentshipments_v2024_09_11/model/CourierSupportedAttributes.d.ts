@@ -11,7 +11,7 @@ export class CourierSupportedAttributes {
      * @param {CourierSupportedAttributes} obj Optional instance to populate.
      * @return {CourierSupportedAttributes} The populated <code>CourierSupportedAttributes</code> instance.
      */
-    static constructFromObject(data: any, obj: CourierSupportedAttributes): CourierSupportedAttributes;
+    static constructFromObject(data: Object, obj: CourierSupportedAttributes): CourierSupportedAttributes;
     /**
      * Constructs a new <code>CourierSupportedAttributes</code>.
      * The tracking details of the package if it is shipped by a third party courier. This attribute should only be provided when the value of &#x60;shipBy&#x60; is &#x60;THIRD_PARTY_CARRIER&#x60;.

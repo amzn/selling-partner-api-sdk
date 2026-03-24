@@ -11,7 +11,7 @@ export class Vehicle {
      * @param {Vehicle} obj Optional instance to populate.
      * @return {Vehicle} The populated <code>Vehicle</code> instance.
      */
-    static constructFromObject(data: any, obj: Vehicle): Vehicle;
+    static constructFromObject(data: Object, obj: Vehicle): Vehicle;
     /**
      * Constructs a new <code>Vehicle</code>.
      * Combinations of attributes and unique identifier that represents a vehicle in vehicle list.

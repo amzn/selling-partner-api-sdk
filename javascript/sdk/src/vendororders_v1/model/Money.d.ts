@@ -11,7 +11,7 @@ export class Money {
      * @param {Money} obj Optional instance to populate.
      * @return {Money} The populated <code>Money</code> instance.
      */
-    static constructFromObject(data: any, obj: Money): Money;
+    static constructFromObject(data: Object, obj: Money): Money;
     /**
      * Three digit currency code in ISO 4217 format. String of length 3.
      * @member {String} currencyCode

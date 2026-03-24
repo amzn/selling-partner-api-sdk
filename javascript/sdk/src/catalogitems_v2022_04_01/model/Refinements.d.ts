@@ -11,7 +11,7 @@ export class Refinements {
      * @param {Refinements} obj Optional instance to populate.
      * @return {Refinements} The populated <code>Refinements</code> instance.
      */
-    static constructFromObject(data: any, obj: Refinements): Refinements;
+    static constructFromObject(data: Object, obj: Refinements): Refinements;
     /**
      * Constructs a new <code>Refinements</code>.
      * Optional fields that you can use to refine your search results.

@@ -11,7 +11,7 @@ export class SetPackingInformationRequest {
      * @param {SetPackingInformationRequest} obj Optional instance to populate.
      * @return {SetPackingInformationRequest} The populated <code>SetPackingInformationRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: SetPackingInformationRequest): SetPackingInformationRequest;
+    static constructFromObject(data: Object, obj: SetPackingInformationRequest): SetPackingInformationRequest;
     /**
      * Constructs a new <code>SetPackingInformationRequest</code>.
      * The &#x60;setPackingInformation&#x60; request.

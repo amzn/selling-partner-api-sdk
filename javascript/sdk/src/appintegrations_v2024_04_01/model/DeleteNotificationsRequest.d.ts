@@ -11,7 +11,7 @@ export class DeleteNotificationsRequest {
      * @param {DeleteNotificationsRequest} obj Optional instance to populate.
      * @return {DeleteNotificationsRequest} The populated <code>DeleteNotificationsRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: DeleteNotificationsRequest): DeleteNotificationsRequest;
+    static constructFromObject(data: Object, obj: DeleteNotificationsRequest): DeleteNotificationsRequest;
     /**
      * Constructs a new <code>DeleteNotificationsRequest</code>.
      * The request for the &#x60;deleteNotifications&#x60; operation.

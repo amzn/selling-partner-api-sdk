@@ -11,7 +11,7 @@ export class GetFeatureSkuResponse {
      * @param {GetFeatureSkuResponse} obj Optional instance to populate.
      * @return {GetFeatureSkuResponse} The populated <code>GetFeatureSkuResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetFeatureSkuResponse): GetFeatureSkuResponse;
+    static constructFromObject(data: Object, obj: GetFeatureSkuResponse): GetFeatureSkuResponse;
     /**
      * @member {GetFeatureSkuResult} payload
      * @type {GetFeatureSkuResult}

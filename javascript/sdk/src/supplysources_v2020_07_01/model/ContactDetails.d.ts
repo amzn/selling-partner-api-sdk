@@ -11,7 +11,7 @@ export class ContactDetails {
      * @param {ContactDetails} obj Optional instance to populate.
      * @return {ContactDetails} The populated <code>ContactDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: ContactDetails): ContactDetails;
+    static constructFromObject(data: Object, obj: ContactDetails): ContactDetails;
     /**
      * @member {ContactDetailsPrimary} primary
      * @type {ContactDetailsPrimary}

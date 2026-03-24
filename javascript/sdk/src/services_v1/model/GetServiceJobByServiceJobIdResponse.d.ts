@@ -11,7 +11,7 @@ export class GetServiceJobByServiceJobIdResponse {
      * @param {GetServiceJobByServiceJobIdResponse} obj Optional instance to populate.
      * @return {GetServiceJobByServiceJobIdResponse} The populated <code>GetServiceJobByServiceJobIdResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetServiceJobByServiceJobIdResponse): GetServiceJobByServiceJobIdResponse;
+    static constructFromObject(data: Object, obj: GetServiceJobByServiceJobIdResponse): GetServiceJobByServiceJobIdResponse;
     /**
      * @member {ServiceJob} payload
      * @type {ServiceJob}

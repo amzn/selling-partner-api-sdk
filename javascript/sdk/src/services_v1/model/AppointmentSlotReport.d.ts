@@ -11,7 +11,7 @@ export class AppointmentSlotReport {
      * @param {AppointmentSlotReport} obj Optional instance to populate.
      * @return {AppointmentSlotReport} The populated <code>AppointmentSlotReport</code> instance.
      */
-    static constructFromObject(data: any, obj: AppointmentSlotReport): AppointmentSlotReport;
+    static constructFromObject(data: Object, obj: AppointmentSlotReport): AppointmentSlotReport;
     /**
      * Defines the type of slots.
      * @member {String} schedulingType

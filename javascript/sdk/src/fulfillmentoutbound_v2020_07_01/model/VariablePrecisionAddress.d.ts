@@ -11,7 +11,7 @@ export class VariablePrecisionAddress {
      * @param {VariablePrecisionAddress} obj Optional instance to populate.
      * @return {VariablePrecisionAddress} The populated <code>VariablePrecisionAddress</code> instance.
      */
-    static constructFromObject(data: any, obj: VariablePrecisionAddress): VariablePrecisionAddress;
+    static constructFromObject(data: Object, obj: VariablePrecisionAddress): VariablePrecisionAddress;
     /**
      * Constructs a new <code>VariablePrecisionAddress</code>.
      * A physical address with varying degrees of precision. A more precise address can provide more accurate results than country code and postal code alone.

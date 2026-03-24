@@ -11,7 +11,7 @@ export class ProductTypeDefinition {
      * @param {ProductTypeDefinition} obj Optional instance to populate.
      * @return {ProductTypeDefinition} The populated <code>ProductTypeDefinition</code> instance.
      */
-    static constructFromObject(data: any, obj: ProductTypeDefinition): ProductTypeDefinition;
+    static constructFromObject(data: Object, obj: ProductTypeDefinition): ProductTypeDefinition;
     /**
      * Constructs a new <code>ProductTypeDefinition</code>.
      * A product type definition represents the attributes and data requirements for a product type in the Amazon catalog. Product type definitions are used interchangeably between the Selling Partner API for Listings Items, Selling Partner API for Catalog Items, and JSON-based listings feeds in the Selling Partner API for Feeds.

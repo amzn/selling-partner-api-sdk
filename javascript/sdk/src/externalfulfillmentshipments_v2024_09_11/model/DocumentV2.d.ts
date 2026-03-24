@@ -11,7 +11,7 @@ export class DocumentV2 {
      * @param {DocumentV2} obj Optional instance to populate.
      * @return {DocumentV2} The populated <code>DocumentV2</code> instance.
      */
-    static constructFromObject(data: any, obj: DocumentV2): DocumentV2;
+    static constructFromObject(data: Object, obj: DocumentV2): DocumentV2;
     /**
      * Constructs a new <code>DocumentV2</code>.
      * An [S3-Presigned URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) you can use to retrieve file contents.

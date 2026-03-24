@@ -11,7 +11,7 @@ export class MskuQuantity {
      * @param {MskuQuantity} obj Optional instance to populate.
      * @return {MskuQuantity} The populated <code>MskuQuantity</code> instance.
      */
-    static constructFromObject(data: any, obj: MskuQuantity): MskuQuantity;
+    static constructFromObject(data: Object, obj: MskuQuantity): MskuQuantity;
     /**
      * Constructs a new <code>MskuQuantity</code>.
      * Represents an MSKU and the related quantity.

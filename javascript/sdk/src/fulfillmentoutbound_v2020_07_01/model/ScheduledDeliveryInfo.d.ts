@@ -11,7 +11,7 @@ export class ScheduledDeliveryInfo {
      * @param {ScheduledDeliveryInfo} obj Optional instance to populate.
      * @return {ScheduledDeliveryInfo} The populated <code>ScheduledDeliveryInfo</code> instance.
      */
-    static constructFromObject(data: any, obj: ScheduledDeliveryInfo): ScheduledDeliveryInfo;
+    static constructFromObject(data: Object, obj: ScheduledDeliveryInfo): ScheduledDeliveryInfo;
     /**
      * Constructs a new <code>ScheduledDeliveryInfo</code>.
      * Delivery information for a scheduled delivery. This is only available in the JP marketplace.

@@ -11,7 +11,7 @@ export class ItemRelationship {
      * @param {ItemRelationship} obj Optional instance to populate.
      * @return {ItemRelationship} The populated <code>ItemRelationship</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemRelationship): ItemRelationship;
+    static constructFromObject(data: Object, obj: ItemRelationship): ItemRelationship;
     /**
      * Constructs a new <code>ItemRelationship</code>.
      * Relationship details for an Amazon catalog item.

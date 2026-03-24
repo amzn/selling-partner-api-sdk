@@ -11,7 +11,7 @@ export class Carrier {
      * @param {Carrier} obj Optional instance to populate.
      * @return {Carrier} The populated <code>Carrier</code> instance.
      */
-    static constructFromObject(data: any, obj: Carrier): Carrier;
+    static constructFromObject(data: Object, obj: Carrier): Carrier;
     /**
      * The carrier code. For example, USPS or DHLEX.
      * @member {String} alphaCode

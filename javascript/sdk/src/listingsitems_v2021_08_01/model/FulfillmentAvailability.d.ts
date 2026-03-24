@@ -11,7 +11,7 @@ export class FulfillmentAvailability {
      * @param {FulfillmentAvailability} obj Optional instance to populate.
      * @return {FulfillmentAvailability} The populated <code>FulfillmentAvailability</code> instance.
      */
-    static constructFromObject(data: any, obj: FulfillmentAvailability): FulfillmentAvailability;
+    static constructFromObject(data: Object, obj: FulfillmentAvailability): FulfillmentAvailability;
     /**
      * Constructs a new <code>FulfillmentAvailability</code>.
      * The fulfillment availability details for the listings item.

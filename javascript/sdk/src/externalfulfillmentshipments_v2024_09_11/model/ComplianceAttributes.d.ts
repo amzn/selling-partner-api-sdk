@@ -11,7 +11,7 @@ export class ComplianceAttributes {
      * @param {ComplianceAttributes} obj Optional instance to populate.
      * @return {ComplianceAttributes} The populated <code>ComplianceAttributes</code> instance.
      */
-    static constructFromObject(data: any, obj: ComplianceAttributes): ComplianceAttributes;
+    static constructFromObject(data: Object, obj: ComplianceAttributes): ComplianceAttributes;
     /**
      * Constructs a new <code>ComplianceAttributes</code>.
      * All necessary compliance attributes specific to the line item.

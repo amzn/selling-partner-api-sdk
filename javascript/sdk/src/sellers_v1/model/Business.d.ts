@@ -11,7 +11,7 @@ export class Business {
      * @param {Business} obj Optional instance to populate.
      * @return {Business} The populated <code>Business</code> instance.
      */
-    static constructFromObject(data: any, obj: Business): Business;
+    static constructFromObject(data: Object, obj: Business): Business;
     /**
      * Constructs a new <code>Business</code>.
      * Information about the seller&#39;s business. Certain fields may be omitted depending on the seller&#39;s &#x60;businessType&#x60;.

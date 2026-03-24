@@ -11,7 +11,7 @@ export class SellerSKUIdentifier {
      * @param {SellerSKUIdentifier} obj Optional instance to populate.
      * @return {SellerSKUIdentifier} The populated <code>SellerSKUIdentifier</code> instance.
      */
-    static constructFromObject(data: any, obj: SellerSKUIdentifier): SellerSKUIdentifier;
+    static constructFromObject(data: Object, obj: SellerSKUIdentifier): SellerSKUIdentifier;
     /**
      * Constructs a new <code>SellerSKUIdentifier</code>.
      * Schema to identify an item by MarketPlaceId, SellerId, and SellerSKU.

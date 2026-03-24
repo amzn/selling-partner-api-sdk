@@ -11,7 +11,7 @@ export class ParkingConfiguration {
      * @param {ParkingConfiguration} obj Optional instance to populate.
      * @return {ParkingConfiguration} The populated <code>ParkingConfiguration</code> instance.
      */
-    static constructFromObject(data: any, obj: ParkingConfiguration): ParkingConfiguration;
+    static constructFromObject(data: Object, obj: ParkingConfiguration): ParkingConfiguration;
     /**
      * @member {ParkingCostType} parkingCostType
      * @type {ParkingCostType}

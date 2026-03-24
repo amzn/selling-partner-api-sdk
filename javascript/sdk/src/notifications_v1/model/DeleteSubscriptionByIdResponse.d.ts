@@ -11,7 +11,7 @@ export class DeleteSubscriptionByIdResponse {
      * @param {DeleteSubscriptionByIdResponse} obj Optional instance to populate.
      * @return {DeleteSubscriptionByIdResponse} The populated <code>DeleteSubscriptionByIdResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: DeleteSubscriptionByIdResponse): DeleteSubscriptionByIdResponse;
+    static constructFromObject(data: Object, obj: DeleteSubscriptionByIdResponse): DeleteSubscriptionByIdResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

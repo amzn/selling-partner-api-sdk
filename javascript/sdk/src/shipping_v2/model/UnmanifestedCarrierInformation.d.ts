@@ -11,7 +11,7 @@ export class UnmanifestedCarrierInformation {
      * @param {UnmanifestedCarrierInformation} obj Optional instance to populate.
      * @return {UnmanifestedCarrierInformation} The populated <code>UnmanifestedCarrierInformation</code> instance.
      */
-    static constructFromObject(data: any, obj: UnmanifestedCarrierInformation): UnmanifestedCarrierInformation;
+    static constructFromObject(data: Object, obj: UnmanifestedCarrierInformation): UnmanifestedCarrierInformation;
     /**
      * The carrier identifier for the offering, provided by the carrier.
      * @member {String} carrierId

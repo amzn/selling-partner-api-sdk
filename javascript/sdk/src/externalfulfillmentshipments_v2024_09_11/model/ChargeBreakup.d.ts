@@ -11,7 +11,7 @@ export class ChargeBreakup {
      * @param {ChargeBreakup} obj Optional instance to populate.
      * @return {ChargeBreakup} The populated <code>ChargeBreakup</code> instance.
      */
-    static constructFromObject(data: any, obj: ChargeBreakup): ChargeBreakup;
+    static constructFromObject(data: Object, obj: ChargeBreakup): ChargeBreakup;
     /**
      * Constructs a new <code>ChargeBreakup</code>.
      * The composition of the charge.

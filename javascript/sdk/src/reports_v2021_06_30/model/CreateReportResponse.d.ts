@@ -11,7 +11,7 @@ export class CreateReportResponse {
      * @param {CreateReportResponse} obj Optional instance to populate.
      * @return {CreateReportResponse} The populated <code>CreateReportResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateReportResponse): CreateReportResponse;
+    static constructFromObject(data: Object, obj: CreateReportResponse): CreateReportResponse;
     /**
      * Constructs a new <code>CreateReportResponse</code>.
      * The response schema.

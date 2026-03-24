@@ -11,7 +11,7 @@ export class CarrierAccountInput {
      * @param {CarrierAccountInput} obj Optional instance to populate.
      * @return {CarrierAccountInput} The populated <code>CarrierAccountInput</code> instance.
      */
-    static constructFromObject(data: any, obj: CarrierAccountInput): CarrierAccountInput;
+    static constructFromObject(data: Object, obj: CarrierAccountInput): CarrierAccountInput;
     /**
      * descriptionLocalizationKey value .
      * @member {String} descriptionLocalizationKey

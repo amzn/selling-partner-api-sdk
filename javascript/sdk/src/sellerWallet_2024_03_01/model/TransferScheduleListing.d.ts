@@ -11,7 +11,7 @@ export class TransferScheduleListing {
      * @param {TransferScheduleListing} obj Optional instance to populate.
      * @return {TransferScheduleListing} The populated <code>TransferScheduleListing</code> instance.
      */
-    static constructFromObject(data: any, obj: TransferScheduleListing): TransferScheduleListing;
+    static constructFromObject(data: Object, obj: TransferScheduleListing): TransferScheduleListing;
     /**
      * Constructs a new <code>TransferScheduleListing</code>.
      * A list of transfer schedules.

@@ -11,7 +11,7 @@ export class ListDeliveryWindowOptionsResponse {
      * @param {ListDeliveryWindowOptionsResponse} obj Optional instance to populate.
      * @return {ListDeliveryWindowOptionsResponse} The populated <code>ListDeliveryWindowOptionsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ListDeliveryWindowOptionsResponse): ListDeliveryWindowOptionsResponse;
+    static constructFromObject(data: Object, obj: ListDeliveryWindowOptionsResponse): ListDeliveryWindowOptionsResponse;
     /**
      * Constructs a new <code>ListDeliveryWindowOptionsResponse</code>.
      * The &#x60;listDeliveryWindowOptions&#x60; response.

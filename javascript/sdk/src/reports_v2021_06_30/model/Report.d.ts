@@ -11,7 +11,7 @@ export class Report {
      * @param {Report} obj Optional instance to populate.
      * @return {Report} The populated <code>Report</code> instance.
      */
-    static constructFromObject(data: any, obj: Report): Report;
+    static constructFromObject(data: Object, obj: Report): Report;
     /**
      * Constructs a new <code>Report</code>.
      * Detailed information about the report.

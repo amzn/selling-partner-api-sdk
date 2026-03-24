@@ -11,7 +11,7 @@ export class InvalidItemReason {
      * @param {InvalidItemReason} obj Optional instance to populate.
      * @return {InvalidItemReason} The populated <code>InvalidItemReason</code> instance.
      */
-    static constructFromObject(data: any, obj: InvalidItemReason): InvalidItemReason;
+    static constructFromObject(data: Object, obj: InvalidItemReason): InvalidItemReason;
     /**
      * Constructs a new <code>InvalidItemReason</code>.
      * The reason that the item is invalid for return.

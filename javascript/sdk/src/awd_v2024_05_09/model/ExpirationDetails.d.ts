@@ -11,7 +11,7 @@ export class ExpirationDetails {
      * @param {ExpirationDetails} obj Optional instance to populate.
      * @return {ExpirationDetails} The populated <code>ExpirationDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: ExpirationDetails): ExpirationDetails;
+    static constructFromObject(data: Object, obj: ExpirationDetails): ExpirationDetails;
     /**
      * The expiration date of the SKU.
      * @member {Date} expiration

@@ -11,7 +11,7 @@ export class DeliveryPolicy {
      * @param {DeliveryPolicy} obj Optional instance to populate.
      * @return {DeliveryPolicy} The populated <code>DeliveryPolicy</code> instance.
      */
-    static constructFromObject(data: any, obj: DeliveryPolicy): DeliveryPolicy;
+    static constructFromObject(data: Object, obj: DeliveryPolicy): DeliveryPolicy;
     /**
      * @member {DeliveryMessage} message
      * @type {DeliveryMessage}

@@ -11,7 +11,7 @@ export class ShipmentItem {
      * @param {ShipmentItem} obj Optional instance to populate.
      * @return {ShipmentItem} The populated <code>ShipmentItem</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipmentItem): ShipmentItem;
+    static constructFromObject(data: Object, obj: ShipmentItem): ShipmentItem;
     /**
      * The Amazon Standard Identification Number (ASIN) of the item.
      * @member {String} ASIN

@@ -11,7 +11,7 @@ export class ServiceFeeEvent {
      * @param {ServiceFeeEvent} obj Optional instance to populate.
      * @return {ServiceFeeEvent} The populated <code>ServiceFeeEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: ServiceFeeEvent): ServiceFeeEvent;
+    static constructFromObject(data: Object, obj: ServiceFeeEvent): ServiceFeeEvent;
     /**
      * An Amazon-defined identifier for an order.
      * @member {String} amazonOrderId

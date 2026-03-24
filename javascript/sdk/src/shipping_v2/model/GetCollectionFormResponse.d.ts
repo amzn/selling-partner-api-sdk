@@ -11,7 +11,7 @@ export class GetCollectionFormResponse {
      * @param {GetCollectionFormResponse} obj Optional instance to populate.
      * @return {GetCollectionFormResponse} The populated <code>GetCollectionFormResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetCollectionFormResponse): GetCollectionFormResponse;
+    static constructFromObject(data: Object, obj: GetCollectionFormResponse): GetCollectionFormResponse;
     /**
      * @member {CollectionsFormDocument} collectionsFormDocument
      * @type {CollectionsFormDocument}

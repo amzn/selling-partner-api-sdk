@@ -11,7 +11,7 @@ export class PackageStatus {
      * @param {PackageStatus} obj Optional instance to populate.
      * @return {PackageStatus} The populated <code>PackageStatus</code> instance.
      */
-    static constructFromObject(data: any, obj: PackageStatus): PackageStatus;
+    static constructFromObject(data: Object, obj: PackageStatus): PackageStatus;
     /**
      * Constructs a new <code>PackageStatus</code>.
      * Current status and detailed tracking information for a shipping package throughout the delivery process.

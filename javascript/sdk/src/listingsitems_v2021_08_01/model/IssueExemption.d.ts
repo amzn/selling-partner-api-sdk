@@ -11,7 +11,7 @@ export class IssueExemption {
      * @param {IssueExemption} obj Optional instance to populate.
      * @return {IssueExemption} The populated <code>IssueExemption</code> instance.
      */
-    static constructFromObject(data: any, obj: IssueExemption): IssueExemption;
+    static constructFromObject(data: Object, obj: IssueExemption): IssueExemption;
     /**
      * Constructs a new <code>IssueExemption</code>.
      * Conveying the status of the listed enforcement actions and, if applicable, provides information about the exemption&#39;s expiry date.

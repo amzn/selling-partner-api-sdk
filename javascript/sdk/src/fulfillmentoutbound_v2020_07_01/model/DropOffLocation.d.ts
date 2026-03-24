@@ -11,7 +11,7 @@ export class DropOffLocation {
      * @param {DropOffLocation} obj Optional instance to populate.
      * @return {DropOffLocation} The populated <code>DropOffLocation</code> instance.
      */
-    static constructFromObject(data: any, obj: DropOffLocation): DropOffLocation;
+    static constructFromObject(data: Object, obj: DropOffLocation): DropOffLocation;
     /**
      * Constructs a new <code>DropOffLocation</code>.
      * The drop-off location at the destination address.

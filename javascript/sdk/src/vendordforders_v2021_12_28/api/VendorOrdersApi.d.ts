@@ -48,12 +48,12 @@ export class VendorOrdersApi {
        * @return {Promise<OrderList>}
        */
     getOrdersWithHttpInfo(createdAfter: Date, createdBefore: Date, opts?: {
-        shipFromPartyId?: string;
-        status?: string;
-        limit?: number;
-        sortOrder?: string;
-        nextToken?: string;
-        includeDetails?: boolean;
+        shipFromPartyId?: string | undefined;
+        status?: string | undefined;
+        limit?: number | undefined;
+        sortOrder?: string | undefined;
+        nextToken?: string | undefined;
+        includeDetails?: boolean | undefined;
     }): Promise<OrderList>;
     /**
        * Returns a list of purchase orders created during the time frame that you specify. You define the time frame using the createdAfter and createdBefore parameters. You must use both parameters. You can choose to get only the purchase order numbers by setting the includeDetails parameter to false. In that case, the operation returns a list of purchase order numbers. You can then call the getOrder operation to return the details of a specific order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -69,12 +69,12 @@ export class VendorOrdersApi {
        * @return {Promise<OrderList>}
        */
     getOrders(createdAfter: Date, createdBefore: Date, opts?: {
-        shipFromPartyId?: string;
-        status?: string;
-        limit?: number;
-        sortOrder?: string;
-        nextToken?: string;
-        includeDetails?: boolean;
+        shipFromPartyId?: string | undefined;
+        status?: string | undefined;
+        limit?: number | undefined;
+        sortOrder?: string | undefined;
+        nextToken?: string | undefined;
+        includeDetails?: boolean | undefined;
     }): Promise<OrderList>;
     /**
        * Submits acknowledgements for one or more purchase orders.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).

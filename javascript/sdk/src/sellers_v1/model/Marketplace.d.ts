@@ -11,7 +11,7 @@ export class Marketplace {
      * @param {Marketplace} obj Optional instance to populate.
      * @return {Marketplace} The populated <code>Marketplace</code> instance.
      */
-    static constructFromObject(data: any, obj: Marketplace): Marketplace;
+    static constructFromObject(data: Object, obj: Marketplace): Marketplace;
     /**
      * Constructs a new <code>Marketplace</code>.
      * Information about an Amazon marketplace where a seller can list items and customers can view and purchase items.

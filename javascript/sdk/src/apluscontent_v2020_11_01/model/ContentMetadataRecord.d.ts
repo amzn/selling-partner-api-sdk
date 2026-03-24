@@ -11,7 +11,7 @@ export class ContentMetadataRecord {
      * @param {ContentMetadataRecord} obj Optional instance to populate.
      * @return {ContentMetadataRecord} The populated <code>ContentMetadataRecord</code> instance.
      */
-    static constructFromObject(data: any, obj: ContentMetadataRecord): ContentMetadataRecord;
+    static constructFromObject(data: Object, obj: ContentMetadataRecord): ContentMetadataRecord;
     /**
      * Constructs a new <code>ContentMetadataRecord</code>.
      * The metadata for an A+ Content document, with additional information for content management.

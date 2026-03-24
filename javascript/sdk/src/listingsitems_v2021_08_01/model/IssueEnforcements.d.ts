@@ -11,7 +11,7 @@ export class IssueEnforcements {
      * @param {IssueEnforcements} obj Optional instance to populate.
      * @return {IssueEnforcements} The populated <code>IssueEnforcements</code> instance.
      */
-    static constructFromObject(data: any, obj: IssueEnforcements): IssueEnforcements;
+    static constructFromObject(data: Object, obj: IssueEnforcements): IssueEnforcements;
     /**
      * Constructs a new <code>IssueEnforcements</code>.
      * This field provides information about the enforcement actions taken by Amazon that affect the publishing or status of a listing. It also includes details about any associated exemptions.

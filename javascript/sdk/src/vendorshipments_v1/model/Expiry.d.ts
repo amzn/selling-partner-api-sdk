@@ -11,7 +11,7 @@ export class Expiry {
      * @param {Expiry} obj Optional instance to populate.
      * @return {Expiry} The populated <code>Expiry</code> instance.
      */
-    static constructFromObject(data: any, obj: Expiry): Expiry;
+    static constructFromObject(data: Object, obj: Expiry): Expiry;
     /**
      * Production, packaging or assembly date determined by the manufacturer. Its meaning is determined based on the trade item context.
      * @member {Date} manufacturerDate

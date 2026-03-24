@@ -11,7 +11,7 @@ export class ItemBuyerInfo {
      * @param {ItemBuyerInfo} obj Optional instance to populate.
      * @return {ItemBuyerInfo} The populated <code>ItemBuyerInfo</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemBuyerInfo): ItemBuyerInfo;
+    static constructFromObject(data: Object, obj: ItemBuyerInfo): ItemBuyerInfo;
     /**
      * @member {BuyerCustomizedInfoDetail} buyerCustomizedInfo
      * @type {BuyerCustomizedInfoDetail}

@@ -11,7 +11,7 @@ export class VehicleIdentifiers {
      * @param {VehicleIdentifiers} obj Optional instance to populate.
      * @return {VehicleIdentifiers} The populated <code>VehicleIdentifiers</code> instance.
      */
-    static constructFromObject(data: any, obj: VehicleIdentifiers): VehicleIdentifiers;
+    static constructFromObject(data: Object, obj: VehicleIdentifiers): VehicleIdentifiers;
     /**
      * Constructs a new <code>VehicleIdentifiers</code>.
      * Combination of vehicle standard and id that can uniquely identify a vehicle from Amazon&#39;s catalog.

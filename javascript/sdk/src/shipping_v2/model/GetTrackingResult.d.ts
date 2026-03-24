@@ -11,7 +11,7 @@ export class GetTrackingResult {
      * @param {GetTrackingResult} obj Optional instance to populate.
      * @return {GetTrackingResult} The populated <code>GetTrackingResult</code> instance.
      */
-    static constructFromObject(data: any, obj: GetTrackingResult): GetTrackingResult;
+    static constructFromObject(data: Object, obj: GetTrackingResult): GetTrackingResult;
     /**
      * Constructs a new <code>GetTrackingResult</code>.
      * The payload for the getTracking operation.

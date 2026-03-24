@@ -11,7 +11,7 @@ export class FreightInformation {
      * @param {FreightInformation} obj Optional instance to populate.
      * @return {FreightInformation} The populated <code>FreightInformation</code> instance.
      */
-    static constructFromObject(data: any, obj: FreightInformation): FreightInformation;
+    static constructFromObject(data: Object, obj: FreightInformation): FreightInformation;
     /**
      * @member {Currency} declaredValue
      * @type {Currency}

@@ -11,7 +11,7 @@ export class InvalidSKU {
      * @param {InvalidSKU} obj Optional instance to populate.
      * @return {InvalidSKU} The populated <code>InvalidSKU</code> instance.
      */
-    static constructFromObject(data: any, obj: InvalidSKU): InvalidSKU;
+    static constructFromObject(data: Object, obj: InvalidSKU): InvalidSKU;
     /**
      * The seller SKU of the item.
      * @member {String} sellerSKU

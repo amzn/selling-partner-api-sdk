@@ -11,7 +11,7 @@ export class BoxInput {
      * @param {BoxInput} obj Optional instance to populate.
      * @return {BoxInput} The populated <code>BoxInput</code> instance.
      */
-    static constructFromObject(data: any, obj: BoxInput): BoxInput;
+    static constructFromObject(data: Object, obj: BoxInput): BoxInput;
     /**
      * Constructs a new <code>BoxInput</code>.
      * Input information for a given box.

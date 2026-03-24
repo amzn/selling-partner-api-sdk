@@ -11,7 +11,7 @@ export class PaymentExecutionDetailItem {
      * @param {PaymentExecutionDetailItem} obj Optional instance to populate.
      * @return {PaymentExecutionDetailItem} The populated <code>PaymentExecutionDetailItem</code> instance.
      */
-    static constructFromObject(data: any, obj: PaymentExecutionDetailItem): PaymentExecutionDetailItem;
+    static constructFromObject(data: Object, obj: PaymentExecutionDetailItem): PaymentExecutionDetailItem;
     /**
      * Constructs a new <code>PaymentExecutionDetailItem</code>.
      * Information about a sub-payment method used to pay for a COD order.

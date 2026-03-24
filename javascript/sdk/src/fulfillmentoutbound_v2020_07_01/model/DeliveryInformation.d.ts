@@ -11,7 +11,7 @@ export class DeliveryInformation {
      * @param {DeliveryInformation} obj Optional instance to populate.
      * @return {DeliveryInformation} The populated <code>DeliveryInformation</code> instance.
      */
-    static constructFromObject(data: any, obj: DeliveryInformation): DeliveryInformation;
+    static constructFromObject(data: Object, obj: DeliveryInformation): DeliveryInformation;
     /**
      * A list of delivery documents for a package.
      * @member {DeliveryDocument[]} deliveryDocumentList

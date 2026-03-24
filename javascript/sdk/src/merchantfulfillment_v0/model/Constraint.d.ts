@@ -11,7 +11,7 @@ export class Constraint {
      * @param {Constraint} obj Optional instance to populate.
      * @return {Constraint} The populated <code>Constraint</code> instance.
      */
-    static constructFromObject(data: any, obj: Constraint): Constraint;
+    static constructFromObject(data: Object, obj: Constraint): Constraint;
     /**
      * Constructs a new <code>Constraint</code>.
      * A validation constraint.

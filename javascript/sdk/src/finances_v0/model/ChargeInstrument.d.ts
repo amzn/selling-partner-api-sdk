@@ -11,7 +11,7 @@ export class ChargeInstrument {
      * @param {ChargeInstrument} obj Optional instance to populate.
      * @return {ChargeInstrument} The populated <code>ChargeInstrument</code> instance.
      */
-    static constructFromObject(data: any, obj: ChargeInstrument): ChargeInstrument;
+    static constructFromObject(data: Object, obj: ChargeInstrument): ChargeInstrument;
     /**
      * A short description of the charge instrument.
      * @member {String} description

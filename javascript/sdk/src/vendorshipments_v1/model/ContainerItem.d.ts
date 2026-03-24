@@ -11,7 +11,7 @@ export class ContainerItem {
      * @param {ContainerItem} obj Optional instance to populate.
      * @return {ContainerItem} The populated <code>ContainerItem</code> instance.
      */
-    static constructFromObject(data: any, obj: ContainerItem): ContainerItem;
+    static constructFromObject(data: Object, obj: ContainerItem): ContainerItem;
     /**
      * Constructs a new <code>ContainerItem</code>.
      * Carton/Pallet level details for the item.

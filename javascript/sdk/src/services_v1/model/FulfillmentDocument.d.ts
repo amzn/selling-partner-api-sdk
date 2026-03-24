@@ -11,7 +11,7 @@ export class FulfillmentDocument {
      * @param {FulfillmentDocument} obj Optional instance to populate.
      * @return {FulfillmentDocument} The populated <code>FulfillmentDocument</code> instance.
      */
-    static constructFromObject(data: any, obj: FulfillmentDocument): FulfillmentDocument;
+    static constructFromObject(data: Object, obj: FulfillmentDocument): FulfillmentDocument;
     /**
      * The identifier of the upload destination. Get this value by calling the `createServiceDocumentUploadDestination` operation of the Services API.
      * @member {String} uploadDestinationId

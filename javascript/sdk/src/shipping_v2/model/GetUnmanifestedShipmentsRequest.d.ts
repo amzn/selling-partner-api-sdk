@@ -11,7 +11,7 @@ export class GetUnmanifestedShipmentsRequest {
      * @param {GetUnmanifestedShipmentsRequest} obj Optional instance to populate.
      * @return {GetUnmanifestedShipmentsRequest} The populated <code>GetUnmanifestedShipmentsRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: GetUnmanifestedShipmentsRequest): GetUnmanifestedShipmentsRequest;
+    static constructFromObject(data: Object, obj: GetUnmanifestedShipmentsRequest): GetUnmanifestedShipmentsRequest;
     /**
      * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
      * @member {ClientReferenceDetail[]} clientReferenceDetails

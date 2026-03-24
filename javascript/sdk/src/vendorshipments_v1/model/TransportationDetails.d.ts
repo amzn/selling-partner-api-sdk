@@ -11,7 +11,7 @@ export class TransportationDetails {
      * @param {TransportationDetails} obj Optional instance to populate.
      * @return {TransportationDetails} The populated <code>TransportationDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: TransportationDetails): TransportationDetails;
+    static constructFromObject(data: Object, obj: TransportationDetails): TransportationDetails;
     /**
      * The type of shipment.
      * @member {String} shipMode

@@ -11,7 +11,7 @@ export class Points {
      * @param {Points} obj Optional instance to populate.
      * @return {Points} The populated <code>Points</code> instance.
      */
-    static constructFromObject(data: any, obj: Points): Points;
+    static constructFromObject(data: Object, obj: Points): Points;
     /**
      * The number of points.
      * @member {Number} pointsNumber

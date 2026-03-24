@@ -11,7 +11,7 @@ export class AccessPointDetails {
      * @param {AccessPointDetails} obj Optional instance to populate.
      * @return {AccessPointDetails} The populated <code>AccessPointDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: AccessPointDetails): AccessPointDetails;
+    static constructFromObject(data: Object, obj: AccessPointDetails): AccessPointDetails;
     /**
      * Unique identifier for the access point
      * @member {String} accessPointId

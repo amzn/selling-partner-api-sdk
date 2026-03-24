@@ -11,7 +11,7 @@ export class OfferCountType {
      * @param {OfferCountType} obj Optional instance to populate.
      * @return {OfferCountType} The populated <code>OfferCountType</code> instance.
      */
-    static constructFromObject(data: any, obj: OfferCountType): OfferCountType;
+    static constructFromObject(data: Object, obj: OfferCountType): OfferCountType;
     /**
      * Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club.
      * @member {String} condition

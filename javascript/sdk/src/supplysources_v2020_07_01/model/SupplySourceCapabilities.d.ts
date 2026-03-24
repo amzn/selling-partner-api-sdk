@@ -11,7 +11,7 @@ export class SupplySourceCapabilities {
      * @param {SupplySourceCapabilities} obj Optional instance to populate.
      * @return {SupplySourceCapabilities} The populated <code>SupplySourceCapabilities</code> instance.
      */
-    static constructFromObject(data: any, obj: SupplySourceCapabilities): SupplySourceCapabilities;
+    static constructFromObject(data: Object, obj: SupplySourceCapabilities): SupplySourceCapabilities;
     /**
      * @member {OutboundCapability} outbound
      * @type {OutboundCapability}

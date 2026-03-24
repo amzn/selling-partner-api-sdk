@@ -11,7 +11,7 @@ export class ItemPointsCost {
      * @param {ItemPointsCost} obj Optional instance to populate.
      * @return {ItemPointsCost} The populated <code>ItemPointsCost</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemPointsCost): ItemPointsCost;
+    static constructFromObject(data: Object, obj: ItemPointsCost): ItemPointsCost;
     /**
      * @member {PointsGranted} pointsGranted
      * @type {PointsGranted}

@@ -11,7 +11,7 @@ export class ShippingService {
      * @param {ShippingService} obj Optional instance to populate.
      * @return {ShippingService} The populated <code>ShippingService</code> instance.
      */
-    static constructFromObject(data: any, obj: ShippingService): ShippingService;
+    static constructFromObject(data: Object, obj: ShippingService): ShippingService;
     /**
      * Constructs a new <code>ShippingService</code>.
      * A shipping service offer made by a carrier.

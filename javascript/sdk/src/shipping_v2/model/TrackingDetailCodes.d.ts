@@ -11,7 +11,7 @@ export class TrackingDetailCodes {
      * @param {TrackingDetailCodes} obj Optional instance to populate.
      * @return {TrackingDetailCodes} The populated <code>TrackingDetailCodes</code> instance.
      */
-    static constructFromObject(data: any, obj: TrackingDetailCodes): TrackingDetailCodes;
+    static constructFromObject(data: Object, obj: TrackingDetailCodes): TrackingDetailCodes;
     /**
      * Constructs a new <code>TrackingDetailCodes</code>.
      * Contains detail codes that provide additional details related to the forward and return leg of the shipment.

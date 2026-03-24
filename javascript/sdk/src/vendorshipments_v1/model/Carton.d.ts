@@ -11,7 +11,7 @@ export class Carton {
      * @param {Carton} obj Optional instance to populate.
      * @return {Carton} The populated <code>Carton</code> instance.
      */
-    static constructFromObject(data: any, obj: Carton): Carton;
+    static constructFromObject(data: Object, obj: Carton): Carton;
     /**
      * Constructs a new <code>Carton</code>.
      * Details of the carton/package being shipped.

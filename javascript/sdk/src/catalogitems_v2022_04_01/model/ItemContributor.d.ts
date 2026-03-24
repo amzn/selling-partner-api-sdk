@@ -11,7 +11,7 @@ export class ItemContributor {
      * @param {ItemContributor} obj Optional instance to populate.
      * @return {ItemContributor} The populated <code>ItemContributor</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemContributor): ItemContributor;
+    static constructFromObject(data: Object, obj: ItemContributor): ItemContributor;
     /**
      * Constructs a new <code>ItemContributor</code>.
      * Individual contributor to the creation of an item, such as an author or actor.

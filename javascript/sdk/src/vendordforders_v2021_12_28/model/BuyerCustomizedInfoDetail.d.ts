@@ -11,7 +11,7 @@ export class BuyerCustomizedInfoDetail {
      * @param {BuyerCustomizedInfoDetail} obj Optional instance to populate.
      * @return {BuyerCustomizedInfoDetail} The populated <code>BuyerCustomizedInfoDetail</code> instance.
      */
-    static constructFromObject(data: any, obj: BuyerCustomizedInfoDetail): BuyerCustomizedInfoDetail;
+    static constructFromObject(data: Object, obj: BuyerCustomizedInfoDetail): BuyerCustomizedInfoDetail;
     /**
      * A [Base 64](https://datatracker.ietf.org/doc/html/rfc4648#section-4) encoded URL using the UTF-8 character set. The URL provides the location of the zip file that specifies the types of customizations or configurations allowed by the vendor, along with types and ranges for the attributes of their products.
      * @member {String} customizedUrl

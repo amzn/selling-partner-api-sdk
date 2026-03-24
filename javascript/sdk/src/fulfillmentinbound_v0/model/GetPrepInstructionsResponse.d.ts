@@ -11,7 +11,7 @@ export class GetPrepInstructionsResponse {
      * @param {GetPrepInstructionsResponse} obj Optional instance to populate.
      * @return {GetPrepInstructionsResponse} The populated <code>GetPrepInstructionsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetPrepInstructionsResponse): GetPrepInstructionsResponse;
+    static constructFromObject(data: Object, obj: GetPrepInstructionsResponse): GetPrepInstructionsResponse;
     /**
      * @member {GetPrepInstructionsResult} payload
      * @type {GetPrepInstructionsResult}

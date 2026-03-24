@@ -11,7 +11,7 @@ export class SubmitShippingLabelsRequest {
      * @param {SubmitShippingLabelsRequest} obj Optional instance to populate.
      * @return {SubmitShippingLabelsRequest} The populated <code>SubmitShippingLabelsRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: SubmitShippingLabelsRequest): SubmitShippingLabelsRequest;
+    static constructFromObject(data: Object, obj: SubmitShippingLabelsRequest): SubmitShippingLabelsRequest;
     /**
      * An array of shipping label requests to be processed.
      * @member {ShippingLabelRequest[]} shippingLabelRequests

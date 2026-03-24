@@ -35,13 +35,13 @@ export class DefaultApi {
        * @return {Promise<ListTransactionsResponse>}
        */
     listTransactionsWithHttpInfo(opts?: {
-        postedAfter?: Date;
-        postedBefore?: Date;
-        marketplaceId?: string;
-        transactionStatus?: string;
-        relatedIdentifierName?: string;
-        relatedIdentifierValue?: string;
-        nextToken?: string;
+        postedAfter?: Date | undefined;
+        postedBefore?: Date | undefined;
+        marketplaceId?: string | undefined;
+        transactionStatus?: string | undefined;
+        relatedIdentifierName?: string | undefined;
+        relatedIdentifierValue?: string | undefined;
+        nextToken?: string | undefined;
     }): Promise<ListTransactionsResponse>;
     /**
        * Returns transactions for the given parameters. Financial events might not include orders from the last 48 hours.  **Usage plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
@@ -56,13 +56,13 @@ export class DefaultApi {
        * @return {Promise<ListTransactionsResponse>}
        */
     listTransactions(opts?: {
-        postedAfter?: Date;
-        postedBefore?: Date;
-        marketplaceId?: string;
-        transactionStatus?: string;
-        relatedIdentifierName?: string;
-        relatedIdentifierValue?: string;
-        nextToken?: string;
+        postedAfter?: Date | undefined;
+        postedBefore?: Date | undefined;
+        marketplaceId?: string | undefined;
+        transactionStatus?: string | undefined;
+        relatedIdentifierName?: string | undefined;
+        relatedIdentifierValue?: string | undefined;
+        nextToken?: string | undefined;
     }): Promise<ListTransactionsResponse>;
     #private;
 }

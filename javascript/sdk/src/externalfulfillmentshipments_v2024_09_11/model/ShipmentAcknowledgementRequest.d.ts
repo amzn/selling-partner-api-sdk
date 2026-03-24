@@ -11,7 +11,7 @@ export class ShipmentAcknowledgementRequest {
      * @param {ShipmentAcknowledgementRequest} obj Optional instance to populate.
      * @return {ShipmentAcknowledgementRequest} The populated <code>ShipmentAcknowledgementRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipmentAcknowledgementRequest): ShipmentAcknowledgementRequest;
+    static constructFromObject(data: Object, obj: ShipmentAcknowledgementRequest): ShipmentAcknowledgementRequest;
     /**
      * Constructs a new <code>ShipmentAcknowledgementRequest</code>.
      * Information about the shipment and its line items, used to confirm or reject line items.

@@ -11,7 +11,7 @@ export class AssignAppointmentResourcesResponsePayload {
      * @param {AssignAppointmentResourcesResponsePayload} obj Optional instance to populate.
      * @return {AssignAppointmentResourcesResponsePayload} The populated <code>AssignAppointmentResourcesResponsePayload</code> instance.
      */
-    static constructFromObject(data: any, obj: AssignAppointmentResourcesResponsePayload): AssignAppointmentResourcesResponsePayload;
+    static constructFromObject(data: Object, obj: AssignAppointmentResourcesResponsePayload): AssignAppointmentResourcesResponsePayload;
     /**
      * A list of warnings returned in the sucessful execution response of an API request.
      * @member {Warning[]} warnings

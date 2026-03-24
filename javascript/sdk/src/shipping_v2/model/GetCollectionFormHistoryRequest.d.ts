@@ -11,7 +11,7 @@ export class GetCollectionFormHistoryRequest {
      * @param {GetCollectionFormHistoryRequest} obj Optional instance to populate.
      * @return {GetCollectionFormHistoryRequest} The populated <code>GetCollectionFormHistoryRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: GetCollectionFormHistoryRequest): GetCollectionFormHistoryRequest;
+    static constructFromObject(data: Object, obj: GetCollectionFormHistoryRequest): GetCollectionFormHistoryRequest;
     /**
      * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
      * @member {ClientReferenceDetail[]} clientReferenceDetails

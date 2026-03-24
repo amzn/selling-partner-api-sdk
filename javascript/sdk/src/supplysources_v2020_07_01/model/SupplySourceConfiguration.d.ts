@@ -11,7 +11,7 @@ export class SupplySourceConfiguration {
      * @param {SupplySourceConfiguration} obj Optional instance to populate.
      * @return {SupplySourceConfiguration} The populated <code>SupplySourceConfiguration</code> instance.
      */
-    static constructFromObject(data: any, obj: SupplySourceConfiguration): SupplySourceConfiguration;
+    static constructFromObject(data: Object, obj: SupplySourceConfiguration): SupplySourceConfiguration;
     /**
      * @member {OperationalConfiguration} operationalConfiguration
      * @type {OperationalConfiguration}

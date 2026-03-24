@@ -11,7 +11,7 @@ export class ShipmentSource {
      * @param {ShipmentSource} obj Optional instance to populate.
      * @return {ShipmentSource} The populated <code>ShipmentSource</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipmentSource): ShipmentSource;
+    static constructFromObject(data: Object, obj: ShipmentSource): ShipmentSource;
     /**
      * Constructs a new <code>ShipmentSource</code>.
      * Specifies the &#39;ship from&#39; address for the shipment.

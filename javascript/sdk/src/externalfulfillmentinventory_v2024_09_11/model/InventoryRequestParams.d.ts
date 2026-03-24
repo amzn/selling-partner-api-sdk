@@ -11,7 +11,7 @@ export class InventoryRequestParams {
      * @param {InventoryRequestParams} obj Optional instance to populate.
      * @return {InventoryRequestParams} The populated <code>InventoryRequestParams</code> instance.
      */
-    static constructFromObject(data: any, obj: InventoryRequestParams): InventoryRequestParams;
+    static constructFromObject(data: Object, obj: InventoryRequestParams): InventoryRequestParams;
     /**
      * The latest sequence number for the inventory update operation. You find this value in the `clientSequenceNumber` property in the response to the `batchInventory` operation.
      * @member {Number} clientSequenceNumber

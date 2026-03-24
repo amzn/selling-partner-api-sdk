@@ -11,7 +11,7 @@ export class ScopeOfWork {
      * @param {ScopeOfWork} obj Optional instance to populate.
      * @return {ScopeOfWork} The populated <code>ScopeOfWork</code> instance.
      */
-    static constructFromObject(data: any, obj: ScopeOfWork): ScopeOfWork;
+    static constructFromObject(data: Object, obj: ScopeOfWork): ScopeOfWork;
     /**
      * The Amazon Standard Identification Number (ASIN) of the service job.
      * @member {String} asin

@@ -11,7 +11,7 @@ export class ExportInvoicesResponse {
      * @param {ExportInvoicesResponse} obj Optional instance to populate.
      * @return {ExportInvoicesResponse} The populated <code>ExportInvoicesResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ExportInvoicesResponse): ExportInvoicesResponse;
+    static constructFromObject(data: Object, obj: ExportInvoicesResponse): ExportInvoicesResponse;
     /**
      * The export identifier.
      * @member {String} exportId

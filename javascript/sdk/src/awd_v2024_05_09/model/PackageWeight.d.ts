@@ -11,7 +11,7 @@ export class PackageWeight {
      * @param {PackageWeight} obj Optional instance to populate.
      * @return {PackageWeight} The populated <code>PackageWeight</code> instance.
      */
-    static constructFromObject(data: any, obj: PackageWeight): PackageWeight;
+    static constructFromObject(data: Object, obj: PackageWeight): PackageWeight;
     /**
      * Constructs a new <code>PackageWeight</code>.
      * Represents the weight of the package with a unit of measurement.

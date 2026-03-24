@@ -11,7 +11,7 @@ export class IneligibleRate {
      * @param {IneligibleRate} obj Optional instance to populate.
      * @return {IneligibleRate} The populated <code>IneligibleRate</code> instance.
      */
-    static constructFromObject(data: any, obj: IneligibleRate): IneligibleRate;
+    static constructFromObject(data: Object, obj: IneligibleRate): IneligibleRate;
     /**
      * Constructs a new <code>IneligibleRate</code>.
      * Detailed information for an ineligible shipping service offering.

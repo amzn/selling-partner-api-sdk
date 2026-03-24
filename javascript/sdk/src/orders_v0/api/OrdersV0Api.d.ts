@@ -80,7 +80,7 @@ export class OrdersV0Api {
        * @return {Promise<GetOrderItemsResponse>}
        */
     getOrderItemsWithHttpInfo(orderId: string, opts?: {
-        nextToken?: string;
+        nextToken?: string | undefined;
     }): Promise<GetOrderItemsResponse>;
     /**
        * Returns detailed order item information for the order that you specify. If &#x60;NextToken&#x60; is provided, it&#39;s used to retrieve the next page of order items.  __Note__: When an order is in the Pending state (the order has been placed but payment has not been authorized), the getOrderItems operation does not return information about pricing, taxes, shipping charges, gift status or promotions for the order items in the order. After an order leaves the Pending state (this occurs when payment has been authorized) and enters the Unshipped, Partially Shipped, or Shipped state, the getOrderItems operation returns information about pricing, taxes, shipping charges, gift status and promotions for the order items in the order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -90,7 +90,7 @@ export class OrdersV0Api {
        * @return {Promise<GetOrderItemsResponse>}
        */
     getOrderItems(orderId: string, opts?: {
-        nextToken?: string;
+        nextToken?: string | undefined;
     }): Promise<GetOrderItemsResponse>;
     /**
        * Returns buyer information for the order items in the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -100,7 +100,7 @@ export class OrdersV0Api {
        * @return {Promise<GetOrderItemsBuyerInfoResponse>}
        */
     getOrderItemsBuyerInfoWithHttpInfo(orderId: string, opts?: {
-        nextToken?: string;
+        nextToken?: string | undefined;
     }): Promise<GetOrderItemsBuyerInfoResponse>;
     /**
        * Returns buyer information for the order items in the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -110,7 +110,7 @@ export class OrdersV0Api {
        * @return {Promise<GetOrderItemsBuyerInfoResponse>}
        */
     getOrderItemsBuyerInfo(orderId: string, opts?: {
-        nextToken?: string;
+        nextToken?: string | undefined;
     }): Promise<GetOrderItemsBuyerInfoResponse>;
     /**
        * Returns regulated information for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -151,26 +151,26 @@ export class OrdersV0Api {
        * @return {Promise<GetOrdersResponse>}
        */
     getOrdersWithHttpInfo(marketplaceIds: string[], opts?: {
-        createdAfter?: string;
-        createdBefore?: string;
-        lastUpdatedAfter?: string;
-        lastUpdatedBefore?: string;
-        orderStatuses?: string[];
-        fulfillmentChannels?: string[];
-        paymentMethods?: string[];
-        sellerOrderId?: string;
-        maxResultsPerPage?: number;
-        easyShipShipmentStatuses?: string[];
-        electronicInvoiceStatuses?: string[];
-        nextToken?: string;
-        amazonOrderIds?: string[];
-        actualFulfillmentSupplySourceId?: string;
-        isISPU?: boolean;
-        storeChainStoreId?: string;
-        earliestDeliveryDateBefore?: string;
-        earliestDeliveryDateAfter?: string;
-        latestDeliveryDateBefore?: string;
-        latestDeliveryDateAfter?: string;
+        createdAfter?: string | undefined;
+        createdBefore?: string | undefined;
+        lastUpdatedAfter?: string | undefined;
+        lastUpdatedBefore?: string | undefined;
+        orderStatuses?: string[] | undefined;
+        fulfillmentChannels?: string[] | undefined;
+        paymentMethods?: string[] | undefined;
+        sellerOrderId?: string | undefined;
+        maxResultsPerPage?: number | undefined;
+        easyShipShipmentStatuses?: string[] | undefined;
+        electronicInvoiceStatuses?: string[] | undefined;
+        nextToken?: string | undefined;
+        amazonOrderIds?: string[] | undefined;
+        actualFulfillmentSupplySourceId?: string | undefined;
+        isISPU?: boolean | undefined;
+        storeChainStoreId?: string | undefined;
+        earliestDeliveryDateBefore?: string | undefined;
+        earliestDeliveryDateAfter?: string | undefined;
+        latestDeliveryDateBefore?: string | undefined;
+        latestDeliveryDateAfter?: string | undefined;
     }): Promise<GetOrdersResponse>;
     /**
        * Returns orders that are created or updated during the specified time period. If you want to return specific types of orders, you can apply filters to your request. &#x60;NextToken&#x60; doesn&#39;t affect any filters that you include in your request; it only impacts the pagination for the filtered orders response.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -199,26 +199,26 @@ export class OrdersV0Api {
        * @return {Promise<GetOrdersResponse>}
        */
     getOrders(marketplaceIds: string[], opts?: {
-        createdAfter?: string;
-        createdBefore?: string;
-        lastUpdatedAfter?: string;
-        lastUpdatedBefore?: string;
-        orderStatuses?: string[];
-        fulfillmentChannels?: string[];
-        paymentMethods?: string[];
-        sellerOrderId?: string;
-        maxResultsPerPage?: number;
-        easyShipShipmentStatuses?: string[];
-        electronicInvoiceStatuses?: string[];
-        nextToken?: string;
-        amazonOrderIds?: string[];
-        actualFulfillmentSupplySourceId?: string;
-        isISPU?: boolean;
-        storeChainStoreId?: string;
-        earliestDeliveryDateBefore?: string;
-        earliestDeliveryDateAfter?: string;
-        latestDeliveryDateBefore?: string;
-        latestDeliveryDateAfter?: string;
+        createdAfter?: string | undefined;
+        createdBefore?: string | undefined;
+        lastUpdatedAfter?: string | undefined;
+        lastUpdatedBefore?: string | undefined;
+        orderStatuses?: string[] | undefined;
+        fulfillmentChannels?: string[] | undefined;
+        paymentMethods?: string[] | undefined;
+        sellerOrderId?: string | undefined;
+        maxResultsPerPage?: number | undefined;
+        easyShipShipmentStatuses?: string[] | undefined;
+        electronicInvoiceStatuses?: string[] | undefined;
+        nextToken?: string | undefined;
+        amazonOrderIds?: string[] | undefined;
+        actualFulfillmentSupplySourceId?: string | undefined;
+        isISPU?: boolean | undefined;
+        storeChainStoreId?: string | undefined;
+        earliestDeliveryDateBefore?: string | undefined;
+        earliestDeliveryDateAfter?: string | undefined;
+        latestDeliveryDateBefore?: string | undefined;
+        latestDeliveryDateAfter?: string | undefined;
     }): Promise<GetOrdersResponse>;
     /**
        * Updates (approves or rejects) the verification status of an order containing regulated products.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).

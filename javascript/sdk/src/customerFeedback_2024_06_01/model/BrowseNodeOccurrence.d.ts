@@ -11,7 +11,7 @@ export class BrowseNodeOccurrence {
      * @param {BrowseNodeOccurrence} obj Optional instance to populate.
      * @return {BrowseNodeOccurrence} The populated <code>BrowseNodeOccurrence</code> instance.
      */
-    static constructFromObject(data: any, obj: BrowseNodeOccurrence): BrowseNodeOccurrence;
+    static constructFromObject(data: Object, obj: BrowseNodeOccurrence): BrowseNodeOccurrence;
     /**
      * Constructs a new <code>BrowseNodeOccurrence</code>.
      * The browse node review trend occurrence metrics.

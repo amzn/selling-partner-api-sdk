@@ -11,7 +11,7 @@ export class ShippingOfferingFilter {
      * @param {ShippingOfferingFilter} obj Optional instance to populate.
      * @return {ShippingOfferingFilter} The populated <code>ShippingOfferingFilter</code> instance.
      */
-    static constructFromObject(data: any, obj: ShippingOfferingFilter): ShippingOfferingFilter;
+    static constructFromObject(data: Object, obj: ShippingOfferingFilter): ShippingOfferingFilter;
     /**
      * When true, include a packing slip with the label.
      * @member {Boolean} includePackingSlipWithLabel

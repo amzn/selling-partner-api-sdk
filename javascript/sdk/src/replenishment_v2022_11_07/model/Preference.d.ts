@@ -11,7 +11,7 @@ export class Preference {
      * @param {Preference} obj Optional instance to populate.
      * @return {Preference} The populated <code>Preference</code> instance.
      */
-    static constructFromObject(data: any, obj: Preference): Preference;
+    static constructFromObject(data: Object, obj: Preference): Preference;
     /**
      * Filters the results to only include offers with the auto-enrollment preference specified.
      * @member {AutoEnrollmentPreference[]} autoEnrollment

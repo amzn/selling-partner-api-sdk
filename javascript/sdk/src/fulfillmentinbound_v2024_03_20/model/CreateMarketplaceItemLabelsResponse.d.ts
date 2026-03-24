@@ -11,7 +11,7 @@ export class CreateMarketplaceItemLabelsResponse {
      * @param {CreateMarketplaceItemLabelsResponse} obj Optional instance to populate.
      * @return {CreateMarketplaceItemLabelsResponse} The populated <code>CreateMarketplaceItemLabelsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateMarketplaceItemLabelsResponse): CreateMarketplaceItemLabelsResponse;
+    static constructFromObject(data: Object, obj: CreateMarketplaceItemLabelsResponse): CreateMarketplaceItemLabelsResponse;
     /**
      * Constructs a new <code>CreateMarketplaceItemLabelsResponse</code>.
      * The &#x60;createMarketplaceItemLabels&#x60; response.

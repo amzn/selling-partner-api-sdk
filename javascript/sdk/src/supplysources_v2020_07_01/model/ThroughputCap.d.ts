@@ -11,7 +11,7 @@ export class ThroughputCap {
      * @param {ThroughputCap} obj Optional instance to populate.
      * @return {ThroughputCap} The populated <code>ThroughputCap</code> instance.
      */
-    static constructFromObject(data: any, obj: ThroughputCap): ThroughputCap;
+    static constructFromObject(data: Object, obj: ThroughputCap): ThroughputCap;
     /**
      * An unsigned integer that can be only positive or zero.
      * @member {Number} value

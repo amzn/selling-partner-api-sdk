@@ -11,7 +11,7 @@ export class ImagingServicesFeeEvent {
      * @param {ImagingServicesFeeEvent} obj Optional instance to populate.
      * @return {ImagingServicesFeeEvent} The populated <code>ImagingServicesFeeEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: ImagingServicesFeeEvent): ImagingServicesFeeEvent;
+    static constructFromObject(data: Object, obj: ImagingServicesFeeEvent): ImagingServicesFeeEvent;
     /**
      * The identifier for the imaging services request.
      * @member {String} imagingRequestBillingItemID

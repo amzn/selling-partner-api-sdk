@@ -11,7 +11,7 @@ export class DebtRecoveryItem {
      * @param {DebtRecoveryItem} obj Optional instance to populate.
      * @return {DebtRecoveryItem} The populated <code>DebtRecoveryItem</code> instance.
      */
-    static constructFromObject(data: any, obj: DebtRecoveryItem): DebtRecoveryItem;
+    static constructFromObject(data: Object, obj: DebtRecoveryItem): DebtRecoveryItem;
     /**
      * @member {Currency} recoveryAmount
      * @type {Currency}

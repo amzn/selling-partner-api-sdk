@@ -11,7 +11,7 @@ export class BuyerCustomizedInfoDetail {
      * @param {BuyerCustomizedInfoDetail} obj Optional instance to populate.
      * @return {BuyerCustomizedInfoDetail} The populated <code>BuyerCustomizedInfoDetail</code> instance.
      */
-    static constructFromObject(data: any, obj: BuyerCustomizedInfoDetail): BuyerCustomizedInfoDetail;
+    static constructFromObject(data: Object, obj: BuyerCustomizedInfoDetail): BuyerCustomizedInfoDetail;
     /**
      * The location of a ZIP file containing Amazon Custom data.
      * @member {String} customizedURL

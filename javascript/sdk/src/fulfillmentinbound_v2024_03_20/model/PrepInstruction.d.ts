@@ -11,7 +11,7 @@ export class PrepInstruction {
      * @param {PrepInstruction} obj Optional instance to populate.
      * @return {PrepInstruction} The populated <code>PrepInstruction</code> instance.
      */
-    static constructFromObject(data: any, obj: PrepInstruction): PrepInstruction;
+    static constructFromObject(data: Object, obj: PrepInstruction): PrepInstruction;
     /**
      * @member {Currency} fee
      * @type {Currency}

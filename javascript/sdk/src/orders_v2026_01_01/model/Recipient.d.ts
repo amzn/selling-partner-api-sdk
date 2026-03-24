@@ -11,7 +11,7 @@ export class Recipient {
      * @param {Recipient} obj Optional instance to populate.
      * @return {Recipient} The populated <code>Recipient</code> instance.
      */
-    static constructFromObject(data: any, obj: Recipient): Recipient;
+    static constructFromObject(data: Object, obj: Recipient): Recipient;
     /**
      * @member {CustomerAddress} deliveryAddress
      * @type {CustomerAddress}

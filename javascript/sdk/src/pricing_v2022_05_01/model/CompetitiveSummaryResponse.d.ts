@@ -11,7 +11,7 @@ export class CompetitiveSummaryResponse {
      * @param {CompetitiveSummaryResponse} obj Optional instance to populate.
      * @return {CompetitiveSummaryResponse} The populated <code>CompetitiveSummaryResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CompetitiveSummaryResponse): CompetitiveSummaryResponse;
+    static constructFromObject(data: Object, obj: CompetitiveSummaryResponse): CompetitiveSummaryResponse;
     /**
      * Constructs a new <code>CompetitiveSummaryResponse</code>.
      * The response for the individual &#x60;competitiveSummary&#x60; request in the batch operation.

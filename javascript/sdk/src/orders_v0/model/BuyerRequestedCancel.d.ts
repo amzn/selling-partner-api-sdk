@@ -11,7 +11,7 @@ export class BuyerRequestedCancel {
      * @param {BuyerRequestedCancel} obj Optional instance to populate.
      * @return {BuyerRequestedCancel} The populated <code>BuyerRequestedCancel</code> instance.
      */
-    static constructFromObject(data: any, obj: BuyerRequestedCancel): BuyerRequestedCancel;
+    static constructFromObject(data: Object, obj: BuyerRequestedCancel): BuyerRequestedCancel;
     /**
      * Indicate whether the buyer has requested cancellation.  **Possible Values**: `true`, `false`.
      * @member {String} isBuyerRequestedCancel

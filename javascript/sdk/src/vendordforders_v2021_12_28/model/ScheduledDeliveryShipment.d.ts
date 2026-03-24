@@ -11,7 +11,7 @@ export class ScheduledDeliveryShipment {
      * @param {ScheduledDeliveryShipment} obj Optional instance to populate.
      * @return {ScheduledDeliveryShipment} The populated <code>ScheduledDeliveryShipment</code> instance.
      */
-    static constructFromObject(data: any, obj: ScheduledDeliveryShipment): ScheduledDeliveryShipment;
+    static constructFromObject(data: Object, obj: ScheduledDeliveryShipment): ScheduledDeliveryShipment;
     /**
      * Scheduled delivery service type.
      * @member {String} scheduledDeliveryServiceType

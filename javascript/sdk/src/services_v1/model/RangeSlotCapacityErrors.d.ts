@@ -11,7 +11,7 @@ export class RangeSlotCapacityErrors {
      * @param {RangeSlotCapacityErrors} obj Optional instance to populate.
      * @return {RangeSlotCapacityErrors} The populated <code>RangeSlotCapacityErrors</code> instance.
      */
-    static constructFromObject(data: any, obj: RangeSlotCapacityErrors): RangeSlotCapacityErrors;
+    static constructFromObject(data: Object, obj: RangeSlotCapacityErrors): RangeSlotCapacityErrors;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

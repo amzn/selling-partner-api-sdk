@@ -11,7 +11,7 @@ export class InvoiceError {
      * @param {InvoiceError} obj Optional instance to populate.
      * @return {InvoiceError} The populated <code>InvoiceError</code> instance.
      */
-    static constructFromObject(data: any, obj: InvoiceError): InvoiceError;
+    static constructFromObject(data: Object, obj: InvoiceError): InvoiceError;
     /**
      * A text description of the error.
      * @member {String} description

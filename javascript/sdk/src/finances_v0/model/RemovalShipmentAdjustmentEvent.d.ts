@@ -11,7 +11,7 @@ export class RemovalShipmentAdjustmentEvent {
      * @param {RemovalShipmentAdjustmentEvent} obj Optional instance to populate.
      * @return {RemovalShipmentAdjustmentEvent} The populated <code>RemovalShipmentAdjustmentEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: RemovalShipmentAdjustmentEvent): RemovalShipmentAdjustmentEvent;
+    static constructFromObject(data: Object, obj: RemovalShipmentAdjustmentEvent): RemovalShipmentAdjustmentEvent;
     /**
      * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate

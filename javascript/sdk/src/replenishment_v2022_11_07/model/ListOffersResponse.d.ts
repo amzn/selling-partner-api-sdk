@@ -11,7 +11,7 @@ export class ListOffersResponse {
      * @param {ListOffersResponse} obj Optional instance to populate.
      * @return {ListOffersResponse} The populated <code>ListOffersResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ListOffersResponse): ListOffersResponse;
+    static constructFromObject(data: Object, obj: ListOffersResponse): ListOffersResponse;
     /**
      * A list of offers.
      * @member {ListOffersResponseOffer[]} offers

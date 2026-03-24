@@ -11,7 +11,7 @@ export class DetailedShippingTimeType {
      * @param {DetailedShippingTimeType} obj Optional instance to populate.
      * @return {DetailedShippingTimeType} The populated <code>DetailedShippingTimeType</code> instance.
      */
-    static constructFromObject(data: any, obj: DetailedShippingTimeType): DetailedShippingTimeType;
+    static constructFromObject(data: Object, obj: DetailedShippingTimeType): DetailedShippingTimeType;
     /**
      * The minimum time, in hours, that the item will likely be shipped after the order has been placed.
      * @member {Number} minimumHours

@@ -11,7 +11,7 @@ export class OfferListingCountType {
      * @param {OfferListingCountType} obj Optional instance to populate.
      * @return {OfferListingCountType} The populated <code>OfferListingCountType</code> instance.
      */
-    static constructFromObject(data: any, obj: OfferListingCountType): OfferListingCountType;
+    static constructFromObject(data: Object, obj: OfferListingCountType): OfferListingCountType;
     /**
      * Constructs a new <code>OfferListingCountType</code>.
      * The number of offer listings with the specified condition.

@@ -11,7 +11,7 @@ export class Weight {
      * @param {Weight} obj Optional instance to populate.
      * @return {Weight} The populated <code>Weight</code> instance.
      */
-    static constructFromObject(data: any, obj: Weight): Weight;
+    static constructFromObject(data: Object, obj: Weight): Weight;
     /**
      * The weight of the package.
      * @member {Number} value

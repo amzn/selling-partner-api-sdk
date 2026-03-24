@@ -11,7 +11,7 @@ export class InStorePickupConfiguration {
      * @param {InStorePickupConfiguration} obj Optional instance to populate.
      * @return {InStorePickupConfiguration} The populated <code>InStorePickupConfiguration</code> instance.
      */
-    static constructFromObject(data: any, obj: InStorePickupConfiguration): InStorePickupConfiguration;
+    static constructFromObject(data: Object, obj: InStorePickupConfiguration): InStorePickupConfiguration;
     /**
      * When true, in-store pickup is supported by the supply source (default: `isSupported` value in `PickupChannel`).
      * @member {Boolean} isSupported

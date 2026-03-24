@@ -11,7 +11,7 @@ export class GetAdditionalSellerInputsRequest {
      * @param {GetAdditionalSellerInputsRequest} obj Optional instance to populate.
      * @return {GetAdditionalSellerInputsRequest} The populated <code>GetAdditionalSellerInputsRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: GetAdditionalSellerInputsRequest): GetAdditionalSellerInputsRequest;
+    static constructFromObject(data: Object, obj: GetAdditionalSellerInputsRequest): GetAdditionalSellerInputsRequest;
     /**
      * Constructs a new <code>GetAdditionalSellerInputsRequest</code>.
      * Request schema.

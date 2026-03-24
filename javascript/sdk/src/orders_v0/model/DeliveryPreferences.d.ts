@@ -11,7 +11,7 @@ export class DeliveryPreferences {
      * @param {DeliveryPreferences} obj Optional instance to populate.
      * @return {DeliveryPreferences} The populated <code>DeliveryPreferences</code> instance.
      */
-    static constructFromObject(data: any, obj: DeliveryPreferences): DeliveryPreferences;
+    static constructFromObject(data: Object, obj: DeliveryPreferences): DeliveryPreferences;
     /**
      * Drop-off location selected by the customer.
      * @member {String} dropOffLocation

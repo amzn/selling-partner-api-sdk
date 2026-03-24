@@ -11,7 +11,7 @@ export class Measurement {
      * @param {Measurement} obj Optional instance to populate.
      * @return {Measurement} The populated <code>Measurement</code> instance.
      */
-    static constructFromObject(data: any, obj: Measurement): Measurement;
+    static constructFromObject(data: Object, obj: Measurement): Measurement;
     /**
      * Constructs a new <code>Measurement</code>.
      * Measurement information for an order item.

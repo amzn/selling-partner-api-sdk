@@ -11,7 +11,7 @@ export class Attachment {
      * @param {Attachment} obj Optional instance to populate.
      * @return {Attachment} The populated <code>Attachment</code> instance.
      */
-    static constructFromObject(data: any, obj: Attachment): Attachment;
+    static constructFromObject(data: Object, obj: Attachment): Attachment;
     /**
      * Constructs a new <code>Attachment</code>.
      * Represents a file that was uploaded to a destination that was created by the Uploads API [&#x60;createUploadDestinationForResource&#x60;](https://developer-docs.amazon.com/sp-api/reference/createuploaddestinationforresource) operation.

@@ -11,7 +11,7 @@ export class AssignAppointmentResourcesRequest {
      * @param {AssignAppointmentResourcesRequest} obj Optional instance to populate.
      * @return {AssignAppointmentResourcesRequest} The populated <code>AssignAppointmentResourcesRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: AssignAppointmentResourcesRequest): AssignAppointmentResourcesRequest;
+    static constructFromObject(data: Object, obj: AssignAppointmentResourcesRequest): AssignAppointmentResourcesRequest;
     /**
      * Constructs a new <code>AssignAppointmentResourcesRequest</code>.
      * Request schema for the &#x60;assignAppointmentResources&#x60; operation.

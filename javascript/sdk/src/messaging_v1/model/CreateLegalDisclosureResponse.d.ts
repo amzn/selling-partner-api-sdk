@@ -11,7 +11,7 @@ export class CreateLegalDisclosureResponse {
      * @param {CreateLegalDisclosureResponse} obj Optional instance to populate.
      * @return {CreateLegalDisclosureResponse} The populated <code>CreateLegalDisclosureResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateLegalDisclosureResponse): CreateLegalDisclosureResponse;
+    static constructFromObject(data: Object, obj: CreateLegalDisclosureResponse): CreateLegalDisclosureResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

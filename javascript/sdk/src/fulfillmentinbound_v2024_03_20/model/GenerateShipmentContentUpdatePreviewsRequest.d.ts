@@ -11,7 +11,7 @@ export class GenerateShipmentContentUpdatePreviewsRequest {
      * @param {GenerateShipmentContentUpdatePreviewsRequest} obj Optional instance to populate.
      * @return {GenerateShipmentContentUpdatePreviewsRequest} The populated <code>GenerateShipmentContentUpdatePreviewsRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: GenerateShipmentContentUpdatePreviewsRequest): GenerateShipmentContentUpdatePreviewsRequest;
+    static constructFromObject(data: Object, obj: GenerateShipmentContentUpdatePreviewsRequest): GenerateShipmentContentUpdatePreviewsRequest;
     /**
      * Constructs a new <code>GenerateShipmentContentUpdatePreviewsRequest</code>.
      * The &#x60;GenerateShipmentContentUpdatePreviews&#x60; request.

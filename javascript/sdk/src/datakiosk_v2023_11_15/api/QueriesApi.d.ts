@@ -69,11 +69,11 @@ export class QueriesApi {
        * @return {Promise<GetQueriesResponse>}
        */
     getQueriesWithHttpInfo(opts?: {
-        processingStatuses?: string[];
-        pageSize?: number;
-        createdSince?: Date;
-        createdUntil?: Date;
-        paginationToken?: string;
+        processingStatuses?: string[] | undefined;
+        pageSize?: number | undefined;
+        createdSince?: Date | undefined;
+        createdUntil?: Date | undefined;
+        paginationToken?: string | undefined;
     }): Promise<GetQueriesResponse>;
     /**
        * Returns details for the Data Kiosk queries that match the specified filters. See the &#x60;createQuery&#x60; operation for details about query retention.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -86,11 +86,11 @@ export class QueriesApi {
        * @return {Promise<GetQueriesResponse>}
        */
     getQueries(opts?: {
-        processingStatuses?: string[];
-        pageSize?: number;
-        createdSince?: Date;
-        createdUntil?: Date;
-        paginationToken?: string;
+        processingStatuses?: string[] | undefined;
+        pageSize?: number | undefined;
+        createdSince?: Date | undefined;
+        createdUntil?: Date | undefined;
+        paginationToken?: string | undefined;
     }): Promise<GetQueriesResponse>;
     /**
        * Returns query details for the query specified by the &#x60;queryId&#x60; parameter. See the &#x60;createQuery&#x60; operation for details about query retention.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2.0 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).

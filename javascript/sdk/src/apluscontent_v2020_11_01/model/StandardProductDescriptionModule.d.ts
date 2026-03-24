@@ -11,7 +11,7 @@ export class StandardProductDescriptionModule {
      * @param {StandardProductDescriptionModule} obj Optional instance to populate.
      * @return {StandardProductDescriptionModule} The populated <code>StandardProductDescriptionModule</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardProductDescriptionModule): StandardProductDescriptionModule;
+    static constructFromObject(data: Object, obj: StandardProductDescriptionModule): StandardProductDescriptionModule;
     /**
      * Constructs a new <code>StandardProductDescriptionModule</code>.
      * Standard product description text.

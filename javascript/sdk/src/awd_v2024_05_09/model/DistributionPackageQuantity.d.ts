@@ -11,7 +11,7 @@ export class DistributionPackageQuantity {
      * @param {DistributionPackageQuantity} obj Optional instance to populate.
      * @return {DistributionPackageQuantity} The populated <code>DistributionPackageQuantity</code> instance.
      */
-    static constructFromObject(data: any, obj: DistributionPackageQuantity): DistributionPackageQuantity;
+    static constructFromObject(data: Object, obj: DistributionPackageQuantity): DistributionPackageQuantity;
     /**
      * Constructs a new <code>DistributionPackageQuantity</code>.
      * Represents a distribution package with its respective quantity.

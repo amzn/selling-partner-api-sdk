@@ -11,7 +11,7 @@ export class GetAdditionalSellerInputsResponse {
      * @param {GetAdditionalSellerInputsResponse} obj Optional instance to populate.
      * @return {GetAdditionalSellerInputsResponse} The populated <code>GetAdditionalSellerInputsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetAdditionalSellerInputsResponse): GetAdditionalSellerInputsResponse;
+    static constructFromObject(data: Object, obj: GetAdditionalSellerInputsResponse): GetAdditionalSellerInputsResponse;
     /**
      * @member {GetAdditionalSellerInputsResult} payload
      * @type {GetAdditionalSellerInputsResult}

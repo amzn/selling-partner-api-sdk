@@ -11,7 +11,7 @@ export class RangeSlot {
      * @param {RangeSlot} obj Optional instance to populate.
      * @return {RangeSlot} The populated <code>RangeSlot</code> instance.
      */
-    static constructFromObject(data: any, obj: RangeSlot): RangeSlot;
+    static constructFromObject(data: Object, obj: RangeSlot): RangeSlot;
     /**
      * Start date time of slot in ISO 8601 format with precision of seconds.
      * @member {Date} startDateTime

@@ -11,7 +11,7 @@ export class DistributionIneligibleReason {
      * @param {DistributionIneligibleReason} obj Optional instance to populate.
      * @return {DistributionIneligibleReason} The populated <code>DistributionIneligibleReason</code> instance.
      */
-    static constructFromObject(data: any, obj: DistributionIneligibleReason): DistributionIneligibleReason;
+    static constructFromObject(data: Object, obj: DistributionIneligibleReason): DistributionIneligibleReason;
     /**
      * Constructs a new <code>DistributionIneligibleReason</code>.
      * Execution errors associated with the replenishment order. This field will be populated if the order failed validation.

@@ -11,7 +11,7 @@ export class Incentive {
      * @param {Incentive} obj Optional instance to populate.
      * @return {Incentive} The populated <code>Incentive</code> instance.
      */
-    static constructFromObject(data: any, obj: Incentive): Incentive;
+    static constructFromObject(data: Object, obj: Incentive): Incentive;
     /**
      * Constructs a new <code>Incentive</code>.
      * Contains details about cost related modifications to the placement cost.

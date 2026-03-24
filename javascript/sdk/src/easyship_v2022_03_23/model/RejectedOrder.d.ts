@@ -11,7 +11,7 @@ export class RejectedOrder {
      * @param {RejectedOrder} obj Optional instance to populate.
      * @return {RejectedOrder} The populated <code>RejectedOrder</code> instance.
      */
-    static constructFromObject(data: any, obj: RejectedOrder): RejectedOrder;
+    static constructFromObject(data: Object, obj: RejectedOrder): RejectedOrder;
     /**
      * Constructs a new <code>RejectedOrder</code>.
      * A order which we couldn&#39;t schedule on your behalf. It contains its id, and information on the error.

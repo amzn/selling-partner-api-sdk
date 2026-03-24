@@ -11,7 +11,7 @@ export class GetMarketplaceParticipationsResponse {
      * @param {GetMarketplaceParticipationsResponse} obj Optional instance to populate.
      * @return {GetMarketplaceParticipationsResponse} The populated <code>GetMarketplaceParticipationsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetMarketplaceParticipationsResponse): GetMarketplaceParticipationsResponse;
+    static constructFromObject(data: Object, obj: GetMarketplaceParticipationsResponse): GetMarketplaceParticipationsResponse;
     /**
      * List of marketplace participations.
      * @member {MarketplaceParticipation[]} payload

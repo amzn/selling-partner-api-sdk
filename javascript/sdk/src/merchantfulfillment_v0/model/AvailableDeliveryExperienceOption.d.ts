@@ -11,7 +11,7 @@ export class AvailableDeliveryExperienceOption {
      * @param {AvailableDeliveryExperienceOption} obj Optional instance to populate.
      * @return {AvailableDeliveryExperienceOption} The populated <code>AvailableDeliveryExperienceOption</code> instance.
      */
-    static constructFromObject(data: any, obj: AvailableDeliveryExperienceOption): AvailableDeliveryExperienceOption;
+    static constructFromObject(data: Object, obj: AvailableDeliveryExperienceOption): AvailableDeliveryExperienceOption;
     /**
      * Constructs a new <code>AvailableDeliveryExperienceOption</code>.
      * The available delivery confirmation options, and the fee charged, if any.

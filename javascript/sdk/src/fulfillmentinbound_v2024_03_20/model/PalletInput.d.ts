@@ -11,7 +11,7 @@ export class PalletInput {
      * @param {PalletInput} obj Optional instance to populate.
      * @return {PalletInput} The populated <code>PalletInput</code> instance.
      */
-    static constructFromObject(data: any, obj: PalletInput): PalletInput;
+    static constructFromObject(data: Object, obj: PalletInput): PalletInput;
     /**
      * Constructs a new <code>PalletInput</code>.
      * Contains input information about a pallet to be used in the inbound plan.

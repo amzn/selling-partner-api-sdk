@@ -11,7 +11,7 @@ export class CompetitiveSummaryResponseBody {
      * @param {CompetitiveSummaryResponseBody} obj Optional instance to populate.
      * @return {CompetitiveSummaryResponseBody} The populated <code>CompetitiveSummaryResponseBody</code> instance.
      */
-    static constructFromObject(data: any, obj: CompetitiveSummaryResponseBody): CompetitiveSummaryResponseBody;
+    static constructFromObject(data: Object, obj: CompetitiveSummaryResponseBody): CompetitiveSummaryResponseBody;
     /**
      * Constructs a new <code>CompetitiveSummaryResponseBody</code>.
      * The &#x60;competitiveSummaryResponse&#x60; body for a requested ASIN and &#x60;marketplaceId&#x60;.

@@ -11,7 +11,7 @@ export class PackedItems {
      * @param {PackedItems} obj Optional instance to populate.
      * @return {PackedItems} The populated <code>PackedItems</code> instance.
      */
-    static constructFromObject(data: any, obj: PackedItems): PackedItems;
+    static constructFromObject(data: Object, obj: PackedItems): PackedItems;
     /**
      * Item sequence number for the item. The first item will be 001, the second 002, and so on. This number is used as a reference to refer to this item from the carton or pallet level.
      * @member {String} itemSequenceNumber

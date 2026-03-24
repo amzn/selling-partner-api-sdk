@@ -11,7 +11,7 @@ export class InboundPackages {
      * @param {InboundPackages} obj Optional instance to populate.
      * @return {InboundPackages} The populated <code>InboundPackages</code> instance.
      */
-    static constructFromObject(data: any, obj: InboundPackages): InboundPackages;
+    static constructFromObject(data: Object, obj: InboundPackages): InboundPackages;
     /**
      * Constructs a new <code>InboundPackages</code>.
      * Represents the packages to inbound.

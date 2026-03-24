@@ -11,7 +11,7 @@ export class OrderItemsInner {
      * @param {OrderItemsInner} obj Optional instance to populate.
      * @return {OrderItemsInner} The populated <code>OrderItemsInner</code> instance.
      */
-    static constructFromObject(data: any, obj: OrderItemsInner): OrderItemsInner;
+    static constructFromObject(data: Object, obj: OrderItemsInner): OrderItemsInner;
     /**
      * The order item's unique identifier.
      * @member {String} orderItemId

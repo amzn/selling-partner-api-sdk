@@ -11,7 +11,7 @@ export class TaxDetail {
      * @param {TaxDetail} obj Optional instance to populate.
      * @return {TaxDetail} The populated <code>TaxDetail</code> instance.
      */
-    static constructFromObject(data: any, obj: TaxDetail): TaxDetail;
+    static constructFromObject(data: Object, obj: TaxDetail): TaxDetail;
     /**
      * Constructs a new <code>TaxDetail</code>.
      * Indicates the tax specifications associated with the shipment for customs compliance purposes in certain regions.

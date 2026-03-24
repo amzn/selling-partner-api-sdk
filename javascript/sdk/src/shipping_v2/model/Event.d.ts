@@ -11,7 +11,7 @@ export class Event {
      * @param {Event} obj Optional instance to populate.
      * @return {Event} The populated <code>Event</code> instance.
      */
-    static constructFromObject(data: any, obj: Event): Event;
+    static constructFromObject(data: Object, obj: Event): Event;
     /**
      * Constructs a new <code>Event</code>.
      * A tracking event.

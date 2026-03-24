@@ -32,7 +32,7 @@ export class ListingsApi {
        * @return {Promise<ListingsItemSubmissionResponse>}
        */
     deleteListingsItemWithHttpInfo(sellerId: string, sku: string, marketplaceIds: string[], opts?: {
-        issueLocale?: string;
+        issueLocale?: string | undefined;
     }): Promise<ListingsItemSubmissionResponse>;
     /**
        * Delete a listings item for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput can receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling Partner API documentation.
@@ -44,7 +44,7 @@ export class ListingsApi {
        * @return {Promise<ListingsItemSubmissionResponse>}
        */
     deleteListingsItem(sellerId: string, sku: string, marketplaceIds: string[], opts?: {
-        issueLocale?: string;
+        issueLocale?: string | undefined;
     }): Promise<ListingsItemSubmissionResponse>;
     /**
        * Returns details about a listings item for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput can receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling Partner API documentation.
@@ -57,8 +57,8 @@ export class ListingsApi {
        * @return {Promise<Item>}
        */
     getListingsItemWithHttpInfo(sellerId: string, sku: string, marketplaceIds: string[], opts?: {
-        issueLocale?: string;
-        includedData?: string[];
+        issueLocale?: string | undefined;
+        includedData?: string[] | undefined;
     }): Promise<Item>;
     /**
        * Returns details about a listings item for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput can receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling Partner API documentation.
@@ -71,8 +71,8 @@ export class ListingsApi {
        * @return {Promise<Item>}
        */
     getListingsItem(sellerId: string, sku: string, marketplaceIds: string[], opts?: {
-        issueLocale?: string;
-        includedData?: string[];
+        issueLocale?: string | undefined;
+        includedData?: string[] | undefined;
     }): Promise<Item>;
     /**
        * Partially update (patch) a listings item for a selling partner. Only top-level listings item attributes can be patched. Patching nested attributes is not supported.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput can receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling Partner API documentation.
@@ -87,9 +87,9 @@ export class ListingsApi {
        * @return {Promise<ListingsItemSubmissionResponse>}
        */
     patchListingsItemWithHttpInfo(sellerId: string, sku: string, marketplaceIds: string[], body: ListingsItemPatchRequest, opts?: {
-        includedData?: string[];
-        mode?: string;
-        issueLocale?: string;
+        includedData?: string[] | undefined;
+        mode?: string | undefined;
+        issueLocale?: string | undefined;
     }): Promise<ListingsItemSubmissionResponse>;
     /**
        * Partially update (patch) a listings item for a selling partner. Only top-level listings item attributes can be patched. Patching nested attributes is not supported.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput can receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling Partner API documentation.
@@ -104,9 +104,9 @@ export class ListingsApi {
        * @return {Promise<ListingsItemSubmissionResponse>}
        */
     patchListingsItem(sellerId: string, sku: string, marketplaceIds: string[], body: ListingsItemPatchRequest, opts?: {
-        includedData?: string[];
-        mode?: string;
-        issueLocale?: string;
+        includedData?: string[] | undefined;
+        mode?: string | undefined;
+        issueLocale?: string | undefined;
     }): Promise<ListingsItemSubmissionResponse>;
     /**
        * Creates a new or fully-updates an existing listings item for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput can receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling Partner API documentation.
@@ -121,9 +121,9 @@ export class ListingsApi {
        * @return {Promise<ListingsItemSubmissionResponse>}
        */
     putListingsItemWithHttpInfo(sellerId: string, sku: string, marketplaceIds: string[], body: ListingsItemPutRequest, opts?: {
-        includedData?: string[];
-        mode?: string;
-        issueLocale?: string;
+        includedData?: string[] | undefined;
+        mode?: string | undefined;
+        issueLocale?: string | undefined;
     }): Promise<ListingsItemSubmissionResponse>;
     /**
        * Creates a new or fully-updates an existing listings item for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput can receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling Partner API documentation.
@@ -138,9 +138,9 @@ export class ListingsApi {
        * @return {Promise<ListingsItemSubmissionResponse>}
        */
     putListingsItem(sellerId: string, sku: string, marketplaceIds: string[], body: ListingsItemPutRequest, opts?: {
-        includedData?: string[];
-        mode?: string;
-        issueLocale?: string;
+        includedData?: string[] | undefined;
+        mode?: string | undefined;
+        issueLocale?: string | undefined;
     }): Promise<ListingsItemSubmissionResponse>;
     /**
        * Search for and return a list of selling partner listings items and their respective details.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -167,23 +167,23 @@ export class ListingsApi {
        * @return {Promise<ItemSearchResults>}
        */
     searchListingsItemsWithHttpInfo(sellerId: string, marketplaceIds: string[], opts?: {
-        issueLocale?: string;
-        includedData?: string[];
-        identifiers?: string[];
-        identifiersType?: string;
-        variationParentSku?: string;
-        packageHierarchySku?: string;
-        createdAfter?: Date;
-        createdBefore?: Date;
-        lastUpdatedAfter?: Date;
-        lastUpdatedBefore?: Date;
-        withIssueSeverity?: string[];
-        withStatus?: string[];
-        withoutStatus?: string[];
-        sortBy?: string;
-        sortOrder?: string;
-        pageSize?: number;
-        pageToken?: string;
+        issueLocale?: string | undefined;
+        includedData?: string[] | undefined;
+        identifiers?: string[] | undefined;
+        identifiersType?: string | undefined;
+        variationParentSku?: string | undefined;
+        packageHierarchySku?: string | undefined;
+        createdAfter?: Date | undefined;
+        createdBefore?: Date | undefined;
+        lastUpdatedAfter?: Date | undefined;
+        lastUpdatedBefore?: Date | undefined;
+        withIssueSeverity?: string[] | undefined;
+        withStatus?: string[] | undefined;
+        withoutStatus?: string[] | undefined;
+        sortBy?: string | undefined;
+        sortOrder?: string | undefined;
+        pageSize?: number | undefined;
+        pageToken?: string | undefined;
     }): Promise<ItemSearchResults>;
     /**
        * Search for and return a list of selling partner listings items and their respective details.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -210,23 +210,23 @@ export class ListingsApi {
        * @return {Promise<ItemSearchResults>}
        */
     searchListingsItems(sellerId: string, marketplaceIds: string[], opts?: {
-        issueLocale?: string;
-        includedData?: string[];
-        identifiers?: string[];
-        identifiersType?: string;
-        variationParentSku?: string;
-        packageHierarchySku?: string;
-        createdAfter?: Date;
-        createdBefore?: Date;
-        lastUpdatedAfter?: Date;
-        lastUpdatedBefore?: Date;
-        withIssueSeverity?: string[];
-        withStatus?: string[];
-        withoutStatus?: string[];
-        sortBy?: string;
-        sortOrder?: string;
-        pageSize?: number;
-        pageToken?: string;
+        issueLocale?: string | undefined;
+        includedData?: string[] | undefined;
+        identifiers?: string[] | undefined;
+        identifiersType?: string | undefined;
+        variationParentSku?: string | undefined;
+        packageHierarchySku?: string | undefined;
+        createdAfter?: Date | undefined;
+        createdBefore?: Date | undefined;
+        lastUpdatedAfter?: Date | undefined;
+        lastUpdatedBefore?: Date | undefined;
+        withIssueSeverity?: string[] | undefined;
+        withStatus?: string[] | undefined;
+        withoutStatus?: string[] | undefined;
+        sortBy?: string | undefined;
+        sortOrder?: string | undefined;
+        pageSize?: number | undefined;
+        pageToken?: string | undefined;
     }): Promise<ItemSearchResults>;
     #private;
 }

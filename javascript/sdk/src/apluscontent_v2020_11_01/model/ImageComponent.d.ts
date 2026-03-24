@@ -11,7 +11,7 @@ export class ImageComponent {
      * @param {ImageComponent} obj Optional instance to populate.
      * @return {ImageComponent} The populated <code>ImageComponent</code> instance.
      */
-    static constructFromObject(data: any, obj: ImageComponent): ImageComponent;
+    static constructFromObject(data: Object, obj: ImageComponent): ImageComponent;
     /**
      * Constructs a new <code>ImageComponent</code>.
      * A reference to an image, hosted in the A+ Content media library.

@@ -11,7 +11,7 @@ export class ValidateContentDocumentAsinRelationsResponse {
      * @param {ValidateContentDocumentAsinRelationsResponse} obj Optional instance to populate.
      * @return {ValidateContentDocumentAsinRelationsResponse} The populated <code>ValidateContentDocumentAsinRelationsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ValidateContentDocumentAsinRelationsResponse): ValidateContentDocumentAsinRelationsResponse;
+    static constructFromObject(data: Object, obj: ValidateContentDocumentAsinRelationsResponse): ValidateContentDocumentAsinRelationsResponse;
     /**
      * Constructs a new <code>ValidateContentDocumentAsinRelationsResponse</code>.
      * @alias module:apluscontent_v2020_11_01/model/ValidateContentDocumentAsinRelationsResponse

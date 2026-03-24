@@ -11,7 +11,7 @@ export class ListOffersRequestSort {
      * @param {ListOffersRequestSort} obj Optional instance to populate.
      * @return {ListOffersRequestSort} The populated <code>ListOffersRequestSort</code> instance.
      */
-    static constructFromObject(data: any, obj: ListOffersRequestSort): ListOffersRequestSort;
+    static constructFromObject(data: Object, obj: ListOffersRequestSort): ListOffersRequestSort;
     /**
      * Constructs a new <code>ListOffersRequestSort</code>.
      * Use these parameters to sort the response.

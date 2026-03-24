@@ -11,7 +11,7 @@ export class Segment {
      * @param {Segment} obj Optional instance to populate.
      * @return {Segment} The populated <code>Segment</code> instance.
      */
-    static constructFromObject(data: any, obj: Segment): Segment;
+    static constructFromObject(data: Object, obj: Segment): Segment;
     /**
      * @member {SegmentDetails} segmentDetails
      * @type {SegmentDetails}

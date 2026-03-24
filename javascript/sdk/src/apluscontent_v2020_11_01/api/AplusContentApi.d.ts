@@ -63,9 +63,9 @@ export class AplusContentApi {
        * @return {Promise<ListContentDocumentAsinRelationsResponse>}
        */
     listContentDocumentAsinRelationsWithHttpInfo(contentReferenceKey: string, marketplaceId: string, opts?: {
-        includedDataSet?: string[];
-        asinSet?: string[];
-        pageToken?: string;
+        includedDataSet?: string[] | undefined;
+        asinSet?: string[] | undefined;
+        pageToken?: string | undefined;
     }): Promise<ListContentDocumentAsinRelationsResponse>;
     /**
        * Returns a list of ASINs that are related to the specified A+ Content document, if available. If you don&#39;t include the &#x60;asinSet&#x60; parameter, this operation returns all ASINs related to the content document.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -78,9 +78,9 @@ export class AplusContentApi {
        * @return {Promise<ListContentDocumentAsinRelationsResponse>}
        */
     listContentDocumentAsinRelations(contentReferenceKey: string, marketplaceId: string, opts?: {
-        includedDataSet?: string[];
-        asinSet?: string[];
-        pageToken?: string;
+        includedDataSet?: string[] | undefined;
+        asinSet?: string[] | undefined;
+        pageToken?: string | undefined;
     }): Promise<ListContentDocumentAsinRelationsResponse>;
     /**
        * Submits an A+ Content document for review, approval, and publishing.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -134,7 +134,7 @@ export class AplusContentApi {
        * @return {Promise<SearchContentDocumentsResponse>}
        */
     searchContentDocumentsWithHttpInfo(marketplaceId: string, opts?: {
-        pageToken?: string;
+        pageToken?: string | undefined;
     }): Promise<SearchContentDocumentsResponse>;
     /**
        * Returns a list of all A+ Content documents, including metadata, that are assigned to a selling partner. To get the actual contents of the A+ Content documents, call the &#x60;getContentDocument&#x60; operation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -144,7 +144,7 @@ export class AplusContentApi {
        * @return {Promise<SearchContentDocumentsResponse>}
        */
     searchContentDocuments(marketplaceId: string, opts?: {
-        pageToken?: string;
+        pageToken?: string | undefined;
     }): Promise<SearchContentDocumentsResponse>;
     /**
        * Searches for A+ Content publishing records, if available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -155,7 +155,7 @@ export class AplusContentApi {
        * @return {Promise<SearchContentPublishRecordsResponse>}
        */
     searchContentPublishRecordsWithHttpInfo(marketplaceId: string, asin: string, opts?: {
-        pageToken?: string;
+        pageToken?: string | undefined;
     }): Promise<SearchContentPublishRecordsResponse>;
     /**
        * Searches for A+ Content publishing records, if available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -166,7 +166,7 @@ export class AplusContentApi {
        * @return {Promise<SearchContentPublishRecordsResponse>}
        */
     searchContentPublishRecords(marketplaceId: string, asin: string, opts?: {
-        pageToken?: string;
+        pageToken?: string | undefined;
     }): Promise<SearchContentPublishRecordsResponse>;
     /**
        * Updates an existing A+ Content document.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -193,7 +193,7 @@ export class AplusContentApi {
        * @return {Promise<ValidateContentDocumentAsinRelationsResponse>}
        */
     validateContentDocumentAsinRelationsWithHttpInfo(marketplaceId: string, postContentDocumentRequest: PostContentDocumentRequest, opts?: {
-        asinSet?: string[];
+        asinSet?: string[] | undefined;
     }): Promise<ValidateContentDocumentAsinRelationsResponse>;
     /**
        * Checks if the A+ Content document is valid for use on a set of ASINs.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -204,7 +204,7 @@ export class AplusContentApi {
        * @return {Promise<ValidateContentDocumentAsinRelationsResponse>}
        */
     validateContentDocumentAsinRelations(marketplaceId: string, postContentDocumentRequest: PostContentDocumentRequest, opts?: {
-        asinSet?: string[];
+        asinSet?: string[] | undefined;
     }): Promise<ValidateContentDocumentAsinRelationsResponse>;
     #private;
 }

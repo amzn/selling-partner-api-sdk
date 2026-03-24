@@ -11,7 +11,7 @@ export class PackingOption {
      * @param {PackingOption} obj Optional instance to populate.
      * @return {PackingOption} The populated <code>PackingOption</code> instance.
      */
-    static constructFromObject(data: any, obj: PackingOption): PackingOption;
+    static constructFromObject(data: Object, obj: PackingOption): PackingOption;
     /**
      * Constructs a new <code>PackingOption</code>.
      * A packing option contains a set of pack groups plus additional information about the packing option, such as any discounts or fees if it&#39;s selected.

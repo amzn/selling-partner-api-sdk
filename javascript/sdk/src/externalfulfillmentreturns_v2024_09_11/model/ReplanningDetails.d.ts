@@ -11,7 +11,7 @@ export class ReplanningDetails {
      * @param {ReplanningDetails} obj Optional instance to populate.
      * @return {ReplanningDetails} The populated <code>ReplanningDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: ReplanningDetails): ReplanningDetails;
+    static constructFromObject(data: Object, obj: ReplanningDetails): ReplanningDetails;
     /**
      * A list of all the previous tracking information for the return.
      * @member {TrackingInfo[]} previousTrackingInfo

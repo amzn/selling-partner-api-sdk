@@ -11,7 +11,7 @@ export class Participation {
      * @param {Participation} obj Optional instance to populate.
      * @return {Participation} The populated <code>Participation</code> instance.
      */
-    static constructFromObject(data: any, obj: Participation): Participation;
+    static constructFromObject(data: Object, obj: Participation): Participation;
     /**
      * Constructs a new <code>Participation</code>.
      * Information that is specific to a seller in a marketplace.

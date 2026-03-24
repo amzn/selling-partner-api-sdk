@@ -11,7 +11,7 @@ export class SpdTrackingItem {
      * @param {SpdTrackingItem} obj Optional instance to populate.
      * @return {SpdTrackingItem} The populated <code>SpdTrackingItem</code> instance.
      */
-    static constructFromObject(data: any, obj: SpdTrackingItem): SpdTrackingItem;
+    static constructFromObject(data: Object, obj: SpdTrackingItem): SpdTrackingItem;
     /**
      * The ID provided by Amazon that identifies a given box. This ID is comprised of the external shipment ID (which is generated after transportation has been confirmed) and the index of the box.
      * @member {String} boxId

@@ -11,7 +11,7 @@ export class ReplacedShipmentInfo {
      * @param {ReplacedShipmentInfo} obj Optional instance to populate.
      * @return {ReplacedShipmentInfo} The populated <code>ReplacedShipmentInfo</code> instance.
      */
-    static constructFromObject(data: any, obj: ReplacedShipmentInfo): ReplacedShipmentInfo;
+    static constructFromObject(data: Object, obj: ReplacedShipmentInfo): ReplacedShipmentInfo;
     /**
      * Constructs a new <code>ReplacedShipmentInfo</code>.
      * Details of the original shipment if &#x60;shipmentType&#x60; is either &#x60;REPLACEMENT&#x60; or &#x60;EXCHANGE&#x60;.

@@ -11,7 +11,7 @@ export class PayWithAmazonEvent {
      * @param {PayWithAmazonEvent} obj Optional instance to populate.
      * @return {PayWithAmazonEvent} The populated <code>PayWithAmazonEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: PayWithAmazonEvent): PayWithAmazonEvent;
+    static constructFromObject(data: Object, obj: PayWithAmazonEvent): PayWithAmazonEvent;
     /**
      * An order identifier that is specified by the seller.
      * @member {String} sellerOrderId

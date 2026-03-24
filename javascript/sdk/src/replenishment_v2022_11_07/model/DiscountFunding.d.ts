@@ -11,7 +11,7 @@ export class DiscountFunding {
      * @param {DiscountFunding} obj Optional instance to populate.
      * @return {DiscountFunding} The populated <code>DiscountFunding</code> instance.
      */
-    static constructFromObject(data: any, obj: DiscountFunding): DiscountFunding;
+    static constructFromObject(data: Object, obj: DiscountFunding): DiscountFunding;
     /**
      * Filters the results to only include offers with the percentage specified.
      * @member {Number[]} percentage

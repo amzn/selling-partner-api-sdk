@@ -11,7 +11,7 @@ export class PurchaseShipmentRequest {
      * @param {PurchaseShipmentRequest} obj Optional instance to populate.
      * @return {PurchaseShipmentRequest} The populated <code>PurchaseShipmentRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: PurchaseShipmentRequest): PurchaseShipmentRequest;
+    static constructFromObject(data: Object, obj: PurchaseShipmentRequest): PurchaseShipmentRequest;
     /**
      * Constructs a new <code>PurchaseShipmentRequest</code>.
      * The request schema for the purchaseShipment operation.
@@ -37,7 +37,7 @@ export class PurchaseShipmentRequest {
      * @type {{String: Object}}
      */
     additionalInputs: {
-        String: any;
+        String: Object;
     };
 }
 import { RequestedDocumentSpecification } from './RequestedDocumentSpecification.js';

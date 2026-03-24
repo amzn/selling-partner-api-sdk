@@ -11,7 +11,7 @@ export class GenerateDeliveryWindowOptionsResponse {
      * @param {GenerateDeliveryWindowOptionsResponse} obj Optional instance to populate.
      * @return {GenerateDeliveryWindowOptionsResponse} The populated <code>GenerateDeliveryWindowOptionsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GenerateDeliveryWindowOptionsResponse): GenerateDeliveryWindowOptionsResponse;
+    static constructFromObject(data: Object, obj: GenerateDeliveryWindowOptionsResponse): GenerateDeliveryWindowOptionsResponse;
     /**
      * Constructs a new <code>GenerateDeliveryWindowOptionsResponse</code>.
      * The &#x60;generateDeliveryWindowOptions&#x60; response.

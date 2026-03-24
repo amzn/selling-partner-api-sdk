@@ -11,7 +11,7 @@ export class ItemDimensionsByMarketplace {
      * @param {ItemDimensionsByMarketplace} obj Optional instance to populate.
      * @return {ItemDimensionsByMarketplace} The populated <code>ItemDimensionsByMarketplace</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemDimensionsByMarketplace): ItemDimensionsByMarketplace;
+    static constructFromObject(data: Object, obj: ItemDimensionsByMarketplace): ItemDimensionsByMarketplace;
     /**
      * Constructs a new <code>ItemDimensionsByMarketplace</code>.
      * Dimensions that are associated with the item in the Amazon catalog for the indicated &#x60;marketplaceId&#x60;.

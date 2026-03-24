@@ -11,7 +11,7 @@ export class Dimension {
      * @param {Dimension} obj Optional instance to populate.
      * @return {Dimension} The populated <code>Dimension</code> instance.
      */
-    static constructFromObject(data: any, obj: Dimension): Dimension;
+    static constructFromObject(data: Object, obj: Dimension): Dimension;
     /**
      * Unit of measurement for the dimension value.
      * @member {String} unit

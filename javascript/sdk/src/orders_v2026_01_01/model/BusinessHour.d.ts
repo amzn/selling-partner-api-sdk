@@ -11,7 +11,7 @@ export class BusinessHour {
      * @param {BusinessHour} obj Optional instance to populate.
      * @return {BusinessHour} The populated <code>BusinessHour</code> instance.
      */
-    static constructFromObject(data: any, obj: BusinessHour): BusinessHour;
+    static constructFromObject(data: Object, obj: BusinessHour): BusinessHour;
     /**
      * Specific day of the week for which operating hours are being defined.
      * @member {String} dayOfWeek

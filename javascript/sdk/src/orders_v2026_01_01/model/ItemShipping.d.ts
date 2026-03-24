@@ -11,7 +11,7 @@ export class ItemShipping {
      * @param {ItemShipping} obj Optional instance to populate.
      * @return {ItemShipping} The populated <code>ItemShipping</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemShipping): ItemShipping;
+    static constructFromObject(data: Object, obj: ItemShipping): ItemShipping;
     /**
      * @member {DateTimeRange} scheduledDeliveryWindow
      * @type {DateTimeRange}

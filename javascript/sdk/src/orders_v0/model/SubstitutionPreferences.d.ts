@@ -11,7 +11,7 @@ export class SubstitutionPreferences {
      * @param {SubstitutionPreferences} obj Optional instance to populate.
      * @return {SubstitutionPreferences} The populated <code>SubstitutionPreferences</code> instance.
      */
-    static constructFromObject(data: any, obj: SubstitutionPreferences): SubstitutionPreferences;
+    static constructFromObject(data: Object, obj: SubstitutionPreferences): SubstitutionPreferences;
     /**
      * Constructs a new <code>SubstitutionPreferences</code>.
      * Substitution preferences for an order item.

@@ -11,7 +11,7 @@ export class TaxWithholdingEvent {
      * @param {TaxWithholdingEvent} obj Optional instance to populate.
      * @return {TaxWithholdingEvent} The populated <code>TaxWithholdingEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: TaxWithholdingEvent): TaxWithholdingEvent;
+    static constructFromObject(data: Object, obj: TaxWithholdingEvent): TaxWithholdingEvent;
     /**
      * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate

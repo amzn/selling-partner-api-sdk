@@ -11,7 +11,7 @@ export class GovernmentInvoiceRequest {
      * @param {GovernmentInvoiceRequest} obj Optional instance to populate.
      * @return {GovernmentInvoiceRequest} The populated <code>GovernmentInvoiceRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: GovernmentInvoiceRequest): GovernmentInvoiceRequest;
+    static constructFromObject(data: Object, obj: GovernmentInvoiceRequest): GovernmentInvoiceRequest;
     /**
      * Constructs a new <code>GovernmentInvoiceRequest</code>.
      * Information required to create the government invoice.

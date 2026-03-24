@@ -11,7 +11,7 @@ export class InboundPreferences {
      * @param {InboundPreferences} obj Optional instance to populate.
      * @return {InboundPreferences} The populated <code>InboundPreferences</code> instance.
      */
-    static constructFromObject(data: any, obj: InboundPreferences): InboundPreferences;
+    static constructFromObject(data: Object, obj: InboundPreferences): InboundPreferences;
     /**
      * Pass a preferred region so that the inbound order can be shipped to an AWD warehouse located in that region. This doesn't guarantee the order to be assigned in the specified destination region as it depends on warehouse capacity availability. AWD currently supports following region IDs: [us-west, us-east, us-southcentral, us-southeast]
      * @member {String} destinationRegion

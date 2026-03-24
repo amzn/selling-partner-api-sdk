@@ -11,7 +11,7 @@ export class Appointment {
      * @param {Appointment} obj Optional instance to populate.
      * @return {Appointment} The populated <code>Appointment</code> instance.
      */
-    static constructFromObject(data: any, obj: Appointment): Appointment;
+    static constructFromObject(data: Object, obj: Appointment): Appointment;
     /**
      * The appointment identifier.
      * @member {String} appointmentId

@@ -11,7 +11,7 @@ export class TDSReimbursementEvent {
      * @param {TDSReimbursementEvent} obj Optional instance to populate.
      * @return {TDSReimbursementEvent} The populated <code>TDSReimbursementEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: TDSReimbursementEvent): TDSReimbursementEvent;
+    static constructFromObject(data: Object, obj: TDSReimbursementEvent): TDSReimbursementEvent;
     /**
      * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate

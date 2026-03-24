@@ -11,7 +11,7 @@ export class AffordabilityExpenseEvent {
      * @param {AffordabilityExpenseEvent} obj Optional instance to populate.
      * @return {AffordabilityExpenseEvent} The populated <code>AffordabilityExpenseEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: AffordabilityExpenseEvent): AffordabilityExpenseEvent;
+    static constructFromObject(data: Object, obj: AffordabilityExpenseEvent): AffordabilityExpenseEvent;
     /**
      * Constructs a new <code>AffordabilityExpenseEvent</code>.
      * An expense related to an affordability promotion.

@@ -11,7 +11,7 @@ export class PostContentDocumentAsinRelationsRequest {
      * @param {PostContentDocumentAsinRelationsRequest} obj Optional instance to populate.
      * @return {PostContentDocumentAsinRelationsRequest} The populated <code>PostContentDocumentAsinRelationsRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: PostContentDocumentAsinRelationsRequest): PostContentDocumentAsinRelationsRequest;
+    static constructFromObject(data: Object, obj: PostContentDocumentAsinRelationsRequest): PostContentDocumentAsinRelationsRequest;
     /**
      * Constructs a new <code>PostContentDocumentAsinRelationsRequest</code>.
      * @alias module:apluscontent_v2020_11_01/model/PostContentDocumentAsinRelationsRequest

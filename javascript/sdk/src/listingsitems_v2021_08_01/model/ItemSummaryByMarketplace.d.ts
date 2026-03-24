@@ -11,7 +11,7 @@ export class ItemSummaryByMarketplace {
      * @param {ItemSummaryByMarketplace} obj Optional instance to populate.
      * @return {ItemSummaryByMarketplace} The populated <code>ItemSummaryByMarketplace</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemSummaryByMarketplace): ItemSummaryByMarketplace;
+    static constructFromObject(data: Object, obj: ItemSummaryByMarketplace): ItemSummaryByMarketplace;
     /**
      * Constructs a new <code>ItemSummaryByMarketplace</code>.
      * Summary details of a listings item for an Amazon marketplace.

@@ -11,7 +11,7 @@ export class BatchRequest {
      * @param {BatchRequest} obj Optional instance to populate.
      * @return {BatchRequest} The populated <code>BatchRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: BatchRequest): BatchRequest;
+    static constructFromObject(data: Object, obj: BatchRequest): BatchRequest;
     /**
      * Constructs a new <code>BatchRequest</code>.
      * The common properties for individual requests within a batch.
@@ -29,7 +29,7 @@ export class BatchRequest {
      * @type {{String: Object}}
      */
     body: {
-        String: any;
+        String: Object;
     };
     /**
      * A mapping of additional HTTP headers to send or receive for an individual request within a batch.

@@ -11,7 +11,7 @@ export class WindowInput {
      * @param {WindowInput} obj Optional instance to populate.
      * @return {WindowInput} The populated <code>WindowInput</code> instance.
      */
-    static constructFromObject(data: any, obj: WindowInput): WindowInput;
+    static constructFromObject(data: Object, obj: WindowInput): WindowInput;
     /**
      * Constructs a new <code>WindowInput</code>.
      * Contains only a starting DateTime.

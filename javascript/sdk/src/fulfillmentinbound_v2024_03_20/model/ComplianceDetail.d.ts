@@ -11,7 +11,7 @@ export class ComplianceDetail {
      * @param {ComplianceDetail} obj Optional instance to populate.
      * @return {ComplianceDetail} The populated <code>ComplianceDetail</code> instance.
      */
-    static constructFromObject(data: any, obj: ComplianceDetail): ComplianceDetail;
+    static constructFromObject(data: Object, obj: ComplianceDetail): ComplianceDetail;
     /**
      * The Amazon Standard Identification Number, which identifies the detail page identifier.
      * @member {String} asin

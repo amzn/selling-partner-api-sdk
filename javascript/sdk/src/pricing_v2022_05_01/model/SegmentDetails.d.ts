@@ -11,7 +11,7 @@ export class SegmentDetails {
      * @param {SegmentDetails} obj Optional instance to populate.
      * @return {SegmentDetails} The populated <code>SegmentDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: SegmentDetails): SegmentDetails;
+    static constructFromObject(data: Object, obj: SegmentDetails): SegmentDetails;
     /**
      * The glance view weighted percentage for this segment, which is the glance views for this segment as a percentage of total glance views across all segments for the ASIN. A higher percentage indicates that more Amazon customers receive this offer as the Featured Offer.
      * @member {Number} glanceViewWeightPercentage

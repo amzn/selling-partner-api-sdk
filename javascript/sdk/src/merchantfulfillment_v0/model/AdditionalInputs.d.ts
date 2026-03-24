@@ -11,7 +11,7 @@ export class AdditionalInputs {
      * @param {AdditionalInputs} obj Optional instance to populate.
      * @return {AdditionalInputs} The populated <code>AdditionalInputs</code> instance.
      */
-    static constructFromObject(data: any, obj: AdditionalInputs): AdditionalInputs;
+    static constructFromObject(data: Object, obj: AdditionalInputs): AdditionalInputs;
     /**
      * The field name.
      * @member {String} additionalInputFieldName

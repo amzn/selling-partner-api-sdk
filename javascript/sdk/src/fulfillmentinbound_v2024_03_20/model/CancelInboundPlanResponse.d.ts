@@ -11,7 +11,7 @@ export class CancelInboundPlanResponse {
      * @param {CancelInboundPlanResponse} obj Optional instance to populate.
      * @return {CancelInboundPlanResponse} The populated <code>CancelInboundPlanResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CancelInboundPlanResponse): CancelInboundPlanResponse;
+    static constructFromObject(data: Object, obj: CancelInboundPlanResponse): CancelInboundPlanResponse;
     /**
      * Constructs a new <code>CancelInboundPlanResponse</code>.
      * The &#x60;cancelInboundPlan&#x60; response.

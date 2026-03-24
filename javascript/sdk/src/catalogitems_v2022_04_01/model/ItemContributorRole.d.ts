@@ -11,7 +11,7 @@ export class ItemContributorRole {
      * @param {ItemContributorRole} obj Optional instance to populate.
      * @return {ItemContributorRole} The populated <code>ItemContributorRole</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemContributorRole): ItemContributorRole;
+    static constructFromObject(data: Object, obj: ItemContributorRole): ItemContributorRole;
     /**
      * Constructs a new <code>ItemContributorRole</code>.
      * Role of an individual contributor in the creation of an item, such as author or actor.

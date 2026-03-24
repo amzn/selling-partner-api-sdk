@@ -11,7 +11,7 @@ export class OrderStatus {
      * @param {OrderStatus} obj Optional instance to populate.
      * @return {OrderStatus} The populated <code>OrderStatus</code> instance.
      */
-    static constructFromObject(data: any, obj: OrderStatus): OrderStatus;
+    static constructFromObject(data: Object, obj: OrderStatus): OrderStatus;
     /**
      * Constructs a new <code>OrderStatus</code>.
      * Current status of a purchase order.

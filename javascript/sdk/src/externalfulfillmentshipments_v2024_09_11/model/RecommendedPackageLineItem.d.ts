@@ -11,7 +11,7 @@ export class RecommendedPackageLineItem {
      * @param {RecommendedPackageLineItem} obj Optional instance to populate.
      * @return {RecommendedPackageLineItem} The populated <code>RecommendedPackageLineItem</code> instance.
      */
-    static constructFromObject(data: any, obj: RecommendedPackageLineItem): RecommendedPackageLineItem;
+    static constructFromObject(data: Object, obj: RecommendedPackageLineItem): RecommendedPackageLineItem;
     /**
      * Constructs a new <code>RecommendedPackageLineItem</code>.
      * A line item to be contained in a recommended package. This attribute is provided only for orders that come with a specific recommendation of line-item distribution within the package recommendations.

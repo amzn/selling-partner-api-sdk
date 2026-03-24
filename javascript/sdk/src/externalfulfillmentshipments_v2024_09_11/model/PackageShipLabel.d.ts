@@ -11,7 +11,7 @@ export class PackageShipLabel {
      * @param {PackageShipLabel} obj Optional instance to populate.
      * @return {PackageShipLabel} The populated <code>PackageShipLabel</code> instance.
      */
-    static constructFromObject(data: any, obj: PackageShipLabel): PackageShipLabel;
+    static constructFromObject(data: Object, obj: PackageShipLabel): PackageShipLabel;
     /**
      * The package ID of the package.
      * @member {String} packageId

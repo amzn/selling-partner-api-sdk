@@ -11,7 +11,7 @@ export class InboundShipmentItem {
      * @param {InboundShipmentItem} obj Optional instance to populate.
      * @return {InboundShipmentItem} The populated <code>InboundShipmentItem</code> instance.
      */
-    static constructFromObject(data: any, obj: InboundShipmentItem): InboundShipmentItem;
+    static constructFromObject(data: Object, obj: InboundShipmentItem): InboundShipmentItem;
     /**
      * Constructs a new <code>InboundShipmentItem</code>.
      * Item information for an inbound shipment. Submitted with a call to the createInboundShipment or updateInboundShipment operation.

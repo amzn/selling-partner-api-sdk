@@ -11,7 +11,7 @@ export class GetPaymentMethodsResponse {
      * @param {GetPaymentMethodsResponse} obj Optional instance to populate.
      * @return {GetPaymentMethodsResponse} The populated <code>GetPaymentMethodsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetPaymentMethodsResponse): GetPaymentMethodsResponse;
+    static constructFromObject(data: Object, obj: GetPaymentMethodsResponse): GetPaymentMethodsResponse;
     /**
      * The list of payment methods with payment method details.
      * @member {PaymentMethodDetails[]} paymentMethods

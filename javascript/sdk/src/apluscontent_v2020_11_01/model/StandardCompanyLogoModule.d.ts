@@ -11,7 +11,7 @@ export class StandardCompanyLogoModule {
      * @param {StandardCompanyLogoModule} obj Optional instance to populate.
      * @return {StandardCompanyLogoModule} The populated <code>StandardCompanyLogoModule</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardCompanyLogoModule): StandardCompanyLogoModule;
+    static constructFromObject(data: Object, obj: StandardCompanyLogoModule): StandardCompanyLogoModule;
     /**
      * Constructs a new <code>StandardCompanyLogoModule</code>.
      * The standard company logo image.

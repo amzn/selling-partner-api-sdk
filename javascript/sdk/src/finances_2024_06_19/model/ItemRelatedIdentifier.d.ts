@@ -11,7 +11,7 @@ export class ItemRelatedIdentifier {
      * @param {ItemRelatedIdentifier} obj Optional instance to populate.
      * @return {ItemRelatedIdentifier} The populated <code>ItemRelatedIdentifier</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemRelatedIdentifier): ItemRelatedIdentifier;
+    static constructFromObject(data: Object, obj: ItemRelatedIdentifier): ItemRelatedIdentifier;
     /**
      * Enumerated set of related item identifier names for the item.
      * @member {String} itemRelatedIdentifierName

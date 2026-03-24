@@ -11,7 +11,7 @@ export class RequestedLabelCustomization {
      * @param {RequestedLabelCustomization} obj Optional instance to populate.
      * @return {RequestedLabelCustomization} The populated <code>RequestedLabelCustomization</code> instance.
      */
-    static constructFromObject(data: any, obj: RequestedLabelCustomization): RequestedLabelCustomization;
+    static constructFromObject(data: Object, obj: RequestedLabelCustomization): RequestedLabelCustomization;
     /**
      * Specify the type of attributes to be added on a label.
      * @member {LabelAttribute[]} requestAttributes

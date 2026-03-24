@@ -11,7 +11,7 @@ export class PostContentDocumentApprovalSubmissionResponse {
      * @param {PostContentDocumentApprovalSubmissionResponse} obj Optional instance to populate.
      * @return {PostContentDocumentApprovalSubmissionResponse} The populated <code>PostContentDocumentApprovalSubmissionResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: PostContentDocumentApprovalSubmissionResponse): PostContentDocumentApprovalSubmissionResponse;
+    static constructFromObject(data: Object, obj: PostContentDocumentApprovalSubmissionResponse): PostContentDocumentApprovalSubmissionResponse;
     /**
      * A set of messages to the user, such as warnings or comments.
      * @member {Error[]} warnings

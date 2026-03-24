@@ -11,7 +11,7 @@ export class SchemaLink {
      * @param {SchemaLink} obj Optional instance to populate.
      * @return {SchemaLink} The populated <code>SchemaLink</code> instance.
      */
-    static constructFromObject(data: any, obj: SchemaLink): SchemaLink;
+    static constructFromObject(data: Object, obj: SchemaLink): SchemaLink;
     /**
      * Constructs a new <code>SchemaLink</code>.
      * @alias module:producttypedefinitions_v2020_09_01/model/SchemaLink

@@ -11,7 +11,7 @@ export class ShippingOptionsResponse {
      * @param {ShippingOptionsResponse} obj Optional instance to populate.
      * @return {ShippingOptionsResponse} The populated <code>ShippingOptionsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ShippingOptionsResponse): ShippingOptionsResponse;
+    static constructFromObject(data: Object, obj: ShippingOptionsResponse): ShippingOptionsResponse;
     /**
      * A list of shipping options.
      * @member {ShippingOptions[]} shippingOptions

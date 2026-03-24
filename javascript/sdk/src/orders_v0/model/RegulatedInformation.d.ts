@@ -11,7 +11,7 @@ export class RegulatedInformation {
      * @param {RegulatedInformation} obj Optional instance to populate.
      * @return {RegulatedInformation} The populated <code>RegulatedInformation</code> instance.
      */
-    static constructFromObject(data: any, obj: RegulatedInformation): RegulatedInformation;
+    static constructFromObject(data: Object, obj: RegulatedInformation): RegulatedInformation;
     /**
      * Constructs a new <code>RegulatedInformation</code>.
      * The regulated information collected during purchase and used to verify the order.

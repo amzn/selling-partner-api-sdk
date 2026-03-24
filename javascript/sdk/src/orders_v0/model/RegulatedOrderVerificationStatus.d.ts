@@ -11,7 +11,7 @@ export class RegulatedOrderVerificationStatus {
      * @param {RegulatedOrderVerificationStatus} obj Optional instance to populate.
      * @return {RegulatedOrderVerificationStatus} The populated <code>RegulatedOrderVerificationStatus</code> instance.
      */
-    static constructFromObject(data: any, obj: RegulatedOrderVerificationStatus): RegulatedOrderVerificationStatus;
+    static constructFromObject(data: Object, obj: RegulatedOrderVerificationStatus): RegulatedOrderVerificationStatus;
     /**
      * Constructs a new <code>RegulatedOrderVerificationStatus</code>.
      * The verification status of the order, along with associated approval or rejection metadata.

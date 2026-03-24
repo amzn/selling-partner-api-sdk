@@ -11,7 +11,7 @@ export class SupportedDocumentDetail {
      * @param {SupportedDocumentDetail} obj Optional instance to populate.
      * @return {SupportedDocumentDetail} The populated <code>SupportedDocumentDetail</code> instance.
      */
-    static constructFromObject(data: any, obj: SupportedDocumentDetail): SupportedDocumentDetail;
+    static constructFromObject(data: Object, obj: SupportedDocumentDetail): SupportedDocumentDetail;
     /**
      * Constructs a new <code>SupportedDocumentDetail</code>.
      * The supported document types for a service offering.

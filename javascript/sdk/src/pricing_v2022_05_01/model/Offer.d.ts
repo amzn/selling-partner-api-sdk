@@ -11,7 +11,7 @@ export class Offer {
      * @param {Offer} obj Optional instance to populate.
      * @return {Offer} The populated <code>Offer</code> instance.
      */
-    static constructFromObject(data: any, obj: Offer): Offer;
+    static constructFromObject(data: Object, obj: Offer): Offer;
     /**
      * Constructs a new <code>Offer</code>.
      * The offer data of a product.

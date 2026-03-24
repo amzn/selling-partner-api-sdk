@@ -11,7 +11,7 @@ export class StandardComparisonProductBlock {
      * @param {StandardComparisonProductBlock} obj Optional instance to populate.
      * @return {StandardComparisonProductBlock} The populated <code>StandardComparisonProductBlock</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardComparisonProductBlock): StandardComparisonProductBlock;
+    static constructFromObject(data: Object, obj: StandardComparisonProductBlock): StandardComparisonProductBlock;
     /**
      * Constructs a new <code>StandardComparisonProductBlock</code>.
      * The A+ Content standard comparison product block.

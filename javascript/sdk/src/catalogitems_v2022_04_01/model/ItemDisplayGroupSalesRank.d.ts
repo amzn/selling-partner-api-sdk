@@ -11,7 +11,7 @@ export class ItemDisplayGroupSalesRank {
      * @param {ItemDisplayGroupSalesRank} obj Optional instance to populate.
      * @return {ItemDisplayGroupSalesRank} The populated <code>ItemDisplayGroupSalesRank</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemDisplayGroupSalesRank): ItemDisplayGroupSalesRank;
+    static constructFromObject(data: Object, obj: ItemDisplayGroupSalesRank): ItemDisplayGroupSalesRank;
     /**
      * Constructs a new <code>ItemDisplayGroupSalesRank</code>.
      * Sales rank of an Amazon catalog item, grouped by website display group.

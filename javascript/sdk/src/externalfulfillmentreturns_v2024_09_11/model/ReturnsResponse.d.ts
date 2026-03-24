@@ -11,7 +11,7 @@ export class ReturnsResponse {
      * @param {ReturnsResponse} obj Optional instance to populate.
      * @return {ReturnsResponse} The populated <code>ReturnsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ReturnsResponse): ReturnsResponse;
+    static constructFromObject(data: Object, obj: ReturnsResponse): ReturnsResponse;
     /**
      * A list of returns.
      * @member {Return[]} returns

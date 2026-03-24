@@ -11,7 +11,7 @@ export class StandardHeaderTextListBlock {
      * @param {StandardHeaderTextListBlock} obj Optional instance to populate.
      * @return {StandardHeaderTextListBlock} The populated <code>StandardHeaderTextListBlock</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardHeaderTextListBlock): StandardHeaderTextListBlock;
+    static constructFromObject(data: Object, obj: StandardHeaderTextListBlock): StandardHeaderTextListBlock;
     /**
      * @member {TextComponent} headline
      * @type {TextComponent}

@@ -11,7 +11,7 @@ export class ServiceJob {
      * @param {ServiceJob} obj Optional instance to populate.
      * @return {ServiceJob} The populated <code>ServiceJob</code> instance.
      */
-    static constructFromObject(data: any, obj: ServiceJob): ServiceJob;
+    static constructFromObject(data: Object, obj: ServiceJob): ServiceJob;
     /**
      * The date and time of the creation of the job in ISO 8601 format.
      * @member {Date} createTime

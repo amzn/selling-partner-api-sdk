@@ -11,7 +11,7 @@ export class InvoiceRequirement {
      * @param {InvoiceRequirement} obj Optional instance to populate.
      * @return {InvoiceRequirement} The populated <code>InvoiceRequirement</code> instance.
      */
-    static constructFromObject(data: any, obj: InvoiceRequirement): InvoiceRequirement;
+    static constructFromObject(data: Object, obj: InvoiceRequirement): InvoiceRequirement;
     /**
      * Whether the invoice document is required to be attached to the shipment.
      * @member {String} requirement

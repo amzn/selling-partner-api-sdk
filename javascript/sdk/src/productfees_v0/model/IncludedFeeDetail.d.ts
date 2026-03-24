@@ -11,7 +11,7 @@ export class IncludedFeeDetail {
      * @param {IncludedFeeDetail} obj Optional instance to populate.
      * @return {IncludedFeeDetail} The populated <code>IncludedFeeDetail</code> instance.
      */
-    static constructFromObject(data: any, obj: IncludedFeeDetail): IncludedFeeDetail;
+    static constructFromObject(data: Object, obj: IncludedFeeDetail): IncludedFeeDetail;
     /**
      * Constructs a new <code>IncludedFeeDetail</code>.
      * The type of fee, fee amount, and other details.

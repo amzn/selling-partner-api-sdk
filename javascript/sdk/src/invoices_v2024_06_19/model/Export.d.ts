@@ -11,7 +11,7 @@ export class Export {
      * @param {Export} obj Optional instance to populate.
      * @return {Export} The populated <code>Export</code> instance.
      */
-    static constructFromObject(data: any, obj: Export): Export;
+    static constructFromObject(data: Object, obj: Export): Export;
     /**
      * When the export generation fails, this attribute contains a description of the error.
      * @member {String} errorMessage

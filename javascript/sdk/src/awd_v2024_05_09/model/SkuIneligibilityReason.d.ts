@@ -11,7 +11,7 @@ export class SkuIneligibilityReason {
      * @param {SkuIneligibilityReason} obj Optional instance to populate.
      * @return {SkuIneligibilityReason} The populated <code>SkuIneligibilityReason</code> instance.
      */
-    static constructFromObject(data: any, obj: SkuIneligibilityReason): SkuIneligibilityReason;
+    static constructFromObject(data: Object, obj: SkuIneligibilityReason): SkuIneligibilityReason;
     /**
      * Constructs a new <code>SkuIneligibilityReason</code>.
      * Represents the ineligibility reason for one SKU.

@@ -11,7 +11,7 @@ export class PackingConfiguration {
      * @param {PackingConfiguration} obj Optional instance to populate.
      * @return {PackingConfiguration} The populated <code>PackingConfiguration</code> instance.
      */
-    static constructFromObject(data: any, obj: PackingConfiguration): PackingConfiguration;
+    static constructFromObject(data: Object, obj: PackingConfiguration): PackingConfiguration;
     /**
      * The box content information sources that are allowed.
      * @member {BoxContentInformationSource[]} boxPackingMethods

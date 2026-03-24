@@ -11,7 +11,7 @@ export class Subscription {
      * @param {Subscription} obj Optional instance to populate.
      * @return {Subscription} The populated <code>Subscription</code> instance.
      */
-    static constructFromObject(data: any, obj: Subscription): Subscription;
+    static constructFromObject(data: Object, obj: Subscription): Subscription;
     /**
      * Constructs a new <code>Subscription</code>.
      * Information about the subscription.

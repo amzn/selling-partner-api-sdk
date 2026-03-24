@@ -11,7 +11,7 @@ export class OrderItemAcknowledgement {
      * @param {OrderItemAcknowledgement} obj Optional instance to populate.
      * @return {OrderItemAcknowledgement} The populated <code>OrderItemAcknowledgement</code> instance.
      */
-    static constructFromObject(data: any, obj: OrderItemAcknowledgement): OrderItemAcknowledgement;
+    static constructFromObject(data: Object, obj: OrderItemAcknowledgement): OrderItemAcknowledgement;
     /**
      * Constructs a new <code>OrderItemAcknowledgement</code>.
      * Details of an individual item within the order being acknowledged.

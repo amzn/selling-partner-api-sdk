@@ -11,7 +11,7 @@ export class TransactionReference {
      * @param {TransactionReference} obj Optional instance to populate.
      * @return {TransactionReference} The populated <code>TransactionReference</code> instance.
      */
-    static constructFromObject(data: any, obj: TransactionReference): TransactionReference;
+    static constructFromObject(data: Object, obj: TransactionReference): TransactionReference;
     /**
      * GUID to identify this transaction. This value can be used with the Transaction Status API to return the status of this transaction.
      * @member {String} transactionId

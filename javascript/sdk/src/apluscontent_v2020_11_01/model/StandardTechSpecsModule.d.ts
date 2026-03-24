@@ -11,7 +11,7 @@ export class StandardTechSpecsModule {
      * @param {StandardTechSpecsModule} obj Optional instance to populate.
      * @return {StandardTechSpecsModule} The populated <code>StandardTechSpecsModule</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardTechSpecsModule): StandardTechSpecsModule;
+    static constructFromObject(data: Object, obj: StandardTechSpecsModule): StandardTechSpecsModule;
     /**
      * Constructs a new <code>StandardTechSpecsModule</code>.
      * The standard table of technical feature names and definitions.

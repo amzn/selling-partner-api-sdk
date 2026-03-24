@@ -11,7 +11,7 @@ export class GetFulfillmentPreviewItem {
      * @param {GetFulfillmentPreviewItem} obj Optional instance to populate.
      * @return {GetFulfillmentPreviewItem} The populated <code>GetFulfillmentPreviewItem</code> instance.
      */
-    static constructFromObject(data: any, obj: GetFulfillmentPreviewItem): GetFulfillmentPreviewItem;
+    static constructFromObject(data: Object, obj: GetFulfillmentPreviewItem): GetFulfillmentPreviewItem;
     /**
      * Constructs a new <code>GetFulfillmentPreviewItem</code>.
      * Item information for a fulfillment order preview.

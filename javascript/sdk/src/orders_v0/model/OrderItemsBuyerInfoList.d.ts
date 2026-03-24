@@ -11,7 +11,7 @@ export class OrderItemsBuyerInfoList {
      * @param {OrderItemsBuyerInfoList} obj Optional instance to populate.
      * @return {OrderItemsBuyerInfoList} The populated <code>OrderItemsBuyerInfoList</code> instance.
      */
-    static constructFromObject(data: any, obj: OrderItemsBuyerInfoList): OrderItemsBuyerInfoList;
+    static constructFromObject(data: Object, obj: OrderItemsBuyerInfoList): OrderItemsBuyerInfoList;
     /**
      * Constructs a new <code>OrderItemsBuyerInfoList</code>.
      * A single order item&#39;s buyer information list with the order ID.

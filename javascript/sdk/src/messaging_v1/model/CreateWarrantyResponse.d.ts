@@ -11,7 +11,7 @@ export class CreateWarrantyResponse {
      * @param {CreateWarrantyResponse} obj Optional instance to populate.
      * @return {CreateWarrantyResponse} The populated <code>CreateWarrantyResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateWarrantyResponse): CreateWarrantyResponse;
+    static constructFromObject(data: Object, obj: CreateWarrantyResponse): CreateWarrantyResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

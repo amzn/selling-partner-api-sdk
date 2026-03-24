@@ -48,13 +48,13 @@ export class ShipmentRetrievalApi {
        * @return {Promise<ShipmentsResponse>}
        */
     getShipmentsWithHttpInfo(status: string, opts?: {
-        locationId?: string;
-        marketplaceId?: string;
-        channelName?: string;
-        lastUpdatedAfter?: string;
-        lastUpdatedBefore?: string;
-        maxResults?: number;
-        paginationToken?: string;
+        locationId?: string | undefined;
+        marketplaceId?: string | undefined;
+        channelName?: string | undefined;
+        lastUpdatedAfter?: string | undefined;
+        lastUpdatedBefore?: string | undefined;
+        maxResults?: number | undefined;
+        paginationToken?: string | undefined;
     }): Promise<ShipmentsResponse>;
     /**
        * Get a list of shipments created for the seller in the status you specify. Shipments can be further filtered based on the fulfillment node or the time of the shipments&#39; last update.
@@ -70,13 +70,13 @@ export class ShipmentRetrievalApi {
        * @return {Promise<ShipmentsResponse>}
        */
     getShipments(status: string, opts?: {
-        locationId?: string;
-        marketplaceId?: string;
-        channelName?: string;
-        lastUpdatedAfter?: string;
-        lastUpdatedBefore?: string;
-        maxResults?: number;
-        paginationToken?: string;
+        locationId?: string | undefined;
+        marketplaceId?: string | undefined;
+        channelName?: string | undefined;
+        lastUpdatedAfter?: string | undefined;
+        lastUpdatedBefore?: string | undefined;
+        maxResults?: number | undefined;
+        paginationToken?: string | undefined;
     }): Promise<ShipmentsResponse>;
     #private;
 }

@@ -49,10 +49,10 @@ export class CustomerInvoicesApi {
        * @return {Promise<CustomerInvoiceList>}
        */
     getCustomerInvoicesWithHttpInfo(createdAfter: Date, createdBefore: Date, opts?: {
-        shipFromPartyId?: string;
-        limit?: number;
-        sortOrder?: string;
-        nextToken?: string;
+        shipFromPartyId?: string | undefined;
+        limit?: number | undefined;
+        sortOrder?: string | undefined;
+        nextToken?: string | undefined;
     }): Promise<CustomerInvoiceList>;
     /**
        * getCustomerInvoices
@@ -67,10 +67,10 @@ export class CustomerInvoicesApi {
        * @return {Promise<CustomerInvoiceList>}
        */
     getCustomerInvoices(createdAfter: Date, createdBefore: Date, opts?: {
-        shipFromPartyId?: string;
-        limit?: number;
-        sortOrder?: string;
-        nextToken?: string;
+        shipFromPartyId?: string | undefined;
+        limit?: number | undefined;
+        sortOrder?: string | undefined;
+        nextToken?: string | undefined;
     }): Promise<CustomerInvoiceList>;
     #private;
 }

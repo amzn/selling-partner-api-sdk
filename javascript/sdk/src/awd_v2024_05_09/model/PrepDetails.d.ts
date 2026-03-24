@@ -11,7 +11,7 @@ export class PrepDetails {
      * @param {PrepDetails} obj Optional instance to populate.
      * @return {PrepDetails} The populated <code>PrepDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: PrepDetails): PrepDetails;
+    static constructFromObject(data: Object, obj: PrepDetails): PrepDetails;
     /**
      * @member {LabelOwner} labelOwner
      * @type {LabelOwner}

@@ -11,7 +11,7 @@ export class VerificationDetails {
      * @param {VerificationDetails} obj Optional instance to populate.
      * @return {VerificationDetails} The populated <code>VerificationDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: VerificationDetails): VerificationDetails;
+    static constructFromObject(data: Object, obj: VerificationDetails): VerificationDetails;
     /**
      * @member {PrescriptionDetail} prescriptionDetail
      * @type {PrescriptionDetail}

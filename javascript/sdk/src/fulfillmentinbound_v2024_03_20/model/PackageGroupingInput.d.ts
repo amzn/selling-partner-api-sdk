@@ -11,7 +11,7 @@ export class PackageGroupingInput {
      * @param {PackageGroupingInput} obj Optional instance to populate.
      * @return {PackageGroupingInput} The populated <code>PackageGroupingInput</code> instance.
      */
-    static constructFromObject(data: any, obj: PackageGroupingInput): PackageGroupingInput;
+    static constructFromObject(data: Object, obj: PackageGroupingInput): PackageGroupingInput;
     /**
      * Constructs a new <code>PackageGroupingInput</code>.
      * Packing information for the inbound plan.

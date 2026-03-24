@@ -30,7 +30,7 @@ export class GetOrderApi {
        * @return {Promise<GetOrderResponse>}
        */
     getOrderWithHttpInfo(orderId: string, opts?: {
-        includedData?: string[];
+        includedData?: string[] | undefined;
     }): Promise<GetOrderResponse>;
     /**
        * Returns the order that you specify.
@@ -40,7 +40,7 @@ export class GetOrderApi {
        * @return {Promise<GetOrderResponse>}
        */
     getOrder(orderId: string, opts?: {
-        includedData?: string[];
+        includedData?: string[] | undefined;
     }): Promise<GetOrderResponse>;
     #private;
 }

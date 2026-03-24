@@ -11,7 +11,7 @@ export class FBALiquidationEvent {
      * @param {FBALiquidationEvent} obj Optional instance to populate.
      * @return {FBALiquidationEvent} The populated <code>FBALiquidationEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: FBALiquidationEvent): FBALiquidationEvent;
+    static constructFromObject(data: Object, obj: FBALiquidationEvent): FBALiquidationEvent;
     /**
      * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate

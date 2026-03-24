@@ -11,7 +11,7 @@ export class FulfillmentTime {
      * @param {FulfillmentTime} obj Optional instance to populate.
      * @return {FulfillmentTime} The populated <code>FulfillmentTime</code> instance.
      */
-    static constructFromObject(data: any, obj: FulfillmentTime): FulfillmentTime;
+    static constructFromObject(data: Object, obj: FulfillmentTime): FulfillmentTime;
     /**
      * The date, time in UTC of the fulfillment start time in ISO 8601 format.
      * @member {Date} startTime

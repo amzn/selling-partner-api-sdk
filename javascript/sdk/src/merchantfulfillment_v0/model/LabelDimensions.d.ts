@@ -11,7 +11,7 @@ export class LabelDimensions {
      * @param {LabelDimensions} obj Optional instance to populate.
      * @return {LabelDimensions} The populated <code>LabelDimensions</code> instance.
      */
-    static constructFromObject(data: any, obj: LabelDimensions): LabelDimensions;
+    static constructFromObject(data: Object, obj: LabelDimensions): LabelDimensions;
     /**
      * Constructs a new <code>LabelDimensions</code>.
      * Dimensions for printing a shipping label.

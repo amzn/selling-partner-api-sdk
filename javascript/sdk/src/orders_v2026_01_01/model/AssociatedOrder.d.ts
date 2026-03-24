@@ -11,7 +11,7 @@ export class AssociatedOrder {
      * @param {AssociatedOrder} obj Optional instance to populate.
      * @return {AssociatedOrder} The populated <code>AssociatedOrder</code> instance.
      */
-    static constructFromObject(data: any, obj: AssociatedOrder): AssociatedOrder;
+    static constructFromObject(data: Object, obj: AssociatedOrder): AssociatedOrder;
     /**
      * The unique identifier of the related order that is associated with the current order.
      * @member {String} orderId

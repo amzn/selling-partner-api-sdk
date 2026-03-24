@@ -11,7 +11,7 @@ export class FeatureSku {
      * @param {FeatureSku} obj Optional instance to populate.
      * @return {FeatureSku} The populated <code>FeatureSku</code> instance.
      */
-    static constructFromObject(data: any, obj: FeatureSku): FeatureSku;
+    static constructFromObject(data: Object, obj: FeatureSku): FeatureSku;
     /**
      * Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.
      * @member {String} sellerSku

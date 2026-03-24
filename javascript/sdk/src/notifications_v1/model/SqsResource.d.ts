@@ -11,7 +11,7 @@ export class SqsResource {
      * @param {SqsResource} obj Optional instance to populate.
      * @return {SqsResource} The populated <code>SqsResource</code> instance.
      */
-    static constructFromObject(data: any, obj: SqsResource): SqsResource;
+    static constructFromObject(data: Object, obj: SqsResource): SqsResource;
     /**
      * Constructs a new <code>SqsResource</code>.
      * The information required to create an Amazon Simple Queue Service (Amazon SQS) queue destination.

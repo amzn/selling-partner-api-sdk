@@ -11,7 +11,7 @@ export class MessagingAction {
      * @param {MessagingAction} obj Optional instance to populate.
      * @return {MessagingAction} The populated <code>MessagingAction</code> instance.
      */
-    static constructFromObject(data: any, obj: MessagingAction): MessagingAction;
+    static constructFromObject(data: Object, obj: MessagingAction): MessagingAction;
     /**
      * Constructs a new <code>MessagingAction</code>.
      * A simple object containing the name of the template.

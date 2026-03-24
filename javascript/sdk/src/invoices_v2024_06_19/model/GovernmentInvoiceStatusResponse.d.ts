@@ -11,7 +11,7 @@ export class GovernmentInvoiceStatusResponse {
      * @param {GovernmentInvoiceStatusResponse} obj Optional instance to populate.
      * @return {GovernmentInvoiceStatusResponse} The populated <code>GovernmentInvoiceStatusResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GovernmentInvoiceStatusResponse): GovernmentInvoiceStatusResponse;
+    static constructFromObject(data: Object, obj: GovernmentInvoiceStatusResponse): GovernmentInvoiceStatusResponse;
     /**
      * The errors that occurred during invoice creation.
      * @member {InvoiceError[]} invoiceErrors

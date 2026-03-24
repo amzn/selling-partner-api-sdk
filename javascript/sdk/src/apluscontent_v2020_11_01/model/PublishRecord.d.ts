@@ -11,7 +11,7 @@ export class PublishRecord {
      * @param {PublishRecord} obj Optional instance to populate.
      * @return {PublishRecord} The populated <code>PublishRecord</code> instance.
      */
-    static constructFromObject(data: any, obj: PublishRecord): PublishRecord;
+    static constructFromObject(data: Object, obj: PublishRecord): PublishRecord;
     /**
      * Constructs a new <code>PublishRecord</code>.
      * The full context for an A+ Content publishing event.

@@ -11,7 +11,7 @@ export class CreateDigitalAccessKeyRequest {
      * @param {CreateDigitalAccessKeyRequest} obj Optional instance to populate.
      * @return {CreateDigitalAccessKeyRequest} The populated <code>CreateDigitalAccessKeyRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateDigitalAccessKeyRequest): CreateDigitalAccessKeyRequest;
+    static constructFromObject(data: Object, obj: CreateDigitalAccessKeyRequest): CreateDigitalAccessKeyRequest;
     /**
      * The text that is sent to the buyer. Only links that are related to the digital access key are allowed. Do not include HTML or email addresses. The text must be written in the buyer's preferred language, which you can retrieve from the `GetAttributes` operation.
      * @member {String} text

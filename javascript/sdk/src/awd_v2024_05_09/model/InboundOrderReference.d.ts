@@ -11,7 +11,7 @@ export class InboundOrderReference {
      * @param {InboundOrderReference} obj Optional instance to populate.
      * @return {InboundOrderReference} The populated <code>InboundOrderReference</code> instance.
      */
-    static constructFromObject(data: any, obj: InboundOrderReference): InboundOrderReference;
+    static constructFromObject(data: Object, obj: InboundOrderReference): InboundOrderReference;
     /**
      * Constructs a new <code>InboundOrderReference</code>.
      * A response that contains the reference identifiers for the newly created or updated inbound order. Consists of an order ID and version.

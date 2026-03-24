@@ -11,7 +11,7 @@ export class GetDestinationResponse {
      * @param {GetDestinationResponse} obj Optional instance to populate.
      * @return {GetDestinationResponse} The populated <code>GetDestinationResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetDestinationResponse): GetDestinationResponse;
+    static constructFromObject(data: Object, obj: GetDestinationResponse): GetDestinationResponse;
     /**
      * @member {Destination} payload
      * @type {Destination}

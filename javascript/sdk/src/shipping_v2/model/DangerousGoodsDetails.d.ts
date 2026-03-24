@@ -11,7 +11,7 @@ export class DangerousGoodsDetails {
      * @param {DangerousGoodsDetails} obj Optional instance to populate.
      * @return {DangerousGoodsDetails} The populated <code>DangerousGoodsDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: DangerousGoodsDetails): DangerousGoodsDetails;
+    static constructFromObject(data: Object, obj: DangerousGoodsDetails): DangerousGoodsDetails;
     /**
      * The specific UNID of the item being shipped.
      * @member {String} unitedNationsRegulatoryId

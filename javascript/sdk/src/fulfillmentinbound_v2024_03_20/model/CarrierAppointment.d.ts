@@ -11,7 +11,7 @@ export class CarrierAppointment {
      * @param {CarrierAppointment} obj Optional instance to populate.
      * @return {CarrierAppointment} The populated <code>CarrierAppointment</code> instance.
      */
-    static constructFromObject(data: any, obj: CarrierAppointment): CarrierAppointment;
+    static constructFromObject(data: Object, obj: CarrierAppointment): CarrierAppointment;
     /**
      * Constructs a new <code>CarrierAppointment</code>.
      * Contains details for a transportation carrier appointment. This appointment is vended out by Amazon and is an indicator for when a transportation carrier is accepting shipments to be picked up.

@@ -11,7 +11,7 @@ export class CustomerAddress {
      * @param {CustomerAddress} obj Optional instance to populate.
      * @return {CustomerAddress} The populated <code>CustomerAddress</code> instance.
      */
-    static constructFromObject(data: any, obj: CustomerAddress): CustomerAddress;
+    static constructFromObject(data: Object, obj: CustomerAddress): CustomerAddress;
     /**
      * The full name of the person who will receive the delivery at this address.
      * @member {String} name

@@ -11,7 +11,7 @@ export class Item {
      * @param {Item} obj Optional instance to populate.
      * @return {Item} The populated <code>Item</code> instance.
      */
-    static constructFromObject(data: any, obj: Item): Item;
+    static constructFromObject(data: Object, obj: Item): Item;
     /**
      * A description of the items in a transaction.
      * @member {String} description

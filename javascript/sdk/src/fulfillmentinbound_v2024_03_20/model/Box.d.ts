@@ -11,7 +11,7 @@ export class Box {
      * @param {Box} obj Optional instance to populate.
      * @return {Box} The populated <code>Box</code> instance.
      */
-    static constructFromObject(data: any, obj: Box): Box;
+    static constructFromObject(data: Object, obj: Box): Box;
     /**
      * Constructs a new <code>Box</code>.
      * Contains information about a box that is used in the inbound plan. The box is a container that holds multiple items.

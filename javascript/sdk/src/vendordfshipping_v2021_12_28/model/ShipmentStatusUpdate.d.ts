@@ -11,7 +11,7 @@ export class ShipmentStatusUpdate {
      * @param {ShipmentStatusUpdate} obj Optional instance to populate.
      * @return {ShipmentStatusUpdate} The populated <code>ShipmentStatusUpdate</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipmentStatusUpdate): ShipmentStatusUpdate;
+    static constructFromObject(data: Object, obj: ShipmentStatusUpdate): ShipmentStatusUpdate;
     /**
      * Constructs a new <code>ShipmentStatusUpdate</code>.
      * Represents an update to the status of a shipment.

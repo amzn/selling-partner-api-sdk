@@ -66,8 +66,8 @@ export class SupplySourcesApi {
        * @return {Promise<GetSupplySourcesResponse>}
        */
     getSupplySourcesWithHttpInfo(opts?: {
-        nextPageToken?: string;
-        pageSize?: number;
+        nextPageToken?: string | undefined;
+        pageSize?: number | undefined;
     }): Promise<GetSupplySourcesResponse>;
     /**
        * The path to retrieve paginated supply sources.
@@ -77,8 +77,8 @@ export class SupplySourcesApi {
        * @return {Promise<GetSupplySourcesResponse>}
        */
     getSupplySources(opts?: {
-        nextPageToken?: string;
-        pageSize?: number;
+        nextPageToken?: string | undefined;
+        pageSize?: number | undefined;
     }): Promise<GetSupplySourcesResponse>;
     /**
        * Update the configuration and capabilities of a supply source.
@@ -88,7 +88,7 @@ export class SupplySourcesApi {
        * @return {Promise<ErrorList>}
        */
     updateSupplySourceWithHttpInfo(supplySourceId: string, opts?: {
-        payload?: UpdateSupplySourceRequest;
+        payload?: UpdateSupplySourceRequest | undefined;
     }): Promise<ErrorList>;
     /**
        * Update the configuration and capabilities of a supply source.
@@ -98,7 +98,7 @@ export class SupplySourcesApi {
        * @return {Promise<ErrorList>}
        */
     updateSupplySource(supplySourceId: string, opts?: {
-        payload?: UpdateSupplySourceRequest;
+        payload?: UpdateSupplySourceRequest | undefined;
     }): Promise<ErrorList>;
     /**
        * Update the status of a supply source.
@@ -108,7 +108,7 @@ export class SupplySourcesApi {
        * @return {Promise<ErrorList>}
        */
     updateSupplySourceStatusWithHttpInfo(supplySourceId: string, opts?: {
-        payload?: UpdateSupplySourceStatusRequest;
+        payload?: UpdateSupplySourceStatusRequest | undefined;
     }): Promise<ErrorList>;
     /**
        * Update the status of a supply source.
@@ -118,7 +118,7 @@ export class SupplySourcesApi {
        * @return {Promise<ErrorList>}
        */
     updateSupplySourceStatus(supplySourceId: string, opts?: {
-        payload?: UpdateSupplySourceStatusRequest;
+        payload?: UpdateSupplySourceStatusRequest | undefined;
     }): Promise<ErrorList>;
     #private;
 }

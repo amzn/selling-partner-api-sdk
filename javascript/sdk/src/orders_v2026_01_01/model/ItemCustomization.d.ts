@@ -11,7 +11,7 @@ export class ItemCustomization {
      * @param {ItemCustomization} obj Optional instance to populate.
      * @return {ItemCustomization} The populated <code>ItemCustomization</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemCustomization): ItemCustomization;
+    static constructFromObject(data: Object, obj: ItemCustomization): ItemCustomization;
     /**
      * The URL of the customized data for custom orders from the Amazon Custom program.
      * @member {String} customizedUrl

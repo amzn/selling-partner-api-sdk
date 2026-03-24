@@ -11,7 +11,7 @@ export class ProductType {
      * @param {ProductType} obj Optional instance to populate.
      * @return {ProductType} The populated <code>ProductType</code> instance.
      */
-    static constructFromObject(data: any, obj: ProductType): ProductType;
+    static constructFromObject(data: Object, obj: ProductType): ProductType;
     /**
      * Constructs a new <code>ProductType</code>.
      * An Amazon product type with a definition available.

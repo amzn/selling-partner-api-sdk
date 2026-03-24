@@ -11,7 +11,7 @@ export class PrintOption {
      * @param {PrintOption} obj Optional instance to populate.
      * @return {PrintOption} The populated <code>PrintOption</code> instance.
      */
-    static constructFromObject(data: any, obj: PrintOption): PrintOption;
+    static constructFromObject(data: Object, obj: PrintOption): PrintOption;
     /**
      * Constructs a new <code>PrintOption</code>.
      * The format options available for a label.

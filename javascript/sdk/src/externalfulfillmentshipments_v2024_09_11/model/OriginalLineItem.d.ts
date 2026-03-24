@@ -11,7 +11,7 @@ export class OriginalLineItem {
      * @param {OriginalLineItem} obj Optional instance to populate.
      * @return {OriginalLineItem} The populated <code>OriginalLineItem</code> instance.
      */
-    static constructFromObject(data: any, obj: OriginalLineItem): OriginalLineItem;
+    static constructFromObject(data: Object, obj: OriginalLineItem): OriginalLineItem;
     /**
      * Constructs a new <code>OriginalLineItem</code>.
      * A line item from the original shipment that corresponds to this shipment.

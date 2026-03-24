@@ -11,7 +11,7 @@ export class CompleteServiceJobByServiceJobIdResponse {
      * @param {CompleteServiceJobByServiceJobIdResponse} obj Optional instance to populate.
      * @return {CompleteServiceJobByServiceJobIdResponse} The populated <code>CompleteServiceJobByServiceJobIdResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CompleteServiceJobByServiceJobIdResponse): CompleteServiceJobByServiceJobIdResponse;
+    static constructFromObject(data: Object, obj: CompleteServiceJobByServiceJobIdResponse): CompleteServiceJobByServiceJobIdResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

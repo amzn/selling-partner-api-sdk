@@ -11,7 +11,7 @@ export class BoxRequirements {
      * @param {BoxRequirements} obj Optional instance to populate.
      * @return {BoxRequirements} The populated <code>BoxRequirements</code> instance.
      */
-    static constructFromObject(data: any, obj: BoxRequirements): BoxRequirements;
+    static constructFromObject(data: Object, obj: BoxRequirements): BoxRequirements;
     /**
      * Constructs a new <code>BoxRequirements</code>.
      * The requirements for a box in the packing option.

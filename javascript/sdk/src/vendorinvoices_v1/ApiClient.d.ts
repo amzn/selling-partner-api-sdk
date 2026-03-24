@@ -53,13 +53,13 @@ export class ApiClient {
       * all properties on <code>data<code> will be converted to this type.
       * @returns An instance of the specified type or null or undefined if data is null or undefined.
       */
-    static convertToType(data: (string | any), type: (string | Array<string> | any | Function)): any;
+    static convertToType(data: (string | Object), type: (string | Array<string> | any | Function)): any;
     /**
       * Constructs a new map or array model from REST data.
       * @param data {Object|Array} The REST data.
       * @param obj {Object|Array} The target object or array.
       */
-    static constructFromObject(data: any | any[], obj: any | any[], itemType: any): void;
+    static constructFromObject(data: Object | any[], obj: Object | any[], itemType: any): void;
     /**
       * Constructs a new ApiClient.
       * @param {String} baseUrl Base URL of endpoint ex. "https://sellingpartnerapi-na.amazon.com"
@@ -178,7 +178,7 @@ export class ApiClient {
       * @param {Object} pathParams The parameter values to append.
       * @returns {String} The encoded path with parameter values substituted.
       */
-    buildUrl(path: string, pathParams: any): string;
+    buildUrl(path: string, pathParams: Object): string;
     /**
       * Checks whether the given content type represents JSON.<br>
       * JSON content type examples:<br>
@@ -231,7 +231,7 @@ export class ApiClient {
       * all properties on <code>data<code> will be converted to this type.
       * @returns A value of the specified type.
       */
-    deserialize(response: any, returnType: (string | Array<string> | any | Function)): any;
+    deserialize(response: Object, returnType: (string | Array<string> | any | Function)): any;
     /**
       * Invokes the REST service using the supplied settings and parameters.
       * @param {String} operation operation name.
@@ -249,7 +249,7 @@ export class ApiClient {
       * @param {SuperagentRateLimiter} defaultRateLimiter The default rate limiter.
       * @returns {Promise} A {@link https://www.promisejs.org/|Promise} object.
       */
-    callApi(operation: string, path: string, httpMethod: string, pathParams: any, queryParams: any, headerParams: any, formParams: any, bodyParam: any, contentTypes: Array<string>, accepts: Array<string>, returnType: (string | any[] | ObjectFunction), defaultRateLimiter: SuperagentRateLimiter): Promise<any>;
+    callApi(operation: string, path: string, httpMethod: string, pathParams: any, queryParams: any, headerParams: any, formParams: any, bodyParam: Object, contentTypes: Array<string>, accepts: Array<string>, returnType: (string | any[] | ObjectFunction), defaultRateLimiter: SuperagentRateLimiter): Promise<any>;
     #private;
 }
 export namespace ApiClient {

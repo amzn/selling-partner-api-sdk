@@ -11,7 +11,7 @@ export class OfferProgramConfiguration {
      * @param {OfferProgramConfiguration} obj Optional instance to populate.
      * @return {OfferProgramConfiguration} The populated <code>OfferProgramConfiguration</code> instance.
      */
-    static constructFromObject(data: any, obj: OfferProgramConfiguration): OfferProgramConfiguration;
+    static constructFromObject(data: Object, obj: OfferProgramConfiguration): OfferProgramConfiguration;
     /**
      * @member {OfferProgramConfigurationPreferences} preferences
      * @type {OfferProgramConfigurationPreferences}

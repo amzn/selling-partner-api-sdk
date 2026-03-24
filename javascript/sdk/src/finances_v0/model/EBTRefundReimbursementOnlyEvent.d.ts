@@ -11,7 +11,7 @@ export class EBTRefundReimbursementOnlyEvent {
      * @param {EBTRefundReimbursementOnlyEvent} obj Optional instance to populate.
      * @return {EBTRefundReimbursementOnlyEvent} The populated <code>EBTRefundReimbursementOnlyEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: EBTRefundReimbursementOnlyEvent): EBTRefundReimbursementOnlyEvent;
+    static constructFromObject(data: Object, obj: EBTRefundReimbursementOnlyEvent): EBTRefundReimbursementOnlyEvent;
     /**
      * The identifier of an order.
      * @member {String} orderId

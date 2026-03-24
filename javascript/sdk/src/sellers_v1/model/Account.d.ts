@@ -11,7 +11,7 @@ export class Account {
      * @param {Account} obj Optional instance to populate.
      * @return {Account} The populated <code>Account</code> instance.
      */
-    static constructFromObject(data: any, obj: Account): Account;
+    static constructFromObject(data: Object, obj: Account): Account;
     /**
      * Constructs a new <code>Account</code>.
      * The response schema for the &#x60;getAccount&#x60; operation.

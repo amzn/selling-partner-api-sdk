@@ -11,7 +11,7 @@ export class OrderItemStatusOrderedQuantity {
      * @param {OrderItemStatusOrderedQuantity} obj Optional instance to populate.
      * @return {OrderItemStatusOrderedQuantity} The populated <code>OrderItemStatusOrderedQuantity</code> instance.
      */
-    static constructFromObject(data: any, obj: OrderItemStatusOrderedQuantity): OrderItemStatusOrderedQuantity;
+    static constructFromObject(data: Object, obj: OrderItemStatusOrderedQuantity): OrderItemStatusOrderedQuantity;
     /**
      * @member {ItemQuantity} orderedQuantity
      * @type {ItemQuantity}

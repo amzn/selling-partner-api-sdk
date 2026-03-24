@@ -11,7 +11,7 @@ export class OrderItemStatusReceivingStatus {
      * @param {OrderItemStatusReceivingStatus} obj Optional instance to populate.
      * @return {OrderItemStatusReceivingStatus} The populated <code>OrderItemStatusReceivingStatus</code> instance.
      */
-    static constructFromObject(data: any, obj: OrderItemStatusReceivingStatus): OrderItemStatusReceivingStatus;
+    static constructFromObject(data: Object, obj: OrderItemStatusReceivingStatus): OrderItemStatusReceivingStatus;
     /**
      * Receive status of the line item.
      * @member {String} receiveStatus

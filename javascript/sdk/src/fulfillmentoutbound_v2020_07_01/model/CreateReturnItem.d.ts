@@ -11,7 +11,7 @@ export class CreateReturnItem {
      * @param {CreateReturnItem} obj Optional instance to populate.
      * @return {CreateReturnItem} The populated <code>CreateReturnItem</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateReturnItem): CreateReturnItem;
+    static constructFromObject(data: Object, obj: CreateReturnItem): CreateReturnItem;
     /**
      * Constructs a new <code>CreateReturnItem</code>.
      * An item that Amazon accepted for return.

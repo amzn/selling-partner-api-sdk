@@ -11,7 +11,7 @@ export class GeneratePlacementOptionsRequest {
      * @param {GeneratePlacementOptionsRequest} obj Optional instance to populate.
      * @return {GeneratePlacementOptionsRequest} The populated <code>GeneratePlacementOptionsRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: GeneratePlacementOptionsRequest): GeneratePlacementOptionsRequest;
+    static constructFromObject(data: Object, obj: GeneratePlacementOptionsRequest): GeneratePlacementOptionsRequest;
     /**
      * Custom placement options you want to add to the plan. This is only used for the India (IN - A21TJRUUN4KGV) marketplace.
      * @member {CustomPlacementInput[]} customPlacement

@@ -11,7 +11,7 @@ export class ASINIdentifier {
      * @param {ASINIdentifier} obj Optional instance to populate.
      * @return {ASINIdentifier} The populated <code>ASINIdentifier</code> instance.
      */
-    static constructFromObject(data: any, obj: ASINIdentifier): ASINIdentifier;
+    static constructFromObject(data: Object, obj: ASINIdentifier): ASINIdentifier;
     /**
      * Constructs a new <code>ASINIdentifier</code>.
      * Schema to identify an item by MarketPlaceId and ASIN.

@@ -11,7 +11,7 @@ export class StandardThreeImageTextModule {
      * @param {StandardThreeImageTextModule} obj Optional instance to populate.
      * @return {StandardThreeImageTextModule} The populated <code>StandardThreeImageTextModule</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardThreeImageTextModule): StandardThreeImageTextModule;
+    static constructFromObject(data: Object, obj: StandardThreeImageTextModule): StandardThreeImageTextModule;
     /**
      * @member {TextComponent} headline
      * @type {TextComponent}

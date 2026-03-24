@@ -11,7 +11,7 @@ export class Promotion {
      * @param {Promotion} obj Optional instance to populate.
      * @return {Promotion} The populated <code>Promotion</code> instance.
      */
-    static constructFromObject(data: any, obj: Promotion): Promotion;
+    static constructFromObject(data: Object, obj: Promotion): Promotion;
     /**
      * @member {DiscountFunding} sellingPartnerFundedBaseDiscount
      * @type {DiscountFunding}

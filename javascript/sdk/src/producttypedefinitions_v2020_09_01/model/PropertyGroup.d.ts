@@ -11,7 +11,7 @@ export class PropertyGroup {
      * @param {PropertyGroup} obj Optional instance to populate.
      * @return {PropertyGroup} The populated <code>PropertyGroup</code> instance.
      */
-    static constructFromObject(data: any, obj: PropertyGroup): PropertyGroup;
+    static constructFromObject(data: Object, obj: PropertyGroup): PropertyGroup;
     /**
      * The display label of the property group.
      * @member {String} title

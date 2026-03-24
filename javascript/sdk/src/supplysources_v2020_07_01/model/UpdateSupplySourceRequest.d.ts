@@ -11,7 +11,7 @@ export class UpdateSupplySourceRequest {
      * @param {UpdateSupplySourceRequest} obj Optional instance to populate.
      * @return {UpdateSupplySourceRequest} The populated <code>UpdateSupplySourceRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: UpdateSupplySourceRequest): UpdateSupplySourceRequest;
+    static constructFromObject(data: Object, obj: UpdateSupplySourceRequest): UpdateSupplySourceRequest;
     /**
      * The custom alias for this supply source
      * @member {String} alias

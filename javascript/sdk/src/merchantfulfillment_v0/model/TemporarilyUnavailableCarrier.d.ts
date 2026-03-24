@@ -11,7 +11,7 @@ export class TemporarilyUnavailableCarrier {
      * @param {TemporarilyUnavailableCarrier} obj Optional instance to populate.
      * @return {TemporarilyUnavailableCarrier} The populated <code>TemporarilyUnavailableCarrier</code> instance.
      */
-    static constructFromObject(data: any, obj: TemporarilyUnavailableCarrier): TemporarilyUnavailableCarrier;
+    static constructFromObject(data: Object, obj: TemporarilyUnavailableCarrier): TemporarilyUnavailableCarrier;
     /**
      * Constructs a new <code>TemporarilyUnavailableCarrier</code>.
      * A carrier who is temporarily unavailable, most likely due to a service outage experienced by the carrier.

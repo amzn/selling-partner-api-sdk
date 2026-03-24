@@ -11,7 +11,7 @@ export class ReplenishmentOrderCreationData {
      * @param {ReplenishmentOrderCreationData} obj Optional instance to populate.
      * @return {ReplenishmentOrderCreationData} The populated <code>ReplenishmentOrderCreationData</code> instance.
      */
-    static constructFromObject(data: any, obj: ReplenishmentOrderCreationData): ReplenishmentOrderCreationData;
+    static constructFromObject(data: Object, obj: ReplenishmentOrderCreationData): ReplenishmentOrderCreationData;
     /**
      * @member {ReplenishmentPreferences} preferences
      * @type {ReplenishmentPreferences}

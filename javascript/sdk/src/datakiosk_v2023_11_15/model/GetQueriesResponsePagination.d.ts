@@ -11,7 +11,7 @@ export class GetQueriesResponsePagination {
      * @param {GetQueriesResponsePagination} obj Optional instance to populate.
      * @return {GetQueriesResponsePagination} The populated <code>GetQueriesResponsePagination</code> instance.
      */
-    static constructFromObject(data: any, obj: GetQueriesResponsePagination): GetQueriesResponsePagination;
+    static constructFromObject(data: Object, obj: GetQueriesResponsePagination): GetQueriesResponsePagination;
     /**
      * A token that can be used to fetch the next page of results.
      * @member {String} nextToken

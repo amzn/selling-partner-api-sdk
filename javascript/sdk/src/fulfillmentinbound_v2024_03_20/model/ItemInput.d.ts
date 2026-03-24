@@ -11,7 +11,7 @@ export class ItemInput {
      * @param {ItemInput} obj Optional instance to populate.
      * @return {ItemInput} The populated <code>ItemInput</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemInput): ItemInput;
+    static constructFromObject(data: Object, obj: ItemInput): ItemInput;
     /**
      * Constructs a new <code>ItemInput</code>.
      * Defines an item&#39;s input parameters.

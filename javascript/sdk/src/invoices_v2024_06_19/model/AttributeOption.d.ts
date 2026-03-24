@@ -11,7 +11,7 @@ export class AttributeOption {
      * @param {AttributeOption} obj Optional instance to populate.
      * @return {AttributeOption} The populated <code>AttributeOption</code> instance.
      */
-    static constructFromObject(data: any, obj: AttributeOption): AttributeOption;
+    static constructFromObject(data: Object, obj: AttributeOption): AttributeOption;
     /**
      * The description of the attribute value.
      * @member {String} description

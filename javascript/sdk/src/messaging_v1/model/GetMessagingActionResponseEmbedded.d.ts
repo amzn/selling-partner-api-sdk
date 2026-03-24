@@ -11,7 +11,7 @@ export class GetMessagingActionResponseEmbedded {
      * @param {GetMessagingActionResponseEmbedded} obj Optional instance to populate.
      * @return {GetMessagingActionResponseEmbedded} The populated <code>GetMessagingActionResponseEmbedded</code> instance.
      */
-    static constructFromObject(data: any, obj: GetMessagingActionResponseEmbedded): GetMessagingActionResponseEmbedded;
+    static constructFromObject(data: Object, obj: GetMessagingActionResponseEmbedded): GetMessagingActionResponseEmbedded;
     /**
      * @member {GetSchemaResponse} schema
      * @type {GetSchemaResponse}

@@ -11,7 +11,7 @@ export class BrowseNodeReviewSubtopicMetrics {
      * @param {BrowseNodeReviewSubtopicMetrics} obj Optional instance to populate.
      * @return {BrowseNodeReviewSubtopicMetrics} The populated <code>BrowseNodeReviewSubtopicMetrics</code> instance.
      */
-    static constructFromObject(data: any, obj: BrowseNodeReviewSubtopicMetrics): BrowseNodeReviewSubtopicMetrics;
+    static constructFromObject(data: Object, obj: BrowseNodeReviewSubtopicMetrics): BrowseNodeReviewSubtopicMetrics;
     /**
      * Constructs a new <code>BrowseNodeReviewSubtopicMetrics</code>.
      * The browse node review subtopic metrics.

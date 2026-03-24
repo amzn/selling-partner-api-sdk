@@ -11,7 +11,7 @@ export class AddInventoryResponse {
      * @param {AddInventoryResponse} obj Optional instance to populate.
      * @return {AddInventoryResponse} The populated <code>AddInventoryResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: AddInventoryResponse): AddInventoryResponse;
+    static constructFromObject(data: Object, obj: AddInventoryResponse): AddInventoryResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

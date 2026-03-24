@@ -11,7 +11,7 @@ export class ListContentDocumentAsinRelationsResponse {
      * @param {ListContentDocumentAsinRelationsResponse} obj Optional instance to populate.
      * @return {ListContentDocumentAsinRelationsResponse} The populated <code>ListContentDocumentAsinRelationsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ListContentDocumentAsinRelationsResponse): ListContentDocumentAsinRelationsResponse;
+    static constructFromObject(data: Object, obj: ListContentDocumentAsinRelationsResponse): ListContentDocumentAsinRelationsResponse;
     /**
      * Constructs a new <code>ListContentDocumentAsinRelationsResponse</code>.
      * @alias module:apluscontent_v2020_11_01/model/ListContentDocumentAsinRelationsResponse

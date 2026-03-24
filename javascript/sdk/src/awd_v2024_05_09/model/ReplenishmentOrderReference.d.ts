@@ -11,7 +11,7 @@ export class ReplenishmentOrderReference {
      * @param {ReplenishmentOrderReference} obj Optional instance to populate.
      * @return {ReplenishmentOrderReference} The populated <code>ReplenishmentOrderReference</code> instance.
      */
-    static constructFromObject(data: any, obj: ReplenishmentOrderReference): ReplenishmentOrderReference;
+    static constructFromObject(data: Object, obj: ReplenishmentOrderReference): ReplenishmentOrderReference;
     /**
      * Constructs a new <code>ReplenishmentOrderReference</code>.
      * Response containing the reference identifier for the newly created/updated replenishment order consisting of the order ID.

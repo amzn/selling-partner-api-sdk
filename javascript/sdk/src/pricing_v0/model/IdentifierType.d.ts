@@ -11,7 +11,7 @@ export class IdentifierType {
      * @param {IdentifierType} obj Optional instance to populate.
      * @return {IdentifierType} The populated <code>IdentifierType</code> instance.
      */
-    static constructFromObject(data: any, obj: IdentifierType): IdentifierType;
+    static constructFromObject(data: Object, obj: IdentifierType): IdentifierType;
     /**
      * Constructs a new <code>IdentifierType</code>.
      * Specifies the identifiers used to uniquely identify an item.

@@ -11,7 +11,7 @@ export class ItemProductTypeByMarketplace {
      * @param {ItemProductTypeByMarketplace} obj Optional instance to populate.
      * @return {ItemProductTypeByMarketplace} The populated <code>ItemProductTypeByMarketplace</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemProductTypeByMarketplace): ItemProductTypeByMarketplace;
+    static constructFromObject(data: Object, obj: ItemProductTypeByMarketplace): ItemProductTypeByMarketplace;
     /**
      * Constructs a new <code>ItemProductTypeByMarketplace</code>.
      * Product types that are associated with the listing item for the specified marketplace.

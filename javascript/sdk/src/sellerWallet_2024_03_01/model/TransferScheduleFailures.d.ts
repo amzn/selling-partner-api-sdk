@@ -11,7 +11,7 @@ export class TransferScheduleFailures {
      * @param {TransferScheduleFailures} obj Optional instance to populate.
      * @return {TransferScheduleFailures} The populated <code>TransferScheduleFailures</code> instance.
      */
-    static constructFromObject(data: any, obj: TransferScheduleFailures): TransferScheduleFailures;
+    static constructFromObject(data: Object, obj: TransferScheduleFailures): TransferScheduleFailures;
     /**
      * Constructs a new <code>TransferScheduleFailures</code>.
      * The time of and reason for the transfer schedule failure.

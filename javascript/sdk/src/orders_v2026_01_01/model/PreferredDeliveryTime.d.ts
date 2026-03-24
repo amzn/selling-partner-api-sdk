@@ -11,7 +11,7 @@ export class PreferredDeliveryTime {
      * @param {PreferredDeliveryTime} obj Optional instance to populate.
      * @return {PreferredDeliveryTime} The populated <code>PreferredDeliveryTime</code> instance.
      */
-    static constructFromObject(data: any, obj: PreferredDeliveryTime): PreferredDeliveryTime;
+    static constructFromObject(data: Object, obj: PreferredDeliveryTime): PreferredDeliveryTime;
     /**
      * Business hours when the business is open for deliveries.
      * @member {BusinessHour[]} businessHours

@@ -11,7 +11,7 @@ export class DirectPurchaseRequest {
      * @param {DirectPurchaseRequest} obj Optional instance to populate.
      * @return {DirectPurchaseRequest} The populated <code>DirectPurchaseRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: DirectPurchaseRequest): DirectPurchaseRequest;
+    static constructFromObject(data: Object, obj: DirectPurchaseRequest): DirectPurchaseRequest;
     /**
      * Constructs a new <code>DirectPurchaseRequest</code>.
      * The request schema for the directPurchaseShipment operation. When the channel type is Amazon, the shipTo address is not required and will be ignored.

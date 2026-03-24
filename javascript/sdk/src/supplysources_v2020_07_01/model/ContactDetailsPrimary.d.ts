@@ -11,7 +11,7 @@ export class ContactDetailsPrimary {
      * @param {ContactDetailsPrimary} obj Optional instance to populate.
      * @return {ContactDetailsPrimary} The populated <code>ContactDetailsPrimary</code> instance.
      */
-    static constructFromObject(data: any, obj: ContactDetailsPrimary): ContactDetailsPrimary;
+    static constructFromObject(data: Object, obj: ContactDetailsPrimary): ContactDetailsPrimary;
     /**
      * The email address to which email messages are delivered.
      * @member {String} email

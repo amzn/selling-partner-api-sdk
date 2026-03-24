@@ -11,7 +11,7 @@ export class RegulatedInformationField {
      * @param {RegulatedInformationField} obj Optional instance to populate.
      * @return {RegulatedInformationField} The populated <code>RegulatedInformationField</code> instance.
      */
-    static constructFromObject(data: any, obj: RegulatedInformationField): RegulatedInformationField;
+    static constructFromObject(data: Object, obj: RegulatedInformationField): RegulatedInformationField;
     /**
      * Constructs a new <code>RegulatedInformationField</code>.
      * A field collected from the regulatory form.

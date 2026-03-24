@@ -11,7 +11,7 @@ export class OneClickShipmentRequest {
      * @param {OneClickShipmentRequest} obj Optional instance to populate.
      * @return {OneClickShipmentRequest} The populated <code>OneClickShipmentRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: OneClickShipmentRequest): OneClickShipmentRequest;
+    static constructFromObject(data: Object, obj: OneClickShipmentRequest): OneClickShipmentRequest;
     /**
      * Constructs a new <code>OneClickShipmentRequest</code>.
      * The request schema for the OneClickShipment operation. When the channelType is not Amazon, shipTo is required and when channelType is Amazon shipTo is ignored.

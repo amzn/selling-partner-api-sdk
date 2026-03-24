@@ -11,7 +11,7 @@ export class AmazonPrepFeesDetails {
      * @param {AmazonPrepFeesDetails} obj Optional instance to populate.
      * @return {AmazonPrepFeesDetails} The populated <code>AmazonPrepFeesDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: AmazonPrepFeesDetails): AmazonPrepFeesDetails;
+    static constructFromObject(data: Object, obj: AmazonPrepFeesDetails): AmazonPrepFeesDetails;
     /**
      * @member {PrepInstruction} prepInstruction
      * @type {PrepInstruction}

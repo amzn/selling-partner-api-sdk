@@ -11,7 +11,7 @@ export class InboundPlan {
      * @param {InboundPlan} obj Optional instance to populate.
      * @return {InboundPlan} The populated <code>InboundPlan</code> instance.
      */
-    static constructFromObject(data: any, obj: InboundPlan): InboundPlan;
+    static constructFromObject(data: Object, obj: InboundPlan): InboundPlan;
     /**
      * Constructs a new <code>InboundPlan</code>.
      * Inbound plan containing details of the inbound workflow.

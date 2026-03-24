@@ -38,16 +38,16 @@ export class SearchOrdersApi {
        * @return {Promise<SearchOrdersResponse>}
        */
     searchOrdersWithHttpInfo(opts?: {
-        createdAfter?: Date;
-        createdBefore?: Date;
-        lastUpdatedAfter?: Date;
-        lastUpdatedBefore?: Date;
-        fulfillmentStatuses?: string[];
-        marketplaceIds?: string[];
-        fulfilledBy?: string[];
-        maxResultsPerPage?: number;
-        paginationToken?: string;
-        includedData?: string[];
+        createdAfter?: Date | undefined;
+        createdBefore?: Date | undefined;
+        lastUpdatedAfter?: Date | undefined;
+        lastUpdatedBefore?: Date | undefined;
+        fulfillmentStatuses?: string[] | undefined;
+        marketplaceIds?: string[] | undefined;
+        fulfilledBy?: string[] | undefined;
+        maxResultsPerPage?: number | undefined;
+        paginationToken?: string | undefined;
+        includedData?: string[] | undefined;
     }): Promise<SearchOrdersResponse>;
     /**
        * Returns orders that are created or updated during the time period that you specify. You can filter the response for specific types of orders.
@@ -65,16 +65,16 @@ export class SearchOrdersApi {
        * @return {Promise<SearchOrdersResponse>}
        */
     searchOrders(opts?: {
-        createdAfter?: Date;
-        createdBefore?: Date;
-        lastUpdatedAfter?: Date;
-        lastUpdatedBefore?: Date;
-        fulfillmentStatuses?: string[];
-        marketplaceIds?: string[];
-        fulfilledBy?: string[];
-        maxResultsPerPage?: number;
-        paginationToken?: string;
-        includedData?: string[];
+        createdAfter?: Date | undefined;
+        createdBefore?: Date | undefined;
+        lastUpdatedAfter?: Date | undefined;
+        lastUpdatedBefore?: Date | undefined;
+        fulfillmentStatuses?: string[] | undefined;
+        marketplaceIds?: string[] | undefined;
+        fulfilledBy?: string[] | undefined;
+        maxResultsPerPage?: number | undefined;
+        paginationToken?: string | undefined;
+        includedData?: string[] | undefined;
     }): Promise<SearchOrdersResponse>;
     #private;
 }

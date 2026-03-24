@@ -11,7 +11,7 @@ export class CollectionFormsHistoryRecord {
      * @param {CollectionFormsHistoryRecord} obj Optional instance to populate.
      * @return {CollectionFormsHistoryRecord} The populated <code>CollectionFormsHistoryRecord</code> instance.
      */
-    static constructFromObject(data: any, obj: CollectionFormsHistoryRecord): CollectionFormsHistoryRecord;
+    static constructFromObject(data: Object, obj: CollectionFormsHistoryRecord): CollectionFormsHistoryRecord;
     /**
      * The carrier name for the offering.
      * @member {String} carrierName

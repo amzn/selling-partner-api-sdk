@@ -11,7 +11,7 @@ export class ItemReviewSubtopic {
      * @param {ItemReviewSubtopic} obj Optional instance to populate.
      * @return {ItemReviewSubtopic} The populated <code>ItemReviewSubtopic</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemReviewSubtopic): ItemReviewSubtopic;
+    static constructFromObject(data: Object, obj: ItemReviewSubtopic): ItemReviewSubtopic;
     /**
      * Constructs a new <code>ItemReviewSubtopic</code>.
      * Details of the subtopic for an item review topic.

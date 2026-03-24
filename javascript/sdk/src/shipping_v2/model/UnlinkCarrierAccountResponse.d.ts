@@ -11,7 +11,7 @@ export class UnlinkCarrierAccountResponse {
      * @param {UnlinkCarrierAccountResponse} obj Optional instance to populate.
      * @return {UnlinkCarrierAccountResponse} The populated <code>UnlinkCarrierAccountResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: UnlinkCarrierAccountResponse): UnlinkCarrierAccountResponse;
+    static constructFromObject(data: Object, obj: UnlinkCarrierAccountResponse): UnlinkCarrierAccountResponse;
     /**
      * Is Carrier unlinked from Merchant
      * @member {Boolean} isUnlinked

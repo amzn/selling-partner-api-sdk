@@ -11,7 +11,7 @@ export class JobListing {
      * @param {JobListing} obj Optional instance to populate.
      * @return {JobListing} The populated <code>JobListing</code> instance.
      */
-    static constructFromObject(data: any, obj: JobListing): JobListing;
+    static constructFromObject(data: Object, obj: JobListing): JobListing;
     /**
      * Total result size of the query result.
      * @member {Number} totalResultSize

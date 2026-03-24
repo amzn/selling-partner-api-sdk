@@ -11,7 +11,7 @@ export class ActionableError {
      * @param {ActionableError} obj Optional instance to populate.
      * @return {ActionableError} The populated <code>ActionableError</code> instance.
      */
-    static constructFromObject(data: any, obj: ActionableError): ActionableError;
+    static constructFromObject(data: Object, obj: ActionableError): ActionableError;
     /**
      * The top level error type that may contain multiple error subtypes.
      * @member {String} errorType

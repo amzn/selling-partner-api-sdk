@@ -11,7 +11,7 @@ export class PointsGrantedDetail {
      * @param {PointsGrantedDetail} obj Optional instance to populate.
      * @return {PointsGrantedDetail} The populated <code>PointsGrantedDetail</code> instance.
      */
-    static constructFromObject(data: any, obj: PointsGrantedDetail): PointsGrantedDetail;
+    static constructFromObject(data: Object, obj: PointsGrantedDetail): PointsGrantedDetail;
     /**
      * The number of Amazon Points granted with the purchase of an item.
      * @member {Number} pointsNumber

@@ -11,7 +11,7 @@ export class ValidVerificationDetail {
      * @param {ValidVerificationDetail} obj Optional instance to populate.
      * @return {ValidVerificationDetail} The populated <code>ValidVerificationDetail</code> instance.
      */
-    static constructFromObject(data: any, obj: ValidVerificationDetail): ValidVerificationDetail;
+    static constructFromObject(data: Object, obj: ValidVerificationDetail): ValidVerificationDetail;
     /**
      * Constructs a new <code>ValidVerificationDetail</code>.
      * The types of verification details that may be provided for the order and the criteria required for when the type of verification detail can be provided. The types of verification details allowed depend on the type of regulated product and will not change order to order.

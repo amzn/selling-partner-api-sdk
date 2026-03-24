@@ -11,7 +11,7 @@ export class CancelSelfShipAppointmentResponse {
      * @param {CancelSelfShipAppointmentResponse} obj Optional instance to populate.
      * @return {CancelSelfShipAppointmentResponse} The populated <code>CancelSelfShipAppointmentResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CancelSelfShipAppointmentResponse): CancelSelfShipAppointmentResponse;
+    static constructFromObject(data: Object, obj: CancelSelfShipAppointmentResponse): CancelSelfShipAppointmentResponse;
     /**
      * Constructs a new <code>CancelSelfShipAppointmentResponse</code>.
      * The &#x60;CancelSelfShipAppointment&#x60; response.

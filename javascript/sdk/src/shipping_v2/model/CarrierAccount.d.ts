@@ -11,7 +11,7 @@ export class CarrierAccount {
      * @param {CarrierAccount} obj Optional instance to populate.
      * @return {CarrierAccount} The populated <code>CarrierAccount</code> instance.
      */
-    static constructFromObject(data: any, obj: CarrierAccount): CarrierAccount;
+    static constructFromObject(data: Object, obj: CarrierAccount): CarrierAccount;
     /**
      * Constructs a new <code>CarrierAccount</code>.
      * Carrier Account details used to fetch rates.

@@ -11,7 +11,7 @@ export class ItemFulfillment {
      * @param {ItemFulfillment} obj Optional instance to populate.
      * @return {ItemFulfillment} The populated <code>ItemFulfillment</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemFulfillment): ItemFulfillment;
+    static constructFromObject(data: Object, obj: ItemFulfillment): ItemFulfillment;
     /**
      * The number of units of this item that have been successfully processed and shipped.
      * @member {Number} quantityFulfilled

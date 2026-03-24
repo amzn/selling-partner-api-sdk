@@ -11,7 +11,7 @@ export class MarketplaceFilter {
      * @param {MarketplaceFilter} obj Optional instance to populate.
      * @return {MarketplaceFilter} The populated <code>MarketplaceFilter</code> instance.
      */
-    static constructFromObject(data: any, obj: MarketplaceFilter): MarketplaceFilter;
+    static constructFromObject(data: Object, obj: MarketplaceFilter): MarketplaceFilter;
     /**
      * A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
      * @member {String[]} marketplaceIds

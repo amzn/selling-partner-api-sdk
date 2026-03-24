@@ -11,7 +11,7 @@ export class ProcessingDirective {
      * @param {ProcessingDirective} obj Optional instance to populate.
      * @return {ProcessingDirective} The populated <code>ProcessingDirective</code> instance.
      */
-    static constructFromObject(data: any, obj: ProcessingDirective): ProcessingDirective;
+    static constructFromObject(data: Object, obj: ProcessingDirective): ProcessingDirective;
     /**
      * @member {EventFilter} eventFilter
      * @type {EventFilter}

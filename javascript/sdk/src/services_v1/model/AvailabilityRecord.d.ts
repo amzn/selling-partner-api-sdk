@@ -11,7 +11,7 @@ export class AvailabilityRecord {
      * @param {AvailabilityRecord} obj Optional instance to populate.
      * @return {AvailabilityRecord} The populated <code>AvailabilityRecord</code> instance.
      */
-    static constructFromObject(data: any, obj: AvailabilityRecord): AvailabilityRecord;
+    static constructFromObject(data: Object, obj: AvailabilityRecord): AvailabilityRecord;
     /**
      * Constructs a new <code>AvailabilityRecord</code>.
      * &#x60;AvailabilityRecord&#x60; to represent the capacity of a resource over a time range.

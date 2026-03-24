@@ -11,7 +11,7 @@ export class AddressInput {
      * @param {AddressInput} obj Optional instance to populate.
      * @return {AddressInput} The populated <code>AddressInput</code> instance.
      */
-    static constructFromObject(data: any, obj: AddressInput): AddressInput;
+    static constructFromObject(data: Object, obj: AddressInput): AddressInput;
     /**
      * Constructs a new <code>AddressInput</code>.
      * Specific details to identify a place.

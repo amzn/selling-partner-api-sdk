@@ -11,7 +11,7 @@ export class FixedSlotCapacity {
      * @param {FixedSlotCapacity} obj Optional instance to populate.
      * @return {FixedSlotCapacity} The populated <code>FixedSlotCapacity</code> instance.
      */
-    static constructFromObject(data: any, obj: FixedSlotCapacity): FixedSlotCapacity;
+    static constructFromObject(data: Object, obj: FixedSlotCapacity): FixedSlotCapacity;
     /**
      * Resource Identifier.
      * @member {String} resourceId

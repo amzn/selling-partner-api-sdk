@@ -11,7 +11,7 @@ export class GetCarrierAccountFormInputsResponse {
      * @param {GetCarrierAccountFormInputsResponse} obj Optional instance to populate.
      * @return {GetCarrierAccountFormInputsResponse} The populated <code>GetCarrierAccountFormInputsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetCarrierAccountFormInputsResponse): GetCarrierAccountFormInputsResponse;
+    static constructFromObject(data: Object, obj: GetCarrierAccountFormInputsResponse): GetCarrierAccountFormInputsResponse;
     /**
      * A list of LinkableCarrier
      * @member {LinkableCarrier[]} linkableCarriersList

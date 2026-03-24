@@ -11,7 +11,7 @@ export class MarketplaceChannel {
      * @param {MarketplaceChannel} obj Optional instance to populate.
      * @return {MarketplaceChannel} The populated <code>MarketplaceChannel</code> instance.
      */
-    static constructFromObject(data: any, obj: MarketplaceChannel): MarketplaceChannel;
+    static constructFromObject(data: Object, obj: MarketplaceChannel): MarketplaceChannel;
     /**
      * The name of the marketplace.
      * @member {String} marketplaceName

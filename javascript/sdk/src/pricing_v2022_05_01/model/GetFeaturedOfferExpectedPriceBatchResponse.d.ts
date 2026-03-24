@@ -11,7 +11,7 @@ export class GetFeaturedOfferExpectedPriceBatchResponse {
      * @param {GetFeaturedOfferExpectedPriceBatchResponse} obj Optional instance to populate.
      * @return {GetFeaturedOfferExpectedPriceBatchResponse} The populated <code>GetFeaturedOfferExpectedPriceBatchResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetFeaturedOfferExpectedPriceBatchResponse): GetFeaturedOfferExpectedPriceBatchResponse;
+    static constructFromObject(data: Object, obj: GetFeaturedOfferExpectedPriceBatchResponse): GetFeaturedOfferExpectedPriceBatchResponse;
     /**
      * A batched list of FOEP responses.
      * @member {FeaturedOfferExpectedPriceResponse[]} responses

@@ -11,7 +11,7 @@ export class InboundOrderCreationData {
      * @param {InboundOrderCreationData} obj Optional instance to populate.
      * @return {InboundOrderCreationData} The populated <code>InboundOrderCreationData</code> instance.
      */
-    static constructFromObject(data: any, obj: InboundOrderCreationData): InboundOrderCreationData;
+    static constructFromObject(data: Object, obj: InboundOrderCreationData): InboundOrderCreationData;
     /**
      * Constructs a new <code>InboundOrderCreationData</code>.
      * Payload for creating an inbound order.

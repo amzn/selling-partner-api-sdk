@@ -11,7 +11,7 @@ export class ContainerSequenceNumbers {
      * @param {ContainerSequenceNumbers} obj Optional instance to populate.
      * @return {ContainerSequenceNumbers} The populated <code>ContainerSequenceNumbers</code> instance.
      */
-    static constructFromObject(data: any, obj: ContainerSequenceNumbers): ContainerSequenceNumbers;
+    static constructFromObject(data: Object, obj: ContainerSequenceNumbers): ContainerSequenceNumbers;
     /**
      * A list of containers shipped
      * @member {String} containerSequenceNumber

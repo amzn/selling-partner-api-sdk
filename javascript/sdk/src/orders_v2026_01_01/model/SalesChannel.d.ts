@@ -11,7 +11,7 @@ export class SalesChannel {
      * @param {SalesChannel} obj Optional instance to populate.
      * @return {SalesChannel} The populated <code>SalesChannel</code> instance.
      */
-    static constructFromObject(data: any, obj: SalesChannel): SalesChannel;
+    static constructFromObject(data: Object, obj: SalesChannel): SalesChannel;
     /**
      * Constructs a new <code>SalesChannel</code>.
      * Information about where the customer placed this order.

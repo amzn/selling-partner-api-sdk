@@ -11,7 +11,7 @@ export class LineItemWithReason {
      * @param {LineItemWithReason} obj Optional instance to populate.
      * @return {LineItemWithReason} The populated <code>LineItemWithReason</code> instance.
      */
-    static constructFromObject(data: any, obj: LineItemWithReason): LineItemWithReason;
+    static constructFromObject(data: Object, obj: LineItemWithReason): LineItemWithReason;
     /**
      * Constructs a new <code>LineItemWithReason</code>.
      * Information about the line item being confirmed or rejected and the reason for the rejection.

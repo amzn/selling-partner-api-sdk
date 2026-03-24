@@ -11,7 +11,7 @@ export class Technician {
      * @param {Technician} obj Optional instance to populate.
      * @return {Technician} The populated <code>Technician</code> instance.
      */
-    static constructFromObject(data: any, obj: Technician): Technician;
+    static constructFromObject(data: Object, obj: Technician): Technician;
     /**
      * The technician identifier.
      * @member {String} technicianId

@@ -11,20 +11,20 @@ export class PaymentInformation {
      * @param {PaymentInformation} obj Optional instance to populate.
      * @return {PaymentInformation} The populated <code>PaymentInformation</code> instance.
      */
-    static constructFromObject(data: any, obj: PaymentInformation): PaymentInformation;
+    static constructFromObject(data: Object, obj: PaymentInformation): PaymentInformation;
     /**
      * @member {PaymentMethodEnum} paymentMethod
      * @type {PaymentMethodEnum}
      */
     paymentMethod: PaymentMethodEnum;
     /**
-     * Government ID of acquirer
+     * The government ID of the acquirer.
      * @member {String} acquirerId
      * @type {String}
      */
     acquirerId: string;
     /**
-     * Credit card brand (if payment method is CreditCard)
+     * The credit card brand if the payment method is `CreditCard`.
      * @member {String} cardBrand
      * @type {String}
      */
@@ -35,7 +35,7 @@ export class PaymentInformation {
      */
     paymentValue: Money;
     /**
-     * Authorization code for this payment
+     * The authorization code of this payment.
      * @member {String} authorizationCode
      * @type {String}
      */

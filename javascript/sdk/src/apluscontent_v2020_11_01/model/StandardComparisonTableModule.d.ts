@@ -11,7 +11,7 @@ export class StandardComparisonTableModule {
      * @param {StandardComparisonTableModule} obj Optional instance to populate.
      * @return {StandardComparisonTableModule} The populated <code>StandardComparisonTableModule</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardComparisonTableModule): StandardComparisonTableModule;
+    static constructFromObject(data: Object, obj: StandardComparisonTableModule): StandardComparisonTableModule;
     /**
      * @member {StandardComparisonProductBlock[]} productColumns
      * @type {StandardComparisonProductBlock[]}

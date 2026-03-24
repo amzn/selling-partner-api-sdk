@@ -11,7 +11,7 @@ export class UnmanifestedShipmentLocation {
      * @param {UnmanifestedShipmentLocation} obj Optional instance to populate.
      * @return {UnmanifestedShipmentLocation} The populated <code>UnmanifestedShipmentLocation</code> instance.
      */
-    static constructFromObject(data: any, obj: UnmanifestedShipmentLocation): UnmanifestedShipmentLocation;
+    static constructFromObject(data: Object, obj: UnmanifestedShipmentLocation): UnmanifestedShipmentLocation;
     /**
      * @member {Address} address
      * @type {Address}

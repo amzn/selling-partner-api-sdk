@@ -11,7 +11,7 @@ export class BrowseNodeReturnTrendPoint {
      * @param {BrowseNodeReturnTrendPoint} obj Optional instance to populate.
      * @return {BrowseNodeReturnTrendPoint} The populated <code>BrowseNodeReturnTrendPoint</code> instance.
      */
-    static constructFromObject(data: any, obj: BrowseNodeReturnTrendPoint): BrowseNodeReturnTrendPoint;
+    static constructFromObject(data: Object, obj: BrowseNodeReturnTrendPoint): BrowseNodeReturnTrendPoint;
     /**
      * Constructs a new <code>BrowseNodeReturnTrendPoint</code>.
      * The return metrics for a certain month.

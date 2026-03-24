@@ -11,7 +11,7 @@ export class Errors {
      * @param {Errors} obj Optional instance to populate.
      * @return {Errors} The populated <code>Errors</code> instance.
      */
-    static constructFromObject(data: any, obj: Errors): Errors;
+    static constructFromObject(data: Object, obj: Errors): Errors;
     /**
      * Constructs a new <code>Errors</code>.
      * A list of error responses returned when a request is unsuccessful.

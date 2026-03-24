@@ -11,7 +11,7 @@ export class ItemPacking {
      * @param {ItemPacking} obj Optional instance to populate.
      * @return {ItemPacking} The populated <code>ItemPacking</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemPacking): ItemPacking;
+    static constructFromObject(data: Object, obj: ItemPacking): ItemPacking;
     /**
      * @member {GiftOption} giftOption
      * @type {GiftOption}

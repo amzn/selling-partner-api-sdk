@@ -35,11 +35,11 @@ export class DefinitionsApi {
        * @return {Promise<ProductTypeDefinition>}
        */
     getDefinitionsProductTypeWithHttpInfo(productType: string, marketplaceIds: string[], opts?: {
-        sellerId?: string;
-        productTypeVersion?: string;
-        requirements?: string;
-        requirementsEnforced?: string;
-        locale?: string;
+        sellerId?: string | undefined;
+        productTypeVersion?: string | undefined;
+        requirements?: string | undefined;
+        requirementsEnforced?: string | undefined;
+        locale?: string | undefined;
     }): Promise<ProductTypeDefinition>;
     /**
        * Retrieve an Amazon product type definition.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 5 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -54,11 +54,11 @@ export class DefinitionsApi {
        * @return {Promise<ProductTypeDefinition>}
        */
     getDefinitionsProductType(productType: string, marketplaceIds: string[], opts?: {
-        sellerId?: string;
-        productTypeVersion?: string;
-        requirements?: string;
-        requirementsEnforced?: string;
-        locale?: string;
+        sellerId?: string | undefined;
+        productTypeVersion?: string | undefined;
+        requirements?: string | undefined;
+        requirementsEnforced?: string | undefined;
+        locale?: string | undefined;
     }): Promise<ProductTypeDefinition>;
     /**
        * Search for and return a list of Amazon product types that have definitions available.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 5 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -71,10 +71,10 @@ export class DefinitionsApi {
        * @return {Promise<ProductTypeList>}
        */
     searchDefinitionsProductTypesWithHttpInfo(marketplaceIds: string[], opts?: {
-        keywords?: string[];
-        itemName?: string;
-        locale?: string;
-        searchLocale?: string;
+        keywords?: string[] | undefined;
+        itemName?: string | undefined;
+        locale?: string | undefined;
+        searchLocale?: string | undefined;
     }): Promise<ProductTypeList>;
     /**
        * Search for and return a list of Amazon product types that have definitions available.  **Usage Plans:**  | Plan type | Rate (requests per second) | Burst | | ---- | ---- | ---- | |Default| 5 | 10 | |Selling partner specific| Variable | Variable |  The x-amzn-RateLimit-Limit response header returns the usage plan rate limits that were applied to the requested operation. Rate limits for some selling partners will vary from the default rate and burst shown in the table above. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -87,10 +87,10 @@ export class DefinitionsApi {
        * @return {Promise<ProductTypeList>}
        */
     searchDefinitionsProductTypes(marketplaceIds: string[], opts?: {
-        keywords?: string[];
-        itemName?: string;
-        locale?: string;
-        searchLocale?: string;
+        keywords?: string[] | undefined;
+        itemName?: string | undefined;
+        locale?: string | undefined;
+        searchLocale?: string | undefined;
     }): Promise<ProductTypeList>;
     #private;
 }

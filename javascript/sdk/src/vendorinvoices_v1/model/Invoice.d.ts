@@ -11,7 +11,7 @@ export class Invoice {
      * @param {Invoice} obj Optional instance to populate.
      * @return {Invoice} The populated <code>Invoice</code> instance.
      */
-    static constructFromObject(data: any, obj: Invoice): Invoice;
+    static constructFromObject(data: Object, obj: Invoice): Invoice;
     /**
      * Constructs a new <code>Invoice</code>.
      * Represents an invoice or credit note document with details about the transaction, parties involved, and line items.
