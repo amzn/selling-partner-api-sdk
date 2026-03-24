@@ -16,8 +16,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
-/** List of payment transactions */
-@Schema(description = "List of payment transactions")
+/** A list of payment transactions. */
+@Schema(description = "A list of payment transactions.")
 public class PaymentInformationList extends ArrayList<PaymentInformation> {
 
     @Override
