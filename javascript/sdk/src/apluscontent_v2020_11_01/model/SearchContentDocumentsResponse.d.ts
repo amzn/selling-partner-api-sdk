@@ -11,7 +11,7 @@ export class SearchContentDocumentsResponse {
      * @param {SearchContentDocumentsResponse} obj Optional instance to populate.
      * @return {SearchContentDocumentsResponse} The populated <code>SearchContentDocumentsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: SearchContentDocumentsResponse): SearchContentDocumentsResponse;
+    static constructFromObject(data: Object, obj: SearchContentDocumentsResponse): SearchContentDocumentsResponse;
     /**
      * Constructs a new <code>SearchContentDocumentsResponse</code>.
      * @alias module:apluscontent_v2020_11_01/model/SearchContentDocumentsResponse

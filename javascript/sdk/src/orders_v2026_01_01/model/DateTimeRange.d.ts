@@ -11,7 +11,7 @@ export class DateTimeRange {
      * @param {DateTimeRange} obj Optional instance to populate.
      * @return {DateTimeRange} The populated <code>DateTimeRange</code> instance.
      */
-    static constructFromObject(data: any, obj: DateTimeRange): DateTimeRange;
+    static constructFromObject(data: Object, obj: DateTimeRange): DateTimeRange;
     /**
      * The beginning of the time period, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      * @member {Date} earliestDateTime

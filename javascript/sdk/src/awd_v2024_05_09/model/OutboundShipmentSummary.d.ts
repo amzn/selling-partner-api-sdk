@@ -11,7 +11,7 @@ export class OutboundShipmentSummary {
      * @param {OutboundShipmentSummary} obj Optional instance to populate.
      * @return {OutboundShipmentSummary} The populated <code>OutboundShipmentSummary</code> instance.
      */
-    static constructFromObject(data: any, obj: OutboundShipmentSummary): OutboundShipmentSummary;
+    static constructFromObject(data: Object, obj: OutboundShipmentSummary): OutboundShipmentSummary;
     /**
      * Constructs a new <code>OutboundShipmentSummary</code>.
      * Summary of an AWD inbound shipment containing the shipment ID which can be used to fetch the actual shipment

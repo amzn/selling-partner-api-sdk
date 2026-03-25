@@ -11,7 +11,7 @@ export class RestrictedResource {
      * @param {RestrictedResource} obj Optional instance to populate.
      * @return {RestrictedResource} The populated <code>RestrictedResource</code> instance.
      */
-    static constructFromObject(data: any, obj: RestrictedResource): RestrictedResource;
+    static constructFromObject(data: Object, obj: RestrictedResource): RestrictedResource;
     /**
      * Constructs a new <code>RestrictedResource</code>.
      * Model of a restricted resource.

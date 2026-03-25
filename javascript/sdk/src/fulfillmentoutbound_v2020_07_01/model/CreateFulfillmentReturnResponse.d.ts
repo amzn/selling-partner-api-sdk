@@ -11,7 +11,7 @@ export class CreateFulfillmentReturnResponse {
      * @param {CreateFulfillmentReturnResponse} obj Optional instance to populate.
      * @return {CreateFulfillmentReturnResponse} The populated <code>CreateFulfillmentReturnResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateFulfillmentReturnResponse): CreateFulfillmentReturnResponse;
+    static constructFromObject(data: Object, obj: CreateFulfillmentReturnResponse): CreateFulfillmentReturnResponse;
     /**
      * @member {CreateFulfillmentReturnResult} payload
      * @type {CreateFulfillmentReturnResult}

@@ -11,7 +11,7 @@ export class PrimaryContact {
      * @param {PrimaryContact} obj Optional instance to populate.
      * @return {PrimaryContact} The populated <code>PrimaryContact</code> instance.
      */
-    static constructFromObject(data: any, obj: PrimaryContact): PrimaryContact;
+    static constructFromObject(data: Object, obj: PrimaryContact): PrimaryContact;
     /**
      * Constructs a new <code>PrimaryContact</code>.
      * Information about the seller&#39;s primary contact.

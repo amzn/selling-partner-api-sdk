@@ -11,7 +11,7 @@ export class ItemSubstitutionPreference {
      * @param {ItemSubstitutionPreference} obj Optional instance to populate.
      * @return {ItemSubstitutionPreference} The populated <code>ItemSubstitutionPreference</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemSubstitutionPreference): ItemSubstitutionPreference;
+    static constructFromObject(data: Object, obj: ItemSubstitutionPreference): ItemSubstitutionPreference;
     /**
      * Constructs a new <code>ItemSubstitutionPreference</code>.
      * Substitution preference for an order item when it becomes unavailable during fulfillment.

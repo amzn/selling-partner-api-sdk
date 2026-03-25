@@ -11,7 +11,7 @@ export class RentalTransactionEvent {
      * @param {RentalTransactionEvent} obj Optional instance to populate.
      * @return {RentalTransactionEvent} The populated <code>RentalTransactionEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: RentalTransactionEvent): RentalTransactionEvent;
+    static constructFromObject(data: Object, obj: RentalTransactionEvent): RentalTransactionEvent;
     /**
      * An Amazon-defined identifier for an order.
      * @member {String} amazonOrderId

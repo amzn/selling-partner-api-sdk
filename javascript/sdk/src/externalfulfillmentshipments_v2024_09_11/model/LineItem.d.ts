@@ -11,7 +11,7 @@ export class LineItem {
      * @param {LineItem} obj Optional instance to populate.
      * @return {LineItem} The populated <code>LineItem</code> instance.
      */
-    static constructFromObject(data: any, obj: LineItem): LineItem;
+    static constructFromObject(data: Object, obj: LineItem): LineItem;
     /**
      * Constructs a new <code>LineItem</code>.
      * Information about the line item being confirmed or rejected.

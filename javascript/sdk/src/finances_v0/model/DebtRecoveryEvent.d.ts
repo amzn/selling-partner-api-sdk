@@ -11,7 +11,7 @@ export class DebtRecoveryEvent {
      * @param {DebtRecoveryEvent} obj Optional instance to populate.
      * @return {DebtRecoveryEvent} The populated <code>DebtRecoveryEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: DebtRecoveryEvent): DebtRecoveryEvent;
+    static constructFromObject(data: Object, obj: DebtRecoveryEvent): DebtRecoveryEvent;
     /**
      * The debt recovery type.  Possible values:  * `DebtPayment` * `DebtPaymentFailure` * `DebtAdjustment`
      * @member {String} debtRecoveryType

@@ -11,7 +11,7 @@ export class LinkableAccountType {
      * @param {LinkableAccountType} obj Optional instance to populate.
      * @return {LinkableAccountType} The populated <code>LinkableAccountType</code> instance.
      */
-    static constructFromObject(data: any, obj: LinkableAccountType): LinkableAccountType;
+    static constructFromObject(data: Object, obj: LinkableAccountType): LinkableAccountType;
     /**
      * @member {AccountType} accountType
      * @type {AccountType}

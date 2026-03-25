@@ -11,7 +11,7 @@ export class GetRatesRequest {
      * @param {GetRatesRequest} obj Optional instance to populate.
      * @return {GetRatesRequest} The populated <code>GetRatesRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: GetRatesRequest): GetRatesRequest;
+    static constructFromObject(data: Object, obj: GetRatesRequest): GetRatesRequest;
     /**
      * Constructs a new <code>GetRatesRequest</code>.
      * The request schema for the getRates operation. When the channelType is Amazon, the shipTo address is not required and will be ignored.

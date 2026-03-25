@@ -11,7 +11,7 @@ export class SetAppointmentResponse {
      * @param {SetAppointmentResponse} obj Optional instance to populate.
      * @return {SetAppointmentResponse} The populated <code>SetAppointmentResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: SetAppointmentResponse): SetAppointmentResponse;
+    static constructFromObject(data: Object, obj: SetAppointmentResponse): SetAppointmentResponse;
     /**
      * The appointment identifier.
      * @member {String} appointmentId

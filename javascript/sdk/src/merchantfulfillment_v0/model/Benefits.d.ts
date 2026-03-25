@@ -11,7 +11,7 @@ export class Benefits {
      * @param {Benefits} obj Optional instance to populate.
      * @return {Benefits} The populated <code>Benefits</code> instance.
      */
-    static constructFromObject(data: any, obj: Benefits): Benefits;
+    static constructFromObject(data: Object, obj: Benefits): Benefits;
     /**
      * A list of included benefits.
      * @member {String[]} includedBenefits

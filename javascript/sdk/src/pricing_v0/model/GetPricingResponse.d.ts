@@ -11,7 +11,7 @@ export class GetPricingResponse {
      * @param {GetPricingResponse} obj Optional instance to populate.
      * @return {GetPricingResponse} The populated <code>GetPricingResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetPricingResponse): GetPricingResponse;
+    static constructFromObject(data: Object, obj: GetPricingResponse): GetPricingResponse;
     /**
      * The payload for the `getPricing` and `getCompetitivePricing` operations.
      * @member {Price[]} payload

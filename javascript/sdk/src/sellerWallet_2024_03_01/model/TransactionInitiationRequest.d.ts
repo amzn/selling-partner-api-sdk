@@ -11,7 +11,7 @@ export class TransactionInitiationRequest {
      * @param {TransactionInitiationRequest} obj Optional instance to populate.
      * @return {TransactionInitiationRequest} The populated <code>TransactionInitiationRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: TransactionInitiationRequest): TransactionInitiationRequest;
+    static constructFromObject(data: Object, obj: TransactionInitiationRequest): TransactionInitiationRequest;
     /**
      * Constructs a new <code>TransactionInitiationRequest</code>.
      * Request body to initiate a transaction from a Seller Wallet bank account to another customer-defined bank account.

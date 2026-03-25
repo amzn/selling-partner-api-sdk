@@ -11,7 +11,7 @@ export class TaxRate {
      * @param {TaxRate} obj Optional instance to populate.
      * @return {TaxRate} The populated <code>TaxRate</code> instance.
      */
-    static constructFromObject(data: any, obj: TaxRate): TaxRate;
+    static constructFromObject(data: Object, obj: TaxRate): TaxRate;
     /**
      * Rate of cess tax.
      * @member {Number} cessRate

@@ -11,7 +11,7 @@ export class LabelCustomization {
      * @param {LabelCustomization} obj Optional instance to populate.
      * @return {LabelCustomization} The populated <code>LabelCustomization</code> instance.
      */
-    static constructFromObject(data: any, obj: LabelCustomization): LabelCustomization;
+    static constructFromObject(data: Object, obj: LabelCustomization): LabelCustomization;
     /**
      * Custom text to print on the label. Note: Custom text is only included on labels that are in ZPL format (ZPL203). FedEx does not support `CustomTextForLabel`.
      * @member {String} customTextForLabel

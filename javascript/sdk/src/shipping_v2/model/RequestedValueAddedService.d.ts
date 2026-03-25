@@ -11,7 +11,7 @@ export class RequestedValueAddedService {
      * @param {RequestedValueAddedService} obj Optional instance to populate.
      * @return {RequestedValueAddedService} The populated <code>RequestedValueAddedService</code> instance.
      */
-    static constructFromObject(data: any, obj: RequestedValueAddedService): RequestedValueAddedService;
+    static constructFromObject(data: Object, obj: RequestedValueAddedService): RequestedValueAddedService;
     /**
      * Constructs a new <code>RequestedValueAddedService</code>.
      * A value-added service to be applied to a shipping service purchase.

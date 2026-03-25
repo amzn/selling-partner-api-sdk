@@ -11,7 +11,7 @@ export class ContainerIdentification {
      * @param {ContainerIdentification} obj Optional instance to populate.
      * @return {ContainerIdentification} The populated <code>ContainerIdentification</code> instance.
      */
-    static constructFromObject(data: any, obj: ContainerIdentification): ContainerIdentification;
+    static constructFromObject(data: Object, obj: ContainerIdentification): ContainerIdentification;
     /**
      * Constructs a new <code>ContainerIdentification</code>.
      * A list of carton identifiers.

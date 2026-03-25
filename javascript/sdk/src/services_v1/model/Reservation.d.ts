@@ -11,7 +11,7 @@ export class Reservation {
      * @param {Reservation} obj Optional instance to populate.
      * @return {Reservation} The populated <code>Reservation</code> instance.
      */
-    static constructFromObject(data: any, obj: Reservation): Reservation;
+    static constructFromObject(data: Object, obj: Reservation): Reservation;
     /**
      * Constructs a new <code>Reservation</code>.
      * Reservation object reduces the capacity of a resource.

@@ -11,7 +11,7 @@ export class Reason {
      * @param {Reason} obj Optional instance to populate.
      * @return {Reason} The populated <code>Reason</code> instance.
      */
-    static constructFromObject(data: any, obj: Reason): Reason;
+    static constructFromObject(data: Object, obj: Reason): Reason;
     /**
      * Constructs a new <code>Reason</code>.
      * A reason for the restriction, including path forward links that may allow Selling Partners to remove the restriction, if available.

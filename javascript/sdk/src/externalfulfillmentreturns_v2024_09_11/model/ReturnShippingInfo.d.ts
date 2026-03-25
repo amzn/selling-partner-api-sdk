@@ -11,7 +11,7 @@ export class ReturnShippingInfo {
      * @param {ReturnShippingInfo} obj Optional instance to populate.
      * @return {ReturnShippingInfo} The populated <code>ReturnShippingInfo</code> instance.
      */
-    static constructFromObject(data: any, obj: ReturnShippingInfo): ReturnShippingInfo;
+    static constructFromObject(data: Object, obj: ReturnShippingInfo): ReturnShippingInfo;
     /**
      * A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      * @member {String} deliveryDateTime

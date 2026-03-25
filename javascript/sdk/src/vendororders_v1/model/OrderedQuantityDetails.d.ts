@@ -11,7 +11,7 @@ export class OrderedQuantityDetails {
      * @param {OrderedQuantityDetails} obj Optional instance to populate.
      * @return {OrderedQuantityDetails} The populated <code>OrderedQuantityDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: OrderedQuantityDetails): OrderedQuantityDetails;
+    static constructFromObject(data: Object, obj: OrderedQuantityDetails): OrderedQuantityDetails;
     /**
      * The date when the line item quantity was updated by buyer. Must be in ISO-8601 date/time format.
      * @member {Date} updatedDate

@@ -32,8 +32,8 @@ export class VehiclesApi {
        * @return {Promise<VehiclesResponse>}
        */
     getVehiclesWithHttpInfo(marketplaceId: string, vehicleType: string, opts?: {
-        pageToken?: string;
-        updatedAfter?: string;
+        pageToken?: string | undefined;
+        updatedAfter?: string | undefined;
     }): Promise<VehiclesResponse>;
     /**
        * Get the latest collection of vehicles
@@ -45,8 +45,8 @@ export class VehiclesApi {
        * @return {Promise<VehiclesResponse>}
        */
     getVehicles(marketplaceId: string, vehicleType: string, opts?: {
-        pageToken?: string;
-        updatedAfter?: string;
+        pageToken?: string | undefined;
+        updatedAfter?: string | undefined;
     }): Promise<VehiclesResponse>;
     #private;
 }

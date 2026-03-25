@@ -11,7 +11,7 @@ export class OtpDetails {
      * @param {OtpDetails} obj Optional instance to populate.
      * @return {OtpDetails} The populated <code>OtpDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: OtpDetails): OtpDetails;
+    static constructFromObject(data: Object, obj: OtpDetails): OtpDetails;
     /**
      * Constructs a new <code>OtpDetails</code>.
      * One-time password (OTP) details of the return item.

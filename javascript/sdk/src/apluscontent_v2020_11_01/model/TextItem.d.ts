@@ -11,7 +11,7 @@ export class TextItem {
      * @param {TextItem} obj Optional instance to populate.
      * @return {TextItem} The populated <code>TextItem</code> instance.
      */
-    static constructFromObject(data: any, obj: TextItem): TextItem;
+    static constructFromObject(data: Object, obj: TextItem): TextItem;
     /**
      * Constructs a new <code>TextItem</code>.
      * Rich positional text that is usually presented as a collection of bullet points.

@@ -11,7 +11,7 @@ export class TrackingDetailsInput {
      * @param {TrackingDetailsInput} obj Optional instance to populate.
      * @return {TrackingDetailsInput} The populated <code>TrackingDetailsInput</code> instance.
      */
-    static constructFromObject(data: any, obj: TrackingDetailsInput): TrackingDetailsInput;
+    static constructFromObject(data: Object, obj: TrackingDetailsInput): TrackingDetailsInput;
     /**
      * @member {LtlTrackingDetailInput} ltlTrackingDetail
      * @type {LtlTrackingDetailInput}

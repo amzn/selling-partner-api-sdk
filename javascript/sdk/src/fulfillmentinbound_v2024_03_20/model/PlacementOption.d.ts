@@ -11,7 +11,7 @@ export class PlacementOption {
      * @param {PlacementOption} obj Optional instance to populate.
      * @return {PlacementOption} The populated <code>PlacementOption</code> instance.
      */
-    static constructFromObject(data: any, obj: PlacementOption): PlacementOption;
+    static constructFromObject(data: Object, obj: PlacementOption): PlacementOption;
     /**
      * Constructs a new <code>PlacementOption</code>.
      * Contains information pertaining to the placement of the contents of an inbound plan and the related costs.

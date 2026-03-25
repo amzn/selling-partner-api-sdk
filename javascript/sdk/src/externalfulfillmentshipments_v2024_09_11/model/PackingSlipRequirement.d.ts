@@ -11,7 +11,7 @@ export class PackingSlipRequirement {
      * @param {PackingSlipRequirement} obj Optional instance to populate.
      * @return {PackingSlipRequirement} The populated <code>PackingSlipRequirement</code> instance.
      */
-    static constructFromObject(data: any, obj: PackingSlipRequirement): PackingSlipRequirement;
+    static constructFromObject(data: Object, obj: PackingSlipRequirement): PackingSlipRequirement;
     /**
      * Whether the packing slip is required to be attached to the shipment.
      * @member {String} requirement

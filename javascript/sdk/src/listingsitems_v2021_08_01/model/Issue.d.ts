@@ -11,7 +11,7 @@ export class Issue {
      * @param {Issue} obj Optional instance to populate.
      * @return {Issue} The populated <code>Issue</code> instance.
      */
-    static constructFromObject(data: any, obj: Issue): Issue;
+    static constructFromObject(data: Object, obj: Issue): Issue;
     /**
      * Constructs a new <code>Issue</code>.
      * An issue with a listings item.

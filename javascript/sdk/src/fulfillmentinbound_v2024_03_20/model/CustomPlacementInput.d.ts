@@ -11,7 +11,7 @@ export class CustomPlacementInput {
      * @param {CustomPlacementInput} obj Optional instance to populate.
      * @return {CustomPlacementInput} The populated <code>CustomPlacementInput</code> instance.
      */
-    static constructFromObject(data: any, obj: CustomPlacementInput): CustomPlacementInput;
+    static constructFromObject(data: Object, obj: CustomPlacementInput): CustomPlacementInput;
     /**
      * Constructs a new <code>CustomPlacementInput</code>.
      * Provide units going to the warehouse.

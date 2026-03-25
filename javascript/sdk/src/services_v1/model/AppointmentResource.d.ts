@@ -11,7 +11,7 @@ export class AppointmentResource {
      * @param {AppointmentResource} obj Optional instance to populate.
      * @return {AppointmentResource} The populated <code>AppointmentResource</code> instance.
      */
-    static constructFromObject(data: any, obj: AppointmentResource): AppointmentResource;
+    static constructFromObject(data: Object, obj: AppointmentResource): AppointmentResource;
     /**
      * The resource identifier.
      * @member {String} resourceId

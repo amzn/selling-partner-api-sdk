@@ -11,7 +11,7 @@ export class SalesRankType {
      * @param {SalesRankType} obj Optional instance to populate.
      * @return {SalesRankType} The populated <code>SalesRankType</code> instance.
      */
-    static constructFromObject(data: any, obj: SalesRankType): SalesRankType;
+    static constructFromObject(data: Object, obj: SalesRankType): SalesRankType;
     /**
      * Constructs a new <code>SalesRankType</code>.
      * Sales rank information for the item, by category

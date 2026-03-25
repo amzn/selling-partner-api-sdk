@@ -11,7 +11,7 @@ export class Duration {
      * @param {Duration} obj Optional instance to populate.
      * @return {Duration} The populated <code>Duration</code> instance.
      */
-    static constructFromObject(data: any, obj: Duration): Duration;
+    static constructFromObject(data: Object, obj: Duration): Duration;
     /**
      * Constructs a new <code>Duration</code>.
      * Duration after manufacturing date during which the product is valid for consumption.

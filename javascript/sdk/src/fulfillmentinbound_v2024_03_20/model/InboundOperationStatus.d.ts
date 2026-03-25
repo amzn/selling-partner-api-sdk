@@ -11,7 +11,7 @@ export class InboundOperationStatus {
      * @param {InboundOperationStatus} obj Optional instance to populate.
      * @return {InboundOperationStatus} The populated <code>InboundOperationStatus</code> instance.
      */
-    static constructFromObject(data: any, obj: InboundOperationStatus): InboundOperationStatus;
+    static constructFromObject(data: Object, obj: InboundOperationStatus): InboundOperationStatus;
     /**
      * Constructs a new <code>InboundOperationStatus</code>.
      * GetInboundOperationStatus response.

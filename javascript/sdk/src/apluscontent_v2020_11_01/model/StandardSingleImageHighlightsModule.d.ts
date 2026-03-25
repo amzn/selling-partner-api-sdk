@@ -11,7 +11,7 @@ export class StandardSingleImageHighlightsModule {
      * @param {StandardSingleImageHighlightsModule} obj Optional instance to populate.
      * @return {StandardSingleImageHighlightsModule} The populated <code>StandardSingleImageHighlightsModule</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardSingleImageHighlightsModule): StandardSingleImageHighlightsModule;
+    static constructFromObject(data: Object, obj: StandardSingleImageHighlightsModule): StandardSingleImageHighlightsModule;
     /**
      * @member {ImageComponent} image
      * @type {ImageComponent}

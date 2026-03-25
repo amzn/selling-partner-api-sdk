@@ -11,7 +11,7 @@ export class GetMyFeesEstimatesErrorList {
      * @param {GetMyFeesEstimatesErrorList} obj Optional instance to populate.
      * @return {GetMyFeesEstimatesErrorList} The populated <code>GetMyFeesEstimatesErrorList</code> instance.
      */
-    static constructFromObject(data: any, obj: GetMyFeesEstimatesErrorList): GetMyFeesEstimatesErrorList;
+    static constructFromObject(data: Object, obj: GetMyFeesEstimatesErrorList): GetMyFeesEstimatesErrorList;
     /**
      * Constructs a new <code>GetMyFeesEstimatesErrorList</code>.
      * A list of error responses returned when a request is unsuccessful.

@@ -11,7 +11,7 @@ export class StandardTextBlock {
      * @param {StandardTextBlock} obj Optional instance to populate.
      * @return {StandardTextBlock} The populated <code>StandardTextBlock</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardTextBlock): StandardTextBlock;
+    static constructFromObject(data: Object, obj: StandardTextBlock): StandardTextBlock;
     /**
      * @member {TextComponent} headline
      * @type {TextComponent}

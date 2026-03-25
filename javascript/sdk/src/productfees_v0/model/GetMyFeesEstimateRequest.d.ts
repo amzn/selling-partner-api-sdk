@@ -11,7 +11,7 @@ export class GetMyFeesEstimateRequest {
      * @param {GetMyFeesEstimateRequest} obj Optional instance to populate.
      * @return {GetMyFeesEstimateRequest} The populated <code>GetMyFeesEstimateRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: GetMyFeesEstimateRequest): GetMyFeesEstimateRequest;
+    static constructFromObject(data: Object, obj: GetMyFeesEstimateRequest): GetMyFeesEstimateRequest;
     /**
      * @member {FeesEstimateRequest} feesEstimateRequest
      * @type {FeesEstimateRequest}

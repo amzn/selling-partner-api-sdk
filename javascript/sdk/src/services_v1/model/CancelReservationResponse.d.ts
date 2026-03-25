@@ -11,7 +11,7 @@ export class CancelReservationResponse {
      * @param {CancelReservationResponse} obj Optional instance to populate.
      * @return {CancelReservationResponse} The populated <code>CancelReservationResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CancelReservationResponse): CancelReservationResponse;
+    static constructFromObject(data: Object, obj: CancelReservationResponse): CancelReservationResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

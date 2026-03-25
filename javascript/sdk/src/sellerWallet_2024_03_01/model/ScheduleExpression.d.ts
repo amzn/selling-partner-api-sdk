@@ -11,7 +11,7 @@ export class ScheduleExpression {
      * @param {ScheduleExpression} obj Optional instance to populate.
      * @return {ScheduleExpression} The populated <code>ScheduleExpression</code> instance.
      */
-    static constructFromObject(data: any, obj: ScheduleExpression): ScheduleExpression;
+    static constructFromObject(data: Object, obj: ScheduleExpression): ScheduleExpression;
     /**
      * Constructs a new <code>ScheduleExpression</code>.
      * The configuration of the schedule.

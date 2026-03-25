@@ -11,7 +11,7 @@ export class RescheduleAppointmentRequest {
      * @param {RescheduleAppointmentRequest} obj Optional instance to populate.
      * @return {RescheduleAppointmentRequest} The populated <code>RescheduleAppointmentRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: RescheduleAppointmentRequest): RescheduleAppointmentRequest;
+    static constructFromObject(data: Object, obj: RescheduleAppointmentRequest): RescheduleAppointmentRequest;
     /**
      * Constructs a new <code>RescheduleAppointmentRequest</code>.
      * Input for rescheduled appointment operation.

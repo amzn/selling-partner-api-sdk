@@ -11,7 +11,7 @@ export class Granularity {
      * @param {Granularity} obj Optional instance to populate.
      * @return {Granularity} The populated <code>Granularity</code> instance.
      */
-    static constructFromObject(data: any, obj: Granularity): Granularity;
+    static constructFromObject(data: Object, obj: Granularity): Granularity;
     /**
      * The granularity type for the inventory aggregation level.
      * @member {String} granularityType

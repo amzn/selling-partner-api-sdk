@@ -11,7 +11,7 @@ export class OrderItemStatusAcknowledgementStatus {
      * @param {OrderItemStatusAcknowledgementStatus} obj Optional instance to populate.
      * @return {OrderItemStatusAcknowledgementStatus} The populated <code>OrderItemStatusAcknowledgementStatus</code> instance.
      */
-    static constructFromObject(data: any, obj: OrderItemStatusAcknowledgementStatus): OrderItemStatusAcknowledgementStatus;
+    static constructFromObject(data: Object, obj: OrderItemStatusAcknowledgementStatus): OrderItemStatusAcknowledgementStatus;
     /**
      * Confirmation status of line item.
      * @member {String} confirmationStatus

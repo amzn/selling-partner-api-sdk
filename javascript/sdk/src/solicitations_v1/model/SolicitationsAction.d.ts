@@ -11,7 +11,7 @@ export class SolicitationsAction {
      * @param {SolicitationsAction} obj Optional instance to populate.
      * @return {SolicitationsAction} The populated <code>SolicitationsAction</code> instance.
      */
-    static constructFromObject(data: any, obj: SolicitationsAction): SolicitationsAction;
+    static constructFromObject(data: Object, obj: SolicitationsAction): SolicitationsAction;
     /**
      * Constructs a new <code>SolicitationsAction</code>.
      * A simple object containing the name of the template.

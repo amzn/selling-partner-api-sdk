@@ -11,7 +11,7 @@ export class Feature {
      * @param {Feature} obj Optional instance to populate.
      * @return {Feature} The populated <code>Feature</code> instance.
      */
-    static constructFromObject(data: any, obj: Feature): Feature;
+    static constructFromObject(data: Object, obj: Feature): Feature;
     /**
      * Constructs a new <code>Feature</code>.
      * A Multi-Channel Fulfillment feature.

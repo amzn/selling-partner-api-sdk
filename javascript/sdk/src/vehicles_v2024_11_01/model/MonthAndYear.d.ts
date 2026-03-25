@@ -11,7 +11,7 @@ export class MonthAndYear {
      * @param {MonthAndYear} obj Optional instance to populate.
      * @return {MonthAndYear} The populated <code>MonthAndYear</code> instance.
      */
-    static constructFromObject(data: any, obj: MonthAndYear): MonthAndYear;
+    static constructFromObject(data: Object, obj: MonthAndYear): MonthAndYear;
     /**
      * Year in YYYY format
      * @member {Number} year

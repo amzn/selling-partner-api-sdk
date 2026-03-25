@@ -11,7 +11,7 @@ export class GetItemEligibilityPreviewResponse {
      * @param {GetItemEligibilityPreviewResponse} obj Optional instance to populate.
      * @return {GetItemEligibilityPreviewResponse} The populated <code>GetItemEligibilityPreviewResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetItemEligibilityPreviewResponse): GetItemEligibilityPreviewResponse;
+    static constructFromObject(data: Object, obj: GetItemEligibilityPreviewResponse): GetItemEligibilityPreviewResponse;
     /**
      * @member {ItemEligibilityPreview} payload
      * @type {ItemEligibilityPreview}

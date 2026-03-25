@@ -38,13 +38,13 @@ export class SalesApi {
        * @return {Promise<GetOrderMetricsResponse>}
        */
     getOrderMetricsWithHttpInfo(marketplaceIds: string[], interval: string, granularity: string, opts?: {
-        granularityTimeZone?: string;
-        buyerType?: string;
-        fulfillmentNetwork?: string;
-        firstDayOfWeek?: string;
-        asin?: string;
-        sku?: string;
-        amazonProgram?: string;
+        granularityTimeZone?: string | undefined;
+        buyerType?: string | undefined;
+        fulfillmentNetwork?: string | undefined;
+        firstDayOfWeek?: string | undefined;
+        asin?: string | undefined;
+        sku?: string | undefined;
+        amazonProgram?: string | undefined;
     }): Promise<GetOrderMetricsResponse>;
     /**
        * Returns aggregated order metrics for given interval, broken down by granularity, for given buyer type.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | .5 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -62,13 +62,13 @@ export class SalesApi {
        * @return {Promise<GetOrderMetricsResponse>}
        */
     getOrderMetrics(marketplaceIds: string[], interval: string, granularity: string, opts?: {
-        granularityTimeZone?: string;
-        buyerType?: string;
-        fulfillmentNetwork?: string;
-        firstDayOfWeek?: string;
-        asin?: string;
-        sku?: string;
-        amazonProgram?: string;
+        granularityTimeZone?: string | undefined;
+        buyerType?: string | undefined;
+        fulfillmentNetwork?: string | undefined;
+        firstDayOfWeek?: string | undefined;
+        asin?: string | undefined;
+        sku?: string | undefined;
+        amazonProgram?: string | undefined;
     }): Promise<GetOrderMetricsResponse>;
     #private;
 }

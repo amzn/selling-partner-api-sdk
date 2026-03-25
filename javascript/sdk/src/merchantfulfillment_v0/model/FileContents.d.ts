@@ -11,7 +11,7 @@ export class FileContents {
      * @param {FileContents} obj Optional instance to populate.
      * @return {FileContents} The populated <code>FileContents</code> instance.
      */
-    static constructFromObject(data: any, obj: FileContents): FileContents;
+    static constructFromObject(data: Object, obj: FileContents): FileContents;
     /**
      * Constructs a new <code>FileContents</code>.
      * The document data and checksum.

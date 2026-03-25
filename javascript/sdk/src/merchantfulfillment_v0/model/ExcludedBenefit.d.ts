@@ -11,7 +11,7 @@ export class ExcludedBenefit {
      * @param {ExcludedBenefit} obj Optional instance to populate.
      * @return {ExcludedBenefit} The populated <code>ExcludedBenefit</code> instance.
      */
-    static constructFromObject(data: any, obj: ExcludedBenefit): ExcludedBenefit;
+    static constructFromObject(data: Object, obj: ExcludedBenefit): ExcludedBenefit;
     /**
      * A benefit that is being excluded from a shipment.
      * @member {String} benefit

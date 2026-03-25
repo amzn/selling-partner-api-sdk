@@ -11,7 +11,7 @@ export class GetFeatureSkuResult {
      * @param {GetFeatureSkuResult} obj Optional instance to populate.
      * @return {GetFeatureSkuResult} The populated <code>GetFeatureSkuResult</code> instance.
      */
-    static constructFromObject(data: any, obj: GetFeatureSkuResult): GetFeatureSkuResult;
+    static constructFromObject(data: Object, obj: GetFeatureSkuResult): GetFeatureSkuResult;
     /**
      * Constructs a new <code>GetFeatureSkuResult</code>.
      * The payload for the &#x60;getFeatureSKU&#x60; operation.

@@ -11,7 +11,7 @@ export class CustomerInvoiceList {
      * @param {CustomerInvoiceList} obj Optional instance to populate.
      * @return {CustomerInvoiceList} The populated <code>CustomerInvoiceList</code> instance.
      */
-    static constructFromObject(data: any, obj: CustomerInvoiceList): CustomerInvoiceList;
+    static constructFromObject(data: Object, obj: CustomerInvoiceList): CustomerInvoiceList;
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

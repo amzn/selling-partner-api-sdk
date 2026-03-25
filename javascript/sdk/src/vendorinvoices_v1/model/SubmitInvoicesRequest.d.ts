@@ -11,7 +11,7 @@ export class SubmitInvoicesRequest {
      * @param {SubmitInvoicesRequest} obj Optional instance to populate.
      * @return {SubmitInvoicesRequest} The populated <code>SubmitInvoicesRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: SubmitInvoicesRequest): SubmitInvoicesRequest;
+    static constructFromObject(data: Object, obj: SubmitInvoicesRequest): SubmitInvoicesRequest;
     /**
      * An array of Invoice objects representing the invoices or credit notes to be submitted.
      * @member {Invoice[]} invoices

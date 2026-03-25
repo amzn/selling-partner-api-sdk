@@ -11,7 +11,7 @@ export class InventorySummary {
      * @param {InventorySummary} obj Optional instance to populate.
      * @return {InventorySummary} The populated <code>InventorySummary</code> instance.
      */
-    static constructFromObject(data: any, obj: InventorySummary): InventorySummary;
+    static constructFromObject(data: Object, obj: InventorySummary): InventorySummary;
     /**
      * Constructs a new <code>InventorySummary</code>.
      * Summary of inventory per SKU.

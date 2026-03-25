@@ -11,7 +11,7 @@ export class UnlinkCarrierAccountRequest {
      * @param {UnlinkCarrierAccountRequest} obj Optional instance to populate.
      * @return {UnlinkCarrierAccountRequest} The populated <code>UnlinkCarrierAccountRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: UnlinkCarrierAccountRequest): UnlinkCarrierAccountRequest;
+    static constructFromObject(data: Object, obj: UnlinkCarrierAccountRequest): UnlinkCarrierAccountRequest;
     /**
      * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
      * @member {ClientReferenceDetail[]} clientReferenceDetails

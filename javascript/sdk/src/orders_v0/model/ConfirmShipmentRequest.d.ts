@@ -11,7 +11,7 @@ export class ConfirmShipmentRequest {
      * @param {ConfirmShipmentRequest} obj Optional instance to populate.
      * @return {ConfirmShipmentRequest} The populated <code>ConfirmShipmentRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: ConfirmShipmentRequest): ConfirmShipmentRequest;
+    static constructFromObject(data: Object, obj: ConfirmShipmentRequest): ConfirmShipmentRequest;
     /**
      * Constructs a new <code>ConfirmShipmentRequest</code>.
      * The request schema for an shipment confirmation.

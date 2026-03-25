@@ -11,7 +11,7 @@ export class ServiceDocumentUploadDestination {
      * @param {ServiceDocumentUploadDestination} obj Optional instance to populate.
      * @return {ServiceDocumentUploadDestination} The populated <code>ServiceDocumentUploadDestination</code> instance.
      */
-    static constructFromObject(data: any, obj: ServiceDocumentUploadDestination): ServiceDocumentUploadDestination;
+    static constructFromObject(data: Object, obj: ServiceDocumentUploadDestination): ServiceDocumentUploadDestination;
     /**
      * Constructs a new <code>ServiceDocumentUploadDestination</code>.
      * Information about an upload destination.
@@ -30,7 +30,7 @@ export class ServiceDocumentUploadDestination {
      * @member {Object} headers
      * @type {Object}
      */
-    headers: any;
+    headers: Object;
 }
 import { EncryptionDetails } from './EncryptionDetails.js';
 //# sourceMappingURL=ServiceDocumentUploadDestination.d.ts.map

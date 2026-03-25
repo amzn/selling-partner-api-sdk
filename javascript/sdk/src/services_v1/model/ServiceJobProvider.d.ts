@@ -11,7 +11,7 @@ export class ServiceJobProvider {
      * @param {ServiceJobProvider} obj Optional instance to populate.
      * @return {ServiceJobProvider} The populated <code>ServiceJobProvider</code> instance.
      */
-    static constructFromObject(data: any, obj: ServiceJobProvider): ServiceJobProvider;
+    static constructFromObject(data: Object, obj: ServiceJobProvider): ServiceJobProvider;
     /**
      * The identifier of the service job provider.
      * @member {String} serviceJobProviderId

@@ -11,7 +11,7 @@ export class ThroughputConfig {
      * @param {ThroughputConfig} obj Optional instance to populate.
      * @return {ThroughputConfig} The populated <code>ThroughputConfig</code> instance.
      */
-    static constructFromObject(data: any, obj: ThroughputConfig): ThroughputConfig;
+    static constructFromObject(data: Object, obj: ThroughputConfig): ThroughputConfig;
     /**
      * Constructs a new <code>ThroughputConfig</code>.
      * The throughput configuration.

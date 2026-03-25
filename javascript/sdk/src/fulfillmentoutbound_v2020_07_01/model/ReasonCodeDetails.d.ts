@@ -11,7 +11,7 @@ export class ReasonCodeDetails {
      * @param {ReasonCodeDetails} obj Optional instance to populate.
      * @return {ReasonCodeDetails} The populated <code>ReasonCodeDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: ReasonCodeDetails): ReasonCodeDetails;
+    static constructFromObject(data: Object, obj: ReasonCodeDetails): ReasonCodeDetails;
     /**
      * Constructs a new <code>ReasonCodeDetails</code>.
      * A return reason code, a description, and an optional description translation.

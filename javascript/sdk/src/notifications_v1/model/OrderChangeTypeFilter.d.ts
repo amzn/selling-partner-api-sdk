@@ -11,7 +11,7 @@ export class OrderChangeTypeFilter {
      * @param {OrderChangeTypeFilter} obj Optional instance to populate.
      * @return {OrderChangeTypeFilter} The populated <code>OrderChangeTypeFilter</code> instance.
      */
-    static constructFromObject(data: any, obj: OrderChangeTypeFilter): OrderChangeTypeFilter;
+    static constructFromObject(data: Object, obj: OrderChangeTypeFilter): OrderChangeTypeFilter;
     /**
      * A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
      * @member {OrderChangeTypeEnum[]} orderChangeTypes

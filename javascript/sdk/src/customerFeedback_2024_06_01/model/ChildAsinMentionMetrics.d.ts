@@ -11,7 +11,7 @@ export class ChildAsinMentionMetrics {
      * @param {ChildAsinMentionMetrics} obj Optional instance to populate.
      * @return {ChildAsinMentionMetrics} The populated <code>ChildAsinMentionMetrics</code> instance.
      */
-    static constructFromObject(data: any, obj: ChildAsinMentionMetrics): ChildAsinMentionMetrics;
+    static constructFromObject(data: Object, obj: ChildAsinMentionMetrics): ChildAsinMentionMetrics;
     /**
      * Constructs a new <code>ChildAsinMentionMetrics</code>.
      * The child ASIN review topic mention metrics.

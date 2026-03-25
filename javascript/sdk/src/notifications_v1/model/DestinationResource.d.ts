@@ -11,7 +11,7 @@ export class DestinationResource {
      * @param {DestinationResource} obj Optional instance to populate.
      * @return {DestinationResource} The populated <code>DestinationResource</code> instance.
      */
-    static constructFromObject(data: any, obj: DestinationResource): DestinationResource;
+    static constructFromObject(data: Object, obj: DestinationResource): DestinationResource;
     /**
      * @member {SqsResource} sqs
      * @type {SqsResource}

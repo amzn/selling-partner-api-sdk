@@ -11,7 +11,7 @@ export class BatchRequest {
      * @param {BatchRequest} obj Optional instance to populate.
      * @return {BatchRequest} The populated <code>BatchRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: BatchRequest): BatchRequest;
+    static constructFromObject(data: Object, obj: BatchRequest): BatchRequest;
     /**
      * Constructs a new <code>BatchRequest</code>.
      * Common properties of batch requests against individual APIs.

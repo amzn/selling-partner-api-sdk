@@ -11,7 +11,7 @@ export class ItemClassificationSalesRank {
      * @param {ItemClassificationSalesRank} obj Optional instance to populate.
      * @return {ItemClassificationSalesRank} The populated <code>ItemClassificationSalesRank</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemClassificationSalesRank): ItemClassificationSalesRank;
+    static constructFromObject(data: Object, obj: ItemClassificationSalesRank): ItemClassificationSalesRank;
     /**
      * Constructs a new <code>ItemClassificationSalesRank</code>.
      * Sales rank of an Amazon catalog item.

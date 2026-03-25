@@ -11,7 +11,7 @@ export class SelfShipAppointmentDetails {
      * @param {SelfShipAppointmentDetails} obj Optional instance to populate.
      * @return {SelfShipAppointmentDetails} The populated <code>SelfShipAppointmentDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: SelfShipAppointmentDetails): SelfShipAppointmentDetails;
+    static constructFromObject(data: Object, obj: SelfShipAppointmentDetails): SelfShipAppointmentDetails;
     /**
      * Identifier for appointment.
      * @member {Number} appointmentId

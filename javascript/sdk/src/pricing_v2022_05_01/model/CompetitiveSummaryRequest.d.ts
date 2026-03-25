@@ -11,7 +11,7 @@ export class CompetitiveSummaryRequest {
      * @param {CompetitiveSummaryRequest} obj Optional instance to populate.
      * @return {CompetitiveSummaryRequest} The populated <code>CompetitiveSummaryRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: CompetitiveSummaryRequest): CompetitiveSummaryRequest;
+    static constructFromObject(data: Object, obj: CompetitiveSummaryRequest): CompetitiveSummaryRequest;
     /**
      * Constructs a new <code>CompetitiveSummaryRequest</code>.
      * An individual &#x60;competitiveSummary&#x60; request for an ASIN and &#x60;marketplaceId&#x60;.

@@ -11,7 +11,7 @@ export class AddressWithContact {
      * @param {AddressWithContact} obj Optional instance to populate.
      * @return {AddressWithContact} The populated <code>AddressWithContact</code> instance.
      */
-    static constructFromObject(data: any, obj: AddressWithContact): AddressWithContact;
+    static constructFromObject(data: Object, obj: AddressWithContact): AddressWithContact;
     /**
      * @member {ContactDetails} contactDetails
      * @type {ContactDetails}

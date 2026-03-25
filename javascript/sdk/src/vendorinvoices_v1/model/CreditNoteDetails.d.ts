@@ -11,7 +11,7 @@ export class CreditNoteDetails {
      * @param {CreditNoteDetails} obj Optional instance to populate.
      * @return {CreditNoteDetails} The populated <code>CreditNoteDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: CreditNoteDetails): CreditNoteDetails;
+    static constructFromObject(data: Object, obj: CreditNoteDetails): CreditNoteDetails;
     /**
      * Original Invoice Number when sending a credit note relating to an existing invoice. One Invoice only to be processed per Credit Note. This is mandatory for AP Credit Notes.
      * @member {String} referenceInvoiceNumber

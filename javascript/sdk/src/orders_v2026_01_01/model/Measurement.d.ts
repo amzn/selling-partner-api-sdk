@@ -11,7 +11,7 @@ export class Measurement {
      * @param {Measurement} obj Optional instance to populate.
      * @return {Measurement} The populated <code>Measurement</code> instance.
      */
-    static constructFromObject(data: any, obj: Measurement): Measurement;
+    static constructFromObject(data: Object, obj: Measurement): Measurement;
     /**
      * Constructs a new <code>Measurement</code>.
      * Specifies the unit of measure and quantity for items that are sold by weight, volume, length, or other measurements rather than simple count.

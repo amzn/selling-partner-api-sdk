@@ -11,7 +11,7 @@ export class ProductInfoDetail {
      * @param {ProductInfoDetail} obj Optional instance to populate.
      * @return {ProductInfoDetail} The populated <code>ProductInfoDetail</code> instance.
      */
-    static constructFromObject(data: any, obj: ProductInfoDetail): ProductInfoDetail;
+    static constructFromObject(data: Object, obj: ProductInfoDetail): ProductInfoDetail;
     /**
      * The total number of items that are included in the ASIN.
      * @member {String} numberOfItems

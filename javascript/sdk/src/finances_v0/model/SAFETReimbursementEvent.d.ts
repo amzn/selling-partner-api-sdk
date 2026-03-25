@@ -11,7 +11,7 @@ export class SAFETReimbursementEvent {
      * @param {SAFETReimbursementEvent} obj Optional instance to populate.
      * @return {SAFETReimbursementEvent} The populated <code>SAFETReimbursementEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: SAFETReimbursementEvent): SAFETReimbursementEvent;
+    static constructFromObject(data: Object, obj: SAFETReimbursementEvent): SAFETReimbursementEvent;
     /**
      * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate

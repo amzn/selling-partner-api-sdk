@@ -49,10 +49,10 @@ export class VendorShippingApi {
        * @return {Promise<PackingSlipList>}
        */
     getPackingSlipsWithHttpInfo(createdAfter: Date, createdBefore: Date, opts?: {
-        shipFromPartyId?: string;
-        limit?: number;
-        sortOrder?: string;
-        nextToken?: string;
+        shipFromPartyId?: string | undefined;
+        limit?: number | undefined;
+        sortOrder?: string | undefined;
+        nextToken?: string | undefined;
     }): Promise<PackingSlipList>;
     /**
        * getPackingSlips
@@ -67,10 +67,10 @@ export class VendorShippingApi {
        * @return {Promise<PackingSlipList>}
        */
     getPackingSlips(createdAfter: Date, createdBefore: Date, opts?: {
-        shipFromPartyId?: string;
-        limit?: number;
-        sortOrder?: string;
-        nextToken?: string;
+        shipFromPartyId?: string | undefined;
+        limit?: number | undefined;
+        sortOrder?: string | undefined;
+        nextToken?: string | undefined;
     }): Promise<PackingSlipList>;
     /**
        * submitShipmentConfirmations

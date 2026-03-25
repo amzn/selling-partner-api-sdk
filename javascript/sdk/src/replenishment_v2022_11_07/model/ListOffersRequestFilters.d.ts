@@ -11,7 +11,7 @@ export class ListOffersRequestFilters {
      * @param {ListOffersRequestFilters} obj Optional instance to populate.
      * @return {ListOffersRequestFilters} The populated <code>ListOffersRequestFilters</code> instance.
      */
-    static constructFromObject(data: any, obj: ListOffersRequestFilters): ListOffersRequestFilters;
+    static constructFromObject(data: Object, obj: ListOffersRequestFilters): ListOffersRequestFilters;
     /**
      * Constructs a new <code>ListOffersRequestFilters</code>.
      * Use these parameters to filter results. Any result must match all of the provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.

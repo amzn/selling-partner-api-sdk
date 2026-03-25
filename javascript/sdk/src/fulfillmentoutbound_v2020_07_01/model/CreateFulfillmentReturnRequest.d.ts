@@ -11,7 +11,7 @@ export class CreateFulfillmentReturnRequest {
      * @param {CreateFulfillmentReturnRequest} obj Optional instance to populate.
      * @return {CreateFulfillmentReturnRequest} The populated <code>CreateFulfillmentReturnRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateFulfillmentReturnRequest): CreateFulfillmentReturnRequest;
+    static constructFromObject(data: Object, obj: CreateFulfillmentReturnRequest): CreateFulfillmentReturnRequest;
     /**
      * Constructs a new <code>CreateFulfillmentReturnRequest</code>.
      * The &#x60;createFulfillmentReturn&#x60; operation creates a fulfillment return for items that were fulfilled using the &#x60;createFulfillmentOrder&#x60; operation. For calls to &#x60;createFulfillmentReturn&#x60;, you must include &#x60;returnReasonCode&#x60; values returned by a previous call to the &#x60;listReturnReasonCodes&#x60; operation.

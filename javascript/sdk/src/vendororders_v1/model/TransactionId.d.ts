@@ -11,7 +11,7 @@ export class TransactionId {
      * @param {TransactionId} obj Optional instance to populate.
      * @return {TransactionId} The populated <code>TransactionId</code> instance.
      */
-    static constructFromObject(data: any, obj: TransactionId): TransactionId;
+    static constructFromObject(data: Object, obj: TransactionId): TransactionId;
     /**
      * GUID assigned by Amazon to identify this transaction. This value can be used with the Transaction Status API to return the status of this transaction.
      * @member {String} transactionId

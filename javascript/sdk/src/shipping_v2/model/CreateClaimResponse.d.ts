@@ -11,7 +11,7 @@ export class CreateClaimResponse {
      * @param {CreateClaimResponse} obj Optional instance to populate.
      * @return {CreateClaimResponse} The populated <code>CreateClaimResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateClaimResponse): CreateClaimResponse;
+    static constructFromObject(data: Object, obj: CreateClaimResponse): CreateClaimResponse;
     /**
      * The claim identifier originally returned by the createClaim operation.
      * @member {String} claimId

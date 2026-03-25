@@ -11,7 +11,7 @@ export class SubmitAcknowledgementRequest {
      * @param {SubmitAcknowledgementRequest} obj Optional instance to populate.
      * @return {SubmitAcknowledgementRequest} The populated <code>SubmitAcknowledgementRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: SubmitAcknowledgementRequest): SubmitAcknowledgementRequest;
+    static constructFromObject(data: Object, obj: SubmitAcknowledgementRequest): SubmitAcknowledgementRequest;
     /**
      * A list of one or more purchase orders.
      * @member {OrderAcknowledgementItem[]} orderAcknowledgements

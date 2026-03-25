@@ -11,7 +11,7 @@ export class FeaturedOfferExpectedPriceResult {
      * @param {FeaturedOfferExpectedPriceResult} obj Optional instance to populate.
      * @return {FeaturedOfferExpectedPriceResult} The populated <code>FeaturedOfferExpectedPriceResult</code> instance.
      */
-    static constructFromObject(data: any, obj: FeaturedOfferExpectedPriceResult): FeaturedOfferExpectedPriceResult;
+    static constructFromObject(data: Object, obj: FeaturedOfferExpectedPriceResult): FeaturedOfferExpectedPriceResult;
     /**
      * Constructs a new <code>FeaturedOfferExpectedPriceResult</code>.
      * The FOEP result data for the requested offer.

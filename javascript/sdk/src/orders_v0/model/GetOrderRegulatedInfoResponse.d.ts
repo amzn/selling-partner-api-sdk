@@ -11,7 +11,7 @@ export class GetOrderRegulatedInfoResponse {
      * @param {GetOrderRegulatedInfoResponse} obj Optional instance to populate.
      * @return {GetOrderRegulatedInfoResponse} The populated <code>GetOrderRegulatedInfoResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetOrderRegulatedInfoResponse): GetOrderRegulatedInfoResponse;
+    static constructFromObject(data: Object, obj: GetOrderRegulatedInfoResponse): GetOrderRegulatedInfoResponse;
     /**
      * @member {OrderRegulatedInfo} payload
      * @type {OrderRegulatedInfo}

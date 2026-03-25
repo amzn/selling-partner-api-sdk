@@ -11,7 +11,7 @@ export class ProductTypeList {
      * @param {ProductTypeList} obj Optional instance to populate.
      * @return {ProductTypeList} The populated <code>ProductTypeList</code> instance.
      */
-    static constructFromObject(data: any, obj: ProductTypeList): ProductTypeList;
+    static constructFromObject(data: Object, obj: ProductTypeList): ProductTypeList;
     /**
      * Constructs a new <code>ProductTypeList</code>.
      * A list of Amazon product types with definitions available.

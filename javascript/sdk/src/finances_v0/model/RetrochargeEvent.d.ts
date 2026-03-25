@@ -11,7 +11,7 @@ export class RetrochargeEvent {
      * @param {RetrochargeEvent} obj Optional instance to populate.
      * @return {RetrochargeEvent} The populated <code>RetrochargeEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: RetrochargeEvent): RetrochargeEvent;
+    static constructFromObject(data: Object, obj: RetrochargeEvent): RetrochargeEvent;
     /**
      * The type of event.  Possible values:  * `Retrocharge`  * `RetrochargeReversal`
      * @member {String} retrochargeEventType

@@ -30,7 +30,7 @@ export class ShippingApi {
        * @return {Promise<CancelShipmentResponse>}
        */
     cancelShipmentWithHttpInfo(shipmentId: string, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<CancelShipmentResponse>;
     /**
        * Cancels a purchased shipment. Returns an empty object if the shipment is successfully cancelled.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -40,7 +40,7 @@ export class ShippingApi {
        * @return {Promise<CancelShipmentResponse>}
        */
     cancelShipment(shipmentId: string, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<CancelShipmentResponse>;
     /**
        * This API will be used to create claim for single eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -50,7 +50,7 @@ export class ShippingApi {
        * @return {Promise<CreateClaimResponse>}
        */
     createClaimWithHttpInfo(body: CreateClaimRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<CreateClaimResponse>;
     /**
        * This API will be used to create claim for single eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -60,7 +60,7 @@ export class ShippingApi {
        * @return {Promise<CreateClaimResponse>}
        */
     createClaim(body: CreateClaimRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<CreateClaimResponse>;
     /**
        * Purchases the shipping service for a shipment using the best fit service offering. Returns purchase related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -72,9 +72,9 @@ export class ShippingApi {
        * @return {Promise<DirectPurchaseResponse>}
        */
     directPurchaseShipmentWithHttpInfo(body: DirectPurchaseRequest, opts?: {
-        xAmznIdempotencyKey?: string;
-        locale?: string;
-        xAmznShippingBusinessId?: string;
+        xAmznIdempotencyKey?: string | undefined;
+        locale?: string | undefined;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<DirectPurchaseResponse>;
     /**
        * Purchases the shipping service for a shipment using the best fit service offering. Returns purchase related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -86,9 +86,9 @@ export class ShippingApi {
        * @return {Promise<DirectPurchaseResponse>}
        */
     directPurchaseShipment(body: DirectPurchaseRequest, opts?: {
-        xAmznIdempotencyKey?: string;
-        locale?: string;
-        xAmznShippingBusinessId?: string;
+        xAmznIdempotencyKey?: string | undefined;
+        locale?: string | undefined;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<DirectPurchaseResponse>;
     /**
        * This API  Call to generate the collection form.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -99,8 +99,8 @@ export class ShippingApi {
        * @return {Promise<GenerateCollectionFormResponse>}
        */
     generateCollectionFormWithHttpInfo(body: GenerateCollectionFormRequest, opts?: {
-        xAmznIdempotencyKey?: string;
-        xAmznShippingBusinessId?: string;
+        xAmznIdempotencyKey?: string | undefined;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GenerateCollectionFormResponse>;
     /**
        * This API  Call to generate the collection form.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -111,8 +111,8 @@ export class ShippingApi {
        * @return {Promise<GenerateCollectionFormResponse>}
        */
     generateCollectionForm(body: GenerateCollectionFormRequest, opts?: {
-        xAmznIdempotencyKey?: string;
-        xAmznShippingBusinessId?: string;
+        xAmznIdempotencyKey?: string | undefined;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GenerateCollectionFormResponse>;
     /**
        * Returns a list of access points in proximity of input postal code.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -124,7 +124,7 @@ export class ShippingApi {
        * @return {Promise<GetAccessPointsResponse>}
        */
     getAccessPointsWithHttpInfo(accessPointTypes: string[], countryCode: string, postalCode: string, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetAccessPointsResponse>;
     /**
        * Returns a list of access points in proximity of input postal code.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -136,7 +136,7 @@ export class ShippingApi {
        * @return {Promise<GetAccessPointsResponse>}
        */
     getAccessPoints(accessPointTypes: string[], countryCode: string, postalCode: string, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetAccessPointsResponse>;
     /**
        * Returns the JSON schema to use for providing additional inputs when needed to purchase a shipping offering. Call the getAdditionalInputs operation when the response to a previous call to the getRates operation indicates that additional inputs are required for the rate (shipping offering) that you want to purchase.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -147,7 +147,7 @@ export class ShippingApi {
        * @return {Promise<GetAdditionalInputsResponse>}
        */
     getAdditionalInputsWithHttpInfo(requestToken: string, rateId: string, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetAdditionalInputsResponse>;
     /**
        * Returns the JSON schema to use for providing additional inputs when needed to purchase a shipping offering. Call the getAdditionalInputs operation when the response to a previous call to the getRates operation indicates that additional inputs are required for the rate (shipping offering) that you want to purchase.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -158,7 +158,7 @@ export class ShippingApi {
        * @return {Promise<GetAdditionalInputsResponse>}
        */
     getAdditionalInputs(requestToken: string, rateId: string, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetAdditionalInputsResponse>;
     /**
        * This API will return a list of input schema required to register a shipper account with the carrier.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -167,7 +167,7 @@ export class ShippingApi {
        * @return {Promise<GetCarrierAccountFormInputsResponse>}
        */
     getCarrierAccountFormInputsWithHttpInfo(opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetCarrierAccountFormInputsResponse>;
     /**
        * This API will return a list of input schema required to register a shipper account with the carrier.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -176,7 +176,7 @@ export class ShippingApi {
        * @return {Promise<GetCarrierAccountFormInputsResponse>}
        */
     getCarrierAccountFormInputs(opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetCarrierAccountFormInputsResponse>;
     /**
        * This API will return Get all carrier accounts for a merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -186,7 +186,7 @@ export class ShippingApi {
        * @return {Promise<GetCarrierAccountsResponse>}
        */
     getCarrierAccountsWithHttpInfo(body: GetCarrierAccountsRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetCarrierAccountsResponse>;
     /**
        * This API will return Get all carrier accounts for a merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -196,7 +196,7 @@ export class ShippingApi {
        * @return {Promise<GetCarrierAccountsResponse>}
        */
     getCarrierAccounts(body: GetCarrierAccountsRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetCarrierAccountsResponse>;
     /**
        * This API reprint a collection form.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -206,7 +206,7 @@ export class ShippingApi {
        * @return {Promise<GetCollectionFormResponse>}
        */
     getCollectionFormWithHttpInfo(collectionFormId: string, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetCollectionFormResponse>;
     /**
        * This API reprint a collection form.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -216,7 +216,7 @@ export class ShippingApi {
        * @return {Promise<GetCollectionFormResponse>}
        */
     getCollectionForm(collectionFormId: string, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetCollectionFormResponse>;
     /**
        * This API Call to get the history of the previously generated collection forms.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -226,7 +226,7 @@ export class ShippingApi {
        * @return {Promise<GetCollectionFormHistoryResponse>}
        */
     getCollectionFormHistoryWithHttpInfo(body: GetCollectionFormHistoryRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetCollectionFormHistoryResponse>;
     /**
        * This API Call to get the history of the previously generated collection forms.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -236,7 +236,7 @@ export class ShippingApi {
        * @return {Promise<GetCollectionFormHistoryResponse>}
        */
     getCollectionFormHistory(body: GetCollectionFormHistoryRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetCollectionFormHistoryResponse>;
     /**
        * Returns the available shipping service offerings.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -246,7 +246,7 @@ export class ShippingApi {
        * @return {Promise<GetRatesResponse>}
        */
     getRatesWithHttpInfo(body: GetRatesRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetRatesResponse>;
     /**
        * Returns the available shipping service offerings.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -256,7 +256,7 @@ export class ShippingApi {
        * @return {Promise<GetRatesResponse>}
        */
     getRates(body: GetRatesRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetRatesResponse>;
     /**
        * Returns the shipping documents associated with a package in a shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -269,9 +269,9 @@ export class ShippingApi {
        * @return {Promise<GetShipmentDocumentsResponse>}
        */
     getShipmentDocumentsWithHttpInfo(shipmentId: string, packageClientReferenceId: string, opts?: {
-        format?: string;
-        dpi?: number;
-        xAmznShippingBusinessId?: string;
+        format?: string | undefined;
+        dpi?: number | undefined;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetShipmentDocumentsResponse>;
     /**
        * Returns the shipping documents associated with a package in a shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -284,9 +284,9 @@ export class ShippingApi {
        * @return {Promise<GetShipmentDocumentsResponse>}
        */
     getShipmentDocuments(shipmentId: string, packageClientReferenceId: string, opts?: {
-        format?: string;
-        dpi?: number;
-        xAmznShippingBusinessId?: string;
+        format?: string | undefined;
+        dpi?: number | undefined;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetShipmentDocumentsResponse>;
     /**
        * Returns tracking information for a purchased shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -297,7 +297,7 @@ export class ShippingApi {
        * @return {Promise<GetTrackingResponse>}
        */
     getTrackingWithHttpInfo(trackingId: string, carrierId: string, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetTrackingResponse>;
     /**
        * Returns tracking information for a purchased shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -308,7 +308,7 @@ export class ShippingApi {
        * @return {Promise<GetTrackingResponse>}
        */
     getTracking(trackingId: string, carrierId: string, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetTrackingResponse>;
     /**
        * This API Get all unmanifested carriers with shipment locations. Any locations which has unmanifested shipments         with an eligible carrier for manifesting shall be returned.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -318,7 +318,7 @@ export class ShippingApi {
        * @return {Promise<GetUnmanifestedShipmentsResponse>}
        */
     getUnmanifestedShipmentsWithHttpInfo(body: GetUnmanifestedShipmentsRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetUnmanifestedShipmentsResponse>;
     /**
        * This API Get all unmanifested carriers with shipment locations. Any locations which has unmanifested shipments         with an eligible carrier for manifesting shall be returned.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -328,7 +328,7 @@ export class ShippingApi {
        * @return {Promise<GetUnmanifestedShipmentsResponse>}
        */
     getUnmanifestedShipments(body: GetUnmanifestedShipmentsRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<GetUnmanifestedShipmentsResponse>;
     /**
        * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -339,7 +339,7 @@ export class ShippingApi {
        * @return {Promise<LinkCarrierAccountResponse>}
        */
     linkCarrierAccountWithHttpInfo(carrierId: string, body: LinkCarrierAccountRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<LinkCarrierAccountResponse>;
     /**
        * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -350,7 +350,7 @@ export class ShippingApi {
        * @return {Promise<LinkCarrierAccountResponse>}
        */
     linkCarrierAccount(carrierId: string, body: LinkCarrierAccountRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<LinkCarrierAccountResponse>;
     /**
        * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -361,7 +361,7 @@ export class ShippingApi {
        * @return {Promise<LinkCarrierAccountResponse>}
        */
     linkCarrierAccount_0WithHttpInfo(carrierId: string, body: LinkCarrierAccountRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<LinkCarrierAccountResponse>;
     /**
        * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -372,7 +372,7 @@ export class ShippingApi {
        * @return {Promise<LinkCarrierAccountResponse>}
        */
     linkCarrierAccount_0(carrierId: string, body: LinkCarrierAccountRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<LinkCarrierAccountResponse>;
     /**
        * Purchases a shipping service identifier and returns purchase-related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -382,7 +382,7 @@ export class ShippingApi {
        * @return {Promise<OneClickShipmentResponse>}
        */
     oneClickShipmentWithHttpInfo(body: OneClickShipmentRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<OneClickShipmentResponse>;
     /**
        * Purchases a shipping service identifier and returns purchase-related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -392,7 +392,7 @@ export class ShippingApi {
        * @return {Promise<OneClickShipmentResponse>}
        */
     oneClickShipment(body: OneClickShipmentRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<OneClickShipmentResponse>;
     /**
        * Purchases a shipping service and returns purchase related details and documents.  Note: You must complete the purchase within 10 minutes of rate creation by the shipping service provider. If you make the request after the 10 minutes have expired, you will receive an error response with the error code equal to \&quot;TOKEN_EXPIRED\&quot;. If you receive this error response, you must get the rates for the shipment again.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -403,8 +403,8 @@ export class ShippingApi {
        * @return {Promise<PurchaseShipmentResponse>}
        */
     purchaseShipmentWithHttpInfo(body: PurchaseShipmentRequest, opts?: {
-        xAmznIdempotencyKey?: string;
-        xAmznShippingBusinessId?: string;
+        xAmznIdempotencyKey?: string | undefined;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<PurchaseShipmentResponse>;
     /**
        * Purchases a shipping service and returns purchase related details and documents.  Note: You must complete the purchase within 10 minutes of rate creation by the shipping service provider. If you make the request after the 10 minutes have expired, you will receive an error response with the error code equal to \&quot;TOKEN_EXPIRED\&quot;. If you receive this error response, you must get the rates for the shipment again.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -415,8 +415,8 @@ export class ShippingApi {
        * @return {Promise<PurchaseShipmentResponse>}
        */
     purchaseShipment(body: PurchaseShipmentRequest, opts?: {
-        xAmznIdempotencyKey?: string;
-        xAmznShippingBusinessId?: string;
+        xAmznIdempotencyKey?: string | undefined;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<PurchaseShipmentResponse>;
     /**
        * This API submits the NDR (Non-delivery Report) Feedback for any eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -426,7 +426,7 @@ export class ShippingApi {
        * @return {Promise<void>}
        */
     submitNdrFeedbackWithHttpInfo(body: SubmitNdrFeedbackRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<void>;
     /**
        * This API submits the NDR (Non-delivery Report) Feedback for any eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -436,7 +436,7 @@ export class ShippingApi {
        * @return {Promise<void>}
        */
     submitNdrFeedback(body: SubmitNdrFeedbackRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<void>;
     /**
        * This API Unlink the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -447,7 +447,7 @@ export class ShippingApi {
        * @return {Promise<UnlinkCarrierAccountResponse>}
        */
     unlinkCarrierAccountWithHttpInfo(carrierId: string, body: UnlinkCarrierAccountRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<UnlinkCarrierAccountResponse>;
     /**
        * This API Unlink the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -458,7 +458,7 @@ export class ShippingApi {
        * @return {Promise<UnlinkCarrierAccountResponse>}
        */
     unlinkCarrierAccount(carrierId: string, body: UnlinkCarrierAccountRequest, opts?: {
-        xAmznShippingBusinessId?: string;
+        xAmznShippingBusinessId?: string | undefined;
     }): Promise<UnlinkCarrierAccountResponse>;
     #private;
 }

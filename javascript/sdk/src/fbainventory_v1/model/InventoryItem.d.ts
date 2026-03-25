@@ -11,7 +11,7 @@ export class InventoryItem {
      * @param {InventoryItem} obj Optional instance to populate.
      * @return {InventoryItem} The populated <code>InventoryItem</code> instance.
      */
-    static constructFromObject(data: any, obj: InventoryItem): InventoryItem;
+    static constructFromObject(data: Object, obj: InventoryItem): InventoryItem;
     /**
      * Constructs a new <code>InventoryItem</code>.
      * An item in the list of inventory to be added.

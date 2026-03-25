@@ -11,7 +11,7 @@ export class Destination {
      * @param {Destination} obj Optional instance to populate.
      * @return {Destination} The populated <code>Destination</code> instance.
      */
-    static constructFromObject(data: any, obj: Destination): Destination;
+    static constructFromObject(data: Object, obj: Destination): Destination;
     /**
      * Constructs a new <code>Destination</code>.
      * Information about the destination created when you call the &#x60;createDestination&#x60; operation.

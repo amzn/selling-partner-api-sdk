@@ -11,7 +11,7 @@ export class GetOffersResult {
      * @param {GetOffersResult} obj Optional instance to populate.
      * @return {GetOffersResult} The populated <code>GetOffersResult</code> instance.
      */
-    static constructFromObject(data: any, obj: GetOffersResult): GetOffersResult;
+    static constructFromObject(data: Object, obj: GetOffersResult): GetOffersResult;
     /**
      * Constructs a new <code>GetOffersResult</code>.
      * The payload for the getListingOffers and getItemOffers operations.

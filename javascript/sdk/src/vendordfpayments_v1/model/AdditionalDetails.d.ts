@@ -11,7 +11,7 @@ export class AdditionalDetails {
      * @param {AdditionalDetails} obj Optional instance to populate.
      * @return {AdditionalDetails} The populated <code>AdditionalDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: AdditionalDetails): AdditionalDetails;
+    static constructFromObject(data: Object, obj: AdditionalDetails): AdditionalDetails;
     /**
      * Constructs a new <code>AdditionalDetails</code>.
      * A field where the selling party can provide additional information for tax-related or any other purposes.

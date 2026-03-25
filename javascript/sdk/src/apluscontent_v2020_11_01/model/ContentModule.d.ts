@@ -11,7 +11,7 @@ export class ContentModule {
      * @param {ContentModule} obj Optional instance to populate.
      * @return {ContentModule} The populated <code>ContentModule</code> instance.
      */
-    static constructFromObject(data: any, obj: ContentModule): ContentModule;
+    static constructFromObject(data: Object, obj: ContentModule): ContentModule;
     /**
      * Constructs a new <code>ContentModule</code>.
      * An A+ Content module. An A+ Content document is composed of content modules. The &#x60;contentModuleType&#x60; property selects which content module types to use.

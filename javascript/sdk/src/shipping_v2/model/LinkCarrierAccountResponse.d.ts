@@ -11,7 +11,7 @@ export class LinkCarrierAccountResponse {
      * @param {LinkCarrierAccountResponse} obj Optional instance to populate.
      * @return {LinkCarrierAccountResponse} The populated <code>LinkCarrierAccountResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: LinkCarrierAccountResponse): LinkCarrierAccountResponse;
+    static constructFromObject(data: Object, obj: LinkCarrierAccountResponse): LinkCarrierAccountResponse;
     /**
      * @member {AccountStatus} registrationStatus
      * @type {AccountStatus}

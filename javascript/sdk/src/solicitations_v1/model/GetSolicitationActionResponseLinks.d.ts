@@ -11,7 +11,7 @@ export class GetSolicitationActionResponseLinks {
      * @param {GetSolicitationActionResponseLinks} obj Optional instance to populate.
      * @return {GetSolicitationActionResponseLinks} The populated <code>GetSolicitationActionResponseLinks</code> instance.
      */
-    static constructFromObject(data: any, obj: GetSolicitationActionResponseLinks): GetSolicitationActionResponseLinks;
+    static constructFromObject(data: Object, obj: GetSolicitationActionResponseLinks): GetSolicitationActionResponseLinks;
     /**
      * Constructs a new <code>GetSolicitationActionResponseLinks</code>.
      * @alias module:solicitations_v1/model/GetSolicitationActionResponseLinks

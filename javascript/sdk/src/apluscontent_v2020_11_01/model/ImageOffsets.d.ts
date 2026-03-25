@@ -11,7 +11,7 @@ export class ImageOffsets {
      * @param {ImageOffsets} obj Optional instance to populate.
      * @return {ImageOffsets} The populated <code>ImageOffsets</code> instance.
      */
-    static constructFromObject(data: any, obj: ImageOffsets): ImageOffsets;
+    static constructFromObject(data: Object, obj: ImageOffsets): ImageOffsets;
     /**
      * Constructs a new <code>ImageOffsets</code>.
      * The top left corner of the cropped image, specified in the original image&#39;s coordinate space.

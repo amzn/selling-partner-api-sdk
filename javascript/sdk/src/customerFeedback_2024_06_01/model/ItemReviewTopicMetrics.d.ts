@@ -11,7 +11,7 @@ export class ItemReviewTopicMetrics {
      * @param {ItemReviewTopicMetrics} obj Optional instance to populate.
      * @return {ItemReviewTopicMetrics} The populated <code>ItemReviewTopicMetrics</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemReviewTopicMetrics): ItemReviewTopicMetrics;
+    static constructFromObject(data: Object, obj: ItemReviewTopicMetrics): ItemReviewTopicMetrics;
     /**
      * The number of times that reviews mention the topic. This value is `null` if reviews do not mention the topic frequently enough.
      * @member {Number} numberOfMentions

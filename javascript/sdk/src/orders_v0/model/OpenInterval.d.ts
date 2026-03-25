@@ -11,7 +11,7 @@ export class OpenInterval {
      * @param {OpenInterval} obj Optional instance to populate.
      * @return {OpenInterval} The populated <code>OpenInterval</code> instance.
      */
-    static constructFromObject(data: any, obj: OpenInterval): OpenInterval;
+    static constructFromObject(data: Object, obj: OpenInterval): OpenInterval;
     /**
      * @member {OpenTimeInterval} startTime
      * @type {OpenTimeInterval}

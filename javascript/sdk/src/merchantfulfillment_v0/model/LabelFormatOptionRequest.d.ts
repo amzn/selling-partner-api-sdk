@@ -11,7 +11,7 @@ export class LabelFormatOptionRequest {
      * @param {LabelFormatOptionRequest} obj Optional instance to populate.
      * @return {LabelFormatOptionRequest} The populated <code>LabelFormatOptionRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: LabelFormatOptionRequest): LabelFormatOptionRequest;
+    static constructFromObject(data: Object, obj: LabelFormatOptionRequest): LabelFormatOptionRequest;
     /**
      * When true, include a packing slip with the label.
      * @member {Boolean} includePackingSlipWithLabel

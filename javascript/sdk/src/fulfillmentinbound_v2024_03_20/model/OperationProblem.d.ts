@@ -11,7 +11,7 @@ export class OperationProblem {
      * @param {OperationProblem} obj Optional instance to populate.
      * @return {OperationProblem} The populated <code>OperationProblem</code> instance.
      */
-    static constructFromObject(data: any, obj: OperationProblem): OperationProblem;
+    static constructFromObject(data: Object, obj: OperationProblem): OperationProblem;
     /**
      * Constructs a new <code>OperationProblem</code>.
      * A problem with additional properties persisted to an operation.

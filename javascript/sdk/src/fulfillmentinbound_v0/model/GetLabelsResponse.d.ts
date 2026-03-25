@@ -11,7 +11,7 @@ export class GetLabelsResponse {
      * @param {GetLabelsResponse} obj Optional instance to populate.
      * @return {GetLabelsResponse} The populated <code>GetLabelsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetLabelsResponse): GetLabelsResponse;
+    static constructFromObject(data: Object, obj: GetLabelsResponse): GetLabelsResponse;
     /**
      * @member {LabelDownloadURL} payload
      * @type {LabelDownloadURL}

@@ -11,7 +11,7 @@ export class CreateWarrantyRequest {
      * @param {CreateWarrantyRequest} obj Optional instance to populate.
      * @return {CreateWarrantyRequest} The populated <code>CreateWarrantyRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateWarrantyRequest): CreateWarrantyRequest;
+    static constructFromObject(data: Object, obj: CreateWarrantyRequest): CreateWarrantyRequest;
     /**
      * Attachments to include in the message to the buyer. If any text is included in the attachment, the text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.
      * @member {Attachment[]} attachments

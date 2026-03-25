@@ -11,7 +11,7 @@ export class OneClickShipmentResult {
      * @param {OneClickShipmentResult} obj Optional instance to populate.
      * @return {OneClickShipmentResult} The populated <code>OneClickShipmentResult</code> instance.
      */
-    static constructFromObject(data: any, obj: OneClickShipmentResult): OneClickShipmentResult;
+    static constructFromObject(data: Object, obj: OneClickShipmentResult): OneClickShipmentResult;
     /**
      * Constructs a new <code>OneClickShipmentResult</code>.
      * The payload for the OneClickShipment API.

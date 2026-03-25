@@ -11,7 +11,7 @@ export class PaymentPreference {
      * @param {PaymentPreference} obj Optional instance to populate.
      * @return {PaymentPreference} The populated <code>PaymentPreference</code> instance.
      */
-    static constructFromObject(data: any, obj: PaymentPreference): PaymentPreference;
+    static constructFromObject(data: Object, obj: PaymentPreference): PaymentPreference;
     /**
      * Constructs a new <code>PaymentPreference</code>.
      * The type of payment preference in which the transfer is being scheduled.

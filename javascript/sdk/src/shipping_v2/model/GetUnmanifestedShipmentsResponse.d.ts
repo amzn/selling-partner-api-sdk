@@ -11,7 +11,7 @@ export class GetUnmanifestedShipmentsResponse {
      * @param {GetUnmanifestedShipmentsResponse} obj Optional instance to populate.
      * @return {GetUnmanifestedShipmentsResponse} The populated <code>GetUnmanifestedShipmentsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetUnmanifestedShipmentsResponse): GetUnmanifestedShipmentsResponse;
+    static constructFromObject(data: Object, obj: GetUnmanifestedShipmentsResponse): GetUnmanifestedShipmentsResponse;
     /**
      * A list of UnmanifestedCarrierInformation
      * @member {UnmanifestedCarrierInformation[]} unmanifestedCarrierInformationList

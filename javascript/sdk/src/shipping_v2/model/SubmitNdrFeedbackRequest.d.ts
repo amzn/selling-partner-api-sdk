@@ -11,7 +11,7 @@ export class SubmitNdrFeedbackRequest {
      * @param {SubmitNdrFeedbackRequest} obj Optional instance to populate.
      * @return {SubmitNdrFeedbackRequest} The populated <code>SubmitNdrFeedbackRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: SubmitNdrFeedbackRequest): SubmitNdrFeedbackRequest;
+    static constructFromObject(data: Object, obj: SubmitNdrFeedbackRequest): SubmitNdrFeedbackRequest;
     /**
      * Constructs a new <code>SubmitNdrFeedbackRequest</code>.
      * The request schema for the NdrFeedback operation

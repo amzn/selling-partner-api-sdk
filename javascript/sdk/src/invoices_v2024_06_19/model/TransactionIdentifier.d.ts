@@ -11,7 +11,7 @@ export class TransactionIdentifier {
      * @param {TransactionIdentifier} obj Optional instance to populate.
      * @return {TransactionIdentifier} The populated <code>TransactionIdentifier</code> instance.
      */
-    static constructFromObject(data: any, obj: TransactionIdentifier): TransactionIdentifier;
+    static constructFromObject(data: Object, obj: TransactionIdentifier): TransactionIdentifier;
     /**
      * The transaction identifier name. Use the `getInvoicesAttributes` operation to check `transactionIdentifierName` options.
      * @member {String} name

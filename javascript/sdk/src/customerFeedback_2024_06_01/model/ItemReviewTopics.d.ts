@@ -11,7 +11,7 @@ export class ItemReviewTopics {
      * @param {ItemReviewTopics} obj Optional instance to populate.
      * @return {ItemReviewTopics} The populated <code>ItemReviewTopics</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemReviewTopics): ItemReviewTopics;
+    static constructFromObject(data: Object, obj: ItemReviewTopics): ItemReviewTopics;
     /**
      * A list of the most positive review topics. When the `sortBy` query parameter is set to `MENTIONS`, the number of reviews that mention the topic determines the topic's placement in the list. When `sortBy` is set to `STAR_RATING_IMPACT`, the effect that the topic has on the star rating of the item determines placement in the list. This value is `null` if there are not enough positive reviews for the specified ASIN.  **Max length:** 10
      * @member {ItemReviewTopic[]} positiveTopics

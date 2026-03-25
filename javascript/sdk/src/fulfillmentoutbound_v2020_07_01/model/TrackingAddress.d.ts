@@ -11,7 +11,7 @@ export class TrackingAddress {
      * @param {TrackingAddress} obj Optional instance to populate.
      * @return {TrackingAddress} The populated <code>TrackingAddress</code> instance.
      */
-    static constructFromObject(data: any, obj: TrackingAddress): TrackingAddress;
+    static constructFromObject(data: Object, obj: TrackingAddress): TrackingAddress;
     /**
      * Constructs a new <code>TrackingAddress</code>.
      * Address information for tracking the package.

@@ -11,7 +11,7 @@ export class ShippingLabelRequest {
      * @param {ShippingLabelRequest} obj Optional instance to populate.
      * @return {ShippingLabelRequest} The populated <code>ShippingLabelRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: ShippingLabelRequest): ShippingLabelRequest;
+    static constructFromObject(data: Object, obj: ShippingLabelRequest): ShippingLabelRequest;
     /**
      * Constructs a new <code>ShippingLabelRequest</code>.
      * Represents the request payload for creating a shipping label, containing the purchase order number, selling party, ship from party, and a list of containers or packages in the shipment.

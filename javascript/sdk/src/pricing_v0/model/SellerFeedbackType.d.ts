@@ -11,7 +11,7 @@ export class SellerFeedbackType {
      * @param {SellerFeedbackType} obj Optional instance to populate.
      * @return {SellerFeedbackType} The populated <code>SellerFeedbackType</code> instance.
      */
-    static constructFromObject(data: any, obj: SellerFeedbackType): SellerFeedbackType;
+    static constructFromObject(data: Object, obj: SellerFeedbackType): SellerFeedbackType;
     /**
      * Constructs a new <code>SellerFeedbackType</code>.
      * Information about the seller&#39;s feedback, including the percentage of positive feedback, and the total number of ratings received.

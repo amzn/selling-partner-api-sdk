@@ -11,7 +11,7 @@ export class ShippingLabel {
      * @param {ShippingLabel} obj Optional instance to populate.
      * @return {ShippingLabel} The populated <code>ShippingLabel</code> instance.
      */
-    static constructFromObject(data: any, obj: ShippingLabel): ShippingLabel;
+    static constructFromObject(data: Object, obj: ShippingLabel): ShippingLabel;
     /**
      * Constructs a new <code>ShippingLabel</code>.
      * Shipping label information for an order, including the purchase order number, selling party, ship from party, label format, and package details.

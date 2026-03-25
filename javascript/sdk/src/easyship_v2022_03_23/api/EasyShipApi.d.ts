@@ -67,7 +67,7 @@ export class EasyShipApi {
        * @return {Promise<ListHandoverSlotsResponse>}
        */
     listHandoverSlotsWithHttpInfo(opts?: {
-        listHandoverSlotsRequest?: ListHandoverSlotsRequest;
+        listHandoverSlotsRequest?: ListHandoverSlotsRequest | undefined;
     }): Promise<ListHandoverSlotsResponse>;
     /**
        * Returns time slots available for Easy Ship orders to be scheduled based on the package weight and dimensions that the seller specifies.  This operation is available for scheduled and unscheduled orders based on marketplace support. See **Get Time Slots** in the [Marketplace Support Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table).  This operation can return time slots that have either pickup or drop-off handover methods - see **Supported Handover Methods** in the [Marketplace Support Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -76,7 +76,7 @@ export class EasyShipApi {
        * @return {Promise<ListHandoverSlotsResponse>}
        */
     listHandoverSlots(opts?: {
-        listHandoverSlotsRequest?: ListHandoverSlotsRequest;
+        listHandoverSlotsRequest?: ListHandoverSlotsRequest | undefined;
     }): Promise<ListHandoverSlotsResponse>;
     /**
        * Updates the time slot for handing over the package indicated by the specified &#x60;scheduledPackageId&#x60;. You can get the new &#x60;slotId&#x60; value for the time slot by calling the &#x60;listHandoverSlots&#x60; operation before making another &#x60;patch&#x60; call.  See the **Update Package** column in the [Marketplace Support Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table) to see which marketplaces this operation is supported in.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -85,7 +85,7 @@ export class EasyShipApi {
        * @return {Promise<Packages>}
        */
     updateScheduledPackagesWithHttpInfo(opts?: {
-        updateScheduledPackagesRequest?: UpdateScheduledPackagesRequest;
+        updateScheduledPackagesRequest?: UpdateScheduledPackagesRequest | undefined;
     }): Promise<Packages>;
     /**
        * Updates the time slot for handing over the package indicated by the specified &#x60;scheduledPackageId&#x60;. You can get the new &#x60;slotId&#x60; value for the time slot by calling the &#x60;listHandoverSlots&#x60; operation before making another &#x60;patch&#x60; call.  See the **Update Package** column in the [Marketplace Support Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table) to see which marketplaces this operation is supported in.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -94,7 +94,7 @@ export class EasyShipApi {
        * @return {Promise<Packages>}
        */
     updateScheduledPackages(opts?: {
-        updateScheduledPackagesRequest?: UpdateScheduledPackagesRequest;
+        updateScheduledPackagesRequest?: UpdateScheduledPackagesRequest | undefined;
     }): Promise<Packages>;
     #private;
 }

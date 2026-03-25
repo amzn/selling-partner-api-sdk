@@ -11,7 +11,7 @@ export class StandardTextPairBlock {
      * @param {StandardTextPairBlock} obj Optional instance to populate.
      * @return {StandardTextPairBlock} The populated <code>StandardTextPairBlock</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardTextPairBlock): StandardTextPairBlock;
+    static constructFromObject(data: Object, obj: StandardTextPairBlock): StandardTextPairBlock;
     /**
      * @member {TextComponent} label
      * @type {TextComponent}

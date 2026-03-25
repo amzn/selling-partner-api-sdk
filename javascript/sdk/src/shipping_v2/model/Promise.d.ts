@@ -11,7 +11,7 @@ export class Promise {
      * @param {Promise} obj Optional instance to populate.
      * @return {Promise} The populated <code>Promise</code> instance.
      */
-    static constructFromObject(data: any, obj: Promise): Promise;
+    static constructFromObject(data: Object, obj: Promise): Promise;
     /**
      * @member {TimeWindow} deliveryWindow
      * @type {TimeWindow}

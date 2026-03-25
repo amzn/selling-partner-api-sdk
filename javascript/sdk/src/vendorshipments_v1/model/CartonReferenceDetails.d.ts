@@ -11,7 +11,7 @@ export class CartonReferenceDetails {
      * @param {CartonReferenceDetails} obj Optional instance to populate.
      * @return {CartonReferenceDetails} The populated <code>CartonReferenceDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: CartonReferenceDetails): CartonReferenceDetails;
+    static constructFromObject(data: Object, obj: CartonReferenceDetails): CartonReferenceDetails;
     /**
      * Constructs a new <code>CartonReferenceDetails</code>.
      * Carton reference details.

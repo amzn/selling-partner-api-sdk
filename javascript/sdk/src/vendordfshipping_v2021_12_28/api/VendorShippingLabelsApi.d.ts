@@ -65,10 +65,10 @@ export class VendorShippingLabelsApi {
        * @return {Promise<ShippingLabelList>}
        */
     getShippingLabelsWithHttpInfo(createdAfter: Date, createdBefore: Date, opts?: {
-        shipFromPartyId?: string;
-        limit?: number;
-        sortOrder?: string;
-        nextToken?: string;
+        shipFromPartyId?: string | undefined;
+        limit?: number | undefined;
+        sortOrder?: string | undefined;
+        nextToken?: string | undefined;
     }): Promise<ShippingLabelList>;
     /**
        * getShippingLabels
@@ -83,10 +83,10 @@ export class VendorShippingLabelsApi {
        * @return {Promise<ShippingLabelList>}
        */
     getShippingLabels(createdAfter: Date, createdBefore: Date, opts?: {
-        shipFromPartyId?: string;
-        limit?: number;
-        sortOrder?: string;
-        nextToken?: string;
+        shipFromPartyId?: string | undefined;
+        limit?: number | undefined;
+        sortOrder?: string | undefined;
+        nextToken?: string | undefined;
     }): Promise<ShippingLabelList>;
     /**
        * submitShippingLabelRequest

@@ -11,7 +11,7 @@ export class BrowseNodeReviewTrends {
      * @param {BrowseNodeReviewTrends} obj Optional instance to populate.
      * @return {BrowseNodeReviewTrends} The populated <code>BrowseNodeReviewTrends</code> instance.
      */
-    static constructFromObject(data: any, obj: BrowseNodeReviewTrends): BrowseNodeReviewTrends;
+    static constructFromObject(data: Object, obj: BrowseNodeReviewTrends): BrowseNodeReviewTrends;
     /**
      * The trends of the most positive review topics. The percentage of reviews that contain the topic across all products in the requested browse node determine the topic's placement in the list. This value is `null` if there aren't enough positive reviews for the requested browse node.  **Max length:** 10
      * @member {BrowseNodeReviewTrend[]} positiveTopics

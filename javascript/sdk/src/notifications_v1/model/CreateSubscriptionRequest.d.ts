@@ -11,7 +11,7 @@ export class CreateSubscriptionRequest {
      * @param {CreateSubscriptionRequest} obj Optional instance to populate.
      * @return {CreateSubscriptionRequest} The populated <code>CreateSubscriptionRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateSubscriptionRequest): CreateSubscriptionRequest;
+    static constructFromObject(data: Object, obj: CreateSubscriptionRequest): CreateSubscriptionRequest;
     /**
      * Constructs a new <code>CreateSubscriptionRequest</code>.
      * The request schema for the &#x60;createSubscription&#x60; operation.

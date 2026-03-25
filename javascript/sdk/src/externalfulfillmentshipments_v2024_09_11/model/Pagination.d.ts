@@ -11,7 +11,7 @@ export class Pagination {
      * @param {Pagination} obj Optional instance to populate.
      * @return {Pagination} The populated <code>Pagination</code> instance.
      */
-    static constructFromObject(data: any, obj: Pagination): Pagination;
+    static constructFromObject(data: Object, obj: Pagination): Pagination;
     /**
      * A token that you use to retrieve the next page of results. The response includes `nextToken` when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
      * @member {String} nextToken

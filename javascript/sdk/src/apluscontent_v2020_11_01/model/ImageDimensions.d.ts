@@ -11,7 +11,7 @@ export class ImageDimensions {
      * @param {ImageDimensions} obj Optional instance to populate.
      * @return {ImageDimensions} The populated <code>ImageDimensions</code> instance.
      */
-    static constructFromObject(data: any, obj: ImageDimensions): ImageDimensions;
+    static constructFromObject(data: Object, obj: ImageDimensions): ImageDimensions;
     /**
      * Constructs a new <code>ImageDimensions</code>.
      * The dimensions that extend from the top left corner of the image (this applies to cropped and uncropped images). &#x60;ImageDimensions&#x60; units must be in pixels.

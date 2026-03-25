@@ -11,7 +11,7 @@ export class ChargeComponent {
      * @param {ChargeComponent} obj Optional instance to populate.
      * @return {ChargeComponent} The populated <code>ChargeComponent</code> instance.
      */
-    static constructFromObject(data: any, obj: ChargeComponent): ChargeComponent;
+    static constructFromObject(data: Object, obj: ChargeComponent): ChargeComponent;
     /**
      * @member {Currency} amount
      * @type {Currency}

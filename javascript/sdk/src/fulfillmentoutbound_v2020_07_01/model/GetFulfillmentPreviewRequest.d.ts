@@ -11,7 +11,7 @@ export class GetFulfillmentPreviewRequest {
      * @param {GetFulfillmentPreviewRequest} obj Optional instance to populate.
      * @return {GetFulfillmentPreviewRequest} The populated <code>GetFulfillmentPreviewRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: GetFulfillmentPreviewRequest): GetFulfillmentPreviewRequest;
+    static constructFromObject(data: Object, obj: GetFulfillmentPreviewRequest): GetFulfillmentPreviewRequest;
     /**
      * Constructs a new <code>GetFulfillmentPreviewRequest</code>.
      * The request body schema for the &#x60;getFulfillmentPreview&#x60; operation.

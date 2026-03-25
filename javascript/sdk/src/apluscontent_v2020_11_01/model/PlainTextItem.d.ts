@@ -11,7 +11,7 @@ export class PlainTextItem {
      * @param {PlainTextItem} obj Optional instance to populate.
      * @return {PlainTextItem} The populated <code>PlainTextItem</code> instance.
      */
-    static constructFromObject(data: any, obj: PlainTextItem): PlainTextItem;
+    static constructFromObject(data: Object, obj: PlainTextItem): PlainTextItem;
     /**
      * Constructs a new <code>PlainTextItem</code>.
      * Plain positional text that is used in collections of brief labels and descriptors.

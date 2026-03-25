@@ -11,7 +11,7 @@ export class CreateInventoryItemRequest {
      * @param {CreateInventoryItemRequest} obj Optional instance to populate.
      * @return {CreateInventoryItemRequest} The populated <code>CreateInventoryItemRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateInventoryItemRequest): CreateInventoryItemRequest;
+    static constructFromObject(data: Object, obj: CreateInventoryItemRequest): CreateInventoryItemRequest;
     /**
      * Constructs a new <code>CreateInventoryItemRequest</code>.
      * An item to be created in the inventory.

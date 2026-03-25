@@ -11,7 +11,7 @@ export class SellerInputDefinition {
      * @param {SellerInputDefinition} obj Optional instance to populate.
      * @return {SellerInputDefinition} The populated <code>SellerInputDefinition</code> instance.
      */
-    static constructFromObject(data: any, obj: SellerInputDefinition): SellerInputDefinition;
+    static constructFromObject(data: Object, obj: SellerInputDefinition): SellerInputDefinition;
     /**
      * Constructs a new <code>SellerInputDefinition</code>.
      * Specifies characteristics that apply to a seller input.

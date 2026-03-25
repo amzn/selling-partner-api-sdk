@@ -11,7 +11,7 @@ export class GoodsOwner {
      * @param {GoodsOwner} obj Optional instance to populate.
      * @return {GoodsOwner} The populated <code>GoodsOwner</code> instance.
      */
-    static constructFromObject(data: any, obj: GoodsOwner): GoodsOwner;
+    static constructFromObject(data: Object, obj: GoodsOwner): GoodsOwner;
     /**
      * Constructs a new <code>GoodsOwner</code>.
      * The seller owning the goods before handing them over to the carrier

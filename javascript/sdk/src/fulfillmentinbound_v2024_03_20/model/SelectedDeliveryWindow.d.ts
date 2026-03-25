@@ -11,7 +11,7 @@ export class SelectedDeliveryWindow {
      * @param {SelectedDeliveryWindow} obj Optional instance to populate.
      * @return {SelectedDeliveryWindow} The populated <code>SelectedDeliveryWindow</code> instance.
      */
-    static constructFromObject(data: any, obj: SelectedDeliveryWindow): SelectedDeliveryWindow;
+    static constructFromObject(data: Object, obj: SelectedDeliveryWindow): SelectedDeliveryWindow;
     /**
      * Constructs a new <code>SelectedDeliveryWindow</code>.
      * Selected delivery window attributes.

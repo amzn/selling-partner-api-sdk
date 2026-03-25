@@ -11,7 +11,7 @@ export class InventoryListing {
      * @param {InventoryListing} obj Optional instance to populate.
      * @return {InventoryListing} The populated <code>InventoryListing</code> instance.
      */
-    static constructFromObject(data: any, obj: InventoryListing): InventoryListing;
+    static constructFromObject(data: Object, obj: InventoryListing): InventoryListing;
     /**
      * Constructs a new <code>InventoryListing</code>.
      * AWD inventory payload.

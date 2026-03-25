@@ -11,7 +11,7 @@ export class AsinMetadata {
      * @param {AsinMetadata} obj Optional instance to populate.
      * @return {AsinMetadata} The populated <code>AsinMetadata</code> instance.
      */
-    static constructFromObject(data: any, obj: AsinMetadata): AsinMetadata;
+    static constructFromObject(data: Object, obj: AsinMetadata): AsinMetadata;
     /**
      * Constructs a new <code>AsinMetadata</code>.
      * The A+ Content ASIN with additional metadata for content management. If you don&#39;t include the &#x60;includedDataSet&#x60; parameter in a call to the &#x60;listContentDocumentAsinRelations&#x60; operation, the related ASINs are returned without metadata.

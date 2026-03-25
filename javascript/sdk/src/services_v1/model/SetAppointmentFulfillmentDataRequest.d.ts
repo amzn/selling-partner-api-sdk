@@ -11,7 +11,7 @@ export class SetAppointmentFulfillmentDataRequest {
      * @param {SetAppointmentFulfillmentDataRequest} obj Optional instance to populate.
      * @return {SetAppointmentFulfillmentDataRequest} The populated <code>SetAppointmentFulfillmentDataRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: SetAppointmentFulfillmentDataRequest): SetAppointmentFulfillmentDataRequest;
+    static constructFromObject(data: Object, obj: SetAppointmentFulfillmentDataRequest): SetAppointmentFulfillmentDataRequest;
     /**
      * @member {DateTimeRange} estimatedArrivalTime
      * @type {DateTimeRange}

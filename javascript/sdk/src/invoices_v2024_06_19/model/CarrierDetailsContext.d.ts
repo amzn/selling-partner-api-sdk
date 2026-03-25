@@ -11,7 +11,7 @@ export class CarrierDetailsContext {
      * @param {CarrierDetailsContext} obj Optional instance to populate.
      * @return {CarrierDetailsContext} The populated <code>CarrierDetailsContext</code> instance.
      */
-    static constructFromObject(data: any, obj: CarrierDetailsContext): CarrierDetailsContext;
+    static constructFromObject(data: Object, obj: CarrierDetailsContext): CarrierDetailsContext;
     /**
      * The name of the carrier, as registered in state and federal tax authorities.
      * @member {String} name

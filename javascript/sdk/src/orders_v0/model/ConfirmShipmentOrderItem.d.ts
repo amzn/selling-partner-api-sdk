@@ -11,7 +11,7 @@ export class ConfirmShipmentOrderItem {
      * @param {ConfirmShipmentOrderItem} obj Optional instance to populate.
      * @return {ConfirmShipmentOrderItem} The populated <code>ConfirmShipmentOrderItem</code> instance.
      */
-    static constructFromObject(data: any, obj: ConfirmShipmentOrderItem): ConfirmShipmentOrderItem;
+    static constructFromObject(data: Object, obj: ConfirmShipmentOrderItem): ConfirmShipmentOrderItem;
     /**
      * Constructs a new <code>ConfirmShipmentOrderItem</code>.
      * A single order item.

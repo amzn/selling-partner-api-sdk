@@ -11,7 +11,7 @@ export class UnfulfillableQuantity {
      * @param {UnfulfillableQuantity} obj Optional instance to populate.
      * @return {UnfulfillableQuantity} The populated <code>UnfulfillableQuantity</code> instance.
      */
-    static constructFromObject(data: any, obj: UnfulfillableQuantity): UnfulfillableQuantity;
+    static constructFromObject(data: Object, obj: UnfulfillableQuantity): UnfulfillableQuantity;
     /**
      * The total number of units in Amazon's fulfillment network in unsellable condition.
      * @member {Number} totalUnfulfillableQuantity

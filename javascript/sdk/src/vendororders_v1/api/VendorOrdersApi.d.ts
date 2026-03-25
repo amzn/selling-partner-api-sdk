@@ -52,18 +52,18 @@ export class VendorOrdersApi {
        * @return {Promise<GetPurchaseOrdersResponse>}
        */
     getPurchaseOrdersWithHttpInfo(opts?: {
-        limit?: number;
-        createdAfter?: Date;
-        createdBefore?: Date;
-        sortOrder?: string;
-        nextToken?: string;
-        includeDetails?: boolean;
-        changedAfter?: Date;
-        changedBefore?: Date;
-        poItemState?: string;
-        isPOChanged?: boolean;
-        purchaseOrderState?: string;
-        orderingVendorCode?: string;
+        limit?: number | undefined;
+        createdAfter?: Date | undefined;
+        createdBefore?: Date | undefined;
+        sortOrder?: string | undefined;
+        nextToken?: string | undefined;
+        includeDetails?: boolean | undefined;
+        changedAfter?: Date | undefined;
+        changedBefore?: Date | undefined;
+        poItemState?: string | undefined;
+        isPOChanged?: boolean | undefined;
+        purchaseOrderState?: string | undefined;
+        orderingVendorCode?: string | undefined;
     }): Promise<GetPurchaseOrdersResponse>;
     /**
        * Returns a list of purchase orders created or changed during the time frame that you specify. You define the time frame using the &#x60;createdAfter&#x60;, &#x60;createdBefore&#x60;, &#x60;changedAfter&#x60; and &#x60;changedBefore&#x60; parameters. The date range to search must not be more than 7 days. You can choose to get only the purchase order numbers by setting &#x60;includeDetails&#x60; to false. You can then use the &#x60;getPurchaseOrder&#x60; operation to receive details for a specific purchase order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -83,18 +83,18 @@ export class VendorOrdersApi {
        * @return {Promise<GetPurchaseOrdersResponse>}
        */
     getPurchaseOrders(opts?: {
-        limit?: number;
-        createdAfter?: Date;
-        createdBefore?: Date;
-        sortOrder?: string;
-        nextToken?: string;
-        includeDetails?: boolean;
-        changedAfter?: Date;
-        changedBefore?: Date;
-        poItemState?: string;
-        isPOChanged?: boolean;
-        purchaseOrderState?: string;
-        orderingVendorCode?: string;
+        limit?: number | undefined;
+        createdAfter?: Date | undefined;
+        createdBefore?: Date | undefined;
+        sortOrder?: string | undefined;
+        nextToken?: string | undefined;
+        includeDetails?: boolean | undefined;
+        changedAfter?: Date | undefined;
+        changedBefore?: Date | undefined;
+        poItemState?: string | undefined;
+        isPOChanged?: boolean | undefined;
+        purchaseOrderState?: string | undefined;
+        orderingVendorCode?: string | undefined;
     }): Promise<GetPurchaseOrdersResponse>;
     /**
        * Returns purchase order statuses based on the filters that you specify. Date range to search must not be more than 7 days. You can return a list of purchase order statuses using the available filters, or a single purchase order status by providing the purchase order number.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -115,19 +115,19 @@ export class VendorOrdersApi {
        * @return {Promise<GetPurchaseOrdersStatusResponse>}
        */
     getPurchaseOrdersStatusWithHttpInfo(opts?: {
-        limit?: number;
-        sortOrder?: string;
-        nextToken?: string;
-        createdAfter?: Date;
-        createdBefore?: Date;
-        updatedAfter?: Date;
-        updatedBefore?: Date;
-        purchaseOrderNumber?: string;
-        purchaseOrderStatus?: string;
-        itemConfirmationStatus?: string;
-        itemReceiveStatus?: string;
-        orderingVendorCode?: string;
-        shipToPartyId?: string;
+        limit?: number | undefined;
+        sortOrder?: string | undefined;
+        nextToken?: string | undefined;
+        createdAfter?: Date | undefined;
+        createdBefore?: Date | undefined;
+        updatedAfter?: Date | undefined;
+        updatedBefore?: Date | undefined;
+        purchaseOrderNumber?: string | undefined;
+        purchaseOrderStatus?: string | undefined;
+        itemConfirmationStatus?: string | undefined;
+        itemReceiveStatus?: string | undefined;
+        orderingVendorCode?: string | undefined;
+        shipToPartyId?: string | undefined;
     }): Promise<GetPurchaseOrdersStatusResponse>;
     /**
        * Returns purchase order statuses based on the filters that you specify. Date range to search must not be more than 7 days. You can return a list of purchase order statuses using the available filters, or a single purchase order status by providing the purchase order number.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -148,19 +148,19 @@ export class VendorOrdersApi {
        * @return {Promise<GetPurchaseOrdersStatusResponse>}
        */
     getPurchaseOrdersStatus(opts?: {
-        limit?: number;
-        sortOrder?: string;
-        nextToken?: string;
-        createdAfter?: Date;
-        createdBefore?: Date;
-        updatedAfter?: Date;
-        updatedBefore?: Date;
-        purchaseOrderNumber?: string;
-        purchaseOrderStatus?: string;
-        itemConfirmationStatus?: string;
-        itemReceiveStatus?: string;
-        orderingVendorCode?: string;
-        shipToPartyId?: string;
+        limit?: number | undefined;
+        sortOrder?: string | undefined;
+        nextToken?: string | undefined;
+        createdAfter?: Date | undefined;
+        createdBefore?: Date | undefined;
+        updatedAfter?: Date | undefined;
+        updatedBefore?: Date | undefined;
+        purchaseOrderNumber?: string | undefined;
+        purchaseOrderStatus?: string | undefined;
+        itemConfirmationStatus?: string | undefined;
+        itemReceiveStatus?: string | undefined;
+        orderingVendorCode?: string | undefined;
+        shipToPartyId?: string | undefined;
     }): Promise<GetPurchaseOrdersStatusResponse>;
     /**
        * Submits acknowledgements for one or more purchase orders.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).

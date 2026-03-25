@@ -11,7 +11,7 @@ export class ErrorList {
      * @param {ErrorList} obj Optional instance to populate.
      * @return {ErrorList} The populated <code>ErrorList</code> instance.
      */
-    static constructFromObject(data: any, obj: ErrorList): ErrorList;
+    static constructFromObject(data: Object, obj: ErrorList): ErrorList;
     /**
      * @member {Error[]} errors
      * @type {Error[]}

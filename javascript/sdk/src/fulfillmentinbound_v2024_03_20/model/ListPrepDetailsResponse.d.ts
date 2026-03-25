@@ -11,7 +11,7 @@ export class ListPrepDetailsResponse {
      * @param {ListPrepDetailsResponse} obj Optional instance to populate.
      * @return {ListPrepDetailsResponse} The populated <code>ListPrepDetailsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ListPrepDetailsResponse): ListPrepDetailsResponse;
+    static constructFromObject(data: Object, obj: ListPrepDetailsResponse): ListPrepDetailsResponse;
     /**
      * Constructs a new <code>ListPrepDetailsResponse</code>.
      * The response to the &#x60;listPrepDetails&#x60; operation.

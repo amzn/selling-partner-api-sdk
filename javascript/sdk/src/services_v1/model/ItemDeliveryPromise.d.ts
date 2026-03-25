@@ -11,7 +11,7 @@ export class ItemDeliveryPromise {
      * @param {ItemDeliveryPromise} obj Optional instance to populate.
      * @return {ItemDeliveryPromise} The populated <code>ItemDeliveryPromise</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemDeliveryPromise): ItemDeliveryPromise;
+    static constructFromObject(data: Object, obj: ItemDeliveryPromise): ItemDeliveryPromise;
     /**
      * The date and time of the start of the promised delivery window in ISO 8601 format.
      * @member {Date} startTime

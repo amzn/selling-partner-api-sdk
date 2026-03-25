@@ -11,7 +11,7 @@ export class FeesEstimateError {
      * @param {FeesEstimateError} obj Optional instance to populate.
      * @return {FeesEstimateError} The populated <code>FeesEstimateError</code> instance.
      */
-    static constructFromObject(data: any, obj: FeesEstimateError): FeesEstimateError;
+    static constructFromObject(data: Object, obj: FeesEstimateError): FeesEstimateError;
     /**
      * Constructs a new <code>FeesEstimateError</code>.
      * An unexpected error occurred during this operation.
@@ -22,10 +22,10 @@ export class FeesEstimateError {
      * @param message {String} A message that describes the error condition.
      * @param detail {Object[]} Additional information that can help the caller understand or fix the issue.
      */
-    constructor(type: string, code: string, message: string, detail: any[]);
+    constructor(type: string, code: string, message: string, detail: Object[]);
     type: string;
     code: string;
     message: string;
-    detail: any[];
+    detail: Object[];
 }
 //# sourceMappingURL=FeesEstimateError.d.ts.map

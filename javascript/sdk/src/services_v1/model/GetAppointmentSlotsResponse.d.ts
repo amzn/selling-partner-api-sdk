@@ -11,7 +11,7 @@ export class GetAppointmentSlotsResponse {
      * @param {GetAppointmentSlotsResponse} obj Optional instance to populate.
      * @return {GetAppointmentSlotsResponse} The populated <code>GetAppointmentSlotsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetAppointmentSlotsResponse): GetAppointmentSlotsResponse;
+    static constructFromObject(data: Object, obj: GetAppointmentSlotsResponse): GetAppointmentSlotsResponse;
     /**
      * @member {AppointmentSlotReport} payload
      * @type {AppointmentSlotReport}

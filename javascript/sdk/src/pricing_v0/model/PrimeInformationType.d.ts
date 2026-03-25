@@ -11,7 +11,7 @@ export class PrimeInformationType {
      * @param {PrimeInformationType} obj Optional instance to populate.
      * @return {PrimeInformationType} The populated <code>PrimeInformationType</code> instance.
      */
-    static constructFromObject(data: any, obj: PrimeInformationType): PrimeInformationType;
+    static constructFromObject(data: Object, obj: PrimeInformationType): PrimeInformationType;
     /**
      * Constructs a new <code>PrimeInformationType</code>.
      * Amazon Prime information.

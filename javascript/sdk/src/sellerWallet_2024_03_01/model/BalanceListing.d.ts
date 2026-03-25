@@ -11,7 +11,7 @@ export class BalanceListing {
      * @param {BalanceListing} obj Optional instance to populate.
      * @return {BalanceListing} The populated <code>BalanceListing</code> instance.
      */
-    static constructFromObject(data: any, obj: BalanceListing): BalanceListing;
+    static constructFromObject(data: Object, obj: BalanceListing): BalanceListing;
     /**
      * A list of balances in the seller account.
      * @member {Balance[]} balances

@@ -11,7 +11,7 @@ export class CreateClaimRequest {
      * @param {CreateClaimRequest} obj Optional instance to populate.
      * @return {CreateClaimRequest} The populated <code>CreateClaimRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateClaimRequest): CreateClaimRequest;
+    static constructFromObject(data: Object, obj: CreateClaimRequest): CreateClaimRequest;
     /**
      * Constructs a new <code>CreateClaimRequest</code>.
      * The request schema for the CreateClaim operation

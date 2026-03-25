@@ -11,7 +11,7 @@ export class ContactInformation {
      * @param {ContactInformation} obj Optional instance to populate.
      * @return {ContactInformation} The populated <code>ContactInformation</code> instance.
      */
-    static constructFromObject(data: any, obj: ContactInformation): ContactInformation;
+    static constructFromObject(data: Object, obj: ContactInformation): ContactInformation;
     /**
      * Constructs a new <code>ContactInformation</code>.
      * The seller&#39;s contact information.

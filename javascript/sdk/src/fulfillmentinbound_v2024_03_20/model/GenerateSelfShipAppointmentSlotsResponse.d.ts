@@ -11,7 +11,7 @@ export class GenerateSelfShipAppointmentSlotsResponse {
      * @param {GenerateSelfShipAppointmentSlotsResponse} obj Optional instance to populate.
      * @return {GenerateSelfShipAppointmentSlotsResponse} The populated <code>GenerateSelfShipAppointmentSlotsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GenerateSelfShipAppointmentSlotsResponse): GenerateSelfShipAppointmentSlotsResponse;
+    static constructFromObject(data: Object, obj: GenerateSelfShipAppointmentSlotsResponse): GenerateSelfShipAppointmentSlotsResponse;
     /**
      * Constructs a new <code>GenerateSelfShipAppointmentSlotsResponse</code>.
      * The &#x60;generateSelfShipAppointmentSlots&#x60; response.

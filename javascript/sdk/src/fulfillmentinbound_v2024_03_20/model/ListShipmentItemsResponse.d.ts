@@ -11,7 +11,7 @@ export class ListShipmentItemsResponse {
      * @param {ListShipmentItemsResponse} obj Optional instance to populate.
      * @return {ListShipmentItemsResponse} The populated <code>ListShipmentItemsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ListShipmentItemsResponse): ListShipmentItemsResponse;
+    static constructFromObject(data: Object, obj: ListShipmentItemsResponse): ListShipmentItemsResponse;
     /**
      * Constructs a new <code>ListShipmentItemsResponse</code>.
      * The &#x60;listShipmentItems&#x60; response.

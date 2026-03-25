@@ -11,7 +11,7 @@ export class StandardImageSidebarModule {
      * @param {StandardImageSidebarModule} obj Optional instance to populate.
      * @return {StandardImageSidebarModule} The populated <code>StandardImageSidebarModule</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardImageSidebarModule): StandardImageSidebarModule;
+    static constructFromObject(data: Object, obj: StandardImageSidebarModule): StandardImageSidebarModule;
     /**
      * @member {TextComponent} headline
      * @type {TextComponent}

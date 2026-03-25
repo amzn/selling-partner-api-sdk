@@ -11,7 +11,7 @@ export class FeaturedOfferExpectedPriceRequestParams {
      * @param {FeaturedOfferExpectedPriceRequestParams} obj Optional instance to populate.
      * @return {FeaturedOfferExpectedPriceRequestParams} The populated <code>FeaturedOfferExpectedPriceRequestParams</code> instance.
      */
-    static constructFromObject(data: any, obj: FeaturedOfferExpectedPriceRequestParams): FeaturedOfferExpectedPriceRequestParams;
+    static constructFromObject(data: Object, obj: FeaturedOfferExpectedPriceRequestParams): FeaturedOfferExpectedPriceRequestParams;
     /**
      * Constructs a new <code>FeaturedOfferExpectedPriceRequestParams</code>.
      * The parameters for an individual request.

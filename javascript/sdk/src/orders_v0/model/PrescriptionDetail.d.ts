@@ -11,7 +11,7 @@ export class PrescriptionDetail {
      * @param {PrescriptionDetail} obj Optional instance to populate.
      * @return {PrescriptionDetail} The populated <code>PrescriptionDetail</code> instance.
      */
-    static constructFromObject(data: any, obj: PrescriptionDetail): PrescriptionDetail;
+    static constructFromObject(data: Object, obj: PrescriptionDetail): PrescriptionDetail;
     /**
      * Constructs a new <code>PrescriptionDetail</code>.
      * Information about the prescription that is used to verify a regulated product. This must be provided once per order and reflect the seller’s own records. Only approved orders can have prescriptions.

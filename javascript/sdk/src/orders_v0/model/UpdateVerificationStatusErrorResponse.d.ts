@@ -11,7 +11,7 @@ export class UpdateVerificationStatusErrorResponse {
      * @param {UpdateVerificationStatusErrorResponse} obj Optional instance to populate.
      * @return {UpdateVerificationStatusErrorResponse} The populated <code>UpdateVerificationStatusErrorResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: UpdateVerificationStatusErrorResponse): UpdateVerificationStatusErrorResponse;
+    static constructFromObject(data: Object, obj: UpdateVerificationStatusErrorResponse): UpdateVerificationStatusErrorResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

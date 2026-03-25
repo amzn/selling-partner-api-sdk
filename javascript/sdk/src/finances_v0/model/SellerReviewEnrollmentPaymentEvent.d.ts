@@ -11,7 +11,7 @@ export class SellerReviewEnrollmentPaymentEvent {
      * @param {SellerReviewEnrollmentPaymentEvent} obj Optional instance to populate.
      * @return {SellerReviewEnrollmentPaymentEvent} The populated <code>SellerReviewEnrollmentPaymentEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: SellerReviewEnrollmentPaymentEvent): SellerReviewEnrollmentPaymentEvent;
+    static constructFromObject(data: Object, obj: SellerReviewEnrollmentPaymentEvent): SellerReviewEnrollmentPaymentEvent;
     /**
      * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate

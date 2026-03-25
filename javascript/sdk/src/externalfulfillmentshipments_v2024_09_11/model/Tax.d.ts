@@ -11,7 +11,7 @@ export class Tax {
      * @param {Tax} obj Optional instance to populate.
      * @return {Tax} The populated <code>Tax</code> instance.
      */
-    static constructFromObject(data: any, obj: Tax): Tax;
+    static constructFromObject(data: Object, obj: Tax): Tax;
     /**
      * Constructs a new <code>Tax</code>.
      * Information about taxes.

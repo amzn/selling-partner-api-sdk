@@ -11,7 +11,7 @@ export class TaxDetails {
      * @param {TaxDetails} obj Optional instance to populate.
      * @return {TaxDetails} The populated <code>TaxDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: TaxDetails): TaxDetails;
+    static constructFromObject(data: Object, obj: TaxDetails): TaxDetails;
     /**
      * Constructs a new <code>TaxDetails</code>.
      * The tax details for the order. _Note:_ Amazon calculates tax on the list price (Amazon retail price).

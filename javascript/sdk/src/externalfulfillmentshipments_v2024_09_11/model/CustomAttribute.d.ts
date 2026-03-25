@@ -11,7 +11,7 @@ export class CustomAttribute {
      * @param {CustomAttribute} obj Optional instance to populate.
      * @return {CustomAttribute} The populated <code>CustomAttribute</code> instance.
      */
-    static constructFromObject(data: any, obj: CustomAttribute): CustomAttribute;
+    static constructFromObject(data: Object, obj: CustomAttribute): CustomAttribute;
     /**
      * The key of the custom attribute. Must be unique.
      * @member {String} key

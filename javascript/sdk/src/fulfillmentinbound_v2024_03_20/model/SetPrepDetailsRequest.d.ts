@@ -11,7 +11,7 @@ export class SetPrepDetailsRequest {
      * @param {SetPrepDetailsRequest} obj Optional instance to populate.
      * @return {SetPrepDetailsRequest} The populated <code>SetPrepDetailsRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: SetPrepDetailsRequest): SetPrepDetailsRequest;
+    static constructFromObject(data: Object, obj: SetPrepDetailsRequest): SetPrepDetailsRequest;
     /**
      * Constructs a new <code>SetPrepDetailsRequest</code>.
      * The &#x60;setPrepDetails&#x60; request.

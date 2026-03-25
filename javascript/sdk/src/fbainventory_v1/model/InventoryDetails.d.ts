@@ -11,7 +11,7 @@ export class InventoryDetails {
      * @param {InventoryDetails} obj Optional instance to populate.
      * @return {InventoryDetails} The populated <code>InventoryDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: InventoryDetails): InventoryDetails;
+    static constructFromObject(data: Object, obj: InventoryDetails): InventoryDetails;
     /**
      * The item quantity that can be picked, packed, and shipped.
      * @member {Number} fulfillableQuantity

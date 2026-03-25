@@ -11,7 +11,7 @@ export class ProductContext {
      * @param {ProductContext} obj Optional instance to populate.
      * @return {ProductContext} The populated <code>ProductContext</code> instance.
      */
-    static constructFromObject(data: any, obj: ProductContext): ProductContext;
+    static constructFromObject(data: Object, obj: ProductContext): ProductContext;
     /**
      * The Amazon Standard Identification Number (ASIN) of the item.
      * @member {String} asin

@@ -11,7 +11,7 @@ export class TaxWithholdingPeriod {
      * @param {TaxWithholdingPeriod} obj Optional instance to populate.
      * @return {TaxWithholdingPeriod} The populated <code>TaxWithholdingPeriod</code> instance.
      */
-    static constructFromObject(data: any, obj: TaxWithholdingPeriod): TaxWithholdingPeriod;
+    static constructFromObject(data: Object, obj: TaxWithholdingPeriod): TaxWithholdingPeriod;
     /**
      * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} startDate

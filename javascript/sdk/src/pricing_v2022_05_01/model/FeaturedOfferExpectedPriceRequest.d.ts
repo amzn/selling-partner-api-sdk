@@ -11,7 +11,7 @@ export class FeaturedOfferExpectedPriceRequest {
      * @param {FeaturedOfferExpectedPriceRequest} obj Optional instance to populate.
      * @return {FeaturedOfferExpectedPriceRequest} The populated <code>FeaturedOfferExpectedPriceRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: FeaturedOfferExpectedPriceRequest): FeaturedOfferExpectedPriceRequest;
+    static constructFromObject(data: Object, obj: FeaturedOfferExpectedPriceRequest): FeaturedOfferExpectedPriceRequest;
     /**
      * Constructs a new <code>FeaturedOfferExpectedPriceRequest</code>.
      * An individual FOEP request for a particular SKU.
@@ -35,7 +35,7 @@ export class FeaturedOfferExpectedPriceRequest {
      * @type {{String: Object}}
      */
     body: {
-        String: any;
+        String: Object;
     };
     /**
      * A mapping of additional HTTP headers to send or receive for an individual request within a batch.

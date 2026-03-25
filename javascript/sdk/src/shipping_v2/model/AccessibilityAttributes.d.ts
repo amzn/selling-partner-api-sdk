@@ -11,7 +11,7 @@ export class AccessibilityAttributes {
      * @param {AccessibilityAttributes} obj Optional instance to populate.
      * @return {AccessibilityAttributes} The populated <code>AccessibilityAttributes</code> instance.
      */
-    static constructFromObject(data: any, obj: AccessibilityAttributes): AccessibilityAttributes;
+    static constructFromObject(data: Object, obj: AccessibilityAttributes): AccessibilityAttributes;
     /**
      * The approximate distance of access point from input postalCode's centroid.
      * @member {String} distance

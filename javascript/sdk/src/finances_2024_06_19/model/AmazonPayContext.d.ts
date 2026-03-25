@@ -11,7 +11,7 @@ export class AmazonPayContext {
      * @param {AmazonPayContext} obj Optional instance to populate.
      * @return {AmazonPayContext} The populated <code>AmazonPayContext</code> instance.
      */
-    static constructFromObject(data: any, obj: AmazonPayContext): AmazonPayContext;
+    static constructFromObject(data: Object, obj: AmazonPayContext): AmazonPayContext;
     /**
      * The name of the store that is related to the transaction.
      * @member {String} storeName

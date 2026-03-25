@@ -11,7 +11,7 @@ export class TaxClassification {
      * @param {TaxClassification} obj Optional instance to populate.
      * @return {TaxClassification} The populated <code>TaxClassification</code> instance.
      */
-    static constructFromObject(data: any, obj: TaxClassification): TaxClassification;
+    static constructFromObject(data: Object, obj: TaxClassification): TaxClassification;
     /**
      * The type of tax.
      * @member {String} name

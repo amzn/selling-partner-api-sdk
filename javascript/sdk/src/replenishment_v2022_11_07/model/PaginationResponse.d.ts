@@ -11,7 +11,7 @@ export class PaginationResponse {
      * @param {PaginationResponse} obj Optional instance to populate.
      * @return {PaginationResponse} The populated <code>PaginationResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: PaginationResponse): PaginationResponse;
+    static constructFromObject(data: Object, obj: PaginationResponse): PaginationResponse;
     /**
      * Total number of results matching the given filter criteria.
      * @member {Number} totalResults

@@ -11,7 +11,7 @@ export class TaxRegistrationDetails {
      * @param {TaxRegistrationDetails} obj Optional instance to populate.
      * @return {TaxRegistrationDetails} The populated <code>TaxRegistrationDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: TaxRegistrationDetails): TaxRegistrationDetails;
+    static constructFromObject(data: Object, obj: TaxRegistrationDetails): TaxRegistrationDetails;
     /**
      * Constructs a new <code>TaxRegistrationDetails</code>.
      * Tax registration details of the entity.

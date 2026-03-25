@@ -11,7 +11,7 @@ export class ResearchingQuantity {
      * @param {ResearchingQuantity} obj Optional instance to populate.
      * @return {ResearchingQuantity} The populated <code>ResearchingQuantity</code> instance.
      */
-    static constructFromObject(data: any, obj: ResearchingQuantity): ResearchingQuantity;
+    static constructFromObject(data: Object, obj: ResearchingQuantity): ResearchingQuantity;
     /**
      * The total number of units currently being researched in Amazon's fulfillment network.
      * @member {Number} totalResearchingQuantity

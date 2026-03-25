@@ -11,7 +11,7 @@ export class Breakdown {
      * @param {Breakdown} obj Optional instance to populate.
      * @return {Breakdown} The populated <code>Breakdown</code> instance.
      */
-    static constructFromObject(data: any, obj: Breakdown): Breakdown;
+    static constructFromObject(data: Object, obj: Breakdown): Breakdown;
     /**
      * The type of charge.
      * @member {String} breakdownType

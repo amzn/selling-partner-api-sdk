@@ -11,7 +11,7 @@ export class AplusResponse {
      * @param {AplusResponse} obj Optional instance to populate.
      * @return {AplusResponse} The populated <code>AplusResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: AplusResponse): AplusResponse;
+    static constructFromObject(data: Object, obj: AplusResponse): AplusResponse;
     /**
      * A set of messages to the user, such as warnings or comments.
      * @member {Error[]} warnings

@@ -11,7 +11,7 @@ export class PackageDocument {
      * @param {PackageDocument} obj Optional instance to populate.
      * @return {PackageDocument} The populated <code>PackageDocument</code> instance.
      */
-    static constructFromObject(data: any, obj: PackageDocument): PackageDocument;
+    static constructFromObject(data: Object, obj: PackageDocument): PackageDocument;
     /**
      * Constructs a new <code>PackageDocument</code>.
      * A document related to a package.

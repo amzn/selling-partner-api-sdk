@@ -11,7 +11,7 @@ export class CreateRestrictedDataTokenResponse {
      * @param {CreateRestrictedDataTokenResponse} obj Optional instance to populate.
      * @return {CreateRestrictedDataTokenResponse} The populated <code>CreateRestrictedDataTokenResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateRestrictedDataTokenResponse): CreateRestrictedDataTokenResponse;
+    static constructFromObject(data: Object, obj: CreateRestrictedDataTokenResponse): CreateRestrictedDataTokenResponse;
     /**
      * A Restricted Data Token (RDT). This is a short-lived access token that authorizes calls to restricted operations. Pass this value with the x-amz-access-token header when making subsequent calls to these restricted resources.
      * @member {String} restrictedDataToken

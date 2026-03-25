@@ -11,7 +11,7 @@ export class VendorDetails {
      * @param {VendorDetails} obj Optional instance to populate.
      * @return {VendorDetails} The populated <code>VendorDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: VendorDetails): VendorDetails;
+    static constructFromObject(data: Object, obj: VendorDetails): VendorDetails;
     /**
      * @member {PartyIdentification} sellingParty
      * @type {PartyIdentification}

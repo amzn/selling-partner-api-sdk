@@ -11,7 +11,7 @@ export class BrowseNodeStarRatingImpact {
      * @param {BrowseNodeStarRatingImpact} obj Optional instance to populate.
      * @return {BrowseNodeStarRatingImpact} The populated <code>BrowseNodeStarRatingImpact</code> instance.
      */
-    static constructFromObject(data: any, obj: BrowseNodeStarRatingImpact): BrowseNodeStarRatingImpact;
+    static constructFromObject(data: Object, obj: BrowseNodeStarRatingImpact): BrowseNodeStarRatingImpact;
     /**
      * Constructs a new <code>BrowseNodeStarRatingImpact</code>.
      * The effects of a topic on a browse node&#39;s star rating.

@@ -11,7 +11,7 @@ export class CarrierAccountAttribute {
      * @param {CarrierAccountAttribute} obj Optional instance to populate.
      * @return {CarrierAccountAttribute} The populated <code>CarrierAccountAttribute</code> instance.
      */
-    static constructFromObject(data: any, obj: CarrierAccountAttribute): CarrierAccountAttribute;
+    static constructFromObject(data: Object, obj: CarrierAccountAttribute): CarrierAccountAttribute;
     /**
      * Attribute Name .
      * @member {String} attributeName

@@ -11,7 +11,7 @@ export class SchemaLinkLink {
      * @param {SchemaLinkLink} obj Optional instance to populate.
      * @return {SchemaLinkLink} The populated <code>SchemaLinkLink</code> instance.
      */
-    static constructFromObject(data: any, obj: SchemaLinkLink): SchemaLinkLink;
+    static constructFromObject(data: Object, obj: SchemaLinkLink): SchemaLinkLink;
     /**
      * Constructs a new <code>SchemaLinkLink</code>.
      * Link to retrieve the schema.

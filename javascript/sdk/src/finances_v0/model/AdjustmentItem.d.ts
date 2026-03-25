@@ -11,7 +11,7 @@ export class AdjustmentItem {
      * @param {AdjustmentItem} obj Optional instance to populate.
      * @return {AdjustmentItem} The populated <code>AdjustmentItem</code> instance.
      */
-    static constructFromObject(data: any, obj: AdjustmentItem): AdjustmentItem;
+    static constructFromObject(data: Object, obj: AdjustmentItem): AdjustmentItem;
     /**
      * Represents the number of units in the seller's inventory when the `AdjustmentType` is `FBAInventoryReimbursement`.
      * @member {String} quantity

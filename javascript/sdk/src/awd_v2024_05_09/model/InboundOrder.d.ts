@@ -11,7 +11,7 @@ export class InboundOrder {
      * @param {InboundOrder} obj Optional instance to populate.
      * @return {InboundOrder} The populated <code>InboundOrder</code> instance.
      */
-    static constructFromObject(data: any, obj: InboundOrder): InboundOrder;
+    static constructFromObject(data: Object, obj: InboundOrder): InboundOrder;
     /**
      * Constructs a new <code>InboundOrder</code>.
      * Represents an AWD inbound order.

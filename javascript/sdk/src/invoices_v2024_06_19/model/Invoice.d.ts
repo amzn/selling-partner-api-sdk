@@ -11,7 +11,7 @@ export class Invoice {
      * @param {Invoice} obj Optional instance to populate.
      * @return {Invoice} The populated <code>Invoice</code> instance.
      */
-    static constructFromObject(data: any, obj: Invoice): Invoice;
+    static constructFromObject(data: Object, obj: Invoice): Invoice;
     /**
      * The date and time the invoice is issued. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} date

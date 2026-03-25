@@ -11,7 +11,7 @@ export class WeightRange {
      * @param {WeightRange} obj Optional instance to populate.
      * @return {WeightRange} The populated <code>WeightRange</code> instance.
      */
-    static constructFromObject(data: any, obj: WeightRange): WeightRange;
+    static constructFromObject(data: Object, obj: WeightRange): WeightRange;
     /**
      * Constructs a new <code>WeightRange</code>.
      * The range of weights that are allowed for a package.

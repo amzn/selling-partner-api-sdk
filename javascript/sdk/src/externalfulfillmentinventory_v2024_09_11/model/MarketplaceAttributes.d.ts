@@ -11,7 +11,7 @@ export class MarketplaceAttributes {
      * @param {MarketplaceAttributes} obj Optional instance to populate.
      * @return {MarketplaceAttributes} The populated <code>MarketplaceAttributes</code> instance.
      */
-    static constructFromObject(data: any, obj: MarketplaceAttributes): MarketplaceAttributes;
+    static constructFromObject(data: Object, obj: MarketplaceAttributes): MarketplaceAttributes;
     /**
      * The name of the fulfillment channel in which to update inventory.
      * @member {String} channelName

@@ -11,7 +11,7 @@ export class ServiceUploadDocument {
      * @param {ServiceUploadDocument} obj Optional instance to populate.
      * @return {ServiceUploadDocument} The populated <code>ServiceUploadDocument</code> instance.
      */
-    static constructFromObject(data: any, obj: ServiceUploadDocument): ServiceUploadDocument;
+    static constructFromObject(data: Object, obj: ServiceUploadDocument): ServiceUploadDocument;
     /**
      * Constructs a new <code>ServiceUploadDocument</code>.
      * Input for to be uploaded document.

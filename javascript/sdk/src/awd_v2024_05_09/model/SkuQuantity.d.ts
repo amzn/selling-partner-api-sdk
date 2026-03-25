@@ -11,7 +11,7 @@ export class SkuQuantity {
      * @param {SkuQuantity} obj Optional instance to populate.
      * @return {SkuQuantity} The populated <code>SkuQuantity</code> instance.
      */
-    static constructFromObject(data: any, obj: SkuQuantity): SkuQuantity;
+    static constructFromObject(data: Object, obj: SkuQuantity): SkuQuantity;
     /**
      * Constructs a new <code>SkuQuantity</code>.
      * Quantity details for a SKU as part of a shipment

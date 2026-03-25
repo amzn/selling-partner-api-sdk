@@ -58,8 +58,8 @@ export class ShipmentProcessingApi {
        * @return {Promise<ShipLabelsResponse>}
        */
     generateShipLabelsWithHttpInfo(shipmentId: string, operation: string, opts?: {
-        shippingOptionId?: string;
-        body?: ShipLabelsInput;
+        shippingOptionId?: string | undefined;
+        body?: ShipLabelsInput | undefined;
     }): Promise<ShipLabelsResponse>;
     /**
        * Generate and retrieve all shipping labels for one or more packages in the shipment you specify.
@@ -71,8 +71,8 @@ export class ShipmentProcessingApi {
        * @return {Promise<ShipLabelsResponse>}
        */
     generateShipLabels(shipmentId: string, operation: string, opts?: {
-        shippingOptionId?: string;
-        body?: ShipLabelsInput;
+        shippingOptionId?: string | undefined;
+        body?: ShipLabelsInput | undefined;
     }): Promise<ShipLabelsResponse>;
     /**
        * Confirm or reject the specified shipment.
@@ -83,7 +83,7 @@ export class ShipmentProcessingApi {
        * @return {Promise<void>}
        */
     processShipmentWithHttpInfo(shipmentId: string, operation: string, opts?: {
-        body?: ShipmentAcknowledgementRequest;
+        body?: ShipmentAcknowledgementRequest | undefined;
     }): Promise<void>;
     /**
        * Confirm or reject the specified shipment.
@@ -94,7 +94,7 @@ export class ShipmentProcessingApi {
        * @return {Promise<void>}
        */
     processShipment(shipmentId: string, operation: string, opts?: {
-        body?: ShipmentAcknowledgementRequest;
+        body?: ShipmentAcknowledgementRequest | undefined;
     }): Promise<void>;
     /**
        * Retrieve invoices for the shipment you specify.
@@ -148,8 +148,8 @@ export class ShipmentProcessingApi {
        * @return {Promise<void>}
        */
     updatePackageStatusWithHttpInfo(shipmentId: string, packageId: string, opts?: {
-        status?: string;
-        body?: PackageDeliveryStatus;
+        status?: string | undefined;
+        body?: PackageDeliveryStatus | undefined;
     }): Promise<void>;
     /**
        * Updates the status of the packages.
@@ -161,8 +161,8 @@ export class ShipmentProcessingApi {
        * @return {Promise<void>}
        */
     updatePackageStatus(shipmentId: string, packageId: string, opts?: {
-        status?: string;
-        body?: PackageDeliveryStatus;
+        status?: string | undefined;
+        body?: PackageDeliveryStatus | undefined;
     }): Promise<void>;
     #private;
 }

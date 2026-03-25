@@ -11,7 +11,7 @@ export class TrackingSummary {
      * @param {TrackingSummary} obj Optional instance to populate.
      * @return {TrackingSummary} The populated <code>TrackingSummary</code> instance.
      */
-    static constructFromObject(data: any, obj: TrackingSummary): TrackingSummary;
+    static constructFromObject(data: Object, obj: TrackingSummary): TrackingSummary;
     /**
      * @member {Status} status
      * @type {Status}

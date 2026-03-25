@@ -11,7 +11,7 @@ export class PaymentTerms {
      * @param {PaymentTerms} obj Optional instance to populate.
      * @return {PaymentTerms} The populated <code>PaymentTerms</code> instance.
      */
-    static constructFromObject(data: any, obj: PaymentTerms): PaymentTerms;
+    static constructFromObject(data: Object, obj: PaymentTerms): PaymentTerms;
     /**
      * The payment term type for the invoice.
      * @member {String} type

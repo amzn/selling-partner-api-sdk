@@ -68,7 +68,7 @@ export class TransactionsApi {
        * @return {Promise<TransactionListing>}
        */
     listAccountTransactionsWithHttpInfo(accountId: string, marketplaceId: string, opts?: {
-        nextPageToken?: string;
+        nextPageToken?: string | undefined;
     }): Promise<TransactionListing>;
     /**
        * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
@@ -80,7 +80,7 @@ export class TransactionsApi {
        * @return {Promise<TransactionListing>}
        */
     listAccountTransactions(accountId: string, marketplaceId: string, opts?: {
-        nextPageToken?: string;
+        nextPageToken?: string | undefined;
     }): Promise<TransactionListing>;
     #private;
 }

@@ -11,7 +11,7 @@ export class CreateQuerySpecification {
      * @param {CreateQuerySpecification} obj Optional instance to populate.
      * @return {CreateQuerySpecification} The populated <code>CreateQuerySpecification</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateQuerySpecification): CreateQuerySpecification;
+    static constructFromObject(data: Object, obj: CreateQuerySpecification): CreateQuerySpecification;
     /**
      * Constructs a new <code>CreateQuerySpecification</code>.
      * Information required to create the query.

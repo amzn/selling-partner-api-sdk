@@ -11,7 +11,7 @@ export class Pagination {
      * @param {Pagination} obj Optional instance to populate.
      * @return {Pagination} The populated <code>Pagination</code> instance.
      */
-    static constructFromObject(data: any, obj: Pagination): Pagination;
+    static constructFromObject(data: Object, obj: Pagination): Pagination;
     /**
      * When present, pass this string token in the next request to return the next response page.
      * @member {String} nextToken

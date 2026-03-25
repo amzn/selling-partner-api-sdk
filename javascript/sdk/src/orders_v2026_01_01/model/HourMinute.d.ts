@@ -11,7 +11,7 @@ export class HourMinute {
      * @param {HourMinute} obj Optional instance to populate.
      * @return {HourMinute} The populated <code>HourMinute</code> instance.
      */
-    static constructFromObject(data: any, obj: HourMinute): HourMinute;
+    static constructFromObject(data: Object, obj: HourMinute): HourMinute;
     /**
      * The hour when the business opens or closes, in 24-hour format (0-23).
      * @member {Number} hour

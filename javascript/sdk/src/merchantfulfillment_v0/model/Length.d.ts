@@ -11,7 +11,7 @@ export class Length {
      * @param {Length} obj Optional instance to populate.
      * @return {Length} The populated <code>Length</code> instance.
      */
-    static constructFromObject(data: any, obj: Length): Length;
+    static constructFromObject(data: Object, obj: Length): Length;
     /**
      * The value in units.
      * @member {Number} value

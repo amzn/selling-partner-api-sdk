@@ -11,7 +11,7 @@ export class RejectedShippingService {
      * @param {RejectedShippingService} obj Optional instance to populate.
      * @return {RejectedShippingService} The populated <code>RejectedShippingService</code> instance.
      */
-    static constructFromObject(data: any, obj: RejectedShippingService): RejectedShippingService;
+    static constructFromObject(data: Object, obj: RejectedShippingService): RejectedShippingService;
     /**
      * Constructs a new <code>RejectedShippingService</code>.
      * Information about a rejected shipping service

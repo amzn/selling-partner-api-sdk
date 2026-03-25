@@ -129,8 +129,8 @@ export class ServiceApi {
        * @return {Promise<GetAppointmentSlotsResponse>}
        */
     getAppointmentSlotsWithHttpInfo(asin: string, storeId: string, marketplaceIds: string[], opts?: {
-        startTime?: string;
-        endTime?: string;
+        startTime?: string | undefined;
+        endTime?: string | undefined;
     }): Promise<GetAppointmentSlotsResponse>;
     /**
        * Gets appointment slots as per the service context specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 20 | 40 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -143,8 +143,8 @@ export class ServiceApi {
        * @return {Promise<GetAppointmentSlotsResponse>}
        */
     getAppointmentSlots(asin: string, storeId: string, marketplaceIds: string[], opts?: {
-        startTime?: string;
-        endTime?: string;
+        startTime?: string | undefined;
+        endTime?: string | undefined;
     }): Promise<GetAppointmentSlotsResponse>;
     /**
        * Gets appointment slots for the service associated with the service job id specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -156,8 +156,8 @@ export class ServiceApi {
        * @return {Promise<GetAppointmentSlotsResponse>}
        */
     getAppointmmentSlotsByJobIdWithHttpInfo(serviceJobId: string, marketplaceIds: string[], opts?: {
-        startTime?: string;
-        endTime?: string;
+        startTime?: string | undefined;
+        endTime?: string | undefined;
     }): Promise<GetAppointmentSlotsResponse>;
     /**
        * Gets appointment slots for the service associated with the service job id specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -169,8 +169,8 @@ export class ServiceApi {
        * @return {Promise<GetAppointmentSlotsResponse>}
        */
     getAppointmmentSlotsByJobId(serviceJobId: string, marketplaceIds: string[], opts?: {
-        startTime?: string;
-        endTime?: string;
+        startTime?: string | undefined;
+        endTime?: string | undefined;
     }): Promise<GetAppointmentSlotsResponse>;
     /**
        * Provides capacity in fixed-size slots.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -182,7 +182,7 @@ export class ServiceApi {
        * @return {Promise<FixedSlotCapacity>}
        */
     getFixedSlotCapacityWithHttpInfo(resourceId: string, marketplaceIds: string[], body: FixedSlotCapacityQuery, opts?: {
-        nextPageToken?: string;
+        nextPageToken?: string | undefined;
     }): Promise<FixedSlotCapacity>;
     /**
        * Provides capacity in fixed-size slots.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -194,7 +194,7 @@ export class ServiceApi {
        * @return {Promise<FixedSlotCapacity>}
        */
     getFixedSlotCapacity(resourceId: string, marketplaceIds: string[], body: FixedSlotCapacityQuery, opts?: {
-        nextPageToken?: string;
+        nextPageToken?: string | undefined;
     }): Promise<FixedSlotCapacity>;
     /**
        * Provides capacity slots in a format similar to availability records.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -206,7 +206,7 @@ export class ServiceApi {
        * @return {Promise<RangeSlotCapacity>}
        */
     getRangeSlotCapacityWithHttpInfo(resourceId: string, marketplaceIds: string[], body: RangeSlotCapacityQuery, opts?: {
-        nextPageToken?: string;
+        nextPageToken?: string | undefined;
     }): Promise<RangeSlotCapacity>;
     /**
        * Provides capacity slots in a format similar to availability records.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -218,7 +218,7 @@ export class ServiceApi {
        * @return {Promise<RangeSlotCapacity>}
        */
     getRangeSlotCapacity(resourceId: string, marketplaceIds: string[], body: RangeSlotCapacityQuery, opts?: {
-        nextPageToken?: string;
+        nextPageToken?: string | undefined;
     }): Promise<RangeSlotCapacity>;
     /**
        * Gets details of service job indicated by the provided &#x60;serviceJobID&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 20 | 40 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -254,21 +254,21 @@ export class ServiceApi {
        * @return {Promise<GetServiceJobsResponse>}
        */
     getServiceJobsWithHttpInfo(marketplaceIds: string[], opts?: {
-        serviceOrderIds?: string[];
-        serviceJobStatus?: string[];
-        pageToken?: string;
-        pageSize?: number;
-        sortField?: string;
-        sortOrder?: string;
-        createdAfter?: string;
-        createdBefore?: string;
-        lastUpdatedAfter?: string;
-        lastUpdatedBefore?: string;
-        scheduleStartDate?: string;
-        scheduleEndDate?: string;
-        asins?: string[];
-        requiredSkills?: string[];
-        storeIds?: string[];
+        serviceOrderIds?: string[] | undefined;
+        serviceJobStatus?: string[] | undefined;
+        pageToken?: string | undefined;
+        pageSize?: number | undefined;
+        sortField?: string | undefined;
+        sortOrder?: string | undefined;
+        createdAfter?: string | undefined;
+        createdBefore?: string | undefined;
+        lastUpdatedAfter?: string | undefined;
+        lastUpdatedBefore?: string | undefined;
+        scheduleStartDate?: string | undefined;
+        scheduleEndDate?: string | undefined;
+        asins?: string[] | undefined;
+        requiredSkills?: string[] | undefined;
+        storeIds?: string[] | undefined;
     }): Promise<GetServiceJobsResponse>;
     /**
        * Gets service job details for the specified filter query.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 40 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -292,21 +292,21 @@ export class ServiceApi {
        * @return {Promise<GetServiceJobsResponse>}
        */
     getServiceJobs(marketplaceIds: string[], opts?: {
-        serviceOrderIds?: string[];
-        serviceJobStatus?: string[];
-        pageToken?: string;
-        pageSize?: number;
-        sortField?: string;
-        sortOrder?: string;
-        createdAfter?: string;
-        createdBefore?: string;
-        lastUpdatedAfter?: string;
-        lastUpdatedBefore?: string;
-        scheduleStartDate?: string;
-        scheduleEndDate?: string;
-        asins?: string[];
-        requiredSkills?: string[];
-        storeIds?: string[];
+        serviceOrderIds?: string[] | undefined;
+        serviceJobStatus?: string[] | undefined;
+        pageToken?: string | undefined;
+        pageSize?: number | undefined;
+        sortField?: string | undefined;
+        sortOrder?: string | undefined;
+        createdAfter?: string | undefined;
+        createdBefore?: string | undefined;
+        lastUpdatedAfter?: string | undefined;
+        lastUpdatedBefore?: string | undefined;
+        scheduleStartDate?: string | undefined;
+        scheduleEndDate?: string | undefined;
+        asins?: string[] | undefined;
+        requiredSkills?: string[] | undefined;
+        storeIds?: string[] | undefined;
     }): Promise<GetServiceJobsResponse>;
     /**
        * Reschedules an appointment for the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).

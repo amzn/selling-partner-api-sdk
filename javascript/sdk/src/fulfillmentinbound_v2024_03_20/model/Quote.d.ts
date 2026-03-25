@@ -11,7 +11,7 @@ export class Quote {
      * @param {Quote} obj Optional instance to populate.
      * @return {Quote} The populated <code>Quote</code> instance.
      */
-    static constructFromObject(data: any, obj: Quote): Quote;
+    static constructFromObject(data: Object, obj: Quote): Quote;
     /**
      * Constructs a new <code>Quote</code>.
      * The estimated shipping cost associated with the transportation option.

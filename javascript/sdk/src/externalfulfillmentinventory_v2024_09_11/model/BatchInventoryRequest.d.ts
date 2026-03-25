@@ -11,7 +11,7 @@ export class BatchInventoryRequest {
      * @param {BatchInventoryRequest} obj Optional instance to populate.
      * @return {BatchInventoryRequest} The populated <code>BatchInventoryRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: BatchInventoryRequest): BatchInventoryRequest;
+    static constructFromObject(data: Object, obj: BatchInventoryRequest): BatchInventoryRequest;
     /**
      * A list of inventory requests.
      * @member {InventoryRequest[]} requests

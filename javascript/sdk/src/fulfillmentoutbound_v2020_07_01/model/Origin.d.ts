@@ -11,7 +11,7 @@ export class Origin {
      * @param {Origin} obj Optional instance to populate.
      * @return {Origin} The populated <code>Origin</code> instance.
      */
-    static constructFromObject(data: any, obj: Origin): Origin;
+    static constructFromObject(data: Object, obj: Origin): Origin;
     /**
      * Constructs a new <code>Origin</code>.
      * The origin for the delivery offer.

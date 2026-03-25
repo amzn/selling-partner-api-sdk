@@ -11,7 +11,7 @@ export class GetPrepInstructionsResult {
      * @param {GetPrepInstructionsResult} obj Optional instance to populate.
      * @return {GetPrepInstructionsResult} The populated <code>GetPrepInstructionsResult</code> instance.
      */
-    static constructFromObject(data: any, obj: GetPrepInstructionsResult): GetPrepInstructionsResult;
+    static constructFromObject(data: Object, obj: GetPrepInstructionsResult): GetPrepInstructionsResult;
     /**
      * A list of SKU labeling requirements and item preparation instructions.
      * @member {SKUPrepInstructions[]} sKUPrepInstructionsList

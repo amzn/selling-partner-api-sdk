@@ -11,7 +11,7 @@ export class CapacityReservationBillingEvent {
      * @param {CapacityReservationBillingEvent} obj Optional instance to populate.
      * @return {CapacityReservationBillingEvent} The populated <code>CapacityReservationBillingEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: CapacityReservationBillingEvent): CapacityReservationBillingEvent;
+    static constructFromObject(data: Object, obj: CapacityReservationBillingEvent): CapacityReservationBillingEvent;
     /**
      * The transaction type. For example, FBA Inventory Fee.
      * @member {String} transactionType

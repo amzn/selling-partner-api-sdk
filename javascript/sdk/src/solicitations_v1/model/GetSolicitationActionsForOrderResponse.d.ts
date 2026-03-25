@@ -11,7 +11,7 @@ export class GetSolicitationActionsForOrderResponse {
      * @param {GetSolicitationActionsForOrderResponse} obj Optional instance to populate.
      * @return {GetSolicitationActionsForOrderResponse} The populated <code>GetSolicitationActionsForOrderResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetSolicitationActionsForOrderResponse): GetSolicitationActionsForOrderResponse;
+    static constructFromObject(data: Object, obj: GetSolicitationActionsForOrderResponse): GetSolicitationActionsForOrderResponse;
     /**
      * @member {GetSolicitationActionsForOrderResponseLinks} links
      * @type {GetSolicitationActionsForOrderResponseLinks}

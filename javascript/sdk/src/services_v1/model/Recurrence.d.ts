@@ -11,7 +11,7 @@ export class Recurrence {
      * @param {Recurrence} obj Optional instance to populate.
      * @return {Recurrence} The populated <code>Recurrence</code> instance.
      */
-    static constructFromObject(data: any, obj: Recurrence): Recurrence;
+    static constructFromObject(data: Object, obj: Recurrence): Recurrence;
     /**
      * Constructs a new <code>Recurrence</code>.
      * Repeated occurrence of an event in a time range.

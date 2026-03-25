@@ -11,7 +11,7 @@ export class ImageCropSpecification {
      * @param {ImageCropSpecification} obj Optional instance to populate.
      * @return {ImageCropSpecification} The populated <code>ImageCropSpecification</code> instance.
      */
-    static constructFromObject(data: any, obj: ImageCropSpecification): ImageCropSpecification;
+    static constructFromObject(data: Object, obj: ImageCropSpecification): ImageCropSpecification;
     /**
      * Constructs a new <code>ImageCropSpecification</code>.
      * The instructions for optionally cropping an image. If you don&#39;t want to crop the image, set the dimensions to the original image size. If the image is cropped and you don&#39;t include offset values, the coordinates of the top left corner of the cropped image are set to (0,0) by default.

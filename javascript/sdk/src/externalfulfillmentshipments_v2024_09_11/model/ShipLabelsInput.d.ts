@@ -11,7 +11,7 @@ export class ShipLabelsInput {
      * @param {ShipLabelsInput} obj Optional instance to populate.
      * @return {ShipLabelsInput} The populated <code>ShipLabelsInput</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipLabelsInput): ShipLabelsInput;
+    static constructFromObject(data: Object, obj: ShipLabelsInput): ShipLabelsInput;
     /**
      * Constructs a new <code>ShipLabelsInput</code>.
      * Tracking details for multiple packages.

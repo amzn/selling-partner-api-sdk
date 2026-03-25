@@ -11,7 +11,7 @@ export class SubmitFulfillmentOrderStatusUpdateResponse {
      * @param {SubmitFulfillmentOrderStatusUpdateResponse} obj Optional instance to populate.
      * @return {SubmitFulfillmentOrderStatusUpdateResponse} The populated <code>SubmitFulfillmentOrderStatusUpdateResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: SubmitFulfillmentOrderStatusUpdateResponse): SubmitFulfillmentOrderStatusUpdateResponse;
+    static constructFromObject(data: Object, obj: SubmitFulfillmentOrderStatusUpdateResponse): SubmitFulfillmentOrderStatusUpdateResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

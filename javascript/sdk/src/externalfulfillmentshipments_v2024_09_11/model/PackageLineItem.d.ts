@@ -11,7 +11,7 @@ export class PackageLineItem {
      * @param {PackageLineItem} obj Optional instance to populate.
      * @return {PackageLineItem} The populated <code>PackageLineItem</code> instance.
      */
-    static constructFromObject(data: any, obj: PackageLineItem): PackageLineItem;
+    static constructFromObject(data: Object, obj: PackageLineItem): PackageLineItem;
     /**
      * Constructs a new <code>PackageLineItem</code>.
      * A line item in a package.

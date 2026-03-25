@@ -11,7 +11,7 @@ export class AmazonPrograms {
      * @param {AmazonPrograms} obj Optional instance to populate.
      * @return {AmazonPrograms} The populated <code>AmazonPrograms</code> instance.
      */
-    static constructFromObject(data: any, obj: AmazonPrograms): AmazonPrograms;
+    static constructFromObject(data: Object, obj: AmazonPrograms): AmazonPrograms;
     /**
      * Constructs a new <code>AmazonPrograms</code>.
      * Contains the list of programs that Amazon associates with an item.  Possible programs are:  - **Subscribe and Save**: Offers recurring, scheduled deliveries to Amazon customers and Amazon Business customers for their frequently ordered products. - **FBM Ship+**: Unlocks expedited shipping without the extra cost. Helps you to provide accurate and fast delivery dates to Amazon customers. You also receive protection from late deliveries, a discount on expedited shipping rates, and cash back when you ship.

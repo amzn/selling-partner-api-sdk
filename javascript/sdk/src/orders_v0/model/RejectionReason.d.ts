@@ -11,7 +11,7 @@ export class RejectionReason {
      * @param {RejectionReason} obj Optional instance to populate.
      * @return {RejectionReason} The populated <code>RejectionReason</code> instance.
      */
-    static constructFromObject(data: any, obj: RejectionReason): RejectionReason;
+    static constructFromObject(data: Object, obj: RejectionReason): RejectionReason;
     /**
      * Constructs a new <code>RejectionReason</code>.
      * The reason for rejecting the order&#39;s regulated information. This is only present if the order is rejected.

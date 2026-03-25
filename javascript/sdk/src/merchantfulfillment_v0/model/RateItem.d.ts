@@ -11,7 +11,7 @@ export class RateItem {
      * @param {RateItem} obj Optional instance to populate.
      * @return {RateItem} The populated <code>RateItem</code> instance.
      */
-    static constructFromObject(data: any, obj: RateItem): RateItem;
+    static constructFromObject(data: Object, obj: RateItem): RateItem;
     /**
      * Constructs a new <code>RateItem</code>.
      * Rate item for shipping costs and adjustments.

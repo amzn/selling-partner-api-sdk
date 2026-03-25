@@ -11,7 +11,7 @@ export class IneligibilityReason {
      * @param {IneligibilityReason} obj Optional instance to populate.
      * @return {IneligibilityReason} The populated <code>IneligibilityReason</code> instance.
      */
-    static constructFromObject(data: any, obj: IneligibilityReason): IneligibilityReason;
+    static constructFromObject(data: Object, obj: IneligibilityReason): IneligibilityReason;
     /**
      * Constructs a new <code>IneligibilityReason</code>.
      * The reason why a shipping service offering is ineligible.

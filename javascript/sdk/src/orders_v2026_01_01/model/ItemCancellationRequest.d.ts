@@ -11,7 +11,7 @@ export class ItemCancellationRequest {
      * @param {ItemCancellationRequest} obj Optional instance to populate.
      * @return {ItemCancellationRequest} The populated <code>ItemCancellationRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemCancellationRequest): ItemCancellationRequest;
+    static constructFromObject(data: Object, obj: ItemCancellationRequest): ItemCancellationRequest;
     /**
      * Entity that initiated the cancellation request for this item.   **Possible values**: `BUYER`
      * @member {String} requester

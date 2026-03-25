@@ -11,7 +11,7 @@ export class HttpResponseHeaders {
      * @param {HttpResponseHeaders} obj Optional instance to populate.
      * @return {HttpResponseHeaders} The populated <code>HttpResponseHeaders</code> instance.
      */
-    static constructFromObject(data: any, obj: HttpResponseHeaders): HttpResponseHeaders;
+    static constructFromObject(data: Object, obj: HttpResponseHeaders): HttpResponseHeaders;
     /**
      * The timestamp that the API request was received.  For more information, consult [RFC 2616 Section 14](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
      * @member {String} date

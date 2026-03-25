@@ -11,7 +11,7 @@ export class ExceptionDates {
      * @param {ExceptionDates} obj Optional instance to populate.
      * @return {ExceptionDates} The populated <code>ExceptionDates</code> instance.
      */
-    static constructFromObject(data: any, obj: ExceptionDates): ExceptionDates;
+    static constructFromObject(data: Object, obj: ExceptionDates): ExceptionDates;
     /**
      * Date when the business is closed, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date format.
      * @member {String} exceptionDate

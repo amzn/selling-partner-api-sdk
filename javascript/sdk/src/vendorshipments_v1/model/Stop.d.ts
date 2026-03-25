@@ -11,7 +11,7 @@ export class Stop {
      * @param {Stop} obj Optional instance to populate.
      * @return {Stop} The populated <code>Stop</code> instance.
      */
-    static constructFromObject(data: any, obj: Stop): Stop;
+    static constructFromObject(data: Object, obj: Stop): Stop;
     /**
      * Constructs a new <code>Stop</code>.
      * Contractual or operational port or point relevant to the movement of the cargo.

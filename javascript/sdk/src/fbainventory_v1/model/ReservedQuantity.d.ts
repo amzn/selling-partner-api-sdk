@@ -11,7 +11,7 @@ export class ReservedQuantity {
      * @param {ReservedQuantity} obj Optional instance to populate.
      * @return {ReservedQuantity} The populated <code>ReservedQuantity</code> instance.
      */
-    static constructFromObject(data: any, obj: ReservedQuantity): ReservedQuantity;
+    static constructFromObject(data: Object, obj: ReservedQuantity): ReservedQuantity;
     /**
      * The total number of units in Amazon's fulfillment network that are currently being picked, packed, and shipped; or are sidelined for measurement, sampling, or other internal processes.
      * @member {Number} totalReservedQuantity

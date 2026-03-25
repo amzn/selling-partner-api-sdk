@@ -11,7 +11,7 @@ export class DocumentDownload {
      * @param {DocumentDownload} obj Optional instance to populate.
      * @return {DocumentDownload} The populated <code>DocumentDownload</code> instance.
      */
-    static constructFromObject(data: any, obj: DocumentDownload): DocumentDownload;
+    static constructFromObject(data: Object, obj: DocumentDownload): DocumentDownload;
     /**
      * Constructs a new <code>DocumentDownload</code>.
      * Resource to download the requested document.

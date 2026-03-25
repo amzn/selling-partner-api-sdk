@@ -11,7 +11,7 @@ export class ItemSearchResults {
      * @param {ItemSearchResults} obj Optional instance to populate.
      * @return {ItemSearchResults} The populated <code>ItemSearchResults</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemSearchResults): ItemSearchResults;
+    static constructFromObject(data: Object, obj: ItemSearchResults): ItemSearchResults;
     /**
      * Constructs a new <code>ItemSearchResults</code>.
      * Selling partner listings items and search related metadata.

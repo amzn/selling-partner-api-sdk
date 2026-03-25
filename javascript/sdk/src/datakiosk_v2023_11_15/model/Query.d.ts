@@ -11,7 +11,7 @@ export class Query {
      * @param {Query} obj Optional instance to populate.
      * @return {Query} The populated <code>Query</code> instance.
      */
-    static constructFromObject(data: any, obj: Query): Query;
+    static constructFromObject(data: Object, obj: Query): Query;
     /**
      * Constructs a new <code>Query</code>.
      * Detailed information about the query.

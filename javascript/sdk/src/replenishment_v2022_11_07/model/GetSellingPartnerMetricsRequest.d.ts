@@ -11,7 +11,7 @@ export class GetSellingPartnerMetricsRequest {
      * @param {GetSellingPartnerMetricsRequest} obj Optional instance to populate.
      * @return {GetSellingPartnerMetricsRequest} The populated <code>GetSellingPartnerMetricsRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: GetSellingPartnerMetricsRequest): GetSellingPartnerMetricsRequest;
+    static constructFromObject(data: Object, obj: GetSellingPartnerMetricsRequest): GetSellingPartnerMetricsRequest;
     /**
      * Constructs a new <code>GetSellingPartnerMetricsRequest</code>.
      * The request body for the &#x60;getSellingPartnerMetrics&#x60; operation.

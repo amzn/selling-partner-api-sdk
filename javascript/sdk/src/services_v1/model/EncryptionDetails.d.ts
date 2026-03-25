@@ -11,7 +11,7 @@ export class EncryptionDetails {
      * @param {EncryptionDetails} obj Optional instance to populate.
      * @return {EncryptionDetails} The populated <code>EncryptionDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: EncryptionDetails): EncryptionDetails;
+    static constructFromObject(data: Object, obj: EncryptionDetails): EncryptionDetails;
     /**
      * Constructs a new <code>EncryptionDetails</code>.
      * Encryption details for required client-side encryption and decryption of document contents.

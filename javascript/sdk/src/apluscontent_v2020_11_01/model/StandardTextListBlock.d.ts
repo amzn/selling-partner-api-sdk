@@ -11,7 +11,7 @@ export class StandardTextListBlock {
      * @param {StandardTextListBlock} obj Optional instance to populate.
      * @return {StandardTextListBlock} The populated <code>StandardTextListBlock</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardTextListBlock): StandardTextListBlock;
+    static constructFromObject(data: Object, obj: StandardTextListBlock): StandardTextListBlock;
     /**
      * Constructs a new <code>StandardTextListBlock</code>.
      * The A+ Content standard fixed-length list of text, usually presented as bullet points.

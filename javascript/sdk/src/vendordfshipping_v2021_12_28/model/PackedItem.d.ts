@@ -11,7 +11,7 @@ export class PackedItem {
      * @param {PackedItem} obj Optional instance to populate.
      * @return {PackedItem} The populated <code>PackedItem</code> instance.
      */
-    static constructFromObject(data: any, obj: PackedItem): PackedItem;
+    static constructFromObject(data: Object, obj: PackedItem): PackedItem;
     /**
      * Constructs a new <code>PackedItem</code>.
      * An item that has been packed into a container for shipping.

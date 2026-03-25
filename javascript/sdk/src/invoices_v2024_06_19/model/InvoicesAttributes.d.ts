@@ -11,7 +11,7 @@ export class InvoicesAttributes {
      * @param {InvoicesAttributes} obj Optional instance to populate.
      * @return {InvoicesAttributes} The populated <code>InvoicesAttributes</code> instance.
      */
-    static constructFromObject(data: any, obj: InvoicesAttributes): InvoicesAttributes;
+    static constructFromObject(data: Object, obj: InvoicesAttributes): InvoicesAttributes;
     /**
      * A list of all the options that are available for the invoice status attribute.
      * @member {AttributeOption[]} invoiceStatusOptions

@@ -11,7 +11,7 @@ export class BuyBoxPriceType {
      * @param {BuyBoxPriceType} obj Optional instance to populate.
      * @return {BuyBoxPriceType} The populated <code>BuyBoxPriceType</code> instance.
      */
-    static constructFromObject(data: any, obj: BuyBoxPriceType): BuyBoxPriceType;
+    static constructFromObject(data: Object, obj: BuyBoxPriceType): BuyBoxPriceType;
     /**
      * Constructs a new <code>BuyBoxPriceType</code>.
      * Schema for an individual buybox price.

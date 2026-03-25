@@ -11,7 +11,7 @@ export class InboundShipmentInfo {
      * @param {InboundShipmentInfo} obj Optional instance to populate.
      * @return {InboundShipmentInfo} The populated <code>InboundShipmentInfo</code> instance.
      */
-    static constructFromObject(data: any, obj: InboundShipmentInfo): InboundShipmentInfo;
+    static constructFromObject(data: Object, obj: InboundShipmentInfo): InboundShipmentInfo;
     /**
      * Constructs a new <code>InboundShipmentInfo</code>.
      * Information about the seller&#39;s inbound shipments. Returned by the listInboundShipments operation.

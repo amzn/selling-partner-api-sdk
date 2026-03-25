@@ -11,7 +11,7 @@ export class GetSchemaResponseLinks {
      * @param {GetSchemaResponseLinks} obj Optional instance to populate.
      * @return {GetSchemaResponseLinks} The populated <code>GetSchemaResponseLinks</code> instance.
      */
-    static constructFromObject(data: any, obj: GetSchemaResponseLinks): GetSchemaResponseLinks;
+    static constructFromObject(data: Object, obj: GetSchemaResponseLinks): GetSchemaResponseLinks;
     /**
      * Constructs a new <code>GetSchemaResponseLinks</code>.
      * The links response that is associated with the object.

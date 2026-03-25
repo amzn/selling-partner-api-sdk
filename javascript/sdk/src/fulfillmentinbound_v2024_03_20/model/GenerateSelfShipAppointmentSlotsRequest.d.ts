@@ -11,7 +11,7 @@ export class GenerateSelfShipAppointmentSlotsRequest {
      * @param {GenerateSelfShipAppointmentSlotsRequest} obj Optional instance to populate.
      * @return {GenerateSelfShipAppointmentSlotsRequest} The populated <code>GenerateSelfShipAppointmentSlotsRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: GenerateSelfShipAppointmentSlotsRequest): GenerateSelfShipAppointmentSlotsRequest;
+    static constructFromObject(data: Object, obj: GenerateSelfShipAppointmentSlotsRequest): GenerateSelfShipAppointmentSlotsRequest;
     /**
      * The desired end date. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.
      * @member {Date} desiredEndDate

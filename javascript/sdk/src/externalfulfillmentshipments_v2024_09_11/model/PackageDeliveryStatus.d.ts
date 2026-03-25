@@ -11,7 +11,7 @@ export class PackageDeliveryStatus {
      * @param {PackageDeliveryStatus} obj Optional instance to populate.
      * @return {PackageDeliveryStatus} The populated <code>PackageDeliveryStatus</code> instance.
      */
-    static constructFromObject(data: any, obj: PackageDeliveryStatus): PackageDeliveryStatus;
+    static constructFromObject(data: Object, obj: PackageDeliveryStatus): PackageDeliveryStatus;
     /**
      * @member {PackageStatus} status
      * @type {PackageStatus}

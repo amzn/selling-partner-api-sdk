@@ -11,7 +11,7 @@ export class ItemInternationalShipping {
      * @param {ItemInternationalShipping} obj Optional instance to populate.
      * @return {ItemInternationalShipping} The populated <code>ItemInternationalShipping</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemInternationalShipping): ItemInternationalShipping;
+    static constructFromObject(data: Object, obj: ItemInternationalShipping): ItemInternationalShipping;
     /**
      * Import One-Stop Shop registration number required for EU VAT compliance when shipping from outside the European Union. Sellers shipping to the EU from outside the EU must provide this IOSS number to their carrier when Amazon has collected the VAT on the sale.
      * @member {String} iossNumber

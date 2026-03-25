@@ -11,7 +11,7 @@ export class TransactionInstrumentDetails {
      * @param {TransactionInstrumentDetails} obj Optional instance to populate.
      * @return {TransactionInstrumentDetails} The populated <code>TransactionInstrumentDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: TransactionInstrumentDetails): TransactionInstrumentDetails;
+    static constructFromObject(data: Object, obj: TransactionInstrumentDetails): TransactionInstrumentDetails;
     /**
      * Constructs a new <code>TransactionInstrumentDetails</code>.
      * Details of the destination bank account in the transaction request.

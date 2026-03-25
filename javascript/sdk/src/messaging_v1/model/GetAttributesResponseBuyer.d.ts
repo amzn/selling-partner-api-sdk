@@ -11,7 +11,7 @@ export class GetAttributesResponseBuyer {
      * @param {GetAttributesResponseBuyer} obj Optional instance to populate.
      * @return {GetAttributesResponseBuyer} The populated <code>GetAttributesResponseBuyer</code> instance.
      */
-    static constructFromObject(data: any, obj: GetAttributesResponseBuyer): GetAttributesResponseBuyer;
+    static constructFromObject(data: Object, obj: GetAttributesResponseBuyer): GetAttributesResponseBuyer;
     /**
      * The buyer's language of preference, indicated with a locale-specific language tag. Examples: \"en-US\", \"zh-CN\", and \"en-GB\".
      * @member {String} locale

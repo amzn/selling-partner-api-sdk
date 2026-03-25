@@ -11,7 +11,7 @@ export class FeedDocument {
      * @param {FeedDocument} obj Optional instance to populate.
      * @return {FeedDocument} The populated <code>FeedDocument</code> instance.
      */
-    static constructFromObject(data: any, obj: FeedDocument): FeedDocument;
+    static constructFromObject(data: Object, obj: FeedDocument): FeedDocument;
     /**
      * Constructs a new <code>FeedDocument</code>.
      * Information required for the feed document.

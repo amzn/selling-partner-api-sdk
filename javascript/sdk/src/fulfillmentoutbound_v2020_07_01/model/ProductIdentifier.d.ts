@@ -11,7 +11,7 @@ export class ProductIdentifier {
      * @param {ProductIdentifier} obj Optional instance to populate.
      * @return {ProductIdentifier} The populated <code>ProductIdentifier</code> instance.
      */
-    static constructFromObject(data: any, obj: ProductIdentifier): ProductIdentifier;
+    static constructFromObject(data: Object, obj: ProductIdentifier): ProductIdentifier;
     /**
      * Constructs a new <code>ProductIdentifier</code>.
      * Product identifier input that locates a product for MCF.

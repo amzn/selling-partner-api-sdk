@@ -11,7 +11,7 @@ export class CreateFeedSpecification {
      * @param {CreateFeedSpecification} obj Optional instance to populate.
      * @return {CreateFeedSpecification} The populated <code>CreateFeedSpecification</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateFeedSpecification): CreateFeedSpecification;
+    static constructFromObject(data: Object, obj: CreateFeedSpecification): CreateFeedSpecification;
     /**
      * Constructs a new <code>CreateFeedSpecification</code>.
      * Information required to create the feed.

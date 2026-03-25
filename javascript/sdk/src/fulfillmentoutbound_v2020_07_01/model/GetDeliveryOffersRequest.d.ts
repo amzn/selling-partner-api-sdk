@@ -11,7 +11,7 @@ export class GetDeliveryOffersRequest {
      * @param {GetDeliveryOffersRequest} obj Optional instance to populate.
      * @return {GetDeliveryOffersRequest} The populated <code>GetDeliveryOffersRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: GetDeliveryOffersRequest): GetDeliveryOffersRequest;
+    static constructFromObject(data: Object, obj: GetDeliveryOffersRequest): GetDeliveryOffersRequest;
     /**
      * Constructs a new <code>GetDeliveryOffersRequest</code>.
      * The request body schema for the &#x60;getDeliveryOffers&#x60; operation.

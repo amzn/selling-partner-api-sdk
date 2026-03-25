@@ -11,7 +11,7 @@ export class FixedSlotCapacityErrors {
      * @param {FixedSlotCapacityErrors} obj Optional instance to populate.
      * @return {FixedSlotCapacityErrors} The populated <code>FixedSlotCapacityErrors</code> instance.
      */
-    static constructFromObject(data: any, obj: FixedSlotCapacityErrors): FixedSlotCapacityErrors;
+    static constructFromObject(data: Object, obj: FixedSlotCapacityErrors): FixedSlotCapacityErrors;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

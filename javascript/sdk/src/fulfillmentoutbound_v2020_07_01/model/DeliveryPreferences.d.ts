@@ -11,7 +11,7 @@ export class DeliveryPreferences {
      * @param {DeliveryPreferences} obj Optional instance to populate.
      * @return {DeliveryPreferences} The populated <code>DeliveryPreferences</code> instance.
      */
-    static constructFromObject(data: any, obj: DeliveryPreferences): DeliveryPreferences;
+    static constructFromObject(data: Object, obj: DeliveryPreferences): DeliveryPreferences;
     /**
      * Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, or `Beware of dogs`.
      * @member {String} deliveryInstructions

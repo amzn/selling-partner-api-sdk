@@ -11,7 +11,7 @@ export class TaxCollection {
      * @param {TaxCollection} obj Optional instance to populate.
      * @return {TaxCollection} The populated <code>TaxCollection</code> instance.
      */
-    static constructFromObject(data: any, obj: TaxCollection): TaxCollection;
+    static constructFromObject(data: Object, obj: TaxCollection): TaxCollection;
     /**
      * The tax collection model applied to the item.
      * @member {String} model

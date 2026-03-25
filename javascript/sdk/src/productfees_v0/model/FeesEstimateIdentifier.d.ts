@@ -11,7 +11,7 @@ export class FeesEstimateIdentifier {
      * @param {FeesEstimateIdentifier} obj Optional instance to populate.
      * @return {FeesEstimateIdentifier} The populated <code>FeesEstimateIdentifier</code> instance.
      */
-    static constructFromObject(data: any, obj: FeesEstimateIdentifier): FeesEstimateIdentifier;
+    static constructFromObject(data: Object, obj: FeesEstimateIdentifier): FeesEstimateIdentifier;
     /**
      * A marketplace identifier.
      * @member {String} marketplaceId

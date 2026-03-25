@@ -11,7 +11,7 @@ export class GiftOption {
      * @param {GiftOption} obj Optional instance to populate.
      * @return {GiftOption} The populated <code>GiftOption</code> instance.
      */
-    static constructFromObject(data: any, obj: GiftOption): GiftOption;
+    static constructFromObject(data: Object, obj: GiftOption): GiftOption;
     /**
      * Personal message from the buyer to be included with the gift-wrapped item.
      * @member {String} giftMessage

@@ -11,7 +11,7 @@ export class TaxItemDetails {
      * @param {TaxItemDetails} obj Optional instance to populate.
      * @return {TaxItemDetails} The populated <code>TaxItemDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: TaxItemDetails): TaxItemDetails;
+    static constructFromObject(data: Object, obj: TaxItemDetails): TaxItemDetails;
     /**
      * A list of tax line items.
      * @member {TaxDetails[]} taxLineItem

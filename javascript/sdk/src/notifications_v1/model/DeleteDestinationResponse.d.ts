@@ -11,7 +11,7 @@ export class DeleteDestinationResponse {
      * @param {DeleteDestinationResponse} obj Optional instance to populate.
      * @return {DeleteDestinationResponse} The populated <code>DeleteDestinationResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: DeleteDestinationResponse): DeleteDestinationResponse;
+    static constructFromObject(data: Object, obj: DeleteDestinationResponse): DeleteDestinationResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

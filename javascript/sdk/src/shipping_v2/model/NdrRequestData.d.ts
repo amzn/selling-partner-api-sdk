@@ -11,7 +11,7 @@ export class NdrRequestData {
      * @param {NdrRequestData} obj Optional instance to populate.
      * @return {NdrRequestData} The populated <code>NdrRequestData</code> instance.
      */
-    static constructFromObject(data: any, obj: NdrRequestData): NdrRequestData;
+    static constructFromObject(data: Object, obj: NdrRequestData): NdrRequestData;
     /**
      * The date on which the Seller wants to reschedule shipment delivery, in ISO-8601 date/time format
      * @member {Date} rescheduleDate

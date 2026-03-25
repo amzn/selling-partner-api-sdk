@@ -11,7 +11,7 @@ export class ContentUpdatePreview {
      * @param {ContentUpdatePreview} obj Optional instance to populate.
      * @return {ContentUpdatePreview} The populated <code>ContentUpdatePreview</code> instance.
      */
-    static constructFromObject(data: any, obj: ContentUpdatePreview): ContentUpdatePreview;
+    static constructFromObject(data: Object, obj: ContentUpdatePreview): ContentUpdatePreview;
     /**
      * Constructs a new <code>ContentUpdatePreview</code>.
      * Preview of the changes that will be applied to the shipment.

@@ -11,7 +11,7 @@ export class UnfulfillablePreviewItem {
      * @param {UnfulfillablePreviewItem} obj Optional instance to populate.
      * @return {UnfulfillablePreviewItem} The populated <code>UnfulfillablePreviewItem</code> instance.
      */
-    static constructFromObject(data: any, obj: UnfulfillablePreviewItem): UnfulfillablePreviewItem;
+    static constructFromObject(data: Object, obj: UnfulfillablePreviewItem): UnfulfillablePreviewItem;
     /**
      * Constructs a new <code>UnfulfillablePreviewItem</code>.
      * Information about unfulfillable items in a fulfillment order preview.

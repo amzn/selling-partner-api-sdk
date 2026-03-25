@@ -11,7 +11,7 @@ export class Pagination {
      * @param {Pagination} obj Optional instance to populate.
      * @return {Pagination} The populated <code>Pagination</code> instance.
      */
-    static constructFromObject(data: any, obj: Pagination): Pagination;
+    static constructFromObject(data: Object, obj: Pagination): Pagination;
     /**
      * Pagination occurs when a request produces a response that exceeds the `pageSize`. This means that the response is divided into individual pages. To retrieve the next page or the previous page, you must pass the `nextToken` value or the `previousToken` value as the `pageToken` parameter in the next request. There is no `nextToken` in the pagination object on the last page.
      * @member {String} nextToken

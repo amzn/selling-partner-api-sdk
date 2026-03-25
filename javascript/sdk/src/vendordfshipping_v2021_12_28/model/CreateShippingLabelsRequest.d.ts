@@ -11,7 +11,7 @@ export class CreateShippingLabelsRequest {
      * @param {CreateShippingLabelsRequest} obj Optional instance to populate.
      * @return {CreateShippingLabelsRequest} The populated <code>CreateShippingLabelsRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateShippingLabelsRequest): CreateShippingLabelsRequest;
+    static constructFromObject(data: Object, obj: CreateShippingLabelsRequest): CreateShippingLabelsRequest;
     /**
      * Constructs a new <code>CreateShippingLabelsRequest</code>.
      * The request body for the createShippingLabels operation.

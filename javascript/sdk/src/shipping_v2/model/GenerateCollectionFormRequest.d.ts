@@ -11,7 +11,7 @@ export class GenerateCollectionFormRequest {
      * @param {GenerateCollectionFormRequest} obj Optional instance to populate.
      * @return {GenerateCollectionFormRequest} The populated <code>GenerateCollectionFormRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: GenerateCollectionFormRequest): GenerateCollectionFormRequest;
+    static constructFromObject(data: Object, obj: GenerateCollectionFormRequest): GenerateCollectionFormRequest;
     /**
      * Constructs a new <code>GenerateCollectionFormRequest</code>.
      * The request schema Call to generate the collection form.

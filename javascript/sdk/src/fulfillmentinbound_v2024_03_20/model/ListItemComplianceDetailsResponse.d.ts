@@ -11,7 +11,7 @@ export class ListItemComplianceDetailsResponse {
      * @param {ListItemComplianceDetailsResponse} obj Optional instance to populate.
      * @return {ListItemComplianceDetailsResponse} The populated <code>ListItemComplianceDetailsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ListItemComplianceDetailsResponse): ListItemComplianceDetailsResponse;
+    static constructFromObject(data: Object, obj: ListItemComplianceDetailsResponse): ListItemComplianceDetailsResponse;
     /**
      * List of compliance details.
      * @member {ComplianceDetail[]} complianceDetails

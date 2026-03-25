@@ -11,7 +11,7 @@ export class ItemPromotionBreakdown {
      * @param {ItemPromotionBreakdown} obj Optional instance to populate.
      * @return {ItemPromotionBreakdown} The populated <code>ItemPromotionBreakdown</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemPromotionBreakdown): ItemPromotionBreakdown;
+    static constructFromObject(data: Object, obj: ItemPromotionBreakdown): ItemPromotionBreakdown;
     /**
      * Unique identifier for the promotion applied to this item.
      * @member {String} promotionId

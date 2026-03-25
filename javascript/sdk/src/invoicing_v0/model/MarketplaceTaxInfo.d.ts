@@ -11,7 +11,7 @@ export class MarketplaceTaxInfo {
      * @param {MarketplaceTaxInfo} obj Optional instance to populate.
      * @return {MarketplaceTaxInfo} The populated <code>MarketplaceTaxInfo</code> instance.
      */
-    static constructFromObject(data: any, obj: MarketplaceTaxInfo): MarketplaceTaxInfo;
+    static constructFromObject(data: Object, obj: MarketplaceTaxInfo): MarketplaceTaxInfo;
     /**
      * The legal name of the company.
      * @member {String} companyLegalName

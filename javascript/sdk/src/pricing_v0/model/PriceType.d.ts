@@ -11,7 +11,7 @@ export class PriceType {
      * @param {PriceType} obj Optional instance to populate.
      * @return {PriceType} The populated <code>PriceType</code> instance.
      */
-    static constructFromObject(data: any, obj: PriceType): PriceType;
+    static constructFromObject(data: Object, obj: PriceType): PriceType;
     /**
      * Constructs a new <code>PriceType</code>.
      * Schema for item&#39;s price information, including listing price, shipping price, and Amazon points.

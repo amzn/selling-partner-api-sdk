@@ -11,7 +11,7 @@ export class StandardImageTextBlock {
      * @param {StandardImageTextBlock} obj Optional instance to populate.
      * @return {StandardImageTextBlock} The populated <code>StandardImageTextBlock</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardImageTextBlock): StandardImageTextBlock;
+    static constructFromObject(data: Object, obj: StandardImageTextBlock): StandardImageTextBlock;
     /**
      * @member {ImageComponent} image
      * @type {ImageComponent}

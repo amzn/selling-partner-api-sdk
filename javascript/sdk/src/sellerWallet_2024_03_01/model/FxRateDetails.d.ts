@@ -11,7 +11,7 @@ export class FxRateDetails {
      * @param {FxRateDetails} obj Optional instance to populate.
      * @return {FxRateDetails} The populated <code>FxRateDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: FxRateDetails): FxRateDetails;
+    static constructFromObject(data: Object, obj: FxRateDetails): FxRateDetails;
     /**
      * Constructs a new <code>FxRateDetails</code>.
      * Foreign exchange rate details.

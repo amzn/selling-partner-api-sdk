@@ -11,7 +11,7 @@ export class TransportationSelection {
      * @param {TransportationSelection} obj Optional instance to populate.
      * @return {TransportationSelection} The populated <code>TransportationSelection</code> instance.
      */
-    static constructFromObject(data: any, obj: TransportationSelection): TransportationSelection;
+    static constructFromObject(data: Object, obj: TransportationSelection): TransportationSelection;
     /**
      * Constructs a new <code>TransportationSelection</code>.
      * The transportation option selected to confirm.

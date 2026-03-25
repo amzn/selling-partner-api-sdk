@@ -11,7 +11,7 @@ export class Document {
      * @param {Document} obj Optional instance to populate.
      * @return {Document} The populated <code>Document</code> instance.
      */
-    static constructFromObject(data: any, obj: Document): Document;
+    static constructFromObject(data: Object, obj: Document): Document;
     /**
      * The type of the file.
      * @member {String} format

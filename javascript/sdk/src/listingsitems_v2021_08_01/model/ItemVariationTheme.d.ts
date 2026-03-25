@@ -11,7 +11,7 @@ export class ItemVariationTheme {
      * @param {ItemVariationTheme} obj Optional instance to populate.
      * @return {ItemVariationTheme} The populated <code>ItemVariationTheme</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemVariationTheme): ItemVariationTheme;
+    static constructFromObject(data: Object, obj: ItemVariationTheme): ItemVariationTheme;
     /**
      * Constructs a new <code>ItemVariationTheme</code>.
      * A variation theme that indicates the combination of listing item attributes that define the variation family.

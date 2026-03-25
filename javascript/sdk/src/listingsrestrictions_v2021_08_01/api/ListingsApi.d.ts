@@ -33,8 +33,8 @@ export class ListingsApi {
        * @return {Promise<RestrictionList>}
        */
     getListingsRestrictionsWithHttpInfo(asin: string, sellerId: string, marketplaceIds: string[], opts?: {
-        conditionType?: string;
-        reasonLocale?: string;
+        conditionType?: string | undefined;
+        reasonLocale?: string | undefined;
     }): Promise<RestrictionList>;
     /**
        * Returns listing restrictions for an item in the Amazon Catalog.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -47,8 +47,8 @@ export class ListingsApi {
        * @return {Promise<RestrictionList>}
        */
     getListingsRestrictions(asin: string, sellerId: string, marketplaceIds: string[], opts?: {
-        conditionType?: string;
-        reasonLocale?: string;
+        conditionType?: string | undefined;
+        reasonLocale?: string | undefined;
     }): Promise<RestrictionList>;
     #private;
 }

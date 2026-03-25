@@ -11,7 +11,7 @@ export class ReturnLocation {
      * @param {ReturnLocation} obj Optional instance to populate.
      * @return {ReturnLocation} The populated <code>ReturnLocation</code> instance.
      */
-    static constructFromObject(data: any, obj: ReturnLocation): ReturnLocation;
+    static constructFromObject(data: Object, obj: ReturnLocation): ReturnLocation;
     /**
      * The Amazon provided `supplySourceId` where orders can be returned to.
      * @member {String} supplySourceId

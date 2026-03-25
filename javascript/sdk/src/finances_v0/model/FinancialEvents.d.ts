@@ -11,7 +11,7 @@ export class FinancialEvents {
      * @param {FinancialEvents} obj Optional instance to populate.
      * @return {FinancialEvents} The populated <code>FinancialEvents</code> instance.
      */
-    static constructFromObject(data: any, obj: FinancialEvents): FinancialEvents;
+    static constructFromObject(data: Object, obj: FinancialEvents): FinancialEvents;
     /**
      * A list of shipment event information.
      * @member {ShipmentEvent[]} shipmentEventList

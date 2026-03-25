@@ -11,7 +11,7 @@ export class ItemImage {
      * @param {ItemImage} obj Optional instance to populate.
      * @return {ItemImage} The populated <code>ItemImage</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemImage): ItemImage;
+    static constructFromObject(data: Object, obj: ItemImage): ItemImage;
     /**
      * Constructs a new <code>ItemImage</code>.
      * The image for the listings item.

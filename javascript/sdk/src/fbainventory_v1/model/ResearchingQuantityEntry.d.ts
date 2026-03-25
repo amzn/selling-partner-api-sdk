@@ -11,7 +11,7 @@ export class ResearchingQuantityEntry {
      * @param {ResearchingQuantityEntry} obj Optional instance to populate.
      * @return {ResearchingQuantityEntry} The populated <code>ResearchingQuantityEntry</code> instance.
      */
-    static constructFromObject(data: any, obj: ResearchingQuantityEntry): ResearchingQuantityEntry;
+    static constructFromObject(data: Object, obj: ResearchingQuantityEntry): ResearchingQuantityEntry;
     /**
      * Constructs a new <code>ResearchingQuantityEntry</code>.
      * The misplaced or warehouse damaged inventory that is actively being confirmed at our fulfillment centers.

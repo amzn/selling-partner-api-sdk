@@ -11,7 +11,7 @@ export class ValueAddedServiceChargeEvent {
      * @param {ValueAddedServiceChargeEvent} obj Optional instance to populate.
      * @return {ValueAddedServiceChargeEvent} The populated <code>ValueAddedServiceChargeEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: ValueAddedServiceChargeEvent): ValueAddedServiceChargeEvent;
+    static constructFromObject(data: Object, obj: ValueAddedServiceChargeEvent): ValueAddedServiceChargeEvent;
     /**
      * The transaction type. For example, 'Other Support Service fees'
      * @member {String} transactionType

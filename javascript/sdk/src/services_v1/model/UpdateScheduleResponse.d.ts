@@ -11,7 +11,7 @@ export class UpdateScheduleResponse {
      * @param {UpdateScheduleResponse} obj Optional instance to populate.
      * @return {UpdateScheduleResponse} The populated <code>UpdateScheduleResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: UpdateScheduleResponse): UpdateScheduleResponse;
+    static constructFromObject(data: Object, obj: UpdateScheduleResponse): UpdateScheduleResponse;
     /**
      * Contains the `UpdateScheduleRecords` for which the error/warning has occurred.
      * @member {UpdateScheduleRecord[]} payload

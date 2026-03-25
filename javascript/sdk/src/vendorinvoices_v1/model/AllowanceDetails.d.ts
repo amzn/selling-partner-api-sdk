@@ -11,7 +11,7 @@ export class AllowanceDetails {
      * @param {AllowanceDetails} obj Optional instance to populate.
      * @return {AllowanceDetails} The populated <code>AllowanceDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: AllowanceDetails): AllowanceDetails;
+    static constructFromObject(data: Object, obj: AllowanceDetails): AllowanceDetails;
     /**
      * Constructs a new <code>AllowanceDetails</code>.
      * Monetary and tax details of the allowance.

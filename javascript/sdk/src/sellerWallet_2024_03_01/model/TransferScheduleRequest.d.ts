@@ -11,7 +11,7 @@ export class TransferScheduleRequest {
      * @param {TransferScheduleRequest} obj Optional instance to populate.
      * @return {TransferScheduleRequest} The populated <code>TransferScheduleRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: TransferScheduleRequest): TransferScheduleRequest;
+    static constructFromObject(data: Object, obj: TransferScheduleRequest): TransferScheduleRequest;
     /**
      * Constructs a new <code>TransferScheduleRequest</code>.
      * Request body to initiate a scheduled transfer from a Seller Wallet bank account to another customer-defined bank account.

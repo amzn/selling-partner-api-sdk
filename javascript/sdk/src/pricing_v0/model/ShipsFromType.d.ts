@@ -11,7 +11,7 @@ export class ShipsFromType {
      * @param {ShipsFromType} obj Optional instance to populate.
      * @return {ShipsFromType} The populated <code>ShipsFromType</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipsFromType): ShipsFromType;
+    static constructFromObject(data: Object, obj: ShipsFromType): ShipsFromType;
     /**
      * The state from where the item is shipped.
      * @member {String} state

@@ -11,7 +11,7 @@ export class ItemReviewTrends {
      * @param {ItemReviewTrends} obj Optional instance to populate.
      * @return {ItemReviewTrends} The populated <code>ItemReviewTrends</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemReviewTrends): ItemReviewTrends;
+    static constructFromObject(data: Object, obj: ItemReviewTrends): ItemReviewTrends;
     /**
      * A list of the most positive review topics. The percentage of reviews that contain the topic determines the topic's placement in the list. This value is `null` if there are not enough positive reviews for the specified ASIN.  **Max length:** 10
      * @member {ItemReviewTrend[]} positiveTopics

@@ -11,7 +11,7 @@ export class CreateSubscriptionResponse {
      * @param {CreateSubscriptionResponse} obj Optional instance to populate.
      * @return {CreateSubscriptionResponse} The populated <code>CreateSubscriptionResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateSubscriptionResponse): CreateSubscriptionResponse;
+    static constructFromObject(data: Object, obj: CreateSubscriptionResponse): CreateSubscriptionResponse;
     /**
      * @member {Subscription} payload
      * @type {Subscription}

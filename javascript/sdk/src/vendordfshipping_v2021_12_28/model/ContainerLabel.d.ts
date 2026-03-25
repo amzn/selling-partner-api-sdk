@@ -11,7 +11,7 @@ export class ContainerLabel {
      * @param {ContainerLabel} obj Optional instance to populate.
      * @return {ContainerLabel} The populated <code>ContainerLabel</code> instance.
      */
-    static constructFromObject(data: any, obj: ContainerLabel): ContainerLabel;
+    static constructFromObject(data: Object, obj: ContainerLabel): ContainerLabel;
     /**
      * Constructs a new <code>ContainerLabel</code>.
      * The details of the container label.

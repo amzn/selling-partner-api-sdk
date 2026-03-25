@@ -11,7 +11,7 @@ export class InventoryResponseBody {
      * @param {InventoryResponseBody} obj Optional instance to populate.
      * @return {InventoryResponseBody} The populated <code>InventoryResponseBody</code> instance.
      */
-    static constructFromObject(data: any, obj: InventoryResponseBody): InventoryResponseBody;
+    static constructFromObject(data: Object, obj: InventoryResponseBody): InventoryResponseBody;
     /**
      * Latest sequence number for an inventory update.
      * @member {Number} clientSequenceNumber

@@ -11,7 +11,7 @@ export class Money {
      * @param {Money} obj Optional instance to populate.
      * @return {Money} The populated <code>Money</code> instance.
      */
-    static constructFromObject(data: any, obj: Money): Money;
+    static constructFromObject(data: Object, obj: Money): Money;
     /**
      * Constructs a new <code>Money</code>.
      * An amount of money, including units in the form of currency.

@@ -11,7 +11,7 @@ export class Return {
      * @param {Return} obj Optional instance to populate.
      * @return {Return} The populated <code>Return</code> instance.
      */
-    static constructFromObject(data: any, obj: Return): Return;
+    static constructFromObject(data: Object, obj: Return): Return;
     /**
      * Constructs a new <code>Return</code>.
      * Information about the return item.

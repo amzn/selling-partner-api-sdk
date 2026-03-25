@@ -11,7 +11,7 @@ export class InvoiceItem {
      * @param {InvoiceItem} obj Optional instance to populate.
      * @return {InvoiceItem} The populated <code>InvoiceItem</code> instance.
      */
-    static constructFromObject(data: any, obj: InvoiceItem): InvoiceItem;
+    static constructFromObject(data: Object, obj: InvoiceItem): InvoiceItem;
     /**
      * Constructs a new <code>InvoiceItem</code>.
      * Provides the details of the items in this invoice.

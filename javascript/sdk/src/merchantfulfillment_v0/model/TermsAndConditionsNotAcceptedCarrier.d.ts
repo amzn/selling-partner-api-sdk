@@ -11,7 +11,7 @@ export class TermsAndConditionsNotAcceptedCarrier {
      * @param {TermsAndConditionsNotAcceptedCarrier} obj Optional instance to populate.
      * @return {TermsAndConditionsNotAcceptedCarrier} The populated <code>TermsAndConditionsNotAcceptedCarrier</code> instance.
      */
-    static constructFromObject(data: any, obj: TermsAndConditionsNotAcceptedCarrier): TermsAndConditionsNotAcceptedCarrier;
+    static constructFromObject(data: Object, obj: TermsAndConditionsNotAcceptedCarrier): TermsAndConditionsNotAcceptedCarrier;
     /**
      * Constructs a new <code>TermsAndConditionsNotAcceptedCarrier</code>.
      * A carrier whose terms and conditions have not been accepted by the seller.

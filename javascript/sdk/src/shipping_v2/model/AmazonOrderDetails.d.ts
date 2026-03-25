@@ -11,7 +11,7 @@ export class AmazonOrderDetails {
      * @param {AmazonOrderDetails} obj Optional instance to populate.
      * @return {AmazonOrderDetails} The populated <code>AmazonOrderDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: AmazonOrderDetails): AmazonOrderDetails;
+    static constructFromObject(data: Object, obj: AmazonOrderDetails): AmazonOrderDetails;
     /**
      * Constructs a new <code>AmazonOrderDetails</code>.
      * Amazon order information. This is required if the shipment source channel is Amazon.

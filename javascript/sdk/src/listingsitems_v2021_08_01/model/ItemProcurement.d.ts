@@ -11,7 +11,7 @@ export class ItemProcurement {
      * @param {ItemProcurement} obj Optional instance to populate.
      * @return {ItemProcurement} The populated <code>ItemProcurement</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemProcurement): ItemProcurement;
+    static constructFromObject(data: Object, obj: ItemProcurement): ItemProcurement;
     /**
      * Constructs a new <code>ItemProcurement</code>.
      * The vendor procurement information for the listings item.

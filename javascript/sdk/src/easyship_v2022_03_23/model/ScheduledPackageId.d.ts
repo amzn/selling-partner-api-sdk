@@ -11,7 +11,7 @@ export class ScheduledPackageId {
      * @param {ScheduledPackageId} obj Optional instance to populate.
      * @return {ScheduledPackageId} The populated <code>ScheduledPackageId</code> instance.
      */
-    static constructFromObject(data: any, obj: ScheduledPackageId): ScheduledPackageId;
+    static constructFromObject(data: Object, obj: ScheduledPackageId): ScheduledPackageId;
     /**
      * Constructs a new <code>ScheduledPackageId</code>.
      * Identifies the scheduled package to be updated.

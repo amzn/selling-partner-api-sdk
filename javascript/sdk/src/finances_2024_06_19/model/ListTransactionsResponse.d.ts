@@ -11,7 +11,7 @@ export class ListTransactionsResponse {
      * @param {ListTransactionsResponse} obj Optional instance to populate.
      * @return {ListTransactionsResponse} The populated <code>ListTransactionsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ListTransactionsResponse): ListTransactionsResponse;
+    static constructFromObject(data: Object, obj: ListTransactionsResponse): ListTransactionsResponse;
     /**
      * @member {TransactionsPayload} payload
      * @type {TransactionsPayload}

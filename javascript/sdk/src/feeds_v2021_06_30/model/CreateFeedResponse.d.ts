@@ -11,7 +11,7 @@ export class CreateFeedResponse {
      * @param {CreateFeedResponse} obj Optional instance to populate.
      * @return {CreateFeedResponse} The populated <code>CreateFeedResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateFeedResponse): CreateFeedResponse;
+    static constructFromObject(data: Object, obj: CreateFeedResponse): CreateFeedResponse;
     /**
      * Constructs a new <code>CreateFeedResponse</code>.
      * Response schema.

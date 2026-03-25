@@ -11,7 +11,7 @@ export class ReferencePrice {
      * @param {ReferencePrice} obj Optional instance to populate.
      * @return {ReferencePrice} The populated <code>ReferencePrice</code> instance.
      */
-    static constructFromObject(data: any, obj: ReferencePrice): ReferencePrice;
+    static constructFromObject(data: Object, obj: ReferencePrice): ReferencePrice;
     /**
      * Constructs a new <code>ReferencePrice</code>.
      * The reference price for the specified ASIN &#x60;marketplaceId&#x60; combination.

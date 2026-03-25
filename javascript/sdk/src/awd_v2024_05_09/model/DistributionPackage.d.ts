@@ -11,7 +11,7 @@ export class DistributionPackage {
      * @param {DistributionPackage} obj Optional instance to populate.
      * @return {DistributionPackage} The populated <code>DistributionPackage</code> instance.
      */
-    static constructFromObject(data: any, obj: DistributionPackage): DistributionPackage;
+    static constructFromObject(data: Object, obj: DistributionPackage): DistributionPackage;
     /**
      * Constructs a new <code>DistributionPackage</code>.
      * Represents an AWD distribution package.

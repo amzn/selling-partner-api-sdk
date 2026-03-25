@@ -11,7 +11,7 @@ export class InnerContainersDetails {
      * @param {InnerContainersDetails} obj Optional instance to populate.
      * @return {InnerContainersDetails} The populated <code>InnerContainersDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: InnerContainersDetails): InnerContainersDetails;
+    static constructFromObject(data: Object, obj: InnerContainersDetails): InnerContainersDetails;
     /**
      * Total containers as part of the shipment
      * @member {Number} containerCount

@@ -11,7 +11,7 @@ export class BrowseNodeReturnTrend {
      * @param {BrowseNodeReturnTrend} obj Optional instance to populate.
      * @return {BrowseNodeReturnTrend} The populated <code>BrowseNodeReturnTrend</code> instance.
      */
-    static constructFromObject(data: any, obj: BrowseNodeReturnTrend): BrowseNodeReturnTrend;
+    static constructFromObject(data: Object, obj: BrowseNodeReturnTrend): BrowseNodeReturnTrend;
     /**
      * Constructs a new <code>BrowseNodeReturnTrend</code>.
      * The trend of return topic metrics for all items in the requested browse node.

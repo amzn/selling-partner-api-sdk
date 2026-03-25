@@ -11,7 +11,7 @@ export class SpdTrackingDetail {
      * @param {SpdTrackingDetail} obj Optional instance to populate.
      * @return {SpdTrackingDetail} The populated <code>SpdTrackingDetail</code> instance.
      */
-    static constructFromObject(data: any, obj: SpdTrackingDetail): SpdTrackingDetail;
+    static constructFromObject(data: Object, obj: SpdTrackingDetail): SpdTrackingDetail;
     /**
      * List of Small Parcel Delivery (SPD) tracking items.
      * @member {SpdTrackingItem[]} spdTrackingItems

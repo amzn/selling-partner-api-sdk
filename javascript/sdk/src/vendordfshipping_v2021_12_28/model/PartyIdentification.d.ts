@@ -11,7 +11,7 @@ export class PartyIdentification {
      * @param {PartyIdentification} obj Optional instance to populate.
      * @return {PartyIdentification} The populated <code>PartyIdentification</code> instance.
      */
-    static constructFromObject(data: any, obj: PartyIdentification): PartyIdentification;
+    static constructFromObject(data: Object, obj: PartyIdentification): PartyIdentification;
     /**
      * Constructs a new <code>PartyIdentification</code>.
      * The name, address, and tax details of a party.

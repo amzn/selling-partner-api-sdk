@@ -11,7 +11,7 @@ export class InvoiceDetail {
      * @param {InvoiceDetail} obj Optional instance to populate.
      * @return {InvoiceDetail} The populated <code>InvoiceDetail</code> instance.
      */
-    static constructFromObject(data: any, obj: InvoiceDetail): InvoiceDetail;
+    static constructFromObject(data: Object, obj: InvoiceDetail): InvoiceDetail;
     /**
      * Constructs a new <code>InvoiceDetail</code>.
      * Represents the details of an invoice, including invoice number, date, parties involved, payment terms, totals, taxes, charges, and line items.

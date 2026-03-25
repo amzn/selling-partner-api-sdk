@@ -11,7 +11,7 @@ export class Containers {
      * @param {Containers} obj Optional instance to populate.
      * @return {Containers} The populated <code>Containers</code> instance.
      */
-    static constructFromObject(data: any, obj: Containers): Containers;
+    static constructFromObject(data: Object, obj: Containers): Containers;
     /**
      * Constructs a new <code>Containers</code>.
      * A list of the items in this transportation and their associated inner container details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.

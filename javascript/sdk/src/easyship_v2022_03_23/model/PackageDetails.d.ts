@@ -11,7 +11,7 @@ export class PackageDetails {
      * @param {PackageDetails} obj Optional instance to populate.
      * @return {PackageDetails} The populated <code>PackageDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: PackageDetails): PackageDetails;
+    static constructFromObject(data: Object, obj: PackageDetails): PackageDetails;
     /**
      * Constructs a new <code>PackageDetails</code>.
      * Package details. Includes &#x60;packageItems&#x60;, &#x60;packageTimeSlot&#x60;, and &#x60;packageIdentifier&#x60;.

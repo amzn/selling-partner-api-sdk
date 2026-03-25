@@ -11,7 +11,7 @@ export class ProductAttribute {
      * @param {ProductAttribute} obj Optional instance to populate.
      * @return {ProductAttribute} The populated <code>ProductAttribute</code> instance.
      */
-    static constructFromObject(data: any, obj: ProductAttribute): ProductAttribute;
+    static constructFromObject(data: Object, obj: ProductAttribute): ProductAttribute;
     /**
      * Product attribute name.
      * @member {String} name

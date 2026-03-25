@@ -11,7 +11,7 @@ export class TransferRatePreview {
      * @param {TransferRatePreview} obj Optional instance to populate.
      * @return {TransferRatePreview} The populated <code>TransferRatePreview</code> instance.
      */
-    static constructFromObject(data: any, obj: TransferRatePreview): TransferRatePreview;
+    static constructFromObject(data: Object, obj: TransferRatePreview): TransferRatePreview;
     /**
      * Constructs a new <code>TransferRatePreview</code>.
      * The fees and foreign exchange rates that apply to the transaction.  If the fees are in terms of the &#x60;baseAmount&#x60; (source account) currency, then the effective rate is equal to **1 - (fees * &#x60;baseRate&#x60; / &#x60;baseAmount&#x60;)**.  If the fees are in terms of the &#x60;transferAmount&#x60; (destination account) currency, then the effective rate is equal to **&#x60;baseRate&#x60; - (fees / &#x60;baseAmount&#x60;)**.  In the preceding expressions, **fees** is equal to the sum of all &#x60;feeAmount.currencyAmount&#x60; values in the &#x60;fees&#x60; array.

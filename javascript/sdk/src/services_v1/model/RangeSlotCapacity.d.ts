@@ -11,7 +11,7 @@ export class RangeSlotCapacity {
      * @param {RangeSlotCapacity} obj Optional instance to populate.
      * @return {RangeSlotCapacity} The populated <code>RangeSlotCapacity</code> instance.
      */
-    static constructFromObject(data: any, obj: RangeSlotCapacity): RangeSlotCapacity;
+    static constructFromObject(data: Object, obj: RangeSlotCapacity): RangeSlotCapacity;
     /**
      * Resource Identifier.
      * @member {String} resourceId

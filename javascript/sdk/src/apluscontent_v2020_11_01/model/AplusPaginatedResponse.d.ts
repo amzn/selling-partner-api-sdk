@@ -11,7 +11,7 @@ export class AplusPaginatedResponse {
      * @param {AplusPaginatedResponse} obj Optional instance to populate.
      * @return {AplusPaginatedResponse} The populated <code>AplusPaginatedResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: AplusPaginatedResponse): AplusPaginatedResponse;
+    static constructFromObject(data: Object, obj: AplusPaginatedResponse): AplusPaginatedResponse;
     /**
      * A set of messages to the user, such as warnings or comments.
      * @member {Error[]} warnings

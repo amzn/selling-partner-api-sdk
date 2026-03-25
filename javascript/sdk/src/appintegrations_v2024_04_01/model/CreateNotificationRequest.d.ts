@@ -11,7 +11,7 @@ export class CreateNotificationRequest {
      * @param {CreateNotificationRequest} obj Optional instance to populate.
      * @return {CreateNotificationRequest} The populated <code>CreateNotificationRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateNotificationRequest): CreateNotificationRequest;
+    static constructFromObject(data: Object, obj: CreateNotificationRequest): CreateNotificationRequest;
     /**
      * Constructs a new <code>CreateNotificationRequest</code>.
      * The request for the &#x60;createNotification&#x60; operation.
@@ -21,11 +21,11 @@ export class CreateNotificationRequest {
      * @param notificationParameters {{String: Object}} The dynamic parameters required by the notification templated specified by `templateId`.
      */
     constructor(templateId: string, notificationParameters: {
-        String: any;
+        String: Object;
     });
     templateId: string;
     notificationParameters: {
-        String: any;
+        String: Object;
     };
     /**
      * An encrypted marketplace identifier for the posted notification.

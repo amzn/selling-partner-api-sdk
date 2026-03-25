@@ -11,7 +11,7 @@ export class OperatingHours {
      * @param {OperatingHours} obj Optional instance to populate.
      * @return {OperatingHours} The populated <code>OperatingHours</code> instance.
      */
-    static constructFromObject(data: any, obj: OperatingHours): OperatingHours;
+    static constructFromObject(data: Object, obj: OperatingHours): OperatingHours;
     /**
      * @member {TimeOfDay} closingTime
      * @type {TimeOfDay}

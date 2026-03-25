@@ -11,7 +11,7 @@ export class Restriction {
      * @param {Restriction} obj Optional instance to populate.
      * @return {Restriction} The populated <code>Restriction</code> instance.
      */
-    static constructFromObject(data: any, obj: Restriction): Restriction;
+    static constructFromObject(data: Object, obj: Restriction): Restriction;
     /**
      * Constructs a new <code>Restriction</code>.
      * A listing restriction, optionally qualified by a condition, with a list of reasons for the restriction.

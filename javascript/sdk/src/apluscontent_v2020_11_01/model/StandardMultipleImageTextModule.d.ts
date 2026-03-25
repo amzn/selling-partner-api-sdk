@@ -11,7 +11,7 @@ export class StandardMultipleImageTextModule {
      * @param {StandardMultipleImageTextModule} obj Optional instance to populate.
      * @return {StandardMultipleImageTextModule} The populated <code>StandardMultipleImageTextModule</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardMultipleImageTextModule): StandardMultipleImageTextModule;
+    static constructFromObject(data: Object, obj: StandardMultipleImageTextModule): StandardMultipleImageTextModule;
     /**
      * @member {StandardImageTextCaptionBlock[]} blocks
      * @type {StandardImageTextCaptionBlock[]}

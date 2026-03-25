@@ -11,7 +11,7 @@ export class ContentRecord {
      * @param {ContentRecord} obj Optional instance to populate.
      * @return {ContentRecord} The populated <code>ContentRecord</code> instance.
      */
-    static constructFromObject(data: any, obj: ContentRecord): ContentRecord;
+    static constructFromObject(data: Object, obj: ContentRecord): ContentRecord;
     /**
      * Constructs a new <code>ContentRecord</code>.
      * A content document with additional information for content management.

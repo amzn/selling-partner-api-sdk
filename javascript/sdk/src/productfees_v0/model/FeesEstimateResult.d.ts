@@ -11,7 +11,7 @@ export class FeesEstimateResult {
      * @param {FeesEstimateResult} obj Optional instance to populate.
      * @return {FeesEstimateResult} The populated <code>FeesEstimateResult</code> instance.
      */
-    static constructFromObject(data: any, obj: FeesEstimateResult): FeesEstimateResult;
+    static constructFromObject(data: Object, obj: FeesEstimateResult): FeesEstimateResult;
     /**
      * The status of the fee request. Possible values: Success, ClientError, ServiceError.
      * @member {String} status

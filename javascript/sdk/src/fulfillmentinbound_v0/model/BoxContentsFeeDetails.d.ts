@@ -11,7 +11,7 @@ export class BoxContentsFeeDetails {
      * @param {BoxContentsFeeDetails} obj Optional instance to populate.
      * @return {BoxContentsFeeDetails} The populated <code>BoxContentsFeeDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: BoxContentsFeeDetails): BoxContentsFeeDetails;
+    static constructFromObject(data: Object, obj: BoxContentsFeeDetails): BoxContentsFeeDetails;
     /**
      * The item quantity.
      * @member {Number} totalUnits

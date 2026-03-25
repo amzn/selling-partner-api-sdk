@@ -11,7 +11,7 @@ export class UpdateSupplySourceStatusRequest {
      * @param {UpdateSupplySourceStatusRequest} obj Optional instance to populate.
      * @return {UpdateSupplySourceStatusRequest} The populated <code>UpdateSupplySourceStatusRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: UpdateSupplySourceStatusRequest): UpdateSupplySourceStatusRequest;
+    static constructFromObject(data: Object, obj: UpdateSupplySourceStatusRequest): UpdateSupplySourceStatusRequest;
     /**
      * @member {SupplySourceStatus} status
      * @type {SupplySourceStatus}

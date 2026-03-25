@@ -11,7 +11,7 @@ export class Link {
      * @param {Link} obj Optional instance to populate.
      * @return {Link} The populated <code>Link</code> instance.
      */
-    static constructFromObject(data: any, obj: Link): Link;
+    static constructFromObject(data: Object, obj: Link): Link;
     /**
      * Constructs a new <code>Link</code>.
      * A link to resources related to a listing restriction.

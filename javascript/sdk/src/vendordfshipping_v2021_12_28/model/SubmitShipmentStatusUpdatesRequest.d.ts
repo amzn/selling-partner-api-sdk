@@ -11,7 +11,7 @@ export class SubmitShipmentStatusUpdatesRequest {
      * @param {SubmitShipmentStatusUpdatesRequest} obj Optional instance to populate.
      * @return {SubmitShipmentStatusUpdatesRequest} The populated <code>SubmitShipmentStatusUpdatesRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: SubmitShipmentStatusUpdatesRequest): SubmitShipmentStatusUpdatesRequest;
+    static constructFromObject(data: Object, obj: SubmitShipmentStatusUpdatesRequest): SubmitShipmentStatusUpdatesRequest;
     /**
      * Contains a list of one or more `ShipmentStatusUpdate` objects. Each `ShipmentStatusUpdate` object represents an update to the status of a specific shipment.
      * @member {ShipmentStatusUpdate[]} shipmentStatusUpdates

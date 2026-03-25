@@ -11,7 +11,7 @@ export class TimeOfDay {
      * @param {TimeOfDay} obj Optional instance to populate.
      * @return {TimeOfDay} The populated <code>TimeOfDay</code> instance.
      */
-    static constructFromObject(data: any, obj: TimeOfDay): TimeOfDay;
+    static constructFromObject(data: Object, obj: TimeOfDay): TimeOfDay;
     /**
      * Denotes hour of the day, used for defining opening or closing time of access points
      * @member {Number} hourOfDay

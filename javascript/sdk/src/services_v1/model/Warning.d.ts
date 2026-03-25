@@ -11,7 +11,7 @@ export class Warning {
      * @param {Warning} obj Optional instance to populate.
      * @return {Warning} The populated <code>Warning</code> instance.
      */
-    static constructFromObject(data: any, obj: Warning): Warning;
+    static constructFromObject(data: Object, obj: Warning): Warning;
     /**
      * Constructs a new <code>Warning</code>.
      * Warning returned when the request is successful, but there are important callouts based on which API clients should take defined actions.

@@ -11,7 +11,7 @@ export class GetCarrierAccountsResponse {
      * @param {GetCarrierAccountsResponse} obj Optional instance to populate.
      * @return {GetCarrierAccountsResponse} The populated <code>GetCarrierAccountsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetCarrierAccountsResponse): GetCarrierAccountsResponse;
+    static constructFromObject(data: Object, obj: GetCarrierAccountsResponse): GetCarrierAccountsResponse;
     /**
      * Constructs a new <code>GetCarrierAccountsResponse</code>.
      * The Response  for the GetCarrierAccountsResponse operation.

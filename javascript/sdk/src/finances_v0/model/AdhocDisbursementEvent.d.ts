@@ -11,7 +11,7 @@ export class AdhocDisbursementEvent {
      * @param {AdhocDisbursementEvent} obj Optional instance to populate.
      * @return {AdhocDisbursementEvent} The populated <code>AdhocDisbursementEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: AdhocDisbursementEvent): AdhocDisbursementEvent;
+    static constructFromObject(data: Object, obj: AdhocDisbursementEvent): AdhocDisbursementEvent;
     /**
      * The type of transaction. For example, \"Disbursed to Amazon Gift Card balance\".
      * @member {String} transactionType

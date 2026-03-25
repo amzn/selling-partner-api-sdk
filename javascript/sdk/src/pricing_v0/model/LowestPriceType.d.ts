@@ -11,7 +11,7 @@ export class LowestPriceType {
      * @param {LowestPriceType} obj Optional instance to populate.
      * @return {LowestPriceType} The populated <code>LowestPriceType</code> instance.
      */
-    static constructFromObject(data: any, obj: LowestPriceType): LowestPriceType;
+    static constructFromObject(data: Object, obj: LowestPriceType): LowestPriceType;
     /**
      * Constructs a new <code>LowestPriceType</code>.
      * Schema for an individual lowest price.

@@ -11,7 +11,7 @@ export class ListPackingOptionsResponse {
      * @param {ListPackingOptionsResponse} obj Optional instance to populate.
      * @return {ListPackingOptionsResponse} The populated <code>ListPackingOptionsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ListPackingOptionsResponse): ListPackingOptionsResponse;
+    static constructFromObject(data: Object, obj: ListPackingOptionsResponse): ListPackingOptionsResponse;
     /**
      * Constructs a new <code>ListPackingOptionsResponse</code>.
      * The &#x60;listPlacementOptions&#x60; response.

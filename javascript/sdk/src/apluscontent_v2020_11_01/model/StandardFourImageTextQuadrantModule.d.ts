@@ -11,7 +11,7 @@ export class StandardFourImageTextQuadrantModule {
      * @param {StandardFourImageTextQuadrantModule} obj Optional instance to populate.
      * @return {StandardFourImageTextQuadrantModule} The populated <code>StandardFourImageTextQuadrantModule</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardFourImageTextQuadrantModule): StandardFourImageTextQuadrantModule;
+    static constructFromObject(data: Object, obj: StandardFourImageTextQuadrantModule): StandardFourImageTextQuadrantModule;
     /**
      * Constructs a new <code>StandardFourImageTextQuadrantModule</code>.
      * Four standard images with text, presented on a grid of four quadrants.

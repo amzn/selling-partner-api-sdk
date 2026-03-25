@@ -11,7 +11,7 @@ export class PartyIdentificationInfo {
      * @param {PartyIdentificationInfo} obj Optional instance to populate.
      * @return {PartyIdentificationInfo} The populated <code>PartyIdentificationInfo</code> instance.
      */
-    static constructFromObject(data: any, obj: PartyIdentificationInfo): PartyIdentificationInfo;
+    static constructFromObject(data: Object, obj: PartyIdentificationInfo): PartyIdentificationInfo;
     /**
      * Constructs a new <code>PartyIdentificationInfo</code>.
      * Party identification details for the shipment, applicable to direct fulfillment shipments.

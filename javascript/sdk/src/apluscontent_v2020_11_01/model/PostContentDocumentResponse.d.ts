@@ -11,7 +11,7 @@ export class PostContentDocumentResponse {
      * @param {PostContentDocumentResponse} obj Optional instance to populate.
      * @return {PostContentDocumentResponse} The populated <code>PostContentDocumentResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: PostContentDocumentResponse): PostContentDocumentResponse;
+    static constructFromObject(data: Object, obj: PostContentDocumentResponse): PostContentDocumentResponse;
     /**
      * Constructs a new <code>PostContentDocumentResponse</code>.
      * @alias module:apluscontent_v2020_11_01/model/PostContentDocumentResponse

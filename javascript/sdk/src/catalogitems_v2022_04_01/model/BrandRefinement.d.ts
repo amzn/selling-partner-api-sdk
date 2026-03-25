@@ -11,7 +11,7 @@ export class BrandRefinement {
      * @param {BrandRefinement} obj Optional instance to populate.
      * @return {BrandRefinement} The populated <code>BrandRefinement</code> instance.
      */
-    static constructFromObject(data: any, obj: BrandRefinement): BrandRefinement;
+    static constructFromObject(data: Object, obj: BrandRefinement): BrandRefinement;
     /**
      * Constructs a new <code>BrandRefinement</code>.
      * A brand that you can use to refine your search.

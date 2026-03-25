@@ -114,7 +114,7 @@ export class AwdApi {
        * @return {Promise<InboundShipment>}
        */
     getInboundShipmentWithHttpInfo(shipmentId: string, opts?: {
-        skuQuantities?: string;
+        skuQuantities?: string | undefined;
     }): Promise<InboundShipment>;
     /**
        * Retrieves an AWD inbound shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
@@ -124,7 +124,7 @@ export class AwdApi {
        * @return {Promise<InboundShipment>}
        */
     getInboundShipment(shipmentId: string, opts?: {
-        skuQuantities?: string;
+        skuQuantities?: string | undefined;
     }): Promise<InboundShipment>;
     /**
        * Retrieves the box labels for a shipment ID that you specify. This is an asynchronous operation. If the label status is &#x60;GENERATED&#x60;, then the label URL is available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -135,8 +135,8 @@ export class AwdApi {
        * @return {Promise<ShipmentLabels>}
        */
     getInboundShipmentLabelsWithHttpInfo(shipmentId: string, opts?: {
-        pageType?: string;
-        formatType?: string;
+        pageType?: string | undefined;
+        formatType?: string | undefined;
     }): Promise<ShipmentLabels>;
     /**
        * Retrieves the box labels for a shipment ID that you specify. This is an asynchronous operation. If the label status is &#x60;GENERATED&#x60;, then the label URL is available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -147,8 +147,8 @@ export class AwdApi {
        * @return {Promise<ShipmentLabels>}
        */
     getInboundShipmentLabels(shipmentId: string, opts?: {
-        pageType?: string;
-        formatType?: string;
+        pageType?: string | undefined;
+        formatType?: string | undefined;
     }): Promise<ShipmentLabels>;
     /**
        * Retrieves an AWD Replenishment order with a set of shipments containing items that is/was planned to be replenished into an FBA node.
@@ -175,13 +175,13 @@ export class AwdApi {
        * @return {Promise<ShipmentListing>}
        */
     listInboundShipmentsWithHttpInfo(opts?: {
-        sortBy?: string;
-        sortOrder?: string;
-        shipmentStatus?: string;
-        updatedAfter?: Date;
-        updatedBefore?: Date;
-        maxResults?: number;
-        nextToken?: string;
+        sortBy?: string | undefined;
+        sortOrder?: string | undefined;
+        shipmentStatus?: string | undefined;
+        updatedAfter?: Date | undefined;
+        updatedBefore?: Date | undefined;
+        maxResults?: number | undefined;
+        nextToken?: string | undefined;
     }): Promise<ShipmentListing>;
     /**
        * Retrieves a summary of all the inbound AWD shipments associated with a merchant, with the ability to apply optional filters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -196,13 +196,13 @@ export class AwdApi {
        * @return {Promise<ShipmentListing>}
        */
     listInboundShipments(opts?: {
-        sortBy?: string;
-        sortOrder?: string;
-        shipmentStatus?: string;
-        updatedAfter?: Date;
-        updatedBefore?: Date;
-        maxResults?: number;
-        nextToken?: string;
+        sortBy?: string | undefined;
+        sortOrder?: string | undefined;
+        shipmentStatus?: string | undefined;
+        updatedAfter?: Date | undefined;
+        updatedBefore?: Date | undefined;
+        maxResults?: number | undefined;
+        nextToken?: string | undefined;
     }): Promise<ShipmentListing>;
     /**
        * Lists AWD inventory associated with a merchant with the ability to apply optional filters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -215,11 +215,11 @@ export class AwdApi {
        * @return {Promise<InventoryListing>}
        */
     listInventoryWithHttpInfo(opts?: {
-        sku?: string;
-        sortOrder?: string;
-        details?: string;
-        nextToken?: string;
-        maxResults?: number;
+        sku?: string | undefined;
+        sortOrder?: string | undefined;
+        details?: string | undefined;
+        nextToken?: string | undefined;
+        maxResults?: number | undefined;
     }): Promise<InventoryListing>;
     /**
        * Lists AWD inventory associated with a merchant with the ability to apply optional filters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -232,11 +232,11 @@ export class AwdApi {
        * @return {Promise<InventoryListing>}
        */
     listInventory(opts?: {
-        sku?: string;
-        sortOrder?: string;
-        details?: string;
-        nextToken?: string;
-        maxResults?: number;
+        sku?: string | undefined;
+        sortOrder?: string | undefined;
+        details?: string | undefined;
+        nextToken?: string | undefined;
+        maxResults?: number | undefined;
     }): Promise<InventoryListing>;
     /**
        * Retrieves all the AWD replenishment orders pertaining to a merchant with optional filters. API by default will sort orders by updatedAt attribute in descending order.
@@ -249,11 +249,11 @@ export class AwdApi {
        * @return {Promise<ReplenishmentOrderListing>}
        */
     listReplenishmentOrdersWithHttpInfo(opts?: {
-        updatedAfter?: Date;
-        updatedBefore?: Date;
-        sortOrder?: string;
-        maxResults?: number;
-        nextToken?: string;
+        updatedAfter?: Date | undefined;
+        updatedBefore?: Date | undefined;
+        sortOrder?: string | undefined;
+        maxResults?: number | undefined;
+        nextToken?: string | undefined;
     }): Promise<ReplenishmentOrderListing>;
     /**
        * Retrieves all the AWD replenishment orders pertaining to a merchant with optional filters. API by default will sort orders by updatedAt attribute in descending order.
@@ -266,11 +266,11 @@ export class AwdApi {
        * @return {Promise<ReplenishmentOrderListing>}
        */
     listReplenishmentOrders(opts?: {
-        updatedAfter?: Date;
-        updatedBefore?: Date;
-        sortOrder?: string;
-        maxResults?: number;
-        nextToken?: string;
+        updatedAfter?: Date | undefined;
+        updatedBefore?: Date | undefined;
+        sortOrder?: string | undefined;
+        maxResults?: number | undefined;
+        nextToken?: string | undefined;
     }): Promise<ReplenishmentOrderListing>;
     /**
        * Updates an AWD inbound order that is in &#x60;DRAFT&#x60; status and not yet confirmed. Use this operation to update the &#x60;packagesToInbound&#x60;, &#x60;originAddress&#x60; and &#x60;preferences&#x60; attributes.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).

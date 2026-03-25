@@ -11,7 +11,7 @@ export class ShipmentInvoiceStatusInfo {
      * @param {ShipmentInvoiceStatusInfo} obj Optional instance to populate.
      * @return {ShipmentInvoiceStatusInfo} The populated <code>ShipmentInvoiceStatusInfo</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipmentInvoiceStatusInfo): ShipmentInvoiceStatusInfo;
+    static constructFromObject(data: Object, obj: ShipmentInvoiceStatusInfo): ShipmentInvoiceStatusInfo;
     /**
      * The Amazon-defined shipment identifier.
      * @member {String} amazonShipmentId

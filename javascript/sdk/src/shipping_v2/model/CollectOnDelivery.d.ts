@@ -11,7 +11,7 @@ export class CollectOnDelivery {
      * @param {CollectOnDelivery} obj Optional instance to populate.
      * @return {CollectOnDelivery} The populated <code>CollectOnDelivery</code> instance.
      */
-    static constructFromObject(data: any, obj: CollectOnDelivery): CollectOnDelivery;
+    static constructFromObject(data: Object, obj: CollectOnDelivery): CollectOnDelivery;
     /**
      * Constructs a new <code>CollectOnDelivery</code>.
      * The amount to collect on delivery.

@@ -11,7 +11,7 @@ export class DeferredContext {
      * @param {DeferredContext} obj Optional instance to populate.
      * @return {DeferredContext} The populated <code>DeferredContext</code> instance.
      */
-    static constructFromObject(data: any, obj: DeferredContext): DeferredContext;
+    static constructFromObject(data: Object, obj: DeferredContext): DeferredContext;
     /**
      * The deferral policy applied to the transaction.  **Examples:** `B2B` (invoiced orders), `DD7` (delivery date policy)
      * @member {String} deferralReason

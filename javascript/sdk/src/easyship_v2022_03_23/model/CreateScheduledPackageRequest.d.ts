@@ -11,7 +11,7 @@ export class CreateScheduledPackageRequest {
      * @param {CreateScheduledPackageRequest} obj Optional instance to populate.
      * @return {CreateScheduledPackageRequest} The populated <code>CreateScheduledPackageRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateScheduledPackageRequest): CreateScheduledPackageRequest;
+    static constructFromObject(data: Object, obj: CreateScheduledPackageRequest): CreateScheduledPackageRequest;
     /**
      * Constructs a new <code>CreateScheduledPackageRequest</code>.
      * The request schema for the &#x60;createScheduledPackage&#x60; operation.

@@ -11,7 +11,7 @@ export class BankAccount {
      * @param {BankAccount} obj Optional instance to populate.
      * @return {BankAccount} The populated <code>BankAccount</code> instance.
      */
-    static constructFromObject(data: any, obj: BankAccount): BankAccount;
+    static constructFromObject(data: Object, obj: BankAccount): BankAccount;
     /**
      * Constructs a new <code>BankAccount</code>.
      * Details of an Amazon Seller Wallet bank account. This account is used to hold the money that a Seller Wallet customer earns by selling items.

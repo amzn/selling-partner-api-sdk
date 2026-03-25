@@ -11,7 +11,7 @@ export class CreateFeedDocumentResponse {
      * @param {CreateFeedDocumentResponse} obj Optional instance to populate.
      * @return {CreateFeedDocumentResponse} The populated <code>CreateFeedDocumentResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateFeedDocumentResponse): CreateFeedDocumentResponse;
+    static constructFromObject(data: Object, obj: CreateFeedDocumentResponse): CreateFeedDocumentResponse;
     /**
      * Constructs a new <code>CreateFeedDocumentResponse</code>.
      * Information required to upload a feed document&#39;s contents.

@@ -11,7 +11,7 @@ export class NetworkComminglingTransactionEvent {
      * @param {NetworkComminglingTransactionEvent} obj Optional instance to populate.
      * @return {NetworkComminglingTransactionEvent} The populated <code>NetworkComminglingTransactionEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: NetworkComminglingTransactionEvent): NetworkComminglingTransactionEvent;
+    static constructFromObject(data: Object, obj: NetworkComminglingTransactionEvent): NetworkComminglingTransactionEvent;
     /**
      * The type of network item swap.  Possible values:  * `NetCo`: A Fulfillment by Amazon inventory pooling transaction. Available only in the India marketplace.  * `ComminglingVAT`: A commingling VAT transaction. Available only in the Spain, UK, France, Germany, and Italy marketplaces.
      * @member {String} transactionType

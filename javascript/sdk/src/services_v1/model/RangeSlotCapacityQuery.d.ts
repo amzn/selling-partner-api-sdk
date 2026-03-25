@@ -11,7 +11,7 @@ export class RangeSlotCapacityQuery {
      * @param {RangeSlotCapacityQuery} obj Optional instance to populate.
      * @return {RangeSlotCapacityQuery} The populated <code>RangeSlotCapacityQuery</code> instance.
      */
-    static constructFromObject(data: any, obj: RangeSlotCapacityQuery): RangeSlotCapacityQuery;
+    static constructFromObject(data: Object, obj: RangeSlotCapacityQuery): RangeSlotCapacityQuery;
     /**
      * Constructs a new <code>RangeSlotCapacityQuery</code>.
      * Request schema for the &#x60;getRangeSlotCapacity&#x60; operation. This schema is used to define the time range and capacity types that are being queried.

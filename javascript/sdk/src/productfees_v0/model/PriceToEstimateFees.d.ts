@@ -11,7 +11,7 @@ export class PriceToEstimateFees {
      * @param {PriceToEstimateFees} obj Optional instance to populate.
      * @return {PriceToEstimateFees} The populated <code>PriceToEstimateFees</code> instance.
      */
-    static constructFromObject(data: any, obj: PriceToEstimateFees): PriceToEstimateFees;
+    static constructFromObject(data: Object, obj: PriceToEstimateFees): PriceToEstimateFees;
     /**
      * Constructs a new <code>PriceToEstimateFees</code>.
      * Price information for an item, used to estimate fees.

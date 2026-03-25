@@ -11,7 +11,7 @@ export class LowestPricedOffer {
      * @param {LowestPricedOffer} obj Optional instance to populate.
      * @return {LowestPricedOffer} The populated <code>LowestPricedOffer</code> instance.
      */
-    static constructFromObject(data: any, obj: LowestPricedOffer): LowestPricedOffer;
+    static constructFromObject(data: Object, obj: LowestPricedOffer): LowestPricedOffer;
     /**
      * Constructs a new <code>LowestPricedOffer</code>.
      * Describes the lowest priced offers for the specified item condition and offer type.

@@ -11,7 +11,7 @@ export class TrackingInfo {
      * @param {TrackingInfo} obj Optional instance to populate.
      * @return {TrackingInfo} The populated <code>TrackingInfo</code> instance.
      */
-    static constructFromObject(data: any, obj: TrackingInfo): TrackingInfo;
+    static constructFromObject(data: Object, obj: TrackingInfo): TrackingInfo;
     /**
      * Constructs a new <code>TrackingInfo</code>.
      * Information for tracking a return.

@@ -11,7 +11,7 @@ export class GeneratePlacementOptionsResponse {
      * @param {GeneratePlacementOptionsResponse} obj Optional instance to populate.
      * @return {GeneratePlacementOptionsResponse} The populated <code>GeneratePlacementOptionsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GeneratePlacementOptionsResponse): GeneratePlacementOptionsResponse;
+    static constructFromObject(data: Object, obj: GeneratePlacementOptionsResponse): GeneratePlacementOptionsResponse;
     /**
      * Constructs a new <code>GeneratePlacementOptionsResponse</code>.
      * The &#x60;generatePlacementOptions&#x60; response.

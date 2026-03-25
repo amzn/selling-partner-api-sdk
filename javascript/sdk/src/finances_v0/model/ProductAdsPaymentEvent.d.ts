@@ -11,7 +11,7 @@ export class ProductAdsPaymentEvent {
      * @param {ProductAdsPaymentEvent} obj Optional instance to populate.
      * @return {ProductAdsPaymentEvent} The populated <code>ProductAdsPaymentEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: ProductAdsPaymentEvent): ProductAdsPaymentEvent;
+    static constructFromObject(data: Object, obj: ProductAdsPaymentEvent): ProductAdsPaymentEvent;
     /**
      * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate

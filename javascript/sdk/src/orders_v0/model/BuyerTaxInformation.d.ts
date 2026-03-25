@@ -11,7 +11,7 @@ export class BuyerTaxInformation {
      * @param {BuyerTaxInformation} obj Optional instance to populate.
      * @return {BuyerTaxInformation} The populated <code>BuyerTaxInformation</code> instance.
      */
-    static constructFromObject(data: any, obj: BuyerTaxInformation): BuyerTaxInformation;
+    static constructFromObject(data: Object, obj: BuyerTaxInformation): BuyerTaxInformation;
     /**
      * Business buyer's company legal name.
      * @member {String} buyerLegalCompanyName

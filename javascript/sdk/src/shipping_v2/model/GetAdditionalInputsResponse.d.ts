@@ -11,14 +11,14 @@ export class GetAdditionalInputsResponse {
      * @param {GetAdditionalInputsResponse} obj Optional instance to populate.
      * @return {GetAdditionalInputsResponse} The populated <code>GetAdditionalInputsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetAdditionalInputsResponse): GetAdditionalInputsResponse;
+    static constructFromObject(data: Object, obj: GetAdditionalInputsResponse): GetAdditionalInputsResponse;
     /**
      * The JSON schema to use to provide additional inputs when required to purchase a shipping offering.
      * @member {{String: Object}} payload
      * @type {{String: Object}}
      */
     payload: {
-        String: any;
+        String: Object;
     };
 }
 //# sourceMappingURL=GetAdditionalInputsResponse.d.ts.map

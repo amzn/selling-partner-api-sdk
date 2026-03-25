@@ -11,7 +11,7 @@ export class EventBridgeResourceSpecification {
      * @param {EventBridgeResourceSpecification} obj Optional instance to populate.
      * @return {EventBridgeResourceSpecification} The populated <code>EventBridgeResourceSpecification</code> instance.
      */
-    static constructFromObject(data: any, obj: EventBridgeResourceSpecification): EventBridgeResourceSpecification;
+    static constructFromObject(data: Object, obj: EventBridgeResourceSpecification): EventBridgeResourceSpecification;
     /**
      * Constructs a new <code>EventBridgeResourceSpecification</code>.
      * The information required to create an Amazon EventBridge destination.

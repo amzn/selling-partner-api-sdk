@@ -11,7 +11,7 @@ export class LtlTrackingDetail {
      * @param {LtlTrackingDetail} obj Optional instance to populate.
      * @return {LtlTrackingDetail} The populated <code>LtlTrackingDetail</code> instance.
      */
-    static constructFromObject(data: any, obj: LtlTrackingDetail): LtlTrackingDetail;
+    static constructFromObject(data: Object, obj: LtlTrackingDetail): LtlTrackingDetail;
     /**
      * The number of the carrier shipment acknowledgement document.
      * @member {String} billOfLadingNumber

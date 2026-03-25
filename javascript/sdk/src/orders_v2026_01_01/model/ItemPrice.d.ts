@@ -11,7 +11,7 @@ export class ItemPrice {
      * @param {ItemPrice} obj Optional instance to populate.
      * @return {ItemPrice} The populated <code>ItemPrice</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemPrice): ItemPrice;
+    static constructFromObject(data: Object, obj: ItemPrice): ItemPrice;
     /**
      * @member {Money} unitPrice
      * @type {Money}

@@ -11,7 +11,7 @@ export class Region {
      * @param {Region} obj Optional instance to populate.
      * @return {Region} The populated <code>Region</code> instance.
      */
-    static constructFromObject(data: any, obj: Region): Region;
+    static constructFromObject(data: Object, obj: Region): Region;
     /**
      * ISO 3166 standard alpha-2 country code.
      * @member {String} countryCode

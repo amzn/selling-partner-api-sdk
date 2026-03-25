@@ -11,7 +11,7 @@ export class GetShipmentsResult {
      * @param {GetShipmentsResult} obj Optional instance to populate.
      * @return {GetShipmentsResult} The populated <code>GetShipmentsResult</code> instance.
      */
-    static constructFromObject(data: any, obj: GetShipmentsResult): GetShipmentsResult;
+    static constructFromObject(data: Object, obj: GetShipmentsResult): GetShipmentsResult;
     /**
      * A list of inbound shipment information.
      * @member {InboundShipmentInfo[]} shipmentData

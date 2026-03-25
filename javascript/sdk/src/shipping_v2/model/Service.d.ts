@@ -11,7 +11,7 @@ export class Service {
      * @param {Service} obj Optional instance to populate.
      * @return {Service} The populated <code>Service</code> instance.
      */
-    static constructFromObject(data: any, obj: Service): Service;
+    static constructFromObject(data: Object, obj: Service): Service;
     /**
      * Constructs a new <code>Service</code>.
      * Service Related Info

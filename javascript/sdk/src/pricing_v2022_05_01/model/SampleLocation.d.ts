@@ -11,7 +11,7 @@ export class SampleLocation {
      * @param {SampleLocation} obj Optional instance to populate.
      * @return {SampleLocation} The populated <code>SampleLocation</code> instance.
      */
-    static constructFromObject(data: any, obj: SampleLocation): SampleLocation;
+    static constructFromObject(data: Object, obj: SampleLocation): SampleLocation;
     /**
      * @member {PostalCode} postalCode
      * @type {PostalCode}

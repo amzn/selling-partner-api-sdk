@@ -11,7 +11,7 @@ export class ItemDelivery {
      * @param {ItemDelivery} obj Optional instance to populate.
      * @return {ItemDelivery} The populated <code>ItemDelivery</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemDelivery): ItemDelivery;
+    static constructFromObject(data: Object, obj: ItemDelivery): ItemDelivery;
     /**
      * The date and time of the latest Estimated Delivery Date (EDD) of all the items with an EDD. In ISO 8601 format.
      * @member {Date} estimatedDeliveryDate

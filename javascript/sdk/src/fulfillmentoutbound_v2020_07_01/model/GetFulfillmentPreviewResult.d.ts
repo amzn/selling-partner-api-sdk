@@ -11,7 +11,7 @@ export class GetFulfillmentPreviewResult {
      * @param {GetFulfillmentPreviewResult} obj Optional instance to populate.
      * @return {GetFulfillmentPreviewResult} The populated <code>GetFulfillmentPreviewResult</code> instance.
      */
-    static constructFromObject(data: any, obj: GetFulfillmentPreviewResult): GetFulfillmentPreviewResult;
+    static constructFromObject(data: Object, obj: GetFulfillmentPreviewResult): GetFulfillmentPreviewResult;
     /**
      * An array of fulfillment preview information.
      * @member {FulfillmentPreview[]} fulfillmentPreviews

@@ -11,7 +11,7 @@ export class Packages {
      * @param {Packages} obj Optional instance to populate.
      * @return {Packages} The populated <code>Packages</code> instance.
      */
-    static constructFromObject(data: any, obj: Packages): Packages;
+    static constructFromObject(data: Object, obj: Packages): Packages;
     /**
      * Constructs a new <code>Packages</code>.
      * A list of packages.

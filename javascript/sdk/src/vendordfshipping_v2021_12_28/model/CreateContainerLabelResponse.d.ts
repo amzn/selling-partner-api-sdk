@@ -11,7 +11,7 @@ export class CreateContainerLabelResponse {
      * @param {CreateContainerLabelResponse} obj Optional instance to populate.
      * @return {CreateContainerLabelResponse} The populated <code>CreateContainerLabelResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateContainerLabelResponse): CreateContainerLabelResponse;
+    static constructFromObject(data: Object, obj: CreateContainerLabelResponse): CreateContainerLabelResponse;
     /**
      * Constructs a new <code>CreateContainerLabelResponse</code>.
      * The response schema for the &#x60;createContainerLabel&#x60; operation.

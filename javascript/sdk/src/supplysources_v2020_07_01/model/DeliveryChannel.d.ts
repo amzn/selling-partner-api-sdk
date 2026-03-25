@@ -11,7 +11,7 @@ export class DeliveryChannel {
      * @param {DeliveryChannel} obj Optional instance to populate.
      * @return {DeliveryChannel} The populated <code>DeliveryChannel</code> instance.
      */
-    static constructFromObject(data: any, obj: DeliveryChannel): DeliveryChannel;
+    static constructFromObject(data: Object, obj: DeliveryChannel): DeliveryChannel;
     /**
      * @member {Boolean} isSupported
      * @type {Boolean}

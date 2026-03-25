@@ -11,7 +11,7 @@ export class ListingOffersResponse {
      * @param {ListingOffersResponse} obj Optional instance to populate.
      * @return {ListingOffersResponse} The populated <code>ListingOffersResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ListingOffersResponse): ListingOffersResponse;
+    static constructFromObject(data: Object, obj: ListingOffersResponse): ListingOffersResponse;
     /**
      * Constructs a new <code>ListingOffersResponse</code>.
      * Schema for an individual &#x60;ListingOffersResponse&#x60;

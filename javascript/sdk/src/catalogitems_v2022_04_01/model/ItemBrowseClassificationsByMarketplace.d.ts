@@ -11,7 +11,7 @@ export class ItemBrowseClassificationsByMarketplace {
      * @param {ItemBrowseClassificationsByMarketplace} obj Optional instance to populate.
      * @return {ItemBrowseClassificationsByMarketplace} The populated <code>ItemBrowseClassificationsByMarketplace</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemBrowseClassificationsByMarketplace): ItemBrowseClassificationsByMarketplace;
+    static constructFromObject(data: Object, obj: ItemBrowseClassificationsByMarketplace): ItemBrowseClassificationsByMarketplace;
     /**
      * Constructs a new <code>ItemBrowseClassificationsByMarketplace</code>.
      * Classifications (browse nodes) that are associated with the item in the Amazon catalog for the indicated &#x60;marketplaceId&#x60;.

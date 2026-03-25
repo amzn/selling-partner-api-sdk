@@ -11,7 +11,7 @@ export class DateRange {
      * @param {DateRange} obj Optional instance to populate.
      * @return {DateRange} The populated <code>DateRange</code> instance.
      */
-    static constructFromObject(data: any, obj: DateRange): DateRange;
+    static constructFromObject(data: Object, obj: DateRange): DateRange;
     /**
      * Start Date for query .
      * @member {String} startDate

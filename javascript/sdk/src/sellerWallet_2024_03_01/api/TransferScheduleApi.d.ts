@@ -84,7 +84,7 @@ export class TransferScheduleApi {
        * @return {Promise<TransferScheduleListing>}
        */
     listTransferSchedulesWithHttpInfo(accountId: string, marketplaceId: string, opts?: {
-        nextPageToken?: string;
+        nextPageToken?: string | undefined;
     }): Promise<TransferScheduleListing>;
     /**
        * The API will return all the transfer schedules for a given Amazon Seller Wallet account
@@ -96,7 +96,7 @@ export class TransferScheduleApi {
        * @return {Promise<TransferScheduleListing>}
        */
     listTransferSchedules(accountId: string, marketplaceId: string, opts?: {
-        nextPageToken?: string;
+        nextPageToken?: string | undefined;
     }): Promise<TransferScheduleListing>;
     /**
        * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.

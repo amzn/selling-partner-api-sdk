@@ -11,7 +11,7 @@ export class GetEligibleShipmentServicesResponse {
      * @param {GetEligibleShipmentServicesResponse} obj Optional instance to populate.
      * @return {GetEligibleShipmentServicesResponse} The populated <code>GetEligibleShipmentServicesResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetEligibleShipmentServicesResponse): GetEligibleShipmentServicesResponse;
+    static constructFromObject(data: Object, obj: GetEligibleShipmentServicesResponse): GetEligibleShipmentServicesResponse;
     /**
      * @member {GetEligibleShipmentServicesResult} payload
      * @type {GetEligibleShipmentServicesResult}

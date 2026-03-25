@@ -11,7 +11,7 @@ export class ItemReviewTrendPoint {
      * @param {ItemReviewTrendPoint} obj Optional instance to populate.
      * @return {ItemReviewTrendPoint} The populated <code>ItemReviewTrendPoint</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemReviewTrendPoint): ItemReviewTrendPoint;
+    static constructFromObject(data: Object, obj: ItemReviewTrendPoint): ItemReviewTrendPoint;
     /**
      * Constructs a new <code>ItemReviewTrendPoint</code>.
      * The review metrics for a certain month.

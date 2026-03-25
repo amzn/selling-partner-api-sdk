@@ -11,7 +11,7 @@ export class SpdTrackingItemInput {
      * @param {SpdTrackingItemInput} obj Optional instance to populate.
      * @return {SpdTrackingItemInput} The populated <code>SpdTrackingItemInput</code> instance.
      */
-    static constructFromObject(data: any, obj: SpdTrackingItemInput): SpdTrackingItemInput;
+    static constructFromObject(data: Object, obj: SpdTrackingItemInput): SpdTrackingItemInput;
     /**
      * Constructs a new <code>SpdTrackingItemInput</code>.
      * Small Parcel Delivery (SPD) tracking items input information.

@@ -11,7 +11,7 @@ export class ShippingConfiguration {
      * @param {ShippingConfiguration} obj Optional instance to populate.
      * @return {ShippingConfiguration} The populated <code>ShippingConfiguration</code> instance.
      */
-    static constructFromObject(data: any, obj: ShippingConfiguration): ShippingConfiguration;
+    static constructFromObject(data: Object, obj: ShippingConfiguration): ShippingConfiguration;
     /**
      * Mode of shipment transportation that this option will provide.  Possible values: `GROUND_SMALL_PARCEL`, `FREIGHT_LTL`, `FREIGHT_FTL_PALLET`, `FREIGHT_FTL_NONPALLET`, `OCEAN_LCL`, `OCEAN_FCL`, `AIR_SMALL_PARCEL`, `AIR_SMALL_PARCEL_EXPRESS`.
      * @member {String} shippingMode

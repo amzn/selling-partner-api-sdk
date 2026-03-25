@@ -23,7 +23,7 @@ import { PaymentMethodEnum } from './PaymentMethodEnum.js'
 export class PaymentInformation {
   /**
    * Constructs a new <code>PaymentInformation</code>.
-   * Payment transaction information
+   * Information about a payment transaction.
    * @alias module:invoicing_v0/model/PaymentInformation
    * @class
    */
@@ -68,14 +68,14 @@ export class PaymentInformation {
 PaymentInformation.prototype.paymentMethod = undefined
 
 /**
- * Government ID of acquirer
+ * The government ID of the acquirer.
  * @member {String} acquirerId
  * @type {String}
  */
 PaymentInformation.prototype.acquirerId = undefined
 
 /**
- * Credit card brand (if payment method is CreditCard)
+ * The credit card brand if the payment method is `CreditCard`.
  * @member {String} cardBrand
  * @type {String}
  */
@@ -88,7 +88,7 @@ PaymentInformation.prototype.cardBrand = undefined
 PaymentInformation.prototype.paymentValue = undefined
 
 /**
- * Authorization code for this payment
+ * The authorization code of this payment.
  * @member {String} authorizationCode
  * @type {String}
  */

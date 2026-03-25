@@ -11,7 +11,7 @@ export class AdditionalSellerInput {
      * @param {AdditionalSellerInput} obj Optional instance to populate.
      * @return {AdditionalSellerInput} The populated <code>AdditionalSellerInput</code> instance.
      */
-    static constructFromObject(data: any, obj: AdditionalSellerInput): AdditionalSellerInput;
+    static constructFromObject(data: Object, obj: AdditionalSellerInput): AdditionalSellerInput;
     /**
      * The data type of the additional information.
      * @member {String} dataType

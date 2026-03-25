@@ -11,7 +11,7 @@ export class ListingsItemPatchRequest {
      * @param {ListingsItemPatchRequest} obj Optional instance to populate.
      * @return {ListingsItemPatchRequest} The populated <code>ListingsItemPatchRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: ListingsItemPatchRequest): ListingsItemPatchRequest;
+    static constructFromObject(data: Object, obj: ListingsItemPatchRequest): ListingsItemPatchRequest;
     /**
      * Constructs a new <code>ListingsItemPatchRequest</code>.
      * The request body schema for the &#x60;patchListingsItem&#x60; operation.

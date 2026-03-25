@@ -11,7 +11,7 @@ export class ServiceSelection {
      * @param {ServiceSelection} obj Optional instance to populate.
      * @return {ServiceSelection} The populated <code>ServiceSelection</code> instance.
      */
-    static constructFromObject(data: any, obj: ServiceSelection): ServiceSelection;
+    static constructFromObject(data: Object, obj: ServiceSelection): ServiceSelection;
     /**
      * Constructs a new <code>ServiceSelection</code>.
      * Service Selection Criteria.

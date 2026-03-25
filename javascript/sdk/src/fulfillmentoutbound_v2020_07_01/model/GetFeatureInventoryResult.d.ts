@@ -11,7 +11,7 @@ export class GetFeatureInventoryResult {
      * @param {GetFeatureInventoryResult} obj Optional instance to populate.
      * @return {GetFeatureInventoryResult} The populated <code>GetFeatureInventoryResult</code> instance.
      */
-    static constructFromObject(data: any, obj: GetFeatureInventoryResult): GetFeatureInventoryResult;
+    static constructFromObject(data: Object, obj: GetFeatureInventoryResult): GetFeatureInventoryResult;
     /**
      * Constructs a new <code>GetFeatureInventoryResult</code>.
      * The payload for the &#x60;getEligibleInventory&#x60; operation.

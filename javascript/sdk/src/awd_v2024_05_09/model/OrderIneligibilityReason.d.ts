@@ -11,7 +11,7 @@ export class OrderIneligibilityReason {
      * @param {OrderIneligibilityReason} obj Optional instance to populate.
      * @return {OrderIneligibilityReason} The populated <code>OrderIneligibilityReason</code> instance.
      */
-    static constructFromObject(data: any, obj: OrderIneligibilityReason): OrderIneligibilityReason;
+    static constructFromObject(data: Object, obj: OrderIneligibilityReason): OrderIneligibilityReason;
     /**
      * Constructs a new <code>OrderIneligibilityReason</code>.
      * Represents one ineligibility reason for the order (there can be multiple reasons).

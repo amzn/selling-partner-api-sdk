@@ -11,7 +11,7 @@ export class InvalidReturnItem {
      * @param {InvalidReturnItem} obj Optional instance to populate.
      * @return {InvalidReturnItem} The populated <code>InvalidReturnItem</code> instance.
      */
-    static constructFromObject(data: any, obj: InvalidReturnItem): InvalidReturnItem;
+    static constructFromObject(data: Object, obj: InvalidReturnItem): InvalidReturnItem;
     /**
      * Constructs a new <code>InvalidReturnItem</code>.
      * An item that is invalid for return.

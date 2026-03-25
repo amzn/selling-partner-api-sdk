@@ -11,7 +11,7 @@ export class GetFeaturesResponse {
      * @param {GetFeaturesResponse} obj Optional instance to populate.
      * @return {GetFeaturesResponse} The populated <code>GetFeaturesResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetFeaturesResponse): GetFeaturesResponse;
+    static constructFromObject(data: Object, obj: GetFeaturesResponse): GetFeaturesResponse;
     /**
      * @member {GetFeaturesResult} payload
      * @type {GetFeaturesResult}

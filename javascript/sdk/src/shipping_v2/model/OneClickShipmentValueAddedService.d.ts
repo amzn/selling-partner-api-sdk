@@ -11,7 +11,7 @@ export class OneClickShipmentValueAddedService {
      * @param {OneClickShipmentValueAddedService} obj Optional instance to populate.
      * @return {OneClickShipmentValueAddedService} The populated <code>OneClickShipmentValueAddedService</code> instance.
      */
-    static constructFromObject(data: any, obj: OneClickShipmentValueAddedService): OneClickShipmentValueAddedService;
+    static constructFromObject(data: Object, obj: OneClickShipmentValueAddedService): OneClickShipmentValueAddedService;
     /**
      * Constructs a new <code>OneClickShipmentValueAddedService</code>.
      * A value-added service to be applied to a shipping service purchase.

@@ -11,7 +11,7 @@ export class Context {
      * @param {Context} obj Optional instance to populate.
      * @return {Context} The populated <code>Context</code> instance.
      */
-    static constructFromObject(data: any, obj: Context): Context;
+    static constructFromObject(data: Object, obj: Context): Context;
     /**
      * Constructs a new <code>Context</code>.
      * Additional Information about the item.

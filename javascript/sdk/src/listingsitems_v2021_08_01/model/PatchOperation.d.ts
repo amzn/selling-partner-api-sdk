@@ -11,7 +11,7 @@ export class PatchOperation {
      * @param {PatchOperation} obj Optional instance to populate.
      * @return {PatchOperation} The populated <code>PatchOperation</code> instance.
      */
-    static constructFromObject(data: any, obj: PatchOperation): PatchOperation;
+    static constructFromObject(data: Object, obj: PatchOperation): PatchOperation;
     /**
      * Constructs a new <code>PatchOperation</code>.
      * Individual JSON Patch operation for an HTTP PATCH request.
@@ -29,7 +29,7 @@ export class PatchOperation {
      * @type {{String: Object}[]}
      */
     value: {
-        String: any;
+        String: Object;
     }[];
 }
 export namespace PatchOperation {

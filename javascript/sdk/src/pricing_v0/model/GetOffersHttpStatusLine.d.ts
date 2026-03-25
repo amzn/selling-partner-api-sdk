@@ -11,7 +11,7 @@ export class GetOffersHttpStatusLine {
      * @param {GetOffersHttpStatusLine} obj Optional instance to populate.
      * @return {GetOffersHttpStatusLine} The populated <code>GetOffersHttpStatusLine</code> instance.
      */
-    static constructFromObject(data: any, obj: GetOffersHttpStatusLine): GetOffersHttpStatusLine;
+    static constructFromObject(data: Object, obj: GetOffersHttpStatusLine): GetOffersHttpStatusLine;
     /**
      * The HTTP response Status Code.
      * @member {Number} statusCode

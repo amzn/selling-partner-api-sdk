@@ -11,7 +11,7 @@ export class StandardFourImageTextModule {
      * @param {StandardFourImageTextModule} obj Optional instance to populate.
      * @return {StandardFourImageTextModule} The populated <code>StandardFourImageTextModule</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardFourImageTextModule): StandardFourImageTextModule;
+    static constructFromObject(data: Object, obj: StandardFourImageTextModule): StandardFourImageTextModule;
     /**
      * @member {TextComponent} headline
      * @type {TextComponent}

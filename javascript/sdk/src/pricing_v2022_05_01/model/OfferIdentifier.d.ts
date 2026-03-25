@@ -11,7 +11,7 @@ export class OfferIdentifier {
      * @param {OfferIdentifier} obj Optional instance to populate.
      * @return {OfferIdentifier} The populated <code>OfferIdentifier</code> instance.
      */
-    static constructFromObject(data: any, obj: OfferIdentifier): OfferIdentifier;
+    static constructFromObject(data: Object, obj: OfferIdentifier): OfferIdentifier;
     /**
      * Constructs a new <code>OfferIdentifier</code>.
      * Identifies an offer from a particular seller for a specified ASIN.

@@ -1,1 +1,1 @@
-{"version":3,"file":"PurchaseShipmentResponse.d.ts","sourceRoot":"","sources":["PurchaseShipmentResponse.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,wBAAwB,GACvB,wBAAwB,CAmBnC;IAGH;;;OAGG;IACH,SAFU,sBAAsB,CAEU;CANzC;uCA1CsC,6BAA6B"}
+{"version":3,"file":"PurchaseShipmentResponse.d.ts","sourceRoot":"","sources":["PurchaseShipmentResponse.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,iCAJW,MAAM,OACN,wBAAwB,GACvB,wBAAwB,CAmBnC;IAGH;;;OAGG;IACH,SAFU,sBAAsB,CAEU;CANzC;uCA1CsC,6BAA6B"}

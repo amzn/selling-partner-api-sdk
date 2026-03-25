@@ -11,7 +11,7 @@ export class ExceptionOperatingHours {
      * @param {ExceptionOperatingHours} obj Optional instance to populate.
      * @return {ExceptionOperatingHours} The populated <code>ExceptionOperatingHours</code> instance.
      */
-    static constructFromObject(data: any, obj: ExceptionOperatingHours): ExceptionOperatingHours;
+    static constructFromObject(data: Object, obj: ExceptionOperatingHours): ExceptionOperatingHours;
     /**
      * @member {DateRange} dateRange
      * @type {DateRange}

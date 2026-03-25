@@ -11,7 +11,7 @@ export class SearchOrdersResponse {
      * @param {SearchOrdersResponse} obj Optional instance to populate.
      * @return {SearchOrdersResponse} The populated <code>SearchOrdersResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: SearchOrdersResponse): SearchOrdersResponse;
+    static constructFromObject(data: Object, obj: SearchOrdersResponse): SearchOrdersResponse;
     /**
      * Constructs a new <code>SearchOrdersResponse</code>.
      * A list of orders.

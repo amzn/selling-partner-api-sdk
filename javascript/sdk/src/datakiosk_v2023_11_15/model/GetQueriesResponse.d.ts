@@ -11,7 +11,7 @@ export class GetQueriesResponse {
      * @param {GetQueriesResponse} obj Optional instance to populate.
      * @return {GetQueriesResponse} The populated <code>GetQueriesResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetQueriesResponse): GetQueriesResponse;
+    static constructFromObject(data: Object, obj: GetQueriesResponse): GetQueriesResponse;
     /**
      * Constructs a new <code>GetQueriesResponse</code>.
      * The response for the &#x60;getQueries&#x60; operation.

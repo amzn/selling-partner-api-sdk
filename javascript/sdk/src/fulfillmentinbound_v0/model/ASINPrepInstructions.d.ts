@@ -11,7 +11,7 @@ export class ASINPrepInstructions {
      * @param {ASINPrepInstructions} obj Optional instance to populate.
      * @return {ASINPrepInstructions} The populated <code>ASINPrepInstructions</code> instance.
      */
-    static constructFromObject(data: any, obj: ASINPrepInstructions): ASINPrepInstructions;
+    static constructFromObject(data: Object, obj: ASINPrepInstructions): ASINPrepInstructions;
     /**
      * The Amazon Standard Identification Number (ASIN) of the item.
      * @member {String} ASIN

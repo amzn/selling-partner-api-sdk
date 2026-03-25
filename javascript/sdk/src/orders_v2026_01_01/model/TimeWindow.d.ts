@@ -11,7 +11,7 @@ export class TimeWindow {
      * @param {TimeWindow} obj Optional instance to populate.
      * @return {TimeWindow} The populated <code>TimeWindow</code> instance.
      */
-    static constructFromObject(data: any, obj: TimeWindow): TimeWindow;
+    static constructFromObject(data: Object, obj: TimeWindow): TimeWindow;
     /**
      * @member {HourMinute} startTime
      * @type {HourMinute}

@@ -11,7 +11,7 @@ export class ItemQuantity {
      * @param {ItemQuantity} obj Optional instance to populate.
      * @return {ItemQuantity} The populated <code>ItemQuantity</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemQuantity): ItemQuantity;
+    static constructFromObject(data: Object, obj: ItemQuantity): ItemQuantity;
     /**
      * Acknowledged quantity. This value should not be zero.
      * @member {Number} amount

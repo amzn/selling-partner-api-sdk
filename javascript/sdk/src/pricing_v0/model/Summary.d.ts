@@ -11,7 +11,7 @@ export class Summary {
      * @param {Summary} obj Optional instance to populate.
      * @return {Summary} The populated <code>Summary</code> instance.
      */
-    static constructFromObject(data: any, obj: Summary): Summary;
+    static constructFromObject(data: Object, obj: Summary): Summary;
     /**
      * Constructs a new <code>Summary</code>.
      * Contains price information about the product, including the LowestPrices and BuyBoxPrices, the ListPrice, the SuggestedLowerPricePlusShipping, and NumberOfOffers and NumberOfBuyBoxEligibleOffers.

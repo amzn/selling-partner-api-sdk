@@ -11,7 +11,7 @@ export class RelatedIdentifier {
      * @param {RelatedIdentifier} obj Optional instance to populate.
      * @return {RelatedIdentifier} The populated <code>RelatedIdentifier</code> instance.
      */
-    static constructFromObject(data: any, obj: RelatedIdentifier): RelatedIdentifier;
+    static constructFromObject(data: Object, obj: RelatedIdentifier): RelatedIdentifier;
     /**
      * An enumerated set of related business identifier names.
      * @member {String} relatedIdentifierName

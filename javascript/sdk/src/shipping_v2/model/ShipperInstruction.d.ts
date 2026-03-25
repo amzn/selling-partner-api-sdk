@@ -11,7 +11,7 @@ export class ShipperInstruction {
      * @param {ShipperInstruction} obj Optional instance to populate.
      * @return {ShipperInstruction} The populated <code>ShipperInstruction</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipperInstruction): ShipperInstruction;
+    static constructFromObject(data: Object, obj: ShipperInstruction): ShipperInstruction;
     /**
      * The delivery notes for the shipment
      * @member {String} deliveryNotes

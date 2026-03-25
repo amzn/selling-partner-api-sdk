@@ -11,7 +11,7 @@ export class ListHandoverSlotsRequest {
      * @param {ListHandoverSlotsRequest} obj Optional instance to populate.
      * @return {ListHandoverSlotsRequest} The populated <code>ListHandoverSlotsRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: ListHandoverSlotsRequest): ListHandoverSlotsRequest;
+    static constructFromObject(data: Object, obj: ListHandoverSlotsRequest): ListHandoverSlotsRequest;
     /**
      * Constructs a new <code>ListHandoverSlotsRequest</code>.
      * The request schema for the &#x60;listHandoverSlots&#x60; operation.

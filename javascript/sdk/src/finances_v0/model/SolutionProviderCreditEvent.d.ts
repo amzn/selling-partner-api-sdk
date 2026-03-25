@@ -11,7 +11,7 @@ export class SolutionProviderCreditEvent {
      * @param {SolutionProviderCreditEvent} obj Optional instance to populate.
      * @return {SolutionProviderCreditEvent} The populated <code>SolutionProviderCreditEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: SolutionProviderCreditEvent): SolutionProviderCreditEvent;
+    static constructFromObject(data: Object, obj: SolutionProviderCreditEvent): SolutionProviderCreditEvent;
     /**
      * The transaction type.
      * @member {String} providerTransactionType

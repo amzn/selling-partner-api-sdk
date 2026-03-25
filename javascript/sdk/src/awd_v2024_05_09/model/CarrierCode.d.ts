@@ -11,7 +11,7 @@ export class CarrierCode {
      * @param {CarrierCode} obj Optional instance to populate.
      * @return {CarrierCode} The populated <code>CarrierCode</code> instance.
      */
-    static constructFromObject(data: any, obj: CarrierCode): CarrierCode;
+    static constructFromObject(data: Object, obj: CarrierCode): CarrierCode;
     /**
      * @member {CarrierCodeType} carrierCodeType
      * @type {CarrierCodeType}

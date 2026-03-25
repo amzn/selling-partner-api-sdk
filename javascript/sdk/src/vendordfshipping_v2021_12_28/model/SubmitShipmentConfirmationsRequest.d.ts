@@ -11,7 +11,7 @@ export class SubmitShipmentConfirmationsRequest {
      * @param {SubmitShipmentConfirmationsRequest} obj Optional instance to populate.
      * @return {SubmitShipmentConfirmationsRequest} The populated <code>SubmitShipmentConfirmationsRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: SubmitShipmentConfirmationsRequest): SubmitShipmentConfirmationsRequest;
+    static constructFromObject(data: Object, obj: SubmitShipmentConfirmationsRequest): SubmitShipmentConfirmationsRequest;
     /**
      * Array of `ShipmentConfirmation` objects. Each `ShipmentConfirmation` object represents the confirmation details for a specific shipment.
      * @member {ShipmentConfirmation[]} shipmentConfirmations

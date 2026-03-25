@@ -11,7 +11,7 @@ export class InventoryUpdate {
      * @param {InventoryUpdate} obj Optional instance to populate.
      * @return {InventoryUpdate} The populated <code>InventoryUpdate</code> instance.
      */
-    static constructFromObject(data: any, obj: InventoryUpdate): InventoryUpdate;
+    static constructFromObject(data: Object, obj: InventoryUpdate): InventoryUpdate;
     /**
      * Constructs a new <code>InventoryUpdate</code>.
      * Inventory details required to update some or all items for the requested warehouse.

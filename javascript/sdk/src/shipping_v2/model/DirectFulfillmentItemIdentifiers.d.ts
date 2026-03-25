@@ -11,7 +11,7 @@ export class DirectFulfillmentItemIdentifiers {
      * @param {DirectFulfillmentItemIdentifiers} obj Optional instance to populate.
      * @return {DirectFulfillmentItemIdentifiers} The populated <code>DirectFulfillmentItemIdentifiers</code> instance.
      */
-    static constructFromObject(data: any, obj: DirectFulfillmentItemIdentifiers): DirectFulfillmentItemIdentifiers;
+    static constructFromObject(data: Object, obj: DirectFulfillmentItemIdentifiers): DirectFulfillmentItemIdentifiers;
     /**
      * Constructs a new <code>DirectFulfillmentItemIdentifiers</code>.
      * Item identifiers for an item in a direct fulfillment shipment.

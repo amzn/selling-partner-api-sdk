@@ -11,7 +11,7 @@ export class LockerDetails {
      * @param {LockerDetails} obj Optional instance to populate.
      * @return {LockerDetails} The populated <code>LockerDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: LockerDetails): LockerDetails;
+    static constructFromObject(data: Object, obj: LockerDetails): LockerDetails;
     /**
      * Indicates the locker number
      * @member {String} lockerNumber

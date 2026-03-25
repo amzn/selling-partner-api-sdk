@@ -11,7 +11,7 @@ export class FeaturedBuyingOption {
      * @param {FeaturedBuyingOption} obj Optional instance to populate.
      * @return {FeaturedBuyingOption} The populated <code>FeaturedBuyingOption</code> instance.
      */
-    static constructFromObject(data: any, obj: FeaturedBuyingOption): FeaturedBuyingOption;
+    static constructFromObject(data: Object, obj: FeaturedBuyingOption): FeaturedBuyingOption;
     /**
      * Constructs a new <code>FeaturedBuyingOption</code>.
      * Describes a featured buying option, which includes a list of segmented featured offers for a particular item condition.

@@ -11,7 +11,7 @@ export class SkuEligibility {
      * @param {SkuEligibility} obj Optional instance to populate.
      * @return {SkuEligibility} The populated <code>SkuEligibility</code> instance.
      */
-    static constructFromObject(data: any, obj: SkuEligibility): SkuEligibility;
+    static constructFromObject(data: Object, obj: SkuEligibility): SkuEligibility;
     /**
      * Constructs a new <code>SkuEligibility</code>.
      * Represents eligibility of one SKU.

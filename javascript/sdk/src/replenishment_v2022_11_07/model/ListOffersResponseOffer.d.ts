@@ -11,7 +11,7 @@ export class ListOffersResponseOffer {
      * @param {ListOffersResponseOffer} obj Optional instance to populate.
      * @return {ListOffersResponseOffer} The populated <code>ListOffersResponseOffer</code> instance.
      */
-    static constructFromObject(data: any, obj: ListOffersResponseOffer): ListOffersResponseOffer;
+    static constructFromObject(data: Object, obj: ListOffersResponseOffer): ListOffersResponseOffer;
     /**
      * The SKU. This property is only supported for sellers and not for vendors.
      * @member {String} sku

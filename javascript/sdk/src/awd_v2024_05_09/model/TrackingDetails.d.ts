@@ -11,7 +11,7 @@ export class TrackingDetails {
      * @param {TrackingDetails} obj Optional instance to populate.
      * @return {TrackingDetails} The populated <code>TrackingDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: TrackingDetails): TrackingDetails;
+    static constructFromObject(data: Object, obj: TrackingDetails): TrackingDetails;
     /**
      * Constructs a new <code>TrackingDetails</code>.
      * Tracking details for the shipment. If using SPD transportation, this can be for each case. If not using SPD transportation, this is a single tracking entry for the entire shipment.

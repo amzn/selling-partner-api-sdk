@@ -11,7 +11,7 @@ export class GetEligibleShipmentServicesRequest {
      * @param {GetEligibleShipmentServicesRequest} obj Optional instance to populate.
      * @return {GetEligibleShipmentServicesRequest} The populated <code>GetEligibleShipmentServicesRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: GetEligibleShipmentServicesRequest): GetEligibleShipmentServicesRequest;
+    static constructFromObject(data: Object, obj: GetEligibleShipmentServicesRequest): GetEligibleShipmentServicesRequest;
     /**
      * Constructs a new <code>GetEligibleShipmentServicesRequest</code>.
      * Request schema.

@@ -11,7 +11,7 @@ export class OrderMetricsInterval {
      * @param {OrderMetricsInterval} obj Optional instance to populate.
      * @return {OrderMetricsInterval} The populated <code>OrderMetricsInterval</code> instance.
      */
-    static constructFromObject(data: any, obj: OrderMetricsInterval): OrderMetricsInterval;
+    static constructFromObject(data: Object, obj: OrderMetricsInterval): OrderMetricsInterval;
     /**
      * Constructs a new <code>OrderMetricsInterval</code>.
      * Contains order metrics.

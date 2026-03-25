@@ -11,7 +11,7 @@ export class Duration {
      * @param {Duration} obj Optional instance to populate.
      * @return {Duration} The populated <code>Duration</code> instance.
      */
-    static constructFromObject(data: any, obj: Duration): Duration;
+    static constructFromObject(data: Object, obj: Duration): Duration;
     /**
      * An unsigned integer that can be only positive or zero.
      * @member {Number} value

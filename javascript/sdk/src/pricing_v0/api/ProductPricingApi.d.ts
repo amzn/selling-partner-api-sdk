@@ -33,9 +33,9 @@ export class ProductPricingApi {
        * @return {Promise<GetPricingResponse>}
        */
     getCompetitivePricingWithHttpInfo(marketplaceId: string, itemType: string, opts?: {
-        asins?: string[];
-        skus?: string[];
-        customerType?: string;
+        asins?: string[] | undefined;
+        skus?: string[] | undefined;
+        customerType?: string | undefined;
     }): Promise<GetPricingResponse>;
     /**
        * Returns competitive pricing information for a seller&#39;s offer listings based on seller SKU or ASIN.  **Note:** The parameters associated with this operation may contain special characters that require URL encoding to call the API. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -48,9 +48,9 @@ export class ProductPricingApi {
        * @return {Promise<GetPricingResponse>}
        */
     getCompetitivePricing(marketplaceId: string, itemType: string, opts?: {
-        asins?: string[];
-        skus?: string[];
-        customerType?: string;
+        asins?: string[] | undefined;
+        skus?: string[] | undefined;
+        customerType?: string | undefined;
     }): Promise<GetPricingResponse>;
     /**
        * Returns the lowest priced offers for a single item based on ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -62,7 +62,7 @@ export class ProductPricingApi {
        * @return {Promise<GetOffersResponse>}
        */
     getItemOffersWithHttpInfo(marketplaceId: string, itemCondition: string, asin: string, opts?: {
-        customerType?: string;
+        customerType?: string | undefined;
     }): Promise<GetOffersResponse>;
     /**
        * Returns the lowest priced offers for a single item based on ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -74,7 +74,7 @@ export class ProductPricingApi {
        * @return {Promise<GetOffersResponse>}
        */
     getItemOffers(marketplaceId: string, itemCondition: string, asin: string, opts?: {
-        customerType?: string;
+        customerType?: string | undefined;
     }): Promise<GetOffersResponse>;
     /**
        * Returns the lowest priced offers for a batch of items based on ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -98,7 +98,7 @@ export class ProductPricingApi {
        * @return {Promise<GetOffersResponse>}
        */
     getListingOffersWithHttpInfo(marketplaceId: string, itemCondition: string, sellerSKU: string, opts?: {
-        customerType?: string;
+        customerType?: string | undefined;
     }): Promise<GetOffersResponse>;
     /**
        * Returns the lowest priced offers for a single SKU listing.  **Note:** The parameters associated with this operation may contain special characters that require URL encoding to call the API. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -110,7 +110,7 @@ export class ProductPricingApi {
        * @return {Promise<GetOffersResponse>}
        */
     getListingOffers(marketplaceId: string, itemCondition: string, sellerSKU: string, opts?: {
-        customerType?: string;
+        customerType?: string | undefined;
     }): Promise<GetOffersResponse>;
     /**
        * Returns the lowest priced offers for a batch of listings by SKU.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -136,10 +136,10 @@ export class ProductPricingApi {
        * @return {Promise<GetPricingResponse>}
        */
     getPricingWithHttpInfo(marketplaceId: string, itemType: string, opts?: {
-        asins?: string[];
-        skus?: string[];
-        itemCondition?: string;
-        offerType?: string;
+        asins?: string[] | undefined;
+        skus?: string[] | undefined;
+        itemCondition?: string | undefined;
+        offerType?: string | undefined;
     }): Promise<GetPricingResponse>;
     /**
        * Returns pricing information for a seller&#39;s offer listings based on seller SKU or ASIN.  **Note:** The parameters associated with this operation may contain special characters that require URL encoding to call the API. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -153,10 +153,10 @@ export class ProductPricingApi {
        * @return {Promise<GetPricingResponse>}
        */
     getPricing(marketplaceId: string, itemType: string, opts?: {
-        asins?: string[];
-        skus?: string[];
-        itemCondition?: string;
-        offerType?: string;
+        asins?: string[] | undefined;
+        skus?: string[] | undefined;
+        itemCondition?: string | undefined;
+        offerType?: string | undefined;
     }): Promise<GetPricingResponse>;
     #private;
 }

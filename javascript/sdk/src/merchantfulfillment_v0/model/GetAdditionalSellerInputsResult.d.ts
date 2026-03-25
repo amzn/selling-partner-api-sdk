@@ -11,7 +11,7 @@ export class GetAdditionalSellerInputsResult {
      * @param {GetAdditionalSellerInputsResult} obj Optional instance to populate.
      * @return {GetAdditionalSellerInputsResult} The populated <code>GetAdditionalSellerInputsResult</code> instance.
      */
-    static constructFromObject(data: any, obj: GetAdditionalSellerInputsResult): GetAdditionalSellerInputsResult;
+    static constructFromObject(data: Object, obj: GetAdditionalSellerInputsResult): GetAdditionalSellerInputsResult;
     /**
      * A list of additional inputs.
      * @member {AdditionalInputs[]} shipmentLevelFields

@@ -11,7 +11,7 @@ export class Product {
      * @param {Product} obj Optional instance to populate.
      * @return {Product} The populated <code>Product</code> instance.
      */
-    static constructFromObject(data: any, obj: Product): Product;
+    static constructFromObject(data: Object, obj: Product): Product;
     /**
      * Constructs a new <code>Product</code>.
      * An item.
@@ -26,13 +26,13 @@ export class Product {
      * @member {Object[]} attributeSets
      * @type {Object[]}
      */
-    attributeSets: any[];
+    attributeSets: Object[];
     /**
      * A list that contains product variation information, if applicable.
      * @member {Object[]} relationships
      * @type {Object[]}
      */
-    relationships: any[];
+    relationships: Object[];
     /**
      * @member {CompetitivePricingType} competitivePricing
      * @type {CompetitivePricingType}

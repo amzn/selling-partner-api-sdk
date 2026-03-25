@@ -11,7 +11,7 @@ export class BatchOffersResponse {
      * @param {BatchOffersResponse} obj Optional instance to populate.
      * @return {BatchOffersResponse} The populated <code>BatchOffersResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: BatchOffersResponse): BatchOffersResponse;
+    static constructFromObject(data: Object, obj: BatchOffersResponse): BatchOffersResponse;
     /**
      * Constructs a new <code>BatchOffersResponse</code>.
      * Common schema that present in &#x60;ItemOffersResponse&#x60; and &#x60;ListingOffersResponse&#x60;

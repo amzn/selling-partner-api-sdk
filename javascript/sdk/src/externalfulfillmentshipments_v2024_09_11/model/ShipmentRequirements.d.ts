@@ -11,7 +11,7 @@ export class ShipmentRequirements {
      * @param {ShipmentRequirements} obj Optional instance to populate.
      * @return {ShipmentRequirements} The populated <code>ShipmentRequirements</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipmentRequirements): ShipmentRequirements;
+    static constructFromObject(data: Object, obj: ShipmentRequirements): ShipmentRequirements;
     /**
      * Constructs a new <code>ShipmentRequirements</code>.
      * Whether specific capabilities are enabled or required for the shipment.

@@ -11,7 +11,7 @@ export class ReturnAuthorization {
      * @param {ReturnAuthorization} obj Optional instance to populate.
      * @return {ReturnAuthorization} The populated <code>ReturnAuthorization</code> instance.
      */
-    static constructFromObject(data: any, obj: ReturnAuthorization): ReturnAuthorization;
+    static constructFromObject(data: Object, obj: ReturnAuthorization): ReturnAuthorization;
     /**
      * Constructs a new <code>ReturnAuthorization</code>.
      * Return authorization information for items accepted for return.

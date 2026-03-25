@@ -11,7 +11,7 @@ export class ContentDocument {
      * @param {ContentDocument} obj Optional instance to populate.
      * @return {ContentDocument} The populated <code>ContentDocument</code> instance.
      */
-    static constructFromObject(data: any, obj: ContentDocument): ContentDocument;
+    static constructFromObject(data: Object, obj: ContentDocument): ContentDocument;
     /**
      * Constructs a new <code>ContentDocument</code>.
      * The A+ Content document. This is the enhanced content that is published to product detail pages.

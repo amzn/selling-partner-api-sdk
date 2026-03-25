@@ -11,7 +11,7 @@ export class BrowseNodeSubtopic {
      * @param {BrowseNodeSubtopic} obj Optional instance to populate.
      * @return {BrowseNodeSubtopic} The populated <code>BrowseNodeSubtopic</code> instance.
      */
-    static constructFromObject(data: any, obj: BrowseNodeSubtopic): BrowseNodeSubtopic;
+    static constructFromObject(data: Object, obj: BrowseNodeSubtopic): BrowseNodeSubtopic;
     /**
      * Constructs a new <code>BrowseNodeSubtopic</code>.
      * The browse node review subtopic.

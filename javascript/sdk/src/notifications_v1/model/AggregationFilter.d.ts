@@ -11,7 +11,7 @@ export class AggregationFilter {
      * @param {AggregationFilter} obj Optional instance to populate.
      * @return {AggregationFilter} The populated <code>AggregationFilter</code> instance.
      */
-    static constructFromObject(data: any, obj: AggregationFilter): AggregationFilter;
+    static constructFromObject(data: Object, obj: AggregationFilter): AggregationFilter;
     /**
      * @member {AggregationSettings} aggregationSettings
      * @type {AggregationSettings}

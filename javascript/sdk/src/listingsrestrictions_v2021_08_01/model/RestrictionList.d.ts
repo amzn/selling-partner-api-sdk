@@ -11,7 +11,7 @@ export class RestrictionList {
      * @param {RestrictionList} obj Optional instance to populate.
      * @return {RestrictionList} The populated <code>RestrictionList</code> instance.
      */
-    static constructFromObject(data: any, obj: RestrictionList): RestrictionList;
+    static constructFromObject(data: Object, obj: RestrictionList): RestrictionList;
     /**
      * Constructs a new <code>RestrictionList</code>.
      * A list of restrictions for the specified Amazon catalog item.

@@ -11,7 +11,7 @@ export class GetInvoicesAttributesResponse {
      * @param {GetInvoicesAttributesResponse} obj Optional instance to populate.
      * @return {GetInvoicesAttributesResponse} The populated <code>GetInvoicesAttributesResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetInvoicesAttributesResponse): GetInvoicesAttributesResponse;
+    static constructFromObject(data: Object, obj: GetInvoicesAttributesResponse): GetInvoicesAttributesResponse;
     /**
      * @member {InvoicesAttributes} invoicesAttributes
      * @type {InvoicesAttributes}

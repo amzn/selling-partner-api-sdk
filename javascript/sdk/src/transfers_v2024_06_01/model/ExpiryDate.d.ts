@@ -11,7 +11,7 @@ export class ExpiryDate {
      * @param {ExpiryDate} obj Optional instance to populate.
      * @return {ExpiryDate} The populated <code>ExpiryDate</code> instance.
      */
-    static constructFromObject(data: any, obj: ExpiryDate): ExpiryDate;
+    static constructFromObject(data: Object, obj: ExpiryDate): ExpiryDate;
     /**
      * The month the card expires expressed as a number from `1` to `12`.
      * @member {String} month

@@ -11,7 +11,7 @@ export class UpdateReservationRequest {
      * @param {UpdateReservationRequest} obj Optional instance to populate.
      * @return {UpdateReservationRequest} The populated <code>UpdateReservationRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: UpdateReservationRequest): UpdateReservationRequest;
+    static constructFromObject(data: Object, obj: UpdateReservationRequest): UpdateReservationRequest;
     /**
      * Constructs a new <code>UpdateReservationRequest</code>.
      * Request schema for the &#x60;updateReservation&#x60; operation.

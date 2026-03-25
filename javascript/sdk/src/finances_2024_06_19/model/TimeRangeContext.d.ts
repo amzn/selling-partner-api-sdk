@@ -11,7 +11,7 @@ export class TimeRangeContext {
      * @param {TimeRangeContext} obj Optional instance to populate.
      * @return {TimeRangeContext} The populated <code>TimeRangeContext</code> instance.
      */
-    static constructFromObject(data: any, obj: TimeRangeContext): TimeRangeContext;
+    static constructFromObject(data: Object, obj: TimeRangeContext): TimeRangeContext;
     /**
      * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} startTime

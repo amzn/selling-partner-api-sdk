@@ -11,7 +11,7 @@ export class UpdateVerificationStatusRequestBody {
      * @param {UpdateVerificationStatusRequestBody} obj Optional instance to populate.
      * @return {UpdateVerificationStatusRequestBody} The populated <code>UpdateVerificationStatusRequestBody</code> instance.
      */
-    static constructFromObject(data: any, obj: UpdateVerificationStatusRequestBody): UpdateVerificationStatusRequestBody;
+    static constructFromObject(data: Object, obj: UpdateVerificationStatusRequestBody): UpdateVerificationStatusRequestBody;
     /**
      * Constructs a new <code>UpdateVerificationStatusRequestBody</code>.
      * The updated values of the &#x60;VerificationStatus&#x60; field.

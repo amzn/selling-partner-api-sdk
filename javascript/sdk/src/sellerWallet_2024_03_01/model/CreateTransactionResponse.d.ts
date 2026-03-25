@@ -11,7 +11,7 @@ export class CreateTransactionResponse {
      * @param {CreateTransactionResponse} obj Optional instance to populate.
      * @return {CreateTransactionResponse} The populated <code>CreateTransactionResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateTransactionResponse): CreateTransactionResponse;
+    static constructFromObject(data: Object, obj: CreateTransactionResponse): CreateTransactionResponse;
     /**
      * Constructs a new <code>CreateTransactionResponse</code>.
      * The transaction response and historical details related to it.

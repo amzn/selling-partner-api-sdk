@@ -11,7 +11,7 @@ export class AcknowledgementStatusDetails {
      * @param {AcknowledgementStatusDetails} obj Optional instance to populate.
      * @return {AcknowledgementStatusDetails} The populated <code>AcknowledgementStatusDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: AcknowledgementStatusDetails): AcknowledgementStatusDetails;
+    static constructFromObject(data: Object, obj: AcknowledgementStatusDetails): AcknowledgementStatusDetails;
     /**
      * The date when the line item was confirmed by vendor. Must be in ISO-8601 date/time format.
      * @member {Date} acknowledgementDate

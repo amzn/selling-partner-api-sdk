@@ -11,7 +11,7 @@ export class EventBridgeResource {
      * @param {EventBridgeResource} obj Optional instance to populate.
      * @return {EventBridgeResource} The populated <code>EventBridgeResource</code> instance.
      */
-    static constructFromObject(data: any, obj: EventBridgeResource): EventBridgeResource;
+    static constructFromObject(data: Object, obj: EventBridgeResource): EventBridgeResource;
     /**
      * Constructs a new <code>EventBridgeResource</code>.
      * The Amazon EventBridge destination.

@@ -11,7 +11,7 @@ export class ShipmentInformation {
      * @param {ShipmentInformation} obj Optional instance to populate.
      * @return {ShipmentInformation} The populated <code>ShipmentInformation</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipmentInformation): ShipmentInformation;
+    static constructFromObject(data: Object, obj: ShipmentInformation): ShipmentInformation;
     /**
      * @member {VendorDetails} vendorDetails
      * @type {VendorDetails}

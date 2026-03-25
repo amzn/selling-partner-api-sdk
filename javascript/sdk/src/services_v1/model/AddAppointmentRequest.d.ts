@@ -11,7 +11,7 @@ export class AddAppointmentRequest {
      * @param {AddAppointmentRequest} obj Optional instance to populate.
      * @return {AddAppointmentRequest} The populated <code>AddAppointmentRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: AddAppointmentRequest): AddAppointmentRequest;
+    static constructFromObject(data: Object, obj: AddAppointmentRequest): AddAppointmentRequest;
     /**
      * Constructs a new <code>AddAppointmentRequest</code>.
      * Input for add appointment operation.

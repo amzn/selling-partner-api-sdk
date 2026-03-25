@@ -11,7 +11,7 @@ export class DeliveryWindowOption {
      * @param {DeliveryWindowOption} obj Optional instance to populate.
      * @return {DeliveryWindowOption} The populated <code>DeliveryWindowOption</code> instance.
      */
-    static constructFromObject(data: any, obj: DeliveryWindowOption): DeliveryWindowOption;
+    static constructFromObject(data: Object, obj: DeliveryWindowOption): DeliveryWindowOption;
     /**
      * Constructs a new <code>DeliveryWindowOption</code>.
      * Contains information pertaining to a delivery window option.

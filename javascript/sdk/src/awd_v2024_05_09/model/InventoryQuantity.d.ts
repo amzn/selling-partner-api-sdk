@@ -11,7 +11,7 @@ export class InventoryQuantity {
      * @param {InventoryQuantity} obj Optional instance to populate.
      * @return {InventoryQuantity} The populated <code>InventoryQuantity</code> instance.
      */
-    static constructFromObject(data: any, obj: InventoryQuantity): InventoryQuantity;
+    static constructFromObject(data: Object, obj: InventoryQuantity): InventoryQuantity;
     /**
      * Constructs a new <code>InventoryQuantity</code>.
      * Quantity of inventory with an associated measurement unit context.

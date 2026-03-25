@@ -11,7 +11,7 @@ export class AppointmentSlotTime {
      * @param {AppointmentSlotTime} obj Optional instance to populate.
      * @return {AppointmentSlotTime} The populated <code>AppointmentSlotTime</code> instance.
      */
-    static constructFromObject(data: any, obj: AppointmentSlotTime): AppointmentSlotTime;
+    static constructFromObject(data: Object, obj: AppointmentSlotTime): AppointmentSlotTime;
     /**
      * Constructs a new <code>AppointmentSlotTime</code>.
      * An appointment slot time with start and end.

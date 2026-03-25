@@ -11,7 +11,7 @@ export class Package {
      * @param {Package} obj Optional instance to populate.
      * @return {Package} The populated <code>Package</code> instance.
      */
-    static constructFromObject(data: any, obj: Package): Package;
+    static constructFromObject(data: Object, obj: Package): Package;
     /**
      * Constructs a new <code>Package</code>.
      * The package that is associated with the container.

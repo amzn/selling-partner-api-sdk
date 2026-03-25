@@ -11,7 +11,7 @@ export class InitiatePayoutResponse {
      * @param {InitiatePayoutResponse} obj Optional instance to populate.
      * @return {InitiatePayoutResponse} The populated <code>InitiatePayoutResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: InitiatePayoutResponse): InitiatePayoutResponse;
+    static constructFromObject(data: Object, obj: InitiatePayoutResponse): InitiatePayoutResponse;
     /**
      * Constructs a new <code>InitiatePayoutResponse</code>.
      * The response schema for the &#x60;initiatePayout&#x60; operation.

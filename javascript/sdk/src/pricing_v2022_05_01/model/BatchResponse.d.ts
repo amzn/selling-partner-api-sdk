@@ -11,7 +11,7 @@ export class BatchResponse {
      * @param {BatchResponse} obj Optional instance to populate.
      * @return {BatchResponse} The populated <code>BatchResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: BatchResponse): BatchResponse;
+    static constructFromObject(data: Object, obj: BatchResponse): BatchResponse;
     /**
      * Constructs a new <code>BatchResponse</code>.
      * The common properties for responses to individual requests within a batch.

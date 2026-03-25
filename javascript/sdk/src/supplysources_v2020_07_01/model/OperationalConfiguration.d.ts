@@ -11,7 +11,7 @@ export class OperationalConfiguration {
      * @param {OperationalConfiguration} obj Optional instance to populate.
      * @return {OperationalConfiguration} The populated <code>OperationalConfiguration</code> instance.
      */
-    static constructFromObject(data: any, obj: OperationalConfiguration): OperationalConfiguration;
+    static constructFromObject(data: Object, obj: OperationalConfiguration): OperationalConfiguration;
     /**
      * @member {ContactDetails} contactDetails
      * @type {ContactDetails}

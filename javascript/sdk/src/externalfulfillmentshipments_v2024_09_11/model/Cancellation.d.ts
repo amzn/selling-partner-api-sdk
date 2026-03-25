@@ -11,7 +11,7 @@ export class Cancellation {
      * @param {Cancellation} obj Optional instance to populate.
      * @return {Cancellation} The populated <code>Cancellation</code> instance.
      */
-    static constructFromObject(data: any, obj: Cancellation): Cancellation;
+    static constructFromObject(data: Object, obj: Cancellation): Cancellation;
     /**
      * Constructs a new <code>Cancellation</code>.
      * A shipment item&#39;s cancellation details.

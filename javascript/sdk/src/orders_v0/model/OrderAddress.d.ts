@@ -11,7 +11,7 @@ export class OrderAddress {
      * @param {OrderAddress} obj Optional instance to populate.
      * @return {OrderAddress} The populated <code>OrderAddress</code> instance.
      */
-    static constructFromObject(data: any, obj: OrderAddress): OrderAddress;
+    static constructFromObject(data: Object, obj: OrderAddress): OrderAddress;
     /**
      * Constructs a new <code>OrderAddress</code>.
      * The shipping address for the order.

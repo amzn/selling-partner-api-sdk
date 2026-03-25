@@ -11,7 +11,7 @@ export class ReplenishmentPreferences {
      * @param {ReplenishmentPreferences} obj Optional instance to populate.
      * @return {ReplenishmentPreferences} The populated <code>ReplenishmentPreferences</code> instance.
      */
-    static constructFromObject(data: any, obj: ReplenishmentPreferences): ReplenishmentPreferences;
+    static constructFromObject(data: Object, obj: ReplenishmentPreferences): ReplenishmentPreferences;
     /**
      * @member {ConfirmationMode} confirmation
      * @type {ConfirmationMode}

@@ -11,7 +11,7 @@ export class ServicesCapability {
      * @param {ServicesCapability} obj Optional instance to populate.
      * @return {ServicesCapability} The populated <code>ServicesCapability</code> instance.
      */
-    static constructFromObject(data: any, obj: ServicesCapability): ServicesCapability;
+    static constructFromObject(data: Object, obj: ServicesCapability): ServicesCapability;
     /**
      * When true, `SupplySource` supports the Service capability.
      * @member {Boolean} isSupported

@@ -11,7 +11,7 @@ export class TransportShipmentMeasurements {
      * @param {TransportShipmentMeasurements} obj Optional instance to populate.
      * @return {TransportShipmentMeasurements} The populated <code>TransportShipmentMeasurements</code> instance.
      */
-    static constructFromObject(data: any, obj: TransportShipmentMeasurements): TransportShipmentMeasurements;
+    static constructFromObject(data: Object, obj: TransportShipmentMeasurements): TransportShipmentMeasurements;
     /**
      * Total number of cartons present in the shipment. Provide the cartonCount only for non-palletized shipments.
      * @member {Number} totalCartonCount

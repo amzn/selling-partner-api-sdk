@@ -53,30 +53,30 @@ export class VendorShippingApi {
        * @return {Promise<GetShipmentDetailsResponse>}
        */
     getShipmentDetailsWithHttpInfo(opts?: {
-        limit?: number;
-        sortOrder?: string;
-        nextToken?: string;
-        createdAfter?: Date;
-        createdBefore?: Date;
-        shipmentConfirmedBefore?: Date;
-        shipmentConfirmedAfter?: Date;
-        packageLabelCreatedBefore?: Date;
-        packageLabelCreatedAfter?: Date;
-        shippedBefore?: Date;
-        shippedAfter?: Date;
-        estimatedDeliveryBefore?: Date;
-        estimatedDeliveryAfter?: Date;
-        shipmentDeliveryBefore?: Date;
-        shipmentDeliveryAfter?: Date;
-        requestedPickUpBefore?: Date;
-        requestedPickUpAfter?: Date;
-        scheduledPickUpBefore?: Date;
-        scheduledPickUpAfter?: Date;
-        currentShipmentStatus?: string;
-        vendorShipmentIdentifier?: string;
-        buyerReferenceNumber?: string;
-        buyerWarehouseCode?: string;
-        sellerWarehouseCode?: string;
+        limit?: number | undefined;
+        sortOrder?: string | undefined;
+        nextToken?: string | undefined;
+        createdAfter?: Date | undefined;
+        createdBefore?: Date | undefined;
+        shipmentConfirmedBefore?: Date | undefined;
+        shipmentConfirmedAfter?: Date | undefined;
+        packageLabelCreatedBefore?: Date | undefined;
+        packageLabelCreatedAfter?: Date | undefined;
+        shippedBefore?: Date | undefined;
+        shippedAfter?: Date | undefined;
+        estimatedDeliveryBefore?: Date | undefined;
+        estimatedDeliveryAfter?: Date | undefined;
+        shipmentDeliveryBefore?: Date | undefined;
+        shipmentDeliveryAfter?: Date | undefined;
+        requestedPickUpBefore?: Date | undefined;
+        requestedPickUpAfter?: Date | undefined;
+        scheduledPickUpBefore?: Date | undefined;
+        scheduledPickUpAfter?: Date | undefined;
+        currentShipmentStatus?: string | undefined;
+        vendorShipmentIdentifier?: string | undefined;
+        buyerReferenceNumber?: string | undefined;
+        buyerWarehouseCode?: string | undefined;
+        sellerWarehouseCode?: string | undefined;
     }): Promise<GetShipmentDetailsResponse>;
     /**
        * GetShipmentDetails
@@ -109,30 +109,30 @@ export class VendorShippingApi {
        * @return {Promise<GetShipmentDetailsResponse>}
        */
     getShipmentDetails(opts?: {
-        limit?: number;
-        sortOrder?: string;
-        nextToken?: string;
-        createdAfter?: Date;
-        createdBefore?: Date;
-        shipmentConfirmedBefore?: Date;
-        shipmentConfirmedAfter?: Date;
-        packageLabelCreatedBefore?: Date;
-        packageLabelCreatedAfter?: Date;
-        shippedBefore?: Date;
-        shippedAfter?: Date;
-        estimatedDeliveryBefore?: Date;
-        estimatedDeliveryAfter?: Date;
-        shipmentDeliveryBefore?: Date;
-        shipmentDeliveryAfter?: Date;
-        requestedPickUpBefore?: Date;
-        requestedPickUpAfter?: Date;
-        scheduledPickUpBefore?: Date;
-        scheduledPickUpAfter?: Date;
-        currentShipmentStatus?: string;
-        vendorShipmentIdentifier?: string;
-        buyerReferenceNumber?: string;
-        buyerWarehouseCode?: string;
-        sellerWarehouseCode?: string;
+        limit?: number | undefined;
+        sortOrder?: string | undefined;
+        nextToken?: string | undefined;
+        createdAfter?: Date | undefined;
+        createdBefore?: Date | undefined;
+        shipmentConfirmedBefore?: Date | undefined;
+        shipmentConfirmedAfter?: Date | undefined;
+        packageLabelCreatedBefore?: Date | undefined;
+        packageLabelCreatedAfter?: Date | undefined;
+        shippedBefore?: Date | undefined;
+        shippedAfter?: Date | undefined;
+        estimatedDeliveryBefore?: Date | undefined;
+        estimatedDeliveryAfter?: Date | undefined;
+        shipmentDeliveryBefore?: Date | undefined;
+        shipmentDeliveryAfter?: Date | undefined;
+        requestedPickUpBefore?: Date | undefined;
+        requestedPickUpAfter?: Date | undefined;
+        scheduledPickUpBefore?: Date | undefined;
+        scheduledPickUpAfter?: Date | undefined;
+        currentShipmentStatus?: string | undefined;
+        vendorShipmentIdentifier?: string | undefined;
+        buyerReferenceNumber?: string | undefined;
+        buyerWarehouseCode?: string | undefined;
+        sellerWarehouseCode?: string | undefined;
     }): Promise<GetShipmentDetailsResponse>;
     /**
        * Returns small parcel shipment labels based on the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -148,14 +148,14 @@ export class VendorShippingApi {
        * @return {Promise<GetShipmentLabels>}
        */
     getShipmentLabelsWithHttpInfo(opts?: {
-        limit?: number;
-        sortOrder?: string;
-        nextToken?: string;
-        labelCreatedAfter?: Date;
-        labelCreatedBefore?: Date;
-        buyerReferenceNumber?: string;
-        vendorShipmentIdentifier?: string;
-        sellerWarehouseCode?: string;
+        limit?: number | undefined;
+        sortOrder?: string | undefined;
+        nextToken?: string | undefined;
+        labelCreatedAfter?: Date | undefined;
+        labelCreatedBefore?: Date | undefined;
+        buyerReferenceNumber?: string | undefined;
+        vendorShipmentIdentifier?: string | undefined;
+        sellerWarehouseCode?: string | undefined;
     }): Promise<GetShipmentLabels>;
     /**
        * Returns small parcel shipment labels based on the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -171,14 +171,14 @@ export class VendorShippingApi {
        * @return {Promise<GetShipmentLabels>}
        */
     getShipmentLabels(opts?: {
-        limit?: number;
-        sortOrder?: string;
-        nextToken?: string;
-        labelCreatedAfter?: Date;
-        labelCreatedBefore?: Date;
-        buyerReferenceNumber?: string;
-        vendorShipmentIdentifier?: string;
-        sellerWarehouseCode?: string;
+        limit?: number | undefined;
+        sortOrder?: string | undefined;
+        nextToken?: string | undefined;
+        labelCreatedAfter?: Date | undefined;
+        labelCreatedBefore?: Date | undefined;
+        buyerReferenceNumber?: string | undefined;
+        vendorShipmentIdentifier?: string | undefined;
+        sellerWarehouseCode?: string | undefined;
     }): Promise<GetShipmentLabels>;
     /**
        * SubmitShipmentConfirmations

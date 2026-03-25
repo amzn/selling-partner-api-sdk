@@ -11,7 +11,7 @@ export class ListingsItemSubmissionResponse {
      * @param {ListingsItemSubmissionResponse} obj Optional instance to populate.
      * @return {ListingsItemSubmissionResponse} The populated <code>ListingsItemSubmissionResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: ListingsItemSubmissionResponse): ListingsItemSubmissionResponse;
+    static constructFromObject(data: Object, obj: ListingsItemSubmissionResponse): ListingsItemSubmissionResponse;
     /**
      * Constructs a new <code>ListingsItemSubmissionResponse</code>.
      * Response containing the results of a submission to the Selling Partner API for Listings Items.

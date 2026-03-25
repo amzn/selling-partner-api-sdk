@@ -11,7 +11,7 @@ export class ItemProceedsBreakdown {
      * @param {ItemProceedsBreakdown} obj Optional instance to populate.
      * @return {ItemProceedsBreakdown} The populated <code>ItemProceedsBreakdown</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemProceedsBreakdown): ItemProceedsBreakdown;
+    static constructFromObject(data: Object, obj: ItemProceedsBreakdown): ItemProceedsBreakdown;
     /**
      * Category classification of the proceeds breakdown.   **Possible values**: `ITEM`, `SHIPPING`, `GIFT_WRAP`, `COD_FEE`, `OTHER`, `TAX`, `DISCOUNT`
      * @member {String} type

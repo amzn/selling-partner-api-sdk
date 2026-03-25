@@ -11,7 +11,7 @@ export class FulfillmentInstruction {
      * @param {FulfillmentInstruction} obj Optional instance to populate.
      * @return {FulfillmentInstruction} The populated <code>FulfillmentInstruction</code> instance.
      */
-    static constructFromObject(data: any, obj: FulfillmentInstruction): FulfillmentInstruction;
+    static constructFromObject(data: Object, obj: FulfillmentInstruction): FulfillmentInstruction;
     /**
      * The `sourceId` of the location from where you want the order fulfilled.
      * @member {String} fulfillmentSupplySourceId

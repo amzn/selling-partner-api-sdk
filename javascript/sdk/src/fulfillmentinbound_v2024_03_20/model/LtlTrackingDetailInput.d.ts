@@ -11,7 +11,7 @@ export class LtlTrackingDetailInput {
      * @param {LtlTrackingDetailInput} obj Optional instance to populate.
      * @return {LtlTrackingDetailInput} The populated <code>LtlTrackingDetailInput</code> instance.
      */
-    static constructFromObject(data: any, obj: LtlTrackingDetailInput): LtlTrackingDetailInput;
+    static constructFromObject(data: Object, obj: LtlTrackingDetailInput): LtlTrackingDetailInput;
     /**
      * Constructs a new <code>LtlTrackingDetailInput</code>.
      * Contains input information to update Less-Than-Truckload (LTL) tracking information.

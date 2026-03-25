@@ -11,7 +11,7 @@ export class CompetitivePricingType {
      * @param {CompetitivePricingType} obj Optional instance to populate.
      * @return {CompetitivePricingType} The populated <code>CompetitivePricingType</code> instance.
      */
-    static constructFromObject(data: any, obj: CompetitivePricingType): CompetitivePricingType;
+    static constructFromObject(data: Object, obj: CompetitivePricingType): CompetitivePricingType;
     /**
      * Constructs a new <code>CompetitivePricingType</code>.
      * Competitive pricing information for the item.

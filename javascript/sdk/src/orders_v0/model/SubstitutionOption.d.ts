@@ -11,7 +11,7 @@ export class SubstitutionOption {
      * @param {SubstitutionOption} obj Optional instance to populate.
      * @return {SubstitutionOption} The populated <code>SubstitutionOption</code> instance.
      */
-    static constructFromObject(data: any, obj: SubstitutionOption): SubstitutionOption;
+    static constructFromObject(data: Object, obj: SubstitutionOption): SubstitutionOption;
     /**
      * The item's Amazon Standard Identification Number (ASIN).
      * @member {String} ASIN

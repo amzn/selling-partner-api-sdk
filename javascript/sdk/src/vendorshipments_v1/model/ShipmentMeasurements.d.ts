@@ -11,7 +11,7 @@ export class ShipmentMeasurements {
      * @param {ShipmentMeasurements} obj Optional instance to populate.
      * @return {ShipmentMeasurements} The populated <code>ShipmentMeasurements</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipmentMeasurements): ShipmentMeasurements;
+    static constructFromObject(data: Object, obj: ShipmentMeasurements): ShipmentMeasurements;
     /**
      * @member {Weight} grossShipmentWeight
      * @type {Weight}

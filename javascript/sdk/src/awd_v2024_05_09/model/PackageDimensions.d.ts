@@ -11,7 +11,7 @@ export class PackageDimensions {
      * @param {PackageDimensions} obj Optional instance to populate.
      * @return {PackageDimensions} The populated <code>PackageDimensions</code> instance.
      */
-    static constructFromObject(data: any, obj: PackageDimensions): PackageDimensions;
+    static constructFromObject(data: Object, obj: PackageDimensions): PackageDimensions;
     /**
      * Constructs a new <code>PackageDimensions</code>.
      * Dimensions of the package.

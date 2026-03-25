@@ -11,7 +11,7 @@ export class TransportationLabels {
      * @param {TransportationLabels} obj Optional instance to populate.
      * @return {TransportationLabels} The populated <code>TransportationLabels</code> instance.
      */
-    static constructFromObject(data: any, obj: TransportationLabels): TransportationLabels;
+    static constructFromObject(data: Object, obj: TransportationLabels): TransportationLabels;
     /**
      * @member {Pagination} pagination
      * @type {Pagination}

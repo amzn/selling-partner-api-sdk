@@ -11,7 +11,7 @@ export class GetSchemaResponse {
      * @param {GetSchemaResponse} obj Optional instance to populate.
      * @return {GetSchemaResponse} The populated <code>GetSchemaResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetSchemaResponse): GetSchemaResponse;
+    static constructFromObject(data: Object, obj: GetSchemaResponse): GetSchemaResponse;
     /**
      * @member {GetSchemaResponseLinks} links
      * @type {GetSchemaResponseLinks}
@@ -23,7 +23,7 @@ export class GetSchemaResponse {
      * @type {{String: Object}}
      */
     payload: {
-        String: any;
+        String: Object;
     };
     /**
      * A list of error responses returned when a request is unsuccessful.

@@ -11,7 +11,7 @@ export class BrowseNodeReviewTrendPoint {
      * @param {BrowseNodeReviewTrendPoint} obj Optional instance to populate.
      * @return {BrowseNodeReviewTrendPoint} The populated <code>BrowseNodeReviewTrendPoint</code> instance.
      */
-    static constructFromObject(data: any, obj: BrowseNodeReviewTrendPoint): BrowseNodeReviewTrendPoint;
+    static constructFromObject(data: Object, obj: BrowseNodeReviewTrendPoint): BrowseNodeReviewTrendPoint;
     /**
      * Constructs a new <code>BrowseNodeReviewTrendPoint</code>.
      * The browse node&#39;s review metrics for a certain month.

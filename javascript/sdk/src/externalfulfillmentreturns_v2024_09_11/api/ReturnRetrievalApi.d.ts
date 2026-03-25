@@ -52,18 +52,18 @@ export class ReturnRetrievalApi {
        * @return {Promise<ReturnsResponse>}
        */
     listReturnsWithHttpInfo(opts?: {
-        returnLocationId?: string;
-        rmaId?: string;
-        status?: string;
-        reverseTrackingId?: string;
-        createdSince?: string;
-        createdUntil?: string;
-        lastUpdatedSince?: string;
-        lastUpdatedUntil?: string;
-        lastUpdatedAfter?: string;
-        lastUpdatedBefore?: string;
-        maxResults?: number;
-        nextToken?: string;
+        returnLocationId?: string | undefined;
+        rmaId?: string | undefined;
+        status?: string | undefined;
+        reverseTrackingId?: string | undefined;
+        createdSince?: string | undefined;
+        createdUntil?: string | undefined;
+        lastUpdatedSince?: string | undefined;
+        lastUpdatedUntil?: string | undefined;
+        lastUpdatedAfter?: string | undefined;
+        lastUpdatedBefore?: string | undefined;
+        maxResults?: number | undefined;
+        nextToken?: string | undefined;
     }): Promise<ReturnsResponse>;
     /**
        * Retrieve a list of return items. You can filter results by location, RMA ID, status, or time.
@@ -83,18 +83,18 @@ export class ReturnRetrievalApi {
        * @return {Promise<ReturnsResponse>}
        */
     listReturns(opts?: {
-        returnLocationId?: string;
-        rmaId?: string;
-        status?: string;
-        reverseTrackingId?: string;
-        createdSince?: string;
-        createdUntil?: string;
-        lastUpdatedSince?: string;
-        lastUpdatedUntil?: string;
-        lastUpdatedAfter?: string;
-        lastUpdatedBefore?: string;
-        maxResults?: number;
-        nextToken?: string;
+        returnLocationId?: string | undefined;
+        rmaId?: string | undefined;
+        status?: string | undefined;
+        reverseTrackingId?: string | undefined;
+        createdSince?: string | undefined;
+        createdUntil?: string | undefined;
+        lastUpdatedSince?: string | undefined;
+        lastUpdatedUntil?: string | undefined;
+        lastUpdatedAfter?: string | undefined;
+        lastUpdatedBefore?: string | undefined;
+        maxResults?: number | undefined;
+        nextToken?: string | undefined;
     }): Promise<ReturnsResponse>;
     #private;
 }

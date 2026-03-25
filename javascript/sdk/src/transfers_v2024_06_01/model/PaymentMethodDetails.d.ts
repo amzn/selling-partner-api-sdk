@@ -11,7 +11,7 @@ export class PaymentMethodDetails {
      * @param {PaymentMethodDetails} obj Optional instance to populate.
      * @return {PaymentMethodDetails} The populated <code>PaymentMethodDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: PaymentMethodDetails): PaymentMethodDetails;
+    static constructFromObject(data: Object, obj: PaymentMethodDetails): PaymentMethodDetails;
     /**
      * The name of the account holder who is registered for the payment method.
      * @member {String} accountHolderName

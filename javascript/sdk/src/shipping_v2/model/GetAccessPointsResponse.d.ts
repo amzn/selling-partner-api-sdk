@@ -11,7 +11,7 @@ export class GetAccessPointsResponse {
      * @param {GetAccessPointsResponse} obj Optional instance to populate.
      * @return {GetAccessPointsResponse} The populated <code>GetAccessPointsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetAccessPointsResponse): GetAccessPointsResponse;
+    static constructFromObject(data: Object, obj: GetAccessPointsResponse): GetAccessPointsResponse;
     /**
      * @member {GetAccessPointsResult} payload
      * @type {GetAccessPointsResult}

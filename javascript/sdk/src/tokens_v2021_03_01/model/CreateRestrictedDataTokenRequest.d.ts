@@ -11,7 +11,7 @@ export class CreateRestrictedDataTokenRequest {
      * @param {CreateRestrictedDataTokenRequest} obj Optional instance to populate.
      * @return {CreateRestrictedDataTokenRequest} The populated <code>CreateRestrictedDataTokenRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateRestrictedDataTokenRequest): CreateRestrictedDataTokenRequest;
+    static constructFromObject(data: Object, obj: CreateRestrictedDataTokenRequest): CreateRestrictedDataTokenRequest;
     /**
      * Constructs a new <code>CreateRestrictedDataTokenRequest</code>.
      * The request schema for the createRestrictedDataToken operation.

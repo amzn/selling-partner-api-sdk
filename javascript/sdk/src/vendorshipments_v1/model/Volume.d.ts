@@ -11,7 +11,7 @@ export class Volume {
      * @param {Volume} obj Optional instance to populate.
      * @return {Volume} The populated <code>Volume</code> instance.
      */
-    static constructFromObject(data: any, obj: Volume): Volume;
+    static constructFromObject(data: Object, obj: Volume): Volume;
     /**
      * Constructs a new <code>Volume</code>.
      * The volume of the shipment.

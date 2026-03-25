@@ -11,7 +11,7 @@ export class GetListingOffersBatchResponse {
      * @param {GetListingOffersBatchResponse} obj Optional instance to populate.
      * @return {GetListingOffersBatchResponse} The populated <code>GetListingOffersBatchResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetListingOffersBatchResponse): GetListingOffersBatchResponse;
+    static constructFromObject(data: Object, obj: GetListingOffersBatchResponse): GetListingOffersBatchResponse;
     /**
      * A list of `getListingOffers` batched responses.
      * @member {ListingOffersResponse[]} responses

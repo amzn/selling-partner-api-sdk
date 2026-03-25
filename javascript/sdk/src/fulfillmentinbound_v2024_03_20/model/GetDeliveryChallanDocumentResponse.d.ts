@@ -11,7 +11,7 @@ export class GetDeliveryChallanDocumentResponse {
      * @param {GetDeliveryChallanDocumentResponse} obj Optional instance to populate.
      * @return {GetDeliveryChallanDocumentResponse} The populated <code>GetDeliveryChallanDocumentResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: GetDeliveryChallanDocumentResponse): GetDeliveryChallanDocumentResponse;
+    static constructFromObject(data: Object, obj: GetDeliveryChallanDocumentResponse): GetDeliveryChallanDocumentResponse;
     /**
      * Constructs a new <code>GetDeliveryChallanDocumentResponse</code>.
      * The &#x60;getDeliveryChallanDocumentResponse&#x60; response.

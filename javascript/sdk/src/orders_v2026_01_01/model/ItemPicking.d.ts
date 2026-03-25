@@ -11,7 +11,7 @@ export class ItemPicking {
      * @param {ItemPicking} obj Optional instance to populate.
      * @return {ItemPicking} The populated <code>ItemPicking</code> instance.
      */
-    static constructFromObject(data: any, obj: ItemPicking): ItemPicking;
+    static constructFromObject(data: Object, obj: ItemPicking): ItemPicking;
     /**
      * @member {ItemSubstitutionPreference} substitutionPreference
      * @type {ItemSubstitutionPreference}

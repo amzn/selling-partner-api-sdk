@@ -11,7 +11,7 @@ export class ShipmentSummary {
      * @param {ShipmentSummary} obj Optional instance to populate.
      * @return {ShipmentSummary} The populated <code>ShipmentSummary</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipmentSummary): ShipmentSummary;
+    static constructFromObject(data: Object, obj: ShipmentSummary): ShipmentSummary;
     /**
      * Constructs a new <code>ShipmentSummary</code>.
      * Summary information about a shipment.

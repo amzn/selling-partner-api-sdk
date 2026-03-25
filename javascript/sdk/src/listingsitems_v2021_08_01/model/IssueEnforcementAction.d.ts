@@ -11,7 +11,7 @@ export class IssueEnforcementAction {
      * @param {IssueEnforcementAction} obj Optional instance to populate.
      * @return {IssueEnforcementAction} The populated <code>IssueEnforcementAction</code> instance.
      */
-    static constructFromObject(data: any, obj: IssueEnforcementAction): IssueEnforcementAction;
+    static constructFromObject(data: Object, obj: IssueEnforcementAction): IssueEnforcementAction;
     /**
      * Constructs a new <code>IssueEnforcementAction</code>.
      * The enforcement action taken by Amazon that affect the publishing or status of a listing

@@ -11,7 +11,7 @@ export class InboundPlanSummary {
      * @param {InboundPlanSummary} obj Optional instance to populate.
      * @return {InboundPlanSummary} The populated <code>InboundPlanSummary</code> instance.
      */
-    static constructFromObject(data: any, obj: InboundPlanSummary): InboundPlanSummary;
+    static constructFromObject(data: Object, obj: InboundPlanSummary): InboundPlanSummary;
     /**
      * Constructs a new <code>InboundPlanSummary</code>.
      * A light-weight inbound plan.

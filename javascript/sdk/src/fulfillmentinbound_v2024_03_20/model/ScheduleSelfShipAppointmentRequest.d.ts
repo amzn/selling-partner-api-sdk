@@ -11,7 +11,7 @@ export class ScheduleSelfShipAppointmentRequest {
      * @param {ScheduleSelfShipAppointmentRequest} obj Optional instance to populate.
      * @return {ScheduleSelfShipAppointmentRequest} The populated <code>ScheduleSelfShipAppointmentRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: ScheduleSelfShipAppointmentRequest): ScheduleSelfShipAppointmentRequest;
+    static constructFromObject(data: Object, obj: ScheduleSelfShipAppointmentRequest): ScheduleSelfShipAppointmentRequest;
     /**
      * @member {ReasonComment} reasonComment
      * @type {ReasonComment}

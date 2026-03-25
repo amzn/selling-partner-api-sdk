@@ -11,7 +11,7 @@ export class CurbsidePickupConfiguration {
      * @param {CurbsidePickupConfiguration} obj Optional instance to populate.
      * @return {CurbsidePickupConfiguration} The populated <code>CurbsidePickupConfiguration</code> instance.
      */
-    static constructFromObject(data: any, obj: CurbsidePickupConfiguration): CurbsidePickupConfiguration;
+    static constructFromObject(data: Object, obj: CurbsidePickupConfiguration): CurbsidePickupConfiguration;
     /**
      * When true, curbside pickup is supported by the supply source.
      * @member {Boolean} isSupported

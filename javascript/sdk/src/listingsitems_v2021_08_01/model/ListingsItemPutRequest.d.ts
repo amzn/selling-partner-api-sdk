@@ -11,7 +11,7 @@ export class ListingsItemPutRequest {
      * @param {ListingsItemPutRequest} obj Optional instance to populate.
      * @return {ListingsItemPutRequest} The populated <code>ListingsItemPutRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: ListingsItemPutRequest): ListingsItemPutRequest;
+    static constructFromObject(data: Object, obj: ListingsItemPutRequest): ListingsItemPutRequest;
     /**
      * Constructs a new <code>ListingsItemPutRequest</code>.
      * The request body schema for the &#x60;putListingsItem&#x60; operation.
@@ -21,11 +21,11 @@ export class ListingsItemPutRequest {
      * @param attributes {{String: Object}} A JSON object containing structured listings item attribute data keyed by attribute name.
      */
     constructor(productType: string, attributes: {
-        String: any;
+        String: Object;
     });
     productType: string;
     attributes: {
-        String: any;
+        String: Object;
     };
     /**
      * The name of the requirements set for the provided data.

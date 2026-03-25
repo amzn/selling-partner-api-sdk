@@ -11,7 +11,7 @@ export class InvoiceRequest {
      * @param {InvoiceRequest} obj Optional instance to populate.
      * @return {InvoiceRequest} The populated <code>InvoiceRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: InvoiceRequest): InvoiceRequest;
+    static constructFromObject(data: Object, obj: InvoiceRequest): InvoiceRequest;
     /**
      * Attachments to include in the message to the buyer.
      * @member {Attachment[]} attachments

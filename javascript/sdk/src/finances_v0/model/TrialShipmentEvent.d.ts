@@ -11,7 +11,7 @@ export class TrialShipmentEvent {
      * @param {TrialShipmentEvent} obj Optional instance to populate.
      * @return {TrialShipmentEvent} The populated <code>TrialShipmentEvent</code> instance.
      */
-    static constructFromObject(data: any, obj: TrialShipmentEvent): TrialShipmentEvent;
+    static constructFromObject(data: Object, obj: TrialShipmentEvent): TrialShipmentEvent;
     /**
      * An Amazon-defined identifier for an order.
      * @member {String} amazonOrderId

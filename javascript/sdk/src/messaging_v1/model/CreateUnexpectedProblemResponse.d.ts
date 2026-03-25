@@ -11,7 +11,7 @@ export class CreateUnexpectedProblemResponse {
      * @param {CreateUnexpectedProblemResponse} obj Optional instance to populate.
      * @return {CreateUnexpectedProblemResponse} The populated <code>CreateUnexpectedProblemResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateUnexpectedProblemResponse): CreateUnexpectedProblemResponse;
+    static constructFromObject(data: Object, obj: CreateUnexpectedProblemResponse): CreateUnexpectedProblemResponse;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

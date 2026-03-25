@@ -11,7 +11,7 @@ export class CarrierDetails {
      * @param {CarrierDetails} obj Optional instance to populate.
      * @return {CarrierDetails} The populated <code>CarrierDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: CarrierDetails): CarrierDetails;
+    static constructFromObject(data: Object, obj: CarrierDetails): CarrierDetails;
     /**
      * The field is used to represent the carrier used for performing the shipment.
      * @member {String} name

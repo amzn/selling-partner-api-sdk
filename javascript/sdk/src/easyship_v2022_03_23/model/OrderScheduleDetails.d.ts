@@ -11,7 +11,7 @@ export class OrderScheduleDetails {
      * @param {OrderScheduleDetails} obj Optional instance to populate.
      * @return {OrderScheduleDetails} The populated <code>OrderScheduleDetails</code> instance.
      */
-    static constructFromObject(data: any, obj: OrderScheduleDetails): OrderScheduleDetails;
+    static constructFromObject(data: Object, obj: OrderScheduleDetails): OrderScheduleDetails;
     /**
      * Constructs a new <code>OrderScheduleDetails</code>.
      * This object allows users to specify an order to be scheduled. Only the amazonOrderId is required.

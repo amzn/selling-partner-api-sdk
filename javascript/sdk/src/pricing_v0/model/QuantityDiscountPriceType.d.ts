@@ -11,7 +11,7 @@ export class QuantityDiscountPriceType {
      * @param {QuantityDiscountPriceType} obj Optional instance to populate.
      * @return {QuantityDiscountPriceType} The populated <code>QuantityDiscountPriceType</code> instance.
      */
-    static constructFromObject(data: any, obj: QuantityDiscountPriceType): QuantityDiscountPriceType;
+    static constructFromObject(data: Object, obj: QuantityDiscountPriceType): QuantityDiscountPriceType;
     /**
      * Constructs a new <code>QuantityDiscountPriceType</code>.
      * Contains pricing information that includes special pricing when buying in bulk.

@@ -11,7 +11,7 @@ export class InboundEligibility {
      * @param {InboundEligibility} obj Optional instance to populate.
      * @return {InboundEligibility} The populated <code>InboundEligibility</code> instance.
      */
-    static constructFromObject(data: any, obj: InboundEligibility): InboundEligibility;
+    static constructFromObject(data: Object, obj: InboundEligibility): InboundEligibility;
     /**
      * Constructs a new <code>InboundEligibility</code>.
      * Represents the eligibility status of the inbound packages.

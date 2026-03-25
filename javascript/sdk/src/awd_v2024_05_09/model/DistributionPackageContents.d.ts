@@ -11,7 +11,7 @@ export class DistributionPackageContents {
      * @param {DistributionPackageContents} obj Optional instance to populate.
      * @return {DistributionPackageContents} The populated <code>DistributionPackageContents</code> instance.
      */
-    static constructFromObject(data: any, obj: DistributionPackageContents): DistributionPackageContents;
+    static constructFromObject(data: Object, obj: DistributionPackageContents): DistributionPackageContents;
     /**
      * This is required only when `DistributionPackageType=PALLET`.
      * @member {DistributionPackageQuantity[]} packages

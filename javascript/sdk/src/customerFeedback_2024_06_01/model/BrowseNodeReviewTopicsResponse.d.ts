@@ -11,7 +11,7 @@ export class BrowseNodeReviewTopicsResponse {
      * @param {BrowseNodeReviewTopicsResponse} obj Optional instance to populate.
      * @return {BrowseNodeReviewTopicsResponse} The populated <code>BrowseNodeReviewTopicsResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: BrowseNodeReviewTopicsResponse): BrowseNodeReviewTopicsResponse;
+    static constructFromObject(data: Object, obj: BrowseNodeReviewTopicsResponse): BrowseNodeReviewTopicsResponse;
     /**
      * Constructs a new <code>BrowseNodeReviewTopicsResponse</code>.
      * The response for the &#x60;getBrowseNodeReviewTopics&#x60; operation.

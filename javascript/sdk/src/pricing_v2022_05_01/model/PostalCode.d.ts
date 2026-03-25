@@ -11,7 +11,7 @@ export class PostalCode {
      * @param {PostalCode} obj Optional instance to populate.
      * @return {PostalCode} The populated <code>PostalCode</code> instance.
      */
-    static constructFromObject(data: any, obj: PostalCode): PostalCode;
+    static constructFromObject(data: Object, obj: PostalCode): PostalCode;
     /**
      * Country code value
      * @member {String} countryCode

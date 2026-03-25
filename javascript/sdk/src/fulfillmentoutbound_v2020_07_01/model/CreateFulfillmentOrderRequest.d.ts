@@ -11,7 +11,7 @@ export class CreateFulfillmentOrderRequest {
      * @param {CreateFulfillmentOrderRequest} obj Optional instance to populate.
      * @return {CreateFulfillmentOrderRequest} The populated <code>CreateFulfillmentOrderRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateFulfillmentOrderRequest): CreateFulfillmentOrderRequest;
+    static constructFromObject(data: Object, obj: CreateFulfillmentOrderRequest): CreateFulfillmentOrderRequest;
     /**
      * Constructs a new <code>CreateFulfillmentOrderRequest</code>.
      * The request body schema for the &#x60;createFulfillmentOrder&#x60; operation.

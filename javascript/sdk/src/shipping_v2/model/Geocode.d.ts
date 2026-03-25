@@ -11,7 +11,7 @@ export class Geocode {
      * @param {Geocode} obj Optional instance to populate.
      * @return {Geocode} The populated <code>Geocode</code> instance.
      */
-    static constructFromObject(data: any, obj: Geocode): Geocode;
+    static constructFromObject(data: Object, obj: Geocode): Geocode;
     /**
      * The latitude of access point.
      * @member {String} latitude

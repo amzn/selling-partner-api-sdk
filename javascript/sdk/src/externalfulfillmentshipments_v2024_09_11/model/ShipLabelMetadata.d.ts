@@ -11,7 +11,7 @@ export class ShipLabelMetadata {
      * @param {ShipLabelMetadata} obj Optional instance to populate.
      * @return {ShipLabelMetadata} The populated <code>ShipLabelMetadata</code> instance.
      */
-    static constructFromObject(data: any, obj: ShipLabelMetadata): ShipLabelMetadata;
+    static constructFromObject(data: Object, obj: ShipLabelMetadata): ShipLabelMetadata;
     /**
      * Constructs a new <code>ShipLabelMetadata</code>.
      * Metadata for a ship label document.

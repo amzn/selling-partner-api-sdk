@@ -11,7 +11,7 @@ export class CreateReservationResponse {
      * @param {CreateReservationResponse} obj Optional instance to populate.
      * @return {CreateReservationResponse} The populated <code>CreateReservationResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateReservationResponse): CreateReservationResponse;
+    static constructFromObject(data: Object, obj: CreateReservationResponse): CreateReservationResponse;
     /**
      * @member {CreateReservationRecord} payload
      * @type {CreateReservationRecord}

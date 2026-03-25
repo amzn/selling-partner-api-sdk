@@ -11,7 +11,7 @@ export class InvoicesDocument {
      * @param {InvoicesDocument} obj Optional instance to populate.
      * @return {InvoicesDocument} The populated <code>InvoicesDocument</code> instance.
      */
-    static constructFromObject(data: any, obj: InvoicesDocument): InvoicesDocument;
+    static constructFromObject(data: Object, obj: InvoicesDocument): InvoicesDocument;
     /**
      * The identifier of the export document.
      * @member {String} invoicesDocumentId

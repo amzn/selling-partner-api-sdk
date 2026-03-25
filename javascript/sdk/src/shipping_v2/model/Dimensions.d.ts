@@ -11,7 +11,7 @@ export class Dimensions {
      * @param {Dimensions} obj Optional instance to populate.
      * @return {Dimensions} The populated <code>Dimensions</code> instance.
      */
-    static constructFromObject(data: any, obj: Dimensions): Dimensions;
+    static constructFromObject(data: Object, obj: Dimensions): Dimensions;
     /**
      * Constructs a new <code>Dimensions</code>.
      * A set of measurements for a three-dimensional object.

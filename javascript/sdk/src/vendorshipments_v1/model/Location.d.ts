@@ -11,7 +11,7 @@ export class Location {
      * @param {Location} obj Optional instance to populate.
      * @return {Location} The populated <code>Location</code> instance.
      */
-    static constructFromObject(data: any, obj: Location): Location;
+    static constructFromObject(data: Object, obj: Location): Location;
     /**
      * Type of location identification.
      * @member {String} type

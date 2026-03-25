@@ -11,7 +11,7 @@ export class PlacementOptionSummary {
      * @param {PlacementOptionSummary} obj Optional instance to populate.
      * @return {PlacementOptionSummary} The populated <code>PlacementOptionSummary</code> instance.
      */
-    static constructFromObject(data: any, obj: PlacementOptionSummary): PlacementOptionSummary;
+    static constructFromObject(data: Object, obj: PlacementOptionSummary): PlacementOptionSummary;
     /**
      * Constructs a new <code>PlacementOptionSummary</code>.
      * Summary information about a placement option.

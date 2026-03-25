@@ -11,7 +11,7 @@ export class CreateNotificationResponse {
      * @param {CreateNotificationResponse} obj Optional instance to populate.
      * @return {CreateNotificationResponse} The populated <code>CreateNotificationResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: CreateNotificationResponse): CreateNotificationResponse;
+    static constructFromObject(data: Object, obj: CreateNotificationResponse): CreateNotificationResponse;
     /**
      * The unique identifier assigned to each notification.
      * @member {String} notificationId

@@ -11,7 +11,7 @@ export class UpdateScheduleRecord {
      * @param {UpdateScheduleRecord} obj Optional instance to populate.
      * @return {UpdateScheduleRecord} The populated <code>UpdateScheduleRecord</code> instance.
      */
-    static constructFromObject(data: any, obj: UpdateScheduleRecord): UpdateScheduleRecord;
+    static constructFromObject(data: Object, obj: UpdateScheduleRecord): UpdateScheduleRecord;
     /**
      * @member {AvailabilityRecord} availability
      * @type {AvailabilityRecord}

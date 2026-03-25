@@ -11,7 +11,7 @@ export class ShippingRequirements {
      * @param {ShippingRequirements} obj Optional instance to populate.
      * @return {ShippingRequirements} The populated <code>ShippingRequirements</code> instance.
      */
-    static constructFromObject(data: any, obj: ShippingRequirements): ShippingRequirements;
+    static constructFromObject(data: Object, obj: ShippingRequirements): ShippingRequirements;
     /**
      * Constructs a new <code>ShippingRequirements</code>.
      * The possible shipping modes for the packing option for a given shipping solution or program. Available solutions are Amazon-Partnered Carrier and Use Your Own Carrier. Available modes are ground small parcel, freight less-than-truckload (LTL), freight full-truckload (FTL) palletized, freight FTL non-palletized, ocean less-than-container-load (LCL), ocean full-container load (FCL), air small parcel, and air small parcel express.

@@ -11,7 +11,7 @@ export class StandardTextModule {
      * @param {StandardTextModule} obj Optional instance to populate.
      * @return {StandardTextModule} The populated <code>StandardTextModule</code> instance.
      */
-    static constructFromObject(data: any, obj: StandardTextModule): StandardTextModule;
+    static constructFromObject(data: Object, obj: StandardTextModule): StandardTextModule;
     /**
      * Constructs a new <code>StandardTextModule</code>.
      * A standard headline and body text.

@@ -11,7 +11,7 @@ export class RecommendedPackage {
      * @param {RecommendedPackage} obj Optional instance to populate.
      * @return {RecommendedPackage} The populated <code>RecommendedPackage</code> instance.
      */
-    static constructFromObject(data: any, obj: RecommendedPackage): RecommendedPackage;
+    static constructFromObject(data: Object, obj: RecommendedPackage): RecommendedPackage;
     /**
      * Constructs a new <code>RecommendedPackage</code>.
      * Recommendations for a package

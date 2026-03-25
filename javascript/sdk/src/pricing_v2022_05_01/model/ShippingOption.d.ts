@@ -11,7 +11,7 @@ export class ShippingOption {
      * @param {ShippingOption} obj Optional instance to populate.
      * @return {ShippingOption} The populated <code>ShippingOption</code> instance.
      */
-    static constructFromObject(data: any, obj: ShippingOption): ShippingOption;
+    static constructFromObject(data: Object, obj: ShippingOption): ShippingOption;
     /**
      * Constructs a new <code>ShippingOption</code>.
      * The shipping option available for the offer.

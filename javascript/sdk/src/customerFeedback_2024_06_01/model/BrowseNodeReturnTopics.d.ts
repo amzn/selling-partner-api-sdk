@@ -11,7 +11,7 @@ export class BrowseNodeReturnTopics {
      * @param {BrowseNodeReturnTopics} obj Optional instance to populate.
      * @return {BrowseNodeReturnTopics} The populated <code>BrowseNodeReturnTopics</code> instance.
      */
-    static constructFromObject(data: any, obj: BrowseNodeReturnTopics): BrowseNodeReturnTopics;
+    static constructFromObject(data: Object, obj: BrowseNodeReturnTopics): BrowseNodeReturnTopics;
     /**
      * Constructs a new <code>BrowseNodeReturnTopics</code>.
      * Topics from returns for all items in a browse node.

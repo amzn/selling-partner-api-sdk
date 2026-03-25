@@ -11,7 +11,7 @@ export class UpdateShipmentSourceAddressResponse {
      * @param {UpdateShipmentSourceAddressResponse} obj Optional instance to populate.
      * @return {UpdateShipmentSourceAddressResponse} The populated <code>UpdateShipmentSourceAddressResponse</code> instance.
      */
-    static constructFromObject(data: any, obj: UpdateShipmentSourceAddressResponse): UpdateShipmentSourceAddressResponse;
+    static constructFromObject(data: Object, obj: UpdateShipmentSourceAddressResponse): UpdateShipmentSourceAddressResponse;
     /**
      * Constructs a new <code>UpdateShipmentSourceAddressResponse</code>.
      * The &#x60;UpdateShipmentSourceAddress&#x60; response.

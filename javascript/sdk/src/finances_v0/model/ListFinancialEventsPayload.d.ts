@@ -11,7 +11,7 @@ export class ListFinancialEventsPayload {
      * @param {ListFinancialEventsPayload} obj Optional instance to populate.
      * @return {ListFinancialEventsPayload} The populated <code>ListFinancialEventsPayload</code> instance.
      */
-    static constructFromObject(data: any, obj: ListFinancialEventsPayload): ListFinancialEventsPayload;
+    static constructFromObject(data: Object, obj: ListFinancialEventsPayload): ListFinancialEventsPayload;
     /**
      * When present and not empty, pass this string token in the next request to return the next response page.
      * @member {String} nextToken

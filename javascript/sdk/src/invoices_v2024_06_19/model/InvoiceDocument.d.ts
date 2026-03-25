@@ -11,7 +11,7 @@ export class InvoiceDocument {
      * @param {InvoiceDocument} obj Optional instance to populate.
      * @return {InvoiceDocument} The populated <code>InvoiceDocument</code> instance.
      */
-    static constructFromObject(data: any, obj: InvoiceDocument): InvoiceDocument;
+    static constructFromObject(data: Object, obj: InvoiceDocument): InvoiceDocument;
     /**
      * A pre-signed URL to download the invoice document in its original format. This URL expires after 30 seconds.
      * @member {String} invoiceDocumentUrl

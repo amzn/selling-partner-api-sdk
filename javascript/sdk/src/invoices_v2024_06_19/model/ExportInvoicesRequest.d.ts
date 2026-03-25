@@ -11,7 +11,7 @@ export class ExportInvoicesRequest {
      * @param {ExportInvoicesRequest} obj Optional instance to populate.
      * @return {ExportInvoicesRequest} The populated <code>ExportInvoicesRequest</code> instance.
      */
-    static constructFromObject(data: any, obj: ExportInvoicesRequest): ExportInvoicesRequest;
+    static constructFromObject(data: Object, obj: ExportInvoicesRequest): ExportInvoicesRequest;
     /**
      * Constructs a new <code>ExportInvoicesRequest</code>.
      * The information required to create the export request.

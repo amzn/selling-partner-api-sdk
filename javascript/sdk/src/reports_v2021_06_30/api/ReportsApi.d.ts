@@ -131,13 +131,13 @@ export class ReportsApi {
        * @return {Promise<GetReportsResponse>}
        */
     getReportsWithHttpInfo(opts?: {
-        reportTypes?: string[];
-        processingStatuses?: string[];
-        marketplaceIds?: string[];
-        pageSize?: number;
-        createdSince?: Date;
-        createdUntil?: Date;
-        nextToken?: string;
+        reportTypes?: string[] | undefined;
+        processingStatuses?: string[] | undefined;
+        marketplaceIds?: string[] | undefined;
+        pageSize?: number | undefined;
+        createdSince?: Date | undefined;
+        createdUntil?: Date | undefined;
+        nextToken?: string | undefined;
     }): Promise<GetReportsResponse>;
     /**
        * Returns report details for the reports that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
@@ -152,13 +152,13 @@ export class ReportsApi {
        * @return {Promise<GetReportsResponse>}
        */
     getReports(opts?: {
-        reportTypes?: string[];
-        processingStatuses?: string[];
-        marketplaceIds?: string[];
-        pageSize?: number;
-        createdSince?: Date;
-        createdUntil?: Date;
-        nextToken?: string;
+        reportTypes?: string[] | undefined;
+        processingStatuses?: string[] | undefined;
+        marketplaceIds?: string[] | undefined;
+        pageSize?: number | undefined;
+        createdSince?: Date | undefined;
+        createdUntil?: Date | undefined;
+        nextToken?: string | undefined;
     }): Promise<GetReportsResponse>;
     #private;
 }

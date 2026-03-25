@@ -11,7 +11,7 @@ export class ListAllFulfillmentOrdersResult {
      * @param {ListAllFulfillmentOrdersResult} obj Optional instance to populate.
      * @return {ListAllFulfillmentOrdersResult} The populated <code>ListAllFulfillmentOrdersResult</code> instance.
      */
-    static constructFromObject(data: any, obj: ListAllFulfillmentOrdersResult): ListAllFulfillmentOrdersResult;
+    static constructFromObject(data: Object, obj: ListAllFulfillmentOrdersResult): ListAllFulfillmentOrdersResult;
     /**
      * When present and not empty, pass this string token in the next request to return the next response page.
      * @member {String} nextToken

@@ -11,7 +11,7 @@ export class AggregationSettings {
      * @param {AggregationSettings} obj Optional instance to populate.
      * @return {AggregationSettings} The populated <code>AggregationSettings</code> instance.
      */
-    static constructFromObject(data: any, obj: AggregationSettings): AggregationSettings;
+    static constructFromObject(data: Object, obj: AggregationSettings): AggregationSettings;
     /**
      * Constructs a new <code>AggregationSettings</code>.
      * A container that holds all of the necessary properties to configure the aggregation of notifications.
