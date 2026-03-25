@@ -523,7 +523,7 @@ class ShipmentDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets payments.
      *
-     * @param null|array $payments List of payment transactions
+     * @param null|array $payments a list of payment transactions
      */
     public function setPayments(?array $payments): self
     {
