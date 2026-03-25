@@ -33,7 +33,7 @@ class SubmitInvoiceRequest(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'invoice_content': 'bytearray',
+        'invoice_content': 'bytes',
         'marketplace_id': 'str',
         'content_md5_value': 'str',
     }
@@ -67,7 +67,7 @@ class SubmitInvoiceRequest(object):
         Shipment invoice document content.  # noqa: E501
 
         :return: The invoice_content of this SubmitInvoiceRequest.  # noqa: E501
-        :rtype: bytearray
+        :rtype: bytes
         """
         return self._invoice_content
 
@@ -78,7 +78,7 @@ class SubmitInvoiceRequest(object):
         Shipment invoice document content.  # noqa: E501
 
         :param invoice_content: The invoice_content of this SubmitInvoiceRequest.  # noqa: E501
-        :type: bytearray
+        :type: bytes
         """
         if self._configuration.client_side_validation and invoice_content is None:
             raise ValueError("Invalid value for `invoice_content`, must not be `None`")  # noqa: E501
