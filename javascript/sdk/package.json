@@ -15,7 +15,7 @@
     "@babel/cli": "^7.0.0",
     "bottleneck": "^2.19.5",
     "superagent": "^9.0.0",
-    "yaml": "^2.4.0"
+    "yaml": "^2.8.3"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
