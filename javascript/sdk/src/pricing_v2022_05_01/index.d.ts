@@ -24,6 +24,7 @@ import { GetFeaturedOfferExpectedPriceBatchRequest } from './model/GetFeaturedOf
 import { GetFeaturedOfferExpectedPriceBatchResponse } from './model/GetFeaturedOfferExpectedPriceBatchResponse.js';
 import { HttpMethod } from './model/HttpMethod.js';
 import { HttpStatusLine } from './model/HttpStatusLine.js';
+import { Item } from './model/Item.js';
 import { LowestPricedOffer } from './model/LowestPricedOffer.js';
 import { LowestPricedOffersInput } from './model/LowestPricedOffersInput.js';
 import { MoneyType } from './model/MoneyType.js';
@@ -39,6 +40,7 @@ import { Segment } from './model/Segment.js';
 import { SegmentDetails } from './model/SegmentDetails.js';
 import { SegmentedFeaturedOffer } from './model/SegmentedFeaturedOffer.js';
 import { ShippingOption } from './model/ShippingOption.js';
+import { SimilarItems } from './model/SimilarItems.js';
 import { ProductPricingApi } from './api/ProductPricingApi.js';
-export { ApiClient, BatchRequest, BatchResponse, CompetitiveSummaryBatchRequest, CompetitiveSummaryBatchResponse, CompetitiveSummaryIncludedData, CompetitiveSummaryRequest, CompetitiveSummaryResponse, CompetitiveSummaryResponseBody, Condition, Error, Errors, FeaturedBuyingOption, FeaturedOffer, FeaturedOfferExpectedPrice, FeaturedOfferExpectedPriceRequest, FeaturedOfferExpectedPriceRequestParams, FeaturedOfferExpectedPriceResponse, FeaturedOfferExpectedPriceResponseBody, FeaturedOfferExpectedPriceResult, FeaturedOfferSegment, FulfillmentType, GetFeaturedOfferExpectedPriceBatchRequest, GetFeaturedOfferExpectedPriceBatchResponse, HttpMethod, HttpStatusLine, LowestPricedOffer, LowestPricedOffersInput, MoneyType, Offer, OfferIdentifier, Points, PostalCode, Price, PrimeDetails, ReferencePrice, SampleLocation, Segment, SegmentDetails, SegmentedFeaturedOffer, ShippingOption, ProductPricingApi };
+export { ApiClient, BatchRequest, BatchResponse, CompetitiveSummaryBatchRequest, CompetitiveSummaryBatchResponse, CompetitiveSummaryIncludedData, CompetitiveSummaryRequest, CompetitiveSummaryResponse, CompetitiveSummaryResponseBody, Condition, Error, Errors, FeaturedBuyingOption, FeaturedOffer, FeaturedOfferExpectedPrice, FeaturedOfferExpectedPriceRequest, FeaturedOfferExpectedPriceRequestParams, FeaturedOfferExpectedPriceResponse, FeaturedOfferExpectedPriceResponseBody, FeaturedOfferExpectedPriceResult, FeaturedOfferSegment, FulfillmentType, GetFeaturedOfferExpectedPriceBatchRequest, GetFeaturedOfferExpectedPriceBatchResponse, HttpMethod, HttpStatusLine, Item, LowestPricedOffer, LowestPricedOffersInput, MoneyType, Offer, OfferIdentifier, Points, PostalCode, Price, PrimeDetails, ReferencePrice, SampleLocation, Segment, SegmentDetails, SegmentedFeaturedOffer, ShippingOption, SimilarItems, ProductPricingApi };
 //# sourceMappingURL=index.d.ts.map

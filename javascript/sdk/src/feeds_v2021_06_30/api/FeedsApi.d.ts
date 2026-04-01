@@ -73,15 +73,23 @@ export class FeedsApi {
     /**
        * Returns the information required for retrieving a feed document&#39;s contents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} feedDocumentId The identifier of the feed document.
+       * @param {Object} [opts] Optional parameters
+       * @param {Boolean} [opts.enableContentEncodingUrlHeader] When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients.
        * @return {Promise<FeedDocument>}
        */
-    getFeedDocumentWithHttpInfo(feedDocumentId: string): Promise<FeedDocument>;
+    getFeedDocumentWithHttpInfo(feedDocumentId: string, opts?: {
+        enableContentEncodingUrlHeader?: boolean | undefined;
+    }): Promise<FeedDocument>;
     /**
        * Returns the information required for retrieving a feed document&#39;s contents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} feedDocumentId The identifier of the feed document.
+       * @param {Object} [opts] Optional parameters
+       * @param {Boolean} [opts.enableContentEncodingUrlHeader] When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients.
        * @return {Promise<FeedDocument>}
        */
-    getFeedDocument(feedDocumentId: string): Promise<FeedDocument>;
+    getFeedDocument(feedDocumentId: string, opts?: {
+        enableContentEncodingUrlHeader?: boolean | undefined;
+    }): Promise<FeedDocument>;
     /**
        * Returns feed details for the feeds that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {Object} [opts] Optional parameters

@@ -14,7 +14,7 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
- * @typedef {'featuredBuyingOptions'|'referencePrices'|'lowestPricedOffers'} CompetitiveSummaryIncludedData
+ * @typedef {'featuredBuyingOptions'|'referencePrices'|'lowestPricedOffers'|'similarItems'} CompetitiveSummaryIncludedData
  */
 export const CompetitiveSummaryIncludedData = Object.assign(
   function () {},
@@ -22,6 +22,7 @@ export const CompetitiveSummaryIncludedData = Object.assign(
     featuredBuyingOptions: 'featuredBuyingOptions',
     referencePrices: 'referencePrices',
     lowestPricedOffers: 'lowestPricedOffers',
+    similarItems: 'similarItems',
     constructFromObject: function (object) {
       return object
     }

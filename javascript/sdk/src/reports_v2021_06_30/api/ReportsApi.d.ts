@@ -85,15 +85,23 @@ export class ReportsApi {
     /**
        * Returns the information required for retrieving a report document&#39;s contents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} reportDocumentId The identifier for the report document.
+       * @param {Object} [opts] Optional parameters
+       * @param {Boolean} [opts.enableContentEncodingUrlHeader] When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients.
        * @return {Promise<ReportDocument>}
        */
-    getReportDocumentWithHttpInfo(reportDocumentId: string): Promise<ReportDocument>;
+    getReportDocumentWithHttpInfo(reportDocumentId: string, opts?: {
+        enableContentEncodingUrlHeader?: boolean | undefined;
+    }): Promise<ReportDocument>;
     /**
        * Returns the information required for retrieving a report document&#39;s contents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} reportDocumentId The identifier for the report document.
+       * @param {Object} [opts] Optional parameters
+       * @param {Boolean} [opts.enableContentEncodingUrlHeader] When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients.
        * @return {Promise<ReportDocument>}
        */
-    getReportDocument(reportDocumentId: string): Promise<ReportDocument>;
+    getReportDocument(reportDocumentId: string, opts?: {
+        enableContentEncodingUrlHeader?: boolean | undefined;
+    }): Promise<ReportDocument>;
     /**
        * Returns report schedule details for the report schedule that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} reportScheduleId The identifier for the report schedule. This identifier is unique only in combination with a seller ID.

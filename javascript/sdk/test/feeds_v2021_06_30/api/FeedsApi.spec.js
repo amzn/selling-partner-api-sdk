@@ -69,7 +69,7 @@ describe('FeedsApi', () => {
     it('should successfully call getFeedDocumentWithHttpInfo', async () => {
       await instructBackendMock("feeds", "getFeedDocument", "200")
       const params = [
-        generateMockData('String')
+        generateMockData('String'),
       ];
       const response = await instance.getFeedDocumentWithHttpInfo(...params);
 

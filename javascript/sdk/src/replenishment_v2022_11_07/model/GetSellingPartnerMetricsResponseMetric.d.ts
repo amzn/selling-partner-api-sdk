@@ -133,7 +133,7 @@ export class GetSellingPartnerMetricsResponseMetric {
      */
     shareOfCouponSubscriptions: number;
     /**
-     * Total revenue from customers who have made purchases from your catalog but have never subscribed to any products
+     * Total revenue from customers who have made purchases from your catalog but have never subscribed to any products.
      * @member {Number} nonSubscriberLifeTimeValueFromOTP
      * @type {Number}
      */
@@ -198,6 +198,12 @@ export class GetSellingPartnerMetricsResponseMetric {
      * @type {Number}
      */
     signupConversionFor5PlusPercentSellerFunding: number;
+    /**
+     * The percentage of total program revenue out of total product revenue over a period of time. Applicable to `PERFORMANCE` `timePeriodType`.
+     * @member {Number} revenuePenetration
+     * @type {Number}
+     */
+    revenuePenetration: number;
     /**
      * @member {TimeInterval} timeInterval
      * @type {TimeInterval}

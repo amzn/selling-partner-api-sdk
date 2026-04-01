@@ -354,6 +354,12 @@ ItemEligibilityPreview.IneligibilityReasonListEnum = {
   FBA_INB_0342: 'FBA_INB_0342',
 
   /**
+     * value: "FBA_INB_0465"
+     * @const
+     */
+  FBA_INB_0465: 'FBA_INB_0465',
+
+  /**
      * value: "UNKNOWN_INB_ERROR_CODE"
      * @const
      */

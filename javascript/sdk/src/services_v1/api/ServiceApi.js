@@ -160,7 +160,7 @@ export class ServiceApi {
      * Assigns new resource(s) or overwrite/update the existing one(s) to a service job appointment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} serviceJobId An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.
      * @param {String} appointmentId An Amazon-defined identifier of active service job appointment.
-     * @param {AssignAppointmentResourcesRequest} body
+     * @param {AssignAppointmentResourcesRequest} body Input containing the resource details to be assigned to the appointment.
      * @return {Promise<AssignAppointmentResourcesResponse>}
      */
   assignAppointmentResourcesWithHttpInfo (serviceJobId, appointmentId, body) {
@@ -207,7 +207,7 @@ export class ServiceApi {
      * Assigns new resource(s) or overwrite/update the existing one(s) to a service job appointment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} serviceJobId An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.
      * @param {String} appointmentId An Amazon-defined identifier of active service job appointment.
-     * @param {AssignAppointmentResourcesRequest} body
+     * @param {AssignAppointmentResourcesRequest} body Input containing the resource details to be assigned to the appointment.
      * @return {Promise<AssignAppointmentResourcesResponse>}
      */
   assignAppointmentResources (serviceJobId, appointmentId, body) {
