@@ -50,6 +50,12 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
 {
     public const DISCRIMINATOR = null;
 
+    public const DELIVERIES_CONDITIONS_NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING = 'NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING';
+    public const DELIVERIES_CONDITIONS_NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE = 'NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE';
+    public const DELIVERIES_CONDITIONS_NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY = 'NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY';
+    public const DELIVERIES_CONDITIONS_NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK = 'NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK';
+    public const DELIVERIES_CONDITIONS_NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES = 'NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES';
+
     /**
      * The original name of the model.
      */
@@ -67,7 +73,8 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
         'eligibilities' => '\SpApi\Model\replenishment\v2022_11_07\EligibilityStatus[]',
         'preferences' => '\SpApi\Model\replenishment\v2022_11_07\Preference',
         'promotions' => '\SpApi\Model\replenishment\v2022_11_07\Promotion',
-        'program_types' => '\SpApi\Model\replenishment\v2022_11_07\ProgramType[]'];
+        'program_types' => '\SpApi\Model\replenishment\v2022_11_07\ProgramType[]',
+        'deliveries_conditions' => 'string[]'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -85,7 +92,8 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
         'eligibilities' => null,
         'preferences' => null,
         'promotions' => null,
-        'program_types' => null];
+        'program_types' => null,
+        'deliveries_conditions' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -100,6 +108,7 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
         'preferences' => true,
         'promotions' => true,
         'program_types' => false,
+        'deliveries_conditions' => true,
     ];
 
     /**
@@ -123,6 +132,7 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
         'preferences' => 'preferences',
         'promotions' => 'promotions',
         'program_types' => 'programTypes',
+        'deliveries_conditions' => 'deliveriesConditions',
     ];
 
     /**
@@ -138,6 +148,7 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
         'preferences' => 'setPreferences',
         'promotions' => 'setPromotions',
         'program_types' => 'setProgramTypes',
+        'deliveries_conditions' => 'setDeliveriesConditions',
     ];
 
     /**
@@ -153,6 +164,7 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
         'preferences' => 'getPreferences',
         'promotions' => 'getPromotions',
         'program_types' => 'getProgramTypes',
+        'deliveries_conditions' => 'getDeliveriesConditions',
     ];
 
     /**
@@ -175,6 +187,7 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
         $this->setIfExists('preferences', $data ?? [], null);
         $this->setIfExists('promotions', $data ?? [], null);
         $this->setIfExists('program_types', $data ?? [], null);
+        $this->setIfExists('deliveries_conditions', $data ?? [], null);
     }
 
     /**
@@ -256,6 +269,22 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets allowable values of the enum.
+     *
+     * @return string[]
+     */
+    public function getDeliveriesConditionsAllowableValues(): array
+    {
+        return [
+            self::DELIVERIES_CONDITIONS_NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING,
+            self::DELIVERIES_CONDITIONS_NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE,
+            self::DELIVERIES_CONDITIONS_NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY,
+            self::DELIVERIES_CONDITIONS_NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK,
+            self::DELIVERIES_CONDITIONS_NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES,
+        ];
+    }
+
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -294,6 +323,10 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
             $invalidProperties[] = "invalid value for 'program_types', number of items must be greater than or equal to 1.";
         }
 
+        if (!is_null($this->container['deliveries_conditions']) && (count($this->container['deliveries_conditions']) < 1)) {
+            $invalidProperties[] = "invalid value for 'deliveries_conditions', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -319,7 +352,7 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
     /**
      * Sets marketplace_id.
      *
-     * @param string $marketplace_id The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
+     * @param string $marketplace_id The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
      */
     public function setMarketplaceId(string $marketplace_id): self
     {
@@ -522,6 +555,49 @@ class ListOffersRequestFilters implements ModelInterface, \ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('invalid length for $program_types when calling ListOffersRequestFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['program_types'] = $program_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets deliveries_conditions.
+     */
+    public function getDeliveriesConditions(): ?array
+    {
+        return $this->container['deliveries_conditions'];
+    }
+
+    /**
+     * Sets deliveries_conditions.
+     *
+     * @param null|array $deliveries_conditions A list of delivery condition types to filter the results by. Results are filtered to only include offers with the specified delivery conditions.
+     */
+    public function setDeliveriesConditions(?array $deliveries_conditions): self
+    {
+        if (is_null($deliveries_conditions)) {
+            array_push($this->openAPINullablesSetToNull, 'deliveries_conditions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deliveries_conditions', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getDeliveriesConditionsAllowableValues();
+        if (!is_null($deliveries_conditions) && array_diff($deliveries_conditions, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'deliveries_conditions', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+
+        if (!is_null($deliveries_conditions) && (count($deliveries_conditions) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $deliveries_conditions when calling ListOffersRequestFilters., number of items must be greater than or equal to 1.');
+        }
+        $this->container['deliveries_conditions'] = $deliveries_conditions;
 
         return $this;
     }

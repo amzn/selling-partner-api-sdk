@@ -477,8 +477,8 @@ class MerchantFulfillmentApiTest extends BaseTestCase
             &quot;Unit&quot; : &quot;oz&quot;
           },
           &quot;ShippingService&quot; : {
-            &quot;ShippingServiceName&quot; : &quot;UPS 2nd Day Air®&quot;,
-            &quot;CarrierName&quot; : &quot;UPS®&quot;,
+            &quot;ShippingServiceName&quot; : &quot;UPS 2nd Day Air\u00AE&quot;,
+            &quot;CarrierName&quot; : &quot;UPS\u00AE&quot;,
             &quot;ShippingServiceId&quot; : &quot;UPS_PTP_2ND_DAY_AIR&quot;,
             &quot;ShippingServiceOfferId&quot; : &quot;WHgxtyn6qjGGaCzOCog1azF5HLHje5Pz3Lc2Fmt5eKoZAReW8oJ1SMumuBS8lA/Hjuglhyiu0+KRLvyJxFV0PB9YFMDhygs3VyTL0WGYkGxiuRkmuEvpqldUn9rrkWVodqnR4vx2VtXvtER/Ju6RqYoddJZGy6RS2KLzzhQ2NclN0NYXMZVqpOe5RsRBddXaGuJr7oza3M52+JzChocAHzcurIhCRynpbxfmNLzZMQEbgnpGLzuaoSMzfxg90/NaXFR/Ou01du/uKd5AbfMW/AxAKP9ht6Oi9lDHq6WkGqvjkVLW0/jj/fBgblIwcs+t&quot;,
             &quot;ShipDate&quot; : &quot;2019-10-28T16:37:37Z&quot;,

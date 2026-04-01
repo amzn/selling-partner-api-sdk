@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TimeInterval.
+ * DeliveriesCondition.
  *
  * PHP version 8.3
  *
@@ -34,11 +34,11 @@ use SpApi\Model\ModelInterface;
 use SpApi\ObjectSerializer;
 
 /**
- * TimeInterval Class Doc Comment.
+ * DeliveriesCondition Class Doc Comment.
  *
  * @category Class
  *
- * @description A date-time interval in ISO 8601 format which is used to compute metrics. Only the date is required, but you must pass the complete date and time value. For example, November 11, 2022 should be passed as \&quot;2022-11-11T00:00:00Z\&quot;. Note that only data for the trailing 2 years is supported.   **Note**: The &#x60;listOfferMetrics&#x60; operation only supports a time interval which covers a single unit of the aggregation frequency. For example, for a MONTH aggregation frequency, the duration of the interval between the startDate and endDate can not be more than 1 month.
+ * @description An object which contains the delivery condition and the quantity of upcoming deliveries associated with that condition for an offer.
  *
  * @author   OpenAPI Generator team
  *
@@ -46,14 +46,20 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class TimeInterval implements ModelInterface, \ArrayAccess, \JsonSerializable
+class DeliveriesCondition implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
+
+    public const CONDITION_NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING = 'NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING';
+    public const CONDITION_NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE = 'NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE';
+    public const CONDITION_NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY = 'NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY';
+    public const CONDITION_NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK = 'NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK';
+    public const CONDITION_NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES = 'NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'TimeInterval';
+    protected static string $openAPIModelName = 'DeliveriesCondition';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,8 +67,8 @@ class TimeInterval implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'start_date' => '\DateTime',
-        'end_date' => '\DateTime'];
+        'condition' => 'string',
+        'next30_days_deliveries' => 'int'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -74,8 +80,8 @@ class TimeInterval implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'start_date' => 'date-time',
-        'end_date' => 'date-time'];
+        'condition' => null,
+        'next30_days_deliveries' => 'int64'];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -83,8 +89,8 @@ class TimeInterval implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'start_date' => false,
-        'end_date' => false,
+        'condition' => true,
+        'next30_days_deliveries' => true,
     ];
 
     /**
@@ -101,8 +107,8 @@ class TimeInterval implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'start_date' => 'startDate',
-        'end_date' => 'endDate',
+        'condition' => 'condition',
+        'next30_days_deliveries' => 'next30DaysDeliveries',
     ];
 
     /**
@@ -111,8 +117,8 @@ class TimeInterval implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'start_date' => 'setStartDate',
-        'end_date' => 'setEndDate',
+        'condition' => 'setCondition',
+        'next30_days_deliveries' => 'setNext30DaysDeliveries',
     ];
 
     /**
@@ -121,8 +127,8 @@ class TimeInterval implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'start_date' => 'getStartDate',
-        'end_date' => 'getEndDate',
+        'condition' => 'getCondition',
+        'next30_days_deliveries' => 'getNext30DaysDeliveries',
     ];
 
     /**
@@ -138,8 +144,8 @@ class TimeInterval implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('start_date', $data ?? [], null);
-        $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('condition', $data ?? [], null);
+        $this->setIfExists('next30_days_deliveries', $data ?? [], null);
     }
 
     /**
@@ -221,6 +227,22 @@ class TimeInterval implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets allowable values of the enum.
+     *
+     * @return string[]
+     */
+    public function getConditionAllowableValues(): array
+    {
+        return [
+            self::CONDITION_NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING,
+            self::CONDITION_NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE,
+            self::CONDITION_NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY,
+            self::CONDITION_NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK,
+            self::CONDITION_NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES,
+        ];
+    }
+
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
@@ -229,11 +251,17 @@ class TimeInterval implements ModelInterface, \ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (null === $this->container['start_date']) {
-            $invalidProperties[] = "'start_date' can't be null";
+        $allowedValues = $this->getConditionAllowableValues();
+        if (!is_null($this->container['condition']) && !in_array($this->container['condition'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'condition', must be one of '%s'",
+                $this->container['condition'],
+                implode("', '", $allowedValues)
+            );
         }
-        if (null === $this->container['end_date']) {
-            $invalidProperties[] = "'end_date' can't be null";
+
+        if (!is_null($this->container['next30_days_deliveries']) && ($this->container['next30_days_deliveries'] < 0)) {
+            $invalidProperties[] = "invalid value for 'next30_days_deliveries', must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -251,47 +279,76 @@ class TimeInterval implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets start_date.
+     * Gets condition.
      */
-    public function getStartDate(): \DateTime
+    public function getCondition(): ?string
     {
-        return $this->container['start_date'];
+        return $this->container['condition'];
     }
 
     /**
-     * Sets start_date.
+     * Sets condition.
      *
-     * @param \DateTime $start_date When this object is used as a request parameter, the specified `startDate` is adjusted based on the aggregation frequency.  * For `WEEK` the metric is computed from the first day of the week (Sunday, based on ISO 8601) that contains the `startDate`. * For `MONTH` the metric is computed from the first day of the month that contains the `startDate`. * For `QUARTER` the metric is computed from the first day of the quarter that contains the `startDate`. * For `YEAR` the metric is computed from the first day of the year that contains the `startDate`.
+     * @param null|string $condition the condition type of upcoming deliveries for the offer
      */
-    public function setStartDate(\DateTime $start_date): self
+    public function setCondition(?string $condition): self
     {
-        if (is_null($start_date)) {
-            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
+        if (is_null($condition)) {
+            array_push($this->openAPINullablesSetToNull, 'condition');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('condition', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['start_date'] = $start_date;
+        $allowedValues = $this->getConditionAllowableValues();
+        if (!is_null($condition) && !in_array($condition, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'condition', must be one of '%s'",
+                    $condition,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['condition'] = $condition;
 
         return $this;
     }
 
     /**
-     * Gets end_date.
+     * Gets next30_days_deliveries.
      */
-    public function getEndDate(): \DateTime
+    public function getNext30DaysDeliveries(): ?int
     {
-        return $this->container['end_date'];
+        return $this->container['next30_days_deliveries'];
     }
 
     /**
-     * Sets end_date.
+     * Sets next30_days_deliveries.
      *
-     * @param \DateTime $end_date When this object is used as a request parameter, the specified `endDate` is adjusted based on the aggregation frequency.  * For `WEEK` the metric is computed up to the last day of the week (Sunday, based on ISO 8601) that contains the `endDate`. * For `MONTH`, the metric is computed up to the last day that contains the `endDate`. * For `QUARTER` the metric is computed up to the last day of the quarter that contains the `endDate`. * For `YEAR` the metric is computed up to the last day of the year that contains the `endDate`.  Note: The end date may be adjusted to a lower value based on the data available in our system.
+     * @param null|int $next30_days_deliveries the number of upcoming deliveries in the next 30 days associated with this delivery condition
      */
-    public function setEndDate(\DateTime $end_date): self
+    public function setNext30DaysDeliveries(?int $next30_days_deliveries): self
     {
-        if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        if (is_null($next30_days_deliveries)) {
+            array_push($this->openAPINullablesSetToNull, 'next30_days_deliveries');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next30_days_deliveries', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['end_date'] = $end_date;
+
+        if (!is_null($next30_days_deliveries) && ($next30_days_deliveries < 0)) {
+            throw new \InvalidArgumentException('invalid value for $next30_days_deliveries when calling DeliveriesCondition., must be bigger than or equal to 0.');
+        }
+
+        $this->container['next30_days_deliveries'] = $next30_days_deliveries;
 
         return $this;
     }

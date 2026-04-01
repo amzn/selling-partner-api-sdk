@@ -1199,17 +1199,20 @@ class FeedsApi
      * Operation getFeedDocument.
      *
      * @param string      $feed_document_id
-     *                                         The identifier of the feed document. (required)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *                                                        The identifier of the feed document. (required)
+     * @param null|bool   $enable_content_encoding_url_header
+     *                                                        When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
+     * @param null|string $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getFeedDocument(
         string $feed_document_id,
+        ?bool $enable_content_encoding_url_header = null,
         ?string $restrictedDataToken = null
     ): FeedDocument {
-        list($response) = $this->getFeedDocumentWithHttpInfo($feed_document_id, $restrictedDataToken);
+        list($response) = $this->getFeedDocumentWithHttpInfo($feed_document_id, $enable_content_encoding_url_header, $restrictedDataToken);
 
         return $response;
     }
@@ -1218,8 +1221,10 @@ class FeedsApi
      * Operation getFeedDocumentWithHttpInfo.
      *
      * @param string      $feed_document_id
-     *                                         The identifier of the feed document. (required)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *                                                        The identifier of the feed document. (required)
+     * @param null|bool   $enable_content_encoding_url_header
+     *                                                        When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
+     * @param null|string $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\feeds\v2021_06_30\FeedDocument, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1228,9 +1233,10 @@ class FeedsApi
      */
     public function getFeedDocumentWithHttpInfo(
         string $feed_document_id,
+        ?bool $enable_content_encoding_url_header = null,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getFeedDocumentRequest($feed_document_id);
+        $request = $this->getFeedDocumentRequest($feed_document_id, $enable_content_encoding_url_header);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeedDocument');
         } else {
@@ -1304,15 +1310,18 @@ class FeedsApi
     /**
      * Operation getFeedDocumentAsync.
      *
-     * @param string $feed_document_id
-     *                                 The identifier of the feed document. (required)
+     * @param string    $feed_document_id
+     *                                                      The identifier of the feed document. (required)
+     * @param null|bool $enable_content_encoding_url_header
+     *                                                      When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getFeedDocumentAsync(
-        string $feed_document_id
+        string $feed_document_id,
+        ?bool $enable_content_encoding_url_header = null
     ): PromiseInterface {
-        return $this->getFeedDocumentAsyncWithHttpInfo($feed_document_id)
+        return $this->getFeedDocumentAsyncWithHttpInfo($feed_document_id, $enable_content_encoding_url_header)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1324,17 +1333,20 @@ class FeedsApi
     /**
      * Operation getFeedDocumentAsyncWithHttpInfo.
      *
-     * @param string $feed_document_id
-     *                                 The identifier of the feed document. (required)
+     * @param string    $feed_document_id
+     *                                                      The identifier of the feed document. (required)
+     * @param null|bool $enable_content_encoding_url_header
+     *                                                      When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getFeedDocumentAsyncWithHttpInfo(
         string $feed_document_id,
+        ?bool $enable_content_encoding_url_header = null,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\feeds\v2021_06_30\FeedDocument';
-        $request = $this->getFeedDocumentRequest($feed_document_id);
+        $request = $this->getFeedDocumentRequest($feed_document_id, $enable_content_encoding_url_header);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeedDocument');
         } else {
@@ -1385,13 +1397,16 @@ class FeedsApi
     /**
      * Create request for operation 'getFeedDocument'.
      *
-     * @param string $feed_document_id
-     *                                 The identifier of the feed document. (required)
+     * @param string    $feed_document_id
+     *                                                      The identifier of the feed document. (required)
+     * @param null|bool $enable_content_encoding_url_header
+     *                                                      When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getFeedDocumentRequest(
-        string $feed_document_id
+        string $feed_document_id,
+        ?bool $enable_content_encoding_url_header = null
     ): Request {
         // verify the required parameter 'feed_document_id' is set
         if (null === $feed_document_id || (is_array($feed_document_id) && 0 === count($feed_document_id))) {
@@ -1406,6 +1421,17 @@ class FeedsApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $enable_content_encoding_url_header,
+            'enableContentEncodingUrlHeader', // param base name
+            'boolean', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
 
         // path params
         if (null !== $feed_document_id) {
