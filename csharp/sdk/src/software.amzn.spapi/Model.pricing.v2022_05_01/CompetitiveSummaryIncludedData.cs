@@ -48,7 +48,13 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// Enum LowestPricedOffers for value: lowestPricedOffers
         /// </summary>
         [EnumMember(Value = "lowestPricedOffers")]
-        LowestPricedOffers = 3
+        LowestPricedOffers = 3,
+
+        /// <summary>
+        /// Enum SimilarItems for value: similarItems
+        /// </summary>
+        [EnumMember(Value = "similarItems")]
+        SimilarItems = 4
     }
 
 }

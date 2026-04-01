@@ -114,7 +114,13 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// Enum SIGNUPCONVERSIONBYSELLERFUNDING for value: SIGNUP_CONVERSION_BY_SELLER_FUNDING
         /// </summary>
         [EnumMember(Value = "SIGNUP_CONVERSION_BY_SELLER_FUNDING")]
-        SIGNUPCONVERSIONBYSELLERFUNDING = 14
+        SIGNUPCONVERSIONBYSELLERFUNDING = 14,
+
+        /// <summary>
+        /// Enum REVENUEPENETRATION for value: REVENUE_PENETRATION
+        /// </summary>
+        [EnumMember(Value = "REVENUE_PENETRATION")]
+        REVENUEPENETRATION = 15
     }
 
 }

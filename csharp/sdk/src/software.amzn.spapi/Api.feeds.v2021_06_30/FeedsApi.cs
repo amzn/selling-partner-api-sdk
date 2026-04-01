@@ -117,8 +117,9 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="feedDocumentId">The identifier of the feed document.</param>
+        /// <param name="enableContentEncodingUrlHeader">When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)</param>
         /// <returns>FeedDocument</returns>
-        FeedDocument GetFeedDocument (string feedDocumentId);
+        FeedDocument GetFeedDocument (string feedDocumentId, bool? enableContentEncodingUrlHeader = null);
 
         /// <summary>
         /// 
@@ -128,8 +129,9 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="feedDocumentId">The identifier of the feed document.</param>
+        /// <param name="enableContentEncodingUrlHeader">When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)</param>
         /// <returns>ApiResponse of FeedDocument</returns>
-        ApiResponse<FeedDocument> GetFeedDocumentWithHttpInfo (string feedDocumentId);
+        ApiResponse<FeedDocument> GetFeedDocumentWithHttpInfo (string feedDocumentId, bool? enableContentEncodingUrlHeader = null);
         /// <summary>
         /// 
         /// </summary>
@@ -257,8 +259,9 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="feedDocumentId">The identifier of the feed document.</param>
+        /// <param name="enableContentEncodingUrlHeader">When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)</param>
         /// <returns>Task of FeedDocument</returns>
-        System.Threading.Tasks.Task<FeedDocument> GetFeedDocumentAsync (string feedDocumentId);
+        System.Threading.Tasks.Task<FeedDocument> GetFeedDocumentAsync (string feedDocumentId, bool? enableContentEncodingUrlHeader = null);
 
         /// <summary>
         /// 
@@ -268,8 +271,9 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="feedDocumentId">The identifier of the feed document.</param>
+        /// <param name="enableContentEncodingUrlHeader">When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)</param>
         /// <returns>Task of ApiResponse (FeedDocument)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FeedDocument>> GetFeedDocumentAsyncWithHttpInfo (string feedDocumentId);
+        System.Threading.Tasks.Task<ApiResponse<FeedDocument>> GetFeedDocumentAsyncWithHttpInfo (string feedDocumentId, bool? enableContentEncodingUrlHeader = null);
         /// <summary>
         /// 
         /// </summary>
@@ -943,10 +947,11 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="feedDocumentId">The identifier of the feed document.</param>
+        /// <param name="enableContentEncodingUrlHeader">When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)</param>
         /// <returns>FeedDocument</returns>
-        public FeedDocument GetFeedDocument (string feedDocumentId)
+        public FeedDocument GetFeedDocument (string feedDocumentId, bool? enableContentEncodingUrlHeader = null)
         {
-             ApiResponse<FeedDocument> localVarResponse = GetFeedDocumentWithHttpInfo(feedDocumentId);
+             ApiResponse<FeedDocument> localVarResponse = GetFeedDocumentWithHttpInfo(feedDocumentId, enableContentEncodingUrlHeader);
              return localVarResponse.Data;
         }
 
@@ -955,8 +960,9 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="feedDocumentId">The identifier of the feed document.</param>
+        /// <param name="enableContentEncodingUrlHeader">When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)</param>
         /// <returns>ApiResponse of FeedDocument</returns>
-        public ApiResponse< FeedDocument > GetFeedDocumentWithHttpInfo (string feedDocumentId)
+        public ApiResponse< FeedDocument > GetFeedDocumentWithHttpInfo (string feedDocumentId, bool? enableContentEncodingUrlHeader = null)
         {
             // verify the required parameter 'feedDocumentId' is set
             if (feedDocumentId == null)
@@ -984,6 +990,7 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (feedDocumentId != null) localVarPathParams.Add("feedDocumentId", this.Configuration.ApiClient.ParameterToString(feedDocumentId)); // path parameter
+            if (enableContentEncodingUrlHeader != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "enableContentEncodingUrlHeader", enableContentEncodingUrlHeader)); // query parameter
 
 
             // make the HTTP request
@@ -1007,10 +1014,11 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="feedDocumentId">The identifier of the feed document.</param>
+        /// <param name="enableContentEncodingUrlHeader">When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)</param>
         /// <returns>Task of FeedDocument</returns>
-        public async System.Threading.Tasks.Task<FeedDocument> GetFeedDocumentAsync (string feedDocumentId)
+        public async System.Threading.Tasks.Task<FeedDocument> GetFeedDocumentAsync (string feedDocumentId, bool? enableContentEncodingUrlHeader = null)
         {
-             ApiResponse<FeedDocument> localVarResponse = await GetFeedDocumentAsyncWithHttpInfo(feedDocumentId);
+             ApiResponse<FeedDocument> localVarResponse = await GetFeedDocumentAsyncWithHttpInfo(feedDocumentId, enableContentEncodingUrlHeader);
              return localVarResponse.Data;
 
         }
@@ -1020,8 +1028,9 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="feedDocumentId">The identifier of the feed document.</param>
+        /// <param name="enableContentEncodingUrlHeader">When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)</param>
         /// <returns>Task of ApiResponse (FeedDocument)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<FeedDocument>> GetFeedDocumentAsyncWithHttpInfo (string feedDocumentId)
+        public async System.Threading.Tasks.Task<ApiResponse<FeedDocument>> GetFeedDocumentAsyncWithHttpInfo (string feedDocumentId, bool? enableContentEncodingUrlHeader = null)
         {
             // verify the required parameter 'feedDocumentId' is set
             if (feedDocumentId == null)
@@ -1049,6 +1058,7 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (feedDocumentId != null) localVarPathParams.Add("feedDocumentId", this.Configuration.ApiClient.ParameterToString(feedDocumentId)); // path parameter
+            if (enableContentEncodingUrlHeader != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "enableContentEncodingUrlHeader", enableContentEncodingUrlHeader)); // query parameter
 
 
             // make the HTTP request

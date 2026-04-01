@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Api.services.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="serviceJobId">An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.</param>
         /// <param name="appointmentId">An Amazon-defined identifier of active service job appointment.</param>
-        /// <param name="body"></param>
+        /// <param name="body">Input containing the resource details to be assigned to the appointment.</param>
         /// <returns>AssignAppointmentResourcesResponse</returns>
         AssignAppointmentResourcesResponse AssignAppointmentResources (string serviceJobId, string appointmentId, AssignAppointmentResourcesRequest body);
 
@@ -70,7 +70,7 @@ namespace software.amzn.spapi.Api.services.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="serviceJobId">An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.</param>
         /// <param name="appointmentId">An Amazon-defined identifier of active service job appointment.</param>
-        /// <param name="body"></param>
+        /// <param name="body">Input containing the resource details to be assigned to the appointment.</param>
         /// <returns>ApiResponse of AssignAppointmentResourcesResponse</returns>
         ApiResponse<AssignAppointmentResourcesResponse> AssignAppointmentResourcesWithHttpInfo (string serviceJobId, string appointmentId, AssignAppointmentResourcesRequest body);
         /// <summary>
@@ -500,7 +500,7 @@ namespace software.amzn.spapi.Api.services.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="serviceJobId">An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.</param>
         /// <param name="appointmentId">An Amazon-defined identifier of active service job appointment.</param>
-        /// <param name="body"></param>
+        /// <param name="body">Input containing the resource details to be assigned to the appointment.</param>
         /// <returns>Task of AssignAppointmentResourcesResponse</returns>
         System.Threading.Tasks.Task<AssignAppointmentResourcesResponse> AssignAppointmentResourcesAsync (string serviceJobId, string appointmentId, AssignAppointmentResourcesRequest body);
 
@@ -513,7 +513,7 @@ namespace software.amzn.spapi.Api.services.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="serviceJobId">An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.</param>
         /// <param name="appointmentId">An Amazon-defined identifier of active service job appointment.</param>
-        /// <param name="body"></param>
+        /// <param name="body">Input containing the resource details to be assigned to the appointment.</param>
         /// <returns>Task of ApiResponse (AssignAppointmentResourcesResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<AssignAppointmentResourcesResponse>> AssignAppointmentResourcesAsyncWithHttpInfo (string serviceJobId, string appointmentId, AssignAppointmentResourcesRequest body);
         /// <summary>
@@ -1162,7 +1162,7 @@ namespace software.amzn.spapi.Api.services.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="serviceJobId">An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.</param>
         /// <param name="appointmentId">An Amazon-defined identifier of active service job appointment.</param>
-        /// <param name="body"></param>
+        /// <param name="body">Input containing the resource details to be assigned to the appointment.</param>
         /// <returns>AssignAppointmentResourcesResponse</returns>
         public AssignAppointmentResourcesResponse AssignAppointmentResources (string serviceJobId, string appointmentId, AssignAppointmentResourcesRequest body)
         {
@@ -1176,7 +1176,7 @@ namespace software.amzn.spapi.Api.services.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="serviceJobId">An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.</param>
         /// <param name="appointmentId">An Amazon-defined identifier of active service job appointment.</param>
-        /// <param name="body"></param>
+        /// <param name="body">Input containing the resource details to be assigned to the appointment.</param>
         /// <returns>ApiResponse of AssignAppointmentResourcesResponse</returns>
         public ApiResponse< AssignAppointmentResourcesResponse > AssignAppointmentResourcesWithHttpInfo (string serviceJobId, string appointmentId, AssignAppointmentResourcesRequest body)
         {
@@ -1246,7 +1246,7 @@ namespace software.amzn.spapi.Api.services.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="serviceJobId">An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.</param>
         /// <param name="appointmentId">An Amazon-defined identifier of active service job appointment.</param>
-        /// <param name="body"></param>
+        /// <param name="body">Input containing the resource details to be assigned to the appointment.</param>
         /// <returns>Task of AssignAppointmentResourcesResponse</returns>
         public async System.Threading.Tasks.Task<AssignAppointmentResourcesResponse> AssignAppointmentResourcesAsync (string serviceJobId, string appointmentId, AssignAppointmentResourcesRequest body)
         {
@@ -1261,7 +1261,7 @@ namespace software.amzn.spapi.Api.services.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="serviceJobId">An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.</param>
         /// <param name="appointmentId">An Amazon-defined identifier of active service job appointment.</param>
-        /// <param name="body"></param>
+        /// <param name="body">Input containing the resource details to be assigned to the appointment.</param>
         /// <returns>Task of ApiResponse (AssignAppointmentResourcesResponse)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<AssignAppointmentResourcesResponse>> AssignAppointmentResourcesAsyncWithHttpInfo (string serviceJobId, string appointmentId, AssignAppointmentResourcesRequest body)
         {

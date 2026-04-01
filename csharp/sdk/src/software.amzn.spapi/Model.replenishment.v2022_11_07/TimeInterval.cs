@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.replenishment.v2022_11_07
 {
     /// <summary>
-    /// A date-time interval in ISO 8601 format which is used to compute metrics. Only the date is required, but you must pass the complete date and time value. For example, November 11, 2022 should be passed as \&quot;2022-11-07T00:00:00Z\&quot;. Note that only data for the trailing 2 years is supported.   **Note**: The &#x60;listOfferMetrics&#x60; operation only supports a time interval which covers a single unit of the aggregation frequency. For example, for a MONTH aggregation frequency, the duration of the interval between the startDate and endDate can not be more than 1 month.
+    /// A date-time interval in ISO 8601 format which is used to compute metrics. Only the date is required, but you must pass the complete date and time value. For example, November 11, 2022 should be passed as \&quot;2022-11-11T00:00:00Z\&quot;. Note that only data for the trailing 2 years is supported.   **Note**: The &#x60;listOfferMetrics&#x60; operation only supports a time interval which covers a single unit of the aggregation frequency. For example, for a MONTH aggregation frequency, the duration of the interval between the startDate and endDate can not be more than 1 month.
     /// </summary>
     [DataContract(Name = "TimeInterval")]
     public partial class TimeInterval : IValidatableObject

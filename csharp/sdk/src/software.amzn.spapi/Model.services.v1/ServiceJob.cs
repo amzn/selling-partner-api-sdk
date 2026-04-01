@@ -105,7 +105,8 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="buyer">buyer.</param>
         /// <param name="associatedItems">A list of items associated with the service job..</param>
         /// <param name="serviceLocation">serviceLocation.</param>
-        public ServiceJob(DateTime? createTime = default(DateTime?), string? serviceJobId = default(string?), ServiceJobStatusEnum? serviceJobStatus = default(ServiceJobStatusEnum?), ScopeOfWork? scopeOfWork = default(ScopeOfWork?), Seller? seller = default(Seller?), ServiceJobProvider? serviceJobProvider = default(ServiceJobProvider?), List<AppointmentTime>? preferredAppointmentTimes = default(List<AppointmentTime>?), List<Appointment>? appointments = default(List<Appointment>?), string? serviceOrderId = default(string?), string? marketplaceId = default(string?), string? storeId = default(string?), Buyer? buyer = default(Buyer?), List<AssociatedItem>? associatedItems = default(List<AssociatedItem>?), ServiceLocation? serviceLocation = default(ServiceLocation?))
+        /// <param name="payments">A list that contains payment information for the service job..</param>
+        public ServiceJob(DateTime? createTime = default(DateTime?), string? serviceJobId = default(string?), ServiceJobStatusEnum? serviceJobStatus = default(ServiceJobStatusEnum?), ScopeOfWork? scopeOfWork = default(ScopeOfWork?), Seller? seller = default(Seller?), ServiceJobProvider? serviceJobProvider = default(ServiceJobProvider?), List<AppointmentTime>? preferredAppointmentTimes = default(List<AppointmentTime>?), List<Appointment>? appointments = default(List<Appointment>?), string? serviceOrderId = default(string?), string? marketplaceId = default(string?), string? storeId = default(string?), Buyer? buyer = default(Buyer?), List<AssociatedItem>? associatedItems = default(List<AssociatedItem>?), ServiceLocation? serviceLocation = default(ServiceLocation?), List<Payment>? payments = default(List<Payment>?))
         {
             this.CreateTime = createTime;
             this.ServiceJobId = serviceJobId;
@@ -121,6 +122,7 @@ namespace software.amzn.spapi.Model.services.v1
             this.Buyer = buyer;
             this.AssociatedItems = associatedItems;
             this.ServiceLocation = serviceLocation;
+            this.Payments = payments;
         }
 
         /// <summary>
@@ -210,6 +212,13 @@ namespace software.amzn.spapi.Model.services.v1
         public ServiceLocation? ServiceLocation { get; set; }
 
         /// <summary>
+        /// A list that contains payment information for the service job.
+        /// </summary>
+        /// <value>A list that contains payment information for the service job.</value>
+        [DataMember(Name = "payments", EmitDefaultValue = false)]
+        public List<Payment>? Payments { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -231,6 +240,7 @@ namespace software.amzn.spapi.Model.services.v1
             sb.Append("  Buyer: ").Append(Buyer).Append("\n");
             sb.Append("  AssociatedItems: ").Append(AssociatedItems).Append("\n");
             sb.Append("  ServiceLocation: ").Append(ServiceLocation).Append("\n");
+            sb.Append("  Payments: ").Append(Payments).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

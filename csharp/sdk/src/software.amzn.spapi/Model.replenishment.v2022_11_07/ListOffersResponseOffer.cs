@@ -48,12 +48,20 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// </summary>
         /// <param name="sku">The SKU. This property is only supported for sellers and not for vendors..</param>
         /// <param name="asin">The Amazon Standard Identification Number (ASIN)..</param>
-        /// <param name="marketplaceId">The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace..</param>
+        /// <param name="marketplaceId">The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace..</param>
         /// <param name="eligibility">eligibility.</param>
         /// <param name="offerProgramConfiguration">offerProgramConfiguration.</param>
         /// <param name="programType">programType.</param>
         /// <param name="vendorCodes">A list of vendor codes associated with the offer..</param>
-        public ListOffersResponseOffer(string? sku = default(string?), string? asin = default(string?), string? marketplaceId = default(string?), EligibilityStatus? eligibility = default(EligibilityStatus?), OfferProgramConfiguration? offerProgramConfiguration = default(OfferProgramConfiguration?), ProgramType? programType = default(ProgramType?), List<string>? vendorCodes = default(List<string>?))
+        /// <param name="price">The current price of the offer. This is the listed price amount for the item..</param>
+        /// <param name="priceCurrencyCode">The currency code in ISO 4217 format for the price. For example, &#x60;USD&#x60; for US dollars..</param>
+        /// <param name="inventory">The available inventory count for the offer..</param>
+        /// <param name="stockRisk">The stock risk level of the offer, indicating the risk of the offer going out of stock..</param>
+        /// <param name="deliveriesConditions">A list of delivery conditions for the offer, indicating the health of upcoming deliveries. Each condition describes the quantity of upcoming deliveries associated with a particular delivery condition type..</param>
+        /// <param name="subscriptions">The number of active subscriptions for the offer..</param>
+        /// <param name="fulfillmentNetworkIDType">The fulfillment network identifier type for the offer, indicating how the offer is fulfilled..</param>
+        /// <param name="forecastDeliveries">forecastDeliveries.</param>
+        public ListOffersResponseOffer(string? sku = default(string?), string? asin = default(string?), string? marketplaceId = default(string?), EligibilityStatus? eligibility = default(EligibilityStatus?), OfferProgramConfiguration? offerProgramConfiguration = default(OfferProgramConfiguration?), ProgramType? programType = default(ProgramType?), List<string>? vendorCodes = default(List<string>?), double? price = default(double?), string? priceCurrencyCode = default(string?), long? inventory = default(long?), string? stockRisk = default(string?), List<DeliveriesCondition>? deliveriesConditions = default(List<DeliveriesCondition>?), long? subscriptions = default(long?), string? fulfillmentNetworkIDType = default(string?), ForecastDeliveries? forecastDeliveries = default(ForecastDeliveries?))
         {
             this.Sku = sku;
             this.Asin = asin;
@@ -62,6 +70,14 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             this.OfferProgramConfiguration = offerProgramConfiguration;
             this.ProgramType = programType;
             this.VendorCodes = vendorCodes;
+            this.Price = price;
+            this.PriceCurrencyCode = priceCurrencyCode;
+            this.Inventory = inventory;
+            this.StockRisk = stockRisk;
+            this.DeliveriesConditions = deliveriesConditions;
+            this.Subscriptions = subscriptions;
+            this.FulfillmentNetworkIDType = fulfillmentNetworkIDType;
+            this.ForecastDeliveries = forecastDeliveries;
         }
 
         /// <summary>
@@ -79,9 +95,9 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         public string? Asin { get; set; }
 
         /// <summary>
-        /// The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
+        /// The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
         /// </summary>
-        /// <value>The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.</value>
+        /// <value>The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.</value>
         [DataMember(Name = "marketplaceId", EmitDefaultValue = false)]
         public string? MarketplaceId { get; set; }
 
@@ -99,6 +115,61 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         public List<string>? VendorCodes { get; set; }
 
         /// <summary>
+        /// The current price of the offer. This is the listed price amount for the item.
+        /// </summary>
+        /// <value>The current price of the offer. This is the listed price amount for the item.</value>
+        [DataMember(Name = "price", EmitDefaultValue = false)]
+        public double? Price { get; set; }
+
+        /// <summary>
+        /// The currency code in ISO 4217 format for the price. For example, &#x60;USD&#x60; for US dollars.
+        /// </summary>
+        /// <value>The currency code in ISO 4217 format for the price. For example, &#x60;USD&#x60; for US dollars.</value>
+        [DataMember(Name = "priceCurrencyCode", EmitDefaultValue = false)]
+        public string? PriceCurrencyCode { get; set; }
+
+        /// <summary>
+        /// The available inventory count for the offer.
+        /// </summary>
+        /// <value>The available inventory count for the offer.</value>
+        [DataMember(Name = "inventory", EmitDefaultValue = false)]
+        public long? Inventory { get; set; }
+
+        /// <summary>
+        /// The stock risk level of the offer, indicating the risk of the offer going out of stock.
+        /// </summary>
+        /// <value>The stock risk level of the offer, indicating the risk of the offer going out of stock.</value>
+        [DataMember(Name = "stockRisk", EmitDefaultValue = false)]
+        public string? StockRisk { get; set; }
+
+        /// <summary>
+        /// A list of delivery conditions for the offer, indicating the health of upcoming deliveries. Each condition describes the quantity of upcoming deliveries associated with a particular delivery condition type.
+        /// </summary>
+        /// <value>A list of delivery conditions for the offer, indicating the health of upcoming deliveries. Each condition describes the quantity of upcoming deliveries associated with a particular delivery condition type.</value>
+        [DataMember(Name = "deliveriesConditions", EmitDefaultValue = false)]
+        public List<DeliveriesCondition>? DeliveriesConditions { get; set; }
+
+        /// <summary>
+        /// The number of active subscriptions for the offer.
+        /// </summary>
+        /// <value>The number of active subscriptions for the offer.</value>
+        [DataMember(Name = "subscriptions", EmitDefaultValue = false)]
+        public long? Subscriptions { get; set; }
+
+        /// <summary>
+        /// The fulfillment network identifier type for the offer, indicating how the offer is fulfilled.
+        /// </summary>
+        /// <value>The fulfillment network identifier type for the offer, indicating how the offer is fulfilled.</value>
+        [DataMember(Name = "fulfillmentNetworkIDType", EmitDefaultValue = false)]
+        public string? FulfillmentNetworkIDType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ForecastDeliveries
+        /// </summary>
+        [DataMember(Name = "forecastDeliveries", EmitDefaultValue = false)]
+        public ForecastDeliveries? ForecastDeliveries { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -113,6 +184,14 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             sb.Append("  OfferProgramConfiguration: ").Append(OfferProgramConfiguration).Append("\n");
             sb.Append("  ProgramType: ").Append(ProgramType).Append("\n");
             sb.Append("  VendorCodes: ").Append(VendorCodes).Append("\n");
+            sb.Append("  Price: ").Append(Price).Append("\n");
+            sb.Append("  PriceCurrencyCode: ").Append(PriceCurrencyCode).Append("\n");
+            sb.Append("  Inventory: ").Append(Inventory).Append("\n");
+            sb.Append("  StockRisk: ").Append(StockRisk).Append("\n");
+            sb.Append("  DeliveriesConditions: ").Append(DeliveriesConditions).Append("\n");
+            sb.Append("  Subscriptions: ").Append(Subscriptions).Append("\n");
+            sb.Append("  FulfillmentNetworkIDType: ").Append(FulfillmentNetworkIDType).Append("\n");
+            sb.Append("  ForecastDeliveries: ").Append(ForecastDeliveries).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -133,6 +212,24 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // Price (double) minimum
+            if (this.Price < (double)0)
+            {
+                yield return new ValidationResult("Invalid value for Price, must be a value greater than or equal to 0.", new [] { "Price" });
+            }
+
+            // Inventory (long) minimum
+            if (this.Inventory < (long)0)
+            {
+                yield return new ValidationResult("Invalid value for Inventory, must be a value greater than or equal to 0.", new [] { "Inventory" });
+            }
+
+            // Subscriptions (long) minimum
+            if (this.Subscriptions < (long)0)
+            {
+                yield return new ValidationResult("Invalid value for Subscriptions, must be a value greater than or equal to 0.", new [] { "Subscriptions" });
+            }
+
             yield break;
         }
     }
