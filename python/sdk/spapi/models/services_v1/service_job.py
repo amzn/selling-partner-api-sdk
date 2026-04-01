@@ -47,6 +47,7 @@ class ServiceJob(object):
         'buyer': 'Buyer',
         'associated_items': 'List[AssociatedItem]',
         'service_location': 'ServiceLocation',
+        'payments': 'List[Payment]',
     }
 
     attribute_map = {
@@ -64,9 +65,10 @@ class ServiceJob(object):
         'buyer': 'buyer',
         'associated_items': 'associatedItems',
         'service_location': 'serviceLocation',
+        'payments': 'payments',
     }
 
-    def __init__(self, create_time=None, service_job_id=None, service_job_status=None, scope_of_work=None, seller=None, service_job_provider=None, preferred_appointment_times=None, appointments=None, service_order_id=None, marketplace_id=None, store_id=None, buyer=None, associated_items=None, service_location=None, _configuration=None):  # noqa: E501
+    def __init__(self, create_time=None, service_job_id=None, service_job_status=None, scope_of_work=None, seller=None, service_job_provider=None, preferred_appointment_times=None, appointments=None, service_order_id=None, marketplace_id=None, store_id=None, buyer=None, associated_items=None, service_location=None, payments=None, _configuration=None):  # noqa: E501
         """ServiceJob - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -86,6 +88,7 @@ class ServiceJob(object):
         self._buyer = None
         self._associated_items = None
         self._service_location = None
+        self._payments = None
         self.discriminator = None
 
         if create_time is not None:
@@ -116,6 +119,8 @@ class ServiceJob(object):
             self.associated_items = associated_items
         if service_location is not None:
             self.service_location = service_location
+        if payments is not None:
+            self.payments = payments
 
     @property
     def create_time(self):
@@ -456,6 +461,29 @@ class ServiceJob(object):
         """
 
         self._service_location = service_location
+
+    @property
+    def payments(self):
+        """Gets the payments of this ServiceJob.  # noqa: E501
+
+        A list that contains payment information for the service job.  # noqa: E501
+
+        :return: The payments of this ServiceJob.  # noqa: E501
+        :rtype: List[Payment]
+        """
+        return self._payments
+
+    @payments.setter
+    def payments(self, payments):
+        """Sets the payments of this ServiceJob.
+
+        A list that contains payment information for the service job.  # noqa: E501
+
+        :param payments: The payments of this ServiceJob.  # noqa: E501
+        :type: List[Payment]
+        """
+
+        self._payments = payments
 
     def to_dict(self):
         """Returns the model properties as a dict"""

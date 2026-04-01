@@ -38,6 +38,7 @@ class CompetitiveSummaryResponseBody(object):
         'featured_buying_options': 'List[FeaturedBuyingOption]',
         'lowest_priced_offers': 'List[LowestPricedOffer]',
         'reference_prices': 'List[ReferencePrice]',
+        'similar_items': 'List[SimilarItems]',
         'errors': 'List[Error]',
     }
 
@@ -47,10 +48,11 @@ class CompetitiveSummaryResponseBody(object):
         'featured_buying_options': 'featuredBuyingOptions',
         'lowest_priced_offers': 'lowestPricedOffers',
         'reference_prices': 'referencePrices',
+        'similar_items': 'similarItems',
         'errors': 'errors',
     }
 
-    def __init__(self, asin=None, marketplace_id=None, featured_buying_options=None, lowest_priced_offers=None, reference_prices=None, errors=None, _configuration=None):  # noqa: E501
+    def __init__(self, asin=None, marketplace_id=None, featured_buying_options=None, lowest_priced_offers=None, reference_prices=None, similar_items=None, errors=None, _configuration=None):  # noqa: E501
         """CompetitiveSummaryResponseBody - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -61,6 +63,7 @@ class CompetitiveSummaryResponseBody(object):
         self._featured_buying_options = None
         self._lowest_priced_offers = None
         self._reference_prices = None
+        self._similar_items = None
         self._errors = None
         self.discriminator = None
 
@@ -72,6 +75,8 @@ class CompetitiveSummaryResponseBody(object):
             self.lowest_priced_offers = lowest_priced_offers
         if reference_prices is not None:
             self.reference_prices = reference_prices
+        if similar_items is not None:
+            self.similar_items = similar_items
         if errors is not None:
             self.errors = errors
 
@@ -193,6 +198,29 @@ class CompetitiveSummaryResponseBody(object):
         """
 
         self._reference_prices = reference_prices
+
+    @property
+    def similar_items(self):
+        """Gets the similar_items of this CompetitiveSummaryResponseBody.  # noqa: E501
+
+        A list of similar items for the specified ASIN `marketplaceId` combination.  # noqa: E501
+
+        :return: The similar_items of this CompetitiveSummaryResponseBody.  # noqa: E501
+        :rtype: List[SimilarItems]
+        """
+        return self._similar_items
+
+    @similar_items.setter
+    def similar_items(self, similar_items):
+        """Sets the similar_items of this CompetitiveSummaryResponseBody.
+
+        A list of similar items for the specified ASIN `marketplaceId` combination.  # noqa: E501
+
+        :param similar_items: The similar_items of this CompetitiveSummaryResponseBody.  # noqa: E501
+        :type: List[SimilarItems]
+        """
+
+        self._similar_items = similar_items
 
     @property
     def errors(self):

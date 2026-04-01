@@ -529,6 +529,7 @@ class ReportsApi(object):
 
         :param async_req bool
         :param str report_document_id: The identifier for the report document. (required)
+        :param bool enable_content_encoding_url_header: When `true`, the Content-Encoding header on the returned URL is set to `gzip` instead of the default `identity` when `compressionAlgorithm` is `GZIP`. This allows automatic decompression by HTTP clients.
         :return: ReportDocument
                  If the method is called asynchronously,
                  returns the request thread.
@@ -551,12 +552,13 @@ class ReportsApi(object):
 
         :param async_req bool
         :param str report_document_id: The identifier for the report document. (required)
+        :param bool enable_content_encoding_url_header: When `true`, the Content-Encoding header on the returned URL is set to `gzip` instead of the default `identity` when `compressionAlgorithm` is `GZIP`. This allows automatic decompression by HTTP clients.
         :return: ReportDocument
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['report_document_id']  # noqa: E501
+        all_params = ['report_document_id', 'enable_content_encoding_url_header']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -583,6 +585,8 @@ class ReportsApi(object):
             path_params['reportDocumentId'] = params['report_document_id']  # noqa: E501
 
         query_params = []
+        if 'enable_content_encoding_url_header' in params:
+            query_params.append(('enableContentEncodingUrlHeader', params['enable_content_encoding_url_header']))  # noqa: E501
 
         header_params = {}
 

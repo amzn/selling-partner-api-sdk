@@ -40,6 +40,14 @@ class ListOffersResponseOffer(object):
         'offer_program_configuration': 'OfferProgramConfiguration',
         'program_type': 'ProgramType',
         'vendor_codes': 'List[str]',
+        'price': 'float',
+        'price_currency_code': 'str',
+        'inventory': 'int',
+        'stock_risk': 'str',
+        'deliveries_conditions': 'List[DeliveriesCondition]',
+        'subscriptions': 'int',
+        'fulfillment_network_id_type': 'str',
+        'forecast_deliveries': 'ForecastDeliveries',
     }
 
     attribute_map = {
@@ -50,9 +58,17 @@ class ListOffersResponseOffer(object):
         'offer_program_configuration': 'offerProgramConfiguration',
         'program_type': 'programType',
         'vendor_codes': 'vendorCodes',
+        'price': 'price',
+        'price_currency_code': 'priceCurrencyCode',
+        'inventory': 'inventory',
+        'stock_risk': 'stockRisk',
+        'deliveries_conditions': 'deliveriesConditions',
+        'subscriptions': 'subscriptions',
+        'fulfillment_network_id_type': 'fulfillmentNetworkIDType',
+        'forecast_deliveries': 'forecastDeliveries',
     }
 
-    def __init__(self, sku=None, asin=None, marketplace_id=None, eligibility=None, offer_program_configuration=None, program_type=None, vendor_codes=None, _configuration=None):  # noqa: E501
+    def __init__(self, sku=None, asin=None, marketplace_id=None, eligibility=None, offer_program_configuration=None, program_type=None, vendor_codes=None, price=None, price_currency_code=None, inventory=None, stock_risk=None, deliveries_conditions=None, subscriptions=None, fulfillment_network_id_type=None, forecast_deliveries=None, _configuration=None):  # noqa: E501
         """ListOffersResponseOffer - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -65,6 +81,14 @@ class ListOffersResponseOffer(object):
         self._offer_program_configuration = None
         self._program_type = None
         self._vendor_codes = None
+        self._price = None
+        self._price_currency_code = None
+        self._inventory = None
+        self._stock_risk = None
+        self._deliveries_conditions = None
+        self._subscriptions = None
+        self._fulfillment_network_id_type = None
+        self._forecast_deliveries = None
         self.discriminator = None
 
         if sku is not None:
@@ -81,6 +105,22 @@ class ListOffersResponseOffer(object):
             self.program_type = program_type
         if vendor_codes is not None:
             self.vendor_codes = vendor_codes
+        if price is not None:
+            self.price = price
+        if price_currency_code is not None:
+            self.price_currency_code = price_currency_code
+        if inventory is not None:
+            self.inventory = inventory
+        if stock_risk is not None:
+            self.stock_risk = stock_risk
+        if deliveries_conditions is not None:
+            self.deliveries_conditions = deliveries_conditions
+        if subscriptions is not None:
+            self.subscriptions = subscriptions
+        if fulfillment_network_id_type is not None:
+            self.fulfillment_network_id_type = fulfillment_network_id_type
+        if forecast_deliveries is not None:
+            self.forecast_deliveries = forecast_deliveries
 
     @property
     def sku(self):
@@ -132,7 +172,7 @@ class ListOffersResponseOffer(object):
     def marketplace_id(self):
         """Gets the marketplace_id of this ListOffersResponseOffer.  # noqa: E501
 
-        The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.  # noqa: E501
+        The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.  # noqa: E501
 
         :return: The marketplace_id of this ListOffersResponseOffer.  # noqa: E501
         :rtype: str
@@ -143,7 +183,7 @@ class ListOffersResponseOffer(object):
     def marketplace_id(self, marketplace_id):
         """Sets the marketplace_id of this ListOffersResponseOffer.
 
-        The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.  # noqa: E501
+        The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.  # noqa: E501
 
         :param marketplace_id: The marketplace_id of this ListOffersResponseOffer.  # noqa: E501
         :type: str
@@ -236,6 +276,197 @@ class ListOffersResponseOffer(object):
         """
 
         self._vendor_codes = vendor_codes
+
+    @property
+    def price(self):
+        """Gets the price of this ListOffersResponseOffer.  # noqa: E501
+
+        The current price of the offer. This is the listed price amount for the item.  # noqa: E501
+
+        :return: The price of this ListOffersResponseOffer.  # noqa: E501
+        :rtype: float
+        """
+        return self._price
+
+    @price.setter
+    def price(self, price):
+        """Sets the price of this ListOffersResponseOffer.
+
+        The current price of the offer. This is the listed price amount for the item.  # noqa: E501
+
+        :param price: The price of this ListOffersResponseOffer.  # noqa: E501
+        :type: float
+        """
+        if (self._configuration.client_side_validation and
+                price is not None and price < 0):  # noqa: E501
+            raise ValueError("Invalid value for `price`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._price = price
+
+    @property
+    def price_currency_code(self):
+        """Gets the price_currency_code of this ListOffersResponseOffer.  # noqa: E501
+
+        The currency code in ISO 4217 format for the price. For example, `USD` for US dollars.  # noqa: E501
+
+        :return: The price_currency_code of this ListOffersResponseOffer.  # noqa: E501
+        :rtype: str
+        """
+        return self._price_currency_code
+
+    @price_currency_code.setter
+    def price_currency_code(self, price_currency_code):
+        """Sets the price_currency_code of this ListOffersResponseOffer.
+
+        The currency code in ISO 4217 format for the price. For example, `USD` for US dollars.  # noqa: E501
+
+        :param price_currency_code: The price_currency_code of this ListOffersResponseOffer.  # noqa: E501
+        :type: str
+        """
+
+        self._price_currency_code = price_currency_code
+
+    @property
+    def inventory(self):
+        """Gets the inventory of this ListOffersResponseOffer.  # noqa: E501
+
+        The available inventory count for the offer.  # noqa: E501
+
+        :return: The inventory of this ListOffersResponseOffer.  # noqa: E501
+        :rtype: int
+        """
+        return self._inventory
+
+    @inventory.setter
+    def inventory(self, inventory):
+        """Sets the inventory of this ListOffersResponseOffer.
+
+        The available inventory count for the offer.  # noqa: E501
+
+        :param inventory: The inventory of this ListOffersResponseOffer.  # noqa: E501
+        :type: int
+        """
+        if (self._configuration.client_side_validation and
+                inventory is not None and inventory < 0):  # noqa: E501
+            raise ValueError("Invalid value for `inventory`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._inventory = inventory
+
+    @property
+    def stock_risk(self):
+        """Gets the stock_risk of this ListOffersResponseOffer.  # noqa: E501
+
+        The stock risk level of the offer, indicating the risk of the offer going out of stock.  # noqa: E501
+
+        :return: The stock_risk of this ListOffersResponseOffer.  # noqa: E501
+        :rtype: str
+        """
+        return self._stock_risk
+
+    @stock_risk.setter
+    def stock_risk(self, stock_risk):
+        """Sets the stock_risk of this ListOffersResponseOffer.
+
+        The stock risk level of the offer, indicating the risk of the offer going out of stock.  # noqa: E501
+
+        :param stock_risk: The stock_risk of this ListOffersResponseOffer.  # noqa: E501
+        :type: str
+        """
+
+        self._stock_risk = stock_risk
+
+    @property
+    def deliveries_conditions(self):
+        """Gets the deliveries_conditions of this ListOffersResponseOffer.  # noqa: E501
+
+        A list of delivery conditions for the offer, indicating the health of upcoming deliveries. Each condition describes the quantity of upcoming deliveries associated with a particular delivery condition type.  # noqa: E501
+
+        :return: The deliveries_conditions of this ListOffersResponseOffer.  # noqa: E501
+        :rtype: List[DeliveriesCondition]
+        """
+        return self._deliveries_conditions
+
+    @deliveries_conditions.setter
+    def deliveries_conditions(self, deliveries_conditions):
+        """Sets the deliveries_conditions of this ListOffersResponseOffer.
+
+        A list of delivery conditions for the offer, indicating the health of upcoming deliveries. Each condition describes the quantity of upcoming deliveries associated with a particular delivery condition type.  # noqa: E501
+
+        :param deliveries_conditions: The deliveries_conditions of this ListOffersResponseOffer.  # noqa: E501
+        :type: List[DeliveriesCondition]
+        """
+
+        self._deliveries_conditions = deliveries_conditions
+
+    @property
+    def subscriptions(self):
+        """Gets the subscriptions of this ListOffersResponseOffer.  # noqa: E501
+
+        The number of active subscriptions for the offer.  # noqa: E501
+
+        :return: The subscriptions of this ListOffersResponseOffer.  # noqa: E501
+        :rtype: int
+        """
+        return self._subscriptions
+
+    @subscriptions.setter
+    def subscriptions(self, subscriptions):
+        """Sets the subscriptions of this ListOffersResponseOffer.
+
+        The number of active subscriptions for the offer.  # noqa: E501
+
+        :param subscriptions: The subscriptions of this ListOffersResponseOffer.  # noqa: E501
+        :type: int
+        """
+        if (self._configuration.client_side_validation and
+                subscriptions is not None and subscriptions < 0):  # noqa: E501
+            raise ValueError("Invalid value for `subscriptions`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._subscriptions = subscriptions
+
+    @property
+    def fulfillment_network_id_type(self):
+        """Gets the fulfillment_network_id_type of this ListOffersResponseOffer.  # noqa: E501
+
+        The fulfillment network identifier type for the offer, indicating how the offer is fulfilled.  # noqa: E501
+
+        :return: The fulfillment_network_id_type of this ListOffersResponseOffer.  # noqa: E501
+        :rtype: str
+        """
+        return self._fulfillment_network_id_type
+
+    @fulfillment_network_id_type.setter
+    def fulfillment_network_id_type(self, fulfillment_network_id_type):
+        """Sets the fulfillment_network_id_type of this ListOffersResponseOffer.
+
+        The fulfillment network identifier type for the offer, indicating how the offer is fulfilled.  # noqa: E501
+
+        :param fulfillment_network_id_type: The fulfillment_network_id_type of this ListOffersResponseOffer.  # noqa: E501
+        :type: str
+        """
+
+        self._fulfillment_network_id_type = fulfillment_network_id_type
+
+    @property
+    def forecast_deliveries(self):
+        """Gets the forecast_deliveries of this ListOffersResponseOffer.  # noqa: E501
+
+
+        :return: The forecast_deliveries of this ListOffersResponseOffer.  # noqa: E501
+        :rtype: ForecastDeliveries
+        """
+        return self._forecast_deliveries
+
+    @forecast_deliveries.setter
+    def forecast_deliveries(self, forecast_deliveries):
+        """Sets the forecast_deliveries of this ListOffersResponseOffer.
+
+
+        :param forecast_deliveries: The forecast_deliveries of this ListOffersResponseOffer.  # noqa: E501
+        :type: ForecastDeliveries
+        """
+
+        self._forecast_deliveries = forecast_deliveries
 
     def to_dict(self):
         """Returns the model properties as a dict"""

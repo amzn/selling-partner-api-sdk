@@ -51,6 +51,8 @@ from spapi.models.services_v1.get_service_jobs_response import GetServiceJobsRes
 from spapi.models.services_v1.item_delivery import ItemDelivery
 from spapi.models.services_v1.item_delivery_promise import ItemDeliveryPromise
 from spapi.models.services_v1.job_listing import JobListing
+from spapi.models.services_v1.money_amount import MoneyAmount
+from spapi.models.services_v1.payment import Payment
 from spapi.models.services_v1.poa import Poa
 from spapi.models.services_v1.range_capacity import RangeCapacity
 from spapi.models.services_v1.range_slot import RangeSlot

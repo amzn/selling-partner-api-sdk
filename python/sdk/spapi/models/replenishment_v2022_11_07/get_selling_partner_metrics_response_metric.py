@@ -64,6 +64,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
         'signup_conversion_for5_percent_seller_funding': 'float',
         'signup_conversion_for10_percent_seller_funding': 'float',
         'signup_conversion_for5_plus_percent_seller_funding': 'float',
+        'revenue_penetration': 'float',
         'time_interval': 'TimeInterval',
         'currency_code': 'str',
     }
@@ -100,11 +101,12 @@ class GetSellingPartnerMetricsResponseMetric(object):
         'signup_conversion_for5_percent_seller_funding': 'signupConversionFor5PercentSellerFunding',
         'signup_conversion_for10_percent_seller_funding': 'signupConversionFor10PercentSellerFunding',
         'signup_conversion_for5_plus_percent_seller_funding': 'signupConversionFor5PlusPercentSellerFunding',
+        'revenue_penetration': 'revenuePenetration',
         'time_interval': 'timeInterval',
         'currency_code': 'currencyCode',
     }
 
-    def __init__(self, not_delivered_due_to_oos=None, total_subscriptions_revenue=None, shipped_subscription_units=None, active_subscriptions=None, subscriber_average_revenue=None, non_subscriber_average_revenue=None, lost_revenue_due_to_oos=None, subscriber_average_reorders=None, non_subscriber_average_reorders=None, coupons_revenue_penetration=None, revenue_from_subscriptions_with_multiple_deliveries=None, revenue_from_active_subscriptions_with_single_delivery=None, revenue_from_cancelled_subscriptions_after_single_delivery=None, subscriber_retention_for30_days=None, subscriber_retention_for90_days=None, revenue_penetration_for0_percent_seller_funding=None, revenue_penetration_for5_percent_seller_funding=None, revenue_penetration_for10_percent_seller_funding=None, revenue_penetration_for5_plus_percent_seller_funding=None, share_of_coupon_subscriptions=None, non_subscriber_life_time_value_from_otp=None, lost_subscriber_life_time_value_from_otp=None, lost_subscriber_life_time_value_from_sns=None, growing_subscriber_life_time_value_from_otp=None, growing_subscriber_life_time_value_from_sns=None, established_subscriber_life_time_value_from_otp=None, established_subscriber_life_time_value_from_sns=None, signup_conversion_for0_percent_seller_funding=None, signup_conversion_for5_percent_seller_funding=None, signup_conversion_for10_percent_seller_funding=None, signup_conversion_for5_plus_percent_seller_funding=None, time_interval=None, currency_code=None, _configuration=None):  # noqa: E501
+    def __init__(self, not_delivered_due_to_oos=None, total_subscriptions_revenue=None, shipped_subscription_units=None, active_subscriptions=None, subscriber_average_revenue=None, non_subscriber_average_revenue=None, lost_revenue_due_to_oos=None, subscriber_average_reorders=None, non_subscriber_average_reorders=None, coupons_revenue_penetration=None, revenue_from_subscriptions_with_multiple_deliveries=None, revenue_from_active_subscriptions_with_single_delivery=None, revenue_from_cancelled_subscriptions_after_single_delivery=None, subscriber_retention_for30_days=None, subscriber_retention_for90_days=None, revenue_penetration_for0_percent_seller_funding=None, revenue_penetration_for5_percent_seller_funding=None, revenue_penetration_for10_percent_seller_funding=None, revenue_penetration_for5_plus_percent_seller_funding=None, share_of_coupon_subscriptions=None, non_subscriber_life_time_value_from_otp=None, lost_subscriber_life_time_value_from_otp=None, lost_subscriber_life_time_value_from_sns=None, growing_subscriber_life_time_value_from_otp=None, growing_subscriber_life_time_value_from_sns=None, established_subscriber_life_time_value_from_otp=None, established_subscriber_life_time_value_from_sns=None, signup_conversion_for0_percent_seller_funding=None, signup_conversion_for5_percent_seller_funding=None, signup_conversion_for10_percent_seller_funding=None, signup_conversion_for5_plus_percent_seller_funding=None, revenue_penetration=None, time_interval=None, currency_code=None, _configuration=None):  # noqa: E501
         """GetSellingPartnerMetricsResponseMetric - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -141,6 +143,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
         self._signup_conversion_for5_percent_seller_funding = None
         self._signup_conversion_for10_percent_seller_funding = None
         self._signup_conversion_for5_plus_percent_seller_funding = None
+        self._revenue_penetration = None
         self._time_interval = None
         self._currency_code = None
         self.discriminator = None
@@ -207,6 +210,8 @@ class GetSellingPartnerMetricsResponseMetric(object):
             self.signup_conversion_for10_percent_seller_funding = signup_conversion_for10_percent_seller_funding
         if signup_conversion_for5_plus_percent_seller_funding is not None:
             self.signup_conversion_for5_plus_percent_seller_funding = signup_conversion_for5_plus_percent_seller_funding
+        if revenue_penetration is not None:
+            self.revenue_penetration = revenue_penetration
         if time_interval is not None:
             self.time_interval = time_interval
         if currency_code is not None:
@@ -763,7 +768,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def non_subscriber_life_time_value_from_otp(self):
         """Gets the non_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        Total revenue from customers who have made purchases from your catalog but have never subscribed to any products  # noqa: E501
+        Total revenue from customers who have made purchases from your catalog but have never subscribed to any products.  # noqa: E501
 
         :return: The non_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -774,7 +779,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def non_subscriber_life_time_value_from_otp(self, non_subscriber_life_time_value_from_otp):
         """Sets the non_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.
 
-        Total revenue from customers who have made purchases from your catalog but have never subscribed to any products  # noqa: E501
+        Total revenue from customers who have made purchases from your catalog but have never subscribed to any products.  # noqa: E501
 
         :param non_subscriber_life_time_value_from_otp: The non_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -1056,6 +1061,35 @@ class GetSellingPartnerMetricsResponseMetric(object):
             raise ValueError("Invalid value for `signup_conversion_for5_plus_percent_seller_funding`, must be a value greater than or equal to `0`")  # noqa: E501
 
         self._signup_conversion_for5_plus_percent_seller_funding = signup_conversion_for5_plus_percent_seller_funding
+
+    @property
+    def revenue_penetration(self):
+        """Gets the revenue_penetration of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+
+        The percentage of total program revenue out of total product revenue over a period of time. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
+
+        :return: The revenue_penetration of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :rtype: float
+        """
+        return self._revenue_penetration
+
+    @revenue_penetration.setter
+    def revenue_penetration(self, revenue_penetration):
+        """Sets the revenue_penetration of this GetSellingPartnerMetricsResponseMetric.
+
+        The percentage of total program revenue out of total product revenue over a period of time. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
+
+        :param revenue_penetration: The revenue_penetration of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :type: float
+        """
+        if (self._configuration.client_side_validation and
+                revenue_penetration is not None and revenue_penetration > 1E+2):  # noqa: E501
+            raise ValueError("Invalid value for `revenue_penetration`, must be a value less than or equal to `1E+2`")  # noqa: E501
+        if (self._configuration.client_side_validation and
+                revenue_penetration is not None and revenue_penetration < 0):  # noqa: E501
+            raise ValueError("Invalid value for `revenue_penetration`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._revenue_penetration = revenue_penetration
 
     @property
     def time_interval(self):
