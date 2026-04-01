@@ -112,7 +112,7 @@ public class ReportsApiTest {
         instructBackendMock("reports", "getReportDocument", "200");
         String reportDocumentId = easyRandom.nextObject(String.class);
 
-        ApiResponse<ReportDocument> response = api.getReportDocumentWithHttpInfo(reportDocumentId);
+        ApiResponse<ReportDocument> response = api.getReportDocumentWithHttpInfo(reportDocumentId, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

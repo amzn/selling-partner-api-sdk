@@ -42,6 +42,30 @@ public class ListOffersResponseOffer {
     @SerializedName("vendorCodes")
     private List<String> vendorCodes = null;
 
+    @SerializedName("price")
+    private Double price = null;
+
+    @SerializedName("priceCurrencyCode")
+    private String priceCurrencyCode = null;
+
+    @SerializedName("inventory")
+    private Long inventory = null;
+
+    @SerializedName("stockRisk")
+    private String stockRisk = null;
+
+    @SerializedName("deliveriesConditions")
+    private List<DeliveriesCondition> deliveriesConditions = null;
+
+    @SerializedName("subscriptions")
+    private Long subscriptions = null;
+
+    @SerializedName("fulfillmentNetworkIDType")
+    private String fulfillmentNetworkIDType = null;
+
+    @SerializedName("forecastDeliveries")
+    private ForecastDeliveries forecastDeliveries = null;
+
     public ListOffersResponseOffer sku(String sku) {
         this.sku = sku;
         return this;
@@ -183,6 +207,171 @@ public class ListOffersResponseOffer {
         this.vendorCodes = vendorCodes;
     }
 
+    public ListOffersResponseOffer price(Double price) {
+        this.price = price;
+        return this;
+    }
+
+    /**
+     * The current price of the offer. This is the listed price amount for the item. minimum: 0
+     *
+     * @return price
+     */
+    @Schema(description = "The current price of the offer. This is the listed price amount for the item.")
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public ListOffersResponseOffer priceCurrencyCode(String priceCurrencyCode) {
+        this.priceCurrencyCode = priceCurrencyCode;
+        return this;
+    }
+
+    /**
+     * The currency code in ISO 4217 format for the price. For example, &#x60;USD&#x60; for US dollars.
+     *
+     * @return priceCurrencyCode
+     */
+    @Schema(description = "The currency code in ISO 4217 format for the price. For example, `USD` for US dollars.")
+    public String getPriceCurrencyCode() {
+        return priceCurrencyCode;
+    }
+
+    public void setPriceCurrencyCode(String priceCurrencyCode) {
+        this.priceCurrencyCode = priceCurrencyCode;
+    }
+
+    public ListOffersResponseOffer inventory(Long inventory) {
+        this.inventory = inventory;
+        return this;
+    }
+
+    /**
+     * The available inventory count for the offer. minimum: 0
+     *
+     * @return inventory
+     */
+    @Schema(description = "The available inventory count for the offer.")
+    public Long getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Long inventory) {
+        this.inventory = inventory;
+    }
+
+    public ListOffersResponseOffer stockRisk(String stockRisk) {
+        this.stockRisk = stockRisk;
+        return this;
+    }
+
+    /**
+     * The stock risk level of the offer, indicating the risk of the offer going out of stock.
+     *
+     * @return stockRisk
+     */
+    @Schema(description = "The stock risk level of the offer, indicating the risk of the offer going out of stock.")
+    public String getStockRisk() {
+        return stockRisk;
+    }
+
+    public void setStockRisk(String stockRisk) {
+        this.stockRisk = stockRisk;
+    }
+
+    public ListOffersResponseOffer deliveriesConditions(List<DeliveriesCondition> deliveriesConditions) {
+        this.deliveriesConditions = deliveriesConditions;
+        return this;
+    }
+
+    public ListOffersResponseOffer addDeliveriesConditionsItem(DeliveriesCondition deliveriesConditionsItem) {
+        if (this.deliveriesConditions == null) {
+            this.deliveriesConditions = new ArrayList<DeliveriesCondition>();
+        }
+        this.deliveriesConditions.add(deliveriesConditionsItem);
+        return this;
+    }
+
+    /**
+     * A list of delivery conditions for the offer, indicating the health of upcoming deliveries. Each condition
+     * describes the quantity of upcoming deliveries associated with a particular delivery condition type.
+     *
+     * @return deliveriesConditions
+     */
+    @Schema(
+            description =
+                    "A list of delivery conditions for the offer, indicating the health of upcoming deliveries. Each condition describes the quantity of upcoming deliveries associated with a particular delivery condition type.")
+    public List<DeliveriesCondition> getDeliveriesConditions() {
+        return deliveriesConditions;
+    }
+
+    public void setDeliveriesConditions(List<DeliveriesCondition> deliveriesConditions) {
+        this.deliveriesConditions = deliveriesConditions;
+    }
+
+    public ListOffersResponseOffer subscriptions(Long subscriptions) {
+        this.subscriptions = subscriptions;
+        return this;
+    }
+
+    /**
+     * The number of active subscriptions for the offer. minimum: 0
+     *
+     * @return subscriptions
+     */
+    @Schema(description = "The number of active subscriptions for the offer.")
+    public Long getSubscriptions() {
+        return subscriptions;
+    }
+
+    public void setSubscriptions(Long subscriptions) {
+        this.subscriptions = subscriptions;
+    }
+
+    public ListOffersResponseOffer fulfillmentNetworkIDType(String fulfillmentNetworkIDType) {
+        this.fulfillmentNetworkIDType = fulfillmentNetworkIDType;
+        return this;
+    }
+
+    /**
+     * The fulfillment network identifier type for the offer, indicating how the offer is fulfilled.
+     *
+     * @return fulfillmentNetworkIDType
+     */
+    @Schema(
+            description =
+                    "The fulfillment network identifier type for the offer, indicating how the offer is fulfilled.")
+    public String getFulfillmentNetworkIDType() {
+        return fulfillmentNetworkIDType;
+    }
+
+    public void setFulfillmentNetworkIDType(String fulfillmentNetworkIDType) {
+        this.fulfillmentNetworkIDType = fulfillmentNetworkIDType;
+    }
+
+    public ListOffersResponseOffer forecastDeliveries(ForecastDeliveries forecastDeliveries) {
+        this.forecastDeliveries = forecastDeliveries;
+        return this;
+    }
+
+    /**
+     * Get forecastDeliveries
+     *
+     * @return forecastDeliveries
+     */
+    @Schema(description = "")
+    public ForecastDeliveries getForecastDeliveries() {
+        return forecastDeliveries;
+    }
+
+    public void setForecastDeliveries(ForecastDeliveries forecastDeliveries) {
+        this.forecastDeliveries = forecastDeliveries;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -198,12 +387,35 @@ public class ListOffersResponseOffer {
                 && Objects.equals(this.eligibility, listOffersResponseOffer.eligibility)
                 && Objects.equals(this.offerProgramConfiguration, listOffersResponseOffer.offerProgramConfiguration)
                 && Objects.equals(this.programType, listOffersResponseOffer.programType)
-                && Objects.equals(this.vendorCodes, listOffersResponseOffer.vendorCodes);
+                && Objects.equals(this.vendorCodes, listOffersResponseOffer.vendorCodes)
+                && Objects.equals(this.price, listOffersResponseOffer.price)
+                && Objects.equals(this.priceCurrencyCode, listOffersResponseOffer.priceCurrencyCode)
+                && Objects.equals(this.inventory, listOffersResponseOffer.inventory)
+                && Objects.equals(this.stockRisk, listOffersResponseOffer.stockRisk)
+                && Objects.equals(this.deliveriesConditions, listOffersResponseOffer.deliveriesConditions)
+                && Objects.equals(this.subscriptions, listOffersResponseOffer.subscriptions)
+                && Objects.equals(this.fulfillmentNetworkIDType, listOffersResponseOffer.fulfillmentNetworkIDType)
+                && Objects.equals(this.forecastDeliveries, listOffersResponseOffer.forecastDeliveries);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(sku, asin, marketplaceId, eligibility, offerProgramConfiguration, programType, vendorCodes);
+        return Objects.hash(
+                sku,
+                asin,
+                marketplaceId,
+                eligibility,
+                offerProgramConfiguration,
+                programType,
+                vendorCodes,
+                price,
+                priceCurrencyCode,
+                inventory,
+                stockRisk,
+                deliveriesConditions,
+                subscriptions,
+                fulfillmentNetworkIDType,
+                forecastDeliveries);
     }
 
     @Override
@@ -220,6 +432,22 @@ public class ListOffersResponseOffer {
                 .append("\n");
         sb.append("    programType: ").append(toIndentedString(programType)).append("\n");
         sb.append("    vendorCodes: ").append(toIndentedString(vendorCodes)).append("\n");
+        sb.append("    price: ").append(toIndentedString(price)).append("\n");
+        sb.append("    priceCurrencyCode: ")
+                .append(toIndentedString(priceCurrencyCode))
+                .append("\n");
+        sb.append("    inventory: ").append(toIndentedString(inventory)).append("\n");
+        sb.append("    stockRisk: ").append(toIndentedString(stockRisk)).append("\n");
+        sb.append("    deliveriesConditions: ")
+                .append(toIndentedString(deliveriesConditions))
+                .append("\n");
+        sb.append("    subscriptions: ").append(toIndentedString(subscriptions)).append("\n");
+        sb.append("    fulfillmentNetworkIDType: ")
+                .append(toIndentedString(fulfillmentNetworkIDType))
+                .append("\n");
+        sb.append("    forecastDeliveries: ")
+                .append(toIndentedString(forecastDeliveries))
+                .append("\n");
         sb.append("}");
         return sb.toString();
     }

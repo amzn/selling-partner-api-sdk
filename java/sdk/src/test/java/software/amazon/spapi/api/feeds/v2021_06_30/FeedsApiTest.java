@@ -101,7 +101,7 @@ public class FeedsApiTest {
         instructBackendMock("feeds", "getFeedDocument", "200");
         String feedDocumentId = easyRandom.nextObject(String.class);
 
-        ApiResponse<FeedDocument> response = api.getFeedDocumentWithHttpInfo(feedDocumentId);
+        ApiResponse<FeedDocument> response = api.getFeedDocumentWithHttpInfo(feedDocumentId, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

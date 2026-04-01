@@ -380,7 +380,7 @@ public class ServiceApi {
     /**
      * Build call for assignAppointmentResources
      *
-     * @param body (required)
+     * @param body Input containing the resource details to be assigned to the appointment. (required)
      * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
      *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
@@ -469,7 +469,7 @@ public class ServiceApi {
      * require higher throughput may see higher rate and burst values than those shown here. For more information, see
      * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body Input containing the resource details to be assigned to the appointment. (required)
      * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
      *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
@@ -497,7 +497,7 @@ public class ServiceApi {
      * require higher throughput may see higher rate and burst values than those shown here. For more information, see
      * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body Input containing the resource details to be assigned to the appointment. (required)
      * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
      *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
@@ -521,7 +521,7 @@ public class ServiceApi {
      * require higher throughput may see higher rate and burst values than those shown here. For more information, see
      * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body Input containing the resource details to be assigned to the appointment. (required)
      * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
      *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
@@ -559,7 +559,7 @@ public class ServiceApi {
      * require higher throughput may see higher rate and burst values than those shown here. For more information, see
      * [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body Input containing the resource details to be assigned to the appointment. (required)
      * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
      *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
@@ -582,7 +582,7 @@ public class ServiceApi {
      * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
      * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body Input containing the resource details to be assigned to the appointment. (required)
      * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
      *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)
@@ -608,7 +608,7 @@ public class ServiceApi {
      * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
      * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body Input containing the resource details to be assigned to the appointment. (required)
      * @param serviceJobId An Amazon-defined service job identifier. Get this value by calling the
      *     &#x60;getServiceJobs&#x60; operation of the Services API. (required)
      * @param appointmentId An Amazon-defined identifier of active service job appointment. (required)

@@ -1157,13 +1157,18 @@ public class ReportsApi {
      * Build call for getReportDocument
      *
      * @param reportDocumentId The identifier for the report document. (required)
+     * @param enableContentEncodingUrlHeader When &#x60;true&#x60;, the Content-Encoding header on the returned URL is
+     *     set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is
+     *     &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getReportDocumentCall(
-            String reportDocumentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String reportDocumentId,
+            Boolean enableContentEncodingUrlHeader,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1181,6 +1186,9 @@ public class ReportsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (enableContentEncodingUrlHeader != null)
+            localVarQueryParams.addAll(
+                    apiClient.parameterToPair("enableContentEncodingUrlHeader", enableContentEncodingUrlHeader));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1207,7 +1215,9 @@ public class ReportsApi {
     }
 
     private okhttp3.Call getReportDocumentValidateBeforeCall(
-            String reportDocumentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String reportDocumentId,
+            Boolean enableContentEncodingUrlHeader,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'reportDocumentId' is set
         if (reportDocumentId == null) {
@@ -1215,7 +1225,7 @@ public class ReportsApi {
                     "Missing the required parameter 'reportDocumentId' when calling getReportDocument(Async)");
         }
 
-        return getReportDocumentCall(reportDocumentId, progressRequestListener);
+        return getReportDocumentCall(reportDocumentId, enableContentEncodingUrlHeader, progressRequestListener);
     }
 
     /**
@@ -1228,14 +1238,19 @@ public class ReportsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param reportDocumentId The identifier for the report document. (required)
+     * @param enableContentEncodingUrlHeader When &#x60;true&#x60;, the Content-Encoding header on the returned URL is
+     *     set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is
+     *     &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ReportDocument
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ReportDocument getReportDocument(String reportDocumentId, String restrictedDataToken)
+    public ReportDocument getReportDocument(
+            String reportDocumentId, Boolean enableContentEncodingUrlHeader, String restrictedDataToken)
             throws ApiException, LWAException {
-        ApiResponse<ReportDocument> resp = getReportDocumentWithHttpInfo(reportDocumentId, restrictedDataToken);
+        ApiResponse<ReportDocument> resp =
+                getReportDocumentWithHttpInfo(reportDocumentId, enableContentEncodingUrlHeader, restrictedDataToken);
         return resp.getData();
     }
 
@@ -1249,12 +1264,17 @@ public class ReportsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param reportDocumentId The identifier for the report document. (required)
+     * @param enableContentEncodingUrlHeader When &#x60;true&#x60;, the Content-Encoding header on the returned URL is
+     *     set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is
+     *     &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      * @return ReportDocument
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ReportDocument getReportDocument(String reportDocumentId) throws ApiException, LWAException {
-        ApiResponse<ReportDocument> resp = getReportDocumentWithHttpInfo(reportDocumentId, null);
+    public ReportDocument getReportDocument(String reportDocumentId, Boolean enableContentEncodingUrlHeader)
+            throws ApiException, LWAException {
+        ApiResponse<ReportDocument> resp =
+                getReportDocumentWithHttpInfo(reportDocumentId, enableContentEncodingUrlHeader, null);
         return resp.getData();
     }
 
@@ -1268,14 +1288,18 @@ public class ReportsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param reportDocumentId The identifier for the report document. (required)
+     * @param enableContentEncodingUrlHeader When &#x60;true&#x60;, the Content-Encoding header on the returned URL is
+     *     set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is
+     *     &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;ReportDocument&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<ReportDocument> getReportDocumentWithHttpInfo(
-            String reportDocumentId, String restrictedDataToken) throws ApiException, LWAException {
-        okhttp3.Call call = getReportDocumentValidateBeforeCall(reportDocumentId, null);
+            String reportDocumentId, Boolean enableContentEncodingUrlHeader, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getReportDocumentValidateBeforeCall(reportDocumentId, enableContentEncodingUrlHeader, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -1299,13 +1323,16 @@ public class ReportsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param reportDocumentId The identifier for the report document. (required)
+     * @param enableContentEncodingUrlHeader When &#x60;true&#x60;, the Content-Encoding header on the returned URL is
+     *     set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is
+     *     &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      * @return ApiResponse&lt;ReportDocument&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<ReportDocument> getReportDocumentWithHttpInfo(String reportDocumentId)
-            throws ApiException, LWAException {
-        return getReportDocumentWithHttpInfo(reportDocumentId, null);
+    public ApiResponse<ReportDocument> getReportDocumentWithHttpInfo(
+            String reportDocumentId, Boolean enableContentEncodingUrlHeader) throws ApiException, LWAException {
+        return getReportDocumentWithHttpInfo(reportDocumentId, enableContentEncodingUrlHeader, null);
     }
 
     /**
@@ -1318,14 +1345,18 @@ public class ReportsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param reportDocumentId The identifier for the report document. (required)
+     * @param enableContentEncodingUrlHeader When &#x60;true&#x60;, the Content-Encoding header on the returned URL is
+     *     set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is
+     *     &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call getReportDocumentAsync(String reportDocumentId, final ApiCallback<ReportDocument> callback)
+    public okhttp3.Call getReportDocumentAsync(
+            String reportDocumentId, Boolean enableContentEncodingUrlHeader, final ApiCallback<ReportDocument> callback)
             throws ApiException, LWAException {
-        return getReportDocumentAsync(reportDocumentId, callback, null);
+        return getReportDocumentAsync(reportDocumentId, enableContentEncodingUrlHeader, callback, null);
     }
     /**
      * (asynchronously) Returns the information required for retrieving a report document&#x27;s contents. **Usage
@@ -1337,6 +1368,9 @@ public class ReportsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param reportDocumentId The identifier for the report document. (required)
+     * @param enableContentEncodingUrlHeader When &#x60;true&#x60;, the Content-Encoding header on the returned URL is
+     *     set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is
+     *     &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -1344,7 +1378,10 @@ public class ReportsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getReportDocumentAsync(
-            String reportDocumentId, final ApiCallback<ReportDocument> callback, String restrictedDataToken)
+            String reportDocumentId,
+            Boolean enableContentEncodingUrlHeader,
+            final ApiCallback<ReportDocument> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1353,7 +1390,8 @@ public class ReportsApi {
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getReportDocumentValidateBeforeCall(reportDocumentId, progressRequestListener);
+        okhttp3.Call call = getReportDocumentValidateBeforeCall(
+                reportDocumentId, enableContentEncodingUrlHeader, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();

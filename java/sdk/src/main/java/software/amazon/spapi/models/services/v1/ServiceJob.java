@@ -125,6 +125,9 @@ public class ServiceJob {
     @SerializedName("serviceLocation")
     private ServiceLocation serviceLocation = null;
 
+    @SerializedName("payments")
+    private List<Payment> payments = null;
+
     public ServiceJob createTime(OffsetDateTime createTime) {
         this.createTime = createTime;
         return this;
@@ -418,6 +421,33 @@ public class ServiceJob {
         this.serviceLocation = serviceLocation;
     }
 
+    public ServiceJob payments(List<Payment> payments) {
+        this.payments = payments;
+        return this;
+    }
+
+    public ServiceJob addPaymentsItem(Payment paymentsItem) {
+        if (this.payments == null) {
+            this.payments = new ArrayList<Payment>();
+        }
+        this.payments.add(paymentsItem);
+        return this;
+    }
+
+    /**
+     * A list that contains payment information for the service job.
+     *
+     * @return payments
+     */
+    @Schema(description = "A list that contains payment information for the service job.")
+    public List<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -440,7 +470,8 @@ public class ServiceJob {
                 && Objects.equals(this.storeId, serviceJob.storeId)
                 && Objects.equals(this.buyer, serviceJob.buyer)
                 && Objects.equals(this.associatedItems, serviceJob.associatedItems)
-                && Objects.equals(this.serviceLocation, serviceJob.serviceLocation);
+                && Objects.equals(this.serviceLocation, serviceJob.serviceLocation)
+                && Objects.equals(this.payments, serviceJob.payments);
     }
 
     @Override
@@ -459,7 +490,8 @@ public class ServiceJob {
                 storeId,
                 buyer,
                 associatedItems,
-                serviceLocation);
+                serviceLocation,
+                payments);
     }
 
     @Override
@@ -493,6 +525,7 @@ public class ServiceJob {
         sb.append("    serviceLocation: ")
                 .append(toIndentedString(serviceLocation))
                 .append("\n");
+        sb.append("    payments: ").append(toIndentedString(payments)).append("\n");
         sb.append("}");
         return sb.toString();
     }
