@@ -52,6 +52,8 @@ class CompetitiveSummaryIncludedData
 
     public const LOWEST_PRICED_OFFERS = 'lowestPricedOffers';
 
+    public const SIMILAR_ITEMS = 'similarItems';
+
     /**
      * Gets allowable values of the enum.
      *
@@ -63,6 +65,7 @@ class CompetitiveSummaryIncludedData
             self::FEATURED_BUYING_OPTIONS,
             self::REFERENCE_PRICES,
             self::LOWEST_PRICED_OFFERS,
+            self::SIMILAR_ITEMS,
         ];
     }
 }

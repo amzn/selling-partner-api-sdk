@@ -111,6 +111,7 @@ class SellingpartnersApiTest extends BaseTestCase
           &quot;signupConversionFor0PercentSellerFunding&quot; : 11.7,
           &quot;signupConversionFor5PercentSellerFunding&quot; : 7.3,
           &quot;signupConversionFor10PercentSellerFunding&quot; : 3.9,
+          &quot;revenuePenetration&quot; : 21.67,
           &quot;currencyCode&quot; : &quot;USD&quot;,
           &quot;timeInterval&quot; : {
             &quot;endDate&quot; : &quot;2025-05-09T22:36:56Z&quot;,
@@ -144,7 +145,7 @@ class SellingpartnersApiTest extends BaseTestCase
                 &quot;startDate&quot; : &quot;2022-01-01T00:00:00Z&quot;,
                 &quot;endDate&quot; : &quot;2022-12-31T00:00:00Z&quot;
               },
-              &quot;metrics&quot; : [ &quot;TOTAL_SUBSCRIPTIONS_REVENUE&quot; ],
+              &quot;metrics&quot; : [ &quot;TOTAL_SUBSCRIPTIONS_REVENUE&quot;, &quot;REVENUE_PENETRATION&quot; ],
               &quot;timePeriodType&quot; : &quot;PERFORMANCE&quot;,
               &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
               &quot;programTypes&quot; : [ &quot;SUBSCRIBE_AND_SAVE&quot; ]
@@ -176,6 +177,7 @@ class SellingpartnersApiTest extends BaseTestCase
           &quot;signupConversionFor0PercentSellerFunding&quot; : 11.7,
           &quot;signupConversionFor5PercentSellerFunding&quot; : 7.3,
           &quot;signupConversionFor10PercentSellerFunding&quot; : 3.9,
+          &quot;revenuePenetration&quot; : 21.67,
           &quot;currencyCode&quot; : &quot;USD&quot;,
           &quot;timeInterval&quot; : {
             &quot;endDate&quot; : &quot;2025-05-09T22:36:56Z&quot;,

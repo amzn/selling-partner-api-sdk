@@ -97,6 +97,8 @@ class OffersApiTest extends BaseTestCase
           &quot;lostRevenueDueToOOS&quot; : 12.32,
           &quot;couponsRevenuePenetration&quot; : 10,
           &quot;shareOfCouponSubscriptions&quot; : 24.04,
+          &quot;sku&quot; : &quot;SD-RES-101973&quot;,
+          &quot;fulfillmentChannelType&quot; : &quot;AMAZON&quot;,
           &quot;timeInterval&quot; : {
             &quot;endDate&quot; : &quot;2023-03-11T00:00:00Z&quot;,
             &quot;startDate&quot; : &quot;2023-03-05T00:00:00Z&quot;
@@ -111,6 +113,8 @@ class OffersApiTest extends BaseTestCase
           &quot;lostRevenueDueToOOS&quot; : 17.82,
           &quot;couponsRevenuePenetration&quot; : 17,
           &quot;shareOfCouponSubscriptions&quot; : 20.04,
+          &quot;sku&quot; : &quot;SD-RES-121973&quot;,
+          &quot;fulfillmentChannelType&quot; : &quot;MERCHANT&quot;,
           &quot;timeInterval&quot; : {
             &quot;endDate&quot; : &quot;2023-03-11T00:00:00Z&quot;,
             &quot;startDate&quot; : &quot;2023-03-05T00:00:00Z&quot;
@@ -155,6 +159,8 @@ class OffersApiTest extends BaseTestCase
       &quot;response&quot; : {
         &quot;offers&quot; : [ {
           &quot;asin&quot; : &quot;B07CYBR5GZ&quot;,
+          &quot;sku&quot; : &quot;SD-RES-101973&quot;,
+          &quot;fulfillmentChannelType&quot; : &quot;AMAZON&quot;,
           &quot;notDeliveredDueToOOS&quot; : 10.2,
           &quot;totalSubscriptionsRevenue&quot; : 100.45,
           &quot;revenuePenetration&quot; : 23.6,
@@ -170,6 +176,8 @@ class OffersApiTest extends BaseTestCase
           &quot;currencyCode&quot; : &quot;USD&quot;
         }, {
           &quot;asin&quot; : &quot;B07CYJJW8H&quot;,
+          &quot;sku&quot; : &quot;SD-RES-121973&quot;,
+          &quot;fulfillmentChannelType&quot; : &quot;MERCHANT&quot;,
           &quot;notDeliveredDueToOOS&quot; : 12.78,
           &quot;totalSubscriptionsRevenue&quot; : 80.11,
           &quot;revenuePenetration&quot; : 35.9,

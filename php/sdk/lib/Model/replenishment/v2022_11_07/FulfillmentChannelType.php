@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ListOffersSortKey.
+ * FulfillmentChannelType.
  *
  * PHP version 8.3
  *
@@ -31,38 +31,24 @@
 namespace SpApi\Model\replenishment\v2022_11_07;
 
 /**
- * ListOffersSortKey Class Doc Comment.
+ * FulfillmentChannelType Class Doc Comment.
  *
  * @category Class
  *
- * @description The attribute to use to sort the results.
+ * @description The fulfillment channel type of an offer. Note that this is only valid for sellers and not for vendors.
  *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech
  */
-class ListOffersSortKey
+class FulfillmentChannelType
 {
     /**
      * Possible values of this enum.
      */
-    public const ASIN = 'ASIN';
+    public const AMAZON = 'AMAZON';
 
-    public const SELLING_PARTNER_FUNDED_BASE_DISCOUNT_PERCENTAGE = 'SELLING_PARTNER_FUNDED_BASE_DISCOUNT_PERCENTAGE';
-
-    public const SELLING_PARTNER_FUNDED_TIERED_DISCOUNT_PERCENTAGE = 'SELLING_PARTNER_FUNDED_TIERED_DISCOUNT_PERCENTAGE';
-
-    public const AMAZON_FUNDED_BASE_DISCOUNT_PERCENTAGE = 'AMAZON_FUNDED_BASE_DISCOUNT_PERCENTAGE';
-
-    public const AMAZON_FUNDED_TIERED_DISCOUNT_PERCENTAGE = 'AMAZON_FUNDED_TIERED_DISCOUNT_PERCENTAGE';
-
-    public const INVENTORY = 'INVENTORY';
-
-    public const PRICE = 'PRICE';
-
-    public const SUBSCRIPTION_COUNT = 'SUBSCRIPTION_COUNT';
-
-    public const FULFILLMENT_NETWORK_ID_TYPE = 'FULFILLMENT_NETWORK_ID_TYPE';
+    public const MERCHANT = 'MERCHANT';
 
     /**
      * Gets allowable values of the enum.
@@ -72,15 +58,8 @@ class ListOffersSortKey
     public static function getAllowableEnumValues(): array
     {
         return [
-            self::ASIN,
-            self::SELLING_PARTNER_FUNDED_BASE_DISCOUNT_PERCENTAGE,
-            self::SELLING_PARTNER_FUNDED_TIERED_DISCOUNT_PERCENTAGE,
-            self::AMAZON_FUNDED_BASE_DISCOUNT_PERCENTAGE,
-            self::AMAZON_FUNDED_TIERED_DISCOUNT_PERCENTAGE,
-            self::INVENTORY,
-            self::PRICE,
-            self::SUBSCRIPTION_COUNT,
-            self::FULFILLMENT_NETWORK_ID_TYPE,
+            self::AMAZON,
+            self::MERCHANT,
         ];
     }
 }

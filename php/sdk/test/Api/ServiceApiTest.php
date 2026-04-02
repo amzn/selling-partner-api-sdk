@@ -375,12 +375,6 @@ class ServiceApiTest extends BaseTestCase
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
-    },
-    &quot;x-amzn-RateLimit-Limit&quot; : {
-      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.\n**Note:** For this status code, the rate limit header is deprecated and no longer returned.&quot;,
-      &quot;schema&quot; : {
-        &quot;type&quot; : &quot;string&quot;
-      }
     }
   },
   &quot;content&quot; : {
@@ -1076,12 +1070,6 @@ class ServiceApiTest extends BaseTestCase
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
       &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
-      &quot;schema&quot; : {
-        &quot;type&quot; : &quot;string&quot;
-      }
-    },
-    &quot;x-amzn-RateLimit-Limit&quot; : {
-      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.\n**Note:** For this status code, the rate limit header is deprecated and no longer returned.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -1971,12 +1959,6 @@ class ServiceApiTest extends BaseTestCase
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
-    },
-    &quot;x-amzn-RateLimit-Limit&quot; : {
-      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.\n**Note:** For this status code, the rate limit header is deprecated and no longer returned.&quot;,
-      &quot;schema&quot; : {
-        &quot;type&quot; : &quot;string&quot;
-      }
     }
   },
   &quot;content&quot; : {
@@ -2374,12 +2356,6 @@ class ServiceApiTest extends BaseTestCase
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
-    },
-    &quot;x-amzn-RateLimit-Limit&quot; : {
-      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.\n**Note:** For this status code, the rate limit header is deprecated and no longer returned.&quot;,
-      &quot;schema&quot; : {
-        &quot;type&quot; : &quot;string&quot;
-      }
     }
   },
   &quot;content&quot; : {
@@ -2769,7 +2745,7 @@ class ServiceApiTest extends BaseTestCase
             $jsonSchema = '{
   &quot;description&quot; : &quot;Successfully created an upload destination for the given resource.&quot;,
   &quot;headers&quot; : {
-    &quot;x-amzn-requestId&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
       &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
@@ -3009,12 +2985,6 @@ class ServiceApiTest extends BaseTestCase
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
       &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
-      &quot;schema&quot; : {
-        &quot;type&quot; : &quot;string&quot;
-      }
-    },
-    &quot;x-amzn-RateLimit-Limit&quot; : {
-      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.\n**Note:** For this status code, the rate limit header is deprecated and no longer returned.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -5326,12 +5296,6 @@ class ServiceApiTest extends BaseTestCase
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
-    },
-    &quot;x-amzn-RateLimit-Limit&quot; : {
-      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.\n**Note:** For this status code, the rate limit header is deprecated and no longer returned.&quot;,
-      &quot;schema&quot; : {
-        &quot;type&quot; : &quot;string&quot;
-      }
     }
   },
   &quot;content&quot; : {
@@ -6141,12 +6105,6 @@ class ServiceApiTest extends BaseTestCase
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
       &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
-      &quot;schema&quot; : {
-        &quot;type&quot; : &quot;string&quot;
-      }
-    },
-    &quot;x-amzn-RateLimit-Limit&quot; : {
-      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.\n**Note:** For this status code, the rate limit header is deprecated and no longer returned.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }

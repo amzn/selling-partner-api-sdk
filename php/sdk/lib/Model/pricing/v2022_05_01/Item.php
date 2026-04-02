@@ -1,7 +1,7 @@
 <?php
 
 /**
- * CompetitiveSummaryResponseBody.
+ * Item.
  *
  * PHP version 8.3
  *
@@ -34,11 +34,11 @@ use SpApi\Model\ModelInterface;
 use SpApi\ObjectSerializer;
 
 /**
- * CompetitiveSummaryResponseBody Class Doc Comment.
+ * Item Class Doc Comment.
  *
  * @category Class
  *
- * @description The &#x60;competitiveSummaryResponse&#x60; body for a requested ASIN and &#x60;marketplaceId&#x60;.
+ * @description A similar item for the specified ASIN &#x60;marketplaceId&#x60; combination.
  *
  * @author   OpenAPI Generator team
  *
@@ -46,14 +46,14 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class CompetitiveSummaryResponseBody implements ModelInterface, \ArrayAccess, \JsonSerializable
+class Item implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'CompetitiveSummaryResponseBody';
+    protected static string $openAPIModelName = 'Item';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,13 +61,7 @@ class CompetitiveSummaryResponseBody implements ModelInterface, \ArrayAccess, \J
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'asin' => 'string',
-        'marketplace_id' => 'string',
-        'featured_buying_options' => '\SpApi\Model\pricing\v2022_05_01\FeaturedBuyingOption[]',
-        'lowest_priced_offers' => '\SpApi\Model\pricing\v2022_05_01\LowestPricedOffer[]',
-        'reference_prices' => '\SpApi\Model\pricing\v2022_05_01\ReferencePrice[]',
-        'similar_items' => '\SpApi\Model\pricing\v2022_05_01\SimilarItems[]',
-        'errors' => '\SpApi\Model\pricing\v2022_05_01\Error[]'];
+        'asin' => 'string'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -79,13 +73,7 @@ class CompetitiveSummaryResponseBody implements ModelInterface, \ArrayAccess, \J
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'asin' => null,
-        'marketplace_id' => null,
-        'featured_buying_options' => null,
-        'lowest_priced_offers' => null,
-        'reference_prices' => null,
-        'similar_items' => null,
-        'errors' => null];
+        'asin' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -94,12 +82,6 @@ class CompetitiveSummaryResponseBody implements ModelInterface, \ArrayAccess, \J
      */
     protected static array $openAPINullables = [
         'asin' => false,
-        'marketplace_id' => false,
-        'featured_buying_options' => true,
-        'lowest_priced_offers' => true,
-        'reference_prices' => true,
-        'similar_items' => true,
-        'errors' => true,
     ];
 
     /**
@@ -117,12 +99,6 @@ class CompetitiveSummaryResponseBody implements ModelInterface, \ArrayAccess, \J
      */
     protected static array $attributeMap = [
         'asin' => 'asin',
-        'marketplace_id' => 'marketplaceId',
-        'featured_buying_options' => 'featuredBuyingOptions',
-        'lowest_priced_offers' => 'lowestPricedOffers',
-        'reference_prices' => 'referencePrices',
-        'similar_items' => 'similarItems',
-        'errors' => 'errors',
     ];
 
     /**
@@ -132,12 +108,6 @@ class CompetitiveSummaryResponseBody implements ModelInterface, \ArrayAccess, \J
      */
     protected static array $setters = [
         'asin' => 'setAsin',
-        'marketplace_id' => 'setMarketplaceId',
-        'featured_buying_options' => 'setFeaturedBuyingOptions',
-        'lowest_priced_offers' => 'setLowestPricedOffers',
-        'reference_prices' => 'setReferencePrices',
-        'similar_items' => 'setSimilarItems',
-        'errors' => 'setErrors',
     ];
 
     /**
@@ -147,12 +117,6 @@ class CompetitiveSummaryResponseBody implements ModelInterface, \ArrayAccess, \J
      */
     protected static array $getters = [
         'asin' => 'getAsin',
-        'marketplace_id' => 'getMarketplaceId',
-        'featured_buying_options' => 'getFeaturedBuyingOptions',
-        'lowest_priced_offers' => 'getLowestPricedOffers',
-        'reference_prices' => 'getReferencePrices',
-        'similar_items' => 'getSimilarItems',
-        'errors' => 'getErrors',
     ];
 
     /**
@@ -169,12 +133,6 @@ class CompetitiveSummaryResponseBody implements ModelInterface, \ArrayAccess, \J
     public function __construct(?array $data = null)
     {
         $this->setIfExists('asin', $data ?? [], null);
-        $this->setIfExists('marketplace_id', $data ?? [], null);
-        $this->setIfExists('featured_buying_options', $data ?? [], null);
-        $this->setIfExists('lowest_priced_offers', $data ?? [], null);
-        $this->setIfExists('reference_prices', $data ?? [], null);
-        $this->setIfExists('similar_items', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -267,9 +225,6 @@ class CompetitiveSummaryResponseBody implements ModelInterface, \ArrayAccess, \J
         if (null === $this->container['asin']) {
             $invalidProperties[] = "'asin' can't be null";
         }
-        if (null === $this->container['marketplace_id']) {
-            $invalidProperties[] = "'marketplace_id' can't be null";
-        }
 
         return $invalidProperties;
     }
@@ -304,179 +259,6 @@ class CompetitiveSummaryResponseBody implements ModelInterface, \ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable asin cannot be null');
         }
         $this->container['asin'] = $asin;
-
-        return $this;
-    }
-
-    /**
-     * Gets marketplace_id.
-     */
-    public function getMarketplaceId(): string
-    {
-        return $this->container['marketplace_id'];
-    }
-
-    /**
-     * Sets marketplace_id.
-     *
-     * @param string $marketplace_id The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     */
-    public function setMarketplaceId(string $marketplace_id): self
-    {
-        if (is_null($marketplace_id)) {
-            throw new \InvalidArgumentException('non-nullable marketplace_id cannot be null');
-        }
-        $this->container['marketplace_id'] = $marketplace_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets featured_buying_options.
-     */
-    public function getFeaturedBuyingOptions(): ?array
-    {
-        return $this->container['featured_buying_options'];
-    }
-
-    /**
-     * Sets featured_buying_options.
-     *
-     * @param null|array $featured_buying_options a list of featured buying options for the specified ASIN `marketplaceId` combination
-     */
-    public function setFeaturedBuyingOptions(?array $featured_buying_options): self
-    {
-        if (is_null($featured_buying_options)) {
-            array_push($this->openAPINullablesSetToNull, 'featured_buying_options');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('featured_buying_options', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['featured_buying_options'] = $featured_buying_options;
-
-        return $this;
-    }
-
-    /**
-     * Gets lowest_priced_offers.
-     */
-    public function getLowestPricedOffers(): ?array
-    {
-        return $this->container['lowest_priced_offers'];
-    }
-
-    /**
-     * Sets lowest_priced_offers.
-     *
-     * @param null|array $lowest_priced_offers a list of lowest priced offers for the specified ASIN `marketplaceId` combination
-     */
-    public function setLowestPricedOffers(?array $lowest_priced_offers): self
-    {
-        if (is_null($lowest_priced_offers)) {
-            array_push($this->openAPINullablesSetToNull, 'lowest_priced_offers');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('lowest_priced_offers', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['lowest_priced_offers'] = $lowest_priced_offers;
-
-        return $this;
-    }
-
-    /**
-     * Gets reference_prices.
-     */
-    public function getReferencePrices(): ?array
-    {
-        return $this->container['reference_prices'];
-    }
-
-    /**
-     * Sets reference_prices.
-     *
-     * @param null|array $reference_prices a list of reference prices for the specified ASIN `marketplaceId` combination
-     */
-    public function setReferencePrices(?array $reference_prices): self
-    {
-        if (is_null($reference_prices)) {
-            array_push($this->openAPINullablesSetToNull, 'reference_prices');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('reference_prices', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['reference_prices'] = $reference_prices;
-
-        return $this;
-    }
-
-    /**
-     * Gets similar_items.
-     */
-    public function getSimilarItems(): ?array
-    {
-        return $this->container['similar_items'];
-    }
-
-    /**
-     * Sets similar_items.
-     *
-     * @param null|array $similar_items a list of similar items for the specified ASIN `marketplaceId` combination
-     */
-    public function setSimilarItems(?array $similar_items): self
-    {
-        if (is_null($similar_items)) {
-            array_push($this->openAPINullablesSetToNull, 'similar_items');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('similar_items', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['similar_items'] = $similar_items;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors.
-     */
-    public function getErrors(): ?array
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors.
-     *
-     * @param null|array $errors a list of error responses that are returned when a request is unsuccessful
-     */
-    public function setErrors(?array $errors): self
-    {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['errors'] = $errors;
 
         return $this;
     }

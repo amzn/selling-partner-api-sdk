@@ -1454,17 +1454,20 @@ class ReportsApi
      * Operation getReportDocument.
      *
      * @param string      $report_document_id
-     *                                         The identifier for the report document. (required)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *                                                        The identifier for the report document. (required)
+     * @param null|bool   $enable_content_encoding_url_header
+     *                                                        When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
+     * @param null|string $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getReportDocument(
         string $report_document_id,
+        ?bool $enable_content_encoding_url_header = null,
         ?string $restrictedDataToken = null
     ): ReportDocument {
-        list($response) = $this->getReportDocumentWithHttpInfo($report_document_id, $restrictedDataToken);
+        list($response) = $this->getReportDocumentWithHttpInfo($report_document_id, $enable_content_encoding_url_header, $restrictedDataToken);
 
         return $response;
     }
@@ -1473,8 +1476,10 @@ class ReportsApi
      * Operation getReportDocumentWithHttpInfo.
      *
      * @param string      $report_document_id
-     *                                         The identifier for the report document. (required)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *                                                        The identifier for the report document. (required)
+     * @param null|bool   $enable_content_encoding_url_header
+     *                                                        When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
+     * @param null|string $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\reports\v2021_06_30\ReportDocument, HTTP status code, HTTP response headers (array of strings)
      *
@@ -1483,9 +1488,10 @@ class ReportsApi
      */
     public function getReportDocumentWithHttpInfo(
         string $report_document_id,
+        ?bool $enable_content_encoding_url_header = null,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getReportDocumentRequest($report_document_id);
+        $request = $this->getReportDocumentRequest($report_document_id, $enable_content_encoding_url_header);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportDocument');
         } else {
@@ -1559,15 +1565,18 @@ class ReportsApi
     /**
      * Operation getReportDocumentAsync.
      *
-     * @param string $report_document_id
-     *                                   The identifier for the report document. (required)
+     * @param string    $report_document_id
+     *                                                      The identifier for the report document. (required)
+     * @param null|bool $enable_content_encoding_url_header
+     *                                                      When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getReportDocumentAsync(
-        string $report_document_id
+        string $report_document_id,
+        ?bool $enable_content_encoding_url_header = null
     ): PromiseInterface {
-        return $this->getReportDocumentAsyncWithHttpInfo($report_document_id)
+        return $this->getReportDocumentAsyncWithHttpInfo($report_document_id, $enable_content_encoding_url_header)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1579,17 +1588,20 @@ class ReportsApi
     /**
      * Operation getReportDocumentAsyncWithHttpInfo.
      *
-     * @param string $report_document_id
-     *                                   The identifier for the report document. (required)
+     * @param string    $report_document_id
+     *                                                      The identifier for the report document. (required)
+     * @param null|bool $enable_content_encoding_url_header
+     *                                                      When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getReportDocumentAsyncWithHttpInfo(
         string $report_document_id,
+        ?bool $enable_content_encoding_url_header = null,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\reports\v2021_06_30\ReportDocument';
-        $request = $this->getReportDocumentRequest($report_document_id);
+        $request = $this->getReportDocumentRequest($report_document_id, $enable_content_encoding_url_header);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportDocument');
         } else {
@@ -1640,13 +1652,16 @@ class ReportsApi
     /**
      * Create request for operation 'getReportDocument'.
      *
-     * @param string $report_document_id
-     *                                   The identifier for the report document. (required)
+     * @param string    $report_document_id
+     *                                                      The identifier for the report document. (required)
+     * @param null|bool $enable_content_encoding_url_header
+     *                                                      When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getReportDocumentRequest(
-        string $report_document_id
+        string $report_document_id,
+        ?bool $enable_content_encoding_url_header = null
     ): Request {
         // verify the required parameter 'report_document_id' is set
         if (null === $report_document_id || (is_array($report_document_id) && 0 === count($report_document_id))) {
@@ -1661,6 +1676,17 @@ class ReportsApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $enable_content_encoding_url_header,
+            'enableContentEncodingUrlHeader', // param base name
+            'boolean', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
 
         // path params
         if (null !== $report_document_id) {

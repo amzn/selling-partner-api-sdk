@@ -507,7 +507,7 @@ class ServiceApi
      * @param string                            $appointment_id
      *                                                               An Amazon-defined identifier of active service job appointment. (required)
      * @param AssignAppointmentResourcesRequest $body
-     *                                                               body (required)
+     *                                                               Input containing the resource details to be assigned to the appointment. (required)
      * @param null|string                       $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -532,7 +532,7 @@ class ServiceApi
      * @param string                            $appointment_id
      *                                                               An Amazon-defined identifier of active service job appointment. (required)
      * @param AssignAppointmentResourcesRequest $body
-     *                                                               (required)
+     *                                                               Input containing the resource details to be assigned to the appointment. (required)
      * @param null|string                       $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\services\v1\AssignAppointmentResourcesResponse, HTTP status code, HTTP response headers (array of strings)
@@ -625,7 +625,7 @@ class ServiceApi
      * @param string                            $appointment_id
      *                                                          An Amazon-defined identifier of active service job appointment. (required)
      * @param AssignAppointmentResourcesRequest $body
-     *                                                          (required)
+     *                                                          Input containing the resource details to be assigned to the appointment. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -651,7 +651,7 @@ class ServiceApi
      * @param string                            $appointment_id
      *                                                          An Amazon-defined identifier of active service job appointment. (required)
      * @param AssignAppointmentResourcesRequest $body
-     *                                                          (required)
+     *                                                          Input containing the resource details to be assigned to the appointment. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -718,7 +718,7 @@ class ServiceApi
      * @param string                            $appointment_id
      *                                                          An Amazon-defined identifier of active service job appointment. (required)
      * @param AssignAppointmentResourcesRequest $body
-     *                                                          (required)
+     *                                                          Input containing the resource details to be assigned to the appointment. (required)
      *
      * @throws \InvalidArgumentException
      */
