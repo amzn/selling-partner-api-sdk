@@ -50,6 +50,8 @@ import { GetServiceJobsResponse } from './model/GetServiceJobsResponse.js'
 import { ItemDelivery } from './model/ItemDelivery.js'
 import { ItemDeliveryPromise } from './model/ItemDeliveryPromise.js'
 import { JobListing } from './model/JobListing.js'
+import { MoneyAmount } from './model/MoneyAmount.js'
+import { Payment } from './model/Payment.js'
 import { Poa } from './model/Poa.js'
 import { RangeCapacity } from './model/RangeCapacity.js'
 import { RangeSlot } from './model/RangeSlot.js'
@@ -318,6 +320,18 @@ export {
      * @property {module:services_v1/model/JobListing}
      */
   JobListing,
+
+  /**
+     * The MoneyAmount model constructor.
+     * @property {module:services_v1/model/MoneyAmount}
+     */
+  MoneyAmount,
+
+  /**
+     * The Payment model constructor.
+     * @property {module:services_v1/model/Payment}
+     */
+  Payment,
 
   /**
      * The Poa model constructor.

@@ -12,7 +12,9 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
+import { DeliveriesCondition } from './DeliveriesCondition.js'
 import { EligibilityStatus } from './EligibilityStatus.js'
+import { ForecastDeliveries } from './ForecastDeliveries.js'
 import { OfferProgramConfiguration } from './OfferProgramConfiguration.js'
 import { ProgramType } from './ProgramType.js'
 
@@ -59,6 +61,14 @@ export class ListOffersResponseOffer {
       if (data.hasOwnProperty('offerProgramConfiguration')) { obj.offerProgramConfiguration = OfferProgramConfiguration.constructFromObject(data.offerProgramConfiguration) }
       if (data.hasOwnProperty('programType')) { obj.programType = ProgramType.constructFromObject(data.programType) }
       if (data.hasOwnProperty('vendorCodes')) { obj.vendorCodes = ApiClient.convertToType(data.vendorCodes, ['String']) }
+      if (data.hasOwnProperty('price')) { obj.price = ApiClient.convertToType(data.price, 'Number') }
+      if (data.hasOwnProperty('priceCurrencyCode')) { obj.priceCurrencyCode = ApiClient.convertToType(data.priceCurrencyCode, 'String') }
+      if (data.hasOwnProperty('inventory')) { obj.inventory = ApiClient.convertToType(data.inventory, 'Number') }
+      if (data.hasOwnProperty('stockRisk')) { obj.stockRisk = ApiClient.convertToType(data.stockRisk, 'String') }
+      if (data.hasOwnProperty('deliveriesConditions')) { obj.deliveriesConditions = ApiClient.convertToType(data.deliveriesConditions, [DeliveriesCondition]) }
+      if (data.hasOwnProperty('subscriptions')) { obj.subscriptions = ApiClient.convertToType(data.subscriptions, 'Number') }
+      if (data.hasOwnProperty('fulfillmentNetworkIDType')) { obj.fulfillmentNetworkIDType = ApiClient.convertToType(data.fulfillmentNetworkIDType, 'String') }
+      if (data.hasOwnProperty('forecastDeliveries')) { obj.forecastDeliveries = ForecastDeliveries.constructFromObject(data.forecastDeliveries) }
     }
     return obj
   }
@@ -79,7 +89,7 @@ ListOffersResponseOffer.prototype.sku = undefined
 ListOffersResponseOffer.prototype.asin = undefined
 
 /**
- * The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
+ * The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
  * @member {String} marketplaceId
  * @type {String}
  */
@@ -109,3 +119,58 @@ ListOffersResponseOffer.prototype.programType = undefined
  * @type {String[]}
  */
 ListOffersResponseOffer.prototype.vendorCodes = undefined
+
+/**
+ * The current price of the offer. This is the listed price amount for the item.
+ * @member {Number} price
+ * @type {Number}
+ */
+ListOffersResponseOffer.prototype.price = undefined
+
+/**
+ * The currency code in ISO 4217 format for the price. For example, `USD` for US dollars.
+ * @member {String} priceCurrencyCode
+ * @type {String}
+ */
+ListOffersResponseOffer.prototype.priceCurrencyCode = undefined
+
+/**
+ * The available inventory count for the offer.
+ * @member {Number} inventory
+ * @type {Number}
+ */
+ListOffersResponseOffer.prototype.inventory = undefined
+
+/**
+ * The stock risk level of the offer, indicating the risk of the offer going out of stock.
+ * @member {String} stockRisk
+ * @type {String}
+ */
+ListOffersResponseOffer.prototype.stockRisk = undefined
+
+/**
+ * A list of delivery conditions for the offer, indicating the health of upcoming deliveries. Each condition describes the quantity of upcoming deliveries associated with a particular delivery condition type.
+ * @member {DeliveriesCondition[]} deliveriesConditions
+ * @type {DeliveriesCondition[]}
+ */
+ListOffersResponseOffer.prototype.deliveriesConditions = undefined
+
+/**
+ * The number of active subscriptions for the offer.
+ * @member {Number} subscriptions
+ * @type {Number}
+ */
+ListOffersResponseOffer.prototype.subscriptions = undefined
+
+/**
+ * The fulfillment network identifier type for the offer, indicating how the offer is fulfilled.
+ * @member {String} fulfillmentNetworkIDType
+ * @type {String}
+ */
+ListOffersResponseOffer.prototype.fulfillmentNetworkIDType = undefined
+
+/**
+ * @member {ForecastDeliveries} forecastDeliveries
+ * @type {ForecastDeliveries}
+ */
+ListOffersResponseOffer.prototype.forecastDeliveries = undefined

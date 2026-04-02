@@ -81,7 +81,7 @@ describe('ReportsApi', () => {
     it('should successfully call getReportDocumentWithHttpInfo', async () => {
       await instructBackendMock("reports", "getReportDocument", "200")
       const params = [
-        generateMockData('String')
+        generateMockData('String'),
       ];
       const response = await instance.getReportDocumentWithHttpInfo(...params);
 

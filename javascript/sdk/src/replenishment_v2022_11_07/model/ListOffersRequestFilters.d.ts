@@ -17,7 +17,7 @@ export class ListOffersRequestFilters {
      * Use these parameters to filter results. Any result must match all of the provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.
      * @alias module:replenishment_v2022_11_07/model/ListOffersRequestFilters
      * @class
-     * @param marketplaceId {String} The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
+     * @param marketplaceId {String} The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
      * @param programTypes {ProgramType[]} A list of replenishment program types.
      */
     constructor(marketplaceId: string, programTypes: ProgramType[]);
@@ -51,6 +51,25 @@ export class ListOffersRequestFilters {
      * @type {Promotion}
      */
     promotions: Promotion;
+    /**
+     * A list of delivery condition types to filter the results by. Results are filtered to only include offers with the specified delivery conditions.
+     * @member {String[]} deliveriesConditions
+     * @type {String[]}
+     */
+    deliveriesConditions: string[];
+}
+export namespace ListOffersRequestFilters {
+    namespace DeliveriesConditionsEnum {
+        let NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING: string;
+        let NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE: string;
+        let NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY: string;
+        let NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK: string;
+        let NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES: string;
+    }
+    /**
+     * *
+     */
+    type DeliveriesConditionsEnum = string;
 }
 import { EligibilityStatus } from './EligibilityStatus.js';
 import { Preference } from './Preference.js';

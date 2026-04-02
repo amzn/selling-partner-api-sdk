@@ -91,6 +91,12 @@ export class ServiceJob {
      * @type {ServiceLocation}
      */
     serviceLocation: ServiceLocation;
+    /**
+     * A list that contains payment information for the service job.
+     * @member {Payment[]} payments
+     * @type {Payment[]}
+     */
+    payments: Payment[];
 }
 export namespace ServiceJob {
     namespace ServiceJobStatusEnum {
@@ -115,4 +121,5 @@ import { Appointment } from './Appointment.js';
 import { Buyer } from './Buyer.js';
 import { AssociatedItem } from './AssociatedItem.js';
 import { ServiceLocation } from './ServiceLocation.js';
+import { Payment } from './Payment.js';
 //# sourceMappingURL=ServiceJob.d.ts.map

@@ -16,6 +16,7 @@ import { Error } from './Error.js'
 import { FeaturedBuyingOption } from './FeaturedBuyingOption.js'
 import { LowestPricedOffer } from './LowestPricedOffer.js'
 import { ReferencePrice } from './ReferencePrice.js'
+import { SimilarItems } from './SimilarItems.js'
 
 /**
  * The CompetitiveSummaryResponseBody model module.
@@ -62,6 +63,7 @@ export class CompetitiveSummaryResponseBody {
       if (data.hasOwnProperty('featuredBuyingOptions')) { obj.featuredBuyingOptions = ApiClient.convertToType(data.featuredBuyingOptions, [FeaturedBuyingOption]) }
       if (data.hasOwnProperty('lowestPricedOffers')) { obj.lowestPricedOffers = ApiClient.convertToType(data.lowestPricedOffers, [LowestPricedOffer]) }
       if (data.hasOwnProperty('referencePrices')) { obj.referencePrices = ApiClient.convertToType(data.referencePrices, [ReferencePrice]) }
+      if (data.hasOwnProperty('similarItems')) { obj.similarItems = ApiClient.convertToType(data.similarItems, [SimilarItems]) }
       if (data.hasOwnProperty('errors')) { obj.errors = ApiClient.convertToType(data.errors, [Error]) }
     }
     return obj
@@ -102,6 +104,13 @@ CompetitiveSummaryResponseBody.prototype.lowestPricedOffers = undefined
  * @type {ReferencePrice[]}
  */
 CompetitiveSummaryResponseBody.prototype.referencePrices = undefined
+
+/**
+ * A list of similar items for the specified ASIN `marketplaceId` combination.
+ * @member {SimilarItems[]} similarItems
+ * @type {SimilarItems[]}
+ */
+CompetitiveSummaryResponseBody.prototype.similarItems = undefined
 
 /**
  * A list of error responses that are returned when a request is unsuccessful.

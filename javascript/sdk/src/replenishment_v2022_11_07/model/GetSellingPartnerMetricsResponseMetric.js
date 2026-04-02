@@ -81,6 +81,7 @@ export class GetSellingPartnerMetricsResponseMetric {
       if (data.hasOwnProperty('signupConversionFor5PercentSellerFunding')) { obj.signupConversionFor5PercentSellerFunding = ApiClient.convertToType(data.signupConversionFor5PercentSellerFunding, 'Number') }
       if (data.hasOwnProperty('signupConversionFor10PercentSellerFunding')) { obj.signupConversionFor10PercentSellerFunding = ApiClient.convertToType(data.signupConversionFor10PercentSellerFunding, 'Number') }
       if (data.hasOwnProperty('signupConversionFor5PlusPercentSellerFunding')) { obj.signupConversionFor5PlusPercentSellerFunding = ApiClient.convertToType(data.signupConversionFor5PlusPercentSellerFunding, 'Number') }
+      if (data.hasOwnProperty('revenuePenetration')) { obj.revenuePenetration = ApiClient.convertToType(data.revenuePenetration, 'Number') }
       if (data.hasOwnProperty('timeInterval')) { obj.timeInterval = TimeInterval.constructFromObject(data.timeInterval) }
       if (data.hasOwnProperty('currencyCode')) { obj.currencyCode = ApiClient.convertToType(data.currencyCode, 'String') }
     }
@@ -229,7 +230,7 @@ GetSellingPartnerMetricsResponseMetric.prototype.revenuePenetrationFor5PlusPerce
 GetSellingPartnerMetricsResponseMetric.prototype.shareOfCouponSubscriptions = undefined
 
 /**
- * Total revenue from customers who have made purchases from your catalog but have never subscribed to any products
+ * Total revenue from customers who have made purchases from your catalog but have never subscribed to any products.
  * @member {Number} nonSubscriberLifeTimeValueFromOTP
  * @type {Number}
  */
@@ -304,6 +305,13 @@ GetSellingPartnerMetricsResponseMetric.prototype.signupConversionFor10PercentSel
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.signupConversionFor5PlusPercentSellerFunding = undefined
+
+/**
+ * The percentage of total program revenue out of total product revenue over a period of time. Applicable to `PERFORMANCE` `timePeriodType`.
+ * @member {Number} revenuePenetration
+ * @type {Number}
+ */
+GetSellingPartnerMetricsResponseMetric.prototype.revenuePenetration = undefined
 
 /**
  * @member {TimeInterval} timeInterval

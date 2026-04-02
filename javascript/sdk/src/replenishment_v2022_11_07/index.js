@@ -14,11 +14,14 @@
 import { ApiClient } from './ApiClient.js'
 import { AggregationFrequency } from './model/AggregationFrequency.js'
 import { AutoEnrollmentPreference } from './model/AutoEnrollmentPreference.js'
+import { DeliveriesCondition } from './model/DeliveriesCondition.js'
 import { DiscountFunding } from './model/DiscountFunding.js'
 import { EligibilityStatus } from './model/EligibilityStatus.js'
 import { EnrollmentMethod } from './model/EnrollmentMethod.js'
 import { Error } from './model/Error.js'
 import { ErrorList } from './model/ErrorList.js'
+import { ForecastDeliveries } from './model/ForecastDeliveries.js'
+import { FulfillmentChannelType } from './model/FulfillmentChannelType.js'
 import { GetSellingPartnerMetricsRequest } from './model/GetSellingPartnerMetricsRequest.js'
 import { GetSellingPartnerMetricsResponse } from './model/GetSellingPartnerMetricsResponse.js'
 import { GetSellingPartnerMetricsResponseMetric } from './model/GetSellingPartnerMetricsResponseMetric.js'
@@ -77,6 +80,12 @@ export {
   AutoEnrollmentPreference,
 
   /**
+     * The DeliveriesCondition model constructor.
+     * @property {module:replenishment_v2022_11_07/model/DeliveriesCondition}
+     */
+  DeliveriesCondition,
+
+  /**
      * The DiscountFunding model constructor.
      * @property {module:replenishment_v2022_11_07/model/DiscountFunding}
      */
@@ -105,6 +114,18 @@ export {
      * @property {module:replenishment_v2022_11_07/model/ErrorList}
      */
   ErrorList,
+
+  /**
+     * The ForecastDeliveries model constructor.
+     * @property {module:replenishment_v2022_11_07/model/ForecastDeliveries}
+     */
+  ForecastDeliveries,
+
+  /**
+     * The FulfillmentChannelType model constructor.
+     * @property {module:replenishment_v2022_11_07/model/FulfillmentChannelType}
+     */
+  FulfillmentChannelType,
 
   /**
      * The GetSellingPartnerMetricsRequest model constructor.

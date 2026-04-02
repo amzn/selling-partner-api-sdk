@@ -42,6 +42,12 @@ export class CompetitiveSummaryResponseBody {
      */
     referencePrices: ReferencePrice[];
     /**
+     * A list of similar items for the specified ASIN `marketplaceId` combination.
+     * @member {SimilarItems[]} similarItems
+     * @type {SimilarItems[]}
+     */
+    similarItems: SimilarItems[];
+    /**
      * A list of error responses that are returned when a request is unsuccessful.
      * @member {Error[]} errors
      * @type {Error[]}
@@ -51,5 +57,6 @@ export class CompetitiveSummaryResponseBody {
 import { FeaturedBuyingOption } from './FeaturedBuyingOption.js';
 import { LowestPricedOffer } from './LowestPricedOffer.js';
 import { ReferencePrice } from './ReferencePrice.js';
+import { SimilarItems } from './SimilarItems.js';
 import { Error } from './Error.js';
 //# sourceMappingURL=CompetitiveSummaryResponseBody.d.ts.map

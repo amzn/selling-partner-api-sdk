@@ -12,6 +12,7 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
+import { FulfillmentChannelType } from './FulfillmentChannelType.js'
 import { TimeInterval } from './TimeInterval.js'
 
 /**
@@ -51,6 +52,8 @@ export class ListOfferMetricsResponseOffer {
       }
       obj = obj || new ListOfferMetricsResponseOffer()
       if (data.hasOwnProperty('asin')) { obj.asin = ApiClient.convertToType(data.asin, 'String') }
+      if (data.hasOwnProperty('sku')) { obj.sku = ApiClient.convertToType(data.sku, 'String') }
+      if (data.hasOwnProperty('fulfillmentChannelType')) { obj.fulfillmentChannelType = FulfillmentChannelType.constructFromObject(data.fulfillmentChannelType) }
       if (data.hasOwnProperty('notDeliveredDueToOOS')) { obj.notDeliveredDueToOOS = ApiClient.convertToType(data.notDeliveredDueToOOS, 'Number') }
       if (data.hasOwnProperty('totalSubscriptionsRevenue')) { obj.totalSubscriptionsRevenue = ApiClient.convertToType(data.totalSubscriptionsRevenue, 'Number') }
       if (data.hasOwnProperty('shippedSubscriptionUnits')) { obj.shippedSubscriptionUnits = ApiClient.convertToType(data.shippedSubscriptionUnits, 'Number') }
@@ -80,98 +83,111 @@ export class ListOfferMetricsResponseOffer {
 ListOfferMetricsResponseOffer.prototype.asin = undefined
 
 /**
- * The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `FORECAST` `timePeriodType`.
+ * The SKU. This property is only supported for sellers and not for vendors.
+ * @member {String} sku
+ * @type {String}
+ */
+ListOfferMetricsResponseOffer.prototype.sku = undefined
+
+/**
+ * @member {FulfillmentChannelType} fulfillmentChannelType
+ * @type {FulfillmentChannelType}
+ */
+ListOfferMetricsResponseOffer.prototype.fulfillmentChannelType = undefined
+
+/**
+ * The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} notDeliveredDueToOOS
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.notDeliveredDueToOOS = undefined
 
 /**
- * The revenue generated from subscriptions over a period of time. Applicable to `FORECAST` `timePeriodType`.
+ * The revenue generated from subscriptions over a period of time. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} totalSubscriptionsRevenue
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.totalSubscriptionsRevenue = undefined
 
 /**
- * The number of units shipped to the subscribers over a period of time. Applicable to `FORECAST` `timePeriodType`.
+ * The number of units shipped to the subscribers over a period of time. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} shippedSubscriptionUnits
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.shippedSubscriptionUnits = undefined
 
 /**
- * The number of active subscriptions present at the end of the period. Applicable to `FORECAST` `timePeriodType`.
+ * The number of active subscriptions present at the end of the period. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} activeSubscriptions
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.activeSubscriptions = undefined
 
 /**
- * The percentage of total program revenue out of total product revenue. Applicable to `FORECAST` `timePeriodType`.
+ * The percentage of total program revenue out of total product revenue. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} revenuePenetration
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.revenuePenetration = undefined
 
 /**
- * The revenue that would have been generated had there not been out of stock. Applicable to `FORECAST` `timePeriodType`.
+ * The revenue that would have been generated had there not been out of stock. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} lostRevenueDueToOOS
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.lostRevenueDueToOOS = undefined
 
 /**
- * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `FORECAST` `timePeriodType`.
+ * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} couponsRevenuePenetration
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.couponsRevenuePenetration = undefined
 
 /**
- * The percentage of new subscriptions acquired through coupons. Applicable to `FORECAST` `timePeriodType`.
+ * The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} shareOfCouponSubscriptions
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.shareOfCouponSubscriptions = undefined
 
 /**
- * The forecasted total subscription revenue for the next 30 days. Applicable to FORECAST timePeriodType.
+ * The forecasted total subscription revenue for the next 30 days. Applicable to `FORECAST` `timePeriodType`.
  * @member {Number} next30DayTotalSubscriptionsRevenue
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.next30DayTotalSubscriptionsRevenue = undefined
 
 /**
- * The forecasted total subscription revenue for the next 60 days. Applicable to FORECAST timePeriodType.
+ * The forecasted total subscription revenue for the next 60 days. Applicable to `FORECAST` `timePeriodType`.
  * @member {Number} next60DayTotalSubscriptionsRevenue
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.next60DayTotalSubscriptionsRevenue = undefined
 
 /**
- * The forecasted total subscription revenue for the next 90 days. Applicable to FORECAST timePeriodType.
+ * The forecasted total subscription revenue for the next 90 days. Applicable to `FORECAST` `timePeriodType`.
  * @member {Number} next90DayTotalSubscriptionsRevenue
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.next90DayTotalSubscriptionsRevenue = undefined
 
 /**
- * The forecasted shipped subscription units for the next 30 days. Applicable to FORECAST timePeriodType.
+ * The forecasted shipped subscription units for the next 30 days. Applicable to `FORECAST` `timePeriodType`.
  * @member {Number} next30DayShippedSubscriptionUnits
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.next30DayShippedSubscriptionUnits = undefined
 
 /**
- * The forecasted shipped subscription units for the next 60 days. Applicable to FORECAST timePeriodType.
+ * The forecasted shipped subscription units for the next 60 days. Applicable to `FORECAST` `timePeriodType`.
  * @member {Number} next60DayShippedSubscriptionUnits
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.next60DayShippedSubscriptionUnits = undefined
 
 /**
- * The forecasted shipped subscription units for the next 90 days. Applicable to FORECAST timePeriodType.
+ * The forecasted shipped subscription units for the next 90 days. Applicable to `FORECAST` `timePeriodType`.
  * @member {Number} next90DayShippedSubscriptionUnits
  * @type {Number}
  */

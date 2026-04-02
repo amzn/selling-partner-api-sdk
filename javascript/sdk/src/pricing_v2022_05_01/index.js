@@ -37,6 +37,7 @@ import { GetFeaturedOfferExpectedPriceBatchRequest } from './model/GetFeaturedOf
 import { GetFeaturedOfferExpectedPriceBatchResponse } from './model/GetFeaturedOfferExpectedPriceBatchResponse.js'
 import { HttpMethod } from './model/HttpMethod.js'
 import { HttpStatusLine } from './model/HttpStatusLine.js'
+import { Item } from './model/Item.js'
 import { LowestPricedOffer } from './model/LowestPricedOffer.js'
 import { LowestPricedOffersInput } from './model/LowestPricedOffersInput.js'
 import { MoneyType } from './model/MoneyType.js'
@@ -52,6 +53,7 @@ import { Segment } from './model/Segment.js'
 import { SegmentDetails } from './model/SegmentDetails.js'
 import { SegmentedFeaturedOffer } from './model/SegmentedFeaturedOffer.js'
 import { ShippingOption } from './model/ShippingOption.js'
+import { SimilarItems } from './model/SimilarItems.js'
 import { ProductPricingApi } from './api/ProductPricingApi.js'
 
 /**
@@ -218,6 +220,12 @@ export {
   HttpStatusLine,
 
   /**
+     * The Item model constructor.
+     * @property {module:pricing_v2022_05_01/model/Item}
+     */
+  Item,
+
+  /**
      * The LowestPricedOffer model constructor.
      * @property {module:pricing_v2022_05_01/model/LowestPricedOffer}
      */
@@ -306,6 +314,12 @@ export {
      * @property {module:pricing_v2022_05_01/model/ShippingOption}
      */
   ShippingOption,
+
+  /**
+     * The SimilarItems model constructor.
+     * @property {module:pricing_v2022_05_01/model/SimilarItems}
+     */
+  SimilarItems,
 
   /**
     * The ProductPricingApi service constructor.

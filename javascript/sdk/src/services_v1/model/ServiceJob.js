@@ -16,6 +16,7 @@ import { Appointment } from './Appointment.js'
 import { AppointmentTime } from './AppointmentTime.js'
 import { AssociatedItem } from './AssociatedItem.js'
 import { Buyer } from './Buyer.js'
+import { Payment } from './Payment.js'
 import { ScopeOfWork } from './ScopeOfWork.js'
 import { Seller } from './Seller.js'
 import { ServiceJobProvider } from './ServiceJobProvider.js'
@@ -71,6 +72,7 @@ export class ServiceJob {
       if (data.hasOwnProperty('buyer')) { obj.buyer = Buyer.constructFromObject(data.buyer) }
       if (data.hasOwnProperty('associatedItems')) { obj.associatedItems = ApiClient.convertToType(data.associatedItems, [AssociatedItem]) }
       if (data.hasOwnProperty('serviceLocation')) { obj.serviceLocation = ServiceLocation.constructFromObject(data.serviceLocation) }
+      if (data.hasOwnProperty('payments')) { obj.payments = ApiClient.convertToType(data.payments, [Payment]) }
     }
     return obj
   }
@@ -217,3 +219,10 @@ ServiceJob.prototype.associatedItems = undefined
  * @type {ServiceLocation}
  */
 ServiceJob.prototype.serviceLocation = undefined
+
+/**
+ * A list that contains payment information for the service job.
+ * @member {Payment[]} payments
+ * @type {Payment[]}
+ */
+ServiceJob.prototype.payments = undefined
