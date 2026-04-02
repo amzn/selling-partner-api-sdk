@@ -170,7 +170,7 @@ class GetSellingPartnerMetricsRequest(object):
     def marketplace_id(self):
         """Gets the marketplace_id of this GetSellingPartnerMetricsRequest.  # noqa: E501
 
-        The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.  # noqa: E501
+        The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.  # noqa: E501
 
         :return: The marketplace_id of this GetSellingPartnerMetricsRequest.  # noqa: E501
         :rtype: str
@@ -181,7 +181,7 @@ class GetSellingPartnerMetricsRequest(object):
     def marketplace_id(self, marketplace_id):
         """Sets the marketplace_id of this GetSellingPartnerMetricsRequest.
 
-        The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.  # noqa: E501
+        The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.  # noqa: E501
 
         :param marketplace_id: The marketplace_id of this GetSellingPartnerMetricsRequest.  # noqa: E501
         :type: str

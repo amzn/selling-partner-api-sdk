@@ -434,6 +434,7 @@ class FeedsApi(object):
 
         :param async_req bool
         :param str feed_document_id: The identifier of the feed document. (required)
+        :param bool enable_content_encoding_url_header: When `true`, the Content-Encoding header on the returned URL is set to `gzip` instead of the default `identity` when `compressionAlgorithm` is `GZIP`. This allows automatic decompression by HTTP clients.
         :return: FeedDocument
                  If the method is called asynchronously,
                  returns the request thread.
@@ -456,12 +457,13 @@ class FeedsApi(object):
 
         :param async_req bool
         :param str feed_document_id: The identifier of the feed document. (required)
+        :param bool enable_content_encoding_url_header: When `true`, the Content-Encoding header on the returned URL is set to `gzip` instead of the default `identity` when `compressionAlgorithm` is `GZIP`. This allows automatic decompression by HTTP clients.
         :return: FeedDocument
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['feed_document_id']  # noqa: E501
+        all_params = ['feed_document_id', 'enable_content_encoding_url_header']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -488,6 +490,8 @@ class FeedsApi(object):
             path_params['feedDocumentId'] = params['feed_document_id']  # noqa: E501
 
         query_params = []
+        if 'enable_content_encoding_url_header' in params:
+            query_params.append(('enableContentEncodingUrlHeader', params['enable_content_encoding_url_header']))  # noqa: E501
 
         header_params = {}
 

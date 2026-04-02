@@ -160,7 +160,7 @@ class ServiceApi(object):
         :param async_req bool
         :param str service_job_id: An Amazon-defined service job identifier. Get this value by calling the `getServiceJobs` operation of the Services API. (required)
         :param str appointment_id: An Amazon-defined identifier of active service job appointment. (required)
-        :param AssignAppointmentResourcesRequest body: (required)
+        :param AssignAppointmentResourcesRequest body: Input containing the resource details to be assigned to the appointment. (required)
         :return: AssignAppointmentResourcesResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -184,7 +184,7 @@ class ServiceApi(object):
         :param async_req bool
         :param str service_job_id: An Amazon-defined service job identifier. Get this value by calling the `getServiceJobs` operation of the Services API. (required)
         :param str appointment_id: An Amazon-defined identifier of active service job appointment. (required)
-        :param AssignAppointmentResourcesRequest body: (required)
+        :param AssignAppointmentResourcesRequest body: Input containing the resource details to be assigned to the appointment. (required)
         :return: AssignAppointmentResourcesResponse
                  If the method is called asynchronously,
                  returns the request thread.

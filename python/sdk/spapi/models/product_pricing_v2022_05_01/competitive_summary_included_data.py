@@ -31,6 +31,7 @@ class CompetitiveSummaryIncludedData(object):
     FEATUREDBUYINGOPTIONS = 'featuredBuyingOptions'
     REFERENCEPRICES = 'referencePrices'
     LOWESTPRICEDOFFERS = 'lowestPricedOffers'
+    SIMILARITEMS = 'similarItems'
 
     """
     Attributes:

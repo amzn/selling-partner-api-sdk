@@ -38,6 +38,7 @@ from spapi.models.product_pricing_v2022_05_01.get_featured_offer_expected_price_
 from spapi.models.product_pricing_v2022_05_01.get_featured_offer_expected_price_batch_response import GetFeaturedOfferExpectedPriceBatchResponse
 from spapi.models.product_pricing_v2022_05_01.http_method import HttpMethod
 from spapi.models.product_pricing_v2022_05_01.http_status_line import HttpStatusLine
+from spapi.models.product_pricing_v2022_05_01.item import Item
 from spapi.models.product_pricing_v2022_05_01.lowest_priced_offer import LowestPricedOffer
 from spapi.models.product_pricing_v2022_05_01.lowest_priced_offers_input import LowestPricedOffersInput
 from spapi.models.product_pricing_v2022_05_01.money_type import MoneyType
@@ -53,3 +54,4 @@ from spapi.models.product_pricing_v2022_05_01.segment import Segment
 from spapi.models.product_pricing_v2022_05_01.segment_details import SegmentDetails
 from spapi.models.product_pricing_v2022_05_01.segmented_featured_offer import SegmentedFeaturedOffer
 from spapi.models.product_pricing_v2022_05_01.shipping_option import ShippingOption
+from spapi.models.product_pricing_v2022_05_01.similar_items import SimilarItems

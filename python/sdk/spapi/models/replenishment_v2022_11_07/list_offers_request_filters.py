@@ -40,6 +40,7 @@ class ListOffersRequestFilters(object):
         'preferences': 'Preference',
         'promotions': 'Promotion',
         'program_types': 'List[ProgramType]',
+        'deliveries_conditions': 'List[str]',
     }
 
     attribute_map = {
@@ -50,9 +51,10 @@ class ListOffersRequestFilters(object):
         'preferences': 'preferences',
         'promotions': 'promotions',
         'program_types': 'programTypes',
+        'deliveries_conditions': 'deliveriesConditions',
     }
 
-    def __init__(self, marketplace_id=None, skus=None, asins=None, eligibilities=None, preferences=None, promotions=None, program_types=None, _configuration=None):  # noqa: E501
+    def __init__(self, marketplace_id=None, skus=None, asins=None, eligibilities=None, preferences=None, promotions=None, program_types=None, deliveries_conditions=None, _configuration=None):  # noqa: E501
         """ListOffersRequestFilters - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -65,6 +67,7 @@ class ListOffersRequestFilters(object):
         self._preferences = None
         self._promotions = None
         self._program_types = None
+        self._deliveries_conditions = None
         self.discriminator = None
 
         self.marketplace_id = marketplace_id
@@ -79,12 +82,14 @@ class ListOffersRequestFilters(object):
         if promotions is not None:
             self.promotions = promotions
         self.program_types = program_types
+        if deliveries_conditions is not None:
+            self.deliveries_conditions = deliveries_conditions
 
     @property
     def marketplace_id(self):
         """Gets the marketplace_id of this ListOffersRequestFilters.  # noqa: E501
 
-        The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.  # noqa: E501
+        The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.  # noqa: E501
 
         :return: The marketplace_id of this ListOffersRequestFilters.  # noqa: E501
         :rtype: str
@@ -95,7 +100,7 @@ class ListOffersRequestFilters(object):
     def marketplace_id(self, marketplace_id):
         """Sets the marketplace_id of this ListOffersRequestFilters.
 
-        The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.  # noqa: E501
+        The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.  # noqa: E501
 
         :param marketplace_id: The marketplace_id of this ListOffersRequestFilters.  # noqa: E501
         :type: str
@@ -258,6 +263,37 @@ class ListOffersRequestFilters(object):
             raise ValueError("Invalid value for `program_types`, number of items must be greater than or equal to `1`")  # noqa: E501
 
         self._program_types = program_types
+
+    @property
+    def deliveries_conditions(self):
+        """Gets the deliveries_conditions of this ListOffersRequestFilters.  # noqa: E501
+
+        A list of delivery condition types to filter the results by. Results are filtered to only include offers with the specified delivery conditions.  # noqa: E501
+
+        :return: The deliveries_conditions of this ListOffersRequestFilters.  # noqa: E501
+        :rtype: List[str]
+        """
+        return self._deliveries_conditions
+
+    @deliveries_conditions.setter
+    def deliveries_conditions(self, deliveries_conditions):
+        """Sets the deliveries_conditions of this ListOffersRequestFilters.
+
+        A list of delivery condition types to filter the results by. Results are filtered to only include offers with the specified delivery conditions.  # noqa: E501
+
+        :param deliveries_conditions: The deliveries_conditions of this ListOffersRequestFilters.  # noqa: E501
+        :type: List[str]
+        """
+        allowed_values = ["NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING", "NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE", "NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY", "NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK", "NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES"]  # noqa: E501
+        if (self._configuration.client_side_validation and
+                not set(deliveries_conditions).issubset(set(allowed_values))):  # noqa: E501
+            raise ValueError(
+                "Invalid values for `deliveries_conditions` [{0}], must be a subset of [{1}]"  # noqa: E501
+                .format(", ".join(map(str, set(deliveries_conditions) - set(allowed_values))),  # noqa: E501
+                        ", ".join(map(str, allowed_values)))
+            )
+
+        self._deliveries_conditions = deliveries_conditions
 
     def to_dict(self):
         """Returns the model properties as a dict"""
