@@ -27,7 +27,9 @@ public enum CompetitiveSummaryIncludedData {
     @SerializedName("referencePrices")
     REFERENCEPRICES("referencePrices"),
     @SerializedName("lowestPricedOffers")
-    LOWESTPRICEDOFFERS("lowestPricedOffers");
+    LOWESTPRICEDOFFERS("lowestPricedOffers"),
+    @SerializedName("similarItems")
+    SIMILARITEMS("similarItems");
 
     private String value;
 

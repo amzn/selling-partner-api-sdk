@@ -12,8 +12,13 @@
 
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -46,6 +51,62 @@ public class ListOffersRequestFilters {
 
     @SerializedName("programTypes")
     private ProgramTypes programTypes = null;
+
+    /** Gets or Sets deliveriesConditions */
+    @JsonAdapter(DeliveriesConditionsEnum.Adapter.class)
+    public enum DeliveriesConditionsEnum {
+        @SerializedName("NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING")
+        NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING("NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING"),
+        @SerializedName("NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE")
+        NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE("NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE"),
+        @SerializedName("NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY")
+        NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY("NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY"),
+        @SerializedName("NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK")
+        NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK("NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK"),
+        @SerializedName("NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES")
+        NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES("NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES");
+
+        private String value;
+
+        DeliveriesConditionsEnum(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static DeliveriesConditionsEnum fromValue(String input) {
+            for (DeliveriesConditionsEnum b : DeliveriesConditionsEnum.values()) {
+                if (b.value.equals(input)) {
+                    return b;
+                }
+            }
+            return null;
+        }
+
+        public static class Adapter extends TypeAdapter<DeliveriesConditionsEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final DeliveriesConditionsEnum enumeration)
+                    throws IOException {
+                jsonWriter.value(String.valueOf(enumeration.getValue()));
+            }
+
+            @Override
+            public DeliveriesConditionsEnum read(final JsonReader jsonReader) throws IOException {
+                Object value = jsonReader.nextString();
+                return DeliveriesConditionsEnum.fromValue((String) (value));
+            }
+        }
+    }
+
+    @SerializedName("deliveriesConditions")
+    private List<DeliveriesConditionsEnum> deliveriesConditions = null;
 
     public ListOffersRequestFilters marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
@@ -204,6 +265,36 @@ public class ListOffersRequestFilters {
         this.programTypes = programTypes;
     }
 
+    public ListOffersRequestFilters deliveriesConditions(List<DeliveriesConditionsEnum> deliveriesConditions) {
+        this.deliveriesConditions = deliveriesConditions;
+        return this;
+    }
+
+    public ListOffersRequestFilters addDeliveriesConditionsItem(DeliveriesConditionsEnum deliveriesConditionsItem) {
+        if (this.deliveriesConditions == null) {
+            this.deliveriesConditions = new ArrayList<DeliveriesConditionsEnum>();
+        }
+        this.deliveriesConditions.add(deliveriesConditionsItem);
+        return this;
+    }
+
+    /**
+     * A list of delivery condition types to filter the results by. Results are filtered to only include offers with the
+     * specified delivery conditions.
+     *
+     * @return deliveriesConditions
+     */
+    @Schema(
+            description =
+                    "A list of delivery condition types to filter the results by. Results are filtered to only include offers with the specified delivery conditions.")
+    public List<DeliveriesConditionsEnum> getDeliveriesConditions() {
+        return deliveriesConditions;
+    }
+
+    public void setDeliveriesConditions(List<DeliveriesConditionsEnum> deliveriesConditions) {
+        this.deliveriesConditions = deliveriesConditions;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -219,12 +310,14 @@ public class ListOffersRequestFilters {
                 && Objects.equals(this.eligibilities, listOffersRequestFilters.eligibilities)
                 && Objects.equals(this.preferences, listOffersRequestFilters.preferences)
                 && Objects.equals(this.promotions, listOffersRequestFilters.promotions)
-                && Objects.equals(this.programTypes, listOffersRequestFilters.programTypes);
+                && Objects.equals(this.programTypes, listOffersRequestFilters.programTypes)
+                && Objects.equals(this.deliveriesConditions, listOffersRequestFilters.deliveriesConditions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(marketplaceId, skus, asins, eligibilities, preferences, promotions, programTypes);
+        return Objects.hash(
+                marketplaceId, skus, asins, eligibilities, preferences, promotions, programTypes, deliveriesConditions);
     }
 
     @Override
@@ -239,6 +332,9 @@ public class ListOffersRequestFilters {
         sb.append("    preferences: ").append(toIndentedString(preferences)).append("\n");
         sb.append("    promotions: ").append(toIndentedString(promotions)).append("\n");
         sb.append("    programTypes: ").append(toIndentedString(programTypes)).append("\n");
+        sb.append("    deliveriesConditions: ")
+                .append(toIndentedString(deliveriesConditions))
+                .append("\n");
         sb.append("}");
         return sb.toString();
     }

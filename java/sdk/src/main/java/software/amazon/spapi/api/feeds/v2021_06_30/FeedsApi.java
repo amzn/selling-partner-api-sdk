@@ -989,13 +989,18 @@ public class FeedsApi {
      * Build call for getFeedDocument
      *
      * @param feedDocumentId The identifier of the feed document. (required)
+     * @param enableContentEncodingUrlHeader When &#x60;true&#x60;, the Content-Encoding header on the returned URL is
+     *     set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is
+     *     &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getFeedDocumentCall(
-            String feedDocumentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String feedDocumentId,
+            Boolean enableContentEncodingUrlHeader,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1012,6 +1017,9 @@ public class FeedsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (enableContentEncodingUrlHeader != null)
+            localVarQueryParams.addAll(
+                    apiClient.parameterToPair("enableContentEncodingUrlHeader", enableContentEncodingUrlHeader));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1038,7 +1046,9 @@ public class FeedsApi {
     }
 
     private okhttp3.Call getFeedDocumentValidateBeforeCall(
-            String feedDocumentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String feedDocumentId,
+            Boolean enableContentEncodingUrlHeader,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'feedDocumentId' is set
         if (feedDocumentId == null) {
@@ -1046,7 +1056,7 @@ public class FeedsApi {
                     "Missing the required parameter 'feedDocumentId' when calling getFeedDocument(Async)");
         }
 
-        return getFeedDocumentCall(feedDocumentId, progressRequestListener);
+        return getFeedDocumentCall(feedDocumentId, enableContentEncodingUrlHeader, progressRequestListener);
     }
 
     /**
@@ -1059,14 +1069,19 @@ public class FeedsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param feedDocumentId The identifier of the feed document. (required)
+     * @param enableContentEncodingUrlHeader When &#x60;true&#x60;, the Content-Encoding header on the returned URL is
+     *     set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is
+     *     &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return FeedDocument
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public FeedDocument getFeedDocument(String feedDocumentId, String restrictedDataToken)
+    public FeedDocument getFeedDocument(
+            String feedDocumentId, Boolean enableContentEncodingUrlHeader, String restrictedDataToken)
             throws ApiException, LWAException {
-        ApiResponse<FeedDocument> resp = getFeedDocumentWithHttpInfo(feedDocumentId, restrictedDataToken);
+        ApiResponse<FeedDocument> resp =
+                getFeedDocumentWithHttpInfo(feedDocumentId, enableContentEncodingUrlHeader, restrictedDataToken);
         return resp.getData();
     }
 
@@ -1080,12 +1095,17 @@ public class FeedsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param feedDocumentId The identifier of the feed document. (required)
+     * @param enableContentEncodingUrlHeader When &#x60;true&#x60;, the Content-Encoding header on the returned URL is
+     *     set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is
+     *     &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      * @return FeedDocument
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public FeedDocument getFeedDocument(String feedDocumentId) throws ApiException, LWAException {
-        ApiResponse<FeedDocument> resp = getFeedDocumentWithHttpInfo(feedDocumentId, null);
+    public FeedDocument getFeedDocument(String feedDocumentId, Boolean enableContentEncodingUrlHeader)
+            throws ApiException, LWAException {
+        ApiResponse<FeedDocument> resp =
+                getFeedDocumentWithHttpInfo(feedDocumentId, enableContentEncodingUrlHeader, null);
         return resp.getData();
     }
 
@@ -1099,14 +1119,18 @@ public class FeedsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param feedDocumentId The identifier of the feed document. (required)
+     * @param enableContentEncodingUrlHeader When &#x60;true&#x60;, the Content-Encoding header on the returned URL is
+     *     set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is
+     *     &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;FeedDocument&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<FeedDocument> getFeedDocumentWithHttpInfo(String feedDocumentId, String restrictedDataToken)
+    public ApiResponse<FeedDocument> getFeedDocumentWithHttpInfo(
+            String feedDocumentId, Boolean enableContentEncodingUrlHeader, String restrictedDataToken)
             throws ApiException, LWAException {
-        okhttp3.Call call = getFeedDocumentValidateBeforeCall(feedDocumentId, null);
+        okhttp3.Call call = getFeedDocumentValidateBeforeCall(feedDocumentId, enableContentEncodingUrlHeader, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -1130,13 +1154,16 @@ public class FeedsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param feedDocumentId The identifier of the feed document. (required)
+     * @param enableContentEncodingUrlHeader When &#x60;true&#x60;, the Content-Encoding header on the returned URL is
+     *     set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is
+     *     &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      * @return ApiResponse&lt;FeedDocument&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<FeedDocument> getFeedDocumentWithHttpInfo(String feedDocumentId)
-            throws ApiException, LWAException {
-        return getFeedDocumentWithHttpInfo(feedDocumentId, null);
+    public ApiResponse<FeedDocument> getFeedDocumentWithHttpInfo(
+            String feedDocumentId, Boolean enableContentEncodingUrlHeader) throws ApiException, LWAException {
+        return getFeedDocumentWithHttpInfo(feedDocumentId, enableContentEncodingUrlHeader, null);
     }
 
     /**
@@ -1149,14 +1176,18 @@ public class FeedsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param feedDocumentId The identifier of the feed document. (required)
+     * @param enableContentEncodingUrlHeader When &#x60;true&#x60;, the Content-Encoding header on the returned URL is
+     *     set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is
+     *     &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call getFeedDocumentAsync(String feedDocumentId, final ApiCallback<FeedDocument> callback)
+    public okhttp3.Call getFeedDocumentAsync(
+            String feedDocumentId, Boolean enableContentEncodingUrlHeader, final ApiCallback<FeedDocument> callback)
             throws ApiException, LWAException {
-        return getFeedDocumentAsync(feedDocumentId, callback, null);
+        return getFeedDocumentAsync(feedDocumentId, enableContentEncodingUrlHeader, callback, null);
     }
     /**
      * (asynchronously) Returns the information required for retrieving a feed document&#x27;s contents. **Usage Plan:**
@@ -1168,6 +1199,9 @@ public class FeedsApi {
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param feedDocumentId The identifier of the feed document. (required)
+     * @param enableContentEncodingUrlHeader When &#x60;true&#x60;, the Content-Encoding header on the returned URL is
+     *     set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is
+     *     &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -1175,7 +1209,10 @@ public class FeedsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getFeedDocumentAsync(
-            String feedDocumentId, final ApiCallback<FeedDocument> callback, String restrictedDataToken)
+            String feedDocumentId,
+            Boolean enableContentEncodingUrlHeader,
+            final ApiCallback<FeedDocument> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1184,7 +1221,8 @@ public class FeedsApi {
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getFeedDocumentValidateBeforeCall(feedDocumentId, progressRequestListener);
+        okhttp3.Call call = getFeedDocumentValidateBeforeCall(
+                feedDocumentId, enableContentEncodingUrlHeader, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();

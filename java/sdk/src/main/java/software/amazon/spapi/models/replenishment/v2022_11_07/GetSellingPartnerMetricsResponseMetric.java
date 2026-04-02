@@ -113,6 +113,9 @@ public class GetSellingPartnerMetricsResponseMetric {
     @SerializedName("signupConversionFor5PlusPercentSellerFunding")
     private Double signupConversionFor5PlusPercentSellerFunding = null;
 
+    @SerializedName("revenuePenetration")
+    private Double revenuePenetration = null;
+
     @SerializedName("timeInterval")
     private TimeInterval timeInterval = null;
 
@@ -582,14 +585,14 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /**
-     * Total revenue from customers who have made purchases from your catalog but have never subscribed to any products
+     * Total revenue from customers who have made purchases from your catalog but have never subscribed to any products.
      * minimum: 0
      *
      * @return nonSubscriberLifeTimeValueFromOTP
      */
     @Schema(
             description =
-                    "Total revenue from customers who have made purchases from your catalog but have never subscribed to any products")
+                    "Total revenue from customers who have made purchases from your catalog but have never subscribed to any products.")
     public Double getNonSubscriberLifeTimeValueFromOTP() {
         return nonSubscriberLifeTimeValueFromOTP;
     }
@@ -828,6 +831,28 @@ public class GetSellingPartnerMetricsResponseMetric {
         this.signupConversionFor5PlusPercentSellerFunding = signupConversionFor5PlusPercentSellerFunding;
     }
 
+    public GetSellingPartnerMetricsResponseMetric revenuePenetration(Double revenuePenetration) {
+        this.revenuePenetration = revenuePenetration;
+        return this;
+    }
+
+    /**
+     * The percentage of total program revenue out of total product revenue over a period of time. Applicable to
+     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0 maximum: 100
+     *
+     * @return revenuePenetration
+     */
+    @Schema(
+            description =
+                    "The percentage of total program revenue out of total product revenue over a period of time. Applicable to `PERFORMANCE` `timePeriodType`.")
+    public Double getRevenuePenetration() {
+        return revenuePenetration;
+    }
+
+    public void setRevenuePenetration(Double revenuePenetration) {
+        this.revenuePenetration = revenuePenetration;
+    }
+
     public GetSellingPartnerMetricsResponseMetric timeInterval(TimeInterval timeInterval) {
         this.timeInterval = timeInterval;
         return this;
@@ -961,6 +986,7 @@ public class GetSellingPartnerMetricsResponseMetric {
                 && Objects.equals(
                         this.signupConversionFor5PlusPercentSellerFunding,
                         getSellingPartnerMetricsResponseMetric.signupConversionFor5PlusPercentSellerFunding)
+                && Objects.equals(this.revenuePenetration, getSellingPartnerMetricsResponseMetric.revenuePenetration)
                 && Objects.equals(this.timeInterval, getSellingPartnerMetricsResponseMetric.timeInterval)
                 && Objects.equals(this.currencyCode, getSellingPartnerMetricsResponseMetric.currencyCode);
     }
@@ -999,6 +1025,7 @@ public class GetSellingPartnerMetricsResponseMetric {
                 signupConversionFor5PercentSellerFunding,
                 signupConversionFor10PercentSellerFunding,
                 signupConversionFor5PlusPercentSellerFunding,
+                revenuePenetration,
                 timeInterval,
                 currencyCode);
     }
@@ -1100,6 +1127,9 @@ public class GetSellingPartnerMetricsResponseMetric {
                 .append("\n");
         sb.append("    signupConversionFor5PlusPercentSellerFunding: ")
                 .append(toIndentedString(signupConversionFor5PlusPercentSellerFunding))
+                .append("\n");
+        sb.append("    revenuePenetration: ")
+                .append(toIndentedString(revenuePenetration))
                 .append("\n");
         sb.append("    timeInterval: ").append(toIndentedString(timeInterval)).append("\n");
         sb.append("    currencyCode: ").append(toIndentedString(currencyCode)).append("\n");

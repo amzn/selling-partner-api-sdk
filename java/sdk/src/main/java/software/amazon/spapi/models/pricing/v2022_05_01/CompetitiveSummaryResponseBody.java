@@ -36,6 +36,9 @@ public class CompetitiveSummaryResponseBody {
     @SerializedName("referencePrices")
     private List<ReferencePrice> referencePrices = null;
 
+    @SerializedName("similarItems")
+    private List<SimilarItems> similarItems = null;
+
     @SerializedName("errors")
     private ErrorList errors = null;
 
@@ -158,6 +161,33 @@ public class CompetitiveSummaryResponseBody {
         this.referencePrices = referencePrices;
     }
 
+    public CompetitiveSummaryResponseBody similarItems(List<SimilarItems> similarItems) {
+        this.similarItems = similarItems;
+        return this;
+    }
+
+    public CompetitiveSummaryResponseBody addSimilarItemsItem(SimilarItems similarItemsItem) {
+        if (this.similarItems == null) {
+            this.similarItems = new ArrayList<SimilarItems>();
+        }
+        this.similarItems.add(similarItemsItem);
+        return this;
+    }
+
+    /**
+     * A list of similar items for the specified ASIN &#x60;marketplaceId&#x60; combination.
+     *
+     * @return similarItems
+     */
+    @Schema(description = "A list of similar items for the specified ASIN `marketplaceId` combination.")
+    public List<SimilarItems> getSimilarItems() {
+        return similarItems;
+    }
+
+    public void setSimilarItems(List<SimilarItems> similarItems) {
+        this.similarItems = similarItems;
+    }
+
     public CompetitiveSummaryResponseBody errors(ErrorList errors) {
         this.errors = errors;
         return this;
@@ -191,12 +221,14 @@ public class CompetitiveSummaryResponseBody {
                 && Objects.equals(this.featuredBuyingOptions, competitiveSummaryResponseBody.featuredBuyingOptions)
                 && Objects.equals(this.lowestPricedOffers, competitiveSummaryResponseBody.lowestPricedOffers)
                 && Objects.equals(this.referencePrices, competitiveSummaryResponseBody.referencePrices)
+                && Objects.equals(this.similarItems, competitiveSummaryResponseBody.similarItems)
                 && Objects.equals(this.errors, competitiveSummaryResponseBody.errors);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(asin, marketplaceId, featuredBuyingOptions, lowestPricedOffers, referencePrices, errors);
+        return Objects.hash(
+                asin, marketplaceId, featuredBuyingOptions, lowestPricedOffers, referencePrices, similarItems, errors);
     }
 
     @Override
@@ -215,6 +247,7 @@ public class CompetitiveSummaryResponseBody {
         sb.append("    referencePrices: ")
                 .append(toIndentedString(referencePrices))
                 .append("\n");
+        sb.append("    similarItems: ").append(toIndentedString(similarItems)).append("\n");
         sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
         sb.append("}");
         return sb.toString();
