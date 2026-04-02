@@ -136,7 +136,7 @@ namespace software.amzn.spapi.Test.Api.feeds.v2021_06_30
             string feedDocumentId = fixture.Create<string>();
             
 
-            var response = api.GetFeedDocumentWithHttpInfo(feedDocumentId);
+            var response = api.GetFeedDocumentWithHttpInfo(feedDocumentId, null);
 
             Assert.Equal(200, (int) response.StatusCode);
             AssertValidResponsePayload(200, response.Content);

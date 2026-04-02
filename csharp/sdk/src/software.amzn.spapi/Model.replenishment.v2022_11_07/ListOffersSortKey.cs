@@ -60,7 +60,31 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// Enum AMAZONFUNDEDTIEREDDISCOUNTPERCENTAGE for value: AMAZON_FUNDED_TIERED_DISCOUNT_PERCENTAGE
         /// </summary>
         [EnumMember(Value = "AMAZON_FUNDED_TIERED_DISCOUNT_PERCENTAGE")]
-        AMAZONFUNDEDTIEREDDISCOUNTPERCENTAGE = 5
+        AMAZONFUNDEDTIEREDDISCOUNTPERCENTAGE = 5,
+
+        /// <summary>
+        /// Enum INVENTORY for value: INVENTORY
+        /// </summary>
+        [EnumMember(Value = "INVENTORY")]
+        INVENTORY = 6,
+
+        /// <summary>
+        /// Enum PRICE for value: PRICE
+        /// </summary>
+        [EnumMember(Value = "PRICE")]
+        PRICE = 7,
+
+        /// <summary>
+        /// Enum SUBSCRIPTIONCOUNT for value: SUBSCRIPTION_COUNT
+        /// </summary>
+        [EnumMember(Value = "SUBSCRIPTION_COUNT")]
+        SUBSCRIPTIONCOUNT = 8,
+
+        /// <summary>
+        /// Enum FULFILLMENTNETWORKIDTYPE for value: FULFILLMENT_NETWORK_ID_TYPE
+        /// </summary>
+        [EnumMember(Value = "FULFILLMENT_NETWORK_ID_TYPE")]
+        FULFILLMENTNETWORKIDTYPE = 9
     }
 
 }

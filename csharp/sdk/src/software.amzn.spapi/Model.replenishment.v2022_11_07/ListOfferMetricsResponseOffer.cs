@@ -31,29 +31,39 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
     [DataContract(Name = "ListOfferMetricsResponseOffer")]
     public partial class ListOfferMetricsResponseOffer : IValidatableObject
     {
+
+        /// <summary>
+        /// Gets or Sets FulfillmentChannelType
+        /// </summary>
+        [DataMember(Name = "fulfillmentChannelType", EmitDefaultValue = false)]
+        public FulfillmentChannelType? FulfillmentChannelType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ListOfferMetricsResponseOffer" /> class.
         /// </summary>
         /// <param name="asin">The Amazon Standard Identification Number (ASIN)..</param>
-        /// <param name="notDeliveredDueToOOS">The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
-        /// <param name="totalSubscriptionsRevenue">The revenue generated from subscriptions over a period of time. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
-        /// <param name="shippedSubscriptionUnits">The number of units shipped to the subscribers over a period of time. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
-        /// <param name="activeSubscriptions">The number of active subscriptions present at the end of the period. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
-        /// <param name="revenuePenetration">The percentage of total program revenue out of total product revenue. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
-        /// <param name="lostRevenueDueToOOS">The revenue that would have been generated had there not been out of stock. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
-        /// <param name="couponsRevenuePenetration">The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
-        /// <param name="shareOfCouponSubscriptions">The percentage of new subscriptions acquired through coupons. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
-        /// <param name="next30DayTotalSubscriptionsRevenue">The forecasted total subscription revenue for the next 30 days. Applicable to FORECAST timePeriodType..</param>
-        /// <param name="next60DayTotalSubscriptionsRevenue">The forecasted total subscription revenue for the next 60 days. Applicable to FORECAST timePeriodType..</param>
-        /// <param name="next90DayTotalSubscriptionsRevenue">The forecasted total subscription revenue for the next 90 days. Applicable to FORECAST timePeriodType..</param>
-        /// <param name="next30DayShippedSubscriptionUnits">The forecasted shipped subscription units for the next 30 days. Applicable to FORECAST timePeriodType..</param>
-        /// <param name="next60DayShippedSubscriptionUnits">The forecasted shipped subscription units for the next 60 days. Applicable to FORECAST timePeriodType..</param>
-        /// <param name="next90DayShippedSubscriptionUnits">The forecasted shipped subscription units for the next 90 days. Applicable to FORECAST timePeriodType..</param>
+        /// <param name="sku">The SKU. This property is only supported for sellers and not for vendors..</param>
+        /// <param name="fulfillmentChannelType">fulfillmentChannelType.</param>
+        /// <param name="notDeliveredDueToOOS">The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;..</param>
+        /// <param name="totalSubscriptionsRevenue">The revenue generated from subscriptions over a period of time. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;..</param>
+        /// <param name="shippedSubscriptionUnits">The number of units shipped to the subscribers over a period of time. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;..</param>
+        /// <param name="activeSubscriptions">The number of active subscriptions present at the end of the period. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;..</param>
+        /// <param name="revenuePenetration">The percentage of total program revenue out of total product revenue. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;..</param>
+        /// <param name="lostRevenueDueToOOS">The revenue that would have been generated had there not been out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;..</param>
+        /// <param name="couponsRevenuePenetration">The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;..</param>
+        /// <param name="shareOfCouponSubscriptions">The percentage of new subscriptions acquired through coupons. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;..</param>
+        /// <param name="next30DayTotalSubscriptionsRevenue">The forecasted total subscription revenue for the next 30 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
+        /// <param name="next60DayTotalSubscriptionsRevenue">The forecasted total subscription revenue for the next 60 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
+        /// <param name="next90DayTotalSubscriptionsRevenue">The forecasted total subscription revenue for the next 90 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
+        /// <param name="next30DayShippedSubscriptionUnits">The forecasted shipped subscription units for the next 30 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
+        /// <param name="next60DayShippedSubscriptionUnits">The forecasted shipped subscription units for the next 60 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
+        /// <param name="next90DayShippedSubscriptionUnits">The forecasted shipped subscription units for the next 90 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
         /// <param name="timeInterval">timeInterval.</param>
         /// <param name="currencyCode">The currency code in ISO 4217 format..</param>
-        public ListOfferMetricsResponseOffer(string? asin = default(string?), double? notDeliveredDueToOOS = default(double?), double? totalSubscriptionsRevenue = default(double?), decimal? shippedSubscriptionUnits = default(decimal?), decimal? activeSubscriptions = default(decimal?), double? revenuePenetration = default(double?), double? lostRevenueDueToOOS = default(double?), double? couponsRevenuePenetration = default(double?), double? shareOfCouponSubscriptions = default(double?), double? next30DayTotalSubscriptionsRevenue = default(double?), double? next60DayTotalSubscriptionsRevenue = default(double?), double? next90DayTotalSubscriptionsRevenue = default(double?), decimal? next30DayShippedSubscriptionUnits = default(decimal?), decimal? next60DayShippedSubscriptionUnits = default(decimal?), decimal? next90DayShippedSubscriptionUnits = default(decimal?), TimeInterval? timeInterval = default(TimeInterval?), string? currencyCode = default(string?))
+        public ListOfferMetricsResponseOffer(string? asin = default(string?), string? sku = default(string?), FulfillmentChannelType? fulfillmentChannelType = default(FulfillmentChannelType?), double? notDeliveredDueToOOS = default(double?), double? totalSubscriptionsRevenue = default(double?), decimal? shippedSubscriptionUnits = default(decimal?), decimal? activeSubscriptions = default(decimal?), double? revenuePenetration = default(double?), double? lostRevenueDueToOOS = default(double?), double? couponsRevenuePenetration = default(double?), double? shareOfCouponSubscriptions = default(double?), double? next30DayTotalSubscriptionsRevenue = default(double?), double? next60DayTotalSubscriptionsRevenue = default(double?), double? next90DayTotalSubscriptionsRevenue = default(double?), decimal? next30DayShippedSubscriptionUnits = default(decimal?), decimal? next60DayShippedSubscriptionUnits = default(decimal?), decimal? next90DayShippedSubscriptionUnits = default(decimal?), TimeInterval? timeInterval = default(TimeInterval?), string? currencyCode = default(string?))
         {
             this.Asin = asin;
+            this.Sku = sku;
+            this.FulfillmentChannelType = fulfillmentChannelType;
             this.NotDeliveredDueToOOS = notDeliveredDueToOOS;
             this.TotalSubscriptionsRevenue = totalSubscriptionsRevenue;
             this.ShippedSubscriptionUnits = shippedSubscriptionUnits;
@@ -80,100 +90,107 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         public string? Asin { get; set; }
 
         /// <summary>
-        /// The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
+        /// The SKU. This property is only supported for sellers and not for vendors.
         /// </summary>
-        /// <value>The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
+        /// <value>The SKU. This property is only supported for sellers and not for vendors.</value>
+        [DataMember(Name = "sku", EmitDefaultValue = false)]
+        public string? Sku { get; set; }
+
+        /// <summary>
+        /// The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+        /// </summary>
+        /// <value>The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "notDeliveredDueToOOS", EmitDefaultValue = false)]
         public double? NotDeliveredDueToOOS { get; set; }
 
         /// <summary>
-        /// The revenue generated from subscriptions over a period of time. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
+        /// The revenue generated from subscriptions over a period of time. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
-        /// <value>The revenue generated from subscriptions over a period of time. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
+        /// <value>The revenue generated from subscriptions over a period of time. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "totalSubscriptionsRevenue", EmitDefaultValue = false)]
         public double? TotalSubscriptionsRevenue { get; set; }
 
         /// <summary>
-        /// The number of units shipped to the subscribers over a period of time. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
+        /// The number of units shipped to the subscribers over a period of time. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
-        /// <value>The number of units shipped to the subscribers over a period of time. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
+        /// <value>The number of units shipped to the subscribers over a period of time. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "shippedSubscriptionUnits", EmitDefaultValue = false)]
         public decimal? ShippedSubscriptionUnits { get; set; }
 
         /// <summary>
-        /// The number of active subscriptions present at the end of the period. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
+        /// The number of active subscriptions present at the end of the period. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
-        /// <value>The number of active subscriptions present at the end of the period. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
+        /// <value>The number of active subscriptions present at the end of the period. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "activeSubscriptions", EmitDefaultValue = false)]
         public decimal? ActiveSubscriptions { get; set; }
 
         /// <summary>
-        /// The percentage of total program revenue out of total product revenue. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
+        /// The percentage of total program revenue out of total product revenue. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
-        /// <value>The percentage of total program revenue out of total product revenue. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
+        /// <value>The percentage of total program revenue out of total product revenue. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "revenuePenetration", EmitDefaultValue = false)]
         public double? RevenuePenetration { get; set; }
 
         /// <summary>
-        /// The revenue that would have been generated had there not been out of stock. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
+        /// The revenue that would have been generated had there not been out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
-        /// <value>The revenue that would have been generated had there not been out of stock. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
+        /// <value>The revenue that would have been generated had there not been out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "lostRevenueDueToOOS", EmitDefaultValue = false)]
         public double? LostRevenueDueToOOS { get; set; }
 
         /// <summary>
-        /// The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
+        /// The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
-        /// <value>The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
+        /// <value>The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "couponsRevenuePenetration", EmitDefaultValue = false)]
         public double? CouponsRevenuePenetration { get; set; }
 
         /// <summary>
-        /// The percentage of new subscriptions acquired through coupons. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
+        /// The percentage of new subscriptions acquired through coupons. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
-        /// <value>The percentage of new subscriptions acquired through coupons. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
+        /// <value>The percentage of new subscriptions acquired through coupons. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "shareOfCouponSubscriptions", EmitDefaultValue = false)]
         public double? ShareOfCouponSubscriptions { get; set; }
 
         /// <summary>
-        /// The forecasted total subscription revenue for the next 30 days. Applicable to FORECAST timePeriodType.
+        /// The forecasted total subscription revenue for the next 30 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
-        /// <value>The forecasted total subscription revenue for the next 30 days. Applicable to FORECAST timePeriodType.</value>
+        /// <value>The forecasted total subscription revenue for the next 30 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "next30DayTotalSubscriptionsRevenue", EmitDefaultValue = false)]
         public double? Next30DayTotalSubscriptionsRevenue { get; set; }
 
         /// <summary>
-        /// The forecasted total subscription revenue for the next 60 days. Applicable to FORECAST timePeriodType.
+        /// The forecasted total subscription revenue for the next 60 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
-        /// <value>The forecasted total subscription revenue for the next 60 days. Applicable to FORECAST timePeriodType.</value>
+        /// <value>The forecasted total subscription revenue for the next 60 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "next60DayTotalSubscriptionsRevenue", EmitDefaultValue = false)]
         public double? Next60DayTotalSubscriptionsRevenue { get; set; }
 
         /// <summary>
-        /// The forecasted total subscription revenue for the next 90 days. Applicable to FORECAST timePeriodType.
+        /// The forecasted total subscription revenue for the next 90 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
-        /// <value>The forecasted total subscription revenue for the next 90 days. Applicable to FORECAST timePeriodType.</value>
+        /// <value>The forecasted total subscription revenue for the next 90 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "next90DayTotalSubscriptionsRevenue", EmitDefaultValue = false)]
         public double? Next90DayTotalSubscriptionsRevenue { get; set; }
 
         /// <summary>
-        /// The forecasted shipped subscription units for the next 30 days. Applicable to FORECAST timePeriodType.
+        /// The forecasted shipped subscription units for the next 30 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
-        /// <value>The forecasted shipped subscription units for the next 30 days. Applicable to FORECAST timePeriodType.</value>
+        /// <value>The forecasted shipped subscription units for the next 30 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "next30DayShippedSubscriptionUnits", EmitDefaultValue = false)]
         public decimal? Next30DayShippedSubscriptionUnits { get; set; }
 
         /// <summary>
-        /// The forecasted shipped subscription units for the next 60 days. Applicable to FORECAST timePeriodType.
+        /// The forecasted shipped subscription units for the next 60 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
-        /// <value>The forecasted shipped subscription units for the next 60 days. Applicable to FORECAST timePeriodType.</value>
+        /// <value>The forecasted shipped subscription units for the next 60 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "next60DayShippedSubscriptionUnits", EmitDefaultValue = false)]
         public decimal? Next60DayShippedSubscriptionUnits { get; set; }
 
         /// <summary>
-        /// The forecasted shipped subscription units for the next 90 days. Applicable to FORECAST timePeriodType.
+        /// The forecasted shipped subscription units for the next 90 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
-        /// <value>The forecasted shipped subscription units for the next 90 days. Applicable to FORECAST timePeriodType.</value>
+        /// <value>The forecasted shipped subscription units for the next 90 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "next90DayShippedSubscriptionUnits", EmitDefaultValue = false)]
         public decimal? Next90DayShippedSubscriptionUnits { get; set; }
 
@@ -199,6 +216,8 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListOfferMetricsResponseOffer {\n");
             sb.Append("  Asin: ").Append(Asin).Append("\n");
+            sb.Append("  Sku: ").Append(Sku).Append("\n");
+            sb.Append("  FulfillmentChannelType: ").Append(FulfillmentChannelType).Append("\n");
             sb.Append("  NotDeliveredDueToOOS: ").Append(NotDeliveredDueToOOS).Append("\n");
             sb.Append("  TotalSubscriptionsRevenue: ").Append(TotalSubscriptionsRevenue).Append("\n");
             sb.Append("  ShippedSubscriptionUnits: ").Append(ShippedSubscriptionUnits).Append("\n");

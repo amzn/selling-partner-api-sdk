@@ -54,7 +54,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <param name="aggregationFrequency">aggregationFrequency.</param>
         /// <param name="timeInterval">timeInterval (required).</param>
         /// <param name="timePeriodType">timePeriodType (required).</param>
-        /// <param name="marketplaceId">The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace. (required).</param>
+        /// <param name="marketplaceId">The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace. (required).</param>
         /// <param name="programTypes">A list of replenishment program types. (required).</param>
         /// <param name="asins">A list of Amazon Standard Identification Numbers (ASINs)..</param>
         public ListOfferMetricsRequestFilters(AggregationFrequency? aggregationFrequency = default(AggregationFrequency?), TimeInterval timeInterval = default(TimeInterval), TimePeriodType timePeriodType = default(TimePeriodType), string marketplaceId = default(string), List<ProgramType> programTypes = default(List<ProgramType>), List<string>? asins = default(List<string>?))
@@ -89,9 +89,9 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         public TimeInterval TimeInterval { get; set; }
 
         /// <summary>
-        /// The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
+        /// The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
         /// </summary>
-        /// <value>The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.</value>
+        /// <value>The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.</value>
         [DataMember(Name = "marketplaceId", IsRequired = true, EmitDefaultValue = true)]
         public string MarketplaceId { get; set; }
 

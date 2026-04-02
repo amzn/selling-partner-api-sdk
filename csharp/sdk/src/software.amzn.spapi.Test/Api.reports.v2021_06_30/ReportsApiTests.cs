@@ -151,7 +151,7 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
             string reportDocumentId = fixture.Create<string>();
             
 
-            var response = api.GetReportDocumentWithHttpInfo(reportDocumentId);
+            var response = api.GetReportDocumentWithHttpInfo(reportDocumentId, null);
 
             Assert.Equal(200, (int) response.StatusCode);
             AssertValidResponsePayload(200, response.Content);

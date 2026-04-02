@@ -300,10 +300,16 @@ namespace software.amzn.spapi.Model.fba.eligibility.v1
             FBAINB0342 = 39,
 
             /// <summary>
+            /// Enum FBAINB0465 for value: FBA_INB_0465
+            /// </summary>
+            [EnumMember(Value = "FBA_INB_0465")]
+            FBAINB0465 = 40,
+
+            /// <summary>
             /// Enum UNKNOWNINBERRORCODE for value: UNKNOWN_INB_ERROR_CODE
             /// </summary>
             [EnumMember(Value = "UNKNOWN_INB_ERROR_CODE")]
-            UNKNOWNINBERRORCODE = 40
+            UNKNOWNINBERRORCODE = 41
         }
 
         /// <summary>

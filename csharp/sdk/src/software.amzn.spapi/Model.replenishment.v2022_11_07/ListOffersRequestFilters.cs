@@ -32,6 +32,43 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
     public partial class ListOffersRequestFilters : IValidatableObject
     {
         /// <summary>
+        /// Defines DeliveriesConditions
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum DeliveriesConditionsEnum
+        {
+            /// <summary>
+            /// Enum NEXT30DAYSDELIVERIESPAUSEDPRICING for value: NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING
+            /// </summary>
+            [EnumMember(Value = "NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING")]
+            NEXT30DAYSDELIVERIESPAUSEDPRICING = 1,
+
+            /// <summary>
+            /// Enum NEXT30DAYSDELIVERIESPAUSEDNONBUYABLE for value: NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE
+            /// </summary>
+            [EnumMember(Value = "NEXT_30_DAYS_DELIVERIES_PAUSED_NON_BUYABLE")]
+            NEXT30DAYSDELIVERIESPAUSEDNONBUYABLE = 2,
+
+            /// <summary>
+            /// Enum NEXT30DAYSDELIVERIESATLOWINVENTORYRISKONLY for value: NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY
+            /// </summary>
+            [EnumMember(Value = "NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK_ONLY")]
+            NEXT30DAYSDELIVERIESATLOWINVENTORYRISKONLY = 3,
+
+            /// <summary>
+            /// Enum NEXT30DAYSDELIVERIESATLOWINVENTORYRISK for value: NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK
+            /// </summary>
+            [EnumMember(Value = "NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK")]
+            NEXT30DAYSDELIVERIESATLOWINVENTORYRISK = 4,
+
+            /// <summary>
+            /// Enum NOISSUESFORNEXT30DAYSDELIVERIES for value: NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES
+            /// </summary>
+            [EnumMember(Value = "NO_ISSUES_FOR_NEXT_30_DAYS_DELIVERIES")]
+            NOISSUESFORNEXT30DAYSDELIVERIES = 5
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ListOffersRequestFilters" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -39,14 +76,15 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <summary>
         /// Initializes a new instance of the <see cref="ListOffersRequestFilters" /> class.
         /// </summary>
-        /// <param name="marketplaceId">The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace. (required).</param>
+        /// <param name="marketplaceId">The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace. (required).</param>
         /// <param name="skus">A list of SKUs to filter. This filter is only supported for sellers and not for vendors..</param>
         /// <param name="asins">A list of Amazon Standard Identification Numbers (ASINs)..</param>
         /// <param name="eligibilities">A list of eligibilities associated with an offer..</param>
         /// <param name="preferences">preferences.</param>
         /// <param name="promotions">promotions.</param>
         /// <param name="programTypes">A list of replenishment program types. (required).</param>
-        public ListOffersRequestFilters(string marketplaceId = default(string), List<string>? skus = default(List<string>?), List<string>? asins = default(List<string>?), List<EligibilityStatus>? eligibilities = default(List<EligibilityStatus>?), Preference? preferences = default(Preference?), Promotion? promotions = default(Promotion?), List<ProgramType> programTypes = default(List<ProgramType>))
+        /// <param name="deliveriesConditions">A list of delivery condition types to filter the results by. Results are filtered to only include offers with the specified delivery conditions..</param>
+        public ListOffersRequestFilters(string marketplaceId = default(string), List<string>? skus = default(List<string>?), List<string>? asins = default(List<string>?), List<EligibilityStatus>? eligibilities = default(List<EligibilityStatus>?), Preference? preferences = default(Preference?), Promotion? promotions = default(Promotion?), List<ProgramType> programTypes = default(List<ProgramType>), List<DeliveriesConditionsEnum>? deliveriesConditions = default(List<DeliveriesConditionsEnum>?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -65,12 +103,13 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             this.Eligibilities = eligibilities;
             this.Preferences = preferences;
             this.Promotions = promotions;
+            this.DeliveriesConditions = deliveriesConditions;
         }
 
         /// <summary>
-        /// The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
+        /// The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
         /// </summary>
-        /// <value>The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.</value>
+        /// <value>The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.</value>
         [DataMember(Name = "marketplaceId", IsRequired = true, EmitDefaultValue = true)]
         public string MarketplaceId { get; set; }
 
@@ -115,6 +154,13 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         public List<ProgramType> ProgramTypes { get; set; }
 
         /// <summary>
+        /// A list of delivery condition types to filter the results by. Results are filtered to only include offers with the specified delivery conditions.
+        /// </summary>
+        /// <value>A list of delivery condition types to filter the results by. Results are filtered to only include offers with the specified delivery conditions.</value>
+        [DataMember(Name = "deliveriesConditions", EmitDefaultValue = false)]
+        public List<ListOffersRequestFilters.DeliveriesConditionsEnum>? DeliveriesConditions { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -129,6 +175,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             sb.Append("  Preferences: ").Append(Preferences).Append("\n");
             sb.Append("  Promotions: ").Append(Promotions).Append("\n");
             sb.Append("  ProgramTypes: ").Append(ProgramTypes).Append("\n");
+            sb.Append("  DeliveriesConditions: ").Append(DeliveriesConditions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

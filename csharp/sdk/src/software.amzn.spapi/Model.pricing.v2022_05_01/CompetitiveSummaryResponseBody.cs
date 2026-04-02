@@ -44,8 +44,9 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// <param name="featuredBuyingOptions">A list of featured buying options for the specified ASIN &#x60;marketplaceId&#x60; combination..</param>
         /// <param name="lowestPricedOffers">A list of lowest priced offers for the specified ASIN &#x60;marketplaceId&#x60; combination..</param>
         /// <param name="referencePrices">A list of reference prices for the specified ASIN &#x60;marketplaceId&#x60; combination..</param>
+        /// <param name="similarItems">A list of similar items for the specified ASIN &#x60;marketplaceId&#x60; combination..</param>
         /// <param name="errors">A list of error responses that are returned when a request is unsuccessful..</param>
-        public CompetitiveSummaryResponseBody(string asin = default(string), string marketplaceId = default(string), List<FeaturedBuyingOption>? featuredBuyingOptions = default(List<FeaturedBuyingOption>?), List<LowestPricedOffer>? lowestPricedOffers = default(List<LowestPricedOffer>?), List<ReferencePrice>? referencePrices = default(List<ReferencePrice>?), List<Error>? errors = default(List<Error>?))
+        public CompetitiveSummaryResponseBody(string asin = default(string), string marketplaceId = default(string), List<FeaturedBuyingOption>? featuredBuyingOptions = default(List<FeaturedBuyingOption>?), List<LowestPricedOffer>? lowestPricedOffers = default(List<LowestPricedOffer>?), List<ReferencePrice>? referencePrices = default(List<ReferencePrice>?), List<SimilarItems>? similarItems = default(List<SimilarItems>?), List<Error>? errors = default(List<Error>?))
         {
             // to ensure "asin" is required (not null)
             if (asin == null)
@@ -62,6 +63,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             this.FeaturedBuyingOptions = featuredBuyingOptions;
             this.LowestPricedOffers = lowestPricedOffers;
             this.ReferencePrices = referencePrices;
+            this.SimilarItems = similarItems;
             this.Errors = errors;
         }
 
@@ -101,6 +103,13 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         public List<ReferencePrice>? ReferencePrices { get; set; }
 
         /// <summary>
+        /// A list of similar items for the specified ASIN &#x60;marketplaceId&#x60; combination.
+        /// </summary>
+        /// <value>A list of similar items for the specified ASIN &#x60;marketplaceId&#x60; combination.</value>
+        [DataMember(Name = "similarItems", EmitDefaultValue = false)]
+        public List<SimilarItems>? SimilarItems { get; set; }
+
+        /// <summary>
         /// A list of error responses that are returned when a request is unsuccessful.
         /// </summary>
         /// <value>A list of error responses that are returned when a request is unsuccessful.</value>
@@ -120,6 +129,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             sb.Append("  FeaturedBuyingOptions: ").Append(FeaturedBuyingOptions).Append("\n");
             sb.Append("  LowestPricedOffers: ").Append(LowestPricedOffers).Append("\n");
             sb.Append("  ReferencePrices: ").Append(ReferencePrices).Append("\n");
+            sb.Append("  SimilarItems: ").Append(SimilarItems).Append("\n");
             sb.Append("  Errors: ").Append(Errors).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

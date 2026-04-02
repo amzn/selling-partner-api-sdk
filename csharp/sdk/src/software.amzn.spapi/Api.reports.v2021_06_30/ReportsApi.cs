@@ -138,8 +138,9 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reportDocumentId">The identifier for the report document.</param>
+        /// <param name="enableContentEncodingUrlHeader">When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)</param>
         /// <returns>ReportDocument</returns>
-        ReportDocument GetReportDocument (string reportDocumentId);
+        ReportDocument GetReportDocument (string reportDocumentId, bool? enableContentEncodingUrlHeader = null);
 
         /// <summary>
         /// 
@@ -149,8 +150,9 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reportDocumentId">The identifier for the report document.</param>
+        /// <param name="enableContentEncodingUrlHeader">When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)</param>
         /// <returns>ApiResponse of ReportDocument</returns>
-        ApiResponse<ReportDocument> GetReportDocumentWithHttpInfo (string reportDocumentId);
+        ApiResponse<ReportDocument> GetReportDocumentWithHttpInfo (string reportDocumentId, bool? enableContentEncodingUrlHeader = null);
         /// <summary>
         /// 
         /// </summary>
@@ -341,8 +343,9 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reportDocumentId">The identifier for the report document.</param>
+        /// <param name="enableContentEncodingUrlHeader">When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)</param>
         /// <returns>Task of ReportDocument</returns>
-        System.Threading.Tasks.Task<ReportDocument> GetReportDocumentAsync (string reportDocumentId);
+        System.Threading.Tasks.Task<ReportDocument> GetReportDocumentAsync (string reportDocumentId, bool? enableContentEncodingUrlHeader = null);
 
         /// <summary>
         /// 
@@ -352,8 +355,9 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reportDocumentId">The identifier for the report document.</param>
+        /// <param name="enableContentEncodingUrlHeader">When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)</param>
         /// <returns>Task of ApiResponse (ReportDocument)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ReportDocument>> GetReportDocumentAsyncWithHttpInfo (string reportDocumentId);
+        System.Threading.Tasks.Task<ApiResponse<ReportDocument>> GetReportDocumentAsyncWithHttpInfo (string reportDocumentId, bool? enableContentEncodingUrlHeader = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1197,10 +1201,11 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reportDocumentId">The identifier for the report document.</param>
+        /// <param name="enableContentEncodingUrlHeader">When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)</param>
         /// <returns>ReportDocument</returns>
-        public ReportDocument GetReportDocument (string reportDocumentId)
+        public ReportDocument GetReportDocument (string reportDocumentId, bool? enableContentEncodingUrlHeader = null)
         {
-             ApiResponse<ReportDocument> localVarResponse = GetReportDocumentWithHttpInfo(reportDocumentId);
+             ApiResponse<ReportDocument> localVarResponse = GetReportDocumentWithHttpInfo(reportDocumentId, enableContentEncodingUrlHeader);
              return localVarResponse.Data;
         }
 
@@ -1209,8 +1214,9 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reportDocumentId">The identifier for the report document.</param>
+        /// <param name="enableContentEncodingUrlHeader">When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)</param>
         /// <returns>ApiResponse of ReportDocument</returns>
-        public ApiResponse< ReportDocument > GetReportDocumentWithHttpInfo (string reportDocumentId)
+        public ApiResponse< ReportDocument > GetReportDocumentWithHttpInfo (string reportDocumentId, bool? enableContentEncodingUrlHeader = null)
         {
             // verify the required parameter 'reportDocumentId' is set
             if (reportDocumentId == null)
@@ -1238,6 +1244,7 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (reportDocumentId != null) localVarPathParams.Add("reportDocumentId", this.Configuration.ApiClient.ParameterToString(reportDocumentId)); // path parameter
+            if (enableContentEncodingUrlHeader != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "enableContentEncodingUrlHeader", enableContentEncodingUrlHeader)); // query parameter
 
 
             // make the HTTP request
@@ -1261,10 +1268,11 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reportDocumentId">The identifier for the report document.</param>
+        /// <param name="enableContentEncodingUrlHeader">When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)</param>
         /// <returns>Task of ReportDocument</returns>
-        public async System.Threading.Tasks.Task<ReportDocument> GetReportDocumentAsync (string reportDocumentId)
+        public async System.Threading.Tasks.Task<ReportDocument> GetReportDocumentAsync (string reportDocumentId, bool? enableContentEncodingUrlHeader = null)
         {
-             ApiResponse<ReportDocument> localVarResponse = await GetReportDocumentAsyncWithHttpInfo(reportDocumentId);
+             ApiResponse<ReportDocument> localVarResponse = await GetReportDocumentAsyncWithHttpInfo(reportDocumentId, enableContentEncodingUrlHeader);
              return localVarResponse.Data;
 
         }
@@ -1274,8 +1282,9 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reportDocumentId">The identifier for the report document.</param>
+        /// <param name="enableContentEncodingUrlHeader">When &#x60;true&#x60;, the Content-Encoding header on the returned URL is set to &#x60;gzip&#x60; instead of the default &#x60;identity&#x60; when &#x60;compressionAlgorithm&#x60; is &#x60;GZIP&#x60;. This allows automatic decompression by HTTP clients. (optional)</param>
         /// <returns>Task of ApiResponse (ReportDocument)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ReportDocument>> GetReportDocumentAsyncWithHttpInfo (string reportDocumentId)
+        public async System.Threading.Tasks.Task<ApiResponse<ReportDocument>> GetReportDocumentAsyncWithHttpInfo (string reportDocumentId, bool? enableContentEncodingUrlHeader = null)
         {
             // verify the required parameter 'reportDocumentId' is set
             if (reportDocumentId == null)
@@ -1303,6 +1312,7 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (reportDocumentId != null) localVarPathParams.Add("reportDocumentId", this.Configuration.ApiClient.ParameterToString(reportDocumentId)); // path parameter
+            if (enableContentEncodingUrlHeader != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "enableContentEncodingUrlHeader", enableContentEncodingUrlHeader)); // query parameter
 
 
             // make the HTTP request
