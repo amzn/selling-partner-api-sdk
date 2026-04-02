@@ -74,6 +74,8 @@ class Metric
 
     public const SIGNUP_CONVERSION_BY_SELLER_FUNDING = 'SIGNUP_CONVERSION_BY_SELLER_FUNDING';
 
+    public const REVENUE_PENETRATION = 'REVENUE_PENETRATION';
+
     /**
      * Gets allowable values of the enum.
      *
@@ -96,6 +98,7 @@ class Metric
             self::SHARE_OF_COUPON_SUBSCRIPTIONS,
             self::SUBSCRIBER_LIFETIME_VALUE_BY_CUSTOMER_SEGMENT,
             self::SIGNUP_CONVERSION_BY_SELLER_FUNDING,
+            self::REVENUE_PENETRATION,
         ];
     }
 }

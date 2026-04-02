@@ -62,6 +62,8 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
      */
     protected static array $openAPITypes = [
         'asin' => 'string',
+        'sku' => 'string',
+        'fulfillment_channel_type' => '\SpApi\Model\replenishment\v2022_11_07\FulfillmentChannelType',
         'not_delivered_due_to_oos' => 'float',
         'total_subscriptions_revenue' => 'float',
         'shipped_subscription_units' => 'float',
@@ -90,6 +92,8 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
      */
     protected static array $openAPIFormats = [
         'asin' => null,
+        'sku' => null,
+        'fulfillment_channel_type' => null,
         'not_delivered_due_to_oos' => 'double',
         'total_subscriptions_revenue' => 'double',
         'shipped_subscription_units' => 'int64',
@@ -114,6 +118,8 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
      */
     protected static array $openAPINullables = [
         'asin' => true,
+        'sku' => true,
+        'fulfillment_channel_type' => true,
         'not_delivered_due_to_oos' => true,
         'total_subscriptions_revenue' => true,
         'shipped_subscription_units' => true,
@@ -147,6 +153,8 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
      */
     protected static array $attributeMap = [
         'asin' => 'asin',
+        'sku' => 'sku',
+        'fulfillment_channel_type' => 'fulfillmentChannelType',
         'not_delivered_due_to_oos' => 'notDeliveredDueToOOS',
         'total_subscriptions_revenue' => 'totalSubscriptionsRevenue',
         'shipped_subscription_units' => 'shippedSubscriptionUnits',
@@ -172,6 +180,8 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
      */
     protected static array $setters = [
         'asin' => 'setAsin',
+        'sku' => 'setSku',
+        'fulfillment_channel_type' => 'setFulfillmentChannelType',
         'not_delivered_due_to_oos' => 'setNotDeliveredDueToOos',
         'total_subscriptions_revenue' => 'setTotalSubscriptionsRevenue',
         'shipped_subscription_units' => 'setShippedSubscriptionUnits',
@@ -197,6 +207,8 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
      */
     protected static array $getters = [
         'asin' => 'getAsin',
+        'sku' => 'getSku',
+        'fulfillment_channel_type' => 'getFulfillmentChannelType',
         'not_delivered_due_to_oos' => 'getNotDeliveredDueToOos',
         'total_subscriptions_revenue' => 'getTotalSubscriptionsRevenue',
         'shipped_subscription_units' => 'getShippedSubscriptionUnits',
@@ -229,6 +241,8 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     public function __construct(?array $data = null)
     {
         $this->setIfExists('asin', $data ?? [], null);
+        $this->setIfExists('sku', $data ?? [], null);
+        $this->setIfExists('fulfillment_channel_type', $data ?? [], null);
         $this->setIfExists('not_delivered_due_to_oos', $data ?? [], null);
         $this->setIfExists('total_subscriptions_revenue', $data ?? [], null);
         $this->setIfExists('shipped_subscription_units', $data ?? [], null);
@@ -451,6 +465,66 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     }
 
     /**
+     * Gets sku.
+     */
+    public function getSku(): ?string
+    {
+        return $this->container['sku'];
+    }
+
+    /**
+     * Sets sku.
+     *
+     * @param null|string $sku The SKU. This property is only supported for sellers and not for vendors.
+     */
+    public function setSku(?string $sku): self
+    {
+        if (is_null($sku)) {
+            array_push($this->openAPINullablesSetToNull, 'sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['sku'] = $sku;
+
+        return $this;
+    }
+
+    /**
+     * Gets fulfillment_channel_type.
+     */
+    public function getFulfillmentChannelType(): ?string
+    {
+        return $this->container['fulfillment_channel_type'];
+    }
+
+    /**
+     * Sets fulfillment_channel_type.
+     *
+     * @param null|string $fulfillment_channel_type fulfillment_channel_type
+     */
+    public function setFulfillmentChannelType(?string $fulfillment_channel_type): self
+    {
+        if (is_null($fulfillment_channel_type)) {
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_channel_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_channel_type', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['fulfillment_channel_type'] = $fulfillment_channel_type;
+
+        return $this;
+    }
+
+    /**
      * Gets not_delivered_due_to_oos.
      */
     public function getNotDeliveredDueToOos(): ?float
@@ -461,7 +535,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets not_delivered_due_to_oos.
      *
-     * @param null|float $not_delivered_due_to_oos The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `FORECAST` `timePeriodType`.
+     * @param null|float $not_delivered_due_to_oos The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `PERFORMANCE` `timePeriodType`.
      */
     public function setNotDeliveredDueToOos(?float $not_delivered_due_to_oos): self
     {
@@ -499,7 +573,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets total_subscriptions_revenue.
      *
-     * @param null|float $total_subscriptions_revenue The revenue generated from subscriptions over a period of time. Applicable to `FORECAST` `timePeriodType`.
+     * @param null|float $total_subscriptions_revenue The revenue generated from subscriptions over a period of time. Applicable to `PERFORMANCE` `timePeriodType`.
      */
     public function setTotalSubscriptionsRevenue(?float $total_subscriptions_revenue): self
     {
@@ -534,7 +608,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets shipped_subscription_units.
      *
-     * @param null|float $shipped_subscription_units The number of units shipped to the subscribers over a period of time. Applicable to `FORECAST` `timePeriodType`.
+     * @param null|float $shipped_subscription_units The number of units shipped to the subscribers over a period of time. Applicable to `PERFORMANCE` `timePeriodType`.
      */
     public function setShippedSubscriptionUnits(?float $shipped_subscription_units): self
     {
@@ -569,7 +643,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets active_subscriptions.
      *
-     * @param null|float $active_subscriptions The number of active subscriptions present at the end of the period. Applicable to `FORECAST` `timePeriodType`.
+     * @param null|float $active_subscriptions The number of active subscriptions present at the end of the period. Applicable to `PERFORMANCE` `timePeriodType`.
      */
     public function setActiveSubscriptions(?float $active_subscriptions): self
     {
@@ -604,7 +678,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets revenue_penetration.
      *
-     * @param null|float $revenue_penetration The percentage of total program revenue out of total product revenue. Applicable to `FORECAST` `timePeriodType`.
+     * @param null|float $revenue_penetration The percentage of total program revenue out of total product revenue. Applicable to `PERFORMANCE` `timePeriodType`.
      */
     public function setRevenuePenetration(?float $revenue_penetration): self
     {
@@ -642,7 +716,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets lost_revenue_due_to_oos.
      *
-     * @param null|float $lost_revenue_due_to_oos The revenue that would have been generated had there not been out of stock. Applicable to `FORECAST` `timePeriodType`.
+     * @param null|float $lost_revenue_due_to_oos The revenue that would have been generated had there not been out of stock. Applicable to `PERFORMANCE` `timePeriodType`.
      */
     public function setLostRevenueDueToOos(?float $lost_revenue_due_to_oos): self
     {
@@ -677,7 +751,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets coupons_revenue_penetration.
      *
-     * @param null|float $coupons_revenue_penetration The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `FORECAST` `timePeriodType`.
+     * @param null|float $coupons_revenue_penetration The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `PERFORMANCE` `timePeriodType`.
      */
     public function setCouponsRevenuePenetration(?float $coupons_revenue_penetration): self
     {
@@ -715,7 +789,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets share_of_coupon_subscriptions.
      *
-     * @param null|float $share_of_coupon_subscriptions The percentage of new subscriptions acquired through coupons. Applicable to `FORECAST` `timePeriodType`.
+     * @param null|float $share_of_coupon_subscriptions The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.
      */
     public function setShareOfCouponSubscriptions(?float $share_of_coupon_subscriptions): self
     {
@@ -753,7 +827,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets next30_day_total_subscriptions_revenue.
      *
-     * @param null|float $next30_day_total_subscriptions_revenue The forecasted total subscription revenue for the next 30 days. Applicable to FORECAST timePeriodType.
+     * @param null|float $next30_day_total_subscriptions_revenue The forecasted total subscription revenue for the next 30 days. Applicable to `FORECAST` `timePeriodType`.
      */
     public function setNext30DayTotalSubscriptionsRevenue(?float $next30_day_total_subscriptions_revenue): self
     {
@@ -788,7 +862,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets next60_day_total_subscriptions_revenue.
      *
-     * @param null|float $next60_day_total_subscriptions_revenue The forecasted total subscription revenue for the next 60 days. Applicable to FORECAST timePeriodType.
+     * @param null|float $next60_day_total_subscriptions_revenue The forecasted total subscription revenue for the next 60 days. Applicable to `FORECAST` `timePeriodType`.
      */
     public function setNext60DayTotalSubscriptionsRevenue(?float $next60_day_total_subscriptions_revenue): self
     {
@@ -823,7 +897,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets next90_day_total_subscriptions_revenue.
      *
-     * @param null|float $next90_day_total_subscriptions_revenue The forecasted total subscription revenue for the next 90 days. Applicable to FORECAST timePeriodType.
+     * @param null|float $next90_day_total_subscriptions_revenue The forecasted total subscription revenue for the next 90 days. Applicable to `FORECAST` `timePeriodType`.
      */
     public function setNext90DayTotalSubscriptionsRevenue(?float $next90_day_total_subscriptions_revenue): self
     {
@@ -858,7 +932,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets next30_day_shipped_subscription_units.
      *
-     * @param null|float $next30_day_shipped_subscription_units The forecasted shipped subscription units for the next 30 days. Applicable to FORECAST timePeriodType.
+     * @param null|float $next30_day_shipped_subscription_units The forecasted shipped subscription units for the next 30 days. Applicable to `FORECAST` `timePeriodType`.
      */
     public function setNext30DayShippedSubscriptionUnits(?float $next30_day_shipped_subscription_units): self
     {
@@ -893,7 +967,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets next60_day_shipped_subscription_units.
      *
-     * @param null|float $next60_day_shipped_subscription_units The forecasted shipped subscription units for the next 60 days. Applicable to FORECAST timePeriodType.
+     * @param null|float $next60_day_shipped_subscription_units The forecasted shipped subscription units for the next 60 days. Applicable to `FORECAST` `timePeriodType`.
      */
     public function setNext60DayShippedSubscriptionUnits(?float $next60_day_shipped_subscription_units): self
     {
@@ -928,7 +1002,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets next90_day_shipped_subscription_units.
      *
-     * @param null|float $next90_day_shipped_subscription_units The forecasted shipped subscription units for the next 90 days. Applicable to FORECAST timePeriodType.
+     * @param null|float $next90_day_shipped_subscription_units The forecasted shipped subscription units for the next 90 days. Applicable to `FORECAST` `timePeriodType`.
      */
     public function setNext90DayShippedSubscriptionUnits(?float $next90_day_shipped_subscription_units): self
     {

@@ -92,6 +92,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
         'signup_conversion_for5_percent_seller_funding' => 'float',
         'signup_conversion_for10_percent_seller_funding' => 'float',
         'signup_conversion_for5_plus_percent_seller_funding' => 'float',
+        'revenue_penetration' => 'float',
         'time_interval' => '\SpApi\Model\replenishment\v2022_11_07\TimeInterval',
         'currency_code' => 'string'];
 
@@ -136,6 +137,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
         'signup_conversion_for5_percent_seller_funding' => 'double',
         'signup_conversion_for10_percent_seller_funding' => 'double',
         'signup_conversion_for5_plus_percent_seller_funding' => 'double',
+        'revenue_penetration' => 'double',
         'time_interval' => null,
         'currency_code' => null];
 
@@ -176,6 +178,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
         'signup_conversion_for5_percent_seller_funding' => true,
         'signup_conversion_for10_percent_seller_funding' => true,
         'signup_conversion_for5_plus_percent_seller_funding' => true,
+        'revenue_penetration' => true,
         'time_interval' => true,
         'currency_code' => true,
     ];
@@ -225,6 +228,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
         'signup_conversion_for5_percent_seller_funding' => 'signupConversionFor5PercentSellerFunding',
         'signup_conversion_for10_percent_seller_funding' => 'signupConversionFor10PercentSellerFunding',
         'signup_conversion_for5_plus_percent_seller_funding' => 'signupConversionFor5PlusPercentSellerFunding',
+        'revenue_penetration' => 'revenuePenetration',
         'time_interval' => 'timeInterval',
         'currency_code' => 'currencyCode',
     ];
@@ -266,6 +270,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
         'signup_conversion_for5_percent_seller_funding' => 'setSignupConversionFor5PercentSellerFunding',
         'signup_conversion_for10_percent_seller_funding' => 'setSignupConversionFor10PercentSellerFunding',
         'signup_conversion_for5_plus_percent_seller_funding' => 'setSignupConversionFor5PlusPercentSellerFunding',
+        'revenue_penetration' => 'setRevenuePenetration',
         'time_interval' => 'setTimeInterval',
         'currency_code' => 'setCurrencyCode',
     ];
@@ -307,6 +312,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
         'signup_conversion_for5_percent_seller_funding' => 'getSignupConversionFor5PercentSellerFunding',
         'signup_conversion_for10_percent_seller_funding' => 'getSignupConversionFor10PercentSellerFunding',
         'signup_conversion_for5_plus_percent_seller_funding' => 'getSignupConversionFor5PlusPercentSellerFunding',
+        'revenue_penetration' => 'getRevenuePenetration',
         'time_interval' => 'getTimeInterval',
         'currency_code' => 'getCurrencyCode',
     ];
@@ -355,6 +361,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
         $this->setIfExists('signup_conversion_for5_percent_seller_funding', $data ?? [], null);
         $this->setIfExists('signup_conversion_for10_percent_seller_funding', $data ?? [], null);
         $this->setIfExists('signup_conversion_for5_plus_percent_seller_funding', $data ?? [], null);
+        $this->setIfExists('revenue_penetration', $data ?? [], null);
         $this->setIfExists('time_interval', $data ?? [], null);
         $this->setIfExists('currency_code', $data ?? [], null);
     }
@@ -620,6 +627,14 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
 
         if (!is_null($this->container['signup_conversion_for5_plus_percent_seller_funding']) && ($this->container['signup_conversion_for5_plus_percent_seller_funding'] < 0)) {
             $invalidProperties[] = "invalid value for 'signup_conversion_for5_plus_percent_seller_funding', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['revenue_penetration']) && ($this->container['revenue_penetration'] > 1E+2)) {
+            $invalidProperties[] = "invalid value for 'revenue_penetration', must be smaller than or equal to 1E+2.";
+        }
+
+        if (!is_null($this->container['revenue_penetration']) && ($this->container['revenue_penetration'] < 0)) {
+            $invalidProperties[] = "invalid value for 'revenue_penetration', must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -1374,7 +1389,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
     /**
      * Sets non_subscriber_life_time_value_from_otp.
      *
-     * @param null|float $non_subscriber_life_time_value_from_otp Total revenue from customers who have made purchases from your catalog but have never subscribed to any products
+     * @param null|float $non_subscriber_life_time_value_from_otp total revenue from customers who have made purchases from your catalog but have never subscribed to any products
      */
     public function setNonSubscriberLifeTimeValueFromOtp(?float $non_subscriber_life_time_value_from_otp): self
     {
@@ -1756,6 +1771,44 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
         }
 
         $this->container['signup_conversion_for5_plus_percent_seller_funding'] = $signup_conversion_for5_plus_percent_seller_funding;
+
+        return $this;
+    }
+
+    /**
+     * Gets revenue_penetration.
+     */
+    public function getRevenuePenetration(): ?float
+    {
+        return $this->container['revenue_penetration'];
+    }
+
+    /**
+     * Sets revenue_penetration.
+     *
+     * @param null|float $revenue_penetration The percentage of total program revenue out of total product revenue over a period of time. Applicable to `PERFORMANCE` `timePeriodType`.
+     */
+    public function setRevenuePenetration(?float $revenue_penetration): self
+    {
+        if (is_null($revenue_penetration)) {
+            array_push($this->openAPINullablesSetToNull, 'revenue_penetration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('revenue_penetration', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($revenue_penetration) && ($revenue_penetration > 1E+2)) {
+            throw new \InvalidArgumentException('invalid value for $revenue_penetration when calling GetSellingPartnerMetricsResponseMetric., must be smaller than or equal to 1E+2.');
+        }
+        if (!is_null($revenue_penetration) && ($revenue_penetration < 0)) {
+            throw new \InvalidArgumentException('invalid value for $revenue_penetration when calling GetSellingPartnerMetricsResponseMetric., must be bigger than or equal to 0.');
+        }
+
+        $this->container['revenue_penetration'] = $revenue_penetration;
 
         return $this;
     }

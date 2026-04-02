@@ -82,7 +82,8 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
         'store_id' => 'string',
         'buyer' => '\SpApi\Model\services\v1\Buyer',
         'associated_items' => '\SpApi\Model\services\v1\AssociatedItem[]',
-        'service_location' => '\SpApi\Model\services\v1\ServiceLocation'];
+        'service_location' => '\SpApi\Model\services\v1\ServiceLocation',
+        'payments' => '\SpApi\Model\services\v1\Payment[]'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -107,7 +108,8 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
         'store_id' => null,
         'buyer' => null,
         'associated_items' => null,
-        'service_location' => null];
+        'service_location' => null,
+        'payments' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -129,6 +131,7 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
         'buyer' => true,
         'associated_items' => true,
         'service_location' => true,
+        'payments' => true,
     ];
 
     /**
@@ -159,6 +162,7 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
         'buyer' => 'buyer',
         'associated_items' => 'associatedItems',
         'service_location' => 'serviceLocation',
+        'payments' => 'payments',
     ];
 
     /**
@@ -181,6 +185,7 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
         'buyer' => 'setBuyer',
         'associated_items' => 'setAssociatedItems',
         'service_location' => 'setServiceLocation',
+        'payments' => 'setPayments',
     ];
 
     /**
@@ -203,6 +208,7 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
         'buyer' => 'getBuyer',
         'associated_items' => 'getAssociatedItems',
         'service_location' => 'getServiceLocation',
+        'payments' => 'getPayments',
     ];
 
     /**
@@ -232,6 +238,7 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('buyer', $data ?? [], null);
         $this->setIfExists('associated_items', $data ?? [], null);
         $this->setIfExists('service_location', $data ?? [], null);
+        $this->setIfExists('payments', $data ?? [], null);
     }
 
     /**
@@ -842,6 +849,36 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
             }
         }
         $this->container['service_location'] = $service_location;
+
+        return $this;
+    }
+
+    /**
+     * Gets payments.
+     */
+    public function getPayments(): ?array
+    {
+        return $this->container['payments'];
+    }
+
+    /**
+     * Sets payments.
+     *
+     * @param null|array $payments a list that contains payment information for the service job
+     */
+    public function setPayments(?array $payments): self
+    {
+        if (is_null($payments)) {
+            array_push($this->openAPINullablesSetToNull, 'payments');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payments', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['payments'] = $payments;
 
         return $this;
     }

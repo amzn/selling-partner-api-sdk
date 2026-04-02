@@ -67,7 +67,15 @@ class ListOffersResponseOffer implements ModelInterface, \ArrayAccess, \JsonSeri
         'eligibility' => '\SpApi\Model\replenishment\v2022_11_07\EligibilityStatus',
         'offer_program_configuration' => '\SpApi\Model\replenishment\v2022_11_07\OfferProgramConfiguration',
         'program_type' => '\SpApi\Model\replenishment\v2022_11_07\ProgramType',
-        'vendor_codes' => 'string[]'];
+        'vendor_codes' => 'string[]',
+        'price' => 'float',
+        'price_currency_code' => 'string',
+        'inventory' => 'int',
+        'stock_risk' => 'string',
+        'deliveries_conditions' => '\SpApi\Model\replenishment\v2022_11_07\DeliveriesCondition[]',
+        'subscriptions' => 'int',
+        'fulfillment_network_id_type' => 'string',
+        'forecast_deliveries' => '\SpApi\Model\replenishment\v2022_11_07\ForecastDeliveries'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -85,7 +93,15 @@ class ListOffersResponseOffer implements ModelInterface, \ArrayAccess, \JsonSeri
         'eligibility' => null,
         'offer_program_configuration' => null,
         'program_type' => null,
-        'vendor_codes' => null];
+        'vendor_codes' => null,
+        'price' => 'double',
+        'price_currency_code' => null,
+        'inventory' => 'int64',
+        'stock_risk' => null,
+        'deliveries_conditions' => null,
+        'subscriptions' => 'int64',
+        'fulfillment_network_id_type' => null,
+        'forecast_deliveries' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -100,6 +116,14 @@ class ListOffersResponseOffer implements ModelInterface, \ArrayAccess, \JsonSeri
         'offer_program_configuration' => true,
         'program_type' => true,
         'vendor_codes' => true,
+        'price' => true,
+        'price_currency_code' => true,
+        'inventory' => true,
+        'stock_risk' => true,
+        'deliveries_conditions' => true,
+        'subscriptions' => true,
+        'fulfillment_network_id_type' => true,
+        'forecast_deliveries' => true,
     ];
 
     /**
@@ -123,6 +147,14 @@ class ListOffersResponseOffer implements ModelInterface, \ArrayAccess, \JsonSeri
         'offer_program_configuration' => 'offerProgramConfiguration',
         'program_type' => 'programType',
         'vendor_codes' => 'vendorCodes',
+        'price' => 'price',
+        'price_currency_code' => 'priceCurrencyCode',
+        'inventory' => 'inventory',
+        'stock_risk' => 'stockRisk',
+        'deliveries_conditions' => 'deliveriesConditions',
+        'subscriptions' => 'subscriptions',
+        'fulfillment_network_id_type' => 'fulfillmentNetworkIDType',
+        'forecast_deliveries' => 'forecastDeliveries',
     ];
 
     /**
@@ -138,6 +170,14 @@ class ListOffersResponseOffer implements ModelInterface, \ArrayAccess, \JsonSeri
         'offer_program_configuration' => 'setOfferProgramConfiguration',
         'program_type' => 'setProgramType',
         'vendor_codes' => 'setVendorCodes',
+        'price' => 'setPrice',
+        'price_currency_code' => 'setPriceCurrencyCode',
+        'inventory' => 'setInventory',
+        'stock_risk' => 'setStockRisk',
+        'deliveries_conditions' => 'setDeliveriesConditions',
+        'subscriptions' => 'setSubscriptions',
+        'fulfillment_network_id_type' => 'setFulfillmentNetworkIdType',
+        'forecast_deliveries' => 'setForecastDeliveries',
     ];
 
     /**
@@ -153,6 +193,14 @@ class ListOffersResponseOffer implements ModelInterface, \ArrayAccess, \JsonSeri
         'offer_program_configuration' => 'getOfferProgramConfiguration',
         'program_type' => 'getProgramType',
         'vendor_codes' => 'getVendorCodes',
+        'price' => 'getPrice',
+        'price_currency_code' => 'getPriceCurrencyCode',
+        'inventory' => 'getInventory',
+        'stock_risk' => 'getStockRisk',
+        'deliveries_conditions' => 'getDeliveriesConditions',
+        'subscriptions' => 'getSubscriptions',
+        'fulfillment_network_id_type' => 'getFulfillmentNetworkIdType',
+        'forecast_deliveries' => 'getForecastDeliveries',
     ];
 
     /**
@@ -175,6 +223,14 @@ class ListOffersResponseOffer implements ModelInterface, \ArrayAccess, \JsonSeri
         $this->setIfExists('offer_program_configuration', $data ?? [], null);
         $this->setIfExists('program_type', $data ?? [], null);
         $this->setIfExists('vendor_codes', $data ?? [], null);
+        $this->setIfExists('price', $data ?? [], null);
+        $this->setIfExists('price_currency_code', $data ?? [], null);
+        $this->setIfExists('inventory', $data ?? [], null);
+        $this->setIfExists('stock_risk', $data ?? [], null);
+        $this->setIfExists('deliveries_conditions', $data ?? [], null);
+        $this->setIfExists('subscriptions', $data ?? [], null);
+        $this->setIfExists('fulfillment_network_id_type', $data ?? [], null);
+        $this->setIfExists('forecast_deliveries', $data ?? [], null);
     }
 
     /**
@@ -262,7 +318,21 @@ class ListOffersResponseOffer implements ModelInterface, \ArrayAccess, \JsonSeri
      */
     public function listInvalidProperties(): array
     {
-        return [];
+        $invalidProperties = [];
+
+        if (!is_null($this->container['price']) && ($this->container['price'] < 0)) {
+            $invalidProperties[] = "invalid value for 'price', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['inventory']) && ($this->container['inventory'] < 0)) {
+            $invalidProperties[] = "invalid value for 'inventory', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['subscriptions']) && ($this->container['subscriptions'] < 0)) {
+            $invalidProperties[] = "invalid value for 'subscriptions', must be bigger than or equal to 0.";
+        }
+
+        return $invalidProperties;
     }
 
     /**
@@ -347,7 +417,7 @@ class ListOffersResponseOffer implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Sets marketplace_id.
      *
-     * @param null|string $marketplace_id The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
+     * @param null|string $marketplace_id The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
      */
     public function setMarketplaceId(?string $marketplace_id): self
     {
@@ -482,6 +552,261 @@ class ListOffersResponseOffer implements ModelInterface, \ArrayAccess, \JsonSeri
             }
         }
         $this->container['vendor_codes'] = $vendor_codes;
+
+        return $this;
+    }
+
+    /**
+     * Gets price.
+     */
+    public function getPrice(): ?float
+    {
+        return $this->container['price'];
+    }
+
+    /**
+     * Sets price.
+     *
+     * @param null|float $price The current price of the offer. This is the listed price amount for the item.
+     */
+    public function setPrice(?float $price): self
+    {
+        if (is_null($price)) {
+            array_push($this->openAPINullablesSetToNull, 'price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('price', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($price) && ($price < 0)) {
+            throw new \InvalidArgumentException('invalid value for $price when calling ListOffersResponseOffer., must be bigger than or equal to 0.');
+        }
+
+        $this->container['price'] = $price;
+
+        return $this;
+    }
+
+    /**
+     * Gets price_currency_code.
+     */
+    public function getPriceCurrencyCode(): ?string
+    {
+        return $this->container['price_currency_code'];
+    }
+
+    /**
+     * Sets price_currency_code.
+     *
+     * @param null|string $price_currency_code The currency code in ISO 4217 format for the price. For example, `USD` for US dollars.
+     */
+    public function setPriceCurrencyCode(?string $price_currency_code): self
+    {
+        if (is_null($price_currency_code)) {
+            array_push($this->openAPINullablesSetToNull, 'price_currency_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('price_currency_code', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['price_currency_code'] = $price_currency_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets inventory.
+     */
+    public function getInventory(): ?int
+    {
+        return $this->container['inventory'];
+    }
+
+    /**
+     * Sets inventory.
+     *
+     * @param null|int $inventory the available inventory count for the offer
+     */
+    public function setInventory(?int $inventory): self
+    {
+        if (is_null($inventory)) {
+            array_push($this->openAPINullablesSetToNull, 'inventory');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inventory', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($inventory) && ($inventory < 0)) {
+            throw new \InvalidArgumentException('invalid value for $inventory when calling ListOffersResponseOffer., must be bigger than or equal to 0.');
+        }
+
+        $this->container['inventory'] = $inventory;
+
+        return $this;
+    }
+
+    /**
+     * Gets stock_risk.
+     */
+    public function getStockRisk(): ?string
+    {
+        return $this->container['stock_risk'];
+    }
+
+    /**
+     * Sets stock_risk.
+     *
+     * @param null|string $stock_risk the stock risk level of the offer, indicating the risk of the offer going out of stock
+     */
+    public function setStockRisk(?string $stock_risk): self
+    {
+        if (is_null($stock_risk)) {
+            array_push($this->openAPINullablesSetToNull, 'stock_risk');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('stock_risk', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['stock_risk'] = $stock_risk;
+
+        return $this;
+    }
+
+    /**
+     * Gets deliveries_conditions.
+     */
+    public function getDeliveriesConditions(): ?array
+    {
+        return $this->container['deliveries_conditions'];
+    }
+
+    /**
+     * Sets deliveries_conditions.
+     *
+     * @param null|array $deliveries_conditions A list of delivery conditions for the offer, indicating the health of upcoming deliveries. Each condition describes the quantity of upcoming deliveries associated with a particular delivery condition type.
+     */
+    public function setDeliveriesConditions(?array $deliveries_conditions): self
+    {
+        if (is_null($deliveries_conditions)) {
+            array_push($this->openAPINullablesSetToNull, 'deliveries_conditions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deliveries_conditions', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deliveries_conditions'] = $deliveries_conditions;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscriptions.
+     */
+    public function getSubscriptions(): ?int
+    {
+        return $this->container['subscriptions'];
+    }
+
+    /**
+     * Sets subscriptions.
+     *
+     * @param null|int $subscriptions the number of active subscriptions for the offer
+     */
+    public function setSubscriptions(?int $subscriptions): self
+    {
+        if (is_null($subscriptions)) {
+            array_push($this->openAPINullablesSetToNull, 'subscriptions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('subscriptions', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($subscriptions) && ($subscriptions < 0)) {
+            throw new \InvalidArgumentException('invalid value for $subscriptions when calling ListOffersResponseOffer., must be bigger than or equal to 0.');
+        }
+
+        $this->container['subscriptions'] = $subscriptions;
+
+        return $this;
+    }
+
+    /**
+     * Gets fulfillment_network_id_type.
+     */
+    public function getFulfillmentNetworkIdType(): ?string
+    {
+        return $this->container['fulfillment_network_id_type'];
+    }
+
+    /**
+     * Sets fulfillment_network_id_type.
+     *
+     * @param null|string $fulfillment_network_id_type the fulfillment network identifier type for the offer, indicating how the offer is fulfilled
+     */
+    public function setFulfillmentNetworkIdType(?string $fulfillment_network_id_type): self
+    {
+        if (is_null($fulfillment_network_id_type)) {
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_network_id_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_network_id_type', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['fulfillment_network_id_type'] = $fulfillment_network_id_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets forecast_deliveries.
+     */
+    public function getForecastDeliveries(): ?ForecastDeliveries
+    {
+        return $this->container['forecast_deliveries'];
+    }
+
+    /**
+     * Sets forecast_deliveries.
+     *
+     * @param null|ForecastDeliveries $forecast_deliveries forecast_deliveries
+     */
+    public function setForecastDeliveries(?ForecastDeliveries $forecast_deliveries): self
+    {
+        if (is_null($forecast_deliveries)) {
+            array_push($this->openAPINullablesSetToNull, 'forecast_deliveries');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('forecast_deliveries', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['forecast_deliveries'] = $forecast_deliveries;
 
         return $this;
     }
