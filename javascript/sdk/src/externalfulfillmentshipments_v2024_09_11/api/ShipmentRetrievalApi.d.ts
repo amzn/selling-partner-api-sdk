@@ -36,7 +36,7 @@ export class ShipmentRetrievalApi {
     getShipment(shipmentId: string): Promise<Shipment>;
     /**
        * Get a list of shipments created for the seller in the status you specify. Shipments can be further filtered based on the fulfillment node or the time of the shipments&#39; last update.
-       * @param {String} status The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;.
+       * @param {String} status The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;CREATED&#x60; or &#x60;ACCEPTED&#x60;.
        * @param {Object} [opts] Optional parameters
        * @param {String} [opts.locationId] The Amazon channel location identifier for the shipments you want to retrieve.
        * @param {String} [opts.marketplaceId] The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
@@ -58,7 +58,7 @@ export class ShipmentRetrievalApi {
     }): Promise<ShipmentsResponse>;
     /**
        * Get a list of shipments created for the seller in the status you specify. Shipments can be further filtered based on the fulfillment node or the time of the shipments&#39; last update.
-       * @param {String} status The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;.
+       * @param {String} status The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;CREATED&#x60; or &#x60;ACCEPTED&#x60;.
        * @param {Object} [opts] Optional parameters
        * @param {String} [opts.locationId] The Amazon channel location identifier for the shipments you want to retrieve.
        * @param {String} [opts.marketplaceId] The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
