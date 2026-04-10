@@ -403,7 +403,7 @@ class ShipmentRetrievalApi
      * Operation getShipments.
      *
      * @param string      $status
-     *                                         The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;. (required)
+     *                                         The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;CREATED&#x60; or &#x60;ACCEPTED&#x60;. (required)
      * @param null|string $location_id
      *                                         The Amazon channel location identifier for the shipments you want to retrieve. (optional)
      * @param null|string $marketplace_id
@@ -443,7 +443,7 @@ class ShipmentRetrievalApi
      * Operation getShipmentsWithHttpInfo.
      *
      * @param string      $status
-     *                                         The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;. (required)
+     *                                         The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;CREATED&#x60; or &#x60;ACCEPTED&#x60;. (required)
      * @param null|string $location_id
      *                                         The Amazon channel location identifier for the shipments you want to retrieve. (optional)
      * @param null|string $marketplace_id
@@ -551,7 +551,7 @@ class ShipmentRetrievalApi
      * Operation getShipmentsAsync.
      *
      * @param string      $status
-     *                                         The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;. (required)
+     *                                         The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;CREATED&#x60; or &#x60;ACCEPTED&#x60;. (required)
      * @param null|string $location_id
      *                                         The Amazon channel location identifier for the shipments you want to retrieve. (optional)
      * @param null|string $marketplace_id
@@ -592,7 +592,7 @@ class ShipmentRetrievalApi
      * Operation getShipmentsAsyncWithHttpInfo.
      *
      * @param string      $status
-     *                                         The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;. (required)
+     *                                         The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;CREATED&#x60; or &#x60;ACCEPTED&#x60;. (required)
      * @param null|string $location_id
      *                                         The Amazon channel location identifier for the shipments you want to retrieve. (optional)
      * @param null|string $marketplace_id
@@ -674,7 +674,7 @@ class ShipmentRetrievalApi
      * Create request for operation 'getShipments'.
      *
      * @param string      $status
-     *                                         The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;ACCEPTED&#x60;. (required)
+     *                                         The status of shipment you want to include in the response. To retrieve all new shipments, set this value to &#x60;CREATED&#x60; or &#x60;ACCEPTED&#x60;. (required)
      * @param null|string $location_id
      *                                         The Amazon channel location identifier for the shipments you want to retrieve. (optional)
      * @param null|string $marketplace_id
