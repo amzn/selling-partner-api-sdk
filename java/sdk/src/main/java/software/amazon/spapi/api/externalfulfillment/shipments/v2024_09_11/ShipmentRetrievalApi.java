@@ -233,7 +233,7 @@ public class ShipmentRetrievalApi {
      * Build call for getShipments
      *
      * @param status The status of shipment you want to include in the response. To retrieve all new shipments, set this
-     *     value to &#x60;ACCEPTED&#x60;. (required)
+     *     value to &#x60;CREATED&#x60; or &#x60;ACCEPTED&#x60;. (required)
      * @param locationId The Amazon channel location identifier for the shipments you want to retrieve. (optional)
      * @param marketplaceId The marketplace ID associated with the location. To find the ID for your marketplace, refer
      *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
@@ -346,7 +346,7 @@ public class ShipmentRetrievalApi {
      * on the fulfillment node or the time of the shipments&#x27; last update.
      *
      * @param status The status of shipment you want to include in the response. To retrieve all new shipments, set this
-     *     value to &#x60;ACCEPTED&#x60;. (required)
+     *     value to &#x60;CREATED&#x60; or &#x60;ACCEPTED&#x60;. (required)
      * @param locationId The Amazon channel location identifier for the shipments you want to retrieve. (optional)
      * @param marketplaceId The marketplace ID associated with the location. To find the ID for your marketplace, refer
      *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
@@ -395,7 +395,7 @@ public class ShipmentRetrievalApi {
      * on the fulfillment node or the time of the shipments&#x27; last update.
      *
      * @param status The status of shipment you want to include in the response. To retrieve all new shipments, set this
-     *     value to &#x60;ACCEPTED&#x60;. (required)
+     *     value to &#x60;CREATED&#x60; or &#x60;ACCEPTED&#x60;. (required)
      * @param locationId The Amazon channel location identifier for the shipments you want to retrieve. (optional)
      * @param marketplaceId The marketplace ID associated with the location. To find the ID for your marketplace, refer
      *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
@@ -442,7 +442,7 @@ public class ShipmentRetrievalApi {
      * on the fulfillment node or the time of the shipments&#x27; last update.
      *
      * @param status The status of shipment you want to include in the response. To retrieve all new shipments, set this
-     *     value to &#x60;ACCEPTED&#x60;. (required)
+     *     value to &#x60;CREATED&#x60; or &#x60;ACCEPTED&#x60;. (required)
      * @param locationId The Amazon channel location identifier for the shipments you want to retrieve. (optional)
      * @param marketplaceId The marketplace ID associated with the location. To find the ID for your marketplace, refer
      *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
@@ -501,7 +501,7 @@ public class ShipmentRetrievalApi {
      * on the fulfillment node or the time of the shipments&#x27; last update.
      *
      * @param status The status of shipment you want to include in the response. To retrieve all new shipments, set this
-     *     value to &#x60;ACCEPTED&#x60;. (required)
+     *     value to &#x60;CREATED&#x60; or &#x60;ACCEPTED&#x60;. (required)
      * @param locationId The Amazon channel location identifier for the shipments you want to retrieve. (optional)
      * @param marketplaceId The marketplace ID associated with the location. To find the ID for your marketplace, refer
      *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
@@ -547,7 +547,7 @@ public class ShipmentRetrievalApi {
      * further filtered based on the fulfillment node or the time of the shipments&#x27; last update.
      *
      * @param status The status of shipment you want to include in the response. To retrieve all new shipments, set this
-     *     value to &#x60;ACCEPTED&#x60;. (required)
+     *     value to &#x60;CREATED&#x60; or &#x60;ACCEPTED&#x60;. (required)
      * @param locationId The Amazon channel location identifier for the shipments you want to retrieve. (optional)
      * @param marketplaceId The marketplace ID associated with the location. To find the ID for your marketplace, refer
      *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
@@ -595,7 +595,7 @@ public class ShipmentRetrievalApi {
      * further filtered based on the fulfillment node or the time of the shipments&#x27; last update.
      *
      * @param status The status of shipment you want to include in the response. To retrieve all new shipments, set this
-     *     value to &#x60;ACCEPTED&#x60;. (required)
+     *     value to &#x60;CREATED&#x60; or &#x60;ACCEPTED&#x60;. (required)
      * @param locationId The Amazon channel location identifier for the shipments you want to retrieve. (optional)
      * @param marketplaceId The marketplace ID associated with the location. To find the ID for your marketplace, refer
      *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
