@@ -141,7 +141,7 @@ class ShipmentRetrievalApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str status: The status of shipment you want to include in the response. To retrieve all new shipments, set this value to `ACCEPTED`. (required)
+        :param str status: The status of shipment you want to include in the response. To retrieve all new shipments, set this value to `CREATED` or `ACCEPTED`. (required)
         :param str location_id: The Amazon channel location identifier for the shipments you want to retrieve.
         :param str marketplace_id: The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
         :param str channel_name: The channel name associated with the location.
@@ -170,7 +170,7 @@ class ShipmentRetrievalApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str status: The status of shipment you want to include in the response. To retrieve all new shipments, set this value to `ACCEPTED`. (required)
+        :param str status: The status of shipment you want to include in the response. To retrieve all new shipments, set this value to `CREATED` or `ACCEPTED`. (required)
         :param str location_id: The Amazon channel location identifier for the shipments you want to retrieve.
         :param str marketplace_id: The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
         :param str channel_name: The channel name associated with the location.
