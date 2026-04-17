@@ -23,9 +23,7 @@ export class BatchResponse {
     constructor(headers: {
         String: string;
     }, status: HttpStatusLine);
-    headers: {
-        String: string;
-    };
+    headers: Object;
     status: HttpStatusLine;
 }
 import { HttpStatusLine } from './HttpStatusLine.js';

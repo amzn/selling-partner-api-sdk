@@ -92,15 +92,15 @@ FeaturedOfferExpectedPriceRequest.prototype.method = undefined
 
 /**
  * Additional HTTP body information that is associated with an individual request within a batch.
- * @member {{String: Object}} body
- * @type {{String: Object}}
+ * @member {Object} body
+ * @type {Object}
  */
 FeaturedOfferExpectedPriceRequest.prototype.body = undefined
 
 /**
  * A mapping of additional HTTP headers to send or receive for an individual request within a batch.
- * @member {{String: String}} headers
- * @type {{String: String}}
+ * @member {Object} headers
+ * @type {Object}
  */
 FeaturedOfferExpectedPriceRequest.prototype.headers = undefined
 
@@ -140,15 +140,15 @@ BatchRequest.prototype.method = undefined
 
 /**
  * Additional HTTP body information that is associated with an individual request within a batch.
- * @member {{String: Object}} body
- * @type {{String: Object}}
+ * @member {Object} body
+ * @type {Object}
  */
 BatchRequest.prototype.body = undefined
 
 /**
  * A mapping of additional HTTP headers to send or receive for an individual request within a batch.
- * @member {{String: String}} headers
- * @type {{String: String}}
+ * @member {Object} headers
+ * @type {Object}
  */
 BatchRequest.prototype.headers = undefined
 

@@ -24,9 +24,7 @@ export class ListingsItemPutRequest {
         String: Object;
     });
     productType: string;
-    attributes: {
-        String: Object;
-    };
+    attributes: Object;
     /**
      * The name of the requirements set for the provided data.
      * @member {String} requirements

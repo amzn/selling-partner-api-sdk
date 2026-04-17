@@ -33,12 +33,10 @@ export class PurchaseShipmentRequest {
     requestedValueAddedServices: RequestedValueAddedService[];
     /**
      * The additional inputs required to purchase a shipping offering, in JSON format. The JSON provided here must adhere to the JSON schema that is returned in the response to the getAdditionalInputs operation.  Additional inputs are only required when indicated by the requiresAdditionalInputs property in the response to the getRates operation.
-     * @member {{String: Object}} additionalInputs
-     * @type {{String: Object}}
+     * @member {Object} additionalInputs
+     * @type {Object}
      */
-    additionalInputs: {
-        String: Object;
-    };
+    additionalInputs: Object;
 }
 import { RequestedDocumentSpecification } from './RequestedDocumentSpecification.js';
 import { RequestedValueAddedService } from './RequestedValueAddedService.js';

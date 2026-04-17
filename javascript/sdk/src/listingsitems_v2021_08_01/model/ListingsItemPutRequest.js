@@ -102,7 +102,7 @@ ListingsItemPutRequest.prototype.requirements = undefined
 
 /**
  * A JSON object containing structured listings item attribute data keyed by attribute name.
- * @member {{String: Object}} attributes
- * @type {{String: Object}}
+ * @member {Object} attributes
+ * @type {Object}
  */
 ListingsItemPutRequest.prototype.attributes = undefined

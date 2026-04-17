@@ -25,12 +25,10 @@ export class CreateReportSpecification {
     marketplaceIds: string[];
     /**
      * Additional information passed to reports. This varies by report type.
-     * @member {{String: String}} reportOptions
-     * @type {{String: String}}
+     * @member {Object} reportOptions
+     * @type {Object}
      */
-    reportOptions: {
-        String: string;
-    };
+    reportOptions: Object;
     /**
      * The start of a date and time range, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.
      * @member {Date} dataStartTime

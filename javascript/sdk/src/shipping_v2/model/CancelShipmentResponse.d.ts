@@ -14,11 +14,9 @@ export class CancelShipmentResponse {
     static constructFromObject(data: Object, obj: CancelShipmentResponse): CancelShipmentResponse;
     /**
      * The payload for the cancelShipment operation.
-     * @member {{String: Object}} payload
-     * @type {{String: Object}}
+     * @member {Object} payload
+     * @type {Object}
      */
-    payload: {
-        String: Object;
-    };
+    payload: Object;
 }
 //# sourceMappingURL=CancelShipmentResponse.d.ts.map

@@ -157,8 +157,8 @@ ProductTypeDefinition.prototype.requirementsEnforced = undefined
 
 /**
  * Mapping of property group names to property groups. Property groups represent logical groupings of schema properties that can be used for display or informational purposes.
- * @member {{String: PropertyGroup}} propertyGroups
- * @type {{String: PropertyGroup}}
+ * @member {Object} propertyGroups
+ * @type {Object}
  */
 ProductTypeDefinition.prototype.propertyGroups = undefined
 
