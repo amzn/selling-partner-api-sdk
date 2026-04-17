@@ -14,11 +14,9 @@ export class GetAdditionalInputsResponse {
     static constructFromObject(data: Object, obj: GetAdditionalInputsResponse): GetAdditionalInputsResponse;
     /**
      * The JSON schema to use to provide additional inputs when required to purchase a shipping offering.
-     * @member {{String: Object}} payload
-     * @type {{String: Object}}
+     * @member {Object} payload
+     * @type {Object}
      */
-    payload: {
-        String: Object;
-    };
+    payload: Object;
 }
 //# sourceMappingURL=GetAdditionalInputsResponse.d.ts.map

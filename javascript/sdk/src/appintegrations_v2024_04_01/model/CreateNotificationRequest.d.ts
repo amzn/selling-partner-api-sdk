@@ -24,9 +24,7 @@ export class CreateNotificationRequest {
         String: Object;
     });
     templateId: string;
-    notificationParameters: {
-        String: Object;
-    };
+    notificationParameters: Object;
     /**
      * An encrypted marketplace identifier for the posted notification.
      * @member {String} marketplaceId

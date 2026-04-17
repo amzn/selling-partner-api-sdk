@@ -27,11 +27,9 @@ export class CreateFeedSpecification {
     inputFeedDocumentId: string;
     /**
      * Additional options to control the feed. These vary by feed type.
-     * @member {{String: String}} feedOptions
-     * @type {{String: String}}
+     * @member {Object} feedOptions
+     * @type {Object}
      */
-    feedOptions: {
-        String: string;
-    };
+    feedOptions: Object;
 }
 //# sourceMappingURL=CreateFeedSpecification.d.ts.map

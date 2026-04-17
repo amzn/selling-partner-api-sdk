@@ -89,8 +89,8 @@ ReportSchedule.prototype.marketplaceIds = undefined
 
 /**
  * Additional information passed to reports. This varies by report type.
- * @member {{String: String}} reportOptions
- * @type {{String: String}}
+ * @member {Object} reportOptions
+ * @type {Object}
  */
 ReportSchedule.prototype.reportOptions = undefined
 

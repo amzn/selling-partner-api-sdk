@@ -124,9 +124,9 @@ export class {{classname}} {{#parentModel}}extends {{classname}} {{/parentModel}
     {{#emitJSDoc}}
 /**{{#description}}
  * {{{description}}}{{/description}}
- * @member {{=< >=}}{<#isArray><items.dataType>[]</isArray><^isArray><dataType></isArray>}<={{ }}=> {{name}}{{#defaultValue}}
+ * @member {{=< >=}}{<#isArray><items.dataType>[]</isArray><#isMap>Object</isMap><^isArray><^isMap><dataType></isMap></isArray>}<={{ }}=> {{name}}{{#defaultValue}}
  * @default {{{defaultValue}}}{{/defaultValue}}
- * @type {{=< >=}}{<#isArray><items.dataType>[]</isArray><^isArray><dataType></isArray>}<={{ }}=>
+ * @type {{=< >=}}{<#isArray><items.dataType>[]</isArray><#isMap>Object</isMap><^isArray><^isMap><dataType></isMap></isArray>}<={{ }}=>
  */
     {{/emitJSDoc}}
 {{classname}}.prototype.{{name}} = {{#defaultValue}}{{{defaultValue}}}{{/defaultValue}}{{^defaultValue}}undefined{{/defaultValue}};
@@ -140,9 +140,9 @@ export class {{classname}} {{#parentModel}}extends {{classname}} {{/parentModel}
       {{#emitJSDoc}}
 /**{{#description}}
  * {{{description}}}{{/description}}
- * @member {{=< >=}}{<#isArray><items.dataType>[]</isArray><^isArray><dataType></isArray>}<={{ }}=> {{name}}{{#defaultValue}}
+ * @member {{=< >=}}{<#isArray><items.dataType>[]</isArray><#isMap>Object</isMap><^isArray><^isMap><dataType></isMap></isArray>}<={{ }}=> {{name}}{{#defaultValue}}
  * @default {{{defaultValue}}}{{/defaultValue}}
- * @type {{=< >=}}{<#isArray><items.dataType>[]</isArray><^isArray><dataType></isArray>}<={{ }}=>
+ * @type {{=< >=}}{<#isArray><items.dataType>[]</isArray><#isMap>Object</isMap><^isArray><^isMap><dataType></isMap></isArray>}<={{ }}=>
  */
       {{/emitJSDoc}}
 {{classname}}.prototype.{{name}} = {{#defaultValue}}{{{defaultValue}}}{{/defaultValue}}{{^defaultValue}}undefined{{/defaultValue}};

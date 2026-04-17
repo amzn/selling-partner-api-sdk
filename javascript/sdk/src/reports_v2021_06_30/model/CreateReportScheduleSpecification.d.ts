@@ -27,12 +27,10 @@ export class CreateReportScheduleSpecification {
     period: string;
     /**
      * Additional information passed to reports. This varies by report type.
-     * @member {{String: String}} reportOptions
-     * @type {{String: String}}
+     * @member {Object} reportOptions
+     * @type {Object}
      */
-    reportOptions: {
-        String: string;
-    };
+    reportOptions: Object;
     /**
      * The date and time when the schedule will create its next report, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format.
      * @member {Date} nextReportCreationTime
