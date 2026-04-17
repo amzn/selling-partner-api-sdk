@@ -72,8 +72,8 @@ export class FeaturedOfferExpectedPriceResponse {
 
 /**
  * A mapping of additional HTTP headers to send or receive for an individual request within a batch.
- * @member {{String: String}} headers
- * @type {{String: String}}
+ * @member {Object} headers
+ * @type {Object}
  */
 FeaturedOfferExpectedPriceResponse.prototype.headers = undefined
 
@@ -98,8 +98,8 @@ FeaturedOfferExpectedPriceResponse.prototype.body = undefined
 // Implement BatchResponse interface:
 /**
  * A mapping of additional HTTP headers to send or receive for an individual request within a batch.
- * @member {{String: String}} headers
- * @type {{String: String}}
+ * @member {Object} headers
+ * @type {Object}
  */
 BatchResponse.prototype.headers = undefined
 

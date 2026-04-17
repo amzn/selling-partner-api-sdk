@@ -77,7 +77,7 @@ BatchRequest.prototype.method = undefined
 
 /**
  * A mapping of additional HTTP headers to send/receive for the individual batch request.
- * @member {{String: String}} headers
- * @type {{String: String}}
+ * @member {Object} headers
+ * @type {Object}
  */
 BatchRequest.prototype.headers = undefined

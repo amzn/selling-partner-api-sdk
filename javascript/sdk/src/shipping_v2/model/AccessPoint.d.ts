@@ -65,12 +65,10 @@ export class AccessPoint {
     score: string;
     /**
      * Map of day of the week to operating hours of that day
-     * @member {{String: OperatingHours}} standardOperatingHours
-     * @type {{String: OperatingHours}}
+     * @member {Object} standardOperatingHours
+     * @type {Object}
      */
-    standardOperatingHours: {
-        String: OperatingHours;
-    };
+    standardOperatingHours: Object;
 }
 export namespace AccessPoint {
     namespace AssistanceTypeEnum {
@@ -86,5 +84,4 @@ import { AccessPointType } from './AccessPointType.js';
 import { AccessibilityAttributes } from './AccessibilityAttributes.js';
 import { Address } from './Address.js';
 import { ExceptionOperatingHours } from './ExceptionOperatingHours.js';
-import { OperatingHours } from './OperatingHours.js';
 //# sourceMappingURL=AccessPoint.d.ts.map

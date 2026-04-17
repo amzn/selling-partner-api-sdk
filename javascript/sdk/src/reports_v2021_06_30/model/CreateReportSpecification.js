@@ -65,8 +65,8 @@ export class CreateReportSpecification {
 
 /**
  * Additional information passed to reports. This varies by report type.
- * @member {{String: String}} reportOptions
- * @type {{String: String}}
+ * @member {Object} reportOptions
+ * @type {Object}
  */
 CreateReportSpecification.prototype.reportOptions = undefined
 
