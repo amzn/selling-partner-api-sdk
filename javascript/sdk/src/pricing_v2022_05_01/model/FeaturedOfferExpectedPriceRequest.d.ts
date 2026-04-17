@@ -31,20 +31,16 @@ export class FeaturedOfferExpectedPriceRequest {
     sku: string;
     /**
      * Additional HTTP body information that is associated with an individual request within a batch.
-     * @member {{String: Object}} body
-     * @type {{String: Object}}
+     * @member {Map<String, String>} body
+     * @type {Map<String, String>}
      */
-    body: {
-        String: Object;
-    };
+    body: Map<string, string>;
     /**
      * A mapping of additional HTTP headers to send or receive for an individual request within a batch.
-     * @member {{String: String}} headers
-     * @type {{String: String}}
+     * @member {Map<String, String>} headers
+     * @type {Map<String, String>}
      */
-    headers: {
-        String: string;
-    };
+    headers: Map<string, string>;
     /**
      * @member {Segment} segment
      * @type {Segment}

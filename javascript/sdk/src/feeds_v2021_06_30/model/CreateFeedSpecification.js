@@ -87,7 +87,7 @@ CreateFeedSpecification.prototype.inputFeedDocumentId = undefined
 
 /**
  * Additional options to control the feed. These vary by feed type.
- * @member {{String: String}} feedOptions
- * @type {{String: String}}
+ * @member {Map<String, String>} feedOptions
+ * @type {Map<String, String>}
  */
 CreateFeedSpecification.prototype.feedOptions = undefined

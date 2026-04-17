@@ -78,14 +78,14 @@ BatchRequest.prototype.method = undefined
 
 /**
  * Additional HTTP body information that is associated with an individual request within a batch.
- * @member {{String: Object}} body
- * @type {{String: Object}}
+ * @member {Map<String, String>} body
+ * @type {Map<String, String>}
  */
 BatchRequest.prototype.body = undefined
 
 /**
  * A mapping of additional HTTP headers to send or receive for an individual request within a batch.
- * @member {{String: String}} headers
- * @type {{String: String}}
+ * @member {Map<String, String>} headers
+ * @type {Map<String, String>}
  */
 BatchRequest.prototype.headers = undefined

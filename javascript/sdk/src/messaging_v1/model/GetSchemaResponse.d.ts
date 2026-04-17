@@ -19,12 +19,10 @@ export class GetSchemaResponse {
     links: GetSchemaResponseLinks;
     /**
      * A JSON schema document describing the expected payload of the action. This object can be validated against <a href=http://json-schema.org/draft-04/schema>http://json-schema.org/draft-04/schema</a>.
-     * @member {{String: Object}} payload
-     * @type {{String: Object}}
+     * @member {Map<String, String>} payload
+     * @type {Map<String, String>}
      */
-    payload: {
-        String: Object;
-    };
+    payload: Map<string, string>;
     /**
      * A list of error responses returned when a request is unsuccessful.
      * @member {Error[]} errors

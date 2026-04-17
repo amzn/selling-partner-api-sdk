@@ -60,7 +60,7 @@ export class GetAccessPointsResult {
 
 /**
  * Map of type of access point to list of access points
- * @member {{String: Array}} accessPointsMap
- * @type {{String: Array}}
+ * @member {Map<String, String>} accessPointsMap
+ * @type {Map<String, String>}
  */
 GetAccessPointsResult.prototype.accessPointsMap = undefined

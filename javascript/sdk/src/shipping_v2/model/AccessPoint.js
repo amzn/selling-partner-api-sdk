@@ -150,7 +150,7 @@ AccessPoint.prototype.score = undefined
 
 /**
  * Map of day of the week to operating hours of that day
- * @member {{String: OperatingHours}} standardOperatingHours
- * @type {{String: OperatingHours}}
+ * @member {Map<String, String>} standardOperatingHours
+ * @type {Map<String, String>}
  */
 AccessPoint.prototype.standardOperatingHours = undefined

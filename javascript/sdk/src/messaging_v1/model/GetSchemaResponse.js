@@ -67,8 +67,8 @@ GetSchemaResponse.prototype.links = undefined
 
 /**
  * A JSON schema document describing the expected payload of the action. This object can be validated against <a href=http://json-schema.org/draft-04/schema>http://json-schema.org/draft-04/schema</a>.
- * @member {{String: Object}} payload
- * @type {{String: Object}}
+ * @member {Map<String, String>} payload
+ * @type {Map<String, String>}
  */
 GetSchemaResponse.prototype.payload = undefined
 

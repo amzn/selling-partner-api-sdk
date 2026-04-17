@@ -31,12 +31,10 @@ export class ItemOffersRequest {
     itemCondition: ItemCondition;
     /**
      * A mapping of additional HTTP headers to send/receive for the individual batch request.
-     * @member {{String: String}} headers
-     * @type {{String: String}}
+     * @member {Map<String, String>} headers
+     * @type {Map<String, String>}
      */
-    headers: {
-        String: string;
-    };
+    headers: Map<string, string>;
     /**
      * @member {CustomerType} customerType
      * @type {CustomerType}

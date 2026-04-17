@@ -92,8 +92,8 @@ ListingOffersRequest.prototype.method = undefined
 
 /**
  * A mapping of additional HTTP headers to send/receive for the individual batch request.
- * @member {{String: String}} headers
- * @type {{String: String}}
+ * @member {Map<String, String>} headers
+ * @type {Map<String, String>}
  */
 ListingOffersRequest.prototype.headers = undefined
 
@@ -132,8 +132,8 @@ BatchRequest.prototype.method = undefined
 
 /**
  * A mapping of additional HTTP headers to send/receive for the individual batch request.
- * @member {{String: String}} headers
- * @type {{String: String}}
+ * @member {Map<String, String>} headers
+ * @type {Map<String, String>}
  */
 BatchRequest.prototype.headers = undefined
 

@@ -22,8 +22,6 @@ export class GetAccessPointsResult {
     constructor(accessPointsMap: {
         String: any[];
     });
-    accessPointsMap: {
-        String: any[];
-    };
+    accessPointsMap: Map<string, string>;
 }
 //# sourceMappingURL=GetAccessPointsResult.d.ts.map

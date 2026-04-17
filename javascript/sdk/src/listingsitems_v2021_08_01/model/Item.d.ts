@@ -29,12 +29,10 @@ export class Item {
     summaries: ItemSummaryByMarketplace[];
     /**
      * A JSON object containing structured listings item attribute data keyed by attribute name.
-     * @member {{String: Object}} attributes
-     * @type {{String: Object}}
+     * @member {Map<String, String>} attributes
+     * @type {Map<String, String>}
      */
-    attributes: {
-        String: Object;
-    };
+    attributes: Map<string, string>;
     /**
      * The issues associated with the listings item.
      * @member {Issue[]} issues

@@ -70,8 +70,8 @@ CreateNotificationRequest.prototype.templateId = undefined
 
 /**
  * The dynamic parameters required by the notification templated specified by `templateId`.
- * @member {{String: Object}} notificationParameters
- * @type {{String: Object}}
+ * @member {Map<String, String>} notificationParameters
+ * @type {Map<String, String>}
  */
 CreateNotificationRequest.prototype.notificationParameters = undefined
 

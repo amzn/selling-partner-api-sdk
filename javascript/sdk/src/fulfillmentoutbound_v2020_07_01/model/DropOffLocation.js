@@ -122,7 +122,7 @@ DropOffLocation.prototype.type = undefined
 
 /**
  * Additional information about the drop-off location. This information can vary depending on the type of drop-off location specified in the `type` field.  If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object must include the keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.  For `RECEPTIONIST` type, the `attributes` object may include a `recipientName` field that contains the name of the person who received or will receive the package.
- * @member {{String: String}} attributes
- * @type {{String: String}}
+ * @member {Map<String, String>} attributes
+ * @type {Map<String, String>}
  */
 DropOffLocation.prototype.attributes = undefined

@@ -25,9 +25,7 @@ export class FeaturedOfferExpectedPriceResponse {
     constructor(headers: {
         String: string;
     }, status: HttpStatusLine, request: FeaturedOfferExpectedPriceRequestParams);
-    headers: {
-        String: string;
-    };
+    headers: Map<string, string>;
     status: HttpStatusLine;
     request: FeaturedOfferExpectedPriceRequestParams;
     /**

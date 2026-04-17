@@ -33,9 +33,7 @@ export class ProductTypeDefinition {
     schema: SchemaLink;
     requirements: string;
     requirementsEnforced: string;
-    propertyGroups: {
-        String: PropertyGroup;
-    };
+    propertyGroups: Map<string, string>;
     locale: string;
     marketplaceIds: string[];
     productType: string;
@@ -67,6 +65,6 @@ export namespace ProductTypeDefinition {
     type RequirementsEnforcedEnum = string;
 }
 import { SchemaLink } from './SchemaLink.js';
-import { PropertyGroup } from './PropertyGroup.js';
 import { ProductTypeVersion } from './ProductTypeVersion.js';
+import { PropertyGroup } from './PropertyGroup.js';
 //# sourceMappingURL=ProductTypeDefinition.d.ts.map
