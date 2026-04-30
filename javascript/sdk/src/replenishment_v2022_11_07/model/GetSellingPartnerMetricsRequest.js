@@ -86,7 +86,7 @@ GetSellingPartnerMetricsRequest.prototype.aggregationFrequency = undefined
 GetSellingPartnerMetricsRequest.prototype.timeInterval = undefined
 
 /**
- * The list of metrics requested. If no metric value is provided, data for all of the metrics will be returned.
+ * The list of metrics requested. If no metric value is provided, data for all metrics will be returned.
  * @member {Metric[]} metrics
  * @type {Metric[]}
  */

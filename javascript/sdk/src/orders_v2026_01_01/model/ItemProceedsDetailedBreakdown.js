@@ -22,7 +22,7 @@ import { Money } from './Money.js'
 export class ItemProceedsDetailedBreakdown {
   /**
    * Constructs a new <code>ItemProceedsDetailedBreakdown</code>.
-   * Further granular breakdown of the subtotal of the proceeds breakdown, only available for TAX and DISCOUNT proceeds type.
+   * Further granular breakdown of the subtotal of the proceeds breakdown, only available for TAX and DISCOUNT proceeds types.
    * @alias module:orders_v2026_01_01/model/ItemProceedsDetailedBreakdown
    * @class
    */

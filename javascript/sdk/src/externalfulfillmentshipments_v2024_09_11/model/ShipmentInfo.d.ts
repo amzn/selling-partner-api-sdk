@@ -50,6 +50,12 @@ export class ShipmentInfo {
      * @type {String}
      */
     processingSource: string;
+    /**
+     * The payment method for the shipment.
+     * @member {String} paymentMethod
+     * @type {String}
+     */
+    paymentMethod: string;
 }
 export namespace ShipmentInfo {
     namespace ShipmentTypeEnum {
@@ -69,6 +75,14 @@ export namespace ShipmentInfo {
      * *
      */
     type ProcessingSourceEnum = string;
+    namespace PaymentMethodEnum {
+        let CASH_ON_DELIVERY: string;
+        let PREPAID: string;
+    }
+    /**
+     * *
+     */
+    type PaymentMethodEnum = string;
 }
 import { Priority } from './Priority.js';
 import { ReplacedShipmentInfo } from './ReplacedShipmentInfo.js';

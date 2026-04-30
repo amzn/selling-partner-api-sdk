@@ -84,7 +84,13 @@ Dimension.DimensionUnitEnum = {
      * value: "M"
      * @const
      */
-  M: 'M'
+  M: 'M',
+
+  /**
+     * value: "IN"
+     * @const
+     */
+  IN: 'IN'
 }
 /**
  * The unit of measurement of the dimension.

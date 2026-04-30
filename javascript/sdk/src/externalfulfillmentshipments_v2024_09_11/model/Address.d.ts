@@ -52,7 +52,7 @@ export class Address {
      */
     district: string;
     /**
-     * The municiplaity where the person, business, or institution is located.
+     * The municipality where the person, business, or institution is located.
      * @member {String} municipality
      * @type {String}
      */
@@ -99,5 +99,11 @@ export class Address {
      * @type {String}
      */
     addressType: string;
+    /**
+     * @member {Geocodes} geocodes
+     * @type {Geocodes}
+     */
+    geocodes: Geocodes;
 }
+import { Geocodes } from './Geocodes.js';
 //# sourceMappingURL=Address.d.ts.map

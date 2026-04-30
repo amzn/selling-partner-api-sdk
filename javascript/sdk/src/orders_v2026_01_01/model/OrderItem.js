@@ -12,12 +12,14 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
+import { AssociatedOrderItem } from './AssociatedOrderItem.js'
 import { ItemCancellation } from './ItemCancellation.js'
 import { ItemExpense } from './ItemExpense.js'
 import { ItemFulfillment } from './ItemFulfillment.js'
 import { ItemProceeds } from './ItemProceeds.js'
 import { ItemProduct } from './ItemProduct.js'
 import { ItemPromotion } from './ItemPromotion.js'
+import { ItemTax } from './ItemTax.js'
 import { Measurement } from './Measurement.js'
 
 /**
@@ -65,6 +67,7 @@ export class OrderItem {
       if (data.hasOwnProperty('orderItemId')) { obj.orderItemId = ApiClient.convertToType(data.orderItemId, 'String') }
       if (data.hasOwnProperty('quantityOrdered')) { obj.quantityOrdered = ApiClient.convertToType(data.quantityOrdered, 'Number') }
       if (data.hasOwnProperty('measurement')) { obj.measurement = Measurement.constructFromObject(data.measurement) }
+      if (data.hasOwnProperty('associatedOrderItems')) { obj.associatedOrderItems = ApiClient.convertToType(data.associatedOrderItems, [AssociatedOrderItem]) }
       if (data.hasOwnProperty('programs')) { obj.programs = ApiClient.convertToType(data.programs, ['String']) }
       if (data.hasOwnProperty('product')) { obj.product = ItemProduct.constructFromObject(data.product) }
       if (data.hasOwnProperty('proceeds')) { obj.proceeds = ItemProceeds.constructFromObject(data.proceeds) }
@@ -72,6 +75,7 @@ export class OrderItem {
       if (data.hasOwnProperty('promotion')) { obj.promotion = ItemPromotion.constructFromObject(data.promotion) }
       if (data.hasOwnProperty('cancellation')) { obj.cancellation = ItemCancellation.constructFromObject(data.cancellation) }
       if (data.hasOwnProperty('fulfillment')) { obj.fulfillment = ItemFulfillment.constructFromObject(data.fulfillment) }
+      if (data.hasOwnProperty('tax')) { obj.tax = ItemTax.constructFromObject(data.tax) }
     }
     return obj
   }
@@ -96,6 +100,13 @@ OrderItem.prototype.quantityOrdered = undefined
  * @type {Measurement}
  */
 OrderItem.prototype.measurement = undefined
+
+/**
+ * A list of order items associated with this item. For example, a value-add service purchased with the product.
+ * @member {AssociatedOrderItem[]} associatedOrderItems
+ * @type {AssociatedOrderItem[]}
+ */
+OrderItem.prototype.associatedOrderItems = undefined
 
 /**
  * Special programs that apply specifically to this item within the order.  **Possible values**: `TRANSPARENCY`, `SUBSCRIBE_AND_SAVE`
@@ -139,3 +150,9 @@ OrderItem.prototype.cancellation = undefined
  * @type {ItemFulfillment}
  */
 OrderItem.prototype.fulfillment = undefined
+
+/**
+ * @member {ItemTax} tax
+ * @type {ItemTax}
+ */
+OrderItem.prototype.tax = undefined

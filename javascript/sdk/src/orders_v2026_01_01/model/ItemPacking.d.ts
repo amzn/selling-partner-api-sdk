@@ -17,6 +17,12 @@ export class ItemPacking {
      * @type {GiftOption}
      */
     giftOption: GiftOption;
+    /**
+     * @member {SerialNumberRequirement} serialNumberRequirement
+     * @type {SerialNumberRequirement}
+     */
+    serialNumberRequirement: SerialNumberRequirement;
 }
 import { GiftOption } from './GiftOption.js';
+import { SerialNumberRequirement } from './SerialNumberRequirement.js';
 //# sourceMappingURL=ItemPacking.d.ts.map

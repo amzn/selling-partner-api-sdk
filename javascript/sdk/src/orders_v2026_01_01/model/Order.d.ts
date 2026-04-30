@@ -36,7 +36,7 @@ export class Order {
      */
     orderAliases: Alias[];
     /**
-     * Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`,  `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`
+     * Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`, `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `INVOICE_BY_AMAZON`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`
      * @member {String[]} programs
      * @type {String[]}
      */
@@ -63,6 +63,16 @@ export class Order {
      */
     proceeds: OrderProceeds;
     /**
+     * @member {OrderPayment} payment
+     * @type {OrderPayment}
+     */
+    payment: OrderPayment;
+    /**
+     * @member {OrderTax} tax
+     * @type {OrderTax}
+     */
+    tax: OrderTax;
+    /**
      * @member {OrderFulfillment} fulfillment
      * @type {OrderFulfillment}
      */
@@ -81,6 +91,8 @@ import { AssociatedOrder } from './AssociatedOrder.js';
 import { Buyer } from './Buyer.js';
 import { Recipient } from './Recipient.js';
 import { OrderProceeds } from './OrderProceeds.js';
+import { OrderPayment } from './OrderPayment.js';
+import { OrderTax } from './OrderTax.js';
 import { OrderFulfillment } from './OrderFulfillment.js';
 import { OrderPackage } from './OrderPackage.js';
 //# sourceMappingURL=Order.d.ts.map

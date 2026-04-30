@@ -12,6 +12,7 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
+import { GeoCoordinates } from './GeoCoordinates.js'
 
 /**
  * The AddressExtendedFields model module.
@@ -21,7 +22,7 @@ import { ApiClient } from '../ApiClient.js'
 export class AddressExtendedFields {
   /**
    * Constructs a new <code>AddressExtendedFields</code>.
-   * The container for address extended fields (such as &#x60;street name&#x60; and &#x60;street number&#x60;). Currently only available with Brazil shipping addresses.
+   * Extended address fields for additional address components including the street name or number.   Note: Available for grocery sellers and Brazil shipping addresses.
    * @alias module:orders_v0/model/AddressExtendedFields
    * @class
    */
@@ -53,6 +54,7 @@ export class AddressExtendedFields {
       if (data.hasOwnProperty('StreetNumber')) { obj.streetNumber = ApiClient.convertToType(data.StreetNumber, 'String') }
       if (data.hasOwnProperty('Complement')) { obj.complement = ApiClient.convertToType(data.Complement, 'String') }
       if (data.hasOwnProperty('Neighborhood')) { obj.neighborhood = ApiClient.convertToType(data.Neighborhood, 'String') }
+      if (data.hasOwnProperty('GeoCoordinates')) { obj.geoCoordinates = GeoCoordinates.constructFromObject(data.GeoCoordinates) }
     }
     return obj
   }
@@ -85,3 +87,9 @@ AddressExtendedFields.prototype.complement = undefined
  * @type {String}
  */
 AddressExtendedFields.prototype.neighborhood = undefined
+
+/**
+ * @member {GeoCoordinates} geoCoordinates
+ * @type {GeoCoordinates}
+ */
+AddressExtendedFields.prototype.geoCoordinates = undefined

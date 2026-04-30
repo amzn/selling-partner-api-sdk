@@ -28,6 +28,7 @@ export namespace Dimension {
     namespace DimensionUnitEnum {
         let CM: string;
         let M: string;
+        let IN: string;
     }
     /**
      * *

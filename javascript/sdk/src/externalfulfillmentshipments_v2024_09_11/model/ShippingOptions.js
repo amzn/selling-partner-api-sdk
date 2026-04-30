@@ -12,6 +12,7 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
+import { HandoverLocation } from './HandoverLocation.js'
 import { TimeWindow } from './TimeWindow.js'
 
 /**
@@ -59,6 +60,7 @@ export class ShippingOptions {
       if (data.hasOwnProperty('carrierName')) { obj.carrierName = ApiClient.convertToType(data.carrierName, 'String') }
       if (data.hasOwnProperty('pickupWindow')) { obj.pickupWindow = TimeWindow.constructFromObject(data.pickupWindow) }
       if (data.hasOwnProperty('timeSlot')) { obj.timeSlot = TimeWindow.constructFromObject(data.timeSlot) }
+      if (data.hasOwnProperty('handoverLocation')) { obj.handoverLocation = HandoverLocation.constructFromObject(data.handoverLocation) }
     }
     return obj
   }
@@ -127,3 +129,9 @@ ShippingOptions.prototype.pickupWindow = undefined
  * @type {TimeWindow}
  */
 ShippingOptions.prototype.timeSlot = undefined
+
+/**
+ * @member {HandoverLocation} handoverLocation
+ * @type {HandoverLocation}
+ */
+ShippingOptions.prototype.handoverLocation = undefined

@@ -39,6 +39,12 @@ export class ShipLabelMetadata {
      * @type {TimeWindow}
      */
     timeSlot: TimeWindow;
+    /**
+     * @member {HandoverLocation} handoverLocation
+     * @type {HandoverLocation}
+     */
+    handoverLocation: HandoverLocation;
 }
 import { TimeWindow } from './TimeWindow.js';
+import { HandoverLocation } from './HandoverLocation.js';
 //# sourceMappingURL=ShipLabelMetadata.d.ts.map

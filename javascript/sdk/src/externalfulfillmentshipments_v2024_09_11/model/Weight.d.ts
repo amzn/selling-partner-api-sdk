@@ -28,6 +28,8 @@ export namespace Weight {
     namespace WeightUnitEnum {
         let G: string;
         let KG: string;
+        let LB: string;
+        let OZ: string;
     }
     /**
      * *

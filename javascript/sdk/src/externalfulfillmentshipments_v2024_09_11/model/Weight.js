@@ -84,7 +84,19 @@ Weight.WeightUnitEnum = {
      * value: "KG"
      * @const
      */
-  KG: 'KG'
+  KG: 'KG',
+
+  /**
+     * value: "LB"
+     * @const
+     */
+  LB: 'LB',
+
+  /**
+     * value: "OZ"
+     * @const
+     */
+  OZ: 'OZ'
 }
 /**
  * The unit of measurement of the weight.
