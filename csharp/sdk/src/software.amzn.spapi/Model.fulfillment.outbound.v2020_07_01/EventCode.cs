@@ -228,7 +228,19 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Enum _419 for value: EVENT_419
         /// </summary>
         [EnumMember(Value = "EVENT_419")]
-        _419 = 33
+        _419 = 33,
+
+        /// <summary>
+        /// Enum _801 for value: EVENT_801
+        /// </summary>
+        [EnumMember(Value = "EVENT_801")]
+        _801 = 34,
+
+        /// <summary>
+        /// Enum _804 for value: EVENT_804
+        /// </summary>
+        [EnumMember(Value = "EVENT_804")]
+        _804 = 35
     }
 
 }

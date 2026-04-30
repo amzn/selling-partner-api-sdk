@@ -21,8 +21,16 @@ servers:
 paths:
   /orders/2026-01-01/orders:
     get:
-      description: Returns orders that are created or updated during the time period
-        that you specify. You can filter the response for specific types of orders.
+      description: |-
+        Returns orders created or updated during the time period that you specify. You can filter the response for specific types of orders.
+
+        **Usage Plan:**
+
+        | Rate (requests per second) | Burst |
+        | ---- | ---- |
+        | 0.0056 | 20 |
+
+        The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that are applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling Partner API documentation.
       operationId: searchOrders
       parameters:
       - description: |-
@@ -46,7 +54,7 @@ paths:
           format: date-time
           type: string
       - description: |-
-          The response includes orders updated at or after this time. An update is defined as any change made by Amazon or by the seller, including an update to the order status. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+          The response includes orders updated at or after this time. An update is any change made by Amazon or the seller, including changes to order status. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
 
           **Note**: You must provide exactly one of `createdAfter` and `lastUpdatedAfter`. If `lastUpdatedAfter` is provided, neither `createdAfter` nor `createdBefore` may be provided.
         example: 2025-01-01T00:00:00Z
@@ -56,7 +64,7 @@ paths:
           format: date-time
           type: string
       - description: |-
-          The response includes orders updated at or before this time. An update is defined as any change made by Amazon or by the seller, including an update to the order status. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+          The response includes orders updated at or before this time. An update is any change made by Amazon or the seller, including changes to order status. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
 
           **Note**: If you include `lastUpdatedAfter` in the request, `lastUpdatedBefore` is optional, and if provided must be equal to or after the `lastUpdatedAfter` date and at least two minutes before the time of the request. If `lastUpdatedBefore` is provided, neither `createdAfter` nor `createdBefore` may be provided.
         example: 2025-01-01T00:00:00Z
@@ -108,7 +116,7 @@ paths:
             - value: UNFULFILLABLE
               description: The order cannot be fulfilled. This state only applies
                 to Amazon-fulfilled orders that were not placed on Amazon's retail
-                web site.
+                website.
           type: array
         style: form
       - description: |-
@@ -183,6 +191,8 @@ paths:
             - CANCELLATION
             - FULFILLMENT
             - PACKAGES
+            - TAX
+            - PAYMENT
             type: string
             x-docgen-enum-table-extension:
             - value: BUYER
@@ -205,6 +215,10 @@ paths:
                 and shipped.
             - value: PACKAGES
               description: Information about shipping packages and tracking.
+            - value: TAX
+              description: The tax information associated with the order.
+            - value: PAYMENT
+              description: The payment information associated with the order.
           type: array
         style: form
       responses:
@@ -339,7 +353,7 @@ paths:
                         customizedUrl: https://amazon.com/custom/view/12345
                     proceeds:
                       proceedsTotal:
-                        amount: "99.98"
+                        amount: "100.00"
                         currencyCode: USD
                       breakdowns:
                       - type: ITEM
@@ -532,7 +546,6 @@ paths:
                           currencyCode: JPY
                       serialNumbers:
                       - ED4JP-2024-ABC123456789
-                      - ED4JP-2024-DEF987654321
                     proceeds:
                       proceedsTotal:
                         amount: "5980"
@@ -736,6 +749,122 @@ paths:
                       transparencyCodes:
                       - T98765ZYXWV43210UK
                 createdBefore: 2024-12-24T15:00:00Z
+            - request:
+                parameters:
+                  createdAfter:
+                    value: 2024-12-20T00:00:00Z
+                  marketplaceIds:
+                    value:
+                    - A2Q3Y263D00KWC
+                  includedData:
+                    value:
+                    - BUYER
+                    - RECIPIENT
+                    - PROCEEDS
+                    - FULFILLMENT
+                    - TAX
+                    - PAYMENT
+              response:
+                orders:
+                - orderId: 171-2345678-9012345
+                  orderAliases:
+                  - aliasId: BR-BIZ-ORDER-2024-001
+                    aliasType: SELLER_ORDER_ID
+                  createdTime: 2024-12-22T15:30:00Z
+                  lastUpdatedTime: 2024-12-23T10:00:00Z
+                  programs:
+                  - AMAZON_BUSINESS
+                  - DELIVERY_BY_AMAZON
+                  salesChannel:
+                    channelName: AMAZON
+                    marketplaceId: A2Q3Y263D00KWC
+                    marketplaceName: Amazon.com.br
+                  buyer:
+                    buyerName: Carlos Oliveira
+                    buyerEmail: buyer-email@marketplace.amazon.com.br
+                    buyerCompanyName: Oliveira Tecnologia Ltda
+                    buyerPurchaseOrderNumber: PO-BR-2024-5678
+                  recipient:
+                    deliveryAddress:
+                      name: Carlos Oliveira
+                      companyName: Oliveira Tecnologia Ltda
+                      addressLine1: "Avenida Paulista, 1000"
+                      addressLine2: Sala 301
+                      city: São Paulo
+                      stateOrRegion: SP
+                      postalCode: 01310-100
+                      countryCode: BR
+                      phone: +55 11 91234-5678
+                      extendedFields:
+                        streetName: Avenida Paulista
+                        streetNumber: "1000"
+                        complement: Sala 301
+                        neighborhood: Bela Vista
+                      addressType: COMMERCIAL
+                  proceeds:
+                    grandTotal:
+                      amount: "1599.90"
+                      currencyCode: BRL
+                  tax:
+                    taxRegistrations:
+                    - entityType: BUYER
+                      legalName: Oliveira Tecnologia Ltda
+                      taxRegistrationType: VAT
+                      taxRegistrationNumber: "1234567890"
+                    - entityType: MARKETPLACE
+                      taxRegistrationType: CNPJ
+                      taxRegistrationNumber: "15436940"
+                    - entityType: MERCHANT
+                      legalName: TechStore
+                    taxInvoicing:
+                      invoiceStatus: PROCESSING
+                  payment:
+                    paymentExecutions:
+                    - paymentMethod: CreditCard
+                      paymentAmount:
+                        amount: "1599.90"
+                        currencyCode: BRL
+                      acquirerId: 01.027.058/0001-91
+                      cardBrand: Visa
+                      authorizationCode: "123456"
+                  fulfillment:
+                    fulfillmentStatus: UNSHIPPED
+                    fulfilledBy: MERCHANT
+                    fulfillmentServiceLevel: STANDARD
+                    shipByWindow:
+                      earliestDateTime: 2024-12-23T00:00:00Z
+                      latestDateTime: 2024-12-24T23:59:59Z
+                    deliverByWindow:
+                      earliestDateTime: 2024-12-26T00:00:00Z
+                      latestDateTime: 2024-12-30T23:59:59Z
+                  orderItems:
+                  - orderItemId: "17123456789012"
+                    quantityOrdered: 1
+                    product:
+                      asin: B09B8V1LZ3
+                      title: Notebook Dell Inspiron 15 3000
+                      sellerSku: DELL-I15-BR-001
+                      condition:
+                        conditionType: NEW
+                        conditionSubtype: NEW
+                      price:
+                        unitPrice:
+                          amount: "1599.90"
+                          currencyCode: BRL
+                        priceDesignation: BUSINESS_PRICE
+                    proceeds:
+                      proceedsTotal:
+                        amount: "1599.90"
+                        currencyCode: BRL
+                      breakdowns:
+                      - type: ITEM
+                        subtotal:
+                          amount: "1599.90"
+                          currencyCode: BRL
+                    fulfillment:
+                      quantityFulfilled: 0
+                      quantityUnfulfilled: 1
+                createdBefore: 2024-12-22T16:00:00Z
         "400":
           content:
             application/json:
@@ -850,7 +979,16 @@ paths:
       - searchOrders
   /orders/2026-01-01/orders/{orderId}:
     get:
-      description: Returns the order that you specify.
+      description: |-
+        Returns the order that you specify.
+
+        **Usage Plan:**
+
+        | Rate (requests per second) | Burst |
+        | ---- | ---- |
+        | 0.5 | 30 |
+
+        The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that are applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling Partner API documentation.
       operationId: getOrder
       parameters:
       - description: An Amazon-defined order identifier.
@@ -877,6 +1015,8 @@ paths:
             - CANCELLATION
             - FULFILLMENT
             - PACKAGES
+            - TAX
+            - PAYMENT
             type: string
             x-docgen-enum-table-extension:
             - value: BUYER
@@ -887,7 +1027,7 @@ paths:
               description: The revenue and financial breakdown for the order and order
                 items.
             - value: EXPENSE
-              description: The cost information applied to the order and order items.
+              description: The cost information about the order and order items.
             - value: PROMOTION
               description: The discount and promotional offer details applied to the
                 order and order items.
@@ -895,10 +1035,14 @@ paths:
               description: Cancellation information applied to the order and order
                 items.
             - value: FULFILLMENT
-              description: Information about how this order and order items are processed
+              description: Information about how the order and order items are processed
                 and shipped.
             - value: PACKAGES
-              description: Shipping packages and tracking information.
+              description: Information about shipping packages and tracking.
+            - value: TAX
+              description: The tax information associated with the order.
+            - value: PAYMENT
+              description: The payment information associated with the order.
           type: array
         style: form
       responses:
@@ -1163,6 +1307,191 @@ paths:
                           giftMessage: Feliz Natal! Espero que goste do seu novo alto-falante
                             inteligente!
                           giftWrapLevel: STANDARD
+            - request:
+                parameters:
+                  orderId:
+                    value: 028-1234567-8901234
+                  includedData:
+                    value:
+                    - BUYER
+                    - RECIPIENT
+                    - PROCEEDS
+                    - FULFILLMENT
+                    - TAX
+              response:
+                order:
+                  orderId: 028-1234567-8901234
+                  orderAliases:
+                  - aliasId: TR-ORDER-2025-001
+                    aliasType: SELLER_ORDER_ID
+                  createdTime: 2025-03-15T10:30:00Z
+                  lastUpdatedTime: 2025-03-15T14:20:00Z
+                  salesChannel:
+                    channelName: AMAZON
+                    marketplaceId: A33AVAJ2PDY3EV
+                    marketplaceName: Amazon.com.tr
+                  buyer:
+                    buyerName: Mehmet Yilmaz
+                    buyerEmail: buyer-email@marketplace.amazon.com.tr
+                  recipient:
+                    deliveryAddress:
+                      name: Mehmet Yilmaz
+                      addressLine1: Istiklal Caddesi No:42
+                      addressLine2: Kat 3
+                      addressLine3: ""
+                      city: Istanbul
+                      districtOrCounty: Beyoglu
+                      stateOrRegion: Istanbul
+                      municipality: ""
+                      postalCode: "34430"
+                      countryCode: TR
+                      addressType: COMMERCIAL
+                  proceeds:
+                    grandTotal:
+                      amount: "125.00"
+                      currencyCode: TRY
+                  fulfillment:
+                    fulfillmentStatus: SHIPPED
+                    fulfilledBy: MERCHANT
+                    fulfillmentServiceLevel: STANDARD
+                    shipByWindow:
+                      earliestDateTime: 2025-03-16T00:00:00Z
+                      latestDateTime: 2025-03-17T23:59:59Z
+                    deliverByWindow:
+                      earliestDateTime: 2025-03-18T00:00:00Z
+                      latestDateTime: 2025-03-21T23:59:59Z
+                  tax:
+                    taxRegistrations:
+                    - entityType: BUYER
+                      taxRegistrationType: BUSINESS
+                      taxRegistrationNumber: TR1234567890
+                      legalName: Test company name
+                      taxRegistrationAddress:
+                        name: Mehmet Yilmaz
+                        companyName: Test company name
+                        addressLine1: Istiklal Caddesi No:42
+                        addressLine2: Kat 3
+                        city: Istanbul
+                        stateOrRegion: Istanbul
+                        postalCode: "34430"
+                        countryCode: TR
+                      taxRegistrationAttributes:
+                      - key: TAX_OFFICE
+                        value: tax office
+                    taxInvoicing:
+                      buyerInvoicePreference: BUSINESS
+                  orderItems:
+                  - orderItemId: "02812345678901"
+                    quantityOrdered: 2
+                    product:
+                      asin: B09V3KXJPB
+                      title: "Fire HD 10 tablet | 10.1 inch, 1080p Full HD"
+                      sellerSku: FIRE-HD10-TR-BLK
+                      condition:
+                        conditionType: NEW
+                        conditionSubtype: NEW
+                        conditionNote: ""
+                      price:
+                        unitPrice:
+                          amount: "62.50"
+                          currencyCode: TRY
+                    proceeds:
+                      proceedsTotal:
+                        amount: "125.00"
+                        currencyCode: TRY
+                      breakdowns:
+                      - type: ITEM
+                        subtotal:
+                          amount: "125.00"
+                          currencyCode: TRY
+                    fulfillment:
+                      quantityFulfilled: 2
+                      quantityUnfulfilled: 0
+                    tax:
+                      taxCalculationBreakdowns:
+                      - reportingScheme: IOSS
+                      taxCollections:
+                      - model: MARKETPLACE_FACILITATOR
+                        responsibleParty: Amazon Services Europe S.a.r.L.
+            - request:
+                parameters:
+                  orderId:
+                    value: 114-9876543-1234567
+                  includedData:
+                    value:
+                    - RECIPIENT
+                    - PROCEEDS
+                    - FULFILLMENT
+              response:
+                order:
+                  orderId: 114-9876543-1234567
+                  createdTime: 2025-03-10T14:00:00Z
+                  lastUpdatedTime: 2025-03-10T14:30:00Z
+                  programs:
+                  - IN_STORE_PICK_UP
+                  salesChannel:
+                    channelName: AMAZON
+                    marketplaceId: ATVPDKIKX0DER
+                    marketplaceName: Amazon.com
+                  recipient:
+                    deliveryAddress:
+                      name: "Test Store #1234"
+                      companyName: Test Store
+                      addressLine1: 100 Main Street
+                      addressLine2: Suite 200
+                      addressLine3: ""
+                      city: Seattle
+                      districtOrCounty: ""
+                      stateOrRegion: WA
+                      municipality: ""
+                      postalCode: "98101"
+                      countryCode: US
+                      phone: +1 206 555 0100
+                      addressType: COMMERCIAL
+                  proceeds:
+                    grandTotal:
+                      amount: "49.99"
+                      currencyCode: USD
+                  fulfillment:
+                    fulfillmentStatus: UNSHIPPED
+                    fulfilledBy: MERCHANT
+                    fulfillmentServiceLevel: STANDARD
+                  orderItems:
+                  - orderItemId: "11498765431234"
+                    quantityOrdered: 1
+                    product:
+                      asin: B0BSHF7WHW
+                      title: All-new Echo Pop | Full sound compact smart speaker with
+                        Alexa
+                      sellerSku: ECHO-POP-US-BLK
+                      condition:
+                        conditionType: NEW
+                        conditionSubtype: NEW
+                        conditionNote: ""
+                      price:
+                        unitPrice:
+                          amount: "39.99"
+                          currencyCode: USD
+                    proceeds:
+                      proceedsTotal:
+                        amount: "49.99"
+                        currencyCode: USD
+                      breakdowns:
+                      - type: ITEM
+                        subtotal:
+                          amount: "39.99"
+                          currencyCode: USD
+                      - type: TAX
+                        subtotal:
+                          amount: "10.00"
+                          currencyCode: USD
+                    fulfillment:
+                      quantityFulfilled: 0
+                      quantityUnfulfilled: 1
+                    associatedOrderItems:
+                    - orderId: 333-1234567-7654321
+                      orderItemId: "11498765435678"
+                      associationType: VALUE_ADD_SERVICE
         "400":
           content:
             application/json:
@@ -1283,6 +1612,67 @@ components:
           nextToken: nextToken
         orders:
         - orderId: orderId
+          tax:
+            taxRegistrations:
+            - legalName: legalName
+              taxRegistrationAttributes:
+              - value: value
+                key: key
+              - value: value
+                key: key
+              entityType: entityType
+              taxRegistrationType: taxRegistrationType
+              taxRegistrationNumber: taxRegistrationNumber
+              taxRegistrationAddress:
+                city: city
+                addressType: addressType
+                companyName: companyName
+                postalCode: postalCode
+                municipality: municipality
+                districtOrCounty: districtOrCounty
+                extendedFields:
+                  streetName: streetName
+                  streetNumber: streetNumber
+                  neighborhood: neighborhood
+                  complement: complement
+                stateOrRegion: stateOrRegion
+                phone: phone
+                countryCode: countryCode
+                name: name
+                addressLine1: addressLine1
+                addressLine2: addressLine2
+                addressLine3: addressLine3
+            - legalName: legalName
+              taxRegistrationAttributes:
+              - value: value
+                key: key
+              - value: value
+                key: key
+              entityType: entityType
+              taxRegistrationType: taxRegistrationType
+              taxRegistrationNumber: taxRegistrationNumber
+              taxRegistrationAddress:
+                city: city
+                addressType: addressType
+                companyName: companyName
+                postalCode: postalCode
+                municipality: municipality
+                districtOrCounty: districtOrCounty
+                extendedFields:
+                  streetName: streetName
+                  streetNumber: streetNumber
+                  neighborhood: neighborhood
+                  complement: complement
+                stateOrRegion: stateOrRegion
+                phone: phone
+                countryCode: countryCode
+                name: name
+                addressLine1: addressLine1
+                addressLine2: addressLine2
+                addressLine3: addressLine3
+            taxInvoicing:
+              buyerInvoicePreference: buyerInvoicePreference
+              invoiceStatus: invoiceStatus
           associatedOrders:
           - orderId: orderId
             associationType: associationType
@@ -1356,7 +1746,14 @@ components:
               status: PENDING
             trackingNumber: trackingNumber
           orderItems:
-          - product:
+          - associatedOrderItems:
+            - orderId: 123-4567890-7654321
+              orderItemId: "12345678904321"
+              associationType: VALUE_ADD_SERVICE
+            - orderId: 123-4567890-7654321
+              orderItemId: "12345678904321"
+              associationType: VALUE_ADD_SERVICE
+            product:
               condition:
                 conditionNote: conditionNote
                 conditionSubtype: conditionSubtype
@@ -1411,6 +1808,15 @@ components:
                 cancelReason: cancelReason
             orderItemId: orderItemId
             quantityOrdered: 1
+            tax:
+              taxCalculationBreakdowns:
+              - reportingScheme: reportingScheme
+              - reportingScheme: reportingScheme
+              taxCollections:
+              - responsibleParty: responsibleParty
+                model: model
+              - responsibleParty: responsibleParty
+                model: model
             programs:
             - programs
             - programs
@@ -1431,8 +1837,10 @@ components:
               quantityFulfilled: 2
               packing:
                 giftOption:
-                  giftMessage: giftMessage
-                  giftWrapLevel: giftWrapLevel
+                  giftMessage: Happy Holidays! Enjoy your new smart speakers.
+                  giftWrapLevel: PREMIUM
+                serialNumberRequirement:
+                  requirementType: REQUIRED
               picking:
                 substitutionPreference:
                   substitutionType: CUSTOMER_PREFERENCE
@@ -1465,7 +1873,14 @@ components:
               breakdowns:
               - promotionId: promotionId
               - promotionId: promotionId
-          - product:
+          - associatedOrderItems:
+            - orderId: 123-4567890-7654321
+              orderItemId: "12345678904321"
+              associationType: VALUE_ADD_SERVICE
+            - orderId: 123-4567890-7654321
+              orderItemId: "12345678904321"
+              associationType: VALUE_ADD_SERVICE
+            product:
               condition:
                 conditionNote: conditionNote
                 conditionSubtype: conditionSubtype
@@ -1520,6 +1935,15 @@ components:
                 cancelReason: cancelReason
             orderItemId: orderItemId
             quantityOrdered: 1
+            tax:
+              taxCalculationBreakdowns:
+              - reportingScheme: reportingScheme
+              - reportingScheme: reportingScheme
+              taxCollections:
+              - responsibleParty: responsibleParty
+                model: model
+              - responsibleParty: responsibleParty
+                model: model
             programs:
             - programs
             - programs
@@ -1540,8 +1964,10 @@ components:
               quantityFulfilled: 2
               packing:
                 giftOption:
-                  giftMessage: giftMessage
-                  giftWrapLevel: giftWrapLevel
+                  giftMessage: Happy Holidays! Enjoy your new smart speakers.
+                  giftWrapLevel: PREMIUM
+                serialNumberRequirement:
+                  requirementType: REQUIRED
               picking:
                 substitutionPreference:
                   substitutionType: CUSTOMER_PREFERENCE
@@ -1677,6 +2103,22 @@ components:
           - aliasId: aliasId
             aliasType: aliasType
           lastUpdatedTime: 2000-01-23T04:56:07.000+00:00
+          payment:
+            paymentExecutions:
+            - authorizationCode: authorizationCode
+              paymentMethod: paymentMethod
+              acquirerId: acquirerId
+              cardBrand: cardBrand
+              paymentAmount:
+                amount: amount
+                currencyCode: currencyCode
+            - authorizationCode: authorizationCode
+              paymentMethod: paymentMethod
+              acquirerId: acquirerId
+              cardBrand: cardBrand
+              paymentAmount:
+                amount: amount
+                currencyCode: currencyCode
           programs:
           - programs
           - programs
@@ -1691,6 +2133,67 @@ components:
             fulfillmentStatus: PENDING_AVAILABILITY
             fulfillmentServiceLevel: fulfillmentServiceLevel
         - orderId: orderId
+          tax:
+            taxRegistrations:
+            - legalName: legalName
+              taxRegistrationAttributes:
+              - value: value
+                key: key
+              - value: value
+                key: key
+              entityType: entityType
+              taxRegistrationType: taxRegistrationType
+              taxRegistrationNumber: taxRegistrationNumber
+              taxRegistrationAddress:
+                city: city
+                addressType: addressType
+                companyName: companyName
+                postalCode: postalCode
+                municipality: municipality
+                districtOrCounty: districtOrCounty
+                extendedFields:
+                  streetName: streetName
+                  streetNumber: streetNumber
+                  neighborhood: neighborhood
+                  complement: complement
+                stateOrRegion: stateOrRegion
+                phone: phone
+                countryCode: countryCode
+                name: name
+                addressLine1: addressLine1
+                addressLine2: addressLine2
+                addressLine3: addressLine3
+            - legalName: legalName
+              taxRegistrationAttributes:
+              - value: value
+                key: key
+              - value: value
+                key: key
+              entityType: entityType
+              taxRegistrationType: taxRegistrationType
+              taxRegistrationNumber: taxRegistrationNumber
+              taxRegistrationAddress:
+                city: city
+                addressType: addressType
+                companyName: companyName
+                postalCode: postalCode
+                municipality: municipality
+                districtOrCounty: districtOrCounty
+                extendedFields:
+                  streetName: streetName
+                  streetNumber: streetNumber
+                  neighborhood: neighborhood
+                  complement: complement
+                stateOrRegion: stateOrRegion
+                phone: phone
+                countryCode: countryCode
+                name: name
+                addressLine1: addressLine1
+                addressLine2: addressLine2
+                addressLine3: addressLine3
+            taxInvoicing:
+              buyerInvoicePreference: buyerInvoicePreference
+              invoiceStatus: invoiceStatus
           associatedOrders:
           - orderId: orderId
             associationType: associationType
@@ -1764,7 +2267,14 @@ components:
               status: PENDING
             trackingNumber: trackingNumber
           orderItems:
-          - product:
+          - associatedOrderItems:
+            - orderId: 123-4567890-7654321
+              orderItemId: "12345678904321"
+              associationType: VALUE_ADD_SERVICE
+            - orderId: 123-4567890-7654321
+              orderItemId: "12345678904321"
+              associationType: VALUE_ADD_SERVICE
+            product:
               condition:
                 conditionNote: conditionNote
                 conditionSubtype: conditionSubtype
@@ -1819,6 +2329,15 @@ components:
                 cancelReason: cancelReason
             orderItemId: orderItemId
             quantityOrdered: 1
+            tax:
+              taxCalculationBreakdowns:
+              - reportingScheme: reportingScheme
+              - reportingScheme: reportingScheme
+              taxCollections:
+              - responsibleParty: responsibleParty
+                model: model
+              - responsibleParty: responsibleParty
+                model: model
             programs:
             - programs
             - programs
@@ -1839,8 +2358,10 @@ components:
               quantityFulfilled: 2
               packing:
                 giftOption:
-                  giftMessage: giftMessage
-                  giftWrapLevel: giftWrapLevel
+                  giftMessage: Happy Holidays! Enjoy your new smart speakers.
+                  giftWrapLevel: PREMIUM
+                serialNumberRequirement:
+                  requirementType: REQUIRED
               picking:
                 substitutionPreference:
                   substitutionType: CUSTOMER_PREFERENCE
@@ -1873,7 +2394,14 @@ components:
               breakdowns:
               - promotionId: promotionId
               - promotionId: promotionId
-          - product:
+          - associatedOrderItems:
+            - orderId: 123-4567890-7654321
+              orderItemId: "12345678904321"
+              associationType: VALUE_ADD_SERVICE
+            - orderId: 123-4567890-7654321
+              orderItemId: "12345678904321"
+              associationType: VALUE_ADD_SERVICE
+            product:
               condition:
                 conditionNote: conditionNote
                 conditionSubtype: conditionSubtype
@@ -1928,6 +2456,15 @@ components:
                 cancelReason: cancelReason
             orderItemId: orderItemId
             quantityOrdered: 1
+            tax:
+              taxCalculationBreakdowns:
+              - reportingScheme: reportingScheme
+              - reportingScheme: reportingScheme
+              taxCollections:
+              - responsibleParty: responsibleParty
+                model: model
+              - responsibleParty: responsibleParty
+                model: model
             programs:
             - programs
             - programs
@@ -1948,8 +2485,10 @@ components:
               quantityFulfilled: 2
               packing:
                 giftOption:
-                  giftMessage: giftMessage
-                  giftWrapLevel: giftWrapLevel
+                  giftMessage: Happy Holidays! Enjoy your new smart speakers.
+                  giftWrapLevel: PREMIUM
+                serialNumberRequirement:
+                  requirementType: REQUIRED
               picking:
                 substitutionPreference:
                   substitutionType: CUSTOMER_PREFERENCE
@@ -2085,6 +2624,22 @@ components:
           - aliasId: aliasId
             aliasType: aliasType
           lastUpdatedTime: 2000-01-23T04:56:07.000+00:00
+          payment:
+            paymentExecutions:
+            - authorizationCode: authorizationCode
+              paymentMethod: paymentMethod
+              acquirerId: acquirerId
+              cardBrand: cardBrand
+              paymentAmount:
+                amount: amount
+                currencyCode: currencyCode
+            - authorizationCode: authorizationCode
+              paymentMethod: paymentMethod
+              acquirerId: acquirerId
+              cardBrand: cardBrand
+              paymentAmount:
+                amount: amount
+                currencyCode: currencyCode
           programs:
           - programs
           - programs
@@ -2109,24 +2664,24 @@ components:
         pagination:
           $ref: '#/components/schemas/Pagination'
         lastUpdatedBefore:
-          description: Only orders updated before the specified time are returned.
-            The date must be in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO
-            8601</a> format.
+          description: "Only orders updated before the specified time are returned.\
+            \ The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)\
+            \ format."
           format: date-time
           type: string
         createdBefore:
-          description: Only orders placed before the specified time are returned.
-            The date must be in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO
-            8601</a> format.
+          description: "Only orders placed before the specified time are returned.\
+            \ The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)\
+            \ format."
           format: date-time
           type: string
       required:
       - orders
       type: object
     Pagination:
-      description: "When a request has results that are not included in the response,\
-        \ pagination occurs. This means the results are divided into individual pages.\
-        \ To retrieve a different page, you must pass the token value as the `paginationToken`\
+      description: "Pagination occurs when a request has results that exceed the response\
+        \ limit. This means the results are divided into individual pages. To retrieve\
+        \ a different page, you must pass the token value as the `paginationToken`\
         \ query parameter in the subsequent request. All other parameters must be\
         \ provided with the same values that were provided with the request that generated\
         \ this token, with the exception of `maxResultsPerPage` and `includedData`,\
@@ -2145,6 +2700,67 @@ components:
       example:
         order:
           orderId: orderId
+          tax:
+            taxRegistrations:
+            - legalName: legalName
+              taxRegistrationAttributes:
+              - value: value
+                key: key
+              - value: value
+                key: key
+              entityType: entityType
+              taxRegistrationType: taxRegistrationType
+              taxRegistrationNumber: taxRegistrationNumber
+              taxRegistrationAddress:
+                city: city
+                addressType: addressType
+                companyName: companyName
+                postalCode: postalCode
+                municipality: municipality
+                districtOrCounty: districtOrCounty
+                extendedFields:
+                  streetName: streetName
+                  streetNumber: streetNumber
+                  neighborhood: neighborhood
+                  complement: complement
+                stateOrRegion: stateOrRegion
+                phone: phone
+                countryCode: countryCode
+                name: name
+                addressLine1: addressLine1
+                addressLine2: addressLine2
+                addressLine3: addressLine3
+            - legalName: legalName
+              taxRegistrationAttributes:
+              - value: value
+                key: key
+              - value: value
+                key: key
+              entityType: entityType
+              taxRegistrationType: taxRegistrationType
+              taxRegistrationNumber: taxRegistrationNumber
+              taxRegistrationAddress:
+                city: city
+                addressType: addressType
+                companyName: companyName
+                postalCode: postalCode
+                municipality: municipality
+                districtOrCounty: districtOrCounty
+                extendedFields:
+                  streetName: streetName
+                  streetNumber: streetNumber
+                  neighborhood: neighborhood
+                  complement: complement
+                stateOrRegion: stateOrRegion
+                phone: phone
+                countryCode: countryCode
+                name: name
+                addressLine1: addressLine1
+                addressLine2: addressLine2
+                addressLine3: addressLine3
+            taxInvoicing:
+              buyerInvoicePreference: buyerInvoicePreference
+              invoiceStatus: invoiceStatus
           associatedOrders:
           - orderId: orderId
             associationType: associationType
@@ -2218,7 +2834,14 @@ components:
               status: PENDING
             trackingNumber: trackingNumber
           orderItems:
-          - product:
+          - associatedOrderItems:
+            - orderId: 123-4567890-7654321
+              orderItemId: "12345678904321"
+              associationType: VALUE_ADD_SERVICE
+            - orderId: 123-4567890-7654321
+              orderItemId: "12345678904321"
+              associationType: VALUE_ADD_SERVICE
+            product:
               condition:
                 conditionNote: conditionNote
                 conditionSubtype: conditionSubtype
@@ -2273,6 +2896,15 @@ components:
                 cancelReason: cancelReason
             orderItemId: orderItemId
             quantityOrdered: 1
+            tax:
+              taxCalculationBreakdowns:
+              - reportingScheme: reportingScheme
+              - reportingScheme: reportingScheme
+              taxCollections:
+              - responsibleParty: responsibleParty
+                model: model
+              - responsibleParty: responsibleParty
+                model: model
             programs:
             - programs
             - programs
@@ -2293,8 +2925,10 @@ components:
               quantityFulfilled: 2
               packing:
                 giftOption:
-                  giftMessage: giftMessage
-                  giftWrapLevel: giftWrapLevel
+                  giftMessage: Happy Holidays! Enjoy your new smart speakers.
+                  giftWrapLevel: PREMIUM
+                serialNumberRequirement:
+                  requirementType: REQUIRED
               picking:
                 substitutionPreference:
                   substitutionType: CUSTOMER_PREFERENCE
@@ -2327,7 +2961,14 @@ components:
               breakdowns:
               - promotionId: promotionId
               - promotionId: promotionId
-          - product:
+          - associatedOrderItems:
+            - orderId: 123-4567890-7654321
+              orderItemId: "12345678904321"
+              associationType: VALUE_ADD_SERVICE
+            - orderId: 123-4567890-7654321
+              orderItemId: "12345678904321"
+              associationType: VALUE_ADD_SERVICE
+            product:
               condition:
                 conditionNote: conditionNote
                 conditionSubtype: conditionSubtype
@@ -2382,6 +3023,15 @@ components:
                 cancelReason: cancelReason
             orderItemId: orderItemId
             quantityOrdered: 1
+            tax:
+              taxCalculationBreakdowns:
+              - reportingScheme: reportingScheme
+              - reportingScheme: reportingScheme
+              taxCollections:
+              - responsibleParty: responsibleParty
+                model: model
+              - responsibleParty: responsibleParty
+                model: model
             programs:
             - programs
             - programs
@@ -2402,8 +3052,10 @@ components:
               quantityFulfilled: 2
               packing:
                 giftOption:
-                  giftMessage: giftMessage
-                  giftWrapLevel: giftWrapLevel
+                  giftMessage: Happy Holidays! Enjoy your new smart speakers.
+                  giftWrapLevel: PREMIUM
+                serialNumberRequirement:
+                  requirementType: REQUIRED
               picking:
                 substitutionPreference:
                   substitutionType: CUSTOMER_PREFERENCE
@@ -2539,6 +3191,22 @@ components:
           - aliasId: aliasId
             aliasType: aliasType
           lastUpdatedTime: 2000-01-23T04:56:07.000+00:00
+          payment:
+            paymentExecutions:
+            - authorizationCode: authorizationCode
+              paymentMethod: paymentMethod
+              acquirerId: acquirerId
+              cardBrand: cardBrand
+              paymentAmount:
+                amount: amount
+                currencyCode: currencyCode
+            - authorizationCode: authorizationCode
+              paymentMethod: paymentMethod
+              acquirerId: acquirerId
+              cardBrand: cardBrand
+              paymentAmount:
+                amount: amount
+                currencyCode: currencyCode
           programs:
           - programs
           - programs
@@ -2562,6 +3230,67 @@ components:
       description: Comprehensive information about a customer order.
       example:
         orderId: orderId
+        tax:
+          taxRegistrations:
+          - legalName: legalName
+            taxRegistrationAttributes:
+            - value: value
+              key: key
+            - value: value
+              key: key
+            entityType: entityType
+            taxRegistrationType: taxRegistrationType
+            taxRegistrationNumber: taxRegistrationNumber
+            taxRegistrationAddress:
+              city: city
+              addressType: addressType
+              companyName: companyName
+              postalCode: postalCode
+              municipality: municipality
+              districtOrCounty: districtOrCounty
+              extendedFields:
+                streetName: streetName
+                streetNumber: streetNumber
+                neighborhood: neighborhood
+                complement: complement
+              stateOrRegion: stateOrRegion
+              phone: phone
+              countryCode: countryCode
+              name: name
+              addressLine1: addressLine1
+              addressLine2: addressLine2
+              addressLine3: addressLine3
+          - legalName: legalName
+            taxRegistrationAttributes:
+            - value: value
+              key: key
+            - value: value
+              key: key
+            entityType: entityType
+            taxRegistrationType: taxRegistrationType
+            taxRegistrationNumber: taxRegistrationNumber
+            taxRegistrationAddress:
+              city: city
+              addressType: addressType
+              companyName: companyName
+              postalCode: postalCode
+              municipality: municipality
+              districtOrCounty: districtOrCounty
+              extendedFields:
+                streetName: streetName
+                streetNumber: streetNumber
+                neighborhood: neighborhood
+                complement: complement
+              stateOrRegion: stateOrRegion
+              phone: phone
+              countryCode: countryCode
+              name: name
+              addressLine1: addressLine1
+              addressLine2: addressLine2
+              addressLine3: addressLine3
+          taxInvoicing:
+            buyerInvoicePreference: buyerInvoicePreference
+            invoiceStatus: invoiceStatus
         associatedOrders:
         - orderId: orderId
           associationType: associationType
@@ -2635,7 +3364,14 @@ components:
             status: PENDING
           trackingNumber: trackingNumber
         orderItems:
-        - product:
+        - associatedOrderItems:
+          - orderId: 123-4567890-7654321
+            orderItemId: "12345678904321"
+            associationType: VALUE_ADD_SERVICE
+          - orderId: 123-4567890-7654321
+            orderItemId: "12345678904321"
+            associationType: VALUE_ADD_SERVICE
+          product:
             condition:
               conditionNote: conditionNote
               conditionSubtype: conditionSubtype
@@ -2690,6 +3426,15 @@ components:
               cancelReason: cancelReason
           orderItemId: orderItemId
           quantityOrdered: 1
+          tax:
+            taxCalculationBreakdowns:
+            - reportingScheme: reportingScheme
+            - reportingScheme: reportingScheme
+            taxCollections:
+            - responsibleParty: responsibleParty
+              model: model
+            - responsibleParty: responsibleParty
+              model: model
           programs:
           - programs
           - programs
@@ -2710,8 +3455,10 @@ components:
             quantityFulfilled: 2
             packing:
               giftOption:
-                giftMessage: giftMessage
-                giftWrapLevel: giftWrapLevel
+                giftMessage: Happy Holidays! Enjoy your new smart speakers.
+                giftWrapLevel: PREMIUM
+              serialNumberRequirement:
+                requirementType: REQUIRED
             picking:
               substitutionPreference:
                 substitutionType: CUSTOMER_PREFERENCE
@@ -2744,7 +3491,14 @@ components:
             breakdowns:
             - promotionId: promotionId
             - promotionId: promotionId
-        - product:
+        - associatedOrderItems:
+          - orderId: 123-4567890-7654321
+            orderItemId: "12345678904321"
+            associationType: VALUE_ADD_SERVICE
+          - orderId: 123-4567890-7654321
+            orderItemId: "12345678904321"
+            associationType: VALUE_ADD_SERVICE
+          product:
             condition:
               conditionNote: conditionNote
               conditionSubtype: conditionSubtype
@@ -2799,6 +3553,15 @@ components:
               cancelReason: cancelReason
           orderItemId: orderItemId
           quantityOrdered: 1
+          tax:
+            taxCalculationBreakdowns:
+            - reportingScheme: reportingScheme
+            - reportingScheme: reportingScheme
+            taxCollections:
+            - responsibleParty: responsibleParty
+              model: model
+            - responsibleParty: responsibleParty
+              model: model
           programs:
           - programs
           - programs
@@ -2819,8 +3582,10 @@ components:
             quantityFulfilled: 2
             packing:
               giftOption:
-                giftMessage: giftMessage
-                giftWrapLevel: giftWrapLevel
+                giftMessage: Happy Holidays! Enjoy your new smart speakers.
+                giftWrapLevel: PREMIUM
+              serialNumberRequirement:
+                requirementType: REQUIRED
             picking:
               substitutionPreference:
                 substitutionType: CUSTOMER_PREFERENCE
@@ -2956,6 +3721,22 @@ components:
         - aliasId: aliasId
           aliasType: aliasType
         lastUpdatedTime: 2000-01-23T04:56:07.000+00:00
+        payment:
+          paymentExecutions:
+          - authorizationCode: authorizationCode
+            paymentMethod: paymentMethod
+            acquirerId: acquirerId
+            cardBrand: cardBrand
+            paymentAmount:
+              amount: amount
+              currencyCode: currencyCode
+          - authorizationCode: authorizationCode
+            paymentMethod: paymentMethod
+            acquirerId: acquirerId
+            cardBrand: cardBrand
+            paymentAmount:
+              amount: amount
+              currencyCode: currencyCode
         programs:
         - programs
         - programs
@@ -2993,8 +3774,9 @@ components:
         programs:
           description: "Special programs associated with this order that may affect\
             \ fulfillment or customer experience. \n\n**Possible values**: `AMAZON_BAZAAR`,\
-            \ `AMAZON_BUSINESS`,  `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`,\
-            \ `FBM_SHIP_PLUS`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`"
+            \ `AMAZON_BUSINESS`, `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`,\
+            \ `FBM_SHIP_PLUS`, `INVOICE_BY_AMAZON`, `IN_STORE_PICK_UP`, `PREMIUM`,\
+            \ `PREORDER`, `PRIME`"
           items:
             type: string
           type: array
@@ -3012,6 +3794,10 @@ components:
           $ref: '#/components/schemas/Recipient'
         proceeds:
           $ref: '#/components/schemas/OrderProceeds'
+        payment:
+          $ref: '#/components/schemas/OrderPayment'
+        tax:
+          $ref: '#/components/schemas/OrderTax'
         fulfillment:
           $ref: '#/components/schemas/OrderFulfillment'
         orderItems:
@@ -3261,6 +4047,13 @@ components:
     OrderItem:
       description: Information about a single product within an order.
       example:
+        associatedOrderItems:
+        - orderId: 123-4567890-7654321
+          orderItemId: "12345678904321"
+          associationType: VALUE_ADD_SERVICE
+        - orderId: 123-4567890-7654321
+          orderItemId: "12345678904321"
+          associationType: VALUE_ADD_SERVICE
         product:
           condition:
             conditionNote: conditionNote
@@ -3316,6 +4109,15 @@ components:
             cancelReason: cancelReason
         orderItemId: orderItemId
         quantityOrdered: 1
+        tax:
+          taxCalculationBreakdowns:
+          - reportingScheme: reportingScheme
+          - reportingScheme: reportingScheme
+          taxCollections:
+          - responsibleParty: responsibleParty
+            model: model
+          - responsibleParty: responsibleParty
+            model: model
         programs:
         - programs
         - programs
@@ -3336,8 +4138,10 @@ components:
           quantityFulfilled: 2
           packing:
             giftOption:
-              giftMessage: giftMessage
-              giftWrapLevel: giftWrapLevel
+              giftMessage: Happy Holidays! Enjoy your new smart speakers.
+              giftWrapLevel: PREMIUM
+            serialNumberRequirement:
+              requirementType: REQUIRED
           picking:
             substitutionPreference:
               substitutionType: CUSTOMER_PREFERENCE
@@ -3379,6 +4183,12 @@ components:
           type: integer
         measurement:
           $ref: '#/components/schemas/Measurement'
+        associatedOrderItems:
+          description: "A list of order items associated with this item. For example,\
+            \ a value-add service purchased with the product."
+          items:
+            $ref: '#/components/schemas/AssociatedOrderItem'
+          type: array
         programs:
           description: |-
             Special programs that apply specifically to this item within the order.
@@ -3399,6 +4209,8 @@ components:
           $ref: '#/components/schemas/ItemCancellation'
         fulfillment:
           $ref: '#/components/schemas/ItemFulfillment'
+        tax:
+          $ref: '#/components/schemas/ItemTax'
       required:
       - orderItemId
       - product
@@ -3731,22 +4543,22 @@ components:
           \ been placed, payment has not been authorized, and the release date of\
           \ the item is in the future. The order is not ready for shipment."
       - value: PENDING
-        description: "The order has been placed but is not ready for shipment. Note\
-          \ that for standard orders, the initial order status is `PENDING`. For pre-orders,\
+        description: "The order has been placed but is not ready for shipment. For\
+          \ standard orders, the initial order status is `PENDING`. For pre-orders,\
           \ the initial order status is `PENDING_AVAILABILITY`, and the order passes\
           \ into the `PENDING` status when payment authorization begins."
       - value: UNSHIPPED
         description: "The order is ready for shipment, but no items in the order have\
           \ been shipped."
       - value: PARTIALLY_SHIPPED
-        description: One or more (but not all) items in the order have been shipped.
+        description: "At least one, but not all, items in the order have been shipped."
       - value: SHIPPED
         description: All items have been shipped to the customer.
       - value: CANCELLED
         description: The order has been canceled and will not be fulfilled.
       - value: UNFULFILLABLE
-        description: The order cannot be fulfilled. This state applies only to Amazon-fulfilled
-          orders that were not placed on Amazon's retail web site.
+        description: The order cannot be fulfilled. This state only applies to Amazon-fulfilled
+          orders that were not placed on Amazon's retail website.
     Measurement:
       description: "Specifies the unit of measure and quantity for items that are\
         \ sold by weight, volume, length, or other measurements rather than simple\
@@ -3986,8 +4798,10 @@ components:
         quantityFulfilled: 2
         packing:
           giftOption:
-            giftMessage: giftMessage
-            giftWrapLevel: giftWrapLevel
+            giftMessage: Happy Holidays! Enjoy your new smart speakers.
+            giftWrapLevel: PREMIUM
+          serialNumberRequirement:
+            requirementType: REQUIRED
         picking:
           substitutionPreference:
             substitutionType: CUSTOMER_PREFERENCE
@@ -4227,7 +5041,7 @@ components:
       type: object
     PreferredDeliveryCapability:
       description: "Special delivery capabilities available at the shipping address\
-        \ that may affect delivery options and methods. \n\n**Possible values:**\n\
+        \ that may affect delivery options and methods. \n\n**Possible values**:\n\
         - `HAS_ACCESS_POINT` (Delivery location includes designated pickup or drop-off\
         \ access points)\n- `PALLET_ENABLED` (Address is equipped to receive large\
         \ pallet deliveries)\n- `PALLET_DISABLED` (Address cannot accommodate pallet\
@@ -4318,7 +5132,7 @@ components:
       type: object
     ItemProceedsDetailedBreakdown:
       description: "Further granular breakdown of the subtotal of the proceeds breakdown,\
-        \ only available for TAX and DISCOUNT proceeds type."
+        \ only available for TAX and DISCOUNT proceeds types."
       example:
         subtype: subtype
         value:
@@ -4415,11 +5229,15 @@ components:
       description: Information related to the packaging process for an order item.
       example:
         giftOption:
-          giftMessage: giftMessage
-          giftWrapLevel: giftWrapLevel
+          giftMessage: Happy Holidays! Enjoy your new smart speakers.
+          giftWrapLevel: PREMIUM
+        serialNumberRequirement:
+          requirementType: REQUIRED
       properties:
         giftOption:
           $ref: '#/components/schemas/GiftOption'
+        serialNumberRequirement:
+          $ref: '#/components/schemas/SerialNumberRequirement'
       type: object
     ItemShipping:
       description: Information related to the shipping and delivery process for an
@@ -4447,9 +5265,6 @@ components:
     GiftOption:
       description: Gift wrapping and personalization options selected by the customer
         for an order item.
-      example:
-        giftMessage: giftMessage
-        giftWrapLevel: giftWrapLevel
       properties:
         giftMessage:
           description: Personal message from the buyer to be included with the gift-wrapped
@@ -4458,6 +5273,14 @@ components:
         giftWrapLevel:
           description: Type or quality level of gift wrapping service selected by
             the customer.
+          type: string
+      type: object
+    SerialNumberRequirement:
+      description: Whether serial numbers must be provided for this line item.
+      properties:
+        requirementType:
+          description: "The requirement type for this request. \n\n**Possible values**:\
+            \ `REQUIRED`"
           type: string
       type: object
     ItemSubstitutionPreference:
@@ -4610,7 +5433,7 @@ components:
             description: Package delivery failure
         detailedStatus:
           description: "Granular status information providing specific details about\
-            \ the package's current location and handling stage. \n\n**Possible values:**\n\
+            \ the package's current location and handling stage. \n\n**Possible values**:\n\
             - `PENDING_SCHEDULE` (Package awaiting pickup scheduling)\n- `PENDING_PICK_UP`\
             \ (Package ready for carrier collection from seller)\n- `PENDING_DROP_OFF`\
             \ (Package awaiting seller delivery to carrier)\n- `LABEL_CANCELLED` (Shipping\
@@ -4653,6 +5476,320 @@ components:
       required:
       - orderItemId
       - quantity
+      type: object
+    OrderPayment:
+      description: Payment information about the order.
+      example:
+        paymentExecutions:
+        - authorizationCode: authorizationCode
+          paymentMethod: paymentMethod
+          acquirerId: acquirerId
+          cardBrand: cardBrand
+          paymentAmount:
+            amount: amount
+            currencyCode: currencyCode
+        - authorizationCode: authorizationCode
+          paymentMethod: paymentMethod
+          acquirerId: acquirerId
+          cardBrand: cardBrand
+          paymentAmount:
+            amount: amount
+            currencyCode: currencyCode
+      properties:
+        paymentExecutions:
+          description: A list of payment executions for the order.
+          items:
+            $ref: '#/components/schemas/PaymentExecution'
+          type: array
+      type: object
+    PaymentExecution:
+      description: Payment execution details for an order.
+      example:
+        authorizationCode: authorizationCode
+        paymentMethod: paymentMethod
+        acquirerId: acquirerId
+        cardBrand: cardBrand
+        paymentAmount:
+          amount: amount
+          currencyCode: currencyCode
+      properties:
+        paymentMethod:
+          description: "The payment method used for this payment execution (for example,\
+            \ CashOnDelivery, ConvenienceStore, CreditCard, Invoice, Pix, and so on)."
+          type: string
+        paymentAmount:
+          $ref: '#/components/schemas/Money'
+        acquirerId:
+          description: "The unique identifier of the payment processor or acquiring\
+            \ bank that authorizes the payment. \n\n**Note**: This attribute is only\
+            \ available for orders in the Brazil (BR) marketplace when the `paymentMethod`\
+            \ is `CreditCard` or `Pix`."
+          type: string
+        cardBrand:
+          description: |-
+            The card network or brand used in the payment transaction (for example, Visa or Mastercard).
+
+            **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `paymentMethod` is `CreditCard`.
+          type: string
+        authorizationCode:
+          description: |-
+            The unique code that confirms the payment authorization.
+
+            **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `paymentMethod` is `CreditCard` or `Pix`.
+          type: string
+      type: object
+    OrderTax:
+      description: Tax information about the order.
+      example:
+        taxRegistrations:
+        - legalName: legalName
+          taxRegistrationAttributes:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          entityType: entityType
+          taxRegistrationType: taxRegistrationType
+          taxRegistrationNumber: taxRegistrationNumber
+          taxRegistrationAddress:
+            city: city
+            addressType: addressType
+            companyName: companyName
+            postalCode: postalCode
+            municipality: municipality
+            districtOrCounty: districtOrCounty
+            extendedFields:
+              streetName: streetName
+              streetNumber: streetNumber
+              neighborhood: neighborhood
+              complement: complement
+            stateOrRegion: stateOrRegion
+            phone: phone
+            countryCode: countryCode
+            name: name
+            addressLine1: addressLine1
+            addressLine2: addressLine2
+            addressLine3: addressLine3
+        - legalName: legalName
+          taxRegistrationAttributes:
+          - value: value
+            key: key
+          - value: value
+            key: key
+          entityType: entityType
+          taxRegistrationType: taxRegistrationType
+          taxRegistrationNumber: taxRegistrationNumber
+          taxRegistrationAddress:
+            city: city
+            addressType: addressType
+            companyName: companyName
+            postalCode: postalCode
+            municipality: municipality
+            districtOrCounty: districtOrCounty
+            extendedFields:
+              streetName: streetName
+              streetNumber: streetNumber
+              neighborhood: neighborhood
+              complement: complement
+            stateOrRegion: stateOrRegion
+            phone: phone
+            countryCode: countryCode
+            name: name
+            addressLine1: addressLine1
+            addressLine2: addressLine2
+            addressLine3: addressLine3
+        taxInvoicing:
+          buyerInvoicePreference: buyerInvoicePreference
+          invoiceStatus: invoiceStatus
+      properties:
+        taxRegistrations:
+          description: A list of tax registrations associated with the order.
+          items:
+            $ref: '#/components/schemas/OrderTaxRegistration'
+          type: array
+        taxInvoicing:
+          $ref: '#/components/schemas/OrderTaxInvoicing'
+      type: object
+    OrderTaxRegistration:
+      description: Tax registration information for an entity associated with the
+        order.
+      example:
+        legalName: legalName
+        taxRegistrationAttributes:
+        - value: value
+          key: key
+        - value: value
+          key: key
+        entityType: entityType
+        taxRegistrationType: taxRegistrationType
+        taxRegistrationNumber: taxRegistrationNumber
+        taxRegistrationAddress:
+          city: city
+          addressType: addressType
+          companyName: companyName
+          postalCode: postalCode
+          municipality: municipality
+          districtOrCounty: districtOrCounty
+          extendedFields:
+            streetName: streetName
+            streetNumber: streetNumber
+            neighborhood: neighborhood
+            complement: complement
+          stateOrRegion: stateOrRegion
+          phone: phone
+          countryCode: countryCode
+          name: name
+          addressLine1: addressLine1
+          addressLine2: addressLine2
+          addressLine3: addressLine3
+      properties:
+        entityType:
+          description: |-
+            The type of entity that the tax registration belongs to.
+
+            **Possible values**:
+            - `BUYER` (Indicates that this is the buyer's tax registration information)
+            - `MERCHANT` (Indicates that this is the merchant's tax registration information)
+            - `MARKETPLACE` (Indicates that this is the marketplace's tax registration information)
+          type: string
+        legalName:
+          description: The legal name associated with the tax registration.
+          type: string
+        taxRegistrationType:
+          description: |-
+            The type of the tax registration number.
+
+            **Possible values**: `BUSINESS`, `VAT`, `CST`, `CPF`, `CNPJ`
+          type: string
+        taxRegistrationNumber:
+          description: The tax registration number that identifies the entity for
+            tax purposes.
+          type: string
+        taxRegistrationAddress:
+          $ref: '#/components/schemas/CustomerAddress'
+        taxRegistrationAttributes:
+          description: Additional attributes related to the tax registration.
+          items:
+            $ref: '#/components/schemas/TaxRegistrationAttribute'
+          type: array
+      type: object
+    TaxRegistrationAttribute:
+      description: An additional attribute associated with a tax registration.
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          description: |-
+            The name of the tax registration attribute.
+
+            **Possible values**: `TAX_OFFICE`
+          type: string
+        value:
+          description: The value of the tax registration attribute.
+          type: string
+      type: object
+    OrderTaxInvoicing:
+      description: Tax invoicing information for the order.
+      example:
+        buyerInvoicePreference: buyerInvoicePreference
+        invoiceStatus: invoiceStatus
+      properties:
+        buyerInvoicePreference:
+          description: "The buyer's invoicing preference, which indicates whether\
+            \ the seller should issue an individual or a business invoice to the buyer.\
+            \ \n\n **Note**: This attribute is only available in the Turkey marketplace.\
+            \ \n\n**Possible values**:\n- `INDIVIDUAL` (Issues an individual invoice\
+            \ to the buyer)\n- `BUSINESS` (Issues a business invoice to the buyer)"
+          type: string
+        invoiceStatus:
+          description: |-
+            The status of the invoice. Only available for Easy Ship orders and orders in the Brazil marketplace.
+
+            **Possible values**:
+            - `NOT_REQUIRED` (The order does not require an electronic invoice to be uploaded)
+            - `NOT_FOUND` (The order requires an electronic invoice but it is not uploaded)
+            - `PROCESSING` (The required electronic invoice was uploaded and is processing)
+            - `ERRORED` (The uploaded electronic invoice was not accepted)
+            - `ACCEPTED` (The uploaded electronic invoice was accepted)
+          type: string
+      type: object
+    AssociatedOrderItem:
+      description: "An associated order item that a customer has purchased with the\
+        \ product. For example, a tire installation service purchased with tires."
+      example:
+        orderId: 123-4567890-7654321
+        orderItemId: "12345678904321"
+        associationType: VALUE_ADD_SERVICE
+      properties:
+        orderId:
+          description: The order identifier of the associated order item.
+          type: string
+        orderItemId:
+          description: The order item identifier of the associated order item.
+          type: string
+        associationType:
+          description: |-
+            The type of association between the order items.
+
+            **Possible values**:
+            - `VALUE_ADD_SERVICE` (The associated item is a service order)
+          type: string
+      type: object
+    ItemTax:
+      description: Tax information for an order item.
+      example:
+        taxCalculationBreakdowns:
+        - reportingScheme: reportingScheme
+        - reportingScheme: reportingScheme
+        taxCollections:
+        - responsibleParty: responsibleParty
+          model: model
+        - responsibleParty: responsibleParty
+          model: model
+      properties:
+        taxCalculationBreakdowns:
+          description: A list of tax calculation breakdowns for the order item.
+          items:
+            $ref: '#/components/schemas/ItemTaxCalculationBreakdown'
+          type: array
+        taxCollections:
+          description: A list of tax collections for the order item.
+          items:
+            $ref: '#/components/schemas/ItemTaxCollection'
+          type: array
+      type: object
+    ItemTaxCalculationBreakdown:
+      description: Tax calculation breakdowns for an order item.
+      example:
+        reportingScheme: reportingScheme
+      properties:
+        reportingScheme:
+          description: |-
+            The tax reporting scheme applied to this order item.
+
+            **Possible values**:
+            - `UOSS` (Union one stop shop. The item being purchased is held in the EU for shipment)
+            - `IOSS` (Import one stop shop. The item being purchased is not held in the EU for shipment)
+          type: string
+      type: object
+    ItemTaxCollection:
+      description: Tax collection information for an order item.
+      example:
+        responsibleParty: responsibleParty
+        model: model
+      properties:
+        model:
+          description: |-
+            The tax collection model applied to the item.
+
+            **Possible values**:
+            - `MARKETPLACE_FACILITATOR` (Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller)
+          type: string
+        responsibleParty:
+          description: The party responsible for withholding the taxes and remitting
+            them to the taxing authority.
+          type: string
       type: object
     Asin:
       description: "The Amazon Standard Identification Number (ASIN), which uniquely\

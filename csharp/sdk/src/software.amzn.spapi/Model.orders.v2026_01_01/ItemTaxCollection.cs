@@ -26,34 +26,35 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.orders.v2026_01_01
 {
     /// <summary>
-    /// Further granular breakdown of the subtotal of the proceeds breakdown, only available for TAX and DISCOUNT proceeds types.
+    /// Tax collection information for an order item.
     /// </summary>
-    [DataContract(Name = "ItemProceedsDetailedBreakdown")]
-    public partial class ItemProceedsDetailedBreakdown : IValidatableObject
+    [DataContract(Name = "ItemTaxCollection")]
+    public partial class ItemTaxCollection : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ItemProceedsDetailedBreakdown" /> class.
+        /// Initializes a new instance of the <see cref="ItemTaxCollection" /> class.
         /// </summary>
-        /// <param name="subtype">Specific classification of the further granular breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;DISCOUNT&#x60;.</param>
-        /// <param name="value">value.</param>
-        public ItemProceedsDetailedBreakdown(string? subtype = default(string?), Money? value = default(Money?))
+        /// <param name="model">The tax collection model applied to the item.  **Possible values**: - &#x60;MARKETPLACE_FACILITATOR&#x60; (Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller).</param>
+        /// <param name="responsibleParty">The party responsible for withholding the taxes and remitting them to the taxing authority..</param>
+        public ItemTaxCollection(string? model = default(string?), string? responsibleParty = default(string?))
         {
-            this.Subtype = subtype;
-            this.Value = value;
+            this.Model = model;
+            this.ResponsibleParty = responsibleParty;
         }
 
         /// <summary>
-        /// Specific classification of the further granular breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;DISCOUNT&#x60;
+        /// The tax collection model applied to the item.  **Possible values**: - &#x60;MARKETPLACE_FACILITATOR&#x60; (Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller)
         /// </summary>
-        /// <value>Specific classification of the further granular breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;DISCOUNT&#x60;</value>
-        [DataMember(Name = "subtype", EmitDefaultValue = false)]
-        public string? Subtype { get; set; }
+        /// <value>The tax collection model applied to the item.  **Possible values**: - &#x60;MARKETPLACE_FACILITATOR&#x60; (Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller)</value>
+        [DataMember(Name = "model", EmitDefaultValue = false)]
+        public string? Model { get; set; }
 
         /// <summary>
-        /// Gets or Sets Value
+        /// The party responsible for withholding the taxes and remitting them to the taxing authority.
         /// </summary>
-        [DataMember(Name = "value", EmitDefaultValue = false)]
-        public Money? Value { get; set; }
+        /// <value>The party responsible for withholding the taxes and remitting them to the taxing authority.</value>
+        [DataMember(Name = "responsibleParty", EmitDefaultValue = false)]
+        public string? ResponsibleParty { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,9 +63,9 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ItemProceedsDetailedBreakdown {\n");
-            sb.Append("  Subtype: ").Append(Subtype).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("class ItemTaxCollection {\n");
+            sb.Append("  Model: ").Append(Model).Append("\n");
+            sb.Append("  ResponsibleParty: ").Append(ResponsibleParty).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

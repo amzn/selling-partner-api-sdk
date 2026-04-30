@@ -26,34 +26,26 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.orders.v2026_01_01
 {
     /// <summary>
-    /// Further granular breakdown of the subtotal of the proceeds breakdown, only available for TAX and DISCOUNT proceeds types.
+    /// Tax calculation breakdowns for an order item.
     /// </summary>
-    [DataContract(Name = "ItemProceedsDetailedBreakdown")]
-    public partial class ItemProceedsDetailedBreakdown : IValidatableObject
+    [DataContract(Name = "ItemTaxCalculationBreakdown")]
+    public partial class ItemTaxCalculationBreakdown : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ItemProceedsDetailedBreakdown" /> class.
+        /// Initializes a new instance of the <see cref="ItemTaxCalculationBreakdown" /> class.
         /// </summary>
-        /// <param name="subtype">Specific classification of the further granular breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;DISCOUNT&#x60;.</param>
-        /// <param name="value">value.</param>
-        public ItemProceedsDetailedBreakdown(string? subtype = default(string?), Money? value = default(Money?))
+        /// <param name="reportingScheme">The tax reporting scheme applied to this order item.  **Possible values**: - &#x60;UOSS&#x60; (Union one stop shop. The item being purchased is held in the EU for shipment) - &#x60;IOSS&#x60; (Import one stop shop. The item being purchased is not held in the EU for shipment).</param>
+        public ItemTaxCalculationBreakdown(string? reportingScheme = default(string?))
         {
-            this.Subtype = subtype;
-            this.Value = value;
+            this.ReportingScheme = reportingScheme;
         }
 
         /// <summary>
-        /// Specific classification of the further granular breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;DISCOUNT&#x60;
+        /// The tax reporting scheme applied to this order item.  **Possible values**: - &#x60;UOSS&#x60; (Union one stop shop. The item being purchased is held in the EU for shipment) - &#x60;IOSS&#x60; (Import one stop shop. The item being purchased is not held in the EU for shipment)
         /// </summary>
-        /// <value>Specific classification of the further granular breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;DISCOUNT&#x60;</value>
-        [DataMember(Name = "subtype", EmitDefaultValue = false)]
-        public string? Subtype { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Value
-        /// </summary>
-        [DataMember(Name = "value", EmitDefaultValue = false)]
-        public Money? Value { get; set; }
+        /// <value>The tax reporting scheme applied to this order item.  **Possible values**: - &#x60;UOSS&#x60; (Union one stop shop. The item being purchased is held in the EU for shipment) - &#x60;IOSS&#x60; (Import one stop shop. The item being purchased is not held in the EU for shipment)</value>
+        [DataMember(Name = "reportingScheme", EmitDefaultValue = false)]
+        public string? ReportingScheme { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,9 +54,8 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ItemProceedsDetailedBreakdown {\n");
-            sb.Append("  Subtype: ").Append(Subtype).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("class ItemTaxCalculationBreakdown {\n");
+            sb.Append("  ReportingScheme: ").Append(ReportingScheme).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

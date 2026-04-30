@@ -102,6 +102,36 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         [DataMember(Name = "processingSource", EmitDefaultValue = false)]
         public ProcessingSourceEnum? ProcessingSource { get; set; }
         /// <summary>
+        /// The payment method for the shipment.
+        /// </summary>
+        /// <value>The payment method for the shipment.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum PaymentMethodEnum
+        {
+            /// <summary>
+            /// Enum CASHONDELIVERY for value: CASH_ON_DELIVERY
+            /// </summary>
+            [EnumMember(Value = "CASH_ON_DELIVERY")]
+            CASHONDELIVERY = 1,
+
+            /// <summary>
+            /// Enum PREPAID for value: PREPAID
+            /// </summary>
+            [EnumMember(Value = "PREPAID")]
+            PREPAID = 2
+        }
+
+
+        /// <summary>
+        /// The payment method for the shipment.
+        /// </summary>
+        /// <value>The payment method for the shipment.</value>
+        /*
+        <example>PREPAID</example>
+        */
+        [DataMember(Name = "paymentMethod", EmitDefaultValue = false)]
+        public PaymentMethodEnum? PaymentMethod { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="ShipmentInfo" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -117,7 +147,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="orderStatesEligibleForRejection">A list of order statuses for which the marketplace allows order rejection (seller cancellation). If the order has a status that does not belong to this list, then seller cancellation is not possible..</param>
         /// <param name="orderPlacedTimestamp">The timestamp of when the order was placed, in UTC.</param>
         /// <param name="processingSource">The source of the order operation..</param>
-        public ShipmentInfo(ShipmentTypeEnum shipmentType = default(ShipmentTypeEnum), ReplacedShipmentInfo? originalShipmentInfo = default(ReplacedShipmentInfo?), int numberOfUnits = default(int), Priority priority = default(Priority), string buyerOrderId = default(string), List<string>? orderStatesEligibleForRejection = default(List<string>?), string? orderPlacedTimestamp = default(string?), ProcessingSourceEnum? processingSource = default(ProcessingSourceEnum?))
+        /// <param name="paymentMethod">The payment method for the shipment..</param>
+        public ShipmentInfo(ShipmentTypeEnum shipmentType = default(ShipmentTypeEnum), ReplacedShipmentInfo? originalShipmentInfo = default(ReplacedShipmentInfo?), int numberOfUnits = default(int), Priority priority = default(Priority), string buyerOrderId = default(string), List<string>? orderStatesEligibleForRejection = default(List<string>?), string? orderPlacedTimestamp = default(string?), ProcessingSourceEnum? processingSource = default(ProcessingSourceEnum?), PaymentMethodEnum? paymentMethod = default(PaymentMethodEnum?))
         {
             this.ShipmentType = shipmentType;
             this.NumberOfUnits = numberOfUnits;
@@ -132,6 +163,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             this.OrderStatesEligibleForRejection = orderStatesEligibleForRejection;
             this.OrderPlacedTimestamp = orderPlacedTimestamp;
             this.ProcessingSource = processingSource;
+            this.PaymentMethod = paymentMethod;
         }
 
         /// <summary>
@@ -184,6 +216,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             sb.Append("  OrderStatesEligibleForRejection: ").Append(OrderStatesEligibleForRejection).Append("\n");
             sb.Append("  OrderPlacedTimestamp: ").Append(OrderPlacedTimestamp).Append("\n");
             sb.Append("  ProcessingSource: ").Append(ProcessingSource).Append("\n");
+            sb.Append("  PaymentMethod: ").Append(PaymentMethod).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

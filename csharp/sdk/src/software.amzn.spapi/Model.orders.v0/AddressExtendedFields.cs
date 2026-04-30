@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.orders.v0
 {
     /// <summary>
-    /// The container for address extended fields (such as &#x60;street name&#x60; and &#x60;street number&#x60;). Currently only available with Brazil shipping addresses.
+    /// Extended address fields for additional address components including the street name or number.   Note: Available for grocery sellers and Brazil shipping addresses.
     /// </summary>
     [DataContract(Name = "AddressExtendedFields")]
     public partial class AddressExtendedFields : IValidatableObject
@@ -38,12 +38,14 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="streetNumber">The house, building, or property number associated with the location&#39;s street address..</param>
         /// <param name="complement">The floor number/unit number in the building/private house number..</param>
         /// <param name="neighborhood">The neighborhood. This value is only used in some countries (such as Brazil)..</param>
-        public AddressExtendedFields(string? streetName = default(string?), string? streetNumber = default(string?), string? complement = default(string?), string? neighborhood = default(string?))
+        /// <param name="geoCoordinates">geoCoordinates.</param>
+        public AddressExtendedFields(string? streetName = default(string?), string? streetNumber = default(string?), string? complement = default(string?), string? neighborhood = default(string?), GeoCoordinates? geoCoordinates = default(GeoCoordinates?))
         {
             this.StreetName = streetName;
             this.StreetNumber = streetNumber;
             this.Complement = complement;
             this.Neighborhood = neighborhood;
+            this.GeoCoordinates = geoCoordinates;
         }
 
         /// <summary>
@@ -75,6 +77,12 @@ namespace software.amzn.spapi.Model.orders.v0
         public string? Neighborhood { get; set; }
 
         /// <summary>
+        /// Gets or Sets GeoCoordinates
+        /// </summary>
+        [DataMember(Name = "GeoCoordinates", EmitDefaultValue = false)]
+        public GeoCoordinates? GeoCoordinates { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -86,6 +94,7 @@ namespace software.amzn.spapi.Model.orders.v0
             sb.Append("  StreetNumber: ").Append(StreetNumber).Append("\n");
             sb.Append("  Complement: ").Append(Complement).Append("\n");
             sb.Append("  Neighborhood: ").Append(Neighborhood).Append("\n");
+            sb.Append("  GeoCoordinates: ").Append(GeoCoordinates).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

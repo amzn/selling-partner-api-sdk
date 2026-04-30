@@ -26,34 +26,35 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.orders.v2026_01_01
 {
     /// <summary>
-    /// Further granular breakdown of the subtotal of the proceeds breakdown, only available for TAX and DISCOUNT proceeds types.
+    /// An additional attribute associated with a tax registration.
     /// </summary>
-    [DataContract(Name = "ItemProceedsDetailedBreakdown")]
-    public partial class ItemProceedsDetailedBreakdown : IValidatableObject
+    [DataContract(Name = "TaxRegistrationAttribute")]
+    public partial class TaxRegistrationAttribute : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ItemProceedsDetailedBreakdown" /> class.
+        /// Initializes a new instance of the <see cref="TaxRegistrationAttribute" /> class.
         /// </summary>
-        /// <param name="subtype">Specific classification of the further granular breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;DISCOUNT&#x60;.</param>
-        /// <param name="value">value.</param>
-        public ItemProceedsDetailedBreakdown(string? subtype = default(string?), Money? value = default(Money?))
+        /// <param name="key">The name of the tax registration attribute.  **Possible values**: &#x60;TAX_OFFICE&#x60;.</param>
+        /// <param name="value">The value of the tax registration attribute..</param>
+        public TaxRegistrationAttribute(string? key = default(string?), string? value = default(string?))
         {
-            this.Subtype = subtype;
+            this.Key = key;
             this.Value = value;
         }
 
         /// <summary>
-        /// Specific classification of the further granular breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;DISCOUNT&#x60;
+        /// The name of the tax registration attribute.  **Possible values**: &#x60;TAX_OFFICE&#x60;
         /// </summary>
-        /// <value>Specific classification of the further granular breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;DISCOUNT&#x60;</value>
-        [DataMember(Name = "subtype", EmitDefaultValue = false)]
-        public string? Subtype { get; set; }
+        /// <value>The name of the tax registration attribute.  **Possible values**: &#x60;TAX_OFFICE&#x60;</value>
+        [DataMember(Name = "key", EmitDefaultValue = false)]
+        public string? Key { get; set; }
 
         /// <summary>
-        /// Gets or Sets Value
+        /// The value of the tax registration attribute.
         /// </summary>
+        /// <value>The value of the tax registration attribute.</value>
         [DataMember(Name = "value", EmitDefaultValue = false)]
-        public Money? Value { get; set; }
+        public string? Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,8 +63,8 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ItemProceedsDetailedBreakdown {\n");
-            sb.Append("  Subtype: ").Append(Subtype).Append("\n");
+            sb.Append("class TaxRegistrationAttribute {\n");
+            sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

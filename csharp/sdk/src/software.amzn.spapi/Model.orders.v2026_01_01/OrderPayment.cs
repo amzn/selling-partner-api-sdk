@@ -26,34 +26,26 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.orders.v2026_01_01
 {
     /// <summary>
-    /// Further granular breakdown of the subtotal of the proceeds breakdown, only available for TAX and DISCOUNT proceeds types.
+    /// Payment information about the order.
     /// </summary>
-    [DataContract(Name = "ItemProceedsDetailedBreakdown")]
-    public partial class ItemProceedsDetailedBreakdown : IValidatableObject
+    [DataContract(Name = "OrderPayment")]
+    public partial class OrderPayment : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ItemProceedsDetailedBreakdown" /> class.
+        /// Initializes a new instance of the <see cref="OrderPayment" /> class.
         /// </summary>
-        /// <param name="subtype">Specific classification of the further granular breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;DISCOUNT&#x60;.</param>
-        /// <param name="value">value.</param>
-        public ItemProceedsDetailedBreakdown(string? subtype = default(string?), Money? value = default(Money?))
+        /// <param name="paymentExecutions">A list of payment executions for the order..</param>
+        public OrderPayment(List<PaymentExecution>? paymentExecutions = default(List<PaymentExecution>?))
         {
-            this.Subtype = subtype;
-            this.Value = value;
+            this.PaymentExecutions = paymentExecutions;
         }
 
         /// <summary>
-        /// Specific classification of the further granular breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;DISCOUNT&#x60;
+        /// A list of payment executions for the order.
         /// </summary>
-        /// <value>Specific classification of the further granular breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;DISCOUNT&#x60;</value>
-        [DataMember(Name = "subtype", EmitDefaultValue = false)]
-        public string? Subtype { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Value
-        /// </summary>
-        [DataMember(Name = "value", EmitDefaultValue = false)]
-        public Money? Value { get; set; }
+        /// <value>A list of payment executions for the order.</value>
+        [DataMember(Name = "paymentExecutions", EmitDefaultValue = false)]
+        public List<PaymentExecution>? PaymentExecutions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,9 +54,8 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ItemProceedsDetailedBreakdown {\n");
-            sb.Append("  Subtype: ").Append(Subtype).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("class OrderPayment {\n");
+            sb.Append("  PaymentExecutions: ").Append(PaymentExecutions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
