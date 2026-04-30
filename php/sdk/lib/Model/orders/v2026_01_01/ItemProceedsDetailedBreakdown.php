@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Further granular breakdown of the subtotal of the proceeds breakdown, only available for TAX and DISCOUNT proceeds type.
+ * @description Further granular breakdown of the subtotal of the proceeds breakdown, only available for TAX and DISCOUNT proceeds types.
  *
  * @author   OpenAPI Generator team
  *
@@ -69,9 +69,9 @@ class ItemProceedsDetailedBreakdown implements ModelInterface, \ArrayAccess, \Js
      *
      * @var string[]
      *
-     * @phpstan-var array<string, string|null>
+     * @phpstan-var array<string, null|string>
      *
-     * @psalm-var array<string, string|null>
+     * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
         'subtype' => null,

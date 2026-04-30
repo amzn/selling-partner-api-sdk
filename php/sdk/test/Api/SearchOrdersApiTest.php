@@ -247,7 +247,7 @@ class SearchOrdersApiTest extends BaseTestCase
             },
             &quot;proceeds&quot; : {
               &quot;proceedsTotal&quot; : {
-                &quot;amount&quot; : &quot;99.98&quot;,
+                &quot;amount&quot; : &quot;100.00&quot;,
                 &quot;currencyCode&quot; : &quot;USD&quot;
               },
               &quot;breakdowns&quot; : [ {
@@ -471,7 +471,7 @@ class SearchOrdersApiTest extends BaseTestCase
                   &quot;currencyCode&quot; : &quot;JPY&quot;
                 }
               },
-              &quot;serialNumbers&quot; : [ &quot;ED4JP-2024-ABC123456789&quot;, &quot;ED4JP-2024-DEF987654321&quot; ]
+              &quot;serialNumbers&quot; : [ &quot;ED4JP-2024-ABC123456789&quot; ]
             },
             &quot;proceeds&quot; : {
               &quot;proceedsTotal&quot; : {
@@ -728,6 +728,150 @@ class SearchOrdersApiTest extends BaseTestCase
           } ]
         } ],
         &quot;createdBefore&quot; : &quot;2024-12-24T15:00:00Z&quot;
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;createdAfter&quot; : {
+            &quot;value&quot; : &quot;2024-12-20T00:00:00Z&quot;
+          },
+          &quot;marketplaceIds&quot; : {
+            &quot;value&quot; : [ &quot;A2Q3Y263D00KWC&quot; ]
+          },
+          &quot;includedData&quot; : {
+            &quot;value&quot; : [ &quot;BUYER&quot;, &quot;RECIPIENT&quot;, &quot;PROCEEDS&quot;, &quot;FULFILLMENT&quot;, &quot;TAX&quot;, &quot;PAYMENT&quot; ]
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;orders&quot; : [ {
+          &quot;orderId&quot; : &quot;171-2345678-9012345&quot;,
+          &quot;orderAliases&quot; : [ {
+            &quot;aliasId&quot; : &quot;BR-BIZ-ORDER-2024-001&quot;,
+            &quot;aliasType&quot; : &quot;SELLER_ORDER_ID&quot;
+          } ],
+          &quot;createdTime&quot; : &quot;2024-12-22T15:30:00Z&quot;,
+          &quot;lastUpdatedTime&quot; : &quot;2024-12-23T10:00:00Z&quot;,
+          &quot;programs&quot; : [ &quot;AMAZON_BUSINESS&quot;, &quot;DELIVERY_BY_AMAZON&quot; ],
+          &quot;salesChannel&quot; : {
+            &quot;channelName&quot; : &quot;AMAZON&quot;,
+            &quot;marketplaceId&quot; : &quot;A2Q3Y263D00KWC&quot;,
+            &quot;marketplaceName&quot; : &quot;Amazon.com.br&quot;
+          },
+          &quot;buyer&quot; : {
+            &quot;buyerName&quot; : &quot;Carlos Oliveira&quot;,
+            &quot;buyerEmail&quot; : &quot;buyer-email@marketplace.amazon.com.br&quot;,
+            &quot;buyerCompanyName&quot; : &quot;Oliveira Tecnologia Ltda&quot;,
+            &quot;buyerPurchaseOrderNumber&quot; : &quot;PO-BR-2024-5678&quot;
+          },
+          &quot;recipient&quot; : {
+            &quot;deliveryAddress&quot; : {
+              &quot;name&quot; : &quot;Carlos Oliveira&quot;,
+              &quot;companyName&quot; : &quot;Oliveira Tecnologia Ltda&quot;,
+              &quot;addressLine1&quot; : &quot;Avenida Paulista, 1000&quot;,
+              &quot;addressLine2&quot; : &quot;Sala 301&quot;,
+              &quot;city&quot; : &quot;São Paulo&quot;,
+              &quot;stateOrRegion&quot; : &quot;SP&quot;,
+              &quot;postalCode&quot; : &quot;01310-100&quot;,
+              &quot;countryCode&quot; : &quot;BR&quot;,
+              &quot;phone&quot; : &quot;+55 11 91234-5678&quot;,
+              &quot;extendedFields&quot; : {
+                &quot;streetName&quot; : &quot;Avenida Paulista&quot;,
+                &quot;streetNumber&quot; : &quot;1000&quot;,
+                &quot;complement&quot; : &quot;Sala 301&quot;,
+                &quot;neighborhood&quot; : &quot;Bela Vista&quot;
+              },
+              &quot;addressType&quot; : &quot;COMMERCIAL&quot;
+            }
+          },
+          &quot;proceeds&quot; : {
+            &quot;grandTotal&quot; : {
+              &quot;amount&quot; : &quot;1599.90&quot;,
+              &quot;currencyCode&quot; : &quot;BRL&quot;
+            }
+          },
+          &quot;tax&quot; : {
+            &quot;taxRegistrations&quot; : [ {
+              &quot;entityType&quot; : &quot;BUYER&quot;,
+              &quot;legalName&quot; : &quot;Oliveira Tecnologia Ltda&quot;,
+              &quot;taxRegistrationType&quot; : &quot;VAT&quot;,
+              &quot;taxRegistrationNumber&quot; : &quot;1234567890&quot;
+            }, {
+              &quot;entityType&quot; : &quot;MARKETPLACE&quot;,
+              &quot;taxRegistrationType&quot; : &quot;CNPJ&quot;,
+              &quot;taxRegistrationNumber&quot; : &quot;15436940&quot;
+            }, {
+              &quot;entityType&quot; : &quot;MERCHANT&quot;,
+              &quot;legalName&quot; : &quot;TechStore&quot;
+            } ],
+            &quot;taxInvoicing&quot; : {
+              &quot;invoiceStatus&quot; : &quot;PROCESSING&quot;
+            }
+          },
+          &quot;payment&quot; : {
+            &quot;paymentExecutions&quot; : [ {
+              &quot;paymentMethod&quot; : &quot;CreditCard&quot;,
+              &quot;paymentAmount&quot; : {
+                &quot;amount&quot; : &quot;1599.90&quot;,
+                &quot;currencyCode&quot; : &quot;BRL&quot;
+              },
+              &quot;acquirerId&quot; : &quot;01.027.058/0001-91&quot;,
+              &quot;cardBrand&quot; : &quot;Visa&quot;,
+              &quot;authorizationCode&quot; : &quot;123456&quot;
+            } ]
+          },
+          &quot;fulfillment&quot; : {
+            &quot;fulfillmentStatus&quot; : &quot;UNSHIPPED&quot;,
+            &quot;fulfilledBy&quot; : &quot;MERCHANT&quot;,
+            &quot;fulfillmentServiceLevel&quot; : &quot;STANDARD&quot;,
+            &quot;shipByWindow&quot; : {
+              &quot;earliestDateTime&quot; : &quot;2024-12-23T00:00:00Z&quot;,
+              &quot;latestDateTime&quot; : &quot;2024-12-24T23:59:59Z&quot;
+            },
+            &quot;deliverByWindow&quot; : {
+              &quot;earliestDateTime&quot; : &quot;2024-12-26T00:00:00Z&quot;,
+              &quot;latestDateTime&quot; : &quot;2024-12-30T23:59:59Z&quot;
+            }
+          },
+          &quot;orderItems&quot; : [ {
+            &quot;orderItemId&quot; : &quot;17123456789012&quot;,
+            &quot;quantityOrdered&quot; : 1,
+            &quot;product&quot; : {
+              &quot;asin&quot; : &quot;B09B8V1LZ3&quot;,
+              &quot;title&quot; : &quot;Notebook Dell Inspiron 15 3000&quot;,
+              &quot;sellerSku&quot; : &quot;DELL-I15-BR-001&quot;,
+              &quot;condition&quot; : {
+                &quot;conditionType&quot; : &quot;NEW&quot;,
+                &quot;conditionSubtype&quot; : &quot;NEW&quot;
+              },
+              &quot;price&quot; : {
+                &quot;unitPrice&quot; : {
+                  &quot;amount&quot; : &quot;1599.90&quot;,
+                  &quot;currencyCode&quot; : &quot;BRL&quot;
+                },
+                &quot;priceDesignation&quot; : &quot;BUSINESS_PRICE&quot;
+              }
+            },
+            &quot;proceeds&quot; : {
+              &quot;proceedsTotal&quot; : {
+                &quot;amount&quot; : &quot;1599.90&quot;,
+                &quot;currencyCode&quot; : &quot;BRL&quot;
+              },
+              &quot;breakdowns&quot; : [ {
+                &quot;type&quot; : &quot;ITEM&quot;,
+                &quot;subtotal&quot; : {
+                  &quot;amount&quot; : &quot;1599.90&quot;,
+                  &quot;currencyCode&quot; : &quot;BRL&quot;
+                }
+              } ]
+            },
+            &quot;fulfillment&quot; : {
+              &quot;quantityFulfilled&quot; : 0,
+              &quot;quantityUnfulfilled&quot; : 1
+            }
+          } ]
+        } ],
+        &quot;createdBefore&quot; : &quot;2024-12-22T16:00:00Z&quot;
       }
     } ]
   }

@@ -75,16 +75,17 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
         'email' => 'string',
         'copy_emails' => 'string[]',
         'phone_number' => 'string',
-        'address_type' => 'string'];
+        'address_type' => 'string',
+        'geocodes' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\Geocodes'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
      * @var string[]
      *
-     * @phpstan-var array<string, string|null>
+     * @phpstan-var array<string, null|string>
      *
-     * @psalm-var array<string, string|null>
+     * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
         'name' => null,
@@ -100,7 +101,8 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
         'email' => null,
         'copy_emails' => null,
         'phone_number' => null,
-        'address_type' => null];
+        'address_type' => null,
+        'geocodes' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -122,6 +124,7 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
         'copy_emails' => true,
         'phone_number' => true,
         'address_type' => true,
+        'geocodes' => true,
     ];
 
     /**
@@ -152,6 +155,7 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
         'copy_emails' => 'copyEmails',
         'phone_number' => 'phoneNumber',
         'address_type' => 'addressType',
+        'geocodes' => 'geocodes',
     ];
 
     /**
@@ -174,6 +178,7 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
         'copy_emails' => 'setCopyEmails',
         'phone_number' => 'setPhoneNumber',
         'address_type' => 'setAddressType',
+        'geocodes' => 'setGeocodes',
     ];
 
     /**
@@ -196,6 +201,7 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
         'copy_emails' => 'getCopyEmails',
         'phone_number' => 'getPhoneNumber',
         'address_type' => 'getAddressType',
+        'geocodes' => 'getGeocodes',
     ];
 
     /**
@@ -225,6 +231,7 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('copy_emails', $data ?? [], null);
         $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('address_type', $data ?? [], null);
+        $this->setIfExists('geocodes', $data ?? [], null);
     }
 
     /**
@@ -600,7 +607,7 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets municipality.
      *
-     * @param null|string $municipality the municiplaity where the person, business, or institution is located
+     * @param null|string $municipality the municipality where the person, business, or institution is located
      */
     public function setMunicipality(?string $municipality): self
     {
@@ -891,6 +898,36 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
         }
 
         $this->container['address_type'] = $address_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets geocodes.
+     */
+    public function getGeocodes(): ?Geocodes
+    {
+        return $this->container['geocodes'];
+    }
+
+    /**
+     * Sets geocodes.
+     *
+     * @param null|Geocodes $geocodes geocodes
+     */
+    public function setGeocodes(?Geocodes $geocodes): self
+    {
+        if (is_null($geocodes)) {
+            array_push($this->openAPINullablesSetToNull, 'geocodes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('geocodes', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['geocodes'] = $geocodes;
 
         return $this;
     }

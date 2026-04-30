@@ -71,9 +71,9 @@ class SearchOrdersResponse implements ModelInterface, \ArrayAccess, \JsonSeriali
      *
      * @var string[]
      *
-     * @phpstan-var array<string, string|null>
+     * @phpstan-var array<string, null|string>
      *
-     * @psalm-var array<string, string|null>
+     * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
         'orders' => null,
@@ -325,7 +325,7 @@ class SearchOrdersResponse implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets last_updated_before.
      *
-     * @param null|\DateTime $last_updated_before Only orders updated before the specified time are returned. The date must be in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.
+     * @param null|\DateTime $last_updated_before Only orders updated before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      */
     public function setLastUpdatedBefore(?\DateTime $last_updated_before): self
     {
@@ -355,7 +355,7 @@ class SearchOrdersResponse implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets created_before.
      *
-     * @param null|\DateTime $created_before Only orders placed before the specified time are returned. The date must be in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.
+     * @param null|\DateTime $created_before Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      */
     public function setCreatedBefore(?\DateTime $created_before): self
     {

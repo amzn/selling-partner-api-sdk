@@ -66,23 +66,25 @@ class ShipLabelMetadata implements ModelInterface, \ArrayAccess, \JsonSerializab
         'carrier_name' => 'string',
         'tracking_id' => 'string',
         'pickup_window' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\TimeWindow',
-        'time_slot' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\TimeWindow'];
+        'time_slot' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\TimeWindow',
+        'handover_location' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\HandoverLocation'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
      * @var string[]
      *
-     * @phpstan-var array<string, string|null>
+     * @phpstan-var array<string, null|string>
      *
-     * @psalm-var array<string, string|null>
+     * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
         'shipping_option_id' => null,
         'carrier_name' => null,
         'tracking_id' => null,
         'pickup_window' => null,
-        'time_slot' => null];
+        'time_slot' => null,
+        'handover_location' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -95,6 +97,7 @@ class ShipLabelMetadata implements ModelInterface, \ArrayAccess, \JsonSerializab
         'tracking_id' => false,
         'pickup_window' => true,
         'time_slot' => true,
+        'handover_location' => true,
     ];
 
     /**
@@ -116,6 +119,7 @@ class ShipLabelMetadata implements ModelInterface, \ArrayAccess, \JsonSerializab
         'tracking_id' => 'trackingId',
         'pickup_window' => 'pickupWindow',
         'time_slot' => 'timeSlot',
+        'handover_location' => 'handoverLocation',
     ];
 
     /**
@@ -129,6 +133,7 @@ class ShipLabelMetadata implements ModelInterface, \ArrayAccess, \JsonSerializab
         'tracking_id' => 'setTrackingId',
         'pickup_window' => 'setPickupWindow',
         'time_slot' => 'setTimeSlot',
+        'handover_location' => 'setHandoverLocation',
     ];
 
     /**
@@ -142,6 +147,7 @@ class ShipLabelMetadata implements ModelInterface, \ArrayAccess, \JsonSerializab
         'tracking_id' => 'getTrackingId',
         'pickup_window' => 'getPickupWindow',
         'time_slot' => 'getTimeSlot',
+        'handover_location' => 'getHandoverLocation',
     ];
 
     /**
@@ -162,6 +168,7 @@ class ShipLabelMetadata implements ModelInterface, \ArrayAccess, \JsonSerializab
         $this->setIfExists('tracking_id', $data ?? [], null);
         $this->setIfExists('pickup_window', $data ?? [], null);
         $this->setIfExists('time_slot', $data ?? [], null);
+        $this->setIfExists('handover_location', $data ?? [], null);
     }
 
     /**
@@ -404,6 +411,36 @@ class ShipLabelMetadata implements ModelInterface, \ArrayAccess, \JsonSerializab
             }
         }
         $this->container['time_slot'] = $time_slot;
+
+        return $this;
+    }
+
+    /**
+     * Gets handover_location.
+     */
+    public function getHandoverLocation(): ?HandoverLocation
+    {
+        return $this->container['handover_location'];
+    }
+
+    /**
+     * Sets handover_location.
+     *
+     * @param null|HandoverLocation $handover_location handover_location
+     */
+    public function setHandoverLocation(?HandoverLocation $handover_location): self
+    {
+        if (is_null($handover_location)) {
+            array_push($this->openAPINullablesSetToNull, 'handover_location');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('handover_location', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['handover_location'] = $handover_location;
 
         return $this;
     }

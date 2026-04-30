@@ -73,9 +73,9 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, \ArrayAccess, \
      *
      * @var string[]
      *
-     * @phpstan-var array<string, string|null>
+     * @phpstan-var array<string, null|string>
      *
-     * @psalm-var array<string, string|null>
+     * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
         'aggregation_frequency' => null,
@@ -355,7 +355,7 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, \ArrayAccess, \
     /**
      * Sets metrics.
      *
-     * @param null|array $metrics The list of metrics requested. If no metric value is provided, data for all of the metrics will be returned.
+     * @param null|array $metrics The list of metrics requested. If no metric value is provided, data for all metrics will be returned.
      */
     public function setMetrics(?array $metrics): self
     {
