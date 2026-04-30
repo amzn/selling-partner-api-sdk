@@ -48,6 +48,7 @@ class Address(object):
         'copy_emails': 'List[str]',
         'phone_number': 'str',
         'address_type': 'str',
+        'geocodes': 'Geocodes',
     }
 
     attribute_map = {
@@ -65,9 +66,10 @@ class Address(object):
         'copy_emails': 'copyEmails',
         'phone_number': 'phoneNumber',
         'address_type': 'addressType',
+        'geocodes': 'geocodes',
     }
 
-    def __init__(self, name=None, address_line1=None, address_line2=None, address_line3=None, district=None, municipality=None, state=None, city=None, country_code=None, postal_code=None, email=None, copy_emails=None, phone_number=None, address_type=None, _configuration=None):  # noqa: E501
+    def __init__(self, name=None, address_line1=None, address_line2=None, address_line3=None, district=None, municipality=None, state=None, city=None, country_code=None, postal_code=None, email=None, copy_emails=None, phone_number=None, address_type=None, geocodes=None, _configuration=None):  # noqa: E501
         """Address - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -87,6 +89,7 @@ class Address(object):
         self._copy_emails = None
         self._phone_number = None
         self._address_type = None
+        self._geocodes = None
         self.discriminator = None
 
         if name is not None:
@@ -116,6 +119,8 @@ class Address(object):
             self.phone_number = phone_number
         if address_type is not None:
             self.address_type = address_type
+        if geocodes is not None:
+            self.geocodes = geocodes
 
     @property
     def name(self):
@@ -260,7 +265,7 @@ class Address(object):
     def municipality(self):
         """Gets the municipality of this Address.  # noqa: E501
 
-        The municiplaity where the person, business, or institution is located.  # noqa: E501
+        The municipality where the person, business, or institution is located.  # noqa: E501
 
         :return: The municipality of this Address.  # noqa: E501
         :rtype: str
@@ -271,7 +276,7 @@ class Address(object):
     def municipality(self, municipality):
         """Sets the municipality of this Address.
 
-        The municiplaity where the person, business, or institution is located.  # noqa: E501
+        The municipality where the person, business, or institution is located.  # noqa: E501
 
         :param municipality: The municipality of this Address.  # noqa: E501
         :type: str
@@ -500,6 +505,27 @@ class Address(object):
             raise ValueError("Invalid value for `address_type`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._address_type = address_type
+
+    @property
+    def geocodes(self):
+        """Gets the geocodes of this Address.  # noqa: E501
+
+
+        :return: The geocodes of this Address.  # noqa: E501
+        :rtype: Geocodes
+        """
+        return self._geocodes
+
+    @geocodes.setter
+    def geocodes(self, geocodes):
+        """Sets the geocodes of this Address.
+
+
+        :param geocodes: The geocodes of this Address.  # noqa: E501
+        :type: Geocodes
+        """
+
+        self._geocodes = geocodes
 
     def to_dict(self):
         """Returns the model properties as a dict"""

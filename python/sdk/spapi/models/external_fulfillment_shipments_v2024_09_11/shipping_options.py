@@ -39,6 +39,7 @@ class ShippingOptions(object):
         'carrier_name': 'str',
         'pickup_window': 'TimeWindow',
         'time_slot': 'TimeWindow',
+        'handover_location': 'HandoverLocation',
     }
 
     attribute_map = {
@@ -47,9 +48,10 @@ class ShippingOptions(object):
         'carrier_name': 'carrierName',
         'pickup_window': 'pickupWindow',
         'time_slot': 'timeSlot',
+        'handover_location': 'handoverLocation',
     }
 
-    def __init__(self, shipping_option_id=None, ship_by=None, carrier_name=None, pickup_window=None, time_slot=None, _configuration=None):  # noqa: E501
+    def __init__(self, shipping_option_id=None, ship_by=None, carrier_name=None, pickup_window=None, time_slot=None, handover_location=None, _configuration=None):  # noqa: E501
         """ShippingOptions - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -60,6 +62,7 @@ class ShippingOptions(object):
         self._carrier_name = None
         self._pickup_window = None
         self._time_slot = None
+        self._handover_location = None
         self.discriminator = None
 
         self.shipping_option_id = shipping_option_id
@@ -70,6 +73,8 @@ class ShippingOptions(object):
             self.pickup_window = pickup_window
         if time_slot is not None:
             self.time_slot = time_slot
+        if handover_location is not None:
+            self.handover_location = handover_location
 
     @property
     def shipping_option_id(self):
@@ -192,6 +197,27 @@ class ShippingOptions(object):
         """
 
         self._time_slot = time_slot
+
+    @property
+    def handover_location(self):
+        """Gets the handover_location of this ShippingOptions.  # noqa: E501
+
+
+        :return: The handover_location of this ShippingOptions.  # noqa: E501
+        :rtype: HandoverLocation
+        """
+        return self._handover_location
+
+    @handover_location.setter
+    def handover_location(self, handover_location):
+        """Sets the handover_location of this ShippingOptions.
+
+
+        :param handover_location: The handover_location of this ShippingOptions.  # noqa: E501
+        :type: HandoverLocation
+        """
+
+        self._handover_location = handover_location
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -121,7 +121,7 @@ class GetSellingPartnerMetricsRequest(object):
     def metrics(self):
         """Gets the metrics of this GetSellingPartnerMetricsRequest.  # noqa: E501
 
-        The list of metrics requested. If no metric value is provided, data for all of the metrics will be returned.  # noqa: E501
+        The list of metrics requested. If no metric value is provided, data for all metrics will be returned.  # noqa: E501
 
         :return: The metrics of this GetSellingPartnerMetricsRequest.  # noqa: E501
         :rtype: List[Metric]
@@ -132,7 +132,7 @@ class GetSellingPartnerMetricsRequest(object):
     def metrics(self, metrics):
         """Sets the metrics of this GetSellingPartnerMetricsRequest.
 
-        The list of metrics requested. If no metric value is provided, data for all of the metrics will be returned.  # noqa: E501
+        The list of metrics requested. If no metric value is provided, data for all metrics will be returned.  # noqa: E501
 
         :param metrics: The metrics of this GetSellingPartnerMetricsRequest.  # noqa: E501
         :type: List[Metric]

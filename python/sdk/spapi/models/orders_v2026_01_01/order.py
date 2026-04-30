@@ -43,6 +43,8 @@ class Order(object):
         'buyer': 'Buyer',
         'recipient': 'Recipient',
         'proceeds': 'OrderProceeds',
+        'payment': 'OrderPayment',
+        'tax': 'OrderTax',
         'fulfillment': 'OrderFulfillment',
         'order_items': 'List[OrderItem]',
         'packages': 'List[OrderPackage]',
@@ -59,12 +61,14 @@ class Order(object):
         'buyer': 'buyer',
         'recipient': 'recipient',
         'proceeds': 'proceeds',
+        'payment': 'payment',
+        'tax': 'tax',
         'fulfillment': 'fulfillment',
         'order_items': 'orderItems',
         'packages': 'packages',
     }
 
-    def __init__(self, order_id=None, order_aliases=None, created_time=None, last_updated_time=None, programs=None, associated_orders=None, sales_channel=None, buyer=None, recipient=None, proceeds=None, fulfillment=None, order_items=None, packages=None, _configuration=None):  # noqa: E501
+    def __init__(self, order_id=None, order_aliases=None, created_time=None, last_updated_time=None, programs=None, associated_orders=None, sales_channel=None, buyer=None, recipient=None, proceeds=None, payment=None, tax=None, fulfillment=None, order_items=None, packages=None, _configuration=None):  # noqa: E501
         """Order - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -80,6 +84,8 @@ class Order(object):
         self._buyer = None
         self._recipient = None
         self._proceeds = None
+        self._payment = None
+        self._tax = None
         self._fulfillment = None
         self._order_items = None
         self._packages = None
@@ -101,6 +107,10 @@ class Order(object):
             self.recipient = recipient
         if proceeds is not None:
             self.proceeds = proceeds
+        if payment is not None:
+            self.payment = payment
+        if tax is not None:
+            self.tax = tax
         if fulfillment is not None:
             self.fulfillment = fulfillment
         self.order_items = order_items
@@ -209,7 +219,7 @@ class Order(object):
     def programs(self):
         """Gets the programs of this Order.  # noqa: E501
 
-        Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`,  `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`  # noqa: E501
+        Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`, `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `INVOICE_BY_AMAZON`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`  # noqa: E501
 
         :return: The programs of this Order.  # noqa: E501
         :rtype: List[str]
@@ -220,7 +230,7 @@ class Order(object):
     def programs(self, programs):
         """Sets the programs of this Order.
 
-        Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`,  `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`  # noqa: E501
+        Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`, `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `INVOICE_BY_AMAZON`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`  # noqa: E501
 
         :param programs: The programs of this Order.  # noqa: E501
         :type: List[str]
@@ -336,6 +346,48 @@ class Order(object):
         """
 
         self._proceeds = proceeds
+
+    @property
+    def payment(self):
+        """Gets the payment of this Order.  # noqa: E501
+
+
+        :return: The payment of this Order.  # noqa: E501
+        :rtype: OrderPayment
+        """
+        return self._payment
+
+    @payment.setter
+    def payment(self, payment):
+        """Sets the payment of this Order.
+
+
+        :param payment: The payment of this Order.  # noqa: E501
+        :type: OrderPayment
+        """
+
+        self._payment = payment
+
+    @property
+    def tax(self):
+        """Gets the tax of this Order.  # noqa: E501
+
+
+        :return: The tax of this Order.  # noqa: E501
+        :rtype: OrderTax
+        """
+        return self._tax
+
+    @tax.setter
+    def tax(self, tax):
+        """Sets the tax of this Order.
+
+
+        :param tax: The tax of this Order.  # noqa: E501
+        :type: OrderTax
+        """
+
+        self._tax = tax
 
     @property
     def fulfillment(self):

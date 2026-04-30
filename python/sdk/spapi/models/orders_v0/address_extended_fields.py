@@ -37,6 +37,7 @@ class AddressExtendedFields(object):
         'street_number': 'str',
         'complement': 'str',
         'neighborhood': 'str',
+        'geo_coordinates': 'GeoCoordinates',
     }
 
     attribute_map = {
@@ -44,9 +45,10 @@ class AddressExtendedFields(object):
         'street_number': 'StreetNumber',
         'complement': 'Complement',
         'neighborhood': 'Neighborhood',
+        'geo_coordinates': 'GeoCoordinates',
     }
 
-    def __init__(self, street_name=None, street_number=None, complement=None, neighborhood=None, _configuration=None):  # noqa: E501
+    def __init__(self, street_name=None, street_number=None, complement=None, neighborhood=None, geo_coordinates=None, _configuration=None):  # noqa: E501
         """AddressExtendedFields - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -56,6 +58,7 @@ class AddressExtendedFields(object):
         self._street_number = None
         self._complement = None
         self._neighborhood = None
+        self._geo_coordinates = None
         self.discriminator = None
 
         if street_name is not None:
@@ -66,6 +69,8 @@ class AddressExtendedFields(object):
             self.complement = complement
         if neighborhood is not None:
             self.neighborhood = neighborhood
+        if geo_coordinates is not None:
+            self.geo_coordinates = geo_coordinates
 
     @property
     def street_name(self):
@@ -158,6 +163,27 @@ class AddressExtendedFields(object):
         """
 
         self._neighborhood = neighborhood
+
+    @property
+    def geo_coordinates(self):
+        """Gets the geo_coordinates of this AddressExtendedFields.  # noqa: E501
+
+
+        :return: The geo_coordinates of this AddressExtendedFields.  # noqa: E501
+        :rtype: GeoCoordinates
+        """
+        return self._geo_coordinates
+
+    @geo_coordinates.setter
+    def geo_coordinates(self, geo_coordinates):
+        """Sets the geo_coordinates of this AddressExtendedFields.
+
+
+        :param geo_coordinates: The geo_coordinates of this AddressExtendedFields.  # noqa: E501
+        :type: GeoCoordinates
+        """
+
+        self._geo_coordinates = geo_coordinates
 
     def to_dict(self):
         """Returns the model properties as a dict"""

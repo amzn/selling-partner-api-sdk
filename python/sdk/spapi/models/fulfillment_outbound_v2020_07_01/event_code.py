@@ -61,6 +61,8 @@ class EventCode(object):
     EVENT_417 = 'EVENT_417'
     EVENT_418 = 'EVENT_418'
     EVENT_419 = 'EVENT_419'
+    EVENT_801 = 'EVENT_801'
+    EVENT_804 = 'EVENT_804'
 
     """
     Attributes:
