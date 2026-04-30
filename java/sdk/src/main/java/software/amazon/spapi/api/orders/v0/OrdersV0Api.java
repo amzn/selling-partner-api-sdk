@@ -1722,10 +1722,12 @@ public class OrdersV0Api {
      * @param paymentMethods A list of payment method values. Use this field to select orders that were paid with the
      *     specified payment methods. **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60;
      *     (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
+     * @param buyerEmail The email address of a buyer. Used to select orders that contain the specified email address.
+     *     (optional)
      * @param sellerOrderId An order identifier that is specified by the seller. Used to select only the orders that
      *     match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;,
-     *     &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, and
-     *     &#x60;LastUpdatedBefore&#x60; cannot be specified. (optional)
+     *     &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;,
+     *     &#x60;LastUpdatedBefore&#x60;, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
      * @param maxResultsPerPage A number that indicates the maximum number of orders that can be returned per page.
      *     Value must be 1 - 100. Default 100. (optional)
      * @param easyShipShipmentStatuses A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship
@@ -1784,6 +1786,7 @@ public class OrdersV0Api {
             List<String> orderStatuses,
             List<String> fulfillmentChannels,
             List<String> paymentMethods,
+            String buyerEmail,
             String sellerOrderId,
             Integer maxResultsPerPage,
             List<String> easyShipShipmentStatuses,
@@ -1827,6 +1830,7 @@ public class OrdersV0Api {
                     apiClient.parameterToPairs("csv", "FulfillmentChannels", fulfillmentChannels));
         if (paymentMethods != null)
             localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "PaymentMethods", paymentMethods));
+        if (buyerEmail != null) localVarQueryParams.addAll(apiClient.parameterToPair("BuyerEmail", buyerEmail));
         if (sellerOrderId != null)
             localVarQueryParams.addAll(apiClient.parameterToPair("SellerOrderId", sellerOrderId));
         if (maxResultsPerPage != null)
@@ -1891,6 +1895,7 @@ public class OrdersV0Api {
             List<String> orderStatuses,
             List<String> fulfillmentChannels,
             List<String> paymentMethods,
+            String buyerEmail,
             String sellerOrderId,
             Integer maxResultsPerPage,
             List<String> easyShipShipmentStatuses,
@@ -1920,6 +1925,7 @@ public class OrdersV0Api {
                 orderStatuses,
                 fulfillmentChannels,
                 paymentMethods,
+                buyerEmail,
                 sellerOrderId,
                 maxResultsPerPage,
                 easyShipShipmentStatuses,
@@ -1991,10 +1997,12 @@ public class OrdersV0Api {
      * @param paymentMethods A list of payment method values. Use this field to select orders that were paid with the
      *     specified payment methods. **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60;
      *     (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
+     * @param buyerEmail The email address of a buyer. Used to select orders that contain the specified email address.
+     *     (optional)
      * @param sellerOrderId An order identifier that is specified by the seller. Used to select only the orders that
      *     match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;,
-     *     &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, and
-     *     &#x60;LastUpdatedBefore&#x60; cannot be specified. (optional)
+     *     &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;,
+     *     &#x60;LastUpdatedBefore&#x60;, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
      * @param maxResultsPerPage A number that indicates the maximum number of orders that can be returned per page.
      *     Value must be 1 - 100. Default 100. (optional)
      * @param easyShipShipmentStatuses A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship
@@ -2053,6 +2061,7 @@ public class OrdersV0Api {
             List<String> orderStatuses,
             List<String> fulfillmentChannels,
             List<String> paymentMethods,
+            String buyerEmail,
             String sellerOrderId,
             Integer maxResultsPerPage,
             List<String> easyShipShipmentStatuses,
@@ -2077,6 +2086,7 @@ public class OrdersV0Api {
                 orderStatuses,
                 fulfillmentChannels,
                 paymentMethods,
+                buyerEmail,
                 sellerOrderId,
                 maxResultsPerPage,
                 easyShipShipmentStatuses,
@@ -2149,10 +2159,12 @@ public class OrdersV0Api {
      * @param paymentMethods A list of payment method values. Use this field to select orders that were paid with the
      *     specified payment methods. **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60;
      *     (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
+     * @param buyerEmail The email address of a buyer. Used to select orders that contain the specified email address.
+     *     (optional)
      * @param sellerOrderId An order identifier that is specified by the seller. Used to select only the orders that
      *     match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;,
-     *     &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, and
-     *     &#x60;LastUpdatedBefore&#x60; cannot be specified. (optional)
+     *     &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;,
+     *     &#x60;LastUpdatedBefore&#x60;, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
      * @param maxResultsPerPage A number that indicates the maximum number of orders that can be returned per page.
      *     Value must be 1 - 100. Default 100. (optional)
      * @param easyShipShipmentStatuses A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship
@@ -2210,6 +2222,7 @@ public class OrdersV0Api {
             List<String> orderStatuses,
             List<String> fulfillmentChannels,
             List<String> paymentMethods,
+            String buyerEmail,
             String sellerOrderId,
             Integer maxResultsPerPage,
             List<String> easyShipShipmentStatuses,
@@ -2233,6 +2246,7 @@ public class OrdersV0Api {
                 orderStatuses,
                 fulfillmentChannels,
                 paymentMethods,
+                buyerEmail,
                 sellerOrderId,
                 maxResultsPerPage,
                 easyShipShipmentStatuses,
@@ -2305,10 +2319,12 @@ public class OrdersV0Api {
      * @param paymentMethods A list of payment method values. Use this field to select orders that were paid with the
      *     specified payment methods. **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60;
      *     (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
+     * @param buyerEmail The email address of a buyer. Used to select orders that contain the specified email address.
+     *     (optional)
      * @param sellerOrderId An order identifier that is specified by the seller. Used to select only the orders that
      *     match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;,
-     *     &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, and
-     *     &#x60;LastUpdatedBefore&#x60; cannot be specified. (optional)
+     *     &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;,
+     *     &#x60;LastUpdatedBefore&#x60;, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
      * @param maxResultsPerPage A number that indicates the maximum number of orders that can be returned per page.
      *     Value must be 1 - 100. Default 100. (optional)
      * @param easyShipShipmentStatuses A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship
@@ -2367,6 +2383,7 @@ public class OrdersV0Api {
             List<String> orderStatuses,
             List<String> fulfillmentChannels,
             List<String> paymentMethods,
+            String buyerEmail,
             String sellerOrderId,
             Integer maxResultsPerPage,
             List<String> easyShipShipmentStatuses,
@@ -2391,6 +2408,7 @@ public class OrdersV0Api {
                 orderStatuses,
                 fulfillmentChannels,
                 paymentMethods,
+                buyerEmail,
                 sellerOrderId,
                 maxResultsPerPage,
                 easyShipShipmentStatuses,
@@ -2473,10 +2491,12 @@ public class OrdersV0Api {
      * @param paymentMethods A list of payment method values. Use this field to select orders that were paid with the
      *     specified payment methods. **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60;
      *     (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
+     * @param buyerEmail The email address of a buyer. Used to select orders that contain the specified email address.
+     *     (optional)
      * @param sellerOrderId An order identifier that is specified by the seller. Used to select only the orders that
      *     match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;,
-     *     &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, and
-     *     &#x60;LastUpdatedBefore&#x60; cannot be specified. (optional)
+     *     &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;,
+     *     &#x60;LastUpdatedBefore&#x60;, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
      * @param maxResultsPerPage A number that indicates the maximum number of orders that can be returned per page.
      *     Value must be 1 - 100. Default 100. (optional)
      * @param easyShipShipmentStatuses A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship
@@ -2534,6 +2554,7 @@ public class OrdersV0Api {
             List<String> orderStatuses,
             List<String> fulfillmentChannels,
             List<String> paymentMethods,
+            String buyerEmail,
             String sellerOrderId,
             Integer maxResultsPerPage,
             List<String> easyShipShipmentStatuses,
@@ -2557,6 +2578,7 @@ public class OrdersV0Api {
                 orderStatuses,
                 fulfillmentChannels,
                 paymentMethods,
+                buyerEmail,
                 sellerOrderId,
                 maxResultsPerPage,
                 easyShipShipmentStatuses,
@@ -2629,10 +2651,12 @@ public class OrdersV0Api {
      * @param paymentMethods A list of payment method values. Use this field to select orders that were paid with the
      *     specified payment methods. **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60;
      *     (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
+     * @param buyerEmail The email address of a buyer. Used to select orders that contain the specified email address.
+     *     (optional)
      * @param sellerOrderId An order identifier that is specified by the seller. Used to select only the orders that
      *     match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;,
-     *     &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, and
-     *     &#x60;LastUpdatedBefore&#x60; cannot be specified. (optional)
+     *     &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;,
+     *     &#x60;LastUpdatedBefore&#x60;, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
      * @param maxResultsPerPage A number that indicates the maximum number of orders that can be returned per page.
      *     Value must be 1 - 100. Default 100. (optional)
      * @param easyShipShipmentStatuses A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship
@@ -2691,6 +2715,7 @@ public class OrdersV0Api {
             List<String> orderStatuses,
             List<String> fulfillmentChannels,
             List<String> paymentMethods,
+            String buyerEmail,
             String sellerOrderId,
             Integer maxResultsPerPage,
             List<String> easyShipShipmentStatuses,
@@ -2715,6 +2740,7 @@ public class OrdersV0Api {
                 orderStatuses,
                 fulfillmentChannels,
                 paymentMethods,
+                buyerEmail,
                 sellerOrderId,
                 maxResultsPerPage,
                 easyShipShipmentStatuses,
@@ -2787,10 +2813,12 @@ public class OrdersV0Api {
      * @param paymentMethods A list of payment method values. Use this field to select orders that were paid with the
      *     specified payment methods. **Possible values**: &#x60;COD&#x60; (cash on delivery), &#x60;CVS&#x60;
      *     (convenience store), &#x60;Other&#x60; (Any payment method other than COD or CVS). (optional)
+     * @param buyerEmail The email address of a buyer. Used to select orders that contain the specified email address.
+     *     (optional)
      * @param sellerOrderId An order identifier that is specified by the seller. Used to select only the orders that
      *     match the order identifier. If &#x60;SellerOrderId&#x60; is specified, then &#x60;FulfillmentChannels&#x60;,
-     *     &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;, and
-     *     &#x60;LastUpdatedBefore&#x60; cannot be specified. (optional)
+     *     &#x60;OrderStatuses&#x60;, &#x60;PaymentMethod&#x60;, &#x60;LastUpdatedAfter&#x60;,
+     *     &#x60;LastUpdatedBefore&#x60;, and &#x60;BuyerEmail&#x60; cannot be specified. (optional)
      * @param maxResultsPerPage A number that indicates the maximum number of orders that can be returned per page.
      *     Value must be 1 - 100. Default 100. (optional)
      * @param easyShipShipmentStatuses A list of &#x60;EasyShipShipmentStatus&#x60; values. Used to select Easy Ship
@@ -2850,6 +2878,7 @@ public class OrdersV0Api {
             List<String> orderStatuses,
             List<String> fulfillmentChannels,
             List<String> paymentMethods,
+            String buyerEmail,
             String sellerOrderId,
             Integer maxResultsPerPage,
             List<String> easyShipShipmentStatuses,
@@ -2882,6 +2911,7 @@ public class OrdersV0Api {
                 orderStatuses,
                 fulfillmentChannels,
                 paymentMethods,
+                buyerEmail,
                 sellerOrderId,
                 maxResultsPerPage,
                 easyShipShipmentStatuses,

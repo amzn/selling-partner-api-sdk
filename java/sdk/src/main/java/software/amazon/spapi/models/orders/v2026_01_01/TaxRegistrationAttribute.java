@@ -16,58 +16,50 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/**
- * Further granular breakdown of the subtotal of the proceeds breakdown, only available for TAX and DISCOUNT proceeds
- * types.
- */
-@Schema(
-        description =
-                "Further granular breakdown of the subtotal of the proceeds breakdown, only available for TAX and DISCOUNT proceeds types.")
-public class ItemProceedsDetailedBreakdown {
-    @SerializedName("subtype")
-    private String subtype = null;
+/** An additional attribute associated with a tax registration. */
+@Schema(description = "An additional attribute associated with a tax registration.")
+public class TaxRegistrationAttribute {
+    @SerializedName("key")
+    private String key = null;
 
     @SerializedName("value")
-    private Money value = null;
+    private String value = null;
 
-    public ItemProceedsDetailedBreakdown subtype(String subtype) {
-        this.subtype = subtype;
+    public TaxRegistrationAttribute key(String key) {
+        this.key = key;
         return this;
     }
 
     /**
-     * Specific classification of the further granular breakdown. **Possible values**: &#x60;ITEM&#x60;,
-     * &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;DISCOUNT&#x60;
+     * The name of the tax registration attribute. **Possible values**: &#x60;TAX_OFFICE&#x60;
      *
-     * @return subtype
+     * @return key
      */
-    @Schema(
-            description =
-                    "Specific classification of the further granular breakdown.   **Possible values**: `ITEM`, `SHIPPING`, `GIFT_WRAP`, `COD_FEE`, `OTHER`, `DISCOUNT`")
-    public String getSubtype() {
-        return subtype;
+    @Schema(description = "The name of the tax registration attribute.  **Possible values**: `TAX_OFFICE`")
+    public String getKey() {
+        return key;
     }
 
-    public void setSubtype(String subtype) {
-        this.subtype = subtype;
+    public void setKey(String key) {
+        this.key = key;
     }
 
-    public ItemProceedsDetailedBreakdown value(Money value) {
+    public TaxRegistrationAttribute value(String value) {
         this.value = value;
         return this;
     }
 
     /**
-     * Get value
+     * The value of the tax registration attribute.
      *
      * @return value
      */
-    @Schema(description = "")
-    public Money getValue() {
+    @Schema(description = "The value of the tax registration attribute.")
+    public String getValue() {
         return value;
     }
 
-    public void setValue(Money value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
@@ -79,22 +71,22 @@ public class ItemProceedsDetailedBreakdown {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ItemProceedsDetailedBreakdown itemProceedsDetailedBreakdown = (ItemProceedsDetailedBreakdown) o;
-        return Objects.equals(this.subtype, itemProceedsDetailedBreakdown.subtype)
-                && Objects.equals(this.value, itemProceedsDetailedBreakdown.value);
+        TaxRegistrationAttribute taxRegistrationAttribute = (TaxRegistrationAttribute) o;
+        return Objects.equals(this.key, taxRegistrationAttribute.key)
+                && Objects.equals(this.value, taxRegistrationAttribute.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(subtype, value);
+        return Objects.hash(key, value);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class ItemProceedsDetailedBreakdown {\n");
+        sb.append("class TaxRegistrationAttribute {\n");
 
-        sb.append("    subtype: ").append(toIndentedString(subtype)).append("\n");
+        sb.append("    key: ").append(toIndentedString(key)).append("\n");
         sb.append("    value: ").append(toIndentedString(value)).append("\n");
         sb.append("}");
         return sb.toString();

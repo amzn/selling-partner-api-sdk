@@ -17,12 +17,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
- * The container for address extended fields (such as &#x60;street name&#x60; and &#x60;street number&#x60;). Currently
- * only available with Brazil shipping addresses.
+ * Extended address fields for additional address components including the street name or number. Note: Available for
+ * grocery sellers and Brazil shipping addresses.
  */
 @Schema(
         description =
-                "The container for address extended fields (such as `street name` and `street number`). Currently only available with Brazil shipping addresses.")
+                "Extended address fields for additional address components including the street name or number.   Note: Available for grocery sellers and Brazil shipping addresses.")
 public class AddressExtendedFields {
     @SerializedName("StreetName")
     private String streetName = null;
@@ -35,6 +35,9 @@ public class AddressExtendedFields {
 
     @SerializedName("Neighborhood")
     private String neighborhood = null;
+
+    @SerializedName("GeoCoordinates")
+    private GeoCoordinates geoCoordinates = null;
 
     public AddressExtendedFields streetName(String streetName) {
         this.streetName = streetName;
@@ -112,6 +115,25 @@ public class AddressExtendedFields {
         this.neighborhood = neighborhood;
     }
 
+    public AddressExtendedFields geoCoordinates(GeoCoordinates geoCoordinates) {
+        this.geoCoordinates = geoCoordinates;
+        return this;
+    }
+
+    /**
+     * Get geoCoordinates
+     *
+     * @return geoCoordinates
+     */
+    @Schema(description = "")
+    public GeoCoordinates getGeoCoordinates() {
+        return geoCoordinates;
+    }
+
+    public void setGeoCoordinates(GeoCoordinates geoCoordinates) {
+        this.geoCoordinates = geoCoordinates;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -124,12 +146,13 @@ public class AddressExtendedFields {
         return Objects.equals(this.streetName, addressExtendedFields.streetName)
                 && Objects.equals(this.streetNumber, addressExtendedFields.streetNumber)
                 && Objects.equals(this.complement, addressExtendedFields.complement)
-                && Objects.equals(this.neighborhood, addressExtendedFields.neighborhood);
+                && Objects.equals(this.neighborhood, addressExtendedFields.neighborhood)
+                && Objects.equals(this.geoCoordinates, addressExtendedFields.geoCoordinates);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(streetName, streetNumber, complement, neighborhood);
+        return Objects.hash(streetName, streetNumber, complement, neighborhood, geoCoordinates);
     }
 
     @Override
@@ -141,6 +164,9 @@ public class AddressExtendedFields {
         sb.append("    streetNumber: ").append(toIndentedString(streetNumber)).append("\n");
         sb.append("    complement: ").append(toIndentedString(complement)).append("\n");
         sb.append("    neighborhood: ").append(toIndentedString(neighborhood)).append("\n");
+        sb.append("    geoCoordinates: ")
+                .append(toIndentedString(geoCoordinates))
+                .append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -24,12 +24,12 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Use these parameters to filter results. Any result must match all of the provided parameters. For any parameter that
- * is an array, the result must match at least one element in the provided array.
+ * Use these parameters to filter results. Any result must match all provided parameters. For any parameter that is an
+ * array, the result must match at least one element in the provided array.
  */
 @Schema(
         description =
-                "Use these parameters to filter results. Any result must match all of the provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.")
+                "Use these parameters to filter results. Any result must match all provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.")
 public class ListOffersRequestFilters {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;

@@ -21,27 +21,23 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
-/** The weight of a package. */
-@Schema(description = "The weight of a package.")
-public class Weight {
+/** A distance measurement. */
+@Schema(description = "A distance measurement.")
+public class Distance {
     @SerializedName("value")
     private String value = null;
 
-    /** The unit of measurement of the weight. */
-    @JsonAdapter(WeightUnitEnum.Adapter.class)
-    public enum WeightUnitEnum {
-        @SerializedName("G")
-        G("G"),
-        @SerializedName("KG")
-        KG("KG"),
-        @SerializedName("LB")
-        LB("LB"),
-        @SerializedName("OZ")
-        OZ("OZ");
+    /** The unit of measurement of the distance. */
+    @JsonAdapter(DistanceUnitEnum.Adapter.class)
+    public enum DistanceUnitEnum {
+        @SerializedName("MI")
+        MI("MI"),
+        @SerializedName("KM")
+        KM("KM");
 
         private String value;
 
-        WeightUnitEnum(String value) {
+        DistanceUnitEnum(String value) {
             this.value = value;
         }
 
@@ -54,8 +50,8 @@ public class Weight {
             return String.valueOf(value);
         }
 
-        public static WeightUnitEnum fromValue(String input) {
-            for (WeightUnitEnum b : WeightUnitEnum.values()) {
+        public static DistanceUnitEnum fromValue(String input) {
+            for (DistanceUnitEnum b : DistanceUnitEnum.values()) {
                 if (b.value.equals(input)) {
                     return b;
                 }
@@ -63,24 +59,24 @@ public class Weight {
             return null;
         }
 
-        public static class Adapter extends TypeAdapter<WeightUnitEnum> {
+        public static class Adapter extends TypeAdapter<DistanceUnitEnum> {
             @Override
-            public void write(final JsonWriter jsonWriter, final WeightUnitEnum enumeration) throws IOException {
+            public void write(final JsonWriter jsonWriter, final DistanceUnitEnum enumeration) throws IOException {
                 jsonWriter.value(String.valueOf(enumeration.getValue()));
             }
 
             @Override
-            public WeightUnitEnum read(final JsonReader jsonReader) throws IOException {
+            public DistanceUnitEnum read(final JsonReader jsonReader) throws IOException {
                 Object value = jsonReader.nextString();
-                return WeightUnitEnum.fromValue((String) (value));
+                return DistanceUnitEnum.fromValue((String) (value));
             }
         }
     }
 
-    @SerializedName("weightUnit")
-    private WeightUnitEnum weightUnit = null;
+    @SerializedName("distanceUnit")
+    private DistanceUnitEnum distanceUnit = null;
 
-    public Weight value(String value) {
+    public Distance value(String value) {
         this.value = value;
         return this;
     }
@@ -99,23 +95,23 @@ public class Weight {
         this.value = value;
     }
 
-    public Weight weightUnit(WeightUnitEnum weightUnit) {
-        this.weightUnit = weightUnit;
+    public Distance distanceUnit(DistanceUnitEnum distanceUnit) {
+        this.distanceUnit = distanceUnit;
         return this;
     }
 
     /**
-     * The unit of measurement of the weight.
+     * The unit of measurement of the distance.
      *
-     * @return weightUnit
+     * @return distanceUnit
      */
-    @Schema(required = true, description = "The unit of measurement of the weight.")
-    public WeightUnitEnum getWeightUnit() {
-        return weightUnit;
+    @Schema(required = true, description = "The unit of measurement of the distance.")
+    public DistanceUnitEnum getDistanceUnit() {
+        return distanceUnit;
     }
 
-    public void setWeightUnit(WeightUnitEnum weightUnit) {
-        this.weightUnit = weightUnit;
+    public void setDistanceUnit(DistanceUnitEnum distanceUnit) {
+        this.distanceUnit = distanceUnit;
     }
 
     @Override
@@ -126,22 +122,22 @@ public class Weight {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Weight weight = (Weight) o;
-        return Objects.equals(this.value, weight.value) && Objects.equals(this.weightUnit, weight.weightUnit);
+        Distance distance = (Distance) o;
+        return Objects.equals(this.value, distance.value) && Objects.equals(this.distanceUnit, distance.distanceUnit);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value, weightUnit);
+        return Objects.hash(value, distanceUnit);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class Weight {\n");
+        sb.append("class Distance {\n");
 
         sb.append("    value: ").append(toIndentedString(value)).append("\n");
-        sb.append("    weightUnit: ").append(toIndentedString(weightUnit)).append("\n");
+        sb.append("    distanceUnit: ").append(toIndentedString(distanceUnit)).append("\n");
         sb.append("}");
         return sb.toString();
     }

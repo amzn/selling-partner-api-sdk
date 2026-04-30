@@ -91,13 +91,13 @@ public class GetSellingPartnerMetricsRequest {
     }
 
     /**
-     * The list of metrics requested. If no metric value is provided, data for all of the metrics will be returned.
+     * The list of metrics requested. If no metric value is provided, data for all metrics will be returned.
      *
      * @return metrics
      */
     @Schema(
             description =
-                    "The list of metrics requested. If no metric value is provided, data for all of the metrics will be returned.")
+                    "The list of metrics requested. If no metric value is provided, data for all metrics will be returned.")
     public List<Metric> getMetrics() {
         return metrics;
     }

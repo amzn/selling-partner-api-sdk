@@ -89,6 +89,9 @@ public class ShippingOptions {
     @SerializedName("timeSlot")
     private TimeWindow timeSlot = null;
 
+    @SerializedName("handoverLocation")
+    private HandoverLocation handoverLocation = null;
+
     public ShippingOptions shippingOptionId(String shippingOptionId) {
         this.shippingOptionId = shippingOptionId;
         return this;
@@ -184,6 +187,25 @@ public class ShippingOptions {
         this.timeSlot = timeSlot;
     }
 
+    public ShippingOptions handoverLocation(HandoverLocation handoverLocation) {
+        this.handoverLocation = handoverLocation;
+        return this;
+    }
+
+    /**
+     * Get handoverLocation
+     *
+     * @return handoverLocation
+     */
+    @Schema(description = "")
+    public HandoverLocation getHandoverLocation() {
+        return handoverLocation;
+    }
+
+    public void setHandoverLocation(HandoverLocation handoverLocation) {
+        this.handoverLocation = handoverLocation;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -197,12 +219,13 @@ public class ShippingOptions {
                 && Objects.equals(this.shipBy, shippingOptions.shipBy)
                 && Objects.equals(this.carrierName, shippingOptions.carrierName)
                 && Objects.equals(this.pickupWindow, shippingOptions.pickupWindow)
-                && Objects.equals(this.timeSlot, shippingOptions.timeSlot);
+                && Objects.equals(this.timeSlot, shippingOptions.timeSlot)
+                && Objects.equals(this.handoverLocation, shippingOptions.handoverLocation);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(shippingOptionId, shipBy, carrierName, pickupWindow, timeSlot);
+        return Objects.hash(shippingOptionId, shipBy, carrierName, pickupWindow, timeSlot, handoverLocation);
     }
 
     @Override
@@ -217,6 +240,9 @@ public class ShippingOptions {
         sb.append("    carrierName: ").append(toIndentedString(carrierName)).append("\n");
         sb.append("    pickupWindow: ").append(toIndentedString(pickupWindow)).append("\n");
         sb.append("    timeSlot: ").append(toIndentedString(timeSlot)).append("\n");
+        sb.append("    handoverLocation: ")
+                .append(toIndentedString(handoverLocation))
+                .append("\n");
         sb.append("}");
         return sb.toString();
     }

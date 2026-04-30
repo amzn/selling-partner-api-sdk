@@ -52,6 +52,12 @@ public class Order {
     @SerializedName("proceeds")
     private OrderProceeds proceeds = null;
 
+    @SerializedName("payment")
+    private OrderPayment payment = null;
+
+    @SerializedName("tax")
+    private OrderTax tax = null;
+
     @SerializedName("fulfillment")
     private OrderFulfillment fulfillment = null;
 
@@ -171,14 +177,15 @@ public class Order {
     /**
      * Special programs associated with this order that may affect fulfillment or customer experience. **Possible
      * values**: &#x60;AMAZON_BAZAAR&#x60;, &#x60;AMAZON_BUSINESS&#x60;, &#x60;AMAZON_EASY_SHIP&#x60;,
-     * &#x60;AMAZON_HAUL&#x60;, &#x60;DELIVERY_BY_AMAZON&#x60;, &#x60;FBM_SHIP_PLUS&#x60;, &#x60;IN_STORE_PICK_UP&#x60;,
-     * &#x60;PREMIUM&#x60;, &#x60;PREORDER&#x60;, &#x60;PRIME&#x60;
+     * &#x60;AMAZON_HAUL&#x60;, &#x60;DELIVERY_BY_AMAZON&#x60;, &#x60;FBM_SHIP_PLUS&#x60;,
+     * &#x60;INVOICE_BY_AMAZON&#x60;, &#x60;IN_STORE_PICK_UP&#x60;, &#x60;PREMIUM&#x60;, &#x60;PREORDER&#x60;,
+     * &#x60;PRIME&#x60;
      *
      * @return programs
      */
     @Schema(
             description =
-                    "Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`,  `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`")
+                    "Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`, `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `INVOICE_BY_AMAZON`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`")
     public List<String> getPrograms() {
         return programs;
     }
@@ -292,6 +299,44 @@ public class Order {
         this.proceeds = proceeds;
     }
 
+    public Order payment(OrderPayment payment) {
+        this.payment = payment;
+        return this;
+    }
+
+    /**
+     * Get payment
+     *
+     * @return payment
+     */
+    @Schema(description = "")
+    public OrderPayment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(OrderPayment payment) {
+        this.payment = payment;
+    }
+
+    public Order tax(OrderTax tax) {
+        this.tax = tax;
+        return this;
+    }
+
+    /**
+     * Get tax
+     *
+     * @return tax
+     */
+    @Schema(description = "")
+    public OrderTax getTax() {
+        return tax;
+    }
+
+    public void setTax(OrderTax tax) {
+        this.tax = tax;
+    }
+
     public Order fulfillment(OrderFulfillment fulfillment) {
         this.fulfillment = fulfillment;
         return this;
@@ -384,6 +429,8 @@ public class Order {
                 && Objects.equals(this.buyer, order.buyer)
                 && Objects.equals(this.recipient, order.recipient)
                 && Objects.equals(this.proceeds, order.proceeds)
+                && Objects.equals(this.payment, order.payment)
+                && Objects.equals(this.tax, order.tax)
                 && Objects.equals(this.fulfillment, order.fulfillment)
                 && Objects.equals(this.orderItems, order.orderItems)
                 && Objects.equals(this.packages, order.packages);
@@ -402,6 +449,8 @@ public class Order {
                 buyer,
                 recipient,
                 proceeds,
+                payment,
+                tax,
                 fulfillment,
                 orderItems,
                 packages);
@@ -426,6 +475,8 @@ public class Order {
         sb.append("    buyer: ").append(toIndentedString(buyer)).append("\n");
         sb.append("    recipient: ").append(toIndentedString(recipient)).append("\n");
         sb.append("    proceeds: ").append(toIndentedString(proceeds)).append("\n");
+        sb.append("    payment: ").append(toIndentedString(payment)).append("\n");
+        sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
         sb.append("    fulfillment: ").append(toIndentedString(fulfillment)).append("\n");
         sb.append("    orderItems: ").append(toIndentedString(orderItems)).append("\n");
         sb.append("    packages: ").append(toIndentedString(packages)).append("\n");
