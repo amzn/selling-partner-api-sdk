@@ -34,6 +34,7 @@ import { ElectronicInvoiceStatus } from './model/ElectronicInvoiceStatus.js'
 import { Error } from './model/Error.js'
 import { ExceptionDates } from './model/ExceptionDates.js'
 import { FulfillmentInstruction } from './model/FulfillmentInstruction.js'
+import { GeoCoordinates } from './model/GeoCoordinates.js'
 import { GetOrderAddressResponse } from './model/GetOrderAddressResponse.js'
 import { GetOrderBuyerInfoResponse } from './model/GetOrderBuyerInfoResponse.js'
 import { GetOrderItemsBuyerInfoResponse } from './model/GetOrderItemsBuyerInfoResponse.js'
@@ -229,6 +230,12 @@ export {
      * @property {module:orders_v0/model/FulfillmentInstruction}
      */
   FulfillmentInstruction,
+
+  /**
+     * The GeoCoordinates model constructor.
+     * @property {module:orders_v0/model/GeoCoordinates}
+     */
+  GeoCoordinates,
 
   /**
      * The GetOrderAddressResponse model constructor.

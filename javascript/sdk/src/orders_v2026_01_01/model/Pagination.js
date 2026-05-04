@@ -21,7 +21,7 @@ import { ApiClient } from '../ApiClient.js'
 export class Pagination {
   /**
    * Constructs a new <code>Pagination</code>.
-   * When a request has results that are not included in the response, pagination occurs. This means the results are divided into individual pages. To retrieve a different page, you must pass the token value as the &#x60;paginationToken&#x60; query parameter in the subsequent request. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of &#x60;maxResultsPerPage&#x60; and &#x60;includedData&#x60;, which can be modified between calls. The token will expire after 24 hours. When there are no other pages to fetch, the &#x60;pagination&#x60; field will be absent from the response.
+   * Pagination occurs when a request has results that exceed the response limit. This means the results are divided into individual pages. To retrieve a different page, you must pass the token value as the &#x60;paginationToken&#x60; query parameter in the subsequent request. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of &#x60;maxResultsPerPage&#x60; and &#x60;includedData&#x60;, which can be modified between calls. The token will expire after 24 hours. When there are no other pages to fetch, the &#x60;pagination&#x60; field will be absent from the response.
    * @alias module:orders_v2026_01_01/model/Pagination
    * @class
    */

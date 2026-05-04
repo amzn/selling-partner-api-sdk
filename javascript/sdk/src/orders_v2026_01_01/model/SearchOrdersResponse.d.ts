@@ -27,13 +27,13 @@ export class SearchOrdersResponse {
      */
     pagination: Pagination;
     /**
-     * Only orders updated before the specified time are returned. The date must be in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.
+     * Only orders updated before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      * @member {Date} lastUpdatedBefore
      * @type {Date}
      */
     lastUpdatedBefore: Date;
     /**
-     * Only orders placed before the specified time are returned. The date must be in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.
+     * Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      * @member {Date} createdBefore
      * @type {Date}
      */

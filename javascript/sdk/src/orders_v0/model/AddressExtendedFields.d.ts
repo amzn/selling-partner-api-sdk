@@ -36,5 +36,11 @@ export class AddressExtendedFields {
      * @type {String}
      */
     neighborhood: string;
+    /**
+     * @member {GeoCoordinates} geoCoordinates
+     * @type {GeoCoordinates}
+     */
+    geoCoordinates: GeoCoordinates;
 }
+import { GeoCoordinates } from './GeoCoordinates.js';
 //# sourceMappingURL=AddressExtendedFields.d.ts.map

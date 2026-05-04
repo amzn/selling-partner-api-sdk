@@ -14,7 +14,7 @@ export class ListOffersRequestFilters {
     static constructFromObject(data: Object, obj: ListOffersRequestFilters): ListOffersRequestFilters;
     /**
      * Constructs a new <code>ListOffersRequestFilters</code>.
-     * Use these parameters to filter results. Any result must match all of the provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.
+     * Use these parameters to filter results. Any result must match all provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.
      * @alias module:replenishment_v2022_11_07/model/ListOffersRequestFilters
      * @class
      * @param marketplaceId {String} The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.

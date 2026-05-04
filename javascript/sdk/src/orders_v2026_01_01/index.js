@@ -15,6 +15,7 @@ import { ApiClient } from './ApiClient.js'
 import { AddressExtendedFields } from './model/AddressExtendedFields.js'
 import { Alias } from './model/Alias.js'
 import { AssociatedOrder } from './model/AssociatedOrder.js'
+import { AssociatedOrderItem } from './model/AssociatedOrderItem.js'
 import { BusinessHour } from './model/BusinessHour.js'
 import { Buyer } from './model/Buyer.js'
 import { ConstraintType } from './model/ConstraintType.js'
@@ -49,6 +50,9 @@ import { ItemShipping } from './model/ItemShipping.js'
 import { ItemShippingConstraints } from './model/ItemShippingConstraints.js'
 import { ItemSubstitutionOption } from './model/ItemSubstitutionOption.js'
 import { ItemSubstitutionPreference } from './model/ItemSubstitutionPreference.js'
+import { ItemTax } from './model/ItemTax.js'
+import { ItemTaxCalculationBreakdown } from './model/ItemTaxCalculationBreakdown.js'
+import { ItemTaxCollection } from './model/ItemTaxCollection.js'
 import { Measurement } from './model/Measurement.js'
 import { MerchantAddress } from './model/MerchantAddress.js'
 import { Money } from './model/Money.js'
@@ -56,15 +60,22 @@ import { Order } from './model/Order.js'
 import { OrderFulfillment } from './model/OrderFulfillment.js'
 import { OrderItem } from './model/OrderItem.js'
 import { OrderPackage } from './model/OrderPackage.js'
+import { OrderPayment } from './model/OrderPayment.js'
 import { OrderProceeds } from './model/OrderProceeds.js'
+import { OrderTax } from './model/OrderTax.js'
+import { OrderTaxInvoicing } from './model/OrderTaxInvoicing.js'
+import { OrderTaxRegistration } from './model/OrderTaxRegistration.js'
 import { PackageItem } from './model/PackageItem.js'
 import { PackageStatus } from './model/PackageStatus.js'
 import { Pagination } from './model/Pagination.js'
+import { PaymentExecution } from './model/PaymentExecution.js'
 import { PointsGranted } from './model/PointsGranted.js'
 import { PreferredDeliveryTime } from './model/PreferredDeliveryTime.js'
 import { Recipient } from './model/Recipient.js'
 import { SalesChannel } from './model/SalesChannel.js'
 import { SearchOrdersResponse } from './model/SearchOrdersResponse.js'
+import { SerialNumberRequirement } from './model/SerialNumberRequirement.js'
+import { TaxRegistrationAttribute } from './model/TaxRegistrationAttribute.js'
 import { TimeWindow } from './model/TimeWindow.js'
 import { GetOrderApi } from './api/GetOrderApi.js'
 import { SearchOrdersApi } from './api/SearchOrdersApi.js'
@@ -99,6 +110,12 @@ export {
      * @property {module:orders_v2026_01_01/model/AssociatedOrder}
      */
   AssociatedOrder,
+
+  /**
+     * The AssociatedOrderItem model constructor.
+     * @property {module:orders_v2026_01_01/model/AssociatedOrderItem}
+     */
+  AssociatedOrderItem,
 
   /**
      * The BusinessHour model constructor.
@@ -305,6 +322,24 @@ export {
   ItemSubstitutionPreference,
 
   /**
+     * The ItemTax model constructor.
+     * @property {module:orders_v2026_01_01/model/ItemTax}
+     */
+  ItemTax,
+
+  /**
+     * The ItemTaxCalculationBreakdown model constructor.
+     * @property {module:orders_v2026_01_01/model/ItemTaxCalculationBreakdown}
+     */
+  ItemTaxCalculationBreakdown,
+
+  /**
+     * The ItemTaxCollection model constructor.
+     * @property {module:orders_v2026_01_01/model/ItemTaxCollection}
+     */
+  ItemTaxCollection,
+
+  /**
      * The Measurement model constructor.
      * @property {module:orders_v2026_01_01/model/Measurement}
      */
@@ -347,10 +382,34 @@ export {
   OrderPackage,
 
   /**
+     * The OrderPayment model constructor.
+     * @property {module:orders_v2026_01_01/model/OrderPayment}
+     */
+  OrderPayment,
+
+  /**
      * The OrderProceeds model constructor.
      * @property {module:orders_v2026_01_01/model/OrderProceeds}
      */
   OrderProceeds,
+
+  /**
+     * The OrderTax model constructor.
+     * @property {module:orders_v2026_01_01/model/OrderTax}
+     */
+  OrderTax,
+
+  /**
+     * The OrderTaxInvoicing model constructor.
+     * @property {module:orders_v2026_01_01/model/OrderTaxInvoicing}
+     */
+  OrderTaxInvoicing,
+
+  /**
+     * The OrderTaxRegistration model constructor.
+     * @property {module:orders_v2026_01_01/model/OrderTaxRegistration}
+     */
+  OrderTaxRegistration,
 
   /**
      * The PackageItem model constructor.
@@ -369,6 +428,12 @@ export {
      * @property {module:orders_v2026_01_01/model/Pagination}
      */
   Pagination,
+
+  /**
+     * The PaymentExecution model constructor.
+     * @property {module:orders_v2026_01_01/model/PaymentExecution}
+     */
+  PaymentExecution,
 
   /**
      * The PointsGranted model constructor.
@@ -399,6 +464,18 @@ export {
      * @property {module:orders_v2026_01_01/model/SearchOrdersResponse}
      */
   SearchOrdersResponse,
+
+  /**
+     * The SerialNumberRequirement model constructor.
+     * @property {module:orders_v2026_01_01/model/SerialNumberRequirement}
+     */
+  SerialNumberRequirement,
+
+  /**
+     * The TaxRegistrationAttribute model constructor.
+     * @property {module:orders_v2026_01_01/model/TaxRegistrationAttribute}
+     */
+  TaxRegistrationAttribute,
 
   /**
      * The TimeWindow model constructor.

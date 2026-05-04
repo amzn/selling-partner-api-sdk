@@ -12,6 +12,7 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
+import { HandoverLocation } from './HandoverLocation.js'
 import { TimeWindow } from './TimeWindow.js'
 
 /**
@@ -59,6 +60,7 @@ export class ShipLabelMetadata {
       if (data.hasOwnProperty('trackingId')) { obj.trackingId = ApiClient.convertToType(data.trackingId, 'String') }
       if (data.hasOwnProperty('pickupWindow')) { obj.pickupWindow = TimeWindow.constructFromObject(data.pickupWindow) }
       if (data.hasOwnProperty('timeSlot')) { obj.timeSlot = TimeWindow.constructFromObject(data.timeSlot) }
+      if (data.hasOwnProperty('handoverLocation')) { obj.handoverLocation = HandoverLocation.constructFromObject(data.handoverLocation) }
     }
     return obj
   }
@@ -96,3 +98,9 @@ ShipLabelMetadata.prototype.pickupWindow = undefined
  * @type {TimeWindow}
  */
 ShipLabelMetadata.prototype.timeSlot = undefined
+
+/**
+ * @member {HandoverLocation} handoverLocation
+ * @type {HandoverLocation}
+ */
+ShipLabelMetadata.prototype.handoverLocation = undefined

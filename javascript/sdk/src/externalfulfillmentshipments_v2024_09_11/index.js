@@ -22,11 +22,14 @@ import { CourierSupportedAttributes } from './model/CourierSupportedAttributes.j
 import { CustomAttribute } from './model/CustomAttribute.js'
 import { CustomAttributeType } from './model/CustomAttributeType.js'
 import { Dimension } from './model/Dimension.js'
+import { Distance } from './model/Distance.js'
 import { Document } from './model/Document.js'
 import { DocumentV2 } from './model/DocumentV2.js'
 import { Error } from './model/Error.js'
 import { ErrorList } from './model/ErrorList.js'
+import { Geocodes } from './model/Geocodes.js'
 import { GiftAttributes } from './model/GiftAttributes.js'
+import { HandoverLocation } from './model/HandoverLocation.js'
 import { InvoiceInfo } from './model/InvoiceInfo.js'
 import { InvoiceRequirement } from './model/InvoiceRequirement.js'
 import { InvoiceResponse } from './model/InvoiceResponse.js'
@@ -146,6 +149,12 @@ export {
   Dimension,
 
   /**
+     * The Distance model constructor.
+     * @property {module:externalfulfillmentshipments_v2024_09_11/model/Distance}
+     */
+  Distance,
+
+  /**
      * The Document model constructor.
      * @property {module:externalfulfillmentshipments_v2024_09_11/model/Document}
      */
@@ -170,10 +179,22 @@ export {
   ErrorList,
 
   /**
+     * The Geocodes model constructor.
+     * @property {module:externalfulfillmentshipments_v2024_09_11/model/Geocodes}
+     */
+  Geocodes,
+
+  /**
      * The GiftAttributes model constructor.
      * @property {module:externalfulfillmentshipments_v2024_09_11/model/GiftAttributes}
      */
   GiftAttributes,
+
+  /**
+     * The HandoverLocation model constructor.
+     * @property {module:externalfulfillmentshipments_v2024_09_11/model/HandoverLocation}
+     */
+  HandoverLocation,
 
   /**
      * The InvoiceInfo model constructor.

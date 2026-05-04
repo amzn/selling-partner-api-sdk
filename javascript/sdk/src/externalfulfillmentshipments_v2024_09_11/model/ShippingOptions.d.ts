@@ -39,6 +39,11 @@ export class ShippingOptions {
      * @type {TimeWindow}
      */
     timeSlot: TimeWindow;
+    /**
+     * @member {HandoverLocation} handoverLocation
+     * @type {HandoverLocation}
+     */
+    handoverLocation: HandoverLocation;
 }
 export namespace ShippingOptions {
     namespace ShipByEnum {
@@ -53,4 +58,5 @@ export namespace ShippingOptions {
     type ShipByEnum = string;
 }
 import { TimeWindow } from './TimeWindow.js';
+import { HandoverLocation } from './HandoverLocation.js';
 //# sourceMappingURL=ShippingOptions.d.ts.map

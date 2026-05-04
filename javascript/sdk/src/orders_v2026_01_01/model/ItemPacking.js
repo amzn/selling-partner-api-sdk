@@ -13,6 +13,7 @@
 
 import { ApiClient } from '../ApiClient.js'
 import { GiftOption } from './GiftOption.js'
+import { SerialNumberRequirement } from './SerialNumberRequirement.js'
 
 /**
  * The ItemPacking model module.
@@ -51,6 +52,7 @@ export class ItemPacking {
       }
       obj = obj || new ItemPacking()
       if (data.hasOwnProperty('giftOption')) { obj.giftOption = GiftOption.constructFromObject(data.giftOption) }
+      if (data.hasOwnProperty('serialNumberRequirement')) { obj.serialNumberRequirement = SerialNumberRequirement.constructFromObject(data.serialNumberRequirement) }
     }
     return obj
   }
@@ -61,3 +63,9 @@ export class ItemPacking {
  * @type {GiftOption}
  */
 ItemPacking.prototype.giftOption = undefined
+
+/**
+ * @member {SerialNumberRequirement} serialNumberRequirement
+ * @type {SerialNumberRequirement}
+ */
+ItemPacking.prototype.serialNumberRequirement = undefined

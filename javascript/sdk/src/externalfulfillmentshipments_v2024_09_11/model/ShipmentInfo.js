@@ -67,6 +67,7 @@ export class ShipmentInfo {
       if (data.hasOwnProperty('orderStatesEligibleForRejection')) { obj.orderStatesEligibleForRejection = ApiClient.convertToType(data.orderStatesEligibleForRejection, ['String']) }
       if (data.hasOwnProperty('orderPlacedTimestamp')) { obj.orderPlacedTimestamp = ApiClient.convertToType(data.orderPlacedTimestamp, 'String') }
       if (data.hasOwnProperty('processingSource')) { obj.processingSource = ApiClient.convertToType(data.processingSource, 'String') }
+      if (data.hasOwnProperty('paymentMethod')) { obj.paymentMethod = ApiClient.convertToType(data.paymentMethod, 'String') }
     }
     return obj
   }
@@ -169,3 +170,29 @@ ShipmentInfo.ProcessingSourceEnum = {
  * @type {String}
  */
 ShipmentInfo.prototype.processingSource = undefined
+
+/**
+ * Allowed values for the <code>paymentMethod</code> property.
+ * @enum {String}
+ * @readonly
+ */
+ShipmentInfo.PaymentMethodEnum = {
+
+  /**
+     * value: "CASH_ON_DELIVERY"
+     * @const
+     */
+  CASH_ON_DELIVERY: 'CASH_ON_DELIVERY',
+
+  /**
+     * value: "PREPAID"
+     * @const
+     */
+  PREPAID: 'PREPAID'
+}
+/**
+ * The payment method for the shipment.
+ * @member {String} paymentMethod
+ * @type {String}
+ */
+ShipmentInfo.prototype.paymentMethod = undefined

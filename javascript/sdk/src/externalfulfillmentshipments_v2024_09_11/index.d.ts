@@ -9,11 +9,14 @@ import { CourierSupportedAttributes } from './model/CourierSupportedAttributes.j
 import { CustomAttribute } from './model/CustomAttribute.js';
 import { CustomAttributeType } from './model/CustomAttributeType.js';
 import { Dimension } from './model/Dimension.js';
+import { Distance } from './model/Distance.js';
 import { Document } from './model/Document.js';
 import { DocumentV2 } from './model/DocumentV2.js';
 import { Error } from './model/Error.js';
 import { ErrorList } from './model/ErrorList.js';
+import { Geocodes } from './model/Geocodes.js';
 import { GiftAttributes } from './model/GiftAttributes.js';
+import { HandoverLocation } from './model/HandoverLocation.js';
 import { InvoiceInfo } from './model/InvoiceInfo.js';
 import { InvoiceRequirement } from './model/InvoiceRequirement.js';
 import { InvoiceResponse } from './model/InvoiceResponse.js';
@@ -58,5 +61,5 @@ import { TimeWindow } from './model/TimeWindow.js';
 import { Weight } from './model/Weight.js';
 import { ShipmentProcessingApi } from './api/ShipmentProcessingApi.js';
 import { ShipmentRetrievalApi } from './api/ShipmentRetrievalApi.js';
-export { ApiClient, Address, Amount, Cancellation, Charge, ChargeBreakup, ComplianceAttributes, CourierSupportedAttributes, CustomAttribute, CustomAttributeType, Dimension, Document, DocumentV2, Error, ErrorList, GiftAttributes, InvoiceInfo, InvoiceRequirement, InvoiceResponse, LineItem, LineItemWithReason, MarketplaceAttributes, OriginalLineItem, Package, PackageDeliveryStatus, PackageDimensions, PackageLineItem, PackageShipLabel, PackageStatus, PackageSubStatus, Packages, PackingSlipRequirement, Pagination, PartyIdentificationInfo, PieceType, PresenceStatus, Priority, RecommendedPackage, RecommendedPackageLineItem, ReplacedShipmentInfo, RequirementLevel, ShipLabelMetadata, ShipLabelsInput, ShipLabelsResponse, Shipment, ShipmentAcknowledgementRequest, ShipmentInfo, ShipmentLineItem, ShipmentRequirements, ShipmentsResponse, ShippingInfo, ShippingOptions, ShippingOptionsResponse, Status, Tax, TaxRegistrationInfo, TimeWindow, Weight, ShipmentProcessingApi, ShipmentRetrievalApi };
+export { ApiClient, Address, Amount, Cancellation, Charge, ChargeBreakup, ComplianceAttributes, CourierSupportedAttributes, CustomAttribute, CustomAttributeType, Dimension, Distance, Document, DocumentV2, Error, ErrorList, Geocodes, GiftAttributes, HandoverLocation, InvoiceInfo, InvoiceRequirement, InvoiceResponse, LineItem, LineItemWithReason, MarketplaceAttributes, OriginalLineItem, Package, PackageDeliveryStatus, PackageDimensions, PackageLineItem, PackageShipLabel, PackageStatus, PackageSubStatus, Packages, PackingSlipRequirement, Pagination, PartyIdentificationInfo, PieceType, PresenceStatus, Priority, RecommendedPackage, RecommendedPackageLineItem, ReplacedShipmentInfo, RequirementLevel, ShipLabelMetadata, ShipLabelsInput, ShipLabelsResponse, Shipment, ShipmentAcknowledgementRequest, ShipmentInfo, ShipmentLineItem, ShipmentRequirements, ShipmentsResponse, ShippingInfo, ShippingOptions, ShippingOptionsResponse, Status, Tax, TaxRegistrationInfo, TimeWindow, Weight, ShipmentProcessingApi, ShipmentRetrievalApi };
 //# sourceMappingURL=index.d.ts.map

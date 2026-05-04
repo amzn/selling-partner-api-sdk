@@ -18,7 +18,9 @@ import { Buyer } from './Buyer.js'
 import { OrderFulfillment } from './OrderFulfillment.js'
 import { OrderItem } from './OrderItem.js'
 import { OrderPackage } from './OrderPackage.js'
+import { OrderPayment } from './OrderPayment.js'
 import { OrderProceeds } from './OrderProceeds.js'
+import { OrderTax } from './OrderTax.js'
 import { Recipient } from './Recipient.js'
 import { SalesChannel } from './SalesChannel.js'
 
@@ -78,6 +80,8 @@ export class Order {
       if (data.hasOwnProperty('buyer')) { obj.buyer = Buyer.constructFromObject(data.buyer) }
       if (data.hasOwnProperty('recipient')) { obj.recipient = Recipient.constructFromObject(data.recipient) }
       if (data.hasOwnProperty('proceeds')) { obj.proceeds = OrderProceeds.constructFromObject(data.proceeds) }
+      if (data.hasOwnProperty('payment')) { obj.payment = OrderPayment.constructFromObject(data.payment) }
+      if (data.hasOwnProperty('tax')) { obj.tax = OrderTax.constructFromObject(data.tax) }
       if (data.hasOwnProperty('fulfillment')) { obj.fulfillment = OrderFulfillment.constructFromObject(data.fulfillment) }
       if (data.hasOwnProperty('orderItems')) { obj.orderItems = ApiClient.convertToType(data.orderItems, [OrderItem]) }
       if (data.hasOwnProperty('packages')) { obj.packages = ApiClient.convertToType(data.packages, [OrderPackage]) }
@@ -115,7 +119,7 @@ Order.prototype.createdTime = undefined
 Order.prototype.lastUpdatedTime = undefined
 
 /**
- * Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`,  `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`
+ * Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`, `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `INVOICE_BY_AMAZON`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`
  * @member {String[]} programs
  * @type {String[]}
  */
@@ -151,6 +155,18 @@ Order.prototype.recipient = undefined
  * @type {OrderProceeds}
  */
 Order.prototype.proceeds = undefined
+
+/**
+ * @member {OrderPayment} payment
+ * @type {OrderPayment}
+ */
+Order.prototype.payment = undefined
+
+/**
+ * @member {OrderTax} tax
+ * @type {OrderTax}
+ */
+Order.prototype.tax = undefined
 
 /**
  * @member {OrderFulfillment} fulfillment

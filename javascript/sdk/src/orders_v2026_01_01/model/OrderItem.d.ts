@@ -31,6 +31,12 @@ export class OrderItem {
      */
     measurement: Measurement;
     /**
+     * A list of order items associated with this item. For example, a value-add service purchased with the product.
+     * @member {AssociatedOrderItem[]} associatedOrderItems
+     * @type {AssociatedOrderItem[]}
+     */
+    associatedOrderItems: AssociatedOrderItem[];
+    /**
      * Special programs that apply specifically to this item within the order.  **Possible values**: `TRANSPARENCY`, `SUBSCRIBE_AND_SAVE`
      * @member {String[]} programs
      * @type {String[]}
@@ -61,12 +67,19 @@ export class OrderItem {
      * @type {ItemFulfillment}
      */
     fulfillment: ItemFulfillment;
+    /**
+     * @member {ItemTax} tax
+     * @type {ItemTax}
+     */
+    tax: ItemTax;
 }
 import { ItemProduct } from './ItemProduct.js';
 import { Measurement } from './Measurement.js';
+import { AssociatedOrderItem } from './AssociatedOrderItem.js';
 import { ItemProceeds } from './ItemProceeds.js';
 import { ItemExpense } from './ItemExpense.js';
 import { ItemPromotion } from './ItemPromotion.js';
 import { ItemCancellation } from './ItemCancellation.js';
 import { ItemFulfillment } from './ItemFulfillment.js';
+import { ItemTax } from './ItemTax.js';
 //# sourceMappingURL=OrderItem.d.ts.map

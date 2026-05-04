@@ -12,6 +12,7 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
+import { Geocodes } from './Geocodes.js'
 
 /**
  * The Address model module.
@@ -65,6 +66,7 @@ export class Address {
       if (data.hasOwnProperty('copyEmails')) { obj.copyEmails = ApiClient.convertToType(data.copyEmails, ['String']) }
       if (data.hasOwnProperty('phoneNumber')) { obj.phoneNumber = ApiClient.convertToType(data.phoneNumber, 'String') }
       if (data.hasOwnProperty('addressType')) { obj.addressType = ApiClient.convertToType(data.addressType, 'String') }
+      if (data.hasOwnProperty('geocodes')) { obj.geocodes = Geocodes.constructFromObject(data.geocodes) }
     }
     return obj
   }
@@ -106,7 +108,7 @@ Address.prototype.addressLine3 = undefined
 Address.prototype.district = undefined
 
 /**
- * The municiplaity where the person, business, or institution is located.
+ * The municipality where the person, business, or institution is located.
  * @member {String} municipality
  * @type {String}
  */
@@ -167,3 +169,9 @@ Address.prototype.phoneNumber = undefined
  * @type {String}
  */
 Address.prototype.addressType = undefined
+
+/**
+ * @member {Geocodes} geocodes
+ * @type {Geocodes}
+ */
+Address.prototype.geocodes = undefined
