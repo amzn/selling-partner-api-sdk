@@ -33,7 +33,9 @@ public class Dimension {
         @SerializedName("CM")
         CM("CM"),
         @SerializedName("M")
-        M("M");
+        M("M"),
+        @SerializedName("IN")
+        IN("IN");
 
         private String value;
 

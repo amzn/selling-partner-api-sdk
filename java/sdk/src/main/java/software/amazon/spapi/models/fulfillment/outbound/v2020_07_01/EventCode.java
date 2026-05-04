@@ -87,7 +87,11 @@ public enum EventCode {
     @SerializedName("EVENT_418")
     _418("EVENT_418"),
     @SerializedName("EVENT_419")
-    _419("EVENT_419");
+    _419("EVENT_419"),
+    @SerializedName("EVENT_801")
+    _801("EVENT_801"),
+    @SerializedName("EVENT_804")
+    _804("EVENT_804");
 
     private String value;
 

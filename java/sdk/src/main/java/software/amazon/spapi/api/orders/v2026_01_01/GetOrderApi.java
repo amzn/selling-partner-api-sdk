@@ -119,7 +119,13 @@ public class GetOrderApi {
     }
 
     /**
-     * Returns the order that you specify.
+     * Returns the order that you specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5
+     * | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied
+     * to the requested operation, when available. The preceding table contains the default rate and burst values for
+     * this operation. Selling partners whose business demands require higher throughput may receive higher rate and
+     * burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API documentation.
      *
      * @param orderId An Amazon-defined order identifier. (required)
      * @param includedData A list of datasets to include in the response. (optional)
@@ -135,7 +141,13 @@ public class GetOrderApi {
     }
 
     /**
-     * Returns the order that you specify.
+     * Returns the order that you specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5
+     * | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied
+     * to the requested operation, when available. The preceding table contains the default rate and burst values for
+     * this operation. Selling partners whose business demands require higher throughput may receive higher rate and
+     * burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API documentation.
      *
      * @param orderId An Amazon-defined order identifier. (required)
      * @param includedData A list of datasets to include in the response. (optional)
@@ -149,7 +161,13 @@ public class GetOrderApi {
     }
 
     /**
-     * Returns the order that you specify.
+     * Returns the order that you specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5
+     * | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied
+     * to the requested operation, when available. The preceding table contains the default rate and burst values for
+     * this operation. Selling partners whose business demands require higher throughput may receive higher rate and
+     * burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API documentation.
      *
      * @param orderId An Amazon-defined order identifier. (required)
      * @param includedData A list of datasets to include in the response. (optional)
@@ -175,7 +193,13 @@ public class GetOrderApi {
     }
 
     /**
-     * Returns the order that you specify.
+     * Returns the order that you specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5
+     * | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied
+     * to the requested operation, when available. The preceding table contains the default rate and burst values for
+     * this operation. Selling partners whose business demands require higher throughput may receive higher rate and
+     * burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API documentation.
      *
      * @param orderId An Amazon-defined order identifier. (required)
      * @param includedData A list of datasets to include in the response. (optional)
@@ -189,7 +213,13 @@ public class GetOrderApi {
     }
 
     /**
-     * (asynchronously) Returns the order that you specify.
+     * (asynchronously) Returns the order that you specify. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that are applied to the requested operation, when available. The preceding table contains the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API documentation.
      *
      * @param orderId An Amazon-defined order identifier. (required)
      * @param includedData A list of datasets to include in the response. (optional)
@@ -204,7 +234,13 @@ public class GetOrderApi {
         return getOrderAsync(orderId, includedData, callback, null);
     }
     /**
-     * (asynchronously) Returns the order that you specify.
+     * (asynchronously) Returns the order that you specify. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
+     * limits that are applied to the requested operation, when available. The preceding table contains the default rate
+     * and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling
+     * Partner API documentation.
      *
      * @param orderId An Amazon-defined order identifier. (required)
      * @param includedData A list of datasets to include in the response. (optional)

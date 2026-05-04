@@ -22,6 +22,9 @@ public class ItemPacking {
     @SerializedName("giftOption")
     private GiftOption giftOption = null;
 
+    @SerializedName("serialNumberRequirement")
+    private SerialNumberRequirement serialNumberRequirement = null;
+
     public ItemPacking giftOption(GiftOption giftOption) {
         this.giftOption = giftOption;
         return this;
@@ -41,6 +44,25 @@ public class ItemPacking {
         this.giftOption = giftOption;
     }
 
+    public ItemPacking serialNumberRequirement(SerialNumberRequirement serialNumberRequirement) {
+        this.serialNumberRequirement = serialNumberRequirement;
+        return this;
+    }
+
+    /**
+     * Get serialNumberRequirement
+     *
+     * @return serialNumberRequirement
+     */
+    @Schema(description = "")
+    public SerialNumberRequirement getSerialNumberRequirement() {
+        return serialNumberRequirement;
+    }
+
+    public void setSerialNumberRequirement(SerialNumberRequirement serialNumberRequirement) {
+        this.serialNumberRequirement = serialNumberRequirement;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,12 +72,13 @@ public class ItemPacking {
             return false;
         }
         ItemPacking itemPacking = (ItemPacking) o;
-        return Objects.equals(this.giftOption, itemPacking.giftOption);
+        return Objects.equals(this.giftOption, itemPacking.giftOption)
+                && Objects.equals(this.serialNumberRequirement, itemPacking.serialNumberRequirement);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(giftOption);
+        return Objects.hash(giftOption, serialNumberRequirement);
     }
 
     @Override
@@ -64,6 +87,9 @@ public class ItemPacking {
         sb.append("class ItemPacking {\n");
 
         sb.append("    giftOption: ").append(toIndentedString(giftOption)).append("\n");
+        sb.append("    serialNumberRequirement: ")
+                .append(toIndentedString(serialNumberRequirement))
+                .append("\n");
         sb.append("}");
         return sb.toString();
     }

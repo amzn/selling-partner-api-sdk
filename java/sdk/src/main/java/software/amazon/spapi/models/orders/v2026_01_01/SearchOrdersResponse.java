@@ -83,14 +83,14 @@ public class SearchOrdersResponse {
     }
 
     /**
-     * Only orders updated before the specified time are returned. The date must be in &lt;a
-     * href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     * Only orders updated before the specified time are returned. The date must be in [ISO
+     * 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      *
      * @return lastUpdatedBefore
      */
     @Schema(
             description =
-                    "Only orders updated before the specified time are returned. The date must be in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.")
+                    "Only orders updated before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
     public OffsetDateTime getLastUpdatedBefore() {
         return lastUpdatedBefore;
     }
@@ -105,14 +105,14 @@ public class SearchOrdersResponse {
     }
 
     /**
-     * Only orders placed before the specified time are returned. The date must be in &lt;a
-     * href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     * Only orders placed before the specified time are returned. The date must be in [ISO
+     * 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      *
      * @return createdBefore
      */
     @Schema(
             description =
-                    "Only orders placed before the specified time are returned. The date must be in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.")
+                    "Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
     public OffsetDateTime getCreatedBefore() {
         return createdBefore;
     }

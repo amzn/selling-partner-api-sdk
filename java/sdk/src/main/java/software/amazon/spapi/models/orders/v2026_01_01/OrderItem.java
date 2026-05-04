@@ -30,6 +30,9 @@ public class OrderItem {
     @SerializedName("measurement")
     private Measurement measurement = null;
 
+    @SerializedName("associatedOrderItems")
+    private List<AssociatedOrderItem> associatedOrderItems = null;
+
     @SerializedName("programs")
     private List<String> programs = null;
 
@@ -50,6 +53,9 @@ public class OrderItem {
 
     @SerializedName("fulfillment")
     private ItemFulfillment fulfillment = null;
+
+    @SerializedName("tax")
+    private ItemTax tax = null;
 
     public OrderItem orderItemId(String orderItemId) {
         this.orderItemId = orderItemId;
@@ -106,6 +112,35 @@ public class OrderItem {
 
     public void setMeasurement(Measurement measurement) {
         this.measurement = measurement;
+    }
+
+    public OrderItem associatedOrderItems(List<AssociatedOrderItem> associatedOrderItems) {
+        this.associatedOrderItems = associatedOrderItems;
+        return this;
+    }
+
+    public OrderItem addAssociatedOrderItemsItem(AssociatedOrderItem associatedOrderItemsItem) {
+        if (this.associatedOrderItems == null) {
+            this.associatedOrderItems = new ArrayList<AssociatedOrderItem>();
+        }
+        this.associatedOrderItems.add(associatedOrderItemsItem);
+        return this;
+    }
+
+    /**
+     * A list of order items associated with this item. For example, a value-add service purchased with the product.
+     *
+     * @return associatedOrderItems
+     */
+    @Schema(
+            description =
+                    "A list of order items associated with this item. For example, a value-add service purchased with the product.")
+    public List<AssociatedOrderItem> getAssociatedOrderItems() {
+        return associatedOrderItems;
+    }
+
+    public void setAssociatedOrderItems(List<AssociatedOrderItem> associatedOrderItems) {
+        this.associatedOrderItems = associatedOrderItems;
     }
 
     public OrderItem programs(List<String> programs) {
@@ -252,6 +287,25 @@ public class OrderItem {
         this.fulfillment = fulfillment;
     }
 
+    public OrderItem tax(ItemTax tax) {
+        this.tax = tax;
+        return this;
+    }
+
+    /**
+     * Get tax
+     *
+     * @return tax
+     */
+    @Schema(description = "")
+    public ItemTax getTax() {
+        return tax;
+    }
+
+    public void setTax(ItemTax tax) {
+        this.tax = tax;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -264,13 +318,15 @@ public class OrderItem {
         return Objects.equals(this.orderItemId, orderItem.orderItemId)
                 && Objects.equals(this.quantityOrdered, orderItem.quantityOrdered)
                 && Objects.equals(this.measurement, orderItem.measurement)
+                && Objects.equals(this.associatedOrderItems, orderItem.associatedOrderItems)
                 && Objects.equals(this.programs, orderItem.programs)
                 && Objects.equals(this.product, orderItem.product)
                 && Objects.equals(this.proceeds, orderItem.proceeds)
                 && Objects.equals(this.expense, orderItem.expense)
                 && Objects.equals(this.promotion, orderItem.promotion)
                 && Objects.equals(this.cancellation, orderItem.cancellation)
-                && Objects.equals(this.fulfillment, orderItem.fulfillment);
+                && Objects.equals(this.fulfillment, orderItem.fulfillment)
+                && Objects.equals(this.tax, orderItem.tax);
     }
 
     @Override
@@ -279,13 +335,15 @@ public class OrderItem {
                 orderItemId,
                 quantityOrdered,
                 measurement,
+                associatedOrderItems,
                 programs,
                 product,
                 proceeds,
                 expense,
                 promotion,
                 cancellation,
-                fulfillment);
+                fulfillment,
+                tax);
     }
 
     @Override
@@ -298,6 +356,9 @@ public class OrderItem {
                 .append(toIndentedString(quantityOrdered))
                 .append("\n");
         sb.append("    measurement: ").append(toIndentedString(measurement)).append("\n");
+        sb.append("    associatedOrderItems: ")
+                .append(toIndentedString(associatedOrderItems))
+                .append("\n");
         sb.append("    programs: ").append(toIndentedString(programs)).append("\n");
         sb.append("    product: ").append(toIndentedString(product)).append("\n");
         sb.append("    proceeds: ").append(toIndentedString(proceeds)).append("\n");
@@ -305,6 +366,7 @@ public class OrderItem {
         sb.append("    promotion: ").append(toIndentedString(promotion)).append("\n");
         sb.append("    cancellation: ").append(toIndentedString(cancellation)).append("\n");
         sb.append("    fulfillment: ").append(toIndentedString(fulfillment)).append("\n");
+        sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
         sb.append("}");
         return sb.toString();
     }

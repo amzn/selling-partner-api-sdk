@@ -63,6 +63,9 @@ public class Address {
     @SerializedName("addressType")
     private String addressType = null;
 
+    @SerializedName("geocodes")
+    private Geocodes geocodes = null;
+
     public Address name(String name) {
         this.name = name;
         return this;
@@ -164,11 +167,11 @@ public class Address {
     }
 
     /**
-     * The municiplaity where the person, business, or institution is located.
+     * The municipality where the person, business, or institution is located.
      *
      * @return municipality
      */
-    @Schema(description = "The municiplaity where the person, business, or institution is located.")
+    @Schema(description = "The municipality where the person, business, or institution is located.")
     public String getMunicipality() {
         return municipality;
     }
@@ -341,6 +344,25 @@ public class Address {
         this.addressType = addressType;
     }
 
+    public Address geocodes(Geocodes geocodes) {
+        this.geocodes = geocodes;
+        return this;
+    }
+
+    /**
+     * Get geocodes
+     *
+     * @return geocodes
+     */
+    @Schema(description = "")
+    public Geocodes getGeocodes() {
+        return geocodes;
+    }
+
+    public void setGeocodes(Geocodes geocodes) {
+        this.geocodes = geocodes;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -363,7 +385,8 @@ public class Address {
                 && Objects.equals(this.email, address.email)
                 && Objects.equals(this.copyEmails, address.copyEmails)
                 && Objects.equals(this.phoneNumber, address.phoneNumber)
-                && Objects.equals(this.addressType, address.addressType);
+                && Objects.equals(this.addressType, address.addressType)
+                && Objects.equals(this.geocodes, address.geocodes);
     }
 
     @Override
@@ -382,7 +405,8 @@ public class Address {
                 email,
                 copyEmails,
                 phoneNumber,
-                addressType);
+                addressType,
+                geocodes);
     }
 
     @Override
@@ -404,6 +428,7 @@ public class Address {
         sb.append("    copyEmails: ").append(toIndentedString(copyEmails)).append("\n");
         sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
         sb.append("    addressType: ").append(toIndentedString(addressType)).append("\n");
+        sb.append("    geocodes: ").append(toIndentedString(geocodes)).append("\n");
         sb.append("}");
         return sb.toString();
     }

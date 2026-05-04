@@ -144,6 +144,55 @@ public class ShipmentInfo {
     @SerializedName("processingSource")
     private ProcessingSourceEnum processingSource = null;
 
+    /** The payment method for the shipment. */
+    @JsonAdapter(PaymentMethodEnum.Adapter.class)
+    public enum PaymentMethodEnum {
+        @SerializedName("CASH_ON_DELIVERY")
+        CASH_ON_DELIVERY("CASH_ON_DELIVERY"),
+        @SerializedName("PREPAID")
+        PREPAID("PREPAID");
+
+        private String value;
+
+        PaymentMethodEnum(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static PaymentMethodEnum fromValue(String input) {
+            for (PaymentMethodEnum b : PaymentMethodEnum.values()) {
+                if (b.value.equals(input)) {
+                    return b;
+                }
+            }
+            return null;
+        }
+
+        public static class Adapter extends TypeAdapter<PaymentMethodEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final PaymentMethodEnum enumeration) throws IOException {
+                jsonWriter.value(String.valueOf(enumeration.getValue()));
+            }
+
+            @Override
+            public PaymentMethodEnum read(final JsonReader jsonReader) throws IOException {
+                Object value = jsonReader.nextString();
+                return PaymentMethodEnum.fromValue((String) (value));
+            }
+        }
+    }
+
+    @SerializedName("paymentMethod")
+    private PaymentMethodEnum paymentMethod = null;
+
     public ShipmentInfo shipmentType(ShipmentTypeEnum shipmentType) {
         this.shipmentType = shipmentType;
         return this;
@@ -307,6 +356,25 @@ public class ShipmentInfo {
         this.processingSource = processingSource;
     }
 
+    public ShipmentInfo paymentMethod(PaymentMethodEnum paymentMethod) {
+        this.paymentMethod = paymentMethod;
+        return this;
+    }
+
+    /**
+     * The payment method for the shipment.
+     *
+     * @return paymentMethod
+     */
+    @Schema(example = "PREPAID", description = "The payment method for the shipment.")
+    public PaymentMethodEnum getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(PaymentMethodEnum paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -323,7 +391,8 @@ public class ShipmentInfo {
                 && Objects.equals(this.buyerOrderId, shipmentInfo.buyerOrderId)
                 && Objects.equals(this.orderStatesEligibleForRejection, shipmentInfo.orderStatesEligibleForRejection)
                 && Objects.equals(this.orderPlacedTimestamp, shipmentInfo.orderPlacedTimestamp)
-                && Objects.equals(this.processingSource, shipmentInfo.processingSource);
+                && Objects.equals(this.processingSource, shipmentInfo.processingSource)
+                && Objects.equals(this.paymentMethod, shipmentInfo.paymentMethod);
     }
 
     @Override
@@ -336,7 +405,8 @@ public class ShipmentInfo {
                 buyerOrderId,
                 orderStatesEligibleForRejection,
                 orderPlacedTimestamp,
-                processingSource);
+                processingSource,
+                paymentMethod);
     }
 
     @Override
@@ -360,6 +430,7 @@ public class ShipmentInfo {
         sb.append("    processingSource: ")
                 .append(toIndentedString(processingSource))
                 .append("\n");
+        sb.append("    paymentMethod: ").append(toIndentedString(paymentMethod)).append("\n");
         sb.append("}");
         return sb.toString();
     }
