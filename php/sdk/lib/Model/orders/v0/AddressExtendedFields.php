@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description The container for address extended fields (such as &#x60;street name&#x60; and &#x60;street number&#x60;). Currently only available with Brazil shipping addresses.
+ * @description Extended address fields for additional address components including the street name or number.   Note: Available for grocery sellers and Brazil shipping addresses.
  *
  * @author   OpenAPI Generator team
  *
@@ -64,22 +64,24 @@ class AddressExtendedFields implements ModelInterface, \ArrayAccess, \JsonSerial
         'street_name' => 'string',
         'street_number' => 'string',
         'complement' => 'string',
-        'neighborhood' => 'string'];
+        'neighborhood' => 'string',
+        'geo_coordinates' => '\SpApi\Model\orders\v0\GeoCoordinates'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
      * @var string[]
      *
-     * @phpstan-var array<string, string|null>
+     * @phpstan-var array<string, null|string>
      *
-     * @psalm-var array<string, string|null>
+     * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
         'street_name' => null,
         'street_number' => null,
         'complement' => null,
-        'neighborhood' => null];
+        'neighborhood' => null,
+        'geo_coordinates' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -91,6 +93,7 @@ class AddressExtendedFields implements ModelInterface, \ArrayAccess, \JsonSerial
         'street_number' => true,
         'complement' => true,
         'neighborhood' => true,
+        'geo_coordinates' => true,
     ];
 
     /**
@@ -111,6 +114,7 @@ class AddressExtendedFields implements ModelInterface, \ArrayAccess, \JsonSerial
         'street_number' => 'StreetNumber',
         'complement' => 'Complement',
         'neighborhood' => 'Neighborhood',
+        'geo_coordinates' => 'GeoCoordinates',
     ];
 
     /**
@@ -123,6 +127,7 @@ class AddressExtendedFields implements ModelInterface, \ArrayAccess, \JsonSerial
         'street_number' => 'setStreetNumber',
         'complement' => 'setComplement',
         'neighborhood' => 'setNeighborhood',
+        'geo_coordinates' => 'setGeoCoordinates',
     ];
 
     /**
@@ -135,6 +140,7 @@ class AddressExtendedFields implements ModelInterface, \ArrayAccess, \JsonSerial
         'street_number' => 'getStreetNumber',
         'complement' => 'getComplement',
         'neighborhood' => 'getNeighborhood',
+        'geo_coordinates' => 'getGeoCoordinates',
     ];
 
     /**
@@ -154,6 +160,7 @@ class AddressExtendedFields implements ModelInterface, \ArrayAccess, \JsonSerial
         $this->setIfExists('street_number', $data ?? [], null);
         $this->setIfExists('complement', $data ?? [], null);
         $this->setIfExists('neighborhood', $data ?? [], null);
+        $this->setIfExists('geo_coordinates', $data ?? [], null);
     }
 
     /**
@@ -371,6 +378,36 @@ class AddressExtendedFields implements ModelInterface, \ArrayAccess, \JsonSerial
             }
         }
         $this->container['neighborhood'] = $neighborhood;
+
+        return $this;
+    }
+
+    /**
+     * Gets geo_coordinates.
+     */
+    public function getGeoCoordinates(): ?GeoCoordinates
+    {
+        return $this->container['geo_coordinates'];
+    }
+
+    /**
+     * Sets geo_coordinates.
+     *
+     * @param null|GeoCoordinates $geo_coordinates geo_coordinates
+     */
+    public function setGeoCoordinates(?GeoCoordinates $geo_coordinates): self
+    {
+        if (is_null($geo_coordinates)) {
+            array_push($this->openAPINullablesSetToNull, 'geo_coordinates');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('geo_coordinates', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['geo_coordinates'] = $geo_coordinates;
 
         return $this;
     }

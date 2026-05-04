@@ -53,6 +53,8 @@ class Weight implements ModelInterface, \ArrayAccess, \JsonSerializable
 
     public const WEIGHT_UNIT_G = 'G';
     public const WEIGHT_UNIT_KG = 'KG';
+    public const WEIGHT_UNIT_LB = 'LB';
+    public const WEIGHT_UNIT_OZ = 'OZ';
 
     /**
      * The original name of the model.
@@ -73,9 +75,9 @@ class Weight implements ModelInterface, \ArrayAccess, \JsonSerializable
      *
      * @var string[]
      *
-     * @phpstan-var array<string, string|null>
+     * @phpstan-var array<string, null|string>
      *
-     * @psalm-var array<string, string|null>
+     * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
         'value' => null,
@@ -234,6 +236,8 @@ class Weight implements ModelInterface, \ArrayAccess, \JsonSerializable
         return [
             self::WEIGHT_UNIT_G,
             self::WEIGHT_UNIT_KG,
+            self::WEIGHT_UNIT_LB,
+            self::WEIGHT_UNIT_OZ,
         ];
     }
 

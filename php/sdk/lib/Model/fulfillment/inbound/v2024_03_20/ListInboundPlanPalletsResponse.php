@@ -69,9 +69,9 @@ class ListInboundPlanPalletsResponse implements ModelInterface, \ArrayAccess, \J
      *
      * @var string[]
      *
-     * @phpstan-var array<string, string|null>
+     * @phpstan-var array<string, null|string>
      *
-     * @psalm-var array<string, string|null>
+     * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
         'pagination' => null,

@@ -389,6 +389,242 @@ class GetOrderApiTest extends BaseTestCase
           } ]
         }
       }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot;028-1234567-8901234&quot;
+          },
+          &quot;includedData&quot; : {
+            &quot;value&quot; : [ &quot;BUYER&quot;, &quot;RECIPIENT&quot;, &quot;PROCEEDS&quot;, &quot;FULFILLMENT&quot;, &quot;TAX&quot; ]
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;order&quot; : {
+          &quot;orderId&quot; : &quot;028-1234567-8901234&quot;,
+          &quot;orderAliases&quot; : [ {
+            &quot;aliasId&quot; : &quot;TR-ORDER-2025-001&quot;,
+            &quot;aliasType&quot; : &quot;SELLER_ORDER_ID&quot;
+          } ],
+          &quot;createdTime&quot; : &quot;2025-03-15T10:30:00Z&quot;,
+          &quot;lastUpdatedTime&quot; : &quot;2025-03-15T14:20:00Z&quot;,
+          &quot;salesChannel&quot; : {
+            &quot;channelName&quot; : &quot;AMAZON&quot;,
+            &quot;marketplaceId&quot; : &quot;A33AVAJ2PDY3EV&quot;,
+            &quot;marketplaceName&quot; : &quot;Amazon.com.tr&quot;
+          },
+          &quot;buyer&quot; : {
+            &quot;buyerName&quot; : &quot;Mehmet Yilmaz&quot;,
+            &quot;buyerEmail&quot; : &quot;buyer-email@marketplace.amazon.com.tr&quot;
+          },
+          &quot;recipient&quot; : {
+            &quot;deliveryAddress&quot; : {
+              &quot;name&quot; : &quot;Mehmet Yilmaz&quot;,
+              &quot;addressLine1&quot; : &quot;Istiklal Caddesi No:42&quot;,
+              &quot;addressLine2&quot; : &quot;Kat 3&quot;,
+              &quot;addressLine3&quot; : &quot;&quot;,
+              &quot;city&quot; : &quot;Istanbul&quot;,
+              &quot;districtOrCounty&quot; : &quot;Beyoglu&quot;,
+              &quot;stateOrRegion&quot; : &quot;Istanbul&quot;,
+              &quot;municipality&quot; : &quot;&quot;,
+              &quot;postalCode&quot; : &quot;34430&quot;,
+              &quot;countryCode&quot; : &quot;TR&quot;,
+              &quot;addressType&quot; : &quot;COMMERCIAL&quot;
+            }
+          },
+          &quot;proceeds&quot; : {
+            &quot;grandTotal&quot; : {
+              &quot;amount&quot; : &quot;125.00&quot;,
+              &quot;currencyCode&quot; : &quot;TRY&quot;
+            }
+          },
+          &quot;fulfillment&quot; : {
+            &quot;fulfillmentStatus&quot; : &quot;SHIPPED&quot;,
+            &quot;fulfilledBy&quot; : &quot;MERCHANT&quot;,
+            &quot;fulfillmentServiceLevel&quot; : &quot;STANDARD&quot;,
+            &quot;shipByWindow&quot; : {
+              &quot;earliestDateTime&quot; : &quot;2025-03-16T00:00:00Z&quot;,
+              &quot;latestDateTime&quot; : &quot;2025-03-17T23:59:59Z&quot;
+            },
+            &quot;deliverByWindow&quot; : {
+              &quot;earliestDateTime&quot; : &quot;2025-03-18T00:00:00Z&quot;,
+              &quot;latestDateTime&quot; : &quot;2025-03-21T23:59:59Z&quot;
+            }
+          },
+          &quot;tax&quot; : {
+            &quot;taxRegistrations&quot; : [ {
+              &quot;entityType&quot; : &quot;BUYER&quot;,
+              &quot;taxRegistrationType&quot; : &quot;BUSINESS&quot;,
+              &quot;taxRegistrationNumber&quot; : &quot;TR1234567890&quot;,
+              &quot;legalName&quot; : &quot;Test company name&quot;,
+              &quot;taxRegistrationAddress&quot; : {
+                &quot;name&quot; : &quot;Mehmet Yilmaz&quot;,
+                &quot;companyName&quot; : &quot;Test company name&quot;,
+                &quot;addressLine1&quot; : &quot;Istiklal Caddesi No:42&quot;,
+                &quot;addressLine2&quot; : &quot;Kat 3&quot;,
+                &quot;city&quot; : &quot;Istanbul&quot;,
+                &quot;stateOrRegion&quot; : &quot;Istanbul&quot;,
+                &quot;postalCode&quot; : &quot;34430&quot;,
+                &quot;countryCode&quot; : &quot;TR&quot;
+              },
+              &quot;taxRegistrationAttributes&quot; : [ {
+                &quot;key&quot; : &quot;TAX_OFFICE&quot;,
+                &quot;value&quot; : &quot;tax office&quot;
+              } ]
+            } ],
+            &quot;taxInvoicing&quot; : {
+              &quot;buyerInvoicePreference&quot; : &quot;BUSINESS&quot;
+            }
+          },
+          &quot;orderItems&quot; : [ {
+            &quot;orderItemId&quot; : &quot;02812345678901&quot;,
+            &quot;quantityOrdered&quot; : 2,
+            &quot;product&quot; : {
+              &quot;asin&quot; : &quot;B09V3KXJPB&quot;,
+              &quot;title&quot; : &quot;Fire HD 10 tablet | 10.1 inch, 1080p Full HD&quot;,
+              &quot;sellerSku&quot; : &quot;FIRE-HD10-TR-BLK&quot;,
+              &quot;condition&quot; : {
+                &quot;conditionType&quot; : &quot;NEW&quot;,
+                &quot;conditionSubtype&quot; : &quot;NEW&quot;,
+                &quot;conditionNote&quot; : &quot;&quot;
+              },
+              &quot;price&quot; : {
+                &quot;unitPrice&quot; : {
+                  &quot;amount&quot; : &quot;62.50&quot;,
+                  &quot;currencyCode&quot; : &quot;TRY&quot;
+                }
+              }
+            },
+            &quot;proceeds&quot; : {
+              &quot;proceedsTotal&quot; : {
+                &quot;amount&quot; : &quot;125.00&quot;,
+                &quot;currencyCode&quot; : &quot;TRY&quot;
+              },
+              &quot;breakdowns&quot; : [ {
+                &quot;type&quot; : &quot;ITEM&quot;,
+                &quot;subtotal&quot; : {
+                  &quot;amount&quot; : &quot;125.00&quot;,
+                  &quot;currencyCode&quot; : &quot;TRY&quot;
+                }
+              } ]
+            },
+            &quot;fulfillment&quot; : {
+              &quot;quantityFulfilled&quot; : 2,
+              &quot;quantityUnfulfilled&quot; : 0
+            },
+            &quot;tax&quot; : {
+              &quot;taxCalculationBreakdowns&quot; : [ {
+                &quot;reportingScheme&quot; : &quot;IOSS&quot;
+              } ],
+              &quot;taxCollections&quot; : [ {
+                &quot;model&quot; : &quot;MARKETPLACE_FACILITATOR&quot;,
+                &quot;responsibleParty&quot; : &quot;Amazon Services Europe S.a.r.L.&quot;
+              } ]
+            }
+          } ]
+        }
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot;114-9876543-1234567&quot;
+          },
+          &quot;includedData&quot; : {
+            &quot;value&quot; : [ &quot;RECIPIENT&quot;, &quot;PROCEEDS&quot;, &quot;FULFILLMENT&quot; ]
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;order&quot; : {
+          &quot;orderId&quot; : &quot;114-9876543-1234567&quot;,
+          &quot;createdTime&quot; : &quot;2025-03-10T14:00:00Z&quot;,
+          &quot;lastUpdatedTime&quot; : &quot;2025-03-10T14:30:00Z&quot;,
+          &quot;programs&quot; : [ &quot;IN_STORE_PICK_UP&quot; ],
+          &quot;salesChannel&quot; : {
+            &quot;channelName&quot; : &quot;AMAZON&quot;,
+            &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
+            &quot;marketplaceName&quot; : &quot;Amazon.com&quot;
+          },
+          &quot;recipient&quot; : {
+            &quot;deliveryAddress&quot; : {
+              &quot;name&quot; : &quot;Test Store #1234&quot;,
+              &quot;companyName&quot; : &quot;Test Store&quot;,
+              &quot;addressLine1&quot; : &quot;100 Main Street&quot;,
+              &quot;addressLine2&quot; : &quot;Suite 200&quot;,
+              &quot;addressLine3&quot; : &quot;&quot;,
+              &quot;city&quot; : &quot;Seattle&quot;,
+              &quot;districtOrCounty&quot; : &quot;&quot;,
+              &quot;stateOrRegion&quot; : &quot;WA&quot;,
+              &quot;municipality&quot; : &quot;&quot;,
+              &quot;postalCode&quot; : &quot;98101&quot;,
+              &quot;countryCode&quot; : &quot;US&quot;,
+              &quot;phone&quot; : &quot;+1 206 555 0100&quot;,
+              &quot;addressType&quot; : &quot;COMMERCIAL&quot;
+            }
+          },
+          &quot;proceeds&quot; : {
+            &quot;grandTotal&quot; : {
+              &quot;amount&quot; : &quot;49.99&quot;,
+              &quot;currencyCode&quot; : &quot;USD&quot;
+            }
+          },
+          &quot;fulfillment&quot; : {
+            &quot;fulfillmentStatus&quot; : &quot;UNSHIPPED&quot;,
+            &quot;fulfilledBy&quot; : &quot;MERCHANT&quot;,
+            &quot;fulfillmentServiceLevel&quot; : &quot;STANDARD&quot;
+          },
+          &quot;orderItems&quot; : [ {
+            &quot;orderItemId&quot; : &quot;11498765431234&quot;,
+            &quot;quantityOrdered&quot; : 1,
+            &quot;product&quot; : {
+              &quot;asin&quot; : &quot;B0BSHF7WHW&quot;,
+              &quot;title&quot; : &quot;All-new Echo Pop | Full sound compact smart speaker with Alexa&quot;,
+              &quot;sellerSku&quot; : &quot;ECHO-POP-US-BLK&quot;,
+              &quot;condition&quot; : {
+                &quot;conditionType&quot; : &quot;NEW&quot;,
+                &quot;conditionSubtype&quot; : &quot;NEW&quot;,
+                &quot;conditionNote&quot; : &quot;&quot;
+              },
+              &quot;price&quot; : {
+                &quot;unitPrice&quot; : {
+                  &quot;amount&quot; : &quot;39.99&quot;,
+                  &quot;currencyCode&quot; : &quot;USD&quot;
+                }
+              }
+            },
+            &quot;proceeds&quot; : {
+              &quot;proceedsTotal&quot; : {
+                &quot;amount&quot; : &quot;49.99&quot;,
+                &quot;currencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;breakdowns&quot; : [ {
+                &quot;type&quot; : &quot;ITEM&quot;,
+                &quot;subtotal&quot; : {
+                  &quot;amount&quot; : &quot;39.99&quot;,
+                  &quot;currencyCode&quot; : &quot;USD&quot;
+                }
+              }, {
+                &quot;type&quot; : &quot;TAX&quot;,
+                &quot;subtotal&quot; : {
+                  &quot;amount&quot; : &quot;10.00&quot;,
+                  &quot;currencyCode&quot; : &quot;USD&quot;
+                }
+              } ]
+            },
+            &quot;fulfillment&quot; : {
+              &quot;quantityFulfilled&quot; : 0,
+              &quot;quantityUnfulfilled&quot; : 1
+            },
+            &quot;associatedOrderItems&quot; : [ {
+              &quot;orderId&quot; : &quot;333-1234567-7654321&quot;,
+              &quot;orderItemId&quot; : &quot;11498765435678&quot;,
+              &quot;associationType&quot; : &quot;VALUE_ADD_SERVICE&quot;
+            } ]
+          } ]
+        }
+      }
     } ]
   }
 }';

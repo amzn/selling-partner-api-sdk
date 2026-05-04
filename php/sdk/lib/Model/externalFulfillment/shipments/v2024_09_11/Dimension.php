@@ -53,6 +53,7 @@ class Dimension implements ModelInterface, \ArrayAccess, \JsonSerializable
 
     public const DIMENSION_UNIT_CM = 'CM';
     public const DIMENSION_UNIT_M = 'M';
+    public const DIMENSION_UNIT_IN = 'IN';
 
     /**
      * The original name of the model.
@@ -73,9 +74,9 @@ class Dimension implements ModelInterface, \ArrayAccess, \JsonSerializable
      *
      * @var string[]
      *
-     * @phpstan-var array<string, string|null>
+     * @phpstan-var array<string, null|string>
      *
-     * @psalm-var array<string, string|null>
+     * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
         'value' => null,
@@ -234,6 +235,7 @@ class Dimension implements ModelInterface, \ArrayAccess, \JsonSerializable
         return [
             self::DIMENSION_UNIT_CM,
             self::DIMENSION_UNIT_M,
+            self::DIMENSION_UNIT_IN,
         ];
     }
 

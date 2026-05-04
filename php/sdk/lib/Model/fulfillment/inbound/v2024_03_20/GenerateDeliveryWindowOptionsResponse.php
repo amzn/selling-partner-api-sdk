@@ -68,9 +68,9 @@ class GenerateDeliveryWindowOptionsResponse implements ModelInterface, \ArrayAcc
      *
      * @var string[]
      *
-     * @phpstan-var array<string, string|null>
+     * @phpstan-var array<string, null|string>
      *
-     * @psalm-var array<string, string|null>
+     * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
         'operation_id' => null];

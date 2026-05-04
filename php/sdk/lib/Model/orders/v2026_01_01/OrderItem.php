@@ -64,34 +64,38 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'order_item_id' => 'string',
         'quantity_ordered' => 'int',
         'measurement' => '\SpApi\Model\orders\v2026_01_01\Measurement',
+        'associated_order_items' => '\SpApi\Model\orders\v2026_01_01\AssociatedOrderItem[]',
         'programs' => 'string[]',
         'product' => '\SpApi\Model\orders\v2026_01_01\ItemProduct',
         'proceeds' => '\SpApi\Model\orders\v2026_01_01\ItemProceeds',
         'expense' => '\SpApi\Model\orders\v2026_01_01\ItemExpense',
         'promotion' => '\SpApi\Model\orders\v2026_01_01\ItemPromotion',
         'cancellation' => '\SpApi\Model\orders\v2026_01_01\ItemCancellation',
-        'fulfillment' => '\SpApi\Model\orders\v2026_01_01\ItemFulfillment'];
+        'fulfillment' => '\SpApi\Model\orders\v2026_01_01\ItemFulfillment',
+        'tax' => '\SpApi\Model\orders\v2026_01_01\ItemTax'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
      * @var string[]
      *
-     * @phpstan-var array<string, string|null>
+     * @phpstan-var array<string, null|string>
      *
-     * @psalm-var array<string, string|null>
+     * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
         'order_item_id' => null,
         'quantity_ordered' => null,
         'measurement' => null,
+        'associated_order_items' => null,
         'programs' => null,
         'product' => null,
         'proceeds' => null,
         'expense' => null,
         'promotion' => null,
         'cancellation' => null,
-        'fulfillment' => null];
+        'fulfillment' => null,
+        'tax' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -102,6 +106,7 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'order_item_id' => false,
         'quantity_ordered' => false,
         'measurement' => true,
+        'associated_order_items' => true,
         'programs' => true,
         'product' => false,
         'proceeds' => true,
@@ -109,6 +114,7 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'promotion' => true,
         'cancellation' => true,
         'fulfillment' => true,
+        'tax' => true,
     ];
 
     /**
@@ -128,6 +134,7 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'order_item_id' => 'orderItemId',
         'quantity_ordered' => 'quantityOrdered',
         'measurement' => 'measurement',
+        'associated_order_items' => 'associatedOrderItems',
         'programs' => 'programs',
         'product' => 'product',
         'proceeds' => 'proceeds',
@@ -135,6 +142,7 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'promotion' => 'promotion',
         'cancellation' => 'cancellation',
         'fulfillment' => 'fulfillment',
+        'tax' => 'tax',
     ];
 
     /**
@@ -146,6 +154,7 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'order_item_id' => 'setOrderItemId',
         'quantity_ordered' => 'setQuantityOrdered',
         'measurement' => 'setMeasurement',
+        'associated_order_items' => 'setAssociatedOrderItems',
         'programs' => 'setPrograms',
         'product' => 'setProduct',
         'proceeds' => 'setProceeds',
@@ -153,6 +162,7 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'promotion' => 'setPromotion',
         'cancellation' => 'setCancellation',
         'fulfillment' => 'setFulfillment',
+        'tax' => 'setTax',
     ];
 
     /**
@@ -164,6 +174,7 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'order_item_id' => 'getOrderItemId',
         'quantity_ordered' => 'getQuantityOrdered',
         'measurement' => 'getMeasurement',
+        'associated_order_items' => 'getAssociatedOrderItems',
         'programs' => 'getPrograms',
         'product' => 'getProduct',
         'proceeds' => 'getProceeds',
@@ -171,6 +182,7 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'promotion' => 'getPromotion',
         'cancellation' => 'getCancellation',
         'fulfillment' => 'getFulfillment',
+        'tax' => 'getTax',
     ];
 
     /**
@@ -189,6 +201,7 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('order_item_id', $data ?? [], null);
         $this->setIfExists('quantity_ordered', $data ?? [], null);
         $this->setIfExists('measurement', $data ?? [], null);
+        $this->setIfExists('associated_order_items', $data ?? [], null);
         $this->setIfExists('programs', $data ?? [], null);
         $this->setIfExists('product', $data ?? [], null);
         $this->setIfExists('proceeds', $data ?? [], null);
@@ -196,6 +209,7 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('promotion', $data ?? [], null);
         $this->setIfExists('cancellation', $data ?? [], null);
         $this->setIfExists('fulfillment', $data ?? [], null);
+        $this->setIfExists('tax', $data ?? [], null);
     }
 
     /**
@@ -381,6 +395,36 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
             }
         }
         $this->container['measurement'] = $measurement;
+
+        return $this;
+    }
+
+    /**
+     * Gets associated_order_items.
+     */
+    public function getAssociatedOrderItems(): ?array
+    {
+        return $this->container['associated_order_items'];
+    }
+
+    /**
+     * Sets associated_order_items.
+     *
+     * @param null|array $associated_order_items A list of order items associated with this item. For example, a value-add service purchased with the product.
+     */
+    public function setAssociatedOrderItems(?array $associated_order_items): self
+    {
+        if (is_null($associated_order_items)) {
+            array_push($this->openAPINullablesSetToNull, 'associated_order_items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('associated_order_items', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['associated_order_items'] = $associated_order_items;
 
         return $this;
     }
@@ -584,6 +628,36 @@ class OrderItem implements ModelInterface, \ArrayAccess, \JsonSerializable
             }
         }
         $this->container['fulfillment'] = $fulfillment;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax.
+     */
+    public function getTax(): ?ItemTax
+    {
+        return $this->container['tax'];
+    }
+
+    /**
+     * Sets tax.
+     *
+     * @param null|ItemTax $tax tax
+     */
+    public function setTax(?ItemTax $tax): self
+    {
+        if (is_null($tax)) {
+            array_push($this->openAPINullablesSetToNull, 'tax');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tax'] = $tax;
 
         return $this;
     }

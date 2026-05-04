@@ -69,9 +69,9 @@ class ContentMetadataRecord implements ModelInterface, \ArrayAccess, \JsonSerial
      *
      * @var string[]
      *
-     * @phpstan-var array<string, string|null>
+     * @phpstan-var array<string, null|string>
      *
-     * @psalm-var array<string, string|null>
+     * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
         'content_reference_key' => null,

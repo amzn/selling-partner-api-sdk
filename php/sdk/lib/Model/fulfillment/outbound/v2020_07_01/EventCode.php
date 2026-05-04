@@ -112,6 +112,10 @@ class EventCode
 
     public const _419 = 'EVENT_419';
 
+    public const _801 = 'EVENT_801';
+
+    public const _804 = 'EVENT_804';
+
     /**
      * Gets allowable values of the enum.
      *
@@ -153,6 +157,8 @@ class EventCode
             self::_417,
             self::_418,
             self::_419,
+            self::_801,
+            self::_804,
         ];
     }
 }

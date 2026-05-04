@@ -71,6 +71,8 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
         'buyer' => '\SpApi\Model\orders\v2026_01_01\Buyer',
         'recipient' => '\SpApi\Model\orders\v2026_01_01\Recipient',
         'proceeds' => '\SpApi\Model\orders\v2026_01_01\OrderProceeds',
+        'payment' => '\SpApi\Model\orders\v2026_01_01\OrderPayment',
+        'tax' => '\SpApi\Model\orders\v2026_01_01\OrderTax',
         'fulfillment' => '\SpApi\Model\orders\v2026_01_01\OrderFulfillment',
         'order_items' => '\SpApi\Model\orders\v2026_01_01\OrderItem[]',
         'packages' => '\SpApi\Model\orders\v2026_01_01\OrderPackage[]'];
@@ -80,9 +82,9 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
      *
      * @var string[]
      *
-     * @phpstan-var array<string, string|null>
+     * @phpstan-var array<string, null|string>
      *
-     * @psalm-var array<string, string|null>
+     * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
         'order_id' => null,
@@ -95,6 +97,8 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
         'buyer' => null,
         'recipient' => null,
         'proceeds' => null,
+        'payment' => null,
+        'tax' => null,
         'fulfillment' => null,
         'order_items' => null,
         'packages' => null];
@@ -115,6 +119,8 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
         'buyer' => true,
         'recipient' => true,
         'proceeds' => true,
+        'payment' => true,
+        'tax' => true,
         'fulfillment' => true,
         'order_items' => false,
         'packages' => true,
@@ -144,6 +150,8 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
         'buyer' => 'buyer',
         'recipient' => 'recipient',
         'proceeds' => 'proceeds',
+        'payment' => 'payment',
+        'tax' => 'tax',
         'fulfillment' => 'fulfillment',
         'order_items' => 'orderItems',
         'packages' => 'packages',
@@ -165,6 +173,8 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
         'buyer' => 'setBuyer',
         'recipient' => 'setRecipient',
         'proceeds' => 'setProceeds',
+        'payment' => 'setPayment',
+        'tax' => 'setTax',
         'fulfillment' => 'setFulfillment',
         'order_items' => 'setOrderItems',
         'packages' => 'setPackages',
@@ -186,6 +196,8 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
         'buyer' => 'getBuyer',
         'recipient' => 'getRecipient',
         'proceeds' => 'getProceeds',
+        'payment' => 'getPayment',
+        'tax' => 'getTax',
         'fulfillment' => 'getFulfillment',
         'order_items' => 'getOrderItems',
         'packages' => 'getPackages',
@@ -214,6 +226,8 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('buyer', $data ?? [], null);
         $this->setIfExists('recipient', $data ?? [], null);
         $this->setIfExists('proceeds', $data ?? [], null);
+        $this->setIfExists('payment', $data ?? [], null);
+        $this->setIfExists('tax', $data ?? [], null);
         $this->setIfExists('fulfillment', $data ?? [], null);
         $this->setIfExists('order_items', $data ?? [], null);
         $this->setIfExists('packages', $data ?? [], null);
@@ -446,7 +460,7 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets programs.
      *
-     * @param null|array $programs Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`,  `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`
+     * @param null|array $programs Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`, `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `INVOICE_BY_AMAZON`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`
      */
     public function setPrograms(?array $programs): self
     {
@@ -604,6 +618,66 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
             }
         }
         $this->container['proceeds'] = $proceeds;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment.
+     */
+    public function getPayment(): ?OrderPayment
+    {
+        return $this->container['payment'];
+    }
+
+    /**
+     * Sets payment.
+     *
+     * @param null|OrderPayment $payment payment
+     */
+    public function setPayment(?OrderPayment $payment): self
+    {
+        if (is_null($payment)) {
+            array_push($this->openAPINullablesSetToNull, 'payment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payment', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['payment'] = $payment;
+
+        return $this;
+    }
+
+    /**
+     * Gets tax.
+     */
+    public function getTax(): ?OrderTax
+    {
+        return $this->container['tax'];
+    }
+
+    /**
+     * Sets tax.
+     *
+     * @param null|OrderTax $tax tax
+     */
+    public function setTax(?OrderTax $tax): self
+    {
+        if (is_null($tax)) {
+            array_push($this->openAPINullablesSetToNull, 'tax');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tax'] = $tax;
 
         return $this;
     }

@@ -61,19 +61,21 @@ class ItemPacking implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'gift_option' => '\SpApi\Model\orders\v2026_01_01\GiftOption'];
+        'gift_option' => '\SpApi\Model\orders\v2026_01_01\GiftOption',
+        'serial_number_requirement' => '\SpApi\Model\orders\v2026_01_01\SerialNumberRequirement'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
      *
      * @var string[]
      *
-     * @phpstan-var array<string, string|null>
+     * @phpstan-var array<string, null|string>
      *
-     * @psalm-var array<string, string|null>
+     * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
-        'gift_option' => null];
+        'gift_option' => null,
+        'serial_number_requirement' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -82,6 +84,7 @@ class ItemPacking implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $openAPINullables = [
         'gift_option' => true,
+        'serial_number_requirement' => true,
     ];
 
     /**
@@ -99,6 +102,7 @@ class ItemPacking implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $attributeMap = [
         'gift_option' => 'giftOption',
+        'serial_number_requirement' => 'serialNumberRequirement',
     ];
 
     /**
@@ -108,6 +112,7 @@ class ItemPacking implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $setters = [
         'gift_option' => 'setGiftOption',
+        'serial_number_requirement' => 'setSerialNumberRequirement',
     ];
 
     /**
@@ -117,6 +122,7 @@ class ItemPacking implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $getters = [
         'gift_option' => 'getGiftOption',
+        'serial_number_requirement' => 'getSerialNumberRequirement',
     ];
 
     /**
@@ -133,6 +139,7 @@ class ItemPacking implements ModelInterface, \ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('gift_option', $data ?? [], null);
+        $this->setIfExists('serial_number_requirement', $data ?? [], null);
     }
 
     /**
@@ -260,6 +267,36 @@ class ItemPacking implements ModelInterface, \ArrayAccess, \JsonSerializable
             }
         }
         $this->container['gift_option'] = $gift_option;
+
+        return $this;
+    }
+
+    /**
+     * Gets serial_number_requirement.
+     */
+    public function getSerialNumberRequirement(): ?SerialNumberRequirement
+    {
+        return $this->container['serial_number_requirement'];
+    }
+
+    /**
+     * Sets serial_number_requirement.
+     *
+     * @param null|SerialNumberRequirement $serial_number_requirement serial_number_requirement
+     */
+    public function setSerialNumberRequirement(?SerialNumberRequirement $serial_number_requirement): self
+    {
+        if (is_null($serial_number_requirement)) {
+            array_push($this->openAPINullablesSetToNull, 'serial_number_requirement');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('serial_number_requirement', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['serial_number_requirement'] = $serial_number_requirement;
 
         return $this;
     }

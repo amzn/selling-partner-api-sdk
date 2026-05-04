@@ -72,9 +72,9 @@ class CreateReturnItem implements ModelInterface, \ArrayAccess, \JsonSerializabl
      *
      * @var string[]
      *
-     * @phpstan-var array<string, string|null>
+     * @phpstan-var array<string, null|string>
      *
-     * @psalm-var array<string, string|null>
+     * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
         'seller_return_item_id' => null,

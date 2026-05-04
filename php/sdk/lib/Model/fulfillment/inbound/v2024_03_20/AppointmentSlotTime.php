@@ -69,9 +69,9 @@ class AppointmentSlotTime implements ModelInterface, \ArrayAccess, \JsonSerializ
      *
      * @var string[]
      *
-     * @phpstan-var array<string, string|null>
+     * @phpstan-var array<string, null|string>
      *
-     * @psalm-var array<string, string|null>
+     * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
         'end_time' => 'date-time',

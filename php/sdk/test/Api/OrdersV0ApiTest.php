@@ -370,6 +370,7 @@ class OrdersV0ApiTest extends BaseTestCase
             &quot;CountryCode&quot; : &quot;US&quot;
           },
           &quot;BuyerInfo&quot; : {
+            &quot;BuyerEmail&quot; : &quot;user@example.com&quot;,
             &quot;BuyerName&quot; : &quot;John Doe&quot;,
             &quot;BuyerTaxInfo&quot; : {
               &quot;CompanyLegalName&quot; : &quot;A Company Name&quot;
@@ -709,7 +710,15 @@ class OrdersV0ApiTest extends BaseTestCase
             &quot;City&quot; : &quot;Canton&quot;,
             &quot;StateOrRegion&quot; : &quot;MI&quot;,
             &quot;PostalCode&quot; : &quot;48817&quot;,
-            &quot;CountryCode&quot; : &quot;US&quot;
+            &quot;CountryCode&quot; : &quot;US&quot;,
+            &quot;ExtendedFields&quot; : {
+              &quot;StreetName&quot; : &quot;Cross St&quot;,
+              &quot;StreetNumber&quot; : &quot;1&quot;,
+              &quot;GeoCoordinates&quot; : {
+                &quot;Latitude&quot; : 37.42678611,
+                &quot;Longitude&quot; : -122.08060321
+              }
+            }
           }
         }
       }
@@ -927,6 +936,7 @@ class OrdersV0ApiTest extends BaseTestCase
       &quot;example&quot; : {
         &quot;payload&quot; : {
           &quot;AmazonOrderId&quot; : &quot;902-3159896-1390916&quot;,
+          &quot;BuyerEmail&quot; : &quot;user@example.com&quot;,
           &quot;BuyerName&quot; : &quot;John Smith&quot;,
           &quot;BuyerTaxInfo&quot; : {
             &quot;CompanyLegalName&quot; : &quot;Company Name&quot;
@@ -948,6 +958,7 @@ class OrdersV0ApiTest extends BaseTestCase
       &quot;response&quot; : {
         &quot;payload&quot; : {
           &quot;AmazonOrderId&quot; : &quot;902-1845936-5435065&quot;,
+          &quot;BuyerEmail&quot; : &quot;fzyrv6gwkhbb15c@example.com&quot;,
           &quot;BuyerName&quot; : &quot;MFNIntegrationTestMerchant&quot;
         }
       }
@@ -2191,6 +2202,7 @@ class OrdersV0ApiTest extends BaseTestCase
               &quot;CountryCode&quot; : &quot;US&quot;
             },
             &quot;BuyerInfo&quot; : {
+              &quot;BuyerEmail&quot; : &quot;user@example.com&quot;,
               &quot;BuyerName&quot; : &quot;John Doe&quot;,
               &quot;BuyerTaxInfo&quot; : {
                 &quot;CompanyLegalName&quot; : &quot;A Company Name&quot;
