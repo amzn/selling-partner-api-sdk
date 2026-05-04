@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.replenishment.v2022_11_07
 {
     /// <summary>
-    /// Use these parameters to filter results. Any result must match all of the provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.
+    /// Use these parameters to filter results. Any result must match all provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.
     /// </summary>
     [DataContract(Name = "ListOffersRequestFilters")]
     public partial class ListOffersRequestFilters : IValidatableObject

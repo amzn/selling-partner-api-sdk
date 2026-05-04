@@ -26,34 +26,34 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.orders.v2026_01_01
 {
     /// <summary>
-    /// Further granular breakdown of the subtotal of the proceeds breakdown, only available for TAX and DISCOUNT proceeds types.
+    /// Tax information about the order.
     /// </summary>
-    [DataContract(Name = "ItemProceedsDetailedBreakdown")]
-    public partial class ItemProceedsDetailedBreakdown : IValidatableObject
+    [DataContract(Name = "OrderTax")]
+    public partial class OrderTax : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ItemProceedsDetailedBreakdown" /> class.
+        /// Initializes a new instance of the <see cref="OrderTax" /> class.
         /// </summary>
-        /// <param name="subtype">Specific classification of the further granular breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;DISCOUNT&#x60;.</param>
-        /// <param name="value">value.</param>
-        public ItemProceedsDetailedBreakdown(string? subtype = default(string?), Money? value = default(Money?))
+        /// <param name="taxRegistrations">A list of tax registrations associated with the order..</param>
+        /// <param name="taxInvoicing">taxInvoicing.</param>
+        public OrderTax(List<OrderTaxRegistration>? taxRegistrations = default(List<OrderTaxRegistration>?), OrderTaxInvoicing? taxInvoicing = default(OrderTaxInvoicing?))
         {
-            this.Subtype = subtype;
-            this.Value = value;
+            this.TaxRegistrations = taxRegistrations;
+            this.TaxInvoicing = taxInvoicing;
         }
 
         /// <summary>
-        /// Specific classification of the further granular breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;DISCOUNT&#x60;
+        /// A list of tax registrations associated with the order.
         /// </summary>
-        /// <value>Specific classification of the further granular breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;DISCOUNT&#x60;</value>
-        [DataMember(Name = "subtype", EmitDefaultValue = false)]
-        public string? Subtype { get; set; }
+        /// <value>A list of tax registrations associated with the order.</value>
+        [DataMember(Name = "taxRegistrations", EmitDefaultValue = false)]
+        public List<OrderTaxRegistration>? TaxRegistrations { get; set; }
 
         /// <summary>
-        /// Gets or Sets Value
+        /// Gets or Sets TaxInvoicing
         /// </summary>
-        [DataMember(Name = "value", EmitDefaultValue = false)]
-        public Money? Value { get; set; }
+        [DataMember(Name = "taxInvoicing", EmitDefaultValue = false)]
+        public OrderTaxInvoicing? TaxInvoicing { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,9 +62,9 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ItemProceedsDetailedBreakdown {\n");
-            sb.Append("  Subtype: ").Append(Subtype).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("class OrderTax {\n");
+            sb.Append("  TaxRegistrations: ").Append(TaxRegistrations).Append("\n");
+            sb.Append("  TaxInvoicing: ").Append(TaxInvoicing).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

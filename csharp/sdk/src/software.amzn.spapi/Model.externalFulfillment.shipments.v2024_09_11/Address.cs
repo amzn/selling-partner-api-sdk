@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="addressLine2">Additional address information, if required..</param>
         /// <param name="addressLine3">Additional address information, if required..</param>
         /// <param name="district">The district or state where the person, business, or institution is located..</param>
-        /// <param name="municipality">The municiplaity where the person, business, or institution is located..</param>
+        /// <param name="municipality">The municipality where the person, business, or institution is located..</param>
         /// <param name="state">The state or region where the person, business, or institution is located..</param>
         /// <param name="city">The city where the person, business, or institution is located..</param>
         /// <param name="countryCode">The two digit country code. In ISO 3166-1 alpha-2 format..</param>
@@ -54,7 +54,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="copyEmails">The email cc addresses of the contact associated with the address..</param>
         /// <param name="phoneNumber">The phone number of the person, business, or institution located at the address..</param>
         /// <param name="addressType">The type of address..</param>
-        public Address(string? name = default(string?), string? addressLine1 = default(string?), string? addressLine2 = default(string?), string? addressLine3 = default(string?), string? district = default(string?), string? municipality = default(string?), string? state = default(string?), string? city = default(string?), string? countryCode = default(string?), string postalCode = default(string), string? email = default(string?), List<string>? copyEmails = default(List<string>?), string? phoneNumber = default(string?), string? addressType = default(string?))
+        /// <param name="geocodes">geocodes.</param>
+        public Address(string? name = default(string?), string? addressLine1 = default(string?), string? addressLine2 = default(string?), string? addressLine3 = default(string?), string? district = default(string?), string? municipality = default(string?), string? state = default(string?), string? city = default(string?), string? countryCode = default(string?), string postalCode = default(string), string? email = default(string?), List<string>? copyEmails = default(List<string>?), string? phoneNumber = default(string?), string? addressType = default(string?), Geocodes? geocodes = default(Geocodes?))
         {
             // to ensure "postalCode" is required (not null)
             if (postalCode == null)
@@ -75,6 +76,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             this.CopyEmails = copyEmails;
             this.PhoneNumber = phoneNumber;
             this.AddressType = addressType;
+            this.Geocodes = geocodes;
         }
 
         /// <summary>
@@ -113,9 +115,9 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         public string? District { get; set; }
 
         /// <summary>
-        /// The municiplaity where the person, business, or institution is located.
+        /// The municipality where the person, business, or institution is located.
         /// </summary>
-        /// <value>The municiplaity where the person, business, or institution is located.</value>
+        /// <value>The municipality where the person, business, or institution is located.</value>
         [DataMember(Name = "municipality", EmitDefaultValue = false)]
         public string? Municipality { get; set; }
 
@@ -176,6 +178,12 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         public string? AddressType { get; set; }
 
         /// <summary>
+        /// Gets or Sets Geocodes
+        /// </summary>
+        [DataMember(Name = "geocodes", EmitDefaultValue = false)]
+        public Geocodes? Geocodes { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -197,6 +205,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             sb.Append("  CopyEmails: ").Append(CopyEmails).Append("\n");
             sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
             sb.Append("  AddressType: ").Append(AddressType).Append("\n");
+            sb.Append("  Geocodes: ").Append(Geocodes).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

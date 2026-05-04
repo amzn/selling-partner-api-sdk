@@ -41,8 +41,8 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// </summary>
         /// <param name="orders">An array containing all orders that match the search criteria. (required).</param>
         /// <param name="pagination">pagination.</param>
-        /// <param name="lastUpdatedBefore">Only orders updated before the specified time are returned. The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format..</param>
-        /// <param name="createdBefore">Only orders placed before the specified time are returned. The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format..</param>
+        /// <param name="lastUpdatedBefore">Only orders updated before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format..</param>
+        /// <param name="createdBefore">Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format..</param>
         public SearchOrdersResponse(List<Order> orders = default(List<Order>), Pagination? pagination = default(Pagination?), DateTime? lastUpdatedBefore = default(DateTime?), DateTime? createdBefore = default(DateTime?))
         {
             // to ensure "orders" is required (not null)
@@ -70,16 +70,16 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         public Pagination? Pagination { get; set; }
 
         /// <summary>
-        /// Only orders updated before the specified time are returned. The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
+        /// Only orders updated before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
         /// </summary>
-        /// <value>Only orders updated before the specified time are returned. The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.</value>
+        /// <value>Only orders updated before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.</value>
         [DataMember(Name = "lastUpdatedBefore", EmitDefaultValue = false)]
         public DateTime? LastUpdatedBefore { get; set; }
 
         /// <summary>
-        /// Only orders placed before the specified time are returned. The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
+        /// Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
         /// </summary>
-        /// <value>Only orders placed before the specified time are returned. The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.</value>
+        /// <value>Only orders placed before the specified time are returned. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.</value>
         [DataMember(Name = "createdBefore", EmitDefaultValue = false)]
         public DateTime? CreatedBefore { get; set; }
 

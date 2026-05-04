@@ -45,7 +45,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="trackingId">The tracking number of the package. (required).</param>
         /// <param name="pickupWindow">pickupWindow.</param>
         /// <param name="timeSlot">timeSlot.</param>
-        public ShipLabelMetadata(string? shippingOptionId = default(string?), string carrierName = default(string), string trackingId = default(string), TimeWindow? pickupWindow = default(TimeWindow?), TimeWindow? timeSlot = default(TimeWindow?))
+        /// <param name="handoverLocation">handoverLocation.</param>
+        public ShipLabelMetadata(string? shippingOptionId = default(string?), string carrierName = default(string), string trackingId = default(string), TimeWindow? pickupWindow = default(TimeWindow?), TimeWindow? timeSlot = default(TimeWindow?), HandoverLocation? handoverLocation = default(HandoverLocation?))
         {
             // to ensure "carrierName" is required (not null)
             if (carrierName == null)
@@ -62,6 +63,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             this.ShippingOptionId = shippingOptionId;
             this.PickupWindow = pickupWindow;
             this.TimeSlot = timeSlot;
+            this.HandoverLocation = handoverLocation;
         }
 
         /// <summary>
@@ -98,6 +100,12 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         public TimeWindow? TimeSlot { get; set; }
 
         /// <summary>
+        /// Gets or Sets HandoverLocation
+        /// </summary>
+        [DataMember(Name = "handoverLocation", EmitDefaultValue = false)]
+        public HandoverLocation? HandoverLocation { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -110,6 +118,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             sb.Append("  TrackingId: ").Append(TrackingId).Append("\n");
             sb.Append("  PickupWindow: ").Append(PickupWindow).Append("\n");
             sb.Append("  TimeSlot: ").Append(TimeSlot).Append("\n");
+            sb.Append("  HandoverLocation: ").Append(HandoverLocation).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

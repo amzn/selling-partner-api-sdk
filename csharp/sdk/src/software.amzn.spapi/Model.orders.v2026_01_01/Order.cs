@@ -43,16 +43,18 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// <param name="orderAliases">Alternative identifiers that can be used to reference this order, such as seller-defined order numbers..</param>
         /// <param name="createdTime">The time when the customer placed the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (required).</param>
         /// <param name="lastUpdatedTime">The most recent time when any aspect of this order was modified by Amazon or the seller. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (required).</param>
-        /// <param name="programs">Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: &#x60;AMAZON_BAZAAR&#x60;, &#x60;AMAZON_BUSINESS&#x60;,  &#x60;AMAZON_EASY_SHIP&#x60;, &#x60;AMAZON_HAUL&#x60;, &#x60;DELIVERY_BY_AMAZON&#x60;, &#x60;FBM_SHIP_PLUS&#x60;, &#x60;IN_STORE_PICK_UP&#x60;, &#x60;PREMIUM&#x60;, &#x60;PREORDER&#x60;, &#x60;PRIME&#x60;.</param>
+        /// <param name="programs">Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: &#x60;AMAZON_BAZAAR&#x60;, &#x60;AMAZON_BUSINESS&#x60;, &#x60;AMAZON_EASY_SHIP&#x60;, &#x60;AMAZON_HAUL&#x60;, &#x60;DELIVERY_BY_AMAZON&#x60;, &#x60;FBM_SHIP_PLUS&#x60;, &#x60;INVOICE_BY_AMAZON&#x60;, &#x60;IN_STORE_PICK_UP&#x60;, &#x60;PREMIUM&#x60;, &#x60;PREORDER&#x60;, &#x60;PRIME&#x60;.</param>
         /// <param name="associatedOrders">Other orders that have a direct relationship to this order, such as replacement or exchange orders..</param>
         /// <param name="salesChannel">salesChannel (required).</param>
         /// <param name="buyer">buyer.</param>
         /// <param name="recipient">recipient.</param>
         /// <param name="proceeds">proceeds.</param>
+        /// <param name="payment">payment.</param>
+        /// <param name="tax">tax.</param>
         /// <param name="fulfillment">fulfillment.</param>
         /// <param name="orderItems">The list of all order items included in this order. (required).</param>
         /// <param name="packages">Shipping packages created for this order, including tracking information. **Note:** Only available for merchant-fulfilled (FBM) orders..</param>
-        public Order(string orderId = default(string), List<Alias>? orderAliases = default(List<Alias>?), DateTime createdTime = default(DateTime), DateTime lastUpdatedTime = default(DateTime), List<string>? programs = default(List<string>?), List<AssociatedOrder>? associatedOrders = default(List<AssociatedOrder>?), SalesChannel salesChannel = default(SalesChannel), Buyer? buyer = default(Buyer?), Recipient? recipient = default(Recipient?), OrderProceeds? proceeds = default(OrderProceeds?), OrderFulfillment? fulfillment = default(OrderFulfillment?), List<OrderItem> orderItems = default(List<OrderItem>), List<OrderPackage>? packages = default(List<OrderPackage>?))
+        public Order(string orderId = default(string), List<Alias>? orderAliases = default(List<Alias>?), DateTime createdTime = default(DateTime), DateTime lastUpdatedTime = default(DateTime), List<string>? programs = default(List<string>?), List<AssociatedOrder>? associatedOrders = default(List<AssociatedOrder>?), SalesChannel salesChannel = default(SalesChannel), Buyer? buyer = default(Buyer?), Recipient? recipient = default(Recipient?), OrderProceeds? proceeds = default(OrderProceeds?), OrderPayment? payment = default(OrderPayment?), OrderTax? tax = default(OrderTax?), OrderFulfillment? fulfillment = default(OrderFulfillment?), List<OrderItem> orderItems = default(List<OrderItem>), List<OrderPackage>? packages = default(List<OrderPackage>?))
         {
             // to ensure "orderId" is required (not null)
             if (orderId == null)
@@ -80,6 +82,8 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
             this.Buyer = buyer;
             this.Recipient = recipient;
             this.Proceeds = proceeds;
+            this.Payment = payment;
+            this.Tax = tax;
             this.Fulfillment = fulfillment;
             this.Packages = packages;
         }
@@ -113,9 +117,9 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         public DateTime LastUpdatedTime { get; set; }
 
         /// <summary>
-        /// Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: &#x60;AMAZON_BAZAAR&#x60;, &#x60;AMAZON_BUSINESS&#x60;,  &#x60;AMAZON_EASY_SHIP&#x60;, &#x60;AMAZON_HAUL&#x60;, &#x60;DELIVERY_BY_AMAZON&#x60;, &#x60;FBM_SHIP_PLUS&#x60;, &#x60;IN_STORE_PICK_UP&#x60;, &#x60;PREMIUM&#x60;, &#x60;PREORDER&#x60;, &#x60;PRIME&#x60;
+        /// Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: &#x60;AMAZON_BAZAAR&#x60;, &#x60;AMAZON_BUSINESS&#x60;, &#x60;AMAZON_EASY_SHIP&#x60;, &#x60;AMAZON_HAUL&#x60;, &#x60;DELIVERY_BY_AMAZON&#x60;, &#x60;FBM_SHIP_PLUS&#x60;, &#x60;INVOICE_BY_AMAZON&#x60;, &#x60;IN_STORE_PICK_UP&#x60;, &#x60;PREMIUM&#x60;, &#x60;PREORDER&#x60;, &#x60;PRIME&#x60;
         /// </summary>
-        /// <value>Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: &#x60;AMAZON_BAZAAR&#x60;, &#x60;AMAZON_BUSINESS&#x60;,  &#x60;AMAZON_EASY_SHIP&#x60;, &#x60;AMAZON_HAUL&#x60;, &#x60;DELIVERY_BY_AMAZON&#x60;, &#x60;FBM_SHIP_PLUS&#x60;, &#x60;IN_STORE_PICK_UP&#x60;, &#x60;PREMIUM&#x60;, &#x60;PREORDER&#x60;, &#x60;PRIME&#x60;</value>
+        /// <value>Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: &#x60;AMAZON_BAZAAR&#x60;, &#x60;AMAZON_BUSINESS&#x60;, &#x60;AMAZON_EASY_SHIP&#x60;, &#x60;AMAZON_HAUL&#x60;, &#x60;DELIVERY_BY_AMAZON&#x60;, &#x60;FBM_SHIP_PLUS&#x60;, &#x60;INVOICE_BY_AMAZON&#x60;, &#x60;IN_STORE_PICK_UP&#x60;, &#x60;PREMIUM&#x60;, &#x60;PREORDER&#x60;, &#x60;PRIME&#x60;</value>
         [DataMember(Name = "programs", EmitDefaultValue = false)]
         public List<string>? Programs { get; set; }
 
@@ -149,6 +153,18 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// </summary>
         [DataMember(Name = "proceeds", EmitDefaultValue = false)]
         public OrderProceeds? Proceeds { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Payment
+        /// </summary>
+        [DataMember(Name = "payment", EmitDefaultValue = false)]
+        public OrderPayment? Payment { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Tax
+        /// </summary>
+        [DataMember(Name = "tax", EmitDefaultValue = false)]
+        public OrderTax? Tax { get; set; }
 
         /// <summary>
         /// Gets or Sets Fulfillment
@@ -188,6 +204,8 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
             sb.Append("  Buyer: ").Append(Buyer).Append("\n");
             sb.Append("  Recipient: ").Append(Recipient).Append("\n");
             sb.Append("  Proceeds: ").Append(Proceeds).Append("\n");
+            sb.Append("  Payment: ").Append(Payment).Append("\n");
+            sb.Append("  Tax: ").Append(Tax).Append("\n");
             sb.Append("  Fulfillment: ").Append(Fulfillment).Append("\n");
             sb.Append("  OrderItems: ").Append(OrderItems).Append("\n");
             sb.Append("  Packages: ").Append(Packages).Append("\n");

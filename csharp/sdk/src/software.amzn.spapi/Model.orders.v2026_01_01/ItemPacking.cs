@@ -35,9 +35,11 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// Initializes a new instance of the <see cref="ItemPacking" /> class.
         /// </summary>
         /// <param name="giftOption">giftOption.</param>
-        public ItemPacking(GiftOption? giftOption = default(GiftOption?))
+        /// <param name="serialNumberRequirement">serialNumberRequirement.</param>
+        public ItemPacking(GiftOption? giftOption = default(GiftOption?), SerialNumberRequirement? serialNumberRequirement = default(SerialNumberRequirement?))
         {
             this.GiftOption = giftOption;
+            this.SerialNumberRequirement = serialNumberRequirement;
         }
 
         /// <summary>
@@ -45,6 +47,12 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// </summary>
         [DataMember(Name = "giftOption", EmitDefaultValue = false)]
         public GiftOption? GiftOption { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SerialNumberRequirement
+        /// </summary>
+        [DataMember(Name = "serialNumberRequirement", EmitDefaultValue = false)]
+        public SerialNumberRequirement? SerialNumberRequirement { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -55,6 +63,7 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
             StringBuilder sb = new StringBuilder();
             sb.Append("class ItemPacking {\n");
             sb.Append("  GiftOption: ").Append(GiftOption).Append("\n");
+            sb.Append("  SerialNumberRequirement: ").Append(SerialNumberRequirement).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

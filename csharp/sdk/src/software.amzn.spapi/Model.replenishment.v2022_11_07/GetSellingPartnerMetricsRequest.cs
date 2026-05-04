@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// </summary>
         /// <param name="aggregationFrequency">aggregationFrequency.</param>
         /// <param name="timeInterval">timeInterval (required).</param>
-        /// <param name="metrics">The list of metrics requested. If no metric value is provided, data for all of the metrics will be returned..</param>
+        /// <param name="metrics">The list of metrics requested. If no metric value is provided, data for all metrics will be returned..</param>
         /// <param name="timePeriodType">timePeriodType (required).</param>
         /// <param name="marketplaceId">The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace. (required).</param>
         /// <param name="programTypes">A list of replenishment program types. (required).</param>
@@ -89,9 +89,9 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         public TimeInterval TimeInterval { get; set; }
 
         /// <summary>
-        /// The list of metrics requested. If no metric value is provided, data for all of the metrics will be returned.
+        /// The list of metrics requested. If no metric value is provided, data for all metrics will be returned.
         /// </summary>
-        /// <value>The list of metrics requested. If no metric value is provided, data for all of the metrics will be returned.</value>
+        /// <value>The list of metrics requested. If no metric value is provided, data for all metrics will be returned.</value>
         [DataMember(Name = "metrics", EmitDefaultValue = false)]
         public List<Metric>? Metrics { get; set; }
 

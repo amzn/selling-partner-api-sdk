@@ -27,69 +27,57 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
 {
     /// <summary>
-    /// The weight of a package.
+    /// A distance measurement.
     /// </summary>
-    [DataContract(Name = "Weight")]
-    public partial class Weight : IValidatableObject
+    [DataContract(Name = "Distance")]
+    public partial class Distance : IValidatableObject
     {
         /// <summary>
-        /// The unit of measurement of the weight.
+        /// The unit of measurement of the distance.
         /// </summary>
-        /// <value>The unit of measurement of the weight.</value>
+        /// <value>The unit of measurement of the distance.</value>
         [JsonConverter(typeof(StringEnumConverter))]
-        public enum WeightUnitEnum
+        public enum DistanceUnitEnum
         {
             /// <summary>
-            /// Enum G for value: G
+            /// Enum MI for value: MI
             /// </summary>
-            [EnumMember(Value = "G")]
-            G = 1,
+            [EnumMember(Value = "MI")]
+            MI = 1,
 
             /// <summary>
-            /// Enum KG for value: KG
+            /// Enum KM for value: KM
             /// </summary>
-            [EnumMember(Value = "KG")]
-            KG = 2,
-
-            /// <summary>
-            /// Enum LB for value: LB
-            /// </summary>
-            [EnumMember(Value = "LB")]
-            LB = 3,
-
-            /// <summary>
-            /// Enum OZ for value: OZ
-            /// </summary>
-            [EnumMember(Value = "OZ")]
-            OZ = 4
+            [EnumMember(Value = "KM")]
+            KM = 2
         }
 
 
         /// <summary>
-        /// The unit of measurement of the weight.
+        /// The unit of measurement of the distance.
         /// </summary>
-        /// <value>The unit of measurement of the weight.</value>
-        [DataMember(Name = "weightUnit", IsRequired = true, EmitDefaultValue = true)]
-        public WeightUnitEnum WeightUnit { get; set; }
+        /// <value>The unit of measurement of the distance.</value>
+        [DataMember(Name = "distanceUnit", IsRequired = true, EmitDefaultValue = true)]
+        public DistanceUnitEnum DistanceUnit { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Weight" /> class.
+        /// Initializes a new instance of the <see cref="Distance" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected Weight() { }
+        protected Distance() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Weight" /> class.
+        /// Initializes a new instance of the <see cref="Distance" /> class.
         /// </summary>
         /// <param name="value">A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. (required).</param>
-        /// <param name="weightUnit">The unit of measurement of the weight. (required).</param>
-        public Weight(string value = default(string), WeightUnitEnum weightUnit = default(WeightUnitEnum))
+        /// <param name="distanceUnit">The unit of measurement of the distance. (required).</param>
+        public Distance(string value = default(string), DistanceUnitEnum distanceUnit = default(DistanceUnitEnum))
         {
             // to ensure "value" is required (not null)
             if (value == null)
             {
-                throw new ArgumentNullException("value is a required property for Weight and cannot be null");
+                throw new ArgumentNullException("value is a required property for Distance and cannot be null");
             }
             this.Value = value;
-            this.WeightUnit = weightUnit;
+            this.DistanceUnit = distanceUnit;
         }
 
         /// <summary>
@@ -106,9 +94,9 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Weight {\n");
+            sb.Append("class Distance {\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
-            sb.Append("  WeightUnit: ").Append(WeightUnit).Append("\n");
+            sb.Append("  DistanceUnit: ").Append(DistanceUnit).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

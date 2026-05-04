@@ -42,6 +42,7 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// <param name="orderItemId">A unique identifier for this specific item within the order. (required).</param>
         /// <param name="quantityOrdered">The number of units of this item that the customer ordered. (required).</param>
         /// <param name="measurement">measurement.</param>
+        /// <param name="associatedOrderItems">A list of order items associated with this item. For example, a value-add service purchased with the product..</param>
         /// <param name="programs">Special programs that apply specifically to this item within the order.  **Possible values**: &#x60;TRANSPARENCY&#x60;, &#x60;SUBSCRIBE_AND_SAVE&#x60;.</param>
         /// <param name="product">product (required).</param>
         /// <param name="proceeds">proceeds.</param>
@@ -49,7 +50,8 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// <param name="promotion">promotion.</param>
         /// <param name="cancellation">cancellation.</param>
         /// <param name="fulfillment">fulfillment.</param>
-        public OrderItem(string orderItemId = default(string), int quantityOrdered = default(int), Measurement? measurement = default(Measurement?), List<string>? programs = default(List<string>?), ItemProduct product = default(ItemProduct), ItemProceeds? proceeds = default(ItemProceeds?), ItemExpense? expense = default(ItemExpense?), ItemPromotion? promotion = default(ItemPromotion?), ItemCancellation? cancellation = default(ItemCancellation?), ItemFulfillment? fulfillment = default(ItemFulfillment?))
+        /// <param name="tax">tax.</param>
+        public OrderItem(string orderItemId = default(string), int quantityOrdered = default(int), Measurement? measurement = default(Measurement?), List<AssociatedOrderItem>? associatedOrderItems = default(List<AssociatedOrderItem>?), List<string>? programs = default(List<string>?), ItemProduct product = default(ItemProduct), ItemProceeds? proceeds = default(ItemProceeds?), ItemExpense? expense = default(ItemExpense?), ItemPromotion? promotion = default(ItemPromotion?), ItemCancellation? cancellation = default(ItemCancellation?), ItemFulfillment? fulfillment = default(ItemFulfillment?), ItemTax? tax = default(ItemTax?))
         {
             // to ensure "orderItemId" is required (not null)
             if (orderItemId == null)
@@ -65,12 +67,14 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
             }
             this.Product = product;
             this.Measurement = measurement;
+            this.AssociatedOrderItems = associatedOrderItems;
             this.Programs = programs;
             this.Proceeds = proceeds;
             this.Expense = expense;
             this.Promotion = promotion;
             this.Cancellation = cancellation;
             this.Fulfillment = fulfillment;
+            this.Tax = tax;
         }
 
         /// <summary>
@@ -92,6 +96,13 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// </summary>
         [DataMember(Name = "measurement", EmitDefaultValue = false)]
         public Measurement? Measurement { get; set; }
+
+        /// <summary>
+        /// A list of order items associated with this item. For example, a value-add service purchased with the product.
+        /// </summary>
+        /// <value>A list of order items associated with this item. For example, a value-add service purchased with the product.</value>
+        [DataMember(Name = "associatedOrderItems", EmitDefaultValue = false)]
+        public List<AssociatedOrderItem>? AssociatedOrderItems { get; set; }
 
         /// <summary>
         /// Special programs that apply specifically to this item within the order.  **Possible values**: &#x60;TRANSPARENCY&#x60;, &#x60;SUBSCRIBE_AND_SAVE&#x60;
@@ -137,6 +148,12 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         public ItemFulfillment? Fulfillment { get; set; }
 
         /// <summary>
+        /// Gets or Sets Tax
+        /// </summary>
+        [DataMember(Name = "tax", EmitDefaultValue = false)]
+        public ItemTax? Tax { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -147,6 +164,7 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
             sb.Append("  OrderItemId: ").Append(OrderItemId).Append("\n");
             sb.Append("  QuantityOrdered: ").Append(QuantityOrdered).Append("\n");
             sb.Append("  Measurement: ").Append(Measurement).Append("\n");
+            sb.Append("  AssociatedOrderItems: ").Append(AssociatedOrderItems).Append("\n");
             sb.Append("  Programs: ").Append(Programs).Append("\n");
             sb.Append("  Product: ").Append(Product).Append("\n");
             sb.Append("  Proceeds: ").Append(Proceeds).Append("\n");
@@ -154,6 +172,7 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
             sb.Append("  Promotion: ").Append(Promotion).Append("\n");
             sb.Append("  Cancellation: ").Append(Cancellation).Append("\n");
             sb.Append("  Fulfillment: ").Append(Fulfillment).Append("\n");
+            sb.Append("  Tax: ").Append(Tax).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -49,7 +49,13 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             /// Enum M for value: M
             /// </summary>
             [EnumMember(Value = "M")]
-            M = 2
+            M = 2,
+
+            /// <summary>
+            /// Enum IN for value: IN
+            /// </summary>
+            [EnumMember(Value = "IN")]
+            IN = 3
         }
 
 
