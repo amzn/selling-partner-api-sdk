@@ -36,6 +36,7 @@ class OrderItem(object):
         'order_item_id': 'str',
         'quantity_ordered': 'int',
         'measurement': 'Measurement',
+        'associated_order_items': 'List[AssociatedOrderItem]',
         'programs': 'List[str]',
         'product': 'ItemProduct',
         'proceeds': 'ItemProceeds',
@@ -43,12 +44,14 @@ class OrderItem(object):
         'promotion': 'ItemPromotion',
         'cancellation': 'ItemCancellation',
         'fulfillment': 'ItemFulfillment',
+        'tax': 'ItemTax',
     }
 
     attribute_map = {
         'order_item_id': 'orderItemId',
         'quantity_ordered': 'quantityOrdered',
         'measurement': 'measurement',
+        'associated_order_items': 'associatedOrderItems',
         'programs': 'programs',
         'product': 'product',
         'proceeds': 'proceeds',
@@ -56,9 +59,10 @@ class OrderItem(object):
         'promotion': 'promotion',
         'cancellation': 'cancellation',
         'fulfillment': 'fulfillment',
+        'tax': 'tax',
     }
 
-    def __init__(self, order_item_id=None, quantity_ordered=None, measurement=None, programs=None, product=None, proceeds=None, expense=None, promotion=None, cancellation=None, fulfillment=None, _configuration=None):  # noqa: E501
+    def __init__(self, order_item_id=None, quantity_ordered=None, measurement=None, associated_order_items=None, programs=None, product=None, proceeds=None, expense=None, promotion=None, cancellation=None, fulfillment=None, tax=None, _configuration=None):  # noqa: E501
         """OrderItem - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -67,6 +71,7 @@ class OrderItem(object):
         self._order_item_id = None
         self._quantity_ordered = None
         self._measurement = None
+        self._associated_order_items = None
         self._programs = None
         self._product = None
         self._proceeds = None
@@ -74,12 +79,15 @@ class OrderItem(object):
         self._promotion = None
         self._cancellation = None
         self._fulfillment = None
+        self._tax = None
         self.discriminator = None
 
         self.order_item_id = order_item_id
         self.quantity_ordered = quantity_ordered
         if measurement is not None:
             self.measurement = measurement
+        if associated_order_items is not None:
+            self.associated_order_items = associated_order_items
         if programs is not None:
             self.programs = programs
         self.product = product
@@ -93,6 +101,8 @@ class OrderItem(object):
             self.cancellation = cancellation
         if fulfillment is not None:
             self.fulfillment = fulfillment
+        if tax is not None:
+            self.tax = tax
 
     @property
     def order_item_id(self):
@@ -164,6 +174,29 @@ class OrderItem(object):
         """
 
         self._measurement = measurement
+
+    @property
+    def associated_order_items(self):
+        """Gets the associated_order_items of this OrderItem.  # noqa: E501
+
+        A list of order items associated with this item. For example, a value-add service purchased with the product.  # noqa: E501
+
+        :return: The associated_order_items of this OrderItem.  # noqa: E501
+        :rtype: List[AssociatedOrderItem]
+        """
+        return self._associated_order_items
+
+    @associated_order_items.setter
+    def associated_order_items(self, associated_order_items):
+        """Sets the associated_order_items of this OrderItem.
+
+        A list of order items associated with this item. For example, a value-add service purchased with the product.  # noqa: E501
+
+        :param associated_order_items: The associated_order_items of this OrderItem.  # noqa: E501
+        :type: List[AssociatedOrderItem]
+        """
+
+        self._associated_order_items = associated_order_items
 
     @property
     def programs(self):
@@ -315,6 +348,27 @@ class OrderItem(object):
         """
 
         self._fulfillment = fulfillment
+
+    @property
+    def tax(self):
+        """Gets the tax of this OrderItem.  # noqa: E501
+
+
+        :return: The tax of this OrderItem.  # noqa: E501
+        :rtype: ItemTax
+        """
+        return self._tax
+
+    @tax.setter
+    def tax(self, tax):
+        """Sets the tax of this OrderItem.
+
+
+        :param tax: The tax of this OrderItem.  # noqa: E501
+        :type: ItemTax
+        """
+
+        self._tax = tax
 
     def to_dict(self):
         """Returns the model properties as a dict"""

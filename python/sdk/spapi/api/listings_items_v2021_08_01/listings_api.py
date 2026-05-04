@@ -360,9 +360,6 @@ class ListingsApi(object):
                                                        params['body'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `body` when calling `patch_listings_item`")  # noqa: E501
 
-        if self.api_client.client_side_validation and ('marketplace_ids' in params and
-                                            len(params['marketplace_ids']) > 1):
-            raise ValueError("Invalid value for parameter `marketplace_ids` when calling `patch_listings_item`, number of items must be less than or equal to `1`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}

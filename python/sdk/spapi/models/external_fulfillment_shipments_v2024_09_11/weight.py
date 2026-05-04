@@ -103,7 +103,7 @@ class Weight(object):
         """
         if self._configuration.client_side_validation and weight_unit is None:
             raise ValueError("Invalid value for `weight_unit`, must not be `None`")  # noqa: E501
-        allowed_values = ["G", "KG"]  # noqa: E501
+        allowed_values = ["G", "KG", "LB", "OZ"]  # noqa: E501
         if (self._configuration.client_side_validation and
                 weight_unit not in allowed_values):
             raise ValueError(

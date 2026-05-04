@@ -42,6 +42,7 @@ class ShipmentInfo(object):
         'order_states_eligible_for_rejection': 'List[str]',
         'order_placed_timestamp': 'str',
         'processing_source': 'str',
+        'payment_method': 'str',
     }
 
     attribute_map = {
@@ -53,9 +54,10 @@ class ShipmentInfo(object):
         'order_states_eligible_for_rejection': 'orderStatesEligibleForRejection',
         'order_placed_timestamp': 'orderPlacedTimestamp',
         'processing_source': 'processingSource',
+        'payment_method': 'paymentMethod',
     }
 
-    def __init__(self, shipment_type=None, original_shipment_info=None, number_of_units=None, priority=None, buyer_order_id=None, order_states_eligible_for_rejection=None, order_placed_timestamp=None, processing_source=None, _configuration=None):  # noqa: E501
+    def __init__(self, shipment_type=None, original_shipment_info=None, number_of_units=None, priority=None, buyer_order_id=None, order_states_eligible_for_rejection=None, order_placed_timestamp=None, processing_source=None, payment_method=None, _configuration=None):  # noqa: E501
         """ShipmentInfo - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -69,6 +71,7 @@ class ShipmentInfo(object):
         self._order_states_eligible_for_rejection = None
         self._order_placed_timestamp = None
         self._processing_source = None
+        self._payment_method = None
         self.discriminator = None
 
         self.shipment_type = shipment_type
@@ -83,6 +86,8 @@ class ShipmentInfo(object):
             self.order_placed_timestamp = order_placed_timestamp
         if processing_source is not None:
             self.processing_source = processing_source
+        if payment_method is not None:
+            self.payment_method = payment_method
 
     @property
     def shipment_type(self):
@@ -291,6 +296,36 @@ class ShipmentInfo(object):
             )
 
         self._processing_source = processing_source
+
+    @property
+    def payment_method(self):
+        """Gets the payment_method of this ShipmentInfo.  # noqa: E501
+
+        The payment method for the shipment.  # noqa: E501
+
+        :return: The payment_method of this ShipmentInfo.  # noqa: E501
+        :rtype: str
+        """
+        return self._payment_method
+
+    @payment_method.setter
+    def payment_method(self, payment_method):
+        """Sets the payment_method of this ShipmentInfo.
+
+        The payment method for the shipment.  # noqa: E501
+
+        :param payment_method: The payment_method of this ShipmentInfo.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["CASH_ON_DELIVERY", "PREPAID"]  # noqa: E501
+        if (self._configuration.client_side_validation and
+                payment_method not in allowed_values):
+            raise ValueError(
+                "Invalid value for `payment_method` ({0}), must be one of {1}"  # noqa: E501
+                .format(payment_method, allowed_values)
+            )
+
+        self._payment_method = payment_method
 
     def to_dict(self):
         """Returns the model properties as a dict"""
