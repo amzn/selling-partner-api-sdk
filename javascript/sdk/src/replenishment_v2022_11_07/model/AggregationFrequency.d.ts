@@ -1,8 +1,9 @@
-export type AggregationFrequency = "WEEK" | "MONTH" | "QUARTER" | "YEAR";
+export type AggregationFrequency = "DAY" | "WEEK" | "MONTH" | "QUARTER" | "YEAR";
 /**
- * @typedef {'WEEK'|'MONTH'|'QUARTER'|'YEAR'} AggregationFrequency
+ * @typedef {'DAY'|'WEEK'|'MONTH'|'QUARTER'|'YEAR'} AggregationFrequency
  */
 export const AggregationFrequency: (() => void) & {
+    DAY: string;
     WEEK: string;
     MONTH: string;
     QUARTER: string;

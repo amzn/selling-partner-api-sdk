@@ -14,11 +14,12 @@
 import { ApiClient } from '../ApiClient.js'
 
 /**
- * @typedef {'WEEK'|'MONTH'|'QUARTER'|'YEAR'} AggregationFrequency
+ * @typedef {'DAY'|'WEEK'|'MONTH'|'QUARTER'|'YEAR'} AggregationFrequency
  */
 export const AggregationFrequency = Object.assign(
   function () {},
   {
+    DAY: 'DAY',
     WEEK: 'WEEK',
     MONTH: 'MONTH',
     QUARTER: 'QUARTER',

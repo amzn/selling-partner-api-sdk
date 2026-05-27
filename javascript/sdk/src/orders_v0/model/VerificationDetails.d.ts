@@ -17,6 +17,19 @@ export class VerificationDetails {
      * @type {PrescriptionDetail}
      */
     prescriptionDetail: PrescriptionDetail;
+    /**
+     * Pre-approved alternative product attributes available for a rejected order. Each element contains an attribute name, its original value from the rejected order, and the corrected value that would result in approval (for example, a substituted `asin` or adjusted `petWeight`).
+     * @member {ApprovedAttribute[]} approvedAlternativeDetails
+     * @type {ApprovedAttribute[]}
+     */
+    approvedAlternativeDetails: ApprovedAttribute[];
+    /**
+     * @member {InterimStatusDetail} interimStatusDetail
+     * @type {InterimStatusDetail}
+     */
+    interimStatusDetail: InterimStatusDetail;
 }
 import { PrescriptionDetail } from './PrescriptionDetail.js';
+import { ApprovedAttribute } from './ApprovedAttribute.js';
+import { InterimStatusDetail } from './InterimStatusDetail.js';
 //# sourceMappingURL=VerificationDetails.d.ts.map

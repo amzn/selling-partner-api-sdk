@@ -54,6 +54,8 @@ export class ListOfferMetricsResponseOffer {
       if (data.hasOwnProperty('asin')) { obj.asin = ApiClient.convertToType(data.asin, 'String') }
       if (data.hasOwnProperty('sku')) { obj.sku = ApiClient.convertToType(data.sku, 'String') }
       if (data.hasOwnProperty('fulfillmentChannelType')) { obj.fulfillmentChannelType = FulfillmentChannelType.constructFromObject(data.fulfillmentChannelType) }
+      if (data.hasOwnProperty('brandName')) { obj.brandName = ApiClient.convertToType(data.brandName, 'String') }
+      if (data.hasOwnProperty('productGroup')) { obj.productGroup = ApiClient.convertToType(data.productGroup, 'String') }
       if (data.hasOwnProperty('notDeliveredDueToOOS')) { obj.notDeliveredDueToOOS = ApiClient.convertToType(data.notDeliveredDueToOOS, 'Number') }
       if (data.hasOwnProperty('totalSubscriptionsRevenue')) { obj.totalSubscriptionsRevenue = ApiClient.convertToType(data.totalSubscriptionsRevenue, 'Number') }
       if (data.hasOwnProperty('shippedSubscriptionUnits')) { obj.shippedSubscriptionUnits = ApiClient.convertToType(data.shippedSubscriptionUnits, 'Number') }
@@ -94,6 +96,20 @@ ListOfferMetricsResponseOffer.prototype.sku = undefined
  * @type {FulfillmentChannelType}
  */
 ListOfferMetricsResponseOffer.prototype.fulfillmentChannelType = undefined
+
+/**
+ * The brand name associated with the offer.
+ * @member {String} brandName
+ * @type {String}
+ */
+ListOfferMetricsResponseOffer.prototype.brandName = undefined
+
+/**
+ * The product group associated with the offer. This property is only supported for vendors and not for sellers.
+ * @member {String} productGroup
+ * @type {String}
+ */
+ListOfferMetricsResponseOffer.prototype.productGroup = undefined
 
 /**
  * The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `PERFORMANCE` `timePeriodType`.
@@ -145,7 +161,7 @@ ListOfferMetricsResponseOffer.prototype.lostRevenueDueToOOS = undefined
 ListOfferMetricsResponseOffer.prototype.couponsRevenuePenetration = undefined
 
 /**
- * The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.
+ * The percentage of new subscriptions from coupons. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} shareOfCouponSubscriptions
  * @type {Number}
  */

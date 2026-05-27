@@ -26,13 +26,13 @@ import { OrderChangeTypeFilter } from './OrderChangeTypeFilter.js'
 export class EventFilter {
   /**
    * Constructs a new <code>EventFilter</code>.
-   * A &#x60;notificationType&#x60; specific filter. This object contains all of the currently available filters and properties that you can use to define a &#x60;notificationType&#x60; specific filter.
+   * A &#x60;notificationType&#x60; filter. This object contains all of the available filters and properties that you can use to define a &#x60;notificationType&#x60; specific filter.
    * @alias module:notifications_v1/model/EventFilter
    * @class
    * @implements module:notifications_v1/model/AggregationFilter
    * @implements module:notifications_v1/model/MarketplaceFilter
    * @implements module:notifications_v1/model/OrderChangeTypeFilter
-   * @param eventFilterType {String} An `eventFilterType` value that is supported by the specific `notificationType`. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an `eventFilterType` is supported.
+   * @param eventFilterType {String} An `eventFilterType` value that the `notificationType` supports. The subscription service uses the `eventFilterType` to determine the type of event filter. To determine if a specific `notificationType` supports an `eventFilterType`, refer to [Notification Type Values]( https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
    */
   constructor (eventFilterType) {
     this.eventFilterType = eventFilterType
@@ -78,14 +78,14 @@ export class EventFilter {
 EventFilter.prototype.aggregationSettings = undefined
 
 /**
- * A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
+ * A list of marketplace identifiers you can subscribe to (for example, `ATVPDKIKX0DER`). To receive notifications in every marketplace, do not provide this list.
  * @member {String[]} marketplaceIds
  * @type {String[]}
  */
 EventFilter.prototype.marketplaceIds = undefined
 
 /**
- * A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
+ * A list of order change types you can subscribe to (for example, `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
  * @member {OrderChangeTypeEnum[]} orderChangeTypes
  * @type {OrderChangeTypeEnum[]}
  */
@@ -111,7 +111,7 @@ EventFilter.EventFilterTypeEnum = {
   ORDER_CHANGE: 'ORDER_CHANGE'
 }
 /**
- * An `eventFilterType` value that is supported by the specific `notificationType`. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an `eventFilterType` is supported.
+ * An `eventFilterType` value that the `notificationType` supports. The subscription service uses the `eventFilterType` to determine the type of event filter. To determine if a specific `notificationType` supports an `eventFilterType`, refer to [Notification Type Values]( https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
  * @member {String} eventFilterType
  * @type {String}
  */
@@ -126,7 +126,7 @@ AggregationFilter.prototype.aggregationSettings = undefined
 
 // Implement MarketplaceFilter interface:
 /**
- * A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
+ * A list of marketplace identifiers you can subscribe to (for example, `ATVPDKIKX0DER`). To receive notifications in every marketplace, do not provide this list.
  * @member {String[]} marketplaceIds
  * @type {String[]}
  */
@@ -134,7 +134,7 @@ MarketplaceFilter.prototype.marketplaceIds = undefined
 
 // Implement OrderChangeTypeFilter interface:
 /**
- * A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
+ * A list of order change types you can subscribe to (for example, `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
  * @member {OrderChangeTypeEnum[]} orderChangeTypes
  * @type {OrderChangeTypeEnum[]}
  */

@@ -15,6 +15,7 @@ import { ApiClient } from './ApiClient.js'
 import { Address } from './model/Address.js'
 import { AddressExtendedFields } from './model/AddressExtendedFields.js'
 import { AmazonPrograms } from './model/AmazonPrograms.js'
+import { ApprovedAttribute } from './model/ApprovedAttribute.js'
 import { AssociatedItem } from './model/AssociatedItem.js'
 import { AssociationType } from './model/AssociationType.js'
 import { AutomatedShippingSettings } from './model/AutomatedShippingSettings.js'
@@ -42,6 +43,7 @@ import { GetOrderItemsResponse } from './model/GetOrderItemsResponse.js'
 import { GetOrderRegulatedInfoResponse } from './model/GetOrderRegulatedInfoResponse.js'
 import { GetOrderResponse } from './model/GetOrderResponse.js'
 import { GetOrdersResponse } from './model/GetOrdersResponse.js'
+import { InterimStatusDetail } from './model/InterimStatusDetail.js'
 import { ItemBuyerInfo } from './model/ItemBuyerInfo.js'
 import { MarketplaceTaxInfo } from './model/MarketplaceTaxInfo.js'
 import { Measurement } from './model/Measurement.js'
@@ -80,6 +82,7 @@ import { UpdateShipmentStatusRequest } from './model/UpdateShipmentStatusRequest
 import { UpdateVerificationStatusErrorResponse } from './model/UpdateVerificationStatusErrorResponse.js'
 import { UpdateVerificationStatusRequest } from './model/UpdateVerificationStatusRequest.js'
 import { UpdateVerificationStatusRequestBody } from './model/UpdateVerificationStatusRequestBody.js'
+import { ValidInterimStatusCode } from './model/ValidInterimStatusCode.js'
 import { ValidVerificationDetail } from './model/ValidVerificationDetail.js'
 import { VerificationDetails } from './model/VerificationDetails.js'
 import { VerificationStatus } from './model/VerificationStatus.js'
@@ -116,6 +119,12 @@ export {
      * @property {module:orders_v0/model/AmazonPrograms}
      */
   AmazonPrograms,
+
+  /**
+     * The ApprovedAttribute model constructor.
+     * @property {module:orders_v0/model/ApprovedAttribute}
+     */
+  ApprovedAttribute,
 
   /**
      * The AssociatedItem model constructor.
@@ -278,6 +287,12 @@ export {
      * @property {module:orders_v0/model/GetOrdersResponse}
      */
   GetOrdersResponse,
+
+  /**
+     * The InterimStatusDetail model constructor.
+     * @property {module:orders_v0/model/InterimStatusDetail}
+     */
+  InterimStatusDetail,
 
   /**
      * The ItemBuyerInfo model constructor.
@@ -506,6 +521,12 @@ export {
      * @property {module:orders_v0/model/UpdateVerificationStatusRequestBody}
      */
   UpdateVerificationStatusRequestBody,
+
+  /**
+     * The ValidInterimStatusCode model constructor.
+     * @property {module:orders_v0/model/ValidInterimStatusCode}
+     */
+  ValidInterimStatusCode,
 
   /**
      * The ValidVerificationDetail model constructor.

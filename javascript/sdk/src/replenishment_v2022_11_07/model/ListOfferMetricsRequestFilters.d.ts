@@ -14,7 +14,7 @@ export class ListOfferMetricsRequestFilters {
     static constructFromObject(data: Object, obj: ListOfferMetricsRequestFilters): ListOfferMetricsRequestFilters;
     /**
      * Constructs a new <code>ListOfferMetricsRequestFilters</code>.
-     * Use these parameters to filter results. Any result must match all provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.
+     * Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept multiple values (arrays), the API returns results that match at least one value in the array.
      * @alias module:replenishment_v2022_11_07/model/ListOfferMetricsRequestFilters
      * @class
      * @param timeInterval {TimeInterval}
@@ -33,14 +33,39 @@ export class ListOfferMetricsRequestFilters {
      */
     aggregationFrequency: AggregationFrequency;
     /**
-     * A list of Amazon Standard Identification Numbers (ASINs).
+     * A list of Amazon Standard Identification Numbers (ASINs) to filter by.
      * @member {String[]} asins
      * @type {String[]}
      */
     asins: string[];
+    /**
+     * [Applicable only for Sellers] A list of SKUs to filter by.
+     * @member {String[]} skus
+     * @type {String[]}
+     */
+    skus: string[];
+    /**
+     * [Applicable only for Sellers] The fulfillment channel types to filter by.
+     * @member {FulfillmentChannelType[]} fulfillmentChannelTypes
+     * @type {FulfillmentChannelType[]}
+     */
+    fulfillmentChannelTypes: FulfillmentChannelType[];
+    /**
+     * [Applicable only for US marketplace] A list of brand names to filter by.
+     * @member {String[]} brandNames
+     * @type {String[]}
+     */
+    brandNames: string[];
+    /**
+     * [Applicable only for Vendors] A list of product group names to filter by.
+     * @member {String[]} productGroups
+     * @type {String[]}
+     */
+    productGroups: string[];
 }
 import { TimeInterval } from './TimeInterval.js';
 import { TimePeriodType } from './TimePeriodType.js';
 import { AggregationFrequency } from './AggregationFrequency.js';
+import { FulfillmentChannelType } from './FulfillmentChannelType.js';
 import { ProgramType } from './ProgramType.js';
 //# sourceMappingURL=ListOfferMetricsRequestFilters.d.ts.map

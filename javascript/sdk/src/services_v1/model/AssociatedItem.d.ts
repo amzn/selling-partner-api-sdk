@@ -53,6 +53,12 @@ export class AssociatedItem {
      * @type {ItemDelivery}
      */
     itemDelivery: ItemDelivery;
+    /**
+     * A list of customer-owned assets on which the service must be performed.
+     * @member {LinkedAsset[]} linkedAssets
+     * @type {LinkedAsset[]}
+     */
+    linkedAssets: LinkedAsset[];
 }
 export namespace AssociatedItem {
     namespace ItemStatusEnum {
@@ -67,4 +73,5 @@ export namespace AssociatedItem {
     type ItemStatusEnum = string;
 }
 import { ItemDelivery } from './ItemDelivery.js';
+import { LinkedAsset } from './LinkedAsset.js';
 //# sourceMappingURL=AssociatedItem.d.ts.map

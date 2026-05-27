@@ -22,7 +22,7 @@ import { EventFilter } from './EventFilter.js'
 export class ProcessingDirective {
   /**
    * Constructs a new <code>ProcessingDirective</code>.
-   * Additional information passed to the subscription to control the processing of notifications. For example, you can use an &#x60;eventFilter&#x60; to customize your subscription to send notifications for only the specified &#x60;marketplaceId&#x60;s, or select the aggregation time period at which to send notifications (for example: limit to one notification every five minutes for high frequency notifications). The specific features available vary depending on the &#x60;notificationType&#x60;.  This feature is currently only supported by the &#x60;ANY_OFFER_CHANGED&#x60; and &#x60;ORDER_CHANGE&#x60; &#x60;notificationType&#x60;s.
+   * Additional information passed to the subscription to control the processing of notifications. For example, you can use an &#x60;eventFilter&#x60; to customize your subscription to send notifications for only the &#x60;marketplaceId&#x60;s that you specify, or select the aggregation time period at which to send notifications (for example, you can set a limit of one notification every five minutes for high frequency notifications). You can also use &#x60;filterExpression&#x60; to filter events based on notification payload. The specific features available can vary by the &#x60;notificationType&#x60;.
    * @alias module:notifications_v1/model/ProcessingDirective
    * @class
    */
@@ -51,6 +51,7 @@ export class ProcessingDirective {
       }
       obj = obj || new ProcessingDirective()
       if (data.hasOwnProperty('eventFilter')) { obj.eventFilter = EventFilter.constructFromObject(data.eventFilter) }
+      if (data.hasOwnProperty('filterExpression')) { obj.filterExpression = ApiClient.convertToType(data.filterExpression, 'String') }
     }
     return obj
   }
@@ -61,3 +62,10 @@ export class ProcessingDirective {
  * @type {EventFilter}
  */
 ProcessingDirective.prototype.eventFilter = undefined
+
+/**
+ * An expression for filtering events before delivery to destination based on the notification payload (example: FulfillmentOrderStatusNotification.FulfillmentOrderStatus == `SHIPPED` ). The `filterExpression` is a string that follows the CEL expression syntax (https://github.com/google/cel-spec) excluding arithmetic operators (+, -, *, /, %) and list/map indexing ([]). Refer to Notification Type Values to determine if filter Expression is supported for a Notification Type. Refer to CEL Operators (https://developer-docs.amazon.com/sp-api/docs/filter-notification-subscriptions) to see if a CEL operator is supported.   Note: eventFilter and filterExpression are mutually exclusive. You can use filterExpression to replace existing eventFilter configurations.
+ * @member {String} filterExpression
+ * @type {String}
+ */
+ProcessingDirective.prototype.filterExpression = undefined

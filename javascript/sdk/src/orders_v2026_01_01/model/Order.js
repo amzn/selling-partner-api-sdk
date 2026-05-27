@@ -15,6 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 import { Alias } from './Alias.js'
 import { AssociatedOrder } from './AssociatedOrder.js'
 import { Buyer } from './Buyer.js'
+import { FulfillmentOrder } from './FulfillmentOrder.js'
 import { OrderFulfillment } from './OrderFulfillment.js'
 import { OrderItem } from './OrderItem.js'
 import { OrderPackage } from './OrderPackage.js'
@@ -85,6 +86,7 @@ export class Order {
       if (data.hasOwnProperty('fulfillment')) { obj.fulfillment = OrderFulfillment.constructFromObject(data.fulfillment) }
       if (data.hasOwnProperty('orderItems')) { obj.orderItems = ApiClient.convertToType(data.orderItems, [OrderItem]) }
       if (data.hasOwnProperty('packages')) { obj.packages = ApiClient.convertToType(data.packages, [OrderPackage]) }
+      if (data.hasOwnProperty('fulfillmentOrders')) { obj.fulfillmentOrders = ApiClient.convertToType(data.fulfillmentOrders, [FulfillmentOrder]) }
     }
     return obj
   }
@@ -187,3 +189,10 @@ Order.prototype.orderItems = undefined
  * @type {OrderPackage[]}
  */
 Order.prototype.packages = undefined
+
+/**
+ * The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.
+ * @member {FulfillmentOrder[]} fulfillmentOrders
+ * @type {FulfillmentOrder[]}
+ */
+Order.prototype.fulfillmentOrders = undefined

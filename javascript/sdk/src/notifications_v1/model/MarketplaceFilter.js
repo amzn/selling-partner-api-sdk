@@ -21,7 +21,7 @@ import { ApiClient } from '../ApiClient.js'
 export class MarketplaceFilter {
   /**
    * Constructs a new <code>MarketplaceFilter</code>.
-   * An event filter to customize your subscription to send notifications for only the specified &#x60;marketplaceId&#x60;s.
+   * An event filter you can use to customize your subscription to send notifications for specific &#x60;marketplaceId&#x60;s.
    * @alias module:notifications_v1/model/MarketplaceFilter
    * @class
    */
@@ -56,7 +56,7 @@ export class MarketplaceFilter {
 }
 
 /**
- * A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
+ * A list of marketplace identifiers you can subscribe to (for example, `ATVPDKIKX0DER`). To receive notifications in every marketplace, do not provide this list.
  * @member {String[]} marketplaceIds
  * @type {String[]}
  */

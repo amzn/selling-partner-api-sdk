@@ -17,6 +17,13 @@ export class OrderProceeds {
      * @type {Money}
      */
     grandTotal: Money;
+    /**
+     * Categorized proceeds for the order. Proceed categories are either aggregated across all order items (such as `ITEM`, `SHIPPING`, and `TAX`) or applied at the order level (such as `DELIVERY_TIP`).
+     * @member {OrderProceedsBreakdown[]} breakdowns
+     * @type {OrderProceedsBreakdown[]}
+     */
+    breakdowns: OrderProceedsBreakdown[];
 }
 import { Money } from './Money.js';
+import { OrderProceedsBreakdown } from './OrderProceedsBreakdown.js';
 //# sourceMappingURL=OrderProceeds.d.ts.map

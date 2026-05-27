@@ -12,6 +12,8 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
+import { ApprovedAttribute } from './ApprovedAttribute.js'
+import { InterimStatusDetail } from './InterimStatusDetail.js'
 import { PrescriptionDetail } from './PrescriptionDetail.js'
 
 /**
@@ -51,6 +53,8 @@ export class VerificationDetails {
       }
       obj = obj || new VerificationDetails()
       if (data.hasOwnProperty('prescriptionDetail')) { obj.prescriptionDetail = PrescriptionDetail.constructFromObject(data.prescriptionDetail) }
+      if (data.hasOwnProperty('approvedAlternativeDetails')) { obj.approvedAlternativeDetails = ApiClient.convertToType(data.approvedAlternativeDetails, [ApprovedAttribute]) }
+      if (data.hasOwnProperty('interimStatusDetail')) { obj.interimStatusDetail = InterimStatusDetail.constructFromObject(data.interimStatusDetail) }
     }
     return obj
   }
@@ -61,3 +65,16 @@ export class VerificationDetails {
  * @type {PrescriptionDetail}
  */
 VerificationDetails.prototype.prescriptionDetail = undefined
+
+/**
+ * Pre-approved alternative product attributes available for a rejected order. Each element contains an attribute name, its original value from the rejected order, and the corrected value that would result in approval (for example, a substituted `asin` or adjusted `petWeight`).
+ * @member {ApprovedAttribute[]} approvedAlternativeDetails
+ * @type {ApprovedAttribute[]}
+ */
+VerificationDetails.prototype.approvedAlternativeDetails = undefined
+
+/**
+ * @member {InterimStatusDetail} interimStatusDetail
+ * @type {InterimStatusDetail}
+ */
+VerificationDetails.prototype.interimStatusDetail = undefined

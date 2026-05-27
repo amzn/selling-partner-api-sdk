@@ -13,7 +13,7 @@ export class OrderChangeTypeFilter {
      */
     static constructFromObject(data: Object, obj: OrderChangeTypeFilter): OrderChangeTypeFilter;
     /**
-     * A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
+     * A list of order change types you can subscribe to (for example, `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
      * @member {OrderChangeTypeEnum[]} orderChangeTypes
      * @type {OrderChangeTypeEnum[]}
      */

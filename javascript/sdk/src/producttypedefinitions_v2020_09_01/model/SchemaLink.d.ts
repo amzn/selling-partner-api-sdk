@@ -14,10 +14,11 @@ export class SchemaLink {
     static constructFromObject(data: Object, obj: SchemaLink): SchemaLink;
     /**
      * Constructs a new <code>SchemaLink</code>.
+     * A link to metadata schema.
      * @alias module:producttypedefinitions_v2020_09_01/model/SchemaLink
      * @class
      * @param link {SchemaLinkLink}
-     * @param checksum {String} Checksum hash of the schema (Base64 MD5). Can be used to verify schema contents, identify changes between schema versions, and for caching.
+     * @param checksum {String} Checksum hash of the schema (Base64 MD5). Use this to verify schema contents, identify changes between schema versions, and for caching.
      */
     constructor(link: SchemaLinkLink, checksum: string);
     link: SchemaLinkLink;

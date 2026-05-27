@@ -27,6 +27,7 @@ import { DistributionProduct } from './model/DistributionProduct.js'
 import { Error } from './model/Error.js'
 import { ErrorList } from './model/ErrorList.js'
 import { ExpirationDetails } from './model/ExpirationDetails.js'
+import { FormatType } from './model/FormatType.js'
 import { InboundEligibility } from './model/InboundEligibility.js'
 import { InboundEligibilityStatus } from './model/InboundEligibilityStatus.js'
 import { InboundOrder } from './model/InboundOrder.js'
@@ -39,6 +40,7 @@ import { InboundShipmentStatus } from './model/InboundShipmentStatus.js'
 import { InboundShipmentSummary } from './model/InboundShipmentSummary.js'
 import { InboundStatus } from './model/InboundStatus.js'
 import { InventoryDetails } from './model/InventoryDetails.js'
+import { InventoryDetailsVisibility } from './model/InventoryDetailsVisibility.js'
 import { InventoryListing } from './model/InventoryListing.js'
 import { InventoryQuantity } from './model/InventoryQuantity.js'
 import { InventorySummary } from './model/InventorySummary.js'
@@ -46,12 +48,23 @@ import { InventoryUnitOfMeasurement } from './model/InventoryUnitOfMeasurement.j
 import { LabelOwner } from './model/LabelOwner.js'
 import { LabelStatus } from './model/LabelStatus.js'
 import { MeasurementData } from './model/MeasurementData.js'
+import { OrderAttribute } from './model/OrderAttribute.js'
 import { OrderIneligibilityReason } from './model/OrderIneligibilityReason.js'
+import { OrderPreference } from './model/OrderPreference.js'
+import { OrderPreferenceValue } from './model/OrderPreferenceValue.js'
+import { OutboundExecutionError } from './model/OutboundExecutionError.js'
+import { OutboundListing } from './model/OutboundListing.js'
+import { OutboundOrder } from './model/OutboundOrder.js'
+import { OutboundOrderCreationData } from './model/OutboundOrderCreationData.js'
+import { OutboundOrderReference } from './model/OutboundOrderReference.js'
+import { OutboundShipment } from './model/OutboundShipment.js'
 import { OutboundShipmentStatus } from './model/OutboundShipmentStatus.js'
 import { OutboundShipmentSummary } from './model/OutboundShipmentSummary.js'
+import { OutboundStatus } from './model/OutboundStatus.js'
 import { PackageDimensions } from './model/PackageDimensions.js'
 import { PackageVolume } from './model/PackageVolume.js'
 import { PackageWeight } from './model/PackageWeight.js'
+import { PageType } from './model/PageType.js'
 import { PrepCategory } from './model/PrepCategory.js'
 import { PrepDetails } from './model/PrepDetails.js'
 import { PrepInstruction } from './model/PrepInstruction.js'
@@ -64,11 +77,15 @@ import { ReplenishmentOrderListing } from './model/ReplenishmentOrderListing.js'
 import { ReplenishmentOrderReference } from './model/ReplenishmentOrderReference.js'
 import { ReplenishmentOrderStatus } from './model/ReplenishmentOrderStatus.js'
 import { ReplenishmentPreferences } from './model/ReplenishmentPreferences.js'
+import { ShipmentLabelPageTypes } from './model/ShipmentLabelPageTypes.js'
 import { ShipmentLabels } from './model/ShipmentLabels.js'
 import { ShipmentListing } from './model/ShipmentListing.js'
+import { ShipmentSortableField } from './model/ShipmentSortableField.js'
 import { SkuEligibility } from './model/SkuEligibility.js'
 import { SkuIneligibilityReason } from './model/SkuIneligibilityReason.js'
+import { SkuQuantitiesVisibility } from './model/SkuQuantitiesVisibility.js'
 import { SkuQuantity } from './model/SkuQuantity.js'
+import { SortOrder } from './model/SortOrder.js'
 import { TrackingDetails } from './model/TrackingDetails.js'
 import { TransportationDetails } from './model/TransportationDetails.js'
 import { VolumeUnitOfMeasurement } from './model/VolumeUnitOfMeasurement.js'
@@ -179,6 +196,12 @@ export {
   ExpirationDetails,
 
   /**
+     * The FormatType model constructor.
+     * @property {module:awd_v2024_05_09/model/FormatType}
+     */
+  FormatType,
+
+  /**
      * The InboundEligibility model constructor.
      * @property {module:awd_v2024_05_09/model/InboundEligibility}
      */
@@ -251,6 +274,12 @@ export {
   InventoryDetails,
 
   /**
+     * The InventoryDetailsVisibility model constructor.
+     * @property {module:awd_v2024_05_09/model/InventoryDetailsVisibility}
+     */
+  InventoryDetailsVisibility,
+
+  /**
      * The InventoryListing model constructor.
      * @property {module:awd_v2024_05_09/model/InventoryListing}
      */
@@ -293,10 +322,64 @@ export {
   MeasurementData,
 
   /**
+     * The OrderAttribute model constructor.
+     * @property {module:awd_v2024_05_09/model/OrderAttribute}
+     */
+  OrderAttribute,
+
+  /**
      * The OrderIneligibilityReason model constructor.
      * @property {module:awd_v2024_05_09/model/OrderIneligibilityReason}
      */
   OrderIneligibilityReason,
+
+  /**
+     * The OrderPreference model constructor.
+     * @property {module:awd_v2024_05_09/model/OrderPreference}
+     */
+  OrderPreference,
+
+  /**
+     * The OrderPreferenceValue model constructor.
+     * @property {module:awd_v2024_05_09/model/OrderPreferenceValue}
+     */
+  OrderPreferenceValue,
+
+  /**
+     * The OutboundExecutionError model constructor.
+     * @property {module:awd_v2024_05_09/model/OutboundExecutionError}
+     */
+  OutboundExecutionError,
+
+  /**
+     * The OutboundListing model constructor.
+     * @property {module:awd_v2024_05_09/model/OutboundListing}
+     */
+  OutboundListing,
+
+  /**
+     * The OutboundOrder model constructor.
+     * @property {module:awd_v2024_05_09/model/OutboundOrder}
+     */
+  OutboundOrder,
+
+  /**
+     * The OutboundOrderCreationData model constructor.
+     * @property {module:awd_v2024_05_09/model/OutboundOrderCreationData}
+     */
+  OutboundOrderCreationData,
+
+  /**
+     * The OutboundOrderReference model constructor.
+     * @property {module:awd_v2024_05_09/model/OutboundOrderReference}
+     */
+  OutboundOrderReference,
+
+  /**
+     * The OutboundShipment model constructor.
+     * @property {module:awd_v2024_05_09/model/OutboundShipment}
+     */
+  OutboundShipment,
 
   /**
      * The OutboundShipmentStatus model constructor.
@@ -309,6 +392,12 @@ export {
      * @property {module:awd_v2024_05_09/model/OutboundShipmentSummary}
      */
   OutboundShipmentSummary,
+
+  /**
+     * The OutboundStatus model constructor.
+     * @property {module:awd_v2024_05_09/model/OutboundStatus}
+     */
+  OutboundStatus,
 
   /**
      * The PackageDimensions model constructor.
@@ -327,6 +416,12 @@ export {
      * @property {module:awd_v2024_05_09/model/PackageWeight}
      */
   PackageWeight,
+
+  /**
+     * The PageType model constructor.
+     * @property {module:awd_v2024_05_09/model/PageType}
+     */
+  PageType,
 
   /**
      * The PrepCategory model constructor.
@@ -401,6 +496,12 @@ export {
   ReplenishmentPreferences,
 
   /**
+     * The ShipmentLabelPageTypes model constructor.
+     * @property {module:awd_v2024_05_09/model/ShipmentLabelPageTypes}
+     */
+  ShipmentLabelPageTypes,
+
+  /**
      * The ShipmentLabels model constructor.
      * @property {module:awd_v2024_05_09/model/ShipmentLabels}
      */
@@ -411,6 +512,12 @@ export {
      * @property {module:awd_v2024_05_09/model/ShipmentListing}
      */
   ShipmentListing,
+
+  /**
+     * The ShipmentSortableField model constructor.
+     * @property {module:awd_v2024_05_09/model/ShipmentSortableField}
+     */
+  ShipmentSortableField,
 
   /**
      * The SkuEligibility model constructor.
@@ -425,10 +532,22 @@ export {
   SkuIneligibilityReason,
 
   /**
+     * The SkuQuantitiesVisibility model constructor.
+     * @property {module:awd_v2024_05_09/model/SkuQuantitiesVisibility}
+     */
+  SkuQuantitiesVisibility,
+
+  /**
      * The SkuQuantity model constructor.
      * @property {module:awd_v2024_05_09/model/SkuQuantity}
      */
   SkuQuantity,
+
+  /**
+     * The SortOrder model constructor.
+     * @property {module:awd_v2024_05_09/model/SortOrder}
+     */
+  SortOrder,
 
   /**
      * The TrackingDetails model constructor.

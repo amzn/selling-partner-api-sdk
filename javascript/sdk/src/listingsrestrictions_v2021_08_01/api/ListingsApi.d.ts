@@ -30,11 +30,13 @@ export class ListingsApi {
        * @param {Object} [opts] Optional parameters
        * @param {String} [opts.conditionType] The condition used to filter restrictions.
        * @param {String} [opts.reasonLocale] A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
+       * @param {String} [opts.productType] The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type.
        * @return {Promise<RestrictionList>}
        */
     getListingsRestrictionsWithHttpInfo(asin: string, sellerId: string, marketplaceIds: string[], opts?: {
         conditionType?: string | undefined;
         reasonLocale?: string | undefined;
+        productType?: string | undefined;
     }): Promise<RestrictionList>;
     /**
        * Returns listing restrictions for an item in the Amazon Catalog.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
@@ -44,11 +46,13 @@ export class ListingsApi {
        * @param {Object} [opts] Optional parameters
        * @param {String} [opts.conditionType] The condition used to filter restrictions.
        * @param {String} [opts.reasonLocale] A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
+       * @param {String} [opts.productType] The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type.
        * @return {Promise<RestrictionList>}
        */
     getListingsRestrictions(asin: string, sellerId: string, marketplaceIds: string[], opts?: {
         conditionType?: string | undefined;
         reasonLocale?: string | undefined;
+        productType?: string | undefined;
     }): Promise<RestrictionList>;
     #private;
 }

@@ -22,7 +22,7 @@ import { OrderChangeTypeEnum } from './OrderChangeTypeEnum.js'
 export class OrderChangeTypeFilter {
   /**
    * Constructs a new <code>OrderChangeTypeFilter</code>.
-   * An event filter to customize your subscription to send notifications for only the specified &#x60;orderChangeType&#x60;.
+   * An event filter you can use to customize your subscription to send notifications for a specific &#x60;orderChangeType&#x60;.
    * @alias module:notifications_v1/model/OrderChangeTypeFilter
    * @class
    */
@@ -57,7 +57,7 @@ export class OrderChangeTypeFilter {
 }
 
 /**
- * A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
+ * A list of order change types you can subscribe to (for example, `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
  * @member {OrderChangeTypeEnum[]} orderChangeTypes
  * @type {OrderChangeTypeEnum[]}
  */

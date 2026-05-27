@@ -2,6 +2,7 @@ import { ApiClient } from './ApiClient.js';
 import { Address } from './model/Address.js';
 import { AddressExtendedFields } from './model/AddressExtendedFields.js';
 import { AmazonPrograms } from './model/AmazonPrograms.js';
+import { ApprovedAttribute } from './model/ApprovedAttribute.js';
 import { AssociatedItem } from './model/AssociatedItem.js';
 import { AssociationType } from './model/AssociationType.js';
 import { AutomatedShippingSettings } from './model/AutomatedShippingSettings.js';
@@ -29,6 +30,7 @@ import { GetOrderItemsResponse } from './model/GetOrderItemsResponse.js';
 import { GetOrderRegulatedInfoResponse } from './model/GetOrderRegulatedInfoResponse.js';
 import { GetOrderResponse } from './model/GetOrderResponse.js';
 import { GetOrdersResponse } from './model/GetOrdersResponse.js';
+import { InterimStatusDetail } from './model/InterimStatusDetail.js';
 import { ItemBuyerInfo } from './model/ItemBuyerInfo.js';
 import { MarketplaceTaxInfo } from './model/MarketplaceTaxInfo.js';
 import { Measurement } from './model/Measurement.js';
@@ -67,10 +69,11 @@ import { UpdateShipmentStatusRequest } from './model/UpdateShipmentStatusRequest
 import { UpdateVerificationStatusErrorResponse } from './model/UpdateVerificationStatusErrorResponse.js';
 import { UpdateVerificationStatusRequest } from './model/UpdateVerificationStatusRequest.js';
 import { UpdateVerificationStatusRequestBody } from './model/UpdateVerificationStatusRequestBody.js';
+import { ValidInterimStatusCode } from './model/ValidInterimStatusCode.js';
 import { ValidVerificationDetail } from './model/ValidVerificationDetail.js';
 import { VerificationDetails } from './model/VerificationDetails.js';
 import { VerificationStatus } from './model/VerificationStatus.js';
 import { OrdersV0Api } from './api/OrdersV0Api.js';
 import { ShipmentApi } from './api/ShipmentApi.js';
-export { ApiClient, Address, AddressExtendedFields, AmazonPrograms, AssociatedItem, AssociationType, AutomatedShippingSettings, BusinessHours, BuyerCustomizedInfoDetail, BuyerInfo, BuyerRequestedCancel, BuyerTaxInfo, BuyerTaxInformation, ConfirmShipmentErrorResponse, ConfirmShipmentOrderItem, ConfirmShipmentRequest, ConstraintType, DeliveryPreferences, EasyShipShipmentStatus, ElectronicInvoiceStatus, Error, ExceptionDates, FulfillmentInstruction, GeoCoordinates, GetOrderAddressResponse, GetOrderBuyerInfoResponse, GetOrderItemsBuyerInfoResponse, GetOrderItemsResponse, GetOrderRegulatedInfoResponse, GetOrderResponse, GetOrdersResponse, ItemBuyerInfo, MarketplaceTaxInfo, Measurement, Money, OpenInterval, OpenTimeInterval, Order, OrderAddress, OrderBuyerInfo, OrderItem, OrderItemBuyerInfo, OrderItemsBuyerInfoList, OrderItemsInner, OrderItemsList, OrderRegulatedInfo, OrdersList, OtherDeliveryAttributes, PackageDetail, PaymentExecutionDetailItem, PointsGrantedDetail, PreferredDeliveryTime, PrescriptionDetail, ProductInfoDetail, RegulatedInformation, RegulatedInformationField, RegulatedOrderVerificationStatus, RejectionReason, ShipmentStatus, ShippingConstraints, SubstitutionOption, SubstitutionPreferences, TaxClassification, TaxCollection, UpdateShipmentStatusErrorResponse, UpdateShipmentStatusRequest, UpdateVerificationStatusErrorResponse, UpdateVerificationStatusRequest, UpdateVerificationStatusRequestBody, ValidVerificationDetail, VerificationDetails, VerificationStatus, OrdersV0Api, ShipmentApi };
+export { ApiClient, Address, AddressExtendedFields, AmazonPrograms, ApprovedAttribute, AssociatedItem, AssociationType, AutomatedShippingSettings, BusinessHours, BuyerCustomizedInfoDetail, BuyerInfo, BuyerRequestedCancel, BuyerTaxInfo, BuyerTaxInformation, ConfirmShipmentErrorResponse, ConfirmShipmentOrderItem, ConfirmShipmentRequest, ConstraintType, DeliveryPreferences, EasyShipShipmentStatus, ElectronicInvoiceStatus, Error, ExceptionDates, FulfillmentInstruction, GeoCoordinates, GetOrderAddressResponse, GetOrderBuyerInfoResponse, GetOrderItemsBuyerInfoResponse, GetOrderItemsResponse, GetOrderRegulatedInfoResponse, GetOrderResponse, GetOrdersResponse, InterimStatusDetail, ItemBuyerInfo, MarketplaceTaxInfo, Measurement, Money, OpenInterval, OpenTimeInterval, Order, OrderAddress, OrderBuyerInfo, OrderItem, OrderItemBuyerInfo, OrderItemsBuyerInfoList, OrderItemsInner, OrderItemsList, OrderRegulatedInfo, OrdersList, OtherDeliveryAttributes, PackageDetail, PaymentExecutionDetailItem, PointsGrantedDetail, PreferredDeliveryTime, PrescriptionDetail, ProductInfoDetail, RegulatedInformation, RegulatedInformationField, RegulatedOrderVerificationStatus, RejectionReason, ShipmentStatus, ShippingConstraints, SubstitutionOption, SubstitutionPreferences, TaxClassification, TaxCollection, UpdateShipmentStatusErrorResponse, UpdateShipmentStatusRequest, UpdateVerificationStatusErrorResponse, UpdateVerificationStatusRequest, UpdateVerificationStatusRequestBody, ValidInterimStatusCode, ValidVerificationDetail, VerificationDetails, VerificationStatus, OrdersV0Api, ShipmentApi };
 //# sourceMappingURL=index.d.ts.map

@@ -13,6 +13,7 @@
 
 import { ApiClient } from '../ApiClient.js'
 import { RejectionReason } from './RejectionReason.js'
+import { ValidInterimStatusCode } from './ValidInterimStatusCode.js'
 import { ValidVerificationDetail } from './ValidVerificationDetail.js'
 import { VerificationStatus } from './VerificationStatus.js'
 
@@ -65,6 +66,7 @@ export class RegulatedOrderVerificationStatus {
       if (data.hasOwnProperty('ReviewDate')) { obj.reviewDate = ApiClient.convertToType(data.ReviewDate, 'String') }
       if (data.hasOwnProperty('ExternalReviewerId')) { obj.externalReviewerId = ApiClient.convertToType(data.ExternalReviewerId, 'String') }
       if (data.hasOwnProperty('ValidVerificationDetails')) { obj.validVerificationDetails = ApiClient.convertToType(data.ValidVerificationDetails, [ValidVerificationDetail]) }
+      if (data.hasOwnProperty('ValidInterimStatusCodes')) { obj.validInterimStatusCodes = ApiClient.convertToType(data.ValidInterimStatusCodes, [ValidInterimStatusCode]) }
     }
     return obj
   }
@@ -116,3 +118,10 @@ RegulatedOrderVerificationStatus.prototype.externalReviewerId = undefined
  * @type {ValidVerificationDetail[]}
  */
 RegulatedOrderVerificationStatus.prototype.validVerificationDetails = undefined
+
+/**
+ * Valid interim status codes that may be used when populating `InterimStatusDetail`. Each element contains a `StatusCode` identifier and its customer-facing `StatusDescription`.
+ * @member {ValidInterimStatusCode[]} validInterimStatusCodes
+ * @type {ValidInterimStatusCode[]}
+ */
+RegulatedOrderVerificationStatus.prototype.validInterimStatusCodes = undefined

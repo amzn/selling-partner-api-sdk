@@ -118,6 +118,20 @@ describe('NotificationsApi', () => {
       assertValidResponsePayload(200, response.data);
     });
   });
+  describe('sendTestNotification', () => {
+    it('should successfully call sendTestNotificationWithHttpInfo', async () => {
+      await instructBackendMock("notifications", "sendTestNotification", "200")
+      const params = [
+        generateMockData('String'),
+        generateMockData('SendTestNotificationRequest')
+      ];
+      const response = await instance.sendTestNotificationWithHttpInfo(...params);
+
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data);
+    });
+  });
 
   describe('constructor', () => {
     it('should use default ApiClient when none provided', () => {

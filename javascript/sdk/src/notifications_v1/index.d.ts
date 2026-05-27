@@ -23,8 +23,11 @@ import { MarketplaceFilter } from './model/MarketplaceFilter.js';
 import { OrderChangeTypeEnum } from './model/OrderChangeTypeEnum.js';
 import { OrderChangeTypeFilter } from './model/OrderChangeTypeFilter.js';
 import { ProcessingDirective } from './model/ProcessingDirective.js';
+import { SendTestNotificationRequest } from './model/SendTestNotificationRequest.js';
+import { SendTestNotificationResponse } from './model/SendTestNotificationResponse.js';
 import { SqsResource } from './model/SqsResource.js';
 import { Subscription } from './model/Subscription.js';
+import { TestNotification } from './model/TestNotification.js';
 import { NotificationsApi } from './api/NotificationsApi.js';
-export { ApiClient, AggregationFilter, AggregationSettings, AggregationTimePeriod, CreateDestinationRequest, CreateDestinationResponse, CreateSubscriptionRequest, CreateSubscriptionResponse, DeleteDestinationResponse, DeleteSubscriptionByIdResponse, Destination, DestinationResource, DestinationResourceSpecification, Error, EventBridgeResource, EventBridgeResourceSpecification, EventFilter, GetDestinationResponse, GetDestinationsResponse, GetSubscriptionByIdResponse, GetSubscriptionResponse, MarketplaceFilter, OrderChangeTypeEnum, OrderChangeTypeFilter, ProcessingDirective, SqsResource, Subscription, NotificationsApi };
+export { ApiClient, AggregationFilter, AggregationSettings, AggregationTimePeriod, CreateDestinationRequest, CreateDestinationResponse, CreateSubscriptionRequest, CreateSubscriptionResponse, DeleteDestinationResponse, DeleteSubscriptionByIdResponse, Destination, DestinationResource, DestinationResourceSpecification, Error, EventBridgeResource, EventBridgeResourceSpecification, EventFilter, GetDestinationResponse, GetDestinationsResponse, GetSubscriptionByIdResponse, GetSubscriptionResponse, MarketplaceFilter, OrderChangeTypeEnum, OrderChangeTypeFilter, ProcessingDirective, SendTestNotificationRequest, SendTestNotificationResponse, SqsResource, Subscription, TestNotification, NotificationsApi };
 //# sourceMappingURL=index.d.ts.map

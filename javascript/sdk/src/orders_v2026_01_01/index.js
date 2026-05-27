@@ -25,6 +25,7 @@ import { DeliveryPreference } from './model/DeliveryPreference.js'
 import { Error } from './model/Error.js'
 import { ErrorList } from './model/ErrorList.js'
 import { ExceptionDate } from './model/ExceptionDate.js'
+import { FulfillmentOrder } from './model/FulfillmentOrder.js'
 import { FulfillmentStatus } from './model/FulfillmentStatus.js'
 import { GetOrderResponse } from './model/GetOrderResponse.js'
 import { GiftOption } from './model/GiftOption.js'
@@ -62,6 +63,7 @@ import { OrderItem } from './model/OrderItem.js'
 import { OrderPackage } from './model/OrderPackage.js'
 import { OrderPayment } from './model/OrderPayment.js'
 import { OrderProceeds } from './model/OrderProceeds.js'
+import { OrderProceedsBreakdown } from './model/OrderProceedsBreakdown.js'
 import { OrderTax } from './model/OrderTax.js'
 import { OrderTaxInvoicing } from './model/OrderTaxInvoicing.js'
 import { OrderTaxRegistration } from './model/OrderTaxRegistration.js'
@@ -170,6 +172,12 @@ export {
      * @property {module:orders_v2026_01_01/model/ExceptionDate}
      */
   ExceptionDate,
+
+  /**
+     * The FulfillmentOrder model constructor.
+     * @property {module:orders_v2026_01_01/model/FulfillmentOrder}
+     */
+  FulfillmentOrder,
 
   /**
      * The FulfillmentStatus model constructor.
@@ -392,6 +400,12 @@ export {
      * @property {module:orders_v2026_01_01/model/OrderProceeds}
      */
   OrderProceeds,
+
+  /**
+     * The OrderProceedsBreakdown model constructor.
+     * @property {module:orders_v2026_01_01/model/OrderProceedsBreakdown}
+     */
+  OrderProceedsBreakdown,
 
   /**
      * The OrderTax model constructor.

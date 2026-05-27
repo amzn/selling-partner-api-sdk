@@ -1,10 +1,11 @@
-export type OrderChangeTypeEnum = "OrderStatusChange" | "BuyerRequestedChange";
+export type OrderChangeTypeEnum = "BuyerRequestedChange" | "DeliveryTipChange" | "OrderStatusChange";
 /**
- * @typedef {'OrderStatusChange'|'BuyerRequestedChange'} OrderChangeTypeEnum
+ * @typedef {'BuyerRequestedChange'|'DeliveryTipChange'|'OrderStatusChange'} OrderChangeTypeEnum
  */
 export const OrderChangeTypeEnum: (() => void) & {
-    OrderStatusChange: string;
     BuyerRequestedChange: string;
+    DeliveryTipChange: string;
+    OrderStatusChange: string;
     constructFromObject: (object: any) => any;
 };
 //# sourceMappingURL=OrderChangeTypeEnum.d.ts.map

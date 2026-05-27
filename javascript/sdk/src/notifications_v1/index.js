@@ -36,8 +36,11 @@ import { MarketplaceFilter } from './model/MarketplaceFilter.js'
 import { OrderChangeTypeEnum } from './model/OrderChangeTypeEnum.js'
 import { OrderChangeTypeFilter } from './model/OrderChangeTypeFilter.js'
 import { ProcessingDirective } from './model/ProcessingDirective.js'
+import { SendTestNotificationRequest } from './model/SendTestNotificationRequest.js'
+import { SendTestNotificationResponse } from './model/SendTestNotificationResponse.js'
 import { SqsResource } from './model/SqsResource.js'
 import { Subscription } from './model/Subscription.js'
+import { TestNotification } from './model/TestNotification.js'
 import { NotificationsApi } from './api/NotificationsApi.js'
 
 /**
@@ -198,6 +201,18 @@ export {
   ProcessingDirective,
 
   /**
+     * The SendTestNotificationRequest model constructor.
+     * @property {module:notifications_v1/model/SendTestNotificationRequest}
+     */
+  SendTestNotificationRequest,
+
+  /**
+     * The SendTestNotificationResponse model constructor.
+     * @property {module:notifications_v1/model/SendTestNotificationResponse}
+     */
+  SendTestNotificationResponse,
+
+  /**
      * The SqsResource model constructor.
      * @property {module:notifications_v1/model/SqsResource}
      */
@@ -208,6 +223,12 @@ export {
      * @property {module:notifications_v1/model/Subscription}
      */
   Subscription,
+
+  /**
+     * The TestNotification model constructor.
+     * @property {module:notifications_v1/model/TestNotification}
+     */
+  TestNotification,
 
   /**
     * The NotificationsApi service constructor.

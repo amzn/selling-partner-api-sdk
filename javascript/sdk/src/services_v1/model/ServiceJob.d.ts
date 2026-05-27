@@ -64,6 +64,18 @@ export class ServiceJob {
      */
     serviceOrderId: string;
     /**
+     * A list of associated product order IDs for the service job.
+     * @member {String[]} productOrderIds
+     * @type {String[]}
+     */
+    productOrderIds: string[];
+    /**
+     * A list of associated product tracking IDs for the service job.
+     * @member {String[]} trackingIds
+     * @type {String[]}
+     */
+    trackingIds: string[];
+    /**
      * The marketplace identifier.
      * @member {String} marketplaceId
      * @type {String}

@@ -18,7 +18,7 @@ export class EventBridgeResource {
      * @alias module:notifications_v1/model/EventBridgeResource
      * @class
      * @param name {String} The name of the partner event source associated with the destination.
-     * @param region {String} The AWS region in which you receive the notifications. For AWS regions that are supported in Amazon EventBridge, refer to [Amazon EventBridge endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ev.html).
+     * @param region {String} The AWS region in which you receive the notifications. For AWS regions that Amazon EventBridge supports, refer to [Amazon EventBridge endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ev.html).
      * @param accountId {String} The identifier for the AWS account that is responsible for charges related to receiving notifications.
      */
     constructor(name: string, region: string, accountId: string);
