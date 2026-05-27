@@ -56,7 +56,7 @@ class OrderChangeTypeFilter(object):
     def order_change_types(self):
         """Gets the order_change_types of this OrderChangeTypeFilter.  # noqa: E501
 
-        A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.  # noqa: E501
+        A list of order change types you can subscribe to (for example, `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.  # noqa: E501
 
         :return: The order_change_types of this OrderChangeTypeFilter.  # noqa: E501
         :rtype: List[OrderChangeTypeEnum]
@@ -67,7 +67,7 @@ class OrderChangeTypeFilter(object):
     def order_change_types(self, order_change_types):
         """Sets the order_change_types of this OrderChangeTypeFilter.
 
-        A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.  # noqa: E501
+        A list of order change types you can subscribe to (for example, `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.  # noqa: E501
 
         :param order_change_types: The order_change_types of this OrderChangeTypeFilter.  # noqa: E501
         :type: List[OrderChangeTypeEnum]

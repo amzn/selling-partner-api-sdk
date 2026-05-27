@@ -56,7 +56,7 @@ class MarketplaceFilter(object):
     def marketplace_ids(self):
         """Gets the marketplace_ids of this MarketplaceFilter.  # noqa: E501
 
-        A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.  # noqa: E501
+        A list of marketplace identifiers you can subscribe to (for example, `ATVPDKIKX0DER`). To receive notifications in every marketplace, do not provide this list.  # noqa: E501
 
         :return: The marketplace_ids of this MarketplaceFilter.  # noqa: E501
         :rtype: List[str]
@@ -67,7 +67,7 @@ class MarketplaceFilter(object):
     def marketplace_ids(self, marketplace_ids):
         """Sets the marketplace_ids of this MarketplaceFilter.
 
-        A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.  # noqa: E501
+        A list of marketplace identifiers you can subscribe to (for example, `ATVPDKIKX0DER`). To receive notifications in every marketplace, do not provide this list.  # noqa: E501
 
         :param marketplace_ids: The marketplace_ids of this MarketplaceFilter.  # noqa: E501
         :type: List[str]

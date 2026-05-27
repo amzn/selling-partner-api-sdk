@@ -40,6 +40,7 @@ class AssociatedItem(object):
         'item_status': 'str',
         'brand_name': 'str',
         'item_delivery': 'ItemDelivery',
+        'linked_assets': 'List[LinkedAsset]',
     }
 
     attribute_map = {
@@ -50,9 +51,10 @@ class AssociatedItem(object):
         'item_status': 'itemStatus',
         'brand_name': 'brandName',
         'item_delivery': 'itemDelivery',
+        'linked_assets': 'linkedAssets',
     }
 
-    def __init__(self, asin=None, title=None, quantity=None, order_id=None, item_status=None, brand_name=None, item_delivery=None, _configuration=None):  # noqa: E501
+    def __init__(self, asin=None, title=None, quantity=None, order_id=None, item_status=None, brand_name=None, item_delivery=None, linked_assets=None, _configuration=None):  # noqa: E501
         """AssociatedItem - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -65,6 +67,7 @@ class AssociatedItem(object):
         self._item_status = None
         self._brand_name = None
         self._item_delivery = None
+        self._linked_assets = None
         self.discriminator = None
 
         if asin is not None:
@@ -81,6 +84,8 @@ class AssociatedItem(object):
             self.brand_name = brand_name
         if item_delivery is not None:
             self.item_delivery = item_delivery
+        if linked_assets is not None:
+            self.linked_assets = linked_assets
 
     @property
     def asin(self):
@@ -253,6 +258,29 @@ class AssociatedItem(object):
         """
 
         self._item_delivery = item_delivery
+
+    @property
+    def linked_assets(self):
+        """Gets the linked_assets of this AssociatedItem.  # noqa: E501
+
+        A list of customer-owned assets on which the service must be performed.  # noqa: E501
+
+        :return: The linked_assets of this AssociatedItem.  # noqa: E501
+        :rtype: List[LinkedAsset]
+        """
+        return self._linked_assets
+
+    @linked_assets.setter
+    def linked_assets(self, linked_assets):
+        """Sets the linked_assets of this AssociatedItem.
+
+        A list of customer-owned assets on which the service must be performed.  # noqa: E501
+
+        :param linked_assets: The linked_assets of this AssociatedItem.  # noqa: E501
+        :type: List[LinkedAsset]
+        """
+
+        self._linked_assets = linked_assets
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -36,6 +36,7 @@ class GetSellingPartnerMetricsRequest(object):
         'aggregation_frequency': 'AggregationFrequency',
         'time_interval': 'TimeInterval',
         'metrics': 'List[Metric]',
+        'filters': 'GetSellingPartnerMetricsRequestFilters',
         'time_period_type': 'TimePeriodType',
         'marketplace_id': 'str',
         'program_types': 'List[ProgramType]',
@@ -45,12 +46,13 @@ class GetSellingPartnerMetricsRequest(object):
         'aggregation_frequency': 'aggregationFrequency',
         'time_interval': 'timeInterval',
         'metrics': 'metrics',
+        'filters': 'filters',
         'time_period_type': 'timePeriodType',
         'marketplace_id': 'marketplaceId',
         'program_types': 'programTypes',
     }
 
-    def __init__(self, aggregation_frequency=None, time_interval=None, metrics=None, time_period_type=None, marketplace_id=None, program_types=None, _configuration=None):  # noqa: E501
+    def __init__(self, aggregation_frequency=None, time_interval=None, metrics=None, filters=None, time_period_type=None, marketplace_id=None, program_types=None, _configuration=None):  # noqa: E501
         """GetSellingPartnerMetricsRequest - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -59,6 +61,7 @@ class GetSellingPartnerMetricsRequest(object):
         self._aggregation_frequency = None
         self._time_interval = None
         self._metrics = None
+        self._filters = None
         self._time_period_type = None
         self._marketplace_id = None
         self._program_types = None
@@ -69,6 +72,8 @@ class GetSellingPartnerMetricsRequest(object):
         self.time_interval = time_interval
         if metrics is not None:
             self.metrics = metrics
+        if filters is not None:
+            self.filters = filters
         self.time_period_type = time_period_type
         self.marketplace_id = marketplace_id
         self.program_types = program_types
@@ -142,6 +147,27 @@ class GetSellingPartnerMetricsRequest(object):
             raise ValueError("Invalid value for `metrics`, number of items must be greater than or equal to `1`")  # noqa: E501
 
         self._metrics = metrics
+
+    @property
+    def filters(self):
+        """Gets the filters of this GetSellingPartnerMetricsRequest.  # noqa: E501
+
+
+        :return: The filters of this GetSellingPartnerMetricsRequest.  # noqa: E501
+        :rtype: GetSellingPartnerMetricsRequestFilters
+        """
+        return self._filters
+
+    @filters.setter
+    def filters(self, filters):
+        """Sets the filters of this GetSellingPartnerMetricsRequest.
+
+
+        :param filters: The filters of this GetSellingPartnerMetricsRequest.  # noqa: E501
+        :type: GetSellingPartnerMetricsRequestFilters
+        """
+
+        self._filters = filters
 
     @property
     def time_period_type(self):

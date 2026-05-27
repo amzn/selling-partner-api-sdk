@@ -16,6 +16,7 @@
 from spapi.models.orders_v0.address import Address
 from spapi.models.orders_v0.address_extended_fields import AddressExtendedFields
 from spapi.models.orders_v0.amazon_programs import AmazonPrograms
+from spapi.models.orders_v0.approved_attribute import ApprovedAttribute
 from spapi.models.orders_v0.associated_item import AssociatedItem
 from spapi.models.orders_v0.association_type import AssociationType
 from spapi.models.orders_v0.automated_shipping_settings import AutomatedShippingSettings
@@ -43,6 +44,7 @@ from spapi.models.orders_v0.get_order_items_response import GetOrderItemsRespons
 from spapi.models.orders_v0.get_order_regulated_info_response import GetOrderRegulatedInfoResponse
 from spapi.models.orders_v0.get_order_response import GetOrderResponse
 from spapi.models.orders_v0.get_orders_response import GetOrdersResponse
+from spapi.models.orders_v0.interim_status_detail import InterimStatusDetail
 from spapi.models.orders_v0.item_buyer_info import ItemBuyerInfo
 from spapi.models.orders_v0.marketplace_tax_info import MarketplaceTaxInfo
 from spapi.models.orders_v0.measurement import Measurement
@@ -81,6 +83,7 @@ from spapi.models.orders_v0.update_shipment_status_request import UpdateShipment
 from spapi.models.orders_v0.update_verification_status_error_response import UpdateVerificationStatusErrorResponse
 from spapi.models.orders_v0.update_verification_status_request import UpdateVerificationStatusRequest
 from spapi.models.orders_v0.update_verification_status_request_body import UpdateVerificationStatusRequestBody
+from spapi.models.orders_v0.valid_interim_status_code import ValidInterimStatusCode
 from spapi.models.orders_v0.valid_verification_detail import ValidVerificationDetail
 from spapi.models.orders_v0.verification_details import VerificationDetails
 from spapi.models.orders_v0.verification_status import VerificationStatus

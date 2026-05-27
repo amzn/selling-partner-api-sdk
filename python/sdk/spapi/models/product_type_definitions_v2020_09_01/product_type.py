@@ -88,7 +88,7 @@ class ProductType(object):
     def display_name(self):
         """Gets the display_name of this ProductType.  # noqa: E501
 
-        The human-readable and localized description of the Amazon product type.  # noqa: E501
+        Human-readable and localized description of the Amazon product type.  # noqa: E501
 
         :return: The display_name of this ProductType.  # noqa: E501
         :rtype: str
@@ -99,7 +99,7 @@ class ProductType(object):
     def display_name(self, display_name):
         """Sets the display_name of this ProductType.
 
-        The human-readable and localized description of the Amazon product type.  # noqa: E501
+        Human-readable and localized description of the Amazon product type.  # noqa: E501
 
         :param display_name: The display_name of this ProductType.  # noqa: E501
         :type: str

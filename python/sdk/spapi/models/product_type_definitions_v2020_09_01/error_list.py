@@ -55,6 +55,7 @@ class ErrorList(object):
     def errors(self):
         """Gets the errors of this ErrorList.  # noqa: E501
 
+        A list of error responses.  # noqa: E501
 
         :return: The errors of this ErrorList.  # noqa: E501
         :rtype: List[Error]
@@ -65,6 +66,7 @@ class ErrorList(object):
     def errors(self, errors):
         """Sets the errors of this ErrorList.
 
+        A list of error responses.  # noqa: E501
 
         :param errors: The errors of this ErrorList.  # noqa: E501
         :type: List[Error]

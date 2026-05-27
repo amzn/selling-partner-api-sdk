@@ -59,6 +59,7 @@ class ProductTypeList(object):
     def product_types(self):
         """Gets the product_types of this ProductTypeList.  # noqa: E501
 
+        A list of product types.  # noqa: E501
 
         :return: The product_types of this ProductTypeList.  # noqa: E501
         :rtype: List[ProductType]
@@ -69,6 +70,7 @@ class ProductTypeList(object):
     def product_types(self, product_types):
         """Sets the product_types of this ProductTypeList.
 
+        A list of product types.  # noqa: E501
 
         :param product_types: The product_types of this ProductTypeList.  # noqa: E501
         :type: List[ProductType]

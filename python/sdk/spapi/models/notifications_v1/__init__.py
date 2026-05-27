@@ -37,5 +37,8 @@ from spapi.models.notifications_v1.marketplace_filter import MarketplaceFilter
 from spapi.models.notifications_v1.order_change_type_enum import OrderChangeTypeEnum
 from spapi.models.notifications_v1.order_change_type_filter import OrderChangeTypeFilter
 from spapi.models.notifications_v1.processing_directive import ProcessingDirective
+from spapi.models.notifications_v1.send_test_notification_request import SendTestNotificationRequest
+from spapi.models.notifications_v1.send_test_notification_response import SendTestNotificationResponse
 from spapi.models.notifications_v1.sqs_resource import SqsResource
 from spapi.models.notifications_v1.subscription import Subscription
+from spapi.models.notifications_v1.test_notification import TestNotification

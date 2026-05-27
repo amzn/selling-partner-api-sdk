@@ -106,6 +106,16 @@ class TestNotificationsApi(unittest.TestCase):
         self.assert_valid_response_payload(200, response[0])
         pass
 
+    def test_send_test_notification(self):
+        notification_type = self._get_random_value("str", None)
+        body = self._get_random_value("SendTestNotificationRequest", None)
+        
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("send_test_notification"), "200")
+        response = self.api.send_test_notification_with_http_info(notification_type, body, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
 
     def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
         if api == "financesv0" or api == "financesv2024" or api == "transfers":

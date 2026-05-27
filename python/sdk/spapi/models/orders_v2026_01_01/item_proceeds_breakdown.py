@@ -55,10 +55,8 @@ class ItemProceedsBreakdown(object):
         self._detailed_breakdowns = None
         self.discriminator = None
 
-        if type is not None:
-            self.type = type
-        if subtotal is not None:
-            self.subtotal = subtotal
+        self.type = type
+        self.subtotal = subtotal
         if detailed_breakdowns is not None:
             self.detailed_breakdowns = detailed_breakdowns
 
@@ -82,6 +80,8 @@ class ItemProceedsBreakdown(object):
         :param type: The type of this ItemProceedsBreakdown.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and type is None:
+            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
 
         self._type = type
 
@@ -103,6 +103,8 @@ class ItemProceedsBreakdown(object):
         :param subtotal: The subtotal of this ItemProceedsBreakdown.  # noqa: E501
         :type: Money
         """
+        if self._configuration.client_side_validation and subtotal is None:
+            raise ValueError("Invalid value for `subtotal`, must not be `None`")  # noqa: E501
 
         self._subtotal = subtotal
 

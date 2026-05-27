@@ -1437,6 +1437,8 @@ class ServiceApi(object):
         :param async_req bool
         :param List[str] marketplace_ids: Used to select jobs that were placed in the specified marketplaces. (required)
         :param List[str] service_order_ids: List of service order ids for the query you want to perform.Max values supported 20.
+        :param List[str] product_order_ids: A list of up to 20 associated product order IDs. You can use these IDs to query service jobs.
+        :param List[str] tracking_ids: A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs.
         :param List[str] service_job_status: A list of one or more job status by which to filter the list of jobs.
         :param str page_token: String returned in the response of your previous request.
         :param int page_size: A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20.
@@ -1474,6 +1476,8 @@ class ServiceApi(object):
         :param async_req bool
         :param List[str] marketplace_ids: Used to select jobs that were placed in the specified marketplaces. (required)
         :param List[str] service_order_ids: List of service order ids for the query you want to perform.Max values supported 20.
+        :param List[str] product_order_ids: A list of up to 20 associated product order IDs. You can use these IDs to query service jobs.
+        :param List[str] tracking_ids: A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs.
         :param List[str] service_job_status: A list of one or more job status by which to filter the list of jobs.
         :param str page_token: String returned in the response of your previous request.
         :param int page_size: A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20.
@@ -1493,7 +1497,7 @@ class ServiceApi(object):
                  returns the request thread.
         """
 
-        all_params = ['marketplace_ids', 'service_order_ids', 'service_job_status', 'page_token', 'page_size', 'sort_field', 'sort_order', 'created_after', 'created_before', 'last_updated_after', 'last_updated_before', 'schedule_start_date', 'schedule_end_date', 'asins', 'required_skills', 'store_ids']  # noqa: E501
+        all_params = ['marketplace_ids', 'service_order_ids', 'product_order_ids', 'tracking_ids', 'service_job_status', 'page_token', 'page_size', 'sort_field', 'sort_order', 'created_after', 'created_before', 'last_updated_after', 'last_updated_before', 'schedule_start_date', 'schedule_end_date', 'asins', 'required_skills', 'store_ids']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1522,6 +1526,18 @@ class ServiceApi(object):
         if self.api_client.client_side_validation and ('service_order_ids' in params and
                                             len(params['service_order_ids']) < 1):
             raise ValueError("Invalid value for parameter `service_order_ids` when calling `get_service_jobs`, number of items must be greater than or equal to `1`")  # noqa: E501
+        if self.api_client.client_side_validation and ('product_order_ids' in params and
+                                            len(params['product_order_ids']) > 20):
+            raise ValueError("Invalid value for parameter `product_order_ids` when calling `get_service_jobs`, number of items must be less than or equal to `20`")  # noqa: E501
+        if self.api_client.client_side_validation and ('product_order_ids' in params and
+                                            len(params['product_order_ids']) < 1):
+            raise ValueError("Invalid value for parameter `product_order_ids` when calling `get_service_jobs`, number of items must be greater than or equal to `1`")  # noqa: E501
+        if self.api_client.client_side_validation and ('tracking_ids' in params and
+                                            len(params['tracking_ids']) > 20):
+            raise ValueError("Invalid value for parameter `tracking_ids` when calling `get_service_jobs`, number of items must be less than or equal to `20`")  # noqa: E501
+        if self.api_client.client_side_validation and ('tracking_ids' in params and
+                                            len(params['tracking_ids']) < 1):
+            raise ValueError("Invalid value for parameter `tracking_ids` when calling `get_service_jobs`, number of items must be greater than or equal to `1`")  # noqa: E501
         if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] > 20):  # noqa: E501
             raise ValueError("Invalid value for parameter `page_size` when calling `get_service_jobs`, must be a value less than or equal to `20`")  # noqa: E501
         if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] < 1):  # noqa: E501
@@ -1552,6 +1568,12 @@ class ServiceApi(object):
         if 'service_order_ids' in params:
             query_params.append(('serviceOrderIds', params['service_order_ids']))  # noqa: E501
             collection_formats['serviceOrderIds'] = 'csv'  # noqa: E501
+        if 'product_order_ids' in params:
+            query_params.append(('productOrderIds', params['product_order_ids']))  # noqa: E501
+            collection_formats['productOrderIds'] = 'csv'  # noqa: E501
+        if 'tracking_ids' in params:
+            query_params.append(('trackingIds', params['tracking_ids']))  # noqa: E501
+            collection_formats['trackingIds'] = 'csv'  # noqa: E501
         if 'service_job_status' in params:
             query_params.append(('serviceJobStatus', params['service_job_status']))  # noqa: E501
             collection_formats['serviceJobStatus'] = 'csv'  # noqa: E501

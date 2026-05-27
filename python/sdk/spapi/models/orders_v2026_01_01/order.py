@@ -48,6 +48,7 @@ class Order(object):
         'fulfillment': 'OrderFulfillment',
         'order_items': 'List[OrderItem]',
         'packages': 'List[OrderPackage]',
+        'fulfillment_orders': 'List[FulfillmentOrder]',
     }
 
     attribute_map = {
@@ -66,9 +67,10 @@ class Order(object):
         'fulfillment': 'fulfillment',
         'order_items': 'orderItems',
         'packages': 'packages',
+        'fulfillment_orders': 'fulfillmentOrders',
     }
 
-    def __init__(self, order_id=None, order_aliases=None, created_time=None, last_updated_time=None, programs=None, associated_orders=None, sales_channel=None, buyer=None, recipient=None, proceeds=None, payment=None, tax=None, fulfillment=None, order_items=None, packages=None, _configuration=None):  # noqa: E501
+    def __init__(self, order_id=None, order_aliases=None, created_time=None, last_updated_time=None, programs=None, associated_orders=None, sales_channel=None, buyer=None, recipient=None, proceeds=None, payment=None, tax=None, fulfillment=None, order_items=None, packages=None, fulfillment_orders=None, _configuration=None):  # noqa: E501
         """Order - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -89,6 +91,7 @@ class Order(object):
         self._fulfillment = None
         self._order_items = None
         self._packages = None
+        self._fulfillment_orders = None
         self.discriminator = None
 
         self.order_id = order_id
@@ -116,6 +119,8 @@ class Order(object):
         self.order_items = order_items
         if packages is not None:
             self.packages = packages
+        if fulfillment_orders is not None:
+            self.fulfillment_orders = fulfillment_orders
 
     @property
     def order_id(self):
@@ -457,6 +462,29 @@ class Order(object):
         """
 
         self._packages = packages
+
+    @property
+    def fulfillment_orders(self):
+        """Gets the fulfillment_orders of this Order.  # noqa: E501
+
+        The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.  # noqa: E501
+
+        :return: The fulfillment_orders of this Order.  # noqa: E501
+        :rtype: List[FulfillmentOrder]
+        """
+        return self._fulfillment_orders
+
+    @fulfillment_orders.setter
+    def fulfillment_orders(self, fulfillment_orders):
+        """Sets the fulfillment_orders of this Order.
+
+        The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.  # noqa: E501
+
+        :param fulfillment_orders: The fulfillment_orders of this Order.  # noqa: E501
+        :type: List[FulfillmentOrder]
+        """
+
+        self._fulfillment_orders = fulfillment_orders
 
     def to_dict(self):
         """Returns the model properties as a dict"""

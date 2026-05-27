@@ -59,7 +59,7 @@ class TimeInterval(object):
     def start_date(self):
         """Gets the start_date of this TimeInterval.  # noqa: E501
 
-        When this object is used as a request parameter, the specified `startDate` is adjusted based on the aggregation frequency.  * For `WEEK` the metric is computed from the first day of the week (Sunday, based on ISO 8601) that contains the `startDate`. * For `MONTH` the metric is computed from the first day of the month that contains the `startDate`. * For `QUARTER` the metric is computed from the first day of the quarter that contains the `startDate`. * For `YEAR` the metric is computed from the first day of the year that contains the `startDate`.  # noqa: E501
+        When this object is used as a request parameter, the specified `startDate` is adjusted based on the aggregation frequency.  * For `DAY` the metric is computed from the specific day indicated by the `startDate`. * For `WEEK` the metric is computed from the first day of the week (Monday, based on ISO 8601) that contains the `startDate`. * For `MONTH` the metric is computed from the first day of the month that contains the `startDate`. * For `QUARTER` the metric is computed from the first day of the quarter that contains the `startDate`. * For `YEAR` the metric is computed from the first day of the year that contains the `startDate`.  # noqa: E501
 
         :return: The start_date of this TimeInterval.  # noqa: E501
         :rtype: datetime
@@ -70,7 +70,7 @@ class TimeInterval(object):
     def start_date(self, start_date):
         """Sets the start_date of this TimeInterval.
 
-        When this object is used as a request parameter, the specified `startDate` is adjusted based on the aggregation frequency.  * For `WEEK` the metric is computed from the first day of the week (Sunday, based on ISO 8601) that contains the `startDate`. * For `MONTH` the metric is computed from the first day of the month that contains the `startDate`. * For `QUARTER` the metric is computed from the first day of the quarter that contains the `startDate`. * For `YEAR` the metric is computed from the first day of the year that contains the `startDate`.  # noqa: E501
+        When this object is used as a request parameter, the specified `startDate` is adjusted based on the aggregation frequency.  * For `DAY` the metric is computed from the specific day indicated by the `startDate`. * For `WEEK` the metric is computed from the first day of the week (Monday, based on ISO 8601) that contains the `startDate`. * For `MONTH` the metric is computed from the first day of the month that contains the `startDate`. * For `QUARTER` the metric is computed from the first day of the quarter that contains the `startDate`. * For `YEAR` the metric is computed from the first day of the year that contains the `startDate`.  # noqa: E501
 
         :param start_date: The start_date of this TimeInterval.  # noqa: E501
         :type: datetime
@@ -84,7 +84,7 @@ class TimeInterval(object):
     def end_date(self):
         """Gets the end_date of this TimeInterval.  # noqa: E501
 
-        When this object is used as a request parameter, the specified `endDate` is adjusted based on the aggregation frequency.  * For `WEEK` the metric is computed up to the last day of the week (Sunday, based on ISO 8601) that contains the `endDate`. * For `MONTH`, the metric is computed up to the last day that contains the `endDate`. * For `QUARTER` the metric is computed up to the last day of the quarter that contains the `endDate`. * For `YEAR` the metric is computed up to the last day of the year that contains the `endDate`.  Note: The end date may be adjusted to a lower value based on the data available in our system.  # noqa: E501
+        When this object is used as a request parameter, the specified `endDate` is adjusted based on the aggregation frequency.  * For `DAY` the metric is computed up to the specific day indicated by the `endDate`. * For `WEEK` the metric is computed up to the last day of the week (Sunday, based on ISO 8601) that contains the `endDate`. * For `MONTH`, the metric is computed up to the last day of the month that contains the `endDate`. * For `QUARTER` the metric is computed up to the last day of the quarter that contains the `endDate`. * For `YEAR` the metric is computed up to the last day of the year that contains the `endDate`.  Note: The end date may be adjusted to a lower value based on the data available in our system.  # noqa: E501
 
         :return: The end_date of this TimeInterval.  # noqa: E501
         :rtype: datetime
@@ -95,7 +95,7 @@ class TimeInterval(object):
     def end_date(self, end_date):
         """Sets the end_date of this TimeInterval.
 
-        When this object is used as a request parameter, the specified `endDate` is adjusted based on the aggregation frequency.  * For `WEEK` the metric is computed up to the last day of the week (Sunday, based on ISO 8601) that contains the `endDate`. * For `MONTH`, the metric is computed up to the last day that contains the `endDate`. * For `QUARTER` the metric is computed up to the last day of the quarter that contains the `endDate`. * For `YEAR` the metric is computed up to the last day of the year that contains the `endDate`.  Note: The end date may be adjusted to a lower value based on the data available in our system.  # noqa: E501
+        When this object is used as a request parameter, the specified `endDate` is adjusted based on the aggregation frequency.  * For `DAY` the metric is computed up to the specific day indicated by the `endDate`. * For `WEEK` the metric is computed up to the last day of the week (Sunday, based on ISO 8601) that contains the `endDate`. * For `MONTH`, the metric is computed up to the last day of the month that contains the `endDate`. * For `QUARTER` the metric is computed up to the last day of the quarter that contains the `endDate`. * For `YEAR` the metric is computed up to the last day of the year that contains the `endDate`.  Note: The end date may be adjusted to a lower value based on the data available in our system.  # noqa: E501
 
         :param end_date: The end_date of this TimeInterval.  # noqa: E501
         :type: datetime

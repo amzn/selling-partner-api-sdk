@@ -34,23 +34,28 @@ class OrderProceeds(object):
     """
     swagger_types = {
         'grand_total': 'Money',
+        'breakdowns': 'List[OrderProceedsBreakdown]',
     }
 
     attribute_map = {
         'grand_total': 'grandTotal',
+        'breakdowns': 'breakdowns',
     }
 
-    def __init__(self, grand_total=None, _configuration=None):  # noqa: E501
+    def __init__(self, grand_total=None, breakdowns=None, _configuration=None):  # noqa: E501
         """OrderProceeds - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
         self._grand_total = None
+        self._breakdowns = None
         self.discriminator = None
 
         if grand_total is not None:
             self.grand_total = grand_total
+        if breakdowns is not None:
+            self.breakdowns = breakdowns
 
     @property
     def grand_total(self):
@@ -72,6 +77,29 @@ class OrderProceeds(object):
         """
 
         self._grand_total = grand_total
+
+    @property
+    def breakdowns(self):
+        """Gets the breakdowns of this OrderProceeds.  # noqa: E501
+
+        Categorized proceeds for the order. Proceed categories are either aggregated across all order items (such as `ITEM`, `SHIPPING`, and `TAX`) or applied at the order level (such as `DELIVERY_TIP`).  # noqa: E501
+
+        :return: The breakdowns of this OrderProceeds.  # noqa: E501
+        :rtype: List[OrderProceedsBreakdown]
+        """
+        return self._breakdowns
+
+    @breakdowns.setter
+    def breakdowns(self, breakdowns):
+        """Sets the breakdowns of this OrderProceeds.
+
+        Categorized proceeds for the order. Proceed categories are either aggregated across all order items (such as `ITEM`, `SHIPPING`, and `TAX`) or applied at the order level (such as `DELIVERY_TIP`).  # noqa: E501
+
+        :param breakdowns: The breakdowns of this OrderProceeds.  # noqa: E501
+        :type: List[OrderProceedsBreakdown]
+        """
+
+        self._breakdowns = breakdowns
 
     def to_dict(self):
         """Returns the model properties as a dict"""

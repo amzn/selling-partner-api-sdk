@@ -50,6 +50,7 @@ class ListingsRestrictionsApi(object):
         :param List[str] marketplace_ids: A comma-delimited list of Amazon marketplace identifiers for the request. (required)
         :param str condition_type: The condition used to filter restrictions.
         :param str reason_locale: A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \"en_US\", \"fr_CA\", \"fr_FR\". Localized messages default to \"en_US\" when a localization is not available in the specified locale.
+        :param str product_type: The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type.
         :return: RestrictionList
                  If the method is called asynchronously,
                  returns the request thread.
@@ -76,12 +77,13 @@ class ListingsRestrictionsApi(object):
         :param List[str] marketplace_ids: A comma-delimited list of Amazon marketplace identifiers for the request. (required)
         :param str condition_type: The condition used to filter restrictions.
         :param str reason_locale: A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \"en_US\", \"fr_CA\", \"fr_FR\". Localized messages default to \"en_US\" when a localization is not available in the specified locale.
+        :param str product_type: The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type.
         :return: RestrictionList
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['asin', 'seller_id', 'marketplace_ids', 'condition_type', 'reason_locale']  # noqa: E501
+        all_params = ['asin', 'seller_id', 'marketplace_ids', 'condition_type', 'reason_locale', 'product_type']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -125,6 +127,8 @@ class ListingsRestrictionsApi(object):
             collection_formats['marketplaceIds'] = 'csv'  # noqa: E501
         if 'reason_locale' in params:
             query_params.append(('reasonLocale', params['reason_locale']))  # noqa: E501
+        if 'product_type' in params:
+            query_params.append(('productType', params['product_type']))  # noqa: E501
 
         header_params = {}
 
