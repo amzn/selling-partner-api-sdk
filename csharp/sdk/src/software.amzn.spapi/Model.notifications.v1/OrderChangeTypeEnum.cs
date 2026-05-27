@@ -33,16 +33,22 @@ namespace software.amzn.spapi.Model.notifications.v1
     public enum OrderChangeTypeEnum
     {
         /// <summary>
-        /// Enum OrderStatusChange for value: OrderStatusChange
-        /// </summary>
-        [EnumMember(Value = "OrderStatusChange")]
-        OrderStatusChange = 1,
-
-        /// <summary>
         /// Enum BuyerRequestedChange for value: BuyerRequestedChange
         /// </summary>
         [EnumMember(Value = "BuyerRequestedChange")]
-        BuyerRequestedChange = 2
+        BuyerRequestedChange = 1,
+
+        /// <summary>
+        /// Enum DeliveryTipChange for value: DeliveryTipChange
+        /// </summary>
+        [EnumMember(Value = "DeliveryTipChange")]
+        DeliveryTipChange = 2,
+
+        /// <summary>
+        /// Enum OrderStatusChange for value: OrderStatusChange
+        /// </summary>
+        [EnumMember(Value = "OrderStatusChange")]
+        OrderStatusChange = 3
     }
 
 }

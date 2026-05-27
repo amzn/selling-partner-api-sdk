@@ -34,12 +34,27 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// <summary>
         /// Initializes a new instance of the <see cref="ItemProceedsBreakdown" /> class.
         /// </summary>
-        /// <param name="type">Category classification of the proceeds breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;TAX&#x60;, &#x60;DISCOUNT&#x60;.</param>
-        /// <param name="subtotal">subtotal.</param>
+        [JsonConstructorAttribute]
+        protected ItemProceedsBreakdown() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ItemProceedsBreakdown" /> class.
+        /// </summary>
+        /// <param name="type">Category classification of the proceeds breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;TAX&#x60;, &#x60;DISCOUNT&#x60; (required).</param>
+        /// <param name="subtotal">subtotal (required).</param>
         /// <param name="detailedBreakdowns">Further granular breakdown of the subtotal..</param>
-        public ItemProceedsBreakdown(string? type = default(string?), Money? subtotal = default(Money?), List<ItemProceedsDetailedBreakdown>? detailedBreakdowns = default(List<ItemProceedsDetailedBreakdown>?))
+        public ItemProceedsBreakdown(string type = default(string), Money subtotal = default(Money), List<ItemProceedsDetailedBreakdown>? detailedBreakdowns = default(List<ItemProceedsDetailedBreakdown>?))
         {
+            // to ensure "type" is required (not null)
+            if (type == null)
+            {
+                throw new ArgumentNullException("type is a required property for ItemProceedsBreakdown and cannot be null");
+            }
             this.Type = type;
+            // to ensure "subtotal" is required (not null)
+            if (subtotal == null)
+            {
+                throw new ArgumentNullException("subtotal is a required property for ItemProceedsBreakdown and cannot be null");
+            }
             this.Subtotal = subtotal;
             this.DetailedBreakdowns = detailedBreakdowns;
         }
@@ -48,14 +63,14 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// Category classification of the proceeds breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;TAX&#x60;, &#x60;DISCOUNT&#x60;
         /// </summary>
         /// <value>Category classification of the proceeds breakdown.   **Possible values**: &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, &#x60;GIFT_WRAP&#x60;, &#x60;COD_FEE&#x60;, &#x60;OTHER&#x60;, &#x60;TAX&#x60;, &#x60;DISCOUNT&#x60;</value>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
-        public string? Type { get; set; }
+        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
+        public string Type { get; set; }
 
         /// <summary>
         /// Gets or Sets Subtotal
         /// </summary>
-        [DataMember(Name = "subtotal", EmitDefaultValue = false)]
-        public Money? Subtotal { get; set; }
+        [DataMember(Name = "subtotal", IsRequired = true, EmitDefaultValue = true)]
+        public Money Subtotal { get; set; }
 
         /// <summary>
         /// Further granular breakdown of the subtotal.

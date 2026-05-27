@@ -92,6 +92,27 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// 
         /// </summary>
         /// <remarks>
+        /// Confirms an AWD outbound order for a set of shipments that contain items that must be outbound to a destination node. You can confirm the order only if it&#39;s in an&#x60;ELIGIBLE&#x60; state.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order you want to confirm.</param>
+        /// <returns></returns>
+        void ConfirmOutbound (string orderId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Confirms an AWD outbound order for a set of shipments that contain items that must be outbound to a destination node. You can confirm the order only if it&#39;s in an&#x60;ELIGIBLE&#x60; state.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order you want to confirm.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> ConfirmOutboundWithHttpInfo (string orderId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Confirms an AWD replenishment order in ELIGIBLE state with a set of shipments containing items that are needed to be replenished to an FBA node. Order can only be confirmed in ELIGIBLE state.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -130,6 +151,27 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="body">Payload for creating an inbound order.</param>
         /// <returns>ApiResponse of InboundOrderReference</returns>
         ApiResponse<InboundOrderReference> CreateInboundWithHttpInfo (InboundOrderCreationData body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates a draft AWD outbound order with the specified products. The API returns the order ID for the newly created order and starts an async validation check on the outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Payload for creating an outbound order.</param>
+        /// <returns>OutboundOrderReference</returns>
+        OutboundOrderReference CreateOutbound (OutboundOrderCreationData body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates a draft AWD outbound order with the specified products. The API returns the order ID for the newly created order and starts an async validation check on the outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Payload for creating an outbound order.</param>
+        /// <returns>ApiResponse of OutboundOrderReference</returns>
+        ApiResponse<OutboundOrderReference> CreateOutboundWithHttpInfo (OutboundOrderCreationData body);
         /// <summary>
         /// 
         /// </summary>
@@ -224,6 +266,48 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// 
         /// </summary>
         /// <remarks>
+        /// Retrieves the available label page types for a shipment ID that you specify. This is an asynchronous operation. If the label status is &#x60;GENERATED&#x60;, then the pageTypes are available.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="shipmentId">ID for the shipment.</param>
+        /// <returns>ShipmentLabelPageTypes</returns>
+        ShipmentLabelPageTypes GetLabelPageTypes (string shipmentId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the available label page types for a shipment ID that you specify. This is an asynchronous operation. If the label status is &#x60;GENERATED&#x60;, then the pageTypes are available.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="shipmentId">ID for the shipment.</param>
+        /// <returns>ApiResponse of ShipmentLabelPageTypes</returns>
+        ApiResponse<ShipmentLabelPageTypes> GetLabelPageTypesWithHttpInfo (string shipmentId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Retrieves an AWD outbound order with a set of shipments that contain items that are outbound into a destination channel. If the order is not eligible, the validation errors field is included in the order response. The API returns the order ID for the newly created order and starts an async validation check on the outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order to be retrieved.</param>
+        /// <returns>OutboundOrder</returns>
+        OutboundOrder GetOutbound (string orderId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Retrieves an AWD outbound order with a set of shipments that contain items that are outbound into a destination channel. If the order is not eligible, the validation errors field is included in the order response. The API returns the order ID for the newly created order and starts an async validation check on the outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order to be retrieved.</param>
+        /// <returns>ApiResponse of OutboundOrder</returns>
+        ApiResponse<OutboundOrder> GetOutboundWithHttpInfo (string orderId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Retrieves an AWD Replenishment order with a set of shipments containing items that is/was planned to be replenished into an FBA node.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -307,6 +391,35 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// 
         /// </summary>
         /// <remarks>
+        /// Retrieves all outbound AWD orders (with optional filters) that pertain to a merchant. By default, orders are sorted by the &#x60;updatedAt&#x60; attribute in descending order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatedAfter">Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="updatedBefore">Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="sortOrder">Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)</param>
+        /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
+        /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>OutboundListing</returns>
+        OutboundListing ListOutbounds (DateTime? updatedAfter = null, DateTime? updatedBefore = null, string? sortOrder = null, int? maxResults = null, string? nextToken = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Retrieves all outbound AWD orders (with optional filters) that pertain to a merchant. By default, orders are sorted by the &#x60;updatedAt&#x60; attribute in descending order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatedAfter">Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="updatedBefore">Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="sortOrder">Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)</param>
+        /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
+        /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>ApiResponse of OutboundListing</returns>
+        ApiResponse<OutboundListing> ListOutboundsWithHttpInfo (DateTime? updatedAfter = null, DateTime? updatedBefore = null, string? sortOrder = null, int? maxResults = null, string? nextToken = null);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Retrieves all the AWD replenishment orders pertaining to a merchant with optional filters. API by default will sort orders by updatedAt attribute in descending order.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -378,6 +491,29 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="body">Transportation details for the shipment.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UpdateInboundShipmentTransportDetailsWithHttpInfo (string shipmentId, TransportationDetails body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Updates an AWD outbound order that is in &#x60;DRAFT&#x60;, &#x60;ELIGIBLE&#x60;, or &#x60;INELIGIBLE&#x60; status. This API allows updates on &#x60;productsToOutbound&#x60; and &#x60;orderPreferences&#x60; attributes only. Any updates will restart the outbound order validation.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order to be updated.</param>
+        /// <param name="body">Represents an AWD outbound order.</param>
+        /// <returns>OutboundOrderReference</returns>
+        OutboundOrderReference UpdateOutbound (string orderId, OutboundOrder body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Updates an AWD outbound order that is in &#x60;DRAFT&#x60;, &#x60;ELIGIBLE&#x60;, or &#x60;INELIGIBLE&#x60; status. This API allows updates on &#x60;productsToOutbound&#x60; and &#x60;orderPreferences&#x60; attributes only. Any updates will restart the outbound order validation.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order to be updated.</param>
+        /// <param name="body">Represents an AWD outbound order.</param>
+        /// <returns>ApiResponse of OutboundOrderReference</returns>
+        ApiResponse<OutboundOrderReference> UpdateOutboundWithHttpInfo (string orderId, OutboundOrder body);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -447,6 +583,27 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// 
         /// </summary>
         /// <remarks>
+        /// Confirms an AWD outbound order for a set of shipments that contain items that must be outbound to a destination node. You can confirm the order only if it&#39;s in an&#x60;ELIGIBLE&#x60; state.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order you want to confirm.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task ConfirmOutboundAsync (string orderId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Confirms an AWD outbound order for a set of shipments that contain items that must be outbound to a destination node. You can confirm the order only if it&#39;s in an&#x60;ELIGIBLE&#x60; state.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order you want to confirm.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> ConfirmOutboundAsyncWithHttpInfo (string orderId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Confirms an AWD replenishment order in ELIGIBLE state with a set of shipments containing items that are needed to be replenished to an FBA node. Order can only be confirmed in ELIGIBLE state.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -485,6 +642,27 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="body">Payload for creating an inbound order.</param>
         /// <returns>Task of ApiResponse (InboundOrderReference)</returns>
         System.Threading.Tasks.Task<ApiResponse<InboundOrderReference>> CreateInboundAsyncWithHttpInfo (InboundOrderCreationData body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates a draft AWD outbound order with the specified products. The API returns the order ID for the newly created order and starts an async validation check on the outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Payload for creating an outbound order.</param>
+        /// <returns>Task of OutboundOrderReference</returns>
+        System.Threading.Tasks.Task<OutboundOrderReference> CreateOutboundAsync (OutboundOrderCreationData body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates a draft AWD outbound order with the specified products. The API returns the order ID for the newly created order and starts an async validation check on the outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Payload for creating an outbound order.</param>
+        /// <returns>Task of ApiResponse (OutboundOrderReference)</returns>
+        System.Threading.Tasks.Task<ApiResponse<OutboundOrderReference>> CreateOutboundAsyncWithHttpInfo (OutboundOrderCreationData body);
         /// <summary>
         /// 
         /// </summary>
@@ -579,6 +757,48 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// 
         /// </summary>
         /// <remarks>
+        /// Retrieves the available label page types for a shipment ID that you specify. This is an asynchronous operation. If the label status is &#x60;GENERATED&#x60;, then the pageTypes are available.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="shipmentId">ID for the shipment.</param>
+        /// <returns>Task of ShipmentLabelPageTypes</returns>
+        System.Threading.Tasks.Task<ShipmentLabelPageTypes> GetLabelPageTypesAsync (string shipmentId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Retrieves the available label page types for a shipment ID that you specify. This is an asynchronous operation. If the label status is &#x60;GENERATED&#x60;, then the pageTypes are available.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="shipmentId">ID for the shipment.</param>
+        /// <returns>Task of ApiResponse (ShipmentLabelPageTypes)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ShipmentLabelPageTypes>> GetLabelPageTypesAsyncWithHttpInfo (string shipmentId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Retrieves an AWD outbound order with a set of shipments that contain items that are outbound into a destination channel. If the order is not eligible, the validation errors field is included in the order response. The API returns the order ID for the newly created order and starts an async validation check on the outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order to be retrieved.</param>
+        /// <returns>Task of OutboundOrder</returns>
+        System.Threading.Tasks.Task<OutboundOrder> GetOutboundAsync (string orderId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Retrieves an AWD outbound order with a set of shipments that contain items that are outbound into a destination channel. If the order is not eligible, the validation errors field is included in the order response. The API returns the order ID for the newly created order and starts an async validation check on the outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order to be retrieved.</param>
+        /// <returns>Task of ApiResponse (OutboundOrder)</returns>
+        System.Threading.Tasks.Task<ApiResponse<OutboundOrder>> GetOutboundAsyncWithHttpInfo (string orderId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Retrieves an AWD Replenishment order with a set of shipments containing items that is/was planned to be replenished into an FBA node.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -662,6 +882,35 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// 
         /// </summary>
         /// <remarks>
+        /// Retrieves all outbound AWD orders (with optional filters) that pertain to a merchant. By default, orders are sorted by the &#x60;updatedAt&#x60; attribute in descending order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatedAfter">Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="updatedBefore">Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="sortOrder">Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)</param>
+        /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
+        /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>Task of OutboundListing</returns>
+        System.Threading.Tasks.Task<OutboundListing> ListOutboundsAsync (DateTime? updatedAfter = null, DateTime? updatedBefore = null, string? sortOrder = null, int? maxResults = null, string? nextToken = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Retrieves all outbound AWD orders (with optional filters) that pertain to a merchant. By default, orders are sorted by the &#x60;updatedAt&#x60; attribute in descending order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatedAfter">Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="updatedBefore">Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="sortOrder">Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)</param>
+        /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
+        /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>Task of ApiResponse (OutboundListing)</returns>
+        System.Threading.Tasks.Task<ApiResponse<OutboundListing>> ListOutboundsAsyncWithHttpInfo (DateTime? updatedAfter = null, DateTime? updatedBefore = null, string? sortOrder = null, int? maxResults = null, string? nextToken = null);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Retrieves all the AWD replenishment orders pertaining to a merchant with optional filters. API by default will sort orders by updatedAt attribute in descending order.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -733,6 +982,29 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="body">Transportation details for the shipment.</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> UpdateInboundShipmentTransportDetailsAsyncWithHttpInfo (string shipmentId, TransportationDetails body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Updates an AWD outbound order that is in &#x60;DRAFT&#x60;, &#x60;ELIGIBLE&#x60;, or &#x60;INELIGIBLE&#x60; status. This API allows updates on &#x60;productsToOutbound&#x60; and &#x60;orderPreferences&#x60; attributes only. Any updates will restart the outbound order validation.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order to be updated.</param>
+        /// <param name="body">Represents an AWD outbound order.</param>
+        /// <returns>Task of OutboundOrderReference</returns>
+        System.Threading.Tasks.Task<OutboundOrderReference> UpdateOutboundAsync (string orderId, OutboundOrder body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Updates an AWD outbound order that is in &#x60;DRAFT&#x60;, &#x60;ELIGIBLE&#x60;, or &#x60;INELIGIBLE&#x60; status. This API allows updates on &#x60;productsToOutbound&#x60; and &#x60;orderPreferences&#x60; attributes only. Any updates will restart the outbound order validation.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order to be updated.</param>
+        /// <param name="body">Represents an AWD outbound order.</param>
+        /// <returns>Task of ApiResponse (OutboundOrderReference)</returns>
+        System.Threading.Tasks.Task<ApiResponse<OutboundOrderReference>> UpdateOutboundAsyncWithHttpInfo (string orderId, OutboundOrder body);
         #endregion Asynchronous Operations
     }
 
@@ -1225,6 +1497,134 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         }
 
         /// <summary>
+        ///  Confirms an AWD outbound order for a set of shipments that contain items that must be outbound to a destination node. You can confirm the order only if it&#39;s in an&#x60;ELIGIBLE&#x60; state.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order you want to confirm.</param>
+        /// <returns></returns>
+        public void ConfirmOutbound (string orderId)
+        {
+             ConfirmOutboundWithHttpInfo(orderId);
+        }
+
+        /// <summary>
+        ///  Confirms an AWD outbound order for a set of shipments that contain items that must be outbound to a destination node. You can confirm the order only if it&#39;s in an&#x60;ELIGIBLE&#x60; state.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order you want to confirm.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> ConfirmOutboundWithHttpInfo (string orderId)
+        {
+            // verify the required parameter 'orderId' is set
+            if (orderId == null)
+                throw new ApiException(400, "Missing required parameter 'orderId' when calling AwdApi->ConfirmOutbound");
+
+            var localVarPath = "/awd/2024-05-09/outboundOrders/{orderId}/confirmation";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (orderId != null) localVarPathParams.Add("orderId", this.Configuration.ApiClient.ParameterToString(orderId)); // path parameter
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath, ChangeHttpMethod("POST"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ConfirmOutbound", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(
+                statusCode: localVarResponse.StatusCode,
+                headers: ConvertHeadersToMultimap(localVarResponse),
+                data: null);
+        }
+
+        /// <summary>
+        ///  Confirms an AWD outbound order for a set of shipments that contain items that must be outbound to a destination node. You can confirm the order only if it&#39;s in an&#x60;ELIGIBLE&#x60; state.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order you want to confirm.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task ConfirmOutboundAsync (string orderId)
+        {
+             await ConfirmOutboundAsyncWithHttpInfo(orderId);
+
+        }
+
+        /// <summary>
+        ///  Confirms an AWD outbound order for a set of shipments that contain items that must be outbound to a destination node. You can confirm the order only if it&#39;s in an&#x60;ELIGIBLE&#x60; state.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order you want to confirm.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> ConfirmOutboundAsyncWithHttpInfo (string orderId)
+        {
+            // verify the required parameter 'orderId' is set
+            if (orderId == null)
+                throw new ApiException(400, "Missing required parameter 'orderId' when calling AwdApi->ConfirmOutbound");
+
+            var localVarPath = "/awd/2024-05-09/outboundOrders/{orderId}/confirmation";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (orderId != null) localVarPathParams.Add("orderId", this.Configuration.ApiClient.ParameterToString(orderId)); // path parameter
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath, ChangeHttpMethod("POST"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ConfirmOutbound", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(
+                statusCode: localVarResponse.StatusCode,
+                headers: ConvertHeadersToMultimap(localVarResponse),
+                data: null);
+        }
+
+        /// <summary>
         ///  Confirms an AWD replenishment order in ELIGIBLE state with a set of shipments containing items that are needed to be replenished to an FBA node. Order can only be confirmed in ELIGIBLE state.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1494,6 +1894,150 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
             return new ApiResponse<InboundOrderReference>(localVarResponse.StatusCode,
                 ConvertHeadersToMultimap(localVarResponse),
                 (InboundOrderReference) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InboundOrderReference)));
+        }
+
+        /// <summary>
+        ///  Creates a draft AWD outbound order with the specified products. The API returns the order ID for the newly created order and starts an async validation check on the outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Payload for creating an outbound order.</param>
+        /// <returns>OutboundOrderReference</returns>
+        public OutboundOrderReference CreateOutbound (OutboundOrderCreationData body)
+        {
+             ApiResponse<OutboundOrderReference> localVarResponse = CreateOutboundWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Creates a draft AWD outbound order with the specified products. The API returns the order ID for the newly created order and starts an async validation check on the outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Payload for creating an outbound order.</param>
+        /// <returns>ApiResponse of OutboundOrderReference</returns>
+        public ApiResponse< OutboundOrderReference > CreateOutboundWithHttpInfo (OutboundOrderCreationData body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling AwdApi->CreateOutbound");
+
+            var localVarPath = "/awd/2024-05-09/outboundOrders";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath, ChangeHttpMethod("POST"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateOutbound", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<OutboundOrderReference>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (OutboundOrderReference) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(OutboundOrderReference)));
+        }
+
+        /// <summary>
+        ///  Creates a draft AWD outbound order with the specified products. The API returns the order ID for the newly created order and starts an async validation check on the outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Payload for creating an outbound order.</param>
+        /// <returns>Task of OutboundOrderReference</returns>
+        public async System.Threading.Tasks.Task<OutboundOrderReference> CreateOutboundAsync (OutboundOrderCreationData body)
+        {
+             ApiResponse<OutboundOrderReference> localVarResponse = await CreateOutboundAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  Creates a draft AWD outbound order with the specified products. The API returns the order ID for the newly created order and starts an async validation check on the outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Payload for creating an outbound order.</param>
+        /// <returns>Task of ApiResponse (OutboundOrderReference)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<OutboundOrderReference>> CreateOutboundAsyncWithHttpInfo (OutboundOrderCreationData body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling AwdApi->CreateOutbound");
+
+            var localVarPath = "/awd/2024-05-09/outboundOrders";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath, ChangeHttpMethod("POST"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateOutbound", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<OutboundOrderReference>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (OutboundOrderReference) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(OutboundOrderReference)));
         }
 
         /// <summary>
@@ -2043,6 +2587,262 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         }
 
         /// <summary>
+        ///  Retrieves the available label page types for a shipment ID that you specify. This is an asynchronous operation. If the label status is &#x60;GENERATED&#x60;, then the pageTypes are available.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="shipmentId">ID for the shipment.</param>
+        /// <returns>ShipmentLabelPageTypes</returns>
+        public ShipmentLabelPageTypes GetLabelPageTypes (string shipmentId)
+        {
+             ApiResponse<ShipmentLabelPageTypes> localVarResponse = GetLabelPageTypesWithHttpInfo(shipmentId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Retrieves the available label page types for a shipment ID that you specify. This is an asynchronous operation. If the label status is &#x60;GENERATED&#x60;, then the pageTypes are available.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="shipmentId">ID for the shipment.</param>
+        /// <returns>ApiResponse of ShipmentLabelPageTypes</returns>
+        public ApiResponse< ShipmentLabelPageTypes > GetLabelPageTypesWithHttpInfo (string shipmentId)
+        {
+            // verify the required parameter 'shipmentId' is set
+            if (shipmentId == null)
+                throw new ApiException(400, "Missing required parameter 'shipmentId' when calling AwdApi->GetLabelPageTypes");
+
+            var localVarPath = "/awd/2024-05-09/inboundShipments/{shipmentId}/labelPageTypes";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (shipmentId != null) localVarPathParams.Add("shipmentId", this.Configuration.ApiClient.ParameterToString(shipmentId)); // path parameter
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath, ChangeHttpMethod("GET"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetLabelPageTypes", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ShipmentLabelPageTypes>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (ShipmentLabelPageTypes) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ShipmentLabelPageTypes)));
+        }
+
+        /// <summary>
+        ///  Retrieves the available label page types for a shipment ID that you specify. This is an asynchronous operation. If the label status is &#x60;GENERATED&#x60;, then the pageTypes are available.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="shipmentId">ID for the shipment.</param>
+        /// <returns>Task of ShipmentLabelPageTypes</returns>
+        public async System.Threading.Tasks.Task<ShipmentLabelPageTypes> GetLabelPageTypesAsync (string shipmentId)
+        {
+             ApiResponse<ShipmentLabelPageTypes> localVarResponse = await GetLabelPageTypesAsyncWithHttpInfo(shipmentId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  Retrieves the available label page types for a shipment ID that you specify. This is an asynchronous operation. If the label status is &#x60;GENERATED&#x60;, then the pageTypes are available.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="shipmentId">ID for the shipment.</param>
+        /// <returns>Task of ApiResponse (ShipmentLabelPageTypes)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ShipmentLabelPageTypes>> GetLabelPageTypesAsyncWithHttpInfo (string shipmentId)
+        {
+            // verify the required parameter 'shipmentId' is set
+            if (shipmentId == null)
+                throw new ApiException(400, "Missing required parameter 'shipmentId' when calling AwdApi->GetLabelPageTypes");
+
+            var localVarPath = "/awd/2024-05-09/inboundShipments/{shipmentId}/labelPageTypes";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (shipmentId != null) localVarPathParams.Add("shipmentId", this.Configuration.ApiClient.ParameterToString(shipmentId)); // path parameter
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath, ChangeHttpMethod("GET"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetLabelPageTypes", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ShipmentLabelPageTypes>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (ShipmentLabelPageTypes) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ShipmentLabelPageTypes)));
+        }
+
+        /// <summary>
+        ///  Retrieves an AWD outbound order with a set of shipments that contain items that are outbound into a destination channel. If the order is not eligible, the validation errors field is included in the order response. The API returns the order ID for the newly created order and starts an async validation check on the outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order to be retrieved.</param>
+        /// <returns>OutboundOrder</returns>
+        public OutboundOrder GetOutbound (string orderId)
+        {
+             ApiResponse<OutboundOrder> localVarResponse = GetOutboundWithHttpInfo(orderId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Retrieves an AWD outbound order with a set of shipments that contain items that are outbound into a destination channel. If the order is not eligible, the validation errors field is included in the order response. The API returns the order ID for the newly created order and starts an async validation check on the outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order to be retrieved.</param>
+        /// <returns>ApiResponse of OutboundOrder</returns>
+        public ApiResponse< OutboundOrder > GetOutboundWithHttpInfo (string orderId)
+        {
+            // verify the required parameter 'orderId' is set
+            if (orderId == null)
+                throw new ApiException(400, "Missing required parameter 'orderId' when calling AwdApi->GetOutbound");
+
+            var localVarPath = "/awd/2024-05-09/outboundOrders/{orderId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (orderId != null) localVarPathParams.Add("orderId", this.Configuration.ApiClient.ParameterToString(orderId)); // path parameter
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath, ChangeHttpMethod("GET"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetOutbound", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<OutboundOrder>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (OutboundOrder) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(OutboundOrder)));
+        }
+
+        /// <summary>
+        ///  Retrieves an AWD outbound order with a set of shipments that contain items that are outbound into a destination channel. If the order is not eligible, the validation errors field is included in the order response. The API returns the order ID for the newly created order and starts an async validation check on the outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order to be retrieved.</param>
+        /// <returns>Task of OutboundOrder</returns>
+        public async System.Threading.Tasks.Task<OutboundOrder> GetOutboundAsync (string orderId)
+        {
+             ApiResponse<OutboundOrder> localVarResponse = await GetOutboundAsyncWithHttpInfo(orderId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  Retrieves an AWD outbound order with a set of shipments that contain items that are outbound into a destination channel. If the order is not eligible, the validation errors field is included in the order response. The API returns the order ID for the newly created order and starts an async validation check on the outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order to be retrieved.</param>
+        /// <returns>Task of ApiResponse (OutboundOrder)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<OutboundOrder>> GetOutboundAsyncWithHttpInfo (string orderId)
+        {
+            // verify the required parameter 'orderId' is set
+            if (orderId == null)
+                throw new ApiException(400, "Missing required parameter 'orderId' when calling AwdApi->GetOutbound");
+
+            var localVarPath = "/awd/2024-05-09/outboundOrders/{orderId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (orderId != null) localVarPathParams.Add("orderId", this.Configuration.ApiClient.ParameterToString(orderId)); // path parameter
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath, ChangeHttpMethod("GET"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetOutbound", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<OutboundOrder>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (OutboundOrder) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(OutboundOrder)));
+        }
+
+        /// <summary>
         ///  Retrieves an AWD Replenishment order with a set of shipments containing items that is/was planned to be replenished into an FBA node.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -2472,6 +3272,152 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
             return new ApiResponse<InventoryListing>(localVarResponse.StatusCode,
                 ConvertHeadersToMultimap(localVarResponse),
                 (InventoryListing) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InventoryListing)));
+        }
+
+        /// <summary>
+        ///  Retrieves all outbound AWD orders (with optional filters) that pertain to a merchant. By default, orders are sorted by the &#x60;updatedAt&#x60; attribute in descending order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatedAfter">Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="updatedBefore">Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="sortOrder">Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)</param>
+        /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
+        /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>OutboundListing</returns>
+        public OutboundListing ListOutbounds (DateTime? updatedAfter = null, DateTime? updatedBefore = null, string? sortOrder = null, int? maxResults = null, string? nextToken = null)
+        {
+             ApiResponse<OutboundListing> localVarResponse = ListOutboundsWithHttpInfo(updatedAfter, updatedBefore, sortOrder, maxResults, nextToken);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Retrieves all outbound AWD orders (with optional filters) that pertain to a merchant. By default, orders are sorted by the &#x60;updatedAt&#x60; attribute in descending order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatedAfter">Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="updatedBefore">Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="sortOrder">Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)</param>
+        /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
+        /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>ApiResponse of OutboundListing</returns>
+        public ApiResponse< OutboundListing > ListOutboundsWithHttpInfo (DateTime? updatedAfter = null, DateTime? updatedBefore = null, string? sortOrder = null, int? maxResults = null, string? nextToken = null)
+        {
+
+            var localVarPath = "/awd/2024-05-09/outboundOrders";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (updatedAfter != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "updatedAfter", updatedAfter)); // query parameter
+            if (updatedBefore != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "updatedBefore", updatedBefore)); // query parameter
+            if (sortOrder != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sortOrder", sortOrder)); // query parameter
+            if (maxResults != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "maxResults", maxResults)); // query parameter
+            if (nextToken != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "nextToken", nextToken)); // query parameter
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath, ChangeHttpMethod("GET"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ListOutbounds", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<OutboundListing>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (OutboundListing) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(OutboundListing)));
+        }
+
+        /// <summary>
+        ///  Retrieves all outbound AWD orders (with optional filters) that pertain to a merchant. By default, orders are sorted by the &#x60;updatedAt&#x60; attribute in descending order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatedAfter">Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="updatedBefore">Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="sortOrder">Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)</param>
+        /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
+        /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>Task of OutboundListing</returns>
+        public async System.Threading.Tasks.Task<OutboundListing> ListOutboundsAsync (DateTime? updatedAfter = null, DateTime? updatedBefore = null, string? sortOrder = null, int? maxResults = null, string? nextToken = null)
+        {
+             ApiResponse<OutboundListing> localVarResponse = await ListOutboundsAsyncWithHttpInfo(updatedAfter, updatedBefore, sortOrder, maxResults, nextToken);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  Retrieves all outbound AWD orders (with optional filters) that pertain to a merchant. By default, orders are sorted by the &#x60;updatedAt&#x60; attribute in descending order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatedAfter">Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="updatedBefore">Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="sortOrder">Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)</param>
+        /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
+        /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>Task of ApiResponse (OutboundListing)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<OutboundListing>> ListOutboundsAsyncWithHttpInfo (DateTime? updatedAfter = null, DateTime? updatedBefore = null, string? sortOrder = null, int? maxResults = null, string? nextToken = null)
+        {
+
+            var localVarPath = "/awd/2024-05-09/outboundOrders";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (updatedAfter != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "updatedAfter", updatedAfter)); // query parameter
+            if (updatedBefore != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "updatedBefore", updatedBefore)); // query parameter
+            if (sortOrder != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sortOrder", sortOrder)); // query parameter
+            if (maxResults != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "maxResults", maxResults)); // query parameter
+            if (nextToken != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "nextToken", nextToken)); // query parameter
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath, ChangeHttpMethod("GET"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ListOutbounds", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<OutboundListing>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (OutboundListing) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(OutboundListing)));
         }
 
         /// <summary>
@@ -2930,6 +3876,162 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
                 statusCode: localVarResponse.StatusCode,
                 headers: ConvertHeadersToMultimap(localVarResponse),
                 data: null);
+        }
+
+        /// <summary>
+        ///  Updates an AWD outbound order that is in &#x60;DRAFT&#x60;, &#x60;ELIGIBLE&#x60;, or &#x60;INELIGIBLE&#x60; status. This API allows updates on &#x60;productsToOutbound&#x60; and &#x60;orderPreferences&#x60; attributes only. Any updates will restart the outbound order validation.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order to be updated.</param>
+        /// <param name="body">Represents an AWD outbound order.</param>
+        /// <returns>OutboundOrderReference</returns>
+        public OutboundOrderReference UpdateOutbound (string orderId, OutboundOrder body)
+        {
+             ApiResponse<OutboundOrderReference> localVarResponse = UpdateOutboundWithHttpInfo(orderId, body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Updates an AWD outbound order that is in &#x60;DRAFT&#x60;, &#x60;ELIGIBLE&#x60;, or &#x60;INELIGIBLE&#x60; status. This API allows updates on &#x60;productsToOutbound&#x60; and &#x60;orderPreferences&#x60; attributes only. Any updates will restart the outbound order validation.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order to be updated.</param>
+        /// <param name="body">Represents an AWD outbound order.</param>
+        /// <returns>ApiResponse of OutboundOrderReference</returns>
+        public ApiResponse< OutboundOrderReference > UpdateOutboundWithHttpInfo (string orderId, OutboundOrder body)
+        {
+            // verify the required parameter 'orderId' is set
+            if (orderId == null)
+                throw new ApiException(400, "Missing required parameter 'orderId' when calling AwdApi->UpdateOutbound");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling AwdApi->UpdateOutbound");
+
+            var localVarPath = "/awd/2024-05-09/outboundOrders/{orderId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (orderId != null) localVarPathParams.Add("orderId", this.Configuration.ApiClient.ParameterToString(orderId)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath, ChangeHttpMethod("PUT"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateOutbound", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<OutboundOrderReference>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (OutboundOrderReference) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(OutboundOrderReference)));
+        }
+
+        /// <summary>
+        ///  Updates an AWD outbound order that is in &#x60;DRAFT&#x60;, &#x60;ELIGIBLE&#x60;, or &#x60;INELIGIBLE&#x60; status. This API allows updates on &#x60;productsToOutbound&#x60; and &#x60;orderPreferences&#x60; attributes only. Any updates will restart the outbound order validation.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order to be updated.</param>
+        /// <param name="body">Represents an AWD outbound order.</param>
+        /// <returns>Task of OutboundOrderReference</returns>
+        public async System.Threading.Tasks.Task<OutboundOrderReference> UpdateOutboundAsync (string orderId, OutboundOrder body)
+        {
+             ApiResponse<OutboundOrderReference> localVarResponse = await UpdateOutboundAsyncWithHttpInfo(orderId, body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  Updates an AWD outbound order that is in &#x60;DRAFT&#x60;, &#x60;ELIGIBLE&#x60;, or &#x60;INELIGIBLE&#x60; status. This API allows updates on &#x60;productsToOutbound&#x60; and &#x60;orderPreferences&#x60; attributes only. Any updates will restart the outbound order validation.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">ID for the outbound order to be updated.</param>
+        /// <param name="body">Represents an AWD outbound order.</param>
+        /// <returns>Task of ApiResponse (OutboundOrderReference)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<OutboundOrderReference>> UpdateOutboundAsyncWithHttpInfo (string orderId, OutboundOrder body)
+        {
+            // verify the required parameter 'orderId' is set
+            if (orderId == null)
+                throw new ApiException(400, "Missing required parameter 'orderId' when calling AwdApi->UpdateOutbound");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling AwdApi->UpdateOutbound");
+
+            var localVarPath = "/awd/2024-05-09/outboundOrders/{orderId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (orderId != null) localVarPathParams.Add("orderId", this.Configuration.ApiClient.ParameterToString(orderId)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath, ChangeHttpMethod("PUT"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateOutbound", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<OutboundOrderReference>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (OutboundOrderReference) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(OutboundOrderReference)));
         }
 
 

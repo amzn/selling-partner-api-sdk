@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Model.productTypeDefinitions.v2020_09_01
         /// Initializes a new instance of the <see cref="ProductType" /> class.
         /// </summary>
         /// <param name="name">The name of the Amazon product type. (required).</param>
-        /// <param name="displayName">The human-readable and localized description of the Amazon product type. (required).</param>
+        /// <param name="displayName">Human-readable and localized description of the Amazon product type. (required).</param>
         /// <param name="marketplaceIds">The Amazon marketplace identifiers for which the product type definition is available. (required).</param>
         public ProductType(string name = default(string), string displayName = default(string), List<string> marketplaceIds = default(List<string>))
         {
@@ -72,9 +72,9 @@ namespace software.amzn.spapi.Model.productTypeDefinitions.v2020_09_01
         public string Name { get; set; }
 
         /// <summary>
-        /// The human-readable and localized description of the Amazon product type.
+        /// Human-readable and localized description of the Amazon product type.
         /// </summary>
-        /// <value>The human-readable and localized description of the Amazon product type.</value>
+        /// <value>Human-readable and localized description of the Amazon product type.</value>
         [DataMember(Name = "displayName", IsRequired = true, EmitDefaultValue = true)]
         public string DisplayName { get; set; }
 

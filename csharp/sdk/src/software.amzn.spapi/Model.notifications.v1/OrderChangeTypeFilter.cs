@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.notifications.v1
 {
     /// <summary>
-    /// An event filter to customize your subscription to send notifications for only the specified &#x60;orderChangeType&#x60;.
+    /// An event filter you can use to customize your subscription to send notifications for a specific &#x60;orderChangeType&#x60;.
     /// </summary>
     [DataContract(Name = "OrderChangeTypeFilter")]
     public partial class OrderChangeTypeFilter : IValidatableObject
@@ -34,16 +34,16 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderChangeTypeFilter" /> class.
         /// </summary>
-        /// <param name="orderChangeTypes">A list of order change types to subscribe to (for example: &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list..</param>
+        /// <param name="orderChangeTypes">A list of order change types you can subscribe to (for example, &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list..</param>
         public OrderChangeTypeFilter(List<OrderChangeTypeEnum>? orderChangeTypes = default(List<OrderChangeTypeEnum>?))
         {
             this.OrderChangeTypes = orderChangeTypes;
         }
 
         /// <summary>
-        /// A list of order change types to subscribe to (for example: &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list.
+        /// A list of order change types you can subscribe to (for example, &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list.
         /// </summary>
-        /// <value>A list of order change types to subscribe to (for example: &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list.</value>
+        /// <value>A list of order change types you can subscribe to (for example, &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list.</value>
         [DataMember(Name = "orderChangeTypes", EmitDefaultValue = false)]
         public List<OrderChangeTypeEnum>? OrderChangeTypes { get; set; }
 

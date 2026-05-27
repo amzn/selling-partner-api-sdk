@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.notifications.v1
 {
     /// <summary>
-    /// Information about the destination created when you call the &#x60;createDestination&#x60; operation.
+    /// Information about the destination you create when you call the &#x60;createDestination&#x60; operation.
     /// </summary>
     [DataContract(Name = "Destination")]
     public partial class Destination : IValidatableObject

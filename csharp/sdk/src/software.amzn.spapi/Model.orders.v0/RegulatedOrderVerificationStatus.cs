@@ -52,7 +52,8 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="reviewDate">The date the order was reviewed. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format..</param>
         /// <param name="externalReviewerId">The identifier for the order&#39;s regulated information reviewer..</param>
         /// <param name="validVerificationDetails">A list of valid verification details that may be provided and the criteria required for when the verification detail can be provided..</param>
-        public RegulatedOrderVerificationStatus(VerificationStatus status = default(VerificationStatus), bool requiresMerchantAction = default(bool), List<RejectionReason> validRejectionReasons = default(List<RejectionReason>), RejectionReason? rejectionReason = default(RejectionReason?), string? reviewDate = default(string?), string? externalReviewerId = default(string?), List<ValidVerificationDetail>? validVerificationDetails = default(List<ValidVerificationDetail>?))
+        /// <param name="validInterimStatusCodes">Valid interim status codes that may be used when populating &#x60;InterimStatusDetail&#x60;. Each element contains a &#x60;StatusCode&#x60; identifier and its customer-facing &#x60;StatusDescription&#x60;..</param>
+        public RegulatedOrderVerificationStatus(VerificationStatus status = default(VerificationStatus), bool requiresMerchantAction = default(bool), List<RejectionReason> validRejectionReasons = default(List<RejectionReason>), RejectionReason? rejectionReason = default(RejectionReason?), string? reviewDate = default(string?), string? externalReviewerId = default(string?), List<ValidVerificationDetail>? validVerificationDetails = default(List<ValidVerificationDetail>?), List<ValidInterimStatusCode>? validInterimStatusCodes = default(List<ValidInterimStatusCode>?))
         {
             this.Status = status;
             this.RequiresMerchantAction = requiresMerchantAction;
@@ -66,6 +67,7 @@ namespace software.amzn.spapi.Model.orders.v0
             this.ReviewDate = reviewDate;
             this.ExternalReviewerId = externalReviewerId;
             this.ValidVerificationDetails = validVerificationDetails;
+            this.ValidInterimStatusCodes = validInterimStatusCodes;
         }
 
         /// <summary>
@@ -110,6 +112,13 @@ namespace software.amzn.spapi.Model.orders.v0
         public List<ValidVerificationDetail>? ValidVerificationDetails { get; set; }
 
         /// <summary>
+        /// Valid interim status codes that may be used when populating &#x60;InterimStatusDetail&#x60;. Each element contains a &#x60;StatusCode&#x60; identifier and its customer-facing &#x60;StatusDescription&#x60;.
+        /// </summary>
+        /// <value>Valid interim status codes that may be used when populating &#x60;InterimStatusDetail&#x60;. Each element contains a &#x60;StatusCode&#x60; identifier and its customer-facing &#x60;StatusDescription&#x60;.</value>
+        [DataMember(Name = "ValidInterimStatusCodes", EmitDefaultValue = false)]
+        public List<ValidInterimStatusCode>? ValidInterimStatusCodes { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -124,6 +133,7 @@ namespace software.amzn.spapi.Model.orders.v0
             sb.Append("  ReviewDate: ").Append(ReviewDate).Append("\n");
             sb.Append("  ExternalReviewerId: ").Append(ExternalReviewerId).Append("\n");
             sb.Append("  ValidVerificationDetails: ").Append(ValidVerificationDetails).Append("\n");
+            sb.Append("  ValidInterimStatusCodes: ").Append(ValidInterimStatusCodes).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

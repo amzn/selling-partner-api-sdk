@@ -35,9 +35,13 @@ namespace software.amzn.spapi.Model.orders.v0
         /// Initializes a new instance of the <see cref="VerificationDetails" /> class.
         /// </summary>
         /// <param name="prescriptionDetail">prescriptionDetail.</param>
-        public VerificationDetails(PrescriptionDetail? prescriptionDetail = default(PrescriptionDetail?))
+        /// <param name="approvedAlternativeDetails">Pre-approved alternative product attributes available for a rejected order. Each element contains an attribute name, its original value from the rejected order, and the corrected value that would result in approval (for example, a substituted &#x60;asin&#x60; or adjusted &#x60;petWeight&#x60;)..</param>
+        /// <param name="interimStatusDetail">interimStatusDetail.</param>
+        public VerificationDetails(PrescriptionDetail? prescriptionDetail = default(PrescriptionDetail?), List<ApprovedAttribute>? approvedAlternativeDetails = default(List<ApprovedAttribute>?), InterimStatusDetail? interimStatusDetail = default(InterimStatusDetail?))
         {
             this.PrescriptionDetail = prescriptionDetail;
+            this.ApprovedAlternativeDetails = approvedAlternativeDetails;
+            this.InterimStatusDetail = interimStatusDetail;
         }
 
         /// <summary>
@@ -45,6 +49,19 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         [DataMember(Name = "prescriptionDetail", EmitDefaultValue = false)]
         public PrescriptionDetail? PrescriptionDetail { get; set; }
+
+        /// <summary>
+        /// Pre-approved alternative product attributes available for a rejected order. Each element contains an attribute name, its original value from the rejected order, and the corrected value that would result in approval (for example, a substituted &#x60;asin&#x60; or adjusted &#x60;petWeight&#x60;).
+        /// </summary>
+        /// <value>Pre-approved alternative product attributes available for a rejected order. Each element contains an attribute name, its original value from the rejected order, and the corrected value that would result in approval (for example, a substituted &#x60;asin&#x60; or adjusted &#x60;petWeight&#x60;).</value>
+        [DataMember(Name = "approvedAlternativeDetails", EmitDefaultValue = false)]
+        public List<ApprovedAttribute>? ApprovedAlternativeDetails { get; set; }
+
+        /// <summary>
+        /// Gets or Sets InterimStatusDetail
+        /// </summary>
+        [DataMember(Name = "interimStatusDetail", EmitDefaultValue = false)]
+        public InterimStatusDetail? InterimStatusDetail { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -55,6 +72,8 @@ namespace software.amzn.spapi.Model.orders.v0
             StringBuilder sb = new StringBuilder();
             sb.Append("class VerificationDetails {\n");
             sb.Append("  PrescriptionDetail: ").Append(PrescriptionDetail).Append("\n");
+            sb.Append("  ApprovedAlternativeDetails: ").Append(ApprovedAlternativeDetails).Append("\n");
+            sb.Append("  InterimStatusDetail: ").Append(InterimStatusDetail).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

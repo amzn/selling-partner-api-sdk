@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidVerificationDetail" /> class.
         /// </summary>
-        /// <param name="verificationDetailType">A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid value: &#x60;prescriptionDetail&#x60;. (required).</param>
+        /// <param name="verificationDetailType">A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid values: &#x60;prescriptionDetail&#x60;, &#x60;approvedAlternativeDetails&#x60;, &#x60;interimStatusDetail&#x60;. (required).</param>
         /// <param name="validVerificationStatuses">A list of valid verification statuses where the associated verification detail type may be provided. For example, if the value of this field is [\&quot;Approved\&quot;], calls to provide the associated verification detail will fail for orders with a &#x60;VerificationStatus&#x60; of &#x60;Pending&#x60;, &#x60;Rejected&#x60;, &#x60;Expired&#x60;, or &#x60;Cancelled&#x60;. (required).</param>
         public ValidVerificationDetail(string verificationDetailType = default(string), List<VerificationStatus> validVerificationStatuses = default(List<VerificationStatus>))
         {
@@ -58,9 +58,9 @@ namespace software.amzn.spapi.Model.orders.v0
         }
 
         /// <summary>
-        /// A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid value: &#x60;prescriptionDetail&#x60;.
+        /// A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid values: &#x60;prescriptionDetail&#x60;, &#x60;approvedAlternativeDetails&#x60;, &#x60;interimStatusDetail&#x60;.
         /// </summary>
-        /// <value>A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid value: &#x60;prescriptionDetail&#x60;.</value>
+        /// <value>A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid values: &#x60;prescriptionDetail&#x60;, &#x60;approvedAlternativeDetails&#x60;, &#x60;interimStatusDetail&#x60;.</value>
         [DataMember(Name = "VerificationDetailType", IsRequired = true, EmitDefaultValue = true)]
         public string VerificationDetailType { get; set; }
 

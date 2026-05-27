@@ -199,6 +199,25 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
             AssertValidResponsePayload(200, response.Content);
         }
         
+        [Fact]
+        public void SendTestNotificationTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("notifications") + "-" + FormatOperationId("SendTestNotification") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+            string notificationType = fixture.Create<string>();
+            
+            SendTestNotificationRequest body = fixture.Create<SendTestNotificationRequest>();
+            
+
+            var response = api.SendTestNotificationWithHttpInfo(notificationType, body);
+
+            Assert.Equal(200, (int) response.StatusCode);
+            AssertValidResponsePayload(200, response.Content);
+        }
+        
 
         private static void AssertValidResponsePayload(int statusCode, Object body) {
             if(statusCode != 204) Assert.NotNull(body);

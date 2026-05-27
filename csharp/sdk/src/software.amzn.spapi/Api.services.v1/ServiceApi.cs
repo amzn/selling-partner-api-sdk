@@ -324,6 +324,8 @@ namespace software.amzn.spapi.Api.services.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">Used to select jobs that were placed in the specified marketplaces.</param>
         /// <param name="serviceOrderIds">List of service order ids for the query you want to perform.Max values supported 20. (optional)</param>
+        /// <param name="productOrderIds">A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)</param>
+        /// <param name="trackingIds">A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)</param>
         /// <param name="serviceJobStatus">A list of one or more job status by which to filter the list of jobs. (optional)</param>
         /// <param name="pageToken">String returned in the response of your previous request. (optional)</param>
         /// <param name="pageSize">A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)</param>
@@ -339,7 +341,7 @@ namespace software.amzn.spapi.Api.services.v1
         /// <param name="requiredSkills">A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)</param>
         /// <param name="storeIds">List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)</param>
         /// <returns>GetServiceJobsResponse</returns>
-        GetServiceJobsResponse GetServiceJobs (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null);
+        GetServiceJobsResponse GetServiceJobs (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null);
 
         /// <summary>
         /// 
@@ -350,6 +352,8 @@ namespace software.amzn.spapi.Api.services.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">Used to select jobs that were placed in the specified marketplaces.</param>
         /// <param name="serviceOrderIds">List of service order ids for the query you want to perform.Max values supported 20. (optional)</param>
+        /// <param name="productOrderIds">A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)</param>
+        /// <param name="trackingIds">A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)</param>
         /// <param name="serviceJobStatus">A list of one or more job status by which to filter the list of jobs. (optional)</param>
         /// <param name="pageToken">String returned in the response of your previous request. (optional)</param>
         /// <param name="pageSize">A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)</param>
@@ -365,7 +369,7 @@ namespace software.amzn.spapi.Api.services.v1
         /// <param name="requiredSkills">A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)</param>
         /// <param name="storeIds">List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)</param>
         /// <returns>ApiResponse of GetServiceJobsResponse</returns>
-        ApiResponse<GetServiceJobsResponse> GetServiceJobsWithHttpInfo (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null);
+        ApiResponse<GetServiceJobsResponse> GetServiceJobsWithHttpInfo (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null);
         /// <summary>
         /// 
         /// </summary>
@@ -767,6 +771,8 @@ namespace software.amzn.spapi.Api.services.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">Used to select jobs that were placed in the specified marketplaces.</param>
         /// <param name="serviceOrderIds">List of service order ids for the query you want to perform.Max values supported 20. (optional)</param>
+        /// <param name="productOrderIds">A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)</param>
+        /// <param name="trackingIds">A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)</param>
         /// <param name="serviceJobStatus">A list of one or more job status by which to filter the list of jobs. (optional)</param>
         /// <param name="pageToken">String returned in the response of your previous request. (optional)</param>
         /// <param name="pageSize">A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)</param>
@@ -782,7 +788,7 @@ namespace software.amzn.spapi.Api.services.v1
         /// <param name="requiredSkills">A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)</param>
         /// <param name="storeIds">List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)</param>
         /// <returns>Task of GetServiceJobsResponse</returns>
-        System.Threading.Tasks.Task<GetServiceJobsResponse> GetServiceJobsAsync (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null);
+        System.Threading.Tasks.Task<GetServiceJobsResponse> GetServiceJobsAsync (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null);
 
         /// <summary>
         /// 
@@ -793,6 +799,8 @@ namespace software.amzn.spapi.Api.services.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">Used to select jobs that were placed in the specified marketplaces.</param>
         /// <param name="serviceOrderIds">List of service order ids for the query you want to perform.Max values supported 20. (optional)</param>
+        /// <param name="productOrderIds">A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)</param>
+        /// <param name="trackingIds">A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)</param>
         /// <param name="serviceJobStatus">A list of one or more job status by which to filter the list of jobs. (optional)</param>
         /// <param name="pageToken">String returned in the response of your previous request. (optional)</param>
         /// <param name="pageSize">A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)</param>
@@ -808,7 +816,7 @@ namespace software.amzn.spapi.Api.services.v1
         /// <param name="requiredSkills">A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)</param>
         /// <param name="storeIds">List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)</param>
         /// <returns>Task of ApiResponse (GetServiceJobsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetServiceJobsResponse>> GetServiceJobsAsyncWithHttpInfo (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null);
+        System.Threading.Tasks.Task<ApiResponse<GetServiceJobsResponse>> GetServiceJobsAsyncWithHttpInfo (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null);
         /// <summary>
         /// 
         /// </summary>
@@ -2830,6 +2838,8 @@ namespace software.amzn.spapi.Api.services.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">Used to select jobs that were placed in the specified marketplaces.</param>
         /// <param name="serviceOrderIds">List of service order ids for the query you want to perform.Max values supported 20. (optional)</param>
+        /// <param name="productOrderIds">A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)</param>
+        /// <param name="trackingIds">A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)</param>
         /// <param name="serviceJobStatus">A list of one or more job status by which to filter the list of jobs. (optional)</param>
         /// <param name="pageToken">String returned in the response of your previous request. (optional)</param>
         /// <param name="pageSize">A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)</param>
@@ -2845,9 +2855,9 @@ namespace software.amzn.spapi.Api.services.v1
         /// <param name="requiredSkills">A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)</param>
         /// <param name="storeIds">List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)</param>
         /// <returns>GetServiceJobsResponse</returns>
-        public GetServiceJobsResponse GetServiceJobs (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null)
+        public GetServiceJobsResponse GetServiceJobs (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null)
         {
-             ApiResponse<GetServiceJobsResponse> localVarResponse = GetServiceJobsWithHttpInfo(marketplaceIds, serviceOrderIds, serviceJobStatus, pageToken, pageSize, sortField, sortOrder, createdAfter, createdBefore, lastUpdatedAfter, lastUpdatedBefore, scheduleStartDate, scheduleEndDate, asins, requiredSkills, storeIds);
+             ApiResponse<GetServiceJobsResponse> localVarResponse = GetServiceJobsWithHttpInfo(marketplaceIds, serviceOrderIds, productOrderIds, trackingIds, serviceJobStatus, pageToken, pageSize, sortField, sortOrder, createdAfter, createdBefore, lastUpdatedAfter, lastUpdatedBefore, scheduleStartDate, scheduleEndDate, asins, requiredSkills, storeIds);
              return localVarResponse.Data;
         }
 
@@ -2857,6 +2867,8 @@ namespace software.amzn.spapi.Api.services.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">Used to select jobs that were placed in the specified marketplaces.</param>
         /// <param name="serviceOrderIds">List of service order ids for the query you want to perform.Max values supported 20. (optional)</param>
+        /// <param name="productOrderIds">A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)</param>
+        /// <param name="trackingIds">A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)</param>
         /// <param name="serviceJobStatus">A list of one or more job status by which to filter the list of jobs. (optional)</param>
         /// <param name="pageToken">String returned in the response of your previous request. (optional)</param>
         /// <param name="pageSize">A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)</param>
@@ -2872,7 +2884,7 @@ namespace software.amzn.spapi.Api.services.v1
         /// <param name="requiredSkills">A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)</param>
         /// <param name="storeIds">List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)</param>
         /// <returns>ApiResponse of GetServiceJobsResponse</returns>
-        public ApiResponse< GetServiceJobsResponse > GetServiceJobsWithHttpInfo (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null)
+        public ApiResponse< GetServiceJobsResponse > GetServiceJobsWithHttpInfo (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null)
         {
             // verify the required parameter 'marketplaceIds' is set
             if (marketplaceIds == null)
@@ -2900,6 +2912,8 @@ namespace software.amzn.spapi.Api.services.v1
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (serviceOrderIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "serviceOrderIds", serviceOrderIds)); // query parameter
+            if (productOrderIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "productOrderIds", productOrderIds)); // query parameter
+            if (trackingIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "trackingIds", trackingIds)); // query parameter
             if (serviceJobStatus != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "serviceJobStatus", serviceJobStatus)); // query parameter
             if (pageToken != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageToken", pageToken)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
@@ -2939,6 +2953,8 @@ namespace software.amzn.spapi.Api.services.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">Used to select jobs that were placed in the specified marketplaces.</param>
         /// <param name="serviceOrderIds">List of service order ids for the query you want to perform.Max values supported 20. (optional)</param>
+        /// <param name="productOrderIds">A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)</param>
+        /// <param name="trackingIds">A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)</param>
         /// <param name="serviceJobStatus">A list of one or more job status by which to filter the list of jobs. (optional)</param>
         /// <param name="pageToken">String returned in the response of your previous request. (optional)</param>
         /// <param name="pageSize">A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)</param>
@@ -2954,9 +2970,9 @@ namespace software.amzn.spapi.Api.services.v1
         /// <param name="requiredSkills">A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)</param>
         /// <param name="storeIds">List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)</param>
         /// <returns>Task of GetServiceJobsResponse</returns>
-        public async System.Threading.Tasks.Task<GetServiceJobsResponse> GetServiceJobsAsync (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null)
+        public async System.Threading.Tasks.Task<GetServiceJobsResponse> GetServiceJobsAsync (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null)
         {
-             ApiResponse<GetServiceJobsResponse> localVarResponse = await GetServiceJobsAsyncWithHttpInfo(marketplaceIds, serviceOrderIds, serviceJobStatus, pageToken, pageSize, sortField, sortOrder, createdAfter, createdBefore, lastUpdatedAfter, lastUpdatedBefore, scheduleStartDate, scheduleEndDate, asins, requiredSkills, storeIds);
+             ApiResponse<GetServiceJobsResponse> localVarResponse = await GetServiceJobsAsyncWithHttpInfo(marketplaceIds, serviceOrderIds, productOrderIds, trackingIds, serviceJobStatus, pageToken, pageSize, sortField, sortOrder, createdAfter, createdBefore, lastUpdatedAfter, lastUpdatedBefore, scheduleStartDate, scheduleEndDate, asins, requiredSkills, storeIds);
              return localVarResponse.Data;
 
         }
@@ -2967,6 +2983,8 @@ namespace software.amzn.spapi.Api.services.v1
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">Used to select jobs that were placed in the specified marketplaces.</param>
         /// <param name="serviceOrderIds">List of service order ids for the query you want to perform.Max values supported 20. (optional)</param>
+        /// <param name="productOrderIds">A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)</param>
+        /// <param name="trackingIds">A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)</param>
         /// <param name="serviceJobStatus">A list of one or more job status by which to filter the list of jobs. (optional)</param>
         /// <param name="pageToken">String returned in the response of your previous request. (optional)</param>
         /// <param name="pageSize">A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (optional, default to 20)</param>
@@ -2982,7 +3000,7 @@ namespace software.amzn.spapi.Api.services.v1
         /// <param name="requiredSkills">A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20. (optional)</param>
         /// <param name="storeIds">List of Amazon-defined identifiers for the region scope. Max values supported is 50. (optional)</param>
         /// <returns>Task of ApiResponse (GetServiceJobsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetServiceJobsResponse>> GetServiceJobsAsyncWithHttpInfo (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetServiceJobsResponse>> GetServiceJobsAsyncWithHttpInfo (List<string> marketplaceIds, List<string>? serviceOrderIds = null, List<string>? productOrderIds = null, List<string>? trackingIds = null, List<string>? serviceJobStatus = null, string? pageToken = null, int? pageSize = null, string? sortField = null, string? sortOrder = null, string? createdAfter = null, string? createdBefore = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, string? scheduleStartDate = null, string? scheduleEndDate = null, List<string>? asins = null, List<string>? requiredSkills = null, List<string>? storeIds = null)
         {
             // verify the required parameter 'marketplaceIds' is set
             if (marketplaceIds == null)
@@ -3010,6 +3028,8 @@ namespace software.amzn.spapi.Api.services.v1
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (serviceOrderIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "serviceOrderIds", serviceOrderIds)); // query parameter
+            if (productOrderIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "productOrderIds", productOrderIds)); // query parameter
+            if (trackingIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "trackingIds", trackingIds)); // query parameter
             if (serviceJobStatus != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "serviceJobStatus", serviceJobStatus)); // query parameter
             if (pageToken != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageToken", pageToken)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter

@@ -100,13 +100,15 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="preferredAppointmentTimes">A list of appointment windows preferred by the buyer. Included only if the buyer selected appointment windows when creating the order..</param>
         /// <param name="appointments">A list of appointments..</param>
         /// <param name="serviceOrderId">The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format..</param>
+        /// <param name="productOrderIds">A list of associated product order IDs for the service job..</param>
+        /// <param name="trackingIds">A list of associated product tracking IDs for the service job..</param>
         /// <param name="marketplaceId">The marketplace identifier..</param>
         /// <param name="storeId">The Amazon-defined identifier for the region scope..</param>
         /// <param name="buyer">buyer.</param>
         /// <param name="associatedItems">A list of items associated with the service job..</param>
         /// <param name="serviceLocation">serviceLocation.</param>
         /// <param name="payments">A list that contains payment information for the service job..</param>
-        public ServiceJob(DateTime? createTime = default(DateTime?), string? serviceJobId = default(string?), ServiceJobStatusEnum? serviceJobStatus = default(ServiceJobStatusEnum?), ScopeOfWork? scopeOfWork = default(ScopeOfWork?), Seller? seller = default(Seller?), ServiceJobProvider? serviceJobProvider = default(ServiceJobProvider?), List<AppointmentTime>? preferredAppointmentTimes = default(List<AppointmentTime>?), List<Appointment>? appointments = default(List<Appointment>?), string? serviceOrderId = default(string?), string? marketplaceId = default(string?), string? storeId = default(string?), Buyer? buyer = default(Buyer?), List<AssociatedItem>? associatedItems = default(List<AssociatedItem>?), ServiceLocation? serviceLocation = default(ServiceLocation?), List<Payment>? payments = default(List<Payment>?))
+        public ServiceJob(DateTime? createTime = default(DateTime?), string? serviceJobId = default(string?), ServiceJobStatusEnum? serviceJobStatus = default(ServiceJobStatusEnum?), ScopeOfWork? scopeOfWork = default(ScopeOfWork?), Seller? seller = default(Seller?), ServiceJobProvider? serviceJobProvider = default(ServiceJobProvider?), List<AppointmentTime>? preferredAppointmentTimes = default(List<AppointmentTime>?), List<Appointment>? appointments = default(List<Appointment>?), string? serviceOrderId = default(string?), List<string>? productOrderIds = default(List<string>?), List<string>? trackingIds = default(List<string>?), string? marketplaceId = default(string?), string? storeId = default(string?), Buyer? buyer = default(Buyer?), List<AssociatedItem>? associatedItems = default(List<AssociatedItem>?), ServiceLocation? serviceLocation = default(ServiceLocation?), List<Payment>? payments = default(List<Payment>?))
         {
             this.CreateTime = createTime;
             this.ServiceJobId = serviceJobId;
@@ -117,6 +119,8 @@ namespace software.amzn.spapi.Model.services.v1
             this.PreferredAppointmentTimes = preferredAppointmentTimes;
             this.Appointments = appointments;
             this.ServiceOrderId = serviceOrderId;
+            this.ProductOrderIds = productOrderIds;
+            this.TrackingIds = trackingIds;
             this.MarketplaceId = marketplaceId;
             this.StoreId = storeId;
             this.Buyer = buyer;
@@ -179,6 +183,20 @@ namespace software.amzn.spapi.Model.services.v1
         public string? ServiceOrderId { get; set; }
 
         /// <summary>
+        /// A list of associated product order IDs for the service job.
+        /// </summary>
+        /// <value>A list of associated product order IDs for the service job.</value>
+        [DataMember(Name = "productOrderIds", EmitDefaultValue = false)]
+        public List<string>? ProductOrderIds { get; set; }
+
+        /// <summary>
+        /// A list of associated product tracking IDs for the service job.
+        /// </summary>
+        /// <value>A list of associated product tracking IDs for the service job.</value>
+        [DataMember(Name = "trackingIds", EmitDefaultValue = false)]
+        public List<string>? TrackingIds { get; set; }
+
+        /// <summary>
         /// The marketplace identifier.
         /// </summary>
         /// <value>The marketplace identifier.</value>
@@ -235,6 +253,8 @@ namespace software.amzn.spapi.Model.services.v1
             sb.Append("  PreferredAppointmentTimes: ").Append(PreferredAppointmentTimes).Append("\n");
             sb.Append("  Appointments: ").Append(Appointments).Append("\n");
             sb.Append("  ServiceOrderId: ").Append(ServiceOrderId).Append("\n");
+            sb.Append("  ProductOrderIds: ").Append(ProductOrderIds).Append("\n");
+            sb.Append("  TrackingIds: ").Append(TrackingIds).Append("\n");
             sb.Append("  MarketplaceId: ").Append(MarketplaceId).Append("\n");
             sb.Append("  StoreId: ").Append(StoreId).Append("\n");
             sb.Append("  Buyer: ").Append(Buyer).Append("\n");

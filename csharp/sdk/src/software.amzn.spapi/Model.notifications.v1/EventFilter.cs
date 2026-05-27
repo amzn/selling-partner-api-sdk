@@ -26,15 +26,15 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.notifications.v1
 {
     /// <summary>
-    /// A &#x60;notificationType&#x60; specific filter. This object contains all of the currently available filters and properties that you can use to define a &#x60;notificationType&#x60; specific filter.
+    /// A &#x60;notificationType&#x60; filter. This object contains all of the available filters and properties that you can use to define a &#x60;notificationType&#x60; specific filter.
     /// </summary>
     [DataContract(Name = "EventFilter")]
     public partial class EventFilter : IValidatableObject
     {
         /// <summary>
-        /// An &#x60;eventFilterType&#x60; value that is supported by the specific &#x60;notificationType&#x60;. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an &#x60;eventFilterType&#x60; is supported.
+        /// An &#x60;eventFilterType&#x60; value that the &#x60;notificationType&#x60; supports. The subscription service uses the &#x60;eventFilterType&#x60; to determine the type of event filter. To determine if a specific &#x60;notificationType&#x60; supports an &#x60;eventFilterType&#x60;, refer to [Notification Type Values]( https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
         /// </summary>
-        /// <value>An &#x60;eventFilterType&#x60; value that is supported by the specific &#x60;notificationType&#x60;. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an &#x60;eventFilterType&#x60; is supported.</value>
+        /// <value>An &#x60;eventFilterType&#x60; value that the &#x60;notificationType&#x60; supports. The subscription service uses the &#x60;eventFilterType&#x60; to determine the type of event filter. To determine if a specific &#x60;notificationType&#x60; supports an &#x60;eventFilterType&#x60;, refer to [Notification Type Values]( https://developer-docs.amazon.com/sp-api/docs/notification-type-values).</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum EventFilterTypeEnum
         {
@@ -53,9 +53,9 @@ namespace software.amzn.spapi.Model.notifications.v1
 
 
         /// <summary>
-        /// An &#x60;eventFilterType&#x60; value that is supported by the specific &#x60;notificationType&#x60;. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an &#x60;eventFilterType&#x60; is supported.
+        /// An &#x60;eventFilterType&#x60; value that the &#x60;notificationType&#x60; supports. The subscription service uses the &#x60;eventFilterType&#x60; to determine the type of event filter. To determine if a specific &#x60;notificationType&#x60; supports an &#x60;eventFilterType&#x60;, refer to [Notification Type Values]( https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
         /// </summary>
-        /// <value>An &#x60;eventFilterType&#x60; value that is supported by the specific &#x60;notificationType&#x60;. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an &#x60;eventFilterType&#x60; is supported.</value>
+        /// <value>An &#x60;eventFilterType&#x60; value that the &#x60;notificationType&#x60; supports. The subscription service uses the &#x60;eventFilterType&#x60; to determine the type of event filter. To determine if a specific &#x60;notificationType&#x60; supports an &#x60;eventFilterType&#x60;, refer to [Notification Type Values]( https://developer-docs.amazon.com/sp-api/docs/notification-type-values).</value>
         [DataMember(Name = "eventFilterType", IsRequired = true, EmitDefaultValue = true)]
         public EventFilterTypeEnum EventFilterType { get; set; }
         /// <summary>
@@ -67,9 +67,9 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// Initializes a new instance of the <see cref="EventFilter" /> class.
         /// </summary>
         /// <param name="aggregationSettings">aggregationSettings.</param>
-        /// <param name="marketplaceIds">A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list..</param>
-        /// <param name="orderChangeTypes">A list of order change types to subscribe to (for example: &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list..</param>
-        /// <param name="eventFilterType">An &#x60;eventFilterType&#x60; value that is supported by the specific &#x60;notificationType&#x60;. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an &#x60;eventFilterType&#x60; is supported. (required).</param>
+        /// <param name="marketplaceIds">A list of marketplace identifiers you can subscribe to (for example, &#x60;ATVPDKIKX0DER&#x60;). To receive notifications in every marketplace, do not provide this list..</param>
+        /// <param name="orderChangeTypes">A list of order change types you can subscribe to (for example, &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list..</param>
+        /// <param name="eventFilterType">An &#x60;eventFilterType&#x60; value that the &#x60;notificationType&#x60; supports. The subscription service uses the &#x60;eventFilterType&#x60; to determine the type of event filter. To determine if a specific &#x60;notificationType&#x60; supports an &#x60;eventFilterType&#x60;, refer to [Notification Type Values]( https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required).</param>
         public EventFilter(AggregationSettings? aggregationSettings = default(AggregationSettings?), List<string>? marketplaceIds = default(List<string>?), List<OrderChangeTypeEnum>? orderChangeTypes = default(List<OrderChangeTypeEnum>?), EventFilterTypeEnum eventFilterType = default(EventFilterTypeEnum))
         {
             this.EventFilterType = eventFilterType;
@@ -85,16 +85,16 @@ namespace software.amzn.spapi.Model.notifications.v1
         public AggregationSettings? AggregationSettings { get; set; }
 
         /// <summary>
-        /// A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
+        /// A list of marketplace identifiers you can subscribe to (for example, &#x60;ATVPDKIKX0DER&#x60;). To receive notifications in every marketplace, do not provide this list.
         /// </summary>
-        /// <value>A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.</value>
+        /// <value>A list of marketplace identifiers you can subscribe to (for example, &#x60;ATVPDKIKX0DER&#x60;). To receive notifications in every marketplace, do not provide this list.</value>
         [DataMember(Name = "marketplaceIds", EmitDefaultValue = false)]
         public List<string>? MarketplaceIds { get; set; }
 
         /// <summary>
-        /// A list of order change types to subscribe to (for example: &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list.
+        /// A list of order change types you can subscribe to (for example, &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list.
         /// </summary>
-        /// <value>A list of order change types to subscribe to (for example: &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list.</value>
+        /// <value>A list of order change types you can subscribe to (for example, &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list.</value>
         [DataMember(Name = "orderChangeTypes", EmitDefaultValue = false)]
         public List<OrderChangeTypeEnum>? OrderChangeTypes { get; set; }
 

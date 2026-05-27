@@ -80,7 +80,8 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="itemStatus">The status of the item..</param>
         /// <param name="brandName">The brand name of the item..</param>
         /// <param name="itemDelivery">itemDelivery.</param>
-        public AssociatedItem(string? asin = default(string?), string? title = default(string?), int? quantity = default(int?), string? orderId = default(string?), ItemStatusEnum? itemStatus = default(ItemStatusEnum?), string? brandName = default(string?), ItemDelivery? itemDelivery = default(ItemDelivery?))
+        /// <param name="linkedAssets">A list of customer-owned assets on which the service must be performed..</param>
+        public AssociatedItem(string? asin = default(string?), string? title = default(string?), int? quantity = default(int?), string? orderId = default(string?), ItemStatusEnum? itemStatus = default(ItemStatusEnum?), string? brandName = default(string?), ItemDelivery? itemDelivery = default(ItemDelivery?), List<LinkedAsset>? linkedAssets = default(List<LinkedAsset>?))
         {
             this.Asin = asin;
             this.Title = title;
@@ -89,6 +90,7 @@ namespace software.amzn.spapi.Model.services.v1
             this.ItemStatus = itemStatus;
             this.BrandName = brandName;
             this.ItemDelivery = itemDelivery;
+            this.LinkedAssets = linkedAssets;
         }
 
         /// <summary>
@@ -133,6 +135,13 @@ namespace software.amzn.spapi.Model.services.v1
         public ItemDelivery? ItemDelivery { get; set; }
 
         /// <summary>
+        /// A list of customer-owned assets on which the service must be performed.
+        /// </summary>
+        /// <value>A list of customer-owned assets on which the service must be performed.</value>
+        [DataMember(Name = "linkedAssets", EmitDefaultValue = false)]
+        public List<LinkedAsset>? LinkedAssets { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -147,6 +156,7 @@ namespace software.amzn.spapi.Model.services.v1
             sb.Append("  ItemStatus: ").Append(ItemStatus).Append("\n");
             sb.Append("  BrandName: ").Append(BrandName).Append("\n");
             sb.Append("  ItemDelivery: ").Append(ItemDelivery).Append("\n");
+            sb.Append("  LinkedAssets: ").Append(LinkedAssets).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

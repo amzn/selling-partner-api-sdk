@@ -74,7 +74,7 @@ namespace software.amzn.spapi.Test.Api.listings.restrictions.v2021_08_01
             List<string> marketplaceIds = fixture.Create<List<string>>();
             
 
-            var response = api.GetListingsRestrictionsWithHttpInfo(asin, sellerId, marketplaceIds, null, null);
+            var response = api.GetListingsRestrictionsWithHttpInfo(asin, sellerId, marketplaceIds, null, null, null);
 
             Assert.Equal(200, (int) response.StatusCode);
             AssertValidResponsePayload(200, response.Content);

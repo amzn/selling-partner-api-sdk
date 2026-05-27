@@ -107,6 +107,21 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         }
         
         [Fact]
+        public void ConfirmOutboundTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("ConfirmOutbound") + "/code/204";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+            string orderId = fixture.Create<string>();
+            
+
+            api.ConfirmOutboundWithHttpInfo(orderId);
+
+        }
+        
+        [Fact]
         public void ConfirmReplenishmentOrderTest()
         {
             Init();
@@ -133,6 +148,23 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
             
 
             var response = api.CreateInboundWithHttpInfo(body);
+
+            Assert.Equal(201, (int) response.StatusCode);
+            AssertValidResponsePayload(201, response.Content);
+        }
+        
+        [Fact]
+        public void CreateOutboundTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("CreateOutbound") + "/code/201";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+            OutboundOrderCreationData body = fixture.Create<OutboundOrderCreationData>();
+            
+
+            var response = api.CreateOutboundWithHttpInfo(body);
 
             Assert.Equal(201, (int) response.StatusCode);
             AssertValidResponsePayload(201, response.Content);
@@ -207,6 +239,40 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         }
         
         [Fact]
+        public void GetLabelPageTypesTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("GetLabelPageTypes") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+            string shipmentId = fixture.Create<string>();
+            
+
+            var response = api.GetLabelPageTypesWithHttpInfo(shipmentId);
+
+            Assert.Equal(200, (int) response.StatusCode);
+            AssertValidResponsePayload(200, response.Content);
+        }
+        
+        [Fact]
+        public void GetOutboundTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("GetOutbound") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+            string orderId = fixture.Create<string>();
+            
+
+            var response = api.GetOutboundWithHttpInfo(orderId);
+
+            Assert.Equal(200, (int) response.StatusCode);
+            AssertValidResponsePayload(200, response.Content);
+        }
+        
+        [Fact]
         public void GetReplenishmentOrderTest()
         {
             Init();
@@ -248,6 +314,21 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
             
 
             var response = api.ListInventoryWithHttpInfo(null, null, null, null, null);
+
+            Assert.Equal(200, (int) response.StatusCode);
+            AssertValidResponsePayload(200, response.Content);
+        }
+        
+        [Fact]
+        public void ListOutboundsTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("ListOutbounds") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+
+            var response = api.ListOutboundsWithHttpInfo(null, null, null, null, null);
 
             Assert.Equal(200, (int) response.StatusCode);
             AssertValidResponsePayload(200, response.Content);
@@ -300,6 +381,25 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
 
             api.UpdateInboundShipmentTransportDetailsWithHttpInfo(shipmentId, body);
 
+        }
+        
+        [Fact]
+        public void UpdateOutboundTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("UpdateOutbound") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+            string orderId = fixture.Create<string>();
+            
+            OutboundOrder body = fixture.Create<OutboundOrder>();
+            
+
+            var response = api.UpdateOutboundWithHttpInfo(orderId, body);
+
+            Assert.Equal(200, (int) response.StatusCode);
+            AssertValidResponsePayload(200, response.Content);
         }
         
 

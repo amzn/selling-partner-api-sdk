@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.listings.restrictions.v2021_08_01
         /// <summary>
         /// Initializes a new instance of the <see cref="RestrictionList" /> class.
         /// </summary>
-        /// <param name="restrictions">restrictions (required).</param>
+        /// <param name="restrictions">A list of restrictions. (required).</param>
         public RestrictionList(List<Restriction> restrictions = default(List<Restriction>))
         {
             // to ensure "restrictions" is required (not null)
@@ -51,8 +51,9 @@ namespace software.amzn.spapi.Model.listings.restrictions.v2021_08_01
         }
 
         /// <summary>
-        /// Gets or Sets Restrictions
+        /// A list of restrictions.
         /// </summary>
+        /// <value>A list of restrictions.</value>
         [DataMember(Name = "restrictions", IsRequired = true, EmitDefaultValue = true)]
         public List<Restriction> Restrictions { get; set; }
 

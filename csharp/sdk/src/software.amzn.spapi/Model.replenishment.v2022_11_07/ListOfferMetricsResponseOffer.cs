@@ -43,6 +43,8 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <param name="asin">The Amazon Standard Identification Number (ASIN)..</param>
         /// <param name="sku">The SKU. This property is only supported for sellers and not for vendors..</param>
         /// <param name="fulfillmentChannelType">fulfillmentChannelType.</param>
+        /// <param name="brandName">The brand name associated with the offer..</param>
+        /// <param name="productGroup">The product group associated with the offer. This property is only supported for vendors and not for sellers..</param>
         /// <param name="notDeliveredDueToOOS">The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;..</param>
         /// <param name="totalSubscriptionsRevenue">The revenue generated from subscriptions over a period of time. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;..</param>
         /// <param name="shippedSubscriptionUnits">The number of units shipped to the subscribers over a period of time. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;..</param>
@@ -50,7 +52,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <param name="revenuePenetration">The percentage of total program revenue out of total product revenue. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;..</param>
         /// <param name="lostRevenueDueToOOS">The revenue that would have been generated had there not been out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;..</param>
         /// <param name="couponsRevenuePenetration">The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;..</param>
-        /// <param name="shareOfCouponSubscriptions">The percentage of new subscriptions acquired through coupons. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;..</param>
+        /// <param name="shareOfCouponSubscriptions">The percentage of new subscriptions from coupons. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;..</param>
         /// <param name="next30DayTotalSubscriptionsRevenue">The forecasted total subscription revenue for the next 30 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
         /// <param name="next60DayTotalSubscriptionsRevenue">The forecasted total subscription revenue for the next 60 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
         /// <param name="next90DayTotalSubscriptionsRevenue">The forecasted total subscription revenue for the next 90 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
@@ -59,11 +61,13 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <param name="next90DayShippedSubscriptionUnits">The forecasted shipped subscription units for the next 90 days. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;..</param>
         /// <param name="timeInterval">timeInterval.</param>
         /// <param name="currencyCode">The currency code in ISO 4217 format..</param>
-        public ListOfferMetricsResponseOffer(string? asin = default(string?), string? sku = default(string?), FulfillmentChannelType? fulfillmentChannelType = default(FulfillmentChannelType?), double? notDeliveredDueToOOS = default(double?), double? totalSubscriptionsRevenue = default(double?), decimal? shippedSubscriptionUnits = default(decimal?), decimal? activeSubscriptions = default(decimal?), double? revenuePenetration = default(double?), double? lostRevenueDueToOOS = default(double?), double? couponsRevenuePenetration = default(double?), double? shareOfCouponSubscriptions = default(double?), double? next30DayTotalSubscriptionsRevenue = default(double?), double? next60DayTotalSubscriptionsRevenue = default(double?), double? next90DayTotalSubscriptionsRevenue = default(double?), decimal? next30DayShippedSubscriptionUnits = default(decimal?), decimal? next60DayShippedSubscriptionUnits = default(decimal?), decimal? next90DayShippedSubscriptionUnits = default(decimal?), TimeInterval? timeInterval = default(TimeInterval?), string? currencyCode = default(string?))
+        public ListOfferMetricsResponseOffer(string? asin = default(string?), string? sku = default(string?), FulfillmentChannelType? fulfillmentChannelType = default(FulfillmentChannelType?), string? brandName = default(string?), string? productGroup = default(string?), double? notDeliveredDueToOOS = default(double?), double? totalSubscriptionsRevenue = default(double?), decimal? shippedSubscriptionUnits = default(decimal?), decimal? activeSubscriptions = default(decimal?), double? revenuePenetration = default(double?), double? lostRevenueDueToOOS = default(double?), double? couponsRevenuePenetration = default(double?), double? shareOfCouponSubscriptions = default(double?), double? next30DayTotalSubscriptionsRevenue = default(double?), double? next60DayTotalSubscriptionsRevenue = default(double?), double? next90DayTotalSubscriptionsRevenue = default(double?), decimal? next30DayShippedSubscriptionUnits = default(decimal?), decimal? next60DayShippedSubscriptionUnits = default(decimal?), decimal? next90DayShippedSubscriptionUnits = default(decimal?), TimeInterval? timeInterval = default(TimeInterval?), string? currencyCode = default(string?))
         {
             this.Asin = asin;
             this.Sku = sku;
             this.FulfillmentChannelType = fulfillmentChannelType;
+            this.BrandName = brandName;
+            this.ProductGroup = productGroup;
             this.NotDeliveredDueToOOS = notDeliveredDueToOOS;
             this.TotalSubscriptionsRevenue = totalSubscriptionsRevenue;
             this.ShippedSubscriptionUnits = shippedSubscriptionUnits;
@@ -95,6 +99,20 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <value>The SKU. This property is only supported for sellers and not for vendors.</value>
         [DataMember(Name = "sku", EmitDefaultValue = false)]
         public string? Sku { get; set; }
+
+        /// <summary>
+        /// The brand name associated with the offer.
+        /// </summary>
+        /// <value>The brand name associated with the offer.</value>
+        [DataMember(Name = "brandName", EmitDefaultValue = false)]
+        public string? BrandName { get; set; }
+
+        /// <summary>
+        /// The product group associated with the offer. This property is only supported for vendors and not for sellers.
+        /// </summary>
+        /// <value>The product group associated with the offer. This property is only supported for vendors and not for sellers.</value>
+        [DataMember(Name = "productGroup", EmitDefaultValue = false)]
+        public string? ProductGroup { get; set; }
 
         /// <summary>
         /// The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
@@ -146,9 +164,9 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         public double? CouponsRevenuePenetration { get; set; }
 
         /// <summary>
-        /// The percentage of new subscriptions acquired through coupons. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+        /// The percentage of new subscriptions from coupons. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
-        /// <value>The percentage of new subscriptions acquired through coupons. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
+        /// <value>The percentage of new subscriptions from coupons. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "shareOfCouponSubscriptions", EmitDefaultValue = false)]
         public double? ShareOfCouponSubscriptions { get; set; }
 
@@ -218,6 +236,8 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             sb.Append("  Asin: ").Append(Asin).Append("\n");
             sb.Append("  Sku: ").Append(Sku).Append("\n");
             sb.Append("  FulfillmentChannelType: ").Append(FulfillmentChannelType).Append("\n");
+            sb.Append("  BrandName: ").Append(BrandName).Append("\n");
+            sb.Append("  ProductGroup: ").Append(ProductGroup).Append("\n");
             sb.Append("  NotDeliveredDueToOOS: ").Append(NotDeliveredDueToOOS).Append("\n");
             sb.Append("  TotalSubscriptionsRevenue: ").Append(TotalSubscriptionsRevenue).Append("\n");
             sb.Append("  ShippedSubscriptionUnits: ").Append(ShippedSubscriptionUnits).Append("\n");
