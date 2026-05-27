@@ -4095,6 +4095,10 @@ class ServiceApi
      *                                           Used to select jobs that were placed in the specified marketplaces. (required)
      * @param null|string[] $service_order_ids
      *                                           List of service order ids for the query you want to perform.Max values supported 20. (optional)
+     * @param null|string[] $product_order_ids
+     *                                           A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)
+     * @param null|string[] $tracking_ids
+     *                                           A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)
      * @param null|string[] $service_job_status
      *                                           A list of one or more job status by which to filter the list of jobs. (optional)
      * @param null|string   $page_token
@@ -4131,6 +4135,8 @@ class ServiceApi
     public function getServiceJobs(
         array $marketplace_ids,
         ?array $service_order_ids = null,
+        ?array $product_order_ids = null,
+        ?array $tracking_ids = null,
         ?array $service_job_status = null,
         ?string $page_token = null,
         ?int $page_size = 20,
@@ -4147,7 +4153,7 @@ class ServiceApi
         ?array $store_ids = null,
         ?string $restrictedDataToken = null
     ): GetServiceJobsResponse {
-        list($response) = $this->getServiceJobsWithHttpInfo($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids, $restrictedDataToken);
+        list($response) = $this->getServiceJobsWithHttpInfo($marketplace_ids, $service_order_ids, $product_order_ids, $tracking_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids, $restrictedDataToken);
 
         return $response;
     }
@@ -4159,6 +4165,10 @@ class ServiceApi
      *                                           Used to select jobs that were placed in the specified marketplaces. (required)
      * @param null|string[] $service_order_ids
      *                                           List of service order ids for the query you want to perform.Max values supported 20. (optional)
+     * @param null|string[] $product_order_ids
+     *                                           A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)
+     * @param null|string[] $tracking_ids
+     *                                           A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)
      * @param null|string[] $service_job_status
      *                                           A list of one or more job status by which to filter the list of jobs. (optional)
      * @param null|string   $page_token
@@ -4197,6 +4207,8 @@ class ServiceApi
     public function getServiceJobsWithHttpInfo(
         array $marketplace_ids,
         ?array $service_order_ids = null,
+        ?array $product_order_ids = null,
+        ?array $tracking_ids = null,
         ?array $service_job_status = null,
         ?string $page_token = null,
         ?int $page_size = 20,
@@ -4213,7 +4225,7 @@ class ServiceApi
         ?array $store_ids = null,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getServiceJobsRequest($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
+        $request = $this->getServiceJobsRequest($marketplace_ids, $service_order_ids, $product_order_ids, $tracking_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getServiceJobs');
         } else {
@@ -4291,6 +4303,10 @@ class ServiceApi
      *                                           Used to select jobs that were placed in the specified marketplaces. (required)
      * @param null|string[] $service_order_ids
      *                                           List of service order ids for the query you want to perform.Max values supported 20. (optional)
+     * @param null|string[] $product_order_ids
+     *                                           A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)
+     * @param null|string[] $tracking_ids
+     *                                           A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)
      * @param null|string[] $service_job_status
      *                                           A list of one or more job status by which to filter the list of jobs. (optional)
      * @param null|string   $page_token
@@ -4325,6 +4341,8 @@ class ServiceApi
     public function getServiceJobsAsync(
         array $marketplace_ids,
         ?array $service_order_ids = null,
+        ?array $product_order_ids = null,
+        ?array $tracking_ids = null,
         ?array $service_job_status = null,
         ?string $page_token = null,
         ?int $page_size = 20,
@@ -4340,7 +4358,7 @@ class ServiceApi
         ?array $required_skills = null,
         ?array $store_ids = null
     ): PromiseInterface {
-        return $this->getServiceJobsAsyncWithHttpInfo($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids)
+        return $this->getServiceJobsAsyncWithHttpInfo($marketplace_ids, $service_order_ids, $product_order_ids, $tracking_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4356,6 +4374,10 @@ class ServiceApi
      *                                           Used to select jobs that were placed in the specified marketplaces. (required)
      * @param null|string[] $service_order_ids
      *                                           List of service order ids for the query you want to perform.Max values supported 20. (optional)
+     * @param null|string[] $product_order_ids
+     *                                           A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)
+     * @param null|string[] $tracking_ids
+     *                                           A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)
      * @param null|string[] $service_job_status
      *                                           A list of one or more job status by which to filter the list of jobs. (optional)
      * @param null|string   $page_token
@@ -4390,6 +4412,8 @@ class ServiceApi
     public function getServiceJobsAsyncWithHttpInfo(
         array $marketplace_ids,
         ?array $service_order_ids = null,
+        ?array $product_order_ids = null,
+        ?array $tracking_ids = null,
         ?array $service_job_status = null,
         ?string $page_token = null,
         ?int $page_size = 20,
@@ -4407,7 +4431,7 @@ class ServiceApi
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\services\v1\GetServiceJobsResponse';
-        $request = $this->getServiceJobsRequest($marketplace_ids, $service_order_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
+        $request = $this->getServiceJobsRequest($marketplace_ids, $service_order_ids, $product_order_ids, $tracking_ids, $service_job_status, $page_token, $page_size, $sort_field, $sort_order, $created_after, $created_before, $last_updated_after, $last_updated_before, $schedule_start_date, $schedule_end_date, $asins, $required_skills, $store_ids);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getServiceJobs');
         } else {
@@ -4462,6 +4486,10 @@ class ServiceApi
      *                                           Used to select jobs that were placed in the specified marketplaces. (required)
      * @param null|string[] $service_order_ids
      *                                           List of service order ids for the query you want to perform.Max values supported 20. (optional)
+     * @param null|string[] $product_order_ids
+     *                                           A list of up to 20 associated product order IDs. You can use these IDs to query service jobs. (optional)
+     * @param null|string[] $tracking_ids
+     *                                           A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs. (optional)
      * @param null|string[] $service_job_status
      *                                           A list of one or more job status by which to filter the list of jobs. (optional)
      * @param null|string   $page_token
@@ -4496,6 +4524,8 @@ class ServiceApi
     public function getServiceJobsRequest(
         array $marketplace_ids,
         ?array $service_order_ids = null,
+        ?array $product_order_ids = null,
+        ?array $tracking_ids = null,
         ?array $service_job_status = null,
         ?string $page_token = null,
         ?int $page_size = 20,
@@ -4526,6 +4556,20 @@ class ServiceApi
         }
         if (null !== $service_order_ids && count($service_order_ids) < 1) {
             throw new \InvalidArgumentException('invalid value for "$service_order_ids" when calling ServiceApi.getServiceJobs, number of items must be greater than or equal to 1.');
+        }
+
+        if (null !== $product_order_ids && count($product_order_ids) > 20) {
+            throw new \InvalidArgumentException('invalid value for "$product_order_ids" when calling ServiceApi.getServiceJobs, number of items must be less than or equal to 20.');
+        }
+        if (null !== $product_order_ids && count($product_order_ids) < 1) {
+            throw new \InvalidArgumentException('invalid value for "$product_order_ids" when calling ServiceApi.getServiceJobs, number of items must be greater than or equal to 1.');
+        }
+
+        if (null !== $tracking_ids && count($tracking_ids) > 20) {
+            throw new \InvalidArgumentException('invalid value for "$tracking_ids" when calling ServiceApi.getServiceJobs, number of items must be less than or equal to 20.');
+        }
+        if (null !== $tracking_ids && count($tracking_ids) < 1) {
+            throw new \InvalidArgumentException('invalid value for "$tracking_ids" when calling ServiceApi.getServiceJobs, number of items must be greater than or equal to 1.');
         }
 
         if (null !== $page_size && $page_size > 20) {
@@ -4567,6 +4611,26 @@ class ServiceApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $service_order_ids,
             'serviceOrderIds', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $product_order_ids,
+            'productOrderIds', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tracking_ids,
+            'trackingIds', // param base name
             'array', // openApiType
             'form', // style
             false, // explode

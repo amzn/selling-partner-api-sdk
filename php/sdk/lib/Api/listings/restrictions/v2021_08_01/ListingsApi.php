@@ -136,6 +136,8 @@ class ListingsApi
      *                                         The condition used to filter restrictions. (optional)
      * @param null|string $reason_locale
      *                                         A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)
+     * @param null|string $product_type
+     *                                         The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -147,9 +149,10 @@ class ListingsApi
         array $marketplace_ids,
         ?string $condition_type = null,
         ?string $reason_locale = null,
+        ?string $product_type = null,
         ?string $restrictedDataToken = null
     ): RestrictionList {
-        list($response) = $this->getListingsRestrictionsWithHttpInfo($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale, $restrictedDataToken);
+        list($response) = $this->getListingsRestrictionsWithHttpInfo($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale, $product_type, $restrictedDataToken);
 
         return $response;
     }
@@ -167,6 +170,8 @@ class ListingsApi
      *                                         The condition used to filter restrictions. (optional)
      * @param null|string $reason_locale
      *                                         A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)
+     * @param null|string $product_type
+     *                                         The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList, HTTP status code, HTTP response headers (array of strings)
@@ -180,9 +185,10 @@ class ListingsApi
         array $marketplace_ids,
         ?string $condition_type = null,
         ?string $reason_locale = null,
+        ?string $product_type = null,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getListingsRestrictionsRequest($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale);
+        $request = $this->getListingsRestrictionsRequest($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale, $product_type);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-getListingsRestrictions');
         } else {
@@ -266,6 +272,8 @@ class ListingsApi
      *                                     The condition used to filter restrictions. (optional)
      * @param null|string $reason_locale
      *                                     A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)
+     * @param null|string $product_type
+     *                                     The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -274,9 +282,10 @@ class ListingsApi
         string $seller_id,
         array $marketplace_ids,
         ?string $condition_type = null,
-        ?string $reason_locale = null
+        ?string $reason_locale = null,
+        ?string $product_type = null
     ): PromiseInterface {
-        return $this->getListingsRestrictionsAsyncWithHttpInfo($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale)
+        return $this->getListingsRestrictionsAsyncWithHttpInfo($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale, $product_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -298,6 +307,8 @@ class ListingsApi
      *                                     The condition used to filter restrictions. (optional)
      * @param null|string $reason_locale
      *                                     A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)
+     * @param null|string $product_type
+     *                                     The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -307,10 +318,11 @@ class ListingsApi
         array $marketplace_ids,
         ?string $condition_type = null,
         ?string $reason_locale = null,
+        ?string $product_type = null,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList';
-        $request = $this->getListingsRestrictionsRequest($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale);
+        $request = $this->getListingsRestrictionsRequest($asin, $seller_id, $marketplace_ids, $condition_type, $reason_locale, $product_type);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-getListingsRestrictions');
         } else {
@@ -371,6 +383,8 @@ class ListingsApi
      *                                     The condition used to filter restrictions. (optional)
      * @param null|string $reason_locale
      *                                     A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)
+     * @param null|string $product_type
+     *                                     The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -379,7 +393,8 @@ class ListingsApi
         string $seller_id,
         array $marketplace_ids,
         ?string $condition_type = null,
-        ?string $reason_locale = null
+        ?string $reason_locale = null,
+        ?string $product_type = null
     ): Request {
         // verify the required parameter 'asin' is set
         if (null === $asin || (is_array($asin) && 0 === count($asin))) {
@@ -451,6 +466,16 @@ class ListingsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $reason_locale,
             'reasonLocale', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $product_type,
+            'productType', // param base name
             'string', // openApiType
             '', // style
             false, // explode

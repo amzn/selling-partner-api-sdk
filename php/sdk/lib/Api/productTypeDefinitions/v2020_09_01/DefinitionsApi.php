@@ -137,13 +137,15 @@ class DefinitionsApi
      * @param null|string $seller_id
      *                                           A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)
      * @param null|string $product_type_version
-     *                                           The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
+     *                                           The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
      * @param null|string $requirements
      *                                           The name of the requirements set to retrieve requirements for. (optional, default to 'LISTING')
      * @param null|string $requirements_enforced
      *                                           Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
      * @param null|string $locale
      *                                           Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
+     * @param null|string $parentage_level
+     *                                           The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions. (optional)
      * @param null|string $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -157,9 +159,10 @@ class DefinitionsApi
         ?string $requirements = 'LISTING',
         ?string $requirements_enforced = 'ENFORCED',
         ?string $locale = 'DEFAULT',
+        ?string $parentage_level = null,
         ?string $restrictedDataToken = null
     ): ProductTypeDefinition {
-        list($response) = $this->getDefinitionsProductTypeWithHttpInfo($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale, $restrictedDataToken);
+        list($response) = $this->getDefinitionsProductTypeWithHttpInfo($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale, $parentage_level, $restrictedDataToken);
 
         return $response;
     }
@@ -174,13 +177,15 @@ class DefinitionsApi
      * @param null|string $seller_id
      *                                           A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)
      * @param null|string $product_type_version
-     *                                           The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
+     *                                           The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
      * @param null|string $requirements
      *                                           The name of the requirements set to retrieve requirements for. (optional, default to 'LISTING')
      * @param null|string $requirements_enforced
      *                                           Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
      * @param null|string $locale
      *                                           Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
+     * @param null|string $parentage_level
+     *                                           The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions. (optional)
      * @param null|string $restrictedDataToken   Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition, HTTP status code, HTTP response headers (array of strings)
@@ -196,9 +201,10 @@ class DefinitionsApi
         ?string $requirements = 'LISTING',
         ?string $requirements_enforced = 'ENFORCED',
         ?string $locale = 'DEFAULT',
+        ?string $parentage_level = null,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getDefinitionsProductTypeRequest($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale);
+        $request = $this->getDefinitionsProductTypeRequest($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale, $parentage_level);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefinitionsApi-getDefinitionsProductType');
         } else {
@@ -279,13 +285,15 @@ class DefinitionsApi
      * @param null|string $seller_id
      *                                           A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)
      * @param null|string $product_type_version
-     *                                           The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
+     *                                           The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
      * @param null|string $requirements
      *                                           The name of the requirements set to retrieve requirements for. (optional, default to 'LISTING')
      * @param null|string $requirements_enforced
      *                                           Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
      * @param null|string $locale
      *                                           Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
+     * @param null|string $parentage_level
+     *                                           The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -296,9 +304,10 @@ class DefinitionsApi
         ?string $product_type_version = 'LATEST',
         ?string $requirements = 'LISTING',
         ?string $requirements_enforced = 'ENFORCED',
-        ?string $locale = 'DEFAULT'
+        ?string $locale = 'DEFAULT',
+        ?string $parentage_level = null
     ): PromiseInterface {
-        return $this->getDefinitionsProductTypeAsyncWithHttpInfo($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale)
+        return $this->getDefinitionsProductTypeAsyncWithHttpInfo($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale, $parentage_level)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -317,13 +326,15 @@ class DefinitionsApi
      * @param null|string $seller_id
      *                                           A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)
      * @param null|string $product_type_version
-     *                                           The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
+     *                                           The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
      * @param null|string $requirements
      *                                           The name of the requirements set to retrieve requirements for. (optional, default to 'LISTING')
      * @param null|string $requirements_enforced
      *                                           Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
      * @param null|string $locale
      *                                           Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
+     * @param null|string $parentage_level
+     *                                           The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -335,10 +346,11 @@ class DefinitionsApi
         ?string $requirements = 'LISTING',
         ?string $requirements_enforced = 'ENFORCED',
         ?string $locale = 'DEFAULT',
+        ?string $parentage_level = null,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition';
-        $request = $this->getDefinitionsProductTypeRequest($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale);
+        $request = $this->getDefinitionsProductTypeRequest($product_type, $marketplace_ids, $seller_id, $product_type_version, $requirements, $requirements_enforced, $locale, $parentage_level);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefinitionsApi-getDefinitionsProductType');
         } else {
@@ -396,13 +408,15 @@ class DefinitionsApi
      * @param null|string $seller_id
      *                                           A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)
      * @param null|string $product_type_version
-     *                                           The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
+     *                                           The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to 'LATEST')
      * @param null|string $requirements
      *                                           The name of the requirements set to retrieve requirements for. (optional, default to 'LISTING')
      * @param null|string $requirements_enforced
      *                                           Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to 'ENFORCED')
      * @param null|string $locale
      *                                           Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to 'DEFAULT')
+     * @param null|string $parentage_level
+     *                                           The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -413,7 +427,8 @@ class DefinitionsApi
         ?string $product_type_version = 'LATEST',
         ?string $requirements = 'LISTING',
         ?string $requirements_enforced = 'ENFORCED',
-        ?string $locale = 'DEFAULT'
+        ?string $locale = 'DEFAULT',
+        ?string $parentage_level = null
     ): Request {
         // verify the required parameter 'product_type' is set
         if (null === $product_type || (is_array($product_type) && 0 === count($product_type))) {
@@ -495,6 +510,16 @@ class DefinitionsApi
             false, // required
             $this->config
         ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $parentage_level,
+            'parentageLevel', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
 
         // path params
         if (null !== $product_type) {
@@ -563,11 +588,11 @@ class DefinitionsApi
      * @param null|string[] $keywords
      *                                           A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
      * @param null|string   $item_name
-     *                                           The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
+     *                                           Title of ASIN to get product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
      * @param null|string   $locale
-     *                                           The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
+     *                                           Locale for display names in response. Defaults to primary locale of the marketplace. (optional)
      * @param null|string   $search_locale
-     *                                           The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
+     *                                           Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to primary locale of the marketplace. (optional)
      * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -594,11 +619,11 @@ class DefinitionsApi
      * @param null|string[] $keywords
      *                                           A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
      * @param null|string   $item_name
-     *                                           The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
+     *                                           Title of ASIN to get product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
      * @param null|string   $locale
-     *                                           The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
+     *                                           Locale for display names in response. Defaults to primary locale of the marketplace. (optional)
      * @param null|string   $search_locale
-     *                                           The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
+     *                                           Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to primary locale of the marketplace. (optional)
      * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList, HTTP status code, HTTP response headers (array of strings)
@@ -693,11 +718,11 @@ class DefinitionsApi
      * @param null|string[] $keywords
      *                                       A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
      * @param null|string   $item_name
-     *                                       The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
+     *                                       Title of ASIN to get product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
      * @param null|string   $locale
-     *                                       The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
+     *                                       Locale for display names in response. Defaults to primary locale of the marketplace. (optional)
      * @param null|string   $search_locale
-     *                                       The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
+     *                                       Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to primary locale of the marketplace. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -725,11 +750,11 @@ class DefinitionsApi
      * @param null|string[] $keywords
      *                                       A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
      * @param null|string   $item_name
-     *                                       The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
+     *                                       Title of ASIN to get product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
      * @param null|string   $locale
-     *                                       The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
+     *                                       Locale for display names in response. Defaults to primary locale of the marketplace. (optional)
      * @param null|string   $search_locale
-     *                                       The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
+     *                                       Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to primary locale of the marketplace. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -798,11 +823,11 @@ class DefinitionsApi
      * @param null|string[] $keywords
      *                                       A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)
      * @param null|string   $item_name
-     *                                       The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
+     *                                       Title of ASIN to get product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)
      * @param null|string   $locale
-     *                                       The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)
+     *                                       Locale for display names in response. Defaults to primary locale of the marketplace. (optional)
      * @param null|string   $search_locale
-     *                                       The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)
+     *                                       Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to primary locale of the marketplace. (optional)
      *
      * @throws \InvalidArgumentException
      */

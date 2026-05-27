@@ -78,6 +78,8 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
         'preferred_appointment_times' => '\SpApi\Model\services\v1\AppointmentTime[]',
         'appointments' => '\SpApi\Model\services\v1\Appointment[]',
         'service_order_id' => 'string',
+        'product_order_ids' => 'string[]',
+        'tracking_ids' => 'string[]',
         'marketplace_id' => 'string',
         'store_id' => 'string',
         'buyer' => '\SpApi\Model\services\v1\Buyer',
@@ -104,6 +106,8 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
         'preferred_appointment_times' => null,
         'appointments' => null,
         'service_order_id' => null,
+        'product_order_ids' => null,
+        'tracking_ids' => null,
         'marketplace_id' => null,
         'store_id' => null,
         'buyer' => null,
@@ -126,6 +130,8 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
         'preferred_appointment_times' => true,
         'appointments' => true,
         'service_order_id' => true,
+        'product_order_ids' => true,
+        'tracking_ids' => true,
         'marketplace_id' => true,
         'store_id' => true,
         'buyer' => true,
@@ -157,6 +163,8 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
         'preferred_appointment_times' => 'preferredAppointmentTimes',
         'appointments' => 'appointments',
         'service_order_id' => 'serviceOrderId',
+        'product_order_ids' => 'productOrderIds',
+        'tracking_ids' => 'trackingIds',
         'marketplace_id' => 'marketplaceId',
         'store_id' => 'storeId',
         'buyer' => 'buyer',
@@ -180,6 +188,8 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
         'preferred_appointment_times' => 'setPreferredAppointmentTimes',
         'appointments' => 'setAppointments',
         'service_order_id' => 'setServiceOrderId',
+        'product_order_ids' => 'setProductOrderIds',
+        'tracking_ids' => 'setTrackingIds',
         'marketplace_id' => 'setMarketplaceId',
         'store_id' => 'setStoreId',
         'buyer' => 'setBuyer',
@@ -203,6 +213,8 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
         'preferred_appointment_times' => 'getPreferredAppointmentTimes',
         'appointments' => 'getAppointments',
         'service_order_id' => 'getServiceOrderId',
+        'product_order_ids' => 'getProductOrderIds',
+        'tracking_ids' => 'getTrackingIds',
         'marketplace_id' => 'getMarketplaceId',
         'store_id' => 'getStoreId',
         'buyer' => 'getBuyer',
@@ -233,6 +245,8 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('preferred_appointment_times', $data ?? [], null);
         $this->setIfExists('appointments', $data ?? [], null);
         $this->setIfExists('service_order_id', $data ?? [], null);
+        $this->setIfExists('product_order_ids', $data ?? [], null);
+        $this->setIfExists('tracking_ids', $data ?? [], null);
         $this->setIfExists('marketplace_id', $data ?? [], null);
         $this->setIfExists('store_id', $data ?? [], null);
         $this->setIfExists('buyer', $data ?? [], null);
@@ -687,6 +701,66 @@ class ServiceJob implements ModelInterface, \ArrayAccess, \JsonSerializable
         }
 
         $this->container['service_order_id'] = $service_order_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_order_ids.
+     */
+    public function getProductOrderIds(): ?array
+    {
+        return $this->container['product_order_ids'];
+    }
+
+    /**
+     * Sets product_order_ids.
+     *
+     * @param null|array $product_order_ids a list of associated product order IDs for the service job
+     */
+    public function setProductOrderIds(?array $product_order_ids): self
+    {
+        if (is_null($product_order_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'product_order_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_order_ids', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['product_order_ids'] = $product_order_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_ids.
+     */
+    public function getTrackingIds(): ?array
+    {
+        return $this->container['tracking_ids'];
+    }
+
+    /**
+     * Sets tracking_ids.
+     *
+     * @param null|array $tracking_ids a list of associated product tracking IDs for the service job
+     */
+    public function setTrackingIds(?array $tracking_ids): self
+    {
+        if (is_null($tracking_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'tracking_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_ids', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tracking_ids'] = $tracking_ids;
 
         return $this;
     }

@@ -1979,6 +1979,34 @@ class OrdersV0ApiTest extends BaseTestCase
             &quot;ValidVerificationDetails&quot; : [ {
               &quot;VerificationDetailType&quot; : &quot;prescriptionDetail&quot;,
               &quot;ValidVerificationStatuses&quot; : [ &quot;Approved&quot; ]
+            }, {
+              &quot;VerificationDetailType&quot; : &quot;approvedAlternativeDetails&quot;,
+              &quot;ValidVerificationStatuses&quot; : [ &quot;Rejected&quot; ]
+            }, {
+              &quot;VerificationDetailType&quot; : &quot;interimStatusDetail&quot;,
+              &quot;ValidVerificationStatuses&quot; : [ &quot;Pending&quot; ]
+            } ],
+            &quot;ValidInterimStatusCodes&quot; : [ {
+              &quot;StatusCode&quot; : &quot;awaiting_vet_response&quot;,
+              &quot;StatusDescription&quot; : &quot;Vetsource is contacting your vet. Response usually takes 1-2 business days.&quot;
+            }, {
+              &quot;StatusCode&quot; : &quot;vet_contacted_email&quot;,
+              &quot;StatusDescription&quot; : &quot;Vetsource contacted your vet via email.&quot;
+            }, {
+              &quot;StatusCode&quot; : &quot;vet_contacted_phone&quot;,
+              &quot;StatusDescription&quot; : &quot;Vetsource contacted your vet via phone.&quot;
+            }, {
+              &quot;StatusCode&quot; : &quot;vet_contacted_fax&quot;,
+              &quot;StatusDescription&quot; : &quot;Vetsource contacted your vet via fax.&quot;
+            }, {
+              &quot;StatusCode&quot; : &quot;communication_failure&quot;,
+              &quot;StatusDescription&quot; : &quot;We&#39;re having trouble reaching your vet. We&#39;ll keep trying.&quot;
+            }, {
+              &quot;StatusCode&quot; : &quot;no_vet_response&quot;,
+              &quot;StatusDescription&quot; : &quot;Your vet didn&#39;t respond. Contact them to confirm they&#39;ll approve your next order.&quot;
+            }, {
+              &quot;StatusCode&quot; : &quot;processing&quot;,
+              &quot;StatusDescription&quot; : &quot;Your order has been approved and is being processed.&quot;
             } ]
           }
         }
@@ -2804,6 +2832,83 @@ class OrdersV0ApiTest extends BaseTestCase
         &quot;errors&quot; : [ {
           &quot;code&quot; : &quot;InvalidInput&quot;,
           &quot;message&quot; : &quot;Missing required parameter(s) from prescriptionDetail value: clinicId&quot;
+        } ]
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot;902-2592119-3531015&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;regulatedOrderVerificationStatus&quot; : {
+                &quot;status&quot; : &quot;Rejected&quot;,
+                &quot;externalReviewerId&quot; : &quot;vet_clinic_12345&quot;,
+                &quot;rejectionReasonId&quot; : &quot;pets_rx_sc_incorrect_product&quot;,
+                &quot;verificationDetails&quot; : {
+                  &quot;approvedAlternativeDetails&quot; : [ {
+                    &quot;attributeName&quot; : &quot;asin&quot;,
+                    &quot;originalValue&quot; : &quot;B00DOGMEDICINE&quot;,
+                    &quot;approvedValue&quot; : &quot;B00CATMEDICINE&quot;
+                  } ]
+                }
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot;902-2592119-3531015&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;regulatedOrderVerificationStatus&quot; : {
+                &quot;status&quot; : &quot;Pending&quot;,
+                &quot;externalReviewerId&quot; : &quot;vetsource_system&quot;,
+                &quot;verificationDetails&quot; : {
+                  &quot;interimStatusDetail&quot; : {
+                    &quot;statusCode&quot; : &quot;vet_contacted_email&quot;,
+                    &quot;statusDateTime&quot; : &quot;2026-02-26T10:00:00Z&quot;
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot;902-2592119-3531015&quot;
+          },
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;regulatedOrderVerificationStatus&quot; : {
+                &quot;status&quot; : &quot;Approved&quot;,
+                &quot;externalReviewerId&quot; : &quot;vet_clinic_12345&quot;,
+                &quot;verificationDetails&quot; : {
+                  &quot;approvedAlternativeDetails&quot; : [ {
+                    &quot;attributeName&quot; : &quot;asin&quot;,
+                    &quot;originalValue&quot; : &quot;B00DOGMEDICINE&quot;,
+                    &quot;approvedValue&quot; : &quot;B00CATMEDICINE&quot;
+                  } ]
+                }
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Verification Detail &#x60;approvedAlternativeDetails&#x60; is not supported when order is in Approved status.&quot;
         } ]
       }
     } ]

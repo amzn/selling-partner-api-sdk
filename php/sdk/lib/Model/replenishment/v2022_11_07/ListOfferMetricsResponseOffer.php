@@ -64,6 +64,8 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
         'asin' => 'string',
         'sku' => 'string',
         'fulfillment_channel_type' => '\SpApi\Model\replenishment\v2022_11_07\FulfillmentChannelType',
+        'brand_name' => 'string',
+        'product_group' => 'string',
         'not_delivered_due_to_oos' => 'float',
         'total_subscriptions_revenue' => 'float',
         'shipped_subscription_units' => 'float',
@@ -94,6 +96,8 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
         'asin' => null,
         'sku' => null,
         'fulfillment_channel_type' => null,
+        'brand_name' => null,
+        'product_group' => null,
         'not_delivered_due_to_oos' => 'double',
         'total_subscriptions_revenue' => 'double',
         'shipped_subscription_units' => 'int64',
@@ -120,6 +124,8 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
         'asin' => true,
         'sku' => true,
         'fulfillment_channel_type' => true,
+        'brand_name' => true,
+        'product_group' => true,
         'not_delivered_due_to_oos' => true,
         'total_subscriptions_revenue' => true,
         'shipped_subscription_units' => true,
@@ -155,6 +161,8 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
         'asin' => 'asin',
         'sku' => 'sku',
         'fulfillment_channel_type' => 'fulfillmentChannelType',
+        'brand_name' => 'brandName',
+        'product_group' => 'productGroup',
         'not_delivered_due_to_oos' => 'notDeliveredDueToOOS',
         'total_subscriptions_revenue' => 'totalSubscriptionsRevenue',
         'shipped_subscription_units' => 'shippedSubscriptionUnits',
@@ -182,6 +190,8 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
         'asin' => 'setAsin',
         'sku' => 'setSku',
         'fulfillment_channel_type' => 'setFulfillmentChannelType',
+        'brand_name' => 'setBrandName',
+        'product_group' => 'setProductGroup',
         'not_delivered_due_to_oos' => 'setNotDeliveredDueToOos',
         'total_subscriptions_revenue' => 'setTotalSubscriptionsRevenue',
         'shipped_subscription_units' => 'setShippedSubscriptionUnits',
@@ -209,6 +219,8 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
         'asin' => 'getAsin',
         'sku' => 'getSku',
         'fulfillment_channel_type' => 'getFulfillmentChannelType',
+        'brand_name' => 'getBrandName',
+        'product_group' => 'getProductGroup',
         'not_delivered_due_to_oos' => 'getNotDeliveredDueToOos',
         'total_subscriptions_revenue' => 'getTotalSubscriptionsRevenue',
         'shipped_subscription_units' => 'getShippedSubscriptionUnits',
@@ -243,6 +255,8 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
         $this->setIfExists('asin', $data ?? [], null);
         $this->setIfExists('sku', $data ?? [], null);
         $this->setIfExists('fulfillment_channel_type', $data ?? [], null);
+        $this->setIfExists('brand_name', $data ?? [], null);
+        $this->setIfExists('product_group', $data ?? [], null);
         $this->setIfExists('not_delivered_due_to_oos', $data ?? [], null);
         $this->setIfExists('total_subscriptions_revenue', $data ?? [], null);
         $this->setIfExists('shipped_subscription_units', $data ?? [], null);
@@ -525,6 +539,66 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     }
 
     /**
+     * Gets brand_name.
+     */
+    public function getBrandName(): ?string
+    {
+        return $this->container['brand_name'];
+    }
+
+    /**
+     * Sets brand_name.
+     *
+     * @param null|string $brand_name the brand name associated with the offer
+     */
+    public function setBrandName(?string $brand_name): self
+    {
+        if (is_null($brand_name)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_name', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['brand_name'] = $brand_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_group.
+     */
+    public function getProductGroup(): ?string
+    {
+        return $this->container['product_group'];
+    }
+
+    /**
+     * Sets product_group.
+     *
+     * @param null|string $product_group The product group associated with the offer. This property is only supported for vendors and not for sellers.
+     */
+    public function setProductGroup(?string $product_group): self
+    {
+        if (is_null($product_group)) {
+            array_push($this->openAPINullablesSetToNull, 'product_group');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_group', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['product_group'] = $product_group;
+
+        return $this;
+    }
+
+    /**
      * Gets not_delivered_due_to_oos.
      */
     public function getNotDeliveredDueToOos(): ?float
@@ -789,7 +863,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets share_of_coupon_subscriptions.
      *
-     * @param null|float $share_of_coupon_subscriptions The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.
+     * @param null|float $share_of_coupon_subscriptions The percentage of new subscriptions from coupons. Applicable to `PERFORMANCE` `timePeriodType`.
      */
     public function setShareOfCouponSubscriptions(?float $share_of_coupon_subscriptions): self
     {

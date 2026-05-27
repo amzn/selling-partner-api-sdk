@@ -204,9 +204,29 @@ class SearchOrdersApiTest extends BaseTestCase
           },
           &quot;proceeds&quot; : {
             &quot;grandTotal&quot; : {
-              &quot;amount&quot; : &quot;149.99&quot;,
+              &quot;amount&quot; : &quot;154.99&quot;,
               &quot;currencyCode&quot; : &quot;USD&quot;
-            }
+            },
+            &quot;breakdowns&quot; : [ {
+              &quot;type&quot; : &quot;ITEM&quot;,
+              &quot;subtotal&quot; : {
+                &quot;amount&quot; : &quot;149.97&quot;,
+                &quot;currencyCode&quot; : &quot;USD&quot;
+              }
+            }, {
+              &quot;type&quot; : &quot;TAX&quot;,
+              &quot;subtotal&quot; : {
+                &quot;amount&quot; : &quot;0.02&quot;,
+                &quot;currencyCode&quot; : &quot;USD&quot;
+              }
+            }, {
+              &quot;type&quot; : &quot;DELIVERY_TIP&quot;,
+              &quot;status&quot; : &quot;FINALIZED&quot;,
+              &quot;subtotal&quot; : {
+                &quot;amount&quot; : &quot;5.00&quot;,
+                &quot;currencyCode&quot; : &quot;USD&quot;
+              }
+            } ]
           },
           &quot;fulfillment&quot; : {
             &quot;fulfillmentStatus&quot; : &quot;SHIPPED&quot;,
@@ -382,6 +402,9 @@ class SearchOrdersApiTest extends BaseTestCase
               &quot;quantity&quot; : 1,
               &quot;transparencyCodes&quot; : [ &quot;T67890GHIJK12345&quot; ]
             } ]
+          } ],
+          &quot;fulfillmentOrders&quot; : [ {
+            &quot;fulfillmentOrderId&quot; : &quot;LdDv2jxM4&quot;
           } ]
         } ],
         &quot;pagination&quot; : {

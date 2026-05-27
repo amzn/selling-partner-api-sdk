@@ -261,7 +261,7 @@ class ValidVerificationDetail implements ModelInterface, \ArrayAccess, \JsonSeri
     /**
      * Sets verification_detail_type.
      *
-     * @param string $verification_detail_type A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid value: `prescriptionDetail`.
+     * @param string $verification_detail_type A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid values: `prescriptionDetail`, `approvedAlternativeDetails`, `interimStatusDetail`.
      */
     public function setVerificationDetailType(string $verification_detail_type): self
     {

@@ -294,7 +294,7 @@ class ProductType implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets display_name.
      *
-     * @param string $display_name the human-readable and localized description of the Amazon product type
+     * @param string $display_name human-readable and localized description of the Amazon product type
      */
     public function setDisplayName(string $display_name): self
     {

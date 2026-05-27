@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description An event filter to customize your subscription to send notifications for only the specified &#x60;marketplaceId&#x60;s.
+ * @description An event filter you can use to customize your subscription to send notifications for specific &#x60;marketplaceId&#x60;s.
  *
  * @author   OpenAPI Generator team
  *
@@ -245,7 +245,7 @@ class MarketplaceFilter implements ModelInterface, \ArrayAccess, \JsonSerializab
     /**
      * Sets marketplace_ids.
      *
-     * @param null|array $marketplace_ids A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
+     * @param null|array $marketplace_ids A list of marketplace identifiers you can subscribe to (for example, `ATVPDKIKX0DER`). To receive notifications in every marketplace, do not provide this list.
      */
     public function setMarketplaceIds(?array $marketplace_ids): self
     {

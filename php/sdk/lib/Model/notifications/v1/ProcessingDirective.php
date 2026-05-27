@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Additional information passed to the subscription to control the processing of notifications. For example, you can use an &#x60;eventFilter&#x60; to customize your subscription to send notifications for only the specified &#x60;marketplaceId&#x60;s, or select the aggregation time period at which to send notifications (for example: limit to one notification every five minutes for high frequency notifications). The specific features available vary depending on the &#x60;notificationType&#x60;.  This feature is currently only supported by the &#x60;ANY_OFFER_CHANGED&#x60; and &#x60;ORDER_CHANGE&#x60; &#x60;notificationType&#x60;s.
+ * @description Additional information passed to the subscription to control the processing of notifications. For example, you can use an &#x60;eventFilter&#x60; to customize your subscription to send notifications for only the &#x60;marketplaceId&#x60;s that you specify, or select the aggregation time period at which to send notifications (for example, you can set a limit of one notification every five minutes for high frequency notifications). You can also use &#x60;filterExpression&#x60; to filter events based on notification payload. The specific features available can vary by the &#x60;notificationType&#x60;.
  *
  * @author   OpenAPI Generator team
  *
@@ -61,7 +61,8 @@ class ProcessingDirective implements ModelInterface, \ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'event_filter' => '\SpApi\Model\notifications\v1\EventFilter'];
+        'event_filter' => '\SpApi\Model\notifications\v1\EventFilter',
+        'filter_expression' => 'string'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -73,7 +74,8 @@ class ProcessingDirective implements ModelInterface, \ArrayAccess, \JsonSerializ
      * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
-        'event_filter' => null];
+        'event_filter' => null,
+        'filter_expression' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -82,6 +84,7 @@ class ProcessingDirective implements ModelInterface, \ArrayAccess, \JsonSerializ
      */
     protected static array $openAPINullables = [
         'event_filter' => true,
+        'filter_expression' => true,
     ];
 
     /**
@@ -99,6 +102,7 @@ class ProcessingDirective implements ModelInterface, \ArrayAccess, \JsonSerializ
      */
     protected static array $attributeMap = [
         'event_filter' => 'eventFilter',
+        'filter_expression' => 'filterExpression',
     ];
 
     /**
@@ -108,6 +112,7 @@ class ProcessingDirective implements ModelInterface, \ArrayAccess, \JsonSerializ
      */
     protected static array $setters = [
         'event_filter' => 'setEventFilter',
+        'filter_expression' => 'setFilterExpression',
     ];
 
     /**
@@ -117,6 +122,7 @@ class ProcessingDirective implements ModelInterface, \ArrayAccess, \JsonSerializ
      */
     protected static array $getters = [
         'event_filter' => 'getEventFilter',
+        'filter_expression' => 'getFilterExpression',
     ];
 
     /**
@@ -133,6 +139,7 @@ class ProcessingDirective implements ModelInterface, \ArrayAccess, \JsonSerializ
     public function __construct(?array $data = null)
     {
         $this->setIfExists('event_filter', $data ?? [], null);
+        $this->setIfExists('filter_expression', $data ?? [], null);
     }
 
     /**
@@ -220,7 +227,17 @@ class ProcessingDirective implements ModelInterface, \ArrayAccess, \JsonSerializ
      */
     public function listInvalidProperties(): array
     {
-        return [];
+        $invalidProperties = [];
+
+        if (!is_null($this->container['filter_expression']) && (mb_strlen($this->container['filter_expression']) > 256)) {
+            $invalidProperties[] = "invalid value for 'filter_expression', the character length must be smaller than or equal to 256.";
+        }
+
+        if (!is_null($this->container['filter_expression']) && (mb_strlen($this->container['filter_expression']) < 1)) {
+            $invalidProperties[] = "invalid value for 'filter_expression', the character length must be bigger than or equal to 1.";
+        }
+
+        return $invalidProperties;
     }
 
     /**
@@ -260,6 +277,43 @@ class ProcessingDirective implements ModelInterface, \ArrayAccess, \JsonSerializ
             }
         }
         $this->container['event_filter'] = $event_filter;
+
+        return $this;
+    }
+
+    /**
+     * Gets filter_expression.
+     */
+    public function getFilterExpression(): ?string
+    {
+        return $this->container['filter_expression'];
+    }
+
+    /**
+     * Sets filter_expression.
+     *
+     * @param null|string $filter_expression An expression for filtering events before delivery to destination based on the notification payload (example: FulfillmentOrderStatusNotification.FulfillmentOrderStatus == `SHIPPED` ). The `filterExpression` is a string that follows the CEL expression syntax (https://github.com/google/cel-spec) excluding arithmetic operators (+, -, *, /, %) and list/map indexing ([]). Refer to Notification Type Values to determine if filter Expression is supported for a Notification Type. Refer to CEL Operators (https://developer-docs.amazon.com/sp-api/docs/filter-notification-subscriptions) to see if a CEL operator is supported.   Note: eventFilter and filterExpression are mutually exclusive. You can use filterExpression to replace existing eventFilter configurations.
+     */
+    public function setFilterExpression(?string $filter_expression): self
+    {
+        if (is_null($filter_expression)) {
+            array_push($this->openAPINullablesSetToNull, 'filter_expression');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('filter_expression', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($filter_expression) && (mb_strlen($filter_expression) > 256)) {
+            throw new \InvalidArgumentException('invalid length for $filter_expression when calling ProcessingDirective., must be smaller than or equal to 256.');
+        }
+        if (!is_null($filter_expression) && (mb_strlen($filter_expression) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $filter_expression when calling ProcessingDirective., must be bigger than or equal to 1.');
+        }
+
+        $this->container['filter_expression'] = $filter_expression;
 
         return $this;
     }

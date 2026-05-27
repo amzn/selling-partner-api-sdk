@@ -19,6 +19,7 @@ lib/Model/orders/v2026_01_01/DeliveryPreference.php
 lib/Model/orders/v2026_01_01/Error.php
 lib/Model/orders/v2026_01_01/ErrorList.php
 lib/Model/orders/v2026_01_01/ExceptionDate.php
+lib/Model/orders/v2026_01_01/FulfillmentOrder.php
 lib/Model/orders/v2026_01_01/FulfillmentStatus.php
 lib/Model/orders/v2026_01_01/GetOrderResponse.php
 lib/Model/orders/v2026_01_01/GiftOption.php
@@ -56,6 +57,7 @@ lib/Model/orders/v2026_01_01/OrderItem.php
 lib/Model/orders/v2026_01_01/OrderPackage.php
 lib/Model/orders/v2026_01_01/OrderPayment.php
 lib/Model/orders/v2026_01_01/OrderProceeds.php
+lib/Model/orders/v2026_01_01/OrderProceedsBreakdown.php
 lib/Model/orders/v2026_01_01/OrderTax.php
 lib/Model/orders/v2026_01_01/OrderTaxInvoicing.php
 lib/Model/orders/v2026_01_01/OrderTaxRegistration.php

@@ -46,9 +46,11 @@ class OrderChangeTypeEnum
     /**
      * Possible values of this enum.
      */
-    public const ORDER_STATUS_CHANGE = 'OrderStatusChange';
-
     public const BUYER_REQUESTED_CHANGE = 'BuyerRequestedChange';
+
+    public const DELIVERY_TIP_CHANGE = 'DeliveryTipChange';
+
+    public const ORDER_STATUS_CHANGE = 'OrderStatusChange';
 
     /**
      * Gets allowable values of the enum.
@@ -58,8 +60,9 @@ class OrderChangeTypeEnum
     public static function getAllowableEnumValues(): array
     {
         return [
-            self::ORDER_STATUS_CHANGE,
             self::BUYER_REQUESTED_CHANGE,
+            self::DELIVERY_TIP_CHANGE,
+            self::ORDER_STATUS_CHANGE,
         ];
     }
 }

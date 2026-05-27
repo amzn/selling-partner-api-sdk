@@ -127,7 +127,26 @@ class GetOrderApiTest extends BaseTestCase
             &quot;grandTotal&quot; : {
               &quot;amount&quot; : &quot;103.97&quot;,
               &quot;currencyCode&quot; : &quot;GBP&quot;
-            }
+            },
+            &quot;breakdowns&quot; : [ {
+              &quot;type&quot; : &quot;ITEM&quot;,
+              &quot;subtotal&quot; : {
+                &quot;amount&quot; : &quot;89.97&quot;,
+                &quot;currencyCode&quot; : &quot;GBP&quot;
+              }
+            }, {
+              &quot;type&quot; : &quot;SHIPPING&quot;,
+              &quot;subtotal&quot; : {
+                &quot;amount&quot; : &quot;10.00&quot;,
+                &quot;currencyCode&quot; : &quot;GBP&quot;
+              }
+            }, {
+              &quot;type&quot; : &quot;TAX&quot;,
+              &quot;subtotal&quot; : {
+                &quot;amount&quot; : &quot;4.00&quot;,
+                &quot;currencyCode&quot; : &quot;GBP&quot;
+              }
+            } ]
           },
           &quot;fulfillment&quot; : {
             &quot;fulfillmentStatus&quot; : &quot;SHIPPED&quot;,
@@ -262,6 +281,9 @@ class GetOrderApiTest extends BaseTestCase
               &quot;quantity&quot; : 3,
               &quot;transparencyCodes&quot; : [ &quot;T12345ABCDE67890UK&quot;, &quot;T12346ABCDF67891UK&quot;, &quot;T12347ABCDG67892UK&quot; ]
             } ]
+          } ],
+          &quot;fulfillmentOrders&quot; : [ {
+            &quot;fulfillmentOrderId&quot; : &quot;LdDv2jxM4&quot;
           } ]
         }
       }

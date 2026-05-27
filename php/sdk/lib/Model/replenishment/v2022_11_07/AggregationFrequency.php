@@ -46,6 +46,8 @@ class AggregationFrequency
     /**
      * Possible values of this enum.
      */
+    public const DAY = 'DAY';
+
     public const WEEK = 'WEEK';
 
     public const MONTH = 'MONTH';
@@ -62,6 +64,7 @@ class AggregationFrequency
     public static function getAllowableEnumValues(): array
     {
         return [
+            self::DAY,
             self::WEEK,
             self::MONTH,
             self::QUARTER,

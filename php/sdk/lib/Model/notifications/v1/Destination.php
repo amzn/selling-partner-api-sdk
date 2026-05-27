@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Information about the destination created when you call the &#x60;createDestination&#x60; operation.
+ * @description Information about the destination you create when you call the &#x60;createDestination&#x60; operation.
  *
  * @author   OpenAPI Generator team
  *

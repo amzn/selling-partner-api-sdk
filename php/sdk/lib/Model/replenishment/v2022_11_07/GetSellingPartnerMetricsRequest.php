@@ -64,6 +64,7 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, \ArrayAccess, \
         'aggregation_frequency' => '\SpApi\Model\replenishment\v2022_11_07\AggregationFrequency',
         'time_interval' => '\SpApi\Model\replenishment\v2022_11_07\TimeInterval',
         'metrics' => '\SpApi\Model\replenishment\v2022_11_07\Metric[]',
+        'filters' => '\SpApi\Model\replenishment\v2022_11_07\GetSellingPartnerMetricsRequestFilters',
         'time_period_type' => '\SpApi\Model\replenishment\v2022_11_07\TimePeriodType',
         'marketplace_id' => 'string',
         'program_types' => '\SpApi\Model\replenishment\v2022_11_07\ProgramType[]'];
@@ -81,6 +82,7 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, \ArrayAccess, \
         'aggregation_frequency' => null,
         'time_interval' => null,
         'metrics' => null,
+        'filters' => null,
         'time_period_type' => null,
         'marketplace_id' => null,
         'program_types' => null];
@@ -94,6 +96,7 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, \ArrayAccess, \
         'aggregation_frequency' => true,
         'time_interval' => false,
         'metrics' => true,
+        'filters' => true,
         'time_period_type' => false,
         'marketplace_id' => false,
         'program_types' => false,
@@ -116,6 +119,7 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, \ArrayAccess, \
         'aggregation_frequency' => 'aggregationFrequency',
         'time_interval' => 'timeInterval',
         'metrics' => 'metrics',
+        'filters' => 'filters',
         'time_period_type' => 'timePeriodType',
         'marketplace_id' => 'marketplaceId',
         'program_types' => 'programTypes',
@@ -130,6 +134,7 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, \ArrayAccess, \
         'aggregation_frequency' => 'setAggregationFrequency',
         'time_interval' => 'setTimeInterval',
         'metrics' => 'setMetrics',
+        'filters' => 'setFilters',
         'time_period_type' => 'setTimePeriodType',
         'marketplace_id' => 'setMarketplaceId',
         'program_types' => 'setProgramTypes',
@@ -144,6 +149,7 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, \ArrayAccess, \
         'aggregation_frequency' => 'getAggregationFrequency',
         'time_interval' => 'getTimeInterval',
         'metrics' => 'getMetrics',
+        'filters' => 'getFilters',
         'time_period_type' => 'getTimePeriodType',
         'marketplace_id' => 'getMarketplaceId',
         'program_types' => 'getProgramTypes',
@@ -165,6 +171,7 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, \ArrayAccess, \
         $this->setIfExists('aggregation_frequency', $data ?? [], null);
         $this->setIfExists('time_interval', $data ?? [], null);
         $this->setIfExists('metrics', $data ?? [], null);
+        $this->setIfExists('filters', $data ?? [], null);
         $this->setIfExists('time_period_type', $data ?? [], null);
         $this->setIfExists('marketplace_id', $data ?? [], null);
         $this->setIfExists('program_types', $data ?? [], null);
@@ -374,6 +381,36 @@ class GetSellingPartnerMetricsRequest implements ModelInterface, \ArrayAccess, \
             throw new \InvalidArgumentException('invalid length for $metrics when calling GetSellingPartnerMetricsRequest., number of items must be greater than or equal to 1.');
         }
         $this->container['metrics'] = $metrics;
+
+        return $this;
+    }
+
+    /**
+     * Gets filters.
+     */
+    public function getFilters(): ?GetSellingPartnerMetricsRequestFilters
+    {
+        return $this->container['filters'];
+    }
+
+    /**
+     * Sets filters.
+     *
+     * @param null|GetSellingPartnerMetricsRequestFilters $filters filters
+     */
+    public function setFilters(?GetSellingPartnerMetricsRequestFilters $filters): self
+    {
+        if (is_null($filters)) {
+            array_push($this->openAPINullablesSetToNull, 'filters');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('filters', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['filters'] = $filters;
 
         return $this;
     }

@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Use these parameters to filter results. Any result must match all provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.
+ * @description Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept multiple values (arrays), the API returns results that match at least one value in the array.
  *
  * @author   OpenAPI Generator team
  *
@@ -66,7 +66,11 @@ class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \J
         'time_period_type' => '\SpApi\Model\replenishment\v2022_11_07\TimePeriodType',
         'marketplace_id' => 'string',
         'program_types' => '\SpApi\Model\replenishment\v2022_11_07\ProgramType[]',
-        'asins' => 'string[]'];
+        'asins' => 'string[]',
+        'skus' => 'string[]',
+        'fulfillment_channel_types' => '\SpApi\Model\replenishment\v2022_11_07\FulfillmentChannelType[]',
+        'brand_names' => 'string[]',
+        'product_groups' => 'string[]'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -83,7 +87,11 @@ class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \J
         'time_period_type' => null,
         'marketplace_id' => null,
         'program_types' => null,
-        'asins' => null];
+        'asins' => null,
+        'skus' => null,
+        'fulfillment_channel_types' => null,
+        'brand_names' => null,
+        'product_groups' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -97,6 +105,10 @@ class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \J
         'marketplace_id' => false,
         'program_types' => false,
         'asins' => true,
+        'skus' => true,
+        'fulfillment_channel_types' => true,
+        'brand_names' => true,
+        'product_groups' => true,
     ];
 
     /**
@@ -119,6 +131,10 @@ class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \J
         'marketplace_id' => 'marketplaceId',
         'program_types' => 'programTypes',
         'asins' => 'asins',
+        'skus' => 'skus',
+        'fulfillment_channel_types' => 'fulfillmentChannelTypes',
+        'brand_names' => 'brandNames',
+        'product_groups' => 'productGroups',
     ];
 
     /**
@@ -133,6 +149,10 @@ class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \J
         'marketplace_id' => 'setMarketplaceId',
         'program_types' => 'setProgramTypes',
         'asins' => 'setAsins',
+        'skus' => 'setSkus',
+        'fulfillment_channel_types' => 'setFulfillmentChannelTypes',
+        'brand_names' => 'setBrandNames',
+        'product_groups' => 'setProductGroups',
     ];
 
     /**
@@ -147,6 +167,10 @@ class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \J
         'marketplace_id' => 'getMarketplaceId',
         'program_types' => 'getProgramTypes',
         'asins' => 'getAsins',
+        'skus' => 'getSkus',
+        'fulfillment_channel_types' => 'getFulfillmentChannelTypes',
+        'brand_names' => 'getBrandNames',
+        'product_groups' => 'getProductGroups',
     ];
 
     /**
@@ -168,6 +192,10 @@ class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \J
         $this->setIfExists('marketplace_id', $data ?? [], null);
         $this->setIfExists('program_types', $data ?? [], null);
         $this->setIfExists('asins', $data ?? [], null);
+        $this->setIfExists('skus', $data ?? [], null);
+        $this->setIfExists('fulfillment_channel_types', $data ?? [], null);
+        $this->setIfExists('brand_names', $data ?? [], null);
+        $this->setIfExists('product_groups', $data ?? [], null);
     }
 
     /**
@@ -279,6 +307,38 @@ class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \J
 
         if (!is_null($this->container['asins']) && (count($this->container['asins']) < 1)) {
             $invalidProperties[] = "invalid value for 'asins', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['skus']) && (count($this->container['skus']) > 20)) {
+            $invalidProperties[] = "invalid value for 'skus', number of items must be less than or equal to 20.";
+        }
+
+        if (!is_null($this->container['skus']) && (count($this->container['skus']) < 1)) {
+            $invalidProperties[] = "invalid value for 'skus', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['fulfillment_channel_types']) && (count($this->container['fulfillment_channel_types']) > 2)) {
+            $invalidProperties[] = "invalid value for 'fulfillment_channel_types', number of items must be less than or equal to 2.";
+        }
+
+        if (!is_null($this->container['fulfillment_channel_types']) && (count($this->container['fulfillment_channel_types']) < 1)) {
+            $invalidProperties[] = "invalid value for 'fulfillment_channel_types', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['brand_names']) && (count($this->container['brand_names']) > 20)) {
+            $invalidProperties[] = "invalid value for 'brand_names', number of items must be less than or equal to 20.";
+        }
+
+        if (!is_null($this->container['brand_names']) && (count($this->container['brand_names']) < 1)) {
+            $invalidProperties[] = "invalid value for 'brand_names', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['product_groups']) && (count($this->container['product_groups']) > 20)) {
+            $invalidProperties[] = "invalid value for 'product_groups', number of items must be less than or equal to 20.";
+        }
+
+        if (!is_null($this->container['product_groups']) && (count($this->container['product_groups']) < 1)) {
+            $invalidProperties[] = "invalid value for 'product_groups', number of items must be greater than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -432,7 +492,7 @@ class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \J
     /**
      * Sets asins.
      *
-     * @param null|array $asins a list of Amazon Standard Identification Numbers (ASINs)
+     * @param null|array $asins a list of Amazon Standard Identification Numbers (ASINs) to filter by
      */
     public function setAsins(?array $asins): self
     {
@@ -454,6 +514,154 @@ class ListOfferMetricsRequestFilters implements ModelInterface, \ArrayAccess, \J
             throw new \InvalidArgumentException('invalid length for $asins when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['asins'] = $asins;
+
+        return $this;
+    }
+
+    /**
+     * Gets skus.
+     */
+    public function getSkus(): ?array
+    {
+        return $this->container['skus'];
+    }
+
+    /**
+     * Sets skus.
+     *
+     * @param null|array $skus [Applicable only for Sellers] A list of SKUs to filter by
+     */
+    public function setSkus(?array $skus): self
+    {
+        if (is_null($skus)) {
+            array_push($this->openAPINullablesSetToNull, 'skus');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('skus', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($skus) && (count($skus) > 20)) {
+            throw new \InvalidArgumentException('invalid value for $skus when calling ListOfferMetricsRequestFilters., number of items must be less than or equal to 20.');
+        }
+        if (!is_null($skus) && (count($skus) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $skus when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
+        }
+        $this->container['skus'] = $skus;
+
+        return $this;
+    }
+
+    /**
+     * Gets fulfillment_channel_types.
+     */
+    public function getFulfillmentChannelTypes(): ?array
+    {
+        return $this->container['fulfillment_channel_types'];
+    }
+
+    /**
+     * Sets fulfillment_channel_types.
+     *
+     * @param null|array $fulfillment_channel_types [Applicable only for Sellers] The fulfillment channel types to filter by
+     */
+    public function setFulfillmentChannelTypes(?array $fulfillment_channel_types): self
+    {
+        if (is_null($fulfillment_channel_types)) {
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_channel_types');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_channel_types', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($fulfillment_channel_types) && (count($fulfillment_channel_types) > 2)) {
+            throw new \InvalidArgumentException('invalid value for $fulfillment_channel_types when calling ListOfferMetricsRequestFilters., number of items must be less than or equal to 2.');
+        }
+        if (!is_null($fulfillment_channel_types) && (count($fulfillment_channel_types) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $fulfillment_channel_types when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
+        }
+        $this->container['fulfillment_channel_types'] = $fulfillment_channel_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets brand_names.
+     */
+    public function getBrandNames(): ?array
+    {
+        return $this->container['brand_names'];
+    }
+
+    /**
+     * Sets brand_names.
+     *
+     * @param null|array $brand_names [Applicable only for US marketplace] A list of brand names to filter by
+     */
+    public function setBrandNames(?array $brand_names): self
+    {
+        if (is_null($brand_names)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_names');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_names', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($brand_names) && (count($brand_names) > 20)) {
+            throw new \InvalidArgumentException('invalid value for $brand_names when calling ListOfferMetricsRequestFilters., number of items must be less than or equal to 20.');
+        }
+        if (!is_null($brand_names) && (count($brand_names) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $brand_names when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
+        }
+        $this->container['brand_names'] = $brand_names;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_groups.
+     */
+    public function getProductGroups(): ?array
+    {
+        return $this->container['product_groups'];
+    }
+
+    /**
+     * Sets product_groups.
+     *
+     * @param null|array $product_groups [Applicable only for Vendors] A list of product group names to filter by
+     */
+    public function setProductGroups(?array $product_groups): self
+    {
+        if (is_null($product_groups)) {
+            array_push($this->openAPINullablesSetToNull, 'product_groups');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_groups', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($product_groups) && (count($product_groups) > 20)) {
+            throw new \InvalidArgumentException('invalid value for $product_groups when calling ListOfferMetricsRequestFilters., number of items must be less than or equal to 20.');
+        }
+        if (!is_null($product_groups) && (count($product_groups) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $product_groups when calling ListOfferMetricsRequestFilters., number of items must be greater than or equal to 1.');
+        }
+        $this->container['product_groups'] = $product_groups;
 
         return $this;
     }

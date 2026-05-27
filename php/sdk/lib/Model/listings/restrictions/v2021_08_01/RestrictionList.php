@@ -251,7 +251,7 @@ class RestrictionList implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets restrictions.
      *
-     * @param array $restrictions restrictions
+     * @param array $restrictions a list of restrictions
      */
     public function setRestrictions(array $restrictions): self
     {

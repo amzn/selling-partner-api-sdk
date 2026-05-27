@@ -75,7 +75,8 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
         'tax' => '\SpApi\Model\orders\v2026_01_01\OrderTax',
         'fulfillment' => '\SpApi\Model\orders\v2026_01_01\OrderFulfillment',
         'order_items' => '\SpApi\Model\orders\v2026_01_01\OrderItem[]',
-        'packages' => '\SpApi\Model\orders\v2026_01_01\OrderPackage[]'];
+        'packages' => '\SpApi\Model\orders\v2026_01_01\OrderPackage[]',
+        'fulfillment_orders' => '\SpApi\Model\orders\v2026_01_01\FulfillmentOrder[]'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -101,7 +102,8 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
         'tax' => null,
         'fulfillment' => null,
         'order_items' => null,
-        'packages' => null];
+        'packages' => null,
+        'fulfillment_orders' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -124,6 +126,7 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
         'fulfillment' => true,
         'order_items' => false,
         'packages' => true,
+        'fulfillment_orders' => true,
     ];
 
     /**
@@ -155,6 +158,7 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
         'fulfillment' => 'fulfillment',
         'order_items' => 'orderItems',
         'packages' => 'packages',
+        'fulfillment_orders' => 'fulfillmentOrders',
     ];
 
     /**
@@ -178,6 +182,7 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
         'fulfillment' => 'setFulfillment',
         'order_items' => 'setOrderItems',
         'packages' => 'setPackages',
+        'fulfillment_orders' => 'setFulfillmentOrders',
     ];
 
     /**
@@ -201,6 +206,7 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
         'fulfillment' => 'getFulfillment',
         'order_items' => 'getOrderItems',
         'packages' => 'getPackages',
+        'fulfillment_orders' => 'getFulfillmentOrders',
     ];
 
     /**
@@ -231,6 +237,7 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('fulfillment', $data ?? [], null);
         $this->setIfExists('order_items', $data ?? [], null);
         $this->setIfExists('packages', $data ?? [], null);
+        $this->setIfExists('fulfillment_orders', $data ?? [], null);
     }
 
     /**
@@ -761,6 +768,36 @@ class Order implements ModelInterface, \ArrayAccess, \JsonSerializable
             }
         }
         $this->container['packages'] = $packages;
+
+        return $this;
+    }
+
+    /**
+     * Gets fulfillment_orders.
+     */
+    public function getFulfillmentOrders(): ?array
+    {
+        return $this->container['fulfillment_orders'];
+    }
+
+    /**
+     * Sets fulfillment_orders.
+     *
+     * @param null|array $fulfillment_orders The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.
+     */
+    public function setFulfillmentOrders(?array $fulfillment_orders): self
+    {
+        if (is_null($fulfillment_orders)) {
+            array_push($this->openAPINullablesSetToNull, 'fulfillment_orders');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('fulfillment_orders', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['fulfillment_orders'] = $fulfillment_orders;
 
         return $this;
     }
