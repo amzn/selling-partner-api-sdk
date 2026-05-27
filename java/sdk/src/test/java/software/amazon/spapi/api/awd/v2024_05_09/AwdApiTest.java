@@ -33,10 +33,15 @@ import software.amazon.spapi.models.awd.v2024_05_09.InboundOrderReference;
 import software.amazon.spapi.models.awd.v2024_05_09.InboundPackages;
 import software.amazon.spapi.models.awd.v2024_05_09.InboundShipment;
 import software.amazon.spapi.models.awd.v2024_05_09.InventoryListing;
+import software.amazon.spapi.models.awd.v2024_05_09.OutboundListing;
+import software.amazon.spapi.models.awd.v2024_05_09.OutboundOrder;
+import software.amazon.spapi.models.awd.v2024_05_09.OutboundOrderCreationData;
+import software.amazon.spapi.models.awd.v2024_05_09.OutboundOrderReference;
 import software.amazon.spapi.models.awd.v2024_05_09.ReplenishmentOrder;
 import software.amazon.spapi.models.awd.v2024_05_09.ReplenishmentOrderCreationData;
 import software.amazon.spapi.models.awd.v2024_05_09.ReplenishmentOrderListing;
 import software.amazon.spapi.models.awd.v2024_05_09.ReplenishmentOrderReference;
+import software.amazon.spapi.models.awd.v2024_05_09.ShipmentLabelPageTypes;
 import software.amazon.spapi.models.awd.v2024_05_09.ShipmentLabels;
 import software.amazon.spapi.models.awd.v2024_05_09.ShipmentListing;
 import software.amazon.spapi.models.awd.v2024_05_09.TransportationDetails;
@@ -90,6 +95,14 @@ public class AwdApiTest {
     }
 
     @Test
+    public void confirmOutboundTest() throws Exception {
+        instructBackendMock("awd", "confirmOutbound", "204");
+        String orderId = easyRandom.nextObject(String.class);
+
+        api.confirmOutboundWithHttpInfo(orderId);
+    }
+
+    @Test
     public void confirmReplenishmentOrderTest() throws Exception {
         instructBackendMock("awd", "confirmReplenishmentOrder", "204");
         String orderId = easyRandom.nextObject(String.class);
@@ -103,6 +116,17 @@ public class AwdApiTest {
         InboundOrderCreationData body = easyRandom.nextObject(InboundOrderCreationData.class);
 
         ApiResponse<InboundOrderReference> response = api.createInboundWithHttpInfo(body);
+
+        assertEquals(201, response.getStatusCode());
+        assertValidResponsePayload(201, response.getData());
+    }
+
+    @Test
+    public void createOutboundTest() throws Exception {
+        instructBackendMock("awd", "createOutbound", "201");
+        OutboundOrderCreationData body = easyRandom.nextObject(OutboundOrderCreationData.class);
+
+        ApiResponse<OutboundOrderReference> response = api.createOutboundWithHttpInfo(body);
 
         assertEquals(201, response.getStatusCode());
         assertValidResponsePayload(201, response.getData());
@@ -153,6 +177,28 @@ public class AwdApiTest {
     }
 
     @Test
+    public void getLabelPageTypesTest() throws Exception {
+        instructBackendMock("awd", "getLabelPageTypes", "200");
+        String shipmentId = easyRandom.nextObject(String.class);
+
+        ApiResponse<ShipmentLabelPageTypes> response = api.getLabelPageTypesWithHttpInfo(shipmentId);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void getOutboundTest() throws Exception {
+        instructBackendMock("awd", "getOutbound", "200");
+        String orderId = easyRandom.nextObject(String.class);
+
+        ApiResponse<OutboundOrder> response = api.getOutboundWithHttpInfo(orderId);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
     public void getReplenishmentOrderTest() throws Exception {
         instructBackendMock("awd", "getReplenishmentOrder", "200");
         String orderId = easyRandom.nextObject(String.class);
@@ -185,6 +231,16 @@ public class AwdApiTest {
     }
 
     @Test
+    public void listOutboundsTest() throws Exception {
+        instructBackendMock("awd", "listOutbounds", "200");
+
+        ApiResponse<OutboundListing> response = api.listOutboundsWithHttpInfo(null, null, null, null, null);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
     public void listReplenishmentOrdersTest() throws Exception {
         instructBackendMock("awd", "listReplenishmentOrders", "200");
 
@@ -211,6 +267,18 @@ public class AwdApiTest {
         String shipmentId = easyRandom.nextObject(String.class);
 
         api.updateInboundShipmentTransportDetailsWithHttpInfo(body, shipmentId);
+    }
+
+    @Test
+    public void updateOutboundTest() throws Exception {
+        instructBackendMock("awd", "updateOutbound", "200");
+        OutboundOrder body = easyRandom.nextObject(OutboundOrder.class);
+        String orderId = easyRandom.nextObject(String.class);
+
+        ApiResponse<OutboundOrderReference> response = api.updateOutboundWithHttpInfo(body, orderId);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
     }
 
     private void instructBackendMock(String basename, String response, String code) throws Exception {

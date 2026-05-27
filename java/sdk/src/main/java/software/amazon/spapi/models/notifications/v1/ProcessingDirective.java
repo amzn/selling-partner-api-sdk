@@ -18,18 +18,21 @@ import java.util.Objects;
 
 /**
  * Additional information passed to the subscription to control the processing of notifications. For example, you can
- * use an &#x60;eventFilter&#x60; to customize your subscription to send notifications for only the specified
- * &#x60;marketplaceId&#x60;s, or select the aggregation time period at which to send notifications (for example: limit
- * to one notification every five minutes for high frequency notifications). The specific features available vary
- * depending on the &#x60;notificationType&#x60;. This feature is currently only supported by the
- * &#x60;ANY_OFFER_CHANGED&#x60; and &#x60;ORDER_CHANGE&#x60; &#x60;notificationType&#x60;s.
+ * use an &#x60;eventFilter&#x60; to customize your subscription to send notifications for only the
+ * &#x60;marketplaceId&#x60;s that you specify, or select the aggregation time period at which to send notifications
+ * (for example, you can set a limit of one notification every five minutes for high frequency notifications). You can
+ * also use &#x60;filterExpression&#x60; to filter events based on notification payload. The specific features available
+ * can vary by the &#x60;notificationType&#x60;.
  */
 @Schema(
         description =
-                "Additional information passed to the subscription to control the processing of notifications. For example, you can use an `eventFilter` to customize your subscription to send notifications for only the specified `marketplaceId`s, or select the aggregation time period at which to send notifications (for example: limit to one notification every five minutes for high frequency notifications). The specific features available vary depending on the `notificationType`.  This feature is currently only supported by the `ANY_OFFER_CHANGED` and `ORDER_CHANGE` `notificationType`s.")
+                "Additional information passed to the subscription to control the processing of notifications. For example, you can use an `eventFilter` to customize your subscription to send notifications for only the `marketplaceId`s that you specify, or select the aggregation time period at which to send notifications (for example, you can set a limit of one notification every five minutes for high frequency notifications). You can also use `filterExpression` to filter events based on notification payload. The specific features available can vary by the `notificationType`.")
 public class ProcessingDirective {
     @SerializedName("eventFilter")
     private EventFilter eventFilter = null;
+
+    @SerializedName("filterExpression")
+    private String filterExpression = null;
 
     public ProcessingDirective eventFilter(EventFilter eventFilter) {
         this.eventFilter = eventFilter;
@@ -50,6 +53,34 @@ public class ProcessingDirective {
         this.eventFilter = eventFilter;
     }
 
+    public ProcessingDirective filterExpression(String filterExpression) {
+        this.filterExpression = filterExpression;
+        return this;
+    }
+
+    /**
+     * An expression for filtering events before delivery to destination based on the notification payload (example:
+     * FulfillmentOrderStatusNotification.FulfillmentOrderStatus &#x3D;&#x3D; &#x60;SHIPPED&#x60; ). The
+     * &#x60;filterExpression&#x60; is a string that follows the CEL expression syntax
+     * (https://github.com/google/cel-spec) excluding arithmetic operators (+, -, *, /, %) and list/map indexing ([]).
+     * Refer to Notification Type Values to determine if filter Expression is supported for a Notification Type. Refer
+     * to CEL Operators (https://developer-docs.amazon.com/sp-api/docs/filter-notification-subscriptions) to see if a
+     * CEL operator is supported. Note: eventFilter and filterExpression are mutually exclusive. You can use
+     * filterExpression to replace existing eventFilter configurations.
+     *
+     * @return filterExpression
+     */
+    @Schema(
+            description =
+                    "An expression for filtering events before delivery to destination based on the notification payload (example: FulfillmentOrderStatusNotification.FulfillmentOrderStatus == `SHIPPED` ). The `filterExpression` is a string that follows the CEL expression syntax (https://github.com/google/cel-spec) excluding arithmetic operators (+, -, *, /, %) and list/map indexing ([]). Refer to Notification Type Values to determine if filter Expression is supported for a Notification Type. Refer to CEL Operators (https://developer-docs.amazon.com/sp-api/docs/filter-notification-subscriptions) to see if a CEL operator is supported.   Note: eventFilter and filterExpression are mutually exclusive. You can use filterExpression to replace existing eventFilter configurations.")
+    public String getFilterExpression() {
+        return filterExpression;
+    }
+
+    public void setFilterExpression(String filterExpression) {
+        this.filterExpression = filterExpression;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -59,12 +90,13 @@ public class ProcessingDirective {
             return false;
         }
         ProcessingDirective processingDirective = (ProcessingDirective) o;
-        return Objects.equals(this.eventFilter, processingDirective.eventFilter);
+        return Objects.equals(this.eventFilter, processingDirective.eventFilter)
+                && Objects.equals(this.filterExpression, processingDirective.filterExpression);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(eventFilter);
+        return Objects.hash(eventFilter, filterExpression);
     }
 
     @Override
@@ -73,6 +105,9 @@ public class ProcessingDirective {
         sb.append("class ProcessingDirective {\n");
 
         sb.append("    eventFilter: ").append(toIndentedString(eventFilter)).append("\n");
+        sb.append("    filterExpression: ")
+                .append(toIndentedString(filterExpression))
+                .append("\n");
         sb.append("}");
         return sb.toString();
     }

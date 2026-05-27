@@ -17,12 +17,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
- * An event filter to customize your subscription to send notifications for only the specified
+ * An event filter you can use to customize your subscription to send notifications for specific
  * &#x60;marketplaceId&#x60;s.
  */
 @Schema(
         description =
-                "An event filter to customize your subscription to send notifications for only the specified `marketplaceId`s.")
+                "An event filter you can use to customize your subscription to send notifications for specific `marketplaceId`s.")
 public class MarketplaceFilter {
     @SerializedName("marketplaceIds")
     private MarketplaceIds marketplaceIds = null;

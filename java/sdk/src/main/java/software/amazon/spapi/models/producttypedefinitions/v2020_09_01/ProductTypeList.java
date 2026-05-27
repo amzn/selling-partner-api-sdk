@@ -38,11 +38,11 @@ public class ProductTypeList {
     }
 
     /**
-     * Get productTypes
+     * A list of product types.
      *
      * @return productTypes
      */
-    @Schema(required = true, description = "")
+    @Schema(required = true, description = "A list of product types.")
     public List<ProductType> getProductTypes() {
         return productTypes;
     }

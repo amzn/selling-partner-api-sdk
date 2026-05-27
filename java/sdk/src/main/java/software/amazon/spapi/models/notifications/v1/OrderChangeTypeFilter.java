@@ -17,12 +17,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
- * An event filter to customize your subscription to send notifications for only the specified
+ * An event filter you can use to customize your subscription to send notifications for a specific
  * &#x60;orderChangeType&#x60;.
  */
 @Schema(
         description =
-                "An event filter to customize your subscription to send notifications for only the specified `orderChangeType`.")
+                "An event filter you can use to customize your subscription to send notifications for a specific `orderChangeType`.")
 public class OrderChangeTypeFilter {
     @SerializedName("orderChangeTypes")
     private OrderChangeTypes orderChangeTypes = null;

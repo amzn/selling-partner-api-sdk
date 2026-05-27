@@ -55,11 +55,11 @@ public class ProductType {
     }
 
     /**
-     * The human-readable and localized description of the Amazon product type.
+     * Human-readable and localized description of the Amazon product type.
      *
      * @return displayName
      */
-    @Schema(required = true, description = "The human-readable and localized description of the Amazon product type.")
+    @Schema(required = true, description = "Human-readable and localized description of the Amazon product type.")
     public String getDisplayName() {
         return displayName;
     }

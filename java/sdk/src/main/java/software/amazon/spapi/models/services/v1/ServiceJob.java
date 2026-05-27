@@ -110,6 +110,12 @@ public class ServiceJob {
     @SerializedName("serviceOrderId")
     private String serviceOrderId = null;
 
+    @SerializedName("productOrderIds")
+    private List<String> productOrderIds = null;
+
+    @SerializedName("trackingIds")
+    private List<String> trackingIds = null;
+
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
 
@@ -318,6 +324,60 @@ public class ServiceJob {
         this.serviceOrderId = serviceOrderId;
     }
 
+    public ServiceJob productOrderIds(List<String> productOrderIds) {
+        this.productOrderIds = productOrderIds;
+        return this;
+    }
+
+    public ServiceJob addProductOrderIdsItem(String productOrderIdsItem) {
+        if (this.productOrderIds == null) {
+            this.productOrderIds = new ArrayList<String>();
+        }
+        this.productOrderIds.add(productOrderIdsItem);
+        return this;
+    }
+
+    /**
+     * A list of associated product order IDs for the service job.
+     *
+     * @return productOrderIds
+     */
+    @Schema(description = "A list of associated product order IDs for the service job.")
+    public List<String> getProductOrderIds() {
+        return productOrderIds;
+    }
+
+    public void setProductOrderIds(List<String> productOrderIds) {
+        this.productOrderIds = productOrderIds;
+    }
+
+    public ServiceJob trackingIds(List<String> trackingIds) {
+        this.trackingIds = trackingIds;
+        return this;
+    }
+
+    public ServiceJob addTrackingIdsItem(String trackingIdsItem) {
+        if (this.trackingIds == null) {
+            this.trackingIds = new ArrayList<String>();
+        }
+        this.trackingIds.add(trackingIdsItem);
+        return this;
+    }
+
+    /**
+     * A list of associated product tracking IDs for the service job.
+     *
+     * @return trackingIds
+     */
+    @Schema(description = "A list of associated product tracking IDs for the service job.")
+    public List<String> getTrackingIds() {
+        return trackingIds;
+    }
+
+    public void setTrackingIds(List<String> trackingIds) {
+        this.trackingIds = trackingIds;
+    }
+
     public ServiceJob marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;
         return this;
@@ -466,6 +526,8 @@ public class ServiceJob {
                 && Objects.equals(this.preferredAppointmentTimes, serviceJob.preferredAppointmentTimes)
                 && Objects.equals(this.appointments, serviceJob.appointments)
                 && Objects.equals(this.serviceOrderId, serviceJob.serviceOrderId)
+                && Objects.equals(this.productOrderIds, serviceJob.productOrderIds)
+                && Objects.equals(this.trackingIds, serviceJob.trackingIds)
                 && Objects.equals(this.marketplaceId, serviceJob.marketplaceId)
                 && Objects.equals(this.storeId, serviceJob.storeId)
                 && Objects.equals(this.buyer, serviceJob.buyer)
@@ -486,6 +548,8 @@ public class ServiceJob {
                 preferredAppointmentTimes,
                 appointments,
                 serviceOrderId,
+                productOrderIds,
+                trackingIds,
                 marketplaceId,
                 storeId,
                 buyer,
@@ -516,6 +580,10 @@ public class ServiceJob {
         sb.append("    serviceOrderId: ")
                 .append(toIndentedString(serviceOrderId))
                 .append("\n");
+        sb.append("    productOrderIds: ")
+                .append(toIndentedString(productOrderIds))
+                .append("\n");
+        sb.append("    trackingIds: ").append(toIndentedString(trackingIds)).append("\n");
         sb.append("    marketplaceId: ").append(toIndentedString(marketplaceId)).append("\n");
         sb.append("    storeId: ").append(toIndentedString(storeId)).append("\n");
         sb.append("    buyer: ").append(toIndentedString(buyer)).append("\n");

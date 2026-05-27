@@ -41,10 +41,15 @@ import software.amazon.spapi.models.awd.v2024_05_09.InboundOrderReference;
 import software.amazon.spapi.models.awd.v2024_05_09.InboundPackages;
 import software.amazon.spapi.models.awd.v2024_05_09.InboundShipment;
 import software.amazon.spapi.models.awd.v2024_05_09.InventoryListing;
+import software.amazon.spapi.models.awd.v2024_05_09.OutboundListing;
+import software.amazon.spapi.models.awd.v2024_05_09.OutboundOrder;
+import software.amazon.spapi.models.awd.v2024_05_09.OutboundOrderCreationData;
+import software.amazon.spapi.models.awd.v2024_05_09.OutboundOrderReference;
 import software.amazon.spapi.models.awd.v2024_05_09.ReplenishmentOrder;
 import software.amazon.spapi.models.awd.v2024_05_09.ReplenishmentOrderCreationData;
 import software.amazon.spapi.models.awd.v2024_05_09.ReplenishmentOrderListing;
 import software.amazon.spapi.models.awd.v2024_05_09.ReplenishmentOrderReference;
+import software.amazon.spapi.models.awd.v2024_05_09.ShipmentLabelPageTypes;
 import software.amazon.spapi.models.awd.v2024_05_09.ShipmentLabels;
 import software.amazon.spapi.models.awd.v2024_05_09.ShipmentListing;
 import software.amazon.spapi.models.awd.v2024_05_09.TransportationDetails;
@@ -70,12 +75,18 @@ public class AwdApi {
     public final Bucket confirmInboundBucket =
             Bucket.builder().addLimit(config.getLimit("AwdApi-confirmInbound")).build();
 
+    public final Bucket confirmOutboundBucket =
+            Bucket.builder().addLimit(config.getLimit("AwdApi-confirmOutbound")).build();
+
     public final Bucket confirmReplenishmentOrderBucket = Bucket.builder()
             .addLimit(config.getLimit("AwdApi-confirmReplenishmentOrder"))
             .build();
 
     public final Bucket createInboundBucket =
             Bucket.builder().addLimit(config.getLimit("AwdApi-createInbound")).build();
+
+    public final Bucket createOutboundBucket =
+            Bucket.builder().addLimit(config.getLimit("AwdApi-createOutbound")).build();
 
     public final Bucket createReplenishmentOrderBucket = Bucket.builder()
             .addLimit(config.getLimit("AwdApi-createReplenishmentOrder"))
@@ -92,6 +103,13 @@ public class AwdApi {
             .addLimit(config.getLimit("AwdApi-getInboundShipmentLabels"))
             .build();
 
+    public final Bucket getLabelPageTypesBucket = Bucket.builder()
+            .addLimit(config.getLimit("AwdApi-getLabelPageTypes"))
+            .build();
+
+    public final Bucket getOutboundBucket =
+            Bucket.builder().addLimit(config.getLimit("AwdApi-getOutbound")).build();
+
     public final Bucket getReplenishmentOrderBucket = Bucket.builder()
             .addLimit(config.getLimit("AwdApi-getReplenishmentOrder"))
             .build();
@@ -103,6 +121,9 @@ public class AwdApi {
     public final Bucket listInventoryBucket =
             Bucket.builder().addLimit(config.getLimit("AwdApi-listInventory")).build();
 
+    public final Bucket listOutboundsBucket =
+            Bucket.builder().addLimit(config.getLimit("AwdApi-listOutbounds")).build();
+
     public final Bucket listReplenishmentOrdersBucket = Bucket.builder()
             .addLimit(config.getLimit("AwdApi-listReplenishmentOrders"))
             .build();
@@ -113,6 +134,9 @@ public class AwdApi {
     public final Bucket updateInboundShipmentTransportDetailsBucket = Bucket.builder()
             .addLimit(config.getLimit("AwdApi-updateInboundShipmentTransportDetails"))
             .build();
+
+    public final Bucket updateOutboundBucket =
+            Bucket.builder().addLimit(config.getLimit("AwdApi-updateOutbound")).build();
 
     /**
      * Build call for cancelInbound
@@ -730,6 +754,216 @@ public class AwdApi {
         } else throw new ApiException.RateLimitExceeded("confirmInbound operation exceeds rate limit");
     }
     /**
+     * Build call for confirmOutbound
+     *
+     * @param orderId ID for the outbound order you want to confirm. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call confirmOutboundCall(
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/awd/2024-05-09/outboundOrders/{orderId}/confirmation"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/outboundOrders/{orderId}/confirmation"
+                    .replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/awd/2024-05-09/outboundOrders/{orderId}/confirmation"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {};
+
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call confirmOutboundValidateBeforeCall(
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'orderId' is set
+        if (orderId == null) {
+            throw new ApiException("Missing the required parameter 'orderId' when calling confirmOutbound(Async)");
+        }
+
+        return confirmOutboundCall(orderId, progressRequestListener);
+    }
+
+    /**
+     * Confirms an AWD outbound order for a set of shipments that contain items that must be outbound to a destination
+     * node. You can confirm the order only if it&#x27;s in an&#x60;ELIGIBLE&#x60; state. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId ID for the outbound order you want to confirm. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void confirmOutbound(String orderId, String restrictedDataToken) throws ApiException, LWAException {
+        confirmOutboundWithHttpInfo(orderId, restrictedDataToken);
+    }
+
+    /**
+     * Confirms an AWD outbound order for a set of shipments that contain items that must be outbound to a destination
+     * node. You can confirm the order only if it&#x27;s in an&#x60;ELIGIBLE&#x60; state. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId ID for the outbound order you want to confirm. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void confirmOutbound(String orderId) throws ApiException, LWAException {
+        confirmOutboundWithHttpInfo(orderId, null);
+    }
+
+    /**
+     * Confirms an AWD outbound order for a set of shipments that contain items that must be outbound to a destination
+     * node. You can confirm the order only if it&#x27;s in an&#x60;ELIGIBLE&#x60; state. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId ID for the outbound order you want to confirm. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> confirmOutboundWithHttpInfo(String orderId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = confirmOutboundValidateBeforeCall(orderId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-confirmOutbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || confirmOutboundBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("confirmOutbound operation exceeds rate limit");
+    }
+
+    /**
+     * Confirms an AWD outbound order for a set of shipments that contain items that must be outbound to a destination
+     * node. You can confirm the order only if it&#x27;s in an&#x60;ELIGIBLE&#x60; state. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId ID for the outbound order you want to confirm. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> confirmOutboundWithHttpInfo(String orderId) throws ApiException, LWAException {
+        return confirmOutboundWithHttpInfo(orderId, null);
+    }
+
+    /**
+     * (asynchronously) Confirms an AWD outbound order for a set of shipments that contain items that must be outbound
+     * to a destination node. You can confirm the order only if it&#x27;s in an&#x60;ELIGIBLE&#x60; state. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId ID for the outbound order you want to confirm. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call confirmOutboundAsync(String orderId, final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return confirmOutboundAsync(orderId, callback, null);
+    }
+    /**
+     * (asynchronously) Confirms an AWD outbound order for a set of shipments that contain items that must be outbound
+     * to a destination node. You can confirm the order only if it&#x27;s in an&#x60;ELIGIBLE&#x60; state. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId ID for the outbound order you want to confirm. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call confirmOutboundAsync(
+            String orderId, final ApiCallback<Void> callback, String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = confirmOutboundValidateBeforeCall(orderId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-confirmOutbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || confirmOutboundBucket.tryConsume(1)) {
+            apiClient.executeAsync(call, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("confirmOutbound operation exceeds rate limit");
+    }
+    /**
      * Build call for confirmReplenishmentOrder
      *
      * @param orderId ID of the replenishment order to be confirmed. (required)
@@ -1115,6 +1349,229 @@ public class AwdApi {
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("createInbound operation exceeds rate limit");
+    }
+    /**
+     * Build call for createOutbound
+     *
+     * @param body Payload for creating an outbound order. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call createOutboundCall(
+            OutboundOrderCreationData body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/awd/2024-05-09/outboundOrders".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/outboundOrders";
+        } else {
+            localVarPath = "/awd/2024-05-09/outboundOrders";
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call createOutboundValidateBeforeCall(
+            OutboundOrderCreationData body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createOutbound(Async)");
+        }
+
+        return createOutboundCall(body, progressRequestListener);
+    }
+
+    /**
+     * Creates a draft AWD outbound order with the specified products. The API returns the order ID for the newly
+     * created order and starts an async validation check on the outbound products. After the validation check, the
+     * order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Payload for creating an outbound order. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return OutboundOrderReference
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public OutboundOrderReference createOutbound(OutboundOrderCreationData body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<OutboundOrderReference> resp = createOutboundWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Creates a draft AWD outbound order with the specified products. The API returns the order ID for the newly
+     * created order and starts an async validation check on the outbound products. After the validation check, the
+     * order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Payload for creating an outbound order. (required)
+     * @return OutboundOrderReference
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public OutboundOrderReference createOutbound(OutboundOrderCreationData body) throws ApiException, LWAException {
+        ApiResponse<OutboundOrderReference> resp = createOutboundWithHttpInfo(body, null);
+        return resp.getData();
+    }
+
+    /**
+     * Creates a draft AWD outbound order with the specified products. The API returns the order ID for the newly
+     * created order and starts an async validation check on the outbound products. After the validation check, the
+     * order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Payload for creating an outbound order. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;OutboundOrderReference&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<OutboundOrderReference> createOutboundWithHttpInfo(
+            OutboundOrderCreationData body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createOutboundValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-createOutbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createOutboundBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<OutboundOrderReference>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createOutbound operation exceeds rate limit");
+    }
+
+    /**
+     * Creates a draft AWD outbound order with the specified products. The API returns the order ID for the newly
+     * created order and starts an async validation check on the outbound products. After the validation check, the
+     * order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Payload for creating an outbound order. (required)
+     * @return ApiResponse&lt;OutboundOrderReference&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<OutboundOrderReference> createOutboundWithHttpInfo(OutboundOrderCreationData body)
+            throws ApiException, LWAException {
+        return createOutboundWithHttpInfo(body, null);
+    }
+
+    /**
+     * (asynchronously) Creates a draft AWD outbound order with the specified products. The API returns the order ID for
+     * the newly created order and starts an async validation check on the outbound products. After the validation
+     * check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Payload for creating an outbound order. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createOutboundAsync(
+            OutboundOrderCreationData body, final ApiCallback<OutboundOrderReference> callback)
+            throws ApiException, LWAException {
+        return createOutboundAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Creates a draft AWD outbound order with the specified products. The API returns the order ID for
+     * the newly created order and starts an async validation check on the outbound products. After the validation
+     * check, the order status transitions from &#x60;VALIDATING&#x60; to &#x60;ELIGIBLE/INELIGIBLE&#x60;. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Payload for creating an outbound order. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createOutboundAsync(
+            OutboundOrderCreationData body,
+            final ApiCallback<OutboundOrderReference> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = createOutboundValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-createOutbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createOutboundBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<OutboundOrderReference>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createOutbound operation exceeds rate limit");
     }
     /**
      * Build call for createReplenishmentOrder
@@ -2000,6 +2457,451 @@ public class AwdApi {
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("getInboundShipmentLabels operation exceeds rate limit");
+    }
+    /**
+     * Build call for getLabelPageTypes
+     *
+     * @param shipmentId ID for the shipment. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call getLabelPageTypesCall(
+            String shipmentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/awd/2024-05-09/inboundShipments/{shipmentId}/labelPageTypes"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/inboundShipments/{shipmentId}/labelPageTypes"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/awd/2024-05-09/inboundShipments/{shipmentId}/labelPageTypes"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {};
+
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "GET",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call getLabelPageTypesValidateBeforeCall(
+            String shipmentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'shipmentId' is set
+        if (shipmentId == null) {
+            throw new ApiException("Missing the required parameter 'shipmentId' when calling getLabelPageTypes(Async)");
+        }
+
+        return getLabelPageTypesCall(shipmentId, progressRequestListener);
+    }
+
+    /**
+     * Retrieves the available label page types for a shipment ID that you specify. This is an asynchronous operation.
+     * If the label status is &#x60;GENERATED&#x60;, then the pageTypes are available. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId ID for the shipment. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ShipmentLabelPageTypes
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ShipmentLabelPageTypes getLabelPageTypes(String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ShipmentLabelPageTypes> resp = getLabelPageTypesWithHttpInfo(shipmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves the available label page types for a shipment ID that you specify. This is an asynchronous operation.
+     * If the label status is &#x60;GENERATED&#x60;, then the pageTypes are available. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId ID for the shipment. (required)
+     * @return ShipmentLabelPageTypes
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ShipmentLabelPageTypes getLabelPageTypes(String shipmentId) throws ApiException, LWAException {
+        ApiResponse<ShipmentLabelPageTypes> resp = getLabelPageTypesWithHttpInfo(shipmentId, null);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves the available label page types for a shipment ID that you specify. This is an asynchronous operation.
+     * If the label status is &#x60;GENERATED&#x60;, then the pageTypes are available. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId ID for the shipment. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ShipmentLabelPageTypes&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ShipmentLabelPageTypes> getLabelPageTypesWithHttpInfo(
+            String shipmentId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getLabelPageTypesValidateBeforeCall(shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-getLabelPageTypes");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getLabelPageTypesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ShipmentLabelPageTypes>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getLabelPageTypes operation exceeds rate limit");
+    }
+
+    /**
+     * Retrieves the available label page types for a shipment ID that you specify. This is an asynchronous operation.
+     * If the label status is &#x60;GENERATED&#x60;, then the pageTypes are available. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
+     * the usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId ID for the shipment. (required)
+     * @return ApiResponse&lt;ShipmentLabelPageTypes&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ShipmentLabelPageTypes> getLabelPageTypesWithHttpInfo(String shipmentId)
+            throws ApiException, LWAException {
+        return getLabelPageTypesWithHttpInfo(shipmentId, null);
+    }
+
+    /**
+     * (asynchronously) Retrieves the available label page types for a shipment ID that you specify. This is an
+     * asynchronous operation. If the label status is &#x60;GENERATED&#x60;, then the pageTypes are available. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The preceding table indicates the default rate and burst values for this operation. Selling partners whose
+     * business demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId ID for the shipment. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getLabelPageTypesAsync(String shipmentId, final ApiCallback<ShipmentLabelPageTypes> callback)
+            throws ApiException, LWAException {
+        return getLabelPageTypesAsync(shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieves the available label page types for a shipment ID that you specify. This is an
+     * asynchronous operation. If the label status is &#x60;GENERATED&#x60;, then the pageTypes are available. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The preceding table indicates the default rate and burst values for this operation. Selling partners whose
+     * business demands require higher throughput may have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param shipmentId ID for the shipment. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getLabelPageTypesAsync(
+            String shipmentId, final ApiCallback<ShipmentLabelPageTypes> callback, String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = getLabelPageTypesValidateBeforeCall(shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-getLabelPageTypes");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getLabelPageTypesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ShipmentLabelPageTypes>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getLabelPageTypes operation exceeds rate limit");
+    }
+    /**
+     * Build call for getOutbound
+     *
+     * @param orderId ID for the outbound order to be retrieved. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call getOutboundCall(
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/awd/2024-05-09/outboundOrders/{orderId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/outboundOrders/{orderId}"
+                    .replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/awd/2024-05-09/outboundOrders/{orderId}"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {};
+
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "GET",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call getOutboundValidateBeforeCall(
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'orderId' is set
+        if (orderId == null) {
+            throw new ApiException("Missing the required parameter 'orderId' when calling getOutbound(Async)");
+        }
+
+        return getOutboundCall(orderId, progressRequestListener);
+    }
+
+    /**
+     * Retrieves an AWD outbound order with a set of shipments that contain items that are outbound into a destination
+     * channel. If the order is not eligible, the validation errors field is included in the order response. The API
+     * returns the order ID for the newly created order and starts an async validation check on the outbound products.
+     * After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to
+     * &#x60;ELIGIBLE/INELIGIBLE&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId ID for the outbound order to be retrieved. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return OutboundOrder
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public OutboundOrder getOutbound(String orderId, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<OutboundOrder> resp = getOutboundWithHttpInfo(orderId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves an AWD outbound order with a set of shipments that contain items that are outbound into a destination
+     * channel. If the order is not eligible, the validation errors field is included in the order response. The API
+     * returns the order ID for the newly created order and starts an async validation check on the outbound products.
+     * After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to
+     * &#x60;ELIGIBLE/INELIGIBLE&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId ID for the outbound order to be retrieved. (required)
+     * @return OutboundOrder
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public OutboundOrder getOutbound(String orderId) throws ApiException, LWAException {
+        ApiResponse<OutboundOrder> resp = getOutboundWithHttpInfo(orderId, null);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves an AWD outbound order with a set of shipments that contain items that are outbound into a destination
+     * channel. If the order is not eligible, the validation errors field is included in the order response. The API
+     * returns the order ID for the newly created order and starts an async validation check on the outbound products.
+     * After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to
+     * &#x60;ELIGIBLE/INELIGIBLE&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId ID for the outbound order to be retrieved. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;OutboundOrder&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<OutboundOrder> getOutboundWithHttpInfo(String orderId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getOutboundValidateBeforeCall(orderId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-getOutbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getOutboundBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<OutboundOrder>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getOutbound operation exceeds rate limit");
+    }
+
+    /**
+     * Retrieves an AWD outbound order with a set of shipments that contain items that are outbound into a destination
+     * channel. If the order is not eligible, the validation errors field is included in the order response. The API
+     * returns the order ID for the newly created order and starts an async validation check on the outbound products.
+     * After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to
+     * &#x60;ELIGIBLE/INELIGIBLE&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId ID for the outbound order to be retrieved. (required)
+     * @return ApiResponse&lt;OutboundOrder&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<OutboundOrder> getOutboundWithHttpInfo(String orderId) throws ApiException, LWAException {
+        return getOutboundWithHttpInfo(orderId, null);
+    }
+
+    /**
+     * (asynchronously) Retrieves an AWD outbound order with a set of shipments that contain items that are outbound
+     * into a destination channel. If the order is not eligible, the validation errors field is included in the order
+     * response. The API returns the order ID for the newly created order and starts an async validation check on the
+     * outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to
+     * &#x60;ELIGIBLE/INELIGIBLE&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId ID for the outbound order to be retrieved. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getOutboundAsync(String orderId, final ApiCallback<OutboundOrder> callback)
+            throws ApiException, LWAException {
+        return getOutboundAsync(orderId, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieves an AWD outbound order with a set of shipments that contain items that are outbound
+     * into a destination channel. If the order is not eligible, the validation errors field is included in the order
+     * response. The API returns the order ID for the newly created order and starts an async validation check on the
+     * outbound products. After the validation check, the order status transitions from &#x60;VALIDATING&#x60; to
+     * &#x60;ELIGIBLE/INELIGIBLE&#x60;. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId ID for the outbound order to be retrieved. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getOutboundAsync(
+            String orderId, final ApiCallback<OutboundOrder> callback, String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = getOutboundValidateBeforeCall(orderId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-getOutbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getOutboundBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<OutboundOrder>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getOutbound operation exceeds rate limit");
     }
     /**
      * Build call for getReplenishmentOrder
@@ -2906,6 +3808,357 @@ public class AwdApi {
         } else throw new ApiException.RateLimitExceeded("listInventory operation exceeds rate limit");
     }
     /**
+     * Build call for listOutbounds
+     *
+     * @param updatedAfter Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param updatedBefore Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param sortOrder Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param maxResults Maximum number of results to return. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call listOutboundsCall(
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String sortOrder,
+            Integer maxResults,
+            String nextToken,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/awd/2024-05-09/outboundOrders".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/outboundOrders";
+        } else {
+            localVarPath = "/awd/2024-05-09/outboundOrders";
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (updatedAfter != null) localVarQueryParams.addAll(apiClient.parameterToPair("updatedAfter", updatedAfter));
+        if (updatedBefore != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("updatedBefore", updatedBefore));
+        if (sortOrder != null) localVarQueryParams.addAll(apiClient.parameterToPair("sortOrder", sortOrder));
+        if (maxResults != null) localVarQueryParams.addAll(apiClient.parameterToPair("maxResults", maxResults));
+        if (nextToken != null) localVarQueryParams.addAll(apiClient.parameterToPair("nextToken", nextToken));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {};
+
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "GET",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call listOutboundsValidateBeforeCall(
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String sortOrder,
+            Integer maxResults,
+            String nextToken,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+
+        return listOutboundsCall(
+                updatedAfter, updatedBefore, sortOrder, maxResults, nextToken, progressRequestListener);
+    }
+
+    /**
+     * Retrieves all outbound AWD orders (with optional filters) that pertain to a merchant. By default, orders are
+     * sorted by the &#x60;updatedAt&#x60; attribute in descending order. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The table above indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param updatedAfter Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param updatedBefore Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param sortOrder Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param maxResults Maximum number of results to return. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return OutboundListing
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public OutboundListing listOutbounds(
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String sortOrder,
+            Integer maxResults,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<OutboundListing> resp = listOutboundsWithHttpInfo(
+                updatedAfter, updatedBefore, sortOrder, maxResults, nextToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves all outbound AWD orders (with optional filters) that pertain to a merchant. By default, orders are
+     * sorted by the &#x60;updatedAt&#x60; attribute in descending order. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The table above indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param updatedAfter Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param updatedBefore Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param sortOrder Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param maxResults Maximum number of results to return. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @return OutboundListing
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public OutboundListing listOutbounds(
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String sortOrder,
+            Integer maxResults,
+            String nextToken)
+            throws ApiException, LWAException {
+        ApiResponse<OutboundListing> resp =
+                listOutboundsWithHttpInfo(updatedAfter, updatedBefore, sortOrder, maxResults, nextToken, null);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves all outbound AWD orders (with optional filters) that pertain to a merchant. By default, orders are
+     * sorted by the &#x60;updatedAt&#x60; attribute in descending order. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The table above indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param updatedAfter Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param updatedBefore Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param sortOrder Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param maxResults Maximum number of results to return. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;OutboundListing&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<OutboundListing> listOutboundsWithHttpInfo(
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String sortOrder,
+            Integer maxResults,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                listOutboundsValidateBeforeCall(updatedAfter, updatedBefore, sortOrder, maxResults, nextToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-listOutbounds");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listOutboundsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<OutboundListing>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listOutbounds operation exceeds rate limit");
+    }
+
+    /**
+     * Retrieves all outbound AWD orders (with optional filters) that pertain to a merchant. By default, orders are
+     * sorted by the &#x60;updatedAt&#x60; attribute in descending order. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The table above indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param updatedAfter Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param updatedBefore Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param sortOrder Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param maxResults Maximum number of results to return. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @return ApiResponse&lt;OutboundListing&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<OutboundListing> listOutboundsWithHttpInfo(
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String sortOrder,
+            Integer maxResults,
+            String nextToken)
+            throws ApiException, LWAException {
+        return listOutboundsWithHttpInfo(updatedAfter, updatedBefore, sortOrder, maxResults, nextToken, null);
+    }
+
+    /**
+     * (asynchronously) Retrieves all outbound AWD orders (with optional filters) that pertain to a merchant. By
+     * default, orders are sorted by the &#x60;updatedAt&#x60; attribute in descending order. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param updatedAfter Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param updatedBefore Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param sortOrder Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param maxResults Maximum number of results to return. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listOutboundsAsync(
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String sortOrder,
+            Integer maxResults,
+            String nextToken,
+            final ApiCallback<OutboundListing> callback)
+            throws ApiException, LWAException {
+        return listOutboundsAsync(updatedAfter, updatedBefore, sortOrder, maxResults, nextToken, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieves all outbound AWD orders (with optional filters) that pertain to a merchant. By
+     * default, orders are sorted by the &#x60;updatedAt&#x60; attribute in descending order. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
+     * returns the usage plan rate limits that were applied to the requested operation, when available. The table above
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param updatedAfter Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param updatedBefore Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a
+     *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
+     *     (optional)
+     * @param sortOrder Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param maxResults Maximum number of results to return. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listOutboundsAsync(
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String sortOrder,
+            Integer maxResults,
+            String nextToken,
+            final ApiCallback<OutboundListing> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = listOutboundsValidateBeforeCall(
+                updatedAfter, updatedBefore, sortOrder, maxResults, nextToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-listOutbounds");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listOutboundsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<OutboundListing>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("listOutbounds operation exceeds rate limit");
+    }
+    /**
      * Build call for listReplenishmentOrders
      *
      * @param updatedAfter Get the replenishment orders updated after certain time (Inclusive) Date should be in ISO
@@ -3667,6 +4920,247 @@ public class AwdApi {
         } else
             throw new ApiException.RateLimitExceeded(
                     "updateInboundShipmentTransportDetails operation exceeds rate limit");
+    }
+    /**
+     * Build call for updateOutbound
+     *
+     * @param body Represents an AWD outbound order. (required)
+     * @param orderId ID for the outbound order to be updated. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call updateOutboundCall(
+            OutboundOrder body,
+            String orderId,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/awd/2024-05-09/outboundOrders/{orderId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/outboundOrders/{orderId}"
+                    .replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/awd/2024-05-09/outboundOrders/{orderId}"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "PUT",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call updateOutboundValidateBeforeCall(
+            OutboundOrder body,
+            String orderId,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateOutbound(Async)");
+        }
+        // verify the required parameter 'orderId' is set
+        if (orderId == null) {
+            throw new ApiException("Missing the required parameter 'orderId' when calling updateOutbound(Async)");
+        }
+
+        return updateOutboundCall(body, orderId, progressRequestListener);
+    }
+
+    /**
+     * Updates an AWD outbound order that is in &#x60;DRAFT&#x60;, &#x60;ELIGIBLE&#x60;, or &#x60;INELIGIBLE&#x60;
+     * status. This API allows updates on &#x60;productsToOutbound&#x60; and &#x60;orderPreferences&#x60; attributes
+     * only. Any updates will restart the outbound order validation. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The table above indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Represents an AWD outbound order. (required)
+     * @param orderId ID for the outbound order to be updated. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return OutboundOrderReference
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public OutboundOrderReference updateOutbound(OutboundOrder body, String orderId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<OutboundOrderReference> resp = updateOutboundWithHttpInfo(body, orderId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Updates an AWD outbound order that is in &#x60;DRAFT&#x60;, &#x60;ELIGIBLE&#x60;, or &#x60;INELIGIBLE&#x60;
+     * status. This API allows updates on &#x60;productsToOutbound&#x60; and &#x60;orderPreferences&#x60; attributes
+     * only. Any updates will restart the outbound order validation. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The table above indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Represents an AWD outbound order. (required)
+     * @param orderId ID for the outbound order to be updated. (required)
+     * @return OutboundOrderReference
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public OutboundOrderReference updateOutbound(OutboundOrder body, String orderId) throws ApiException, LWAException {
+        ApiResponse<OutboundOrderReference> resp = updateOutboundWithHttpInfo(body, orderId, null);
+        return resp.getData();
+    }
+
+    /**
+     * Updates an AWD outbound order that is in &#x60;DRAFT&#x60;, &#x60;ELIGIBLE&#x60;, or &#x60;INELIGIBLE&#x60;
+     * status. This API allows updates on &#x60;productsToOutbound&#x60; and &#x60;orderPreferences&#x60; attributes
+     * only. Any updates will restart the outbound order validation. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The table above indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Represents an AWD outbound order. (required)
+     * @param orderId ID for the outbound order to be updated. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;OutboundOrderReference&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<OutboundOrderReference> updateOutboundWithHttpInfo(
+            OutboundOrder body, String orderId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = updateOutboundValidateBeforeCall(body, orderId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-updateOutbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateOutboundBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<OutboundOrderReference>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateOutbound operation exceeds rate limit");
+    }
+
+    /**
+     * Updates an AWD outbound order that is in &#x60;DRAFT&#x60;, &#x60;ELIGIBLE&#x60;, or &#x60;INELIGIBLE&#x60;
+     * status. This API allows updates on &#x60;productsToOutbound&#x60; and &#x60;orderPreferences&#x60; attributes
+     * only. Any updates will restart the outbound order validation. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan
+     * rate limits that were applied to the requested operation, when available. The table above indicates the default
+     * rate and burst values for this operation. Selling partners whose business demands require higher throughput may
+     * see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Represents an AWD outbound order. (required)
+     * @param orderId ID for the outbound order to be updated. (required)
+     * @return ApiResponse&lt;OutboundOrderReference&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<OutboundOrderReference> updateOutboundWithHttpInfo(OutboundOrder body, String orderId)
+            throws ApiException, LWAException {
+        return updateOutboundWithHttpInfo(body, orderId, null);
+    }
+
+    /**
+     * (asynchronously) Updates an AWD outbound order that is in &#x60;DRAFT&#x60;, &#x60;ELIGIBLE&#x60;, or
+     * &#x60;INELIGIBLE&#x60; status. This API allows updates on &#x60;productsToOutbound&#x60; and
+     * &#x60;orderPreferences&#x60; attributes only. Any updates will restart the outbound order validation. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Represents an AWD outbound order. (required)
+     * @param orderId ID for the outbound order to be updated. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateOutboundAsync(
+            OutboundOrder body, String orderId, final ApiCallback<OutboundOrderReference> callback)
+            throws ApiException, LWAException {
+        return updateOutboundAsync(body, orderId, callback, null);
+    }
+    /**
+     * (asynchronously) Updates an AWD outbound order that is in &#x60;DRAFT&#x60;, &#x60;ELIGIBLE&#x60;, or
+     * &#x60;INELIGIBLE&#x60; status. This API allows updates on &#x60;productsToOutbound&#x60; and
+     * &#x60;orderPreferences&#x60; attributes only. Any updates will restart the outbound order validation. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
+     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput may see higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body Represents an AWD outbound order. (required)
+     * @param orderId ID for the outbound order to be updated. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateOutboundAsync(
+            OutboundOrder body,
+            String orderId,
+            final ApiCallback<OutboundOrderReference> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = updateOutboundValidateBeforeCall(body, orderId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-updateOutbound");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateOutboundBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<OutboundOrderReference>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("updateOutbound operation exceeds rate limit");
     }
 
     public static class Builder {
