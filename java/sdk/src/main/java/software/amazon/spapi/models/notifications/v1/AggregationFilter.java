@@ -17,12 +17,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
- * A filter used to select the aggregation time period at which to send notifications (for example: limit to one
+ * A filter you can use to select the aggregation time period at which to send notifications (for example, limit to one
  * notification every five minutes for high frequency notifications).
  */
 @Schema(
         description =
-                "A filter used to select the aggregation time period at which to send notifications (for example: limit to one notification every five minutes for high frequency notifications).")
+                "A filter you can use to select the aggregation time period at which to send notifications (for example, limit to one notification every five minutes for high frequency notifications).")
 public class AggregationFilter {
     @SerializedName("aggregationSettings")
     private AggregationSettings aggregationSettings = null;

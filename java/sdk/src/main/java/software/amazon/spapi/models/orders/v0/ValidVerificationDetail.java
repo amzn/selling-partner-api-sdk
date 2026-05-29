@@ -40,14 +40,15 @@ public class ValidVerificationDetail {
 
     /**
      * A supported type of verification detail. The type indicates which verification detail could be shared while
-     * updating the regulated order. Valid value: &#x60;prescriptionDetail&#x60;.
+     * updating the regulated order. Valid values: &#x60;prescriptionDetail&#x60;,
+     * &#x60;approvedAlternativeDetails&#x60;, &#x60;interimStatusDetail&#x60;.
      *
      * @return verificationDetailType
      */
     @Schema(
             required = true,
             description =
-                    "A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid value: `prescriptionDetail`.")
+                    "A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid values: `prescriptionDetail`, `approvedAlternativeDetails`, `interimStatusDetail`.")
     public String getVerificationDetailType() {
         return verificationDetailType;
     }

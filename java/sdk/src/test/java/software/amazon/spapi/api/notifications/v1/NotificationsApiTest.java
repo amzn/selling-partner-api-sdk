@@ -36,6 +36,8 @@ import software.amazon.spapi.models.notifications.v1.GetDestinationResponse;
 import software.amazon.spapi.models.notifications.v1.GetDestinationsResponse;
 import software.amazon.spapi.models.notifications.v1.GetSubscriptionByIdResponse;
 import software.amazon.spapi.models.notifications.v1.GetSubscriptionResponse;
+import software.amazon.spapi.models.notifications.v1.SendTestNotificationRequest;
+import software.amazon.spapi.models.notifications.v1.SendTestNotificationResponse;
 
 public class NotificationsApiTest {
 
@@ -145,6 +147,19 @@ public class NotificationsApiTest {
 
         ApiResponse<GetSubscriptionByIdResponse> response =
                 api.getSubscriptionByIdWithHttpInfo(subscriptionId, notificationType);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void sendTestNotificationTest() throws Exception {
+        instructBackendMock("notifications", "sendTestNotification", "200");
+        SendTestNotificationRequest body = easyRandom.nextObject(SendTestNotificationRequest.class);
+        String notificationType = easyRandom.nextObject(String.class);
+
+        ApiResponse<SendTestNotificationResponse> response =
+                api.sendTestNotificationWithHttpInfo(body, notificationType);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

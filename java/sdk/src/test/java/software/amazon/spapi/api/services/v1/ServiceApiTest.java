@@ -250,6 +250,8 @@ public class ServiceApiTest {
                 null,
                 null,
                 null,
+                null,
+                null,
                 null);
 
         assertEquals(200, response.getStatusCode());

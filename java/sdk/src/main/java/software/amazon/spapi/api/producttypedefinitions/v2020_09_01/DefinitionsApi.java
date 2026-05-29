@@ -64,7 +64,7 @@ public class DefinitionsApi {
      * @param sellerId A selling partner identifier. When provided, seller-specific requirements and values are
      *     populated within the product type definition schema, such as brand names associated with the selling partner.
      *     (optional)
-     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,.
+     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;.
      *     Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no
      *     prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional,
      *     default to LATEST)
@@ -75,6 +75,9 @@ public class DefinitionsApi {
      *     default to ENFORCED)
      * @param locale Locale for retrieving display labels and other presentation details. Defaults to the default
      *     language of the first marketplace in the request. (optional, default to DEFAULT)
+     * @param parentageLevel The parentage level of the listing to retrieve a schema for. When provided, the schema is
+     *     simplified by resolving all conditional logic related to the specified parentage level, resulting in a
+     *     smaller schema with fewer conditions. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -88,6 +91,7 @@ public class DefinitionsApi {
             String requirements,
             String requirementsEnforced,
             String locale,
+            String parentageLevel,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -114,6 +118,8 @@ public class DefinitionsApi {
         if (requirementsEnforced != null)
             localVarQueryParams.addAll(apiClient.parameterToPair("requirementsEnforced", requirementsEnforced));
         if (locale != null) localVarQueryParams.addAll(apiClient.parameterToPair("locale", locale));
+        if (parentageLevel != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("parentageLevel", parentageLevel));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -147,6 +153,7 @@ public class DefinitionsApi {
             String requirements,
             String requirementsEnforced,
             String locale,
+            String parentageLevel,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'productType' is set
@@ -168,6 +175,7 @@ public class DefinitionsApi {
                 requirements,
                 requirementsEnforced,
                 locale,
+                parentageLevel,
                 progressRequestListener);
     }
 
@@ -185,7 +193,7 @@ public class DefinitionsApi {
      * @param sellerId A selling partner identifier. When provided, seller-specific requirements and values are
      *     populated within the product type definition schema, such as brand names associated with the selling partner.
      *     (optional)
-     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,.
+     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;.
      *     Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no
      *     prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional,
      *     default to LATEST)
@@ -196,6 +204,9 @@ public class DefinitionsApi {
      *     default to ENFORCED)
      * @param locale Locale for retrieving display labels and other presentation details. Defaults to the default
      *     language of the first marketplace in the request. (optional, default to DEFAULT)
+     * @param parentageLevel The parentage level of the listing to retrieve a schema for. When provided, the schema is
+     *     simplified by resolving all conditional logic related to the specified parentage level, resulting in a
+     *     smaller schema with fewer conditions. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ProductTypeDefinition
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -209,6 +220,7 @@ public class DefinitionsApi {
             String requirements,
             String requirementsEnforced,
             String locale,
+            String parentageLevel,
             String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<ProductTypeDefinition> resp = getDefinitionsProductTypeWithHttpInfo(
@@ -219,6 +231,7 @@ public class DefinitionsApi {
                 requirements,
                 requirementsEnforced,
                 locale,
+                parentageLevel,
                 restrictedDataToken);
         return resp.getData();
     }
@@ -237,7 +250,7 @@ public class DefinitionsApi {
      * @param sellerId A selling partner identifier. When provided, seller-specific requirements and values are
      *     populated within the product type definition schema, such as brand names associated with the selling partner.
      *     (optional)
-     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,.
+     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;.
      *     Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no
      *     prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional,
      *     default to LATEST)
@@ -248,6 +261,9 @@ public class DefinitionsApi {
      *     default to ENFORCED)
      * @param locale Locale for retrieving display labels and other presentation details. Defaults to the default
      *     language of the first marketplace in the request. (optional, default to DEFAULT)
+     * @param parentageLevel The parentage level of the listing to retrieve a schema for. When provided, the schema is
+     *     simplified by resolving all conditional logic related to the specified parentage level, resulting in a
+     *     smaller schema with fewer conditions. (optional)
      * @return ProductTypeDefinition
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -259,7 +275,8 @@ public class DefinitionsApi {
             String productTypeVersion,
             String requirements,
             String requirementsEnforced,
-            String locale)
+            String locale,
+            String parentageLevel)
             throws ApiException, LWAException {
         ApiResponse<ProductTypeDefinition> resp = getDefinitionsProductTypeWithHttpInfo(
                 productType,
@@ -269,6 +286,7 @@ public class DefinitionsApi {
                 requirements,
                 requirementsEnforced,
                 locale,
+                parentageLevel,
                 null);
         return resp.getData();
     }
@@ -287,7 +305,7 @@ public class DefinitionsApi {
      * @param sellerId A selling partner identifier. When provided, seller-specific requirements and values are
      *     populated within the product type definition schema, such as brand names associated with the selling partner.
      *     (optional)
-     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,.
+     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;.
      *     Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no
      *     prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional,
      *     default to LATEST)
@@ -298,6 +316,9 @@ public class DefinitionsApi {
      *     default to ENFORCED)
      * @param locale Locale for retrieving display labels and other presentation details. Defaults to the default
      *     language of the first marketplace in the request. (optional, default to DEFAULT)
+     * @param parentageLevel The parentage level of the listing to retrieve a schema for. When provided, the schema is
+     *     simplified by resolving all conditional logic related to the specified parentage level, resulting in a
+     *     smaller schema with fewer conditions. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;ProductTypeDefinition&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -311,6 +332,7 @@ public class DefinitionsApi {
             String requirements,
             String requirementsEnforced,
             String locale,
+            String parentageLevel,
             String restrictedDataToken)
             throws ApiException, LWAException {
         okhttp3.Call call = getDefinitionsProductTypeValidateBeforeCall(
@@ -321,6 +343,7 @@ public class DefinitionsApi {
                 requirements,
                 requirementsEnforced,
                 locale,
+                parentageLevel,
                 null);
 
         if (restrictedDataToken != null) {
@@ -350,7 +373,7 @@ public class DefinitionsApi {
      * @param sellerId A selling partner identifier. When provided, seller-specific requirements and values are
      *     populated within the product type definition schema, such as brand names associated with the selling partner.
      *     (optional)
-     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,.
+     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;.
      *     Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no
      *     prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional,
      *     default to LATEST)
@@ -361,6 +384,9 @@ public class DefinitionsApi {
      *     default to ENFORCED)
      * @param locale Locale for retrieving display labels and other presentation details. Defaults to the default
      *     language of the first marketplace in the request. (optional, default to DEFAULT)
+     * @param parentageLevel The parentage level of the listing to retrieve a schema for. When provided, the schema is
+     *     simplified by resolving all conditional logic related to the specified parentage level, resulting in a
+     *     smaller schema with fewer conditions. (optional)
      * @return ApiResponse&lt;ProductTypeDefinition&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -372,7 +398,8 @@ public class DefinitionsApi {
             String productTypeVersion,
             String requirements,
             String requirementsEnforced,
-            String locale)
+            String locale,
+            String parentageLevel)
             throws ApiException, LWAException {
         return getDefinitionsProductTypeWithHttpInfo(
                 productType,
@@ -382,6 +409,7 @@ public class DefinitionsApi {
                 requirements,
                 requirementsEnforced,
                 locale,
+                parentageLevel,
                 null);
     }
 
@@ -399,7 +427,7 @@ public class DefinitionsApi {
      * @param sellerId A selling partner identifier. When provided, seller-specific requirements and values are
      *     populated within the product type definition schema, such as brand names associated with the selling partner.
      *     (optional)
-     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,.
+     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;.
      *     Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no
      *     prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional,
      *     default to LATEST)
@@ -410,6 +438,9 @@ public class DefinitionsApi {
      *     default to ENFORCED)
      * @param locale Locale for retrieving display labels and other presentation details. Defaults to the default
      *     language of the first marketplace in the request. (optional, default to DEFAULT)
+     * @param parentageLevel The parentage level of the listing to retrieve a schema for. When provided, the schema is
+     *     simplified by resolving all conditional logic related to the specified parentage level, resulting in a
+     *     smaller schema with fewer conditions. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -423,6 +454,7 @@ public class DefinitionsApi {
             String requirements,
             String requirementsEnforced,
             String locale,
+            String parentageLevel,
             final ApiCallback<ProductTypeDefinition> callback)
             throws ApiException, LWAException {
         return getDefinitionsProductTypeAsync(
@@ -433,6 +465,7 @@ public class DefinitionsApi {
                 requirements,
                 requirementsEnforced,
                 locale,
+                parentageLevel,
                 callback,
                 null);
     }
@@ -450,7 +483,7 @@ public class DefinitionsApi {
      * @param sellerId A selling partner identifier. When provided, seller-specific requirements and values are
      *     populated within the product type definition schema, such as brand names associated with the selling partner.
      *     (optional)
-     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,.
+     * @param productTypeVersion The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;.
      *     Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no
      *     prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional,
      *     default to LATEST)
@@ -461,6 +494,9 @@ public class DefinitionsApi {
      *     default to ENFORCED)
      * @param locale Locale for retrieving display labels and other presentation details. Defaults to the default
      *     language of the first marketplace in the request. (optional, default to DEFAULT)
+     * @param parentageLevel The parentage level of the listing to retrieve a schema for. When provided, the schema is
+     *     simplified by resolving all conditional logic related to the specified parentage level, resulting in a
+     *     smaller schema with fewer conditions. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -475,6 +511,7 @@ public class DefinitionsApi {
             String requirements,
             String requirementsEnforced,
             String locale,
+            String parentageLevel,
             final ApiCallback<ProductTypeDefinition> callback,
             String restrictedDataToken)
             throws ApiException, LWAException {
@@ -493,6 +530,7 @@ public class DefinitionsApi {
                 requirements,
                 requirementsEnforced,
                 locale,
+                parentageLevel,
                 progressRequestListener);
 
         if (restrictedDataToken != null) {
@@ -514,12 +552,11 @@ public class DefinitionsApi {
      * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param keywords A comma-delimited list of keywords to search product types. **Note:** Cannot be used with
      *     &#x60;itemName&#x60;. (optional)
-     * @param itemName The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with
+     * @param itemName Title of ASIN to get product type recommendation. **Note:** Cannot be used with
      *     &#x60;keywords&#x60;. (optional)
-     * @param locale The locale for the display names in the response. Defaults to the primary locale of the
-     *     marketplace. (optional)
-     * @param searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to
-     *     the primary locale of the marketplace. (optional)
+     * @param locale Locale for display names in response. Defaults to primary locale of the marketplace. (optional)
+     * @param searchLocale Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to
+     *     primary locale of the marketplace. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -606,12 +643,11 @@ public class DefinitionsApi {
      * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param keywords A comma-delimited list of keywords to search product types. **Note:** Cannot be used with
      *     &#x60;itemName&#x60;. (optional)
-     * @param itemName The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with
+     * @param itemName Title of ASIN to get product type recommendation. **Note:** Cannot be used with
      *     &#x60;keywords&#x60;. (optional)
-     * @param locale The locale for the display names in the response. Defaults to the primary locale of the
-     *     marketplace. (optional)
-     * @param searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to
-     *     the primary locale of the marketplace. (optional)
+     * @param locale Locale for display names in response. Defaults to primary locale of the marketplace. (optional)
+     * @param searchLocale Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to
+     *     primary locale of the marketplace. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ProductTypeList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -641,12 +677,11 @@ public class DefinitionsApi {
      * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param keywords A comma-delimited list of keywords to search product types. **Note:** Cannot be used with
      *     &#x60;itemName&#x60;. (optional)
-     * @param itemName The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with
+     * @param itemName Title of ASIN to get product type recommendation. **Note:** Cannot be used with
      *     &#x60;keywords&#x60;. (optional)
-     * @param locale The locale for the display names in the response. Defaults to the primary locale of the
-     *     marketplace. (optional)
-     * @param searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to
-     *     the primary locale of the marketplace. (optional)
+     * @param locale Locale for display names in response. Defaults to primary locale of the marketplace. (optional)
+     * @param searchLocale Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to
+     *     primary locale of the marketplace. (optional)
      * @return ProductTypeList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -670,12 +705,11 @@ public class DefinitionsApi {
      * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param keywords A comma-delimited list of keywords to search product types. **Note:** Cannot be used with
      *     &#x60;itemName&#x60;. (optional)
-     * @param itemName The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with
+     * @param itemName Title of ASIN to get product type recommendation. **Note:** Cannot be used with
      *     &#x60;keywords&#x60;. (optional)
-     * @param locale The locale for the display names in the response. Defaults to the primary locale of the
-     *     marketplace. (optional)
-     * @param searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to
-     *     the primary locale of the marketplace. (optional)
+     * @param locale Locale for display names in response. Defaults to primary locale of the marketplace. (optional)
+     * @param searchLocale Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to
+     *     primary locale of the marketplace. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;ProductTypeList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -716,12 +750,11 @@ public class DefinitionsApi {
      * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param keywords A comma-delimited list of keywords to search product types. **Note:** Cannot be used with
      *     &#x60;itemName&#x60;. (optional)
-     * @param itemName The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with
+     * @param itemName Title of ASIN to get product type recommendation. **Note:** Cannot be used with
      *     &#x60;keywords&#x60;. (optional)
-     * @param locale The locale for the display names in the response. Defaults to the primary locale of the
-     *     marketplace. (optional)
-     * @param searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to
-     *     the primary locale of the marketplace. (optional)
+     * @param locale Locale for display names in response. Defaults to primary locale of the marketplace. (optional)
+     * @param searchLocale Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to
+     *     primary locale of the marketplace. (optional)
      * @return ApiResponse&lt;ProductTypeList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -744,12 +777,11 @@ public class DefinitionsApi {
      * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param keywords A comma-delimited list of keywords to search product types. **Note:** Cannot be used with
      *     &#x60;itemName&#x60;. (optional)
-     * @param itemName The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with
+     * @param itemName Title of ASIN to get product type recommendation. **Note:** Cannot be used with
      *     &#x60;keywords&#x60;. (optional)
-     * @param locale The locale for the display names in the response. Defaults to the primary locale of the
-     *     marketplace. (optional)
-     * @param searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to
-     *     the primary locale of the marketplace. (optional)
+     * @param locale Locale for display names in response. Defaults to primary locale of the marketplace. (optional)
+     * @param searchLocale Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to
+     *     primary locale of the marketplace. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -777,12 +809,11 @@ public class DefinitionsApi {
      * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
      * @param keywords A comma-delimited list of keywords to search product types. **Note:** Cannot be used with
      *     &#x60;itemName&#x60;. (optional)
-     * @param itemName The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with
+     * @param itemName Title of ASIN to get product type recommendation. **Note:** Cannot be used with
      *     &#x60;keywords&#x60;. (optional)
-     * @param locale The locale for the display names in the response. Defaults to the primary locale of the
-     *     marketplace. (optional)
-     * @param searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to
-     *     the primary locale of the marketplace. (optional)
+     * @param locale Locale for display names in response. Defaults to primary locale of the marketplace. (optional)
+     * @param searchLocale Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to
+     *     primary locale of the marketplace. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call

@@ -61,6 +61,8 @@ public class ListingsApi {
      *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized
      *     messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
      *     (optional)
+     * @param productType The product type of the item. When provided with the brand name, the API evaluates GTIN
+     *     exemption restrictions in addition to brand restrictions for the specified product type. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -72,6 +74,7 @@ public class ListingsApi {
             List<String> marketplaceIds,
             String conditionType,
             String reasonLocale,
+            String productType,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -93,6 +96,7 @@ public class ListingsApi {
         if (marketplaceIds != null)
             localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "marketplaceIds", marketplaceIds));
         if (reasonLocale != null) localVarQueryParams.addAll(apiClient.parameterToPair("reasonLocale", reasonLocale));
+        if (productType != null) localVarQueryParams.addAll(apiClient.parameterToPair("productType", productType));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -124,6 +128,7 @@ public class ListingsApi {
             List<String> marketplaceIds,
             String conditionType,
             String reasonLocale,
+            String productType,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'asin' is set
@@ -142,7 +147,7 @@ public class ListingsApi {
         }
 
         return getListingsRestrictionsCall(
-                asin, sellerId, marketplaceIds, conditionType, reasonLocale, progressRequestListener);
+                asin, sellerId, marketplaceIds, conditionType, reasonLocale, productType, progressRequestListener);
     }
 
     /**
@@ -161,6 +166,8 @@ public class ListingsApi {
      *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized
      *     messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
      *     (optional)
+     * @param productType The product type of the item. When provided with the brand name, the API evaluates GTIN
+     *     exemption restrictions in addition to brand restrictions for the specified product type. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return RestrictionList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -172,10 +179,11 @@ public class ListingsApi {
             List<String> marketplaceIds,
             String conditionType,
             String reasonLocale,
+            String productType,
             String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<RestrictionList> resp = getListingsRestrictionsWithHttpInfo(
-                asin, sellerId, marketplaceIds, conditionType, reasonLocale, restrictedDataToken);
+                asin, sellerId, marketplaceIds, conditionType, reasonLocale, productType, restrictedDataToken);
         return resp.getData();
     }
 
@@ -195,15 +203,22 @@ public class ListingsApi {
      *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized
      *     messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
      *     (optional)
+     * @param productType The product type of the item. When provided with the brand name, the API evaluates GTIN
+     *     exemption restrictions in addition to brand restrictions for the specified product type. (optional)
      * @return RestrictionList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public RestrictionList getListingsRestrictions(
-            String asin, String sellerId, List<String> marketplaceIds, String conditionType, String reasonLocale)
+            String asin,
+            String sellerId,
+            List<String> marketplaceIds,
+            String conditionType,
+            String reasonLocale,
+            String productType)
             throws ApiException, LWAException {
-        ApiResponse<RestrictionList> resp =
-                getListingsRestrictionsWithHttpInfo(asin, sellerId, marketplaceIds, conditionType, reasonLocale, null);
+        ApiResponse<RestrictionList> resp = getListingsRestrictionsWithHttpInfo(
+                asin, sellerId, marketplaceIds, conditionType, reasonLocale, productType, null);
         return resp.getData();
     }
 
@@ -223,6 +238,8 @@ public class ListingsApi {
      *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized
      *     messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
      *     (optional)
+     * @param productType The product type of the item. When provided with the brand name, the API evaluates GTIN
+     *     exemption restrictions in addition to brand restrictions for the specified product type. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;RestrictionList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -234,10 +251,11 @@ public class ListingsApi {
             List<String> marketplaceIds,
             String conditionType,
             String reasonLocale,
+            String productType,
             String restrictedDataToken)
             throws ApiException, LWAException {
         okhttp3.Call call = getListingsRestrictionsValidateBeforeCall(
-                asin, sellerId, marketplaceIds, conditionType, reasonLocale, null);
+                asin, sellerId, marketplaceIds, conditionType, reasonLocale, productType, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -268,14 +286,22 @@ public class ListingsApi {
      *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized
      *     messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
      *     (optional)
+     * @param productType The product type of the item. When provided with the brand name, the API evaluates GTIN
+     *     exemption restrictions in addition to brand restrictions for the specified product type. (optional)
      * @return ApiResponse&lt;RestrictionList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<RestrictionList> getListingsRestrictionsWithHttpInfo(
-            String asin, String sellerId, List<String> marketplaceIds, String conditionType, String reasonLocale)
+            String asin,
+            String sellerId,
+            List<String> marketplaceIds,
+            String conditionType,
+            String reasonLocale,
+            String productType)
             throws ApiException, LWAException {
-        return getListingsRestrictionsWithHttpInfo(asin, sellerId, marketplaceIds, conditionType, reasonLocale, null);
+        return getListingsRestrictionsWithHttpInfo(
+                asin, sellerId, marketplaceIds, conditionType, reasonLocale, productType, null);
     }
 
     /**
@@ -294,6 +320,8 @@ public class ListingsApi {
      *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized
      *     messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
      *     (optional)
+     * @param productType The product type of the item. When provided with the brand name, the API evaluates GTIN
+     *     exemption restrictions in addition to brand restrictions for the specified product type. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -305,10 +333,11 @@ public class ListingsApi {
             List<String> marketplaceIds,
             String conditionType,
             String reasonLocale,
+            String productType,
             final ApiCallback<RestrictionList> callback)
             throws ApiException, LWAException {
         return getListingsRestrictionsAsync(
-                asin, sellerId, marketplaceIds, conditionType, reasonLocale, callback, null);
+                asin, sellerId, marketplaceIds, conditionType, reasonLocale, productType, callback, null);
     }
     /**
      * (asynchronously) Returns listing restrictions for an item in the Amazon Catalog. **Usage Plan:** | Rate (requests
@@ -326,6 +355,8 @@ public class ListingsApi {
      *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized
      *     messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
      *     (optional)
+     * @param productType The product type of the item. When provided with the brand name, the API evaluates GTIN
+     *     exemption restrictions in addition to brand restrictions for the specified product type. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -338,6 +369,7 @@ public class ListingsApi {
             List<String> marketplaceIds,
             String conditionType,
             String reasonLocale,
+            String productType,
             final ApiCallback<RestrictionList> callback,
             String restrictedDataToken)
             throws ApiException, LWAException {
@@ -349,7 +381,7 @@ public class ListingsApi {
         }
 
         okhttp3.Call call = getListingsRestrictionsValidateBeforeCall(
-                asin, sellerId, marketplaceIds, conditionType, reasonLocale, progressRequestListener);
+                asin, sellerId, marketplaceIds, conditionType, reasonLocale, productType, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();

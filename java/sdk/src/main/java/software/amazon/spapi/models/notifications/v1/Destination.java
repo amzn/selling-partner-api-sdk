@@ -16,8 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** Information about the destination created when you call the &#x60;createDestination&#x60; operation. */
-@Schema(description = "Information about the destination created when you call the `createDestination` operation.")
+/** Information about the destination you create when you call the &#x60;createDestination&#x60; operation. */
+@Schema(description = "Information about the destination you create when you call the `createDestination` operation.")
 public class Destination {
     @SerializedName("name")
     private String name = null;

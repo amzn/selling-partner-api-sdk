@@ -29,6 +29,12 @@ public class ListOfferMetricsResponseOffer {
     @SerializedName("fulfillmentChannelType")
     private FulfillmentChannelType fulfillmentChannelType = null;
 
+    @SerializedName("brandName")
+    private String brandName = null;
+
+    @SerializedName("productGroup")
+    private String productGroup = null;
+
     @SerializedName("notDeliveredDueToOOS")
     private Double notDeliveredDueToOOS = null;
 
@@ -132,6 +138,46 @@ public class ListOfferMetricsResponseOffer {
 
     public void setFulfillmentChannelType(FulfillmentChannelType fulfillmentChannelType) {
         this.fulfillmentChannelType = fulfillmentChannelType;
+    }
+
+    public ListOfferMetricsResponseOffer brandName(String brandName) {
+        this.brandName = brandName;
+        return this;
+    }
+
+    /**
+     * The brand name associated with the offer.
+     *
+     * @return brandName
+     */
+    @Schema(description = "The brand name associated with the offer.")
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
+    public ListOfferMetricsResponseOffer productGroup(String productGroup) {
+        this.productGroup = productGroup;
+        return this;
+    }
+
+    /**
+     * The product group associated with the offer. This property is only supported for vendors and not for sellers.
+     *
+     * @return productGroup
+     */
+    @Schema(
+            description =
+                    "The product group associated with the offer. This property is only supported for vendors and not for sellers.")
+    public String getProductGroup() {
+        return productGroup;
+    }
+
+    public void setProductGroup(String productGroup) {
+        this.productGroup = productGroup;
     }
 
     public ListOfferMetricsResponseOffer notDeliveredDueToOOS(Double notDeliveredDueToOOS) {
@@ -294,14 +340,14 @@ public class ListOfferMetricsResponseOffer {
     }
 
     /**
-     * The percentage of new subscriptions acquired through coupons. Applicable to &#x60;PERFORMANCE&#x60;
+     * The percentage of new subscriptions from coupons. Applicable to &#x60;PERFORMANCE&#x60;
      * &#x60;timePeriodType&#x60;. minimum: 0 maximum: 100
      *
      * @return shareOfCouponSubscriptions
      */
     @Schema(
             description =
-                    "The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.")
+                    "The percentage of new subscriptions from coupons. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getShareOfCouponSubscriptions() {
         return shareOfCouponSubscriptions;
     }
@@ -495,6 +541,8 @@ public class ListOfferMetricsResponseOffer {
         return Objects.equals(this.asin, listOfferMetricsResponseOffer.asin)
                 && Objects.equals(this.sku, listOfferMetricsResponseOffer.sku)
                 && Objects.equals(this.fulfillmentChannelType, listOfferMetricsResponseOffer.fulfillmentChannelType)
+                && Objects.equals(this.brandName, listOfferMetricsResponseOffer.brandName)
+                && Objects.equals(this.productGroup, listOfferMetricsResponseOffer.productGroup)
                 && Objects.equals(this.notDeliveredDueToOOS, listOfferMetricsResponseOffer.notDeliveredDueToOOS)
                 && Objects.equals(
                         this.totalSubscriptionsRevenue, listOfferMetricsResponseOffer.totalSubscriptionsRevenue)
@@ -534,6 +582,8 @@ public class ListOfferMetricsResponseOffer {
                 asin,
                 sku,
                 fulfillmentChannelType,
+                brandName,
+                productGroup,
                 notDeliveredDueToOOS,
                 totalSubscriptionsRevenue,
                 shippedSubscriptionUnits,
@@ -562,6 +612,8 @@ public class ListOfferMetricsResponseOffer {
         sb.append("    fulfillmentChannelType: ")
                 .append(toIndentedString(fulfillmentChannelType))
                 .append("\n");
+        sb.append("    brandName: ").append(toIndentedString(brandName)).append("\n");
+        sb.append("    productGroup: ").append(toIndentedString(productGroup)).append("\n");
         sb.append("    notDeliveredDueToOOS: ")
                 .append(toIndentedString(notDeliveredDueToOOS))
                 .append("\n");

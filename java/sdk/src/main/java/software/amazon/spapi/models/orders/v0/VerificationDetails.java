@@ -22,6 +22,12 @@ public class VerificationDetails {
     @SerializedName("prescriptionDetail")
     private PrescriptionDetail prescriptionDetail = null;
 
+    @SerializedName("approvedAlternativeDetails")
+    private ApprovedAlternativeDetails approvedAlternativeDetails = null;
+
+    @SerializedName("interimStatusDetail")
+    private InterimStatusDetail interimStatusDetail = null;
+
     public VerificationDetails prescriptionDetail(PrescriptionDetail prescriptionDetail) {
         this.prescriptionDetail = prescriptionDetail;
         return this;
@@ -41,6 +47,44 @@ public class VerificationDetails {
         this.prescriptionDetail = prescriptionDetail;
     }
 
+    public VerificationDetails approvedAlternativeDetails(ApprovedAlternativeDetails approvedAlternativeDetails) {
+        this.approvedAlternativeDetails = approvedAlternativeDetails;
+        return this;
+    }
+
+    /**
+     * Get approvedAlternativeDetails
+     *
+     * @return approvedAlternativeDetails
+     */
+    @Schema(description = "")
+    public ApprovedAlternativeDetails getApprovedAlternativeDetails() {
+        return approvedAlternativeDetails;
+    }
+
+    public void setApprovedAlternativeDetails(ApprovedAlternativeDetails approvedAlternativeDetails) {
+        this.approvedAlternativeDetails = approvedAlternativeDetails;
+    }
+
+    public VerificationDetails interimStatusDetail(InterimStatusDetail interimStatusDetail) {
+        this.interimStatusDetail = interimStatusDetail;
+        return this;
+    }
+
+    /**
+     * Get interimStatusDetail
+     *
+     * @return interimStatusDetail
+     */
+    @Schema(description = "")
+    public InterimStatusDetail getInterimStatusDetail() {
+        return interimStatusDetail;
+    }
+
+    public void setInterimStatusDetail(InterimStatusDetail interimStatusDetail) {
+        this.interimStatusDetail = interimStatusDetail;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,12 +94,14 @@ public class VerificationDetails {
             return false;
         }
         VerificationDetails verificationDetails = (VerificationDetails) o;
-        return Objects.equals(this.prescriptionDetail, verificationDetails.prescriptionDetail);
+        return Objects.equals(this.prescriptionDetail, verificationDetails.prescriptionDetail)
+                && Objects.equals(this.approvedAlternativeDetails, verificationDetails.approvedAlternativeDetails)
+                && Objects.equals(this.interimStatusDetail, verificationDetails.interimStatusDetail);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(prescriptionDetail);
+        return Objects.hash(prescriptionDetail, approvedAlternativeDetails, interimStatusDetail);
     }
 
     @Override
@@ -65,6 +111,12 @@ public class VerificationDetails {
 
         sb.append("    prescriptionDetail: ")
                 .append(toIndentedString(prescriptionDetail))
+                .append("\n");
+        sb.append("    approvedAlternativeDetails: ")
+                .append(toIndentedString(approvedAlternativeDetails))
+                .append("\n");
+        sb.append("    interimStatusDetail: ")
+                .append(toIndentedString(interimStatusDetail))
                 .append("\n");
         sb.append("}");
         return sb.toString();

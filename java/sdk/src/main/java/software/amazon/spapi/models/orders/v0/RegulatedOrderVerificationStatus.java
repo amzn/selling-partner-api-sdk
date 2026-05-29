@@ -42,6 +42,9 @@ public class RegulatedOrderVerificationStatus {
     @SerializedName("ValidVerificationDetails")
     private List<ValidVerificationDetail> validVerificationDetails = null;
 
+    @SerializedName("ValidInterimStatusCodes")
+    private List<ValidInterimStatusCode> validInterimStatusCodes = null;
+
     public RegulatedOrderVerificationStatus status(VerificationStatus status) {
         this.status = status;
         return this;
@@ -202,6 +205,38 @@ public class RegulatedOrderVerificationStatus {
         this.validVerificationDetails = validVerificationDetails;
     }
 
+    public RegulatedOrderVerificationStatus validInterimStatusCodes(
+            List<ValidInterimStatusCode> validInterimStatusCodes) {
+        this.validInterimStatusCodes = validInterimStatusCodes;
+        return this;
+    }
+
+    public RegulatedOrderVerificationStatus addValidInterimStatusCodesItem(
+            ValidInterimStatusCode validInterimStatusCodesItem) {
+        if (this.validInterimStatusCodes == null) {
+            this.validInterimStatusCodes = new ArrayList<ValidInterimStatusCode>();
+        }
+        this.validInterimStatusCodes.add(validInterimStatusCodesItem);
+        return this;
+    }
+
+    /**
+     * Valid interim status codes that may be used when populating &#x60;InterimStatusDetail&#x60;. Each element
+     * contains a &#x60;StatusCode&#x60; identifier and its customer-facing &#x60;StatusDescription&#x60;.
+     *
+     * @return validInterimStatusCodes
+     */
+    @Schema(
+            description =
+                    "Valid interim status codes that may be used when populating `InterimStatusDetail`. Each element contains a `StatusCode` identifier and its customer-facing `StatusDescription`.")
+    public List<ValidInterimStatusCode> getValidInterimStatusCodes() {
+        return validInterimStatusCodes;
+    }
+
+    public void setValidInterimStatusCodes(List<ValidInterimStatusCode> validInterimStatusCodes) {
+        this.validInterimStatusCodes = validInterimStatusCodes;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -218,7 +253,9 @@ public class RegulatedOrderVerificationStatus {
                 && Objects.equals(this.reviewDate, regulatedOrderVerificationStatus.reviewDate)
                 && Objects.equals(this.externalReviewerId, regulatedOrderVerificationStatus.externalReviewerId)
                 && Objects.equals(
-                        this.validVerificationDetails, regulatedOrderVerificationStatus.validVerificationDetails);
+                        this.validVerificationDetails, regulatedOrderVerificationStatus.validVerificationDetails)
+                && Objects.equals(
+                        this.validInterimStatusCodes, regulatedOrderVerificationStatus.validInterimStatusCodes);
     }
 
     @Override
@@ -230,7 +267,8 @@ public class RegulatedOrderVerificationStatus {
                 rejectionReason,
                 reviewDate,
                 externalReviewerId,
-                validVerificationDetails);
+                validVerificationDetails,
+                validInterimStatusCodes);
     }
 
     @Override
@@ -254,6 +292,9 @@ public class RegulatedOrderVerificationStatus {
                 .append("\n");
         sb.append("    validVerificationDetails: ")
                 .append(toIndentedString(validVerificationDetails))
+                .append("\n");
+        sb.append("    validInterimStatusCodes: ")
+                .append(toIndentedString(validInterimStatusCodes))
                 .append("\n");
         sb.append("}");
         return sb.toString();

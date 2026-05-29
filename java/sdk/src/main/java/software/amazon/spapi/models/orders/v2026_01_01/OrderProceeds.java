@@ -14,6 +14,8 @@ package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /** The money that the seller receives from the sale of the order. */
@@ -21,6 +23,9 @@ import java.util.Objects;
 public class OrderProceeds {
     @SerializedName("grandTotal")
     private Money grandTotal = null;
+
+    @SerializedName("breakdowns")
+    private List<OrderProceedsBreakdown> breakdowns = null;
 
     public OrderProceeds grandTotal(Money grandTotal) {
         this.grandTotal = grandTotal;
@@ -41,6 +46,37 @@ public class OrderProceeds {
         this.grandTotal = grandTotal;
     }
 
+    public OrderProceeds breakdowns(List<OrderProceedsBreakdown> breakdowns) {
+        this.breakdowns = breakdowns;
+        return this;
+    }
+
+    public OrderProceeds addBreakdownsItem(OrderProceedsBreakdown breakdownsItem) {
+        if (this.breakdowns == null) {
+            this.breakdowns = new ArrayList<OrderProceedsBreakdown>();
+        }
+        this.breakdowns.add(breakdownsItem);
+        return this;
+    }
+
+    /**
+     * Categorized proceeds for the order. Proceed categories are either aggregated across all order items (such as
+     * &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, and &#x60;TAX&#x60;) or applied at the order level (such as
+     * &#x60;DELIVERY_TIP&#x60;).
+     *
+     * @return breakdowns
+     */
+    @Schema(
+            description =
+                    "Categorized proceeds for the order. Proceed categories are either aggregated across all order items (such as `ITEM`, `SHIPPING`, and `TAX`) or applied at the order level (such as `DELIVERY_TIP`).")
+    public List<OrderProceedsBreakdown> getBreakdowns() {
+        return breakdowns;
+    }
+
+    public void setBreakdowns(List<OrderProceedsBreakdown> breakdowns) {
+        this.breakdowns = breakdowns;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,12 +86,13 @@ public class OrderProceeds {
             return false;
         }
         OrderProceeds orderProceeds = (OrderProceeds) o;
-        return Objects.equals(this.grandTotal, orderProceeds.grandTotal);
+        return Objects.equals(this.grandTotal, orderProceeds.grandTotal)
+                && Objects.equals(this.breakdowns, orderProceeds.breakdowns);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(grandTotal);
+        return Objects.hash(grandTotal, breakdowns);
     }
 
     @Override
@@ -64,6 +101,7 @@ public class OrderProceeds {
         sb.append("class OrderProceeds {\n");
 
         sb.append("    grandTotal: ").append(toIndentedString(grandTotal)).append("\n");
+        sb.append("    breakdowns: ").append(toIndentedString(breakdowns)).append("\n");
         sb.append("}");
         return sb.toString();
     }

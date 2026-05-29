@@ -562,14 +562,14 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /**
-     * The percentage of new subscriptions acquired through coupons. Applicable to &#x60;PERFORMANCE&#x60;
+     * The percentage of new subscriptions from coupons. Applicable to &#x60;PERFORMANCE&#x60;
      * &#x60;timePeriodType&#x60;. minimum: 0 maximum: 100
      *
      * @return shareOfCouponSubscriptions
      */
     @Schema(
             description =
-                    "The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.")
+                    "The percentage of new subscriptions from coupons. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getShareOfCouponSubscriptions() {
         return shareOfCouponSubscriptions;
     }
@@ -746,14 +746,14 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /**
-     * Percentage of subscriptions created by offers with 0% seller-funded discount out of the total number of new
-     * orders placed over the past 12 months minimum: 0 maximum: 100
+     * Percentage of subscriptions from offers with 0% seller-funded discount out of the total number of new orders
+     * placed over the past 12 months. minimum: 0 maximum: 100
      *
      * @return signupConversionFor0PercentSellerFunding
      */
     @Schema(
             description =
-                    "Percentage of subscriptions created by offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months")
+                    "Percentage of subscriptions from offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months.")
     public Double getSignupConversionFor0PercentSellerFunding() {
         return signupConversionFor0PercentSellerFunding;
     }
@@ -769,14 +769,14 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /**
-     * [Applicable only for Sellers] Percentage of subscriptions created by offers with 5% seller-funded discount out of
-     * the total number of new orders placed over the past 12 months minimum: 0 maximum: 100
+     * [Applicable only for Sellers] Percentage of subscriptions from offers with 5% seller-funded discount out of the
+     * total number of new orders placed over the past 12 months. minimum: 0 maximum: 100
      *
      * @return signupConversionFor5PercentSellerFunding
      */
     @Schema(
             description =
-                    "[Applicable only for Sellers] Percentage of subscriptions created by offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months")
+                    "[Applicable only for Sellers] Percentage of subscriptions from offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months.")
     public Double getSignupConversionFor5PercentSellerFunding() {
         return signupConversionFor5PercentSellerFunding;
     }
@@ -792,14 +792,14 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /**
-     * [Applicable only for Sellers] Percentage of subscriptions created by offers with 10% seller-funded discount out
-     * of the total number of new orders placed over the past 12 months minimum: 0 maximum: 100
+     * [Applicable only for Sellers] Percentage of subscriptions from offers with 10% seller-funded discount out of the
+     * total number of new orders placed over the past 12 months. minimum: 0 maximum: 100
      *
      * @return signupConversionFor10PercentSellerFunding
      */
     @Schema(
             description =
-                    "[Applicable only for Sellers] Percentage of subscriptions created by offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months")
+                    "[Applicable only for Sellers] Percentage of subscriptions from offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months.")
     public Double getSignupConversionFor10PercentSellerFunding() {
         return signupConversionFor10PercentSellerFunding;
     }
@@ -815,14 +815,14 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /**
-     * [Applicable only for Vendors] Percentage of subscriptions created by offers with 5% or above seller-funded
-     * discount out of the total number of new orders placed over the past 12 months minimum: 0 maximum: 100
+     * [Applicable only for Vendors] Percentage of subscriptions from offers with 5% or above seller-funded discount out
+     * of the total number of new orders placed over the past 12 months. minimum: 0 maximum: 100
      *
      * @return signupConversionFor5PlusPercentSellerFunding
      */
     @Schema(
             description =
-                    "[Applicable only for Vendors] Percentage of subscriptions created by offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months")
+                    "[Applicable only for Vendors] Percentage of subscriptions from offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months.")
     public Double getSignupConversionFor5PlusPercentSellerFunding() {
         return signupConversionFor5PlusPercentSellerFunding;
     }
