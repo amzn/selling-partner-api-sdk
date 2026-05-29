@@ -37,8 +37,9 @@ namespace software.amzn.spapi.Api.listings.restrictions.v2021_08_01
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request.</param>
         /// <param name="conditionType">The condition used to filter restrictions. (optional)</param>
         /// <param name="reasonLocale">A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)</param>
+        /// <param name="productType">The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type. (optional)</param>
         /// <returns>RestrictionList</returns>
-        RestrictionList GetListingsRestrictions (string asin, string sellerId, List<string> marketplaceIds, string? conditionType = null, string? reasonLocale = null);
+        RestrictionList GetListingsRestrictions (string asin, string sellerId, List<string> marketplaceIds, string? conditionType = null, string? reasonLocale = null, string? productType = null);
 
         /// <summary>
         /// 
@@ -52,8 +53,9 @@ namespace software.amzn.spapi.Api.listings.restrictions.v2021_08_01
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request.</param>
         /// <param name="conditionType">The condition used to filter restrictions. (optional)</param>
         /// <param name="reasonLocale">A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)</param>
+        /// <param name="productType">The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type. (optional)</param>
         /// <returns>ApiResponse of RestrictionList</returns>
-        ApiResponse<RestrictionList> GetListingsRestrictionsWithHttpInfo (string asin, string sellerId, List<string> marketplaceIds, string? conditionType = null, string? reasonLocale = null);
+        ApiResponse<RestrictionList> GetListingsRestrictionsWithHttpInfo (string asin, string sellerId, List<string> marketplaceIds, string? conditionType = null, string? reasonLocale = null, string? productType = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -68,8 +70,9 @@ namespace software.amzn.spapi.Api.listings.restrictions.v2021_08_01
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request.</param>
         /// <param name="conditionType">The condition used to filter restrictions. (optional)</param>
         /// <param name="reasonLocale">A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)</param>
+        /// <param name="productType">The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type. (optional)</param>
         /// <returns>Task of RestrictionList</returns>
-        System.Threading.Tasks.Task<RestrictionList> GetListingsRestrictionsAsync (string asin, string sellerId, List<string> marketplaceIds, string? conditionType = null, string? reasonLocale = null);
+        System.Threading.Tasks.Task<RestrictionList> GetListingsRestrictionsAsync (string asin, string sellerId, List<string> marketplaceIds, string? conditionType = null, string? reasonLocale = null, string? productType = null);
 
         /// <summary>
         /// 
@@ -83,8 +86,9 @@ namespace software.amzn.spapi.Api.listings.restrictions.v2021_08_01
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request.</param>
         /// <param name="conditionType">The condition used to filter restrictions. (optional)</param>
         /// <param name="reasonLocale">A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)</param>
+        /// <param name="productType">The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type. (optional)</param>
         /// <returns>Task of ApiResponse (RestrictionList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RestrictionList>> GetListingsRestrictionsAsyncWithHttpInfo (string asin, string sellerId, List<string> marketplaceIds, string? conditionType = null, string? reasonLocale = null);
+        System.Threading.Tasks.Task<ApiResponse<RestrictionList>> GetListingsRestrictionsAsyncWithHttpInfo (string asin, string sellerId, List<string> marketplaceIds, string? conditionType = null, string? reasonLocale = null, string? productType = null);
         #endregion Asynchronous Operations
     }
 
@@ -185,10 +189,11 @@ namespace software.amzn.spapi.Api.listings.restrictions.v2021_08_01
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request.</param>
         /// <param name="conditionType">The condition used to filter restrictions. (optional)</param>
         /// <param name="reasonLocale">A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)</param>
+        /// <param name="productType">The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type. (optional)</param>
         /// <returns>RestrictionList</returns>
-        public RestrictionList GetListingsRestrictions (string asin, string sellerId, List<string> marketplaceIds, string? conditionType = null, string? reasonLocale = null)
+        public RestrictionList GetListingsRestrictions (string asin, string sellerId, List<string> marketplaceIds, string? conditionType = null, string? reasonLocale = null, string? productType = null)
         {
-             ApiResponse<RestrictionList> localVarResponse = GetListingsRestrictionsWithHttpInfo(asin, sellerId, marketplaceIds, conditionType, reasonLocale);
+             ApiResponse<RestrictionList> localVarResponse = GetListingsRestrictionsWithHttpInfo(asin, sellerId, marketplaceIds, conditionType, reasonLocale, productType);
              return localVarResponse.Data;
         }
 
@@ -201,8 +206,9 @@ namespace software.amzn.spapi.Api.listings.restrictions.v2021_08_01
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request.</param>
         /// <param name="conditionType">The condition used to filter restrictions. (optional)</param>
         /// <param name="reasonLocale">A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)</param>
+        /// <param name="productType">The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type. (optional)</param>
         /// <returns>ApiResponse of RestrictionList</returns>
-        public ApiResponse< RestrictionList > GetListingsRestrictionsWithHttpInfo (string asin, string sellerId, List<string> marketplaceIds, string? conditionType = null, string? reasonLocale = null)
+        public ApiResponse< RestrictionList > GetListingsRestrictionsWithHttpInfo (string asin, string sellerId, List<string> marketplaceIds, string? conditionType = null, string? reasonLocale = null, string? productType = null)
         {
             // verify the required parameter 'asin' is set
             if (asin == null)
@@ -240,6 +246,7 @@ namespace software.amzn.spapi.Api.listings.restrictions.v2021_08_01
             if (sellerId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sellerId", sellerId)); // query parameter
             if (marketplaceIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "marketplaceIds", marketplaceIds)); // query parameter
             if (reasonLocale != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "reasonLocale", reasonLocale)); // query parameter
+            if (productType != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "productType", productType)); // query parameter
 
 
             // make the HTTP request
@@ -267,10 +274,11 @@ namespace software.amzn.spapi.Api.listings.restrictions.v2021_08_01
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request.</param>
         /// <param name="conditionType">The condition used to filter restrictions. (optional)</param>
         /// <param name="reasonLocale">A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)</param>
+        /// <param name="productType">The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type. (optional)</param>
         /// <returns>Task of RestrictionList</returns>
-        public async System.Threading.Tasks.Task<RestrictionList> GetListingsRestrictionsAsync (string asin, string sellerId, List<string> marketplaceIds, string? conditionType = null, string? reasonLocale = null)
+        public async System.Threading.Tasks.Task<RestrictionList> GetListingsRestrictionsAsync (string asin, string sellerId, List<string> marketplaceIds, string? conditionType = null, string? reasonLocale = null, string? productType = null)
         {
-             ApiResponse<RestrictionList> localVarResponse = await GetListingsRestrictionsAsyncWithHttpInfo(asin, sellerId, marketplaceIds, conditionType, reasonLocale);
+             ApiResponse<RestrictionList> localVarResponse = await GetListingsRestrictionsAsyncWithHttpInfo(asin, sellerId, marketplaceIds, conditionType, reasonLocale, productType);
              return localVarResponse.Data;
 
         }
@@ -284,8 +292,9 @@ namespace software.amzn.spapi.Api.listings.restrictions.v2021_08_01
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request.</param>
         /// <param name="conditionType">The condition used to filter restrictions. (optional)</param>
         /// <param name="reasonLocale">A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale. (optional)</param>
+        /// <param name="productType">The product type of the item. When provided with the brand name, the API evaluates GTIN exemption restrictions in addition to brand restrictions for the specified product type. (optional)</param>
         /// <returns>Task of ApiResponse (RestrictionList)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<RestrictionList>> GetListingsRestrictionsAsyncWithHttpInfo (string asin, string sellerId, List<string> marketplaceIds, string? conditionType = null, string? reasonLocale = null)
+        public async System.Threading.Tasks.Task<ApiResponse<RestrictionList>> GetListingsRestrictionsAsyncWithHttpInfo (string asin, string sellerId, List<string> marketplaceIds, string? conditionType = null, string? reasonLocale = null, string? productType = null)
         {
             // verify the required parameter 'asin' is set
             if (asin == null)
@@ -323,6 +332,7 @@ namespace software.amzn.spapi.Api.listings.restrictions.v2021_08_01
             if (sellerId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sellerId", sellerId)); // query parameter
             if (marketplaceIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "marketplaceIds", marketplaceIds)); // query parameter
             if (reasonLocale != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "reasonLocale", reasonLocale)); // query parameter
+            if (productType != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "productType", productType)); // query parameter
 
 
             // make the HTTP request

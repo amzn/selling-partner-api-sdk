@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.productTypeDefinitions.v2020_09_01
         /// <summary>
         /// Initializes a new instance of the <see cref="ProductTypeList" /> class.
         /// </summary>
-        /// <param name="productTypes">productTypes (required).</param>
+        /// <param name="productTypes">A list of product types. (required).</param>
         /// <param name="productTypeVersion">Amazon product type version identifier. (required).</param>
         public ProductTypeList(List<ProductType> productTypes = default(List<ProductType>), string productTypeVersion = default(string))
         {
@@ -58,8 +58,9 @@ namespace software.amzn.spapi.Model.productTypeDefinitions.v2020_09_01
         }
 
         /// <summary>
-        /// Gets or Sets ProductTypes
+        /// A list of product types.
         /// </summary>
+        /// <value>A list of product types.</value>
         [DataMember(Name = "productTypes", IsRequired = true, EmitDefaultValue = true)]
         public List<ProductType> ProductTypes { get; set; }
 

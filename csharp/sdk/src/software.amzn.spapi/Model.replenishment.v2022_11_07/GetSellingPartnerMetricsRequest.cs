@@ -54,10 +54,11 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <param name="aggregationFrequency">aggregationFrequency.</param>
         /// <param name="timeInterval">timeInterval (required).</param>
         /// <param name="metrics">The list of metrics requested. If no metric value is provided, data for all metrics will be returned..</param>
+        /// <param name="filters">filters.</param>
         /// <param name="timePeriodType">timePeriodType (required).</param>
         /// <param name="marketplaceId">The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace. (required).</param>
         /// <param name="programTypes">A list of replenishment program types. (required).</param>
-        public GetSellingPartnerMetricsRequest(AggregationFrequency? aggregationFrequency = default(AggregationFrequency?), TimeInterval timeInterval = default(TimeInterval), List<Metric>? metrics = default(List<Metric>?), TimePeriodType timePeriodType = default(TimePeriodType), string marketplaceId = default(string), List<ProgramType> programTypes = default(List<ProgramType>))
+        public GetSellingPartnerMetricsRequest(AggregationFrequency? aggregationFrequency = default(AggregationFrequency?), TimeInterval timeInterval = default(TimeInterval), List<Metric>? metrics = default(List<Metric>?), GetSellingPartnerMetricsRequestFilters? filters = default(GetSellingPartnerMetricsRequestFilters?), TimePeriodType timePeriodType = default(TimePeriodType), string marketplaceId = default(string), List<ProgramType> programTypes = default(List<ProgramType>))
         {
             // to ensure "timeInterval" is required (not null)
             if (timeInterval == null)
@@ -80,6 +81,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             this.ProgramTypes = programTypes;
             this.AggregationFrequency = aggregationFrequency;
             this.Metrics = metrics;
+            this.Filters = filters;
         }
 
         /// <summary>
@@ -94,6 +96,12 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <value>The list of metrics requested. If no metric value is provided, data for all metrics will be returned.</value>
         [DataMember(Name = "metrics", EmitDefaultValue = false)]
         public List<Metric>? Metrics { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Filters
+        /// </summary>
+        [DataMember(Name = "filters", EmitDefaultValue = false)]
+        public GetSellingPartnerMetricsRequestFilters? Filters { get; set; }
 
         /// <summary>
         /// The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
@@ -120,6 +128,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             sb.Append("  AggregationFrequency: ").Append(AggregationFrequency).Append("\n");
             sb.Append("  TimeInterval: ").Append(TimeInterval).Append("\n");
             sb.Append("  Metrics: ").Append(Metrics).Append("\n");
+            sb.Append("  Filters: ").Append(Filters).Append("\n");
             sb.Append("  TimePeriodType: ").Append(TimePeriodType).Append("\n");
             sb.Append("  MarketplaceId: ").Append(MarketplaceId).Append("\n");
             sb.Append("  ProgramTypes: ").Append(ProgramTypes).Append("\n");

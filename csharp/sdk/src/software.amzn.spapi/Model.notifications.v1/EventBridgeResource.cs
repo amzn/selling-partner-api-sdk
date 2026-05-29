@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// Initializes a new instance of the <see cref="EventBridgeResource" /> class.
         /// </summary>
         /// <param name="name">The name of the partner event source associated with the destination. (required).</param>
-        /// <param name="region">The AWS region in which you receive the notifications. For AWS regions that are supported in Amazon EventBridge, refer to [Amazon EventBridge endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ev.html). (required).</param>
+        /// <param name="region">The AWS region in which you receive the notifications. For AWS regions that Amazon EventBridge supports, refer to [Amazon EventBridge endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ev.html). (required).</param>
         /// <param name="accountId">The identifier for the AWS account that is responsible for charges related to receiving notifications. (required).</param>
         public EventBridgeResource(string name = default(string), string region = default(string), string accountId = default(string))
         {
@@ -72,9 +72,9 @@ namespace software.amzn.spapi.Model.notifications.v1
         public string Name { get; set; }
 
         /// <summary>
-        /// The AWS region in which you receive the notifications. For AWS regions that are supported in Amazon EventBridge, refer to [Amazon EventBridge endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ev.html).
+        /// The AWS region in which you receive the notifications. For AWS regions that Amazon EventBridge supports, refer to [Amazon EventBridge endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ev.html).
         /// </summary>
-        /// <value>The AWS region in which you receive the notifications. For AWS regions that are supported in Amazon EventBridge, refer to [Amazon EventBridge endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ev.html).</value>
+        /// <value>The AWS region in which you receive the notifications. For AWS regions that Amazon EventBridge supports, refer to [Amazon EventBridge endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ev.html).</value>
         [DataMember(Name = "region", IsRequired = true, EmitDefaultValue = true)]
         public string Region { get; set; }
 

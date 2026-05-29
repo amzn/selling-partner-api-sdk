@@ -193,6 +193,7 @@ paths:
             - PACKAGES
             - TAX
             - PAYMENT
+            - FULFILLMENT_ORDERS
             type: string
             x-docgen-enum-table-extension:
             - value: BUYER
@@ -219,6 +220,8 @@ paths:
               description: The tax information associated with the order.
             - value: PAYMENT
               description: The payment information associated with the order.
+            - value: FULFILLMENT_ORDERS
+              description: The fulfillment orders associated with this order.
           type: array
         style: form
       responses:
@@ -318,8 +321,22 @@ paths:
                       - PALLET_ENABLED
                   proceeds:
                     grandTotal:
-                      amount: "149.99"
+                      amount: "154.99"
                       currencyCode: USD
+                    breakdowns:
+                    - type: ITEM
+                      subtotal:
+                        amount: "149.97"
+                        currencyCode: USD
+                    - type: TAX
+                      subtotal:
+                        amount: "0.02"
+                        currencyCode: USD
+                    - type: DELIVERY_TIP
+                      status: FINALIZED
+                      subtotal:
+                        amount: "5.00"
+                        currencyCode: USD
                   fulfillment:
                     fulfillmentStatus: SHIPPED
                     fulfilledBy: MERCHANT
@@ -455,6 +472,8 @@ paths:
                       quantity: 1
                       transparencyCodes:
                       - T67890GHIJK12345
+                  fulfillmentOrders:
+                  - fulfillmentOrderId: LdDv2jxM4
                 pagination:
                   nextToken: 2YgYW55IGNhcm5hbCBwbGVhc3VyZS4
                 lastUpdatedBefore: 2024-12-25T15:00:00Z
@@ -1017,6 +1036,7 @@ paths:
             - PACKAGES
             - TAX
             - PAYMENT
+            - FULFILLMENT_ORDERS
             type: string
             x-docgen-enum-table-extension:
             - value: BUYER
@@ -1043,6 +1063,8 @@ paths:
               description: The tax information associated with the order.
             - value: PAYMENT
               description: The payment information associated with the order.
+            - value: FULFILLMENT_ORDERS
+              description: The fulfillment orders associated with this order.
           type: array
         style: form
       responses:
@@ -1085,6 +1107,19 @@ paths:
                     grandTotal:
                       amount: "103.97"
                       currencyCode: GBP
+                    breakdowns:
+                    - type: ITEM
+                      subtotal:
+                        amount: "89.97"
+                        currencyCode: GBP
+                    - type: SHIPPING
+                      subtotal:
+                        amount: "10.00"
+                        currencyCode: GBP
+                    - type: TAX
+                      subtotal:
+                        amount: "4.00"
+                        currencyCode: GBP
                   fulfillment:
                     fulfillmentStatus: SHIPPED
                     fulfilledBy: MERCHANT
@@ -1193,6 +1228,8 @@ paths:
                       - T12345ABCDE67890UK
                       - T12346ABCDF67891UK
                       - T12347ABCDG67892UK
+                  fulfillmentOrders:
+                  - fulfillmentOrderId: LdDv2jxM4
               schema:
                 $ref: '#/components/schemas/GetOrderResponse'
           description: Success.
@@ -2009,6 +2046,20 @@ components:
             grandTotal:
               amount: amount
               currencyCode: currencyCode
+            breakdowns:
+            - subtotal:
+                amount: amount
+                currencyCode: currencyCode
+              type: type
+              status: status
+            - subtotal:
+                amount: amount
+                currencyCode: currencyCode
+              type: type
+              status: status
+          fulfillmentOrders:
+          - fulfillmentOrderId: fulfillmentOrderId
+          - fulfillmentOrderId: fulfillmentOrderId
           recipient:
             deliveryAddress:
               city: city
@@ -2530,6 +2581,20 @@ components:
             grandTotal:
               amount: amount
               currencyCode: currencyCode
+            breakdowns:
+            - subtotal:
+                amount: amount
+                currencyCode: currencyCode
+              type: type
+              status: status
+            - subtotal:
+                amount: amount
+                currencyCode: currencyCode
+              type: type
+              status: status
+          fulfillmentOrders:
+          - fulfillmentOrderId: fulfillmentOrderId
+          - fulfillmentOrderId: fulfillmentOrderId
           recipient:
             deliveryAddress:
               city: city
@@ -3097,6 +3162,20 @@ components:
             grandTotal:
               amount: amount
               currencyCode: currencyCode
+            breakdowns:
+            - subtotal:
+                amount: amount
+                currencyCode: currencyCode
+              type: type
+              status: status
+            - subtotal:
+                amount: amount
+                currencyCode: currencyCode
+              type: type
+              status: status
+          fulfillmentOrders:
+          - fulfillmentOrderId: fulfillmentOrderId
+          - fulfillmentOrderId: fulfillmentOrderId
           recipient:
             deliveryAddress:
               city: city
@@ -3627,6 +3706,20 @@ components:
           grandTotal:
             amount: amount
             currencyCode: currencyCode
+          breakdowns:
+          - subtotal:
+              amount: amount
+              currencyCode: currencyCode
+            type: type
+            status: status
+          - subtotal:
+              amount: amount
+              currencyCode: currencyCode
+            type: type
+            status: status
+        fulfillmentOrders:
+        - fulfillmentOrderId: fulfillmentOrderId
+        - fulfillmentOrderId: fulfillmentOrderId
         recipient:
           deliveryAddress:
             city: city
@@ -3810,6 +3903,13 @@ components:
             \ information. **Note:** Only available for merchant-fulfilled (FBM) orders."
           items:
             $ref: '#/components/schemas/OrderPackage'
+          type: array
+        fulfillmentOrders:
+          description: The list of fulfillment orders associated with this customer
+            order. Each entry corresponds to one fulfillment unit created by Amazon
+            for this order. **Note:** Only available for EasyShip orders at present.
+          items:
+            $ref: '#/components/schemas/FulfillmentOrder'
           type: array
       required:
       - createdTime
@@ -4005,9 +4105,55 @@ components:
         grandTotal:
           amount: amount
           currencyCode: currencyCode
+        breakdowns:
+        - subtotal:
+            amount: amount
+            currencyCode: currencyCode
+          type: type
+          status: status
+        - subtotal:
+            amount: amount
+            currencyCode: currencyCode
+          type: type
+          status: status
       properties:
         grandTotal:
           $ref: '#/components/schemas/Money'
+        breakdowns:
+          description: "Categorized proceeds for the order. Proceed categories are\
+            \ either aggregated across all order items (such as `ITEM`, `SHIPPING`,\
+            \ and `TAX`) or applied at the order level (such as `DELIVERY_TIP`)."
+          items:
+            $ref: '#/components/schemas/OrderProceedsBreakdown'
+          type: array
+      type: object
+    OrderProceedsBreakdown:
+      description: An entry detailing proceeds information.
+      example:
+        subtotal:
+          amount: amount
+          currencyCode: currencyCode
+        type: type
+        status: status
+      properties:
+        type:
+          description: "The proceeds category. \n\n**Possible values**: `ITEM`, `SHIPPING`,\
+            \ `GIFT_WRAP`, `COD_FEE`, `TAX`, `DISCOUNT`, `DELIVERY_TIP`, `OTHER`.\
+            \ **Note:** `DELIVERY_TIP` is charged separately and not attributed to\
+            \ a specific item. The remaining categories are aggregated across all\
+            \ order items."
+          type: string
+        status:
+          description: |-
+            The processing status of the charge. Only present for categories processed separately after checkout, such as `DELIVERY_TIP`.
+
+            **Possible values**: `PENDING`, `FINALIZED`.
+          type: string
+        subtotal:
+          $ref: '#/components/schemas/Money'
+      required:
+      - subtotal
+      - type
       type: object
     OrderFulfillment:
       description: "Information about how the order is being processed, packed, and\
@@ -5129,6 +5275,9 @@ components:
           items:
             $ref: '#/components/schemas/ItemProceedsDetailedBreakdown'
           type: array
+      required:
+      - subtotal
+      - type
       type: object
     ItemProceedsDetailedBreakdown:
       description: "Further granular breakdown of the subtotal of the proceeds breakdown,\
@@ -5877,6 +6026,21 @@ components:
           type: array
       required:
       - errors
+      type: object
+    FulfillmentOrder:
+      description: Information about a fulfillment order associated with a customer
+        order. A fulfillment order represents a unit of fulfillment created by Amazon
+        for the order. **Note:** Only available for EasyShip orders at present.
+      example:
+        fulfillmentOrderId: fulfillmentOrderId
+      properties:
+        fulfillmentOrderId:
+          description: The Fulfillment Order ID assigned by Amazon after fulfillment
+            planning. This identifier is identical to the Shipment ID required by
+            External Fulfillment APIs.
+          type: string
+      required:
+      - fulfillmentOrderId
       type: object
 x-original-swagger-version: "2.0"
 

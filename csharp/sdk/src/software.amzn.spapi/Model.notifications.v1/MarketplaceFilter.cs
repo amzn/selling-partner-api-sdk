@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.notifications.v1
 {
     /// <summary>
-    /// An event filter to customize your subscription to send notifications for only the specified &#x60;marketplaceId&#x60;s.
+    /// An event filter you can use to customize your subscription to send notifications for specific &#x60;marketplaceId&#x60;s.
     /// </summary>
     [DataContract(Name = "MarketplaceFilter")]
     public partial class MarketplaceFilter : IValidatableObject
@@ -34,16 +34,16 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// <summary>
         /// Initializes a new instance of the <see cref="MarketplaceFilter" /> class.
         /// </summary>
-        /// <param name="marketplaceIds">A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list..</param>
+        /// <param name="marketplaceIds">A list of marketplace identifiers you can subscribe to (for example, &#x60;ATVPDKIKX0DER&#x60;). To receive notifications in every marketplace, do not provide this list..</param>
         public MarketplaceFilter(List<string>? marketplaceIds = default(List<string>?))
         {
             this.MarketplaceIds = marketplaceIds;
         }
 
         /// <summary>
-        /// A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
+        /// A list of marketplace identifiers you can subscribe to (for example, &#x60;ATVPDKIKX0DER&#x60;). To receive notifications in every marketplace, do not provide this list.
         /// </summary>
-        /// <value>A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.</value>
+        /// <value>A list of marketplace identifiers you can subscribe to (for example, &#x60;ATVPDKIKX0DER&#x60;). To receive notifications in every marketplace, do not provide this list.</value>
         [DataMember(Name = "marketplaceIds", EmitDefaultValue = false)]
         public List<string>? MarketplaceIds { get; set; }
 

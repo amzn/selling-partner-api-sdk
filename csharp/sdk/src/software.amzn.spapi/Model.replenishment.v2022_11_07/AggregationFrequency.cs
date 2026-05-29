@@ -33,28 +33,34 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
     public enum AggregationFrequency
     {
         /// <summary>
+        /// Enum DAY for value: DAY
+        /// </summary>
+        [EnumMember(Value = "DAY")]
+        DAY = 1,
+
+        /// <summary>
         /// Enum WEEK for value: WEEK
         /// </summary>
         [EnumMember(Value = "WEEK")]
-        WEEK = 1,
+        WEEK = 2,
 
         /// <summary>
         /// Enum MONTH for value: MONTH
         /// </summary>
         [EnumMember(Value = "MONTH")]
-        MONTH = 2,
+        MONTH = 3,
 
         /// <summary>
         /// Enum QUARTER for value: QUARTER
         /// </summary>
         [EnumMember(Value = "QUARTER")]
-        QUARTER = 3,
+        QUARTER = 4,
 
         /// <summary>
         /// Enum YEAR for value: YEAR
         /// </summary>
         [EnumMember(Value = "YEAR")]
-        YEAR = 4
+        YEAR = 5
     }
 
 }

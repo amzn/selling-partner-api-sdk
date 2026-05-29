@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.replenishment.v2022_11_07
 {
     /// <summary>
-    /// Use these parameters to filter results. Any result must match all provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.
+    /// Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept multiple values (arrays), the API returns results that match at least one value in the array.
     /// </summary>
     [DataContract(Name = "ListOfferMetricsRequestFilters")]
     public partial class ListOfferMetricsRequestFilters : IValidatableObject
@@ -56,8 +56,12 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <param name="timePeriodType">timePeriodType (required).</param>
         /// <param name="marketplaceId">The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace. (required).</param>
         /// <param name="programTypes">A list of replenishment program types. (required).</param>
-        /// <param name="asins">A list of Amazon Standard Identification Numbers (ASINs)..</param>
-        public ListOfferMetricsRequestFilters(AggregationFrequency? aggregationFrequency = default(AggregationFrequency?), TimeInterval timeInterval = default(TimeInterval), TimePeriodType timePeriodType = default(TimePeriodType), string marketplaceId = default(string), List<ProgramType> programTypes = default(List<ProgramType>), List<string>? asins = default(List<string>?))
+        /// <param name="asins">A list of Amazon Standard Identification Numbers (ASINs) to filter by..</param>
+        /// <param name="skus">[Applicable only for Sellers] A list of SKUs to filter by..</param>
+        /// <param name="fulfillmentChannelTypes">[Applicable only for Sellers] The fulfillment channel types to filter by..</param>
+        /// <param name="brandNames">[Applicable only for US marketplace] A list of brand names to filter by..</param>
+        /// <param name="productGroups">[Applicable only for Vendors] A list of product group names to filter by..</param>
+        public ListOfferMetricsRequestFilters(AggregationFrequency? aggregationFrequency = default(AggregationFrequency?), TimeInterval timeInterval = default(TimeInterval), TimePeriodType timePeriodType = default(TimePeriodType), string marketplaceId = default(string), List<ProgramType> programTypes = default(List<ProgramType>), List<string>? asins = default(List<string>?), List<string>? skus = default(List<string>?), List<FulfillmentChannelType>? fulfillmentChannelTypes = default(List<FulfillmentChannelType>?), List<string>? brandNames = default(List<string>?), List<string>? productGroups = default(List<string>?))
         {
             // to ensure "timeInterval" is required (not null)
             if (timeInterval == null)
@@ -80,6 +84,10 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             this.ProgramTypes = programTypes;
             this.AggregationFrequency = aggregationFrequency;
             this.Asins = asins;
+            this.Skus = skus;
+            this.FulfillmentChannelTypes = fulfillmentChannelTypes;
+            this.BrandNames = brandNames;
+            this.ProductGroups = productGroups;
         }
 
         /// <summary>
@@ -103,11 +111,39 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         public List<ProgramType> ProgramTypes { get; set; }
 
         /// <summary>
-        /// A list of Amazon Standard Identification Numbers (ASINs).
+        /// A list of Amazon Standard Identification Numbers (ASINs) to filter by.
         /// </summary>
-        /// <value>A list of Amazon Standard Identification Numbers (ASINs).</value>
+        /// <value>A list of Amazon Standard Identification Numbers (ASINs) to filter by.</value>
         [DataMember(Name = "asins", EmitDefaultValue = false)]
         public List<string>? Asins { get; set; }
+
+        /// <summary>
+        /// [Applicable only for Sellers] A list of SKUs to filter by.
+        /// </summary>
+        /// <value>[Applicable only for Sellers] A list of SKUs to filter by.</value>
+        [DataMember(Name = "skus", EmitDefaultValue = false)]
+        public List<string>? Skus { get; set; }
+
+        /// <summary>
+        /// [Applicable only for Sellers] The fulfillment channel types to filter by.
+        /// </summary>
+        /// <value>[Applicable only for Sellers] The fulfillment channel types to filter by.</value>
+        [DataMember(Name = "fulfillmentChannelTypes", EmitDefaultValue = false)]
+        public List<FulfillmentChannelType>? FulfillmentChannelTypes { get; set; }
+
+        /// <summary>
+        /// [Applicable only for US marketplace] A list of brand names to filter by.
+        /// </summary>
+        /// <value>[Applicable only for US marketplace] A list of brand names to filter by.</value>
+        [DataMember(Name = "brandNames", EmitDefaultValue = false)]
+        public List<string>? BrandNames { get; set; }
+
+        /// <summary>
+        /// [Applicable only for Vendors] A list of product group names to filter by.
+        /// </summary>
+        /// <value>[Applicable only for Vendors] A list of product group names to filter by.</value>
+        [DataMember(Name = "productGroups", EmitDefaultValue = false)]
+        public List<string>? ProductGroups { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -123,6 +159,10 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             sb.Append("  MarketplaceId: ").Append(MarketplaceId).Append("\n");
             sb.Append("  ProgramTypes: ").Append(ProgramTypes).Append("\n");
             sb.Append("  Asins: ").Append(Asins).Append("\n");
+            sb.Append("  Skus: ").Append(Skus).Append("\n");
+            sb.Append("  FulfillmentChannelTypes: ").Append(FulfillmentChannelTypes).Append("\n");
+            sb.Append("  BrandNames: ").Append(BrandNames).Append("\n");
+            sb.Append("  ProductGroups: ").Append(ProductGroups).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

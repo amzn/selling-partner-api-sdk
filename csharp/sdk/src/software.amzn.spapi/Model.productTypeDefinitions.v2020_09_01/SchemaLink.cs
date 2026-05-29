@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.productTypeDefinitions.v2020_09_01
 {
     /// <summary>
-    /// SchemaLink
+    /// A link to metadata schema.
     /// </summary>
     [DataContract(Name = "SchemaLink")]
     public partial class SchemaLink : IValidatableObject
@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Model.productTypeDefinitions.v2020_09_01
         /// Initializes a new instance of the <see cref="SchemaLink" /> class.
         /// </summary>
         /// <param name="link">link (required).</param>
-        /// <param name="checksum">Checksum hash of the schema (Base64 MD5). Can be used to verify schema contents, identify changes between schema versions, and for caching. (required).</param>
+        /// <param name="checksum">Checksum hash of the schema (Base64 MD5). Use this to verify schema contents, identify changes between schema versions, and for caching. (required).</param>
         public SchemaLink(SchemaLinkLink link = default(SchemaLinkLink), string checksum = default(string))
         {
             // to ensure "link" is required (not null)
@@ -64,9 +64,9 @@ namespace software.amzn.spapi.Model.productTypeDefinitions.v2020_09_01
         public SchemaLinkLink Link { get; set; }
 
         /// <summary>
-        /// Checksum hash of the schema (Base64 MD5). Can be used to verify schema contents, identify changes between schema versions, and for caching.
+        /// Checksum hash of the schema (Base64 MD5). Use this to verify schema contents, identify changes between schema versions, and for caching.
         /// </summary>
-        /// <value>Checksum hash of the schema (Base64 MD5). Can be used to verify schema contents, identify changes between schema versions, and for caching.</value>
+        /// <value>Checksum hash of the schema (Base64 MD5). Use this to verify schema contents, identify changes between schema versions, and for caching.</value>
         [DataMember(Name = "checksum", IsRequired = true, EmitDefaultValue = true)]
         public string Checksum { get; set; }
 

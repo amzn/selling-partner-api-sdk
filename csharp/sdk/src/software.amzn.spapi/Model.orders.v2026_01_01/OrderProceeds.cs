@@ -35,9 +35,11 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// Initializes a new instance of the <see cref="OrderProceeds" /> class.
         /// </summary>
         /// <param name="grandTotal">grandTotal.</param>
-        public OrderProceeds(Money? grandTotal = default(Money?))
+        /// <param name="breakdowns">Categorized proceeds for the order. Proceed categories are either aggregated across all order items (such as &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, and &#x60;TAX&#x60;) or applied at the order level (such as &#x60;DELIVERY_TIP&#x60;)..</param>
+        public OrderProceeds(Money? grandTotal = default(Money?), List<OrderProceedsBreakdown>? breakdowns = default(List<OrderProceedsBreakdown>?))
         {
             this.GrandTotal = grandTotal;
+            this.Breakdowns = breakdowns;
         }
 
         /// <summary>
@@ -45,6 +47,13 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// </summary>
         [DataMember(Name = "grandTotal", EmitDefaultValue = false)]
         public Money? GrandTotal { get; set; }
+
+        /// <summary>
+        /// Categorized proceeds for the order. Proceed categories are either aggregated across all order items (such as &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, and &#x60;TAX&#x60;) or applied at the order level (such as &#x60;DELIVERY_TIP&#x60;).
+        /// </summary>
+        /// <value>Categorized proceeds for the order. Proceed categories are either aggregated across all order items (such as &#x60;ITEM&#x60;, &#x60;SHIPPING&#x60;, and &#x60;TAX&#x60;) or applied at the order level (such as &#x60;DELIVERY_TIP&#x60;).</value>
+        [DataMember(Name = "breakdowns", EmitDefaultValue = false)]
+        public List<OrderProceedsBreakdown>? Breakdowns { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -55,6 +64,7 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
             StringBuilder sb = new StringBuilder();
             sb.Append("class OrderProceeds {\n");
             sb.Append("  GrandTotal: ").Append(GrandTotal).Append("\n");
+            sb.Append("  Breakdowns: ").Append(Breakdowns).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -35,12 +35,13 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
         /// <param name="productType">The Amazon product type name.</param>
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time.</param>
         /// <param name="sellerId">A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)</param>
-        /// <param name="productTypeVersion">The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to &quot;LATEST&quot;)</param>
+        /// <param name="productTypeVersion">The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to &quot;LATEST&quot;)</param>
         /// <param name="requirements">The name of the requirements set to retrieve requirements for. (optional, default to LISTING)</param>
         /// <param name="requirementsEnforced">Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to ENFORCED)</param>
         /// <param name="locale">Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to DEFAULT)</param>
+        /// <param name="parentageLevel">The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions. (optional)</param>
         /// <returns>ProductTypeDefinition</returns>
-        ProductTypeDefinition GetDefinitionsProductType (string productType, List<string> marketplaceIds, string? sellerId = null, string? productTypeVersion = null, string? requirements = null, string? requirementsEnforced = null, string? locale = null);
+        ProductTypeDefinition GetDefinitionsProductType (string productType, List<string> marketplaceIds, string? sellerId = null, string? productTypeVersion = null, string? requirements = null, string? requirementsEnforced = null, string? locale = null, string? parentageLevel = null);
 
         /// <summary>
         /// 
@@ -52,12 +53,13 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
         /// <param name="productType">The Amazon product type name.</param>
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time.</param>
         /// <param name="sellerId">A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)</param>
-        /// <param name="productTypeVersion">The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to &quot;LATEST&quot;)</param>
+        /// <param name="productTypeVersion">The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to &quot;LATEST&quot;)</param>
         /// <param name="requirements">The name of the requirements set to retrieve requirements for. (optional, default to LISTING)</param>
         /// <param name="requirementsEnforced">Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to ENFORCED)</param>
         /// <param name="locale">Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to DEFAULT)</param>
+        /// <param name="parentageLevel">The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions. (optional)</param>
         /// <returns>ApiResponse of ProductTypeDefinition</returns>
-        ApiResponse<ProductTypeDefinition> GetDefinitionsProductTypeWithHttpInfo (string productType, List<string> marketplaceIds, string? sellerId = null, string? productTypeVersion = null, string? requirements = null, string? requirementsEnforced = null, string? locale = null);
+        ApiResponse<ProductTypeDefinition> GetDefinitionsProductTypeWithHttpInfo (string productType, List<string> marketplaceIds, string? sellerId = null, string? productTypeVersion = null, string? requirements = null, string? requirementsEnforced = null, string? locale = null, string? parentageLevel = null);
         /// <summary>
         /// 
         /// </summary>
@@ -67,9 +69,9 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request.</param>
         /// <param name="keywords">A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)</param>
-        /// <param name="itemName">The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)</param>
-        /// <param name="locale">The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)</param>
-        /// <param name="searchLocale">The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)</param>
+        /// <param name="itemName">Title of ASIN to get product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)</param>
+        /// <param name="locale">Locale for display names in response. Defaults to primary locale of the marketplace. (optional)</param>
+        /// <param name="searchLocale">Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to primary locale of the marketplace. (optional)</param>
         /// <returns>ProductTypeList</returns>
         ProductTypeList SearchDefinitionsProductTypes (List<string> marketplaceIds, List<string>? keywords = null, string? itemName = null, string? locale = null, string? searchLocale = null);
 
@@ -82,9 +84,9 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request.</param>
         /// <param name="keywords">A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)</param>
-        /// <param name="itemName">The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)</param>
-        /// <param name="locale">The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)</param>
-        /// <param name="searchLocale">The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)</param>
+        /// <param name="itemName">Title of ASIN to get product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)</param>
+        /// <param name="locale">Locale for display names in response. Defaults to primary locale of the marketplace. (optional)</param>
+        /// <param name="searchLocale">Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to primary locale of the marketplace. (optional)</param>
         /// <returns>ApiResponse of ProductTypeList</returns>
         ApiResponse<ProductTypeList> SearchDefinitionsProductTypesWithHttpInfo (List<string> marketplaceIds, List<string>? keywords = null, string? itemName = null, string? locale = null, string? searchLocale = null);
         #endregion Synchronous Operations
@@ -99,12 +101,13 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
         /// <param name="productType">The Amazon product type name.</param>
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time.</param>
         /// <param name="sellerId">A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)</param>
-        /// <param name="productTypeVersion">The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to &quot;LATEST&quot;)</param>
+        /// <param name="productTypeVersion">The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to &quot;LATEST&quot;)</param>
         /// <param name="requirements">The name of the requirements set to retrieve requirements for. (optional, default to LISTING)</param>
         /// <param name="requirementsEnforced">Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to ENFORCED)</param>
         /// <param name="locale">Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to DEFAULT)</param>
+        /// <param name="parentageLevel">The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions. (optional)</param>
         /// <returns>Task of ProductTypeDefinition</returns>
-        System.Threading.Tasks.Task<ProductTypeDefinition> GetDefinitionsProductTypeAsync (string productType, List<string> marketplaceIds, string? sellerId = null, string? productTypeVersion = null, string? requirements = null, string? requirementsEnforced = null, string? locale = null);
+        System.Threading.Tasks.Task<ProductTypeDefinition> GetDefinitionsProductTypeAsync (string productType, List<string> marketplaceIds, string? sellerId = null, string? productTypeVersion = null, string? requirements = null, string? requirementsEnforced = null, string? locale = null, string? parentageLevel = null);
 
         /// <summary>
         /// 
@@ -116,12 +119,13 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
         /// <param name="productType">The Amazon product type name.</param>
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time.</param>
         /// <param name="sellerId">A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)</param>
-        /// <param name="productTypeVersion">The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to &quot;LATEST&quot;)</param>
+        /// <param name="productTypeVersion">The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to &quot;LATEST&quot;)</param>
         /// <param name="requirements">The name of the requirements set to retrieve requirements for. (optional, default to LISTING)</param>
         /// <param name="requirementsEnforced">Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to ENFORCED)</param>
         /// <param name="locale">Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to DEFAULT)</param>
+        /// <param name="parentageLevel">The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions. (optional)</param>
         /// <returns>Task of ApiResponse (ProductTypeDefinition)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ProductTypeDefinition>> GetDefinitionsProductTypeAsyncWithHttpInfo (string productType, List<string> marketplaceIds, string? sellerId = null, string? productTypeVersion = null, string? requirements = null, string? requirementsEnforced = null, string? locale = null);
+        System.Threading.Tasks.Task<ApiResponse<ProductTypeDefinition>> GetDefinitionsProductTypeAsyncWithHttpInfo (string productType, List<string> marketplaceIds, string? sellerId = null, string? productTypeVersion = null, string? requirements = null, string? requirementsEnforced = null, string? locale = null, string? parentageLevel = null);
         /// <summary>
         /// 
         /// </summary>
@@ -131,9 +135,9 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request.</param>
         /// <param name="keywords">A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)</param>
-        /// <param name="itemName">The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)</param>
-        /// <param name="locale">The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)</param>
-        /// <param name="searchLocale">The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)</param>
+        /// <param name="itemName">Title of ASIN to get product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)</param>
+        /// <param name="locale">Locale for display names in response. Defaults to primary locale of the marketplace. (optional)</param>
+        /// <param name="searchLocale">Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to primary locale of the marketplace. (optional)</param>
         /// <returns>Task of ProductTypeList</returns>
         System.Threading.Tasks.Task<ProductTypeList> SearchDefinitionsProductTypesAsync (List<string> marketplaceIds, List<string>? keywords = null, string? itemName = null, string? locale = null, string? searchLocale = null);
 
@@ -146,9 +150,9 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request.</param>
         /// <param name="keywords">A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)</param>
-        /// <param name="itemName">The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)</param>
-        /// <param name="locale">The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)</param>
-        /// <param name="searchLocale">The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)</param>
+        /// <param name="itemName">Title of ASIN to get product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)</param>
+        /// <param name="locale">Locale for display names in response. Defaults to primary locale of the marketplace. (optional)</param>
+        /// <param name="searchLocale">Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to primary locale of the marketplace. (optional)</param>
         /// <returns>Task of ApiResponse (ProductTypeList)</returns>
         System.Threading.Tasks.Task<ApiResponse<ProductTypeList>> SearchDefinitionsProductTypesAsyncWithHttpInfo (List<string> marketplaceIds, List<string>? keywords = null, string? itemName = null, string? locale = null, string? searchLocale = null);
         #endregion Asynchronous Operations
@@ -249,14 +253,15 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
         /// <param name="productType">The Amazon product type name.</param>
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time.</param>
         /// <param name="sellerId">A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)</param>
-        /// <param name="productTypeVersion">The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to &quot;LATEST&quot;)</param>
+        /// <param name="productTypeVersion">The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to &quot;LATEST&quot;)</param>
         /// <param name="requirements">The name of the requirements set to retrieve requirements for. (optional, default to LISTING)</param>
         /// <param name="requirementsEnforced">Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to ENFORCED)</param>
         /// <param name="locale">Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to DEFAULT)</param>
+        /// <param name="parentageLevel">The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions. (optional)</param>
         /// <returns>ProductTypeDefinition</returns>
-        public ProductTypeDefinition GetDefinitionsProductType (string productType, List<string> marketplaceIds, string? sellerId = null, string? productTypeVersion = null, string? requirements = null, string? requirementsEnforced = null, string? locale = null)
+        public ProductTypeDefinition GetDefinitionsProductType (string productType, List<string> marketplaceIds, string? sellerId = null, string? productTypeVersion = null, string? requirements = null, string? requirementsEnforced = null, string? locale = null, string? parentageLevel = null)
         {
-             ApiResponse<ProductTypeDefinition> localVarResponse = GetDefinitionsProductTypeWithHttpInfo(productType, marketplaceIds, sellerId, productTypeVersion, requirements, requirementsEnforced, locale);
+             ApiResponse<ProductTypeDefinition> localVarResponse = GetDefinitionsProductTypeWithHttpInfo(productType, marketplaceIds, sellerId, productTypeVersion, requirements, requirementsEnforced, locale, parentageLevel);
              return localVarResponse.Data;
         }
 
@@ -267,12 +272,13 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
         /// <param name="productType">The Amazon product type name.</param>
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time.</param>
         /// <param name="sellerId">A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)</param>
-        /// <param name="productTypeVersion">The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to &quot;LATEST&quot;)</param>
+        /// <param name="productTypeVersion">The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to &quot;LATEST&quot;)</param>
         /// <param name="requirements">The name of the requirements set to retrieve requirements for. (optional, default to LISTING)</param>
         /// <param name="requirementsEnforced">Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to ENFORCED)</param>
         /// <param name="locale">Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to DEFAULT)</param>
+        /// <param name="parentageLevel">The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions. (optional)</param>
         /// <returns>ApiResponse of ProductTypeDefinition</returns>
-        public ApiResponse< ProductTypeDefinition > GetDefinitionsProductTypeWithHttpInfo (string productType, List<string> marketplaceIds, string? sellerId = null, string? productTypeVersion = null, string? requirements = null, string? requirementsEnforced = null, string? locale = null)
+        public ApiResponse< ProductTypeDefinition > GetDefinitionsProductTypeWithHttpInfo (string productType, List<string> marketplaceIds, string? sellerId = null, string? productTypeVersion = null, string? requirements = null, string? requirementsEnforced = null, string? locale = null, string? parentageLevel = null)
         {
             // verify the required parameter 'productType' is set
             if (productType == null)
@@ -309,6 +315,7 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
             if (requirements != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "requirements", requirements)); // query parameter
             if (requirementsEnforced != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "requirementsEnforced", requirementsEnforced)); // query parameter
             if (locale != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "locale", locale)); // query parameter
+            if (parentageLevel != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "parentageLevel", parentageLevel)); // query parameter
 
 
             // make the HTTP request
@@ -334,14 +341,15 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
         /// <param name="productType">The Amazon product type name.</param>
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time.</param>
         /// <param name="sellerId">A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)</param>
-        /// <param name="productTypeVersion">The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to &quot;LATEST&quot;)</param>
+        /// <param name="productTypeVersion">The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to &quot;LATEST&quot;)</param>
         /// <param name="requirements">The name of the requirements set to retrieve requirements for. (optional, default to LISTING)</param>
         /// <param name="requirementsEnforced">Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to ENFORCED)</param>
         /// <param name="locale">Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to DEFAULT)</param>
+        /// <param name="parentageLevel">The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions. (optional)</param>
         /// <returns>Task of ProductTypeDefinition</returns>
-        public async System.Threading.Tasks.Task<ProductTypeDefinition> GetDefinitionsProductTypeAsync (string productType, List<string> marketplaceIds, string? sellerId = null, string? productTypeVersion = null, string? requirements = null, string? requirementsEnforced = null, string? locale = null)
+        public async System.Threading.Tasks.Task<ProductTypeDefinition> GetDefinitionsProductTypeAsync (string productType, List<string> marketplaceIds, string? sellerId = null, string? productTypeVersion = null, string? requirements = null, string? requirementsEnforced = null, string? locale = null, string? parentageLevel = null)
         {
-             ApiResponse<ProductTypeDefinition> localVarResponse = await GetDefinitionsProductTypeAsyncWithHttpInfo(productType, marketplaceIds, sellerId, productTypeVersion, requirements, requirementsEnforced, locale);
+             ApiResponse<ProductTypeDefinition> localVarResponse = await GetDefinitionsProductTypeAsyncWithHttpInfo(productType, marketplaceIds, sellerId, productTypeVersion, requirements, requirementsEnforced, locale, parentageLevel);
              return localVarResponse.Data;
 
         }
@@ -353,12 +361,13 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
         /// <param name="productType">The Amazon product type name.</param>
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time.</param>
         /// <param name="sellerId">A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner. (optional)</param>
-        /// <param name="productTypeVersion">The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to &quot;LATEST&quot;)</param>
+        /// <param name="productTypeVersion">The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (optional, default to &quot;LATEST&quot;)</param>
         /// <param name="requirements">The name of the requirements set to retrieve requirements for. (optional, default to LISTING)</param>
         /// <param name="requirementsEnforced">Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (optional, default to ENFORCED)</param>
         /// <param name="locale">Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (optional, default to DEFAULT)</param>
+        /// <param name="parentageLevel">The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions. (optional)</param>
         /// <returns>Task of ApiResponse (ProductTypeDefinition)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ProductTypeDefinition>> GetDefinitionsProductTypeAsyncWithHttpInfo (string productType, List<string> marketplaceIds, string? sellerId = null, string? productTypeVersion = null, string? requirements = null, string? requirementsEnforced = null, string? locale = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ProductTypeDefinition>> GetDefinitionsProductTypeAsyncWithHttpInfo (string productType, List<string> marketplaceIds, string? sellerId = null, string? productTypeVersion = null, string? requirements = null, string? requirementsEnforced = null, string? locale = null, string? parentageLevel = null)
         {
             // verify the required parameter 'productType' is set
             if (productType == null)
@@ -395,6 +404,7 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
             if (requirements != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "requirements", requirements)); // query parameter
             if (requirementsEnforced != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "requirementsEnforced", requirementsEnforced)); // query parameter
             if (locale != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "locale", locale)); // query parameter
+            if (parentageLevel != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "parentageLevel", parentageLevel)); // query parameter
 
 
             // make the HTTP request
@@ -418,9 +428,9 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request.</param>
         /// <param name="keywords">A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)</param>
-        /// <param name="itemName">The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)</param>
-        /// <param name="locale">The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)</param>
-        /// <param name="searchLocale">The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)</param>
+        /// <param name="itemName">Title of ASIN to get product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)</param>
+        /// <param name="locale">Locale for display names in response. Defaults to primary locale of the marketplace. (optional)</param>
+        /// <param name="searchLocale">Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to primary locale of the marketplace. (optional)</param>
         /// <returns>ProductTypeList</returns>
         public ProductTypeList SearchDefinitionsProductTypes (List<string> marketplaceIds, List<string>? keywords = null, string? itemName = null, string? locale = null, string? searchLocale = null)
         {
@@ -434,9 +444,9 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request.</param>
         /// <param name="keywords">A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)</param>
-        /// <param name="itemName">The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)</param>
-        /// <param name="locale">The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)</param>
-        /// <param name="searchLocale">The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)</param>
+        /// <param name="itemName">Title of ASIN to get product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)</param>
+        /// <param name="locale">Locale for display names in response. Defaults to primary locale of the marketplace. (optional)</param>
+        /// <param name="searchLocale">Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to primary locale of the marketplace. (optional)</param>
         /// <returns>ApiResponse of ProductTypeList</returns>
         public ApiResponse< ProductTypeList > SearchDefinitionsProductTypesWithHttpInfo (List<string> marketplaceIds, List<string>? keywords = null, string? itemName = null, string? locale = null, string? searchLocale = null)
         {
@@ -494,9 +504,9 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request.</param>
         /// <param name="keywords">A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)</param>
-        /// <param name="itemName">The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)</param>
-        /// <param name="locale">The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)</param>
-        /// <param name="searchLocale">The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)</param>
+        /// <param name="itemName">Title of ASIN to get product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)</param>
+        /// <param name="locale">Locale for display names in response. Defaults to primary locale of the marketplace. (optional)</param>
+        /// <param name="searchLocale">Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to primary locale of the marketplace. (optional)</param>
         /// <returns>Task of ProductTypeList</returns>
         public async System.Threading.Tasks.Task<ProductTypeList> SearchDefinitionsProductTypesAsync (List<string> marketplaceIds, List<string>? keywords = null, string? itemName = null, string? locale = null, string? searchLocale = null)
         {
@@ -511,9 +521,9 @@ namespace software.amzn.spapi.Api.productTypeDefinitions.v2020_09_01
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceIds">A comma-delimited list of Amazon marketplace identifiers for the request.</param>
         /// <param name="keywords">A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;. (optional)</param>
-        /// <param name="itemName">The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)</param>
-        /// <param name="locale">The locale for the display names in the response. Defaults to the primary locale of the marketplace. (optional)</param>
-        /// <param name="searchLocale">The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace. (optional)</param>
+        /// <param name="itemName">Title of ASIN to get product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;. (optional)</param>
+        /// <param name="locale">Locale for display names in response. Defaults to primary locale of the marketplace. (optional)</param>
+        /// <param name="searchLocale">Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to primary locale of the marketplace. (optional)</param>
         /// <returns>Task of ApiResponse (ProductTypeList)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<ProductTypeList>> SearchDefinitionsProductTypesAsyncWithHttpInfo (List<string> marketplaceIds, List<string>? keywords = null, string? itemName = null, string? locale = null, string? searchLocale = null)
         {

@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.notifications.v1
 {
     /// <summary>
-    /// A filter used to select the aggregation time period at which to send notifications (for example: limit to one notification every five minutes for high frequency notifications).
+    /// A filter you can use to select the aggregation time period at which to send notifications (for example, limit to one notification every five minutes for high frequency notifications).
     /// </summary>
     [DataContract(Name = "AggregationFilter")]
     public partial class AggregationFilter : IValidatableObject
