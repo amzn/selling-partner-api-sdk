@@ -17,7 +17,7 @@ export class RestrictionList {
      * A list of restrictions for the specified Amazon catalog item.
      * @alias module:listingsrestrictions_v2021_08_01/model/RestrictionList
      * @class
-     * @param restrictions {Restriction[]}
+     * @param restrictions {Restriction[]} A list of restrictions.
      */
     constructor(restrictions: Restriction[]);
     restrictions: Restriction[];

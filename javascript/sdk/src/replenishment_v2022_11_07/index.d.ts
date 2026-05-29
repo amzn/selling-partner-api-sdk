@@ -10,6 +10,7 @@ import { ErrorList } from './model/ErrorList.js';
 import { ForecastDeliveries } from './model/ForecastDeliveries.js';
 import { FulfillmentChannelType } from './model/FulfillmentChannelType.js';
 import { GetSellingPartnerMetricsRequest } from './model/GetSellingPartnerMetricsRequest.js';
+import { GetSellingPartnerMetricsRequestFilters } from './model/GetSellingPartnerMetricsRequestFilters.js';
 import { GetSellingPartnerMetricsResponse } from './model/GetSellingPartnerMetricsResponse.js';
 import { GetSellingPartnerMetricsResponseMetric } from './model/GetSellingPartnerMetricsResponseMetric.js';
 import { ListOfferMetricsRequest } from './model/ListOfferMetricsRequest.js';
@@ -40,5 +41,5 @@ import { TimeInterval } from './model/TimeInterval.js';
 import { TimePeriodType } from './model/TimePeriodType.js';
 import { OffersApi } from './api/OffersApi.js';
 import { SellingpartnersApi } from './api/SellingpartnersApi.js';
-export { ApiClient, AggregationFrequency, AutoEnrollmentPreference, DeliveriesCondition, DiscountFunding, EligibilityStatus, EnrollmentMethod, Error, ErrorList, ForecastDeliveries, FulfillmentChannelType, GetSellingPartnerMetricsRequest, GetSellingPartnerMetricsResponse, GetSellingPartnerMetricsResponseMetric, ListOfferMetricsRequest, ListOfferMetricsRequestFilters, ListOfferMetricsRequestPagination, ListOfferMetricsRequestSort, ListOfferMetricsResponse, ListOfferMetricsResponseOffer, ListOfferMetricsSortKey, ListOffersRequest, ListOffersRequestFilters, ListOffersRequestPagination, ListOffersRequestSort, ListOffersResponse, ListOffersResponseOffer, ListOffersSortKey, Metric, OfferProgramConfiguration, OfferProgramConfigurationPreferences, OfferProgramConfigurationPromotions, OfferProgramConfigurationPromotionsDiscountFunding, PaginationResponse, Preference, ProgramType, Promotion, SortOrder, TimeInterval, TimePeriodType, OffersApi, SellingpartnersApi };
+export { ApiClient, AggregationFrequency, AutoEnrollmentPreference, DeliveriesCondition, DiscountFunding, EligibilityStatus, EnrollmentMethod, Error, ErrorList, ForecastDeliveries, FulfillmentChannelType, GetSellingPartnerMetricsRequest, GetSellingPartnerMetricsRequestFilters, GetSellingPartnerMetricsResponse, GetSellingPartnerMetricsResponseMetric, ListOfferMetricsRequest, ListOfferMetricsRequestFilters, ListOfferMetricsRequestPagination, ListOfferMetricsRequestSort, ListOfferMetricsResponse, ListOfferMetricsResponseOffer, ListOfferMetricsSortKey, ListOffersRequest, ListOffersRequestFilters, ListOffersRequestPagination, ListOffersRequestSort, ListOffersResponse, ListOffersResponseOffer, ListOffersSortKey, Metric, OfferProgramConfiguration, OfferProgramConfigurationPreferences, OfferProgramConfigurationPromotions, OfferProgramConfigurationPromotionsDiscountFunding, PaginationResponse, Preference, ProgramType, Promotion, SortOrder, TimeInterval, TimePeriodType, OffersApi, SellingpartnersApi };
 //# sourceMappingURL=index.d.ts.map

@@ -13,6 +13,7 @@
 
 import { ApiClient } from '../ApiClient.js'
 import { Money } from './Money.js'
+import { OrderProceedsBreakdown } from './OrderProceedsBreakdown.js'
 
 /**
  * The OrderProceeds model module.
@@ -51,6 +52,7 @@ export class OrderProceeds {
       }
       obj = obj || new OrderProceeds()
       if (data.hasOwnProperty('grandTotal')) { obj.grandTotal = Money.constructFromObject(data.grandTotal) }
+      if (data.hasOwnProperty('breakdowns')) { obj.breakdowns = ApiClient.convertToType(data.breakdowns, [OrderProceedsBreakdown]) }
     }
     return obj
   }
@@ -61,3 +63,10 @@ export class OrderProceeds {
  * @type {Money}
  */
 OrderProceeds.prototype.grandTotal = undefined
+
+/**
+ * Categorized proceeds for the order. Proceed categories are either aggregated across all order items (such as `ITEM`, `SHIPPING`, and `TAX`) or applied at the order level (such as `DELIVERY_TIP`).
+ * @member {OrderProceedsBreakdown[]} breakdowns
+ * @type {OrderProceedsBreakdown[]}
+ */
+OrderProceeds.prototype.breakdowns = undefined

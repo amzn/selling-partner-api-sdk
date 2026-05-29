@@ -50,6 +50,7 @@ import { GetServiceJobsResponse } from './model/GetServiceJobsResponse.js'
 import { ItemDelivery } from './model/ItemDelivery.js'
 import { ItemDeliveryPromise } from './model/ItemDeliveryPromise.js'
 import { JobListing } from './model/JobListing.js'
+import { LinkedAsset } from './model/LinkedAsset.js'
 import { MoneyAmount } from './model/MoneyAmount.js'
 import { Payment } from './model/Payment.js'
 import { Poa } from './model/Poa.js'
@@ -320,6 +321,12 @@ export {
      * @property {module:services_v1/model/JobListing}
      */
   JobListing,
+
+  /**
+     * The LinkedAsset model constructor.
+     * @property {module:services_v1/model/LinkedAsset}
+     */
+  LinkedAsset,
 
   /**
      * The MoneyAmount model constructor.

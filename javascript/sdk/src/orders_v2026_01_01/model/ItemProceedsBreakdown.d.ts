@@ -13,15 +13,15 @@ export class ItemProceedsBreakdown {
      */
     static constructFromObject(data: Object, obj: ItemProceedsBreakdown): ItemProceedsBreakdown;
     /**
-     * Category classification of the proceeds breakdown.   **Possible values**: `ITEM`, `SHIPPING`, `GIFT_WRAP`, `COD_FEE`, `OTHER`, `TAX`, `DISCOUNT`
-     * @member {String} type
-     * @type {String}
+     * Constructs a new <code>ItemProceedsBreakdown</code>.
+     * Detailed proceeds breakdown for a specific order item.
+     * @alias module:orders_v2026_01_01/model/ItemProceedsBreakdown
+     * @class
+     * @param type {String} Category classification of the proceeds breakdown.   **Possible values**: `ITEM`, `SHIPPING`, `GIFT_WRAP`, `COD_FEE`, `OTHER`, `TAX`, `DISCOUNT`
+     * @param subtotal {Money}
      */
+    constructor(type: string, subtotal: Money);
     type: string;
-    /**
-     * @member {Money} subtotal
-     * @type {Money}
-     */
     subtotal: Money;
     /**
      * Further granular breakdown of the subtotal.

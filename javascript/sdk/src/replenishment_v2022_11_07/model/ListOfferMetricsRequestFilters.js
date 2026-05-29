@@ -13,6 +13,7 @@
 
 import { ApiClient } from '../ApiClient.js'
 import { AggregationFrequency } from './AggregationFrequency.js'
+import { FulfillmentChannelType } from './FulfillmentChannelType.js'
 import { ProgramType } from './ProgramType.js'
 import { TimeInterval } from './TimeInterval.js'
 import { TimePeriodType } from './TimePeriodType.js'
@@ -25,7 +26,7 @@ import { TimePeriodType } from './TimePeriodType.js'
 export class ListOfferMetricsRequestFilters {
   /**
    * Constructs a new <code>ListOfferMetricsRequestFilters</code>.
-   * Use these parameters to filter results. Any result must match all provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.
+   * Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept multiple values (arrays), the API returns results that match at least one value in the array.
    * @alias module:replenishment_v2022_11_07/model/ListOfferMetricsRequestFilters
    * @class
    * @param timeInterval {TimeInterval}
@@ -67,6 +68,10 @@ export class ListOfferMetricsRequestFilters {
       if (data.hasOwnProperty('marketplaceId')) { obj.marketplaceId = ApiClient.convertToType(data.marketplaceId, 'String') }
       if (data.hasOwnProperty('programTypes')) { obj.programTypes = ApiClient.convertToType(data.programTypes, [ProgramType]) }
       if (data.hasOwnProperty('asins')) { obj.asins = ApiClient.convertToType(data.asins, ['String']) }
+      if (data.hasOwnProperty('skus')) { obj.skus = ApiClient.convertToType(data.skus, ['String']) }
+      if (data.hasOwnProperty('fulfillmentChannelTypes')) { obj.fulfillmentChannelTypes = ApiClient.convertToType(data.fulfillmentChannelTypes, [FulfillmentChannelType]) }
+      if (data.hasOwnProperty('brandNames')) { obj.brandNames = ApiClient.convertToType(data.brandNames, ['String']) }
+      if (data.hasOwnProperty('productGroups')) { obj.productGroups = ApiClient.convertToType(data.productGroups, ['String']) }
     }
     return obj
   }
@@ -105,8 +110,36 @@ ListOfferMetricsRequestFilters.prototype.marketplaceId = undefined
 ListOfferMetricsRequestFilters.prototype.programTypes = undefined
 
 /**
- * A list of Amazon Standard Identification Numbers (ASINs).
+ * A list of Amazon Standard Identification Numbers (ASINs) to filter by.
  * @member {String[]} asins
  * @type {String[]}
  */
 ListOfferMetricsRequestFilters.prototype.asins = undefined
+
+/**
+ * [Applicable only for Sellers] A list of SKUs to filter by.
+ * @member {String[]} skus
+ * @type {String[]}
+ */
+ListOfferMetricsRequestFilters.prototype.skus = undefined
+
+/**
+ * [Applicable only for Sellers] The fulfillment channel types to filter by.
+ * @member {FulfillmentChannelType[]} fulfillmentChannelTypes
+ * @type {FulfillmentChannelType[]}
+ */
+ListOfferMetricsRequestFilters.prototype.fulfillmentChannelTypes = undefined
+
+/**
+ * [Applicable only for US marketplace] A list of brand names to filter by.
+ * @member {String[]} brandNames
+ * @type {String[]}
+ */
+ListOfferMetricsRequestFilters.prototype.brandNames = undefined
+
+/**
+ * [Applicable only for Vendors] A list of product group names to filter by.
+ * @member {String[]} productGroups
+ * @type {String[]}
+ */
+ListOfferMetricsRequestFilters.prototype.productGroups = undefined

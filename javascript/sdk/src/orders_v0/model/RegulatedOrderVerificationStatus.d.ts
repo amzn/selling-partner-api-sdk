@@ -48,8 +48,15 @@ export class RegulatedOrderVerificationStatus {
      * @type {ValidVerificationDetail[]}
      */
     validVerificationDetails: ValidVerificationDetail[];
+    /**
+     * Valid interim status codes that may be used when populating `InterimStatusDetail`. Each element contains a `StatusCode` identifier and its customer-facing `StatusDescription`.
+     * @member {ValidInterimStatusCode[]} validInterimStatusCodes
+     * @type {ValidInterimStatusCode[]}
+     */
+    validInterimStatusCodes: ValidInterimStatusCode[];
 }
 import { VerificationStatus } from './VerificationStatus.js';
 import { RejectionReason } from './RejectionReason.js';
 import { ValidVerificationDetail } from './ValidVerificationDetail.js';
+import { ValidInterimStatusCode } from './ValidInterimStatusCode.js';
 //# sourceMappingURL=RegulatedOrderVerificationStatus.d.ts.map

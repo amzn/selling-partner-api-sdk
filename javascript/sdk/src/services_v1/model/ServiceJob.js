@@ -67,6 +67,8 @@ export class ServiceJob {
       if (data.hasOwnProperty('preferredAppointmentTimes')) { obj.preferredAppointmentTimes = ApiClient.convertToType(data.preferredAppointmentTimes, [AppointmentTime]) }
       if (data.hasOwnProperty('appointments')) { obj.appointments = ApiClient.convertToType(data.appointments, [Appointment]) }
       if (data.hasOwnProperty('serviceOrderId')) { obj.serviceOrderId = ApiClient.convertToType(data.serviceOrderId, 'String') }
+      if (data.hasOwnProperty('productOrderIds')) { obj.productOrderIds = ApiClient.convertToType(data.productOrderIds, ['String']) }
+      if (data.hasOwnProperty('trackingIds')) { obj.trackingIds = ApiClient.convertToType(data.trackingIds, ['String']) }
       if (data.hasOwnProperty('marketplaceId')) { obj.marketplaceId = ApiClient.convertToType(data.marketplaceId, 'String') }
       if (data.hasOwnProperty('storeId')) { obj.storeId = ApiClient.convertToType(data.storeId, 'String') }
       if (data.hasOwnProperty('buyer')) { obj.buyer = Buyer.constructFromObject(data.buyer) }
@@ -186,6 +188,20 @@ ServiceJob.prototype.appointments = undefined
  * @type {String}
  */
 ServiceJob.prototype.serviceOrderId = undefined
+
+/**
+ * A list of associated product order IDs for the service job.
+ * @member {String[]} productOrderIds
+ * @type {String[]}
+ */
+ServiceJob.prototype.productOrderIds = undefined
+
+/**
+ * A list of associated product tracking IDs for the service job.
+ * @member {String[]} trackingIds
+ * @type {String[]}
+ */
+ServiceJob.prototype.trackingIds = undefined
 
 /**
  * The marketplace identifier.

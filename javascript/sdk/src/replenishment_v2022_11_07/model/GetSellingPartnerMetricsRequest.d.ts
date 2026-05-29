@@ -38,10 +38,16 @@ export class GetSellingPartnerMetricsRequest {
      * @type {Metric[]}
      */
     metrics: Metric[];
+    /**
+     * @member {GetSellingPartnerMetricsRequestFilters} filters
+     * @type {GetSellingPartnerMetricsRequestFilters}
+     */
+    filters: GetSellingPartnerMetricsRequestFilters;
 }
 import { TimeInterval } from './TimeInterval.js';
 import { TimePeriodType } from './TimePeriodType.js';
 import { AggregationFrequency } from './AggregationFrequency.js';
 import { Metric } from './Metric.js';
+import { GetSellingPartnerMetricsRequestFilters } from './GetSellingPartnerMetricsRequestFilters.js';
 import { ProgramType } from './ProgramType.js';
 //# sourceMappingURL=GetSellingPartnerMetricsRequest.d.ts.map

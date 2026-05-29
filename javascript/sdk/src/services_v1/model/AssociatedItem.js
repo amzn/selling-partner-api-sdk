@@ -13,6 +13,7 @@
 
 import { ApiClient } from '../ApiClient.js'
 import { ItemDelivery } from './ItemDelivery.js'
+import { LinkedAsset } from './LinkedAsset.js'
 
 /**
  * The AssociatedItem model module.
@@ -57,6 +58,7 @@ export class AssociatedItem {
       if (data.hasOwnProperty('itemStatus')) { obj.itemStatus = ApiClient.convertToType(data.itemStatus, 'String') }
       if (data.hasOwnProperty('brandName')) { obj.brandName = ApiClient.convertToType(data.brandName, 'String') }
       if (data.hasOwnProperty('itemDelivery')) { obj.itemDelivery = ItemDelivery.constructFromObject(data.itemDelivery) }
+      if (data.hasOwnProperty('linkedAssets')) { obj.linkedAssets = ApiClient.convertToType(data.linkedAssets, [LinkedAsset]) }
     }
     return obj
   }
@@ -140,3 +142,10 @@ AssociatedItem.prototype.brandName = undefined
  * @type {ItemDelivery}
  */
 AssociatedItem.prototype.itemDelivery = undefined
+
+/**
+ * A list of customer-owned assets on which the service must be performed.
+ * @member {LinkedAsset[]} linkedAssets
+ * @type {LinkedAsset[]}
+ */
+AssociatedItem.prototype.linkedAssets = undefined

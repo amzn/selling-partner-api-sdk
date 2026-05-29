@@ -70,10 +70,11 @@ export class DefinitionsApi {
      * @param {String[]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time.
      * @param {Object} [opts] Optional parameters
      * @param {String} [opts.sellerId] A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner.
-     * @param {String} [opts.productTypeVersion] The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (default to &#39;LATEST&#39;)
+     * @param {String} [opts.productTypeVersion] The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (default to &#39;LATEST&#39;)
      * @param {String} [opts.requirements] The name of the requirements set to retrieve requirements for. (default to &#39;LISTING&#39;)
      * @param {String} [opts.requirementsEnforced] Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (default to &#39;ENFORCED&#39;)
      * @param {String} [opts.locale] Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (default to &#39;DEFAULT&#39;)
+     * @param {String} [opts.parentageLevel] The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions.
      * @return {Promise<ProductTypeDefinition>}
      */
   getDefinitionsProductTypeWithHttpInfo (productType, marketplaceIds, opts) {
@@ -99,7 +100,8 @@ export class DefinitionsApi {
       productTypeVersion: opts.productTypeVersion,
       requirements: opts.requirements,
       requirementsEnforced: opts.requirementsEnforced,
-      locale: opts.locale
+      locale: opts.locale,
+      parentageLevel: opts.parentageLevel
     }
     const headerParams = {
     }
@@ -123,10 +125,11 @@ export class DefinitionsApi {
      * @param {String[]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time.
      * @param {Object} [opts] Optional parameters
      * @param {String} [opts.sellerId] A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner.
-     * @param {String} [opts.productTypeVersion] The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;,. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (default to &#39;LATEST&#39;)
+     * @param {String} [opts.productTypeVersion] The version of the Amazon product type to retrieve. Defaults to \&quot;LATEST\&quot;. Prerelease versions of product type definitions may be retrieved with \&quot;RELEASE_CANDIDATE\&quot;. If no prerelease version is currently available, the \&quot;LATEST\&quot; live version will be provided. (default to &#39;LATEST&#39;)
      * @param {String} [opts.requirements] The name of the requirements set to retrieve requirements for. (default to &#39;LISTING&#39;)
      * @param {String} [opts.requirementsEnforced] Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (default to &#39;ENFORCED&#39;)
      * @param {String} [opts.locale] Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (default to &#39;DEFAULT&#39;)
+     * @param {String} [opts.parentageLevel] The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions.
      * @return {Promise<ProductTypeDefinition>}
      */
   getDefinitionsProductType (productType, marketplaceIds, opts) {
@@ -141,9 +144,9 @@ export class DefinitionsApi {
      * @param {String[]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
      * @param {Object} [opts] Optional parameters
      * @param {String[]} [opts.keywords] A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;.
-     * @param {String} [opts.itemName] The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;.
-     * @param {String} [opts.locale] The locale for the display names in the response. Defaults to the primary locale of the marketplace.
-     * @param {String} [opts.searchLocale] The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace.
+     * @param {String} [opts.itemName] Title of ASIN to get product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;.
+     * @param {String} [opts.locale] Locale for display names in response. Defaults to primary locale of the marketplace.
+     * @param {String} [opts.searchLocale] Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to primary locale of the marketplace.
      * @return {Promise<ProductTypeList>}
      */
   searchDefinitionsProductTypesWithHttpInfo (marketplaceIds, opts) {
@@ -185,9 +188,9 @@ export class DefinitionsApi {
      * @param {String[]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
      * @param {Object} [opts] Optional parameters
      * @param {String[]} [opts.keywords] A comma-delimited list of keywords to search product types. **Note:** Cannot be used with &#x60;itemName&#x60;.
-     * @param {String} [opts.itemName] The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;.
-     * @param {String} [opts.locale] The locale for the display names in the response. Defaults to the primary locale of the marketplace.
-     * @param {String} [opts.searchLocale] The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace.
+     * @param {String} [opts.itemName] Title of ASIN to get product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;.
+     * @param {String} [opts.locale] Locale for display names in response. Defaults to primary locale of the marketplace.
+     * @param {String} [opts.searchLocale] Language used for &#x60;keywords&#x60; or &#x60;itemName&#x60; parameters. Defaults to primary locale of the marketplace.
      * @return {Promise<ProductTypeList>}
      */
   searchDefinitionsProductTypes (marketplaceIds, opts) {

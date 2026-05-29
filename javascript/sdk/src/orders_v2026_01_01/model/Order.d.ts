@@ -83,6 +83,12 @@ export class Order {
      * @type {OrderPackage[]}
      */
     packages: OrderPackage[];
+    /**
+     * The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.
+     * @member {FulfillmentOrder[]} fulfillmentOrders
+     * @type {FulfillmentOrder[]}
+     */
+    fulfillmentOrders: FulfillmentOrder[];
 }
 import { SalesChannel } from './SalesChannel.js';
 import { OrderItem } from './OrderItem.js';
@@ -95,4 +101,5 @@ import { OrderPayment } from './OrderPayment.js';
 import { OrderTax } from './OrderTax.js';
 import { OrderFulfillment } from './OrderFulfillment.js';
 import { OrderPackage } from './OrderPackage.js';
+import { FulfillmentOrder } from './FulfillmentOrder.js';
 //# sourceMappingURL=Order.d.ts.map

@@ -22,7 +22,7 @@ import { AggregationSettings } from './AggregationSettings.js'
 export class AggregationFilter {
   /**
    * Constructs a new <code>AggregationFilter</code>.
-   * A filter used to select the aggregation time period at which to send notifications (for example: limit to one notification every five minutes for high frequency notifications).
+   * A filter you can use to select the aggregation time period at which to send notifications (for example, limit to one notification every five minutes for high frequency notifications).
    * @alias module:notifications_v1/model/AggregationFilter
    * @class
    */

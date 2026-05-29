@@ -237,6 +237,8 @@ export class ServiceApi {
        * @param {String[]} marketplaceIds Used to select jobs that were placed in the specified marketplaces.
        * @param {Object} [opts] Optional parameters
        * @param {String[]} [opts.serviceOrderIds] List of service order ids for the query you want to perform.Max values supported 20.
+       * @param {String[]} [opts.productOrderIds] A list of up to 20 associated product order IDs. You can use these IDs to query service jobs.
+       * @param {String[]} [opts.trackingIds] A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs.
        * @param {String[]} [opts.serviceJobStatus] A list of one or more job status by which to filter the list of jobs.
        * @param {String} [opts.pageToken] String returned in the response of your previous request.
        * @param {Number} [opts.pageSize] A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (default to 20)
@@ -255,6 +257,8 @@ export class ServiceApi {
        */
     getServiceJobsWithHttpInfo(marketplaceIds: string[], opts?: {
         serviceOrderIds?: string[] | undefined;
+        productOrderIds?: string[] | undefined;
+        trackingIds?: string[] | undefined;
         serviceJobStatus?: string[] | undefined;
         pageToken?: string | undefined;
         pageSize?: number | undefined;
@@ -275,6 +279,8 @@ export class ServiceApi {
        * @param {String[]} marketplaceIds Used to select jobs that were placed in the specified marketplaces.
        * @param {Object} [opts] Optional parameters
        * @param {String[]} [opts.serviceOrderIds] List of service order ids for the query you want to perform.Max values supported 20.
+       * @param {String[]} [opts.productOrderIds] A list of up to 20 associated product order IDs. You can use these IDs to query service jobs.
+       * @param {String[]} [opts.trackingIds] A list of up to 20 associated product tracking IDs. You can use these IDs to query service jobs.
        * @param {String[]} [opts.serviceJobStatus] A list of one or more job status by which to filter the list of jobs.
        * @param {String} [opts.pageToken] String returned in the response of your previous request.
        * @param {Number} [opts.pageSize] A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (default to 20)
@@ -293,6 +299,8 @@ export class ServiceApi {
        */
     getServiceJobs(marketplaceIds: string[], opts?: {
         serviceOrderIds?: string[] | undefined;
+        productOrderIds?: string[] | undefined;
+        trackingIds?: string[] | undefined;
         serviceJobStatus?: string[] | undefined;
         pageToken?: string | undefined;
         pageSize?: number | undefined;

@@ -22,10 +22,11 @@ import { SchemaLinkLink } from './SchemaLinkLink.js'
 export class SchemaLink {
   /**
    * Constructs a new <code>SchemaLink</code>.
+   * A link to metadata schema.
    * @alias module:producttypedefinitions_v2020_09_01/model/SchemaLink
    * @class
    * @param link {SchemaLinkLink}
-   * @param checksum {String} Checksum hash of the schema (Base64 MD5). Can be used to verify schema contents, identify changes between schema versions, and for caching.
+   * @param checksum {String} Checksum hash of the schema (Base64 MD5). Use this to verify schema contents, identify changes between schema versions, and for caching.
    */
   constructor (link, checksum) {
     this.link = link
@@ -67,7 +68,7 @@ export class SchemaLink {
 SchemaLink.prototype.link = undefined
 
 /**
- * Checksum hash of the schema (Base64 MD5). Can be used to verify schema contents, identify changes between schema versions, and for caching.
+ * Checksum hash of the schema (Base64 MD5). Use this to verify schema contents, identify changes between schema versions, and for caching.
  * @member {String} checksum
  * @type {String}
  */

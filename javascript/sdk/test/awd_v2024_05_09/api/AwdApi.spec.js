@@ -51,6 +51,18 @@ describe('AwdApi', () => {
       expect(response.response.statusCode).to.equal(204)
     });
   });
+  describe('confirmOutbound', () => {
+    it('should successfully call confirmOutboundWithHttpInfo', async () => {
+      await instructBackendMock("awd", "confirmOutbound", "204")
+      const params = [
+        generateMockData('String')
+      ];
+      const response = await instance.confirmOutboundWithHttpInfo(...params);
+
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(204)
+    });
+  });
   describe('confirmReplenishmentOrder', () => {
     it('should successfully call confirmReplenishmentOrderWithHttpInfo', async () => {
       await instructBackendMock("awd", "confirmReplenishmentOrder", "204")
@@ -70,6 +82,19 @@ describe('AwdApi', () => {
         generateMockData('InboundOrderCreationData')
       ];
       const response = await instance.createInboundWithHttpInfo(...params);
+
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(201)
+      assertValidResponsePayload(201, response.data);
+    });
+  });
+  describe('createOutbound', () => {
+    it('should successfully call createOutboundWithHttpInfo', async () => {
+      await instructBackendMock("awd", "createOutbound", "201")
+      const params = [
+        generateMockData('OutboundOrderCreationData')
+      ];
+      const response = await instance.createOutboundWithHttpInfo(...params);
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(201)
@@ -128,6 +153,32 @@ describe('AwdApi', () => {
       assertValidResponsePayload(200, response.data);
     });
   });
+  describe('getLabelPageTypes', () => {
+    it('should successfully call getLabelPageTypesWithHttpInfo', async () => {
+      await instructBackendMock("awd", "getLabelPageTypes", "200")
+      const params = [
+        generateMockData('String')
+      ];
+      const response = await instance.getLabelPageTypesWithHttpInfo(...params);
+
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data);
+    });
+  });
+  describe('getOutbound', () => {
+    it('should successfully call getOutboundWithHttpInfo', async () => {
+      await instructBackendMock("awd", "getOutbound", "200")
+      const params = [
+        generateMockData('String')
+      ];
+      const response = await instance.getOutboundWithHttpInfo(...params);
+
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data);
+    });
+  });
   describe('getReplenishmentOrder', () => {
     it('should successfully call getReplenishmentOrderWithHttpInfo', async () => {
       await instructBackendMock("awd", "getReplenishmentOrder", "200")
@@ -159,6 +210,18 @@ describe('AwdApi', () => {
       const params = [
       ];
       const response = await instance.listInventoryWithHttpInfo(...params);
+
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data);
+    });
+  });
+  describe('listOutbounds', () => {
+    it('should successfully call listOutboundsWithHttpInfo', async () => {
+      await instructBackendMock("awd", "listOutbounds", "200")
+      const params = [
+      ];
+      const response = await instance.listOutboundsWithHttpInfo(...params);
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(200)
@@ -201,6 +264,20 @@ describe('AwdApi', () => {
 
       expect(response.response).to.have.property('statusCode');
       expect(response.response.statusCode).to.equal(204)
+    });
+  });
+  describe('updateOutbound', () => {
+    it('should successfully call updateOutboundWithHttpInfo', async () => {
+      await instructBackendMock("awd", "updateOutbound", "200")
+      const params = [
+        generateMockData('String'),
+        generateMockData('OutboundOrder')
+      ];
+      const response = await instance.updateOutboundWithHttpInfo(...params);
+
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data);
     });
   });
 

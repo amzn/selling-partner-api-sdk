@@ -26,8 +26,12 @@ export class ItemProceedsBreakdown {
    * Detailed proceeds breakdown for a specific order item.
    * @alias module:orders_v2026_01_01/model/ItemProceedsBreakdown
    * @class
+   * @param type {String} Category classification of the proceeds breakdown.   **Possible values**: `ITEM`, `SHIPPING`, `GIFT_WRAP`, `COD_FEE`, `OTHER`, `TAX`, `DISCOUNT`
+   * @param subtotal {Money}
    */
-  constructor () {
+  constructor (type, subtotal) {
+    this.type = type
+    this.subtotal = subtotal
   }
 
   /**

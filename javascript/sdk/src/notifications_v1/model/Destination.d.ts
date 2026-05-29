@@ -14,7 +14,7 @@ export class Destination {
     static constructFromObject(data: Object, obj: Destination): Destination;
     /**
      * Constructs a new <code>Destination</code>.
-     * Information about the destination created when you call the &#x60;createDestination&#x60; operation.
+     * Information about the destination you create when you call the &#x60;createDestination&#x60; operation.
      * @alias module:notifications_v1/model/Destination
      * @class
      * @param name {String} The developer-defined name for this destination.

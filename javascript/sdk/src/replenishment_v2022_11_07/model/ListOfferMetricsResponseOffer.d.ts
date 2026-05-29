@@ -30,6 +30,18 @@ export class ListOfferMetricsResponseOffer {
      */
     fulfillmentChannelType: FulfillmentChannelType;
     /**
+     * The brand name associated with the offer.
+     * @member {String} brandName
+     * @type {String}
+     */
+    brandName: string;
+    /**
+     * The product group associated with the offer. This property is only supported for vendors and not for sellers.
+     * @member {String} productGroup
+     * @type {String}
+     */
+    productGroup: string;
+    /**
      * The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `PERFORMANCE` `timePeriodType`.
      * @member {Number} notDeliveredDueToOOS
      * @type {Number}
@@ -72,7 +84,7 @@ export class ListOfferMetricsResponseOffer {
      */
     couponsRevenuePenetration: number;
     /**
-     * The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.
+     * The percentage of new subscriptions from coupons. Applicable to `PERFORMANCE` `timePeriodType`.
      * @member {Number} shareOfCouponSubscriptions
      * @type {Number}
      */

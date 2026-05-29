@@ -18,7 +18,7 @@ export class ProductType {
      * @alias module:producttypedefinitions_v2020_09_01/model/ProductType
      * @class
      * @param name {String} The name of the Amazon product type.
-     * @param displayName {String} The human-readable and localized description of the Amazon product type.
+     * @param displayName {String} Human-readable and localized description of the Amazon product type.
      * @param marketplaceIds {String[]} The Amazon marketplace identifiers for which the product type definition is available.
      */
     constructor(name: string, displayName: string, marketplaceIds: string[]);

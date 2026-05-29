@@ -13,6 +13,7 @@
 
 import { ApiClient } from '../ApiClient.js'
 import { AggregationFrequency } from './AggregationFrequency.js'
+import { GetSellingPartnerMetricsRequestFilters } from './GetSellingPartnerMetricsRequestFilters.js'
 import { Metric } from './Metric.js'
 import { ProgramType } from './ProgramType.js'
 import { TimeInterval } from './TimeInterval.js'
@@ -65,6 +66,7 @@ export class GetSellingPartnerMetricsRequest {
       if (data.hasOwnProperty('aggregationFrequency')) { obj.aggregationFrequency = AggregationFrequency.constructFromObject(data.aggregationFrequency) }
       if (data.hasOwnProperty('timeInterval')) { obj.timeInterval = TimeInterval.constructFromObject(data.timeInterval) }
       if (data.hasOwnProperty('metrics')) { obj.metrics = ApiClient.convertToType(data.metrics, [Metric]) }
+      if (data.hasOwnProperty('filters')) { obj.filters = GetSellingPartnerMetricsRequestFilters.constructFromObject(data.filters) }
       if (data.hasOwnProperty('timePeriodType')) { obj.timePeriodType = TimePeriodType.constructFromObject(data.timePeriodType) }
       if (data.hasOwnProperty('marketplaceId')) { obj.marketplaceId = ApiClient.convertToType(data.marketplaceId, 'String') }
       if (data.hasOwnProperty('programTypes')) { obj.programTypes = ApiClient.convertToType(data.programTypes, [ProgramType]) }
@@ -91,6 +93,12 @@ GetSellingPartnerMetricsRequest.prototype.timeInterval = undefined
  * @type {Metric[]}
  */
 GetSellingPartnerMetricsRequest.prototype.metrics = undefined
+
+/**
+ * @member {GetSellingPartnerMetricsRequestFilters} filters
+ * @type {GetSellingPartnerMetricsRequestFilters}
+ */
+GetSellingPartnerMetricsRequest.prototype.filters = undefined
 
 /**
  * @member {TimePeriodType} timePeriodType

@@ -23,6 +23,7 @@ import { ErrorList } from './model/ErrorList.js'
 import { ForecastDeliveries } from './model/ForecastDeliveries.js'
 import { FulfillmentChannelType } from './model/FulfillmentChannelType.js'
 import { GetSellingPartnerMetricsRequest } from './model/GetSellingPartnerMetricsRequest.js'
+import { GetSellingPartnerMetricsRequestFilters } from './model/GetSellingPartnerMetricsRequestFilters.js'
 import { GetSellingPartnerMetricsResponse } from './model/GetSellingPartnerMetricsResponse.js'
 import { GetSellingPartnerMetricsResponseMetric } from './model/GetSellingPartnerMetricsResponseMetric.js'
 import { ListOfferMetricsRequest } from './model/ListOfferMetricsRequest.js'
@@ -132,6 +133,12 @@ export {
      * @property {module:replenishment_v2022_11_07/model/GetSellingPartnerMetricsRequest}
      */
   GetSellingPartnerMetricsRequest,
+
+  /**
+     * The GetSellingPartnerMetricsRequestFilters model constructor.
+     * @property {module:replenishment_v2022_11_07/model/GetSellingPartnerMetricsRequestFilters}
+     */
+  GetSellingPartnerMetricsRequestFilters,
 
   /**
      * The GetSellingPartnerMetricsResponse model constructor.

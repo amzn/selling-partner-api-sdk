@@ -223,7 +223,7 @@ GetSellingPartnerMetricsResponseMetric.prototype.revenuePenetrationFor10PercentS
 GetSellingPartnerMetricsResponseMetric.prototype.revenuePenetrationFor5PlusPercentSellerFunding = undefined
 
 /**
- * The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.
+ * The percentage of new subscriptions from coupons. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} shareOfCouponSubscriptions
  * @type {Number}
  */
@@ -279,28 +279,28 @@ GetSellingPartnerMetricsResponseMetric.prototype.establishedSubscriberLifeTimeVa
 GetSellingPartnerMetricsResponseMetric.prototype.establishedSubscriberLifeTimeValueFromSNS = undefined
 
 /**
- * Percentage of subscriptions created by offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months
+ * Percentage of subscriptions from offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months.
  * @member {Number} signupConversionFor0PercentSellerFunding
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.signupConversionFor0PercentSellerFunding = undefined
 
 /**
- * [Applicable only for Sellers] Percentage of subscriptions created by offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months
+ * [Applicable only for Sellers] Percentage of subscriptions from offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months.
  * @member {Number} signupConversionFor5PercentSellerFunding
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.signupConversionFor5PercentSellerFunding = undefined
 
 /**
- * [Applicable only for Sellers] Percentage of subscriptions created by offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months
+ * [Applicable only for Sellers] Percentage of subscriptions from offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months.
  * @member {Number} signupConversionFor10PercentSellerFunding
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.signupConversionFor10PercentSellerFunding = undefined
 
 /**
- * [Applicable only for Vendors] Percentage of subscriptions created by offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months
+ * [Applicable only for Vendors] Percentage of subscriptions from offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months.
  * @member {Number} signupConversionFor5PlusPercentSellerFunding
  * @type {Number}
  */

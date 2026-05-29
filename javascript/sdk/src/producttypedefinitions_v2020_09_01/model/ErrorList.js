@@ -25,7 +25,7 @@ export class ErrorList {
    * A list of error responses returned when a request is unsuccessful.
    * @alias module:producttypedefinitions_v2020_09_01/model/ErrorList
    * @class
-   * @param errors {Error[]}
+   * @param errors {Error[]} A list of error responses.
    */
   constructor (errors) {
     this.errors = errors
@@ -59,6 +59,7 @@ export class ErrorList {
 }
 
 /**
+ * A list of error responses.
  * @member {Error[]} errors
  * @type {Error[]}
  */
