@@ -261,7 +261,7 @@ class ProductTypeList implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets product_types.
      *
-     * @param array $product_types product_types
+     * @param array $product_types a list of product types
      */
     public function setProductTypes(array $product_types): self
     {

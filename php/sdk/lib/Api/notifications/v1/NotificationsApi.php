@@ -51,6 +51,8 @@ use SpApi\Model\notifications\v1\GetDestinationResponse;
 use SpApi\Model\notifications\v1\GetDestinationsResponse;
 use SpApi\Model\notifications\v1\GetSubscriptionByIdResponse;
 use SpApi\Model\notifications\v1\GetSubscriptionResponse;
+use SpApi\Model\notifications\v1\SendTestNotificationRequest;
+use SpApi\Model\notifications\v1\SendTestNotificationResponse;
 use SpApi\ObjectSerializer;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
@@ -75,6 +77,7 @@ class NotificationsApi
     public ?LimiterInterface $getDestinationsRateLimiter;
     public ?LimiterInterface $getSubscriptionRateLimiter;
     public ?LimiterInterface $getSubscriptionByIdRateLimiter;
+    public ?LimiterInterface $sendTestNotificationRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -121,6 +124,8 @@ class NotificationsApi
             $this->getSubscriptionRateLimiter = $factory->create('NotificationsApi-getSubscription');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-getSubscriptionById'), $this->rateLimitStorage);
             $this->getSubscriptionByIdRateLimiter = $factory->create('NotificationsApi-getSubscriptionById');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-sendTestNotification'), $this->rateLimitStorage);
+            $this->sendTestNotificationRateLimiter = $factory->create('NotificationsApi-sendTestNotification');
         }
 
         $this->client = $client ?: new Client();
@@ -157,7 +162,7 @@ class NotificationsApi
      * Operation createDestination.
      *
      * @param CreateDestinationRequest $body
-     *                                                      body (required)
+     *                                                      The request schema for the &#x60;createDestination&#x60; operation. (required)
      * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -176,7 +181,7 @@ class NotificationsApi
      * Operation createDestinationWithHttpInfo.
      *
      * @param CreateDestinationRequest $body
-     *                                                      (required)
+     *                                                      The request schema for the &#x60;createDestination&#x60; operation. (required)
      * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\notifications\v1\CreateDestinationResponse, HTTP status code, HTTP response headers (array of strings)
@@ -263,7 +268,7 @@ class NotificationsApi
      * Operation createDestinationAsync.
      *
      * @param CreateDestinationRequest $body
-     *                                       (required)
+     *                                       The request schema for the &#x60;createDestination&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -283,7 +288,7 @@ class NotificationsApi
      * Operation createDestinationAsyncWithHttpInfo.
      *
      * @param CreateDestinationRequest $body
-     *                                       (required)
+     *                                       The request schema for the &#x60;createDestination&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -344,7 +349,7 @@ class NotificationsApi
      * Create request for operation 'createDestination'.
      *
      * @param CreateDestinationRequest $body
-     *                                       (required)
+     *                                       The request schema for the &#x60;createDestination&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -425,9 +430,9 @@ class NotificationsApi
      * Operation createSubscription.
      *
      * @param string                    $notification_type
-     *                                                       The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                                       The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param CreateSubscriptionRequest $body
-     *                                                       body (required)
+     *                                                       The request schema for the &#x60;createSubscription&#x60; operation. (required)
      * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -447,9 +452,9 @@ class NotificationsApi
      * Operation createSubscriptionWithHttpInfo.
      *
      * @param string                    $notification_type
-     *                                                       The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                                       The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param CreateSubscriptionRequest $body
-     *                                                       (required)
+     *                                                       The request schema for the &#x60;createSubscription&#x60; operation. (required)
      * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\notifications\v1\CreateSubscriptionResponse, HTTP status code, HTTP response headers (array of strings)
@@ -537,9 +542,9 @@ class NotificationsApi
      * Operation createSubscriptionAsync.
      *
      * @param string                    $notification_type
-     *                                                     The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                                     The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param CreateSubscriptionRequest $body
-     *                                                     (required)
+     *                                                     The request schema for the &#x60;createSubscription&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -560,9 +565,9 @@ class NotificationsApi
      * Operation createSubscriptionAsyncWithHttpInfo.
      *
      * @param string                    $notification_type
-     *                                                     The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                                     The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param CreateSubscriptionRequest $body
-     *                                                     (required)
+     *                                                     The request schema for the &#x60;createSubscription&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -624,9 +629,9 @@ class NotificationsApi
      * Create request for operation 'createSubscription'.
      *
      * @param string                    $notification_type
-     *                                                     The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                                     The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param CreateSubscriptionRequest $body
-     *                                                     (required)
+     *                                                     The request schema for the &#x60;createSubscription&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -996,7 +1001,7 @@ class NotificationsApi
      * @param string      $subscription_id
      *                                         The identifier for the subscription that you want to delete. (required)
      * @param string      $notification_type
-     *                                         The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                         The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -1018,7 +1023,7 @@ class NotificationsApi
      * @param string      $subscription_id
      *                                         The identifier for the subscription that you want to delete. (required)
      * @param string      $notification_type
-     *                                         The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                         The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\notifications\v1\DeleteSubscriptionByIdResponse, HTTP status code, HTTP response headers (array of strings)
@@ -1108,7 +1113,7 @@ class NotificationsApi
      * @param string $subscription_id
      *                                  The identifier for the subscription that you want to delete. (required)
      * @param string $notification_type
-     *                                  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                  The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -1131,7 +1136,7 @@ class NotificationsApi
      * @param string $subscription_id
      *                                  The identifier for the subscription that you want to delete. (required)
      * @param string $notification_type
-     *                                  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                  The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -1195,7 +1200,7 @@ class NotificationsApi
      * @param string $subscription_id
      *                                  The identifier for the subscription that you want to delete. (required)
      * @param string $notification_type
-     *                                  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                  The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -1802,7 +1807,7 @@ class NotificationsApi
      * Operation getSubscription.
      *
      * @param string      $notification_type
-     *                                         The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                         The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param null|string $payload_version
      *                                         The version of the payload object to be used in the notification. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -1824,7 +1829,7 @@ class NotificationsApi
      * Operation getSubscriptionWithHttpInfo.
      *
      * @param string      $notification_type
-     *                                         The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                         The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param null|string $payload_version
      *                                         The version of the payload object to be used in the notification. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -1914,7 +1919,7 @@ class NotificationsApi
      * Operation getSubscriptionAsync.
      *
      * @param string      $notification_type
-     *                                       The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                       The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param null|string $payload_version
      *                                       The version of the payload object to be used in the notification. (optional)
      *
@@ -1937,7 +1942,7 @@ class NotificationsApi
      * Operation getSubscriptionAsyncWithHttpInfo.
      *
      * @param string      $notification_type
-     *                                       The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                       The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param null|string $payload_version
      *                                       The version of the payload object to be used in the notification. (optional)
      *
@@ -2001,7 +2006,7 @@ class NotificationsApi
      * Create request for operation 'getSubscription'.
      *
      * @param string      $notification_type
-     *                                       The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                       The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param null|string $payload_version
      *                                       The version of the payload object to be used in the notification. (optional)
      *
@@ -2101,7 +2106,7 @@ class NotificationsApi
      * @param string      $subscription_id
      *                                         The identifier for the subscription that you want to get. (required)
      * @param string      $notification_type
-     *                                         The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                         The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -2123,7 +2128,7 @@ class NotificationsApi
      * @param string      $subscription_id
      *                                         The identifier for the subscription that you want to get. (required)
      * @param string      $notification_type
-     *                                         The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                         The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\notifications\v1\GetSubscriptionByIdResponse, HTTP status code, HTTP response headers (array of strings)
@@ -2213,7 +2218,7 @@ class NotificationsApi
      * @param string $subscription_id
      *                                  The identifier for the subscription that you want to get. (required)
      * @param string $notification_type
-     *                                  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                  The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -2236,7 +2241,7 @@ class NotificationsApi
      * @param string $subscription_id
      *                                  The identifier for the subscription that you want to get. (required)
      * @param string $notification_type
-     *                                  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                  The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -2300,7 +2305,7 @@ class NotificationsApi
      * @param string $subscription_id
      *                                  The identifier for the subscription that you want to get. (required)
      * @param string $notification_type
-     *                                  The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required)
+     *                                  The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -2389,6 +2394,304 @@ class NotificationsApi
 
         return new Request(
             'GET',
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation sendTestNotification.
+     *
+     * @param string                      $notification_type
+     *                                                         The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param SendTestNotificationRequest $body
+     *                                                         The request schema for the &#x60;sendTestNotification&#x60; operation. (required)
+     * @param null|string                 $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function sendTestNotification(
+        string $notification_type,
+        SendTestNotificationRequest $body,
+        ?string $restrictedDataToken = null
+    ): SendTestNotificationResponse {
+        list($response) = $this->sendTestNotificationWithHttpInfo($notification_type, $body, $restrictedDataToken);
+
+        return $response;
+    }
+
+    /**
+     * Operation sendTestNotificationWithHttpInfo.
+     *
+     * @param string                      $notification_type
+     *                                                         The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param SendTestNotificationRequest $body
+     *                                                         The request schema for the &#x60;sendTestNotification&#x60; operation. (required)
+     * @param null|string                 $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @return array of \SpApi\Model\notifications\v1\SendTestNotificationResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function sendTestNotificationWithHttpInfo(
+        string $notification_type,
+        SendTestNotificationRequest $body,
+        ?string $restrictedDataToken = null
+    ): array {
+        $request = $this->sendTestNotificationRequest($notification_type, $body);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-sendTestNotification');
+        } else {
+            $request = $this->config->sign($request);
+        }
+
+        try {
+            $options = $this->createHttpClientOption();
+
+            try {
+                if ($this->rateLimiterEnabled) {
+                    $this->sendTestNotificationRateLimiter->consume()->ensureAccepted();
+                }
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+            if ('\SpApi\Model\notifications\v1\SendTestNotificationResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\notifications\v1\SendTestNotificationResponse' !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\SendTestNotificationResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
+        } catch (ApiException $e) {
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\notifications\v1\SendTestNotificationResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation sendTestNotificationAsync.
+     *
+     * @param string                      $notification_type
+     *                                                       The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param SendTestNotificationRequest $body
+     *                                                       The request schema for the &#x60;sendTestNotification&#x60; operation. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function sendTestNotificationAsync(
+        string $notification_type,
+        SendTestNotificationRequest $body
+    ): PromiseInterface {
+        return $this->sendTestNotificationAsyncWithHttpInfo($notification_type, $body)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            )
+        ;
+    }
+
+    /**
+     * Operation sendTestNotificationAsyncWithHttpInfo.
+     *
+     * @param string                      $notification_type
+     *                                                       The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param SendTestNotificationRequest $body
+     *                                                       The request schema for the &#x60;sendTestNotification&#x60; operation. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function sendTestNotificationAsyncWithHttpInfo(
+        string $notification_type,
+        SendTestNotificationRequest $body,
+        ?string $restrictedDataToken = null
+    ): PromiseInterface {
+        $returnType = '\SpApi\Model\notifications\v1\SendTestNotificationResponse';
+        $request = $this->sendTestNotificationRequest($notification_type, $body);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-sendTestNotification');
+        } else {
+            $request = $this->config->sign($request);
+        }
+        if ($this->rateLimiterEnabled) {
+            $this->sendTestNotificationRateLimiter->consume()->ensureAccepted();
+        }
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('string' !== $returnType) {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders(),
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            )
+        ;
+    }
+
+    /**
+     * Create request for operation 'sendTestNotification'.
+     *
+     * @param string                      $notification_type
+     *                                                       The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param SendTestNotificationRequest $body
+     *                                                       The request schema for the &#x60;sendTestNotification&#x60; operation. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function sendTestNotificationRequest(
+        string $notification_type,
+        SendTestNotificationRequest $body
+    ): Request {
+        // verify the required parameter 'notification_type' is set
+        if (null === $notification_type || (is_array($notification_type) && 0 === count($notification_type))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $notification_type when calling sendTestNotification'
+            );
+        }
+        // verify the required parameter 'body' is set
+        if (null === $body || (is_array($body) && 0 === count($body))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling sendTestNotification'
+            );
+        }
+
+        $resourcePath = '/notifications/v1/subscriptions/{notificationType}/testNotification';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if (null !== $notification_type) {
+            $resourcePath = str_replace(
+                '{notificationType}',
+                ObjectSerializer::toPathValue($notification_type),
+                $resourcePath
+            );
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', 'Successful Response', 'Response'],
+            'application/json',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
+        return new Request(
+            'POST',
             $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody

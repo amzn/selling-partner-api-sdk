@@ -38,6 +38,8 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
+ * @description A link to metadata schema.
+ *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech
@@ -282,7 +284,7 @@ class SchemaLink implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets checksum.
      *
-     * @param string $checksum Checksum hash of the schema (Base64 MD5). Can be used to verify schema contents, identify changes between schema versions, and for caching.
+     * @param string $checksum Checksum hash of the schema (Base64 MD5). Use this to verify schema contents, identify changes between schema versions, and for caching.
      */
     public function setChecksum(string $checksum): self
     {

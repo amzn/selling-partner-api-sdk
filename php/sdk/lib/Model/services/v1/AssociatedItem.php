@@ -72,7 +72,8 @@ class AssociatedItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'order_id' => 'string',
         'item_status' => 'string',
         'brand_name' => 'string',
-        'item_delivery' => '\SpApi\Model\services\v1\ItemDelivery'];
+        'item_delivery' => '\SpApi\Model\services\v1\ItemDelivery',
+        'linked_assets' => '\SpApi\Model\services\v1\LinkedAsset[]'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -90,7 +91,8 @@ class AssociatedItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'order_id' => null,
         'item_status' => null,
         'brand_name' => null,
-        'item_delivery' => null];
+        'item_delivery' => null,
+        'linked_assets' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -105,6 +107,7 @@ class AssociatedItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'item_status' => true,
         'brand_name' => true,
         'item_delivery' => true,
+        'linked_assets' => true,
     ];
 
     /**
@@ -128,6 +131,7 @@ class AssociatedItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'item_status' => 'itemStatus',
         'brand_name' => 'brandName',
         'item_delivery' => 'itemDelivery',
+        'linked_assets' => 'linkedAssets',
     ];
 
     /**
@@ -143,6 +147,7 @@ class AssociatedItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'item_status' => 'setItemStatus',
         'brand_name' => 'setBrandName',
         'item_delivery' => 'setItemDelivery',
+        'linked_assets' => 'setLinkedAssets',
     ];
 
     /**
@@ -158,6 +163,7 @@ class AssociatedItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         'item_status' => 'getItemStatus',
         'brand_name' => 'getBrandName',
         'item_delivery' => 'getItemDelivery',
+        'linked_assets' => 'getLinkedAssets',
     ];
 
     /**
@@ -180,6 +186,7 @@ class AssociatedItem implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('item_status', $data ?? [], null);
         $this->setIfExists('brand_name', $data ?? [], null);
         $this->setIfExists('item_delivery', $data ?? [], null);
+        $this->setIfExists('linked_assets', $data ?? [], null);
     }
 
     /**
@@ -538,6 +545,36 @@ class AssociatedItem implements ModelInterface, \ArrayAccess, \JsonSerializable
             }
         }
         $this->container['item_delivery'] = $item_delivery;
+
+        return $this;
+    }
+
+    /**
+     * Gets linked_assets.
+     */
+    public function getLinkedAssets(): ?array
+    {
+        return $this->container['linked_assets'];
+    }
+
+    /**
+     * Sets linked_assets.
+     *
+     * @param null|array $linked_assets a list of customer-owned assets on which the service must be performed
+     */
+    public function setLinkedAssets(?array $linked_assets): self
+    {
+        if (is_null($linked_assets)) {
+            array_push($this->openAPINullablesSetToNull, 'linked_assets');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('linked_assets', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['linked_assets'] = $linked_assets;
 
         return $this;
     }

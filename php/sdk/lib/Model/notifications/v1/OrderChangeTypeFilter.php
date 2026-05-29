@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description An event filter to customize your subscription to send notifications for only the specified &#x60;orderChangeType&#x60;.
+ * @description An event filter you can use to customize your subscription to send notifications for a specific &#x60;orderChangeType&#x60;.
  *
  * @author   OpenAPI Generator team
  *
@@ -245,7 +245,7 @@ class OrderChangeTypeFilter implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets order_change_types.
      *
-     * @param null|array $order_change_types A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
+     * @param null|array $order_change_types A list of order change types you can subscribe to (for example, `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
      */
     public function setOrderChangeTypes(?array $order_change_types): self
     {

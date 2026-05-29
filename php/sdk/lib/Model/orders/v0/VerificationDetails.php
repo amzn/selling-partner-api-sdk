@@ -61,7 +61,9 @@ class VerificationDetails implements ModelInterface, \ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'prescription_detail' => '\SpApi\Model\orders\v0\PrescriptionDetail'];
+        'prescription_detail' => '\SpApi\Model\orders\v0\PrescriptionDetail',
+        'approved_alternative_details' => '\SpApi\Model\orders\v0\ApprovedAttribute[]',
+        'interim_status_detail' => '\SpApi\Model\orders\v0\InterimStatusDetail'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -73,7 +75,9 @@ class VerificationDetails implements ModelInterface, \ArrayAccess, \JsonSerializ
      * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
-        'prescription_detail' => null];
+        'prescription_detail' => null,
+        'approved_alternative_details' => null,
+        'interim_status_detail' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -82,6 +86,8 @@ class VerificationDetails implements ModelInterface, \ArrayAccess, \JsonSerializ
      */
     protected static array $openAPINullables = [
         'prescription_detail' => true,
+        'approved_alternative_details' => true,
+        'interim_status_detail' => true,
     ];
 
     /**
@@ -99,6 +105,8 @@ class VerificationDetails implements ModelInterface, \ArrayAccess, \JsonSerializ
      */
     protected static array $attributeMap = [
         'prescription_detail' => 'prescriptionDetail',
+        'approved_alternative_details' => 'approvedAlternativeDetails',
+        'interim_status_detail' => 'interimStatusDetail',
     ];
 
     /**
@@ -108,6 +116,8 @@ class VerificationDetails implements ModelInterface, \ArrayAccess, \JsonSerializ
      */
     protected static array $setters = [
         'prescription_detail' => 'setPrescriptionDetail',
+        'approved_alternative_details' => 'setApprovedAlternativeDetails',
+        'interim_status_detail' => 'setInterimStatusDetail',
     ];
 
     /**
@@ -117,6 +127,8 @@ class VerificationDetails implements ModelInterface, \ArrayAccess, \JsonSerializ
      */
     protected static array $getters = [
         'prescription_detail' => 'getPrescriptionDetail',
+        'approved_alternative_details' => 'getApprovedAlternativeDetails',
+        'interim_status_detail' => 'getInterimStatusDetail',
     ];
 
     /**
@@ -133,6 +145,8 @@ class VerificationDetails implements ModelInterface, \ArrayAccess, \JsonSerializ
     public function __construct(?array $data = null)
     {
         $this->setIfExists('prescription_detail', $data ?? [], null);
+        $this->setIfExists('approved_alternative_details', $data ?? [], null);
+        $this->setIfExists('interim_status_detail', $data ?? [], null);
     }
 
     /**
@@ -260,6 +274,66 @@ class VerificationDetails implements ModelInterface, \ArrayAccess, \JsonSerializ
             }
         }
         $this->container['prescription_detail'] = $prescription_detail;
+
+        return $this;
+    }
+
+    /**
+     * Gets approved_alternative_details.
+     */
+    public function getApprovedAlternativeDetails(): ?array
+    {
+        return $this->container['approved_alternative_details'];
+    }
+
+    /**
+     * Sets approved_alternative_details.
+     *
+     * @param null|array $approved_alternative_details Pre-approved alternative product attributes available for a rejected order. Each element contains an attribute name, its original value from the rejected order, and the corrected value that would result in approval (for example, a substituted `asin` or adjusted `petWeight`).
+     */
+    public function setApprovedAlternativeDetails(?array $approved_alternative_details): self
+    {
+        if (is_null($approved_alternative_details)) {
+            array_push($this->openAPINullablesSetToNull, 'approved_alternative_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('approved_alternative_details', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['approved_alternative_details'] = $approved_alternative_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets interim_status_detail.
+     */
+    public function getInterimStatusDetail(): ?InterimStatusDetail
+    {
+        return $this->container['interim_status_detail'];
+    }
+
+    /**
+     * Sets interim_status_detail.
+     *
+     * @param null|InterimStatusDetail $interim_status_detail interim_status_detail
+     */
+    public function setInterimStatusDetail(?InterimStatusDetail $interim_status_detail): self
+    {
+        if (is_null($interim_status_detail)) {
+            array_push($this->openAPINullablesSetToNull, 'interim_status_detail');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('interim_status_detail', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['interim_status_detail'] = $interim_status_detail;
 
         return $this;
     }

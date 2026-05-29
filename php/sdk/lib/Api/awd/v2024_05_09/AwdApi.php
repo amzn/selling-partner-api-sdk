@@ -48,10 +48,15 @@ use SpApi\Model\awd\v2024_05_09\InboundOrderReference;
 use SpApi\Model\awd\v2024_05_09\InboundPackages;
 use SpApi\Model\awd\v2024_05_09\InboundShipment;
 use SpApi\Model\awd\v2024_05_09\InventoryListing;
+use SpApi\Model\awd\v2024_05_09\OutboundListing;
+use SpApi\Model\awd\v2024_05_09\OutboundOrder;
+use SpApi\Model\awd\v2024_05_09\OutboundOrderCreationData;
+use SpApi\Model\awd\v2024_05_09\OutboundOrderReference;
 use SpApi\Model\awd\v2024_05_09\ReplenishmentOrder;
 use SpApi\Model\awd\v2024_05_09\ReplenishmentOrderCreationData;
 use SpApi\Model\awd\v2024_05_09\ReplenishmentOrderListing;
 use SpApi\Model\awd\v2024_05_09\ReplenishmentOrderReference;
+use SpApi\Model\awd\v2024_05_09\ShipmentLabelPageTypes;
 use SpApi\Model\awd\v2024_05_09\ShipmentLabels;
 use SpApi\Model\awd\v2024_05_09\ShipmentListing;
 use SpApi\Model\awd\v2024_05_09\TransportationDetails;
@@ -74,18 +79,24 @@ class AwdApi
     public ?LimiterInterface $cancelInboundRateLimiter;
     public ?LimiterInterface $checkInboundEligibilityRateLimiter;
     public ?LimiterInterface $confirmInboundRateLimiter;
+    public ?LimiterInterface $confirmOutboundRateLimiter;
     public ?LimiterInterface $confirmReplenishmentOrderRateLimiter;
     public ?LimiterInterface $createInboundRateLimiter;
+    public ?LimiterInterface $createOutboundRateLimiter;
     public ?LimiterInterface $createReplenishmentOrderRateLimiter;
     public ?LimiterInterface $getInboundRateLimiter;
     public ?LimiterInterface $getInboundShipmentRateLimiter;
     public ?LimiterInterface $getInboundShipmentLabelsRateLimiter;
+    public ?LimiterInterface $getLabelPageTypesRateLimiter;
+    public ?LimiterInterface $getOutboundRateLimiter;
     public ?LimiterInterface $getReplenishmentOrderRateLimiter;
     public ?LimiterInterface $listInboundShipmentsRateLimiter;
     public ?LimiterInterface $listInventoryRateLimiter;
+    public ?LimiterInterface $listOutboundsRateLimiter;
     public ?LimiterInterface $listReplenishmentOrdersRateLimiter;
     public ?LimiterInterface $updateInboundRateLimiter;
     public ?LimiterInterface $updateInboundShipmentTransportDetailsRateLimiter;
+    public ?LimiterInterface $updateOutboundRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -122,10 +133,14 @@ class AwdApi
             $this->checkInboundEligibilityRateLimiter = $factory->create('AwdApi-checkInboundEligibility');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-confirmInbound'), $this->rateLimitStorage);
             $this->confirmInboundRateLimiter = $factory->create('AwdApi-confirmInbound');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-confirmOutbound'), $this->rateLimitStorage);
+            $this->confirmOutboundRateLimiter = $factory->create('AwdApi-confirmOutbound');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-confirmReplenishmentOrder'), $this->rateLimitStorage);
             $this->confirmReplenishmentOrderRateLimiter = $factory->create('AwdApi-confirmReplenishmentOrder');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-createInbound'), $this->rateLimitStorage);
             $this->createInboundRateLimiter = $factory->create('AwdApi-createInbound');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-createOutbound'), $this->rateLimitStorage);
+            $this->createOutboundRateLimiter = $factory->create('AwdApi-createOutbound');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-createReplenishmentOrder'), $this->rateLimitStorage);
             $this->createReplenishmentOrderRateLimiter = $factory->create('AwdApi-createReplenishmentOrder');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-getInbound'), $this->rateLimitStorage);
@@ -134,18 +149,26 @@ class AwdApi
             $this->getInboundShipmentRateLimiter = $factory->create('AwdApi-getInboundShipment');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-getInboundShipmentLabels'), $this->rateLimitStorage);
             $this->getInboundShipmentLabelsRateLimiter = $factory->create('AwdApi-getInboundShipmentLabels');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-getLabelPageTypes'), $this->rateLimitStorage);
+            $this->getLabelPageTypesRateLimiter = $factory->create('AwdApi-getLabelPageTypes');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-getOutbound'), $this->rateLimitStorage);
+            $this->getOutboundRateLimiter = $factory->create('AwdApi-getOutbound');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-getReplenishmentOrder'), $this->rateLimitStorage);
             $this->getReplenishmentOrderRateLimiter = $factory->create('AwdApi-getReplenishmentOrder');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-listInboundShipments'), $this->rateLimitStorage);
             $this->listInboundShipmentsRateLimiter = $factory->create('AwdApi-listInboundShipments');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-listInventory'), $this->rateLimitStorage);
             $this->listInventoryRateLimiter = $factory->create('AwdApi-listInventory');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-listOutbounds'), $this->rateLimitStorage);
+            $this->listOutboundsRateLimiter = $factory->create('AwdApi-listOutbounds');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-listReplenishmentOrders'), $this->rateLimitStorage);
             $this->listReplenishmentOrdersRateLimiter = $factory->create('AwdApi-listReplenishmentOrders');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-updateInbound'), $this->rateLimitStorage);
             $this->updateInboundRateLimiter = $factory->create('AwdApi-updateInbound');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-updateInboundShipmentTransportDetails'), $this->rateLimitStorage);
             $this->updateInboundShipmentTransportDetailsRateLimiter = $factory->create('AwdApi-updateInboundShipmentTransportDetails');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-updateOutbound'), $this->rateLimitStorage);
+            $this->updateOutboundRateLimiter = $factory->create('AwdApi-updateOutbound');
         }
 
         $this->client = $client ?: new Client();
@@ -935,6 +958,250 @@ class AwdApi
     }
 
     /**
+     * Operation confirmOutbound.
+     *
+     * @param string      $order_id
+     *                                         ID for the outbound order you want to confirm. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function confirmOutbound(
+        string $order_id,
+        ?string $restrictedDataToken = null
+    ): void {
+        $this->confirmOutboundWithHttpInfo($order_id, $restrictedDataToken);
+    }
+
+    /**
+     * Operation confirmOutboundWithHttpInfo.
+     *
+     * @param string      $order_id
+     *                                         ID for the outbound order you want to confirm. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @return array of , HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function confirmOutboundWithHttpInfo(
+        string $order_id,
+        ?string $restrictedDataToken = null
+    ): array {
+        $request = $this->confirmOutboundRequest($order_id);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-confirmOutbound');
+        } else {
+            $request = $this->config->sign($request);
+        }
+
+        try {
+            $options = $this->createHttpClientOption();
+
+            try {
+                if ($this->rateLimiterEnabled) {
+                    $this->confirmOutboundRateLimiter->consume()->ensureAccepted();
+                }
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\awd\v2024_05_09\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation confirmOutboundAsync.
+     *
+     * @param string $order_id
+     *                         ID for the outbound order you want to confirm. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function confirmOutboundAsync(
+        string $order_id
+    ): PromiseInterface {
+        return $this->confirmOutboundAsyncWithHttpInfo($order_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            )
+        ;
+    }
+
+    /**
+     * Operation confirmOutboundAsyncWithHttpInfo.
+     *
+     * @param string $order_id
+     *                         ID for the outbound order you want to confirm. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function confirmOutboundAsyncWithHttpInfo(
+        string $order_id,
+        ?string $restrictedDataToken = null
+    ): PromiseInterface {
+        $returnType = '';
+        $request = $this->confirmOutboundRequest($order_id);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-confirmOutbound');
+        } else {
+            $request = $this->config->sign($request);
+        }
+        if ($this->rateLimiterEnabled) {
+            $this->confirmOutboundRateLimiter->consume()->ensureAccepted();
+        }
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            )
+        ;
+    }
+
+    /**
+     * Create request for operation 'confirmOutbound'.
+     *
+     * @param string $order_id
+     *                         ID for the outbound order you want to confirm. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function confirmOutboundRequest(
+        string $order_id
+    ): Request {
+        // verify the required parameter 'order_id' is set
+        if (null === $order_id || (is_array($order_id) && 0 === count($order_id))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $order_id when calling confirmOutbound'
+            );
+        }
+
+        $resourcePath = '/awd/2024-05-09/outboundOrders/{orderId}/confirmation';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if (null !== $order_id) {
+            $resourcePath = str_replace(
+                '{orderId}',
+                ObjectSerializer::toPathValue($order_id),
+                $resourcePath
+            );
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            '',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
+        return new Request(
+            'POST',
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation confirmReplenishmentOrder.
      *
      * @param string      $order_id
@@ -1384,6 +1651,274 @@ class AwdApi
         }
 
         $resourcePath = '/awd/2024-05-09/inboundOrders';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            'application/json',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
+        return new Request(
+            'POST',
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createOutbound.
+     *
+     * @param OutboundOrderCreationData $body
+     *                                                       Payload for creating an outbound order. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function createOutbound(
+        OutboundOrderCreationData $body,
+        ?string $restrictedDataToken = null
+    ): OutboundOrderReference {
+        list($response) = $this->createOutboundWithHttpInfo($body, $restrictedDataToken);
+
+        return $response;
+    }
+
+    /**
+     * Operation createOutboundWithHttpInfo.
+     *
+     * @param OutboundOrderCreationData $body
+     *                                                       Payload for creating an outbound order. (required)
+     * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @return array of \SpApi\Model\awd\v2024_05_09\OutboundOrderReference, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function createOutboundWithHttpInfo(
+        OutboundOrderCreationData $body,
+        ?string $restrictedDataToken = null
+    ): array {
+        $request = $this->createOutboundRequest($body);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-createOutbound');
+        } else {
+            $request = $this->config->sign($request);
+        }
+
+        try {
+            $options = $this->createHttpClientOption();
+
+            try {
+                if ($this->rateLimiterEnabled) {
+                    $this->createOutboundRateLimiter->consume()->ensureAccepted();
+                }
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+            if ('\SpApi\Model\awd\v2024_05_09\OutboundOrderReference' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\awd\v2024_05_09\OutboundOrderReference' !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\OutboundOrderReference', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
+        } catch (ApiException $e) {
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\awd\v2024_05_09\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createOutboundAsync.
+     *
+     * @param OutboundOrderCreationData $body
+     *                                        Payload for creating an outbound order. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function createOutboundAsync(
+        OutboundOrderCreationData $body
+    ): PromiseInterface {
+        return $this->createOutboundAsyncWithHttpInfo($body)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            )
+        ;
+    }
+
+    /**
+     * Operation createOutboundAsyncWithHttpInfo.
+     *
+     * @param OutboundOrderCreationData $body
+     *                                        Payload for creating an outbound order. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function createOutboundAsyncWithHttpInfo(
+        OutboundOrderCreationData $body,
+        ?string $restrictedDataToken = null
+    ): PromiseInterface {
+        $returnType = '\SpApi\Model\awd\v2024_05_09\OutboundOrderReference';
+        $request = $this->createOutboundRequest($body);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-createOutbound');
+        } else {
+            $request = $this->config->sign($request);
+        }
+        if ($this->rateLimiterEnabled) {
+            $this->createOutboundRateLimiter->consume()->ensureAccepted();
+        }
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('string' !== $returnType) {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders(),
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            )
+        ;
+    }
+
+    /**
+     * Create request for operation 'createOutbound'.
+     *
+     * @param OutboundOrderCreationData $body
+     *                                        Payload for creating an outbound order. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function createOutboundRequest(
+        OutboundOrderCreationData $body
+    ): Request {
+        // verify the required parameter 'body' is set
+        if (null === $body || (is_array($body) && 0 === count($body))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling createOutbound'
+            );
+        }
+
+        $resourcePath = '/awd/2024-05-09/outboundOrders';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2611,6 +3146,551 @@ class AwdApi
     }
 
     /**
+     * Operation getLabelPageTypes.
+     *
+     * @param string      $shipment_id
+     *                                         ID for the shipment. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function getLabelPageTypes(
+        string $shipment_id,
+        ?string $restrictedDataToken = null
+    ): ShipmentLabelPageTypes {
+        list($response) = $this->getLabelPageTypesWithHttpInfo($shipment_id, $restrictedDataToken);
+
+        return $response;
+    }
+
+    /**
+     * Operation getLabelPageTypesWithHttpInfo.
+     *
+     * @param string      $shipment_id
+     *                                         ID for the shipment. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @return array of \SpApi\Model\awd\v2024_05_09\ShipmentLabelPageTypes, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function getLabelPageTypesWithHttpInfo(
+        string $shipment_id,
+        ?string $restrictedDataToken = null
+    ): array {
+        $request = $this->getLabelPageTypesRequest($shipment_id);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-getLabelPageTypes');
+        } else {
+            $request = $this->config->sign($request);
+        }
+
+        try {
+            $options = $this->createHttpClientOption();
+
+            try {
+                if ($this->rateLimiterEnabled) {
+                    $this->getLabelPageTypesRateLimiter->consume()->ensureAccepted();
+                }
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+            if ('\SpApi\Model\awd\v2024_05_09\ShipmentLabelPageTypes' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\awd\v2024_05_09\ShipmentLabelPageTypes' !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\ShipmentLabelPageTypes', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
+        } catch (ApiException $e) {
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\awd\v2024_05_09\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getLabelPageTypesAsync.
+     *
+     * @param string $shipment_id
+     *                            ID for the shipment. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getLabelPageTypesAsync(
+        string $shipment_id
+    ): PromiseInterface {
+        return $this->getLabelPageTypesAsyncWithHttpInfo($shipment_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            )
+        ;
+    }
+
+    /**
+     * Operation getLabelPageTypesAsyncWithHttpInfo.
+     *
+     * @param string $shipment_id
+     *                            ID for the shipment. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getLabelPageTypesAsyncWithHttpInfo(
+        string $shipment_id,
+        ?string $restrictedDataToken = null
+    ): PromiseInterface {
+        $returnType = '\SpApi\Model\awd\v2024_05_09\ShipmentLabelPageTypes';
+        $request = $this->getLabelPageTypesRequest($shipment_id);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-getLabelPageTypes');
+        } else {
+            $request = $this->config->sign($request);
+        }
+        if ($this->rateLimiterEnabled) {
+            $this->getLabelPageTypesRateLimiter->consume()->ensureAccepted();
+        }
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('string' !== $returnType) {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders(),
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            )
+        ;
+    }
+
+    /**
+     * Create request for operation 'getLabelPageTypes'.
+     *
+     * @param string $shipment_id
+     *                            ID for the shipment. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getLabelPageTypesRequest(
+        string $shipment_id
+    ): Request {
+        // verify the required parameter 'shipment_id' is set
+        if (null === $shipment_id || (is_array($shipment_id) && 0 === count($shipment_id))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $shipment_id when calling getLabelPageTypes'
+            );
+        }
+        if (strlen($shipment_id) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$shipment_id" when calling AwdApi.getLabelPageTypes, must be bigger than or equal to 1.');
+        }
+
+        $resourcePath = '/awd/2024-05-09/inboundShipments/{shipmentId}/labelPageTypes';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if (null !== $shipment_id) {
+            $resourcePath = str_replace(
+                '{shipmentId}',
+                ObjectSerializer::toPathValue($shipment_id),
+                $resourcePath
+            );
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            '',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
+        return new Request(
+            'GET',
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getOutbound.
+     *
+     * @param string      $order_id
+     *                                         ID for the outbound order to be retrieved. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function getOutbound(
+        string $order_id,
+        ?string $restrictedDataToken = null
+    ): OutboundOrder {
+        list($response) = $this->getOutboundWithHttpInfo($order_id, $restrictedDataToken);
+
+        return $response;
+    }
+
+    /**
+     * Operation getOutboundWithHttpInfo.
+     *
+     * @param string      $order_id
+     *                                         ID for the outbound order to be retrieved. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @return array of \SpApi\Model\awd\v2024_05_09\OutboundOrder, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function getOutboundWithHttpInfo(
+        string $order_id,
+        ?string $restrictedDataToken = null
+    ): array {
+        $request = $this->getOutboundRequest($order_id);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-getOutbound');
+        } else {
+            $request = $this->config->sign($request);
+        }
+
+        try {
+            $options = $this->createHttpClientOption();
+
+            try {
+                if ($this->rateLimiterEnabled) {
+                    $this->getOutboundRateLimiter->consume()->ensureAccepted();
+                }
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+            if ('\SpApi\Model\awd\v2024_05_09\OutboundOrder' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\awd\v2024_05_09\OutboundOrder' !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\OutboundOrder', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
+        } catch (ApiException $e) {
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\awd\v2024_05_09\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getOutboundAsync.
+     *
+     * @param string $order_id
+     *                         ID for the outbound order to be retrieved. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getOutboundAsync(
+        string $order_id
+    ): PromiseInterface {
+        return $this->getOutboundAsyncWithHttpInfo($order_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            )
+        ;
+    }
+
+    /**
+     * Operation getOutboundAsyncWithHttpInfo.
+     *
+     * @param string $order_id
+     *                         ID for the outbound order to be retrieved. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getOutboundAsyncWithHttpInfo(
+        string $order_id,
+        ?string $restrictedDataToken = null
+    ): PromiseInterface {
+        $returnType = '\SpApi\Model\awd\v2024_05_09\OutboundOrder';
+        $request = $this->getOutboundRequest($order_id);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-getOutbound');
+        } else {
+            $request = $this->config->sign($request);
+        }
+        if ($this->rateLimiterEnabled) {
+            $this->getOutboundRateLimiter->consume()->ensureAccepted();
+        }
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('string' !== $returnType) {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders(),
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            )
+        ;
+    }
+
+    /**
+     * Create request for operation 'getOutbound'.
+     *
+     * @param string $order_id
+     *                         ID for the outbound order to be retrieved. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getOutboundRequest(
+        string $order_id
+    ): Request {
+        // verify the required parameter 'order_id' is set
+        if (null === $order_id || (is_array($order_id) && 0 === count($order_id))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $order_id when calling getOutbound'
+            );
+        }
+
+        $resourcePath = '/awd/2024-05-09/outboundOrders/{orderId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if (null !== $order_id) {
+            $resourcePath = str_replace(
+                '{orderId}',
+                ObjectSerializer::toPathValue($order_id),
+                $resourcePath
+            );
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            '',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
+        return new Request(
+            'GET',
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getReplenishmentOrder.
      *
      * @param string      $order_id
@@ -3678,6 +4758,379 @@ class AwdApi
     }
 
     /**
+     * Operation listOutbounds.
+     *
+     * @param null|\DateTime $updated_after
+     *                                            Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|\DateTime $updated_before
+     *                                            Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|string    $sort_order
+     *                                            Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param null|int       $max_results
+     *                                            Maximum number of results to return. (optional, default to 25)
+     * @param null|string    $next_token
+     *                                            A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function listOutbounds(
+        ?\DateTime $updated_after = null,
+        ?\DateTime $updated_before = null,
+        ?string $sort_order = null,
+        ?int $max_results = 25,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): OutboundListing {
+        list($response) = $this->listOutboundsWithHttpInfo($updated_after, $updated_before, $sort_order, $max_results, $next_token, $restrictedDataToken);
+
+        return $response;
+    }
+
+    /**
+     * Operation listOutboundsWithHttpInfo.
+     *
+     * @param null|\DateTime $updated_after
+     *                                            Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|\DateTime $updated_before
+     *                                            Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|string    $sort_order
+     *                                            Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param null|int       $max_results
+     *                                            Maximum number of results to return. (optional, default to 25)
+     * @param null|string    $next_token
+     *                                            A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @return array of \SpApi\Model\awd\v2024_05_09\OutboundListing, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function listOutboundsWithHttpInfo(
+        ?\DateTime $updated_after = null,
+        ?\DateTime $updated_before = null,
+        ?string $sort_order = null,
+        ?int $max_results = 25,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): array {
+        $request = $this->listOutboundsRequest($updated_after, $updated_before, $sort_order, $max_results, $next_token);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-listOutbounds');
+        } else {
+            $request = $this->config->sign($request);
+        }
+
+        try {
+            $options = $this->createHttpClientOption();
+
+            try {
+                if ($this->rateLimiterEnabled) {
+                    $this->listOutboundsRateLimiter->consume()->ensureAccepted();
+                }
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+            if ('\SpApi\Model\awd\v2024_05_09\OutboundListing' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\awd\v2024_05_09\OutboundListing' !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\OutboundListing', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
+        } catch (ApiException $e) {
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\awd\v2024_05_09\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listOutboundsAsync.
+     *
+     * @param null|\DateTime $updated_after
+     *                                       Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|\DateTime $updated_before
+     *                                       Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|string    $sort_order
+     *                                       Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param null|int       $max_results
+     *                                       Maximum number of results to return. (optional, default to 25)
+     * @param null|string    $next_token
+     *                                       A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function listOutboundsAsync(
+        ?\DateTime $updated_after = null,
+        ?\DateTime $updated_before = null,
+        ?string $sort_order = null,
+        ?int $max_results = 25,
+        ?string $next_token = null
+    ): PromiseInterface {
+        return $this->listOutboundsAsyncWithHttpInfo($updated_after, $updated_before, $sort_order, $max_results, $next_token)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            )
+        ;
+    }
+
+    /**
+     * Operation listOutboundsAsyncWithHttpInfo.
+     *
+     * @param null|\DateTime $updated_after
+     *                                       Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|\DateTime $updated_before
+     *                                       Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|string    $sort_order
+     *                                       Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param null|int       $max_results
+     *                                       Maximum number of results to return. (optional, default to 25)
+     * @param null|string    $next_token
+     *                                       A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function listOutboundsAsyncWithHttpInfo(
+        ?\DateTime $updated_after = null,
+        ?\DateTime $updated_before = null,
+        ?string $sort_order = null,
+        ?int $max_results = 25,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): PromiseInterface {
+        $returnType = '\SpApi\Model\awd\v2024_05_09\OutboundListing';
+        $request = $this->listOutboundsRequest($updated_after, $updated_before, $sort_order, $max_results, $next_token);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-listOutbounds');
+        } else {
+            $request = $this->config->sign($request);
+        }
+        if ($this->rateLimiterEnabled) {
+            $this->listOutboundsRateLimiter->consume()->ensureAccepted();
+        }
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('string' !== $returnType) {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders(),
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            )
+        ;
+    }
+
+    /**
+     * Create request for operation 'listOutbounds'.
+     *
+     * @param null|\DateTime $updated_after
+     *                                       Get the outbound orders updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|\DateTime $updated_before
+     *                                       Get the outbound orders updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)
+     * @param null|string    $sort_order
+     *                                       Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order. (optional)
+     * @param null|int       $max_results
+     *                                       Maximum number of results to return. (optional, default to 25)
+     * @param null|string    $next_token
+     *                                       A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function listOutboundsRequest(
+        ?\DateTime $updated_after = null,
+        ?\DateTime $updated_before = null,
+        ?string $sort_order = null,
+        ?int $max_results = 25,
+        ?string $next_token = null
+    ): Request {
+        if (null !== $max_results && $max_results > 100) {
+            throw new \InvalidArgumentException('invalid value for "$max_results" when calling AwdApi.listOutbounds, must be smaller than or equal to 100.');
+        }
+        if (null !== $max_results && $max_results < 1) {
+            throw new \InvalidArgumentException('invalid value for "$max_results" when calling AwdApi.listOutbounds, must be bigger than or equal to 1.');
+        }
+
+        $resourcePath = '/awd/2024-05-09/outboundOrders';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_after,
+            'updatedAfter', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_before,
+            'updatedBefore', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort_order,
+            'sortOrder', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $max_results,
+            'maxResults', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $next_token,
+            'nextToken', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            '',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
+        return new Request(
+            'GET',
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listReplenishmentOrders.
      *
      * @param null|\DateTime $updated_after
@@ -4536,6 +5989,304 @@ class AwdApi
             $resourcePath = str_replace(
                 '{shipmentId}',
                 ObjectSerializer::toPathValue($shipment_id),
+                $resourcePath
+            );
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            'application/json',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
+        return new Request(
+            'PUT',
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateOutbound.
+     *
+     * @param string        $order_id
+     *                                           ID for the outbound order to be updated. (required)
+     * @param OutboundOrder $body
+     *                                           Represents an AWD outbound order. (required)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function updateOutbound(
+        string $order_id,
+        OutboundOrder $body,
+        ?string $restrictedDataToken = null
+    ): OutboundOrderReference {
+        list($response) = $this->updateOutboundWithHttpInfo($order_id, $body, $restrictedDataToken);
+
+        return $response;
+    }
+
+    /**
+     * Operation updateOutboundWithHttpInfo.
+     *
+     * @param string        $order_id
+     *                                           ID for the outbound order to be updated. (required)
+     * @param OutboundOrder $body
+     *                                           Represents an AWD outbound order. (required)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @return array of \SpApi\Model\awd\v2024_05_09\OutboundOrderReference, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function updateOutboundWithHttpInfo(
+        string $order_id,
+        OutboundOrder $body,
+        ?string $restrictedDataToken = null
+    ): array {
+        $request = $this->updateOutboundRequest($order_id, $body);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-updateOutbound');
+        } else {
+            $request = $this->config->sign($request);
+        }
+
+        try {
+            $options = $this->createHttpClientOption();
+
+            try {
+                if ($this->rateLimiterEnabled) {
+                    $this->updateOutboundRateLimiter->consume()->ensureAccepted();
+                }
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+            if ('\SpApi\Model\awd\v2024_05_09\OutboundOrderReference' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\awd\v2024_05_09\OutboundOrderReference' !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\awd\v2024_05_09\OutboundOrderReference', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
+        } catch (ApiException $e) {
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\awd\v2024_05_09\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateOutboundAsync.
+     *
+     * @param string        $order_id
+     *                                ID for the outbound order to be updated. (required)
+     * @param OutboundOrder $body
+     *                                Represents an AWD outbound order. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function updateOutboundAsync(
+        string $order_id,
+        OutboundOrder $body
+    ): PromiseInterface {
+        return $this->updateOutboundAsyncWithHttpInfo($order_id, $body)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            )
+        ;
+    }
+
+    /**
+     * Operation updateOutboundAsyncWithHttpInfo.
+     *
+     * @param string        $order_id
+     *                                ID for the outbound order to be updated. (required)
+     * @param OutboundOrder $body
+     *                                Represents an AWD outbound order. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function updateOutboundAsyncWithHttpInfo(
+        string $order_id,
+        OutboundOrder $body,
+        ?string $restrictedDataToken = null
+    ): PromiseInterface {
+        $returnType = '\SpApi\Model\awd\v2024_05_09\OutboundOrderReference';
+        $request = $this->updateOutboundRequest($order_id, $body);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-updateOutbound');
+        } else {
+            $request = $this->config->sign($request);
+        }
+        if ($this->rateLimiterEnabled) {
+            $this->updateOutboundRateLimiter->consume()->ensureAccepted();
+        }
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('string' !== $returnType) {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders(),
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            )
+        ;
+    }
+
+    /**
+     * Create request for operation 'updateOutbound'.
+     *
+     * @param string        $order_id
+     *                                ID for the outbound order to be updated. (required)
+     * @param OutboundOrder $body
+     *                                Represents an AWD outbound order. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function updateOutboundRequest(
+        string $order_id,
+        OutboundOrder $body
+    ): Request {
+        // verify the required parameter 'order_id' is set
+        if (null === $order_id || (is_array($order_id) && 0 === count($order_id))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $order_id when calling updateOutbound'
+            );
+        }
+        // verify the required parameter 'body' is set
+        if (null === $body || (is_array($body) && 0 === count($body))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling updateOutbound'
+            );
+        }
+
+        $resourcePath = '/awd/2024-05-09/outboundOrders/{orderId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if (null !== $order_id) {
+            $resourcePath = str_replace(
+                '{orderId}',
+                ObjectSerializer::toPathValue($order_id),
                 $resourcePath
             );
         }

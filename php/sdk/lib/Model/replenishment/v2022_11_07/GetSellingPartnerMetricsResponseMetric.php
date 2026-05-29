@@ -1351,7 +1351,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
     /**
      * Sets share_of_coupon_subscriptions.
      *
-     * @param null|float $share_of_coupon_subscriptions The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.
+     * @param null|float $share_of_coupon_subscriptions The percentage of new subscriptions from coupons. Applicable to `PERFORMANCE` `timePeriodType`.
      */
     public function setShareOfCouponSubscriptions(?float $share_of_coupon_subscriptions): self
     {
@@ -1634,7 +1634,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
     /**
      * Sets signup_conversion_for0_percent_seller_funding.
      *
-     * @param null|float $signup_conversion_for0_percent_seller_funding Percentage of subscriptions created by offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months
+     * @param null|float $signup_conversion_for0_percent_seller_funding percentage of subscriptions from offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months
      */
     public function setSignupConversionFor0PercentSellerFunding(?float $signup_conversion_for0_percent_seller_funding): self
     {
@@ -1672,7 +1672,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
     /**
      * Sets signup_conversion_for5_percent_seller_funding.
      *
-     * @param null|float $signup_conversion_for5_percent_seller_funding [Applicable only for Sellers] Percentage of subscriptions created by offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months
+     * @param null|float $signup_conversion_for5_percent_seller_funding [Applicable only for Sellers] Percentage of subscriptions from offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months
      */
     public function setSignupConversionFor5PercentSellerFunding(?float $signup_conversion_for5_percent_seller_funding): self
     {
@@ -1710,7 +1710,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
     /**
      * Sets signup_conversion_for10_percent_seller_funding.
      *
-     * @param null|float $signup_conversion_for10_percent_seller_funding [Applicable only for Sellers] Percentage of subscriptions created by offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months
+     * @param null|float $signup_conversion_for10_percent_seller_funding [Applicable only for Sellers] Percentage of subscriptions from offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months
      */
     public function setSignupConversionFor10PercentSellerFunding(?float $signup_conversion_for10_percent_seller_funding): self
     {
@@ -1748,7 +1748,7 @@ class GetSellingPartnerMetricsResponseMetric implements ModelInterface, \ArrayAc
     /**
      * Sets signup_conversion_for5_plus_percent_seller_funding.
      *
-     * @param null|float $signup_conversion_for5_plus_percent_seller_funding [Applicable only for Vendors] Percentage of subscriptions created by offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months
+     * @param null|float $signup_conversion_for5_plus_percent_seller_funding [Applicable only for Vendors] Percentage of subscriptions from offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months
      */
     public function setSignupConversionFor5PlusPercentSellerFunding(?float $signup_conversion_for5_plus_percent_seller_funding): self
     {

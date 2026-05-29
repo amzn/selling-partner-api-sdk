@@ -67,7 +67,8 @@ class RegulatedOrderVerificationStatus implements ModelInterface, \ArrayAccess, 
         'rejection_reason' => '\SpApi\Model\orders\v0\RejectionReason',
         'review_date' => 'string',
         'external_reviewer_id' => 'string',
-        'valid_verification_details' => '\SpApi\Model\orders\v0\ValidVerificationDetail[]'];
+        'valid_verification_details' => '\SpApi\Model\orders\v0\ValidVerificationDetail[]',
+        'valid_interim_status_codes' => '\SpApi\Model\orders\v0\ValidInterimStatusCode[]'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -85,7 +86,8 @@ class RegulatedOrderVerificationStatus implements ModelInterface, \ArrayAccess, 
         'rejection_reason' => null,
         'review_date' => null,
         'external_reviewer_id' => null,
-        'valid_verification_details' => null];
+        'valid_verification_details' => null,
+        'valid_interim_status_codes' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -100,6 +102,7 @@ class RegulatedOrderVerificationStatus implements ModelInterface, \ArrayAccess, 
         'review_date' => true,
         'external_reviewer_id' => true,
         'valid_verification_details' => true,
+        'valid_interim_status_codes' => true,
     ];
 
     /**
@@ -123,6 +126,7 @@ class RegulatedOrderVerificationStatus implements ModelInterface, \ArrayAccess, 
         'review_date' => 'ReviewDate',
         'external_reviewer_id' => 'ExternalReviewerId',
         'valid_verification_details' => 'ValidVerificationDetails',
+        'valid_interim_status_codes' => 'ValidInterimStatusCodes',
     ];
 
     /**
@@ -138,6 +142,7 @@ class RegulatedOrderVerificationStatus implements ModelInterface, \ArrayAccess, 
         'review_date' => 'setReviewDate',
         'external_reviewer_id' => 'setExternalReviewerId',
         'valid_verification_details' => 'setValidVerificationDetails',
+        'valid_interim_status_codes' => 'setValidInterimStatusCodes',
     ];
 
     /**
@@ -153,6 +158,7 @@ class RegulatedOrderVerificationStatus implements ModelInterface, \ArrayAccess, 
         'review_date' => 'getReviewDate',
         'external_reviewer_id' => 'getExternalReviewerId',
         'valid_verification_details' => 'getValidVerificationDetails',
+        'valid_interim_status_codes' => 'getValidInterimStatusCodes',
     ];
 
     /**
@@ -175,6 +181,7 @@ class RegulatedOrderVerificationStatus implements ModelInterface, \ArrayAccess, 
         $this->setIfExists('review_date', $data ?? [], null);
         $this->setIfExists('external_reviewer_id', $data ?? [], null);
         $this->setIfExists('valid_verification_details', $data ?? [], null);
+        $this->setIfExists('valid_interim_status_codes', $data ?? [], null);
     }
 
     /**
@@ -473,6 +480,36 @@ class RegulatedOrderVerificationStatus implements ModelInterface, \ArrayAccess, 
             }
         }
         $this->container['valid_verification_details'] = $valid_verification_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets valid_interim_status_codes.
+     */
+    public function getValidInterimStatusCodes(): ?array
+    {
+        return $this->container['valid_interim_status_codes'];
+    }
+
+    /**
+     * Sets valid_interim_status_codes.
+     *
+     * @param null|array $valid_interim_status_codes Valid interim status codes that may be used when populating `InterimStatusDetail`. Each element contains a `StatusCode` identifier and its customer-facing `StatusDescription`.
+     */
+    public function setValidInterimStatusCodes(?array $valid_interim_status_codes): self
+    {
+        if (is_null($valid_interim_status_codes)) {
+            array_push($this->openAPINullablesSetToNull, 'valid_interim_status_codes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('valid_interim_status_codes', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['valid_interim_status_codes'] = $valid_interim_status_codes;
 
         return $this;
     }

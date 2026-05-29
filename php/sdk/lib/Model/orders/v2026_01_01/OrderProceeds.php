@@ -61,7 +61,8 @@ class OrderProceeds implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'grand_total' => '\SpApi\Model\orders\v2026_01_01\Money'];
+        'grand_total' => '\SpApi\Model\orders\v2026_01_01\Money',
+        'breakdowns' => '\SpApi\Model\orders\v2026_01_01\OrderProceedsBreakdown[]'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -73,7 +74,8 @@ class OrderProceeds implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
-        'grand_total' => null];
+        'grand_total' => null,
+        'breakdowns' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -82,6 +84,7 @@ class OrderProceeds implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $openAPINullables = [
         'grand_total' => true,
+        'breakdowns' => true,
     ];
 
     /**
@@ -99,6 +102,7 @@ class OrderProceeds implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $attributeMap = [
         'grand_total' => 'grandTotal',
+        'breakdowns' => 'breakdowns',
     ];
 
     /**
@@ -108,6 +112,7 @@ class OrderProceeds implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $setters = [
         'grand_total' => 'setGrandTotal',
+        'breakdowns' => 'setBreakdowns',
     ];
 
     /**
@@ -117,6 +122,7 @@ class OrderProceeds implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     protected static array $getters = [
         'grand_total' => 'getGrandTotal',
+        'breakdowns' => 'getBreakdowns',
     ];
 
     /**
@@ -133,6 +139,7 @@ class OrderProceeds implements ModelInterface, \ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('grand_total', $data ?? [], null);
+        $this->setIfExists('breakdowns', $data ?? [], null);
     }
 
     /**
@@ -260,6 +267,36 @@ class OrderProceeds implements ModelInterface, \ArrayAccess, \JsonSerializable
             }
         }
         $this->container['grand_total'] = $grand_total;
+
+        return $this;
+    }
+
+    /**
+     * Gets breakdowns.
+     */
+    public function getBreakdowns(): ?array
+    {
+        return $this->container['breakdowns'];
+    }
+
+    /**
+     * Sets breakdowns.
+     *
+     * @param null|array $breakdowns Categorized proceeds for the order. Proceed categories are either aggregated across all order items (such as `ITEM`, `SHIPPING`, and `TAX`) or applied at the order level (such as `DELIVERY_TIP`).
+     */
+    public function setBreakdowns(?array $breakdowns): self
+    {
+        if (is_null($breakdowns)) {
+            array_push($this->openAPINullablesSetToNull, 'breakdowns');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('breakdowns', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['breakdowns'] = $breakdowns;
 
         return $this;
     }

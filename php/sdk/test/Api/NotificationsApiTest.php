@@ -1328,4 +1328,111 @@ class NotificationsApiTest extends BaseTestCase
         // Skip this test
         $this->markTestSkipped('Skip test for this operation.');
     }
+    /**
+     * Test case for sendTestNotification_200
+     */
+    public function testSendTestNotification200()
+    {
+        // Dynamic sandbox case
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testSendTestNotification200', 'NotificationsApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            // Skip entire class
+            if ($this->testHelper->shouldSkipTest('NotificationsApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $result = $this->testHelper->buildRequestForDynamicSandBox(
+                $this->apiInstance,
+                'sendTestNotification'
+            );
+            $requestParams = $result;
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->sendTestNotificationWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(200, $statusCode);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 200);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for sendTestNotification_400
+     */
+    public function testSendTestNotification400()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for sendTestNotification_403
+     */
+    public function testSendTestNotification403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for sendTestNotification_404
+     */
+    public function testSendTestNotification404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for sendTestNotification_409
+     */
+    public function testSendTestNotification409()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for sendTestNotification_413
+     */
+    public function testSendTestNotification413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for sendTestNotification_415
+     */
+    public function testSendTestNotification415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for sendTestNotification_429
+     */
+    public function testSendTestNotification429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for sendTestNotification_500
+     */
+    public function testSendTestNotification500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for sendTestNotification_503
+     */
+    public function testSendTestNotification503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
 }

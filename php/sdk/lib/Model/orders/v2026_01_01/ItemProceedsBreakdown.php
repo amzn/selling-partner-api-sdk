@@ -85,8 +85,8 @@ class ItemProceedsBreakdown implements ModelInterface, \ArrayAccess, \JsonSerial
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'type' => true,
-        'subtotal' => true,
+        'type' => false,
+        'subtotal' => false,
         'detailed_breakdowns' => true,
     ];
 
@@ -234,7 +234,16 @@ class ItemProceedsBreakdown implements ModelInterface, \ArrayAccess, \JsonSerial
      */
     public function listInvalidProperties(): array
     {
-        return [];
+        $invalidProperties = [];
+
+        if (null === $this->container['type']) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if (null === $this->container['subtotal']) {
+            $invalidProperties[] = "'subtotal' can't be null";
+        }
+
+        return $invalidProperties;
     }
 
     /**
@@ -251,7 +260,7 @@ class ItemProceedsBreakdown implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Gets type.
      */
-    public function getType(): ?string
+    public function getType(): string
     {
         return $this->container['type'];
     }
@@ -259,19 +268,12 @@ class ItemProceedsBreakdown implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets type.
      *
-     * @param null|string $type Category classification of the proceeds breakdown.   **Possible values**: `ITEM`, `SHIPPING`, `GIFT_WRAP`, `COD_FEE`, `OTHER`, `TAX`, `DISCOUNT`
+     * @param string $type Category classification of the proceeds breakdown.   **Possible values**: `ITEM`, `SHIPPING`, `GIFT_WRAP`, `COD_FEE`, `OTHER`, `TAX`, `DISCOUNT`
      */
-    public function setType(?string $type): self
+    public function setType(string $type): self
     {
         if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
         $this->container['type'] = $type;
 
@@ -281,7 +283,7 @@ class ItemProceedsBreakdown implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Gets subtotal.
      */
-    public function getSubtotal(): ?Money
+    public function getSubtotal(): Money
     {
         return $this->container['subtotal'];
     }
@@ -289,19 +291,12 @@ class ItemProceedsBreakdown implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets subtotal.
      *
-     * @param null|Money $subtotal subtotal
+     * @param Money $subtotal subtotal
      */
-    public function setSubtotal(?Money $subtotal): self
+    public function setSubtotal(Money $subtotal): self
     {
         if (is_null($subtotal)) {
-            array_push($this->openAPINullablesSetToNull, 'subtotal');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('subtotal', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable subtotal cannot be null');
         }
         $this->container['subtotal'] = $subtotal;
 
