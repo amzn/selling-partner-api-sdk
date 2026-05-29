@@ -17,12 +17,12 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- * A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every
- * marketplace, do not provide this list.
+ * A list of marketplace identifiers you can subscribe to (for example, &#x60;ATVPDKIKX0DER&#x60;). To receive
+ * notifications in every marketplace, do not provide this list.
  */
 @Schema(
         description =
-                "A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.")
+                "A list of marketplace identifiers you can subscribe to (for example, `ATVPDKIKX0DER`). To receive notifications in every marketplace, do not provide this list.")
 public class MarketplaceIds extends ArrayList<String> {
 
     @Override

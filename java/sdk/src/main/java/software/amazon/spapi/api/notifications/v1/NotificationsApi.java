@@ -43,6 +43,8 @@ import software.amazon.spapi.models.notifications.v1.GetDestinationResponse;
 import software.amazon.spapi.models.notifications.v1.GetDestinationsResponse;
 import software.amazon.spapi.models.notifications.v1.GetSubscriptionByIdResponse;
 import software.amazon.spapi.models.notifications.v1.GetSubscriptionResponse;
+import software.amazon.spapi.models.notifications.v1.SendTestNotificationRequest;
+import software.amazon.spapi.models.notifications.v1.SendTestNotificationResponse;
 
 public class NotificationsApi {
     private ApiClient apiClient;
@@ -87,10 +89,14 @@ public class NotificationsApi {
             .addLimit(config.getLimit("NotificationsApi-getSubscriptionById"))
             .build();
 
+    public final Bucket sendTestNotificationBucket = Bucket.builder()
+            .addLimit(config.getLimit("NotificationsApi-sendTestNotification"))
+            .build();
+
     /**
      * Build call for createDestination
      *
-     * @param body (required)
+     * @param body The request schema for the &#x60;createDestination&#x60; operation. (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -149,15 +155,15 @@ public class NotificationsApi {
     /**
      * Creates a destination resource to receive notifications. The &#x60;createDestination&#x60; operation is
      * grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request schema for the &#x60;createDestination&#x60; operation. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return CreateDestinationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -172,15 +178,15 @@ public class NotificationsApi {
     /**
      * Creates a destination resource to receive notifications. The &#x60;createDestination&#x60; operation is
      * grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request schema for the &#x60;createDestination&#x60; operation. (required)
      * @return CreateDestinationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -194,15 +200,15 @@ public class NotificationsApi {
     /**
      * Creates a destination resource to receive notifications. The &#x60;createDestination&#x60; operation is
      * grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request schema for the &#x60;createDestination&#x60; operation. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;CreateDestinationResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -228,15 +234,15 @@ public class NotificationsApi {
     /**
      * Creates a destination resource to receive notifications. The &#x60;createDestination&#x60; operation is
      * grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request schema for the &#x60;createDestination&#x60; operation. (required)
      * @return ApiResponse&lt;CreateDestinationResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -249,15 +255,15 @@ public class NotificationsApi {
     /**
      * (asynchronously) Creates a destination resource to receive notifications. The &#x60;createDestination&#x60;
      * operation is grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request schema for the &#x60;createDestination&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -271,15 +277,15 @@ public class NotificationsApi {
     /**
      * (asynchronously) Creates a destination resource to receive notifications. The &#x60;createDestination&#x60;
      * operation is grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request schema for the &#x60;createDestination&#x60; operation. (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -316,10 +322,10 @@ public class NotificationsApi {
     /**
      * Build call for createSubscription
      *
-     * @param body (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param body The request schema for the &#x60;createSubscription&#x60; operation. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -391,19 +397,19 @@ public class NotificationsApi {
     /**
      * Creates a subscription for the specified notification type to be delivered to the specified destination. Before
      * you can subscribe, you must first create the destination by calling the &#x60;createDestination&#x60; operation.
-     * In cases where the specified notification type supports multiple payload versions, you can utilize this API to
+     * If the notification type that you specify supports multiple payload versions, you can use this operation to
      * subscribe to a different payload version if you already have an existing subscription for a different payload
      * version. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param body The request schema for the &#x60;createSubscription&#x60; operation. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return CreateSubscriptionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -420,19 +426,19 @@ public class NotificationsApi {
     /**
      * Creates a subscription for the specified notification type to be delivered to the specified destination. Before
      * you can subscribe, you must first create the destination by calling the &#x60;createDestination&#x60; operation.
-     * In cases where the specified notification type supports multiple payload versions, you can utilize this API to
+     * If the notification type that you specify supports multiple payload versions, you can use this operation to
      * subscribe to a different payload version if you already have an existing subscription for a different payload
      * version. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param body The request schema for the &#x60;createSubscription&#x60; operation. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @return CreateSubscriptionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -446,19 +452,19 @@ public class NotificationsApi {
     /**
      * Creates a subscription for the specified notification type to be delivered to the specified destination. Before
      * you can subscribe, you must first create the destination by calling the &#x60;createDestination&#x60; operation.
-     * In cases where the specified notification type supports multiple payload versions, you can utilize this API to
+     * If the notification type that you specify supports multiple payload versions, you can use this operation to
      * subscribe to a different payload version if you already have an existing subscription for a different payload
      * version. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param body The request schema for the &#x60;createSubscription&#x60; operation. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;CreateSubscriptionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -485,19 +491,19 @@ public class NotificationsApi {
     /**
      * Creates a subscription for the specified notification type to be delivered to the specified destination. Before
      * you can subscribe, you must first create the destination by calling the &#x60;createDestination&#x60; operation.
-     * In cases where the specified notification type supports multiple payload versions, you can utilize this API to
+     * If the notification type that you specify supports multiple payload versions, you can use this operation to
      * subscribe to a different payload version if you already have an existing subscription for a different payload
      * version. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param body The request schema for the &#x60;createSubscription&#x60; operation. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @return ApiResponse&lt;CreateSubscriptionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -510,19 +516,19 @@ public class NotificationsApi {
     /**
      * (asynchronously) Creates a subscription for the specified notification type to be delivered to the specified
      * destination. Before you can subscribe, you must first create the destination by calling the
-     * &#x60;createDestination&#x60; operation. In cases where the specified notification type supports multiple payload
-     * versions, you can utilize this API to subscribe to a different payload version if you already have an existing
+     * &#x60;createDestination&#x60; operation. If the notification type that you specify supports multiple payload
+     * versions, you can use this operation to subscribe to a different payload version if you already have an existing
      * subscription for a different payload version. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
-     * ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
-     * were applied to the requested operation, when available. The table above indicates the default rate and burst
-     * values for this operation. Selling partners whose business demands require higher throughput may observe higher
-     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for
+     * the operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param body The request schema for the &#x60;createSubscription&#x60; operation. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -538,19 +544,19 @@ public class NotificationsApi {
     /**
      * (asynchronously) Creates a subscription for the specified notification type to be delivered to the specified
      * destination. Before you can subscribe, you must first create the destination by calling the
-     * &#x60;createDestination&#x60; operation. In cases where the specified notification type supports multiple payload
-     * versions, you can utilize this API to subscribe to a different payload version if you already have an existing
+     * &#x60;createDestination&#x60; operation. If the notification type that you specify supports multiple payload
+     * versions, you can use this operation to subscribe to a different payload version if you already have an existing
      * subscription for a different payload version. **Usage Plan:** | Rate (requests per second) | Burst | | ---- |
-     * ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
-     * were applied to the requested operation, when available. The table above indicates the default rate and burst
-     * values for this operation. Selling partners whose business demands require higher throughput may observe higher
-     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
-     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for
+     * the operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param body The request schema for the &#x60;createSubscription&#x60; operation. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -651,12 +657,12 @@ public class NotificationsApi {
 
     /**
      * Deletes the destination that you specify. The &#x60;deleteDestination&#x60; operation is grantless. For more
-     * information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).
-     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * information, refer to [Grantless Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations)
+     * in the Selling Partner API Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the
+     * operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param destinationId The identifier for the destination that you want to delete. (required)
@@ -673,12 +679,12 @@ public class NotificationsApi {
 
     /**
      * Deletes the destination that you specify. The &#x60;deleteDestination&#x60; operation is grantless. For more
-     * information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).
-     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * information, refer to [Grantless Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations)
+     * in the Selling Partner API Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the
+     * operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param destinationId The identifier for the destination that you want to delete. (required)
@@ -693,12 +699,12 @@ public class NotificationsApi {
 
     /**
      * Deletes the destination that you specify. The &#x60;deleteDestination&#x60; operation is grantless. For more
-     * information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).
-     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * information, refer to [Grantless Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations)
+     * in the Selling Partner API Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the
+     * operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param destinationId The identifier for the destination that you want to delete. (required)
@@ -726,12 +732,12 @@ public class NotificationsApi {
 
     /**
      * Deletes the destination that you specify. The &#x60;deleteDestination&#x60; operation is grantless. For more
-     * information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).
-     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * information, refer to [Grantless Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations)
+     * in the Selling Partner API Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the
+     * operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param destinationId The identifier for the destination that you want to delete. (required)
@@ -747,12 +753,12 @@ public class NotificationsApi {
     /**
      * (asynchronously) Deletes the destination that you specify. The &#x60;deleteDestination&#x60; operation is
      * grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param destinationId The identifier for the destination that you want to delete. (required)
@@ -769,12 +775,12 @@ public class NotificationsApi {
     /**
      * (asynchronously) Deletes the destination that you specify. The &#x60;deleteDestination&#x60; operation is
      * grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param destinationId The identifier for the destination that you want to delete. (required)
@@ -813,9 +819,9 @@ public class NotificationsApi {
      * Build call for deleteSubscriptionById
      *
      * @param subscriptionId The identifier for the subscription that you want to delete. (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -893,18 +899,18 @@ public class NotificationsApi {
      * subscription identifier can be for any subscription associated with your application. After you successfully call
      * this operation, notifications will stop being sent for the associated subscription. The
      * &#x60;deleteSubscriptionById&#x60; operation is grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param subscriptionId The identifier for the subscription that you want to delete. (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return DeleteSubscriptionByIdResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -923,18 +929,18 @@ public class NotificationsApi {
      * subscription identifier can be for any subscription associated with your application. After you successfully call
      * this operation, notifications will stop being sent for the associated subscription. The
      * &#x60;deleteSubscriptionById&#x60; operation is grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param subscriptionId The identifier for the subscription that you want to delete. (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @return DeleteSubscriptionByIdResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -951,18 +957,18 @@ public class NotificationsApi {
      * subscription identifier can be for any subscription associated with your application. After you successfully call
      * this operation, notifications will stop being sent for the associated subscription. The
      * &#x60;deleteSubscriptionById&#x60; operation is grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param subscriptionId The identifier for the subscription that you want to delete. (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;DeleteSubscriptionByIdResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -991,18 +997,18 @@ public class NotificationsApi {
      * subscription identifier can be for any subscription associated with your application. After you successfully call
      * this operation, notifications will stop being sent for the associated subscription. The
      * &#x60;deleteSubscriptionById&#x60; operation is grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param subscriptionId The identifier for the subscription that you want to delete. (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @return ApiResponse&lt;DeleteSubscriptionByIdResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1017,18 +1023,18 @@ public class NotificationsApi {
      * specify. The subscription identifier can be for any subscription associated with your application. After you
      * successfully call this operation, notifications will stop being sent for the associated subscription. The
      * &#x60;deleteSubscriptionById&#x60; operation is grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param subscriptionId The identifier for the subscription that you want to delete. (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1044,18 +1050,18 @@ public class NotificationsApi {
      * specify. The subscription identifier can be for any subscription associated with your application. After you
      * successfully call this operation, notifications will stop being sent for the associated subscription. The
      * &#x60;deleteSubscriptionById&#x60; operation is grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param subscriptionId The identifier for the subscription that you want to delete. (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -1157,12 +1163,12 @@ public class NotificationsApi {
     /**
      * Returns information about the destination that you specify. The &#x60;getDestination&#x60; operation is
      * grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param destinationId The identifier generated when you created the destination. (required)
@@ -1180,12 +1186,12 @@ public class NotificationsApi {
     /**
      * Returns information about the destination that you specify. The &#x60;getDestination&#x60; operation is
      * grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param destinationId The identifier generated when you created the destination. (required)
@@ -1201,12 +1207,12 @@ public class NotificationsApi {
     /**
      * Returns information about the destination that you specify. The &#x60;getDestination&#x60; operation is
      * grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param destinationId The identifier generated when you created the destination. (required)
@@ -1234,12 +1240,12 @@ public class NotificationsApi {
     /**
      * Returns information about the destination that you specify. The &#x60;getDestination&#x60; operation is
      * grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param destinationId The identifier generated when you created the destination. (required)
@@ -1255,12 +1261,12 @@ public class NotificationsApi {
     /**
      * (asynchronously) Returns information about the destination that you specify. The &#x60;getDestination&#x60;
      * operation is grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param destinationId The identifier generated when you created the destination. (required)
@@ -1276,12 +1282,12 @@ public class NotificationsApi {
     /**
      * (asynchronously) Returns information about the destination that you specify. The &#x60;getDestination&#x60;
      * operation is grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param destinationId The identifier generated when you created the destination. (required)
@@ -1371,12 +1377,12 @@ public class NotificationsApi {
 
     /**
      * Returns information about all destinations. The &#x60;getDestinations&#x60; operation is grantless. For more
-     * information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).
-     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * information, refer to [Grantless Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations)
+     * in the Selling Partner API Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the
+     * operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -1391,12 +1397,12 @@ public class NotificationsApi {
 
     /**
      * Returns information about all destinations. The &#x60;getDestinations&#x60; operation is grantless. For more
-     * information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).
-     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * information, refer to [Grantless Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations)
+     * in the Selling Partner API Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the
+     * operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @return GetDestinationsResponse
@@ -1410,12 +1416,12 @@ public class NotificationsApi {
 
     /**
      * Returns information about all destinations. The &#x60;getDestinations&#x60; operation is grantless. For more
-     * information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).
-     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * information, refer to [Grantless Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations)
+     * in the Selling Partner API Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the
+     * operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -1441,12 +1447,12 @@ public class NotificationsApi {
 
     /**
      * Returns information about all destinations. The &#x60;getDestinations&#x60; operation is grantless. For more
-     * information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).
-     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may observe higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * information, refer to [Grantless Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations)
+     * in the Selling Partner API Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the
+     * operation, when available. The preceding table contains the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput might have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @return ApiResponse&lt;GetDestinationsResponse&gt;
@@ -1460,12 +1466,12 @@ public class NotificationsApi {
     /**
      * (asynchronously) Returns information about all destinations. The &#x60;getDestinations&#x60; operation is
      * grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param callback The callback to be executed when the API call finishes
@@ -1480,12 +1486,12 @@ public class NotificationsApi {
     /**
      * (asynchronously) Returns information about all destinations. The &#x60;getDestinations&#x60; operation is
      * grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param callback The callback to be executed when the API call finishes
@@ -1521,9 +1527,9 @@ public class NotificationsApi {
     /**
      * Build call for getSubscription
      *
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param payloadVersion The version of the payload object to be used in the notification. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1594,19 +1600,18 @@ public class NotificationsApi {
 
     /**
      * Returns information about subscription of the specified notification type and payload version.
-     * &#x60;payloadVersion&#x60; is an optional parameter. When &#x60;payloadVersion&#x60; is not provided, it will
-     * return latest payload version subscription&#x27;s information. You can use this API to get subscription
-     * information when you do not have a subscription identifier. **Usage Plan:** | Rate (requests per second) | Burst
-     * | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
-     * limits that were applied to the requested operation, when available. The table above indicates the default rate
-     * and burst values for this operation. Selling partners whose business demands require higher throughput may
-     * observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
-     * Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the
+     * operation returns the latest payload version subscription&#x27;s information. You can use this API to get
+     * subscription information when you do not have a subscription identifier. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
+     * usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param payloadVersion The version of the payload object to be used in the notification. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return GetSubscriptionResponse
@@ -1623,19 +1628,18 @@ public class NotificationsApi {
 
     /**
      * Returns information about subscription of the specified notification type and payload version.
-     * &#x60;payloadVersion&#x60; is an optional parameter. When &#x60;payloadVersion&#x60; is not provided, it will
-     * return latest payload version subscription&#x27;s information. You can use this API to get subscription
-     * information when you do not have a subscription identifier. **Usage Plan:** | Rate (requests per second) | Burst
-     * | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
-     * limits that were applied to the requested operation, when available. The table above indicates the default rate
-     * and burst values for this operation. Selling partners whose business demands require higher throughput may
-     * observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
-     * Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the
+     * operation returns the latest payload version subscription&#x27;s information. You can use this API to get
+     * subscription information when you do not have a subscription identifier. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
+     * usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param payloadVersion The version of the payload object to be used in the notification. (optional)
      * @return GetSubscriptionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1649,19 +1653,18 @@ public class NotificationsApi {
 
     /**
      * Returns information about subscription of the specified notification type and payload version.
-     * &#x60;payloadVersion&#x60; is an optional parameter. When &#x60;payloadVersion&#x60; is not provided, it will
-     * return latest payload version subscription&#x27;s information. You can use this API to get subscription
-     * information when you do not have a subscription identifier. **Usage Plan:** | Rate (requests per second) | Burst
-     * | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
-     * limits that were applied to the requested operation, when available. The table above indicates the default rate
-     * and burst values for this operation. Selling partners whose business demands require higher throughput may
-     * observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
-     * Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the
+     * operation returns the latest payload version subscription&#x27;s information. You can use this API to get
+     * subscription information when you do not have a subscription identifier. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
+     * usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param payloadVersion The version of the payload object to be used in the notification. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;GetSubscriptionResponse&gt;
@@ -1687,19 +1690,18 @@ public class NotificationsApi {
 
     /**
      * Returns information about subscription of the specified notification type and payload version.
-     * &#x60;payloadVersion&#x60; is an optional parameter. When &#x60;payloadVersion&#x60; is not provided, it will
-     * return latest payload version subscription&#x27;s information. You can use this API to get subscription
-     * information when you do not have a subscription identifier. **Usage Plan:** | Rate (requests per second) | Burst
-     * | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
-     * limits that were applied to the requested operation, when available. The table above indicates the default rate
-     * and burst values for this operation. Selling partners whose business demands require higher throughput may
-     * observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
-     * Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the
+     * operation returns the latest payload version subscription&#x27;s information. You can use this API to get
+     * subscription information when you do not have a subscription identifier. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
+     * usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param payloadVersion The version of the payload object to be used in the notification. (optional)
      * @return ApiResponse&lt;GetSubscriptionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1712,19 +1714,18 @@ public class NotificationsApi {
 
     /**
      * (asynchronously) Returns information about subscription of the specified notification type and payload version.
-     * &#x60;payloadVersion&#x60; is an optional parameter. When &#x60;payloadVersion&#x60; is not provided, it will
-     * return latest payload version subscription&#x27;s information. You can use this API to get subscription
-     * information when you do not have a subscription identifier. **Usage Plan:** | Rate (requests per second) | Burst
-     * | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
-     * limits that were applied to the requested operation, when available. The table above indicates the default rate
-     * and burst values for this operation. Selling partners whose business demands require higher throughput may
-     * observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
-     * Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the
+     * operation returns the latest payload version subscription&#x27;s information. You can use this API to get
+     * subscription information when you do not have a subscription identifier. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
+     * usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param payloadVersion The version of the payload object to be used in the notification. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1738,19 +1739,18 @@ public class NotificationsApi {
     }
     /**
      * (asynchronously) Returns information about subscription of the specified notification type and payload version.
-     * &#x60;payloadVersion&#x60; is an optional parameter. When &#x60;payloadVersion&#x60; is not provided, it will
-     * return latest payload version subscription&#x27;s information. You can use this API to get subscription
-     * information when you do not have a subscription identifier. **Usage Plan:** | Rate (requests per second) | Burst
-     * | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate
-     * limits that were applied to the requested operation, when available. The table above indicates the default rate
-     * and burst values for this operation. Selling partners whose business demands require higher throughput may
-     * observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
-     * Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the
+     * operation returns the latest payload version subscription&#x27;s information. You can use this API to get
+     * subscription information when you do not have a subscription identifier. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the
+     * usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param payloadVersion The version of the payload object to be used in the notification. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -1790,9 +1790,9 @@ public class NotificationsApi {
      * Build call for getSubscriptionById
      *
      * @param subscriptionId The identifier for the subscription that you want to get. (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1868,18 +1868,18 @@ public class NotificationsApi {
     /**
      * Returns information about a subscription for the specified notification type. The &#x60;getSubscriptionById&#x60;
      * operation is grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param subscriptionId The identifier for the subscription that you want to get. (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return GetSubscriptionByIdResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1896,18 +1896,18 @@ public class NotificationsApi {
     /**
      * Returns information about a subscription for the specified notification type. The &#x60;getSubscriptionById&#x60;
      * operation is grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param subscriptionId The identifier for the subscription that you want to get. (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @return GetSubscriptionByIdResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1922,18 +1922,18 @@ public class NotificationsApi {
     /**
      * Returns information about a subscription for the specified notification type. The &#x60;getSubscriptionById&#x60;
      * operation is grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param subscriptionId The identifier for the subscription that you want to get. (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;GetSubscriptionByIdResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1960,18 +1960,18 @@ public class NotificationsApi {
     /**
      * Returns information about a subscription for the specified notification type. The &#x60;getSubscriptionById&#x60;
      * operation is grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param subscriptionId The identifier for the subscription that you want to get. (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @return ApiResponse&lt;GetSubscriptionByIdResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1984,18 +1984,18 @@ public class NotificationsApi {
     /**
      * (asynchronously) Returns information about a subscription for the specified notification type. The
      * &#x60;getSubscriptionById&#x60; operation is grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param subscriptionId The identifier for the subscription that you want to get. (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2009,18 +2009,18 @@ public class NotificationsApi {
     /**
      * (asynchronously) Returns information about a subscription for the specified notification type. The
      * &#x60;getSubscriptionById&#x60; operation is grantless. For more information, refer to [Grantless
-     * operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations). **Usage Plan:** | Rate (requests
-     * per second) | Burst | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns
-     * the usage plan rate limits that were applied to the requested operation, when available. The table above
-     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
-     * higher throughput may observe higher rate and burst values than those shown here. For more information, refer to
-     * [Usage Plans and Rate Limits in the Selling Partner
+     * Operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations) in the Selling Partner API
+     * Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param subscriptionId The identifier for the subscription that you want to get. (required)
-     * @param notificationType The type of notification. For more information about notification types, refer to
-     *     [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     *     (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -2055,6 +2055,256 @@ public class NotificationsApi {
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("getSubscriptionById operation exceeds rate limit");
+    }
+    /**
+     * Build call for sendTestNotification
+     *
+     * @param body The request schema for the &#x60;sendTestNotification&#x60; operation. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call sendTestNotificationCall(
+            SendTestNotificationRequest body,
+            String notificationType,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/notifications/v1/subscriptions/{notificationType}/testNotification"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/notifications/v1/subscriptions/{notificationType}/testNotification"
+                    .replaceAll("\\{" + "notificationType" + "\\}", notificationType.toString());
+        } else {
+            localVarPath = "/notifications/v1/subscriptions/{notificationType}/testNotification"
+                    .replaceAll(
+                            "\\{" + "notificationType" + "\\}", apiClient.escapeString(notificationType.toString()));
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json", "Successful Response", "Response"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call sendTestNotificationValidateBeforeCall(
+            SendTestNotificationRequest body,
+            String notificationType,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling sendTestNotification(Async)");
+        }
+        // verify the required parameter 'notificationType' is set
+        if (notificationType == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'notificationType' when calling sendTestNotification(Async)");
+        }
+
+        return sendTestNotificationCall(body, notificationType, progressRequestListener);
+    }
+
+    /**
+     * Sends a mock notification of the specified type to your SQS. The &#x60;sendTestNotification&#x60; API is
+     * grantless. For more information, see \&quot;Grantless operations\&quot; in the Selling Partner API Developer
+     * Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | For more information, see
+     * \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation. This is a sandbox-only
+     * operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API
+     * sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
+     *
+     * @param body The request schema for the &#x60;sendTestNotification&#x60; operation. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return SendTestNotificationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SendTestNotificationResponse sendTestNotification(
+            SendTestNotificationRequest body, String notificationType, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<SendTestNotificationResponse> resp =
+                sendTestNotificationWithHttpInfo(body, notificationType, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Sends a mock notification of the specified type to your SQS. The &#x60;sendTestNotification&#x60; API is
+     * grantless. For more information, see \&quot;Grantless operations\&quot; in the Selling Partner API Developer
+     * Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | For more information, see
+     * \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation. This is a sandbox-only
+     * operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API
+     * sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
+     *
+     * @param body The request schema for the &#x60;sendTestNotification&#x60; operation. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @return SendTestNotificationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SendTestNotificationResponse sendTestNotification(SendTestNotificationRequest body, String notificationType)
+            throws ApiException, LWAException {
+        ApiResponse<SendTestNotificationResponse> resp = sendTestNotificationWithHttpInfo(body, notificationType, null);
+        return resp.getData();
+    }
+
+    /**
+     * Sends a mock notification of the specified type to your SQS. The &#x60;sendTestNotification&#x60; API is
+     * grantless. For more information, see \&quot;Grantless operations\&quot; in the Selling Partner API Developer
+     * Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | For more information, see
+     * \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation. This is a sandbox-only
+     * operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API
+     * sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
+     *
+     * @param body The request schema for the &#x60;sendTestNotification&#x60; operation. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;SendTestNotificationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SendTestNotificationResponse> sendTestNotificationWithHttpInfo(
+            SendTestNotificationRequest body, String notificationType, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = sendTestNotificationValidateBeforeCall(body, notificationType, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "NotificationsApi-sendTestNotification");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || sendTestNotificationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SendTestNotificationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("sendTestNotification operation exceeds rate limit");
+    }
+
+    /**
+     * Sends a mock notification of the specified type to your SQS. The &#x60;sendTestNotification&#x60; API is
+     * grantless. For more information, see \&quot;Grantless operations\&quot; in the Selling Partner API Developer
+     * Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | For more information, see
+     * \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation. This is a sandbox-only
+     * operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API
+     * sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
+     *
+     * @param body The request schema for the &#x60;sendTestNotification&#x60; operation. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @return ApiResponse&lt;SendTestNotificationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SendTestNotificationResponse> sendTestNotificationWithHttpInfo(
+            SendTestNotificationRequest body, String notificationType) throws ApiException, LWAException {
+        return sendTestNotificationWithHttpInfo(body, notificationType, null);
+    }
+
+    /**
+     * (asynchronously) Sends a mock notification of the specified type to your SQS. The
+     * &#x60;sendTestNotification&#x60; API is grantless. For more information, see \&quot;Grantless operations\&quot;
+     * in the Selling Partner API Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 1 | 5 | For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API
+     * documentation. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling
+     * Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more
+     * information.
+     *
+     * @param body The request schema for the &#x60;sendTestNotification&#x60; operation. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call sendTestNotificationAsync(
+            SendTestNotificationRequest body,
+            String notificationType,
+            final ApiCallback<SendTestNotificationResponse> callback)
+            throws ApiException, LWAException {
+        return sendTestNotificationAsync(body, notificationType, callback, null);
+    }
+    /**
+     * (asynchronously) Sends a mock notification of the specified type to your SQS. The
+     * &#x60;sendTestNotification&#x60; API is grantless. For more information, see \&quot;Grantless operations\&quot;
+     * in the Selling Partner API Developer Guide. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 1 | 5 | For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API
+     * documentation. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling
+     * Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more
+     * information.
+     *
+     * @param body The request schema for the &#x60;sendTestNotification&#x60; operation. (required)
+     * @param notificationType The type of notification. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call sendTestNotificationAsync(
+            SendTestNotificationRequest body,
+            String notificationType,
+            final ApiCallback<SendTestNotificationResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = sendTestNotificationValidateBeforeCall(body, notificationType, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "NotificationsApi-sendTestNotification");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || sendTestNotificationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SendTestNotificationResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("sendTestNotification operation exceeds rate limit");
     }
 
     public static class Builder {

@@ -30,6 +30,9 @@ public class GetSellingPartnerMetricsRequest {
     @SerializedName("metrics")
     private List<Metric> metrics = null;
 
+    @SerializedName("filters")
+    private GetSellingPartnerMetricsRequestFilters filters = null;
+
     @SerializedName("timePeriodType")
     private TimePeriodType timePeriodType = null;
 
@@ -106,6 +109,25 @@ public class GetSellingPartnerMetricsRequest {
         this.metrics = metrics;
     }
 
+    public GetSellingPartnerMetricsRequest filters(GetSellingPartnerMetricsRequestFilters filters) {
+        this.filters = filters;
+        return this;
+    }
+
+    /**
+     * Get filters
+     *
+     * @return filters
+     */
+    @Schema(description = "")
+    public GetSellingPartnerMetricsRequestFilters getFilters() {
+        return filters;
+    }
+
+    public void setFilters(GetSellingPartnerMetricsRequestFilters filters) {
+        this.filters = filters;
+    }
+
     public GetSellingPartnerMetricsRequest timePeriodType(TimePeriodType timePeriodType) {
         this.timePeriodType = timePeriodType;
         return this;
@@ -175,6 +197,7 @@ public class GetSellingPartnerMetricsRequest {
         return Objects.equals(this.aggregationFrequency, getSellingPartnerMetricsRequest.aggregationFrequency)
                 && Objects.equals(this.timeInterval, getSellingPartnerMetricsRequest.timeInterval)
                 && Objects.equals(this.metrics, getSellingPartnerMetricsRequest.metrics)
+                && Objects.equals(this.filters, getSellingPartnerMetricsRequest.filters)
                 && Objects.equals(this.timePeriodType, getSellingPartnerMetricsRequest.timePeriodType)
                 && Objects.equals(this.marketplaceId, getSellingPartnerMetricsRequest.marketplaceId)
                 && Objects.equals(this.programTypes, getSellingPartnerMetricsRequest.programTypes);
@@ -182,7 +205,8 @@ public class GetSellingPartnerMetricsRequest {
 
     @Override
     public int hashCode() {
-        return Objects.hash(aggregationFrequency, timeInterval, metrics, timePeriodType, marketplaceId, programTypes);
+        return Objects.hash(
+                aggregationFrequency, timeInterval, metrics, filters, timePeriodType, marketplaceId, programTypes);
     }
 
     @Override
@@ -195,6 +219,7 @@ public class GetSellingPartnerMetricsRequest {
                 .append("\n");
         sb.append("    timeInterval: ").append(toIndentedString(timeInterval)).append("\n");
         sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
+        sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
         sb.append("    timePeriodType: ")
                 .append(toIndentedString(timePeriodType))
                 .append("\n");

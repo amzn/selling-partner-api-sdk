@@ -57,8 +57,8 @@ public class DefinitionsApiTest {
         String productType = easyRandom.nextObject(String.class);
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
-        ApiResponse<ProductTypeDefinition> response =
-                api.getDefinitionsProductTypeWithHttpInfo(productType, marketplaceIds, null, null, null, null, null);
+        ApiResponse<ProductTypeDefinition> response = api.getDefinitionsProductTypeWithHttpInfo(
+                productType, marketplaceIds, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

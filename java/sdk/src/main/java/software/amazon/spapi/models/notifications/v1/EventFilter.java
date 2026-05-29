@@ -22,12 +22,12 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
- * A &#x60;notificationType&#x60; specific filter. This object contains all of the currently available filters and
- * properties that you can use to define a &#x60;notificationType&#x60; specific filter.
+ * A &#x60;notificationType&#x60; filter. This object contains all of the available filters and properties that you can
+ * use to define a &#x60;notificationType&#x60; specific filter.
  */
 @Schema(
         description =
-                "A `notificationType` specific filter. This object contains all of the currently available filters and properties that you can use to define a `notificationType` specific filter.")
+                "A `notificationType` filter. This object contains all of the available filters and properties that you can use to define a `notificationType` specific filter.")
 public class EventFilter extends AggregationFilter {
     @SerializedName("marketplaceIds")
     private MarketplaceIds marketplaceIds = null;
@@ -36,10 +36,10 @@ public class EventFilter extends AggregationFilter {
     private OrderChangeTypes orderChangeTypes = null;
 
     /**
-     * An &#x60;eventFilterType&#x60; value that is supported by the specific &#x60;notificationType&#x60;. This is used
-     * by the subscription service to determine the type of event filter. Refer to [Notification Type
-     * Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an
-     * &#x60;eventFilterType&#x60; is supported.
+     * An &#x60;eventFilterType&#x60; value that the &#x60;notificationType&#x60; supports. The subscription service
+     * uses the &#x60;eventFilterType&#x60; to determine the type of event filter. To determine if a specific
+     * &#x60;notificationType&#x60; supports an &#x60;eventFilterType&#x60;, refer to [Notification Type Values](
+     * https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
      */
     @JsonAdapter(EventFilterTypeEnum.Adapter.class)
     public enum EventFilterTypeEnum {
@@ -133,17 +133,17 @@ public class EventFilter extends AggregationFilter {
     }
 
     /**
-     * An &#x60;eventFilterType&#x60; value that is supported by the specific &#x60;notificationType&#x60;. This is used
-     * by the subscription service to determine the type of event filter. Refer to [Notification Type
-     * Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an
-     * &#x60;eventFilterType&#x60; is supported.
+     * An &#x60;eventFilterType&#x60; value that the &#x60;notificationType&#x60; supports. The subscription service
+     * uses the &#x60;eventFilterType&#x60; to determine the type of event filter. To determine if a specific
+     * &#x60;notificationType&#x60; supports an &#x60;eventFilterType&#x60;, refer to [Notification Type Values](
+     * https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
      *
      * @return eventFilterType
      */
     @Schema(
             required = true,
             description =
-                    "An `eventFilterType` value that is supported by the specific `notificationType`. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an `eventFilterType` is supported.")
+                    "An `eventFilterType` value that the `notificationType` supports. The subscription service uses the `eventFilterType` to determine the type of event filter. To determine if a specific `notificationType` supports an `eventFilterType`, refer to [Notification Type Values]( https://developer-docs.amazon.com/sp-api/docs/notification-type-values).")
     public EventFilterTypeEnum getEventFilterType() {
         return eventFilterType;
     }

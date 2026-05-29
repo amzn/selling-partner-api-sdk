@@ -35,11 +35,11 @@ public class RestrictionList {
     }
 
     /**
-     * Get restrictions
+     * A list of restrictions.
      *
      * @return restrictions
      */
-    @Schema(required = true, description = "")
+    @Schema(required = true, description = "A list of restrictions.")
     public List<Restriction> getRestrictions() {
         return restrictions;
     }

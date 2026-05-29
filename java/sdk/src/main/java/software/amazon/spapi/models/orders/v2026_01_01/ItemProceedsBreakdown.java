@@ -42,6 +42,7 @@ public class ItemProceedsBreakdown {
      * @return type
      */
     @Schema(
+            required = true,
             description =
                     "Category classification of the proceeds breakdown.   **Possible values**: `ITEM`, `SHIPPING`, `GIFT_WRAP`, `COD_FEE`, `OTHER`, `TAX`, `DISCOUNT`")
     public String getType() {
@@ -62,7 +63,7 @@ public class ItemProceedsBreakdown {
      *
      * @return subtotal
      */
-    @Schema(description = "")
+    @Schema(required = true, description = "")
     public Money getSubtotal() {
         return subtotal;
     }

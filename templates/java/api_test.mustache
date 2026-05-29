@@ -41,6 +41,7 @@ public class {{classname}}Test {
         new EasyRandomParameters().randomize(OffsetDateTime.class, OffsetDateTime::now)
                 .randomize(LocalDate.class, LocalDate::now)
                 .collectionSizeRange(1, 2)
+                .randomizationDepth(10)
     );
 
 {{#operations}}{{#operation}}

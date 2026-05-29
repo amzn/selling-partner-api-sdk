@@ -22,10 +22,12 @@ import java.io.IOException;
 /** The supported order change type of ORDER_CHANGE notification. */
 @JsonAdapter(OrderChangeTypeEnum.Adapter.class)
 public enum OrderChangeTypeEnum {
-    @SerializedName("OrderStatusChange")
-    ORDERSTATUSCHANGE("OrderStatusChange"),
     @SerializedName("BuyerRequestedChange")
-    BUYERREQUESTEDCHANGE("BuyerRequestedChange");
+    BUYERREQUESTEDCHANGE("BuyerRequestedChange"),
+    @SerializedName("DeliveryTipChange")
+    DELIVERYTIPCHANGE("DeliveryTipChange"),
+    @SerializedName("OrderStatusChange")
+    ORDERSTATUSCHANGE("OrderStatusChange");
 
     private String value;
 

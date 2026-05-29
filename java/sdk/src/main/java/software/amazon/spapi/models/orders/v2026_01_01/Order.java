@@ -67,6 +67,9 @@ public class Order {
     @SerializedName("packages")
     private List<OrderPackage> packages = null;
 
+    @SerializedName("fulfillmentOrders")
+    private List<FulfillmentOrder> fulfillmentOrders = null;
+
     public Order orderId(String orderId) {
         this.orderId = orderId;
         return this;
@@ -410,6 +413,36 @@ public class Order {
         this.packages = packages;
     }
 
+    public Order fulfillmentOrders(List<FulfillmentOrder> fulfillmentOrders) {
+        this.fulfillmentOrders = fulfillmentOrders;
+        return this;
+    }
+
+    public Order addFulfillmentOrdersItem(FulfillmentOrder fulfillmentOrdersItem) {
+        if (this.fulfillmentOrders == null) {
+            this.fulfillmentOrders = new ArrayList<FulfillmentOrder>();
+        }
+        this.fulfillmentOrders.add(fulfillmentOrdersItem);
+        return this;
+    }
+
+    /**
+     * The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment
+     * unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.
+     *
+     * @return fulfillmentOrders
+     */
+    @Schema(
+            description =
+                    "The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.")
+    public List<FulfillmentOrder> getFulfillmentOrders() {
+        return fulfillmentOrders;
+    }
+
+    public void setFulfillmentOrders(List<FulfillmentOrder> fulfillmentOrders) {
+        this.fulfillmentOrders = fulfillmentOrders;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -433,7 +466,8 @@ public class Order {
                 && Objects.equals(this.tax, order.tax)
                 && Objects.equals(this.fulfillment, order.fulfillment)
                 && Objects.equals(this.orderItems, order.orderItems)
-                && Objects.equals(this.packages, order.packages);
+                && Objects.equals(this.packages, order.packages)
+                && Objects.equals(this.fulfillmentOrders, order.fulfillmentOrders);
     }
 
     @Override
@@ -453,7 +487,8 @@ public class Order {
                 tax,
                 fulfillment,
                 orderItems,
-                packages);
+                packages,
+                fulfillmentOrders);
     }
 
     @Override
@@ -480,6 +515,9 @@ public class Order {
         sb.append("    fulfillment: ").append(toIndentedString(fulfillment)).append("\n");
         sb.append("    orderItems: ").append(toIndentedString(orderItems)).append("\n");
         sb.append("    packages: ").append(toIndentedString(packages)).append("\n");
+        sb.append("    fulfillmentOrders: ")
+                .append(toIndentedString(fulfillmentOrders))
+                .append("\n");
         sb.append("}");
         return sb.toString();
     }

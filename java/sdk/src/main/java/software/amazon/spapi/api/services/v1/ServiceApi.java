@@ -3182,6 +3182,10 @@ public class ServiceApi {
      * @param marketplaceIds Used to select jobs that were placed in the specified marketplaces. (required)
      * @param serviceOrderIds List of service order ids for the query you want to perform.Max values supported 20.
      *     (optional)
+     * @param productOrderIds A list of up to 20 associated product order IDs. You can use these IDs to query service
+     *     jobs. (optional)
+     * @param trackingIds A list of up to 20 associated product tracking IDs. You can use these IDs to query service
+     *     jobs. (optional)
      * @param serviceJobStatus A list of one or more job status by which to filter the list of jobs. (optional)
      * @param pageToken String returned in the response of your previous request. (optional)
      * @param pageSize A non-negative integer that indicates the maximum number of jobs to return in the list, Value
@@ -3216,6 +3220,8 @@ public class ServiceApi {
     private okhttp3.Call getServiceJobsCall(
             List<String> marketplaceIds,
             List<String> serviceOrderIds,
+            List<String> productOrderIds,
+            List<String> trackingIds,
             List<String> serviceJobStatus,
             String pageToken,
             Integer pageSize,
@@ -3246,6 +3252,10 @@ public class ServiceApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (serviceOrderIds != null)
             localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "serviceOrderIds", serviceOrderIds));
+        if (productOrderIds != null)
+            localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "productOrderIds", productOrderIds));
+        if (trackingIds != null)
+            localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "trackingIds", trackingIds));
         if (serviceJobStatus != null)
             localVarCollectionQueryParams.addAll(
                     apiClient.parameterToPairs("csv", "serviceJobStatus", serviceJobStatus));
@@ -3299,6 +3309,8 @@ public class ServiceApi {
     private okhttp3.Call getServiceJobsValidateBeforeCall(
             List<String> marketplaceIds,
             List<String> serviceOrderIds,
+            List<String> productOrderIds,
+            List<String> trackingIds,
             List<String> serviceJobStatus,
             String pageToken,
             Integer pageSize,
@@ -3324,6 +3336,8 @@ public class ServiceApi {
         return getServiceJobsCall(
                 marketplaceIds,
                 serviceOrderIds,
+                productOrderIds,
+                trackingIds,
                 serviceJobStatus,
                 pageToken,
                 pageSize,
@@ -3352,6 +3366,10 @@ public class ServiceApi {
      * @param marketplaceIds Used to select jobs that were placed in the specified marketplaces. (required)
      * @param serviceOrderIds List of service order ids for the query you want to perform.Max values supported 20.
      *     (optional)
+     * @param productOrderIds A list of up to 20 associated product order IDs. You can use these IDs to query service
+     *     jobs. (optional)
+     * @param trackingIds A list of up to 20 associated product tracking IDs. You can use these IDs to query service
+     *     jobs. (optional)
      * @param serviceJobStatus A list of one or more job status by which to filter the list of jobs. (optional)
      * @param pageToken String returned in the response of your previous request. (optional)
      * @param pageSize A non-negative integer that indicates the maximum number of jobs to return in the list, Value
@@ -3386,6 +3404,8 @@ public class ServiceApi {
     public GetServiceJobsResponse getServiceJobs(
             List<String> marketplaceIds,
             List<String> serviceOrderIds,
+            List<String> productOrderIds,
+            List<String> trackingIds,
             List<String> serviceJobStatus,
             String pageToken,
             Integer pageSize,
@@ -3405,6 +3425,8 @@ public class ServiceApi {
         ApiResponse<GetServiceJobsResponse> resp = getServiceJobsWithHttpInfo(
                 marketplaceIds,
                 serviceOrderIds,
+                productOrderIds,
+                trackingIds,
                 serviceJobStatus,
                 pageToken,
                 pageSize,
@@ -3434,6 +3456,10 @@ public class ServiceApi {
      * @param marketplaceIds Used to select jobs that were placed in the specified marketplaces. (required)
      * @param serviceOrderIds List of service order ids for the query you want to perform.Max values supported 20.
      *     (optional)
+     * @param productOrderIds A list of up to 20 associated product order IDs. You can use these IDs to query service
+     *     jobs. (optional)
+     * @param trackingIds A list of up to 20 associated product tracking IDs. You can use these IDs to query service
+     *     jobs. (optional)
      * @param serviceJobStatus A list of one or more job status by which to filter the list of jobs. (optional)
      * @param pageToken String returned in the response of your previous request. (optional)
      * @param pageSize A non-negative integer that indicates the maximum number of jobs to return in the list, Value
@@ -3467,6 +3493,8 @@ public class ServiceApi {
     public GetServiceJobsResponse getServiceJobs(
             List<String> marketplaceIds,
             List<String> serviceOrderIds,
+            List<String> productOrderIds,
+            List<String> trackingIds,
             List<String> serviceJobStatus,
             String pageToken,
             Integer pageSize,
@@ -3485,6 +3513,8 @@ public class ServiceApi {
         ApiResponse<GetServiceJobsResponse> resp = getServiceJobsWithHttpInfo(
                 marketplaceIds,
                 serviceOrderIds,
+                productOrderIds,
+                trackingIds,
                 serviceJobStatus,
                 pageToken,
                 pageSize,
@@ -3514,6 +3544,10 @@ public class ServiceApi {
      * @param marketplaceIds Used to select jobs that were placed in the specified marketplaces. (required)
      * @param serviceOrderIds List of service order ids for the query you want to perform.Max values supported 20.
      *     (optional)
+     * @param productOrderIds A list of up to 20 associated product order IDs. You can use these IDs to query service
+     *     jobs. (optional)
+     * @param trackingIds A list of up to 20 associated product tracking IDs. You can use these IDs to query service
+     *     jobs. (optional)
      * @param serviceJobStatus A list of one or more job status by which to filter the list of jobs. (optional)
      * @param pageToken String returned in the response of your previous request. (optional)
      * @param pageSize A non-negative integer that indicates the maximum number of jobs to return in the list, Value
@@ -3548,6 +3582,8 @@ public class ServiceApi {
     public ApiResponse<GetServiceJobsResponse> getServiceJobsWithHttpInfo(
             List<String> marketplaceIds,
             List<String> serviceOrderIds,
+            List<String> productOrderIds,
+            List<String> trackingIds,
             List<String> serviceJobStatus,
             String pageToken,
             Integer pageSize,
@@ -3567,6 +3603,8 @@ public class ServiceApi {
         okhttp3.Call call = getServiceJobsValidateBeforeCall(
                 marketplaceIds,
                 serviceOrderIds,
+                productOrderIds,
+                trackingIds,
                 serviceJobStatus,
                 pageToken,
                 pageSize,
@@ -3606,6 +3644,10 @@ public class ServiceApi {
      * @param marketplaceIds Used to select jobs that were placed in the specified marketplaces. (required)
      * @param serviceOrderIds List of service order ids for the query you want to perform.Max values supported 20.
      *     (optional)
+     * @param productOrderIds A list of up to 20 associated product order IDs. You can use these IDs to query service
+     *     jobs. (optional)
+     * @param trackingIds A list of up to 20 associated product tracking IDs. You can use these IDs to query service
+     *     jobs. (optional)
      * @param serviceJobStatus A list of one or more job status by which to filter the list of jobs. (optional)
      * @param pageToken String returned in the response of your previous request. (optional)
      * @param pageSize A non-negative integer that indicates the maximum number of jobs to return in the list, Value
@@ -3639,6 +3681,8 @@ public class ServiceApi {
     public ApiResponse<GetServiceJobsResponse> getServiceJobsWithHttpInfo(
             List<String> marketplaceIds,
             List<String> serviceOrderIds,
+            List<String> productOrderIds,
+            List<String> trackingIds,
             List<String> serviceJobStatus,
             String pageToken,
             Integer pageSize,
@@ -3657,6 +3701,8 @@ public class ServiceApi {
         return getServiceJobsWithHttpInfo(
                 marketplaceIds,
                 serviceOrderIds,
+                productOrderIds,
+                trackingIds,
                 serviceJobStatus,
                 pageToken,
                 pageSize,
@@ -3685,6 +3731,10 @@ public class ServiceApi {
      * @param marketplaceIds Used to select jobs that were placed in the specified marketplaces. (required)
      * @param serviceOrderIds List of service order ids for the query you want to perform.Max values supported 20.
      *     (optional)
+     * @param productOrderIds A list of up to 20 associated product order IDs. You can use these IDs to query service
+     *     jobs. (optional)
+     * @param trackingIds A list of up to 20 associated product tracking IDs. You can use these IDs to query service
+     *     jobs. (optional)
      * @param serviceJobStatus A list of one or more job status by which to filter the list of jobs. (optional)
      * @param pageToken String returned in the response of your previous request. (optional)
      * @param pageSize A non-negative integer that indicates the maximum number of jobs to return in the list, Value
@@ -3719,6 +3769,8 @@ public class ServiceApi {
     public okhttp3.Call getServiceJobsAsync(
             List<String> marketplaceIds,
             List<String> serviceOrderIds,
+            List<String> productOrderIds,
+            List<String> trackingIds,
             List<String> serviceJobStatus,
             String pageToken,
             Integer pageSize,
@@ -3738,6 +3790,8 @@ public class ServiceApi {
         return getServiceJobsAsync(
                 marketplaceIds,
                 serviceOrderIds,
+                productOrderIds,
+                trackingIds,
                 serviceJobStatus,
                 pageToken,
                 pageSize,
@@ -3766,6 +3820,10 @@ public class ServiceApi {
      * @param marketplaceIds Used to select jobs that were placed in the specified marketplaces. (required)
      * @param serviceOrderIds List of service order ids for the query you want to perform.Max values supported 20.
      *     (optional)
+     * @param productOrderIds A list of up to 20 associated product order IDs. You can use these IDs to query service
+     *     jobs. (optional)
+     * @param trackingIds A list of up to 20 associated product tracking IDs. You can use these IDs to query service
+     *     jobs. (optional)
      * @param serviceJobStatus A list of one or more job status by which to filter the list of jobs. (optional)
      * @param pageToken String returned in the response of your previous request. (optional)
      * @param pageSize A non-negative integer that indicates the maximum number of jobs to return in the list, Value
@@ -3801,6 +3859,8 @@ public class ServiceApi {
     public okhttp3.Call getServiceJobsAsync(
             List<String> marketplaceIds,
             List<String> serviceOrderIds,
+            List<String> productOrderIds,
+            List<String> trackingIds,
             List<String> serviceJobStatus,
             String pageToken,
             Integer pageSize,
@@ -3828,6 +3888,8 @@ public class ServiceApi {
         okhttp3.Call call = getServiceJobsValidateBeforeCall(
                 marketplaceIds,
                 serviceOrderIds,
+                productOrderIds,
+                trackingIds,
                 serviceJobStatus,
                 pageToken,
                 pageSize,

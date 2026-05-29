@@ -19,6 +19,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /** Information about an item associated with the service job. */
@@ -94,6 +96,9 @@ public class AssociatedItem {
 
     @SerializedName("itemDelivery")
     private ItemDelivery itemDelivery = null;
+
+    @SerializedName("linkedAssets")
+    private List<LinkedAsset> linkedAssets = null;
 
     public AssociatedItem asin(String asin) {
         this.asin = asin;
@@ -228,6 +233,33 @@ public class AssociatedItem {
         this.itemDelivery = itemDelivery;
     }
 
+    public AssociatedItem linkedAssets(List<LinkedAsset> linkedAssets) {
+        this.linkedAssets = linkedAssets;
+        return this;
+    }
+
+    public AssociatedItem addLinkedAssetsItem(LinkedAsset linkedAssetsItem) {
+        if (this.linkedAssets == null) {
+            this.linkedAssets = new ArrayList<LinkedAsset>();
+        }
+        this.linkedAssets.add(linkedAssetsItem);
+        return this;
+    }
+
+    /**
+     * A list of customer-owned assets on which the service must be performed.
+     *
+     * @return linkedAssets
+     */
+    @Schema(description = "A list of customer-owned assets on which the service must be performed.")
+    public List<LinkedAsset> getLinkedAssets() {
+        return linkedAssets;
+    }
+
+    public void setLinkedAssets(List<LinkedAsset> linkedAssets) {
+        this.linkedAssets = linkedAssets;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -243,12 +275,13 @@ public class AssociatedItem {
                 && Objects.equals(this.orderId, associatedItem.orderId)
                 && Objects.equals(this.itemStatus, associatedItem.itemStatus)
                 && Objects.equals(this.brandName, associatedItem.brandName)
-                && Objects.equals(this.itemDelivery, associatedItem.itemDelivery);
+                && Objects.equals(this.itemDelivery, associatedItem.itemDelivery)
+                && Objects.equals(this.linkedAssets, associatedItem.linkedAssets);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(asin, title, quantity, orderId, itemStatus, brandName, itemDelivery);
+        return Objects.hash(asin, title, quantity, orderId, itemStatus, brandName, itemDelivery, linkedAssets);
     }
 
     @Override
@@ -263,6 +296,7 @@ public class AssociatedItem {
         sb.append("    itemStatus: ").append(toIndentedString(itemStatus)).append("\n");
         sb.append("    brandName: ").append(toIndentedString(brandName)).append("\n");
         sb.append("    itemDelivery: ").append(toIndentedString(itemDelivery)).append("\n");
+        sb.append("    linkedAssets: ").append(toIndentedString(linkedAssets)).append("\n");
         sb.append("}");
         return sb.toString();
     }

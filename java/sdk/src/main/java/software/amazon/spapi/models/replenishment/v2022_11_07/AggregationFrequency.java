@@ -25,6 +25,8 @@ import java.io.IOException;
  */
 @JsonAdapter(AggregationFrequency.Adapter.class)
 public enum AggregationFrequency {
+    @SerializedName("DAY")
+    DAY("DAY"),
     @SerializedName("WEEK")
     WEEK("WEEK"),
     @SerializedName("MONTH")

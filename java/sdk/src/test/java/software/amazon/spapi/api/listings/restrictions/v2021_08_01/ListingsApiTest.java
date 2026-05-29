@@ -58,7 +58,7 @@ public class ListingsApiTest {
         List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
 
         ApiResponse<RestrictionList> response =
-                api.getListingsRestrictionsWithHttpInfo(asin, sellerId, marketplaceIds, null, null);
+                api.getListingsRestrictionsWithHttpInfo(asin, sellerId, marketplaceIds, null, null, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

@@ -19,12 +19,12 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Use these parameters to filter results. Any result must match all provided parameters. For any parameter that is an
- * array, the result must match at least one element in the provided array.
+ * Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept
+ * multiple values (arrays), the API returns results that match at least one value in the array.
  */
 @Schema(
         description =
-                "Use these parameters to filter results. Any result must match all provided parameters. For any parameter that is an array, the result must match at least one element in the provided array.")
+                "Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept multiple values (arrays), the API returns results that match at least one value in the array.")
 public class ListOfferMetricsRequestFilters {
     @SerializedName("aggregationFrequency")
     private AggregationFrequency aggregationFrequency = null;
@@ -43,6 +43,18 @@ public class ListOfferMetricsRequestFilters {
 
     @SerializedName("asins")
     private List<String> asins = null;
+
+    @SerializedName("skus")
+    private List<String> skus = null;
+
+    @SerializedName("fulfillmentChannelTypes")
+    private List<FulfillmentChannelType> fulfillmentChannelTypes = null;
+
+    @SerializedName("brandNames")
+    private List<String> brandNames = null;
+
+    @SerializedName("productGroups")
+    private List<String> productGroups = null;
 
     public ListOfferMetricsRequestFilters aggregationFrequency(AggregationFrequency aggregationFrequency) {
         this.aggregationFrequency = aggregationFrequency;
@@ -153,17 +165,127 @@ public class ListOfferMetricsRequestFilters {
     }
 
     /**
-     * A list of Amazon Standard Identification Numbers (ASINs).
+     * A list of Amazon Standard Identification Numbers (ASINs) to filter by.
      *
      * @return asins
      */
-    @Schema(description = "A list of Amazon Standard Identification Numbers (ASINs).")
+    @Schema(description = "A list of Amazon Standard Identification Numbers (ASINs) to filter by.")
     public List<String> getAsins() {
         return asins;
     }
 
     public void setAsins(List<String> asins) {
         this.asins = asins;
+    }
+
+    public ListOfferMetricsRequestFilters skus(List<String> skus) {
+        this.skus = skus;
+        return this;
+    }
+
+    public ListOfferMetricsRequestFilters addSkusItem(String skusItem) {
+        if (this.skus == null) {
+            this.skus = new ArrayList<String>();
+        }
+        this.skus.add(skusItem);
+        return this;
+    }
+
+    /**
+     * [Applicable only for Sellers] A list of SKUs to filter by.
+     *
+     * @return skus
+     */
+    @Schema(description = "[Applicable only for Sellers] A list of SKUs to filter by.")
+    public List<String> getSkus() {
+        return skus;
+    }
+
+    public void setSkus(List<String> skus) {
+        this.skus = skus;
+    }
+
+    public ListOfferMetricsRequestFilters fulfillmentChannelTypes(
+            List<FulfillmentChannelType> fulfillmentChannelTypes) {
+        this.fulfillmentChannelTypes = fulfillmentChannelTypes;
+        return this;
+    }
+
+    public ListOfferMetricsRequestFilters addFulfillmentChannelTypesItem(
+            FulfillmentChannelType fulfillmentChannelTypesItem) {
+        if (this.fulfillmentChannelTypes == null) {
+            this.fulfillmentChannelTypes = new ArrayList<FulfillmentChannelType>();
+        }
+        this.fulfillmentChannelTypes.add(fulfillmentChannelTypesItem);
+        return this;
+    }
+
+    /**
+     * [Applicable only for Sellers] The fulfillment channel types to filter by.
+     *
+     * @return fulfillmentChannelTypes
+     */
+    @Schema(description = "[Applicable only for Sellers] The fulfillment channel types to filter by.")
+    public List<FulfillmentChannelType> getFulfillmentChannelTypes() {
+        return fulfillmentChannelTypes;
+    }
+
+    public void setFulfillmentChannelTypes(List<FulfillmentChannelType> fulfillmentChannelTypes) {
+        this.fulfillmentChannelTypes = fulfillmentChannelTypes;
+    }
+
+    public ListOfferMetricsRequestFilters brandNames(List<String> brandNames) {
+        this.brandNames = brandNames;
+        return this;
+    }
+
+    public ListOfferMetricsRequestFilters addBrandNamesItem(String brandNamesItem) {
+        if (this.brandNames == null) {
+            this.brandNames = new ArrayList<String>();
+        }
+        this.brandNames.add(brandNamesItem);
+        return this;
+    }
+
+    /**
+     * [Applicable only for US marketplace] A list of brand names to filter by.
+     *
+     * @return brandNames
+     */
+    @Schema(description = "[Applicable only for US marketplace] A list of brand names to filter by.")
+    public List<String> getBrandNames() {
+        return brandNames;
+    }
+
+    public void setBrandNames(List<String> brandNames) {
+        this.brandNames = brandNames;
+    }
+
+    public ListOfferMetricsRequestFilters productGroups(List<String> productGroups) {
+        this.productGroups = productGroups;
+        return this;
+    }
+
+    public ListOfferMetricsRequestFilters addProductGroupsItem(String productGroupsItem) {
+        if (this.productGroups == null) {
+            this.productGroups = new ArrayList<String>();
+        }
+        this.productGroups.add(productGroupsItem);
+        return this;
+    }
+
+    /**
+     * [Applicable only for Vendors] A list of product group names to filter by.
+     *
+     * @return productGroups
+     */
+    @Schema(description = "[Applicable only for Vendors] A list of product group names to filter by.")
+    public List<String> getProductGroups() {
+        return productGroups;
+    }
+
+    public void setProductGroups(List<String> productGroups) {
+        this.productGroups = productGroups;
     }
 
     @Override
@@ -180,12 +302,26 @@ public class ListOfferMetricsRequestFilters {
                 && Objects.equals(this.timePeriodType, listOfferMetricsRequestFilters.timePeriodType)
                 && Objects.equals(this.marketplaceId, listOfferMetricsRequestFilters.marketplaceId)
                 && Objects.equals(this.programTypes, listOfferMetricsRequestFilters.programTypes)
-                && Objects.equals(this.asins, listOfferMetricsRequestFilters.asins);
+                && Objects.equals(this.asins, listOfferMetricsRequestFilters.asins)
+                && Objects.equals(this.skus, listOfferMetricsRequestFilters.skus)
+                && Objects.equals(this.fulfillmentChannelTypes, listOfferMetricsRequestFilters.fulfillmentChannelTypes)
+                && Objects.equals(this.brandNames, listOfferMetricsRequestFilters.brandNames)
+                && Objects.equals(this.productGroups, listOfferMetricsRequestFilters.productGroups);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(aggregationFrequency, timeInterval, timePeriodType, marketplaceId, programTypes, asins);
+        return Objects.hash(
+                aggregationFrequency,
+                timeInterval,
+                timePeriodType,
+                marketplaceId,
+                programTypes,
+                asins,
+                skus,
+                fulfillmentChannelTypes,
+                brandNames,
+                productGroups);
     }
 
     @Override
@@ -203,6 +339,12 @@ public class ListOfferMetricsRequestFilters {
         sb.append("    marketplaceId: ").append(toIndentedString(marketplaceId)).append("\n");
         sb.append("    programTypes: ").append(toIndentedString(programTypes)).append("\n");
         sb.append("    asins: ").append(toIndentedString(asins)).append("\n");
+        sb.append("    skus: ").append(toIndentedString(skus)).append("\n");
+        sb.append("    fulfillmentChannelTypes: ")
+                .append(toIndentedString(fulfillmentChannelTypes))
+                .append("\n");
+        sb.append("    brandNames: ").append(toIndentedString(brandNames)).append("\n");
+        sb.append("    productGroups: ").append(toIndentedString(productGroups)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -16,7 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** SchemaLink */
+/** A link to metadata schema. */
+@Schema(description = "A link to metadata schema.")
 public class SchemaLink {
     @SerializedName("link")
     private SchemaLinkLink link = null;
@@ -49,7 +50,7 @@ public class SchemaLink {
     }
 
     /**
-     * Checksum hash of the schema (Base64 MD5). Can be used to verify schema contents, identify changes between schema
+     * Checksum hash of the schema (Base64 MD5). Use this to verify schema contents, identify changes between schema
      * versions, and for caching.
      *
      * @return checksum
@@ -57,7 +58,7 @@ public class SchemaLink {
     @Schema(
             required = true,
             description =
-                    "Checksum hash of the schema (Base64 MD5). Can be used to verify schema contents, identify changes between schema versions, and for caching.")
+                    "Checksum hash of the schema (Base64 MD5). Use this to verify schema contents, identify changes between schema versions, and for caching.")
     public String getChecksum() {
         return checksum;
     }
