@@ -40,6 +40,7 @@ class RegulatedOrderVerificationStatus(object):
         'review_date': 'str',
         'external_reviewer_id': 'str',
         'valid_verification_details': 'List[ValidVerificationDetail]',
+        'valid_interim_status_codes': 'List[ValidInterimStatusCode]',
     }
 
     attribute_map = {
@@ -50,9 +51,10 @@ class RegulatedOrderVerificationStatus(object):
         'review_date': 'ReviewDate',
         'external_reviewer_id': 'ExternalReviewerId',
         'valid_verification_details': 'ValidVerificationDetails',
+        'valid_interim_status_codes': 'ValidInterimStatusCodes',
     }
 
-    def __init__(self, status=None, requires_merchant_action=None, valid_rejection_reasons=None, rejection_reason=None, review_date=None, external_reviewer_id=None, valid_verification_details=None, _configuration=None):  # noqa: E501
+    def __init__(self, status=None, requires_merchant_action=None, valid_rejection_reasons=None, rejection_reason=None, review_date=None, external_reviewer_id=None, valid_verification_details=None, valid_interim_status_codes=None, _configuration=None):  # noqa: E501
         """RegulatedOrderVerificationStatus - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -65,6 +67,7 @@ class RegulatedOrderVerificationStatus(object):
         self._review_date = None
         self._external_reviewer_id = None
         self._valid_verification_details = None
+        self._valid_interim_status_codes = None
         self.discriminator = None
 
         self.status = status
@@ -78,6 +81,8 @@ class RegulatedOrderVerificationStatus(object):
             self.external_reviewer_id = external_reviewer_id
         if valid_verification_details is not None:
             self.valid_verification_details = valid_verification_details
+        if valid_interim_status_codes is not None:
+            self.valid_interim_status_codes = valid_interim_status_codes
 
     @property
     def status(self):
@@ -241,6 +246,29 @@ class RegulatedOrderVerificationStatus(object):
         """
 
         self._valid_verification_details = valid_verification_details
+
+    @property
+    def valid_interim_status_codes(self):
+        """Gets the valid_interim_status_codes of this RegulatedOrderVerificationStatus.  # noqa: E501
+
+        Valid interim status codes that may be used when populating `InterimStatusDetail`. Each element contains a `StatusCode` identifier and its customer-facing `StatusDescription`.  # noqa: E501
+
+        :return: The valid_interim_status_codes of this RegulatedOrderVerificationStatus.  # noqa: E501
+        :rtype: List[ValidInterimStatusCode]
+        """
+        return self._valid_interim_status_codes
+
+    @valid_interim_status_codes.setter
+    def valid_interim_status_codes(self, valid_interim_status_codes):
+        """Sets the valid_interim_status_codes of this RegulatedOrderVerificationStatus.
+
+        Valid interim status codes that may be used when populating `InterimStatusDetail`. Each element contains a `StatusCode` identifier and its customer-facing `StatusDescription`.  # noqa: E501
+
+        :param valid_interim_status_codes: The valid_interim_status_codes of this RegulatedOrderVerificationStatus.  # noqa: E501
+        :type: List[ValidInterimStatusCode]
+        """
+
+        self._valid_interim_status_codes = valid_interim_status_codes
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -55,6 +55,7 @@ class RestrictionList(object):
     def restrictions(self):
         """Gets the restrictions of this RestrictionList.  # noqa: E501
 
+        A list of restrictions.  # noqa: E501
 
         :return: The restrictions of this RestrictionList.  # noqa: E501
         :rtype: List[Restriction]
@@ -65,6 +66,7 @@ class RestrictionList(object):
     def restrictions(self, restrictions):
         """Sets the restrictions of this RestrictionList.
 
+        A list of restrictions.  # noqa: E501
 
         :param restrictions: The restrictions of this RestrictionList.  # noqa: E501
         :type: List[Restriction]

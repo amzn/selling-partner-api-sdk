@@ -91,7 +91,7 @@ class EventBridgeResource(object):
     def region(self):
         """Gets the region of this EventBridgeResource.  # noqa: E501
 
-        The AWS region in which you receive the notifications. For AWS regions that are supported in Amazon EventBridge, refer to [Amazon EventBridge endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ev.html).  # noqa: E501
+        The AWS region in which you receive the notifications. For AWS regions that Amazon EventBridge supports, refer to [Amazon EventBridge endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ev.html).  # noqa: E501
 
         :return: The region of this EventBridgeResource.  # noqa: E501
         :rtype: str
@@ -102,7 +102,7 @@ class EventBridgeResource(object):
     def region(self, region):
         """Sets the region of this EventBridgeResource.
 
-        The AWS region in which you receive the notifications. For AWS regions that are supported in Amazon EventBridge, refer to [Amazon EventBridge endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ev.html).  # noqa: E501
+        The AWS region in which you receive the notifications. For AWS regions that Amazon EventBridge supports, refer to [Amazon EventBridge endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ev.html).  # noqa: E501
 
         :param region: The region of this EventBridgeResource.  # noqa: E501
         :type: str

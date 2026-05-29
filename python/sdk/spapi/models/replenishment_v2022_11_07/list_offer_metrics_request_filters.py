@@ -39,6 +39,10 @@ class ListOfferMetricsRequestFilters(object):
         'marketplace_id': 'str',
         'program_types': 'List[ProgramType]',
         'asins': 'List[str]',
+        'skus': 'List[str]',
+        'fulfillment_channel_types': 'List[FulfillmentChannelType]',
+        'brand_names': 'List[str]',
+        'product_groups': 'List[str]',
     }
 
     attribute_map = {
@@ -48,9 +52,13 @@ class ListOfferMetricsRequestFilters(object):
         'marketplace_id': 'marketplaceId',
         'program_types': 'programTypes',
         'asins': 'asins',
+        'skus': 'skus',
+        'fulfillment_channel_types': 'fulfillmentChannelTypes',
+        'brand_names': 'brandNames',
+        'product_groups': 'productGroups',
     }
 
-    def __init__(self, aggregation_frequency=None, time_interval=None, time_period_type=None, marketplace_id=None, program_types=None, asins=None, _configuration=None):  # noqa: E501
+    def __init__(self, aggregation_frequency=None, time_interval=None, time_period_type=None, marketplace_id=None, program_types=None, asins=None, skus=None, fulfillment_channel_types=None, brand_names=None, product_groups=None, _configuration=None):  # noqa: E501
         """ListOfferMetricsRequestFilters - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -62,6 +70,10 @@ class ListOfferMetricsRequestFilters(object):
         self._marketplace_id = None
         self._program_types = None
         self._asins = None
+        self._skus = None
+        self._fulfillment_channel_types = None
+        self._brand_names = None
+        self._product_groups = None
         self.discriminator = None
 
         if aggregation_frequency is not None:
@@ -72,6 +84,14 @@ class ListOfferMetricsRequestFilters(object):
         self.program_types = program_types
         if asins is not None:
             self.asins = asins
+        if skus is not None:
+            self.skus = skus
+        if fulfillment_channel_types is not None:
+            self.fulfillment_channel_types = fulfillment_channel_types
+        if brand_names is not None:
+            self.brand_names = brand_names
+        if product_groups is not None:
+            self.product_groups = product_groups
 
     @property
     def aggregation_frequency(self):
@@ -197,7 +217,7 @@ class ListOfferMetricsRequestFilters(object):
     def asins(self):
         """Gets the asins of this ListOfferMetricsRequestFilters.  # noqa: E501
 
-        A list of Amazon Standard Identification Numbers (ASINs).  # noqa: E501
+        A list of Amazon Standard Identification Numbers (ASINs) to filter by.  # noqa: E501
 
         :return: The asins of this ListOfferMetricsRequestFilters.  # noqa: E501
         :rtype: List[str]
@@ -208,7 +228,7 @@ class ListOfferMetricsRequestFilters(object):
     def asins(self, asins):
         """Sets the asins of this ListOfferMetricsRequestFilters.
 
-        A list of Amazon Standard Identification Numbers (ASINs).  # noqa: E501
+        A list of Amazon Standard Identification Numbers (ASINs) to filter by.  # noqa: E501
 
         :param asins: The asins of this ListOfferMetricsRequestFilters.  # noqa: E501
         :type: List[str]
@@ -221,6 +241,122 @@ class ListOfferMetricsRequestFilters(object):
             raise ValueError("Invalid value for `asins`, number of items must be greater than or equal to `1`")  # noqa: E501
 
         self._asins = asins
+
+    @property
+    def skus(self):
+        """Gets the skus of this ListOfferMetricsRequestFilters.  # noqa: E501
+
+        [Applicable only for Sellers] A list of SKUs to filter by.  # noqa: E501
+
+        :return: The skus of this ListOfferMetricsRequestFilters.  # noqa: E501
+        :rtype: List[str]
+        """
+        return self._skus
+
+    @skus.setter
+    def skus(self, skus):
+        """Sets the skus of this ListOfferMetricsRequestFilters.
+
+        [Applicable only for Sellers] A list of SKUs to filter by.  # noqa: E501
+
+        :param skus: The skus of this ListOfferMetricsRequestFilters.  # noqa: E501
+        :type: List[str]
+        """
+        if (self._configuration.client_side_validation and
+                skus is not None and len(skus) > 20):
+            raise ValueError("Invalid value for `skus`, number of items must be less than or equal to `20`")  # noqa: E501
+        if (self._configuration.client_side_validation and
+                skus is not None and len(skus) < 1):
+            raise ValueError("Invalid value for `skus`, number of items must be greater than or equal to `1`")  # noqa: E501
+
+        self._skus = skus
+
+    @property
+    def fulfillment_channel_types(self):
+        """Gets the fulfillment_channel_types of this ListOfferMetricsRequestFilters.  # noqa: E501
+
+        [Applicable only for Sellers] The fulfillment channel types to filter by.  # noqa: E501
+
+        :return: The fulfillment_channel_types of this ListOfferMetricsRequestFilters.  # noqa: E501
+        :rtype: List[FulfillmentChannelType]
+        """
+        return self._fulfillment_channel_types
+
+    @fulfillment_channel_types.setter
+    def fulfillment_channel_types(self, fulfillment_channel_types):
+        """Sets the fulfillment_channel_types of this ListOfferMetricsRequestFilters.
+
+        [Applicable only for Sellers] The fulfillment channel types to filter by.  # noqa: E501
+
+        :param fulfillment_channel_types: The fulfillment_channel_types of this ListOfferMetricsRequestFilters.  # noqa: E501
+        :type: List[FulfillmentChannelType]
+        """
+        if (self._configuration.client_side_validation and
+                fulfillment_channel_types is not None and len(fulfillment_channel_types) > 2):
+            raise ValueError("Invalid value for `fulfillment_channel_types`, number of items must be less than or equal to `2`")  # noqa: E501
+        if (self._configuration.client_side_validation and
+                fulfillment_channel_types is not None and len(fulfillment_channel_types) < 1):
+            raise ValueError("Invalid value for `fulfillment_channel_types`, number of items must be greater than or equal to `1`")  # noqa: E501
+
+        self._fulfillment_channel_types = fulfillment_channel_types
+
+    @property
+    def brand_names(self):
+        """Gets the brand_names of this ListOfferMetricsRequestFilters.  # noqa: E501
+
+        [Applicable only for US marketplace] A list of brand names to filter by.  # noqa: E501
+
+        :return: The brand_names of this ListOfferMetricsRequestFilters.  # noqa: E501
+        :rtype: List[str]
+        """
+        return self._brand_names
+
+    @brand_names.setter
+    def brand_names(self, brand_names):
+        """Sets the brand_names of this ListOfferMetricsRequestFilters.
+
+        [Applicable only for US marketplace] A list of brand names to filter by.  # noqa: E501
+
+        :param brand_names: The brand_names of this ListOfferMetricsRequestFilters.  # noqa: E501
+        :type: List[str]
+        """
+        if (self._configuration.client_side_validation and
+                brand_names is not None and len(brand_names) > 20):
+            raise ValueError("Invalid value for `brand_names`, number of items must be less than or equal to `20`")  # noqa: E501
+        if (self._configuration.client_side_validation and
+                brand_names is not None and len(brand_names) < 1):
+            raise ValueError("Invalid value for `brand_names`, number of items must be greater than or equal to `1`")  # noqa: E501
+
+        self._brand_names = brand_names
+
+    @property
+    def product_groups(self):
+        """Gets the product_groups of this ListOfferMetricsRequestFilters.  # noqa: E501
+
+        [Applicable only for Vendors] A list of product group names to filter by.  # noqa: E501
+
+        :return: The product_groups of this ListOfferMetricsRequestFilters.  # noqa: E501
+        :rtype: List[str]
+        """
+        return self._product_groups
+
+    @product_groups.setter
+    def product_groups(self, product_groups):
+        """Sets the product_groups of this ListOfferMetricsRequestFilters.
+
+        [Applicable only for Vendors] A list of product group names to filter by.  # noqa: E501
+
+        :param product_groups: The product_groups of this ListOfferMetricsRequestFilters.  # noqa: E501
+        :type: List[str]
+        """
+        if (self._configuration.client_side_validation and
+                product_groups is not None and len(product_groups) > 20):
+            raise ValueError("Invalid value for `product_groups`, number of items must be less than or equal to `20`")  # noqa: E501
+        if (self._configuration.client_side_validation and
+                product_groups is not None and len(product_groups) < 1):
+            raise ValueError("Invalid value for `product_groups`, number of items must be greater than or equal to `1`")  # noqa: E501
+
+        self._product_groups = product_groups
 
     def to_dict(self):
         """Returns the model properties as a dict"""

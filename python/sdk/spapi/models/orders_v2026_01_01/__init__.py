@@ -26,6 +26,7 @@ from spapi.models.orders_v2026_01_01.delivery_preference import DeliveryPreferen
 from spapi.models.orders_v2026_01_01.error import Error
 from spapi.models.orders_v2026_01_01.error_list import ErrorList
 from spapi.models.orders_v2026_01_01.exception_date import ExceptionDate
+from spapi.models.orders_v2026_01_01.fulfillment_order import FulfillmentOrder
 from spapi.models.orders_v2026_01_01.fulfillment_status import FulfillmentStatus
 from spapi.models.orders_v2026_01_01.get_order_response import GetOrderResponse
 from spapi.models.orders_v2026_01_01.gift_option import GiftOption
@@ -63,6 +64,7 @@ from spapi.models.orders_v2026_01_01.order_item import OrderItem
 from spapi.models.orders_v2026_01_01.order_package import OrderPackage
 from spapi.models.orders_v2026_01_01.order_payment import OrderPayment
 from spapi.models.orders_v2026_01_01.order_proceeds import OrderProceeds
+from spapi.models.orders_v2026_01_01.order_proceeds_breakdown import OrderProceedsBreakdown
 from spapi.models.orders_v2026_01_01.order_tax import OrderTax
 from spapi.models.orders_v2026_01_01.order_tax_invoicing import OrderTaxInvoicing
 from spapi.models.orders_v2026_01_01.order_tax_registration import OrderTaxRegistration

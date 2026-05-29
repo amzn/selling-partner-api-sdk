@@ -34,23 +34,33 @@ class VerificationDetails(object):
     """
     swagger_types = {
         'prescription_detail': 'PrescriptionDetail',
+        'approved_alternative_details': 'List[ApprovedAttribute]',
+        'interim_status_detail': 'InterimStatusDetail',
     }
 
     attribute_map = {
         'prescription_detail': 'prescriptionDetail',
+        'approved_alternative_details': 'approvedAlternativeDetails',
+        'interim_status_detail': 'interimStatusDetail',
     }
 
-    def __init__(self, prescription_detail=None, _configuration=None):  # noqa: E501
+    def __init__(self, prescription_detail=None, approved_alternative_details=None, interim_status_detail=None, _configuration=None):  # noqa: E501
         """VerificationDetails - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
         self._prescription_detail = None
+        self._approved_alternative_details = None
+        self._interim_status_detail = None
         self.discriminator = None
 
         if prescription_detail is not None:
             self.prescription_detail = prescription_detail
+        if approved_alternative_details is not None:
+            self.approved_alternative_details = approved_alternative_details
+        if interim_status_detail is not None:
+            self.interim_status_detail = interim_status_detail
 
     @property
     def prescription_detail(self):
@@ -72,6 +82,50 @@ class VerificationDetails(object):
         """
 
         self._prescription_detail = prescription_detail
+
+    @property
+    def approved_alternative_details(self):
+        """Gets the approved_alternative_details of this VerificationDetails.  # noqa: E501
+
+        Pre-approved alternative product attributes available for a rejected order. Each element contains an attribute name, its original value from the rejected order, and the corrected value that would result in approval (for example, a substituted `asin` or adjusted `petWeight`).  # noqa: E501
+
+        :return: The approved_alternative_details of this VerificationDetails.  # noqa: E501
+        :rtype: List[ApprovedAttribute]
+        """
+        return self._approved_alternative_details
+
+    @approved_alternative_details.setter
+    def approved_alternative_details(self, approved_alternative_details):
+        """Sets the approved_alternative_details of this VerificationDetails.
+
+        Pre-approved alternative product attributes available for a rejected order. Each element contains an attribute name, its original value from the rejected order, and the corrected value that would result in approval (for example, a substituted `asin` or adjusted `petWeight`).  # noqa: E501
+
+        :param approved_alternative_details: The approved_alternative_details of this VerificationDetails.  # noqa: E501
+        :type: List[ApprovedAttribute]
+        """
+
+        self._approved_alternative_details = approved_alternative_details
+
+    @property
+    def interim_status_detail(self):
+        """Gets the interim_status_detail of this VerificationDetails.  # noqa: E501
+
+
+        :return: The interim_status_detail of this VerificationDetails.  # noqa: E501
+        :rtype: InterimStatusDetail
+        """
+        return self._interim_status_detail
+
+    @interim_status_detail.setter
+    def interim_status_detail(self, interim_status_detail):
+        """Sets the interim_status_detail of this VerificationDetails.
+
+
+        :param interim_status_detail: The interim_status_detail of this VerificationDetails.  # noqa: E501
+        :type: InterimStatusDetail
+        """
+
+        self._interim_status_detail = interim_status_detail
 
     def to_dict(self):
         """Returns the model properties as a dict"""

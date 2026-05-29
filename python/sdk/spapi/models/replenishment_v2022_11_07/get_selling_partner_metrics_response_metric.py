@@ -739,7 +739,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def share_of_coupon_subscriptions(self):
         """Gets the share_of_coupon_subscriptions of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
+        The percentage of new subscriptions from coupons. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The share_of_coupon_subscriptions of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -750,7 +750,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def share_of_coupon_subscriptions(self, share_of_coupon_subscriptions):
         """Sets the share_of_coupon_subscriptions of this GetSellingPartnerMetricsResponseMetric.
 
-        The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
+        The percentage of new subscriptions from coupons. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param share_of_coupon_subscriptions: The share_of_coupon_subscriptions of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -950,7 +950,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def signup_conversion_for0_percent_seller_funding(self):
         """Gets the signup_conversion_for0_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        Percentage of subscriptions created by offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months  # noqa: E501
+        Percentage of subscriptions from offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months.  # noqa: E501
 
         :return: The signup_conversion_for0_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -961,7 +961,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def signup_conversion_for0_percent_seller_funding(self, signup_conversion_for0_percent_seller_funding):
         """Sets the signup_conversion_for0_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.
 
-        Percentage of subscriptions created by offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months  # noqa: E501
+        Percentage of subscriptions from offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months.  # noqa: E501
 
         :param signup_conversion_for0_percent_seller_funding: The signup_conversion_for0_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -979,7 +979,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def signup_conversion_for5_percent_seller_funding(self):
         """Gets the signup_conversion_for5_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        [Applicable only for Sellers] Percentage of subscriptions created by offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months  # noqa: E501
+        [Applicable only for Sellers] Percentage of subscriptions from offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months.  # noqa: E501
 
         :return: The signup_conversion_for5_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -990,7 +990,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def signup_conversion_for5_percent_seller_funding(self, signup_conversion_for5_percent_seller_funding):
         """Sets the signup_conversion_for5_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.
 
-        [Applicable only for Sellers] Percentage of subscriptions created by offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months  # noqa: E501
+        [Applicable only for Sellers] Percentage of subscriptions from offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months.  # noqa: E501
 
         :param signup_conversion_for5_percent_seller_funding: The signup_conversion_for5_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -1008,7 +1008,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def signup_conversion_for10_percent_seller_funding(self):
         """Gets the signup_conversion_for10_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        [Applicable only for Sellers] Percentage of subscriptions created by offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months  # noqa: E501
+        [Applicable only for Sellers] Percentage of subscriptions from offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months.  # noqa: E501
 
         :return: The signup_conversion_for10_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -1019,7 +1019,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def signup_conversion_for10_percent_seller_funding(self, signup_conversion_for10_percent_seller_funding):
         """Sets the signup_conversion_for10_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.
 
-        [Applicable only for Sellers] Percentage of subscriptions created by offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months  # noqa: E501
+        [Applicable only for Sellers] Percentage of subscriptions from offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months.  # noqa: E501
 
         :param signup_conversion_for10_percent_seller_funding: The signup_conversion_for10_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -1037,7 +1037,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def signup_conversion_for5_plus_percent_seller_funding(self):
         """Gets the signup_conversion_for5_plus_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        [Applicable only for Vendors] Percentage of subscriptions created by offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months  # noqa: E501
+        [Applicable only for Vendors] Percentage of subscriptions from offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months.  # noqa: E501
 
         :return: The signup_conversion_for5_plus_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -1048,7 +1048,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def signup_conversion_for5_plus_percent_seller_funding(self, signup_conversion_for5_plus_percent_seller_funding):
         """Sets the signup_conversion_for5_plus_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.
 
-        [Applicable only for Vendors] Percentage of subscriptions created by offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months  # noqa: E501
+        [Applicable only for Vendors] Percentage of subscriptions from offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months.  # noqa: E501
 
         :param signup_conversion_for5_plus_percent_seller_funding: The signup_conversion_for5_plus_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float

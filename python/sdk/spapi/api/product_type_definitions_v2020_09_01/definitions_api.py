@@ -48,10 +48,11 @@ class DefinitionsApi(object):
         :param str product_type: The Amazon product type name. (required)
         :param List[str] marketplace_ids: A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time. (required)
         :param str seller_id: A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner.
-        :param str product_type_version: The version of the Amazon product type to retrieve. Defaults to \"LATEST\",. Prerelease versions of product type definitions may be retrieved with \"RELEASE_CANDIDATE\". If no prerelease version is currently available, the \"LATEST\" live version will be provided.
+        :param str product_type_version: The version of the Amazon product type to retrieve. Defaults to \"LATEST\". Prerelease versions of product type definitions may be retrieved with \"RELEASE_CANDIDATE\". If no prerelease version is currently available, the \"LATEST\" live version will be provided.
         :param str requirements: The name of the requirements set to retrieve requirements for.
         :param str requirements_enforced: Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates).
         :param str locale: Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request.
+        :param str parentage_level: The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions.
         :return: ProductTypeDefinition
                  If the method is called asynchronously,
                  returns the request thread.
@@ -76,16 +77,17 @@ class DefinitionsApi(object):
         :param str product_type: The Amazon product type name. (required)
         :param List[str] marketplace_ids: A comma-delimited list of Amazon marketplace identifiers for the request. Note: This parameter is limited to one marketplaceId at this time. (required)
         :param str seller_id: A selling partner identifier. When provided, seller-specific requirements and values are populated within the product type definition schema, such as brand names associated with the selling partner.
-        :param str product_type_version: The version of the Amazon product type to retrieve. Defaults to \"LATEST\",. Prerelease versions of product type definitions may be retrieved with \"RELEASE_CANDIDATE\". If no prerelease version is currently available, the \"LATEST\" live version will be provided.
+        :param str product_type_version: The version of the Amazon product type to retrieve. Defaults to \"LATEST\". Prerelease versions of product type definitions may be retrieved with \"RELEASE_CANDIDATE\". If no prerelease version is currently available, the \"LATEST\" live version will be provided.
         :param str requirements: The name of the requirements set to retrieve requirements for.
         :param str requirements_enforced: Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates).
         :param str locale: Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request.
+        :param str parentage_level: The parentage level of the listing to retrieve a schema for. When provided, the schema is simplified by resolving all conditional logic related to the specified parentage level, resulting in a smaller schema with fewer conditions.
         :return: ProductTypeDefinition
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['product_type', 'marketplace_ids', 'seller_id', 'product_type_version', 'requirements', 'requirements_enforced', 'locale']  # noqa: E501
+        all_params = ['product_type', 'marketplace_ids', 'seller_id', 'product_type_version', 'requirements', 'requirements_enforced', 'locale', 'parentage_level']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -129,6 +131,8 @@ class DefinitionsApi(object):
             query_params.append(('requirementsEnforced', params['requirements_enforced']))  # noqa: E501
         if 'locale' in params:
             query_params.append(('locale', params['locale']))  # noqa: E501
+        if 'parentage_level' in params:
+            query_params.append(('parentageLevel', params['parentage_level']))  # noqa: E501
 
         header_params = {}
 
@@ -171,9 +175,9 @@ class DefinitionsApi(object):
         :param async_req bool
         :param List[str] marketplace_ids: A comma-delimited list of Amazon marketplace identifiers for the request. (required)
         :param List[str] keywords: A comma-delimited list of keywords to search product types. **Note:** Cannot be used with `itemName`.
-        :param str item_name: The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with `keywords`.
-        :param str locale: The locale for the display names in the response. Defaults to the primary locale of the marketplace.
-        :param str search_locale: The locale used for the `keywords` and `itemName` parameters. Defaults to the primary locale of the marketplace.
+        :param str item_name: Title of ASIN to get product type recommendation. **Note:** Cannot be used with `keywords`.
+        :param str locale: Locale for display names in response. Defaults to primary locale of the marketplace.
+        :param str search_locale: Language used for `keywords` or `itemName` parameters. Defaults to primary locale of the marketplace.
         :return: ProductTypeList
                  If the method is called asynchronously,
                  returns the request thread.
@@ -197,9 +201,9 @@ class DefinitionsApi(object):
         :param async_req bool
         :param List[str] marketplace_ids: A comma-delimited list of Amazon marketplace identifiers for the request. (required)
         :param List[str] keywords: A comma-delimited list of keywords to search product types. **Note:** Cannot be used with `itemName`.
-        :param str item_name: The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with `keywords`.
-        :param str locale: The locale for the display names in the response. Defaults to the primary locale of the marketplace.
-        :param str search_locale: The locale used for the `keywords` and `itemName` parameters. Defaults to the primary locale of the marketplace.
+        :param str item_name: Title of ASIN to get product type recommendation. **Note:** Cannot be used with `keywords`.
+        :param str locale: Locale for display names in response. Defaults to primary locale of the marketplace.
+        :param str search_locale: Language used for `keywords` or `itemName` parameters. Defaults to primary locale of the marketplace.
         :return: ProductTypeList
                  If the method is called asynchronously,
                  returns the request thread.

@@ -34,23 +34,28 @@ class ProcessingDirective(object):
     """
     swagger_types = {
         'event_filter': 'EventFilter',
+        'filter_expression': 'str',
     }
 
     attribute_map = {
         'event_filter': 'eventFilter',
+        'filter_expression': 'filterExpression',
     }
 
-    def __init__(self, event_filter=None, _configuration=None):  # noqa: E501
+    def __init__(self, event_filter=None, filter_expression=None, _configuration=None):  # noqa: E501
         """ProcessingDirective - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
         self._event_filter = None
+        self._filter_expression = None
         self.discriminator = None
 
         if event_filter is not None:
             self.event_filter = event_filter
+        if filter_expression is not None:
+            self.filter_expression = filter_expression
 
     @property
     def event_filter(self):
@@ -72,6 +77,35 @@ class ProcessingDirective(object):
         """
 
         self._event_filter = event_filter
+
+    @property
+    def filter_expression(self):
+        """Gets the filter_expression of this ProcessingDirective.  # noqa: E501
+
+        An expression for filtering events before delivery to destination based on the notification payload (example: FulfillmentOrderStatusNotification.FulfillmentOrderStatus == `SHIPPED` ). The `filterExpression` is a string that follows the CEL expression syntax (https://github.com/google/cel-spec) excluding arithmetic operators (+, -, *, /, %) and list/map indexing ([]). Refer to Notification Type Values to determine if filter Expression is supported for a Notification Type. Refer to CEL Operators (https://developer-docs.amazon.com/sp-api/docs/filter-notification-subscriptions) to see if a CEL operator is supported.   Note: eventFilter and filterExpression are mutually exclusive. You can use filterExpression to replace existing eventFilter configurations.  # noqa: E501
+
+        :return: The filter_expression of this ProcessingDirective.  # noqa: E501
+        :rtype: str
+        """
+        return self._filter_expression
+
+    @filter_expression.setter
+    def filter_expression(self, filter_expression):
+        """Sets the filter_expression of this ProcessingDirective.
+
+        An expression for filtering events before delivery to destination based on the notification payload (example: FulfillmentOrderStatusNotification.FulfillmentOrderStatus == `SHIPPED` ). The `filterExpression` is a string that follows the CEL expression syntax (https://github.com/google/cel-spec) excluding arithmetic operators (+, -, *, /, %) and list/map indexing ([]). Refer to Notification Type Values to determine if filter Expression is supported for a Notification Type. Refer to CEL Operators (https://developer-docs.amazon.com/sp-api/docs/filter-notification-subscriptions) to see if a CEL operator is supported.   Note: eventFilter and filterExpression are mutually exclusive. You can use filterExpression to replace existing eventFilter configurations.  # noqa: E501
+
+        :param filter_expression: The filter_expression of this ProcessingDirective.  # noqa: E501
+        :type: str
+        """
+        if (self._configuration.client_side_validation and
+                filter_expression is not None and len(filter_expression) > 256):
+            raise ValueError("Invalid value for `filter_expression`, length must be less than or equal to `256`")  # noqa: E501
+        if (self._configuration.client_side_validation and
+                filter_expression is not None and len(filter_expression) < 1):
+            raise ValueError("Invalid value for `filter_expression`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._filter_expression = filter_expression
 
     def to_dict(self):
         """Returns the model properties as a dict"""

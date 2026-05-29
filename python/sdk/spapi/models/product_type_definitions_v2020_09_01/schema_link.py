@@ -82,7 +82,7 @@ class SchemaLink(object):
     def checksum(self):
         """Gets the checksum of this SchemaLink.  # noqa: E501
 
-        Checksum hash of the schema (Base64 MD5). Can be used to verify schema contents, identify changes between schema versions, and for caching.  # noqa: E501
+        Checksum hash of the schema (Base64 MD5). Use this to verify schema contents, identify changes between schema versions, and for caching.  # noqa: E501
 
         :return: The checksum of this SchemaLink.  # noqa: E501
         :rtype: str
@@ -93,7 +93,7 @@ class SchemaLink(object):
     def checksum(self, checksum):
         """Sets the checksum of this SchemaLink.
 
-        Checksum hash of the schema (Base64 MD5). Can be used to verify schema contents, identify changes between schema versions, and for caching.  # noqa: E501
+        Checksum hash of the schema (Base64 MD5). Use this to verify schema contents, identify changes between schema versions, and for caching.  # noqa: E501
 
         :param checksum: The checksum of this SchemaLink.  # noqa: E501
         :type: str

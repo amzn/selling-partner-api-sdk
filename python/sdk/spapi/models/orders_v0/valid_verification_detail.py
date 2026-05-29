@@ -59,7 +59,7 @@ class ValidVerificationDetail(object):
     def verification_detail_type(self):
         """Gets the verification_detail_type of this ValidVerificationDetail.  # noqa: E501
 
-        A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid value: `prescriptionDetail`.  # noqa: E501
+        A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid values: `prescriptionDetail`, `approvedAlternativeDetails`, `interimStatusDetail`.  # noqa: E501
 
         :return: The verification_detail_type of this ValidVerificationDetail.  # noqa: E501
         :rtype: str
@@ -70,7 +70,7 @@ class ValidVerificationDetail(object):
     def verification_detail_type(self, verification_detail_type):
         """Sets the verification_detail_type of this ValidVerificationDetail.
 
-        A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid value: `prescriptionDetail`.  # noqa: E501
+        A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid values: `prescriptionDetail`, `approvedAlternativeDetails`, `interimStatusDetail`.  # noqa: E501
 
         :param verification_detail_type: The verification_detail_type of this ValidVerificationDetail.  # noqa: E501
         :type: str

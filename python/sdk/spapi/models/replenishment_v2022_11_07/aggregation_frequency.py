@@ -28,6 +28,7 @@ class AggregationFrequency(object):
     """
     allowed enum values
     """
+    DAY = 'DAY'
     WEEK = 'WEEK'
     MONTH = 'MONTH'
     QUARTER = 'QUARTER'

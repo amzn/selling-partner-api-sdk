@@ -28,8 +28,9 @@ class OrderChangeTypeEnum(object):
     """
     allowed enum values
     """
-    ORDERSTATUSCHANGE = 'OrderStatusChange'
     BUYERREQUESTEDCHANGE = 'BuyerRequestedChange'
+    DELIVERYTIPCHANGE = 'DeliveryTipChange'
+    ORDERSTATUSCHANGE = 'OrderStatusChange'
 
     """
     Attributes:

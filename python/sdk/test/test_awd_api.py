@@ -55,6 +55,13 @@ class TestAwdApi(unittest.TestCase):
         response = self.api.confirm_inbound_with_http_info(order_id, )
         pass
 
+    def test_confirm_outbound(self):
+        order_id = self._get_random_value("str", None)
+        
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("confirm_outbound"), "204")
+        response = self.api.confirm_outbound_with_http_info(order_id, )
+        pass
+
     def test_confirm_replenishment_order(self):
         order_id = self._get_random_value("str", None)
         
@@ -67,6 +74,15 @@ class TestAwdApi(unittest.TestCase):
         
         self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("create_inbound"), "201")
         response = self.api.create_inbound_with_http_info(body, )
+        self.assertEqual(201, response[1])
+        self.assert_valid_response_payload(201, response[0])
+        pass
+
+    def test_create_outbound(self):
+        body = self._get_random_value("OutboundOrderCreationData", None)
+        
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("create_outbound"), "201")
+        response = self.api.create_outbound_with_http_info(body, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])
         pass
@@ -107,6 +123,24 @@ class TestAwdApi(unittest.TestCase):
         self.assert_valid_response_payload(200, response[0])
         pass
 
+    def test_get_label_page_types(self):
+        shipment_id = self._get_random_value("str", None)
+        
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("get_label_page_types"), "200")
+        response = self.api.get_label_page_types_with_http_info(shipment_id, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
+    def test_get_outbound(self):
+        order_id = self._get_random_value("str", None)
+        
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("get_outbound"), "200")
+        response = self.api.get_outbound_with_http_info(order_id, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
     def test_get_replenishment_order(self):
         order_id = self._get_random_value("str", None)
         
@@ -128,6 +162,14 @@ class TestAwdApi(unittest.TestCase):
         
         self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("list_inventory"), "200")
         response = self.api.list_inventory_with_http_info()
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
+    def test_list_outbounds(self):
+        
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("list_outbounds"), "200")
+        response = self.api.list_outbounds_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
@@ -154,6 +196,16 @@ class TestAwdApi(unittest.TestCase):
         
         self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("update_inbound_shipment_transport_details"), "204")
         response = self.api.update_inbound_shipment_transport_details_with_http_info(shipment_id, body, )
+        pass
+
+    def test_update_outbound(self):
+        order_id = self._get_random_value("str", None)
+        body = self._get_random_value("OutboundOrder", None)
+        
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("update_outbound"), "200")
+        response = self.api.update_outbound_with_http_info(order_id, body, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
         pass
 
 

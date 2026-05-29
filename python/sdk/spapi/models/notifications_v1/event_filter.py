@@ -91,7 +91,7 @@ class EventFilter(object):
     def marketplace_ids(self):
         """Gets the marketplace_ids of this EventFilter.  # noqa: E501
 
-        A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.  # noqa: E501
+        A list of marketplace identifiers you can subscribe to (for example, `ATVPDKIKX0DER`). To receive notifications in every marketplace, do not provide this list.  # noqa: E501
 
         :return: The marketplace_ids of this EventFilter.  # noqa: E501
         :rtype: List[str]
@@ -102,7 +102,7 @@ class EventFilter(object):
     def marketplace_ids(self, marketplace_ids):
         """Sets the marketplace_ids of this EventFilter.
 
-        A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.  # noqa: E501
+        A list of marketplace identifiers you can subscribe to (for example, `ATVPDKIKX0DER`). To receive notifications in every marketplace, do not provide this list.  # noqa: E501
 
         :param marketplace_ids: The marketplace_ids of this EventFilter.  # noqa: E501
         :type: List[str]
@@ -114,7 +114,7 @@ class EventFilter(object):
     def order_change_types(self):
         """Gets the order_change_types of this EventFilter.  # noqa: E501
 
-        A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.  # noqa: E501
+        A list of order change types you can subscribe to (for example, `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.  # noqa: E501
 
         :return: The order_change_types of this EventFilter.  # noqa: E501
         :rtype: List[OrderChangeTypeEnum]
@@ -125,7 +125,7 @@ class EventFilter(object):
     def order_change_types(self, order_change_types):
         """Sets the order_change_types of this EventFilter.
 
-        A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.  # noqa: E501
+        A list of order change types you can subscribe to (for example, `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.  # noqa: E501
 
         :param order_change_types: The order_change_types of this EventFilter.  # noqa: E501
         :type: List[OrderChangeTypeEnum]
@@ -137,7 +137,7 @@ class EventFilter(object):
     def event_filter_type(self):
         """Gets the event_filter_type of this EventFilter.  # noqa: E501
 
-        An `eventFilterType` value that is supported by the specific `notificationType`. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an `eventFilterType` is supported.  # noqa: E501
+        An `eventFilterType` value that the `notificationType` supports. The subscription service uses the `eventFilterType` to determine the type of event filter. To determine if a specific `notificationType` supports an `eventFilterType`, refer to [Notification Type Values]( https://developer-docs.amazon.com/sp-api/docs/notification-type-values).  # noqa: E501
 
         :return: The event_filter_type of this EventFilter.  # noqa: E501
         :rtype: str
@@ -148,7 +148,7 @@ class EventFilter(object):
     def event_filter_type(self, event_filter_type):
         """Sets the event_filter_type of this EventFilter.
 
-        An `eventFilterType` value that is supported by the specific `notificationType`. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an `eventFilterType` is supported.  # noqa: E501
+        An `eventFilterType` value that the `notificationType` supports. The subscription service uses the `eventFilterType` to determine the type of event filter. To determine if a specific `notificationType` supports an `eventFilterType`, refer to [Notification Type Values]( https://developer-docs.amazon.com/sp-api/docs/notification-type-values).  # noqa: E501
 
         :param event_filter_type: The event_filter_type of this EventFilter.  # noqa: E501
         :type: str

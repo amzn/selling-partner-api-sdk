@@ -42,6 +42,8 @@ class ServiceJob(object):
         'preferred_appointment_times': 'List[AppointmentTime]',
         'appointments': 'List[Appointment]',
         'service_order_id': 'str',
+        'product_order_ids': 'List[str]',
+        'tracking_ids': 'List[str]',
         'marketplace_id': 'str',
         'store_id': 'str',
         'buyer': 'Buyer',
@@ -60,6 +62,8 @@ class ServiceJob(object):
         'preferred_appointment_times': 'preferredAppointmentTimes',
         'appointments': 'appointments',
         'service_order_id': 'serviceOrderId',
+        'product_order_ids': 'productOrderIds',
+        'tracking_ids': 'trackingIds',
         'marketplace_id': 'marketplaceId',
         'store_id': 'storeId',
         'buyer': 'buyer',
@@ -68,7 +72,7 @@ class ServiceJob(object):
         'payments': 'payments',
     }
 
-    def __init__(self, create_time=None, service_job_id=None, service_job_status=None, scope_of_work=None, seller=None, service_job_provider=None, preferred_appointment_times=None, appointments=None, service_order_id=None, marketplace_id=None, store_id=None, buyer=None, associated_items=None, service_location=None, payments=None, _configuration=None):  # noqa: E501
+    def __init__(self, create_time=None, service_job_id=None, service_job_status=None, scope_of_work=None, seller=None, service_job_provider=None, preferred_appointment_times=None, appointments=None, service_order_id=None, product_order_ids=None, tracking_ids=None, marketplace_id=None, store_id=None, buyer=None, associated_items=None, service_location=None, payments=None, _configuration=None):  # noqa: E501
         """ServiceJob - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -83,6 +87,8 @@ class ServiceJob(object):
         self._preferred_appointment_times = None
         self._appointments = None
         self._service_order_id = None
+        self._product_order_ids = None
+        self._tracking_ids = None
         self._marketplace_id = None
         self._store_id = None
         self._buyer = None
@@ -109,6 +115,10 @@ class ServiceJob(object):
             self.appointments = appointments
         if service_order_id is not None:
             self.service_order_id = service_order_id
+        if product_order_ids is not None:
+            self.product_order_ids = product_order_ids
+        if tracking_ids is not None:
+            self.tracking_ids = tracking_ids
         if marketplace_id is not None:
             self.marketplace_id = marketplace_id
         if store_id is not None:
@@ -341,6 +351,52 @@ class ServiceJob(object):
             raise ValueError("Invalid value for `service_order_id`, length must be greater than or equal to `5`")  # noqa: E501
 
         self._service_order_id = service_order_id
+
+    @property
+    def product_order_ids(self):
+        """Gets the product_order_ids of this ServiceJob.  # noqa: E501
+
+        A list of associated product order IDs for the service job.  # noqa: E501
+
+        :return: The product_order_ids of this ServiceJob.  # noqa: E501
+        :rtype: List[str]
+        """
+        return self._product_order_ids
+
+    @product_order_ids.setter
+    def product_order_ids(self, product_order_ids):
+        """Sets the product_order_ids of this ServiceJob.
+
+        A list of associated product order IDs for the service job.  # noqa: E501
+
+        :param product_order_ids: The product_order_ids of this ServiceJob.  # noqa: E501
+        :type: List[str]
+        """
+
+        self._product_order_ids = product_order_ids
+
+    @property
+    def tracking_ids(self):
+        """Gets the tracking_ids of this ServiceJob.  # noqa: E501
+
+        A list of associated product tracking IDs for the service job.  # noqa: E501
+
+        :return: The tracking_ids of this ServiceJob.  # noqa: E501
+        :rtype: List[str]
+        """
+        return self._tracking_ids
+
+    @tracking_ids.setter
+    def tracking_ids(self, tracking_ids):
+        """Sets the tracking_ids of this ServiceJob.
+
+        A list of associated product tracking IDs for the service job.  # noqa: E501
+
+        :param tracking_ids: The tracking_ids of this ServiceJob.  # noqa: E501
+        :type: List[str]
+        """
+
+        self._tracking_ids = tracking_ids
 
     @property
     def marketplace_id(self):

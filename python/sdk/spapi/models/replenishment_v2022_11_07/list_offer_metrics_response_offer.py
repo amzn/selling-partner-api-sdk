@@ -36,6 +36,8 @@ class ListOfferMetricsResponseOffer(object):
         'asin': 'str',
         'sku': 'str',
         'fulfillment_channel_type': 'FulfillmentChannelType',
+        'brand_name': 'str',
+        'product_group': 'str',
         'not_delivered_due_to_oos': 'float',
         'total_subscriptions_revenue': 'float',
         'shipped_subscription_units': 'float',
@@ -58,6 +60,8 @@ class ListOfferMetricsResponseOffer(object):
         'asin': 'asin',
         'sku': 'sku',
         'fulfillment_channel_type': 'fulfillmentChannelType',
+        'brand_name': 'brandName',
+        'product_group': 'productGroup',
         'not_delivered_due_to_oos': 'notDeliveredDueToOOS',
         'total_subscriptions_revenue': 'totalSubscriptionsRevenue',
         'shipped_subscription_units': 'shippedSubscriptionUnits',
@@ -76,7 +80,7 @@ class ListOfferMetricsResponseOffer(object):
         'currency_code': 'currencyCode',
     }
 
-    def __init__(self, asin=None, sku=None, fulfillment_channel_type=None, not_delivered_due_to_oos=None, total_subscriptions_revenue=None, shipped_subscription_units=None, active_subscriptions=None, revenue_penetration=None, lost_revenue_due_to_oos=None, coupons_revenue_penetration=None, share_of_coupon_subscriptions=None, next30_day_total_subscriptions_revenue=None, next60_day_total_subscriptions_revenue=None, next90_day_total_subscriptions_revenue=None, next30_day_shipped_subscription_units=None, next60_day_shipped_subscription_units=None, next90_day_shipped_subscription_units=None, time_interval=None, currency_code=None, _configuration=None):  # noqa: E501
+    def __init__(self, asin=None, sku=None, fulfillment_channel_type=None, brand_name=None, product_group=None, not_delivered_due_to_oos=None, total_subscriptions_revenue=None, shipped_subscription_units=None, active_subscriptions=None, revenue_penetration=None, lost_revenue_due_to_oos=None, coupons_revenue_penetration=None, share_of_coupon_subscriptions=None, next30_day_total_subscriptions_revenue=None, next60_day_total_subscriptions_revenue=None, next90_day_total_subscriptions_revenue=None, next30_day_shipped_subscription_units=None, next60_day_shipped_subscription_units=None, next90_day_shipped_subscription_units=None, time_interval=None, currency_code=None, _configuration=None):  # noqa: E501
         """ListOfferMetricsResponseOffer - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -85,6 +89,8 @@ class ListOfferMetricsResponseOffer(object):
         self._asin = None
         self._sku = None
         self._fulfillment_channel_type = None
+        self._brand_name = None
+        self._product_group = None
         self._not_delivered_due_to_oos = None
         self._total_subscriptions_revenue = None
         self._shipped_subscription_units = None
@@ -109,6 +115,10 @@ class ListOfferMetricsResponseOffer(object):
             self.sku = sku
         if fulfillment_channel_type is not None:
             self.fulfillment_channel_type = fulfillment_channel_type
+        if brand_name is not None:
+            self.brand_name = brand_name
+        if product_group is not None:
+            self.product_group = product_group
         if not_delivered_due_to_oos is not None:
             self.not_delivered_due_to_oos = not_delivered_due_to_oos
         if total_subscriptions_revenue is not None:
@@ -208,6 +218,52 @@ class ListOfferMetricsResponseOffer(object):
         """
 
         self._fulfillment_channel_type = fulfillment_channel_type
+
+    @property
+    def brand_name(self):
+        """Gets the brand_name of this ListOfferMetricsResponseOffer.  # noqa: E501
+
+        The brand name associated with the offer.  # noqa: E501
+
+        :return: The brand_name of this ListOfferMetricsResponseOffer.  # noqa: E501
+        :rtype: str
+        """
+        return self._brand_name
+
+    @brand_name.setter
+    def brand_name(self, brand_name):
+        """Sets the brand_name of this ListOfferMetricsResponseOffer.
+
+        The brand name associated with the offer.  # noqa: E501
+
+        :param brand_name: The brand_name of this ListOfferMetricsResponseOffer.  # noqa: E501
+        :type: str
+        """
+
+        self._brand_name = brand_name
+
+    @property
+    def product_group(self):
+        """Gets the product_group of this ListOfferMetricsResponseOffer.  # noqa: E501
+
+        The product group associated with the offer. This property is only supported for vendors and not for sellers.  # noqa: E501
+
+        :return: The product_group of this ListOfferMetricsResponseOffer.  # noqa: E501
+        :rtype: str
+        """
+        return self._product_group
+
+    @product_group.setter
+    def product_group(self, product_group):
+        """Sets the product_group of this ListOfferMetricsResponseOffer.
+
+        The product group associated with the offer. This property is only supported for vendors and not for sellers.  # noqa: E501
+
+        :param product_group: The product_group of this ListOfferMetricsResponseOffer.  # noqa: E501
+        :type: str
+        """
+
+        self._product_group = product_group
 
     @property
     def not_delivered_due_to_oos(self):
@@ -404,7 +460,7 @@ class ListOfferMetricsResponseOffer(object):
     def share_of_coupon_subscriptions(self):
         """Gets the share_of_coupon_subscriptions of this ListOfferMetricsResponseOffer.  # noqa: E501
 
-        The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
+        The percentage of new subscriptions from coupons. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The share_of_coupon_subscriptions of this ListOfferMetricsResponseOffer.  # noqa: E501
         :rtype: float
@@ -415,7 +471,7 @@ class ListOfferMetricsResponseOffer(object):
     def share_of_coupon_subscriptions(self, share_of_coupon_subscriptions):
         """Sets the share_of_coupon_subscriptions of this ListOfferMetricsResponseOffer.
 
-        The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
+        The percentage of new subscriptions from coupons. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param share_of_coupon_subscriptions: The share_of_coupon_subscriptions of this ListOfferMetricsResponseOffer.  # noqa: E501
         :type: float
