@@ -65,7 +65,7 @@ public class UploadsApi {
      *     If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be
      *     &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be
      *     &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;. (required)
-     * @param contentType The content type of the file you upload. (optional)
+     * @param contentType The content type of the file you upload. This parameter is required for A+ content. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -170,7 +170,7 @@ public class UploadsApi {
      *     If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be
      *     &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be
      *     &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;. (required)
-     * @param contentType The content type of the file you upload. (optional)
+     * @param contentType The content type of the file you upload. This parameter is required for A+ content. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return CreateUploadDestinationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -209,7 +209,7 @@ public class UploadsApi {
      *     If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be
      *     &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be
      *     &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;. (required)
-     * @param contentType The content type of the file you upload. (optional)
+     * @param contentType The content type of the file you upload. This parameter is required for A+ content. (optional)
      * @return CreateUploadDestinationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -243,7 +243,7 @@ public class UploadsApi {
      *     If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be
      *     &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be
      *     &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;. (required)
-     * @param contentType The content type of the file you upload. (optional)
+     * @param contentType The content type of the file you upload. This parameter is required for A+ content. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;CreateUploadDestinationResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -294,7 +294,7 @@ public class UploadsApi {
      *     If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be
      *     &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be
      *     &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;. (required)
-     * @param contentType The content type of the file you upload. (optional)
+     * @param contentType The content type of the file you upload. This parameter is required for A+ content. (optional)
      * @return ApiResponse&lt;CreateUploadDestinationResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -326,7 +326,7 @@ public class UploadsApi {
      *     If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be
      *     &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be
      *     &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;. (required)
-     * @param contentType The content type of the file you upload. (optional)
+     * @param contentType The content type of the file you upload. This parameter is required for A+ content. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -363,7 +363,7 @@ public class UploadsApi {
      *     If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be
      *     &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be
      *     &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;. (required)
-     * @param contentType The content type of the file you upload. (optional)
+     * @param contentType The content type of the file you upload. This parameter is required for A+ content. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
