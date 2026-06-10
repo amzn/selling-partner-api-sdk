@@ -751,7 +751,7 @@ export class ApiClient {
 
     switch (type) {
       case 'Boolean':
-        return Boolean(data)
+        return data.toLowerCase() === 'true'
       case 'Integer':
         return parseInt(data, 10)
       case 'Number':
