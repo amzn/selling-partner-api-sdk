@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Api.uploads.v2020_11_01
         /// <param name="marketplaceIds">The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <param name="contentMD5">An MD5 hash of the content to be submitted to the upload destination. This value is used to determine if the data has been corrupted or tampered with during transit.</param>
         /// <param name="resource">The upload destination for your resource. For example, if you create an upload destination for the &#x60;createLegalDisclosure&#x60; operation of the Messaging API, the &#x60;{resource}&#x60; would be &#x60;/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;, and the entire path would be &#x60;/uploads/2020-11-01/uploadDestinations/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;. If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;.</param>
-        /// <param name="contentType">The content type of the file you upload. (optional)</param>
+        /// <param name="contentType">The content type of the file you upload. This parameter is required for A+ content. (optional)</param>
         /// <returns>CreateUploadDestinationResponse</returns>
         CreateUploadDestinationResponse CreateUploadDestinationForResource (List<string> marketplaceIds, string contentMD5, string resource, string? contentType = null);
 
@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Api.uploads.v2020_11_01
         /// <param name="marketplaceIds">The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <param name="contentMD5">An MD5 hash of the content to be submitted to the upload destination. This value is used to determine if the data has been corrupted or tampered with during transit.</param>
         /// <param name="resource">The upload destination for your resource. For example, if you create an upload destination for the &#x60;createLegalDisclosure&#x60; operation of the Messaging API, the &#x60;{resource}&#x60; would be &#x60;/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;, and the entire path would be &#x60;/uploads/2020-11-01/uploadDestinations/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;. If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;.</param>
-        /// <param name="contentType">The content type of the file you upload. (optional)</param>
+        /// <param name="contentType">The content type of the file you upload. This parameter is required for A+ content. (optional)</param>
         /// <returns>ApiResponse of CreateUploadDestinationResponse</returns>
         ApiResponse<CreateUploadDestinationResponse> CreateUploadDestinationForResourceWithHttpInfo (List<string> marketplaceIds, string contentMD5, string resource, string? contentType = null);
         #endregion Synchronous Operations
@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Api.uploads.v2020_11_01
         /// <param name="marketplaceIds">The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <param name="contentMD5">An MD5 hash of the content to be submitted to the upload destination. This value is used to determine if the data has been corrupted or tampered with during transit.</param>
         /// <param name="resource">The upload destination for your resource. For example, if you create an upload destination for the &#x60;createLegalDisclosure&#x60; operation of the Messaging API, the &#x60;{resource}&#x60; would be &#x60;/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;, and the entire path would be &#x60;/uploads/2020-11-01/uploadDestinations/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;. If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;.</param>
-        /// <param name="contentType">The content type of the file you upload. (optional)</param>
+        /// <param name="contentType">The content type of the file you upload. This parameter is required for A+ content. (optional)</param>
         /// <returns>Task of CreateUploadDestinationResponse</returns>
         System.Threading.Tasks.Task<CreateUploadDestinationResponse> CreateUploadDestinationForResourceAsync (List<string> marketplaceIds, string contentMD5, string resource, string? contentType = null);
 
@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Api.uploads.v2020_11_01
         /// <param name="marketplaceIds">The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <param name="contentMD5">An MD5 hash of the content to be submitted to the upload destination. This value is used to determine if the data has been corrupted or tampered with during transit.</param>
         /// <param name="resource">The upload destination for your resource. For example, if you create an upload destination for the &#x60;createLegalDisclosure&#x60; operation of the Messaging API, the &#x60;{resource}&#x60; would be &#x60;/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;, and the entire path would be &#x60;/uploads/2020-11-01/uploadDestinations/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;. If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;.</param>
-        /// <param name="contentType">The content type of the file you upload. (optional)</param>
+        /// <param name="contentType">The content type of the file you upload. This parameter is required for A+ content. (optional)</param>
         /// <returns>Task of ApiResponse (CreateUploadDestinationResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateUploadDestinationResponse>> CreateUploadDestinationForResourceAsyncWithHttpInfo (List<string> marketplaceIds, string contentMD5, string resource, string? contentType = null);
         #endregion Asynchronous Operations
@@ -179,7 +179,7 @@ namespace software.amzn.spapi.Api.uploads.v2020_11_01
         /// <param name="marketplaceIds">The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <param name="contentMD5">An MD5 hash of the content to be submitted to the upload destination. This value is used to determine if the data has been corrupted or tampered with during transit.</param>
         /// <param name="resource">The upload destination for your resource. For example, if you create an upload destination for the &#x60;createLegalDisclosure&#x60; operation of the Messaging API, the &#x60;{resource}&#x60; would be &#x60;/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;, and the entire path would be &#x60;/uploads/2020-11-01/uploadDestinations/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;. If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;.</param>
-        /// <param name="contentType">The content type of the file you upload. (optional)</param>
+        /// <param name="contentType">The content type of the file you upload. This parameter is required for A+ content. (optional)</param>
         /// <returns>CreateUploadDestinationResponse</returns>
         public CreateUploadDestinationResponse CreateUploadDestinationForResource (List<string> marketplaceIds, string contentMD5, string resource, string? contentType = null)
         {
@@ -194,7 +194,7 @@ namespace software.amzn.spapi.Api.uploads.v2020_11_01
         /// <param name="marketplaceIds">The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <param name="contentMD5">An MD5 hash of the content to be submitted to the upload destination. This value is used to determine if the data has been corrupted or tampered with during transit.</param>
         /// <param name="resource">The upload destination for your resource. For example, if you create an upload destination for the &#x60;createLegalDisclosure&#x60; operation of the Messaging API, the &#x60;{resource}&#x60; would be &#x60;/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;, and the entire path would be &#x60;/uploads/2020-11-01/uploadDestinations/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;. If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;.</param>
-        /// <param name="contentType">The content type of the file you upload. (optional)</param>
+        /// <param name="contentType">The content type of the file you upload. This parameter is required for A+ content. (optional)</param>
         /// <returns>ApiResponse of CreateUploadDestinationResponse</returns>
         public ApiResponse< CreateUploadDestinationResponse > CreateUploadDestinationForResourceWithHttpInfo (List<string> marketplaceIds, string contentMD5, string resource, string? contentType = null)
         {
@@ -258,7 +258,7 @@ namespace software.amzn.spapi.Api.uploads.v2020_11_01
         /// <param name="marketplaceIds">The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <param name="contentMD5">An MD5 hash of the content to be submitted to the upload destination. This value is used to determine if the data has been corrupted or tampered with during transit.</param>
         /// <param name="resource">The upload destination for your resource. For example, if you create an upload destination for the &#x60;createLegalDisclosure&#x60; operation of the Messaging API, the &#x60;{resource}&#x60; would be &#x60;/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;, and the entire path would be &#x60;/uploads/2020-11-01/uploadDestinations/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;. If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;.</param>
-        /// <param name="contentType">The content type of the file you upload. (optional)</param>
+        /// <param name="contentType">The content type of the file you upload. This parameter is required for A+ content. (optional)</param>
         /// <returns>Task of CreateUploadDestinationResponse</returns>
         public async System.Threading.Tasks.Task<CreateUploadDestinationResponse> CreateUploadDestinationForResourceAsync (List<string> marketplaceIds, string contentMD5, string resource, string? contentType = null)
         {
@@ -274,7 +274,7 @@ namespace software.amzn.spapi.Api.uploads.v2020_11_01
         /// <param name="marketplaceIds">The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</param>
         /// <param name="contentMD5">An MD5 hash of the content to be submitted to the upload destination. This value is used to determine if the data has been corrupted or tampered with during transit.</param>
         /// <param name="resource">The upload destination for your resource. For example, if you create an upload destination for the &#x60;createLegalDisclosure&#x60; operation of the Messaging API, the &#x60;{resource}&#x60; would be &#x60;/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;, and the entire path would be &#x60;/uploads/2020-11-01/uploadDestinations/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;. If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;.</param>
-        /// <param name="contentType">The content type of the file you upload. (optional)</param>
+        /// <param name="contentType">The content type of the file you upload. This parameter is required for A+ content. (optional)</param>
         /// <returns>Task of ApiResponse (CreateUploadDestinationResponse)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<CreateUploadDestinationResponse>> CreateUploadDestinationForResourceAsyncWithHttpInfo (List<string> marketplaceIds, string contentMD5, string resource, string? contentType = null)
         {
