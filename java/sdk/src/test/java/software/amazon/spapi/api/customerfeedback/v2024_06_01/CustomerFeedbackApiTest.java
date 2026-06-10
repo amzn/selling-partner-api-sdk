@@ -53,7 +53,8 @@ public class CustomerFeedbackApiTest {
     private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
             .randomize(OffsetDateTime.class, OffsetDateTime::now)
             .randomize(LocalDate.class, LocalDate::now)
-            .collectionSizeRange(1, 2));
+            .collectionSizeRange(1, 2)
+            .randomizationDepth(10));
 
     @Test
     public void getBrowseNodeReturnTopicsTest() throws Exception {
