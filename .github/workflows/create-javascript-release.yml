@@ -31,9 +31,11 @@ jobs:
         run: npm install -g npm@latest
       - name: Set version in package.json
         working-directory: javascript/sdk
+        env:
+          NEW_VERSION: ${{ github.event.inputs.newVersionNumber }}
         run: |
-          npm version ${{ github.event.inputs.newVersionNumber }} --no-git-tag-version
-          echo "Updated package.json version to ${{ github.event.inputs.newVersionNumber }}"
+          npm version "$NEW_VERSION" --no-git-tag-version
+          echo "Updated package.json version to $NEW_VERSION"
       - name: Copy README.md file
         working-directory: javascript
         run: |

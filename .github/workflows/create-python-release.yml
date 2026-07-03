@@ -41,10 +41,14 @@ jobs:
           pip install -r build-requirements.txt
       - name: Build SP-API Python SDK
         working-directory: python/sdk
+        env:
+          NEW_VERSION: ${{ github.event.inputs.newVersionNumber }}
         run: |
-          bump2version --new-version ${{ github.event.inputs.newVersionNumber }} --allow-dirty --no-tag patch
+          bump2version --new-version "$NEW_VERSION" --allow-dirty --no-tag patch
           python -m build
       - name: Copy back and commit version files
+        env:
+          NEW_VERSION: ${{ github.event.inputs.newVersionNumber }}
         run: |
           # Copy the updated files back to dev-toolkit/distribution
           cp python/sdk/.bumpversion.cfg python/dev-toolkit/distribution/
@@ -56,7 +60,7 @@ jobs:
 
           # Persist new version
           git add python/dev-toolkit/distribution/.bumpversion.cfg python/dev-toolkit/distribution/pyproject.toml
-          git commit -m "chore: bump python version to ${{ github.event.inputs.newVersionNumber }}"
+          git commit -m "chore: bump python version to $NEW_VERSION"
           git push
       - name: Publish to PyPI
         working-directory: python/sdk
