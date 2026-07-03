@@ -31,12 +31,13 @@ jobs:
           GH_PAT: ${{ secrets.TOMLIKED_PAT }}
           PR_LABELS: false
       - name: Enable auto merge for PR
-        run: |
-          URL="$(echo '${{ steps.sync.outputs.pull_request_urls }}' | jq -r first)"
-          echo "Merging PR: $URL"
-          gh pr merge --auto --merge "$URL"
         env:
           GH_TOKEN: ${{ secrets.TOMLIKED_PAT }}
+          PR_URLS: ${{ steps.sync.outputs.pull_request_urls }}
+        run: |
+          URL="$(echo "$PR_URLS" | jq -r first)"
+          echo "Merging PR: $URL"
+          gh pr merge --auto --merge "$URL"
 
   tag_and_release:
     needs: [ release_php ]
@@ -58,14 +59,17 @@ jobs:
         run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
       - name: Create tag
         uses: actions/github-script@v5
+        env:
+          TAG_NAME: ${{ github.event.inputs.newVersionNumber }}
+          COMMIT_SHA: ${{ steps.sha.outputs.sha }}
         with:
           github-token: ${{ secrets.TOMLIKED_PAT }}
           script: |
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: 'selling-partner-api-php-release',
-              ref: "refs/tags/${{ github.event.inputs.newVersionNumber }}",
-              sha: "${{ steps.sha.outputs.sha }}"
+              ref: `refs/tags/${process.env.TAG_NAME}`,
+              sha: process.env.COMMIT_SHA
             })
       - name: Create Release
         uses: softprops/action-gh-release@v2

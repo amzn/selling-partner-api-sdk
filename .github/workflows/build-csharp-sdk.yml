@@ -89,7 +89,9 @@ jobs:
           java -jar openapi-generator-cli-7.9.0.jar generate -i ../../selling-partner-api-models/models/external-fulfillment/externalFulfillmentReturns_2024-09-11.json -g csharp -t ../templates/csharp -o sdk -c config/config.json --additional-properties=modelPackage=Model.externalFulfillment.returns.v2024_09_11,apiPackage=Api.externalFulfillment.returns.v2024_09_11 && \
           java -jar openapi-generator-cli-7.9.0.jar generate -i ../../selling-partner-api-models/models/orders-api-model/orders_2026-01-01.json -g csharp -t ../templates/csharp -o sdk -c config/config.json --additional-properties=modelPackage=Model.orders.v2026_01_01,apiPackage=Api.orders.v2026_01_01
       - name: Print workspace path
-        run: echo ${{ github.workspace }}
+        run: echo "$GITHUB_WORKSPACE"
+        env:
+          GITHUB_WORKSPACE: ${{ github.workspace }}
       - name: Copy auth lib files to sdk directory
         working-directory: ./selling-partner-api-sdk/csharp/sdk/src/software.amzn.spapi/
         run: |
