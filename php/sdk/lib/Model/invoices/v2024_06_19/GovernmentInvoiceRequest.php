@@ -295,7 +295,7 @@ class GovernmentInvoiceRequest implements ModelInterface, \ArrayAccess, \JsonSer
     /**
      * Sets contexts.
      *
-     * @param null|array $contexts Object that contains additional invoice creation information
+     * @param null|array $contexts additional information for invoice creation
      */
     public function setContexts(?array $contexts): self
     {
@@ -325,7 +325,7 @@ class GovernmentInvoiceRequest implements ModelInterface, \ArrayAccess, \JsonSer
     /**
      * Sets inbound_plan_id.
      *
-     * @param null|string $inbound_plan_id the unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created
+     * @param null|string $inbound_plan_id the unique inbound plan identifier in which the shipment is contained and for which the invoice will be created
      */
     public function setInboundPlanId(?string $inbound_plan_id): self
     {
@@ -355,7 +355,7 @@ class GovernmentInvoiceRequest implements ModelInterface, \ArrayAccess, \JsonSer
     /**
      * Sets invoice_type.
      *
-     * @param string $invoice_type Marketplace specific classification of the invoice type. Check 'invoiceType' options using 'getInvoicesAttributes' operation.
+     * @param string $invoice_type The marketplace-specific classification of the invoice type. Check `invoiceType` options using the `getInvoicesAttributes` operation.
      */
     public function setInvoiceType(string $invoice_type): self
     {
@@ -378,7 +378,7 @@ class GovernmentInvoiceRequest implements ModelInterface, \ArrayAccess, \JsonSer
     /**
      * Sets marketplace_id.
      *
-     * @param string $marketplace_id the government invoices creation request will match the national authoritative source of the given marketplace
+     * @param string $marketplace_id the marketplace of the national authoritative source that will be on the government invoice creation request
      */
     public function setMarketplaceId(string $marketplace_id): self
     {
@@ -401,7 +401,7 @@ class GovernmentInvoiceRequest implements ModelInterface, \ArrayAccess, \JsonSer
     /**
      * Sets shipment_id.
      *
-     * @param string $shipment_id the unique shipment identifier to get an invoice for
+     * @param string $shipment_id the unique shipment identifier for which to get an invoice
      */
     public function setShipmentId(string $shipment_id): self
     {
@@ -424,7 +424,7 @@ class GovernmentInvoiceRequest implements ModelInterface, \ArrayAccess, \JsonSer
     /**
      * Sets transaction_type.
      *
-     * @param string $transaction_type Marketplace specific classification of the transaction type that originated the invoice. Check 'transactionType' options using 'getInvoicesAttributes' operation.
+     * @param string $transaction_type The marketplace-specific classification of the transaction type that originated the invoice. Check `transactionType` options using the `getInvoicesAttributes` operation.
      */
     public function setTransactionType(string $transaction_type): self
     {

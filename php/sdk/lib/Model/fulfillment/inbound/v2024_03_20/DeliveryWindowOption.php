@@ -63,6 +63,7 @@ class DeliveryWindowOption implements ModelInterface, \ArrayAccess, \JsonSeriali
     protected static array $openAPITypes = [
         'availability_type' => 'string',
         'delivery_window_option_id' => 'string',
+        'discounts' => '\SpApi\Model\fulfillment\inbound\v2024_03_20\Incentive[]',
         'end_date' => '\DateTime',
         'start_date' => '\DateTime',
         'valid_until' => '\DateTime'];
@@ -79,6 +80,7 @@ class DeliveryWindowOption implements ModelInterface, \ArrayAccess, \JsonSeriali
     protected static array $openAPIFormats = [
         'availability_type' => null,
         'delivery_window_option_id' => null,
+        'discounts' => null,
         'end_date' => 'date-time',
         'start_date' => 'date-time',
         'valid_until' => 'date-time'];
@@ -91,6 +93,7 @@ class DeliveryWindowOption implements ModelInterface, \ArrayAccess, \JsonSeriali
     protected static array $openAPINullables = [
         'availability_type' => false,
         'delivery_window_option_id' => false,
+        'discounts' => true,
         'end_date' => false,
         'start_date' => false,
         'valid_until' => false,
@@ -112,6 +115,7 @@ class DeliveryWindowOption implements ModelInterface, \ArrayAccess, \JsonSeriali
     protected static array $attributeMap = [
         'availability_type' => 'availabilityType',
         'delivery_window_option_id' => 'deliveryWindowOptionId',
+        'discounts' => 'discounts',
         'end_date' => 'endDate',
         'start_date' => 'startDate',
         'valid_until' => 'validUntil',
@@ -125,6 +129,7 @@ class DeliveryWindowOption implements ModelInterface, \ArrayAccess, \JsonSeriali
     protected static array $setters = [
         'availability_type' => 'setAvailabilityType',
         'delivery_window_option_id' => 'setDeliveryWindowOptionId',
+        'discounts' => 'setDiscounts',
         'end_date' => 'setEndDate',
         'start_date' => 'setStartDate',
         'valid_until' => 'setValidUntil',
@@ -138,6 +143,7 @@ class DeliveryWindowOption implements ModelInterface, \ArrayAccess, \JsonSeriali
     protected static array $getters = [
         'availability_type' => 'getAvailabilityType',
         'delivery_window_option_id' => 'getDeliveryWindowOptionId',
+        'discounts' => 'getDiscounts',
         'end_date' => 'getEndDate',
         'start_date' => 'getStartDate',
         'valid_until' => 'getValidUntil',
@@ -158,6 +164,7 @@ class DeliveryWindowOption implements ModelInterface, \ArrayAccess, \JsonSeriali
     {
         $this->setIfExists('availability_type', $data ?? [], null);
         $this->setIfExists('delivery_window_option_id', $data ?? [], null);
+        $this->setIfExists('discounts', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('valid_until', $data ?? [], null);
@@ -268,6 +275,10 @@ class DeliveryWindowOption implements ModelInterface, \ArrayAccess, \JsonSeriali
             $invalidProperties[] = "invalid value for 'delivery_window_option_id', must be conform to the pattern /^[a-zA-Z0-9-]*$/.";
         }
 
+        if (!is_null($this->container['discounts']) && (count($this->container['discounts']) < 1)) {
+            $invalidProperties[] = "invalid value for 'discounts', number of items must be greater than or equal to 1.";
+        }
+
         if (null === $this->container['end_date']) {
             $invalidProperties[] = "'end_date' can't be null";
         }
@@ -344,6 +355,40 @@ class DeliveryWindowOption implements ModelInterface, \ArrayAccess, \JsonSeriali
         }
 
         $this->container['delivery_window_option_id'] = $delivery_window_option_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets discounts.
+     */
+    public function getDiscounts(): ?array
+    {
+        return $this->container['discounts'];
+    }
+
+    /**
+     * Sets discounts.
+     *
+     * @param null|array $discounts discounts for the offered option
+     */
+    public function setDiscounts(?array $discounts): self
+    {
+        if (is_null($discounts)) {
+            array_push($this->openAPINullablesSetToNull, 'discounts');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('discounts', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($discounts) && (count($discounts) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $discounts when calling DeliveryWindowOption., number of items must be greater than or equal to 1.');
+        }
+        $this->container['discounts'] = $discounts;
 
         return $this;
     }

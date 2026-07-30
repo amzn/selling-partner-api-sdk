@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description An invoice creation error occurrence.
+ * @description An invoice creation error occurred.
  *
  * @author   OpenAPI Generator team
  *
@@ -252,7 +252,7 @@ class InvoiceError implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets description.
      *
-     * @param null|string $description a text description of the error
+     * @param null|string $description a description of the error
      */
     public function setDescription(?string $description): self
     {

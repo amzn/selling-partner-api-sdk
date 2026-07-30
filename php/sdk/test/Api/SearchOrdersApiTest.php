@@ -300,6 +300,10 @@ class SearchOrdersApiTest extends BaseTestCase
               &quot;cancellationRequest&quot; : {
                 &quot;requester&quot; : &quot;BUYER&quot;,
                 &quot;cancelReason&quot; : &quot;Changed mind about purchase&quot;
+              },
+              &quot;cancellationExecution&quot; : {
+                &quot;cancelledBy&quot; : &quot;MERCHANT&quot;,
+                &quot;cancelReason&quot; : &quot;Buyer requested cancellation&quot;
               }
             },
             &quot;fulfillment&quot; : {

@@ -289,7 +289,7 @@ class GovernmentInvoiceStatusResponse implements ModelInterface, \ArrayAccess, \
     /**
      * Sets invoice_external_document_id.
      *
-     * @param null|string $invoice_external_document_id government Invoice ID of a successfully authorized invoice
+     * @param null|string $invoice_external_document_id the Government Invoice ID of a successfully authorized invoice
      */
     public function setInvoiceExternalDocumentId(?string $invoice_external_document_id): self
     {

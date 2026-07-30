@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Additional Information about the item.
+ * @description Additional information about the item.
  *
  * @author   OpenAPI Generator team
  *
@@ -419,7 +419,7 @@ class Context implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets order_type.
      *
-     * @param null|string $order_type the transaction's order type
+     * @param null|string $order_type the order type of the transaction
      */
     public function setOrderType(?string $order_type): self
     {
@@ -449,7 +449,7 @@ class Context implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets channel.
      *
-     * @param null|string $channel channel details of related transaction
+     * @param null|string $channel The channel of the transaction. For example: `MFN`.
      */
     public function setChannel(?string $channel): self
     {
@@ -839,7 +839,7 @@ class Context implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets context_type.
      *
-     * @param string $context_type context_type
+     * @param string $context_type the type of context
      */
     public function setContextType(string $context_type): self
     {

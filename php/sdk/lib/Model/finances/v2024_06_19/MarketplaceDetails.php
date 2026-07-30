@@ -252,7 +252,7 @@ class MarketplaceDetails implements ModelInterface, \ArrayAccess, \JsonSerializa
     /**
      * Sets marketplace_id.
      *
-     * @param null|string $marketplace_id The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     * @param null|string $marketplace_id The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      */
     public function setMarketplaceId(?string $marketplace_id): self
     {

@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Object containing the documentId and a S3 pre-signed URL to download the specified document file.
+ * @description The &#x60;documentId&#x60; and an S3 pre-signed URL that you can use to download the specified document file.
  *
  * @author   OpenAPI Generator team
  *
@@ -245,7 +245,7 @@ class InvoiceDocument implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets invoice_document_url.
      *
-     * @param null|string $invoice_document_url A pre-signed URL to download the invoice document in its original format. This URL expires after 30 seconds.
+     * @param null|string $invoice_document_url A pre-signed URL that you can use to download the invoice document in its original format. This URL expires after 30 seconds.
      */
     public function setInvoiceDocumentUrl(?string $invoice_document_url): self
     {

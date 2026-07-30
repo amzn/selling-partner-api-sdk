@@ -41,7 +41,9 @@ use SpApi\ApiException;
 use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\finances\v2024_06_19\ListBalancesResponse;
 use SpApi\Model\finances\v2024_06_19\ListTransactionsResponse;
+use SpApi\Model\finances\v2024_06_19\SummaryResponse;
 use SpApi\ObjectSerializer;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
@@ -58,6 +60,8 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class DefaultApi
 {
+    public ?LimiterInterface $listBalancesRateLimiter;
+    public ?LimiterInterface $listSummaryRateLimiter;
     public ?LimiterInterface $listTransactionsRateLimiter;
     protected ClientInterface $client;
 
@@ -89,6 +93,10 @@ class DefaultApi
         if ($rateLimiterEnabled) {
             $this->rateLimitStorage = new InMemoryStorage();
 
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listBalances'), $this->rateLimitStorage);
+            $this->listBalancesRateLimiter = $factory->create('DefaultApi-listBalances');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listSummary'), $this->rateLimitStorage);
+            $this->listSummaryRateLimiter = $factory->create('DefaultApi-listSummary');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listTransactions'), $this->rateLimitStorage);
             $this->listTransactionsRateLimiter = $factory->create('DefaultApi-listTransactions');
         }
@@ -124,6 +132,788 @@ class DefaultApi
     }
 
     /**
+     * Operation listBalances.
+     *
+     * @param null|string[]  $marketplace_ids
+     *                                            The marketplaces from which to retrieve balances. If omitted, balances from all applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string    $balance_type
+     *                                            The type of balance to include in the response. If omitted, all balance types may be included in the response.  **Possible values:** &#x60;AVAILABLE&#x60;, &#x60;RESERVED&#x60;, &#x60;TOTAL&#x60;, &#x60;DEFERRED&#x60;, &#x60;ACCOUNT_LEVEL_RESERVE&#x60; (optional)
+     * @param null|string    $account_type
+     *                                            The type of account to include in the response. (optional)
+     * @param null|\DateTime $as_of_date
+     *                                            The date from which you want to retrieve balances. If provided, the response includes historical balances at the specified date. The value must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. If omitted, the point in time balance is provided. (optional)
+     * @param null|string    $next_token
+     *                                            A token that you use to retrieve subsequent pages of results. When there are more than 500 results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. Repeat this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function listBalances(
+        ?array $marketplace_ids = null,
+        ?string $balance_type = null,
+        ?string $account_type = null,
+        ?\DateTime $as_of_date = null,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): ListBalancesResponse {
+        list($response) = $this->listBalancesWithHttpInfo($marketplace_ids, $balance_type, $account_type, $as_of_date, $next_token, $restrictedDataToken);
+
+        return $response;
+    }
+
+    /**
+     * Operation listBalancesWithHttpInfo.
+     *
+     * @param null|string[]  $marketplace_ids
+     *                                            The marketplaces from which to retrieve balances. If omitted, balances from all applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string    $balance_type
+     *                                            The type of balance to include in the response. If omitted, all balance types may be included in the response.  **Possible values:** &#x60;AVAILABLE&#x60;, &#x60;RESERVED&#x60;, &#x60;TOTAL&#x60;, &#x60;DEFERRED&#x60;, &#x60;ACCOUNT_LEVEL_RESERVE&#x60; (optional)
+     * @param null|string    $account_type
+     *                                            The type of account to include in the response. (optional)
+     * @param null|\DateTime $as_of_date
+     *                                            The date from which you want to retrieve balances. If provided, the response includes historical balances at the specified date. The value must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. If omitted, the point in time balance is provided. (optional)
+     * @param null|string    $next_token
+     *                                            A token that you use to retrieve subsequent pages of results. When there are more than 500 results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. Repeat this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @return array of \SpApi\Model\finances\v2024_06_19\ListBalancesResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function listBalancesWithHttpInfo(
+        ?array $marketplace_ids = null,
+        ?string $balance_type = null,
+        ?string $account_type = null,
+        ?\DateTime $as_of_date = null,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): array {
+        $request = $this->listBalancesRequest($marketplace_ids, $balance_type, $account_type, $as_of_date, $next_token);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listBalances');
+        } else {
+            $request = $this->config->sign($request);
+        }
+
+        try {
+            $options = $this->createHttpClientOption();
+
+            try {
+                if ($this->rateLimiterEnabled) {
+                    $this->listBalancesRateLimiter->consume()->ensureAccepted();
+                }
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+            if ('\SpApi\Model\finances\v2024_06_19\ListBalancesResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\finances\v2024_06_19\ListBalancesResponse' !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v2024_06_19\ListBalancesResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
+        } catch (ApiException $e) {
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\finances\v2024_06_19\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listBalancesAsync.
+     *
+     * @param null|string[]  $marketplace_ids
+     *                                        The marketplaces from which to retrieve balances. If omitted, balances from all applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string    $balance_type
+     *                                        The type of balance to include in the response. If omitted, all balance types may be included in the response.  **Possible values:** &#x60;AVAILABLE&#x60;, &#x60;RESERVED&#x60;, &#x60;TOTAL&#x60;, &#x60;DEFERRED&#x60;, &#x60;ACCOUNT_LEVEL_RESERVE&#x60; (optional)
+     * @param null|string    $account_type
+     *                                        The type of account to include in the response. (optional)
+     * @param null|\DateTime $as_of_date
+     *                                        The date from which you want to retrieve balances. If provided, the response includes historical balances at the specified date. The value must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. If omitted, the point in time balance is provided. (optional)
+     * @param null|string    $next_token
+     *                                        A token that you use to retrieve subsequent pages of results. When there are more than 500 results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. Repeat this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function listBalancesAsync(
+        ?array $marketplace_ids = null,
+        ?string $balance_type = null,
+        ?string $account_type = null,
+        ?\DateTime $as_of_date = null,
+        ?string $next_token = null
+    ): PromiseInterface {
+        return $this->listBalancesAsyncWithHttpInfo($marketplace_ids, $balance_type, $account_type, $as_of_date, $next_token)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            )
+        ;
+    }
+
+    /**
+     * Operation listBalancesAsyncWithHttpInfo.
+     *
+     * @param null|string[]  $marketplace_ids
+     *                                        The marketplaces from which to retrieve balances. If omitted, balances from all applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string    $balance_type
+     *                                        The type of balance to include in the response. If omitted, all balance types may be included in the response.  **Possible values:** &#x60;AVAILABLE&#x60;, &#x60;RESERVED&#x60;, &#x60;TOTAL&#x60;, &#x60;DEFERRED&#x60;, &#x60;ACCOUNT_LEVEL_RESERVE&#x60; (optional)
+     * @param null|string    $account_type
+     *                                        The type of account to include in the response. (optional)
+     * @param null|\DateTime $as_of_date
+     *                                        The date from which you want to retrieve balances. If provided, the response includes historical balances at the specified date. The value must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. If omitted, the point in time balance is provided. (optional)
+     * @param null|string    $next_token
+     *                                        A token that you use to retrieve subsequent pages of results. When there are more than 500 results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. Repeat this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function listBalancesAsyncWithHttpInfo(
+        ?array $marketplace_ids = null,
+        ?string $balance_type = null,
+        ?string $account_type = null,
+        ?\DateTime $as_of_date = null,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): PromiseInterface {
+        $returnType = '\SpApi\Model\finances\v2024_06_19\ListBalancesResponse';
+        $request = $this->listBalancesRequest($marketplace_ids, $balance_type, $account_type, $as_of_date, $next_token);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listBalances');
+        } else {
+            $request = $this->config->sign($request);
+        }
+        if ($this->rateLimiterEnabled) {
+            $this->listBalancesRateLimiter->consume()->ensureAccepted();
+        }
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('string' !== $returnType) {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders(),
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            )
+        ;
+    }
+
+    /**
+     * Create request for operation 'listBalances'.
+     *
+     * @param null|string[]  $marketplace_ids
+     *                                        The marketplaces from which to retrieve balances. If omitted, balances from all applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string    $balance_type
+     *                                        The type of balance to include in the response. If omitted, all balance types may be included in the response.  **Possible values:** &#x60;AVAILABLE&#x60;, &#x60;RESERVED&#x60;, &#x60;TOTAL&#x60;, &#x60;DEFERRED&#x60;, &#x60;ACCOUNT_LEVEL_RESERVE&#x60; (optional)
+     * @param null|string    $account_type
+     *                                        The type of account to include in the response. (optional)
+     * @param null|\DateTime $as_of_date
+     *                                        The date from which you want to retrieve balances. If provided, the response includes historical balances at the specified date. The value must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. If omitted, the point in time balance is provided. (optional)
+     * @param null|string    $next_token
+     *                                        A token that you use to retrieve subsequent pages of results. When there are more than 500 results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. Repeat this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function listBalancesRequest(
+        ?array $marketplace_ids = null,
+        ?string $balance_type = null,
+        ?string $account_type = null,
+        ?\DateTime $as_of_date = null,
+        ?string $next_token = null
+    ): Request {
+        $resourcePath = '/finances/2024-06-19/balances';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketplace_ids,
+            'marketplaceIds', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $balance_type,
+            'balanceType', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_type,
+            'accountType', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $as_of_date,
+            'asOfDate', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $next_token,
+            'nextToken', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            '',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
+        return new Request(
+            'GET',
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listSummary.
+     *
+     * @param null|string[]  $marketplace_ids
+     *                                                 The marketplaces from which to retrieve summaries. If omitted, summaries from all applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string    $account_type
+     *                                                 The type of account to include in the response. (optional)
+     * @param null|string    $related_identifier_name
+     *                                                 The name of the &#x60;relatedIdentifier&#x60;. The only possible value is &#x60;SETTLEMENT_ID&#x60;, the settlement ID associated with the summary. (optional)
+     * @param null|string    $related_identifier_value
+     *                                                 The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param null|\DateTime $period_start
+     *                                                 The start of the period for which to retrieve summaries. When provided, the response will only include summaries with transactions that occurred on or after the specified date. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param null|\DateTime $period_end
+     *                                                 The end of the period for which to retrieve summaries. When provided, the response will only include summaries with transactions that occurred on or before the specified date. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param null|string    $next_token
+     *                                                 A token that you use to retrieve subsequent pages of results. When there are more results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. Repeat this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @param null|string    $restrictedDataToken      Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function listSummary(
+        ?array $marketplace_ids = null,
+        ?string $account_type = null,
+        ?string $related_identifier_name = null,
+        ?string $related_identifier_value = null,
+        ?\DateTime $period_start = null,
+        ?\DateTime $period_end = null,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): SummaryResponse {
+        list($response) = $this->listSummaryWithHttpInfo($marketplace_ids, $account_type, $related_identifier_name, $related_identifier_value, $period_start, $period_end, $next_token, $restrictedDataToken);
+
+        return $response;
+    }
+
+    /**
+     * Operation listSummaryWithHttpInfo.
+     *
+     * @param null|string[]  $marketplace_ids
+     *                                                 The marketplaces from which to retrieve summaries. If omitted, summaries from all applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string    $account_type
+     *                                                 The type of account to include in the response. (optional)
+     * @param null|string    $related_identifier_name
+     *                                                 The name of the &#x60;relatedIdentifier&#x60;. The only possible value is &#x60;SETTLEMENT_ID&#x60;, the settlement ID associated with the summary. (optional)
+     * @param null|string    $related_identifier_value
+     *                                                 The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param null|\DateTime $period_start
+     *                                                 The start of the period for which to retrieve summaries. When provided, the response will only include summaries with transactions that occurred on or after the specified date. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param null|\DateTime $period_end
+     *                                                 The end of the period for which to retrieve summaries. When provided, the response will only include summaries with transactions that occurred on or before the specified date. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param null|string    $next_token
+     *                                                 A token that you use to retrieve subsequent pages of results. When there are more results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. Repeat this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @param null|string    $restrictedDataToken      Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @return array of \SpApi\Model\finances\v2024_06_19\SummaryResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function listSummaryWithHttpInfo(
+        ?array $marketplace_ids = null,
+        ?string $account_type = null,
+        ?string $related_identifier_name = null,
+        ?string $related_identifier_value = null,
+        ?\DateTime $period_start = null,
+        ?\DateTime $period_end = null,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): array {
+        $request = $this->listSummaryRequest($marketplace_ids, $account_type, $related_identifier_name, $related_identifier_value, $period_start, $period_end, $next_token);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listSummary');
+        } else {
+            $request = $this->config->sign($request);
+        }
+
+        try {
+            $options = $this->createHttpClientOption();
+
+            try {
+                if ($this->rateLimiterEnabled) {
+                    $this->listSummaryRateLimiter->consume()->ensureAccepted();
+                }
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+            if ('\SpApi\Model\finances\v2024_06_19\SummaryResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\finances\v2024_06_19\SummaryResponse' !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\finances\v2024_06_19\SummaryResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
+        } catch (ApiException $e) {
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\finances\v2024_06_19\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listSummaryAsync.
+     *
+     * @param null|string[]  $marketplace_ids
+     *                                                 The marketplaces from which to retrieve summaries. If omitted, summaries from all applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string    $account_type
+     *                                                 The type of account to include in the response. (optional)
+     * @param null|string    $related_identifier_name
+     *                                                 The name of the &#x60;relatedIdentifier&#x60;. The only possible value is &#x60;SETTLEMENT_ID&#x60;, the settlement ID associated with the summary. (optional)
+     * @param null|string    $related_identifier_value
+     *                                                 The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param null|\DateTime $period_start
+     *                                                 The start of the period for which to retrieve summaries. When provided, the response will only include summaries with transactions that occurred on or after the specified date. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param null|\DateTime $period_end
+     *                                                 The end of the period for which to retrieve summaries. When provided, the response will only include summaries with transactions that occurred on or before the specified date. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param null|string    $next_token
+     *                                                 A token that you use to retrieve subsequent pages of results. When there are more results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. Repeat this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function listSummaryAsync(
+        ?array $marketplace_ids = null,
+        ?string $account_type = null,
+        ?string $related_identifier_name = null,
+        ?string $related_identifier_value = null,
+        ?\DateTime $period_start = null,
+        ?\DateTime $period_end = null,
+        ?string $next_token = null
+    ): PromiseInterface {
+        return $this->listSummaryAsyncWithHttpInfo($marketplace_ids, $account_type, $related_identifier_name, $related_identifier_value, $period_start, $period_end, $next_token)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            )
+        ;
+    }
+
+    /**
+     * Operation listSummaryAsyncWithHttpInfo.
+     *
+     * @param null|string[]  $marketplace_ids
+     *                                                 The marketplaces from which to retrieve summaries. If omitted, summaries from all applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string    $account_type
+     *                                                 The type of account to include in the response. (optional)
+     * @param null|string    $related_identifier_name
+     *                                                 The name of the &#x60;relatedIdentifier&#x60;. The only possible value is &#x60;SETTLEMENT_ID&#x60;, the settlement ID associated with the summary. (optional)
+     * @param null|string    $related_identifier_value
+     *                                                 The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param null|\DateTime $period_start
+     *                                                 The start of the period for which to retrieve summaries. When provided, the response will only include summaries with transactions that occurred on or after the specified date. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param null|\DateTime $period_end
+     *                                                 The end of the period for which to retrieve summaries. When provided, the response will only include summaries with transactions that occurred on or before the specified date. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param null|string    $next_token
+     *                                                 A token that you use to retrieve subsequent pages of results. When there are more results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. Repeat this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function listSummaryAsyncWithHttpInfo(
+        ?array $marketplace_ids = null,
+        ?string $account_type = null,
+        ?string $related_identifier_name = null,
+        ?string $related_identifier_value = null,
+        ?\DateTime $period_start = null,
+        ?\DateTime $period_end = null,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): PromiseInterface {
+        $returnType = '\SpApi\Model\finances\v2024_06_19\SummaryResponse';
+        $request = $this->listSummaryRequest($marketplace_ids, $account_type, $related_identifier_name, $related_identifier_value, $period_start, $period_end, $next_token);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listSummary');
+        } else {
+            $request = $this->config->sign($request);
+        }
+        if ($this->rateLimiterEnabled) {
+            $this->listSummaryRateLimiter->consume()->ensureAccepted();
+        }
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('string' !== $returnType) {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders(),
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            )
+        ;
+    }
+
+    /**
+     * Create request for operation 'listSummary'.
+     *
+     * @param null|string[]  $marketplace_ids
+     *                                                 The marketplaces from which to retrieve summaries. If omitted, summaries from all applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string    $account_type
+     *                                                 The type of account to include in the response. (optional)
+     * @param null|string    $related_identifier_name
+     *                                                 The name of the &#x60;relatedIdentifier&#x60;. The only possible value is &#x60;SETTLEMENT_ID&#x60;, the settlement ID associated with the summary. (optional)
+     * @param null|string    $related_identifier_value
+     *                                                 The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param null|\DateTime $period_start
+     *                                                 The start of the period for which to retrieve summaries. When provided, the response will only include summaries with transactions that occurred on or after the specified date. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param null|\DateTime $period_end
+     *                                                 The end of the period for which to retrieve summaries. When provided, the response will only include summaries with transactions that occurred on or before the specified date. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param null|string    $next_token
+     *                                                 A token that you use to retrieve subsequent pages of results. When there are more results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. Repeat this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function listSummaryRequest(
+        ?array $marketplace_ids = null,
+        ?string $account_type = null,
+        ?string $related_identifier_name = null,
+        ?string $related_identifier_value = null,
+        ?\DateTime $period_start = null,
+        ?\DateTime $period_end = null,
+        ?string $next_token = null
+    ): Request {
+        $resourcePath = '/finances/2024-06-19/summary';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketplace_ids,
+            'marketplaceIds', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_type,
+            'accountType', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $related_identifier_name,
+            'relatedIdentifierName', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $related_identifier_value,
+            'relatedIdentifierValue', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $period_start,
+            'periodStart', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $period_end,
+            'periodEnd', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $next_token,
+            'nextToken', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            '',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
+        return new Request(
+            'GET',
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listTransactions.
      *
      * @param null|\DateTime $posted_after
@@ -131,11 +921,11 @@ class DefaultApi
      * @param null|\DateTime $posted_before
      *                                                 The response includes financial events posted before (but not on) this date. This date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.  The date-time must be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.  **Default:** Two minutes before the time of the request. (optional)
      * @param null|string    $marketplace_id
-     *                                                 The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *                                                 The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
      * @param null|string    $transaction_status
      *                                                 The status of the transaction.  **Possible values:**  * &#x60;DEFERRED&#x60;: the transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. * &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param null|string    $related_identifier_name
-     *                                                 The name of the &#x60;relatedIdentifier&#x60;.  **Possible values:**  * &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction.  * &#x60;ORDER_ID&#x60;: the order ID associated with the transaction.    **Note:**   FINANCIAL_EVENT_GROUP_ID and ORDER_ID are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for filtering purposes. (optional)
+     *                                                 The name of the &#x60;relatedIdentifier&#x60;.  **Possible values:**  * &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction.  * &#x60;ORDER_ID&#x60;: the order ID associated with the transaction.    **Note:**  &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for filtering purposes. (optional)
      * @param null|string    $related_identifier_value
      *                                                 The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param null|string    $next_token
@@ -168,11 +958,11 @@ class DefaultApi
      * @param null|\DateTime $posted_before
      *                                                 The response includes financial events posted before (but not on) this date. This date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.  The date-time must be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.  **Default:** Two minutes before the time of the request. (optional)
      * @param null|string    $marketplace_id
-     *                                                 The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *                                                 The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
      * @param null|string    $transaction_status
      *                                                 The status of the transaction.  **Possible values:**  * &#x60;DEFERRED&#x60;: the transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. * &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param null|string    $related_identifier_name
-     *                                                 The name of the &#x60;relatedIdentifier&#x60;.  **Possible values:**  * &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction.  * &#x60;ORDER_ID&#x60;: the order ID associated with the transaction.    **Note:**   FINANCIAL_EVENT_GROUP_ID and ORDER_ID are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for filtering purposes. (optional)
+     *                                                 The name of the &#x60;relatedIdentifier&#x60;.  **Possible values:**  * &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction.  * &#x60;ORDER_ID&#x60;: the order ID associated with the transaction.    **Note:**  &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for filtering purposes. (optional)
      * @param null|string    $related_identifier_value
      *                                                 The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param null|string    $next_token
@@ -273,11 +1063,11 @@ class DefaultApi
      * @param null|\DateTime $posted_before
      *                                                 The response includes financial events posted before (but not on) this date. This date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.  The date-time must be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.  **Default:** Two minutes before the time of the request. (optional)
      * @param null|string    $marketplace_id
-     *                                                 The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *                                                 The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
      * @param null|string    $transaction_status
      *                                                 The status of the transaction.  **Possible values:**  * &#x60;DEFERRED&#x60;: the transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. * &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param null|string    $related_identifier_name
-     *                                                 The name of the &#x60;relatedIdentifier&#x60;.  **Possible values:**  * &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction.  * &#x60;ORDER_ID&#x60;: the order ID associated with the transaction.    **Note:**   FINANCIAL_EVENT_GROUP_ID and ORDER_ID are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for filtering purposes. (optional)
+     *                                                 The name of the &#x60;relatedIdentifier&#x60;.  **Possible values:**  * &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction.  * &#x60;ORDER_ID&#x60;: the order ID associated with the transaction.    **Note:**  &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for filtering purposes. (optional)
      * @param null|string    $related_identifier_value
      *                                                 The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param null|string    $next_token
@@ -311,11 +1101,11 @@ class DefaultApi
      * @param null|\DateTime $posted_before
      *                                                 The response includes financial events posted before (but not on) this date. This date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.  The date-time must be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.  **Default:** Two minutes before the time of the request. (optional)
      * @param null|string    $marketplace_id
-     *                                                 The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *                                                 The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
      * @param null|string    $transaction_status
      *                                                 The status of the transaction.  **Possible values:**  * &#x60;DEFERRED&#x60;: the transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. * &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param null|string    $related_identifier_name
-     *                                                 The name of the &#x60;relatedIdentifier&#x60;.  **Possible values:**  * &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction.  * &#x60;ORDER_ID&#x60;: the order ID associated with the transaction.    **Note:**   FINANCIAL_EVENT_GROUP_ID and ORDER_ID are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for filtering purposes. (optional)
+     *                                                 The name of the &#x60;relatedIdentifier&#x60;.  **Possible values:**  * &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction.  * &#x60;ORDER_ID&#x60;: the order ID associated with the transaction.    **Note:**  &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for filtering purposes. (optional)
      * @param null|string    $related_identifier_value
      *                                                 The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param null|string    $next_token
@@ -390,11 +1180,11 @@ class DefaultApi
      * @param null|\DateTime $posted_before
      *                                                 The response includes financial events posted before (but not on) this date. This date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.  The date-time must be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.  **Default:** Two minutes before the time of the request. (optional)
      * @param null|string    $marketplace_id
-     *                                                 The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *                                                 The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
      * @param null|string    $transaction_status
      *                                                 The status of the transaction.  **Possible values:**  * &#x60;DEFERRED&#x60;: the transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. * &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param null|string    $related_identifier_name
-     *                                                 The name of the &#x60;relatedIdentifier&#x60;.  **Possible values:**  * &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction.  * &#x60;ORDER_ID&#x60;: the order ID associated with the transaction.    **Note:**   FINANCIAL_EVENT_GROUP_ID and ORDER_ID are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for filtering purposes. (optional)
+     *                                                 The name of the &#x60;relatedIdentifier&#x60;.  **Possible values:**  * &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction.  * &#x60;ORDER_ID&#x60;: the order ID associated with the transaction.    **Note:**  &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for filtering purposes. (optional)
      * @param null|string    $related_identifier_value
      *                                                 The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param null|string    $next_token

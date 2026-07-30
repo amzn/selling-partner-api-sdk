@@ -359,6 +359,9 @@ class GetOrderApiTest extends BaseTestCase
             &quot;deliverByWindow&quot; : {
               &quot;earliestDateTime&quot; : &quot;2024-12-28T00:00:00Z&quot;,
               &quot;latestDateTime&quot; : &quot;2024-12-31T23:59:59Z&quot;
+            },
+            &quot;labelPrintingWindow&quot; : {
+              &quot;earliestDateTime&quot; : &quot;2024-12-26T17:00:00Z&quot;
             }
           },
           &quot;orderItems&quot; : [ {

@@ -307,7 +307,7 @@ class PrepInstruction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets prep_owner.
      *
-     * @param null|string $prep_owner In some situations, special preparations are required for items and this field reflects the owner of the preparations. Options include `AMAZON`, `SELLER` or `NONE`.
+     * @param null|string $prep_owner In some situations, special preparations are required for items and this field reflects the owner of the preparations. Options include `AMAZON`, `SELLER` or `NONE`. `AMAZON` is not an accepted value in the US marketplace.
      */
     public function setPrepOwner(?string $prep_owner): self
     {

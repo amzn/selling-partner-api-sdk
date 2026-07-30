@@ -65,7 +65,8 @@ class OrderFulfillment implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'fulfilled_by' => 'string',
         'fulfillment_service_level' => 'string',
         'ship_by_window' => '\SpApi\Model\orders\v2026_01_01\DateTimeRange',
-        'deliver_by_window' => '\SpApi\Model\orders\v2026_01_01\DateTimeRange'];
+        'deliver_by_window' => '\SpApi\Model\orders\v2026_01_01\DateTimeRange',
+        'label_printing_window' => '\SpApi\Model\orders\v2026_01_01\DateTimeRange'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -81,7 +82,8 @@ class OrderFulfillment implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'fulfilled_by' => null,
         'fulfillment_service_level' => null,
         'ship_by_window' => null,
-        'deliver_by_window' => null];
+        'deliver_by_window' => null,
+        'label_printing_window' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -94,6 +96,7 @@ class OrderFulfillment implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'fulfillment_service_level' => true,
         'ship_by_window' => true,
         'deliver_by_window' => true,
+        'label_printing_window' => true,
     ];
 
     /**
@@ -115,6 +118,7 @@ class OrderFulfillment implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'fulfillment_service_level' => 'fulfillmentServiceLevel',
         'ship_by_window' => 'shipByWindow',
         'deliver_by_window' => 'deliverByWindow',
+        'label_printing_window' => 'labelPrintingWindow',
     ];
 
     /**
@@ -128,6 +132,7 @@ class OrderFulfillment implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'fulfillment_service_level' => 'setFulfillmentServiceLevel',
         'ship_by_window' => 'setShipByWindow',
         'deliver_by_window' => 'setDeliverByWindow',
+        'label_printing_window' => 'setLabelPrintingWindow',
     ];
 
     /**
@@ -141,6 +146,7 @@ class OrderFulfillment implements ModelInterface, \ArrayAccess, \JsonSerializabl
         'fulfillment_service_level' => 'getFulfillmentServiceLevel',
         'ship_by_window' => 'getShipByWindow',
         'deliver_by_window' => 'getDeliverByWindow',
+        'label_printing_window' => 'getLabelPrintingWindow',
     ];
 
     /**
@@ -161,6 +167,7 @@ class OrderFulfillment implements ModelInterface, \ArrayAccess, \JsonSerializabl
         $this->setIfExists('fulfillment_service_level', $data ?? [], null);
         $this->setIfExists('ship_by_window', $data ?? [], null);
         $this->setIfExists('deliver_by_window', $data ?? [], null);
+        $this->setIfExists('label_printing_window', $data ?? [], null);
     }
 
     /**
@@ -407,6 +414,36 @@ class OrderFulfillment implements ModelInterface, \ArrayAccess, \JsonSerializabl
             }
         }
         $this->container['deliver_by_window'] = $deliver_by_window;
+
+        return $this;
+    }
+
+    /**
+     * Gets label_printing_window.
+     */
+    public function getLabelPrintingWindow(): ?DateTimeRange
+    {
+        return $this->container['label_printing_window'];
+    }
+
+    /**
+     * Sets label_printing_window.
+     *
+     * @param null|DateTimeRange $label_printing_window label_printing_window
+     */
+    public function setLabelPrintingWindow(?DateTimeRange $label_printing_window): self
+    {
+        if (is_null($label_printing_window)) {
+            array_push($this->openAPINullablesSetToNull, 'label_printing_window');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('label_printing_window', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['label_printing_window'] = $label_printing_window;
 
         return $this;
     }
