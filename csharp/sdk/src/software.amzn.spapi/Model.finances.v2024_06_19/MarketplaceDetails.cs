@@ -34,7 +34,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// <summary>
         /// Initializes a new instance of the <see cref="MarketplaceDetails" /> class.
         /// </summary>
-        /// <param name="marketplaceId">The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids)..</param>
+        /// <param name="marketplaceId">The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids)..</param>
         /// <param name="marketplaceName">The name of the marketplace where the transaction occurred. For example: &#x60;Amazon.com&#x60;,&#x60;Amazon.in&#x60;.</param>
         public MarketplaceDetails(string? marketplaceId = default(string?), string? marketplaceName = default(string?))
         {
@@ -43,9 +43,9 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         }
 
         /// <summary>
-        /// The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+        /// The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
         /// </summary>
-        /// <value>The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</value>
+        /// <value>The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</value>
         [DataMember(Name = "marketplaceId", EmitDefaultValue = false)]
         public string? MarketplaceId { get; set; }
 

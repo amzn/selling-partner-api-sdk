@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.invoices.v2024_06_19
 {
     /// <summary>
-    /// An invoice creation error occurrence.
+    /// An invoice creation error occurred.
     /// </summary>
     [DataContract(Name = "InvoiceError")]
     public partial class InvoiceError : IValidatableObject
@@ -34,7 +34,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// <summary>
         /// Initializes a new instance of the <see cref="InvoiceError" /> class.
         /// </summary>
-        /// <param name="description">A text description of the error..</param>
+        /// <param name="description">A description of the error..</param>
         /// <param name="errorCode">The code of the error..</param>
         public InvoiceError(string? description = default(string?), string? errorCode = default(string?))
         {
@@ -43,9 +43,9 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         }
 
         /// <summary>
-        /// A text description of the error.
+        /// A description of the error.
         /// </summary>
-        /// <value>A text description of the error.</value>
+        /// <value>A description of the error.</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string? Description { get; set; }
 

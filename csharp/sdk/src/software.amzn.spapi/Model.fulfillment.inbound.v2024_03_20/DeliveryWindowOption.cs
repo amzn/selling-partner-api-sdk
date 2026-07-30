@@ -41,10 +41,11 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="availabilityType">The type of delivery window availability. Values: &#x60;AVAILABLE&#x60;, &#x60;BLOCKED&#x60;, &#x60;CONGESTED&#x60;, &#x60;DISCOUNTED&#x60; (required).</param>
         /// <param name="deliveryWindowOptionId">Identifier of a delivery window option. A delivery window option represent one option for when a shipment is expected to be delivered. (required).</param>
+        /// <param name="discounts">Discounts for the offered option..</param>
         /// <param name="endDate">The time at which this delivery window option ends. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern &#x60;yyyy-MM-ddTHH:mmZ&#x60;. (required).</param>
         /// <param name="startDate">The time at which this delivery window option starts. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern &#x60;yyyy-MM-ddTHH:mmZ&#x60;. (required).</param>
         /// <param name="validUntil">The time at which this window delivery option is no longer valid. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern &#x60;yyyy-MM-ddTHH:mmZ&#x60;. (required).</param>
-        public DeliveryWindowOption(string availabilityType = default(string), string deliveryWindowOptionId = default(string), DateTime endDate = default(DateTime), DateTime startDate = default(DateTime), DateTime validUntil = default(DateTime))
+        public DeliveryWindowOption(string availabilityType = default(string), string deliveryWindowOptionId = default(string), List<Incentive>? discounts = default(List<Incentive>?), DateTime endDate = default(DateTime), DateTime startDate = default(DateTime), DateTime validUntil = default(DateTime))
         {
             // to ensure "availabilityType" is required (not null)
             if (availabilityType == null)
@@ -61,6 +62,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             this.EndDate = endDate;
             this.StartDate = startDate;
             this.ValidUntil = validUntil;
+            this.Discounts = discounts;
         }
 
         /// <summary>
@@ -76,6 +78,13 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <value>Identifier of a delivery window option. A delivery window option represent one option for when a shipment is expected to be delivered.</value>
         [DataMember(Name = "deliveryWindowOptionId", IsRequired = true, EmitDefaultValue = true)]
         public string DeliveryWindowOptionId { get; set; }
+
+        /// <summary>
+        /// Discounts for the offered option.
+        /// </summary>
+        /// <value>Discounts for the offered option.</value>
+        [DataMember(Name = "discounts", EmitDefaultValue = false)]
+        public List<Incentive>? Discounts { get; set; }
 
         /// <summary>
         /// The time at which this delivery window option ends. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern &#x60;yyyy-MM-ddTHH:mmZ&#x60;.
@@ -108,6 +117,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             sb.Append("class DeliveryWindowOption {\n");
             sb.Append("  AvailabilityType: ").Append(AvailabilityType).Append("\n");
             sb.Append("  DeliveryWindowOptionId: ").Append(DeliveryWindowOptionId).Append("\n");
+            sb.Append("  Discounts: ").Append(Discounts).Append("\n");
             sb.Append("  EndDate: ").Append(EndDate).Append("\n");
             sb.Append("  StartDate: ").Append(StartDate).Append("\n");
             sb.Append("  ValidUntil: ").Append(ValidUntil).Append("\n");

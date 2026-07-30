@@ -35,9 +35,11 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// Initializes a new instance of the <see cref="ItemCancellation" /> class.
         /// </summary>
         /// <param name="cancellationRequest">cancellationRequest.</param>
-        public ItemCancellation(ItemCancellationRequest? cancellationRequest = default(ItemCancellationRequest?))
+        /// <param name="cancellationExecution">cancellationExecution.</param>
+        public ItemCancellation(ItemCancellationRequest? cancellationRequest = default(ItemCancellationRequest?), ItemCancellationExecution? cancellationExecution = default(ItemCancellationExecution?))
         {
             this.CancellationRequest = cancellationRequest;
+            this.CancellationExecution = cancellationExecution;
         }
 
         /// <summary>
@@ -45,6 +47,12 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// </summary>
         [DataMember(Name = "cancellationRequest", EmitDefaultValue = false)]
         public ItemCancellationRequest? CancellationRequest { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CancellationExecution
+        /// </summary>
+        [DataMember(Name = "cancellationExecution", EmitDefaultValue = false)]
+        public ItemCancellationExecution? CancellationExecution { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -55,6 +63,7 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
             StringBuilder sb = new StringBuilder();
             sb.Append("class ItemCancellation {\n");
             sb.Append("  CancellationRequest: ").Append(CancellationRequest).Append("\n");
+            sb.Append("  CancellationExecution: ").Append(CancellationExecution).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

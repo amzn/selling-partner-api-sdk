@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// Initializes a new instance of the <see cref="GovernmentInvoiceStatusResponse" /> class.
         /// </summary>
         /// <param name="invoiceErrors">The errors that occurred during invoice creation..</param>
-        /// <param name="invoiceExternalDocumentId">Government Invoice ID of a successfully authorized invoice..</param>
+        /// <param name="invoiceExternalDocumentId">The Government Invoice ID of a successfully authorized invoice..</param>
         /// <param name="status">status.</param>
         public GovernmentInvoiceStatusResponse(List<InvoiceError>? invoiceErrors = default(List<InvoiceError>?), string? invoiceExternalDocumentId = default(string?), GovernmentInvoiceCreationStatus? status = default(GovernmentInvoiceCreationStatus?))
         {
@@ -58,9 +58,9 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         public List<InvoiceError>? InvoiceErrors { get; set; }
 
         /// <summary>
-        /// Government Invoice ID of a successfully authorized invoice.
+        /// The Government Invoice ID of a successfully authorized invoice.
         /// </summary>
-        /// <value>Government Invoice ID of a successfully authorized invoice.</value>
+        /// <value>The Government Invoice ID of a successfully authorized invoice.</value>
         [DataMember(Name = "invoiceExternalDocumentId", EmitDefaultValue = false)]
         public string? InvoiceExternalDocumentId { get; set; }
 

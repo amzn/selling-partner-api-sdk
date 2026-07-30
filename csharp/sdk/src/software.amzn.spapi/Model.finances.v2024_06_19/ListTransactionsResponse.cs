@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.finances.v2024_06_19
 {
     /// <summary>
-    /// The response schema for the &#x60;listTransactions&#x60; operation.
+    /// The response to the &#x60;listTransactions&#x60; operation.
     /// </summary>
     [DataContract(Name = "ListTransactionsResponse")]
     public partial class ListTransactionsResponse : IValidatableObject

@@ -393,6 +393,9 @@ paths:
                       cancellationRequest:
                         requester: BUYER
                         cancelReason: Changed mind about purchase
+                      cancellationExecution:
+                        cancelledBy: MERCHANT
+                        cancelReason: Buyer requested cancellation
                     fulfillment:
                       quantityFulfilled: 2
                       quantityUnfulfilled: 0
@@ -996,6 +999,7 @@ paths:
                 type: string
       tags:
       - searchOrders
+      x-amzn-api-internal: INTERNAL_AND_EXTERNAL
   /orders/2026-01-01/orders/{orderId}:
     get:
       description: |-
@@ -1308,6 +1312,8 @@ paths:
                     deliverByWindow:
                       earliestDateTime: 2024-12-28T00:00:00Z
                       latestDateTime: 2024-12-31T23:59:59Z
+                    labelPrintingWindow:
+                      earliestDateTime: 2024-12-26T17:00:00Z
                   orderItems:
                   - orderItemId: "17198765432109"
                     quantityOrdered: 1
@@ -1640,6 +1646,7 @@ paths:
                 type: string
       tags:
       - getOrder
+      x-amzn-api-internal: INTERNAL_AND_EXTERNAL
 components:
   schemas:
     SearchOrdersResponse:
@@ -1843,6 +1850,9 @@ components:
               cancellationRequest:
                 requester: requester
                 cancelReason: cancelReason
+              cancellationExecution:
+                cancelledBy: cancelledBy
+                cancelReason: cancelReason
             orderItemId: orderItemId
             quantityOrdered: 1
             tax:
@@ -1969,6 +1979,9 @@ components:
             cancellation:
               cancellationRequest:
                 requester: requester
+                cancelReason: cancelReason
+              cancellationExecution:
+                cancelledBy: cancelledBy
                 cancelReason: cancelReason
             orderItemId: orderItemId
             quantityOrdered: 1
@@ -2179,6 +2192,9 @@ components:
               earliestDateTime: 2000-01-23T04:56:07.000+00:00
             fulfilledBy: fulfilledBy
             deliverByWindow:
+              latestDateTime: 2000-01-23T04:56:07.000+00:00
+              earliestDateTime: 2000-01-23T04:56:07.000+00:00
+            labelPrintingWindow:
               latestDateTime: 2000-01-23T04:56:07.000+00:00
               earliestDateTime: 2000-01-23T04:56:07.000+00:00
             fulfillmentStatus: PENDING_AVAILABILITY
@@ -2378,6 +2394,9 @@ components:
               cancellationRequest:
                 requester: requester
                 cancelReason: cancelReason
+              cancellationExecution:
+                cancelledBy: cancelledBy
+                cancelReason: cancelReason
             orderItemId: orderItemId
             quantityOrdered: 1
             tax:
@@ -2504,6 +2523,9 @@ components:
             cancellation:
               cancellationRequest:
                 requester: requester
+                cancelReason: cancelReason
+              cancellationExecution:
+                cancelledBy: cancelledBy
                 cancelReason: cancelReason
             orderItemId: orderItemId
             quantityOrdered: 1
@@ -2714,6 +2736,9 @@ components:
               earliestDateTime: 2000-01-23T04:56:07.000+00:00
             fulfilledBy: fulfilledBy
             deliverByWindow:
+              latestDateTime: 2000-01-23T04:56:07.000+00:00
+              earliestDateTime: 2000-01-23T04:56:07.000+00:00
+            labelPrintingWindow:
               latestDateTime: 2000-01-23T04:56:07.000+00:00
               earliestDateTime: 2000-01-23T04:56:07.000+00:00
             fulfillmentStatus: PENDING_AVAILABILITY
@@ -2959,6 +2984,9 @@ components:
               cancellationRequest:
                 requester: requester
                 cancelReason: cancelReason
+              cancellationExecution:
+                cancelledBy: cancelledBy
+                cancelReason: cancelReason
             orderItemId: orderItemId
             quantityOrdered: 1
             tax:
@@ -3085,6 +3113,9 @@ components:
             cancellation:
               cancellationRequest:
                 requester: requester
+                cancelReason: cancelReason
+              cancellationExecution:
+                cancelledBy: cancelledBy
                 cancelReason: cancelReason
             orderItemId: orderItemId
             quantityOrdered: 1
@@ -3297,6 +3328,9 @@ components:
             deliverByWindow:
               latestDateTime: 2000-01-23T04:56:07.000+00:00
               earliestDateTime: 2000-01-23T04:56:07.000+00:00
+            labelPrintingWindow:
+              latestDateTime: 2000-01-23T04:56:07.000+00:00
+              earliestDateTime: 2000-01-23T04:56:07.000+00:00
             fulfillmentStatus: PENDING_AVAILABILITY
             fulfillmentServiceLevel: fulfillmentServiceLevel
       properties:
@@ -3503,6 +3537,9 @@ components:
             cancellationRequest:
               requester: requester
               cancelReason: cancelReason
+            cancellationExecution:
+              cancelledBy: cancelledBy
+              cancelReason: cancelReason
           orderItemId: orderItemId
           quantityOrdered: 1
           tax:
@@ -3629,6 +3666,9 @@ components:
           cancellation:
             cancellationRequest:
               requester: requester
+              cancelReason: cancelReason
+            cancellationExecution:
+              cancelledBy: cancelledBy
               cancelReason: cancelReason
           orderItemId: orderItemId
           quantityOrdered: 1
@@ -3839,6 +3879,9 @@ components:
             earliestDateTime: 2000-01-23T04:56:07.000+00:00
           fulfilledBy: fulfilledBy
           deliverByWindow:
+            latestDateTime: 2000-01-23T04:56:07.000+00:00
+            earliestDateTime: 2000-01-23T04:56:07.000+00:00
+          labelPrintingWindow:
             latestDateTime: 2000-01-23T04:56:07.000+00:00
             earliestDateTime: 2000-01-23T04:56:07.000+00:00
           fulfillmentStatus: PENDING_AVAILABILITY
@@ -4166,6 +4209,9 @@ components:
         deliverByWindow:
           latestDateTime: 2000-01-23T04:56:07.000+00:00
           earliestDateTime: 2000-01-23T04:56:07.000+00:00
+        labelPrintingWindow:
+          latestDateTime: 2000-01-23T04:56:07.000+00:00
+          earliestDateTime: 2000-01-23T04:56:07.000+00:00
         fulfillmentStatus: PENDING_AVAILABILITY
         fulfillmentServiceLevel: fulfillmentServiceLevel
       properties:
@@ -4186,6 +4232,8 @@ components:
         shipByWindow:
           $ref: '#/components/schemas/DateTimeRange'
         deliverByWindow:
+          $ref: '#/components/schemas/DateTimeRange'
+        labelPrintingWindow:
           $ref: '#/components/schemas/DateTimeRange'
       required:
       - fulfillmentStatus
@@ -4252,6 +4300,9 @@ components:
         cancellation:
           cancellationRequest:
             requester: requester
+            cancelReason: cancelReason
+          cancellationExecution:
+            cancelledBy: cancelledBy
             cancelReason: cancelReason
         orderItemId: orderItemId
         quantityOrdered: 1
@@ -4920,9 +4971,14 @@ components:
         cancellationRequest:
           requester: requester
           cancelReason: cancelReason
+        cancellationExecution:
+          cancelledBy: cancelledBy
+          cancelReason: cancelReason
       properties:
         cancellationRequest:
           $ref: '#/components/schemas/ItemCancellationRequest'
+        cancellationExecution:
+          $ref: '#/components/schemas/ItemCancellationExecution'
       type: object
     ItemFulfillment:
       description: "Information about how the order item should be processed, packed,\
@@ -5347,6 +5403,21 @@ components:
           type: string
         cancelReason:
           description: Explanation provided for why the cancellation was requested.
+          type: string
+      type: object
+    ItemCancellationExecution:
+      description: "Details of how the cancellation was executed for a specific order\
+        \ item, including who performed the cancellation and the reason."
+      example:
+        cancelledBy: cancelledBy
+        cancelReason: cancelReason
+      properties:
+        cancelledBy:
+          description: "Entity that executed the cancellation for this item. \n\n\
+            **Possible values**: `BUYER`, `MERCHANT`, `AMAZON`"
+          type: string
+        cancelReason:
+          description: Explanation provided for why the cancellation was executed.
           type: string
       type: object
     ItemPicking:

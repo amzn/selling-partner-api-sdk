@@ -34,9 +34,9 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// <summary>
         /// Initializes a new instance of the <see cref="SellingPartnerMetadata" /> class.
         /// </summary>
-        /// <param name="sellingPartnerId">A unique seller identifier..</param>
+        /// <param name="sellingPartnerId">The unique seller identifier..</param>
         /// <param name="accountType">The type of account in the transaction..</param>
-        /// <param name="marketplaceId">The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids)..</param>
+        /// <param name="marketplaceId">The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids)..</param>
         public SellingPartnerMetadata(string? sellingPartnerId = default(string?), string? accountType = default(string?), string? marketplaceId = default(string?))
         {
             this.SellingPartnerId = sellingPartnerId;
@@ -45,9 +45,9 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         }
 
         /// <summary>
-        /// A unique seller identifier.
+        /// The unique seller identifier.
         /// </summary>
-        /// <value>A unique seller identifier.</value>
+        /// <value>The unique seller identifier.</value>
         [DataMember(Name = "sellingPartnerId", EmitDefaultValue = false)]
         public string? SellingPartnerId { get; set; }
 
@@ -59,9 +59,9 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         public string? AccountType { get; set; }
 
         /// <summary>
-        /// The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+        /// The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
         /// </summary>
-        /// <value>The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</value>
+        /// <value>The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</value>
         [DataMember(Name = "marketplaceId", EmitDefaultValue = false)]
         public string? MarketplaceId { get; set; }
 

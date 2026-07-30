@@ -26,9 +26,9 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
 {
     /// <summary>
-    /// Specifies who will label the items. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60; or &#x60;NONE&#x60;.
+    /// Specifies who will label the items. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60; or &#x60;NONE&#x60;. &#x60;AMAZON&#x60; is not an accepted value in the US marketplace.
     /// </summary>
-    /// <value>Specifies who will label the items. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60; or &#x60;NONE&#x60;.</value>
+    /// <value>Specifies who will label the items. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60; or &#x60;NONE&#x60;. &#x60;AMAZON&#x60; is not an accepted value in the US marketplace.</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum LabelOwner
     {

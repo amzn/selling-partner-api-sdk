@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// <param name="transactionType">The type of transaction.  **Possible value:** &#x60;Shipment&#x60;.</param>
         /// <param name="transactionId">The unique identifier of the transaction..</param>
         /// <param name="transactionStatus">The status of the transaction.  **Possible values:**  * &#x60;DEFERRED&#x60;: the transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. * &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released..</param>
-        /// <param name="description">Describes the reasons for the transaction.  **Example:** &#39;Order Payment&#39;, &#39;Refund Order&#39;.</param>
+        /// <param name="description">Describes the reasons for the transaction.  **Example:** &#x60;Order Payment&#x60;, &#x60;Refund Order&#x60;.</param>
         /// <param name="postedDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="totalAmount">totalAmount.</param>
         /// <param name="marketplaceDetails">marketplaceDetails.</param>
@@ -97,9 +97,9 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         public string? TransactionStatus { get; set; }
 
         /// <summary>
-        /// Describes the reasons for the transaction.  **Example:** &#39;Order Payment&#39;, &#39;Refund Order&#39;
+        /// Describes the reasons for the transaction.  **Example:** &#x60;Order Payment&#x60;, &#x60;Refund Order&#x60;
         /// </summary>
-        /// <value>Describes the reasons for the transaction.  **Example:** &#39;Order Payment&#39;, &#39;Refund Order&#39;</value>
+        /// <value>Describes the reasons for the transaction.  **Example:** &#x60;Order Payment&#x60;, &#x60;Refund Order&#x60;</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
         public string? Description { get; set; }
 

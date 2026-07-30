@@ -50,13 +50,15 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         /// <param name="fulfillmentServiceLevel">The category of the shipping speed option selected by the customer at checkout.  **Possible values**: &#x60;EXPEDITED&#x60;, &#x60;FREE_ECONOMY&#x60;, &#x60;NEXT_DAY&#x60;, &#x60;PRIORITY&#x60;, &#x60;SAME_DAY&#x60;, &#x60;SECOND_DAY&#x60;, &#x60;SCHEDULED&#x60;, &#x60;STANDARD&#x60;..</param>
         /// <param name="shipByWindow">shipByWindow.</param>
         /// <param name="deliverByWindow">deliverByWindow.</param>
-        public OrderFulfillment(FulfillmentStatus fulfillmentStatus = default(FulfillmentStatus), string? fulfilledBy = default(string?), string? fulfillmentServiceLevel = default(string?), DateTimeRange? shipByWindow = default(DateTimeRange?), DateTimeRange? deliverByWindow = default(DateTimeRange?))
+        /// <param name="labelPrintingWindow">labelPrintingWindow.</param>
+        public OrderFulfillment(FulfillmentStatus fulfillmentStatus = default(FulfillmentStatus), string? fulfilledBy = default(string?), string? fulfillmentServiceLevel = default(string?), DateTimeRange? shipByWindow = default(DateTimeRange?), DateTimeRange? deliverByWindow = default(DateTimeRange?), DateTimeRange? labelPrintingWindow = default(DateTimeRange?))
         {
             this.FulfillmentStatus = fulfillmentStatus;
             this.FulfilledBy = fulfilledBy;
             this.FulfillmentServiceLevel = fulfillmentServiceLevel;
             this.ShipByWindow = shipByWindow;
             this.DeliverByWindow = deliverByWindow;
+            this.LabelPrintingWindow = labelPrintingWindow;
         }
 
         /// <summary>
@@ -86,6 +88,12 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
         public DateTimeRange? DeliverByWindow { get; set; }
 
         /// <summary>
+        /// Gets or Sets LabelPrintingWindow
+        /// </summary>
+        [DataMember(Name = "labelPrintingWindow", EmitDefaultValue = false)]
+        public DateTimeRange? LabelPrintingWindow { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -98,6 +106,7 @@ namespace software.amzn.spapi.Model.orders.v2026_01_01
             sb.Append("  FulfillmentServiceLevel: ").Append(FulfillmentServiceLevel).Append("\n");
             sb.Append("  ShipByWindow: ").Append(ShipByWindow).Append("\n");
             sb.Append("  DeliverByWindow: ").Append(DeliverByWindow).Append("\n");
+            sb.Append("  LabelPrintingWindow: ").Append(LabelPrintingWindow).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -39,12 +39,12 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// <summary>
         /// Initializes a new instance of the <see cref="GovernmentInvoiceRequest" /> class.
         /// </summary>
-        /// <param name="contexts">Object that contains additional invoice creation information.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created..</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required).</param>
-        /// <param name="marketplaceId">The government invoices creation request will match the national authoritative source of the given marketplace. (required).</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for. (required).</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required).</param>
+        /// <param name="contexts">Additional information for invoice creation..</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created..</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required).</param>
+        /// <param name="marketplaceId">The marketplace of the national authoritative source that will be on the government invoice creation request. (required).</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice. (required).</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required).</param>
         public GovernmentInvoiceRequest(List<CarrierDetailsContext>? contexts = default(List<CarrierDetailsContext>?), string? inboundPlanId = default(string?), string invoiceType = default(string), string marketplaceId = default(string), string shipmentId = default(string), string transactionType = default(string))
         {
             // to ensure "invoiceType" is required (not null)
@@ -76,44 +76,44 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         }
 
         /// <summary>
-        /// Object that contains additional invoice creation information
+        /// Additional information for invoice creation.
         /// </summary>
-        /// <value>Object that contains additional invoice creation information</value>
+        /// <value>Additional information for invoice creation.</value>
         [DataMember(Name = "contexts", EmitDefaultValue = false)]
         public List<CarrierDetailsContext>? Contexts { get; set; }
 
         /// <summary>
-        /// The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
+        /// The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created.
         /// </summary>
-        /// <value>The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.</value>
+        /// <value>The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created.</value>
         [DataMember(Name = "inboundPlanId", EmitDefaultValue = false)]
         public string? InboundPlanId { get; set; }
 
         /// <summary>
-        /// Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+        /// The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.
         /// </summary>
-        /// <value>Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</value>
+        /// <value>The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</value>
         [DataMember(Name = "invoiceType", IsRequired = true, EmitDefaultValue = true)]
         public string InvoiceType { get; set; }
 
         /// <summary>
-        /// The government invoices creation request will match the national authoritative source of the given marketplace.
+        /// The marketplace of the national authoritative source that will be on the government invoice creation request.
         /// </summary>
-        /// <value>The government invoices creation request will match the national authoritative source of the given marketplace.</value>
+        /// <value>The marketplace of the national authoritative source that will be on the government invoice creation request.</value>
         [DataMember(Name = "marketplaceId", IsRequired = true, EmitDefaultValue = true)]
         public string MarketplaceId { get; set; }
 
         /// <summary>
-        /// The unique shipment identifier to get an invoice for.
+        /// The unique shipment identifier for which to get an invoice.
         /// </summary>
-        /// <value>The unique shipment identifier to get an invoice for.</value>
+        /// <value>The unique shipment identifier for which to get an invoice.</value>
         [DataMember(Name = "shipmentId", IsRequired = true, EmitDefaultValue = true)]
         public string ShipmentId { get; set; }
 
         /// <summary>
-        /// Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+        /// The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.
         /// </summary>
-        /// <value>Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</value>
+        /// <value>The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</value>
         [DataMember(Name = "transactionType", IsRequired = true, EmitDefaultValue = true)]
         public string TransactionType { get; set; }
 
