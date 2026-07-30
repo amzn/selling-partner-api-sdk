@@ -19,7 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/** Specifies who will label the items. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60; or &#x60;NONE&#x60;. */
+/**
+ * Specifies who will label the items. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60; or &#x60;NONE&#x60;.
+ * &#x60;AMAZON&#x60; is not an accepted value in the US marketplace.
+ */
 @JsonAdapter(LabelOwner.Adapter.class)
 public enum LabelOwner {
     @SerializedName("AMAZON")

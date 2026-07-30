@@ -16,8 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** The response schema for the &#x60;listTransactions&#x60; operation. */
-@Schema(description = "The response schema for the `listTransactions` operation.")
+/** The response to the &#x60;listTransactions&#x60; operation. */
+@Schema(description = "The response to the `listTransactions` operation.")
 public class ListTransactionsResponse {
     @SerializedName("payload")
     private TransactionsPayload payload = null;

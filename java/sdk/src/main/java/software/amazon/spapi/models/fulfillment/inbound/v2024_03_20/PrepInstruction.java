@@ -54,13 +54,14 @@ public class PrepInstruction {
 
     /**
      * In some situations, special preparations are required for items and this field reflects the owner of the
-     * preparations. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60; or &#x60;NONE&#x60;.
+     * preparations. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60; or &#x60;NONE&#x60;. &#x60;AMAZON&#x60; is
+     * not an accepted value in the US marketplace.
      *
      * @return prepOwner
      */
     @Schema(
             description =
-                    "In some situations, special preparations are required for items and this field reflects the owner of the preparations. Options include `AMAZON`, `SELLER` or `NONE`.")
+                    "In some situations, special preparations are required for items and this field reflects the owner of the preparations. Options include `AMAZON`, `SELLER` or `NONE`. `AMAZON` is not an accepted value in the US marketplace.")
     public String getPrepOwner() {
         return prepOwner;
     }

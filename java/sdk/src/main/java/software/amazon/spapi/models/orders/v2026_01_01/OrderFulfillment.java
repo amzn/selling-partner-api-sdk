@@ -34,6 +34,9 @@ public class OrderFulfillment {
     @SerializedName("deliverByWindow")
     private DateTimeRange deliverByWindow = null;
 
+    @SerializedName("labelPrintingWindow")
+    private DateTimeRange labelPrintingWindow = null;
+
     public OrderFulfillment fulfillmentStatus(FulfillmentStatus fulfillmentStatus) {
         this.fulfillmentStatus = fulfillmentStatus;
         return this;
@@ -136,6 +139,25 @@ public class OrderFulfillment {
         this.deliverByWindow = deliverByWindow;
     }
 
+    public OrderFulfillment labelPrintingWindow(DateTimeRange labelPrintingWindow) {
+        this.labelPrintingWindow = labelPrintingWindow;
+        return this;
+    }
+
+    /**
+     * Get labelPrintingWindow
+     *
+     * @return labelPrintingWindow
+     */
+    @Schema(description = "")
+    public DateTimeRange getLabelPrintingWindow() {
+        return labelPrintingWindow;
+    }
+
+    public void setLabelPrintingWindow(DateTimeRange labelPrintingWindow) {
+        this.labelPrintingWindow = labelPrintingWindow;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -149,12 +171,19 @@ public class OrderFulfillment {
                 && Objects.equals(this.fulfilledBy, orderFulfillment.fulfilledBy)
                 && Objects.equals(this.fulfillmentServiceLevel, orderFulfillment.fulfillmentServiceLevel)
                 && Objects.equals(this.shipByWindow, orderFulfillment.shipByWindow)
-                && Objects.equals(this.deliverByWindow, orderFulfillment.deliverByWindow);
+                && Objects.equals(this.deliverByWindow, orderFulfillment.deliverByWindow)
+                && Objects.equals(this.labelPrintingWindow, orderFulfillment.labelPrintingWindow);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fulfillmentStatus, fulfilledBy, fulfillmentServiceLevel, shipByWindow, deliverByWindow);
+        return Objects.hash(
+                fulfillmentStatus,
+                fulfilledBy,
+                fulfillmentServiceLevel,
+                shipByWindow,
+                deliverByWindow,
+                labelPrintingWindow);
     }
 
     @Override
@@ -172,6 +201,9 @@ public class OrderFulfillment {
         sb.append("    shipByWindow: ").append(toIndentedString(shipByWindow)).append("\n");
         sb.append("    deliverByWindow: ")
                 .append(toIndentedString(deliverByWindow))
+                .append("\n");
+        sb.append("    labelPrintingWindow: ")
+                .append(toIndentedString(labelPrintingWindow))
                 .append("\n");
         sb.append("}");
         return sb.toString();

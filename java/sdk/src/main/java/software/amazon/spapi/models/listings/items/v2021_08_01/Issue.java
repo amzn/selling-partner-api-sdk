@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * OpenAPI spec version: 2021-08-01
  *
@@ -92,6 +92,9 @@ public class Issue {
     @SerializedName("enforcements")
     private IssueEnforcements enforcements = null;
 
+    @SerializedName("marketplaceIds")
+    private List<String> marketplaceIds = null;
+
     public Issue code(String code) {
         this.code = code;
         return this;
@@ -163,11 +166,11 @@ public class Issue {
     }
 
     /**
-     * The names of the attributes associated with the issue, if applicable.
+     * Names of the attributes that are associated with the issue, if applicable.
      *
      * @return attributeNames
      */
-    @Schema(description = "The names of the attributes associated with the issue, if applicable.")
+    @Schema(description = "Names of the attributes that are associated with the issue, if applicable.")
     public List<String> getAttributeNames() {
         return attributeNames;
     }
@@ -230,6 +233,33 @@ public class Issue {
         this.enforcements = enforcements;
     }
 
+    public Issue marketplaceIds(List<String> marketplaceIds) {
+        this.marketplaceIds = marketplaceIds;
+        return this;
+    }
+
+    public Issue addMarketplaceIdsItem(String marketplaceIdsItem) {
+        if (this.marketplaceIds == null) {
+            this.marketplaceIds = new ArrayList<String>();
+        }
+        this.marketplaceIds.add(marketplaceIdsItem);
+        return this;
+    }
+
+    /**
+     * List of Amazon store identifiers.
+     *
+     * @return marketplaceIds
+     */
+    @Schema(description = "List of Amazon store identifiers.")
+    public List<String> getMarketplaceIds() {
+        return marketplaceIds;
+    }
+
+    public void setMarketplaceIds(List<String> marketplaceIds) {
+        this.marketplaceIds = marketplaceIds;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -244,12 +274,13 @@ public class Issue {
                 && Objects.equals(this.severity, issue.severity)
                 && Objects.equals(this.attributeNames, issue.attributeNames)
                 && Objects.equals(this.categories, issue.categories)
-                && Objects.equals(this.enforcements, issue.enforcements);
+                && Objects.equals(this.enforcements, issue.enforcements)
+                && Objects.equals(this.marketplaceIds, issue.marketplaceIds);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(code, message, severity, attributeNames, categories, enforcements);
+        return Objects.hash(code, message, severity, attributeNames, categories, enforcements, marketplaceIds);
     }
 
     @Override
@@ -265,6 +296,9 @@ public class Issue {
                 .append("\n");
         sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
         sb.append("    enforcements: ").append(toIndentedString(enforcements)).append("\n");
+        sb.append("    marketplaceIds: ")
+                .append(toIndentedString(marketplaceIds))
+                .append("\n");
         sb.append("}");
         return sb.toString();
     }

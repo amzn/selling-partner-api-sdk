@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * OpenAPI spec version: 2021-08-01
  *
@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/** Relationship details for the listing item in the specified marketplace. */
-@Schema(description = "Relationship details for the listing item in the specified marketplace.")
+/** Relationship details for the listing item in the specified Amazon store. */
+@Schema(description = "Relationship details for the listing item in the specified Amazon store.")
 public class ItemRelationshipsByMarketplace {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -33,11 +33,11 @@ public class ItemRelationshipsByMarketplace {
     }
 
     /**
-     * Amazon marketplace identifier.
+     * Amazon store identifier.
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "Amazon marketplace identifier.")
+    @Schema(required = true, description = "Amazon store identifier.")
     public String getMarketplaceId() {
         return marketplaceId;
     }

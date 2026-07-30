@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * OpenAPI spec version: 2021-08-01
  *
@@ -16,8 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** The currency type and amount. */
-@Schema(description = "The currency type and amount.")
+/** The currency type and the amount. */
+@Schema(description = "The currency type and the amount.")
 public class Money {
     @SerializedName("currencyCode")
     private String currencyCode = null;
@@ -31,11 +31,11 @@ public class Money {
     }
 
     /**
-     * Three-digit currency code in ISO 4217 format.
+     * Three-digit currency code. In ISO 4217 format.
      *
      * @return currencyCode
      */
-    @Schema(required = true, description = "Three-digit currency code in ISO 4217 format.")
+    @Schema(required = true, description = "Three-digit currency code. In ISO 4217 format.")
     public String getCurrencyCode() {
         return currencyCode;
     }

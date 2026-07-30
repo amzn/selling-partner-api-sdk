@@ -29,6 +29,8 @@ import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.models.transfers.v2024_06_01.GetPaymentMethodsResponse;
 import software.amazon.spapi.models.transfers.v2024_06_01.InitiatePayoutRequest;
 import software.amazon.spapi.models.transfers.v2024_06_01.InitiatePayoutResponse;
+import software.amazon.spapi.models.transfers.v2024_06_01.ListExpectedPayoutsResponse;
+import software.amazon.spapi.models.transfers.v2024_06_01.ListPayoutsResponse;
 
 public class DefaultApiTest {
 
@@ -69,6 +71,26 @@ public class DefaultApiTest {
         InitiatePayoutRequest body = easyRandom.nextObject(InitiatePayoutRequest.class);
 
         ApiResponse<InitiatePayoutResponse> response = api.initiatePayoutWithHttpInfo(body);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void listExpectedPayoutsTest() throws Exception {
+        instructBackendMock("default", "listExpectedPayouts", "200");
+
+        ApiResponse<ListExpectedPayoutsResponse> response = api.listExpectedPayoutsWithHttpInfo(null, null, null);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void listPayoutsTest() throws Exception {
+        instructBackendMock("default", "listPayouts", "200");
+
+        ApiResponse<ListPayoutsResponse> response = api.listPayoutsWithHttpInfo(null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

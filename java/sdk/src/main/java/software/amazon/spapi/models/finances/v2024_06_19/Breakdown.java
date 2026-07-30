@@ -18,13 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Details about the movement of money in the financial transaction. Breakdowns are further categorized into breakdown
- * types, breakdown amounts, and further breakdowns.
- */
-@Schema(
-        description =
-                "Details about the movement of money in the financial transaction. Breakdowns are further categorized into breakdown types, breakdown amounts, and further breakdowns.")
+/** Details about the movement of money in the financial transaction. */
+@Schema(description = "Details about the movement of money in the financial transaction.")
 public class Breakdown {
     @SerializedName("breakdownType")
     private String breakdownType = null;

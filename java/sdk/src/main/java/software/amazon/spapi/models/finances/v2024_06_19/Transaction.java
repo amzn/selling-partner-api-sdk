@@ -164,11 +164,11 @@ public class Transaction {
     }
 
     /**
-     * Describes the reasons for the transaction. **Example:** &#x27;Order Payment&#x27;, &#x27;Refund Order&#x27;
+     * Describes the reasons for the transaction. **Example:** &#x60;Order Payment&#x60;, &#x60;Refund Order&#x60;
      *
      * @return description
      */
-    @Schema(description = "Describes the reasons for the transaction.  **Example:** 'Order Payment', 'Refund Order'")
+    @Schema(description = "Describes the reasons for the transaction.  **Example:** `Order Payment`, `Refund Order`")
     public String getDescription() {
         return description;
     }

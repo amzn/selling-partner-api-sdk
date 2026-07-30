@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * OpenAPI spec version: 2021-08-01
  *
@@ -31,7 +31,7 @@ public class IssueEnforcementAction {
      * The enforcement action name. Possible values: * &#x60;LISTING_SUPPRESSED&#x60; - This enforcement takes down the
      * current listing item&#x27;s buyability. * &#x60;ATTRIBUTE_SUPPRESSED&#x60; - An attribute&#x27;s value on the
      * listing item is invalid, which causes it to be rejected by Amazon. * &#x60;CATALOG_ITEM_REMOVED&#x60; - This
-     * catalog item is inactive on Amazon, and all offers against it in the applicable marketplace are non-buyable. *
+     * catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable. *
      * &#x60;SEARCH_SUPPRESSED&#x60; - This value indicates that the catalog item is hidden from search results.
      *
      * @return action
@@ -40,7 +40,7 @@ public class IssueEnforcementAction {
             example = "LISTING_SUPPRESSED",
             required = true,
             description =
-                    "The enforcement action name.   Possible values:   * `LISTING_SUPPRESSED` - This enforcement takes down the current listing item's buyability.   * `ATTRIBUTE_SUPPRESSED` - An attribute's value on the listing item is invalid, which causes it to be rejected by Amazon.   * `CATALOG_ITEM_REMOVED` - This catalog item is inactive on Amazon, and all offers against it in the applicable marketplace are non-buyable.   * `SEARCH_SUPPRESSED` - This value indicates that the catalog item is hidden from search results.")
+                    "The enforcement action name.   Possible values:   * `LISTING_SUPPRESSED` - This enforcement takes down the current listing item's buyability.   * `ATTRIBUTE_SUPPRESSED` - An attribute's value on the listing item is invalid, which causes it to be rejected by Amazon.   * `CATALOG_ITEM_REMOVED` - This catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable.   * `SEARCH_SUPPRESSED` - This value indicates that the catalog item is hidden from search results.")
     public String getAction() {
         return action;
     }

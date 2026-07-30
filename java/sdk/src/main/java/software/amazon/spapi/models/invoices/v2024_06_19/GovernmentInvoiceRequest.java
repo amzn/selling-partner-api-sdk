@@ -53,11 +53,11 @@ public class GovernmentInvoiceRequest {
     }
 
     /**
-     * Object that contains additional invoice creation information
+     * Additional information for invoice creation.
      *
      * @return contexts
      */
-    @Schema(description = "Object that contains additional invoice creation information")
+    @Schema(description = "Additional information for invoice creation.")
     public List<CarrierDetailsContext> getContexts() {
         return contexts;
     }
@@ -72,13 +72,13 @@ public class GovernmentInvoiceRequest {
     }
 
     /**
-     * The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
+     * The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created.
      *
      * @return inboundPlanId
      */
     @Schema(
             description =
-                    "The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.")
+                    "The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created.")
     public String getInboundPlanId() {
         return inboundPlanId;
     }
@@ -93,15 +93,15 @@ public class GovernmentInvoiceRequest {
     }
 
     /**
-     * Marketplace specific classification of the invoice type. Check &#x27;invoiceType&#x27; options using
-     * &#x27;getInvoicesAttributes&#x27; operation.
+     * The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the
+     * &#x60;getInvoicesAttributes&#x60; operation.
      *
      * @return invoiceType
      */
     @Schema(
             required = true,
             description =
-                    "Marketplace specific classification of the invoice type. Check 'invoiceType' options using 'getInvoicesAttributes' operation.")
+                    "The marketplace-specific classification of the invoice type. Check `invoiceType` options using the `getInvoicesAttributes` operation.")
     public String getInvoiceType() {
         return invoiceType;
     }
@@ -116,14 +116,14 @@ public class GovernmentInvoiceRequest {
     }
 
     /**
-     * The government invoices creation request will match the national authoritative source of the given marketplace.
+     * The marketplace of the national authoritative source that will be on the government invoice creation request.
      *
      * @return marketplaceId
      */
     @Schema(
             required = true,
             description =
-                    "The government invoices creation request will match the national authoritative source of the given marketplace.")
+                    "The marketplace of the national authoritative source that will be on the government invoice creation request.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -138,11 +138,11 @@ public class GovernmentInvoiceRequest {
     }
 
     /**
-     * The unique shipment identifier to get an invoice for.
+     * The unique shipment identifier for which to get an invoice.
      *
      * @return shipmentId
      */
-    @Schema(required = true, description = "The unique shipment identifier to get an invoice for.")
+    @Schema(required = true, description = "The unique shipment identifier for which to get an invoice.")
     public String getShipmentId() {
         return shipmentId;
     }
@@ -157,15 +157,15 @@ public class GovernmentInvoiceRequest {
     }
 
     /**
-     * Marketplace specific classification of the transaction type that originated the invoice. Check
-     * &#x27;transactionType&#x27; options using &#x27;getInvoicesAttributes&#x27; operation.
+     * The marketplace-specific classification of the transaction type that originated the invoice. Check
+     * &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.
      *
      * @return transactionType
      */
     @Schema(
             required = true,
             description =
-                    "Marketplace specific classification of the transaction type that originated the invoice. Check 'transactionType' options using 'getInvoicesAttributes' operation.")
+                    "The marketplace-specific classification of the transaction type that originated the invoice. Check `transactionType` options using the `getInvoicesAttributes` operation.")
     public String getTransactionType() {
         return transactionType;
     }

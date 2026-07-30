@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/** Additional information about the items in a transaction. */
-@Schema(description = "Additional information about the items in a transaction.")
+/** Additional information about an item in a transaction. */
+@Schema(description = "Additional information about an item in a transaction.")
 public class Item {
     @SerializedName("description")
     private String description = null;

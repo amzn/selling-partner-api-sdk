@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * OpenAPI spec version: 2021-08-01
  *
@@ -89,11 +89,11 @@ public class ListingsItemPutRequest {
     }
 
     /**
-     * The Amazon product type of the listings item.
+     * The listings item&#x27;s Amazon product type.
      *
      * @return productType
      */
-    @Schema(required = true, description = "The Amazon product type of the listings item.")
+    @Schema(required = true, description = "The listings item's Amazon product type.")
     public String getProductType() {
         return productType;
     }
@@ -132,13 +132,13 @@ public class ListingsItemPutRequest {
     }
 
     /**
-     * A JSON object containing structured listings item attribute data keyed by attribute name.
+     * JSON object containing structured listings item attribute data keyed by attribute name.
      *
      * @return attributes
      */
     @Schema(
             required = true,
-            description = "A JSON object containing structured listings item attribute data keyed by attribute name.")
+            description = "JSON object containing structured listings item attribute data keyed by attribute name.")
     public Map<String, Object> getAttributes() {
         return attributes;
     }

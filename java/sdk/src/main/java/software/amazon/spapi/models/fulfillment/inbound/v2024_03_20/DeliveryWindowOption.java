@@ -14,6 +14,8 @@ package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import org.threeten.bp.OffsetDateTime;
 
@@ -25,6 +27,9 @@ public class DeliveryWindowOption {
 
     @SerializedName("deliveryWindowOptionId")
     private String deliveryWindowOptionId = null;
+
+    @SerializedName("discounts")
+    private List<Incentive> discounts = null;
 
     @SerializedName("endDate")
     private OffsetDateTime endDate = null;
@@ -79,6 +84,33 @@ public class DeliveryWindowOption {
 
     public void setDeliveryWindowOptionId(String deliveryWindowOptionId) {
         this.deliveryWindowOptionId = deliveryWindowOptionId;
+    }
+
+    public DeliveryWindowOption discounts(List<Incentive> discounts) {
+        this.discounts = discounts;
+        return this;
+    }
+
+    public DeliveryWindowOption addDiscountsItem(Incentive discountsItem) {
+        if (this.discounts == null) {
+            this.discounts = new ArrayList<Incentive>();
+        }
+        this.discounts.add(discountsItem);
+        return this;
+    }
+
+    /**
+     * Discounts for the offered option.
+     *
+     * @return discounts
+     */
+    @Schema(description = "Discounts for the offered option.")
+    public List<Incentive> getDiscounts() {
+        return discounts;
+    }
+
+    public void setDiscounts(List<Incentive> discounts) {
+        this.discounts = discounts;
     }
 
     public DeliveryWindowOption endDate(OffsetDateTime endDate) {
@@ -164,6 +196,7 @@ public class DeliveryWindowOption {
         DeliveryWindowOption deliveryWindowOption = (DeliveryWindowOption) o;
         return Objects.equals(this.availabilityType, deliveryWindowOption.availabilityType)
                 && Objects.equals(this.deliveryWindowOptionId, deliveryWindowOption.deliveryWindowOptionId)
+                && Objects.equals(this.discounts, deliveryWindowOption.discounts)
                 && Objects.equals(this.endDate, deliveryWindowOption.endDate)
                 && Objects.equals(this.startDate, deliveryWindowOption.startDate)
                 && Objects.equals(this.validUntil, deliveryWindowOption.validUntil);
@@ -171,7 +204,7 @@ public class DeliveryWindowOption {
 
     @Override
     public int hashCode() {
-        return Objects.hash(availabilityType, deliveryWindowOptionId, endDate, startDate, validUntil);
+        return Objects.hash(availabilityType, deliveryWindowOptionId, discounts, endDate, startDate, validUntil);
     }
 
     @Override
@@ -185,6 +218,7 @@ public class DeliveryWindowOption {
         sb.append("    deliveryWindowOptionId: ")
                 .append(toIndentedString(deliveryWindowOptionId))
                 .append("\n");
+        sb.append("    discounts: ").append(toIndentedString(discounts)).append("\n");
         sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
         sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
         sb.append("    validUntil: ").append(toIndentedString(validUntil)).append("\n");

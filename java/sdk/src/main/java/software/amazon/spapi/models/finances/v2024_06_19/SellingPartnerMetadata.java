@@ -34,11 +34,11 @@ public class SellingPartnerMetadata {
     }
 
     /**
-     * A unique seller identifier.
+     * The unique seller identifier.
      *
      * @return sellingPartnerId
      */
-    @Schema(description = "A unique seller identifier.")
+    @Schema(description = "The unique seller identifier.")
     public String getSellingPartnerId() {
         return sellingPartnerId;
     }
@@ -73,14 +73,14 @@ public class SellingPartnerMetadata {
 
     /**
      * The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique
-     * identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     * identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace
      * IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      *
      * @return marketplaceId
      */
     @Schema(
             description =
-                    "The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
+                    "The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
     public String getMarketplaceId() {
         return marketplaceId;
     }

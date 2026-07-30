@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * OpenAPI spec version: 2021-08-01
  *
@@ -24,8 +24,8 @@ import java.util.List;
 import java.util.Objects;
 import org.threeten.bp.OffsetDateTime;
 
-/** Summary details of a listings item for an Amazon marketplace. */
-@Schema(description = "Summary details of a listings item for an Amazon marketplace.")
+/** Summary details for a listings item for an Amazon store. */
+@Schema(description = "Summary details for a listings item for an Amazon store.")
 public class ItemSummaryByMarketplace {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -177,13 +177,11 @@ public class ItemSummaryByMarketplace {
     }
 
     /**
-     * A marketplace identifier. Identifies the Amazon marketplace for the listings item.
+     * A marketplace identifier. Identifies the listings item&#x27;s Amazon store.
      *
      * @return marketplaceId
      */
-    @Schema(
-            required = true,
-            description = "A marketplace identifier. Identifies the Amazon marketplace for the listings item.")
+    @Schema(required = true, description = "A marketplace identifier. Identifies the listings item's Amazon store.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -198,11 +196,11 @@ public class ItemSummaryByMarketplace {
     }
 
     /**
-     * Amazon Standard Identification Number (ASIN) of the listings item.
+     * The ASIN of the listings item.
      *
      * @return asin
      */
-    @Schema(description = "Amazon Standard Identification Number (ASIN) of the listings item.")
+    @Schema(description = "The ASIN of the listings item.")
     public String getAsin() {
         return asin;
     }
@@ -217,11 +215,11 @@ public class ItemSummaryByMarketplace {
     }
 
     /**
-     * The Amazon product type of the listings item.
+     * The listings item&#x27;s Amazon product type.
      *
      * @return productType
      */
-    @Schema(required = true, description = "The Amazon product type of the listings item.")
+    @Schema(required = true, description = "The listings item's Amazon product type.")
     public String getProductType() {
         return productType;
     }
@@ -279,14 +277,14 @@ public class ItemSummaryByMarketplace {
     }
 
     /**
-     * The fulfillment network stock keeping unit is an identifier used by Amazon fulfillment centers to identify each
+     * Fulfillment network stock keeping unit is an identifier used by Amazon fulfillment centers to identify each
      * unique item.
      *
      * @return fnSku
      */
     @Schema(
             description =
-                    "The fulfillment network stock keeping unit is an identifier used by Amazon fulfillment centers to identify each unique item.")
+                    "Fulfillment network stock keeping unit is an identifier used by Amazon fulfillment centers to identify each unique item.")
     public String getFnSku() {
         return fnSku;
     }
@@ -301,11 +299,11 @@ public class ItemSummaryByMarketplace {
     }
 
     /**
-     * The name or title associated with an Amazon catalog item.
+     * Name, or title, associated with an Amazon catalog item.
      *
      * @return itemName
      */
-    @Schema(description = "The name or title associated with an Amazon catalog item.")
+    @Schema(description = "Name, or title, associated with an Amazon catalog item.")
     public String getItemName() {
         return itemName;
     }
@@ -320,11 +318,11 @@ public class ItemSummaryByMarketplace {
     }
 
     /**
-     * The date the listings item was created in ISO 8601 format.
+     * Date the listings item was created, in ISO 8601 format.
      *
      * @return createdDate
      */
-    @Schema(required = true, description = "The date the listings item was created in ISO 8601 format.")
+    @Schema(required = true, description = "Date the listings item was created, in ISO 8601 format.")
     public OffsetDateTime getCreatedDate() {
         return createdDate;
     }
@@ -339,11 +337,11 @@ public class ItemSummaryByMarketplace {
     }
 
     /**
-     * The date the listings item was last updated in ISO 8601 format.
+     * Date the listings item was last updated, in ISO 8601 format.
      *
      * @return lastUpdatedDate
      */
-    @Schema(required = true, description = "The date the listings item was last updated in ISO 8601 format.")
+    @Schema(required = true, description = "Date the listings item was last updated, in ISO 8601 format.")
     public OffsetDateTime getLastUpdatedDate() {
         return lastUpdatedDate;
     }

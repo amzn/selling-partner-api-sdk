@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Pricing
- * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer pricing information for Amazon Marketplace products.  For more information, refer to the [Product Pricing v2022-05-01 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
+ * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer pricing information for Amazon store products.  For more information, refer to the [Product Pricing v2022-05-01 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-05-01
  *
@@ -117,6 +117,9 @@ public class Offer {
 
     @SerializedName("primeDetails")
     private PrimeDetails primeDetails = null;
+
+    @SerializedName("promotions")
+    private Promotions promotions = null;
 
     public Offer sellerId(String sellerId) {
         this.sellerId = sellerId;
@@ -278,6 +281,25 @@ public class Offer {
         this.primeDetails = primeDetails;
     }
 
+    public Offer promotions(Promotions promotions) {
+        this.promotions = promotions;
+        return this;
+    }
+
+    /**
+     * Get promotions
+     *
+     * @return promotions
+     */
+    @Schema(description = "")
+    public Promotions getPromotions() {
+        return promotions;
+    }
+
+    public void setPromotions(Promotions promotions) {
+        this.promotions = promotions;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -294,7 +316,8 @@ public class Offer {
                 && Objects.equals(this.listingPrice, offer.listingPrice)
                 && Objects.equals(this.shippingOptions, offer.shippingOptions)
                 && Objects.equals(this.points, offer.points)
-                && Objects.equals(this.primeDetails, offer.primeDetails);
+                && Objects.equals(this.primeDetails, offer.primeDetails)
+                && Objects.equals(this.promotions, offer.promotions);
     }
 
     @Override
@@ -307,7 +330,8 @@ public class Offer {
                 listingPrice,
                 shippingOptions,
                 points,
-                primeDetails);
+                primeDetails,
+                promotions);
     }
 
     @Override
@@ -327,6 +351,7 @@ public class Offer {
                 .append("\n");
         sb.append("    points: ").append(toIndentedString(points)).append("\n");
         sb.append("    primeDetails: ").append(toIndentedString(primeDetails)).append("\n");
+        sb.append("    promotions: ").append(toIndentedString(promotions)).append("\n");
         sb.append("}");
         return sb.toString();
     }

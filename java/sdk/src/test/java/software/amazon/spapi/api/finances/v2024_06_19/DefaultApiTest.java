@@ -26,7 +26,9 @@ import org.junit.jupiter.api.Test;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.models.finances.v2024_06_19.ListBalancesResponse;
 import software.amazon.spapi.models.finances.v2024_06_19.ListTransactionsResponse;
+import software.amazon.spapi.models.finances.v2024_06_19.SummaryResponse;
 
 public class DefaultApiTest {
 
@@ -49,6 +51,26 @@ public class DefaultApiTest {
             .randomize(LocalDate.class, LocalDate::now)
             .collectionSizeRange(1, 2)
             .randomizationDepth(10));
+
+    @Test
+    public void listBalancesTest() throws Exception {
+        instructBackendMock("default", "listBalances", "200");
+
+        ApiResponse<ListBalancesResponse> response = api.listBalancesWithHttpInfo(null, null, null, null, null);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void listSummaryTest() throws Exception {
+        instructBackendMock("default", "listSummary", "200");
+
+        ApiResponse<SummaryResponse> response = api.listSummaryWithHttpInfo(null, null, null, null, null, null, null);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
 
     @Test
     public void listTransactionsTest() throws Exception {

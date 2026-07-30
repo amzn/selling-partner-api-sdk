@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
@@ -34,7 +35,9 @@ import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
+import software.amazon.spapi.models.finances.v2024_06_19.ListBalancesResponse;
 import software.amazon.spapi.models.finances.v2024_06_19.ListTransactionsResponse;
+import software.amazon.spapi.models.finances.v2024_06_19.SummaryResponse;
 
 public class DefaultApi {
     private ApiClient apiClient;
@@ -47,10 +50,814 @@ public class DefaultApi {
 
     private final Configuration config = Configuration.get();
 
+    public final Bucket listBalancesBucket = Bucket.builder()
+            .addLimit(config.getLimit("DefaultApi-listBalances"))
+            .build();
+
+    public final Bucket listSummaryBucket =
+            Bucket.builder().addLimit(config.getLimit("DefaultApi-listSummary")).build();
+
     public final Bucket listTransactionsBucket = Bucket.builder()
             .addLimit(config.getLimit("DefaultApi-listTransactions"))
             .build();
 
+    /**
+     * Build call for listBalances
+     *
+     * @param marketplaceIds The marketplaces from which to retrieve balances. If omitted, balances from all applicable
+     *     marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param balanceType The type of balance to include in the response. If omitted, all balance types may be included
+     *     in the response. **Possible values:** &#x60;AVAILABLE&#x60;, &#x60;RESERVED&#x60;, &#x60;TOTAL&#x60;,
+     *     &#x60;DEFERRED&#x60;, &#x60;ACCOUNT_LEVEL_RESERVE&#x60; (optional)
+     * @param accountType The type of account to include in the response. (optional)
+     * @param asOfDate The date from which you want to retrieve balances. If provided, the response includes historical
+     *     balances at the specified date. The value must be in [ISO
+     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. If omitted, the point in time
+     *     balance is provided. (optional)
+     * @param nextToken A token that you use to retrieve subsequent pages of results. When there are more than 500
+     *     results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results,
+     *     call the operation with this token and include the same arguments as the call that produced the token. Repeat
+     *     this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call listBalancesCall(
+            List<String> marketplaceIds,
+            String balanceType,
+            String accountType,
+            LocalDate asOfDate,
+            String nextToken,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/finances/2024-06-19/balances".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/2024-06-19/balances";
+        } else {
+            localVarPath = "/finances/2024-06-19/balances";
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (marketplaceIds != null)
+            localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "marketplaceIds", marketplaceIds));
+        if (balanceType != null) localVarQueryParams.addAll(apiClient.parameterToPair("balanceType", balanceType));
+        if (accountType != null) localVarQueryParams.addAll(apiClient.parameterToPair("accountType", accountType));
+        if (asOfDate != null) localVarQueryParams.addAll(apiClient.parameterToPair("asOfDate", asOfDate));
+        if (nextToken != null) localVarQueryParams.addAll(apiClient.parameterToPair("nextToken", nextToken));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {};
+
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "GET",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call listBalancesValidateBeforeCall(
+            List<String> marketplaceIds,
+            String balanceType,
+            String accountType,
+            LocalDate asOfDate,
+            String nextToken,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+
+        return listBalancesCall(marketplaceIds, balanceType, accountType, asOfDate, nextToken, progressRequestListener);
+    }
+
+    /**
+     * Retrieve a balance. This balance can be a past balances at a specified date, or a current balance. Sub-balances
+     * are listed by account type and marketplace. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 0.5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * apply to the operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds The marketplaces from which to retrieve balances. If omitted, balances from all applicable
+     *     marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param balanceType The type of balance to include in the response. If omitted, all balance types may be included
+     *     in the response. **Possible values:** &#x60;AVAILABLE&#x60;, &#x60;RESERVED&#x60;, &#x60;TOTAL&#x60;,
+     *     &#x60;DEFERRED&#x60;, &#x60;ACCOUNT_LEVEL_RESERVE&#x60; (optional)
+     * @param accountType The type of account to include in the response. (optional)
+     * @param asOfDate The date from which you want to retrieve balances. If provided, the response includes historical
+     *     balances at the specified date. The value must be in [ISO
+     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. If omitted, the point in time
+     *     balance is provided. (optional)
+     * @param nextToken A token that you use to retrieve subsequent pages of results. When there are more than 500
+     *     results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results,
+     *     call the operation with this token and include the same arguments as the call that produced the token. Repeat
+     *     this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListBalancesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListBalancesResponse listBalances(
+            List<String> marketplaceIds,
+            String balanceType,
+            String accountType,
+            LocalDate asOfDate,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListBalancesResponse> resp = listBalancesWithHttpInfo(
+                marketplaceIds, balanceType, accountType, asOfDate, nextToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieve a balance. This balance can be a past balances at a specified date, or a current balance. Sub-balances
+     * are listed by account type and marketplace. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 0.5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * apply to the operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds The marketplaces from which to retrieve balances. If omitted, balances from all applicable
+     *     marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param balanceType The type of balance to include in the response. If omitted, all balance types may be included
+     *     in the response. **Possible values:** &#x60;AVAILABLE&#x60;, &#x60;RESERVED&#x60;, &#x60;TOTAL&#x60;,
+     *     &#x60;DEFERRED&#x60;, &#x60;ACCOUNT_LEVEL_RESERVE&#x60; (optional)
+     * @param accountType The type of account to include in the response. (optional)
+     * @param asOfDate The date from which you want to retrieve balances. If provided, the response includes historical
+     *     balances at the specified date. The value must be in [ISO
+     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. If omitted, the point in time
+     *     balance is provided. (optional)
+     * @param nextToken A token that you use to retrieve subsequent pages of results. When there are more than 500
+     *     results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results,
+     *     call the operation with this token and include the same arguments as the call that produced the token. Repeat
+     *     this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @return ListBalancesResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListBalancesResponse listBalances(
+            List<String> marketplaceIds, String balanceType, String accountType, LocalDate asOfDate, String nextToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListBalancesResponse> resp =
+                listBalancesWithHttpInfo(marketplaceIds, balanceType, accountType, asOfDate, nextToken, null);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieve a balance. This balance can be a past balances at a specified date, or a current balance. Sub-balances
+     * are listed by account type and marketplace. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 0.5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * apply to the operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds The marketplaces from which to retrieve balances. If omitted, balances from all applicable
+     *     marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param balanceType The type of balance to include in the response. If omitted, all balance types may be included
+     *     in the response. **Possible values:** &#x60;AVAILABLE&#x60;, &#x60;RESERVED&#x60;, &#x60;TOTAL&#x60;,
+     *     &#x60;DEFERRED&#x60;, &#x60;ACCOUNT_LEVEL_RESERVE&#x60; (optional)
+     * @param accountType The type of account to include in the response. (optional)
+     * @param asOfDate The date from which you want to retrieve balances. If provided, the response includes historical
+     *     balances at the specified date. The value must be in [ISO
+     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. If omitted, the point in time
+     *     balance is provided. (optional)
+     * @param nextToken A token that you use to retrieve subsequent pages of results. When there are more than 500
+     *     results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results,
+     *     call the operation with this token and include the same arguments as the call that produced the token. Repeat
+     *     this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListBalancesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListBalancesResponse> listBalancesWithHttpInfo(
+            List<String> marketplaceIds,
+            String balanceType,
+            String accountType,
+            LocalDate asOfDate,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                listBalancesValidateBeforeCall(marketplaceIds, balanceType, accountType, asOfDate, nextToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "DefaultApi-listBalances");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listBalancesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListBalancesResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listBalances operation exceeds rate limit");
+    }
+
+    /**
+     * Retrieve a balance. This balance can be a past balances at a specified date, or a current balance. Sub-balances
+     * are listed by account type and marketplace. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ----
+     * | | 0.5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that
+     * apply to the operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds The marketplaces from which to retrieve balances. If omitted, balances from all applicable
+     *     marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param balanceType The type of balance to include in the response. If omitted, all balance types may be included
+     *     in the response. **Possible values:** &#x60;AVAILABLE&#x60;, &#x60;RESERVED&#x60;, &#x60;TOTAL&#x60;,
+     *     &#x60;DEFERRED&#x60;, &#x60;ACCOUNT_LEVEL_RESERVE&#x60; (optional)
+     * @param accountType The type of account to include in the response. (optional)
+     * @param asOfDate The date from which you want to retrieve balances. If provided, the response includes historical
+     *     balances at the specified date. The value must be in [ISO
+     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. If omitted, the point in time
+     *     balance is provided. (optional)
+     * @param nextToken A token that you use to retrieve subsequent pages of results. When there are more than 500
+     *     results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results,
+     *     call the operation with this token and include the same arguments as the call that produced the token. Repeat
+     *     this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @return ApiResponse&lt;ListBalancesResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListBalancesResponse> listBalancesWithHttpInfo(
+            List<String> marketplaceIds, String balanceType, String accountType, LocalDate asOfDate, String nextToken)
+            throws ApiException, LWAException {
+        return listBalancesWithHttpInfo(marketplaceIds, balanceType, accountType, asOfDate, nextToken, null);
+    }
+
+    /**
+     * (asynchronously) Retrieve a balance. This balance can be a past balances at a specified date, or a current
+     * balance. Sub-balances are listed by account type and marketplace. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 0.5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that apply to the operation, when available. The preceding table indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may have
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits
+     * in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds The marketplaces from which to retrieve balances. If omitted, balances from all applicable
+     *     marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param balanceType The type of balance to include in the response. If omitted, all balance types may be included
+     *     in the response. **Possible values:** &#x60;AVAILABLE&#x60;, &#x60;RESERVED&#x60;, &#x60;TOTAL&#x60;,
+     *     &#x60;DEFERRED&#x60;, &#x60;ACCOUNT_LEVEL_RESERVE&#x60; (optional)
+     * @param accountType The type of account to include in the response. (optional)
+     * @param asOfDate The date from which you want to retrieve balances. If provided, the response includes historical
+     *     balances at the specified date. The value must be in [ISO
+     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. If omitted, the point in time
+     *     balance is provided. (optional)
+     * @param nextToken A token that you use to retrieve subsequent pages of results. When there are more than 500
+     *     results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results,
+     *     call the operation with this token and include the same arguments as the call that produced the token. Repeat
+     *     this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listBalancesAsync(
+            List<String> marketplaceIds,
+            String balanceType,
+            String accountType,
+            LocalDate asOfDate,
+            String nextToken,
+            final ApiCallback<ListBalancesResponse> callback)
+            throws ApiException, LWAException {
+        return listBalancesAsync(marketplaceIds, balanceType, accountType, asOfDate, nextToken, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieve a balance. This balance can be a past balances at a specified date, or a current
+     * balance. Sub-balances are listed by account type and marketplace. **Usage Plan:** | Rate (requests per second) |
+     * Burst | | ---- | ---- | | 0.5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage
+     * plan rate limits that apply to the operation, when available. The preceding table indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may have
+     * higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits
+     * in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds The marketplaces from which to retrieve balances. If omitted, balances from all applicable
+     *     marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param balanceType The type of balance to include in the response. If omitted, all balance types may be included
+     *     in the response. **Possible values:** &#x60;AVAILABLE&#x60;, &#x60;RESERVED&#x60;, &#x60;TOTAL&#x60;,
+     *     &#x60;DEFERRED&#x60;, &#x60;ACCOUNT_LEVEL_RESERVE&#x60; (optional)
+     * @param accountType The type of account to include in the response. (optional)
+     * @param asOfDate The date from which you want to retrieve balances. If provided, the response includes historical
+     *     balances at the specified date. The value must be in [ISO
+     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. If omitted, the point in time
+     *     balance is provided. (optional)
+     * @param nextToken A token that you use to retrieve subsequent pages of results. When there are more than 500
+     *     results available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results,
+     *     call the operation with this token and include the same arguments as the call that produced the token. Repeat
+     *     this process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listBalancesAsync(
+            List<String> marketplaceIds,
+            String balanceType,
+            String accountType,
+            LocalDate asOfDate,
+            String nextToken,
+            final ApiCallback<ListBalancesResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = listBalancesValidateBeforeCall(
+                marketplaceIds, balanceType, accountType, asOfDate, nextToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "DefaultApi-listBalances");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listBalancesBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListBalancesResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("listBalances operation exceeds rate limit");
+    }
+    /**
+     * Build call for listSummary
+     *
+     * @param marketplaceIds The marketplaces from which to retrieve summaries. If omitted, summaries from all
+     *     applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param accountType The type of account to include in the response. (optional)
+     * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. The only possible value is
+     *     &#x60;SETTLEMENT_ID&#x60;, the settlement ID associated with the summary. (optional)
+     * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param periodStart The start of the period for which to retrieve summaries. When provided, the response will only
+     *     include summaries with transactions that occurred on or after the specified date. The value must be formatted
+     *     in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param periodEnd The end of the period for which to retrieve summaries. When provided, the response will only
+     *     include summaries with transactions that occurred on or before the specified date. The value must be
+     *     formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param nextToken A token that you use to retrieve subsequent pages of results. When there are more results
+     *     available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the
+     *     operation with this token and include the same arguments as the call that produced the token. Repeat this
+     *     process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call listSummaryCall(
+            List<String> marketplaceIds,
+            String accountType,
+            String relatedIdentifierName,
+            String relatedIdentifierValue,
+            LocalDate periodStart,
+            LocalDate periodEnd,
+            String nextToken,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/finances/2024-06-19/summary".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/2024-06-19/summary";
+        } else {
+            localVarPath = "/finances/2024-06-19/summary";
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (marketplaceIds != null)
+            localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "marketplaceIds", marketplaceIds));
+        if (accountType != null) localVarQueryParams.addAll(apiClient.parameterToPair("accountType", accountType));
+        if (relatedIdentifierName != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("relatedIdentifierName", relatedIdentifierName));
+        if (relatedIdentifierValue != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("relatedIdentifierValue", relatedIdentifierValue));
+        if (periodStart != null) localVarQueryParams.addAll(apiClient.parameterToPair("periodStart", periodStart));
+        if (periodEnd != null) localVarQueryParams.addAll(apiClient.parameterToPair("periodEnd", periodEnd));
+        if (nextToken != null) localVarQueryParams.addAll(apiClient.parameterToPair("nextToken", nextToken));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {};
+
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "GET",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call listSummaryValidateBeforeCall(
+            List<String> marketplaceIds,
+            String accountType,
+            String relatedIdentifierName,
+            String relatedIdentifierValue,
+            LocalDate periodStart,
+            LocalDate periodEnd,
+            String nextToken,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+
+        return listSummaryCall(
+                marketplaceIds,
+                accountType,
+                relatedIdentifierName,
+                relatedIdentifierValue,
+                periodStart,
+                periodEnd,
+                nextToken,
+                progressRequestListener);
+    }
+
+    /**
+     * Retrieve the financial summary for the specified time period or settlement period. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that apply to the operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds The marketplaces from which to retrieve summaries. If omitted, summaries from all
+     *     applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param accountType The type of account to include in the response. (optional)
+     * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. The only possible value is
+     *     &#x60;SETTLEMENT_ID&#x60;, the settlement ID associated with the summary. (optional)
+     * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param periodStart The start of the period for which to retrieve summaries. When provided, the response will only
+     *     include summaries with transactions that occurred on or after the specified date. The value must be formatted
+     *     in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param periodEnd The end of the period for which to retrieve summaries. When provided, the response will only
+     *     include summaries with transactions that occurred on or before the specified date. The value must be
+     *     formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param nextToken A token that you use to retrieve subsequent pages of results. When there are more results
+     *     available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the
+     *     operation with this token and include the same arguments as the call that produced the token. Repeat this
+     *     process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return SummaryResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SummaryResponse listSummary(
+            List<String> marketplaceIds,
+            String accountType,
+            String relatedIdentifierName,
+            String relatedIdentifierValue,
+            LocalDate periodStart,
+            LocalDate periodEnd,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<SummaryResponse> resp = listSummaryWithHttpInfo(
+                marketplaceIds,
+                accountType,
+                relatedIdentifierName,
+                relatedIdentifierValue,
+                periodStart,
+                periodEnd,
+                nextToken,
+                restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieve the financial summary for the specified time period or settlement period. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that apply to the operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds The marketplaces from which to retrieve summaries. If omitted, summaries from all
+     *     applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param accountType The type of account to include in the response. (optional)
+     * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. The only possible value is
+     *     &#x60;SETTLEMENT_ID&#x60;, the settlement ID associated with the summary. (optional)
+     * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param periodStart The start of the period for which to retrieve summaries. When provided, the response will only
+     *     include summaries with transactions that occurred on or after the specified date. The value must be formatted
+     *     in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param periodEnd The end of the period for which to retrieve summaries. When provided, the response will only
+     *     include summaries with transactions that occurred on or before the specified date. The value must be
+     *     formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param nextToken A token that you use to retrieve subsequent pages of results. When there are more results
+     *     available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the
+     *     operation with this token and include the same arguments as the call that produced the token. Repeat this
+     *     process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @return SummaryResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SummaryResponse listSummary(
+            List<String> marketplaceIds,
+            String accountType,
+            String relatedIdentifierName,
+            String relatedIdentifierValue,
+            LocalDate periodStart,
+            LocalDate periodEnd,
+            String nextToken)
+            throws ApiException, LWAException {
+        ApiResponse<SummaryResponse> resp = listSummaryWithHttpInfo(
+                marketplaceIds,
+                accountType,
+                relatedIdentifierName,
+                relatedIdentifierValue,
+                periodStart,
+                periodEnd,
+                nextToken,
+                null);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieve the financial summary for the specified time period or settlement period. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that apply to the operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds The marketplaces from which to retrieve summaries. If omitted, summaries from all
+     *     applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param accountType The type of account to include in the response. (optional)
+     * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. The only possible value is
+     *     &#x60;SETTLEMENT_ID&#x60;, the settlement ID associated with the summary. (optional)
+     * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param periodStart The start of the period for which to retrieve summaries. When provided, the response will only
+     *     include summaries with transactions that occurred on or after the specified date. The value must be formatted
+     *     in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param periodEnd The end of the period for which to retrieve summaries. When provided, the response will only
+     *     include summaries with transactions that occurred on or before the specified date. The value must be
+     *     formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param nextToken A token that you use to retrieve subsequent pages of results. When there are more results
+     *     available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the
+     *     operation with this token and include the same arguments as the call that produced the token. Repeat this
+     *     process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;SummaryResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SummaryResponse> listSummaryWithHttpInfo(
+            List<String> marketplaceIds,
+            String accountType,
+            String relatedIdentifierName,
+            String relatedIdentifierValue,
+            LocalDate periodStart,
+            LocalDate periodEnd,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listSummaryValidateBeforeCall(
+                marketplaceIds,
+                accountType,
+                relatedIdentifierName,
+                relatedIdentifierValue,
+                periodStart,
+                periodEnd,
+                nextToken,
+                null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "DefaultApi-listSummary");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listSummaryBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SummaryResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listSummary operation exceeds rate limit");
+    }
+
+    /**
+     * Retrieve the financial summary for the specified time period or settlement period. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that apply to the operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may have higher rate and burst values than those shown here. For more information, refer to
+     * [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds The marketplaces from which to retrieve summaries. If omitted, summaries from all
+     *     applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param accountType The type of account to include in the response. (optional)
+     * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. The only possible value is
+     *     &#x60;SETTLEMENT_ID&#x60;, the settlement ID associated with the summary. (optional)
+     * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param periodStart The start of the period for which to retrieve summaries. When provided, the response will only
+     *     include summaries with transactions that occurred on or after the specified date. The value must be formatted
+     *     in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param periodEnd The end of the period for which to retrieve summaries. When provided, the response will only
+     *     include summaries with transactions that occurred on or before the specified date. The value must be
+     *     formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param nextToken A token that you use to retrieve subsequent pages of results. When there are more results
+     *     available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the
+     *     operation with this token and include the same arguments as the call that produced the token. Repeat this
+     *     process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @return ApiResponse&lt;SummaryResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SummaryResponse> listSummaryWithHttpInfo(
+            List<String> marketplaceIds,
+            String accountType,
+            String relatedIdentifierName,
+            String relatedIdentifierValue,
+            LocalDate periodStart,
+            LocalDate periodEnd,
+            String nextToken)
+            throws ApiException, LWAException {
+        return listSummaryWithHttpInfo(
+                marketplaceIds,
+                accountType,
+                relatedIdentifierName,
+                relatedIdentifierValue,
+                periodStart,
+                periodEnd,
+                nextToken,
+                null);
+    }
+
+    /**
+     * (asynchronously) Retrieve the financial summary for the specified time period or settlement period. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that apply to the
+     * operation, when available. The preceding table indicates the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput may have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds The marketplaces from which to retrieve summaries. If omitted, summaries from all
+     *     applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param accountType The type of account to include in the response. (optional)
+     * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. The only possible value is
+     *     &#x60;SETTLEMENT_ID&#x60;, the settlement ID associated with the summary. (optional)
+     * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param periodStart The start of the period for which to retrieve summaries. When provided, the response will only
+     *     include summaries with transactions that occurred on or after the specified date. The value must be formatted
+     *     in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param periodEnd The end of the period for which to retrieve summaries. When provided, the response will only
+     *     include summaries with transactions that occurred on or before the specified date. The value must be
+     *     formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param nextToken A token that you use to retrieve subsequent pages of results. When there are more results
+     *     available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the
+     *     operation with this token and include the same arguments as the call that produced the token. Repeat this
+     *     process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listSummaryAsync(
+            List<String> marketplaceIds,
+            String accountType,
+            String relatedIdentifierName,
+            String relatedIdentifierValue,
+            LocalDate periodStart,
+            LocalDate periodEnd,
+            String nextToken,
+            final ApiCallback<SummaryResponse> callback)
+            throws ApiException, LWAException {
+        return listSummaryAsync(
+                marketplaceIds,
+                accountType,
+                relatedIdentifierName,
+                relatedIdentifierValue,
+                periodStart,
+                periodEnd,
+                nextToken,
+                callback,
+                null);
+    }
+    /**
+     * (asynchronously) Retrieve the financial summary for the specified time period or settlement period. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that apply to the
+     * operation, when available. The preceding table indicates the default rate and burst values for this operation.
+     * Selling partners whose business demands require higher throughput may have higher rate and burst values than
+     * those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds The marketplaces from which to retrieve summaries. If omitted, summaries from all
+     *     applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param accountType The type of account to include in the response. (optional)
+     * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. The only possible value is
+     *     &#x60;SETTLEMENT_ID&#x60;, the settlement ID associated with the summary. (optional)
+     * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param periodStart The start of the period for which to retrieve summaries. When provided, the response will only
+     *     include summaries with transactions that occurred on or after the specified date. The value must be formatted
+     *     in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param periodEnd The end of the period for which to retrieve summaries. When provided, the response will only
+     *     include summaries with transactions that occurred on or before the specified date. The value must be
+     *     formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. (optional)
+     * @param nextToken A token that you use to retrieve subsequent pages of results. When there are more results
+     *     available, the response will include a &#x60;nextToken&#x60; value. To get the next page of results, call the
+     *     operation with this token and include the same arguments as the call that produced the token. Repeat this
+     *     process until the &#x60;nextToken&#x60; value is null to retrieve all results. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listSummaryAsync(
+            List<String> marketplaceIds,
+            String accountType,
+            String relatedIdentifierName,
+            String relatedIdentifierValue,
+            LocalDate periodStart,
+            LocalDate periodEnd,
+            String nextToken,
+            final ApiCallback<SummaryResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = listSummaryValidateBeforeCall(
+                marketplaceIds,
+                accountType,
+                relatedIdentifierName,
+                relatedIdentifierValue,
+                periodStart,
+                periodEnd,
+                nextToken,
+                progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "DefaultApi-listSummary");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listSummaryBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SummaryResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("listSummary operation exceeds rate limit");
+    }
     /**
      * Build call for listTransactions
      *
@@ -64,18 +871,18 @@ public class DefaultApi {
      *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.
      *     **Default:** Two minutes before the time of the request. (optional)
      * @param marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The
-     *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer
-     *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to
+     *     [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
      * @param transactionStatus The status of the transaction. **Possible values:** * &#x60;DEFERRED&#x60;: the
      *     transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. *
      *     &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
      *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. *
-     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:** FINANCIAL_EVENT_GROUP_ID and
-     *     ORDER_ID are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other
-     *     &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for
-     *     filtering purposes. (optional)
+     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:**
+     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with
+     *     filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in
+     *     the response when available, they cannot be used for filtering purposes. (optional)
      * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
      *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
@@ -168,7 +975,8 @@ public class DefaultApi {
 
     /**
      * Returns transactions for the given parameters. Financial events might not include orders from the last 48 hours.
-     * **Usage plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * **Note:** If you want to retrieve MFN orders in the US store, do not supply the &#x60;marketplaceId&#x60;
+     * parameter. **Usage plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
      * requested operation, when available. The preceding table contains the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
@@ -185,18 +993,18 @@ public class DefaultApi {
      *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.
      *     **Default:** Two minutes before the time of the request. (optional)
      * @param marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The
-     *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer
-     *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to
+     *     [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
      * @param transactionStatus The status of the transaction. **Possible values:** * &#x60;DEFERRED&#x60;: the
      *     transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. *
      *     &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
      *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. *
-     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:** FINANCIAL_EVENT_GROUP_ID and
-     *     ORDER_ID are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other
-     *     &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for
-     *     filtering purposes. (optional)
+     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:**
+     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with
+     *     filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in
+     *     the response when available, they cannot be used for filtering purposes. (optional)
      * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
      *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
@@ -231,7 +1039,8 @@ public class DefaultApi {
 
     /**
      * Returns transactions for the given parameters. Financial events might not include orders from the last 48 hours.
-     * **Usage plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * **Note:** If you want to retrieve MFN orders in the US store, do not supply the &#x60;marketplaceId&#x60;
+     * parameter. **Usage plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
      * requested operation, when available. The preceding table contains the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
@@ -248,18 +1057,18 @@ public class DefaultApi {
      *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.
      *     **Default:** Two minutes before the time of the request. (optional)
      * @param marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The
-     *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer
-     *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to
+     *     [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
      * @param transactionStatus The status of the transaction. **Possible values:** * &#x60;DEFERRED&#x60;: the
      *     transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. *
      *     &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
      *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. *
-     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:** FINANCIAL_EVENT_GROUP_ID and
-     *     ORDER_ID are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other
-     *     &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for
-     *     filtering purposes. (optional)
+     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:**
+     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with
+     *     filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in
+     *     the response when available, they cannot be used for filtering purposes. (optional)
      * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
      *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
@@ -292,7 +1101,8 @@ public class DefaultApi {
 
     /**
      * Returns transactions for the given parameters. Financial events might not include orders from the last 48 hours.
-     * **Usage plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * **Note:** If you want to retrieve MFN orders in the US store, do not supply the &#x60;marketplaceId&#x60;
+     * parameter. **Usage plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
      * requested operation, when available. The preceding table contains the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
@@ -309,18 +1119,18 @@ public class DefaultApi {
      *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.
      *     **Default:** Two minutes before the time of the request. (optional)
      * @param marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The
-     *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer
-     *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to
+     *     [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
      * @param transactionStatus The status of the transaction. **Possible values:** * &#x60;DEFERRED&#x60;: the
      *     transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. *
      *     &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
      *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. *
-     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:** FINANCIAL_EVENT_GROUP_ID and
-     *     ORDER_ID are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other
-     *     &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for
-     *     filtering purposes. (optional)
+     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:**
+     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with
+     *     filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in
+     *     the response when available, they cannot be used for filtering purposes. (optional)
      * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
      *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
@@ -365,7 +1175,8 @@ public class DefaultApi {
 
     /**
      * Returns transactions for the given parameters. Financial events might not include orders from the last 48 hours.
-     * **Usage plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * **Note:** If you want to retrieve MFN orders in the US store, do not supply the &#x60;marketplaceId&#x60;
+     * parameter. **Usage plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
      * requested operation, when available. The preceding table contains the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
@@ -382,18 +1193,18 @@ public class DefaultApi {
      *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.
      *     **Default:** Two minutes before the time of the request. (optional)
      * @param marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The
-     *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer
-     *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to
+     *     [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
      * @param transactionStatus The status of the transaction. **Possible values:** * &#x60;DEFERRED&#x60;: the
      *     transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. *
      *     &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
      *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. *
-     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:** FINANCIAL_EVENT_GROUP_ID and
-     *     ORDER_ID are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other
-     *     &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for
-     *     filtering purposes. (optional)
+     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:**
+     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with
+     *     filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in
+     *     the response when available, they cannot be used for filtering purposes. (optional)
      * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
      *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
@@ -425,11 +1236,12 @@ public class DefaultApi {
 
     /**
      * (asynchronously) Returns transactions for the given parameters. Financial events might not include orders from
-     * the last 48 hours. **Usage plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The preceding table contains the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * the last 48 hours. **Note:** If you want to retrieve MFN orders in the US store, do not supply the
+     * &#x60;marketplaceId&#x60; parameter. **Usage plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5
+     * | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param postedAfter The response includes financial events posted on or after this date. This date must be in [ISO
@@ -442,18 +1254,18 @@ public class DefaultApi {
      *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.
      *     **Default:** Two minutes before the time of the request. (optional)
      * @param marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The
-     *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer
-     *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to
+     *     [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
      * @param transactionStatus The status of the transaction. **Possible values:** * &#x60;DEFERRED&#x60;: the
      *     transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. *
      *     &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
      *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. *
-     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:** FINANCIAL_EVENT_GROUP_ID and
-     *     ORDER_ID are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other
-     *     &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for
-     *     filtering purposes. (optional)
+     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:**
+     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with
+     *     filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in
+     *     the response when available, they cannot be used for filtering purposes. (optional)
      * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
      *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
@@ -487,11 +1299,12 @@ public class DefaultApi {
     }
     /**
      * (asynchronously) Returns transactions for the given parameters. Financial events might not include orders from
-     * the last 48 hours. **Usage plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The preceding table contains the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * the last 48 hours. **Note:** If you want to retrieve MFN orders in the US store, do not supply the
+     * &#x60;marketplaceId&#x60; parameter. **Usage plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5
+     * | 10 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param postedAfter The response includes financial events posted on or after this date. This date must be in [ISO
@@ -504,18 +1317,18 @@ public class DefaultApi {
      *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.
      *     **Default:** Two minutes before the time of the request. (optional)
      * @param marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The
-     *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer
-     *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to
+     *     [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
      * @param transactionStatus The status of the transaction. **Possible values:** * &#x60;DEFERRED&#x60;: the
      *     transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. *
      *     &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
      * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
      *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. *
-     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:** FINANCIAL_EVENT_GROUP_ID and
-     *     ORDER_ID are the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment. While other
-     *     &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot be used for
-     *     filtering purposes. (optional)
+     *     &#x60;ORDER_ID&#x60;: the order ID associated with the transaction. **Note:**
+     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60; and &#x60;ORDER_ID&#x60; are the only &#x60;relatedIdentifier&#x60; with
+     *     filtering capabilities at the moment. While other &#x60;relatedIdentifier&#x60; values will be included in
+     *     the response when available, they cannot be used for filtering purposes. (optional)
      * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
      * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
      *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
