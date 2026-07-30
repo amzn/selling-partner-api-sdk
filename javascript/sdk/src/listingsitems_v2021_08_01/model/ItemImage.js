@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * The version of the OpenAPI document: 2021-08-01
  *
@@ -21,12 +21,12 @@ import { ApiClient } from '../ApiClient.js'
 export class ItemImage {
   /**
    * Constructs a new <code>ItemImage</code>.
-   * The image for the listings item.
+   * The listings item&#39;s image.
    * @alias module:listingsitems_v2021_08_01/model/ItemImage
    * @class
-   * @param link {String} The link, or URL, to the image.
-   * @param height {Number} The height of the image in pixels.
-   * @param width {Number} The width of the image in pixels.
+   * @param link {String} The image's link or URL.
+   * @param height {Number} The image's height, in pixels.
+   * @param width {Number} The image's width, in pixels.
    */
   constructor (link, height, width) {
     this.link = link
@@ -64,21 +64,21 @@ export class ItemImage {
 }
 
 /**
- * The link, or URL, to the image.
+ * The image's link or URL.
  * @member {String} link
  * @type {String}
  */
 ItemImage.prototype.link = undefined
 
 /**
- * The height of the image in pixels.
+ * The image's height, in pixels.
  * @member {Number} height
  * @type {Number}
  */
 ItemImage.prototype.height = undefined
 
 /**
- * The width of the image in pixels.
+ * The image's width, in pixels.
  * @member {Number} width
  * @type {Number}
  */

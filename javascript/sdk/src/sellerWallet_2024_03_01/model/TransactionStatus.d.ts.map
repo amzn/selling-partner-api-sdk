@@ -1,1 +1,1 @@
-{"version":3,"file":"TransactionStatus.d.ts","sourceRoot":"","sources":["TransactionStatus.js"],"names":[],"mappings":"gCAgBa,SAAS,GAAC,QAAQ,GAAC,wBAAwB,GAAC,aAAa,GAAC,uBAAuB,GAAC,YAAY;AAD3G;;GAEG;AACH;;;;;;;;EAYI"}
+{"version":3,"file":"TransactionStatus.d.ts","sourceRoot":"","sources":["TransactionStatus.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAKA,YAA0G,iBAAiB,GAAjH,SAAS,GAAC,QAAQ,GAAC,wBAAwB,GAAC,aAAa,GAAC,uBAAuB,GAAC,YAAY,CAAmB;AAD9H;;GAEG;AACH,eAAO,MAAM,iBAAiB;;;;;;;;CAY1B,CAAA"}

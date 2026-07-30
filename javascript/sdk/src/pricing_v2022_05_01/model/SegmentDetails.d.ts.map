@@ -1,1 +1,1 @@
-{"version":3,"file":"SegmentDetails.d.ts","sourceRoot":"","sources":["SegmentDetails.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,iCAJW,MAAM,OACN,cAAc,GACb,cAAc,CAoBzB;IAGH;;;;OAIG;IACH,mCAAmD;IAEnD;;;OAGG;IACH,gBAFU,cAAc,CAEe;CAbtC;+BA3C8B,qBAAqB"}
+{"version":3,"file":"SegmentDetails.d.ts","sourceRoot":"","sources":["SegmentDetails.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAKH;;;;GAIG;AACH,qBAAa,cAAc;IACzB;;;;;OAKG;IACH,cACC;IAED;;;;;;OAMG;IACH,MAAM,CAAC,mBAAmB,CAAE,IAAI,EAJrB,MAIqB,EAAE,GAAG,EAH1B,cAG0B,GAFzB,cAAc,CAoBzB;CACF"}

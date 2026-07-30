@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * The version of the OpenAPI document: 2021-08-01
  *
@@ -21,11 +21,11 @@ import { ApiClient } from '../ApiClient.js'
 export class Money {
   /**
    * Constructs a new <code>Money</code>.
-   * The currency type and amount.
+   * The currency type and the amount.
    * @alias module:listingsitems_v2021_08_01/model/Money
    * @class
-   * @param currencyCode {String} Three-digit currency code in ISO 4217 format.
-   * @param amount {String} A decimal number with no loss of precision. Useful when precision loss is unnaceptable, as with currencies. Follows RFC7159 for number representation.
+   * @param currencyCode {String} Three-digit currency code. In ISO 4217 format.
+   * @param amount {String} A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation.
    */
   constructor (currencyCode, amount) {
     this.currencyCode = currencyCode
@@ -61,14 +61,14 @@ export class Money {
 }
 
 /**
- * Three-digit currency code in ISO 4217 format.
+ * Three-digit currency code. In ISO 4217 format.
  * @member {String} currencyCode
  * @type {String}
  */
 Money.prototype.currencyCode = undefined
 
 /**
- * A decimal number with no loss of precision. Useful when precision loss is unnaceptable, as with currencies. Follows RFC7159 for number representation.
+ * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation.
  * @member {String} amount
  * @type {String}
  */

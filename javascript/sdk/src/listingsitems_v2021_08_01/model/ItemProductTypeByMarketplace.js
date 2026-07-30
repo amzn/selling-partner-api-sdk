@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * The version of the OpenAPI document: 2021-08-01
  *
@@ -21,10 +21,10 @@ import { ApiClient } from '../ApiClient.js'
 export class ItemProductTypeByMarketplace {
   /**
    * Constructs a new <code>ItemProductTypeByMarketplace</code>.
-   * Product types that are associated with the listing item for the specified marketplace.
+   * Product types that are associated with the listing item for the specified Amazon store.
    * @alias module:listingsitems_v2021_08_01/model/ItemProductTypeByMarketplace
    * @class
-   * @param marketplaceId {String} Amazon marketplace identifier.
+   * @param marketplaceId {String} Amazon store identifier.
    * @param productType {String} The name of the product type that is submitted by the Selling Partner.
    */
   constructor (marketplaceId, productType) {
@@ -61,7 +61,7 @@ export class ItemProductTypeByMarketplace {
 }
 
 /**
- * Amazon marketplace identifier.
+ * Amazon store identifier.
  * @member {String} marketplaceId
  * @type {String}
  */

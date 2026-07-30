@@ -1,1 +1,1 @@
-{"version":3,"file":"ShippingConfiguration.d.ts","sourceRoot":"","sources":["ShippingConfiguration.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,iCAJW,MAAM,OACN,qBAAqB,GACpB,qBAAqB,CAoBhC;IAGH;;;;OAIG;IACH,qBAA4C;IAE5C;;;;OAIG;IACH,yBAAgD;CAd/C"}
+{"version":3,"file":"ShippingConfiguration.d.ts","sourceRoot":"","sources":["ShippingConfiguration.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAIH;;;;GAIG;AACH,qBAAa,qBAAqB;IAChC;;;;;OAKG;IACH,cACC;IAED;;;;;;OAMG;IACH,MAAM,CAAC,mBAAmB,CAAE,IAAI,EAJrB,MAIqB,EAAE,GAAG,EAH1B,qBAG0B,GAFzB,qBAAqB,CAoBhC;CACF"}

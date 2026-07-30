@@ -27,7 +27,7 @@ import { TimeRangeContext } from './TimeRangeContext.js'
 export class Context {
   /**
    * Constructs a new <code>Context</code>.
-   * Additional Information about the item.
+   * Additional information about the item.
    * @alias module:finances_2024_06_19/model/Context
    * @class
    * @implements module:finances_2024_06_19/model/AmazonPayContext
@@ -36,7 +36,7 @@ export class Context {
    * @implements module:finances_2024_06_19/model/DeferredContext
    * @implements module:finances_2024_06_19/model/BusinessContext
    * @implements module:finances_2024_06_19/model/TimeRangeContext
-   * @param contextType {String}
+   * @param contextType {String} The type of context.
    */
   constructor (contextType) {
     this.contextType = contextType
@@ -111,14 +111,14 @@ Context.StoreNameEnum = {
 Context.prototype.storeName = undefined
 
 /**
- * The transaction's order type.
+ * The order type of the transaction.
  * @member {String} orderType
  * @type {String}
  */
 Context.prototype.orderType = undefined
 
 /**
- * Channel details of related transaction.
+ * The channel of the transaction. For example: `MFN`.
  * @member {String} channel
  * @type {String}
  */
@@ -209,6 +209,7 @@ Context.prototype.startTime = undefined
 Context.prototype.endTime = undefined
 
 /**
+ * The type of context.
  * @member {String} contextType
  * @type {String}
  */
@@ -223,14 +224,14 @@ Context.prototype.contextType = undefined
 AmazonPayContext.prototype.storeName = undefined
 
 /**
- * The transaction's order type.
+ * The order type of the transaction.
  * @member {String} orderType
  * @type {String}
  */
 AmazonPayContext.prototype.orderType = undefined
 
 /**
- * Channel details of related transaction.
+ * The channel of the transaction. For example: `MFN`.
  * @member {String} channel
  * @type {String}
  */

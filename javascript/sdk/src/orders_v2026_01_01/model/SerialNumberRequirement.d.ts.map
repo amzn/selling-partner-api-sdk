@@ -1,1 +1,1 @@
-{"version":3,"file":"SerialNumberRequirement.d.ts","sourceRoot":"","sources":["SerialNumberRequirement.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,iCAJW,MAAM,OACN,uBAAuB,GACtB,uBAAuB,CAmBlC;IAGH;;;;OAIG;IACH,wBAAiD;CAPhD"}
+{"version":3,"file":"SerialNumberRequirement.d.ts","sourceRoot":"","sources":["SerialNumberRequirement.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAIH;;;;GAIG;AACH,qBAAa,uBAAuB;IAClC;;;;;OAKG;IACH,cACC;IAED;;;;;;OAMG;IACH,MAAM,CAAC,mBAAmB,CAAE,IAAI,EAJrB,MAIqB,EAAE,GAAG,EAH1B,uBAG0B,GAFzB,uBAAuB,CAmBlC;CACF"}

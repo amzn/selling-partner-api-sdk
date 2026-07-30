@@ -21,7 +21,7 @@ import { ApiClient } from '../ApiClient.js'
 export class InvoiceDocument {
   /**
    * Constructs a new <code>InvoiceDocument</code>.
-   * Object containing the documentId and a S3 pre-signed URL to download the specified document file.
+   * The &#x60;documentId&#x60; and an S3 pre-signed URL that you can use to download the specified document file.
    * @alias module:invoices_v2024_06_19/model/InvoiceDocument
    * @class
    */
@@ -56,7 +56,7 @@ export class InvoiceDocument {
 }
 
 /**
- * A pre-signed URL to download the invoice document in its original format. This URL expires after 30 seconds.
+ * A pre-signed URL that you can use to download the invoice document in its original format. This URL expires after 30 seconds.
  * @member {String} invoiceDocumentUrl
  * @type {String}
  */

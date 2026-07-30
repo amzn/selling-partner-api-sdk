@@ -67,7 +67,7 @@ export class GovernmentInvoiceStatusResponse {
 GovernmentInvoiceStatusResponse.prototype.invoiceErrors = undefined
 
 /**
- * Government Invoice ID of a successfully authorized invoice.
+ * The Government Invoice ID of a successfully authorized invoice.
  * @member {String} invoiceExternalDocumentId
  * @type {String}
  */

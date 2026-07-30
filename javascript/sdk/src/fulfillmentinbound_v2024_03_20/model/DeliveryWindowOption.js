@@ -12,6 +12,7 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
+import { Incentive } from './Incentive.js'
 
 /**
  * The DeliveryWindowOption model module.
@@ -61,6 +62,7 @@ export class DeliveryWindowOption {
       obj = obj || new DeliveryWindowOption()
       if (data.hasOwnProperty('availabilityType')) { obj.availabilityType = ApiClient.convertToType(data.availabilityType, 'String') }
       if (data.hasOwnProperty('deliveryWindowOptionId')) { obj.deliveryWindowOptionId = ApiClient.convertToType(data.deliveryWindowOptionId, 'String') }
+      if (data.hasOwnProperty('discounts')) { obj.discounts = ApiClient.convertToType(data.discounts, [Incentive]) }
       if (data.hasOwnProperty('endDate')) { obj.endDate = ApiClient.convertToType(data.endDate, 'Date') }
       if (data.hasOwnProperty('startDate')) { obj.startDate = ApiClient.convertToType(data.startDate, 'Date') }
       if (data.hasOwnProperty('validUntil')) { obj.validUntil = ApiClient.convertToType(data.validUntil, 'Date') }
@@ -82,6 +84,13 @@ DeliveryWindowOption.prototype.availabilityType = undefined
  * @type {String}
  */
 DeliveryWindowOption.prototype.deliveryWindowOptionId = undefined
+
+/**
+ * Discounts for the offered option.
+ * @member {Incentive[]} discounts
+ * @type {Incentive[]}
+ */
+DeliveryWindowOption.prototype.discounts = undefined
 
 /**
  * The time at which this delivery window option ends. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mmZ`.

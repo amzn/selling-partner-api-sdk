@@ -1,1 +1,1 @@
-{"version":3,"file":"LabelFormatOptionRequest.d.ts","sourceRoot":"","sources":["LabelFormatOptionRequest.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,iCAJW,MAAM,OACN,wBAAwB,GACvB,wBAAwB,CAmBnC;IAGH;;;;OAIG;IACH,qCAA8D;CAP7D"}
+{"version":3,"file":"LabelFormatOptionRequest.d.ts","sourceRoot":"","sources":["LabelFormatOptionRequest.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAIH;;;;GAIG;AACH,qBAAa,wBAAwB;IACnC;;;;;OAKG;IACH,cACC;IAED;;;;;;OAMG;IACH,MAAM,CAAC,mBAAmB,CAAE,IAAI,EAJrB,MAIqB,EAAE,GAAG,EAH1B,wBAG0B,GAFzB,wBAAwB,CAmBnC;CACF"}

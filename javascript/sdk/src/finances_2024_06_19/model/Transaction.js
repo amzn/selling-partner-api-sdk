@@ -108,7 +108,7 @@ Transaction.prototype.transactionId = undefined
 Transaction.prototype.transactionStatus = undefined
 
 /**
- * Describes the reasons for the transaction.  **Example:** 'Order Payment', 'Refund Order'
+ * Describes the reasons for the transaction.  **Example:** `Order Payment`, `Refund Order`
  * @member {String} description
  * @type {String}
  */

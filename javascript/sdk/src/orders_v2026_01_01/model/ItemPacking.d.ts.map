@@ -1,1 +1,1 @@
-{"version":3,"file":"ItemPacking.d.ts","sourceRoot":"","sources":["ItemPacking.js"],"names":[],"mappings":"AAiBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,iCAJW,MAAM,OACN,WAAW,GACV,WAAW,CAoBtB;IAGH;;;OAGG;IACH,YAFU,UAAU,CAEY;IAEhC;;;OAGG;IACH,yBAFU,uBAAuB,CAEY;CAZ5C;2BA5C0B,iBAAiB;wCACJ,8BAA8B"}
+{"version":3,"file":"ItemPacking.d.ts","sourceRoot":"","sources":["ItemPacking.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAMH;;;;GAIG;AACH,qBAAa,WAAW;IACtB;;;;;OAKG;IACH,cACC;IAED;;;;;;OAMG;IACH,MAAM,CAAC,mBAAmB,CAAE,IAAI,EAJrB,MAIqB,EAAE,GAAG,EAH1B,WAG0B,GAFzB,WAAW,CAoBtB;CACF"}

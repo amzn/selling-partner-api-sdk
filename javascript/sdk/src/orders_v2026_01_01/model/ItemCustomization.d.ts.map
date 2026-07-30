@@ -1,1 +1,1 @@
-{"version":3,"file":"ItemCustomization.d.ts","sourceRoot":"","sources":["ItemCustomization.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,iCAJW,MAAM,OACN,iBAAiB,GAChB,iBAAiB,CAmB5B;IAGH;;;;OAIG;IACH,sBAAyC;CAPxC"}
+{"version":3,"file":"ItemCustomization.d.ts","sourceRoot":"","sources":["ItemCustomization.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAIH;;;;GAIG;AACH,qBAAa,iBAAiB;IAC5B;;;;;OAKG;IACH,cACC;IAED;;;;;;OAMG;IACH,MAAM,CAAC,mBAAmB,CAAE,IAAI,EAJrB,MAIqB,EAAE,GAAG,EAH1B,iBAG0B,GAFzB,iBAAiB,CAmB5B;CACF"}

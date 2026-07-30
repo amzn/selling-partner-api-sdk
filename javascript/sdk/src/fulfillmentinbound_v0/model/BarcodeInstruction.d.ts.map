@@ -1,1 +1,1 @@
-{"version":3,"file":"BarcodeInstruction.d.ts","sourceRoot":"","sources":["BarcodeInstruction.js"],"names":[],"mappings":"iCAgBa,oBAAoB,GAAC,uBAAuB,GAAC,sBAAsB;AADhF;;GAEG;AACH;;;;;EASI"}
+{"version":3,"file":"BarcodeInstruction.d.ts","sourceRoot":"","sources":["BarcodeInstruction.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAKA,YAA+E,kBAAkB,GAAvF,oBAAoB,GAAC,uBAAuB,GAAC,sBAAsB,CAAoB;AADpG;;GAEG;AACH,eAAO,MAAM,kBAAkB;;;;;CAS3B,CAAA"}

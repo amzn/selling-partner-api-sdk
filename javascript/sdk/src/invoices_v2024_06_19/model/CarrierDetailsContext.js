@@ -63,28 +63,28 @@ export class CarrierDetailsContext {
 }
 
 /**
- * The name of the carrier, as registered in state and federal tax authorities.
+ * The name of the carrier, as registered with state and federal tax authorities.
  * @member {String} name
  * @type {String}
  */
 CarrierDetailsContext.prototype.name = undefined
 
 /**
- * The address of the carrier, as registered in state and federal tax authorities.
+ * The address of the carrier, as registered with state and federal tax authorities.
  * @member {String} address
  * @type {String}
  */
 CarrierDetailsContext.prototype.address = undefined
 
 /**
- * Type of additional information.
+ * The type of additional information.
  * @member {String} contextType
  * @type {String}
  */
 CarrierDetailsContext.prototype.contextType = undefined
 
 /**
- * Tax Identification number of the carrier.
+ * The tax identification number of the carrier.
  * @member {String} federalTaxId
  * @type {String}
  */
@@ -105,7 +105,7 @@ CarrierDetailsContext.prototype.regionCode = undefined
 CarrierDetailsContext.prototype.regionTaxId = undefined
 
 /**
- * The identifier for the carrier vehicle as printed in its registration plate.
+ * The identifier for the carrier vehicle, as printed on its registration plate.
  * @member {String} vehicleLicensePlate
  * @type {String}
  */

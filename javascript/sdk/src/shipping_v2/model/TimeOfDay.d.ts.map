@@ -1,1 +1,1 @@
-{"version":3,"file":"TimeOfDay.d.ts","sourceRoot":"","sources":["TimeOfDay.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,iCAJW,MAAM,OACN,SAAS,GACR,SAAS,CAqBpB;IAGH;;;;OAIG;IACH,kBAA6B;IAE7B;;;;OAIG;IACH,qBAAgC;IAEhC;;;;OAIG;IACH,uBAAkC;CArBjC"}
+{"version":3,"file":"TimeOfDay.d.ts","sourceRoot":"","sources":["TimeOfDay.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAIH;;;;GAIG;AACH,qBAAa,SAAS;IACpB;;;;;OAKG;IACH,cACC;IAED;;;;;;OAMG;IACH,MAAM,CAAC,mBAAmB,CAAE,IAAI,EAJrB,MAIqB,EAAE,GAAG,EAH1B,SAG0B,GAFzB,SAAS,CAqBpB;CACF"}

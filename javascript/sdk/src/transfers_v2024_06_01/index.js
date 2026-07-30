@@ -13,14 +13,28 @@
 
 import { ApiClient } from './ApiClient.js'
 import { AssignmentType } from './model/AssignmentType.js'
+import { Currency } from './model/Currency.js'
 import { Error } from './model/Error.js'
 import { ErrorList } from './model/ErrorList.js'
+import { ExpectedPayout } from './model/ExpectedPayout.js'
+import { ExpectedPayoutStatusName } from './model/ExpectedPayoutStatusName.js'
 import { ExpiryDate } from './model/ExpiryDate.js'
 import { GetPaymentMethodsResponse } from './model/GetPaymentMethodsResponse.js'
 import { InitiatePayoutRequest } from './model/InitiatePayoutRequest.js'
 import { InitiatePayoutResponse } from './model/InitiatePayoutResponse.js'
+import { ListExpectedPayoutsResponse } from './model/ListExpectedPayoutsResponse.js'
+import { ListPayoutsResponse } from './model/ListPayoutsResponse.js'
+import { PartnerMetadata } from './model/PartnerMetadata.js'
 import { PaymentMethodDetails } from './model/PaymentMethodDetails.js'
+import { PaymentMethodName } from './model/PaymentMethodName.js'
 import { PaymentMethodType } from './model/PaymentMethodType.js'
+import { Payout } from './model/Payout.js'
+import { PayoutStatusEntry } from './model/PayoutStatusEntry.js'
+import { PayoutStatusName } from './model/PayoutStatusName.js'
+import { PayoutTypeName } from './model/PayoutTypeName.js'
+import { Period } from './model/Period.js'
+import { RelatedIdentifier } from './model/RelatedIdentifier.js'
+import { RelatedIdentifierName } from './model/RelatedIdentifierName.js'
 import { DefaultApi } from './api/DefaultApi.js'
 
 /**
@@ -43,6 +57,12 @@ export {
   AssignmentType,
 
   /**
+     * The Currency model constructor.
+     * @property {module:transfers_v2024_06_01/model/Currency}
+     */
+  Currency,
+
+  /**
      * The Error model constructor.
      * @property {module:transfers_v2024_06_01/model/Error}
      */
@@ -53,6 +73,18 @@ export {
      * @property {module:transfers_v2024_06_01/model/ErrorList}
      */
   ErrorList,
+
+  /**
+     * The ExpectedPayout model constructor.
+     * @property {module:transfers_v2024_06_01/model/ExpectedPayout}
+     */
+  ExpectedPayout,
+
+  /**
+     * The ExpectedPayoutStatusName model constructor.
+     * @property {module:transfers_v2024_06_01/model/ExpectedPayoutStatusName}
+     */
+  ExpectedPayoutStatusName,
 
   /**
      * The ExpiryDate model constructor.
@@ -79,16 +111,82 @@ export {
   InitiatePayoutResponse,
 
   /**
+     * The ListExpectedPayoutsResponse model constructor.
+     * @property {module:transfers_v2024_06_01/model/ListExpectedPayoutsResponse}
+     */
+  ListExpectedPayoutsResponse,
+
+  /**
+     * The ListPayoutsResponse model constructor.
+     * @property {module:transfers_v2024_06_01/model/ListPayoutsResponse}
+     */
+  ListPayoutsResponse,
+
+  /**
+     * The PartnerMetadata model constructor.
+     * @property {module:transfers_v2024_06_01/model/PartnerMetadata}
+     */
+  PartnerMetadata,
+
+  /**
      * The PaymentMethodDetails model constructor.
      * @property {module:transfers_v2024_06_01/model/PaymentMethodDetails}
      */
   PaymentMethodDetails,
 
   /**
+     * The PaymentMethodName model constructor.
+     * @property {module:transfers_v2024_06_01/model/PaymentMethodName}
+     */
+  PaymentMethodName,
+
+  /**
      * The PaymentMethodType model constructor.
      * @property {module:transfers_v2024_06_01/model/PaymentMethodType}
      */
   PaymentMethodType,
+
+  /**
+     * The Payout model constructor.
+     * @property {module:transfers_v2024_06_01/model/Payout}
+     */
+  Payout,
+
+  /**
+     * The PayoutStatusEntry model constructor.
+     * @property {module:transfers_v2024_06_01/model/PayoutStatusEntry}
+     */
+  PayoutStatusEntry,
+
+  /**
+     * The PayoutStatusName model constructor.
+     * @property {module:transfers_v2024_06_01/model/PayoutStatusName}
+     */
+  PayoutStatusName,
+
+  /**
+     * The PayoutTypeName model constructor.
+     * @property {module:transfers_v2024_06_01/model/PayoutTypeName}
+     */
+  PayoutTypeName,
+
+  /**
+     * The Period model constructor.
+     * @property {module:transfers_v2024_06_01/model/Period}
+     */
+  Period,
+
+  /**
+     * The RelatedIdentifier model constructor.
+     * @property {module:transfers_v2024_06_01/model/RelatedIdentifier}
+     */
+  RelatedIdentifier,
+
+  /**
+     * The RelatedIdentifierName model constructor.
+     * @property {module:transfers_v2024_06_01/model/RelatedIdentifierName}
+     */
+  RelatedIdentifierName,
 
   /**
     * The DefaultApi service constructor.

@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Pricing
- * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer pricing information for Amazon Marketplace products.  For more information, refer to the [Product Pricing v2022-05-01 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
+ * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer pricing information for Amazon store products.  For more information, refer to the [Product Pricing v2022-05-01 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
  *
  * The version of the OpenAPI document: 2022-05-01
  *
@@ -17,6 +17,7 @@ import { FulfillmentType } from './FulfillmentType.js'
 import { MoneyType } from './MoneyType.js'
 import { Points } from './Points.js'
 import { PrimeDetails } from './PrimeDetails.js'
+import { Promotion } from './Promotion.js'
 import { ShippingOption } from './ShippingOption.js'
 
 /**
@@ -71,6 +72,7 @@ export class Offer {
       if (data.hasOwnProperty('shippingOptions')) { obj.shippingOptions = ApiClient.convertToType(data.shippingOptions, [ShippingOption]) }
       if (data.hasOwnProperty('points')) { obj.points = Points.constructFromObject(data.points) }
       if (data.hasOwnProperty('primeDetails')) { obj.primeDetails = PrimeDetails.constructFromObject(data.primeDetails) }
+      if (data.hasOwnProperty('promotions')) { obj.promotions = ApiClient.convertToType(data.promotions, [Promotion]) }
     }
     return obj
   }
@@ -211,3 +213,10 @@ Offer.prototype.points = undefined
  * @type {PrimeDetails}
  */
 Offer.prototype.primeDetails = undefined
+
+/**
+ * A list of live promotions applicable to this offer.
+ * @member {Promotion[]} promotions
+ * @type {Promotion[]}
+ */
+Offer.prototype.promotions = undefined
