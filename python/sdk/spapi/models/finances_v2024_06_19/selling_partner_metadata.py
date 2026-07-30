@@ -66,7 +66,7 @@ class SellingPartnerMetadata(object):
     def selling_partner_id(self):
         """Gets the selling_partner_id of this SellingPartnerMetadata.  # noqa: E501
 
-        A unique seller identifier.  # noqa: E501
+        The unique seller identifier.  # noqa: E501
 
         :return: The selling_partner_id of this SellingPartnerMetadata.  # noqa: E501
         :rtype: str
@@ -77,7 +77,7 @@ class SellingPartnerMetadata(object):
     def selling_partner_id(self, selling_partner_id):
         """Sets the selling_partner_id of this SellingPartnerMetadata.
 
-        A unique seller identifier.  # noqa: E501
+        The unique seller identifier.  # noqa: E501
 
         :param selling_partner_id: The selling_partner_id of this SellingPartnerMetadata.  # noqa: E501
         :type: str
@@ -112,7 +112,7 @@ class SellingPartnerMetadata(object):
     def marketplace_id(self):
         """Gets the marketplace_id of this SellingPartnerMetadata.  # noqa: E501
 
-        The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).  # noqa: E501
+        The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).  # noqa: E501
 
         :return: The marketplace_id of this SellingPartnerMetadata.  # noqa: E501
         :rtype: str
@@ -123,7 +123,7 @@ class SellingPartnerMetadata(object):
     def marketplace_id(self, marketplace_id):
         """Sets the marketplace_id of this SellingPartnerMetadata.
 
-        The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).  # noqa: E501
+        The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).  # noqa: E501
 
         :param marketplace_id: The marketplace_id of this SellingPartnerMetadata.  # noqa: E501
         :type: str

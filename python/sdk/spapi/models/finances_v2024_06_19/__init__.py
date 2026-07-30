@@ -14,6 +14,7 @@
 
 # import models into model package
 from spapi.models.finances_v2024_06_19.amazon_pay_context import AmazonPayContext
+from spapi.models.finances_v2024_06_19.balance import Balance
 from spapi.models.finances_v2024_06_19.breakdown import Breakdown
 from spapi.models.finances_v2024_06_19.business_context import BusinessContext
 from spapi.models.finances_v2024_06_19.context import Context
@@ -23,12 +24,16 @@ from spapi.models.finances_v2024_06_19.error import Error
 from spapi.models.finances_v2024_06_19.error_list import ErrorList
 from spapi.models.finances_v2024_06_19.item import Item
 from spapi.models.finances_v2024_06_19.item_related_identifier import ItemRelatedIdentifier
+from spapi.models.finances_v2024_06_19.list_balances_response import ListBalancesResponse
 from spapi.models.finances_v2024_06_19.list_transactions_response import ListTransactionsResponse
 from spapi.models.finances_v2024_06_19.marketplace_details import MarketplaceDetails
+from spapi.models.finances_v2024_06_19.partner_metadata import PartnerMetadata
 from spapi.models.finances_v2024_06_19.payments_context import PaymentsContext
 from spapi.models.finances_v2024_06_19.product_context import ProductContext
 from spapi.models.finances_v2024_06_19.related_identifier import RelatedIdentifier
 from spapi.models.finances_v2024_06_19.selling_partner_metadata import SellingPartnerMetadata
+from spapi.models.finances_v2024_06_19.summary import Summary
+from spapi.models.finances_v2024_06_19.summary_response import SummaryResponse
 from spapi.models.finances_v2024_06_19.time_range_context import TimeRangeContext
 from spapi.models.finances_v2024_06_19.transaction import Transaction
 from spapi.models.finances_v2024_06_19.transactions_payload import TransactionsPayload

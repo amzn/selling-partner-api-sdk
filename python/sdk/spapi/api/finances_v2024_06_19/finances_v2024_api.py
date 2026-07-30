@@ -35,10 +35,234 @@ class FinancesV2024Api(object):
         self.api_client = api_client
         self.classFileName = 'finances_v2024_api'
 
+    def list_balances(self, **kwargs):  # noqa: E501
+        """list_balances  # noqa: E501
+
+        Retrieve a balance. This balance can be a past balances at a specified date, or a current balance. Sub-balances are listed by account type and marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that apply to the operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.list_balances(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param List[str] marketplace_ids: The marketplaces from which to retrieve balances. If omitted, balances from all applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+        :param str balance_type: The type of balance to include in the response. If omitted, all balance types may be included in the response.  **Possible values:** `AVAILABLE`, `RESERVED`, `TOTAL`, `DEFERRED`, `ACCOUNT_LEVEL_RESERVE`
+        :param str account_type: The type of account to include in the response.
+        :param date as_of_date: The date from which you want to retrieve balances. If provided, the response includes historical balances at the specified date. The value must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. If omitted, the point in time balance is provided.
+        :param str next_token: A token that you use to retrieve subsequent pages of results. When there are more than 500 results available, the response will include a `nextToken` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. Repeat this process until the `nextToken` value is null to retrieve all results.
+        :return: ListBalancesResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.list_balances_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.list_balances_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def list_balances_with_http_info(self, **kwargs):  # noqa: E501
+        """list_balances  # noqa: E501
+
+        Retrieve a balance. This balance can be a past balances at a specified date, or a current balance. Sub-balances are listed by account type and marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that apply to the operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.list_balances_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param List[str] marketplace_ids: The marketplaces from which to retrieve balances. If omitted, balances from all applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+        :param str balance_type: The type of balance to include in the response. If omitted, all balance types may be included in the response.  **Possible values:** `AVAILABLE`, `RESERVED`, `TOTAL`, `DEFERRED`, `ACCOUNT_LEVEL_RESERVE`
+        :param str account_type: The type of account to include in the response.
+        :param date as_of_date: The date from which you want to retrieve balances. If provided, the response includes historical balances at the specified date. The value must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format. If omitted, the point in time balance is provided.
+        :param str next_token: A token that you use to retrieve subsequent pages of results. When there are more than 500 results available, the response will include a `nextToken` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. Repeat this process until the `nextToken` value is null to retrieve all results.
+        :return: ListBalancesResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['marketplace_ids', 'balance_type', 'account_type', 'as_of_date', 'next_token']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_balances" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'marketplace_ids' in params:
+            query_params.append(('marketplaceIds', params['marketplace_ids']))  # noqa: E501
+            collection_formats['marketplaceIds'] = 'csv'  # noqa: E501
+        if 'balance_type' in params:
+            query_params.append(('balanceType', params['balance_type']))  # noqa: E501
+        if 'account_type' in params:
+            query_params.append(('accountType', params['account_type']))  # noqa: E501
+        if 'as_of_date' in params:
+            query_params.append(('asOfDate', params['as_of_date']))  # noqa: E501
+        if 'next_token' in params:
+            query_params.append(('nextToken', params['next_token']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/finances/2024-06-19/balances', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ListBalancesResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats, api_models_module=self.api_models_module)
+
+    def list_summary(self, **kwargs):  # noqa: E501
+        """list_summary  # noqa: E501
+
+        Retrieve the financial summary for the specified time period or settlement period.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that apply to the operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.list_summary(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param List[str] marketplace_ids: The marketplaces from which to retrieve summaries. If omitted, summaries from all applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+        :param str account_type: The type of account to include in the response.
+        :param str related_identifier_name: The name of the `relatedIdentifier`. The only possible value is `SETTLEMENT_ID`, the settlement ID associated with the summary.
+        :param str related_identifier_value: The value of the `relatedIdentifier`.
+        :param date period_start: The start of the period for which to retrieve summaries. When provided, the response will only include summaries with transactions that occurred on or after the specified date. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format.
+        :param date period_end: The end of the period for which to retrieve summaries. When provided, the response will only include summaries with transactions that occurred on or before the specified date. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format.
+        :param str next_token: A token that you use to retrieve subsequent pages of results. When there are more results available, the response will include a `nextToken` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. Repeat this process until the `nextToken` value is null to retrieve all results.
+        :return: SummaryResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.list_summary_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.list_summary_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def list_summary_with_http_info(self, **kwargs):  # noqa: E501
+        """list_summary  # noqa: E501
+
+        Retrieve the financial summary for the specified time period or settlement period.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that apply to the operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.list_summary_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param List[str] marketplace_ids: The marketplaces from which to retrieve summaries. If omitted, summaries from all applicable marketplaces may be returned. To find the marketplace ID for a region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+        :param str account_type: The type of account to include in the response.
+        :param str related_identifier_name: The name of the `relatedIdentifier`. The only possible value is `SETTLEMENT_ID`, the settlement ID associated with the summary.
+        :param str related_identifier_value: The value of the `relatedIdentifier`.
+        :param date period_start: The start of the period for which to retrieve summaries. When provided, the response will only include summaries with transactions that occurred on or after the specified date. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format.
+        :param date period_end: The end of the period for which to retrieve summaries. When provided, the response will only include summaries with transactions that occurred on or before the specified date. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date format.
+        :param str next_token: A token that you use to retrieve subsequent pages of results. When there are more results available, the response will include a `nextToken` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. Repeat this process until the `nextToken` value is null to retrieve all results.
+        :return: SummaryResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['marketplace_ids', 'account_type', 'related_identifier_name', 'related_identifier_value', 'period_start', 'period_end', 'next_token']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_summary" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'marketplace_ids' in params:
+            query_params.append(('marketplaceIds', params['marketplace_ids']))  # noqa: E501
+            collection_formats['marketplaceIds'] = 'csv'  # noqa: E501
+        if 'account_type' in params:
+            query_params.append(('accountType', params['account_type']))  # noqa: E501
+        if 'related_identifier_name' in params:
+            query_params.append(('relatedIdentifierName', params['related_identifier_name']))  # noqa: E501
+        if 'related_identifier_value' in params:
+            query_params.append(('relatedIdentifierValue', params['related_identifier_value']))  # noqa: E501
+        if 'period_start' in params:
+            query_params.append(('periodStart', params['period_start']))  # noqa: E501
+        if 'period_end' in params:
+            query_params.append(('periodEnd', params['period_end']))  # noqa: E501
+        if 'next_token' in params:
+            query_params.append(('nextToken', params['next_token']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/finances/2024-06-19/summary', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='SummaryResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats, api_models_module=self.api_models_module)
+
     def list_transactions(self, **kwargs):  # noqa: E501
         """list_transactions  # noqa: E501
 
-        Returns transactions for the given parameters. Financial events might not include orders from the last 48 hours.  **Usage plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).  # noqa: E501
+        Returns transactions for the given parameters. Financial events might not include orders from the last 48 hours. **Note:** If you want to retrieve MFN orders in the US store, do not supply the `marketplaceId` parameter.  **Usage plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.list_transactions(async_req=True)
@@ -47,9 +271,9 @@ class FinancesV2024Api(object):
         :param async_req bool
         :param datetime posted_after: The response includes financial events posted on or after this date. This date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be more than two minutes before the time of the request.  This field is required if you do not specify a related identifier.
         :param datetime posted_before: The response includes financial events posted before (but not on) this date. This date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.  The date-time must be later than `PostedAfter` and more than two minutes before the request was submitted. If `PostedAfter` and `PostedBefore` are more than 180 days apart, the response is empty.  **Default:** Two minutes before the time of the request.
-        :param str marketplace_id: The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+        :param str marketplace_id: The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
         :param str transaction_status: The status of the transaction.  **Possible values:**  * `DEFERRED`: the transaction is currently deferred. * `RELEASED`: the transaction is currently released. * `DEFERRED_RELEASED`: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to `DEFERRED_RELEASED` when the transaction is released.
-        :param str related_identifier_name: The name of the `relatedIdentifier`.  **Possible values:**  * `FINANCIAL_EVENT_GROUP_ID`: the financial event group ID associated with the transaction.  * `ORDER_ID`: the order ID associated with the transaction.    **Note:**   FINANCIAL_EVENT_GROUP_ID and ORDER_ID are the only `relatedIdentifier` with filtering capabilities at the moment. While other `relatedIdentifier` values will be included in the response when available, they cannot be used for filtering purposes.
+        :param str related_identifier_name: The name of the `relatedIdentifier`.  **Possible values:**  * `FINANCIAL_EVENT_GROUP_ID`: the financial event group ID associated with the transaction.  * `ORDER_ID`: the order ID associated with the transaction.    **Note:**  `FINANCIAL_EVENT_GROUP_ID` and `ORDER_ID` are the only `relatedIdentifier` with filtering capabilities at the moment. While other `relatedIdentifier` values will be included in the response when available, they cannot be used for filtering purposes.
         :param str related_identifier_value: The value of the `relatedIdentifier`.
         :param str next_token: The response includes `nextToken` when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
         :return: ListTransactionsResponse
@@ -66,7 +290,7 @@ class FinancesV2024Api(object):
     def list_transactions_with_http_info(self, **kwargs):  # noqa: E501
         """list_transactions  # noqa: E501
 
-        Returns transactions for the given parameters. Financial events might not include orders from the last 48 hours.  **Usage plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).  # noqa: E501
+        Returns transactions for the given parameters. Financial events might not include orders from the last 48 hours. **Note:** If you want to retrieve MFN orders in the US store, do not supply the `marketplaceId` parameter.  **Usage plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.list_transactions_with_http_info(async_req=True)
@@ -75,9 +299,9 @@ class FinancesV2024Api(object):
         :param async_req bool
         :param datetime posted_after: The response includes financial events posted on or after this date. This date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be more than two minutes before the time of the request.  This field is required if you do not specify a related identifier.
         :param datetime posted_before: The response includes financial events posted before (but not on) this date. This date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.  The date-time must be later than `PostedAfter` and more than two minutes before the request was submitted. If `PostedAfter` and `PostedBefore` are more than 180 days apart, the response is empty.  **Default:** Two minutes before the time of the request.
-        :param str marketplace_id: The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+        :param str marketplace_id: The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
         :param str transaction_status: The status of the transaction.  **Possible values:**  * `DEFERRED`: the transaction is currently deferred. * `RELEASED`: the transaction is currently released. * `DEFERRED_RELEASED`: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to `DEFERRED_RELEASED` when the transaction is released.
-        :param str related_identifier_name: The name of the `relatedIdentifier`.  **Possible values:**  * `FINANCIAL_EVENT_GROUP_ID`: the financial event group ID associated with the transaction.  * `ORDER_ID`: the order ID associated with the transaction.    **Note:**   FINANCIAL_EVENT_GROUP_ID and ORDER_ID are the only `relatedIdentifier` with filtering capabilities at the moment. While other `relatedIdentifier` values will be included in the response when available, they cannot be used for filtering purposes.
+        :param str related_identifier_name: The name of the `relatedIdentifier`.  **Possible values:**  * `FINANCIAL_EVENT_GROUP_ID`: the financial event group ID associated with the transaction.  * `ORDER_ID`: the order ID associated with the transaction.    **Note:**  `FINANCIAL_EVENT_GROUP_ID` and `ORDER_ID` are the only `relatedIdentifier` with filtering capabilities at the moment. While other `relatedIdentifier` values will be included in the response when available, they cannot be used for filtering purposes.
         :param str related_identifier_value: The value of the `relatedIdentifier`.
         :param str next_token: The response includes `nextToken` when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
         :return: ListTransactionsResponse

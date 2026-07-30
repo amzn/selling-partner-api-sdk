@@ -236,3 +236,215 @@ class TransfersApi(object):
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats, api_models_module=self.api_models_module)
+
+    def list_expected_payouts(self, **kwargs):  # noqa: E501
+        """list_expected_payouts  # noqa: E501
+
+        Returns the upcoming expected payouts from Amazon associated with a partner's account for the specified parameters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The `x-amzn-RateLimit-Limit` response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.list_expected_payouts(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param List[str] marketplace_ids: An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+        :param str account_type: An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned.
+        :param str next_token: The response includes `nextToken` when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
+        :return: ListExpectedPayoutsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.list_expected_payouts_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.list_expected_payouts_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def list_expected_payouts_with_http_info(self, **kwargs):  # noqa: E501
+        """list_expected_payouts  # noqa: E501
+
+        Returns the upcoming expected payouts from Amazon associated with a partner's account for the specified parameters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The `x-amzn-RateLimit-Limit` response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.list_expected_payouts_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param List[str] marketplace_ids: An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+        :param str account_type: An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned.
+        :param str next_token: The response includes `nextToken` when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
+        :return: ListExpectedPayoutsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['marketplace_ids', 'account_type', 'next_token']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_expected_payouts" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'marketplace_ids' in params:
+            query_params.append(('marketplaceIds', params['marketplace_ids']))  # noqa: E501
+            collection_formats['marketplaceIds'] = 'csv'  # noqa: E501
+        if 'account_type' in params:
+            query_params.append(('accountType', params['account_type']))  # noqa: E501
+        if 'next_token' in params:
+            query_params.append(('nextToken', params['next_token']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/finances/transfers/2024-06-01/payouts/expected', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ListExpectedPayoutsResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats, api_models_module=self.api_models_module)
+
+    def list_payouts(self, **kwargs):  # noqa: E501
+        """list_payouts  # noqa: E501
+
+        Returns a list of payouts for the selling partner's account. Results can be filtered by `marketplaceIds`, `accountType`, date range (`createdAfter` and `createdBefore`), or a specific `payoutId`. By default, the API returns payouts for all available marketplaces and account types. Results are sorted in descending order of their creation dates.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The `x-amzn-RateLimit-Limit` response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.list_payouts(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param List[str] marketplace_ids: An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+        :param datetime created_after: An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied.
+        :param datetime created_before: An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied.
+        :param str payout_id: An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier.
+        :param str account_type: An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned.
+        :param str next_token: The response includes `nextToken` when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
+        :return: ListPayoutsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.list_payouts_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.list_payouts_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def list_payouts_with_http_info(self, **kwargs):  # noqa: E501
+        """list_payouts  # noqa: E501
+
+        Returns a list of payouts for the selling partner's account. Results can be filtered by `marketplaceIds`, `accountType`, date range (`createdAfter` and `createdBefore`), or a specific `payoutId`. By default, the API returns payouts for all available marketplaces and account types. Results are sorted in descending order of their creation dates.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The `x-amzn-RateLimit-Limit` response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.list_payouts_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param List[str] marketplace_ids: An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+        :param datetime created_after: An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied.
+        :param datetime created_before: An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied.
+        :param str payout_id: An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier.
+        :param str account_type: An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned.
+        :param str next_token: The response includes `nextToken` when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
+        :return: ListPayoutsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['marketplace_ids', 'created_after', 'created_before', 'payout_id', 'account_type', 'next_token']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_payouts" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'marketplace_ids' in params:
+            query_params.append(('marketplaceIds', params['marketplace_ids']))  # noqa: E501
+            collection_formats['marketplaceIds'] = 'csv'  # noqa: E501
+        if 'created_after' in params:
+            query_params.append(('createdAfter', params['created_after']))  # noqa: E501
+        if 'created_before' in params:
+            query_params.append(('createdBefore', params['created_before']))  # noqa: E501
+        if 'payout_id' in params:
+            query_params.append(('payoutId', params['payout_id']))  # noqa: E501
+        if 'account_type' in params:
+            query_params.append(('accountType', params['account_type']))  # noqa: E501
+        if 'next_token' in params:
+            query_params.append(('nextToken', params['next_token']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/finances/transfers/2024-06-01/payouts', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ListPayoutsResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats, api_models_module=self.api_models_module)

@@ -50,6 +50,22 @@ class TestTransfersApi(unittest.TestCase):
         self.assert_valid_response_payload(200, response[0])
         pass
 
+    def test_list_expected_payouts(self):
+        
+        self.instruct_backend_mock("transfers".casefold().replace(' ', ''), self.to_camel_case("list_expected_payouts"), "200")
+        response = self.api.list_expected_payouts_with_http_info()
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
+    def test_list_payouts(self):
+        
+        self.instruct_backend_mock("transfers".casefold().replace(' ', ''), self.to_camel_case("list_payouts"), "200")
+        response = self.api.list_payouts_with_http_info()
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
 
     def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
         if api == "financesv0" or api == "financesv2024" or api == "transfers":

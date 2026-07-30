@@ -34,23 +34,28 @@ class ItemCancellation(object):
     """
     swagger_types = {
         'cancellation_request': 'ItemCancellationRequest',
+        'cancellation_execution': 'ItemCancellationExecution',
     }
 
     attribute_map = {
         'cancellation_request': 'cancellationRequest',
+        'cancellation_execution': 'cancellationExecution',
     }
 
-    def __init__(self, cancellation_request=None, _configuration=None):  # noqa: E501
+    def __init__(self, cancellation_request=None, cancellation_execution=None, _configuration=None):  # noqa: E501
         """ItemCancellation - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
         self._cancellation_request = None
+        self._cancellation_execution = None
         self.discriminator = None
 
         if cancellation_request is not None:
             self.cancellation_request = cancellation_request
+        if cancellation_execution is not None:
+            self.cancellation_execution = cancellation_execution
 
     @property
     def cancellation_request(self):
@@ -72,6 +77,27 @@ class ItemCancellation(object):
         """
 
         self._cancellation_request = cancellation_request
+
+    @property
+    def cancellation_execution(self):
+        """Gets the cancellation_execution of this ItemCancellation.  # noqa: E501
+
+
+        :return: The cancellation_execution of this ItemCancellation.  # noqa: E501
+        :rtype: ItemCancellationExecution
+        """
+        return self._cancellation_execution
+
+    @cancellation_execution.setter
+    def cancellation_execution(self, cancellation_execution):
+        """Sets the cancellation_execution of this ItemCancellation.
+
+
+        :param cancellation_execution: The cancellation_execution of this ItemCancellation.  # noqa: E501
+        :type: ItemCancellationExecution
+        """
+
+        self._cancellation_execution = cancellation_execution
 
     def to_dict(self):
         """Returns the model properties as a dict"""

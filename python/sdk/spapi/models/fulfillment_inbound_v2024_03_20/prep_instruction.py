@@ -87,7 +87,7 @@ class PrepInstruction(object):
     def prep_owner(self):
         """Gets the prep_owner of this PrepInstruction.  # noqa: E501
 
-        In some situations, special preparations are required for items and this field reflects the owner of the preparations. Options include `AMAZON`, `SELLER` or `NONE`.  # noqa: E501
+        In some situations, special preparations are required for items and this field reflects the owner of the preparations. Options include `AMAZON`, `SELLER` or `NONE`. `AMAZON` is not an accepted value in the US marketplace.  # noqa: E501
 
         :return: The prep_owner of this PrepInstruction.  # noqa: E501
         :rtype: str
@@ -98,7 +98,7 @@ class PrepInstruction(object):
     def prep_owner(self, prep_owner):
         """Sets the prep_owner of this PrepInstruction.
 
-        In some situations, special preparations are required for items and this field reflects the owner of the preparations. Options include `AMAZON`, `SELLER` or `NONE`.  # noqa: E501
+        In some situations, special preparations are required for items and this field reflects the owner of the preparations. Options include `AMAZON`, `SELLER` or `NONE`. `AMAZON` is not an accepted value in the US marketplace.  # noqa: E501
 
         :param prep_owner: The prep_owner of this PrepInstruction.  # noqa: E501
         :type: str

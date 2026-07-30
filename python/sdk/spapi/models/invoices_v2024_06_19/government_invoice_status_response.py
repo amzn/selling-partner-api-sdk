@@ -89,7 +89,7 @@ class GovernmentInvoiceStatusResponse(object):
     def invoice_external_document_id(self):
         """Gets the invoice_external_document_id of this GovernmentInvoiceStatusResponse.  # noqa: E501
 
-        Government Invoice ID of a successfully authorized invoice.  # noqa: E501
+        The Government Invoice ID of a successfully authorized invoice.  # noqa: E501
 
         :return: The invoice_external_document_id of this GovernmentInvoiceStatusResponse.  # noqa: E501
         :rtype: str
@@ -100,7 +100,7 @@ class GovernmentInvoiceStatusResponse(object):
     def invoice_external_document_id(self, invoice_external_document_id):
         """Sets the invoice_external_document_id of this GovernmentInvoiceStatusResponse.
 
-        Government Invoice ID of a successfully authorized invoice.  # noqa: E501
+        The Government Invoice ID of a successfully authorized invoice.  # noqa: E501
 
         :param invoice_external_document_id: The invoice_external_document_id of this GovernmentInvoiceStatusResponse.  # noqa: E501
         :type: str

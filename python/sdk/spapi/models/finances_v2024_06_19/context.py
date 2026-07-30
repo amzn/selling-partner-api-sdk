@@ -160,7 +160,7 @@ class Context(object):
     def order_type(self):
         """Gets the order_type of this Context.  # noqa: E501
 
-        The transaction's order type.  # noqa: E501
+        The order type of the transaction.  # noqa: E501
 
         :return: The order_type of this Context.  # noqa: E501
         :rtype: str
@@ -171,7 +171,7 @@ class Context(object):
     def order_type(self, order_type):
         """Sets the order_type of this Context.
 
-        The transaction's order type.  # noqa: E501
+        The order type of the transaction.  # noqa: E501
 
         :param order_type: The order_type of this Context.  # noqa: E501
         :type: str
@@ -183,7 +183,7 @@ class Context(object):
     def channel(self):
         """Gets the channel of this Context.  # noqa: E501
 
-        Channel details of related transaction.  # noqa: E501
+        The channel of the transaction. For example: `MFN`.  # noqa: E501
 
         :return: The channel of this Context.  # noqa: E501
         :rtype: str
@@ -194,7 +194,7 @@ class Context(object):
     def channel(self, channel):
         """Sets the channel of this Context.
 
-        Channel details of related transaction.  # noqa: E501
+        The channel of the transaction. For example: `MFN`.  # noqa: E501
 
         :param channel: The channel of this Context.  # noqa: E501
         :type: str
@@ -482,6 +482,7 @@ class Context(object):
     def context_type(self):
         """Gets the context_type of this Context.  # noqa: E501
 
+        The type of context.  # noqa: E501
 
         :return: The context_type of this Context.  # noqa: E501
         :rtype: str
@@ -492,6 +493,7 @@ class Context(object):
     def context_type(self, context_type):
         """Sets the context_type of this Context.
 
+        The type of context.  # noqa: E501
 
         :param context_type: The context_type of this Context.  # noqa: E501
         :type: str

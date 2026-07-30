@@ -14,11 +14,25 @@
 
 # import models into model package
 from spapi.models.transfers_v2024_06_01.assignment_type import AssignmentType
+from spapi.models.transfers_v2024_06_01.currency import Currency
 from spapi.models.transfers_v2024_06_01.error import Error
 from spapi.models.transfers_v2024_06_01.error_list import ErrorList
+from spapi.models.transfers_v2024_06_01.expected_payout import ExpectedPayout
+from spapi.models.transfers_v2024_06_01.expected_payout_status_name import ExpectedPayoutStatusName
 from spapi.models.transfers_v2024_06_01.expiry_date import ExpiryDate
 from spapi.models.transfers_v2024_06_01.get_payment_methods_response import GetPaymentMethodsResponse
 from spapi.models.transfers_v2024_06_01.initiate_payout_request import InitiatePayoutRequest
 from spapi.models.transfers_v2024_06_01.initiate_payout_response import InitiatePayoutResponse
+from spapi.models.transfers_v2024_06_01.list_expected_payouts_response import ListExpectedPayoutsResponse
+from spapi.models.transfers_v2024_06_01.list_payouts_response import ListPayoutsResponse
+from spapi.models.transfers_v2024_06_01.partner_metadata import PartnerMetadata
 from spapi.models.transfers_v2024_06_01.payment_method_details import PaymentMethodDetails
+from spapi.models.transfers_v2024_06_01.payment_method_name import PaymentMethodName
 from spapi.models.transfers_v2024_06_01.payment_method_type import PaymentMethodType
+from spapi.models.transfers_v2024_06_01.payout import Payout
+from spapi.models.transfers_v2024_06_01.payout_status_entry import PayoutStatusEntry
+from spapi.models.transfers_v2024_06_01.payout_status_name import PayoutStatusName
+from spapi.models.transfers_v2024_06_01.payout_type_name import PayoutTypeName
+from spapi.models.transfers_v2024_06_01.period import Period
+from spapi.models.transfers_v2024_06_01.related_identifier import RelatedIdentifier
+from spapi.models.transfers_v2024_06_01.related_identifier_name import RelatedIdentifierName

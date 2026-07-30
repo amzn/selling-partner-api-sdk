@@ -35,6 +35,7 @@ class DeliveryWindowOption(object):
     swagger_types = {
         'availability_type': 'str',
         'delivery_window_option_id': 'str',
+        'discounts': 'List[Incentive]',
         'end_date': 'datetime',
         'start_date': 'datetime',
         'valid_until': 'datetime',
@@ -43,12 +44,13 @@ class DeliveryWindowOption(object):
     attribute_map = {
         'availability_type': 'availabilityType',
         'delivery_window_option_id': 'deliveryWindowOptionId',
+        'discounts': 'discounts',
         'end_date': 'endDate',
         'start_date': 'startDate',
         'valid_until': 'validUntil',
     }
 
-    def __init__(self, availability_type=None, delivery_window_option_id=None, end_date=None, start_date=None, valid_until=None, _configuration=None):  # noqa: E501
+    def __init__(self, availability_type=None, delivery_window_option_id=None, discounts=None, end_date=None, start_date=None, valid_until=None, _configuration=None):  # noqa: E501
         """DeliveryWindowOption - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -56,6 +58,7 @@ class DeliveryWindowOption(object):
 
         self._availability_type = None
         self._delivery_window_option_id = None
+        self._discounts = None
         self._end_date = None
         self._start_date = None
         self._valid_until = None
@@ -63,6 +66,8 @@ class DeliveryWindowOption(object):
 
         self.availability_type = availability_type
         self.delivery_window_option_id = delivery_window_option_id
+        if discounts is not None:
+            self.discounts = discounts
         self.end_date = end_date
         self.start_date = start_date
         self.valid_until = valid_until
@@ -125,6 +130,32 @@ class DeliveryWindowOption(object):
             raise ValueError(r"Invalid value for `delivery_window_option_id`, must be a follow pattern or equal to `/^[a-zA-Z0-9-]*$/`")  # noqa: E501
 
         self._delivery_window_option_id = delivery_window_option_id
+
+    @property
+    def discounts(self):
+        """Gets the discounts of this DeliveryWindowOption.  # noqa: E501
+
+        Discounts for the offered option.  # noqa: E501
+
+        :return: The discounts of this DeliveryWindowOption.  # noqa: E501
+        :rtype: List[Incentive]
+        """
+        return self._discounts
+
+    @discounts.setter
+    def discounts(self, discounts):
+        """Sets the discounts of this DeliveryWindowOption.
+
+        Discounts for the offered option.  # noqa: E501
+
+        :param discounts: The discounts of this DeliveryWindowOption.  # noqa: E501
+        :type: List[Incentive]
+        """
+        if (self._configuration.client_side_validation and
+                discounts is not None and len(discounts) < 1):
+            raise ValueError("Invalid value for `discounts`, number of items must be greater than or equal to `1`")  # noqa: E501
+
+        self._discounts = discounts
 
     @property
     def end_date(self):
