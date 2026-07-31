@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * OpenAPI spec version: 2021-08-01
  *
@@ -75,11 +75,11 @@ public class ListingsApi {
      * Build call for deleteListingsItem
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -170,11 +170,11 @@ public class ListingsApi {
      * Partner API documentation.
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ListingsItemSubmissionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -198,11 +198,11 @@ public class ListingsApi {
      * Partner API documentation.
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @return ListingsItemSubmissionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -225,11 +225,11 @@ public class ListingsApi {
      * Partner API documentation.
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;ListingsItemSubmissionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -262,11 +262,11 @@ public class ListingsApi {
      * Partner API documentation.
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @return ApiResponse&lt;ListingsItemSubmissionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -287,11 +287,11 @@ public class ListingsApi {
      * in the Selling Partner API documentation.
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -316,11 +316,11 @@ public class ListingsApi {
      * in the Selling Partner API documentation.
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -361,11 +361,11 @@ public class ListingsApi {
      * Build call for getListingsItem
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param includedData A comma-delimited list of data sets to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional)
      * @param progressRequestListener Progress request listener
@@ -462,11 +462,11 @@ public class ListingsApi {
      * Partner API documentation.
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param includedData A comma-delimited list of data sets to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -497,11 +497,11 @@ public class ListingsApi {
      * Partner API documentation.
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param includedData A comma-delimited list of data sets to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional)
      * @return Item
@@ -526,11 +526,11 @@ public class ListingsApi {
      * Partner API documentation.
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param includedData A comma-delimited list of data sets to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -571,11 +571,11 @@ public class ListingsApi {
      * Partner API documentation.
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param includedData A comma-delimited list of data sets to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional)
      * @return ApiResponse&lt;Item&gt;
@@ -599,11 +599,11 @@ public class ListingsApi {
      * Partner API documentation.
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param includedData A comma-delimited list of data sets to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -632,11 +632,11 @@ public class ListingsApi {
      * Partner API documentation.
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param includedData A comma-delimited list of data sets to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -681,14 +681,14 @@ public class ListingsApi {
      *
      * @param body The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      *     (optional)
-     * @param mode The mode of operation for the request. (optional)
+     * @param mode Describes the mode of operation for the request. (optional)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -794,14 +794,14 @@ public class ListingsApi {
      *
      * @param body The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      *     (optional)
-     * @param mode The mode of operation for the request. (optional)
+     * @param mode Describes the mode of operation for the request. (optional)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ListingsItemSubmissionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -834,14 +834,14 @@ public class ListingsApi {
      *
      * @param body The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      *     (optional)
-     * @param mode The mode of operation for the request. (optional)
+     * @param mode Describes the mode of operation for the request. (optional)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @return ListingsItemSubmissionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -872,14 +872,14 @@ public class ListingsApi {
      *
      * @param body The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      *     (optional)
-     * @param mode The mode of operation for the request. (optional)
+     * @param mode Describes the mode of operation for the request. (optional)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;ListingsItemSubmissionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -922,14 +922,14 @@ public class ListingsApi {
      *
      * @param body The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      *     (optional)
-     * @param mode The mode of operation for the request. (optional)
+     * @param mode Describes the mode of operation for the request. (optional)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @return ApiResponse&lt;ListingsItemSubmissionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -960,14 +960,14 @@ public class ListingsApi {
      *
      * @param body The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      *     (optional)
-     * @param mode The mode of operation for the request. (optional)
+     * @param mode Describes the mode of operation for the request. (optional)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -999,14 +999,14 @@ public class ListingsApi {
      *
      * @param body The request body schema for the &#x60;patchListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      *     (optional)
-     * @param mode The mode of operation for the request. (optional)
+     * @param mode Describes the mode of operation for the request. (optional)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -1051,14 +1051,14 @@ public class ListingsApi {
      *
      * @param body The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      *     (optional)
-     * @param mode The mode of operation for the request. (optional)
+     * @param mode Describes the mode of operation for the request. (optional)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1164,14 +1164,14 @@ public class ListingsApi {
      *
      * @param body The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      *     (optional)
-     * @param mode The mode of operation for the request. (optional)
+     * @param mode Describes the mode of operation for the request. (optional)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ListingsItemSubmissionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1204,14 +1204,14 @@ public class ListingsApi {
      *
      * @param body The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      *     (optional)
-     * @param mode The mode of operation for the request. (optional)
+     * @param mode Describes the mode of operation for the request. (optional)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @return ListingsItemSubmissionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1242,14 +1242,14 @@ public class ListingsApi {
      *
      * @param body The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      *     (optional)
-     * @param mode The mode of operation for the request. (optional)
+     * @param mode Describes the mode of operation for the request. (optional)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;ListingsItemSubmissionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1292,14 +1292,14 @@ public class ListingsApi {
      *
      * @param body The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      *     (optional)
-     * @param mode The mode of operation for the request. (optional)
+     * @param mode Describes the mode of operation for the request. (optional)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @return ApiResponse&lt;ListingsItemSubmissionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1328,14 +1328,14 @@ public class ListingsApi {
      *
      * @param body The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      *     (optional)
-     * @param mode The mode of operation for the request. (optional)
+     * @param mode Describes the mode of operation for the request. (optional)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1366,14 +1366,14 @@ public class ListingsApi {
      *
      * @param body The request body schema for the &#x60;putListingsItem&#x60; operation. (required)
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param sku A selling partner provided identifier for an Amazon listing. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param sku A selling partner-provided identifier for an Amazon listing. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      *     (optional)
-     * @param mode The mode of operation for the request. (optional)
+     * @param mode Describes the mode of operation for the request. (optional)
      * @param issueLocale A locale for localization of issues. When not provided, the default language code of the first
-     *     marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
-     *     default to &#x60;en_US&#x60; when a localization is not available in the specified locale. (optional)
+     *     Amazon store is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages
+     *     default to &#x60;en_US&#x60; when localization is not available for the specified locale. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -1417,12 +1417,12 @@ public class ListingsApi {
      * Build call for searchListingsItems
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale that is used to localize issues. When not provided, the default language code of the
-     *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
+     *     first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
      *     localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
      *     (optional)
-     * @param includedData A comma-delimited list of datasets that you want to include in the response. Default:
+     * @param includedData A comma-delimited list of data sets that you want to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional)
      * @param identifiers A comma-delimited list of product identifiers that you can use to search for listings items.
      *     **Note**: 1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use
@@ -1620,12 +1620,12 @@ public class ListingsApi {
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale that is used to localize issues. When not provided, the default language code of the
-     *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
+     *     first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
      *     localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
      *     (optional)
-     * @param includedData A comma-delimited list of datasets that you want to include in the response. Default:
+     * @param includedData A comma-delimited list of data sets that you want to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional)
      * @param identifiers A comma-delimited list of product identifiers that you can use to search for listings items.
      *     **Note**: 1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use
@@ -1722,12 +1722,12 @@ public class ListingsApi {
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale that is used to localize issues. When not provided, the default language code of the
-     *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
+     *     first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
      *     localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
      *     (optional)
-     * @param includedData A comma-delimited list of datasets that you want to include in the response. Default:
+     * @param includedData A comma-delimited list of data sets that you want to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional)
      * @param identifiers A comma-delimited list of product identifiers that you can use to search for listings items.
      *     **Note**: 1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use
@@ -1822,12 +1822,12 @@ public class ListingsApi {
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale that is used to localize issues. When not provided, the default language code of the
-     *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
+     *     first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
      *     localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
      *     (optional)
-     * @param includedData A comma-delimited list of datasets that you want to include in the response. Default:
+     * @param includedData A comma-delimited list of data sets that you want to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional)
      * @param identifiers A comma-delimited list of product identifiers that you can use to search for listings items.
      *     **Note**: 1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use
@@ -1934,12 +1934,12 @@ public class ListingsApi {
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale that is used to localize issues. When not provided, the default language code of the
-     *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
+     *     first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
      *     localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
      *     (optional)
-     * @param includedData A comma-delimited list of datasets that you want to include in the response. Default:
+     * @param includedData A comma-delimited list of data sets that you want to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional)
      * @param identifiers A comma-delimited list of product identifiers that you can use to search for listings items.
      *     **Note**: 1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use
@@ -2033,12 +2033,12 @@ public class ListingsApi {
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale that is used to localize issues. When not provided, the default language code of the
-     *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
+     *     first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
      *     localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
      *     (optional)
-     * @param includedData A comma-delimited list of datasets that you want to include in the response. Default:
+     * @param includedData A comma-delimited list of data sets that you want to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional)
      * @param identifiers A comma-delimited list of product identifiers that you can use to search for listings items.
      *     **Note**: 1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use
@@ -2134,12 +2134,12 @@ public class ListingsApi {
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param sellerId A selling partner identifier, such as a merchant account or vendor code. (required)
-     * @param marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request. (required)
+     * @param marketplaceIds A comma-delimited list of Amazon store identifiers for the request. (required)
      * @param issueLocale A locale that is used to localize issues. When not provided, the default language code of the
-     *     first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
+     *     first Amazon store is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. When a
      *     localization is not available in the specified locale, localized messages default to \&quot;en_US\&quot;.
      *     (optional)
-     * @param includedData A comma-delimited list of datasets that you want to include in the response. Default:
+     * @param includedData A comma-delimited list of data sets that you want to include in the response. Default:
      *     &#x60;summaries&#x60;. (optional)
      * @param identifiers A comma-delimited list of product identifiers that you can use to search for listings items.
      *     **Note**: 1. This is required when you specify &#x60;identifiersType&#x60;. 2. You cannot use

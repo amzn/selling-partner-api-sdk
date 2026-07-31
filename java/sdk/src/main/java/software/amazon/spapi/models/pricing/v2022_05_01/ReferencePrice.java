@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Pricing
- * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer pricing information for Amazon Marketplace products.  For more information, refer to the [Product Pricing v2022-05-01 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
+ * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer pricing information for Amazon store products.  For more information, refer to the [Product Pricing v2022-05-01 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
  *
  * OpenAPI spec version: 2022-05-01
  *
@@ -32,15 +32,15 @@ public class ReferencePrice {
 
     /**
      * Reference price type (e.g., &#x60;CompetitivePriceThreshold&#x60;, &#x60;WasPrice&#x60;,
-     * &#x60;CompetitivePrice&#x60;). For definitions, see the [Product Pricing API Use Case
-     * Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
+     * &#x60;CompetitivePrice&#x60;). For definitions, refer to the [Product Pricing API Use Case
+     * Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api).
      *
      * @return name
      */
     @Schema(
             required = true,
             description =
-                    "Reference price type (e.g., `CompetitivePriceThreshold`, `WasPrice`, `CompetitivePrice`). For definitions, see the [Product Pricing API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).")
+                    "Reference price type (e.g., `CompetitivePriceThreshold`, `WasPrice`, `CompetitivePrice`). For definitions, refer to the [Product Pricing API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api).")
     public String getName() {
         return name;
     }

@@ -22,8 +22,8 @@ import java.io.IOException;
 import java.util.Objects;
 import org.threeten.bp.OffsetDateTime;
 
-/** Additional Information about the item. */
-@Schema(description = "Additional Information about the item.")
+/** Additional information about the item. */
+@Schema(description = "Additional information about the item.")
 public class Context {
     @SerializedName("contextType")
     private String contextType = null;
@@ -123,11 +123,11 @@ public class Context {
     }
 
     /**
-     * Get contextType
+     * The type of context.
      *
      * @return contextType
      */
-    @Schema(required = true, description = "")
+    @Schema(required = true, description = "The type of context.")
     public String getContextType() {
         return contextType;
     }
@@ -161,11 +161,11 @@ public class Context {
     }
 
     /**
-     * The transaction&#x27;s order type.
+     * The order type of the transaction.
      *
      * @return orderType
      */
-    @Schema(description = "The transaction's order type.")
+    @Schema(description = "The order type of the transaction.")
     public String getOrderType() {
         return orderType;
     }
@@ -180,11 +180,11 @@ public class Context {
     }
 
     /**
-     * Channel details of related transaction.
+     * The channel of the transaction. For example: &#x60;MFN&#x60;.
      *
      * @return channel
      */
-    @Schema(description = "Channel details of related transaction.")
+    @Schema(description = "The channel of the transaction. For example: `MFN`.")
     public String getChannel() {
         return channel;
     }

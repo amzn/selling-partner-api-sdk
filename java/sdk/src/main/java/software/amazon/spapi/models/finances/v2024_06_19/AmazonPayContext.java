@@ -53,11 +53,11 @@ public class AmazonPayContext {
     }
 
     /**
-     * The transaction&#x27;s order type.
+     * The order type of the transaction.
      *
      * @return orderType
      */
-    @Schema(description = "The transaction's order type.")
+    @Schema(description = "The order type of the transaction.")
     public String getOrderType() {
         return orderType;
     }
@@ -72,11 +72,11 @@ public class AmazonPayContext {
     }
 
     /**
-     * Channel details of related transaction.
+     * The channel of the transaction. For example: &#x60;MFN&#x60;.
      *
      * @return channel
      */
-    @Schema(description = "Channel details of related transaction.")
+    @Schema(description = "The channel of the transaction. For example: `MFN`.")
     public String getChannel() {
         return channel;
     }

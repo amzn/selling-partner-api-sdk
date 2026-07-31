@@ -16,10 +16,10 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** Object containing the documentId and a S3 pre-signed URL to download the specified document file. */
+/** The &#x60;documentId&#x60; and an S3 pre-signed URL that you can use to download the specified document file. */
 @Schema(
         description =
-                "Object containing the documentId and a S3 pre-signed URL to download the specified document file.")
+                "The `documentId` and an S3 pre-signed URL that you can use to download the specified document file.")
 public class InvoiceDocument {
     @SerializedName("invoiceDocumentUrl")
     private String invoiceDocumentUrl = null;
@@ -30,13 +30,14 @@ public class InvoiceDocument {
     }
 
     /**
-     * A pre-signed URL to download the invoice document in its original format. This URL expires after 30 seconds.
+     * A pre-signed URL that you can use to download the invoice document in its original format. This URL expires after
+     * 30 seconds.
      *
      * @return invoiceDocumentUrl
      */
     @Schema(
             description =
-                    "A pre-signed URL to download the invoice document in its original format. This URL expires after 30 seconds.")
+                    "A pre-signed URL that you can use to download the invoice document in its original format. This URL expires after 30 seconds.")
     public String getInvoiceDocumentUrl() {
         return invoiceDocumentUrl;
     }

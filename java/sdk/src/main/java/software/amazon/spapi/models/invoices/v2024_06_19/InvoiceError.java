@@ -16,8 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** An invoice creation error occurrence. */
-@Schema(description = "An invoice creation error occurrence.")
+/** An invoice creation error occurred. */
+@Schema(description = "An invoice creation error occurred.")
 public class InvoiceError {
     @SerializedName("description")
     private String description = null;
@@ -31,11 +31,11 @@ public class InvoiceError {
     }
 
     /**
-     * A text description of the error.
+     * A description of the error.
      *
      * @return description
      */
-    @Schema(description = "A text description of the error.")
+    @Schema(description = "A description of the error.")
     public String getDescription() {
         return description;
     }

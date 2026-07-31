@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * OpenAPI spec version: 2021-08-01
  *
@@ -54,11 +54,11 @@ public class Item {
     }
 
     /**
-     * A selling partner provided identifier for an Amazon listing.
+     * A selling partner-provided identifier for an Amazon listing.
      *
      * @return sku
      */
-    @Schema(required = true, description = "A selling partner provided identifier for an Amazon listing.")
+    @Schema(required = true, description = "A selling partner-provided identifier for an Amazon listing.")
     public String getSku() {
         return sku;
     }
@@ -157,11 +157,11 @@ public class Item {
     }
 
     /**
-     * The fulfillment availability for the listings item.
+     * The listings item&#x27;s fulfillment availability.
      *
      * @return fulfillmentAvailability
      */
-    @Schema(description = "The fulfillment availability for the listings item.")
+    @Schema(description = "The listings item's fulfillment availability.")
     public List<FulfillmentAvailability> getFulfillmentAvailability() {
         return fulfillmentAvailability;
     }
@@ -184,11 +184,11 @@ public class Item {
     }
 
     /**
-     * The vendor procurement information for the listings item.
+     * The listings item&#x27;s vendor procurement information.
      *
      * @return procurement
      */
-    @Schema(description = "The vendor procurement information for the listings item.")
+    @Schema(description = "The listings item's vendor procurement information.")
     public List<ItemProcurement> getProcurement() {
         return procurement;
     }

@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * OpenAPI spec version: 2021-08-01
  *
@@ -31,7 +31,7 @@ import org.threeten.bp.OffsetDateTime;
                 "Conveying the status of the listed enforcement actions and, if applicable, provides information about the exemption's expiry date.")
 public class IssueExemption {
     /**
-     * This field indicates the current exemption status for the listed enforcement actions. It can take values such as
+     * Indicates the current exemption status for the listed enforcement actions. It can take values such as
      * &#x60;EXEMPT&#x60;, signifying permanent exemption, &#x60;EXEMPT_UNTIL_EXPIRY_DATE&#x60; indicating temporary
      * exemption until a specified date, or &#x60;NOT_EXEMPT&#x60; signifying no exemptions, and enforcement actions
      * were already applied.
@@ -95,7 +95,7 @@ public class IssueExemption {
     }
 
     /**
-     * This field indicates the current exemption status for the listed enforcement actions. It can take values such as
+     * Indicates the current exemption status for the listed enforcement actions. It can take values such as
      * &#x60;EXEMPT&#x60;, signifying permanent exemption, &#x60;EXEMPT_UNTIL_EXPIRY_DATE&#x60; indicating temporary
      * exemption until a specified date, or &#x60;NOT_EXEMPT&#x60; signifying no exemptions, and enforcement actions
      * were already applied.
@@ -105,7 +105,7 @@ public class IssueExemption {
     @Schema(
             required = true,
             description =
-                    "This field indicates the current exemption status for the listed enforcement actions. It can take values such as `EXEMPT`, signifying permanent exemption, `EXEMPT_UNTIL_EXPIRY_DATE` indicating temporary exemption until a specified date, or `NOT_EXEMPT` signifying no exemptions, and enforcement actions were already applied.")
+                    "Indicates the current exemption status for the listed enforcement actions. It can take values such as `EXEMPT`, signifying permanent exemption, `EXEMPT_UNTIL_EXPIRY_DATE` indicating temporary exemption until a specified date, or `NOT_EXEMPT` signifying no exemptions, and enforcement actions were already applied.")
     public StatusEnum getStatus() {
         return status;
     }

@@ -63,11 +63,11 @@ public class GovernmentInvoiceStatusResponse {
     }
 
     /**
-     * Government Invoice ID of a successfully authorized invoice.
+     * The Government Invoice ID of a successfully authorized invoice.
      *
      * @return invoiceExternalDocumentId
      */
-    @Schema(description = "Government Invoice ID of a successfully authorized invoice.")
+    @Schema(description = "The Government Invoice ID of a successfully authorized invoice.")
     public String getInvoiceExternalDocumentId() {
         return invoiceExternalDocumentId;
     }

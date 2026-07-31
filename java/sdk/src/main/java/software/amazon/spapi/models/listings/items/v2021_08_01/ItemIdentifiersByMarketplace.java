@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * OpenAPI spec version: 2021-08-01
  *
@@ -16,10 +16,10 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** Identity attributes associated with the item in the Amazon catalog for the indicated Amazon marketplace. */
+/** Identity attributes associated with the item in the Amazon catalog for the indicated Amazon store. */
 @Schema(
         description =
-                "Identity attributes associated with the item in the Amazon catalog for the indicated Amazon marketplace.")
+                "Identity attributes associated with the item in the Amazon catalog for the indicated Amazon store.")
 public class ItemIdentifiersByMarketplace {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -33,11 +33,11 @@ public class ItemIdentifiersByMarketplace {
     }
 
     /**
-     * A marketplace identifier. Identifies the Amazon marketplace for the listings item.
+     * Amazon store identifier. Identifies the listings item&#x27;s Amazon store.
      *
      * @return marketplaceId
      */
-    @Schema(description = "A marketplace identifier. Identifies the Amazon marketplace for the listings item.")
+    @Schema(description = "Amazon store identifier. Identifies the listings item's Amazon store.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -52,11 +52,11 @@ public class ItemIdentifiersByMarketplace {
     }
 
     /**
-     * Amazon Standard Identification Number (ASIN) of the listings item.
+     * The ASIN of the listings item.
      *
      * @return asin
      */
-    @Schema(description = "Amazon Standard Identification Number (ASIN) of the listings item.")
+    @Schema(description = "The ASIN of the listings item.")
     public String getAsin() {
         return asin;
     }

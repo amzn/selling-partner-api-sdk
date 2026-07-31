@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * OpenAPI spec version: 2021-08-01
  *
@@ -21,13 +21,13 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
-/** Offer details of a listings item for an Amazon marketplace. */
-@Schema(description = "Offer details of a listings item for an Amazon marketplace.")
+/** Offer details for a listings item for the specified Amazon store. */
+@Schema(description = "Offer details for a listings item for the specified Amazon store.")
 public class ItemOfferByMarketplace {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
 
-    /** Type of offer for the listings item. */
+    /** The listings item&#x27;s offer type. */
     @JsonAdapter(OfferTypeEnum.Adapter.class)
     public enum OfferTypeEnum {
         @SerializedName("B2C")
@@ -91,11 +91,11 @@ public class ItemOfferByMarketplace {
     }
 
     /**
-     * The Amazon marketplace identifier.
+     * Amazon store identifier.
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "The Amazon marketplace identifier.")
+    @Schema(required = true, description = "Amazon store identifier.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -110,11 +110,11 @@ public class ItemOfferByMarketplace {
     }
 
     /**
-     * Type of offer for the listings item.
+     * The listings item&#x27;s offer type.
      *
      * @return offerType
      */
-    @Schema(required = true, description = "Type of offer for the listings item.")
+    @Schema(required = true, description = "The listings item's offer type.")
     public OfferTypeEnum getOfferType() {
         return offerType;
     }

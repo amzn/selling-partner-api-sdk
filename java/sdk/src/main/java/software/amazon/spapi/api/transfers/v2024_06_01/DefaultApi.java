@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
@@ -36,6 +37,8 @@ import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.transfers.v2024_06_01.GetPaymentMethodsResponse;
 import software.amazon.spapi.models.transfers.v2024_06_01.InitiatePayoutRequest;
 import software.amazon.spapi.models.transfers.v2024_06_01.InitiatePayoutResponse;
+import software.amazon.spapi.models.transfers.v2024_06_01.ListExpectedPayoutsResponse;
+import software.amazon.spapi.models.transfers.v2024_06_01.ListPayoutsResponse;
 
 public class DefaultApi {
     private ApiClient apiClient;
@@ -55,6 +58,13 @@ public class DefaultApi {
     public final Bucket initiatePayoutBucket = Bucket.builder()
             .addLimit(config.getLimit("DefaultApi-initiatePayout"))
             .build();
+
+    public final Bucket listExpectedPayoutsBucket = Bucket.builder()
+            .addLimit(config.getLimit("DefaultApi-listExpectedPayouts"))
+            .build();
+
+    public final Bucket listPayoutsBucket =
+            Bucket.builder().addLimit(config.getLimit("DefaultApi-listPayouts")).build();
 
     /**
      * Build call for getPaymentMethods
@@ -526,6 +536,744 @@ public class DefaultApi {
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("initiatePayout operation exceeds rate limit");
+    }
+    /**
+     * Build call for listExpectedPayouts
+     *
+     * @param marketplaceIds An optional query parameter that specifies the marketplaces from which to retrieve expected
+     *     payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When
+     *     provided, the response will only include expected payouts associated with the specified marketplaces. If
+     *     omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for
+     *     your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (optional)
+     * @param accountType An optional query parameter used to filter the response by a specific account type. When
+     *     provided, only expected payouts associated with the specified account type will be returned. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     page size. To get the next page of results, call the operation with this token and include the same arguments
+     *     as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60;
+     *     is null. Note that this operation can return empty pages. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call listExpectedPayoutsCall(
+            List<String> marketplaceIds,
+            String accountType,
+            String nextToken,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/finances/transfers/2024-06-01/payouts/expected"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/transfers/2024-06-01/payouts/expected";
+        } else {
+            localVarPath = "/finances/transfers/2024-06-01/payouts/expected";
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (marketplaceIds != null)
+            localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "marketplaceIds", marketplaceIds));
+        if (accountType != null) localVarQueryParams.addAll(apiClient.parameterToPair("accountType", accountType));
+        if (nextToken != null) localVarQueryParams.addAll(apiClient.parameterToPair("nextToken", nextToken));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {};
+
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "GET",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call listExpectedPayoutsValidateBeforeCall(
+            List<String> marketplaceIds,
+            String accountType,
+            String nextToken,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+
+        return listExpectedPayoutsCall(marketplaceIds, accountType, nextToken, progressRequestListener);
+    }
+
+    /**
+     * Returns the upcoming expected payouts from Amazon associated with a partner&#x27;s account for the specified
+     * parameters. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds An optional query parameter that specifies the marketplaces from which to retrieve expected
+     *     payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When
+     *     provided, the response will only include expected payouts associated with the specified marketplaces. If
+     *     omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for
+     *     your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (optional)
+     * @param accountType An optional query parameter used to filter the response by a specific account type. When
+     *     provided, only expected payouts associated with the specified account type will be returned. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     page size. To get the next page of results, call the operation with this token and include the same arguments
+     *     as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60;
+     *     is null. Note that this operation can return empty pages. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListExpectedPayoutsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListExpectedPayoutsResponse listExpectedPayouts(
+            List<String> marketplaceIds, String accountType, String nextToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListExpectedPayoutsResponse> resp =
+                listExpectedPayoutsWithHttpInfo(marketplaceIds, accountType, nextToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the upcoming expected payouts from Amazon associated with a partner&#x27;s account for the specified
+     * parameters. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds An optional query parameter that specifies the marketplaces from which to retrieve expected
+     *     payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When
+     *     provided, the response will only include expected payouts associated with the specified marketplaces. If
+     *     omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for
+     *     your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (optional)
+     * @param accountType An optional query parameter used to filter the response by a specific account type. When
+     *     provided, only expected payouts associated with the specified account type will be returned. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     page size. To get the next page of results, call the operation with this token and include the same arguments
+     *     as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60;
+     *     is null. Note that this operation can return empty pages. (optional)
+     * @return ListExpectedPayoutsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListExpectedPayoutsResponse listExpectedPayouts(
+            List<String> marketplaceIds, String accountType, String nextToken) throws ApiException, LWAException {
+        ApiResponse<ListExpectedPayoutsResponse> resp =
+                listExpectedPayoutsWithHttpInfo(marketplaceIds, accountType, nextToken, null);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the upcoming expected payouts from Amazon associated with a partner&#x27;s account for the specified
+     * parameters. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds An optional query parameter that specifies the marketplaces from which to retrieve expected
+     *     payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When
+     *     provided, the response will only include expected payouts associated with the specified marketplaces. If
+     *     omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for
+     *     your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (optional)
+     * @param accountType An optional query parameter used to filter the response by a specific account type. When
+     *     provided, only expected payouts associated with the specified account type will be returned. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     page size. To get the next page of results, call the operation with this token and include the same arguments
+     *     as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60;
+     *     is null. Note that this operation can return empty pages. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListExpectedPayoutsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListExpectedPayoutsResponse> listExpectedPayoutsWithHttpInfo(
+            List<String> marketplaceIds, String accountType, String nextToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listExpectedPayoutsValidateBeforeCall(marketplaceIds, accountType, nextToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "DefaultApi-listExpectedPayouts");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listExpectedPayoutsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListExpectedPayoutsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listExpectedPayouts operation exceeds rate limit");
+    }
+
+    /**
+     * Returns the upcoming expected payouts from Amazon associated with a partner&#x27;s account for the specified
+     * parameters. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds An optional query parameter that specifies the marketplaces from which to retrieve expected
+     *     payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When
+     *     provided, the response will only include expected payouts associated with the specified marketplaces. If
+     *     omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for
+     *     your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (optional)
+     * @param accountType An optional query parameter used to filter the response by a specific account type. When
+     *     provided, only expected payouts associated with the specified account type will be returned. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     page size. To get the next page of results, call the operation with this token and include the same arguments
+     *     as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60;
+     *     is null. Note that this operation can return empty pages. (optional)
+     * @return ApiResponse&lt;ListExpectedPayoutsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListExpectedPayoutsResponse> listExpectedPayoutsWithHttpInfo(
+            List<String> marketplaceIds, String accountType, String nextToken) throws ApiException, LWAException {
+        return listExpectedPayoutsWithHttpInfo(marketplaceIds, accountType, nextToken, null);
+    }
+
+    /**
+     * (asynchronously) Returns the upcoming expected payouts from Amazon associated with a partner&#x27;s account for
+     * the specified parameters. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds An optional query parameter that specifies the marketplaces from which to retrieve expected
+     *     payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When
+     *     provided, the response will only include expected payouts associated with the specified marketplaces. If
+     *     omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for
+     *     your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (optional)
+     * @param accountType An optional query parameter used to filter the response by a specific account type. When
+     *     provided, only expected payouts associated with the specified account type will be returned. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     page size. To get the next page of results, call the operation with this token and include the same arguments
+     *     as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60;
+     *     is null. Note that this operation can return empty pages. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listExpectedPayoutsAsync(
+            List<String> marketplaceIds,
+            String accountType,
+            String nextToken,
+            final ApiCallback<ListExpectedPayoutsResponse> callback)
+            throws ApiException, LWAException {
+        return listExpectedPayoutsAsync(marketplaceIds, accountType, nextToken, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the upcoming expected payouts from Amazon associated with a partner&#x27;s account for
+     * the specified parameters. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds An optional query parameter that specifies the marketplaces from which to retrieve expected
+     *     payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When
+     *     provided, the response will only include expected payouts associated with the specified marketplaces. If
+     *     omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for
+     *     your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     *     (optional)
+     * @param accountType An optional query parameter used to filter the response by a specific account type. When
+     *     provided, only expected payouts associated with the specified account type will be returned. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     page size. To get the next page of results, call the operation with this token and include the same arguments
+     *     as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60;
+     *     is null. Note that this operation can return empty pages. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listExpectedPayoutsAsync(
+            List<String> marketplaceIds,
+            String accountType,
+            String nextToken,
+            final ApiCallback<ListExpectedPayoutsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call =
+                listExpectedPayoutsValidateBeforeCall(marketplaceIds, accountType, nextToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "DefaultApi-listExpectedPayouts");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listExpectedPayoutsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListExpectedPayoutsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("listExpectedPayouts operation exceeds rate limit");
+    }
+    /**
+     * Build call for listPayouts
+     *
+     * @param marketplaceIds An optional query parameter that specifies the marketplaces from which to retrieve payouts.
+     *     The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the
+     *     response will only include payouts associated with the specified marketplaces. If omitted, payouts from all
+     *     applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param createdAfter An optional query parameter to filter payouts created on or after this date-time. When
+     *     provided, the response will only include payouts with a creation date on or after the specified date-time.
+     *     The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time
+     *     format. If omitted, no start date filter is applied. (optional)
+     * @param createdBefore An optional query parameter to filter payouts created before this date-time. When provided,
+     *     the response will only include payouts with a creation date before the specified date-time (exclusive). The
+     *     value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time
+     *     format. If omitted, no end date filter is applied. (optional)
+     * @param payoutId An optional query parameter that specifies the payout to retrieve. When provided, the response
+     *     will only include the payout matching the specified identifier. (optional)
+     * @param accountType An optional query parameter to filter payouts by a specific account type. When provided, only
+     *     payouts associated with the specified account type will be returned. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     page size. To get the next page of results, call the operation with this token and include the same arguments
+     *     as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60;
+     *     is null. Note that this operation can return empty pages. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call listPayoutsCall(
+            List<String> marketplaceIds,
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String payoutId,
+            String accountType,
+            String nextToken,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/finances/transfers/2024-06-01/payouts".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/transfers/2024-06-01/payouts";
+        } else {
+            localVarPath = "/finances/transfers/2024-06-01/payouts";
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (marketplaceIds != null)
+            localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "marketplaceIds", marketplaceIds));
+        if (createdAfter != null) localVarQueryParams.addAll(apiClient.parameterToPair("createdAfter", createdAfter));
+        if (createdBefore != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("createdBefore", createdBefore));
+        if (payoutId != null) localVarQueryParams.addAll(apiClient.parameterToPair("payoutId", payoutId));
+        if (accountType != null) localVarQueryParams.addAll(apiClient.parameterToPair("accountType", accountType));
+        if (nextToken != null) localVarQueryParams.addAll(apiClient.parameterToPair("nextToken", nextToken));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {};
+
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "GET",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call listPayoutsValidateBeforeCall(
+            List<String> marketplaceIds,
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String payoutId,
+            String accountType,
+            String nextToken,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+
+        return listPayoutsCall(
+                marketplaceIds, createdAfter, createdBefore, payoutId, accountType, nextToken, progressRequestListener);
+    }
+
+    /**
+     * Returns a list of payouts for the selling partner&#x27;s account. Results can be filtered by
+     * &#x60;marketplaceIds&#x60;, &#x60;accountType&#x60;, date range (&#x60;createdAfter&#x60; and
+     * &#x60;createdBefore&#x60;), or a specific &#x60;payoutId&#x60;. By default, the API returns payouts for all
+     * available marketplaces and account types. Results are sorted in descending order of their creation dates. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds An optional query parameter that specifies the marketplaces from which to retrieve payouts.
+     *     The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the
+     *     response will only include payouts associated with the specified marketplaces. If omitted, payouts from all
+     *     applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param createdAfter An optional query parameter to filter payouts created on or after this date-time. When
+     *     provided, the response will only include payouts with a creation date on or after the specified date-time.
+     *     The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time
+     *     format. If omitted, no start date filter is applied. (optional)
+     * @param createdBefore An optional query parameter to filter payouts created before this date-time. When provided,
+     *     the response will only include payouts with a creation date before the specified date-time (exclusive). The
+     *     value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time
+     *     format. If omitted, no end date filter is applied. (optional)
+     * @param payoutId An optional query parameter that specifies the payout to retrieve. When provided, the response
+     *     will only include the payout matching the specified identifier. (optional)
+     * @param accountType An optional query parameter to filter payouts by a specific account type. When provided, only
+     *     payouts associated with the specified account type will be returned. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     page size. To get the next page of results, call the operation with this token and include the same arguments
+     *     as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60;
+     *     is null. Note that this operation can return empty pages. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListPayoutsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListPayoutsResponse listPayouts(
+            List<String> marketplaceIds,
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String payoutId,
+            String accountType,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListPayoutsResponse> resp = listPayoutsWithHttpInfo(
+                marketplaceIds, createdAfter, createdBefore, payoutId, accountType, nextToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns a list of payouts for the selling partner&#x27;s account. Results can be filtered by
+     * &#x60;marketplaceIds&#x60;, &#x60;accountType&#x60;, date range (&#x60;createdAfter&#x60; and
+     * &#x60;createdBefore&#x60;), or a specific &#x60;payoutId&#x60;. By default, the API returns payouts for all
+     * available marketplaces and account types. Results are sorted in descending order of their creation dates. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds An optional query parameter that specifies the marketplaces from which to retrieve payouts.
+     *     The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the
+     *     response will only include payouts associated with the specified marketplaces. If omitted, payouts from all
+     *     applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param createdAfter An optional query parameter to filter payouts created on or after this date-time. When
+     *     provided, the response will only include payouts with a creation date on or after the specified date-time.
+     *     The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time
+     *     format. If omitted, no start date filter is applied. (optional)
+     * @param createdBefore An optional query parameter to filter payouts created before this date-time. When provided,
+     *     the response will only include payouts with a creation date before the specified date-time (exclusive). The
+     *     value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time
+     *     format. If omitted, no end date filter is applied. (optional)
+     * @param payoutId An optional query parameter that specifies the payout to retrieve. When provided, the response
+     *     will only include the payout matching the specified identifier. (optional)
+     * @param accountType An optional query parameter to filter payouts by a specific account type. When provided, only
+     *     payouts associated with the specified account type will be returned. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     page size. To get the next page of results, call the operation with this token and include the same arguments
+     *     as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60;
+     *     is null. Note that this operation can return empty pages. (optional)
+     * @return ListPayoutsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListPayoutsResponse listPayouts(
+            List<String> marketplaceIds,
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String payoutId,
+            String accountType,
+            String nextToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListPayoutsResponse> resp = listPayoutsWithHttpInfo(
+                marketplaceIds, createdAfter, createdBefore, payoutId, accountType, nextToken, null);
+        return resp.getData();
+    }
+
+    /**
+     * Returns a list of payouts for the selling partner&#x27;s account. Results can be filtered by
+     * &#x60;marketplaceIds&#x60;, &#x60;accountType&#x60;, date range (&#x60;createdAfter&#x60; and
+     * &#x60;createdBefore&#x60;), or a specific &#x60;payoutId&#x60;. By default, the API returns payouts for all
+     * available marketplaces and account types. Results are sorted in descending order of their creation dates. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds An optional query parameter that specifies the marketplaces from which to retrieve payouts.
+     *     The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the
+     *     response will only include payouts associated with the specified marketplaces. If omitted, payouts from all
+     *     applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param createdAfter An optional query parameter to filter payouts created on or after this date-time. When
+     *     provided, the response will only include payouts with a creation date on or after the specified date-time.
+     *     The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time
+     *     format. If omitted, no start date filter is applied. (optional)
+     * @param createdBefore An optional query parameter to filter payouts created before this date-time. When provided,
+     *     the response will only include payouts with a creation date before the specified date-time (exclusive). The
+     *     value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time
+     *     format. If omitted, no end date filter is applied. (optional)
+     * @param payoutId An optional query parameter that specifies the payout to retrieve. When provided, the response
+     *     will only include the payout matching the specified identifier. (optional)
+     * @param accountType An optional query parameter to filter payouts by a specific account type. When provided, only
+     *     payouts associated with the specified account type will be returned. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     page size. To get the next page of results, call the operation with this token and include the same arguments
+     *     as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60;
+     *     is null. Note that this operation can return empty pages. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListPayoutsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListPayoutsResponse> listPayoutsWithHttpInfo(
+            List<String> marketplaceIds,
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String payoutId,
+            String accountType,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listPayoutsValidateBeforeCall(
+                marketplaceIds, createdAfter, createdBefore, payoutId, accountType, nextToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "DefaultApi-listPayouts");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listPayoutsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListPayoutsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listPayouts operation exceeds rate limit");
+    }
+
+    /**
+     * Returns a list of payouts for the selling partner&#x27;s account. Results can be filtered by
+     * &#x60;marketplaceIds&#x60;, &#x60;accountType&#x60;, date range (&#x60;createdAfter&#x60; and
+     * &#x60;createdBefore&#x60;), or a specific &#x60;payoutId&#x60;. By default, the API returns payouts for all
+     * available marketplaces and account types. Results are sorted in descending order of their creation dates. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds An optional query parameter that specifies the marketplaces from which to retrieve payouts.
+     *     The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the
+     *     response will only include payouts associated with the specified marketplaces. If omitted, payouts from all
+     *     applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param createdAfter An optional query parameter to filter payouts created on or after this date-time. When
+     *     provided, the response will only include payouts with a creation date on or after the specified date-time.
+     *     The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time
+     *     format. If omitted, no start date filter is applied. (optional)
+     * @param createdBefore An optional query parameter to filter payouts created before this date-time. When provided,
+     *     the response will only include payouts with a creation date before the specified date-time (exclusive). The
+     *     value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time
+     *     format. If omitted, no end date filter is applied. (optional)
+     * @param payoutId An optional query parameter that specifies the payout to retrieve. When provided, the response
+     *     will only include the payout matching the specified identifier. (optional)
+     * @param accountType An optional query parameter to filter payouts by a specific account type. When provided, only
+     *     payouts associated with the specified account type will be returned. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     page size. To get the next page of results, call the operation with this token and include the same arguments
+     *     as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60;
+     *     is null. Note that this operation can return empty pages. (optional)
+     * @return ApiResponse&lt;ListPayoutsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListPayoutsResponse> listPayoutsWithHttpInfo(
+            List<String> marketplaceIds,
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String payoutId,
+            String accountType,
+            String nextToken)
+            throws ApiException, LWAException {
+        return listPayoutsWithHttpInfo(
+                marketplaceIds, createdAfter, createdBefore, payoutId, accountType, nextToken, null);
+    }
+
+    /**
+     * (asynchronously) Returns a list of payouts for the selling partner&#x27;s account. Results can be filtered by
+     * &#x60;marketplaceIds&#x60;, &#x60;accountType&#x60;, date range (&#x60;createdAfter&#x60; and
+     * &#x60;createdBefore&#x60;), or a specific &#x60;payoutId&#x60;. By default, the API returns payouts for all
+     * available marketplaces and account types. Results are sorted in descending order of their creation dates. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds An optional query parameter that specifies the marketplaces from which to retrieve payouts.
+     *     The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the
+     *     response will only include payouts associated with the specified marketplaces. If omitted, payouts from all
+     *     applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param createdAfter An optional query parameter to filter payouts created on or after this date-time. When
+     *     provided, the response will only include payouts with a creation date on or after the specified date-time.
+     *     The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time
+     *     format. If omitted, no start date filter is applied. (optional)
+     * @param createdBefore An optional query parameter to filter payouts created before this date-time. When provided,
+     *     the response will only include payouts with a creation date before the specified date-time (exclusive). The
+     *     value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time
+     *     format. If omitted, no end date filter is applied. (optional)
+     * @param payoutId An optional query parameter that specifies the payout to retrieve. When provided, the response
+     *     will only include the payout matching the specified identifier. (optional)
+     * @param accountType An optional query parameter to filter payouts by a specific account type. When provided, only
+     *     payouts associated with the specified account type will be returned. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     page size. To get the next page of results, call the operation with this token and include the same arguments
+     *     as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60;
+     *     is null. Note that this operation can return empty pages. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listPayoutsAsync(
+            List<String> marketplaceIds,
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String payoutId,
+            String accountType,
+            String nextToken,
+            final ApiCallback<ListPayoutsResponse> callback)
+            throws ApiException, LWAException {
+        return listPayoutsAsync(
+                marketplaceIds, createdAfter, createdBefore, payoutId, accountType, nextToken, callback, null);
+    }
+    /**
+     * (asynchronously) Returns a list of payouts for the selling partner&#x27;s account. Results can be filtered by
+     * &#x60;marketplaceIds&#x60;, &#x60;accountType&#x60;, date range (&#x60;createdAfter&#x60; and
+     * &#x60;createdBefore&#x60;), or a specific &#x60;payoutId&#x60;. By default, the API returns payouts for all
+     * available marketplaces and account types. Results are sorted in descending order of their creation dates. **Usage
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param marketplaceIds An optional query parameter that specifies the marketplaces from which to retrieve payouts.
+     *     The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the
+     *     response will only include payouts associated with the specified marketplaces. If omitted, payouts from all
+     *     applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param createdAfter An optional query parameter to filter payouts created on or after this date-time. When
+     *     provided, the response will only include payouts with a creation date on or after the specified date-time.
+     *     The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time
+     *     format. If omitted, no start date filter is applied. (optional)
+     * @param createdBefore An optional query parameter to filter payouts created before this date-time. When provided,
+     *     the response will only include payouts with a creation date before the specified date-time (exclusive). The
+     *     value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time
+     *     format. If omitted, no end date filter is applied. (optional)
+     * @param payoutId An optional query parameter that specifies the payout to retrieve. When provided, the response
+     *     will only include the payout matching the specified identifier. (optional)
+     * @param accountType An optional query parameter to filter payouts by a specific account type. When provided, only
+     *     payouts associated with the specified account type will be returned. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     page size. To get the next page of results, call the operation with this token and include the same arguments
+     *     as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60;
+     *     is null. Note that this operation can return empty pages. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listPayoutsAsync(
+            List<String> marketplaceIds,
+            OffsetDateTime createdAfter,
+            OffsetDateTime createdBefore,
+            String payoutId,
+            String accountType,
+            String nextToken,
+            final ApiCallback<ListPayoutsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = listPayoutsValidateBeforeCall(
+                marketplaceIds, createdAfter, createdBefore, payoutId, accountType, nextToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "DefaultApi-listPayouts");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listPayoutsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListPayoutsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("listPayouts operation exceeds rate limit");
     }
 
     public static class Builder {

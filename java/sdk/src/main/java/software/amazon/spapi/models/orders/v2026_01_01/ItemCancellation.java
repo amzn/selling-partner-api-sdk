@@ -22,6 +22,9 @@ public class ItemCancellation {
     @SerializedName("cancellationRequest")
     private ItemCancellationRequest cancellationRequest = null;
 
+    @SerializedName("cancellationExecution")
+    private ItemCancellationExecution cancellationExecution = null;
+
     public ItemCancellation cancellationRequest(ItemCancellationRequest cancellationRequest) {
         this.cancellationRequest = cancellationRequest;
         return this;
@@ -41,6 +44,25 @@ public class ItemCancellation {
         this.cancellationRequest = cancellationRequest;
     }
 
+    public ItemCancellation cancellationExecution(ItemCancellationExecution cancellationExecution) {
+        this.cancellationExecution = cancellationExecution;
+        return this;
+    }
+
+    /**
+     * Get cancellationExecution
+     *
+     * @return cancellationExecution
+     */
+    @Schema(description = "")
+    public ItemCancellationExecution getCancellationExecution() {
+        return cancellationExecution;
+    }
+
+    public void setCancellationExecution(ItemCancellationExecution cancellationExecution) {
+        this.cancellationExecution = cancellationExecution;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,12 +72,13 @@ public class ItemCancellation {
             return false;
         }
         ItemCancellation itemCancellation = (ItemCancellation) o;
-        return Objects.equals(this.cancellationRequest, itemCancellation.cancellationRequest);
+        return Objects.equals(this.cancellationRequest, itemCancellation.cancellationRequest)
+                && Objects.equals(this.cancellationExecution, itemCancellation.cancellationExecution);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cancellationRequest);
+        return Objects.hash(cancellationRequest, cancellationExecution);
     }
 
     @Override
@@ -65,6 +88,9 @@ public class ItemCancellation {
 
         sb.append("    cancellationRequest: ")
                 .append(toIndentedString(cancellationRequest))
+                .append("\n");
+        sb.append("    cancellationExecution: ")
+                .append(toIndentedString(cancellationExecution))
                 .append("\n");
         sb.append("}");
         return sb.toString();

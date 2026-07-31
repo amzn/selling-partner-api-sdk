@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * OpenAPI spec version: 2021-08-01
  *
@@ -16,8 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** The image for the listings item. */
-@Schema(description = "The image for the listings item.")
+/** The listings item&#x27;s image. */
+@Schema(description = "The listings item's image.")
 public class ItemImage {
     @SerializedName("link")
     private String link = null;
@@ -34,11 +34,11 @@ public class ItemImage {
     }
 
     /**
-     * The link, or URL, to the image.
+     * The image&#x27;s link or URL.
      *
      * @return link
      */
-    @Schema(required = true, description = "The link, or URL, to the image.")
+    @Schema(required = true, description = "The image's link or URL.")
     public String getLink() {
         return link;
     }
@@ -53,11 +53,11 @@ public class ItemImage {
     }
 
     /**
-     * The height of the image in pixels.
+     * The image&#x27;s height, in pixels.
      *
      * @return height
      */
-    @Schema(required = true, description = "The height of the image in pixels.")
+    @Schema(required = true, description = "The image's height, in pixels.")
     public Integer getHeight() {
         return height;
     }
@@ -72,11 +72,11 @@ public class ItemImage {
     }
 
     /**
-     * The width of the image in pixels.
+     * The image&#x27;s width, in pixels.
      *
      * @return width
      */
-    @Schema(required = true, description = "The width of the image in pixels.")
+    @Schema(required = true, description = "The image's width, in pixels.")
     public Integer getWidth() {
         return width;
     }

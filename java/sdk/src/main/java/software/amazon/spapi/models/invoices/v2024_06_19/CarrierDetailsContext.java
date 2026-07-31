@@ -49,11 +49,11 @@ public class CarrierDetailsContext {
     }
 
     /**
-     * The name of the carrier, as registered in state and federal tax authorities.
+     * The name of the carrier, as registered with state and federal tax authorities.
      *
      * @return name
      */
-    @Schema(description = "The name of the carrier, as registered in state and federal tax authorities.")
+    @Schema(description = "The name of the carrier, as registered with state and federal tax authorities.")
     public String getName() {
         return name;
     }
@@ -68,11 +68,11 @@ public class CarrierDetailsContext {
     }
 
     /**
-     * The address of the carrier, as registered in state and federal tax authorities.
+     * The address of the carrier, as registered with state and federal tax authorities.
      *
      * @return address
      */
-    @Schema(description = "The address of the carrier, as registered in state and federal tax authorities.")
+    @Schema(description = "The address of the carrier, as registered with state and federal tax authorities.")
     public String getAddress() {
         return address;
     }
@@ -87,11 +87,11 @@ public class CarrierDetailsContext {
     }
 
     /**
-     * Type of additional information.
+     * The type of additional information.
      *
      * @return contextType
      */
-    @Schema(description = "Type of additional information.")
+    @Schema(description = "The type of additional information.")
     public String getContextType() {
         return contextType;
     }
@@ -106,11 +106,11 @@ public class CarrierDetailsContext {
     }
 
     /**
-     * Tax Identification number of the carrier.
+     * The tax identification number of the carrier.
      *
      * @return federalTaxId
      */
-    @Schema(description = "Tax Identification number of the carrier.")
+    @Schema(description = "The tax identification number of the carrier.")
     public String getFederalTaxId() {
         return federalTaxId;
     }
@@ -163,11 +163,11 @@ public class CarrierDetailsContext {
     }
 
     /**
-     * The identifier for the carrier vehicle as printed in its registration plate.
+     * The identifier for the carrier vehicle, as printed on its registration plate.
      *
      * @return vehicleLicensePlate
      */
-    @Schema(description = "The identifier for the carrier vehicle as printed in its registration plate.")
+    @Schema(description = "The identifier for the carrier vehicle, as printed on its registration plate.")
     public String getVehicleLicensePlate() {
         return vehicleLicensePlate;
     }
