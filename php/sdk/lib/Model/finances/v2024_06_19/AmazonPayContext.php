@@ -289,7 +289,7 @@ class AmazonPayContext implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Sets order_type.
      *
-     * @param null|string $order_type the transaction's order type
+     * @param null|string $order_type the order type of the transaction
      */
     public function setOrderType(?string $order_type): self
     {
@@ -319,7 +319,7 @@ class AmazonPayContext implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Sets channel.
      *
-     * @param null|string $channel channel details of related transaction
+     * @param null|string $channel The channel of the transaction. For example: `MFN`.
      */
     public function setChannel(?string $channel): self
     {

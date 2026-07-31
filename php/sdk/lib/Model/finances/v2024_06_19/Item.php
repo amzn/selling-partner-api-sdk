@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Additional information about the items in a transaction.
+ * @description Additional information about an item in a transaction.
  *
  * @author   OpenAPI Generator team
  *

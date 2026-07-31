@@ -259,7 +259,7 @@ class SellingPartnerMetadata implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets selling_partner_id.
      *
-     * @param null|string $selling_partner_id a unique seller identifier
+     * @param null|string $selling_partner_id the unique seller identifier
      */
     public function setSellingPartnerId(?string $selling_partner_id): self
     {
@@ -319,7 +319,7 @@ class SellingPartnerMetadata implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets marketplace_id.
      *
-     * @param null|string $marketplace_id The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     * @param null|string $marketplace_id The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      */
     public function setMarketplaceId(?string $marketplace_id): self
     {

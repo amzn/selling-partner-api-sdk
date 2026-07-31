@@ -472,7 +472,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets description.
      *
-     * @param null|string $description Describes the reasons for the transaction.  **Example:** 'Order Payment', 'Refund Order'
+     * @param null|string $description Describes the reasons for the transaction.  **Example:** `Order Payment`, `Refund Order`
      */
     public function setDescription(?string $description): self
     {

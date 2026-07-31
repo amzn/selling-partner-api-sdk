@@ -44,6 +44,8 @@ use SpApi\HeaderSelector;
 use SpApi\Model\transfers\v2024_06_01\GetPaymentMethodsResponse;
 use SpApi\Model\transfers\v2024_06_01\InitiatePayoutRequest;
 use SpApi\Model\transfers\v2024_06_01\InitiatePayoutResponse;
+use SpApi\Model\transfers\v2024_06_01\ListExpectedPayoutsResponse;
+use SpApi\Model\transfers\v2024_06_01\ListPayoutsResponse;
 use SpApi\ObjectSerializer;
 use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
@@ -62,6 +64,8 @@ class DefaultApi
 {
     public ?LimiterInterface $getPaymentMethodsRateLimiter;
     public ?LimiterInterface $initiatePayoutRateLimiter;
+    public ?LimiterInterface $listExpectedPayoutsRateLimiter;
+    public ?LimiterInterface $listPayoutsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -96,6 +100,10 @@ class DefaultApi
             $this->getPaymentMethodsRateLimiter = $factory->create('DefaultApi-getPaymentMethods');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-initiatePayout'), $this->rateLimitStorage);
             $this->initiatePayoutRateLimiter = $factory->create('DefaultApi-initiatePayout');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listExpectedPayouts'), $this->rateLimitStorage);
+            $this->listExpectedPayoutsRateLimiter = $factory->create('DefaultApi-listExpectedPayouts');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listPayouts'), $this->rateLimitStorage);
+            $this->listPayoutsRateLimiter = $factory->create('DefaultApi-listPayouts');
         }
 
         $this->client = $client ?: new Client();
@@ -691,6 +699,713 @@ class DefaultApi
 
         return new Request(
             'POST',
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listExpectedPayouts.
+     *
+     * @param null|string[] $marketplace_ids
+     *                                           An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string   $account_type
+     *                                           An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)
+     * @param null|string   $next_token
+     *                                           The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function listExpectedPayouts(
+        ?array $marketplace_ids = null,
+        ?string $account_type = null,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): ListExpectedPayoutsResponse {
+        list($response) = $this->listExpectedPayoutsWithHttpInfo($marketplace_ids, $account_type, $next_token, $restrictedDataToken);
+
+        return $response;
+    }
+
+    /**
+     * Operation listExpectedPayoutsWithHttpInfo.
+     *
+     * @param null|string[] $marketplace_ids
+     *                                           An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string   $account_type
+     *                                           An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)
+     * @param null|string   $next_token
+     *                                           The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @return array of \SpApi\Model\transfers\v2024_06_01\ListExpectedPayoutsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function listExpectedPayoutsWithHttpInfo(
+        ?array $marketplace_ids = null,
+        ?string $account_type = null,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): array {
+        $request = $this->listExpectedPayoutsRequest($marketplace_ids, $account_type, $next_token);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listExpectedPayouts');
+        } else {
+            $request = $this->config->sign($request);
+        }
+
+        try {
+            $options = $this->createHttpClientOption();
+
+            try {
+                if ($this->rateLimiterEnabled) {
+                    $this->listExpectedPayoutsRateLimiter->consume()->ensureAccepted();
+                }
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+            if ('\SpApi\Model\transfers\v2024_06_01\ListExpectedPayoutsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\transfers\v2024_06_01\ListExpectedPayoutsResponse' !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ListExpectedPayoutsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
+        } catch (ApiException $e) {
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\transfers\v2024_06_01\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listExpectedPayoutsAsync.
+     *
+     * @param null|string[] $marketplace_ids
+     *                                       An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string   $account_type
+     *                                       An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)
+     * @param null|string   $next_token
+     *                                       The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function listExpectedPayoutsAsync(
+        ?array $marketplace_ids = null,
+        ?string $account_type = null,
+        ?string $next_token = null
+    ): PromiseInterface {
+        return $this->listExpectedPayoutsAsyncWithHttpInfo($marketplace_ids, $account_type, $next_token)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            )
+        ;
+    }
+
+    /**
+     * Operation listExpectedPayoutsAsyncWithHttpInfo.
+     *
+     * @param null|string[] $marketplace_ids
+     *                                       An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string   $account_type
+     *                                       An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)
+     * @param null|string   $next_token
+     *                                       The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function listExpectedPayoutsAsyncWithHttpInfo(
+        ?array $marketplace_ids = null,
+        ?string $account_type = null,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): PromiseInterface {
+        $returnType = '\SpApi\Model\transfers\v2024_06_01\ListExpectedPayoutsResponse';
+        $request = $this->listExpectedPayoutsRequest($marketplace_ids, $account_type, $next_token);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listExpectedPayouts');
+        } else {
+            $request = $this->config->sign($request);
+        }
+        if ($this->rateLimiterEnabled) {
+            $this->listExpectedPayoutsRateLimiter->consume()->ensureAccepted();
+        }
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('string' !== $returnType) {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders(),
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            )
+        ;
+    }
+
+    /**
+     * Create request for operation 'listExpectedPayouts'.
+     *
+     * @param null|string[] $marketplace_ids
+     *                                       An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|string   $account_type
+     *                                       An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)
+     * @param null|string   $next_token
+     *                                       The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function listExpectedPayoutsRequest(
+        ?array $marketplace_ids = null,
+        ?string $account_type = null,
+        ?string $next_token = null
+    ): Request {
+        $resourcePath = '/finances/transfers/2024-06-01/payouts/expected';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketplace_ids,
+            'marketplaceIds', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_type,
+            'accountType', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $next_token,
+            'nextToken', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            '',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
+        return new Request(
+            'GET',
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listPayouts.
+     *
+     * @param null|string[]  $marketplace_ids
+     *                                            An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|\DateTime $created_after
+     *                                            An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)
+     * @param null|\DateTime $created_before
+     *                                            An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)
+     * @param null|string    $payout_id
+     *                                            An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)
+     * @param null|string    $account_type
+     *                                            An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)
+     * @param null|string    $next_token
+     *                                            The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function listPayouts(
+        ?array $marketplace_ids = null,
+        ?\DateTime $created_after = null,
+        ?\DateTime $created_before = null,
+        ?string $payout_id = null,
+        ?string $account_type = null,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): ListPayoutsResponse {
+        list($response) = $this->listPayoutsWithHttpInfo($marketplace_ids, $created_after, $created_before, $payout_id, $account_type, $next_token, $restrictedDataToken);
+
+        return $response;
+    }
+
+    /**
+     * Operation listPayoutsWithHttpInfo.
+     *
+     * @param null|string[]  $marketplace_ids
+     *                                            An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|\DateTime $created_after
+     *                                            An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)
+     * @param null|\DateTime $created_before
+     *                                            An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)
+     * @param null|string    $payout_id
+     *                                            An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)
+     * @param null|string    $account_type
+     *                                            An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)
+     * @param null|string    $next_token
+     *                                            The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @return array of \SpApi\Model\transfers\v2024_06_01\ListPayoutsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function listPayoutsWithHttpInfo(
+        ?array $marketplace_ids = null,
+        ?\DateTime $created_after = null,
+        ?\DateTime $created_before = null,
+        ?string $payout_id = null,
+        ?string $account_type = null,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): array {
+        $request = $this->listPayoutsRequest($marketplace_ids, $created_after, $created_before, $payout_id, $account_type, $next_token);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listPayouts');
+        } else {
+            $request = $this->config->sign($request);
+        }
+
+        try {
+            $options = $this->createHttpClientOption();
+
+            try {
+                if ($this->rateLimiterEnabled) {
+                    $this->listPayoutsRateLimiter->consume()->ensureAccepted();
+                }
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+            if ('\SpApi\Model\transfers\v2024_06_01\ListPayoutsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\transfers\v2024_06_01\ListPayoutsResponse' !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\transfers\v2024_06_01\ListPayoutsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
+        } catch (ApiException $e) {
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\transfers\v2024_06_01\ErrorList',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listPayoutsAsync.
+     *
+     * @param null|string[]  $marketplace_ids
+     *                                        An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|\DateTime $created_after
+     *                                        An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)
+     * @param null|\DateTime $created_before
+     *                                        An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)
+     * @param null|string    $payout_id
+     *                                        An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)
+     * @param null|string    $account_type
+     *                                        An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)
+     * @param null|string    $next_token
+     *                                        The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function listPayoutsAsync(
+        ?array $marketplace_ids = null,
+        ?\DateTime $created_after = null,
+        ?\DateTime $created_before = null,
+        ?string $payout_id = null,
+        ?string $account_type = null,
+        ?string $next_token = null
+    ): PromiseInterface {
+        return $this->listPayoutsAsyncWithHttpInfo($marketplace_ids, $created_after, $created_before, $payout_id, $account_type, $next_token)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            )
+        ;
+    }
+
+    /**
+     * Operation listPayoutsAsyncWithHttpInfo.
+     *
+     * @param null|string[]  $marketplace_ids
+     *                                        An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|\DateTime $created_after
+     *                                        An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)
+     * @param null|\DateTime $created_before
+     *                                        An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)
+     * @param null|string    $payout_id
+     *                                        An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)
+     * @param null|string    $account_type
+     *                                        An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)
+     * @param null|string    $next_token
+     *                                        The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function listPayoutsAsyncWithHttpInfo(
+        ?array $marketplace_ids = null,
+        ?\DateTime $created_after = null,
+        ?\DateTime $created_before = null,
+        ?string $payout_id = null,
+        ?string $account_type = null,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): PromiseInterface {
+        $returnType = '\SpApi\Model\transfers\v2024_06_01\ListPayoutsResponse';
+        $request = $this->listPayoutsRequest($marketplace_ids, $created_after, $created_before, $payout_id, $account_type, $next_token);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listPayouts');
+        } else {
+            $request = $this->config->sign($request);
+        }
+        if ($this->rateLimiterEnabled) {
+            $this->listPayoutsRateLimiter->consume()->ensureAccepted();
+        }
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('string' !== $returnType) {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders(),
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            )
+        ;
+    }
+
+    /**
+     * Create request for operation 'listPayouts'.
+     *
+     * @param null|string[]  $marketplace_ids
+     *                                        An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     * @param null|\DateTime $created_after
+     *                                        An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)
+     * @param null|\DateTime $created_before
+     *                                        An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)
+     * @param null|string    $payout_id
+     *                                        An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)
+     * @param null|string    $account_type
+     *                                        An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)
+     * @param null|string    $next_token
+     *                                        The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function listPayoutsRequest(
+        ?array $marketplace_ids = null,
+        ?\DateTime $created_after = null,
+        ?\DateTime $created_before = null,
+        ?string $payout_id = null,
+        ?string $account_type = null,
+        ?string $next_token = null
+    ): Request {
+        $resourcePath = '/finances/transfers/2024-06-01/payouts';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketplace_ids,
+            'marketplaceIds', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_after,
+            'createdAfter', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_before,
+            'createdBefore', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $payout_id,
+            'payoutId', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_type,
+            'accountType', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $next_token,
+            'nextToken', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            '',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
+        return new Request(
+            'GET',
             $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody

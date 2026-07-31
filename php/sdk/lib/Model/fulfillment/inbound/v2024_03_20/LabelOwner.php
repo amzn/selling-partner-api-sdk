@@ -35,7 +35,7 @@ namespace SpApi\Model\fulfillment\inbound\v2024_03_20;
  *
  * @category Class
  *
- * @description Specifies who will label the items. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60; or &#x60;NONE&#x60;.
+ * @description Specifies who will label the items. Options include &#x60;AMAZON&#x60;, &#x60;SELLER&#x60; or &#x60;NONE&#x60;. &#x60;AMAZON&#x60; is not an accepted value in the US marketplace.
  *
  * @author   OpenAPI Generator team
  *

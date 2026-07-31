@@ -673,17 +673,17 @@ class InvoicesApi
      * Operation getGovernmentInvoiceDocument.
      *
      * @param string      $marketplace_id
-     *                                         The invoices returned will match the marketplace that you specify. (required)
+     *                                         The marketplace of the invoice. (required)
      * @param string      $transaction_type
-     *                                         Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                         The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param string      $shipment_id
-     *                                         The unique shipment identifier to get an invoice for. (required)
+     *                                         The unique shipment identifier for which to get an invoice. (required)
      * @param string      $invoice_type
-     *                                         Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                         The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param null|string $inbound_plan_id
-     *                                         The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)
+     *                                         The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)
      * @param null|string $file_format
-     *                                         Requested file format. Default is XML (optional)
+     *                                         The file format of the invoice. The default is XML. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -707,17 +707,17 @@ class InvoicesApi
      * Operation getGovernmentInvoiceDocumentWithHttpInfo.
      *
      * @param string      $marketplace_id
-     *                                         The invoices returned will match the marketplace that you specify. (required)
+     *                                         The marketplace of the invoice. (required)
      * @param string      $transaction_type
-     *                                         Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                         The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param string      $shipment_id
-     *                                         The unique shipment identifier to get an invoice for. (required)
+     *                                         The unique shipment identifier for which to get an invoice. (required)
      * @param string      $invoice_type
-     *                                         Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                         The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param null|string $inbound_plan_id
-     *                                         The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)
+     *                                         The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)
      * @param null|string $file_format
-     *                                         Requested file format. Default is XML (optional)
+     *                                         The file format of the invoice. The default is XML. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoices\v2024_06_19\GovtInvoiceDocumentResponse, HTTP status code, HTTP response headers (array of strings)
@@ -809,17 +809,17 @@ class InvoicesApi
      * Operation getGovernmentInvoiceDocumentAsync.
      *
      * @param string      $marketplace_id
-     *                                      The invoices returned will match the marketplace that you specify. (required)
+     *                                      The marketplace of the invoice. (required)
      * @param string      $transaction_type
-     *                                      Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                      The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param string      $shipment_id
-     *                                      The unique shipment identifier to get an invoice for. (required)
+     *                                      The unique shipment identifier for which to get an invoice. (required)
      * @param string      $invoice_type
-     *                                      Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                      The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param null|string $inbound_plan_id
-     *                                      The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)
+     *                                      The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)
      * @param null|string $file_format
-     *                                      Requested file format. Default is XML (optional)
+     *                                      The file format of the invoice. The default is XML. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -844,17 +844,17 @@ class InvoicesApi
      * Operation getGovernmentInvoiceDocumentAsyncWithHttpInfo.
      *
      * @param string      $marketplace_id
-     *                                      The invoices returned will match the marketplace that you specify. (required)
+     *                                      The marketplace of the invoice. (required)
      * @param string      $transaction_type
-     *                                      Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                      The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param string      $shipment_id
-     *                                      The unique shipment identifier to get an invoice for. (required)
+     *                                      The unique shipment identifier for which to get an invoice. (required)
      * @param string      $invoice_type
-     *                                      Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                      The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param null|string $inbound_plan_id
-     *                                      The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)
+     *                                      The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)
      * @param null|string $file_format
-     *                                      Requested file format. Default is XML (optional)
+     *                                      The file format of the invoice. The default is XML. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -920,17 +920,17 @@ class InvoicesApi
      * Create request for operation 'getGovernmentInvoiceDocument'.
      *
      * @param string      $marketplace_id
-     *                                      The invoices returned will match the marketplace that you specify. (required)
+     *                                      The marketplace of the invoice. (required)
      * @param string      $transaction_type
-     *                                      Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                      The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param string      $shipment_id
-     *                                      The unique shipment identifier to get an invoice for. (required)
+     *                                      The unique shipment identifier for which to get an invoice. (required)
      * @param string      $invoice_type
-     *                                      Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                      The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param null|string $inbound_plan_id
-     *                                      The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)
+     *                                      The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)
      * @param null|string $file_format
-     *                                      Requested file format. Default is XML (optional)
+     *                                      The file format of the invoice. The default is XML. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -1088,15 +1088,15 @@ class InvoicesApi
      * Operation getGovernmentInvoiceStatus.
      *
      * @param string      $marketplace_id
-     *                                         The invoices status will match the marketplace that you specify. (required)
+     *                                         The marketplace of the invoice request. (required)
      * @param string      $transaction_type
-     *                                         Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                         The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param string      $shipment_id
-     *                                         The unique shipment identifier to get an invoice for. (required)
+     *                                         The unique shipment identifier for which to get an invoice. (required)
      * @param string      $invoice_type
-     *                                         Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                         The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param null|string $inbound_plan_id
-     *                                         The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)
+     *                                         The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -1119,15 +1119,15 @@ class InvoicesApi
      * Operation getGovernmentInvoiceStatusWithHttpInfo.
      *
      * @param string      $marketplace_id
-     *                                         The invoices status will match the marketplace that you specify. (required)
+     *                                         The marketplace of the invoice request. (required)
      * @param string      $transaction_type
-     *                                         Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                         The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param string      $shipment_id
-     *                                         The unique shipment identifier to get an invoice for. (required)
+     *                                         The unique shipment identifier for which to get an invoice. (required)
      * @param string      $invoice_type
-     *                                         Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                         The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param null|string $inbound_plan_id
-     *                                         The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)
+     *                                         The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\invoices\v2024_06_19\GovernmentInvoiceStatusResponse, HTTP status code, HTTP response headers (array of strings)
@@ -1218,15 +1218,15 @@ class InvoicesApi
      * Operation getGovernmentInvoiceStatusAsync.
      *
      * @param string      $marketplace_id
-     *                                      The invoices status will match the marketplace that you specify. (required)
+     *                                      The marketplace of the invoice request. (required)
      * @param string      $transaction_type
-     *                                      Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                      The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param string      $shipment_id
-     *                                      The unique shipment identifier to get an invoice for. (required)
+     *                                      The unique shipment identifier for which to get an invoice. (required)
      * @param string      $invoice_type
-     *                                      Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                      The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param null|string $inbound_plan_id
-     *                                      The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)
+     *                                      The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -1250,15 +1250,15 @@ class InvoicesApi
      * Operation getGovernmentInvoiceStatusAsyncWithHttpInfo.
      *
      * @param string      $marketplace_id
-     *                                      The invoices status will match the marketplace that you specify. (required)
+     *                                      The marketplace of the invoice request. (required)
      * @param string      $transaction_type
-     *                                      Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                      The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param string      $shipment_id
-     *                                      The unique shipment identifier to get an invoice for. (required)
+     *                                      The unique shipment identifier for which to get an invoice. (required)
      * @param string      $invoice_type
-     *                                      Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                      The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param null|string $inbound_plan_id
-     *                                      The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)
+     *                                      The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -1323,15 +1323,15 @@ class InvoicesApi
      * Create request for operation 'getGovernmentInvoiceStatus'.
      *
      * @param string      $marketplace_id
-     *                                      The invoices status will match the marketplace that you specify. (required)
+     *                                      The marketplace of the invoice request. (required)
      * @param string      $transaction_type
-     *                                      Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                      The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param string      $shipment_id
-     *                                      The unique shipment identifier to get an invoice for. (required)
+     *                                      The unique shipment identifier for which to get an invoice. (required)
      * @param string      $invoice_type
-     *                                      Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation. (required)
+     *                                      The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation. (required)
      * @param null|string $inbound_plan_id
-     *                                      The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)
+     *                                      The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)
      *
      * @throws \InvalidArgumentException
      */

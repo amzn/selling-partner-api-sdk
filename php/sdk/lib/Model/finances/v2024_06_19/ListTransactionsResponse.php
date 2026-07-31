@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description The response schema for the &#x60;listTransactions&#x60; operation.
+ * @description The response to the &#x60;listTransactions&#x60; operation.
  *
  * @author   OpenAPI Generator team
  *

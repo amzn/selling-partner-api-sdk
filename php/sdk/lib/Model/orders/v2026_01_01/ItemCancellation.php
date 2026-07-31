@@ -61,7 +61,8 @@ class ItemCancellation implements ModelInterface, \ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'cancellation_request' => '\SpApi\Model\orders\v2026_01_01\ItemCancellationRequest'];
+        'cancellation_request' => '\SpApi\Model\orders\v2026_01_01\ItemCancellationRequest',
+        'cancellation_execution' => '\SpApi\Model\orders\v2026_01_01\ItemCancellationExecution'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -73,7 +74,8 @@ class ItemCancellation implements ModelInterface, \ArrayAccess, \JsonSerializabl
      * @psalm-var array<string, null|string>
      */
     protected static array $openAPIFormats = [
-        'cancellation_request' => null];
+        'cancellation_request' => null,
+        'cancellation_execution' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -82,6 +84,7 @@ class ItemCancellation implements ModelInterface, \ArrayAccess, \JsonSerializabl
      */
     protected static array $openAPINullables = [
         'cancellation_request' => true,
+        'cancellation_execution' => true,
     ];
 
     /**
@@ -99,6 +102,7 @@ class ItemCancellation implements ModelInterface, \ArrayAccess, \JsonSerializabl
      */
     protected static array $attributeMap = [
         'cancellation_request' => 'cancellationRequest',
+        'cancellation_execution' => 'cancellationExecution',
     ];
 
     /**
@@ -108,6 +112,7 @@ class ItemCancellation implements ModelInterface, \ArrayAccess, \JsonSerializabl
      */
     protected static array $setters = [
         'cancellation_request' => 'setCancellationRequest',
+        'cancellation_execution' => 'setCancellationExecution',
     ];
 
     /**
@@ -117,6 +122,7 @@ class ItemCancellation implements ModelInterface, \ArrayAccess, \JsonSerializabl
      */
     protected static array $getters = [
         'cancellation_request' => 'getCancellationRequest',
+        'cancellation_execution' => 'getCancellationExecution',
     ];
 
     /**
@@ -133,6 +139,7 @@ class ItemCancellation implements ModelInterface, \ArrayAccess, \JsonSerializabl
     public function __construct(?array $data = null)
     {
         $this->setIfExists('cancellation_request', $data ?? [], null);
+        $this->setIfExists('cancellation_execution', $data ?? [], null);
     }
 
     /**
@@ -260,6 +267,36 @@ class ItemCancellation implements ModelInterface, \ArrayAccess, \JsonSerializabl
             }
         }
         $this->container['cancellation_request'] = $cancellation_request;
+
+        return $this;
+    }
+
+    /**
+     * Gets cancellation_execution.
+     */
+    public function getCancellationExecution(): ?ItemCancellationExecution
+    {
+        return $this->container['cancellation_execution'];
+    }
+
+    /**
+     * Sets cancellation_execution.
+     *
+     * @param null|ItemCancellationExecution $cancellation_execution cancellation_execution
+     */
+    public function setCancellationExecution(?ItemCancellationExecution $cancellation_execution): self
+    {
+        if (is_null($cancellation_execution)) {
+            array_push($this->openAPINullablesSetToNull, 'cancellation_execution');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cancellation_execution', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cancellation_execution'] = $cancellation_execution;
 
         return $this;
     }

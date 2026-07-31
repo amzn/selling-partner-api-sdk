@@ -25,6 +25,7 @@ lib/Model/orders/v2026_01_01/GetOrderResponse.php
 lib/Model/orders/v2026_01_01/GiftOption.php
 lib/Model/orders/v2026_01_01/HourMinute.php
 lib/Model/orders/v2026_01_01/ItemCancellation.php
+lib/Model/orders/v2026_01_01/ItemCancellationExecution.php
 lib/Model/orders/v2026_01_01/ItemCancellationRequest.php
 lib/Model/orders/v2026_01_01/ItemCondition.php
 lib/Model/orders/v2026_01_01/ItemCustomization.php

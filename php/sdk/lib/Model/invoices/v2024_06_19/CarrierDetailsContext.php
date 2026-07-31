@@ -294,7 +294,7 @@ class CarrierDetailsContext implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets name.
      *
-     * @param null|string $name the name of the carrier, as registered in state and federal tax authorities
+     * @param null|string $name the name of the carrier, as registered with state and federal tax authorities
      */
     public function setName(?string $name): self
     {
@@ -324,7 +324,7 @@ class CarrierDetailsContext implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets address.
      *
-     * @param null|string $address the address of the carrier, as registered in state and federal tax authorities
+     * @param null|string $address the address of the carrier, as registered with state and federal tax authorities
      */
     public function setAddress(?string $address): self
     {
@@ -354,7 +354,7 @@ class CarrierDetailsContext implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets context_type.
      *
-     * @param null|string $context_type type of additional information
+     * @param null|string $context_type the type of additional information
      */
     public function setContextType(?string $context_type): self
     {
@@ -384,7 +384,7 @@ class CarrierDetailsContext implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets federal_tax_id.
      *
-     * @param null|string $federal_tax_id tax Identification number of the carrier
+     * @param null|string $federal_tax_id the tax identification number of the carrier
      */
     public function setFederalTaxId(?string $federal_tax_id): self
     {
@@ -474,7 +474,7 @@ class CarrierDetailsContext implements ModelInterface, \ArrayAccess, \JsonSerial
     /**
      * Sets vehicle_license_plate.
      *
-     * @param null|string $vehicle_license_plate the identifier for the carrier vehicle as printed in its registration plate
+     * @param null|string $vehicle_license_plate the identifier for the carrier vehicle, as printed on its registration plate
      */
     public function setVehicleLicensePlate(?string $vehicle_license_plate): self
     {
