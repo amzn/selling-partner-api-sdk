@@ -26,7 +26,7 @@ export class PartnerMetadata {
    * @class
    * @param partnerId {String} A unique selling partner identifier.
    * @param accountType {String} The type of the selling partner's account in the payout.
-   * @param marketplaceId {String} The identifier of the marketplace associated with the payout. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+   * @param marketplaceId {String} The identifier of the store associated with the payout. To find the ID for your store, refer to [Store Identifiers](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
    */
   constructor (partnerId, accountType, marketplaceId) {
     this.partnerId = partnerId
@@ -78,7 +78,7 @@ PartnerMetadata.prototype.partnerId = undefined
 PartnerMetadata.prototype.accountType = undefined
 
 /**
- * The identifier of the marketplace associated with the payout. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+ * The identifier of the store associated with the payout. To find the ID for your store, refer to [Store Identifiers](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
  * @type {String}
  */
