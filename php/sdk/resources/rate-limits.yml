@@ -1076,3 +1076,65 @@ ShipmentProcessingApi-retrieveInvoice:
 ShipmentProcessingApi-processShipment:
   - 1
   - 1
+# Finance Invoices API v2026-06-25
+DefaultApi-getInvoiceHeaders:
+  - 25
+  - 5
+DefaultApi-getInvoice:
+  - 25
+  - 5
+# Fulfillment Outbound v2026-07-04
+FulfillmentOutboundApi-getOffers:
+  - 5
+  - 30
+OffersApi-getOffers:
+  - 5
+  - 30
+FulfillmentOutboundApi-getOrderPreview:
+  - 2
+  - 30
+FulfillmentPreviewsApi-getOrderPreview:
+  - 2
+  - 30
+FulfillmentOutboundApi-cancelOrder:
+  - 2
+  - 30
+FulfillmentOrdersApi-cancelOrder:
+  - 2
+  - 30
+FulfillmentOutboundApi-updateOrderStatus:
+  - 1
+  - 1
+FulfillmentOrdersApi-updateOrderStatus:
+  - 1
+  - 1
+FulfillmentOutboundApi-updatePackage:
+  - 1
+  - 1
+FulfillmentOrdersApi-updatePackage:
+  - 1
+  - 1
+FulfillmentOutboundApi-updateOrder:
+  - 2
+  - 30
+FulfillmentOrdersApi-updateOrder:
+  - 2
+  - 30
+FulfillmentOutboundApi-getOrder:
+  - 2
+  - 30
+FulfillmentOrdersApi-getOrder:
+  - 2
+  - 30
+FulfillmentOutboundApi-listOrder:
+  - 2
+  - 30
+FulfillmentOrdersApi-listOrder:
+  - 2
+  - 30
+FulfillmentOutboundApi-createOrder:
+  - 2
+  - 30
+FulfillmentOrdersApi-createOrder:
+  - 2
+  - 30
