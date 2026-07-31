@@ -321,6 +321,26 @@ export const defaultRateLimitMap = {
   "ShipmentProcessingApi-retrieveShippingOptions": [1, 1],
   "ShipmentProcessingApi-generateInvoice": [1, 1],
   "ShipmentProcessingApi-retrieveInvoice": [1, 1],
-  "ShipmentProcessingApi-processShipment": [1, 1]
+  "ShipmentProcessingApi-processShipment": [1, 1],
+  "DefaultApi-getInvoiceHeaders": [25, 5],
+  "DefaultApi-getInvoice": [25, 5],
+  "FulfillmentOutboundApi-getOffers": [5, 30],
+  "OffersApi-getOffers": [5, 30],
+  "FulfillmentOutboundApi-getOrderPreview": [2, 30],
+  "FulfillmentPreviewsApi-getOrderPreview": [2, 30],
+  "FulfillmentOutboundApi-cancelOrder": [2, 30],
+  "FulfillmentOrdersApi-cancelOrder": [2, 30],
+  "FulfillmentOutboundApi-updateOrderStatus": [1, 1],
+  "FulfillmentOrdersApi-updateOrderStatus": [1, 1],
+  "FulfillmentOutboundApi-updatePackage": [1, 1],
+  "FulfillmentOrdersApi-updatePackage": [1, 1],
+  "FulfillmentOutboundApi-updateOrder": [2, 30],
+  "FulfillmentOrdersApi-updateOrder": [2, 30],
+  "FulfillmentOutboundApi-getOrder": [2, 30],
+  "FulfillmentOrdersApi-getOrder": [2, 30],
+  "FulfillmentOutboundApi-listOrder": [2, 30],
+  "FulfillmentOrdersApi-listOrder": [2, 30],
+  "FulfillmentOutboundApi-createOrder": [2, 30],
+  "FulfillmentOrdersApi-createOrder": [2, 30]
 }
 
