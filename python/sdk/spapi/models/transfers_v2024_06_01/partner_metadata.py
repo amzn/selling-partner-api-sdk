@@ -113,7 +113,7 @@ class PartnerMetadata(object):
     def marketplace_id(self):
         """Gets the marketplace_id of this PartnerMetadata.  # noqa: E501
 
-        The identifier of the marketplace associated with the payout. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).  # noqa: E501
+        The identifier of the store associated with the payout. To find the ID for your store, refer to [Store Identifiers](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).  # noqa: E501
 
         :return: The marketplace_id of this PartnerMetadata.  # noqa: E501
         :rtype: str
@@ -124,7 +124,7 @@ class PartnerMetadata(object):
     def marketplace_id(self, marketplace_id):
         """Sets the marketplace_id of this PartnerMetadata.
 
-        The identifier of the marketplace associated with the payout. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).  # noqa: E501
+        The identifier of the store associated with the payout. To find the ID for your store, refer to [Store Identifiers](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).  # noqa: E501
 
         :param marketplace_id: The marketplace_id of this PartnerMetadata.  # noqa: E501
         :type: str
