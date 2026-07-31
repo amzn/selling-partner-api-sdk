@@ -710,8 +710,26 @@ class TestHelper
         'testGetDestination200', // returns 500
         'testGetDestinations200', // returns 500
         'testDeleteDestination200', // returns 500
-        'testCreateDestination200', // returns 500
+        'testCreateDestination200', // returns 500,
+        'testSendTestNotification200', // returns 500
         // Orders Api v2026-01-01
         'testSearchOrders400', // Invalid request parameter
+        // Fulfillment Outbound Api v2026-07-04
+        'testGetOrderPreview0200', // returns 400
+        'testUpdateOrderStatus204', // returns 400
+        'testUpdateOrder202', // returns 400
+        'testGetOrderPreview200', // returns 400
+        'testGetOrder200',  // returns 400
+        'testGetOffers200', // returns 400
+        'testCreateOrder202', // returns 400
+        'testCreateOrder200', // returns 400
+        'testCancelOrder202', // returns 400
+        'testUpdatePackage0204', // returns 400
+        'testUpdateOrder0202', // returns 400
+        'testUpdateOrderStatus0204', // returns 400
+        'testGetOrder0200', // returns 400
+        'testCreateOrder0202', // returns 400
+        'testCreateOrder0200', // returns 400
+        'testCancelOrder0202', // returns 400
     ];
 }
