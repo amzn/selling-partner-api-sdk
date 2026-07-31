@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * The version of the OpenAPI document: 2021-08-01
  *
@@ -31,7 +31,7 @@ export class Item {
    * A listings item.
    * @alias module:listingsitems_v2021_08_01/model/Item
    * @class
-   * @param sku {String} A selling partner provided identifier for an Amazon listing.
+   * @param sku {String} A selling partner-provided identifier for an Amazon listing.
    */
   constructor (sku) {
     this.sku = sku
@@ -73,63 +73,63 @@ export class Item {
 }
 
 /**
- * A selling partner provided identifier for an Amazon listing.
+ * A selling partner-provided identifier for an Amazon listing.
  * @member {String} sku
  * @type {String}
  */
 Item.prototype.sku = undefined
 
 /**
- * Summary details of a listings item.
+ * Summary details for a listings item.
  * @member {ItemSummaryByMarketplace[]} summaries
  * @type {ItemSummaryByMarketplace[]}
  */
 Item.prototype.summaries = undefined
 
 /**
- * A JSON object containing structured listings item attribute data keyed by attribute name.
+ * JSON object containing structured listings item attribute data keyed by attribute name.
  * @member {Object} attributes
  * @type {Object}
  */
 Item.prototype.attributes = undefined
 
 /**
- * The issues associated with the listings item.
+ * Issues associated with the listings item.
  * @member {Issue[]} issues
  * @type {Issue[]}
  */
 Item.prototype.issues = undefined
 
 /**
- * Offer details for the listings item.
+ * The listings item's offer details.
  * @member {ItemOfferByMarketplace[]} offers
  * @type {ItemOfferByMarketplace[]}
  */
 Item.prototype.offers = undefined
 
 /**
- * The fulfillment availability for the listings item.
+ * The listings item's fulfillment availability.
  * @member {FulfillmentAvailability[]} fulfillmentAvailability
  * @type {FulfillmentAvailability[]}
  */
 Item.prototype.fulfillmentAvailability = undefined
 
 /**
- * The vendor procurement information for the listings item.
+ * The listings item's vendor procurement information.
  * @member {ItemProcurement[]} procurement
  * @type {ItemProcurement[]}
  */
 Item.prototype.procurement = undefined
 
 /**
- * Relationships for a listing item, by marketplace (for example, variations).
+ * Relationships for a listing item, by Amazon store (for example, variations).
  * @member {ItemRelationshipsByMarketplace[]} relationships
  * @type {ItemRelationshipsByMarketplace[]}
  */
 Item.prototype.relationships = undefined
 
 /**
- * Product types for a listing item, by marketplace.
+ * Product types for a listing item, by Amazon store.
  * @member {ItemProductTypeByMarketplace[]} productTypes
  * @type {ItemProductTypeByMarketplace[]}
  */

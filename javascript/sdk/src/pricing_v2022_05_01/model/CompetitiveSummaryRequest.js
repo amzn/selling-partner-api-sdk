@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Pricing
- * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer pricing information for Amazon Marketplace products.  For more information, refer to the [Product Pricing v2022-05-01 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
+ * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer pricing information for Amazon store products.  For more information, refer to the [Product Pricing v2022-05-01 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
  *
  * The version of the OpenAPI document: 2022-05-01
  *
@@ -28,7 +28,7 @@ export class CompetitiveSummaryRequest {
    * @alias module:pricing_v2022_05_01/model/CompetitiveSummaryRequest
    * @class
    * @param asin {String} The ASIN of the item.
-   * @param marketplaceId {String} The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+   * @param marketplaceId {String} The `MarketplaceID` is the globally unique identifier of an Amazon store. To find the ID for your Amazon store, refer to [Amazon store IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
    * @param includedData {CompetitiveSummaryIncludedData[]} The list of requested competitive pricing data for the product.
    * @param method {HttpMethod}
    * @param uri {String} The URI associated with the individual APIs that are called as part of the batch request.
@@ -81,7 +81,7 @@ export class CompetitiveSummaryRequest {
 CompetitiveSummaryRequest.prototype.asin = undefined
 
 /**
- * The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+ * The `MarketplaceID` is the globally unique identifier of an Amazon store. To find the ID for your Amazon store, refer to [Amazon store IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
  * @type {String}
  */

@@ -22,7 +22,7 @@ import { Currency } from './Currency.js'
 export class Breakdown {
   /**
    * Constructs a new <code>Breakdown</code>.
-   * Details about the movement of money in the financial transaction. Breakdowns are further categorized into breakdown types, breakdown amounts, and further breakdowns.
+   * Details about the movement of money in the financial transaction.
    * @alias module:finances_2024_06_19/model/Breakdown
    * @class
    */

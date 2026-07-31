@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Pricing
- * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer pricing information for Amazon Marketplace products.  For more information, refer to the [Product Pricing v2022-05-01 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
+ * The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer pricing information for Amazon store products.  For more information, refer to the [Product Pricing v2022-05-01 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
  *
  * The version of the OpenAPI document: 2022-05-01
  *
@@ -12,6 +12,7 @@
  */
 
 import { ApiClient } from './ApiClient.js'
+import { AmountThreshold } from './model/AmountThreshold.js'
 import { BatchRequest } from './model/BatchRequest.js'
 import { BatchResponse } from './model/BatchResponse.js'
 import { CompetitiveSummaryBatchRequest } from './model/CompetitiveSummaryBatchRequest.js'
@@ -47,6 +48,12 @@ import { Points } from './model/Points.js'
 import { PostalCode } from './model/PostalCode.js'
 import { Price } from './model/Price.js'
 import { PrimeDetails } from './model/PrimeDetails.js'
+import { Promotion } from './model/Promotion.js'
+import { PromotionDiscount } from './model/PromotionDiscount.js'
+import { PromotionSavings } from './model/PromotionSavings.js'
+import { PurchaseCondition } from './model/PurchaseCondition.js'
+import { PurchaseRequirements } from './model/PurchaseRequirements.js'
+import { QuantityThreshold } from './model/QuantityThreshold.js'
 import { ReferencePrice } from './model/ReferencePrice.js'
 import { SampleLocation } from './model/SampleLocation.js'
 import { Segment } from './model/Segment.js'
@@ -57,7 +64,7 @@ import { SimilarItems } from './model/SimilarItems.js'
 import { ProductPricingApi } from './api/ProductPricingApi.js'
 
 /**
-* The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer pricing information for Amazon Marketplace products.  For more information, refer to the [Product Pricing v2022-05-01 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide)..<br>
+* The Selling Partner API for Pricing helps you programmatically retrieve product pricing and offer pricing information for Amazon store products.  For more information, refer to the [Product Pricing v2022-05-01 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide)..<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * @module pricing_v2022_05_01/index
 * @version 2022-05-01
@@ -68,6 +75,12 @@ export {
      * @property {module:pricing_v2022_05_01/ApiClient}
      */
   ApiClient,
+
+  /**
+     * The AmountThreshold model constructor.
+     * @property {module:pricing_v2022_05_01/model/AmountThreshold}
+     */
+  AmountThreshold,
 
   /**
      * The BatchRequest model constructor.
@@ -278,6 +291,42 @@ export {
      * @property {module:pricing_v2022_05_01/model/PrimeDetails}
      */
   PrimeDetails,
+
+  /**
+     * The Promotion model constructor.
+     * @property {module:pricing_v2022_05_01/model/Promotion}
+     */
+  Promotion,
+
+  /**
+     * The PromotionDiscount model constructor.
+     * @property {module:pricing_v2022_05_01/model/PromotionDiscount}
+     */
+  PromotionDiscount,
+
+  /**
+     * The PromotionSavings model constructor.
+     * @property {module:pricing_v2022_05_01/model/PromotionSavings}
+     */
+  PromotionSavings,
+
+  /**
+     * The PurchaseCondition model constructor.
+     * @property {module:pricing_v2022_05_01/model/PurchaseCondition}
+     */
+  PurchaseCondition,
+
+  /**
+     * The PurchaseRequirements model constructor.
+     * @property {module:pricing_v2022_05_01/model/PurchaseRequirements}
+     */
+  PurchaseRequirements,
+
+  /**
+     * The QuantityThreshold model constructor.
+     * @property {module:pricing_v2022_05_01/model/QuantityThreshold}
+     */
+  QuantityThreshold,
 
   /**
      * The ReferencePrice model constructor.

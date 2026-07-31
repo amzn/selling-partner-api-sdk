@@ -58,6 +58,7 @@ export class OrderFulfillment {
       if (data.hasOwnProperty('fulfillmentServiceLevel')) { obj.fulfillmentServiceLevel = ApiClient.convertToType(data.fulfillmentServiceLevel, 'String') }
       if (data.hasOwnProperty('shipByWindow')) { obj.shipByWindow = DateTimeRange.constructFromObject(data.shipByWindow) }
       if (data.hasOwnProperty('deliverByWindow')) { obj.deliverByWindow = DateTimeRange.constructFromObject(data.deliverByWindow) }
+      if (data.hasOwnProperty('labelPrintingWindow')) { obj.labelPrintingWindow = DateTimeRange.constructFromObject(data.labelPrintingWindow) }
     }
     return obj
   }
@@ -94,3 +95,9 @@ OrderFulfillment.prototype.shipByWindow = undefined
  * @type {DateTimeRange}
  */
 OrderFulfillment.prototype.deliverByWindow = undefined
+
+/**
+ * @member {DateTimeRange} labelPrintingWindow
+ * @type {DateTimeRange}
+ */
+OrderFulfillment.prototype.labelPrintingWindow = undefined

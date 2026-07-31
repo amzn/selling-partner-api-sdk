@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * The version of the OpenAPI document: 2021-08-01
  *
@@ -24,8 +24,8 @@ export class ListingsItemPutRequest {
    * The request body schema for the &#x60;putListingsItem&#x60; operation.
    * @alias module:listingsitems_v2021_08_01/model/ListingsItemPutRequest
    * @class
-   * @param productType {String} The Amazon product type of the listings item.
-   * @param attributes {{String: Object}} A JSON object containing structured listings item attribute data keyed by attribute name.
+   * @param productType {String} The listings item's Amazon product type.
+   * @param attributes {{String: Object}} JSON object containing structured listings item attribute data keyed by attribute name.
    */
   constructor (productType, attributes) {
     this.productType = productType
@@ -62,7 +62,7 @@ export class ListingsItemPutRequest {
 }
 
 /**
- * The Amazon product type of the listings item.
+ * The listings item's Amazon product type.
  * @member {String} productType
  * @type {String}
  */
@@ -101,7 +101,7 @@ ListingsItemPutRequest.RequirementsEnum = {
 ListingsItemPutRequest.prototype.requirements = undefined
 
 /**
- * A JSON object containing structured listings item attribute data keyed by attribute name.
+ * JSON object containing structured listings item attribute data keyed by attribute name.
  * @member {Object} attributes
  * @type {Object}
  */

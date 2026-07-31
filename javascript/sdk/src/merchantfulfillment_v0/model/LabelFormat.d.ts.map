@@ -1,1 +1,1 @@
-{"version":3,"file":"LabelFormat.d.ts","sourceRoot":"","sources":["LabelFormat.js"],"names":[],"mappings":"0BAgBa,KAAK,GAAC,KAAK,GAAC,QAAQ,GAAC,QAAQ,GAAC,wBAAwB;AADnE;;GAEG;AACH;;;;;;;EAWI"}
+{"version":3,"file":"LabelFormat.d.ts","sourceRoot":"","sources":["LabelFormat.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAKA,YAAkE,WAAW,GAAnE,KAAK,GAAC,KAAK,GAAC,QAAQ,GAAC,QAAQ,GAAC,wBAAwB,CAAa;AADhF;;GAEG;AACH,eAAO,MAAM,WAAW;;;;;;;CAWpB,CAAA"}

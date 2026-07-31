@@ -22,7 +22,7 @@ import { TransactionsPayload } from './TransactionsPayload.js'
 export class ListTransactionsResponse {
   /**
    * Constructs a new <code>ListTransactionsResponse</code>.
-   * The response schema for the &#x60;listTransactions&#x60; operation.
+   * The response to the &#x60;listTransactions&#x60; operation.
    * @alias module:finances_2024_06_19/model/ListTransactionsResponse
    * @class
    */

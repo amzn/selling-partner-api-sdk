@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * The version of the OpenAPI document: 2021-08-01
  *
@@ -21,7 +21,7 @@ import { ApiClient } from '../ApiClient.js'
 export class ItemIdentifiersByMarketplace {
   /**
    * Constructs a new <code>ItemIdentifiersByMarketplace</code>.
-   * Identity attributes associated with the item in the Amazon catalog for the indicated Amazon marketplace.
+   * Identity attributes associated with the item in the Amazon catalog for the indicated Amazon store.
    * @alias module:listingsitems_v2021_08_01/model/ItemIdentifiersByMarketplace
    * @class
    */
@@ -57,14 +57,14 @@ export class ItemIdentifiersByMarketplace {
 }
 
 /**
- * A marketplace identifier. Identifies the Amazon marketplace for the listings item.
+ * Amazon store identifier. Identifies the listings item's Amazon store.
  * @member {String} marketplaceId
  * @type {String}
  */
 ItemIdentifiersByMarketplace.prototype.marketplaceId = undefined
 
 /**
- * Amazon Standard Identification Number (ASIN) of the listings item.
+ * The ASIN of the listings item.
  * @member {String} asin
  * @type {String}
  */

@@ -12,6 +12,7 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
+import { ItemCancellationExecution } from './ItemCancellationExecution.js'
 import { ItemCancellationRequest } from './ItemCancellationRequest.js'
 
 /**
@@ -51,6 +52,7 @@ export class ItemCancellation {
       }
       obj = obj || new ItemCancellation()
       if (data.hasOwnProperty('cancellationRequest')) { obj.cancellationRequest = ItemCancellationRequest.constructFromObject(data.cancellationRequest) }
+      if (data.hasOwnProperty('cancellationExecution')) { obj.cancellationExecution = ItemCancellationExecution.constructFromObject(data.cancellationExecution) }
     }
     return obj
   }
@@ -61,3 +63,9 @@ export class ItemCancellation {
  * @type {ItemCancellationRequest}
  */
 ItemCancellation.prototype.cancellationRequest = undefined
+
+/**
+ * @member {ItemCancellationExecution} cancellationExecution
+ * @type {ItemCancellationExecution}
+ */
+ItemCancellation.prototype.cancellationExecution = undefined

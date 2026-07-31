@@ -1,1 +1,1 @@
-{"version":3,"file":"BankAccountNumberFormat.d.ts","sourceRoot":"","sources":["BankAccountNumberFormat.js"],"names":[],"mappings":"sCAgBa,MAAM,GAAC,MAAM;AAD1B;;GAEG;AACH;;;;EAQI"}
+{"version":3,"file":"BankAccountNumberFormat.d.ts","sourceRoot":"","sources":["BankAccountNumberFormat.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAKA,YAAyB,uBAAuB,GAAtC,MAAM,GAAC,MAAM,CAAyB;AADnD;;GAEG;AACH,eAAO,MAAM,uBAAuB;;;;CAQhC,CAAA"}

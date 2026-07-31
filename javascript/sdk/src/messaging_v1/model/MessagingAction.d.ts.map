@@ -1,1 +1,1 @@
-{"version":3,"file":"MessagingAction.d.ts","sourceRoot":"","sources":["MessagingAction.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,iCAJW,MAAM,OACN,eAAe,GACd,eAAe,CAmB1B;IAnCD;;;;;;OAMG;IACH,0BAEC;IADC,aAAgB;CA4BnB"}
+{"version":3,"file":"MessagingAction.d.ts","sourceRoot":"","sources":["MessagingAction.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAIH;;;;GAIG;AACH,qBAAa,eAAe;IASnB,IAAI;IARX;;;;;;OAMG;IACH,YAAa,IAAI,QAAA,EAEhB;IAED;;;;;;OAMG;IACH,MAAM,CAAC,mBAAmB,CAAE,IAAI,EAJrB,MAIqB,EAAE,GAAG,EAH1B,eAG0B,GAFzB,eAAe,CAmB1B;CACF"}

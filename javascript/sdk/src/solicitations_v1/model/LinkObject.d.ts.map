@@ -1,1 +1,1 @@
-{"version":3,"file":"LinkObject.d.ts","sourceRoot":"","sources":["LinkObject.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,iCAJW,MAAM,OACN,UAAU,GACT,UAAU,CAoBrB;IApCD;;;;;;OAMG;IACH,0BAEC;IADC,aAAgB;IAsCpB;;;;OAIG;IACH,aAAyB;CAdxB"}
+{"version":3,"file":"LinkObject.d.ts","sourceRoot":"","sources":["LinkObject.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAIH;;;;GAIG;AACH,qBAAa,UAAU;IASd,IAAI;IARX;;;;;;OAMG;IACH,YAAa,IAAI,QAAA,EAEhB;IAED;;;;;;OAMG;IACH,MAAM,CAAC,mBAAmB,CAAE,IAAI,EAJrB,MAIqB,EAAE,GAAG,EAH1B,UAG0B,GAFzB,UAAU,CAoBrB;CACF"}

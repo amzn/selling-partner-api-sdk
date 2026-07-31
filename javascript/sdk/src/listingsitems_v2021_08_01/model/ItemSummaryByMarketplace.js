@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * The version of the OpenAPI document: 2021-08-01
  *
@@ -22,14 +22,14 @@ import { ItemImage } from './ItemImage.js'
 export class ItemSummaryByMarketplace {
   /**
    * Constructs a new <code>ItemSummaryByMarketplace</code>.
-   * Summary details of a listings item for an Amazon marketplace.
+   * Summary details for a listings item for an Amazon store.
    * @alias module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace
    * @class
-   * @param marketplaceId {String} A marketplace identifier. Identifies the Amazon marketplace for the listings item.
-   * @param productType {String} The Amazon product type of the listings item.
+   * @param marketplaceId {String} A marketplace identifier. Identifies the listings item's Amazon store.
+   * @param productType {String} The listings item's Amazon product type.
    * @param status {String[]} Statuses that apply to the listings item.
-   * @param createdDate {Date} The date the listings item was created in ISO 8601 format.
-   * @param lastUpdatedDate {Date} The date the listings item was last updated in ISO 8601 format.
+   * @param createdDate {Date} Date the listings item was created, in ISO 8601 format.
+   * @param lastUpdatedDate {Date} Date the listings item was last updated, in ISO 8601 format.
    */
   constructor (marketplaceId, productType, status, createdDate, lastUpdatedDate) {
     this.marketplaceId = marketplaceId
@@ -76,21 +76,21 @@ export class ItemSummaryByMarketplace {
 }
 
 /**
- * A marketplace identifier. Identifies the Amazon marketplace for the listings item.
+ * A marketplace identifier. Identifies the listings item's Amazon store.
  * @member {String} marketplaceId
  * @type {String}
  */
 ItemSummaryByMarketplace.prototype.marketplaceId = undefined
 
 /**
- * Amazon Standard Identification Number (ASIN) of the listings item.
+ * The ASIN of the listings item.
  * @member {String} asin
  * @type {String}
  */
 ItemSummaryByMarketplace.prototype.asin = undefined
 
 /**
- * The Amazon product type of the listings item.
+ * The listings item's Amazon product type.
  * @member {String} productType
  * @type {String}
  */
@@ -215,28 +215,28 @@ ItemSummaryByMarketplace.StatusEnum = {
 ItemSummaryByMarketplace.prototype.status = undefined
 
 /**
- * The fulfillment network stock keeping unit is an identifier used by Amazon fulfillment centers to identify each unique item.
+ * Fulfillment network stock keeping unit is an identifier used by Amazon fulfillment centers to identify each unique item.
  * @member {String} fnSku
  * @type {String}
  */
 ItemSummaryByMarketplace.prototype.fnSku = undefined
 
 /**
- * The name or title associated with an Amazon catalog item.
+ * Name, or title, associated with an Amazon catalog item.
  * @member {String} itemName
  * @type {String}
  */
 ItemSummaryByMarketplace.prototype.itemName = undefined
 
 /**
- * The date the listings item was created in ISO 8601 format.
+ * Date the listings item was created, in ISO 8601 format.
  * @member {Date} createdDate
  * @type {Date}
  */
 ItemSummaryByMarketplace.prototype.createdDate = undefined
 
 /**
- * The date the listings item was last updated in ISO 8601 format.
+ * Date the listings item was last updated, in ISO 8601 format.
  * @member {Date} lastUpdatedDate
  * @type {Date}
  */

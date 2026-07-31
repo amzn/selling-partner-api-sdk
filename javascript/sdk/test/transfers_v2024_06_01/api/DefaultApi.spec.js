@@ -40,6 +40,30 @@ describe('DefaultApi', () => {
       assertValidResponsePayload(200, response.data);
     });
   });
+  describe('listExpectedPayouts', () => {
+    it('should successfully call listExpectedPayoutsWithHttpInfo', async () => {
+      await instructBackendMock("default", "listExpectedPayouts", "200")
+      const params = [
+      ];
+      const response = await instance.listExpectedPayoutsWithHttpInfo(...params);
+
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data);
+    });
+  });
+  describe('listPayouts', () => {
+    it('should successfully call listPayoutsWithHttpInfo', async () => {
+      await instructBackendMock("default", "listPayouts", "200")
+      const params = [
+      ];
+      const response = await instance.listPayoutsWithHttpInfo(...params);
+
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data);
+    });
+  });
 
   describe('constructor', () => {
     it('should use default ApiClient when none provided', () => {

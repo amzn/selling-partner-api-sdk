@@ -25,7 +25,7 @@ import { ItemRelatedIdentifier } from './ItemRelatedIdentifier.js'
 export class Item {
   /**
    * Constructs a new <code>Item</code>.
-   * Additional information about the items in a transaction.
+   * Additional information about an item in a transaction.
    * @alias module:finances_2024_06_19/model/Item
    * @class
    */

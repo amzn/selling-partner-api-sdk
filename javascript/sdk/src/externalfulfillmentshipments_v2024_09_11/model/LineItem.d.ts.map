@@ -1,1 +1,1 @@
-{"version":3,"file":"LineItem.d.ts","sourceRoot":"","sources":["LineItem.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,iCAJW,MAAM,OACN,QAAQ,GACP,QAAQ,CAoBnB;IApCD;;;;;;OAMG;IACH,wBAEC;IADC,WAAY;IAsChB;;;;OAIG;IACH,iBAA2B;CAd1B"}
+{"version":3,"file":"LineItem.d.ts","sourceRoot":"","sources":["LineItem.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAIH;;;;GAIG;AACH,qBAAa,QAAQ;IASZ,EAAE;IART;;;;;;OAMG;IACH,YAAa,EAAE,QAAA,EAEd;IAED;;;;;;OAMG;IACH,MAAM,CAAC,mBAAmB,CAAE,IAAI,EAJrB,MAIqB,EAAE,GAAG,EAH1B,QAG0B,GAFzB,QAAQ,CAoBnB;CACF"}

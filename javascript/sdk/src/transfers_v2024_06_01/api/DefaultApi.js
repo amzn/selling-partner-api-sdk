@@ -16,6 +16,8 @@ import { ErrorList } from '../model/ErrorList.js'
 import { GetPaymentMethodsResponse } from '../model/GetPaymentMethodsResponse.js'
 import { InitiatePayoutRequest } from '../model/InitiatePayoutRequest.js'
 import { InitiatePayoutResponse } from '../model/InitiatePayoutResponse.js'
+import { ListExpectedPayoutsResponse } from '../model/ListExpectedPayoutsResponse.js'
+import { ListPayoutsResponse } from '../model/ListPayoutsResponse.js'
 import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
 import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
@@ -48,7 +50,9 @@ export class DefaultApi {
     const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
     const operations = [
       'DefaultApi-getPaymentMethods',
-      'DefaultApi-initiatePayout'
+      'DefaultApi-initiatePayout',
+      'DefaultApi-listExpectedPayouts',
+      'DefaultApi-listPayouts'
     ]
 
     for (const operation of operations) {
@@ -157,6 +161,115 @@ export class DefaultApi {
      */
   initiatePayout (body) {
     return this.initiatePayoutWithHttpInfo(body)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
+
+  /**
+     * Returns the upcoming expected payouts from Amazon associated with a partner&#39;s account for the specified parameters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param {Object} [opts] Optional parameters
+     * @param {String[]} [opts.marketplaceIds] An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     * @param {String} [opts.accountType] An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned.
+     * @param {String} [opts.nextToken] The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
+     * @return {Promise<ListExpectedPayoutsResponse>}
+     */
+  listExpectedPayoutsWithHttpInfo (opts) {
+    opts = opts || {}
+    const postBody = null
+
+    const pathParams = {
+    }
+    const queryParams = {
+      marketplaceIds: this.apiClient.buildCollectionParam(opts.marketplaceIds, 'csv'),
+      accountType: opts.accountType,
+      nextToken: opts.nextToken
+    }
+    const headerParams = {
+    }
+    const formParams = {
+    }
+
+    const contentTypes = []
+    const accepts = ['application/json']
+    const returnType = ListExpectedPayoutsResponse
+
+    return this.apiClient.callApi('DefaultApi-listExpectedPayouts',
+      '/finances/transfers/2024-06-01/payouts/expected', 'GET',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listExpectedPayouts')
+    )
+  }
+
+  /**
+     * Returns the upcoming expected payouts from Amazon associated with a partner&#39;s account for the specified parameters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param {Object} [opts] Optional parameters
+     * @param {String[]} [opts.marketplaceIds] An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     * @param {String} [opts.accountType] An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned.
+     * @param {String} [opts.nextToken] The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
+     * @return {Promise<ListExpectedPayoutsResponse>}
+     */
+  listExpectedPayouts (opts) {
+    return this.listExpectedPayoutsWithHttpInfo(opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
+
+  /**
+     * Returns a list of payouts for the selling partner&#39;s account. Results can be filtered by &#x60;marketplaceIds&#x60;, &#x60;accountType&#x60;, date range (&#x60;createdAfter&#x60; and &#x60;createdBefore&#x60;), or a specific &#x60;payoutId&#x60;. By default, the API returns payouts for all available marketplaces and account types. Results are sorted in descending order of their creation dates.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param {Object} [opts] Optional parameters
+     * @param {String[]} [opts.marketplaceIds] An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     * @param {Date} [opts.createdAfter] An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied.
+     * @param {Date} [opts.createdBefore] An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied.
+     * @param {String} [opts.payoutId] An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier.
+     * @param {String} [opts.accountType] An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned.
+     * @param {String} [opts.nextToken] The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
+     * @return {Promise<ListPayoutsResponse>}
+     */
+  listPayoutsWithHttpInfo (opts) {
+    opts = opts || {}
+    const postBody = null
+
+    const pathParams = {
+    }
+    const queryParams = {
+      marketplaceIds: this.apiClient.buildCollectionParam(opts.marketplaceIds, 'csv'),
+      createdAfter: opts.createdAfter,
+      createdBefore: opts.createdBefore,
+      payoutId: opts.payoutId,
+      accountType: opts.accountType,
+      nextToken: opts.nextToken
+    }
+    const headerParams = {
+    }
+    const formParams = {
+    }
+
+    const contentTypes = []
+    const accepts = ['application/json']
+    const returnType = ListPayoutsResponse
+
+    return this.apiClient.callApi('DefaultApi-listPayouts',
+      '/finances/transfers/2024-06-01/payouts', 'GET',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listPayouts')
+    )
+  }
+
+  /**
+     * Returns a list of payouts for the selling partner&#39;s account. Results can be filtered by &#x60;marketplaceIds&#x60;, &#x60;accountType&#x60;, date range (&#x60;createdAfter&#x60; and &#x60;createdBefore&#x60;), or a specific &#x60;payoutId&#x60;. By default, the API returns payouts for all available marketplaces and account types. Results are sorted in descending order of their creation dates.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param {Object} [opts] Optional parameters
+     * @param {String[]} [opts.marketplaceIds] An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     * @param {Date} [opts.createdAfter] An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied.
+     * @param {Date} [opts.createdBefore] An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied.
+     * @param {String} [opts.payoutId] An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier.
+     * @param {String} [opts.accountType] An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned.
+     * @param {String} [opts.nextToken] The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
+     * @return {Promise<ListPayoutsResponse>}
+     */
+  listPayouts (opts) {
+    return this.listPayoutsWithHttpInfo(opts)
       .then(function (response_and_data) {
         return response_and_data.data
       })

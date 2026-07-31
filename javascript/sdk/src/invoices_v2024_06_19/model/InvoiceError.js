@@ -21,7 +21,7 @@ import { ApiClient } from '../ApiClient.js'
 export class InvoiceError {
   /**
    * Constructs a new <code>InvoiceError</code>.
-   * An invoice creation error occurrence.
+   * An invoice creation error occurred.
    * @alias module:invoices_v2024_06_19/model/InvoiceError
    * @class
    */
@@ -57,7 +57,7 @@ export class InvoiceError {
 }
 
 /**
- * A text description of the error.
+ * A description of the error.
  * @member {String} description
  * @type {String}
  */

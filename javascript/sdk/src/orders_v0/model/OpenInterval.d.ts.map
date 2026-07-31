@@ -1,1 +1,1 @@
-{"version":3,"file":"OpenInterval.d.ts","sourceRoot":"","sources":["OpenInterval.js"],"names":[],"mappings":"AAgBA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,iCAJW,MAAM,OACN,YAAY,GACX,YAAY,CAoBvB;IAGH;;;OAGG;IACH,WAFU,gBAAgB,CAEM;IAEhC;;;OAGG;IACH,SAFU,gBAAgB,CAEI;CAZ7B;iCA3CgC,uBAAuB"}
+{"version":3,"file":"OpenInterval.d.ts","sourceRoot":"","sources":["OpenInterval.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAKH;;;;GAIG;AACH,qBAAa,YAAY;IACvB;;;;;OAKG;IACH,cACC;IAED;;;;;;OAMG;IACH,MAAM,CAAC,mBAAmB,CAAE,IAAI,EAJrB,MAIqB,EAAE,GAAG,EAH1B,YAG0B,GAFzB,YAAY,CAoBvB;CACF"}

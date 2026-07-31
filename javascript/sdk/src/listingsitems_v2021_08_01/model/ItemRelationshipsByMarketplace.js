@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * The version of the OpenAPI document: 2021-08-01
  *
@@ -22,10 +22,10 @@ import { ItemRelationship } from './ItemRelationship.js'
 export class ItemRelationshipsByMarketplace {
   /**
    * Constructs a new <code>ItemRelationshipsByMarketplace</code>.
-   * Relationship details for the listing item in the specified marketplace.
+   * Relationship details for the listing item in the specified Amazon store.
    * @alias module:listingsitems_v2021_08_01/model/ItemRelationshipsByMarketplace
    * @class
-   * @param marketplaceId {String} Amazon marketplace identifier.
+   * @param marketplaceId {String} Amazon store identifier.
    * @param relationships {ItemRelationship[]} Relationships for the listing item.
    */
   constructor (marketplaceId, relationships) {
@@ -62,7 +62,7 @@ export class ItemRelationshipsByMarketplace {
 }
 
 /**
- * Amazon marketplace identifier.
+ * Amazon store identifier.
  * @member {String} marketplaceId
  * @type {String}
  */

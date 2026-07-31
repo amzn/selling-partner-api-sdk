@@ -14,6 +14,30 @@ describe('DefaultApi', () => {
     instance = new TheSellingPartnerApiForFinances.DefaultApi(apiClientInstance);
   });
 
+  describe('listBalances', () => {
+    it('should successfully call listBalancesWithHttpInfo', async () => {
+      await instructBackendMock("default", "listBalances", "200")
+      const params = [
+      ];
+      const response = await instance.listBalancesWithHttpInfo(...params);
+
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data);
+    });
+  });
+  describe('listSummary', () => {
+    it('should successfully call listSummaryWithHttpInfo', async () => {
+      await instructBackendMock("default", "listSummary", "200")
+      const params = [
+      ];
+      const response = await instance.listSummaryWithHttpInfo(...params);
+
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data);
+    });
+  });
   describe('listTransactions', () => {
     it('should successfully call listTransactionsWithHttpInfo', async () => {
       await instructBackendMock("default", "listTransactions", "200")

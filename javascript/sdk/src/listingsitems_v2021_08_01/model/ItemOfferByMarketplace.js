@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * The version of the OpenAPI document: 2021-08-01
  *
@@ -24,11 +24,11 @@ import { Points } from './Points.js'
 export class ItemOfferByMarketplace {
   /**
    * Constructs a new <code>ItemOfferByMarketplace</code>.
-   * Offer details of a listings item for an Amazon marketplace.
+   * Offer details for a listings item for the specified Amazon store.
    * @alias module:listingsitems_v2021_08_01/model/ItemOfferByMarketplace
    * @class
-   * @param marketplaceId {String} The Amazon marketplace identifier.
-   * @param offerType {String} Type of offer for the listings item.
+   * @param marketplaceId {String} Amazon store identifier.
+   * @param offerType {String} The listings item's offer type.
    * @param price {Money}
    */
   constructor (marketplaceId, offerType, price) {
@@ -69,7 +69,7 @@ export class ItemOfferByMarketplace {
 }
 
 /**
- * The Amazon marketplace identifier.
+ * Amazon store identifier.
  * @member {String} marketplaceId
  * @type {String}
  */
@@ -95,7 +95,7 @@ ItemOfferByMarketplace.OfferTypeEnum = {
   B2B: 'B2B'
 }
 /**
- * Type of offer for the listings item.
+ * The listings item's offer type.
  * @member {String} offerType
  * @type {String}
  */

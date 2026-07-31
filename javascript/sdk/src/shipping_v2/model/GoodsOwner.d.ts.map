@@ -1,1 +1,1 @@
-{"version":3,"file":"GoodsOwner.d.ts","sourceRoot":"","sources":["GoodsOwner.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,iCAJW,MAAM,OACN,UAAU,GACT,UAAU,CAmBrB;IAnCD;;;;;;OAMG;IACH,gCAEC;IADC,mBAA4B;CA4B/B"}
+{"version":3,"file":"GoodsOwner.d.ts","sourceRoot":"","sources":["GoodsOwner.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAIH;;;;GAIG;AACH,qBAAa,UAAU;IASd,UAAU;IARjB;;;;;;OAMG;IACH,YAAa,UAAU,QAAA,EAEtB;IAED;;;;;;OAMG;IACH,MAAM,CAAC,mBAAmB,CAAE,IAAI,EAJrB,MAIqB,EAAE,GAAG,EAH1B,UAG0B,GAFzB,UAAU,CAmBrB;CACF"}

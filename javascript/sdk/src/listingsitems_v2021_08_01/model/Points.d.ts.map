@@ -1,1 +1,1 @@
-{"version":3,"file":"Points.d.ts","sourceRoot":"","sources":["Points.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAYE;;;;;;OAMG;IACH,iCAJW,MAAM,OACN,MAAM,GACL,MAAM,CAmBjB;IAnCD;;;;;;OAMG;IACH,kCAEC;IADC,qBAAgC;CA4BnC"}
+{"version":3,"file":"Points.d.ts","sourceRoot":"","sources":["Points.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAIH;;;;GAIG;AACH,qBAAa,MAAM;IASV,YAAY;IARnB;;;;;;OAMG;IACH,YAAa,YAAY,QAAA,EAExB;IAED;;;;;;OAMG;IACH,MAAM,CAAC,mBAAmB,CAAE,IAAI,EAJrB,MAIqB,EAAE,GAAG,EAH1B,MAG0B,GAFzB,MAAM,CAmBjB;CACF"}

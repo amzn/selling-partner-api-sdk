@@ -13,6 +13,7 @@
 
 import { ApiClient } from './ApiClient.js'
 import { AmazonPayContext } from './model/AmazonPayContext.js'
+import { Balance } from './model/Balance.js'
 import { Breakdown } from './model/Breakdown.js'
 import { BusinessContext } from './model/BusinessContext.js'
 import { Context } from './model/Context.js'
@@ -22,12 +23,16 @@ import { Error } from './model/Error.js'
 import { ErrorList } from './model/ErrorList.js'
 import { Item } from './model/Item.js'
 import { ItemRelatedIdentifier } from './model/ItemRelatedIdentifier.js'
+import { ListBalancesResponse } from './model/ListBalancesResponse.js'
 import { ListTransactionsResponse } from './model/ListTransactionsResponse.js'
 import { MarketplaceDetails } from './model/MarketplaceDetails.js'
+import { PartnerMetadata } from './model/PartnerMetadata.js'
 import { PaymentsContext } from './model/PaymentsContext.js'
 import { ProductContext } from './model/ProductContext.js'
 import { RelatedIdentifier } from './model/RelatedIdentifier.js'
 import { SellingPartnerMetadata } from './model/SellingPartnerMetadata.js'
+import { Summary } from './model/Summary.js'
+import { SummaryResponse } from './model/SummaryResponse.js'
 import { TimeRangeContext } from './model/TimeRangeContext.js'
 import { Transaction } from './model/Transaction.js'
 import { TransactionsPayload } from './model/TransactionsPayload.js'
@@ -51,6 +56,12 @@ export {
      * @property {module:finances_2024_06_19/model/AmazonPayContext}
      */
   AmazonPayContext,
+
+  /**
+     * The Balance model constructor.
+     * @property {module:finances_2024_06_19/model/Balance}
+     */
+  Balance,
 
   /**
      * The Breakdown model constructor.
@@ -107,6 +118,12 @@ export {
   ItemRelatedIdentifier,
 
   /**
+     * The ListBalancesResponse model constructor.
+     * @property {module:finances_2024_06_19/model/ListBalancesResponse}
+     */
+  ListBalancesResponse,
+
+  /**
      * The ListTransactionsResponse model constructor.
      * @property {module:finances_2024_06_19/model/ListTransactionsResponse}
      */
@@ -117,6 +134,12 @@ export {
      * @property {module:finances_2024_06_19/model/MarketplaceDetails}
      */
   MarketplaceDetails,
+
+  /**
+     * The PartnerMetadata model constructor.
+     * @property {module:finances_2024_06_19/model/PartnerMetadata}
+     */
+  PartnerMetadata,
 
   /**
      * The PaymentsContext model constructor.
@@ -141,6 +164,18 @@ export {
      * @property {module:finances_2024_06_19/model/SellingPartnerMetadata}
      */
   SellingPartnerMetadata,
+
+  /**
+     * The Summary model constructor.
+     * @property {module:finances_2024_06_19/model/Summary}
+     */
+  Summary,
+
+  /**
+     * The SummaryResponse model constructor.
+     * @property {module:finances_2024_06_19/model/SummaryResponse}
+     */
+  SummaryResponse,
 
   /**
      * The TimeRangeContext model constructor.

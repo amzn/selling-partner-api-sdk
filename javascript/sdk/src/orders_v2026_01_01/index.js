@@ -31,6 +31,7 @@ import { GetOrderResponse } from './model/GetOrderResponse.js'
 import { GiftOption } from './model/GiftOption.js'
 import { HourMinute } from './model/HourMinute.js'
 import { ItemCancellation } from './model/ItemCancellation.js'
+import { ItemCancellationExecution } from './model/ItemCancellationExecution.js'
 import { ItemCancellationRequest } from './model/ItemCancellationRequest.js'
 import { ItemCondition } from './model/ItemCondition.js'
 import { ItemCustomization } from './model/ItemCustomization.js'
@@ -208,6 +209,12 @@ export {
      * @property {module:orders_v2026_01_01/model/ItemCancellation}
      */
   ItemCancellation,
+
+  /**
+     * The ItemCancellationExecution model constructor.
+     * @property {module:orders_v2026_01_01/model/ItemCancellationExecution}
+     */
+  ItemCancellationExecution,
 
   /**
      * The ItemCancellationRequest model constructor.

@@ -1,1 +1,1 @@
-{"version":3,"file":"RangeSlot.d.ts","sourceRoot":"","sources":["RangeSlot.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,iCAJW,MAAM,OACN,SAAS,GACR,SAAS,CAqBpB;IAGH;;;;OAIG;IACH,eAFU,IAAI,CAEmB;IAEjC;;;;OAIG;IACH,aAFU,IAAI,CAEiB;IAE/B;;;;OAIG;IACH,iBAA4B;CArB3B"}
+{"version":3,"file":"RangeSlot.d.ts","sourceRoot":"","sources":["RangeSlot.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAIH;;;;GAIG;AACH,qBAAa,SAAS;IACpB;;;;;OAKG;IACH,cACC;IAED;;;;;;OAMG;IACH,MAAM,CAAC,mBAAmB,CAAE,IAAI,EAJrB,MAIqB,EAAE,GAAG,EAH1B,SAG0B,GAFzB,SAAS,CAqBpB;CACF"}

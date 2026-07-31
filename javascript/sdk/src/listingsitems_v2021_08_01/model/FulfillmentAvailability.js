@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * The version of the OpenAPI document: 2021-08-01
  *
@@ -21,7 +21,7 @@ import { ApiClient } from '../ApiClient.js'
 export class FulfillmentAvailability {
   /**
    * Constructs a new <code>FulfillmentAvailability</code>.
-   * The fulfillment availability details for the listings item.
+   * The listings item&#39;s fulfillment availability details.
    * @alias module:listingsitems_v2021_08_01/model/FulfillmentAvailability
    * @class
    * @param fulfillmentChannelCode {String} Designates which fulfillment network is used.
@@ -66,7 +66,7 @@ export class FulfillmentAvailability {
 FulfillmentAvailability.prototype.fulfillmentChannelCode = undefined
 
 /**
- * The quantity of the item you are making available for sale.
+ * The item quantity that you're making available for sale.
  * @member {Number} quantity
  * @type {Number}
  */

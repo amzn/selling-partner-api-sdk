@@ -24,6 +24,7 @@ src/orders_v2026_01_01/model/GetOrderResponse.js
 src/orders_v2026_01_01/model/GiftOption.js
 src/orders_v2026_01_01/model/HourMinute.js
 src/orders_v2026_01_01/model/ItemCancellation.js
+src/orders_v2026_01_01/model/ItemCancellationExecution.js
 src/orders_v2026_01_01/model/ItemCancellationRequest.js
 src/orders_v2026_01_01/model/ItemCondition.js
 src/orders_v2026_01_01/model/ItemCustomization.js

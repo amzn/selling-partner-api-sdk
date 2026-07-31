@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Listings Items
- * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, see the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
+ * The Selling Partner API for Listings Items (Listings Items API) provides programmatic access to selling partner listings on Amazon. Use this API in collaboration with the Selling Partner API for Product Type Definitions, which you can use to retrieve the information about Amazon product types needed to use the Listings Items API.  For more information, refer to the [Listings Items API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide).
  *
  * The version of the OpenAPI document: 2021-08-01
  *
@@ -24,7 +24,7 @@ export class Points {
    * The number of Amazon Points offered with the purchase of an item, and their monetary value. Note that the &#x60;Points&#x60; element is only returned in Japan (JP).
    * @alias module:listingsitems_v2021_08_01/model/Points
    * @class
-   * @param pointsNumber {Number}
+   * @param pointsNumber {Number} The number of Amazon Points offered with the purchase of an item, and their monetary value.
    */
   constructor (pointsNumber) {
     this.pointsNumber = pointsNumber
@@ -58,6 +58,7 @@ export class Points {
 }
 
 /**
+ * The number of Amazon Points offered with the purchase of an item, and their monetary value.
  * @member {Number} pointsNumber
  * @type {Number}
  */

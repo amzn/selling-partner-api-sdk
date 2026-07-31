@@ -1,1 +1,1 @@
-{"version":3,"file":"ElectronicInvoiceStatus.d.ts","sourceRoot":"","sources":["ElectronicInvoiceStatus.js"],"names":[],"mappings":"sCAgBa,aAAa,GAAC,UAAU,GAAC,YAAY,GAAC,SAAS,GAAC,UAAU;AADvE;;GAEG;AACH;;;;;;;EAWI"}
+{"version":3,"file":"ElectronicInvoiceStatus.d.ts","sourceRoot":"","sources":["ElectronicInvoiceStatus.js"],"names":[],"mappings":"AAAA;;;;;;;;;;;GAWG;AAKA,YAAsE,uBAAuB,GAAnF,aAAa,GAAC,UAAU,GAAC,YAAY,GAAC,SAAS,GAAC,UAAU,CAAyB;AADhG;;GAEG;AACH,eAAO,MAAM,uBAAuB;;;;;;;CAWhC,CAAA"}
