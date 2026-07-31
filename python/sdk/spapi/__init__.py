@@ -25,11 +25,16 @@ from spapi.api.external_fulfillment_shipments_v2024_09_11.shipment_retrieval_api
 from spapi.api.fba_eligibility_v1.fba_inbound_eligibility_api import FbaInboundEligibilityApi
 from spapi.api.fba_inventory_v1.fba_inventory_api import FbaInventoryApi
 from spapi.api.feeds_v2021_06_30.feeds_api import FeedsApi
+from spapi.api.finances_invoices_v2026_06_25.default_api import DefaultApi
 from spapi.api.finances_v0.finances_v0_api import FinancesV0Api
 from spapi.api.finances_v2024_06_19.finances_v2024_api import FinancesV2024Api
 from spapi.api.fulfillment_inbound_v0.fba_inbound_v0_api import FbaInboundV0Api
 from spapi.api.fulfillment_inbound_v2024_03_20.fba_inbound_api import FbaInboundApi
 from spapi.api.fulfillment_outbound_v2020_07_01.fba_outbound_api import FbaOutboundApi
+from spapi.api.fulfillment_outbound_v2026_07_04.fulfillment_orders_api import FulfillmentOrdersApi
+from spapi.api.fulfillment_outbound_v2026_07_04.fulfillment_outbound_api import FulfillmentOutboundApi
+from spapi.api.fulfillment_outbound_v2026_07_04.fulfillment_previews_api import FulfillmentPreviewsApi
+from spapi.api.fulfillment_outbound_v2026_07_04.offers_api import OffersApi
 from spapi.api.invoices_v2024_06_19.invoices_api import InvoicesApi
 from spapi.api.listings_items_v2021_08_01.listings_api import ListingsApi
 from spapi.api.listings_restrictions_v2021_08_01.listings_restrictions_api import ListingsRestrictionsApi
