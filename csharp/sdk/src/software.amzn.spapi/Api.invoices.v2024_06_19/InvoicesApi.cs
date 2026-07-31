@@ -29,7 +29,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Submits an asynchronous government invoice creation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        /// Submit an asynchronous request to create a government invoice.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Information required to create the government invoice.</param>
@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Submits an asynchronous government invoice creation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        /// Submit an asynchronous request to create a government invoice.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Information required to create the government invoice.</param>
@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Creates an invoice export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Creates an invoice export request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Information required to create the export request.</param>
@@ -61,7 +61,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Creates an invoice export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Creates an invoice export request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Information required to create the export request.</param>
@@ -71,15 +71,15 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        /// Retrieve the URL of an invoice document.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">The invoices returned will match the marketplace that you specify.</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for.</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
-        /// <param name="fileFormat">Requested file format. Default is XML (optional)</param>
+        /// <param name="marketplaceId">The marketplace of the invoice.</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice.</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
+        /// <param name="fileFormat">The file format of the invoice. The default is XML. (optional)</param>
         /// <returns>GovtInvoiceDocumentResponse</returns>
         GovtInvoiceDocumentResponse GetGovernmentInvoiceDocument (string marketplaceId, string transactionType, string shipmentId, string invoiceType, string? inboundPlanId = null, string? fileFormat = null);
 
@@ -87,29 +87,29 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        /// Retrieve the URL of an invoice document.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">The invoices returned will match the marketplace that you specify.</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for.</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
-        /// <param name="fileFormat">Requested file format. Default is XML (optional)</param>
+        /// <param name="marketplaceId">The marketplace of the invoice.</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice.</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
+        /// <param name="fileFormat">The file format of the invoice. The default is XML. (optional)</param>
         /// <returns>ApiResponse of GovtInvoiceDocumentResponse</returns>
         ApiResponse<GovtInvoiceDocumentResponse> GetGovernmentInvoiceDocumentWithHttpInfo (string marketplaceId, string transactionType, string shipmentId, string invoiceType, string? inboundPlanId = null, string? fileFormat = null);
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        /// Retrieve the status of an invoice generation request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">The invoices status will match the marketplace that you specify.</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for.</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
+        /// <param name="marketplaceId">The marketplace of the invoice request.</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice.</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
         /// <returns>GovernmentInvoiceStatusResponse</returns>
         GovernmentInvoiceStatusResponse GetGovernmentInvoiceStatus (string marketplaceId, string transactionType, string shipmentId, string invoiceType, string? inboundPlanId = null);
 
@@ -117,21 +117,21 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        /// Retrieve the status of an invoice generation request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">The invoices status will match the marketplace that you specify.</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for.</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
+        /// <param name="marketplaceId">The marketplace of the invoice request.</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice.</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
         /// <returns>ApiResponse of GovernmentInvoiceStatusResponse</returns>
         ApiResponse<GovernmentInvoiceStatusResponse> GetGovernmentInvoiceStatusWithHttpInfo (string marketplaceId, string transactionType, string shipmentId, string invoiceType, string? inboundPlanId = null);
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace from which you want the invoice.</param>
@@ -143,7 +143,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace from which you want the invoice.</param>
@@ -154,7 +154,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns invoice details for the invoices that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns invoice details for the invoices that match the filters that you specify.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The response includes only the invoices that match the specified marketplace.</param>
@@ -178,7 +178,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns invoice details for the invoices that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns invoice details for the invoices that match the filters that you specify.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The response includes only the invoices that match the specified marketplace.</param>
@@ -201,7 +201,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns marketplace-dependent schemas and their respective set of possible values.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns marketplace-dependent schemas and their respective set of possible values.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace identifier.</param>
@@ -212,7 +212,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns marketplace-dependent schemas and their respective set of possible values.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns marketplace-dependent schemas and their respective set of possible values.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace identifier.</param>
@@ -222,7 +222,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="invoicesDocumentId">The export document identifier.</param>
@@ -233,7 +233,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="invoicesDocumentId">The export document identifier.</param>
@@ -243,7 +243,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exportId">The unique identifier for the export.</param>
@@ -254,7 +254,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exportId">The unique identifier for the export.</param>
@@ -264,7 +264,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns invoice exports details for exports that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns invoice exports details for exports that match the filters that you specify.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The returned exports match the specified marketplace.</param>
@@ -280,7 +280,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns invoice exports details for exports that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns invoice exports details for exports that match the filters that you specify.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The returned exports match the specified marketplace.</param>
@@ -297,7 +297,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Submits an asynchronous government invoice creation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        /// Submit an asynchronous request to create a government invoice.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Information required to create the government invoice.</param>
@@ -308,7 +308,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Submits an asynchronous government invoice creation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        /// Submit an asynchronous request to create a government invoice.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Information required to create the government invoice.</param>
@@ -318,7 +318,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Creates an invoice export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Creates an invoice export request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Information required to create the export request.</param>
@@ -329,7 +329,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Creates an invoice export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Creates an invoice export request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Information required to create the export request.</param>
@@ -339,15 +339,15 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        /// Retrieve the URL of an invoice document.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">The invoices returned will match the marketplace that you specify.</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for.</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
-        /// <param name="fileFormat">Requested file format. Default is XML (optional)</param>
+        /// <param name="marketplaceId">The marketplace of the invoice.</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice.</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
+        /// <param name="fileFormat">The file format of the invoice. The default is XML. (optional)</param>
         /// <returns>Task of GovtInvoiceDocumentResponse</returns>
         System.Threading.Tasks.Task<GovtInvoiceDocumentResponse> GetGovernmentInvoiceDocumentAsync (string marketplaceId, string transactionType, string shipmentId, string invoiceType, string? inboundPlanId = null, string? fileFormat = null);
 
@@ -355,29 +355,29 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        /// Retrieve the URL of an invoice document.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">The invoices returned will match the marketplace that you specify.</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for.</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
-        /// <param name="fileFormat">Requested file format. Default is XML (optional)</param>
+        /// <param name="marketplaceId">The marketplace of the invoice.</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice.</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
+        /// <param name="fileFormat">The file format of the invoice. The default is XML. (optional)</param>
         /// <returns>Task of ApiResponse (GovtInvoiceDocumentResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GovtInvoiceDocumentResponse>> GetGovernmentInvoiceDocumentAsyncWithHttpInfo (string marketplaceId, string transactionType, string shipmentId, string invoiceType, string? inboundPlanId = null, string? fileFormat = null);
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        /// Retrieve the status of an invoice generation request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">The invoices status will match the marketplace that you specify.</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for.</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
+        /// <param name="marketplaceId">The marketplace of the invoice request.</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice.</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
         /// <returns>Task of GovernmentInvoiceStatusResponse</returns>
         System.Threading.Tasks.Task<GovernmentInvoiceStatusResponse> GetGovernmentInvoiceStatusAsync (string marketplaceId, string transactionType, string shipmentId, string invoiceType, string? inboundPlanId = null);
 
@@ -385,21 +385,21 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        /// Retrieve the status of an invoice generation request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">The invoices status will match the marketplace that you specify.</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for.</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
+        /// <param name="marketplaceId">The marketplace of the invoice request.</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice.</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
         /// <returns>Task of ApiResponse (GovernmentInvoiceStatusResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GovernmentInvoiceStatusResponse>> GetGovernmentInvoiceStatusAsyncWithHttpInfo (string marketplaceId, string transactionType, string shipmentId, string invoiceType, string? inboundPlanId = null);
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace from which you want the invoice.</param>
@@ -411,7 +411,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace from which you want the invoice.</param>
@@ -422,7 +422,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns invoice details for the invoices that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns invoice details for the invoices that match the filters that you specify.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The response includes only the invoices that match the specified marketplace.</param>
@@ -446,7 +446,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns invoice details for the invoices that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns invoice details for the invoices that match the filters that you specify.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The response includes only the invoices that match the specified marketplace.</param>
@@ -469,7 +469,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns marketplace-dependent schemas and their respective set of possible values.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns marketplace-dependent schemas and their respective set of possible values.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace identifier.</param>
@@ -480,7 +480,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns marketplace-dependent schemas and their respective set of possible values.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns marketplace-dependent schemas and their respective set of possible values.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace identifier.</param>
@@ -490,7 +490,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="invoicesDocumentId">The export document identifier.</param>
@@ -501,7 +501,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="invoicesDocumentId">The export document identifier.</param>
@@ -511,7 +511,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exportId">The unique identifier for the export.</param>
@@ -522,7 +522,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exportId">The unique identifier for the export.</param>
@@ -532,7 +532,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns invoice exports details for exports that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns invoice exports details for exports that match the filters that you specify.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The returned exports match the specified marketplace.</param>
@@ -548,7 +548,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns invoice exports details for exports that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// Returns invoice exports details for exports that match the filters that you specify.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The returned exports match the specified marketplace.</param>
@@ -651,7 +651,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Submits an asynchronous government invoice creation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        ///  Submit an asynchronous request to create a government invoice.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Information required to create the government invoice.</param>
@@ -662,7 +662,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Submits an asynchronous government invoice creation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        ///  Submit an asynchronous request to create a government invoice.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Information required to create the government invoice.</param>
@@ -723,7 +723,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Submits an asynchronous government invoice creation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        ///  Submit an asynchronous request to create a government invoice.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Information required to create the government invoice.</param>
@@ -735,7 +735,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Submits an asynchronous government invoice creation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        ///  Submit an asynchronous request to create a government invoice.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Information required to create the government invoice.</param>
@@ -795,7 +795,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Creates an invoice export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Creates an invoice export request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Information required to create the export request.</param>
@@ -807,7 +807,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Creates an invoice export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Creates an invoice export request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Information required to create the export request.</param>
@@ -867,7 +867,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Creates an invoice export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Creates an invoice export request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Information required to create the export request.</param>
@@ -880,7 +880,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Creates an invoice export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Creates an invoice export request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Information required to create the export request.</param>
@@ -939,15 +939,15 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        ///  Retrieve the URL of an invoice document.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">The invoices returned will match the marketplace that you specify.</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for.</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
-        /// <param name="fileFormat">Requested file format. Default is XML (optional)</param>
+        /// <param name="marketplaceId">The marketplace of the invoice.</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice.</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
+        /// <param name="fileFormat">The file format of the invoice. The default is XML. (optional)</param>
         /// <returns>GovtInvoiceDocumentResponse</returns>
         public GovtInvoiceDocumentResponse GetGovernmentInvoiceDocument (string marketplaceId, string transactionType, string shipmentId, string invoiceType, string? inboundPlanId = null, string? fileFormat = null)
         {
@@ -956,15 +956,15 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        ///  Retrieve the URL of an invoice document.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">The invoices returned will match the marketplace that you specify.</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for.</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
-        /// <param name="fileFormat">Requested file format. Default is XML (optional)</param>
+        /// <param name="marketplaceId">The marketplace of the invoice.</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice.</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
+        /// <param name="fileFormat">The file format of the invoice. The default is XML. (optional)</param>
         /// <returns>ApiResponse of GovtInvoiceDocumentResponse</returns>
         public ApiResponse< GovtInvoiceDocumentResponse > GetGovernmentInvoiceDocumentWithHttpInfo (string marketplaceId, string transactionType, string shipmentId, string invoiceType, string? inboundPlanId = null, string? fileFormat = null)
         {
@@ -1027,15 +1027,15 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        ///  Retrieve the URL of an invoice document.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">The invoices returned will match the marketplace that you specify.</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for.</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
-        /// <param name="fileFormat">Requested file format. Default is XML (optional)</param>
+        /// <param name="marketplaceId">The marketplace of the invoice.</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice.</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
+        /// <param name="fileFormat">The file format of the invoice. The default is XML. (optional)</param>
         /// <returns>Task of GovtInvoiceDocumentResponse</returns>
         public async System.Threading.Tasks.Task<GovtInvoiceDocumentResponse> GetGovernmentInvoiceDocumentAsync (string marketplaceId, string transactionType, string shipmentId, string invoiceType, string? inboundPlanId = null, string? fileFormat = null)
         {
@@ -1045,15 +1045,15 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        ///  Retrieve the URL of an invoice document.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">The invoices returned will match the marketplace that you specify.</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for.</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
-        /// <param name="fileFormat">Requested file format. Default is XML (optional)</param>
+        /// <param name="marketplaceId">The marketplace of the invoice.</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice.</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
+        /// <param name="fileFormat">The file format of the invoice. The default is XML. (optional)</param>
         /// <returns>Task of ApiResponse (GovtInvoiceDocumentResponse)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<GovtInvoiceDocumentResponse>> GetGovernmentInvoiceDocumentAsyncWithHttpInfo (string marketplaceId, string transactionType, string shipmentId, string invoiceType, string? inboundPlanId = null, string? fileFormat = null)
         {
@@ -1115,14 +1115,14 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        ///  Retrieve the status of an invoice generation request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">The invoices status will match the marketplace that you specify.</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for.</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
+        /// <param name="marketplaceId">The marketplace of the invoice request.</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice.</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
         /// <returns>GovernmentInvoiceStatusResponse</returns>
         public GovernmentInvoiceStatusResponse GetGovernmentInvoiceStatus (string marketplaceId, string transactionType, string shipmentId, string invoiceType, string? inboundPlanId = null)
         {
@@ -1131,14 +1131,14 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        ///  Retrieve the status of an invoice generation request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">The invoices status will match the marketplace that you specify.</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for.</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
+        /// <param name="marketplaceId">The marketplace of the invoice request.</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice.</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
         /// <returns>ApiResponse of GovernmentInvoiceStatusResponse</returns>
         public ApiResponse< GovernmentInvoiceStatusResponse > GetGovernmentInvoiceStatusWithHttpInfo (string marketplaceId, string transactionType, string shipmentId, string invoiceType, string? inboundPlanId = null)
         {
@@ -1200,14 +1200,14 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        ///  Retrieve the status of an invoice generation request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">The invoices status will match the marketplace that you specify.</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for.</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
+        /// <param name="marketplaceId">The marketplace of the invoice request.</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice.</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
         /// <returns>Task of GovernmentInvoiceStatusResponse</returns>
         public async System.Threading.Tasks.Task<GovernmentInvoiceStatusResponse> GetGovernmentInvoiceStatusAsync (string marketplaceId, string transactionType, string shipmentId, string invoiceType, string? inboundPlanId = null)
         {
@@ -1217,14 +1217,14 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+        ///  Retrieve the status of an invoice generation request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="marketplaceId">The invoices status will match the marketplace that you specify.</param>
-        /// <param name="transactionType">Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="shipmentId">The unique shipment identifier to get an invoice for.</param>
-        /// <param name="invoiceType">Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.</param>
-        /// <param name="inboundPlanId">The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
+        /// <param name="marketplaceId">The marketplace of the invoice request.</param>
+        /// <param name="transactionType">The marketplace-specific classification of the transaction type that originated the invoice. Check &#x60;transactionType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="shipmentId">The unique shipment identifier for which to get an invoice.</param>
+        /// <param name="invoiceType">The marketplace-specific classification of the invoice type. Check &#x60;invoiceType&#x60; options using the &#x60;getInvoicesAttributes&#x60; operation.</param>
+        /// <param name="inboundPlanId">The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created. (optional)</param>
         /// <returns>Task of ApiResponse (GovernmentInvoiceStatusResponse)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<GovernmentInvoiceStatusResponse>> GetGovernmentInvoiceStatusAsyncWithHttpInfo (string marketplaceId, string transactionType, string shipmentId, string invoiceType, string? inboundPlanId = null)
         {
@@ -1285,7 +1285,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace from which you want the invoice.</param>
@@ -1298,7 +1298,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace from which you want the invoice.</param>
@@ -1355,7 +1355,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace from which you want the invoice.</param>
@@ -1369,7 +1369,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace from which you want the invoice.</param>
@@ -1425,7 +1425,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns invoice details for the invoices that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns invoice details for the invoices that match the filters that you specify.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The response includes only the invoices that match the specified marketplace.</param>
@@ -1450,7 +1450,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns invoice details for the invoices that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns invoice details for the invoices that match the filters that you specify.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The response includes only the invoices that match the specified marketplace.</param>
@@ -1528,7 +1528,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns invoice details for the invoices that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns invoice details for the invoices that match the filters that you specify.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The response includes only the invoices that match the specified marketplace.</param>
@@ -1554,7 +1554,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns invoice details for the invoices that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns invoice details for the invoices that match the filters that you specify.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The response includes only the invoices that match the specified marketplace.</param>
@@ -1631,7 +1631,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns marketplace-dependent schemas and their respective set of possible values.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns marketplace-dependent schemas and their respective set of possible values.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace identifier.</param>
@@ -1643,7 +1643,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns marketplace-dependent schemas and their respective set of possible values.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns marketplace-dependent schemas and their respective set of possible values.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace identifier.</param>
@@ -1695,7 +1695,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns marketplace-dependent schemas and their respective set of possible values.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns marketplace-dependent schemas and their respective set of possible values.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace identifier.</param>
@@ -1708,7 +1708,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns marketplace-dependent schemas and their respective set of possible values.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns marketplace-dependent schemas and their respective set of possible values.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The marketplace identifier.</param>
@@ -1759,7 +1759,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="invoicesDocumentId">The export document identifier.</param>
@@ -1771,7 +1771,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="invoicesDocumentId">The export document identifier.</param>
@@ -1823,7 +1823,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="invoicesDocumentId">The export document identifier.</param>
@@ -1836,7 +1836,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.0167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="invoicesDocumentId">The export document identifier.</param>
@@ -1887,7 +1887,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exportId">The unique identifier for the export.</param>
@@ -1899,7 +1899,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exportId">The unique identifier for the export.</param>
@@ -1951,7 +1951,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exportId">The unique identifier for the export.</param>
@@ -1964,7 +1964,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="exportId">The unique identifier for the export.</param>
@@ -2015,7 +2015,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns invoice exports details for exports that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns invoice exports details for exports that match the filters that you specify.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The returned exports match the specified marketplace.</param>
@@ -2032,7 +2032,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns invoice exports details for exports that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns invoice exports details for exports that match the filters that you specify.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The returned exports match the specified marketplace.</param>
@@ -2094,7 +2094,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns invoice exports details for exports that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns invoice exports details for exports that match the filters that you specify.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The returned exports match the specified marketplace.</param>
@@ -2112,7 +2112,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         }
 
         /// <summary>
-        ///  Returns invoice exports details for exports that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        ///  Returns invoice exports details for exports that match the filters that you specify.
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplaceId">The returned exports match the specified marketplace.</param>

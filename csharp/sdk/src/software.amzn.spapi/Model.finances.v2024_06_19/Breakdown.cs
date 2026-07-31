@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.finances.v2024_06_19
 {
     /// <summary>
-    /// Details about the movement of money in the financial transaction. Breakdowns are further categorized into breakdown types, breakdown amounts, and further breakdowns.
+    /// Details about the movement of money in the financial transaction.
     /// </summary>
     [DataContract(Name = "Breakdown")]
     public partial class Breakdown : IValidatableObject

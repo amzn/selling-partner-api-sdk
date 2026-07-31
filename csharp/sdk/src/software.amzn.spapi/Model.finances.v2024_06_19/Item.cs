@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.finances.v2024_06_19
 {
     /// <summary>
-    /// Additional information about the items in a transaction.
+    /// Additional information about an item in a transaction.
     /// </summary>
     [DataContract(Name = "Item")]
     public partial class Item : IValidatableObject

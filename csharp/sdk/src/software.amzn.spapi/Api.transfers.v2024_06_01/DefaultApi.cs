@@ -69,6 +69,62 @@ namespace software.amzn.spapi.Api.transfers.v2024_06_01
         /// <param name="body">The request body for the &#x60;initiatePayout&#x60; operation.</param>
         /// <returns>ApiResponse of InitiatePayoutResponse</returns>
         ApiResponse<InitiatePayoutResponse> InitiatePayoutWithHttpInfo (InitiatePayoutRequest body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns the upcoming expected payouts from Amazon associated with a partner&#39;s account for the specified parameters.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceIds">An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)</param>
+        /// <param name="accountType">An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)</param>
+        /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>ListExpectedPayoutsResponse</returns>
+        ListExpectedPayoutsResponse ListExpectedPayouts (List<string>? marketplaceIds = null, string? accountType = null, string? nextToken = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns the upcoming expected payouts from Amazon associated with a partner&#39;s account for the specified parameters.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceIds">An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)</param>
+        /// <param name="accountType">An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)</param>
+        /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>ApiResponse of ListExpectedPayoutsResponse</returns>
+        ApiResponse<ListExpectedPayoutsResponse> ListExpectedPayoutsWithHttpInfo (List<string>? marketplaceIds = null, string? accountType = null, string? nextToken = null);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns a list of payouts for the selling partner&#39;s account. Results can be filtered by &#x60;marketplaceIds&#x60;, &#x60;accountType&#x60;, date range (&#x60;createdAfter&#x60; and &#x60;createdBefore&#x60;), or a specific &#x60;payoutId&#x60;. By default, the API returns payouts for all available marketplaces and account types. Results are sorted in descending order of their creation dates.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceIds">An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)</param>
+        /// <param name="createdAfter">An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)</param>
+        /// <param name="createdBefore">An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)</param>
+        /// <param name="payoutId">An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)</param>
+        /// <param name="accountType">An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)</param>
+        /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>ListPayoutsResponse</returns>
+        ListPayoutsResponse ListPayouts (List<string>? marketplaceIds = null, DateTime? createdAfter = null, DateTime? createdBefore = null, string? payoutId = null, string? accountType = null, string? nextToken = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns a list of payouts for the selling partner&#39;s account. Results can be filtered by &#x60;marketplaceIds&#x60;, &#x60;accountType&#x60;, date range (&#x60;createdAfter&#x60; and &#x60;createdBefore&#x60;), or a specific &#x60;payoutId&#x60;. By default, the API returns payouts for all available marketplaces and account types. Results are sorted in descending order of their creation dates.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceIds">An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)</param>
+        /// <param name="createdAfter">An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)</param>
+        /// <param name="createdBefore">An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)</param>
+        /// <param name="payoutId">An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)</param>
+        /// <param name="accountType">An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)</param>
+        /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>ApiResponse of ListPayoutsResponse</returns>
+        ApiResponse<ListPayoutsResponse> ListPayoutsWithHttpInfo (List<string>? marketplaceIds = null, DateTime? createdAfter = null, DateTime? createdBefore = null, string? payoutId = null, string? accountType = null, string? nextToken = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -115,6 +171,62 @@ namespace software.amzn.spapi.Api.transfers.v2024_06_01
         /// <param name="body">The request body for the &#x60;initiatePayout&#x60; operation.</param>
         /// <returns>Task of ApiResponse (InitiatePayoutResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<InitiatePayoutResponse>> InitiatePayoutAsyncWithHttpInfo (InitiatePayoutRequest body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns the upcoming expected payouts from Amazon associated with a partner&#39;s account for the specified parameters.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceIds">An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)</param>
+        /// <param name="accountType">An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)</param>
+        /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>Task of ListExpectedPayoutsResponse</returns>
+        System.Threading.Tasks.Task<ListExpectedPayoutsResponse> ListExpectedPayoutsAsync (List<string>? marketplaceIds = null, string? accountType = null, string? nextToken = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns the upcoming expected payouts from Amazon associated with a partner&#39;s account for the specified parameters.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceIds">An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)</param>
+        /// <param name="accountType">An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)</param>
+        /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>Task of ApiResponse (ListExpectedPayoutsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListExpectedPayoutsResponse>> ListExpectedPayoutsAsyncWithHttpInfo (List<string>? marketplaceIds = null, string? accountType = null, string? nextToken = null);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns a list of payouts for the selling partner&#39;s account. Results can be filtered by &#x60;marketplaceIds&#x60;, &#x60;accountType&#x60;, date range (&#x60;createdAfter&#x60; and &#x60;createdBefore&#x60;), or a specific &#x60;payoutId&#x60;. By default, the API returns payouts for all available marketplaces and account types. Results are sorted in descending order of their creation dates.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceIds">An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)</param>
+        /// <param name="createdAfter">An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)</param>
+        /// <param name="createdBefore">An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)</param>
+        /// <param name="payoutId">An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)</param>
+        /// <param name="accountType">An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)</param>
+        /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>Task of ListPayoutsResponse</returns>
+        System.Threading.Tasks.Task<ListPayoutsResponse> ListPayoutsAsync (List<string>? marketplaceIds = null, DateTime? createdAfter = null, DateTime? createdBefore = null, string? payoutId = null, string? accountType = null, string? nextToken = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns a list of payouts for the selling partner&#39;s account. Results can be filtered by &#x60;marketplaceIds&#x60;, &#x60;accountType&#x60;, date range (&#x60;createdAfter&#x60; and &#x60;createdBefore&#x60;), or a specific &#x60;payoutId&#x60;. By default, the API returns payouts for all available marketplaces and account types. Results are sorted in descending order of their creation dates.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceIds">An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)</param>
+        /// <param name="createdAfter">An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)</param>
+        /// <param name="createdBefore">An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)</param>
+        /// <param name="payoutId">An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)</param>
+        /// <param name="accountType">An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)</param>
+        /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>Task of ApiResponse (ListPayoutsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListPayoutsResponse>> ListPayoutsAsyncWithHttpInfo (List<string>? marketplaceIds = null, DateTime? createdAfter = null, DateTime? createdBefore = null, string? payoutId = null, string? accountType = null, string? nextToken = null);
         #endregion Asynchronous Operations
     }
 
@@ -482,6 +594,292 @@ namespace software.amzn.spapi.Api.transfers.v2024_06_01
             return new ApiResponse<InitiatePayoutResponse>(localVarResponse.StatusCode,
                 ConvertHeadersToMultimap(localVarResponse),
                 (InitiatePayoutResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InitiatePayoutResponse)));
+        }
+
+        /// <summary>
+        ///  Returns the upcoming expected payouts from Amazon associated with a partner&#39;s account for the specified parameters.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceIds">An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)</param>
+        /// <param name="accountType">An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)</param>
+        /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>ListExpectedPayoutsResponse</returns>
+        public ListExpectedPayoutsResponse ListExpectedPayouts (List<string>? marketplaceIds = null, string? accountType = null, string? nextToken = null)
+        {
+             ApiResponse<ListExpectedPayoutsResponse> localVarResponse = ListExpectedPayoutsWithHttpInfo(marketplaceIds, accountType, nextToken);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Returns the upcoming expected payouts from Amazon associated with a partner&#39;s account for the specified parameters.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceIds">An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)</param>
+        /// <param name="accountType">An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)</param>
+        /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>ApiResponse of ListExpectedPayoutsResponse</returns>
+        public ApiResponse< ListExpectedPayoutsResponse > ListExpectedPayoutsWithHttpInfo (List<string>? marketplaceIds = null, string? accountType = null, string? nextToken = null)
+        {
+
+            var localVarPath = "/finances/transfers/2024-06-01/payouts/expected";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (marketplaceIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "marketplaceIds", marketplaceIds)); // query parameter
+            if (accountType != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "accountType", accountType)); // query parameter
+            if (nextToken != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "nextToken", nextToken)); // query parameter
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath, ChangeHttpMethod("GET"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ListExpectedPayouts", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ListExpectedPayoutsResponse>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (ListExpectedPayoutsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ListExpectedPayoutsResponse)));
+        }
+
+        /// <summary>
+        ///  Returns the upcoming expected payouts from Amazon associated with a partner&#39;s account for the specified parameters.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceIds">An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)</param>
+        /// <param name="accountType">An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)</param>
+        /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>Task of ListExpectedPayoutsResponse</returns>
+        public async System.Threading.Tasks.Task<ListExpectedPayoutsResponse> ListExpectedPayoutsAsync (List<string>? marketplaceIds = null, string? accountType = null, string? nextToken = null)
+        {
+             ApiResponse<ListExpectedPayoutsResponse> localVarResponse = await ListExpectedPayoutsAsyncWithHttpInfo(marketplaceIds, accountType, nextToken);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  Returns the upcoming expected payouts from Amazon associated with a partner&#39;s account for the specified parameters.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceIds">An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)</param>
+        /// <param name="accountType">An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)</param>
+        /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>Task of ApiResponse (ListExpectedPayoutsResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ListExpectedPayoutsResponse>> ListExpectedPayoutsAsyncWithHttpInfo (List<string>? marketplaceIds = null, string? accountType = null, string? nextToken = null)
+        {
+
+            var localVarPath = "/finances/transfers/2024-06-01/payouts/expected";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (marketplaceIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "marketplaceIds", marketplaceIds)); // query parameter
+            if (accountType != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "accountType", accountType)); // query parameter
+            if (nextToken != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "nextToken", nextToken)); // query parameter
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath, ChangeHttpMethod("GET"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ListExpectedPayouts", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ListExpectedPayoutsResponse>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (ListExpectedPayoutsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ListExpectedPayoutsResponse)));
+        }
+
+        /// <summary>
+        ///  Returns a list of payouts for the selling partner&#39;s account. Results can be filtered by &#x60;marketplaceIds&#x60;, &#x60;accountType&#x60;, date range (&#x60;createdAfter&#x60; and &#x60;createdBefore&#x60;), or a specific &#x60;payoutId&#x60;. By default, the API returns payouts for all available marketplaces and account types. Results are sorted in descending order of their creation dates.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceIds">An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)</param>
+        /// <param name="createdAfter">An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)</param>
+        /// <param name="createdBefore">An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)</param>
+        /// <param name="payoutId">An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)</param>
+        /// <param name="accountType">An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)</param>
+        /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>ListPayoutsResponse</returns>
+        public ListPayoutsResponse ListPayouts (List<string>? marketplaceIds = null, DateTime? createdAfter = null, DateTime? createdBefore = null, string? payoutId = null, string? accountType = null, string? nextToken = null)
+        {
+             ApiResponse<ListPayoutsResponse> localVarResponse = ListPayoutsWithHttpInfo(marketplaceIds, createdAfter, createdBefore, payoutId, accountType, nextToken);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Returns a list of payouts for the selling partner&#39;s account. Results can be filtered by &#x60;marketplaceIds&#x60;, &#x60;accountType&#x60;, date range (&#x60;createdAfter&#x60; and &#x60;createdBefore&#x60;), or a specific &#x60;payoutId&#x60;. By default, the API returns payouts for all available marketplaces and account types. Results are sorted in descending order of their creation dates.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceIds">An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)</param>
+        /// <param name="createdAfter">An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)</param>
+        /// <param name="createdBefore">An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)</param>
+        /// <param name="payoutId">An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)</param>
+        /// <param name="accountType">An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)</param>
+        /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>ApiResponse of ListPayoutsResponse</returns>
+        public ApiResponse< ListPayoutsResponse > ListPayoutsWithHttpInfo (List<string>? marketplaceIds = null, DateTime? createdAfter = null, DateTime? createdBefore = null, string? payoutId = null, string? accountType = null, string? nextToken = null)
+        {
+
+            var localVarPath = "/finances/transfers/2024-06-01/payouts";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (marketplaceIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "marketplaceIds", marketplaceIds)); // query parameter
+            if (createdAfter != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "createdAfter", createdAfter)); // query parameter
+            if (createdBefore != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "createdBefore", createdBefore)); // query parameter
+            if (payoutId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "payoutId", payoutId)); // query parameter
+            if (accountType != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "accountType", accountType)); // query parameter
+            if (nextToken != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "nextToken", nextToken)); // query parameter
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath, ChangeHttpMethod("GET"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ListPayouts", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ListPayoutsResponse>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (ListPayoutsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ListPayoutsResponse)));
+        }
+
+        /// <summary>
+        ///  Returns a list of payouts for the selling partner&#39;s account. Results can be filtered by &#x60;marketplaceIds&#x60;, &#x60;accountType&#x60;, date range (&#x60;createdAfter&#x60; and &#x60;createdBefore&#x60;), or a specific &#x60;payoutId&#x60;. By default, the API returns payouts for all available marketplaces and account types. Results are sorted in descending order of their creation dates.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceIds">An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)</param>
+        /// <param name="createdAfter">An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)</param>
+        /// <param name="createdBefore">An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)</param>
+        /// <param name="payoutId">An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)</param>
+        /// <param name="accountType">An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)</param>
+        /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>Task of ListPayoutsResponse</returns>
+        public async System.Threading.Tasks.Task<ListPayoutsResponse> ListPayoutsAsync (List<string>? marketplaceIds = null, DateTime? createdAfter = null, DateTime? createdBefore = null, string? payoutId = null, string? accountType = null, string? nextToken = null)
+        {
+             ApiResponse<ListPayoutsResponse> localVarResponse = await ListPayoutsAsyncWithHttpInfo(marketplaceIds, createdAfter, createdBefore, payoutId, accountType, nextToken);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  Returns a list of payouts for the selling partner&#39;s account. Results can be filtered by &#x60;marketplaceIds&#x60;, &#x60;accountType&#x60;, date range (&#x60;createdAfter&#x60; and &#x60;createdBefore&#x60;), or a specific &#x60;payoutId&#x60;. By default, the API returns payouts for all available marketplaces and account types. Results are sorted in descending order of their creation dates.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceIds">An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)</param>
+        /// <param name="createdAfter">An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)</param>
+        /// <param name="createdBefore">An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)</param>
+        /// <param name="payoutId">An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)</param>
+        /// <param name="accountType">An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)</param>
+        /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
+        /// <returns>Task of ApiResponse (ListPayoutsResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ListPayoutsResponse>> ListPayoutsAsyncWithHttpInfo (List<string>? marketplaceIds = null, DateTime? createdAfter = null, DateTime? createdBefore = null, string? payoutId = null, string? accountType = null, string? nextToken = null)
+        {
+
+            var localVarPath = "/finances/transfers/2024-06-01/payouts";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (marketplaceIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "marketplaceIds", marketplaceIds)); // query parameter
+            if (createdAfter != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "createdAfter", createdAfter)); // query parameter
+            if (createdBefore != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "createdBefore", createdBefore)); // query parameter
+            if (payoutId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "payoutId", payoutId)); // query parameter
+            if (accountType != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "accountType", accountType)); // query parameter
+            if (nextToken != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "nextToken", nextToken)); // query parameter
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath, ChangeHttpMethod("GET"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ListPayouts", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ListPayoutsResponse>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (ListPayoutsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ListPayoutsResponse)));
         }
 
 

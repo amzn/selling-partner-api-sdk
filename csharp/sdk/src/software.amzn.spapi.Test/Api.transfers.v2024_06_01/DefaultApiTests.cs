@@ -93,6 +93,36 @@ namespace software.amzn.spapi.Test.Api.transfers.v2024_06_01
             AssertValidResponsePayload(200, response.Content);
         }
         
+        [Fact]
+        public void ListExpectedPayoutsTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("default") + "-" + FormatOperationId("ListExpectedPayouts") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+
+            var response = api.ListExpectedPayoutsWithHttpInfo(null, null, null);
+
+            Assert.Equal(200, (int) response.StatusCode);
+            AssertValidResponsePayload(200, response.Content);
+        }
+        
+        [Fact]
+        public void ListPayoutsTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("default") + "-" + FormatOperationId("ListPayouts") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+
+            var response = api.ListPayoutsWithHttpInfo(null, null, null, null, null, null);
+
+            Assert.Equal(200, (int) response.StatusCode);
+            AssertValidResponsePayload(200, response.Content);
+        }
+        
 
         private static void AssertValidResponsePayload(int statusCode, Object body) {
             if(statusCode != 204) Assert.NotNull(body);

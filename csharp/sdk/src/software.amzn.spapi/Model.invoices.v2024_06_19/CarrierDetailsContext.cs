@@ -34,13 +34,13 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// <summary>
         /// Initializes a new instance of the <see cref="CarrierDetailsContext" /> class.
         /// </summary>
-        /// <param name="name">The name of the carrier, as registered in state and federal tax authorities..</param>
-        /// <param name="address">The address of the carrier, as registered in state and federal tax authorities..</param>
-        /// <param name="contextType">Type of additional information..</param>
-        /// <param name="federalTaxId">Tax Identification number of the carrier..</param>
+        /// <param name="name">The name of the carrier, as registered with state and federal tax authorities..</param>
+        /// <param name="address">The address of the carrier, as registered with state and federal tax authorities..</param>
+        /// <param name="contextType">The type of additional information..</param>
+        /// <param name="federalTaxId">The tax identification number of the carrier..</param>
         /// <param name="regionCode">The code of the federal subdivision in which the carrier is registered..</param>
         /// <param name="regionTaxId">The regional tax registration number of the carrier..</param>
-        /// <param name="vehicleLicensePlate">The identifier for the carrier vehicle as printed in its registration plate..</param>
+        /// <param name="vehicleLicensePlate">The identifier for the carrier vehicle, as printed on its registration plate..</param>
         /// <param name="vehicleRegistrationRegionCode">The code of the federal subdivision in which the carrier vehicle is registered..</param>
         public CarrierDetailsContext(string? name = default(string?), string? address = default(string?), string? contextType = default(string?), string? federalTaxId = default(string?), string? regionCode = default(string?), string? regionTaxId = default(string?), string? vehicleLicensePlate = default(string?), string? vehicleRegistrationRegionCode = default(string?))
         {
@@ -55,30 +55,30 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         }
 
         /// <summary>
-        /// The name of the carrier, as registered in state and federal tax authorities.
+        /// The name of the carrier, as registered with state and federal tax authorities.
         /// </summary>
-        /// <value>The name of the carrier, as registered in state and federal tax authorities.</value>
+        /// <value>The name of the carrier, as registered with state and federal tax authorities.</value>
         [DataMember(Name = "name", EmitDefaultValue = false)]
         public string? Name { get; set; }
 
         /// <summary>
-        /// The address of the carrier, as registered in state and federal tax authorities.
+        /// The address of the carrier, as registered with state and federal tax authorities.
         /// </summary>
-        /// <value>The address of the carrier, as registered in state and federal tax authorities.</value>
+        /// <value>The address of the carrier, as registered with state and federal tax authorities.</value>
         [DataMember(Name = "address", EmitDefaultValue = false)]
         public string? Address { get; set; }
 
         /// <summary>
-        /// Type of additional information.
+        /// The type of additional information.
         /// </summary>
-        /// <value>Type of additional information.</value>
+        /// <value>The type of additional information.</value>
         [DataMember(Name = "contextType", EmitDefaultValue = false)]
         public string? ContextType { get; set; }
 
         /// <summary>
-        /// Tax Identification number of the carrier.
+        /// The tax identification number of the carrier.
         /// </summary>
-        /// <value>Tax Identification number of the carrier.</value>
+        /// <value>The tax identification number of the carrier.</value>
         [DataMember(Name = "federalTaxId", EmitDefaultValue = false)]
         public string? FederalTaxId { get; set; }
 
@@ -97,9 +97,9 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         public string? RegionTaxId { get; set; }
 
         /// <summary>
-        /// The identifier for the carrier vehicle as printed in its registration plate.
+        /// The identifier for the carrier vehicle, as printed on its registration plate.
         /// </summary>
-        /// <value>The identifier for the carrier vehicle as printed in its registration plate.</value>
+        /// <value>The identifier for the carrier vehicle, as printed on its registration plate.</value>
         [DataMember(Name = "vehicleLicensePlate", EmitDefaultValue = false)]
         public string? VehicleLicensePlate { get; set; }
 

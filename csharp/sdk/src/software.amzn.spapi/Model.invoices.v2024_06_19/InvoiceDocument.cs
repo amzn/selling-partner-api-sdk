@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.invoices.v2024_06_19
 {
     /// <summary>
-    /// Object containing the documentId and a S3 pre-signed URL to download the specified document file.
+    /// The &#x60;documentId&#x60; and an S3 pre-signed URL that you can use to download the specified document file.
     /// </summary>
     [DataContract(Name = "InvoiceDocument")]
     public partial class InvoiceDocument : IValidatableObject
@@ -34,16 +34,16 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// <summary>
         /// Initializes a new instance of the <see cref="InvoiceDocument" /> class.
         /// </summary>
-        /// <param name="invoiceDocumentUrl">A pre-signed URL to download the invoice document in its original format. This URL expires after 30 seconds..</param>
+        /// <param name="invoiceDocumentUrl">A pre-signed URL that you can use to download the invoice document in its original format. This URL expires after 30 seconds..</param>
         public InvoiceDocument(string? invoiceDocumentUrl = default(string?))
         {
             this.InvoiceDocumentUrl = invoiceDocumentUrl;
         }
 
         /// <summary>
-        /// A pre-signed URL to download the invoice document in its original format. This URL expires after 30 seconds.
+        /// A pre-signed URL that you can use to download the invoice document in its original format. This URL expires after 30 seconds.
         /// </summary>
-        /// <value>A pre-signed URL to download the invoice document in its original format. This URL expires after 30 seconds.</value>
+        /// <value>A pre-signed URL that you can use to download the invoice document in its original format. This URL expires after 30 seconds.</value>
         [DataMember(Name = "invoiceDocumentUrl", EmitDefaultValue = false)]
         public string? InvoiceDocumentUrl { get; set; }
 

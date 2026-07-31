@@ -60,6 +60,36 @@ namespace software.amzn.spapi.Test.Api.finances.v2024_06_19
 
         
         [Fact]
+        public void ListBalancesTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("default") + "-" + FormatOperationId("ListBalances") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+
+            var response = api.ListBalancesWithHttpInfo(null, null, null, null, null);
+
+            Assert.Equal(200, (int) response.StatusCode);
+            AssertValidResponsePayload(200, response.Content);
+        }
+        
+        [Fact]
+        public void ListSummaryTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("default") + "-" + FormatOperationId("ListSummary") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+
+            var response = api.ListSummaryWithHttpInfo(null, null, null, null, null, null, null);
+
+            Assert.Equal(200, (int) response.StatusCode);
+            AssertValidResponsePayload(200, response.Content);
+        }
+        
+        [Fact]
         public void ListTransactionsTest()
         {
             Init();

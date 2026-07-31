@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.finances.v2024_06_19
 {
     /// <summary>
-    /// Additional Information about the item.
+    /// Additional information about the item.
     /// </summary>
     [DataContract(Name = "Context")]
     public partial class Context : IValidatableObject
@@ -61,8 +61,8 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// Initializes a new instance of the <see cref="Context" /> class.
         /// </summary>
         /// <param name="storeName">The store name associated with the transaction..</param>
-        /// <param name="orderType">The transaction&#39;s order type..</param>
-        /// <param name="channel">Channel details of related transaction..</param>
+        /// <param name="orderType">The order type of the transaction..</param>
+        /// <param name="channel">The channel of the transaction. For example: &#x60;MFN&#x60;..</param>
         /// <param name="asin">The Amazon Standard Identification Number (ASIN) of the item..</param>
         /// <param name="sku">The Stock Keeping Unit (SKU) of the item..</param>
         /// <param name="quantityShipped">The quantity of the item shipped..</param>
@@ -75,7 +75,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// <param name="maturityDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="startTime">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="endTime">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
-        /// <param name="contextType">contextType (required).</param>
+        /// <param name="contextType">The type of context. (required).</param>
         public Context(StoreNameEnum? storeName = default(StoreNameEnum?), string? orderType = default(string?), string? channel = default(string?), string? asin = default(string?), string? sku = default(string?), int? quantityShipped = default(int?), string? fulfillmentNetwork = default(string?), string? paymentType = default(string?), string? paymentMethod = default(string?), string? paymentReference = default(string?), DateTime? paymentDate = default(DateTime?), string? deferralReason = default(string?), DateTime? maturityDate = default(DateTime?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), string contextType = default(string))
         {
             // to ensure "contextType" is required (not null)
@@ -102,16 +102,16 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         }
 
         /// <summary>
-        /// The transaction&#39;s order type.
+        /// The order type of the transaction.
         /// </summary>
-        /// <value>The transaction&#39;s order type.</value>
+        /// <value>The order type of the transaction.</value>
         [DataMember(Name = "orderType", EmitDefaultValue = false)]
         public string? OrderType { get; set; }
 
         /// <summary>
-        /// Channel details of related transaction.
+        /// The channel of the transaction. For example: &#x60;MFN&#x60;.
         /// </summary>
-        /// <value>Channel details of related transaction.</value>
+        /// <value>The channel of the transaction. For example: &#x60;MFN&#x60;.</value>
         [DataMember(Name = "channel", EmitDefaultValue = false)]
         public string? Channel { get; set; }
 
@@ -200,8 +200,9 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         public DateTime? EndTime { get; set; }
 
         /// <summary>
-        /// Gets or Sets ContextType
+        /// The type of context.
         /// </summary>
+        /// <value>The type of context.</value>
         [DataMember(Name = "contextType", IsRequired = true, EmitDefaultValue = true)]
         public string ContextType { get; set; }
 

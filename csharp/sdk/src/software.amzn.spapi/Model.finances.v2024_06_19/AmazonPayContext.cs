@@ -35,8 +35,8 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// Initializes a new instance of the <see cref="AmazonPayContext" /> class.
         /// </summary>
         /// <param name="storeName">The name of the store that is related to the transaction..</param>
-        /// <param name="orderType">The transaction&#39;s order type..</param>
-        /// <param name="channel">Channel details of related transaction..</param>
+        /// <param name="orderType">The order type of the transaction..</param>
+        /// <param name="channel">The channel of the transaction. For example: &#x60;MFN&#x60;..</param>
         public AmazonPayContext(string? storeName = default(string?), string? orderType = default(string?), string? channel = default(string?))
         {
             this.StoreName = storeName;
@@ -52,16 +52,16 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         public string? StoreName { get; set; }
 
         /// <summary>
-        /// The transaction&#39;s order type.
+        /// The order type of the transaction.
         /// </summary>
-        /// <value>The transaction&#39;s order type.</value>
+        /// <value>The order type of the transaction.</value>
         [DataMember(Name = "orderType", EmitDefaultValue = false)]
         public string? OrderType { get; set; }
 
         /// <summary>
-        /// Channel details of related transaction.
+        /// The channel of the transaction. For example: &#x60;MFN&#x60;.
         /// </summary>
-        /// <value>Channel details of related transaction.</value>
+        /// <value>The channel of the transaction. For example: &#x60;MFN&#x60;.</value>
         [DataMember(Name = "channel", EmitDefaultValue = false)]
         public string? Channel { get; set; }
 
