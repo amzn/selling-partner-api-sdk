@@ -77,7 +77,7 @@ class GovernmentInvoiceRequest(object):
     def contexts(self):
         """Gets the contexts of this GovernmentInvoiceRequest.  # noqa: E501
 
-        Object that contains additional invoice creation information  # noqa: E501
+        Additional information for invoice creation.  # noqa: E501
 
         :return: The contexts of this GovernmentInvoiceRequest.  # noqa: E501
         :rtype: List[CarrierDetailsContext]
@@ -88,7 +88,7 @@ class GovernmentInvoiceRequest(object):
     def contexts(self, contexts):
         """Sets the contexts of this GovernmentInvoiceRequest.
 
-        Object that contains additional invoice creation information  # noqa: E501
+        Additional information for invoice creation.  # noqa: E501
 
         :param contexts: The contexts of this GovernmentInvoiceRequest.  # noqa: E501
         :type: List[CarrierDetailsContext]
@@ -100,7 +100,7 @@ class GovernmentInvoiceRequest(object):
     def inbound_plan_id(self):
         """Gets the inbound_plan_id of this GovernmentInvoiceRequest.  # noqa: E501
 
-        The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.  # noqa: E501
+        The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created.  # noqa: E501
 
         :return: The inbound_plan_id of this GovernmentInvoiceRequest.  # noqa: E501
         :rtype: str
@@ -111,7 +111,7 @@ class GovernmentInvoiceRequest(object):
     def inbound_plan_id(self, inbound_plan_id):
         """Sets the inbound_plan_id of this GovernmentInvoiceRequest.
 
-        The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.  # noqa: E501
+        The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created.  # noqa: E501
 
         :param inbound_plan_id: The inbound_plan_id of this GovernmentInvoiceRequest.  # noqa: E501
         :type: str
@@ -123,7 +123,7 @@ class GovernmentInvoiceRequest(object):
     def invoice_type(self):
         """Gets the invoice_type of this GovernmentInvoiceRequest.  # noqa: E501
 
-        Marketplace specific classification of the invoice type. Check 'invoiceType' options using 'getInvoicesAttributes' operation.  # noqa: E501
+        The marketplace-specific classification of the invoice type. Check `invoiceType` options using the `getInvoicesAttributes` operation.  # noqa: E501
 
         :return: The invoice_type of this GovernmentInvoiceRequest.  # noqa: E501
         :rtype: str
@@ -134,7 +134,7 @@ class GovernmentInvoiceRequest(object):
     def invoice_type(self, invoice_type):
         """Sets the invoice_type of this GovernmentInvoiceRequest.
 
-        Marketplace specific classification of the invoice type. Check 'invoiceType' options using 'getInvoicesAttributes' operation.  # noqa: E501
+        The marketplace-specific classification of the invoice type. Check `invoiceType` options using the `getInvoicesAttributes` operation.  # noqa: E501
 
         :param invoice_type: The invoice_type of this GovernmentInvoiceRequest.  # noqa: E501
         :type: str
@@ -148,7 +148,7 @@ class GovernmentInvoiceRequest(object):
     def marketplace_id(self):
         """Gets the marketplace_id of this GovernmentInvoiceRequest.  # noqa: E501
 
-        The government invoices creation request will match the national authoritative source of the given marketplace.  # noqa: E501
+        The marketplace of the national authoritative source that will be on the government invoice creation request.  # noqa: E501
 
         :return: The marketplace_id of this GovernmentInvoiceRequest.  # noqa: E501
         :rtype: str
@@ -159,7 +159,7 @@ class GovernmentInvoiceRequest(object):
     def marketplace_id(self, marketplace_id):
         """Sets the marketplace_id of this GovernmentInvoiceRequest.
 
-        The government invoices creation request will match the national authoritative source of the given marketplace.  # noqa: E501
+        The marketplace of the national authoritative source that will be on the government invoice creation request.  # noqa: E501
 
         :param marketplace_id: The marketplace_id of this GovernmentInvoiceRequest.  # noqa: E501
         :type: str
@@ -173,7 +173,7 @@ class GovernmentInvoiceRequest(object):
     def shipment_id(self):
         """Gets the shipment_id of this GovernmentInvoiceRequest.  # noqa: E501
 
-        The unique shipment identifier to get an invoice for.  # noqa: E501
+        The unique shipment identifier for which to get an invoice.  # noqa: E501
 
         :return: The shipment_id of this GovernmentInvoiceRequest.  # noqa: E501
         :rtype: str
@@ -184,7 +184,7 @@ class GovernmentInvoiceRequest(object):
     def shipment_id(self, shipment_id):
         """Sets the shipment_id of this GovernmentInvoiceRequest.
 
-        The unique shipment identifier to get an invoice for.  # noqa: E501
+        The unique shipment identifier for which to get an invoice.  # noqa: E501
 
         :param shipment_id: The shipment_id of this GovernmentInvoiceRequest.  # noqa: E501
         :type: str
@@ -198,7 +198,7 @@ class GovernmentInvoiceRequest(object):
     def transaction_type(self):
         """Gets the transaction_type of this GovernmentInvoiceRequest.  # noqa: E501
 
-        Marketplace specific classification of the transaction type that originated the invoice. Check 'transactionType' options using 'getInvoicesAttributes' operation.  # noqa: E501
+        The marketplace-specific classification of the transaction type that originated the invoice. Check `transactionType` options using the `getInvoicesAttributes` operation.  # noqa: E501
 
         :return: The transaction_type of this GovernmentInvoiceRequest.  # noqa: E501
         :rtype: str
@@ -209,7 +209,7 @@ class GovernmentInvoiceRequest(object):
     def transaction_type(self, transaction_type):
         """Sets the transaction_type of this GovernmentInvoiceRequest.
 
-        Marketplace specific classification of the transaction type that originated the invoice. Check 'transactionType' options using 'getInvoicesAttributes' operation.  # noqa: E501
+        The marketplace-specific classification of the transaction type that originated the invoice. Check `transactionType` options using the `getInvoicesAttributes` operation.  # noqa: E501
 
         :param transaction_type: The transaction_type of this GovernmentInvoiceRequest.  # noqa: E501
         :type: str

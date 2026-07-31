@@ -38,6 +38,7 @@ class OrderFulfillment(object):
         'fulfillment_service_level': 'str',
         'ship_by_window': 'DateTimeRange',
         'deliver_by_window': 'DateTimeRange',
+        'label_printing_window': 'DateTimeRange',
     }
 
     attribute_map = {
@@ -46,9 +47,10 @@ class OrderFulfillment(object):
         'fulfillment_service_level': 'fulfillmentServiceLevel',
         'ship_by_window': 'shipByWindow',
         'deliver_by_window': 'deliverByWindow',
+        'label_printing_window': 'labelPrintingWindow',
     }
 
-    def __init__(self, fulfillment_status=None, fulfilled_by=None, fulfillment_service_level=None, ship_by_window=None, deliver_by_window=None, _configuration=None):  # noqa: E501
+    def __init__(self, fulfillment_status=None, fulfilled_by=None, fulfillment_service_level=None, ship_by_window=None, deliver_by_window=None, label_printing_window=None, _configuration=None):  # noqa: E501
         """OrderFulfillment - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -59,6 +61,7 @@ class OrderFulfillment(object):
         self._fulfillment_service_level = None
         self._ship_by_window = None
         self._deliver_by_window = None
+        self._label_printing_window = None
         self.discriminator = None
 
         self.fulfillment_status = fulfillment_status
@@ -70,6 +73,8 @@ class OrderFulfillment(object):
             self.ship_by_window = ship_by_window
         if deliver_by_window is not None:
             self.deliver_by_window = deliver_by_window
+        if label_printing_window is not None:
+            self.label_printing_window = label_printing_window
 
     @property
     def fulfillment_status(self):
@@ -181,6 +186,27 @@ class OrderFulfillment(object):
         """
 
         self._deliver_by_window = deliver_by_window
+
+    @property
+    def label_printing_window(self):
+        """Gets the label_printing_window of this OrderFulfillment.  # noqa: E501
+
+
+        :return: The label_printing_window of this OrderFulfillment.  # noqa: E501
+        :rtype: DateTimeRange
+        """
+        return self._label_printing_window
+
+    @label_printing_window.setter
+    def label_printing_window(self, label_printing_window):
+        """Sets the label_printing_window of this OrderFulfillment.
+
+
+        :param label_printing_window: The label_printing_window of this OrderFulfillment.  # noqa: E501
+        :type: DateTimeRange
+        """
+
+        self._label_printing_window = label_printing_window
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -32,6 +32,22 @@ class TestFinancesV2024Api(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_list_balances(self):
+        
+        self.instruct_backend_mock("financesV2024".casefold().replace(' ', ''), self.to_camel_case("list_balances"), "200")
+        response = self.api.list_balances_with_http_info()
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
+    def test_list_summary(self):
+        
+        self.instruct_backend_mock("financesV2024".casefold().replace(' ', ''), self.to_camel_case("list_summary"), "200")
+        response = self.api.list_summary_with_http_info()
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
     def test_list_transactions(self):
         
         self.instruct_backend_mock("financesV2024".casefold().replace(' ', ''), self.to_camel_case("list_transactions"), "200")

@@ -224,7 +224,7 @@ class Transaction(object):
     def description(self):
         """Gets the description of this Transaction.  # noqa: E501
 
-        Describes the reasons for the transaction.  **Example:** 'Order Payment', 'Refund Order'  # noqa: E501
+        Describes the reasons for the transaction.  **Example:** `Order Payment`, `Refund Order`  # noqa: E501
 
         :return: The description of this Transaction.  # noqa: E501
         :rtype: str
@@ -235,7 +235,7 @@ class Transaction(object):
     def description(self, description):
         """Sets the description of this Transaction.
 
-        Describes the reasons for the transaction.  **Example:** 'Order Payment', 'Refund Order'  # noqa: E501
+        Describes the reasons for the transaction.  **Example:** `Order Payment`, `Refund Order`  # noqa: E501
 
         :param description: The description of this Transaction.  # noqa: E501
         :type: str

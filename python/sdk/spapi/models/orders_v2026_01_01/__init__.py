@@ -32,6 +32,7 @@ from spapi.models.orders_v2026_01_01.get_order_response import GetOrderResponse
 from spapi.models.orders_v2026_01_01.gift_option import GiftOption
 from spapi.models.orders_v2026_01_01.hour_minute import HourMinute
 from spapi.models.orders_v2026_01_01.item_cancellation import ItemCancellation
+from spapi.models.orders_v2026_01_01.item_cancellation_execution import ItemCancellationExecution
 from spapi.models.orders_v2026_01_01.item_cancellation_request import ItemCancellationRequest
 from spapi.models.orders_v2026_01_01.item_condition import ItemCondition
 from spapi.models.orders_v2026_01_01.item_customization import ItemCustomization

@@ -91,7 +91,7 @@ class CarrierDetailsContext(object):
     def name(self):
         """Gets the name of this CarrierDetailsContext.  # noqa: E501
 
-        The name of the carrier, as registered in state and federal tax authorities.  # noqa: E501
+        The name of the carrier, as registered with state and federal tax authorities.  # noqa: E501
 
         :return: The name of this CarrierDetailsContext.  # noqa: E501
         :rtype: str
@@ -102,7 +102,7 @@ class CarrierDetailsContext(object):
     def name(self, name):
         """Sets the name of this CarrierDetailsContext.
 
-        The name of the carrier, as registered in state and federal tax authorities.  # noqa: E501
+        The name of the carrier, as registered with state and federal tax authorities.  # noqa: E501
 
         :param name: The name of this CarrierDetailsContext.  # noqa: E501
         :type: str
@@ -114,7 +114,7 @@ class CarrierDetailsContext(object):
     def address(self):
         """Gets the address of this CarrierDetailsContext.  # noqa: E501
 
-        The address of the carrier, as registered in state and federal tax authorities.  # noqa: E501
+        The address of the carrier, as registered with state and federal tax authorities.  # noqa: E501
 
         :return: The address of this CarrierDetailsContext.  # noqa: E501
         :rtype: str
@@ -125,7 +125,7 @@ class CarrierDetailsContext(object):
     def address(self, address):
         """Sets the address of this CarrierDetailsContext.
 
-        The address of the carrier, as registered in state and federal tax authorities.  # noqa: E501
+        The address of the carrier, as registered with state and federal tax authorities.  # noqa: E501
 
         :param address: The address of this CarrierDetailsContext.  # noqa: E501
         :type: str
@@ -137,7 +137,7 @@ class CarrierDetailsContext(object):
     def context_type(self):
         """Gets the context_type of this CarrierDetailsContext.  # noqa: E501
 
-        Type of additional information.  # noqa: E501
+        The type of additional information.  # noqa: E501
 
         :return: The context_type of this CarrierDetailsContext.  # noqa: E501
         :rtype: str
@@ -148,7 +148,7 @@ class CarrierDetailsContext(object):
     def context_type(self, context_type):
         """Sets the context_type of this CarrierDetailsContext.
 
-        Type of additional information.  # noqa: E501
+        The type of additional information.  # noqa: E501
 
         :param context_type: The context_type of this CarrierDetailsContext.  # noqa: E501
         :type: str
@@ -160,7 +160,7 @@ class CarrierDetailsContext(object):
     def federal_tax_id(self):
         """Gets the federal_tax_id of this CarrierDetailsContext.  # noqa: E501
 
-        Tax Identification number of the carrier.  # noqa: E501
+        The tax identification number of the carrier.  # noqa: E501
 
         :return: The federal_tax_id of this CarrierDetailsContext.  # noqa: E501
         :rtype: str
@@ -171,7 +171,7 @@ class CarrierDetailsContext(object):
     def federal_tax_id(self, federal_tax_id):
         """Sets the federal_tax_id of this CarrierDetailsContext.
 
-        Tax Identification number of the carrier.  # noqa: E501
+        The tax identification number of the carrier.  # noqa: E501
 
         :param federal_tax_id: The federal_tax_id of this CarrierDetailsContext.  # noqa: E501
         :type: str
@@ -229,7 +229,7 @@ class CarrierDetailsContext(object):
     def vehicle_license_plate(self):
         """Gets the vehicle_license_plate of this CarrierDetailsContext.  # noqa: E501
 
-        The identifier for the carrier vehicle as printed in its registration plate.  # noqa: E501
+        The identifier for the carrier vehicle, as printed on its registration plate.  # noqa: E501
 
         :return: The vehicle_license_plate of this CarrierDetailsContext.  # noqa: E501
         :rtype: str
@@ -240,7 +240,7 @@ class CarrierDetailsContext(object):
     def vehicle_license_plate(self, vehicle_license_plate):
         """Sets the vehicle_license_plate of this CarrierDetailsContext.
 
-        The identifier for the carrier vehicle as printed in its registration plate.  # noqa: E501
+        The identifier for the carrier vehicle, as printed on its registration plate.  # noqa: E501
 
         :param vehicle_license_plate: The vehicle_license_plate of this CarrierDetailsContext.  # noqa: E501
         :type: str

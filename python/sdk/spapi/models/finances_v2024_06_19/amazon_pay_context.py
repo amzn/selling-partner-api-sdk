@@ -89,7 +89,7 @@ class AmazonPayContext(object):
     def order_type(self):
         """Gets the order_type of this AmazonPayContext.  # noqa: E501
 
-        The transaction's order type.  # noqa: E501
+        The order type of the transaction.  # noqa: E501
 
         :return: The order_type of this AmazonPayContext.  # noqa: E501
         :rtype: str
@@ -100,7 +100,7 @@ class AmazonPayContext(object):
     def order_type(self, order_type):
         """Sets the order_type of this AmazonPayContext.
 
-        The transaction's order type.  # noqa: E501
+        The order type of the transaction.  # noqa: E501
 
         :param order_type: The order_type of this AmazonPayContext.  # noqa: E501
         :type: str
@@ -112,7 +112,7 @@ class AmazonPayContext(object):
     def channel(self):
         """Gets the channel of this AmazonPayContext.  # noqa: E501
 
-        Channel details of related transaction.  # noqa: E501
+        The channel of the transaction. For example: `MFN`.  # noqa: E501
 
         :return: The channel of this AmazonPayContext.  # noqa: E501
         :rtype: str
@@ -123,7 +123,7 @@ class AmazonPayContext(object):
     def channel(self, channel):
         """Sets the channel of this AmazonPayContext.
 
-        Channel details of related transaction.  # noqa: E501
+        The channel of the transaction. For example: `MFN`.  # noqa: E501
 
         :param channel: The channel of this AmazonPayContext.  # noqa: E501
         :type: str

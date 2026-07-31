@@ -61,7 +61,7 @@ class InvoiceError(object):
     def description(self):
         """Gets the description of this InvoiceError.  # noqa: E501
 
-        A text description of the error.  # noqa: E501
+        A description of the error.  # noqa: E501
 
         :return: The description of this InvoiceError.  # noqa: E501
         :rtype: str
@@ -72,7 +72,7 @@ class InvoiceError(object):
     def description(self, description):
         """Sets the description of this InvoiceError.
 
-        A text description of the error.  # noqa: E501
+        A description of the error.  # noqa: E501
 
         :param description: The description of this InvoiceError.  # noqa: E501
         :type: str

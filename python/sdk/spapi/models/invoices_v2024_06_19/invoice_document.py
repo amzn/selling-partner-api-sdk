@@ -56,7 +56,7 @@ class InvoiceDocument(object):
     def invoice_document_url(self):
         """Gets the invoice_document_url of this InvoiceDocument.  # noqa: E501
 
-        A pre-signed URL to download the invoice document in its original format. This URL expires after 30 seconds.  # noqa: E501
+        A pre-signed URL that you can use to download the invoice document in its original format. This URL expires after 30 seconds.  # noqa: E501
 
         :return: The invoice_document_url of this InvoiceDocument.  # noqa: E501
         :rtype: str
@@ -67,7 +67,7 @@ class InvoiceDocument(object):
     def invoice_document_url(self, invoice_document_url):
         """Sets the invoice_document_url of this InvoiceDocument.
 
-        A pre-signed URL to download the invoice document in its original format. This URL expires after 30 seconds.  # noqa: E501
+        A pre-signed URL that you can use to download the invoice document in its original format. This URL expires after 30 seconds.  # noqa: E501
 
         :param invoice_document_url: The invoice_document_url of this InvoiceDocument.  # noqa: E501
         :type: str

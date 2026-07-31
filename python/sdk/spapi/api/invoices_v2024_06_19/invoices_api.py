@@ -38,7 +38,7 @@ class InvoicesApi(object):
     def create_government_invoice(self, body, **kwargs):  # noqa: E501
         """create_government_invoice  # noqa: E501
 
-        Submits an asynchronous government invoice creation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.  # noqa: E501
+        Submit an asynchronous request to create a government invoice.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_government_invoice(body, async_req=True)
@@ -60,7 +60,7 @@ class InvoicesApi(object):
     def create_government_invoice_with_http_info(self, body, **kwargs):  # noqa: E501
         """create_government_invoice  # noqa: E501
 
-        Submits an asynchronous government invoice creation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.  # noqa: E501
+        Submit an asynchronous request to create a government invoice.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_government_invoice_with_http_info(body, async_req=True)
@@ -137,7 +137,7 @@ class InvoicesApi(object):
     def create_invoices_export(self, body, **kwargs):  # noqa: E501
         """create_invoices_export  # noqa: E501
 
-        Creates an invoice export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.167 | 1 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        Creates an invoice export request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_invoices_export(body, async_req=True)
@@ -159,7 +159,7 @@ class InvoicesApi(object):
     def create_invoices_export_with_http_info(self, body, **kwargs):  # noqa: E501
         """create_invoices_export  # noqa: E501
 
-        Creates an invoice export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.167 | 1 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        Creates an invoice export request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_invoices_export_with_http_info(body, async_req=True)
@@ -236,19 +236,19 @@ class InvoicesApi(object):
     def get_government_invoice_document(self, marketplace_id, transaction_type, shipment_id, invoice_type, **kwargs):  # noqa: E501
         """get_government_invoice_document  # noqa: E501
 
-        Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.  # noqa: E501
+        Retrieve the URL of an invoice document.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_government_invoice_document(marketplace_id, transaction_type, shipment_id, invoice_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str marketplace_id: The invoices returned will match the marketplace that you specify. (required)
-        :param str transaction_type: Marketplace specific classification of the transaction type that originated the invoice. Check 'transactionType' options using 'getInvoicesAttributes' operation. (required)
-        :param str shipment_id: The unique shipment identifier to get an invoice for. (required)
-        :param str invoice_type: Marketplace specific classification of the invoice type. Check 'invoiceType' options using 'getInvoicesAttributes' operation. (required)
-        :param str inbound_plan_id: The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
-        :param str file_format: Requested file format. Default is XML
+        :param str marketplace_id: The marketplace of the invoice. (required)
+        :param str transaction_type: The marketplace-specific classification of the transaction type that originated the invoice. Check `transactionType` options using the `getInvoicesAttributes` operation. (required)
+        :param str shipment_id: The unique shipment identifier for which to get an invoice. (required)
+        :param str invoice_type: The marketplace-specific classification of the invoice type. Check `invoiceType` options using the `getInvoicesAttributes` operation. (required)
+        :param str inbound_plan_id: The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created.
+        :param str file_format: The file format of the invoice. The default is XML.
         :return: GovtInvoiceDocumentResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -263,19 +263,19 @@ class InvoicesApi(object):
     def get_government_invoice_document_with_http_info(self, marketplace_id, transaction_type, shipment_id, invoice_type, **kwargs):  # noqa: E501
         """get_government_invoice_document  # noqa: E501
 
-        Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.  # noqa: E501
+        Retrieve the URL of an invoice document.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_government_invoice_document_with_http_info(marketplace_id, transaction_type, shipment_id, invoice_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str marketplace_id: The invoices returned will match the marketplace that you specify. (required)
-        :param str transaction_type: Marketplace specific classification of the transaction type that originated the invoice. Check 'transactionType' options using 'getInvoicesAttributes' operation. (required)
-        :param str shipment_id: The unique shipment identifier to get an invoice for. (required)
-        :param str invoice_type: Marketplace specific classification of the invoice type. Check 'invoiceType' options using 'getInvoicesAttributes' operation. (required)
-        :param str inbound_plan_id: The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
-        :param str file_format: Requested file format. Default is XML
+        :param str marketplace_id: The marketplace of the invoice. (required)
+        :param str transaction_type: The marketplace-specific classification of the transaction type that originated the invoice. Check `transactionType` options using the `getInvoicesAttributes` operation. (required)
+        :param str shipment_id: The unique shipment identifier for which to get an invoice. (required)
+        :param str invoice_type: The marketplace-specific classification of the invoice type. Check `invoiceType` options using the `getInvoicesAttributes` operation. (required)
+        :param str inbound_plan_id: The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created.
+        :param str file_format: The file format of the invoice. The default is XML.
         :return: GovtInvoiceDocumentResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -363,18 +363,18 @@ class InvoicesApi(object):
     def get_government_invoice_status(self, marketplace_id, transaction_type, shipment_id, invoice_type, **kwargs):  # noqa: E501
         """get_government_invoice_status  # noqa: E501
 
-        Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.  # noqa: E501
+        Retrieve the status of an invoice generation request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_government_invoice_status(marketplace_id, transaction_type, shipment_id, invoice_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str marketplace_id: The invoices status will match the marketplace that you specify. (required)
-        :param str transaction_type: Marketplace specific classification of the transaction type that originated the invoice. Check 'transactionType' options using 'getInvoicesAttributes' operation. (required)
-        :param str shipment_id: The unique shipment identifier to get an invoice for. (required)
-        :param str invoice_type: Marketplace specific classification of the invoice type. Check 'invoiceType' options using 'getInvoicesAttributes' operation. (required)
-        :param str inbound_plan_id: The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
+        :param str marketplace_id: The marketplace of the invoice request. (required)
+        :param str transaction_type: The marketplace-specific classification of the transaction type that originated the invoice. Check `transactionType` options using the `getInvoicesAttributes` operation. (required)
+        :param str shipment_id: The unique shipment identifier for which to get an invoice. (required)
+        :param str invoice_type: The marketplace-specific classification of the invoice type. Check `invoiceType` options using the `getInvoicesAttributes` operation. (required)
+        :param str inbound_plan_id: The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created.
         :return: GovernmentInvoiceStatusResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -389,18 +389,18 @@ class InvoicesApi(object):
     def get_government_invoice_status_with_http_info(self, marketplace_id, transaction_type, shipment_id, invoice_type, **kwargs):  # noqa: E501
         """get_government_invoice_status  # noqa: E501
 
-        Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.  # noqa: E501
+        Retrieve the status of an invoice generation request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_government_invoice_status_with_http_info(marketplace_id, transaction_type, shipment_id, invoice_type, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str marketplace_id: The invoices status will match the marketplace that you specify. (required)
-        :param str transaction_type: Marketplace specific classification of the transaction type that originated the invoice. Check 'transactionType' options using 'getInvoicesAttributes' operation. (required)
-        :param str shipment_id: The unique shipment identifier to get an invoice for. (required)
-        :param str invoice_type: Marketplace specific classification of the invoice type. Check 'invoiceType' options using 'getInvoicesAttributes' operation. (required)
-        :param str inbound_plan_id: The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
+        :param str marketplace_id: The marketplace of the invoice request. (required)
+        :param str transaction_type: The marketplace-specific classification of the transaction type that originated the invoice. Check `transactionType` options using the `getInvoicesAttributes` operation. (required)
+        :param str shipment_id: The unique shipment identifier for which to get an invoice. (required)
+        :param str invoice_type: The marketplace-specific classification of the invoice type. Check `invoiceType` options using the `getInvoicesAttributes` operation. (required)
+        :param str inbound_plan_id: The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created.
         :return: GovernmentInvoiceStatusResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -486,7 +486,7 @@ class InvoicesApi(object):
     def get_invoice(self, marketplace_id, invoice_id, **kwargs):  # noqa: E501
         """get_invoice  # noqa: E501
 
-        Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the `createInvoicesExport` operation to start an export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the `createInvoicesExport` operation to start an export request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_invoice(marketplace_id, invoice_id, async_req=True)
@@ -509,7 +509,7 @@ class InvoicesApi(object):
     def get_invoice_with_http_info(self, marketplace_id, invoice_id, **kwargs):  # noqa: E501
         """get_invoice  # noqa: E501
 
-        Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the `createInvoicesExport` operation to start an export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the `createInvoicesExport` operation to start an export request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_invoice_with_http_info(marketplace_id, invoice_id, async_req=True)
@@ -589,7 +589,7 @@ class InvoicesApi(object):
     def get_invoices(self, marketplace_id, **kwargs):  # noqa: E501
         """get_invoices  # noqa: E501
 
-        Returns invoice details for the invoices that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        Returns invoice details for the invoices that match the filters that you specify.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_invoices(marketplace_id, async_req=True)
@@ -624,7 +624,7 @@ class InvoicesApi(object):
     def get_invoices_with_http_info(self, marketplace_id, **kwargs):  # noqa: E501
         """get_invoices  # noqa: E501
 
-        Returns invoice details for the invoices that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        Returns invoice details for the invoices that match the filters that you specify.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_invoices_with_http_info(marketplace_id, async_req=True)
@@ -740,7 +740,7 @@ class InvoicesApi(object):
     def get_invoices_attributes(self, marketplace_id, **kwargs):  # noqa: E501
         """get_invoices_attributes  # noqa: E501
 
-        Returns marketplace-dependent schemas and their respective set of possible values.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        Returns marketplace-dependent schemas and their respective set of possible values.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_invoices_attributes(marketplace_id, async_req=True)
@@ -762,7 +762,7 @@ class InvoicesApi(object):
     def get_invoices_attributes_with_http_info(self, marketplace_id, **kwargs):  # noqa: E501
         """get_invoices_attributes  # noqa: E501
 
-        Returns marketplace-dependent schemas and their respective set of possible values.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        Returns marketplace-dependent schemas and their respective set of possible values.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_invoices_attributes_with_http_info(marketplace_id, async_req=True)
@@ -835,7 +835,7 @@ class InvoicesApi(object):
     def get_invoices_document(self, invoices_document_id, **kwargs):  # noqa: E501
         """get_invoices_document  # noqa: E501
 
-        Returns the invoice document's ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding `createInvoicesExport` request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        Returns the invoice document's ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding `createInvoicesExport` request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_invoices_document(invoices_document_id, async_req=True)
@@ -857,7 +857,7 @@ class InvoicesApi(object):
     def get_invoices_document_with_http_info(self, invoices_document_id, **kwargs):  # noqa: E501
         """get_invoices_document  # noqa: E501
 
-        Returns the invoice document's ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding `createInvoicesExport` request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        Returns the invoice document's ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding `createInvoicesExport` request.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_invoices_document_with_http_info(invoices_document_id, async_req=True)
@@ -930,7 +930,7 @@ class InvoicesApi(object):
     def get_invoices_export(self, export_id, **kwargs):  # noqa: E501
         """get_invoices_export  # noqa: E501
 
-        Returns invoice export details (including the `exportDocumentId`, if available) for the export that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        Returns invoice export details (including the `exportDocumentId`, if available) for the export that you specify.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_invoices_export(export_id, async_req=True)
@@ -952,7 +952,7 @@ class InvoicesApi(object):
     def get_invoices_export_with_http_info(self, export_id, **kwargs):  # noqa: E501
         """get_invoices_export  # noqa: E501
 
-        Returns invoice export details (including the `exportDocumentId`, if available) for the export that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        Returns invoice export details (including the `exportDocumentId`, if available) for the export that you specify.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_invoices_export_with_http_info(export_id, async_req=True)
@@ -1025,7 +1025,7 @@ class InvoicesApi(object):
     def get_invoices_exports(self, marketplace_id, **kwargs):  # noqa: E501
         """get_invoices_exports  # noqa: E501
 
-        Returns invoice exports details for exports that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        Returns invoice exports details for exports that match the filters that you specify.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_invoices_exports(marketplace_id, async_req=True)
@@ -1052,7 +1052,7 @@ class InvoicesApi(object):
     def get_invoices_exports_with_http_info(self, marketplace_id, **kwargs):  # noqa: E501
         """get_invoices_exports  # noqa: E501
 
-        Returns invoice exports details for exports that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 20 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        Returns invoice exports details for exports that match the filters that you specify.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_invoices_exports_with_http_info(marketplace_id, async_req=True)
