@@ -18,7 +18,7 @@ export * as FinancesinvoicesSpApi from './src/financesinvoices_v2026_06_25/index
 export * as FulfillmentinboundSpApi from './src/fulfillmentinbound_v2024_03_20/index.js';
 export * as Fulfillmentinbound_v0SpApi from './src/fulfillmentinbound_v0/index.js';
 export * as FulfillmentoutboundSpApi from './src/fulfillmentoutbound_v2020_07_01/index.js';
-export * as FulfillmentoutboundSpApi from './src/fulfillmentoutbound_v2026_07_04/index.js';
+export * as Fulfillmentoutbound_v2026SpApi from './src/fulfillmentoutbound_v2026_07_04/index.js';
 export * as InvoicesSpApi from './src/invoices_v2024_06_19/index.js';
 export * as InvoicingSpApi from './src/invoicing_v0/index.js';
 export * as ListingsitemsSpApi from './src/listingsitems_v2021_08_01/index.js';
