@@ -35,6 +35,9 @@ get_export_name() {
     elif [[ "$dir" == "orders_v2026_01_01" ]]; then
         echo "Orders_v2026SpApi"
         return
+    elif [[ "$dir" == "fulfillmentoutbound_v2026_07_04" ]]; then
+            echo "Fulfillmentoutbound_v2026SpApi"
+            return
     fi
     
     # Capitalize first letter of each word and remove underscores
@@ -69,5 +72,19 @@ echo "" >> "$output_file"  # Add blank line for readability
 echo "export * from './helper/LwaAuthClient.mjs';" >> "$output_file"
 echo "export * from './helper/ScopeConstants.mjs';" >> "$output_file"
 echo "export * from './helper/RateLimitConfiguration.mjs';" >> "$output_file"
+
+# Check for duplicate export names
+duplicates=$(sed -n 's/^export \* as \([^ ]*\) .*/\1/p' "$output_file" | sort | uniq -d)
+
+if [ -n "$duplicates" ]; then
+    echo "ERROR: Duplicate export names detected in $output_file:" >&2
+    echo "$duplicates" >&2
+    echo "" >&2
+    echo "Conflicting entries:" >&2
+    for dup in $duplicates; do
+        grep "as $dup " "$output_file" >&2
+    done
+    exit 1
+fi
 
 echo "Generated consolidated index.js in sdk folder with exports for all APIs and LwaAuthClient"
