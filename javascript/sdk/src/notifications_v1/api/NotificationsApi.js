@@ -22,6 +22,7 @@ import { GetDestinationResponse } from '../model/GetDestinationResponse.js'
 import { GetDestinationsResponse } from '../model/GetDestinationsResponse.js'
 import { GetSubscriptionByIdResponse } from '../model/GetSubscriptionByIdResponse.js'
 import { GetSubscriptionResponse } from '../model/GetSubscriptionResponse.js'
+import { GetSubscriptionsResponse } from '../model/GetSubscriptionsResponse.js'
 import { SendTestNotificationRequest } from '../model/SendTestNotificationRequest.js'
 import { SendTestNotificationResponse } from '../model/SendTestNotificationResponse.js'
 import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
@@ -63,6 +64,7 @@ export class NotificationsApi {
       'NotificationsApi-getDestinations',
       'NotificationsApi-getSubscription',
       'NotificationsApi-getSubscriptionById',
+      'NotificationsApi-getSubscriptions',
       'NotificationsApi-sendTestNotification'
     ]
 
@@ -463,6 +465,64 @@ export class NotificationsApi {
      */
   getSubscriptionById (subscriptionId, notificationType) {
     return this.getSubscriptionByIdWithHttpInfo(subscriptionId, notificationType)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
+
+  /**
+     * Returns information about subscriptions of the specified notification type. You can use this API to retrieve all subscriptions when multiple subscriptions exist for a notification type (for example, when using filter expressions).  The operation returns all subscriptions for the caller&#39;s party.  &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the operation returns subscriptions across all payload versions.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param {String[]} notificationTypes A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide).
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.payloadVersion] The version of the payload object to be used in the notification.
+     * @param {Number} [opts.pageSize] The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (default to 30)
+     * @param {String} [opts.nextToken] A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page.
+     * @return {Promise<GetSubscriptionsResponse>}
+     */
+  getSubscriptionsWithHttpInfo (notificationTypes, opts) {
+    opts = opts || {}
+    const postBody = null
+
+    // verify the required parameter 'notificationTypes' is set
+    if (notificationTypes === undefined || notificationTypes === null) {
+      throw new Error("Missing the required parameter 'notificationTypes' when calling getSubscriptions")
+    }
+
+    const pathParams = {
+    }
+    const queryParams = {
+      notificationTypes: this.apiClient.buildCollectionParam(notificationTypes, 'csv'),
+      payloadVersion: opts.payloadVersion,
+      pageSize: opts.pageSize,
+      nextToken: opts.nextToken
+    }
+    const headerParams = {
+    }
+    const formParams = {
+    }
+
+    const contentTypes = []
+    const accepts = ['application/json']
+    const returnType = GetSubscriptionsResponse
+
+    return this.apiClient.callApi('NotificationsApi-getSubscriptions',
+      '/notifications/v1/subscriptions', 'GET',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-getSubscriptions')
+    )
+  }
+
+  /**
+     * Returns information about subscriptions of the specified notification type. You can use this API to retrieve all subscriptions when multiple subscriptions exist for a notification type (for example, when using filter expressions).  The operation returns all subscriptions for the caller&#39;s party.  &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the operation returns subscriptions across all payload versions.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * @param {String[]} notificationTypes A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide).
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.payloadVersion] The version of the payload object to be used in the notification.
+     * @param {Number} [opts.pageSize] The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (default to 30)
+     * @param {String} [opts.nextToken] A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page.
+     * @return {Promise<GetSubscriptionsResponse>}
+     */
+  getSubscriptions (notificationTypes, opts) {
+    return this.getSubscriptionsWithHttpInfo(notificationTypes, opts)
       .then(function (response_and_data) {
         return response_and_data.data
       })

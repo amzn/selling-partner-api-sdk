@@ -32,6 +32,8 @@ import { GetDestinationResponse } from './model/GetDestinationResponse.js'
 import { GetDestinationsResponse } from './model/GetDestinationsResponse.js'
 import { GetSubscriptionByIdResponse } from './model/GetSubscriptionByIdResponse.js'
 import { GetSubscriptionResponse } from './model/GetSubscriptionResponse.js'
+import { GetSubscriptionsPayload } from './model/GetSubscriptionsPayload.js'
+import { GetSubscriptionsResponse } from './model/GetSubscriptionsResponse.js'
 import { MarketplaceFilter } from './model/MarketplaceFilter.js'
 import { OrderChangeTypeEnum } from './model/OrderChangeTypeEnum.js'
 import { OrderChangeTypeFilter } from './model/OrderChangeTypeFilter.js'
@@ -41,6 +43,9 @@ import { SendTestNotificationResponse } from './model/SendTestNotificationRespon
 import { SqsResource } from './model/SqsResource.js'
 import { Subscription } from './model/Subscription.js'
 import { TestNotification } from './model/TestNotification.js'
+import { TrackingFilter } from './model/TrackingFilter.js'
+import { TrackingIdentifier } from './model/TrackingIdentifier.js'
+import { TrackingIdentifierCarrierTracking } from './model/TrackingIdentifierCarrierTracking.js'
 import { NotificationsApi } from './api/NotificationsApi.js'
 
 /**
@@ -177,6 +182,18 @@ export {
   GetSubscriptionResponse,
 
   /**
+     * The GetSubscriptionsPayload model constructor.
+     * @property {module:notifications_v1/model/GetSubscriptionsPayload}
+     */
+  GetSubscriptionsPayload,
+
+  /**
+     * The GetSubscriptionsResponse model constructor.
+     * @property {module:notifications_v1/model/GetSubscriptionsResponse}
+     */
+  GetSubscriptionsResponse,
+
+  /**
      * The MarketplaceFilter model constructor.
      * @property {module:notifications_v1/model/MarketplaceFilter}
      */
@@ -229,6 +246,24 @@ export {
      * @property {module:notifications_v1/model/TestNotification}
      */
   TestNotification,
+
+  /**
+     * The TrackingFilter model constructor.
+     * @property {module:notifications_v1/model/TrackingFilter}
+     */
+  TrackingFilter,
+
+  /**
+     * The TrackingIdentifier model constructor.
+     * @property {module:notifications_v1/model/TrackingIdentifier}
+     */
+  TrackingIdentifier,
+
+  /**
+     * The TrackingIdentifierCarrierTracking model constructor.
+     * @property {module:notifications_v1/model/TrackingIdentifierCarrierTracking}
+     */
+  TrackingIdentifierCarrierTracking,
 
   /**
     * The NotificationsApi service constructor.

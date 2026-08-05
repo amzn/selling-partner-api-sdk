@@ -21,6 +21,7 @@ import { GetDestinationResponse } from '../model/GetDestinationResponse.js';
 import { GetDestinationsResponse } from '../model/GetDestinationsResponse.js';
 import { GetSubscriptionByIdResponse } from '../model/GetSubscriptionByIdResponse.js';
 import { GetSubscriptionResponse } from '../model/GetSubscriptionResponse.js';
+import { GetSubscriptionsResponse } from '../model/GetSubscriptionsResponse.js';
 import { SendTestNotificationRequest } from '../model/SendTestNotificationRequest.js';
 import { SendTestNotificationResponse } from '../model/SendTestNotificationResponse.js';
 /**
@@ -156,6 +157,34 @@ export declare class NotificationsApi {
        * @return {Promise<GetSubscriptionByIdResponse>}
        */
     getSubscriptionById(subscriptionId: string, notificationType: string): Promise<GetSubscriptionByIdResponse>;
+    /**
+       * Returns information about subscriptions of the specified notification type. You can use this API to retrieve all subscriptions when multiple subscriptions exist for a notification type (for example, when using filter expressions).  The operation returns all subscriptions for the caller&#39;s party.  &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the operation returns subscriptions across all payload versions.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+       * @param {String[]} notificationTypes A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide).
+       * @param {Object} [opts] Optional parameters
+       * @param {String} [opts.payloadVersion] The version of the payload object to be used in the notification.
+       * @param {Number} [opts.pageSize] The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (default to 30)
+       * @param {String} [opts.nextToken] A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page.
+       * @return {Promise<GetSubscriptionsResponse>}
+       */
+    getSubscriptionsWithHttpInfo(notificationTypes: string[], opts?: {
+        payloadVersion?: string;
+        pageSize?: number;
+        nextToken?: string;
+    }): Promise<GetSubscriptionsResponse>;
+    /**
+       * Returns information about subscriptions of the specified notification type. You can use this API to retrieve all subscriptions when multiple subscriptions exist for a notification type (for example, when using filter expressions).  The operation returns all subscriptions for the caller&#39;s party.  &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the operation returns subscriptions across all payload versions.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+       * @param {String[]} notificationTypes A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide).
+       * @param {Object} [opts] Optional parameters
+       * @param {String} [opts.payloadVersion] The version of the payload object to be used in the notification.
+       * @param {Number} [opts.pageSize] The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (default to 30)
+       * @param {String} [opts.nextToken] A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page.
+       * @return {Promise<GetSubscriptionsResponse>}
+       */
+    getSubscriptions(notificationTypes: string[], opts?: {
+        payloadVersion?: string;
+        pageSize?: number;
+        nextToken?: string;
+    }): Promise<GetSubscriptionsResponse>;
     /**
        * Sends a mock notification of the specified type to your SQS. The &#x60;sendTestNotification&#x60; API is grantless. For more information, see \&quot;Grantless operations\&quot; in the Selling Partner API Developer Guide.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
        * @param {String} notificationType The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide).
