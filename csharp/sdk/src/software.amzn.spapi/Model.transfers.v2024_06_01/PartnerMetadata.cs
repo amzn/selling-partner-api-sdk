@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.transfers.v2024_06_01
         /// </summary>
         /// <param name="partnerId">A unique selling partner identifier. (required).</param>
         /// <param name="accountType">The type of the selling partner&#39;s account in the payout. (required).</param>
-        /// <param name="marketplaceId">The identifier of the marketplace associated with the payout. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required).</param>
+        /// <param name="marketplaceId">The identifier of the store associated with the payout. To find the ID for your store, refer to [Store Identifiers](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required).</param>
         public PartnerMetadata(string partnerId = default(string), string accountType = default(string), string marketplaceId = default(string))
         {
             // to ensure "partnerId" is required (not null)
@@ -79,9 +79,9 @@ namespace software.amzn.spapi.Model.transfers.v2024_06_01
         public string AccountType { get; set; }
 
         /// <summary>
-        /// The identifier of the marketplace associated with the payout. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+        /// The identifier of the store associated with the payout. To find the ID for your store, refer to [Store Identifiers](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
         /// </summary>
-        /// <value>The identifier of the marketplace associated with the payout. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</value>
+        /// <value>The identifier of the store associated with the payout. To find the ID for your store, refer to [Store Identifiers](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</value>
         [DataMember(Name = "marketplaceId", IsRequired = true, EmitDefaultValue = true)]
         public string MarketplaceId { get; set; }
 

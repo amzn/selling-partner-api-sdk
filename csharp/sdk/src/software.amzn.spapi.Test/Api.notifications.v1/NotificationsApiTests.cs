@@ -200,6 +200,23 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         }
         
         [Fact]
+        public void GetSubscriptionsTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("notifications") + "-" + FormatOperationId("GetSubscriptions") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+            List<string> notificationTypes = fixture.Create<List<string>>();
+            
+
+            var response = api.GetSubscriptionsWithHttpInfo(notificationTypes, null, null, null);
+
+            Assert.Equal(200, (int) response.StatusCode);
+            AssertValidResponsePayload(200, response.Content);
+        }
+        
+        [Fact]
         public void SendTestNotificationTest()
         {
             Init();
