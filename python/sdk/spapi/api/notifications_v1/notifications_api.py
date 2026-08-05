@@ -823,6 +823,124 @@ class NotificationsApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats, api_models_module=self.api_models_module)
 
+    def get_subscriptions(self, notification_types, **kwargs):  # noqa: E501
+        """get_subscriptions  # noqa: E501
+
+        Returns information about subscriptions of the specified notification type. You can use this API to retrieve all subscriptions when multiple subscriptions exist for a notification type (for example, when using filter expressions).  The operation returns all subscriptions for the caller's party.  `payloadVersion` is an optional parameter. When you do not provide `payloadVersion`, the operation returns subscriptions across all payload versions.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The `x-amzn-RateLimit-Limit` response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_subscriptions(notification_types, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param List[str] notification_types: A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+        :param str payload_version: The version of the payload object to be used in the notification.
+        :param int page_size: The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30.
+        :param str next_token: A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page.
+        :return: GetSubscriptionsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.get_subscriptions_with_http_info(notification_types, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_subscriptions_with_http_info(notification_types, **kwargs)  # noqa: E501
+            return data
+
+    def get_subscriptions_with_http_info(self, notification_types, **kwargs):  # noqa: E501
+        """get_subscriptions  # noqa: E501
+
+        Returns information about subscriptions of the specified notification type. You can use this API to retrieve all subscriptions when multiple subscriptions exist for a notification type (for example, when using filter expressions).  The operation returns all subscriptions for the caller's party.  `payloadVersion` is an optional parameter. When you do not provide `payloadVersion`, the operation returns subscriptions across all payload versions.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The `x-amzn-RateLimit-Limit` response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_subscriptions_with_http_info(notification_types, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param List[str] notification_types: A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+        :param str payload_version: The version of the payload object to be used in the notification.
+        :param int page_size: The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30.
+        :param str next_token: A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page.
+        :return: GetSubscriptionsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['notification_types', 'payload_version', 'page_size', 'next_token']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_subscriptions" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'notification_types' is set
+        if self.api_client.client_side_validation and ('notification_types' not in params or
+                                                       params['notification_types'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `notification_types` when calling `get_subscriptions`")  # noqa: E501
+
+        if self.api_client.client_side_validation and ('notification_types' in params and
+                                            len(params['notification_types']) > 1):
+            raise ValueError("Invalid value for parameter `notification_types` when calling `get_subscriptions`, number of items must be less than or equal to `1`")  # noqa: E501
+        if self.api_client.client_side_validation and ('notification_types' in params and
+                                            len(params['notification_types']) < 1):
+            raise ValueError("Invalid value for parameter `notification_types` when calling `get_subscriptions`, number of items must be greater than or equal to `1`")  # noqa: E501
+        if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] > 100):  # noqa: E501
+            raise ValueError("Invalid value for parameter `page_size` when calling `get_subscriptions`, must be a value less than or equal to `100`")  # noqa: E501
+        if self.api_client.client_side_validation and ('page_size' in params and params['page_size'] < 30):  # noqa: E501
+            raise ValueError("Invalid value for parameter `page_size` when calling `get_subscriptions`, must be a value greater than or equal to `30`")  # noqa: E501
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'notification_types' in params:
+            query_params.append(('notificationTypes', params['notification_types']))  # noqa: E501
+            collection_formats['notificationTypes'] = 'csv'  # noqa: E501
+        if 'payload_version' in params:
+            query_params.append(('payloadVersion', params['payload_version']))  # noqa: E501
+        if 'page_size' in params:
+            query_params.append(('pageSize', params['page_size']))  # noqa: E501
+        if 'next_token' in params:
+            query_params.append(('nextToken', params['next_token']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/notifications/v1/subscriptions', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='GetSubscriptionsResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats, api_models_module=self.api_models_module)
+
     def send_test_notification(self, notification_type, body, **kwargs):  # noqa: E501
         """send_test_notification  # noqa: E501
 
