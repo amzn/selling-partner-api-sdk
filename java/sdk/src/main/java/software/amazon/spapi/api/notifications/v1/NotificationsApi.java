@@ -43,6 +43,7 @@ import software.amazon.spapi.models.notifications.v1.GetDestinationResponse;
 import software.amazon.spapi.models.notifications.v1.GetDestinationsResponse;
 import software.amazon.spapi.models.notifications.v1.GetSubscriptionByIdResponse;
 import software.amazon.spapi.models.notifications.v1.GetSubscriptionResponse;
+import software.amazon.spapi.models.notifications.v1.GetSubscriptionsResponse;
 import software.amazon.spapi.models.notifications.v1.SendTestNotificationRequest;
 import software.amazon.spapi.models.notifications.v1.SendTestNotificationResponse;
 
@@ -87,6 +88,10 @@ public class NotificationsApi {
 
     public final Bucket getSubscriptionByIdBucket = Bucket.builder()
             .addLimit(config.getLimit("NotificationsApi-getSubscriptionById"))
+            .build();
+
+    public final Bucket getSubscriptionsBucket = Bucket.builder()
+            .addLimit(config.getLimit("NotificationsApi-getSubscriptions"))
             .build();
 
     public final Bucket sendTestNotificationBucket = Bucket.builder()
@@ -2055,6 +2060,332 @@ public class NotificationsApi {
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("getSubscriptionById operation exceeds rate limit");
+    }
+    /**
+     * Build call for getSubscriptions
+     *
+     * @param notificationTypes A list of notification types to retrieve subscriptions for. Currently limited to a
+     *     single notification type per request. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param payloadVersion The version of the payload object to be used in the notification. (optional)
+     * @param pageSize The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is
+     *     100. Default is 30. (optional, default to 30)
+     * @param nextToken A token to retrieve the next page of results. If this field is not empty in a response, pass its
+     *     value in the next request to retrieve the next page. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call getSubscriptionsCall(
+            List<String> notificationTypes,
+            String payloadVersion,
+            Integer pageSize,
+            String nextToken,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/notifications/v1/subscriptions".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/notifications/v1/subscriptions";
+        } else {
+            localVarPath = "/notifications/v1/subscriptions";
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (notificationTypes != null)
+            localVarCollectionQueryParams.addAll(
+                    apiClient.parameterToPairs("csv", "notificationTypes", notificationTypes));
+        if (payloadVersion != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("payloadVersion", payloadVersion));
+        if (pageSize != null) localVarQueryParams.addAll(apiClient.parameterToPair("pageSize", pageSize));
+        if (nextToken != null) localVarQueryParams.addAll(apiClient.parameterToPair("nextToken", nextToken));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {};
+
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "GET",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call getSubscriptionsValidateBeforeCall(
+            List<String> notificationTypes,
+            String payloadVersion,
+            Integer pageSize,
+            String nextToken,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'notificationTypes' is set
+        if (notificationTypes == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'notificationTypes' when calling getSubscriptions(Async)");
+        }
+
+        return getSubscriptionsCall(notificationTypes, payloadVersion, pageSize, nextToken, progressRequestListener);
+    }
+
+    /**
+     * Returns information about subscriptions of the specified notification type. You can use this API to retrieve all
+     * subscriptions when multiple subscriptions exist for a notification type (for example, when using filter
+     * expressions). The operation returns all subscriptions for the caller&#x27;s party. &#x60;payloadVersion&#x60; is
+     * an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the operation returns subscriptions
+     * across all payload versions. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param notificationTypes A list of notification types to retrieve subscriptions for. Currently limited to a
+     *     single notification type per request. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param payloadVersion The version of the payload object to be used in the notification. (optional)
+     * @param pageSize The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is
+     *     100. Default is 30. (optional, default to 30)
+     * @param nextToken A token to retrieve the next page of results. If this field is not empty in a response, pass its
+     *     value in the next request to retrieve the next page. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetSubscriptionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetSubscriptionsResponse getSubscriptions(
+            List<String> notificationTypes,
+            String payloadVersion,
+            Integer pageSize,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetSubscriptionsResponse> resp = getSubscriptionsWithHttpInfo(
+                notificationTypes, payloadVersion, pageSize, nextToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns information about subscriptions of the specified notification type. You can use this API to retrieve all
+     * subscriptions when multiple subscriptions exist for a notification type (for example, when using filter
+     * expressions). The operation returns all subscriptions for the caller&#x27;s party. &#x60;payloadVersion&#x60; is
+     * an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the operation returns subscriptions
+     * across all payload versions. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param notificationTypes A list of notification types to retrieve subscriptions for. Currently limited to a
+     *     single notification type per request. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param payloadVersion The version of the payload object to be used in the notification. (optional)
+     * @param pageSize The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is
+     *     100. Default is 30. (optional, default to 30)
+     * @param nextToken A token to retrieve the next page of results. If this field is not empty in a response, pass its
+     *     value in the next request to retrieve the next page. (optional)
+     * @return GetSubscriptionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetSubscriptionsResponse getSubscriptions(
+            List<String> notificationTypes, String payloadVersion, Integer pageSize, String nextToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetSubscriptionsResponse> resp =
+                getSubscriptionsWithHttpInfo(notificationTypes, payloadVersion, pageSize, nextToken, null);
+        return resp.getData();
+    }
+
+    /**
+     * Returns information about subscriptions of the specified notification type. You can use this API to retrieve all
+     * subscriptions when multiple subscriptions exist for a notification type (for example, when using filter
+     * expressions). The operation returns all subscriptions for the caller&#x27;s party. &#x60;payloadVersion&#x60; is
+     * an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the operation returns subscriptions
+     * across all payload versions. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param notificationTypes A list of notification types to retrieve subscriptions for. Currently limited to a
+     *     single notification type per request. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param payloadVersion The version of the payload object to be used in the notification. (optional)
+     * @param pageSize The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is
+     *     100. Default is 30. (optional, default to 30)
+     * @param nextToken A token to retrieve the next page of results. If this field is not empty in a response, pass its
+     *     value in the next request to retrieve the next page. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetSubscriptionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetSubscriptionsResponse> getSubscriptionsWithHttpInfo(
+            List<String> notificationTypes,
+            String payloadVersion,
+            Integer pageSize,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                getSubscriptionsValidateBeforeCall(notificationTypes, payloadVersion, pageSize, nextToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "NotificationsApi-getSubscriptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getSubscriptionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetSubscriptionsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getSubscriptions operation exceeds rate limit");
+    }
+
+    /**
+     * Returns information about subscriptions of the specified notification type. You can use this API to retrieve all
+     * subscriptions when multiple subscriptions exist for a notification type (for example, when using filter
+     * expressions). The operation returns all subscriptions for the caller&#x27;s party. &#x60;payloadVersion&#x60; is
+     * an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the operation returns subscriptions
+     * across all payload versions. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when
+     * available. The preceding table contains the default rate and burst values for this operation. Selling partners
+     * whose business demands require higher throughput might have higher rate and burst values than those shown here.
+     * For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param notificationTypes A list of notification types to retrieve subscriptions for. Currently limited to a
+     *     single notification type per request. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param payloadVersion The version of the payload object to be used in the notification. (optional)
+     * @param pageSize The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is
+     *     100. Default is 30. (optional, default to 30)
+     * @param nextToken A token to retrieve the next page of results. If this field is not empty in a response, pass its
+     *     value in the next request to retrieve the next page. (optional)
+     * @return ApiResponse&lt;GetSubscriptionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetSubscriptionsResponse> getSubscriptionsWithHttpInfo(
+            List<String> notificationTypes, String payloadVersion, Integer pageSize, String nextToken)
+            throws ApiException, LWAException {
+        return getSubscriptionsWithHttpInfo(notificationTypes, payloadVersion, pageSize, nextToken, null);
+    }
+
+    /**
+     * (asynchronously) Returns information about subscriptions of the specified notification type. You can use this API
+     * to retrieve all subscriptions when multiple subscriptions exist for a notification type (for example, when using
+     * filter expressions). The operation returns all subscriptions for the caller&#x27;s party.
+     * &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the
+     * operation returns subscriptions across all payload versions. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * limits for the operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param notificationTypes A list of notification types to retrieve subscriptions for. Currently limited to a
+     *     single notification type per request. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param payloadVersion The version of the payload object to be used in the notification. (optional)
+     * @param pageSize The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is
+     *     100. Default is 30. (optional, default to 30)
+     * @param nextToken A token to retrieve the next page of results. If this field is not empty in a response, pass its
+     *     value in the next request to retrieve the next page. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getSubscriptionsAsync(
+            List<String> notificationTypes,
+            String payloadVersion,
+            Integer pageSize,
+            String nextToken,
+            final ApiCallback<GetSubscriptionsResponse> callback)
+            throws ApiException, LWAException {
+        return getSubscriptionsAsync(notificationTypes, payloadVersion, pageSize, nextToken, callback, null);
+    }
+    /**
+     * (asynchronously) Returns information about subscriptions of the specified notification type. You can use this API
+     * to retrieve all subscriptions when multiple subscriptions exist for a notification type (for example, when using
+     * filter expressions). The operation returns all subscriptions for the caller&#x27;s party.
+     * &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the
+     * operation returns subscriptions across all payload versions. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 1 | 5 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate
+     * limits for the operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput might have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param notificationTypes A list of notification types to retrieve subscriptions for. Currently limited to a
+     *     single notification type per request. For more information about notification types, refer to the
+     *     [Notifications API v1 Use Case
+     *     Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param payloadVersion The version of the payload object to be used in the notification. (optional)
+     * @param pageSize The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is
+     *     100. Default is 30. (optional, default to 30)
+     * @param nextToken A token to retrieve the next page of results. If this field is not empty in a response, pass its
+     *     value in the next request to retrieve the next page. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getSubscriptionsAsync(
+            List<String> notificationTypes,
+            String payloadVersion,
+            Integer pageSize,
+            String nextToken,
+            final ApiCallback<GetSubscriptionsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = getSubscriptionsValidateBeforeCall(
+                notificationTypes, payloadVersion, pageSize, nextToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "NotificationsApi-getSubscriptions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getSubscriptionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetSubscriptionsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getSubscriptions operation exceeds rate limit");
     }
     /**
      * Build call for sendTestNotification

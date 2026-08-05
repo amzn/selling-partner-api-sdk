@@ -20,6 +20,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.*;
+import java.util.stream.Collectors;
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 import org.junit.jupiter.api.Test;
@@ -36,6 +37,7 @@ import software.amazon.spapi.models.notifications.v1.GetDestinationResponse;
 import software.amazon.spapi.models.notifications.v1.GetDestinationsResponse;
 import software.amazon.spapi.models.notifications.v1.GetSubscriptionByIdResponse;
 import software.amazon.spapi.models.notifications.v1.GetSubscriptionResponse;
+import software.amazon.spapi.models.notifications.v1.GetSubscriptionsResponse;
 import software.amazon.spapi.models.notifications.v1.SendTestNotificationRequest;
 import software.amazon.spapi.models.notifications.v1.SendTestNotificationResponse;
 
@@ -148,6 +150,18 @@ public class NotificationsApiTest {
 
         ApiResponse<GetSubscriptionByIdResponse> response =
                 api.getSubscriptionByIdWithHttpInfo(subscriptionId, notificationType);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void getSubscriptionsTest() throws Exception {
+        instructBackendMock("notifications", "getSubscriptions", "200");
+        List<String> notificationTypes = easyRandom.objects(String.class, 2).collect(Collectors.toList());
+
+        ApiResponse<GetSubscriptionsResponse> response =
+                api.getSubscriptionsWithHttpInfo(notificationTypes, null, null, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
