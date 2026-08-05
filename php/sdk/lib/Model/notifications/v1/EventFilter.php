@@ -52,6 +52,7 @@ class EventFilter implements ModelInterface, \ArrayAccess, \JsonSerializable
 
     public const EVENT_FILTER_TYPE_ANY_OFFER_CHANGED = 'ANY_OFFER_CHANGED';
     public const EVENT_FILTER_TYPE_ORDER_CHANGE = 'ORDER_CHANGE';
+    public const EVENT_FILTER_TYPE_SHIPMENT_TRACKING_MILESTONE_CHANGED = 'SHIPMENT_TRACKING_MILESTONE_CHANGED';
 
     /**
      * The original name of the model.
@@ -67,6 +68,7 @@ class EventFilter implements ModelInterface, \ArrayAccess, \JsonSerializable
         'aggregation_settings' => '\SpApi\Model\notifications\v1\AggregationSettings',
         'marketplace_ids' => 'string[]',
         'order_change_types' => '\SpApi\Model\notifications\v1\OrderChangeTypeEnum[]',
+        'tracking_identifier' => '\SpApi\Model\notifications\v1\TrackingIdentifier',
         'event_filter_type' => 'string'];
 
     /**
@@ -82,6 +84,7 @@ class EventFilter implements ModelInterface, \ArrayAccess, \JsonSerializable
         'aggregation_settings' => null,
         'marketplace_ids' => null,
         'order_change_types' => null,
+        'tracking_identifier' => null,
         'event_filter_type' => null];
 
     /**
@@ -93,6 +96,7 @@ class EventFilter implements ModelInterface, \ArrayAccess, \JsonSerializable
         'aggregation_settings' => true,
         'marketplace_ids' => true,
         'order_change_types' => true,
+        'tracking_identifier' => true,
         'event_filter_type' => false,
     ];
 
@@ -113,6 +117,7 @@ class EventFilter implements ModelInterface, \ArrayAccess, \JsonSerializable
         'aggregation_settings' => 'aggregationSettings',
         'marketplace_ids' => 'marketplaceIds',
         'order_change_types' => 'orderChangeTypes',
+        'tracking_identifier' => 'trackingIdentifier',
         'event_filter_type' => 'eventFilterType',
     ];
 
@@ -125,6 +130,7 @@ class EventFilter implements ModelInterface, \ArrayAccess, \JsonSerializable
         'aggregation_settings' => 'setAggregationSettings',
         'marketplace_ids' => 'setMarketplaceIds',
         'order_change_types' => 'setOrderChangeTypes',
+        'tracking_identifier' => 'setTrackingIdentifier',
         'event_filter_type' => 'setEventFilterType',
     ];
 
@@ -137,6 +143,7 @@ class EventFilter implements ModelInterface, \ArrayAccess, \JsonSerializable
         'aggregation_settings' => 'getAggregationSettings',
         'marketplace_ids' => 'getMarketplaceIds',
         'order_change_types' => 'getOrderChangeTypes',
+        'tracking_identifier' => 'getTrackingIdentifier',
         'event_filter_type' => 'getEventFilterType',
     ];
 
@@ -156,6 +163,7 @@ class EventFilter implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('aggregation_settings', $data ?? [], null);
         $this->setIfExists('marketplace_ids', $data ?? [], null);
         $this->setIfExists('order_change_types', $data ?? [], null);
+        $this->setIfExists('tracking_identifier', $data ?? [], null);
         $this->setIfExists('event_filter_type', $data ?? [], null);
     }
 
@@ -247,6 +255,7 @@ class EventFilter implements ModelInterface, \ArrayAccess, \JsonSerializable
         return [
             self::EVENT_FILTER_TYPE_ANY_OFFER_CHANGED,
             self::EVENT_FILTER_TYPE_ORDER_CHANGE,
+            self::EVENT_FILTER_TYPE_SHIPMENT_TRACKING_MILESTONE_CHANGED,
         ];
     }
 
@@ -371,6 +380,36 @@ class EventFilter implements ModelInterface, \ArrayAccess, \JsonSerializable
             }
         }
         $this->container['order_change_types'] = $order_change_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_identifier.
+     */
+    public function getTrackingIdentifier(): ?TrackingIdentifier
+    {
+        return $this->container['tracking_identifier'];
+    }
+
+    /**
+     * Sets tracking_identifier.
+     *
+     * @param null|TrackingIdentifier $tracking_identifier tracking_identifier
+     */
+    public function setTrackingIdentifier(?TrackingIdentifier $tracking_identifier): self
+    {
+        if (is_null($tracking_identifier)) {
+            array_push($this->openAPINullablesSetToNull, 'tracking_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tracking_identifier', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tracking_identifier'] = $tracking_identifier;
 
         return $this;
     }

@@ -1329,6 +1329,154 @@ class NotificationsApiTest extends BaseTestCase
         $this->markTestSkipped('Skip test for this operation.');
     }
     /**
+     * Test case for getSubscriptions_200
+     */
+    public function testGetSubscriptions200()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetSubscriptions200', 'NotificationsApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetSubscriptionsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;notificationTypes&quot; : {
+            &quot;value&quot; : [ &quot;ANY_OFFER_CHANGED&quot; ]
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;subscriptions&quot; : [ {
+            &quot;subscriptionId&quot; : &quot;7fcacc7e-727b-11e9-8848-1681be663d3e&quot;,
+            &quot;payloadVersion&quot; : &quot;1.0&quot;,
+            &quot;destinationId&quot; : &quot;3acafc7e-121b-1329-8ae8-1571be663aa2&quot;
+          } ]
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'getSubscriptions'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('NotificationsApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getSubscriptionsWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(200, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 200, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 200);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for getSubscriptions_400
+     */
+    public function testGetSubscriptions400()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getSubscriptions_403
+     */
+    public function testGetSubscriptions403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getSubscriptions_404
+     */
+    public function testGetSubscriptions404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getSubscriptions_413
+     */
+    public function testGetSubscriptions413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getSubscriptions_415
+     */
+    public function testGetSubscriptions415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getSubscriptions_429
+     */
+    public function testGetSubscriptions429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getSubscriptions_500
+     */
+    public function testGetSubscriptions500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getSubscriptions_503
+     */
+    public function testGetSubscriptions503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
      * Test case for sendTestNotification_200
      */
     public function testSendTestNotification200()

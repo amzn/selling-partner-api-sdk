@@ -140,7 +140,7 @@ class DefaultApi
      * Operation getPaymentMethods.
      *
      * @param string        $marketplace_id
-     *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     *                                            The identifier of the Amazon store from which you want to retrieve payment methods. For the list of store identifiers, refer to [Store Identifiers](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string[] $payment_method_types
      *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
      * @param null|string   $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -162,7 +162,7 @@ class DefaultApi
      * Operation getPaymentMethodsWithHttpInfo.
      *
      * @param string        $marketplace_id
-     *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     *                                            The identifier of the Amazon store from which you want to retrieve payment methods. For the list of store identifiers, refer to [Store Identifiers](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string[] $payment_method_types
      *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
      * @param null|string   $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -252,7 +252,7 @@ class DefaultApi
      * Operation getPaymentMethodsAsync.
      *
      * @param string        $marketplace_id
-     *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     *                                            The identifier of the Amazon store from which you want to retrieve payment methods. For the list of store identifiers, refer to [Store Identifiers](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string[] $payment_method_types
      *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
      *
@@ -275,7 +275,7 @@ class DefaultApi
      * Operation getPaymentMethodsAsyncWithHttpInfo.
      *
      * @param string        $marketplace_id
-     *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     *                                            The identifier of the Amazon store from which you want to retrieve payment methods. For the list of store identifiers, refer to [Store Identifiers](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string[] $payment_method_types
      *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
      *
@@ -339,7 +339,7 @@ class DefaultApi
      * Create request for operation 'getPaymentMethods'.
      *
      * @param string        $marketplace_id
-     *                                            The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     *                                            The identifier of the Amazon store from which you want to retrieve payment methods. For the list of store identifiers, refer to [Store Identifiers](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string[] $payment_method_types
      *                                            A comma-separated list of the payment method types you want to include in the response. (optional)
      *
@@ -709,9 +709,9 @@ class DefaultApi
      * Operation listExpectedPayouts.
      *
      * @param null|string[] $marketplace_ids
-     *                                           An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *                                           The Amazon stores from which to retrieve payouts. The Amazon store ID is a globally unique identifier assigned to each Amazon store. If omitted, the response includes payouts from all applicable stores. To find the Amazon store ID for your region, refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers). (optional)
      * @param null|string   $account_type
-     *                                           An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)
+     *                                           The response only includes the accounts of the specified account type. (optional)
      * @param null|string   $next_token
      *                                           The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -734,9 +734,9 @@ class DefaultApi
      * Operation listExpectedPayoutsWithHttpInfo.
      *
      * @param null|string[] $marketplace_ids
-     *                                           An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *                                           The Amazon stores from which to retrieve payouts. The Amazon store ID is a globally unique identifier assigned to each Amazon store. If omitted, the response includes payouts from all applicable stores. To find the Amazon store ID for your region, refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers). (optional)
      * @param null|string   $account_type
-     *                                           An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)
+     *                                           The response only includes the accounts of the specified account type. (optional)
      * @param null|string   $next_token
      *                                           The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param null|string   $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -827,9 +827,9 @@ class DefaultApi
      * Operation listExpectedPayoutsAsync.
      *
      * @param null|string[] $marketplace_ids
-     *                                       An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *                                       The Amazon stores from which to retrieve payouts. The Amazon store ID is a globally unique identifier assigned to each Amazon store. If omitted, the response includes payouts from all applicable stores. To find the Amazon store ID for your region, refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers). (optional)
      * @param null|string   $account_type
-     *                                       An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)
+     *                                       The response only includes the accounts of the specified account type. (optional)
      * @param null|string   $next_token
      *                                       The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
@@ -853,9 +853,9 @@ class DefaultApi
      * Operation listExpectedPayoutsAsyncWithHttpInfo.
      *
      * @param null|string[] $marketplace_ids
-     *                                       An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *                                       The Amazon stores from which to retrieve payouts. The Amazon store ID is a globally unique identifier assigned to each Amazon store. If omitted, the response includes payouts from all applicable stores. To find the Amazon store ID for your region, refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers). (optional)
      * @param null|string   $account_type
-     *                                       An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)
+     *                                       The response only includes the accounts of the specified account type. (optional)
      * @param null|string   $next_token
      *                                       The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
@@ -920,9 +920,9 @@ class DefaultApi
      * Create request for operation 'listExpectedPayouts'.
      *
      * @param null|string[] $marketplace_ids
-     *                                       An optional query parameter that specifies the marketplaces from which to retrieve expected payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include expected payouts associated with the specified marketplaces. If omitted, expected payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *                                       The Amazon stores from which to retrieve payouts. The Amazon store ID is a globally unique identifier assigned to each Amazon store. If omitted, the response includes payouts from all applicable stores. To find the Amazon store ID for your region, refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers). (optional)
      * @param null|string   $account_type
-     *                                       An optional query parameter used to filter the response by a specific account type. When provided, only expected payouts associated with the specified account type will be returned. (optional)
+     *                                       The response only includes the accounts of the specified account type. (optional)
      * @param null|string   $next_token
      *                                       The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
@@ -1025,17 +1025,17 @@ class DefaultApi
      * Operation listPayouts.
      *
      * @param null|string[]  $marketplace_ids
-     *                                            An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *                                            The Amazon stores from which to retrieve payouts. The Amazon store ID is a globally unique identifier assigned to each Amazon store. If omitted, the response includes payouts from all applicable stores. To find the Amazon store ID for your region, refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers). (optional)
      * @param null|\DateTime $created_after
-     *                                            An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)
+     *                                            The response only includes payouts created on or after this date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)
      * @param null|\DateTime $created_before
-     *                                            An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)
+     *                                            The response only includes payouts created before this date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)
      * @param null|string    $payout_id
-     *                                            An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)
+     *                                            The response only includes the payout matching the specified identifier. (optional)
      * @param null|string    $account_type
-     *                                            An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)
+     *                                            The response only includes payouts associated with the specified account type. (optional)
      * @param null|string    $next_token
-     *                                            The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                            The response includes &#x60;nextToken&#x60; when the number of results exceeds the page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -1059,17 +1059,17 @@ class DefaultApi
      * Operation listPayoutsWithHttpInfo.
      *
      * @param null|string[]  $marketplace_ids
-     *                                            An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *                                            The Amazon stores from which to retrieve payouts. The Amazon store ID is a globally unique identifier assigned to each Amazon store. If omitted, the response includes payouts from all applicable stores. To find the Amazon store ID for your region, refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers). (optional)
      * @param null|\DateTime $created_after
-     *                                            An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)
+     *                                            The response only includes payouts created on or after this date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)
      * @param null|\DateTime $created_before
-     *                                            An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)
+     *                                            The response only includes payouts created before this date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)
      * @param null|string    $payout_id
-     *                                            An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)
+     *                                            The response only includes the payout matching the specified identifier. (optional)
      * @param null|string    $account_type
-     *                                            An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)
+     *                                            The response only includes payouts associated with the specified account type. (optional)
      * @param null|string    $next_token
-     *                                            The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                            The response includes &#x60;nextToken&#x60; when the number of results exceeds the page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\transfers\v2024_06_01\ListPayoutsResponse, HTTP status code, HTTP response headers (array of strings)
@@ -1161,17 +1161,17 @@ class DefaultApi
      * Operation listPayoutsAsync.
      *
      * @param null|string[]  $marketplace_ids
-     *                                        An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *                                        The Amazon stores from which to retrieve payouts. The Amazon store ID is a globally unique identifier assigned to each Amazon store. If omitted, the response includes payouts from all applicable stores. To find the Amazon store ID for your region, refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers). (optional)
      * @param null|\DateTime $created_after
-     *                                        An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)
+     *                                        The response only includes payouts created on or after this date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)
      * @param null|\DateTime $created_before
-     *                                        An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)
+     *                                        The response only includes payouts created before this date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)
      * @param null|string    $payout_id
-     *                                        An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)
+     *                                        The response only includes the payout matching the specified identifier. (optional)
      * @param null|string    $account_type
-     *                                        An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)
+     *                                        The response only includes payouts associated with the specified account type. (optional)
      * @param null|string    $next_token
-     *                                        The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                        The response includes &#x60;nextToken&#x60; when the number of results exceeds the page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -1196,17 +1196,17 @@ class DefaultApi
      * Operation listPayoutsAsyncWithHttpInfo.
      *
      * @param null|string[]  $marketplace_ids
-     *                                        An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *                                        The Amazon stores from which to retrieve payouts. The Amazon store ID is a globally unique identifier assigned to each Amazon store. If omitted, the response includes payouts from all applicable stores. To find the Amazon store ID for your region, refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers). (optional)
      * @param null|\DateTime $created_after
-     *                                        An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)
+     *                                        The response only includes payouts created on or after this date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)
      * @param null|\DateTime $created_before
-     *                                        An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)
+     *                                        The response only includes payouts created before this date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)
      * @param null|string    $payout_id
-     *                                        An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)
+     *                                        The response only includes the payout matching the specified identifier. (optional)
      * @param null|string    $account_type
-     *                                        An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)
+     *                                        The response only includes payouts associated with the specified account type. (optional)
      * @param null|string    $next_token
-     *                                        The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                        The response includes &#x60;nextToken&#x60; when the number of results exceeds the page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -1272,17 +1272,17 @@ class DefaultApi
      * Create request for operation 'listPayouts'.
      *
      * @param null|string[]  $marketplace_ids
-     *                                        An optional query parameter that specifies the marketplaces from which to retrieve payouts. The marketplace ID is a globally unique identifier assigned to each Amazon marketplace. When provided, the response will only include payouts associated with the specified marketplaces. If omitted, payouts from all applicable marketplaces may be returned. To find the marketplace ID for your region, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
+     *                                        The Amazon stores from which to retrieve payouts. The Amazon store ID is a globally unique identifier assigned to each Amazon store. If omitted, the response includes payouts from all applicable stores. To find the Amazon store ID for your region, refer to [Store Identifiers](https://developer-docs.amazon/sp-api/docs/store-identifiers). (optional)
      * @param null|\DateTime $created_after
-     *                                        An optional query parameter to filter payouts created on or after this date-time. When provided, the response will only include payouts with a creation date on or after the specified date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)
+     *                                        The response only includes payouts created on or after this date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no start date filter is applied. (optional)
      * @param null|\DateTime $created_before
-     *                                        An optional query parameter to filter payouts created before this date-time. When provided, the response will only include payouts with a creation date before the specified date-time (exclusive). The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)
+     *                                        The response only includes payouts created before this date-time. The value must be formatted in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. If omitted, no end date filter is applied. (optional)
      * @param null|string    $payout_id
-     *                                        An optional query parameter that specifies the payout to retrieve. When provided, the response will only include the payout matching the specified identifier. (optional)
+     *                                        The response only includes the payout matching the specified identifier. (optional)
      * @param null|string    $account_type
-     *                                        An optional query parameter to filter payouts by a specific account type. When provided, only payouts associated with the specified account type will be returned. (optional)
+     *                                        The response only includes payouts associated with the specified account type. (optional)
      * @param null|string    $next_token
-     *                                        The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                        The response includes &#x60;nextToken&#x60; when the number of results exceeds the page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      *
      * @throws \InvalidArgumentException
      */

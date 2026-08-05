@@ -51,6 +51,7 @@ use SpApi\Model\notifications\v1\GetDestinationResponse;
 use SpApi\Model\notifications\v1\GetDestinationsResponse;
 use SpApi\Model\notifications\v1\GetSubscriptionByIdResponse;
 use SpApi\Model\notifications\v1\GetSubscriptionResponse;
+use SpApi\Model\notifications\v1\GetSubscriptionsResponse;
 use SpApi\Model\notifications\v1\SendTestNotificationRequest;
 use SpApi\Model\notifications\v1\SendTestNotificationResponse;
 use SpApi\ObjectSerializer;
@@ -77,6 +78,7 @@ class NotificationsApi
     public ?LimiterInterface $getDestinationsRateLimiter;
     public ?LimiterInterface $getSubscriptionRateLimiter;
     public ?LimiterInterface $getSubscriptionByIdRateLimiter;
+    public ?LimiterInterface $getSubscriptionsRateLimiter;
     public ?LimiterInterface $sendTestNotificationRateLimiter;
     protected ClientInterface $client;
 
@@ -124,6 +126,8 @@ class NotificationsApi
             $this->getSubscriptionRateLimiter = $factory->create('NotificationsApi-getSubscription');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-getSubscriptionById'), $this->rateLimitStorage);
             $this->getSubscriptionByIdRateLimiter = $factory->create('NotificationsApi-getSubscriptionById');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-getSubscriptions'), $this->rateLimitStorage);
+            $this->getSubscriptionsRateLimiter = $factory->create('NotificationsApi-getSubscriptions');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-sendTestNotification'), $this->rateLimitStorage);
             $this->sendTestNotificationRateLimiter = $factory->create('NotificationsApi-sendTestNotification');
         }
@@ -2352,6 +2356,367 @@ class NotificationsApi
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', 'Successful Response'],
+            '',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
+        return new Request(
+            'GET',
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getSubscriptions.
+     *
+     * @param string[]    $notification_types
+     *                                         A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param null|string $payload_version
+     *                                         The version of the payload object to be used in the notification. (optional)
+     * @param null|int    $page_size
+     *                                         The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (optional, default to 30)
+     * @param null|string $next_token
+     *                                         A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function getSubscriptions(
+        array $notification_types,
+        ?string $payload_version = null,
+        ?int $page_size = 30,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): GetSubscriptionsResponse {
+        list($response) = $this->getSubscriptionsWithHttpInfo($notification_types, $payload_version, $page_size, $next_token, $restrictedDataToken);
+
+        return $response;
+    }
+
+    /**
+     * Operation getSubscriptionsWithHttpInfo.
+     *
+     * @param string[]    $notification_types
+     *                                         A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param null|string $payload_version
+     *                                         The version of the payload object to be used in the notification. (optional)
+     * @param null|int    $page_size
+     *                                         The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (optional, default to 30)
+     * @param null|string $next_token
+     *                                         A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page. (optional)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @return array of \SpApi\Model\notifications\v1\GetSubscriptionsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function getSubscriptionsWithHttpInfo(
+        array $notification_types,
+        ?string $payload_version = null,
+        ?int $page_size = 30,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): array {
+        $request = $this->getSubscriptionsRequest($notification_types, $payload_version, $page_size, $next_token);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-getSubscriptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
+
+        try {
+            $options = $this->createHttpClientOption();
+
+            try {
+                if ($this->rateLimiterEnabled) {
+                    $this->getSubscriptionsRateLimiter->consume()->ensureAccepted();
+                }
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+            if ('\SpApi\Model\notifications\v1\GetSubscriptionsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\notifications\v1\GetSubscriptionsResponse' !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\notifications\v1\GetSubscriptionsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
+        } catch (ApiException $e) {
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\notifications\v1\GetSubscriptionsResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getSubscriptionsAsync.
+     *
+     * @param string[]    $notification_types
+     *                                        A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param null|string $payload_version
+     *                                        The version of the payload object to be used in the notification. (optional)
+     * @param null|int    $page_size
+     *                                        The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (optional, default to 30)
+     * @param null|string $next_token
+     *                                        A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getSubscriptionsAsync(
+        array $notification_types,
+        ?string $payload_version = null,
+        ?int $page_size = 30,
+        ?string $next_token = null
+    ): PromiseInterface {
+        return $this->getSubscriptionsAsyncWithHttpInfo($notification_types, $payload_version, $page_size, $next_token)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            )
+        ;
+    }
+
+    /**
+     * Operation getSubscriptionsAsyncWithHttpInfo.
+     *
+     * @param string[]    $notification_types
+     *                                        A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param null|string $payload_version
+     *                                        The version of the payload object to be used in the notification. (optional)
+     * @param null|int    $page_size
+     *                                        The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (optional, default to 30)
+     * @param null|string $next_token
+     *                                        A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getSubscriptionsAsyncWithHttpInfo(
+        array $notification_types,
+        ?string $payload_version = null,
+        ?int $page_size = 30,
+        ?string $next_token = null,
+        ?string $restrictedDataToken = null
+    ): PromiseInterface {
+        $returnType = '\SpApi\Model\notifications\v1\GetSubscriptionsResponse';
+        $request = $this->getSubscriptionsRequest($notification_types, $payload_version, $page_size, $next_token);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-getSubscriptions');
+        } else {
+            $request = $this->config->sign($request);
+        }
+        if ($this->rateLimiterEnabled) {
+            $this->getSubscriptionsRateLimiter->consume()->ensureAccepted();
+        }
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('string' !== $returnType) {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders(),
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            )
+        ;
+    }
+
+    /**
+     * Create request for operation 'getSubscriptions'.
+     *
+     * @param string[]    $notification_types
+     *                                        A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide). (required)
+     * @param null|string $payload_version
+     *                                        The version of the payload object to be used in the notification. (optional)
+     * @param null|int    $page_size
+     *                                        The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (optional, default to 30)
+     * @param null|string $next_token
+     *                                        A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page. (optional)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getSubscriptionsRequest(
+        array $notification_types,
+        ?string $payload_version = null,
+        ?int $page_size = 30,
+        ?string $next_token = null
+    ): Request {
+        // verify the required parameter 'notification_types' is set
+        if (null === $notification_types || (is_array($notification_types) && 0 === count($notification_types))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $notification_types when calling getSubscriptions'
+            );
+        }
+        if (count($notification_types) > 1) {
+            throw new \InvalidArgumentException('invalid value for "$notification_types" when calling NotificationsApi.getSubscriptions, number of items must be less than or equal to 1.');
+        }
+        if (count($notification_types) < 1) {
+            throw new \InvalidArgumentException('invalid value for "$notification_types" when calling NotificationsApi.getSubscriptions, number of items must be greater than or equal to 1.');
+        }
+
+        if (null !== $page_size && $page_size > 100) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling NotificationsApi.getSubscriptions, must be smaller than or equal to 100.');
+        }
+        if (null !== $page_size && $page_size < 30) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling NotificationsApi.getSubscriptions, must be bigger than or equal to 30.');
+        }
+
+        $resourcePath = '/notifications/v1/subscriptions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $notification_types,
+            'notificationTypes', // param base name
+            'array', // openApiType
+            'form', // style
+            false, // explode
+            true, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $payload_version,
+            'payloadVersion', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'pageSize', // param base name
+            'integer', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $next_token,
+            'nextToken', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
+            $this->config
+        ) ?? []);
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
             '',
             $multipart
         );
