@@ -36,6 +36,7 @@ class EventFilter(object):
         'aggregation_settings': 'AggregationSettings',
         'marketplace_ids': 'List[str]',
         'order_change_types': 'List[OrderChangeTypeEnum]',
+        'tracking_identifier': 'TrackingIdentifier',
         'event_filter_type': 'str',
     }
 
@@ -43,10 +44,11 @@ class EventFilter(object):
         'aggregation_settings': 'aggregationSettings',
         'marketplace_ids': 'marketplaceIds',
         'order_change_types': 'orderChangeTypes',
+        'tracking_identifier': 'trackingIdentifier',
         'event_filter_type': 'eventFilterType',
     }
 
-    def __init__(self, aggregation_settings=None, marketplace_ids=None, order_change_types=None, event_filter_type=None, _configuration=None):  # noqa: E501
+    def __init__(self, aggregation_settings=None, marketplace_ids=None, order_change_types=None, tracking_identifier=None, event_filter_type=None, _configuration=None):  # noqa: E501
         """EventFilter - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -55,6 +57,7 @@ class EventFilter(object):
         self._aggregation_settings = None
         self._marketplace_ids = None
         self._order_change_types = None
+        self._tracking_identifier = None
         self._event_filter_type = None
         self.discriminator = None
 
@@ -64,6 +67,8 @@ class EventFilter(object):
             self.marketplace_ids = marketplace_ids
         if order_change_types is not None:
             self.order_change_types = order_change_types
+        if tracking_identifier is not None:
+            self.tracking_identifier = tracking_identifier
         self.event_filter_type = event_filter_type
 
     @property
@@ -134,6 +139,27 @@ class EventFilter(object):
         self._order_change_types = order_change_types
 
     @property
+    def tracking_identifier(self):
+        """Gets the tracking_identifier of this EventFilter.  # noqa: E501
+
+
+        :return: The tracking_identifier of this EventFilter.  # noqa: E501
+        :rtype: TrackingIdentifier
+        """
+        return self._tracking_identifier
+
+    @tracking_identifier.setter
+    def tracking_identifier(self, tracking_identifier):
+        """Sets the tracking_identifier of this EventFilter.
+
+
+        :param tracking_identifier: The tracking_identifier of this EventFilter.  # noqa: E501
+        :type: TrackingIdentifier
+        """
+
+        self._tracking_identifier = tracking_identifier
+
+    @property
     def event_filter_type(self):
         """Gets the event_filter_type of this EventFilter.  # noqa: E501
 
@@ -155,7 +181,7 @@ class EventFilter(object):
         """
         if self._configuration.client_side_validation and event_filter_type is None:
             raise ValueError("Invalid value for `event_filter_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["ANY_OFFER_CHANGED", "ORDER_CHANGE"]  # noqa: E501
+        allowed_values = ["ANY_OFFER_CHANGED", "ORDER_CHANGE", "SHIPMENT_TRACKING_MILESTONE_CHANGED"]  # noqa: E501
         if (self._configuration.client_side_validation and
                 event_filter_type not in allowed_values):
             raise ValueError(

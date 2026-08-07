@@ -106,6 +106,15 @@ class TestNotificationsApi(unittest.TestCase):
         self.assert_valid_response_payload(200, response[0])
         pass
 
+    def test_get_subscriptions(self):
+        notification_types = [self._get_random_value("List[str]") for _ in range(1)]
+        
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("get_subscriptions"), "200")
+        response = self.api.get_subscriptions_with_http_info(notification_types, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
     def test_send_test_notification(self):
         notification_type = self._get_random_value("str", None)
         body = self._get_random_value("SendTestNotificationRequest", None)

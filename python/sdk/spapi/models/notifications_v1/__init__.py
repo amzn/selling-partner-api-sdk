@@ -33,6 +33,8 @@ from spapi.models.notifications_v1.get_destination_response import GetDestinatio
 from spapi.models.notifications_v1.get_destinations_response import GetDestinationsResponse
 from spapi.models.notifications_v1.get_subscription_by_id_response import GetSubscriptionByIdResponse
 from spapi.models.notifications_v1.get_subscription_response import GetSubscriptionResponse
+from spapi.models.notifications_v1.get_subscriptions_payload import GetSubscriptionsPayload
+from spapi.models.notifications_v1.get_subscriptions_response import GetSubscriptionsResponse
 from spapi.models.notifications_v1.marketplace_filter import MarketplaceFilter
 from spapi.models.notifications_v1.order_change_type_enum import OrderChangeTypeEnum
 from spapi.models.notifications_v1.order_change_type_filter import OrderChangeTypeFilter
@@ -42,3 +44,6 @@ from spapi.models.notifications_v1.send_test_notification_response import SendTe
 from spapi.models.notifications_v1.sqs_resource import SqsResource
 from spapi.models.notifications_v1.subscription import Subscription
 from spapi.models.notifications_v1.test_notification import TestNotification
+from spapi.models.notifications_v1.tracking_filter import TrackingFilter
+from spapi.models.notifications_v1.tracking_identifier import TrackingIdentifier
+from spapi.models.notifications_v1.tracking_identifier_carrier_tracking import TrackingIdentifierCarrierTracking
