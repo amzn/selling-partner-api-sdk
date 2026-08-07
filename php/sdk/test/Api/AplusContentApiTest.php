@@ -74,7 +74,10 @@ class AplusContentApiTest extends TestCase
 
     public function testcreateContentDocument()
     {
-        $this->instructBackendMock('aplusContent', 'createContentDocument', '200');
+        $operationId = 'createContentDocument';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('aplusContent', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -90,7 +93,10 @@ class AplusContentApiTest extends TestCase
 
     public function testgetContentDocument()
     {
-        $this->instructBackendMock('aplusContent', 'getContentDocument', '200');
+        $operationId = 'getContentDocument';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('aplusContent', $mockOperationId, '200');
         
         $content_reference_key = $this->generateMockData('string');
         
@@ -108,7 +114,10 @@ class AplusContentApiTest extends TestCase
 
     public function testlistContentDocumentAsinRelations()
     {
-        $this->instructBackendMock('aplusContent', 'listContentDocumentAsinRelations', '200');
+        $operationId = 'listContentDocumentAsinRelations';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('aplusContent', $mockOperationId, '200');
         
         $content_reference_key = $this->generateMockData('string');
         
@@ -124,7 +133,10 @@ class AplusContentApiTest extends TestCase
 
     public function testpostContentDocumentApprovalSubmission()
     {
-        $this->instructBackendMock('aplusContent', 'postContentDocumentApprovalSubmission', '200');
+        $operationId = 'postContentDocumentApprovalSubmission';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('aplusContent', $mockOperationId, '200');
         
         $content_reference_key = $this->generateMockData('string');
         
@@ -140,7 +152,10 @@ class AplusContentApiTest extends TestCase
 
     public function testpostContentDocumentAsinRelations()
     {
-        $this->instructBackendMock('aplusContent', 'postContentDocumentAsinRelations', '200');
+        $operationId = 'postContentDocumentAsinRelations';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('aplusContent', $mockOperationId, '200');
         
         $content_reference_key = $this->generateMockData('string');
         
@@ -158,7 +173,10 @@ class AplusContentApiTest extends TestCase
 
     public function testpostContentDocumentSuspendSubmission()
     {
-        $this->instructBackendMock('aplusContent', 'postContentDocumentSuspendSubmission', '200');
+        $operationId = 'postContentDocumentSuspendSubmission';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('aplusContent', $mockOperationId, '200');
         
         $content_reference_key = $this->generateMockData('string');
         
@@ -174,7 +192,10 @@ class AplusContentApiTest extends TestCase
 
     public function testsearchContentDocuments()
     {
-        $this->instructBackendMock('aplusContent', 'searchContentDocuments', '200');
+        $operationId = 'searchContentDocuments';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('aplusContent', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -188,7 +209,10 @@ class AplusContentApiTest extends TestCase
 
     public function testsearchContentPublishRecords()
     {
-        $this->instructBackendMock('aplusContent', 'searchContentPublishRecords', '200');
+        $operationId = 'searchContentPublishRecords';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('aplusContent', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -204,7 +228,10 @@ class AplusContentApiTest extends TestCase
 
     public function testupdateContentDocument()
     {
-        $this->instructBackendMock('aplusContent', 'updateContentDocument', '200');
+        $operationId = 'updateContentDocument';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('aplusContent', $mockOperationId, '200');
         
         $content_reference_key = $this->generateMockData('string');
         
@@ -222,7 +249,10 @@ class AplusContentApiTest extends TestCase
 
     public function testvalidateContentDocumentAsinRelations()
     {
-        $this->instructBackendMock('aplusContent', 'validateContentDocumentAsinRelations', '200');
+        $operationId = 'validateContentDocumentAsinRelations';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('aplusContent', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -257,7 +287,7 @@ class AplusContentApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -282,6 +312,6 @@ class AplusContentApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

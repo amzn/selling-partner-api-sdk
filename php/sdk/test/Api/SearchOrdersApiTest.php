@@ -74,7 +74,10 @@ class SearchOrdersApiTest extends TestCase
 
     public function testsearchOrders()
     {
-        $this->instructBackendMock('searchOrders', 'searchOrders', '200');
+        $operationId = 'searchOrders';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('searchOrders', $mockOperationId, '200');
         
 
         $response = $this->api->searchOrdersWithHttpInfo(null, null, null, null, null, null, null, null, null, null);
@@ -105,7 +108,7 @@ class SearchOrdersApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -130,6 +133,6 @@ class SearchOrdersApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

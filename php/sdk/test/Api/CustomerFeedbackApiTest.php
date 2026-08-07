@@ -74,7 +74,10 @@ class CustomerFeedbackApiTest extends TestCase
 
     public function testgetBrowseNodeReturnTopics()
     {
-        $this->instructBackendMock('customerFeedback', 'getBrowseNodeReturnTopics', '200');
+        $operationId = 'getBrowseNodeReturnTopics';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('customerFeedback', $mockOperationId, '200');
         
         $browse_node_id = $this->generateMockData('string');
         
@@ -90,7 +93,10 @@ class CustomerFeedbackApiTest extends TestCase
 
     public function testgetBrowseNodeReturnTrends()
     {
-        $this->instructBackendMock('customerFeedback', 'getBrowseNodeReturnTrends', '200');
+        $operationId = 'getBrowseNodeReturnTrends';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('customerFeedback', $mockOperationId, '200');
         
         $browse_node_id = $this->generateMockData('string');
         
@@ -106,7 +112,10 @@ class CustomerFeedbackApiTest extends TestCase
 
     public function testgetBrowseNodeReviewTopics()
     {
-        $this->instructBackendMock('customerFeedback', 'getBrowseNodeReviewTopics', '200');
+        $operationId = 'getBrowseNodeReviewTopics';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('customerFeedback', $mockOperationId, '200');
         
         $browse_node_id = $this->generateMockData('string');
         
@@ -124,7 +133,10 @@ class CustomerFeedbackApiTest extends TestCase
 
     public function testgetBrowseNodeReviewTrends()
     {
-        $this->instructBackendMock('customerFeedback', 'getBrowseNodeReviewTrends', '200');
+        $operationId = 'getBrowseNodeReviewTrends';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('customerFeedback', $mockOperationId, '200');
         
         $browse_node_id = $this->generateMockData('string');
         
@@ -140,7 +152,10 @@ class CustomerFeedbackApiTest extends TestCase
 
     public function testgetItemBrowseNode()
     {
-        $this->instructBackendMock('customerFeedback', 'getItemBrowseNode', '200');
+        $operationId = 'getItemBrowseNode';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('customerFeedback', $mockOperationId, '200');
         
         $asin = $this->generateMockData('string');
         
@@ -156,7 +171,10 @@ class CustomerFeedbackApiTest extends TestCase
 
     public function testgetItemReviewTopics()
     {
-        $this->instructBackendMock('customerFeedback', 'getItemReviewTopics', '200');
+        $operationId = 'getItemReviewTopics';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('customerFeedback', $mockOperationId, '200');
         
         $asin = $this->generateMockData('string');
         
@@ -174,7 +192,10 @@ class CustomerFeedbackApiTest extends TestCase
 
     public function testgetItemReviewTrends()
     {
-        $this->instructBackendMock('customerFeedback', 'getItemReviewTrends', '200');
+        $operationId = 'getItemReviewTrends';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('customerFeedback', $mockOperationId, '200');
         
         $asin = $this->generateMockData('string');
         
@@ -209,7 +230,7 @@ class CustomerFeedbackApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -234,6 +255,6 @@ class CustomerFeedbackApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

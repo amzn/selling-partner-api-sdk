@@ -74,7 +74,10 @@ class FulfillmentOutboundApiTest extends TestCase
 
     public function testcancelOrder()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'cancelOrder', '202');
+        $operationId = 'cancelOrder';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '202');
         
         $order_id = $this->generateMockData('string');
         
@@ -88,7 +91,10 @@ class FulfillmentOutboundApiTest extends TestCase
 
     public function testcreateOrder()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'createOrder', '200');
+        $operationId = 'createOrder';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '200');
         
         $body = $this->generateMockData('\SpApi\Model\fulfillment\outbound\v2026_07_04\CreateOrderRequest');
         
@@ -102,7 +108,10 @@ class FulfillmentOutboundApiTest extends TestCase
 
     public function testgetOffers()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'getOffers', '200');
+        $operationId = 'getOffers';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '200');
         
         $body = $this->generateMockData('\SpApi\Model\fulfillment\outbound\v2026_07_04\GetOffersRequest');
         
@@ -116,7 +125,10 @@ class FulfillmentOutboundApiTest extends TestCase
 
     public function testgetOrder()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'getOrder', '200');
+        $operationId = 'getOrder';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '200');
         
         $order_id = $this->generateMockData('string');
         
@@ -130,7 +142,10 @@ class FulfillmentOutboundApiTest extends TestCase
 
     public function testgetOrderPreview()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'getOrderPreview', '200');
+        $operationId = 'getOrderPreview';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '200');
         
         $body = $this->generateMockData('\SpApi\Model\fulfillment\outbound\v2026_07_04\GetOrderPreviewRequest');
         
@@ -144,7 +159,10 @@ class FulfillmentOutboundApiTest extends TestCase
 
     public function testlistOrders()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'listOrders', '200');
+        $operationId = 'listOrders';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '200');
         
 
         $response = $this->api->listOrdersWithHttpInfo(null, null, null, null);
@@ -156,7 +174,10 @@ class FulfillmentOutboundApiTest extends TestCase
 
     public function testupdateOrder()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'updateOrder', '202');
+        $operationId = 'updateOrder';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '202');
         
         $order_id = $this->generateMockData('string');
         
@@ -172,7 +193,10 @@ class FulfillmentOutboundApiTest extends TestCase
 
     public function testupdateOrderStatus()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'updateOrderStatus', '204');
+        $operationId = 'updateOrderStatus';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '204');
         
         $order_id = $this->generateMockData('string');
         
@@ -186,7 +210,10 @@ class FulfillmentOutboundApiTest extends TestCase
 
     public function testupdatePackage()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'updatePackage', '204');
+        $operationId = 'updatePackage';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '204');
         
         $order_id = $this->generateMockData('string');
         
@@ -221,7 +248,7 @@ class FulfillmentOutboundApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -246,6 +273,6 @@ class FulfillmentOutboundApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

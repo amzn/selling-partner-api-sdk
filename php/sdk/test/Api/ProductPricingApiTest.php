@@ -74,7 +74,10 @@ class ProductPricingApiTest extends TestCase
 
     public function testgetCompetitivePricing()
     {
-        $this->instructBackendMock('productPricing', 'getCompetitivePricing', '200');
+        $operationId = 'getCompetitivePricing';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('productPricing', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -90,7 +93,10 @@ class ProductPricingApiTest extends TestCase
 
     public function testgetItemOffers()
     {
-        $this->instructBackendMock('productPricing', 'getItemOffers', '200');
+        $operationId = 'getItemOffers';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('productPricing', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -108,7 +114,10 @@ class ProductPricingApiTest extends TestCase
 
     public function testgetItemOffersBatch()
     {
-        $this->instructBackendMock('productPricing', 'getItemOffersBatch', '200');
+        $operationId = 'getItemOffersBatch';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('productPricing', $mockOperationId, '200');
         
         $get_item_offers_batch_request_body = $this->generateMockData('\SpApi\Model\pricing\v0\GetItemOffersBatchRequest');
         
@@ -122,7 +131,10 @@ class ProductPricingApiTest extends TestCase
 
     public function testgetListingOffers()
     {
-        $this->instructBackendMock('productPricing', 'getListingOffers', '200');
+        $operationId = 'getListingOffers';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('productPricing', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -140,7 +152,10 @@ class ProductPricingApiTest extends TestCase
 
     public function testgetListingOffersBatch()
     {
-        $this->instructBackendMock('productPricing', 'getListingOffersBatch', '200');
+        $operationId = 'getListingOffersBatch';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('productPricing', $mockOperationId, '200');
         
         $get_listing_offers_batch_request_body = $this->generateMockData('\SpApi\Model\pricing\v0\GetListingOffersBatchRequest');
         
@@ -154,7 +169,10 @@ class ProductPricingApiTest extends TestCase
 
     public function testgetPricing()
     {
-        $this->instructBackendMock('productPricing', 'getPricing', '200');
+        $operationId = 'getPricing';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('productPricing', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -189,7 +207,7 @@ class ProductPricingApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -214,6 +232,6 @@ class ProductPricingApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

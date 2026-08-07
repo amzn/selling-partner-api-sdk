@@ -74,7 +74,10 @@ class BatchInventoryApiTest extends TestCase
 
     public function testbatchInventory()
     {
-        $this->instructBackendMock('batchInventory', 'batchInventory', '207');
+        $operationId = 'batchInventory';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('batchInventory', $mockOperationId, '207');
         
         $body = $this->generateMockData('\SpApi\Model\externalFulfillment\inventory\v2024_09_11\BatchInventoryRequest');
         
@@ -107,7 +110,7 @@ class BatchInventoryApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -132,6 +135,6 @@ class BatchInventoryApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

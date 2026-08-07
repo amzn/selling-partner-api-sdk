@@ -74,7 +74,10 @@ class FulfillmentOrdersApiTest extends TestCase
 
     public function testcancelOrder_0()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'cancelOrder_0', '202');
+        $operationId = 'cancelOrder_0';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '202');
         
         $order_id = $this->generateMockData('string');
         
@@ -88,7 +91,10 @@ class FulfillmentOrdersApiTest extends TestCase
 
     public function testcreateOrder_0()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'createOrder_0', '200');
+        $operationId = 'createOrder_0';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '200');
         
         $body = $this->generateMockData('\SpApi\Model\fulfillment\outbound\v2026_07_04\CreateOrderRequest');
         
@@ -102,7 +108,10 @@ class FulfillmentOrdersApiTest extends TestCase
 
     public function testgetOrder_0()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'getOrder_0', '200');
+        $operationId = 'getOrder_0';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '200');
         
         $order_id = $this->generateMockData('string');
         
@@ -116,7 +125,10 @@ class FulfillmentOrdersApiTest extends TestCase
 
     public function testlistOrders_0()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'listOrders_0', '200');
+        $operationId = 'listOrders_0';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '200');
         
 
         $response = $this->api->listOrders_0WithHttpInfo(null, null, null, null);
@@ -128,7 +140,10 @@ class FulfillmentOrdersApiTest extends TestCase
 
     public function testupdateOrderStatus_0()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'updateOrderStatus_0', '204');
+        $operationId = 'updateOrderStatus_0';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '204');
         
         $order_id = $this->generateMockData('string');
         
@@ -142,7 +157,10 @@ class FulfillmentOrdersApiTest extends TestCase
 
     public function testupdateOrder_0()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'updateOrder_0', '202');
+        $operationId = 'updateOrder_0';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '202');
         
         $order_id = $this->generateMockData('string');
         
@@ -158,7 +176,10 @@ class FulfillmentOrdersApiTest extends TestCase
 
     public function testupdatePackage_0()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'updatePackage_0', '204');
+        $operationId = 'updatePackage_0';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '204');
         
         $order_id = $this->generateMockData('string');
         
@@ -193,7 +214,7 @@ class FulfillmentOrdersApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -218,6 +239,6 @@ class FulfillmentOrdersApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

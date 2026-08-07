@@ -74,7 +74,10 @@ class UpdateInventoryApiTest extends TestCase
 
     public function testsubmitInventoryUpdate()
     {
-        $this->instructBackendMock('updateInventory', 'submitInventoryUpdate', '202');
+        $operationId = 'submitInventoryUpdate';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('updateInventory', $mockOperationId, '202');
         
         $warehouse_id = $this->generateMockData('string');
         
@@ -109,7 +112,7 @@ class UpdateInventoryApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -134,6 +137,6 @@ class UpdateInventoryApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

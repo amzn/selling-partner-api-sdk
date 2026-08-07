@@ -74,7 +74,10 @@ class VehiclesApiTest extends TestCase
 
     public function testgetVehicles()
     {
-        $this->instructBackendMock('vehicles', 'getVehicles', '200');
+        $operationId = 'getVehicles';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('vehicles', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -109,7 +112,7 @@ class VehiclesApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -134,6 +137,6 @@ class VehiclesApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

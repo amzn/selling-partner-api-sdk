@@ -74,7 +74,10 @@ class GetOrderApiTest extends TestCase
 
     public function testgetOrder()
     {
-        $this->instructBackendMock('getOrder', 'getOrder', '200');
+        $operationId = 'getOrder';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('getOrder', $mockOperationId, '200');
         
         $order_id = $this->generateMockData('string');
         
@@ -107,7 +110,7 @@ class GetOrderApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -132,6 +135,6 @@ class GetOrderApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

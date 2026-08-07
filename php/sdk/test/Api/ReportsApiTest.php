@@ -74,7 +74,10 @@ class ReportsApiTest extends TestCase
 
     public function testcancelReport()
     {
-        $this->instructBackendMock('reports', 'cancelReport', '200');
+        $operationId = 'cancelReport';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('reports', $mockOperationId, '200');
         
         $report_id = $this->generateMockData('string');
         
@@ -86,7 +89,10 @@ class ReportsApiTest extends TestCase
 
     public function testcancelReportSchedule()
     {
-        $this->instructBackendMock('reports', 'cancelReportSchedule', '200');
+        $operationId = 'cancelReportSchedule';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('reports', $mockOperationId, '200');
         
         $report_schedule_id = $this->generateMockData('string');
         
@@ -98,7 +104,10 @@ class ReportsApiTest extends TestCase
 
     public function testcreateReport()
     {
-        $this->instructBackendMock('reports', 'createReport', '202');
+        $operationId = 'createReport';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('reports', $mockOperationId, '202');
         
         $body = $this->generateMockData('\SpApi\Model\reports\v2021_06_30\CreateReportSpecification');
         
@@ -112,7 +121,10 @@ class ReportsApiTest extends TestCase
 
     public function testcreateReportSchedule()
     {
-        $this->instructBackendMock('reports', 'createReportSchedule', '201');
+        $operationId = 'createReportSchedule';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('reports', $mockOperationId, '201');
         
         $body = $this->generateMockData('\SpApi\Model\reports\v2021_06_30\CreateReportScheduleSpecification');
         
@@ -126,7 +138,10 @@ class ReportsApiTest extends TestCase
 
     public function testgetReport()
     {
-        $this->instructBackendMock('reports', 'getReport', '200');
+        $operationId = 'getReport';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('reports', $mockOperationId, '200');
         
         $report_id = $this->generateMockData('string');
         
@@ -140,7 +155,10 @@ class ReportsApiTest extends TestCase
 
     public function testgetReportDocument()
     {
-        $this->instructBackendMock('reports', 'getReportDocument', '200');
+        $operationId = 'getReportDocument';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('reports', $mockOperationId, '200');
         
         $report_document_id = $this->generateMockData('string');
         
@@ -154,7 +172,10 @@ class ReportsApiTest extends TestCase
 
     public function testgetReportSchedule()
     {
-        $this->instructBackendMock('reports', 'getReportSchedule', '200');
+        $operationId = 'getReportSchedule';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('reports', $mockOperationId, '200');
         
         $report_schedule_id = $this->generateMockData('string');
         
@@ -168,7 +189,10 @@ class ReportsApiTest extends TestCase
 
     public function testgetReportSchedules()
     {
-        $this->instructBackendMock('reports', 'getReportSchedules', '200');
+        $operationId = 'getReportSchedules';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('reports', $mockOperationId, '200');
         
         $report_types = $this->generateMockData('string[]', true);
         
@@ -182,7 +206,10 @@ class ReportsApiTest extends TestCase
 
     public function testgetReports()
     {
-        $this->instructBackendMock('reports', 'getReports', '200');
+        $operationId = 'getReports';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('reports', $mockOperationId, '200');
         
 
         $response = $this->api->getReportsWithHttpInfo(null, null, null, null, null, null, null);
@@ -213,7 +240,7 @@ class ReportsApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -238,6 +265,6 @@ class ReportsApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

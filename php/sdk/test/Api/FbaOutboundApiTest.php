@@ -74,7 +74,10 @@ class FbaOutboundApiTest extends TestCase
 
     public function testcancelFulfillmentOrder()
     {
-        $this->instructBackendMock('fbaOutbound', 'cancelFulfillmentOrder', '200');
+        $operationId = 'cancelFulfillmentOrder';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaOutbound', $mockOperationId, '200');
         
         $seller_fulfillment_order_id = $this->generateMockData('string');
         
@@ -88,7 +91,10 @@ class FbaOutboundApiTest extends TestCase
 
     public function testcreateFulfillmentOrder()
     {
-        $this->instructBackendMock('fbaOutbound', 'createFulfillmentOrder', '200');
+        $operationId = 'createFulfillmentOrder';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaOutbound', $mockOperationId, '200');
         
         $body = $this->generateMockData('\SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderRequest');
         
@@ -102,7 +108,10 @@ class FbaOutboundApiTest extends TestCase
 
     public function testcreateFulfillmentReturn()
     {
-        $this->instructBackendMock('fbaOutbound', 'createFulfillmentReturn', '200');
+        $operationId = 'createFulfillmentReturn';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaOutbound', $mockOperationId, '200');
         
         $seller_fulfillment_order_id = $this->generateMockData('string');
         
@@ -118,7 +127,10 @@ class FbaOutboundApiTest extends TestCase
 
     public function testdeliveryOffers()
     {
-        $this->instructBackendMock('fbaOutbound', 'deliveryOffers', '200');
+        $operationId = 'deliveryOffers';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaOutbound', $mockOperationId, '200');
         
         $body = $this->generateMockData('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersRequest');
         
@@ -132,7 +144,10 @@ class FbaOutboundApiTest extends TestCase
 
     public function testgetFeatureInventory()
     {
-        $this->instructBackendMock('fbaOutbound', 'getFeatureInventory', '200');
+        $operationId = 'getFeatureInventory';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaOutbound', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -148,7 +163,10 @@ class FbaOutboundApiTest extends TestCase
 
     public function testgetFeatureSKU()
     {
-        $this->instructBackendMock('fbaOutbound', 'getFeatureSKU', '200');
+        $operationId = 'getFeatureSKU';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaOutbound', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -166,7 +184,10 @@ class FbaOutboundApiTest extends TestCase
 
     public function testgetFeatures()
     {
-        $this->instructBackendMock('fbaOutbound', 'getFeatures', '200');
+        $operationId = 'getFeatures';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaOutbound', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -180,7 +201,10 @@ class FbaOutboundApiTest extends TestCase
 
     public function testgetFulfillmentOrder()
     {
-        $this->instructBackendMock('fbaOutbound', 'getFulfillmentOrder', '200');
+        $operationId = 'getFulfillmentOrder';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaOutbound', $mockOperationId, '200');
         
         $seller_fulfillment_order_id = $this->generateMockData('string');
         
@@ -194,7 +218,10 @@ class FbaOutboundApiTest extends TestCase
 
     public function testgetFulfillmentPreview()
     {
-        $this->instructBackendMock('fbaOutbound', 'getFulfillmentPreview', '200');
+        $operationId = 'getFulfillmentPreview';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaOutbound', $mockOperationId, '200');
         
         $body = $this->generateMockData('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetFulfillmentPreviewRequest');
         
@@ -208,7 +235,10 @@ class FbaOutboundApiTest extends TestCase
 
     public function testgetPackageTrackingDetails()
     {
-        $this->instructBackendMock('fbaOutbound', 'getPackageTrackingDetails', '200');
+        $operationId = 'getPackageTrackingDetails';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaOutbound', $mockOperationId, '200');
         
         $package_number = $this->generateMockData('int');
         
@@ -222,7 +252,10 @@ class FbaOutboundApiTest extends TestCase
 
     public function testlistAllFulfillmentOrders()
     {
-        $this->instructBackendMock('fbaOutbound', 'listAllFulfillmentOrders', '200');
+        $operationId = 'listAllFulfillmentOrders';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaOutbound', $mockOperationId, '200');
         
 
         $response = $this->api->listAllFulfillmentOrdersWithHttpInfo(null, null);
@@ -234,7 +267,10 @@ class FbaOutboundApiTest extends TestCase
 
     public function testlistReturnReasonCodes()
     {
-        $this->instructBackendMock('fbaOutbound', 'listReturnReasonCodes', '200');
+        $operationId = 'listReturnReasonCodes';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaOutbound', $mockOperationId, '200');
         
         $seller_sku = $this->generateMockData('string');
         
@@ -248,7 +284,10 @@ class FbaOutboundApiTest extends TestCase
 
     public function testsubmitFulfillmentOrderStatusUpdate()
     {
-        $this->instructBackendMock('fbaOutbound', 'submitFulfillmentOrderStatusUpdate', '200');
+        $operationId = 'submitFulfillmentOrderStatusUpdate';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaOutbound', $mockOperationId, '200');
         
         $seller_fulfillment_order_id = $this->generateMockData('string');
         
@@ -264,7 +303,10 @@ class FbaOutboundApiTest extends TestCase
 
     public function testupdateFulfillmentOrder()
     {
-        $this->instructBackendMock('fbaOutbound', 'updateFulfillmentOrder', '200');
+        $operationId = 'updateFulfillmentOrder';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaOutbound', $mockOperationId, '200');
         
         $seller_fulfillment_order_id = $this->generateMockData('string');
         
@@ -299,7 +341,7 @@ class FbaOutboundApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -324,6 +366,6 @@ class FbaOutboundApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

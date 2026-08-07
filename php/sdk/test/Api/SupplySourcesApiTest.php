@@ -74,7 +74,10 @@ class SupplySourcesApiTest extends TestCase
 
     public function testarchiveSupplySource()
     {
-        $this->instructBackendMock('supplySources', 'archiveSupplySource', '204');
+        $operationId = 'archiveSupplySource';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('supplySources', $mockOperationId, '204');
         
         $supply_source_id = $this->generateMockData('string');
         
@@ -88,7 +91,10 @@ class SupplySourcesApiTest extends TestCase
 
     public function testcreateSupplySource()
     {
-        $this->instructBackendMock('supplySources', 'createSupplySource', '200');
+        $operationId = 'createSupplySource';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('supplySources', $mockOperationId, '200');
         
         $payload = $this->generateMockData('\SpApi\Model\supplySources\v2020_07_01\CreateSupplySourceRequest');
         
@@ -102,7 +108,10 @@ class SupplySourcesApiTest extends TestCase
 
     public function testgetSupplySource()
     {
-        $this->instructBackendMock('supplySources', 'getSupplySource', '200');
+        $operationId = 'getSupplySource';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('supplySources', $mockOperationId, '200');
         
         $supply_source_id = $this->generateMockData('string');
         
@@ -116,7 +125,10 @@ class SupplySourcesApiTest extends TestCase
 
     public function testgetSupplySources()
     {
-        $this->instructBackendMock('supplySources', 'getSupplySources', '200');
+        $operationId = 'getSupplySources';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('supplySources', $mockOperationId, '200');
         
 
         $response = $this->api->getSupplySourcesWithHttpInfo(null, null);
@@ -128,7 +140,10 @@ class SupplySourcesApiTest extends TestCase
 
     public function testupdateSupplySource()
     {
-        $this->instructBackendMock('supplySources', 'updateSupplySource', '204');
+        $operationId = 'updateSupplySource';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('supplySources', $mockOperationId, '204');
         
         $supply_source_id = $this->generateMockData('string');
         
@@ -142,7 +157,10 @@ class SupplySourcesApiTest extends TestCase
 
     public function testupdateSupplySourceStatus()
     {
-        $this->instructBackendMock('supplySources', 'updateSupplySourceStatus', '204');
+        $operationId = 'updateSupplySourceStatus';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('supplySources', $mockOperationId, '204');
         
         $supply_source_id = $this->generateMockData('string');
         
@@ -175,7 +193,7 @@ class SupplySourcesApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -200,6 +218,6 @@ class SupplySourcesApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

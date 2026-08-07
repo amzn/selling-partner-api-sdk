@@ -74,7 +74,10 @@ class ListingsApiTest extends TestCase
 
     public function testdeleteListingsItem()
     {
-        $this->instructBackendMock('listings', 'deleteListingsItem', '200');
+        $operationId = 'deleteListingsItem';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('listings', $mockOperationId, '200');
         
         $seller_id = $this->generateMockData('string');
         
@@ -92,7 +95,10 @@ class ListingsApiTest extends TestCase
 
     public function testgetListingsItem()
     {
-        $this->instructBackendMock('listings', 'getListingsItem', '200');
+        $operationId = 'getListingsItem';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('listings', $mockOperationId, '200');
         
         $seller_id = $this->generateMockData('string');
         
@@ -110,7 +116,10 @@ class ListingsApiTest extends TestCase
 
     public function testpatchListingsItem()
     {
-        $this->instructBackendMock('listings', 'patchListingsItem', '200');
+        $operationId = 'patchListingsItem';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('listings', $mockOperationId, '200');
         
         $seller_id = $this->generateMockData('string');
         
@@ -130,7 +139,10 @@ class ListingsApiTest extends TestCase
 
     public function testputListingsItem()
     {
-        $this->instructBackendMock('listings', 'putListingsItem', '200');
+        $operationId = 'putListingsItem';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('listings', $mockOperationId, '200');
         
         $seller_id = $this->generateMockData('string');
         
@@ -150,7 +162,10 @@ class ListingsApiTest extends TestCase
 
     public function testsearchListingsItems()
     {
-        $this->instructBackendMock('listings', 'searchListingsItems', '200');
+        $operationId = 'searchListingsItems';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('listings', $mockOperationId, '200');
         
         $seller_id = $this->generateMockData('string');
         
@@ -185,7 +200,7 @@ class ListingsApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -210,6 +225,6 @@ class ListingsApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

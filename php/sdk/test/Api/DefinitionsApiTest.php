@@ -74,7 +74,10 @@ class DefinitionsApiTest extends TestCase
 
     public function testgetDefinitionsProductType()
     {
-        $this->instructBackendMock('definitions', 'getDefinitionsProductType', '200');
+        $operationId = 'getDefinitionsProductType';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('definitions', $mockOperationId, '200');
         
         $product_type = $this->generateMockData('string');
         
@@ -90,7 +93,10 @@ class DefinitionsApiTest extends TestCase
 
     public function testsearchDefinitionsProductTypes()
     {
-        $this->instructBackendMock('definitions', 'searchDefinitionsProductTypes', '200');
+        $operationId = 'searchDefinitionsProductTypes';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('definitions', $mockOperationId, '200');
         
         $marketplace_ids = $this->generateMockData('string[]', true);
         
@@ -123,7 +129,7 @@ class DefinitionsApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -148,6 +154,6 @@ class DefinitionsApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

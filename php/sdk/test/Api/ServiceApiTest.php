@@ -74,7 +74,10 @@ class ServiceApiTest extends TestCase
 
     public function testaddAppointmentForServiceJobByServiceJobId()
     {
-        $this->instructBackendMock('service', 'addAppointmentForServiceJobByServiceJobId', '200');
+        $operationId = 'addAppointmentForServiceJobByServiceJobId';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '200');
         
         $service_job_id = $this->generateMockData('string');
         
@@ -90,7 +93,10 @@ class ServiceApiTest extends TestCase
 
     public function testassignAppointmentResources()
     {
-        $this->instructBackendMock('service', 'assignAppointmentResources', '200');
+        $operationId = 'assignAppointmentResources';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '200');
         
         $service_job_id = $this->generateMockData('string');
         
@@ -108,7 +114,10 @@ class ServiceApiTest extends TestCase
 
     public function testcancelReservation()
     {
-        $this->instructBackendMock('service', 'cancelReservation', '204');
+        $operationId = 'cancelReservation';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '204');
         
         $reservation_id = $this->generateMockData('string');
         
@@ -124,7 +133,10 @@ class ServiceApiTest extends TestCase
 
     public function testcancelServiceJobByServiceJobId()
     {
-        $this->instructBackendMock('service', 'cancelServiceJobByServiceJobId', '200');
+        $operationId = 'cancelServiceJobByServiceJobId';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '200');
         
         $service_job_id = $this->generateMockData('string');
         
@@ -140,7 +152,10 @@ class ServiceApiTest extends TestCase
 
     public function testcompleteServiceJobByServiceJobId()
     {
-        $this->instructBackendMock('service', 'completeServiceJobByServiceJobId', '200');
+        $operationId = 'completeServiceJobByServiceJobId';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '200');
         
         $service_job_id = $this->generateMockData('string');
         
@@ -154,7 +169,10 @@ class ServiceApiTest extends TestCase
 
     public function testcreateReservation()
     {
-        $this->instructBackendMock('service', 'createReservation', '200');
+        $operationId = 'createReservation';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '200');
         
         $marketplace_ids = $this->generateMockData('string[]', true);
         
@@ -170,7 +188,10 @@ class ServiceApiTest extends TestCase
 
     public function testcreateServiceDocumentUploadDestination()
     {
-        $this->instructBackendMock('service', 'createServiceDocumentUploadDestination', '200');
+        $operationId = 'createServiceDocumentUploadDestination';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '200');
         
         $body = $this->generateMockData('\SpApi\Model\services\v1\ServiceUploadDocument');
         
@@ -184,7 +205,10 @@ class ServiceApiTest extends TestCase
 
     public function testgetAppointmentSlots()
     {
-        $this->instructBackendMock('service', 'getAppointmentSlots', '200');
+        $operationId = 'getAppointmentSlots';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '200');
         
         $asin = $this->generateMockData('string');
         
@@ -202,7 +226,10 @@ class ServiceApiTest extends TestCase
 
     public function testgetAppointmmentSlotsByJobId()
     {
-        $this->instructBackendMock('service', 'getAppointmmentSlotsByJobId', '200');
+        $operationId = 'getAppointmmentSlotsByJobId';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '200');
         
         $service_job_id = $this->generateMockData('string');
         
@@ -218,7 +245,10 @@ class ServiceApiTest extends TestCase
 
     public function testgetFixedSlotCapacity()
     {
-        $this->instructBackendMock('service', 'getFixedSlotCapacity', '200');
+        $operationId = 'getFixedSlotCapacity';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '200');
         
         $resource_id = $this->generateMockData('string');
         
@@ -236,7 +266,10 @@ class ServiceApiTest extends TestCase
 
     public function testgetRangeSlotCapacity()
     {
-        $this->instructBackendMock('service', 'getRangeSlotCapacity', '200');
+        $operationId = 'getRangeSlotCapacity';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '200');
         
         $resource_id = $this->generateMockData('string');
         
@@ -254,7 +287,10 @@ class ServiceApiTest extends TestCase
 
     public function testgetServiceJobByServiceJobId()
     {
-        $this->instructBackendMock('service', 'getServiceJobByServiceJobId', '200');
+        $operationId = 'getServiceJobByServiceJobId';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '200');
         
         $service_job_id = $this->generateMockData('string');
         
@@ -268,7 +304,10 @@ class ServiceApiTest extends TestCase
 
     public function testgetServiceJobs()
     {
-        $this->instructBackendMock('service', 'getServiceJobs', '200');
+        $operationId = 'getServiceJobs';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '200');
         
         $marketplace_ids = $this->generateMockData('string[]', true);
         
@@ -282,7 +321,10 @@ class ServiceApiTest extends TestCase
 
     public function testrescheduleAppointmentForServiceJobByServiceJobId()
     {
-        $this->instructBackendMock('service', 'rescheduleAppointmentForServiceJobByServiceJobId', '200');
+        $operationId = 'rescheduleAppointmentForServiceJobByServiceJobId';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '200');
         
         $service_job_id = $this->generateMockData('string');
         
@@ -300,7 +342,10 @@ class ServiceApiTest extends TestCase
 
     public function testsetAppointmentFulfillmentData()
     {
-        $this->instructBackendMock('service', 'setAppointmentFulfillmentData', '204');
+        $operationId = 'setAppointmentFulfillmentData';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '204');
         
         $service_job_id = $this->generateMockData('string');
         
@@ -318,7 +363,10 @@ class ServiceApiTest extends TestCase
 
     public function testupdateReservation()
     {
-        $this->instructBackendMock('service', 'updateReservation', '200');
+        $operationId = 'updateReservation';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '200');
         
         $reservation_id = $this->generateMockData('string');
         
@@ -336,7 +384,10 @@ class ServiceApiTest extends TestCase
 
     public function testupdateSchedule()
     {
-        $this->instructBackendMock('service', 'updateSchedule', '200');
+        $operationId = 'updateSchedule';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('service', $mockOperationId, '200');
         
         $resource_id = $this->generateMockData('string');
         
@@ -373,7 +424,7 @@ class ServiceApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -398,6 +449,6 @@ class ServiceApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

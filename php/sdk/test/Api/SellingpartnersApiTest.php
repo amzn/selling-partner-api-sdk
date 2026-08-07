@@ -74,7 +74,10 @@ class SellingpartnersApiTest extends TestCase
 
     public function testgetSellingPartnerMetrics()
     {
-        $this->instructBackendMock('sellingpartners', 'getSellingPartnerMetrics', '200');
+        $operationId = 'getSellingPartnerMetrics';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('sellingpartners', $mockOperationId, '200');
         
 
         $response = $this->api->getSellingPartnerMetricsWithHttpInfo(null);
@@ -105,7 +108,7 @@ class SellingpartnersApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -130,6 +133,6 @@ class SellingpartnersApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

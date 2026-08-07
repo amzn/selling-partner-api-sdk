@@ -74,7 +74,10 @@ class MessagingApiTest extends TestCase
 
     public function testconfirmCustomizationDetails()
     {
-        $this->instructBackendMock('messaging', 'confirmCustomizationDetails', '201');
+        $operationId = 'confirmCustomizationDetails';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('messaging', $mockOperationId, '201');
         
         $amazon_order_id = $this->generateMockData('string');
         
@@ -92,7 +95,10 @@ class MessagingApiTest extends TestCase
 
     public function testcreateConfirmDeliveryDetails()
     {
-        $this->instructBackendMock('messaging', 'createConfirmDeliveryDetails', '201');
+        $operationId = 'createConfirmDeliveryDetails';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('messaging', $mockOperationId, '201');
         
         $amazon_order_id = $this->generateMockData('string');
         
@@ -110,7 +116,10 @@ class MessagingApiTest extends TestCase
 
     public function testcreateConfirmOrderDetails()
     {
-        $this->instructBackendMock('messaging', 'createConfirmOrderDetails', '201');
+        $operationId = 'createConfirmOrderDetails';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('messaging', $mockOperationId, '201');
         
         $amazon_order_id = $this->generateMockData('string');
         
@@ -128,7 +137,10 @@ class MessagingApiTest extends TestCase
 
     public function testcreateConfirmServiceDetails()
     {
-        $this->instructBackendMock('messaging', 'createConfirmServiceDetails', '201');
+        $operationId = 'createConfirmServiceDetails';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('messaging', $mockOperationId, '201');
         
         $amazon_order_id = $this->generateMockData('string');
         
@@ -146,7 +158,10 @@ class MessagingApiTest extends TestCase
 
     public function testcreateDigitalAccessKey()
     {
-        $this->instructBackendMock('messaging', 'createDigitalAccessKey', '201');
+        $operationId = 'createDigitalAccessKey';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('messaging', $mockOperationId, '201');
         
         $amazon_order_id = $this->generateMockData('string');
         
@@ -164,7 +179,10 @@ class MessagingApiTest extends TestCase
 
     public function testcreateLegalDisclosure()
     {
-        $this->instructBackendMock('messaging', 'createLegalDisclosure', '201');
+        $operationId = 'createLegalDisclosure';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('messaging', $mockOperationId, '201');
         
         $amazon_order_id = $this->generateMockData('string');
         
@@ -182,7 +200,10 @@ class MessagingApiTest extends TestCase
 
     public function testcreateUnexpectedProblem()
     {
-        $this->instructBackendMock('messaging', 'createUnexpectedProblem', '201');
+        $operationId = 'createUnexpectedProblem';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('messaging', $mockOperationId, '201');
         
         $amazon_order_id = $this->generateMockData('string');
         
@@ -200,7 +221,10 @@ class MessagingApiTest extends TestCase
 
     public function testcreateWarranty()
     {
-        $this->instructBackendMock('messaging', 'createWarranty', '201');
+        $operationId = 'createWarranty';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('messaging', $mockOperationId, '201');
         
         $amazon_order_id = $this->generateMockData('string');
         
@@ -218,7 +242,10 @@ class MessagingApiTest extends TestCase
 
     public function testgetAttributes()
     {
-        $this->instructBackendMock('messaging', 'getAttributes', '200');
+        $operationId = 'getAttributes';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('messaging', $mockOperationId, '200');
         
         $amazon_order_id = $this->generateMockData('string');
         
@@ -234,7 +261,10 @@ class MessagingApiTest extends TestCase
 
     public function testgetMessagingActionsForOrder()
     {
-        $this->instructBackendMock('messaging', 'getMessagingActionsForOrder', '200');
+        $operationId = 'getMessagingActionsForOrder';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('messaging', $mockOperationId, '200');
         
         $amazon_order_id = $this->generateMockData('string');
         
@@ -250,7 +280,10 @@ class MessagingApiTest extends TestCase
 
     public function testsendInvoice()
     {
-        $this->instructBackendMock('messaging', 'sendInvoice', '201');
+        $operationId = 'sendInvoice';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('messaging', $mockOperationId, '201');
         
         $amazon_order_id = $this->generateMockData('string');
         
@@ -287,7 +320,7 @@ class MessagingApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -312,6 +345,6 @@ class MessagingApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

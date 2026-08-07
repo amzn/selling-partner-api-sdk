@@ -74,7 +74,10 @@ class UploadsApiTest extends TestCase
 
     public function testcreateUploadDestinationForResource()
     {
-        $this->instructBackendMock('uploads', 'createUploadDestinationForResource', '201');
+        $operationId = 'createUploadDestinationForResource';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('uploads', $mockOperationId, '201');
         
         $marketplace_ids = $this->generateMockData('string[]', true);
         
@@ -111,7 +114,7 @@ class UploadsApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -136,6 +139,6 @@ class UploadsApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

@@ -74,7 +74,10 @@ class AwdApiTest extends TestCase
 
     public function testcancelInbound()
     {
-        $this->instructBackendMock('awd', 'cancelInbound', '204');
+        $operationId = 'cancelInbound';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '204');
         
         $order_id = $this->generateMockData('string');
         
@@ -86,7 +89,10 @@ class AwdApiTest extends TestCase
 
     public function testcheckInboundEligibility()
     {
-        $this->instructBackendMock('awd', 'checkInboundEligibility', '200');
+        $operationId = 'checkInboundEligibility';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '200');
         
         $body = $this->generateMockData('\SpApi\Model\awd\v2024_05_09\InboundPackages');
         
@@ -100,7 +106,10 @@ class AwdApiTest extends TestCase
 
     public function testconfirmInbound()
     {
-        $this->instructBackendMock('awd', 'confirmInbound', '204');
+        $operationId = 'confirmInbound';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '204');
         
         $order_id = $this->generateMockData('string');
         
@@ -112,7 +121,10 @@ class AwdApiTest extends TestCase
 
     public function testconfirmOutbound()
     {
-        $this->instructBackendMock('awd', 'confirmOutbound', '204');
+        $operationId = 'confirmOutbound';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '204');
         
         $order_id = $this->generateMockData('string');
         
@@ -124,7 +136,10 @@ class AwdApiTest extends TestCase
 
     public function testconfirmReplenishmentOrder()
     {
-        $this->instructBackendMock('awd', 'confirmReplenishmentOrder', '204');
+        $operationId = 'confirmReplenishmentOrder';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '204');
         
         $order_id = $this->generateMockData('string');
         
@@ -136,7 +151,10 @@ class AwdApiTest extends TestCase
 
     public function testcreateInbound()
     {
-        $this->instructBackendMock('awd', 'createInbound', '201');
+        $operationId = 'createInbound';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '201');
         
         $body = $this->generateMockData('\SpApi\Model\awd\v2024_05_09\InboundOrderCreationData');
         
@@ -150,7 +168,10 @@ class AwdApiTest extends TestCase
 
     public function testcreateOutbound()
     {
-        $this->instructBackendMock('awd', 'createOutbound', '201');
+        $operationId = 'createOutbound';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '201');
         
         $body = $this->generateMockData('\SpApi\Model\awd\v2024_05_09\OutboundOrderCreationData');
         
@@ -164,7 +185,10 @@ class AwdApiTest extends TestCase
 
     public function testcreateReplenishmentOrder()
     {
-        $this->instructBackendMock('awd', 'createReplenishmentOrder', '201');
+        $operationId = 'createReplenishmentOrder';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '201');
         
         $body = $this->generateMockData('\SpApi\Model\awd\v2024_05_09\ReplenishmentOrderCreationData');
         
@@ -178,7 +202,10 @@ class AwdApiTest extends TestCase
 
     public function testgetInbound()
     {
-        $this->instructBackendMock('awd', 'getInbound', '200');
+        $operationId = 'getInbound';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '200');
         
         $order_id = $this->generateMockData('string');
         
@@ -192,7 +219,10 @@ class AwdApiTest extends TestCase
 
     public function testgetInboundShipment()
     {
-        $this->instructBackendMock('awd', 'getInboundShipment', '200');
+        $operationId = 'getInboundShipment';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '200');
         
         $shipment_id = $this->generateMockData('string');
         
@@ -206,7 +236,10 @@ class AwdApiTest extends TestCase
 
     public function testgetInboundShipmentLabels()
     {
-        $this->instructBackendMock('awd', 'getInboundShipmentLabels', '200');
+        $operationId = 'getInboundShipmentLabels';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '200');
         
         $shipment_id = $this->generateMockData('string');
         
@@ -220,7 +253,10 @@ class AwdApiTest extends TestCase
 
     public function testgetLabelPageTypes()
     {
-        $this->instructBackendMock('awd', 'getLabelPageTypes', '200');
+        $operationId = 'getLabelPageTypes';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '200');
         
         $shipment_id = $this->generateMockData('string');
         
@@ -234,7 +270,10 @@ class AwdApiTest extends TestCase
 
     public function testgetOutbound()
     {
-        $this->instructBackendMock('awd', 'getOutbound', '200');
+        $operationId = 'getOutbound';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '200');
         
         $order_id = $this->generateMockData('string');
         
@@ -248,7 +287,10 @@ class AwdApiTest extends TestCase
 
     public function testgetReplenishmentOrder()
     {
-        $this->instructBackendMock('awd', 'getReplenishmentOrder', '200');
+        $operationId = 'getReplenishmentOrder';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '200');
         
         $order_id = $this->generateMockData('string');
         
@@ -262,7 +304,10 @@ class AwdApiTest extends TestCase
 
     public function testlistInboundShipments()
     {
-        $this->instructBackendMock('awd', 'listInboundShipments', '200');
+        $operationId = 'listInboundShipments';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '200');
         
 
         $response = $this->api->listInboundShipmentsWithHttpInfo(null, null, null, null, null, null, null);
@@ -274,7 +319,10 @@ class AwdApiTest extends TestCase
 
     public function testlistInventory()
     {
-        $this->instructBackendMock('awd', 'listInventory', '200');
+        $operationId = 'listInventory';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '200');
         
 
         $response = $this->api->listInventoryWithHttpInfo(null, null, null, null, null);
@@ -286,7 +334,10 @@ class AwdApiTest extends TestCase
 
     public function testlistOutbounds()
     {
-        $this->instructBackendMock('awd', 'listOutbounds', '200');
+        $operationId = 'listOutbounds';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '200');
         
 
         $response = $this->api->listOutboundsWithHttpInfo(null, null, null, null, null);
@@ -298,7 +349,10 @@ class AwdApiTest extends TestCase
 
     public function testlistReplenishmentOrders()
     {
-        $this->instructBackendMock('awd', 'listReplenishmentOrders', '200');
+        $operationId = 'listReplenishmentOrders';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '200');
         
 
         $response = $this->api->listReplenishmentOrdersWithHttpInfo(null, null, null, null, null);
@@ -310,7 +364,10 @@ class AwdApiTest extends TestCase
 
     public function testupdateInbound()
     {
-        $this->instructBackendMock('awd', 'updateInbound', '204');
+        $operationId = 'updateInbound';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '204');
         
         $order_id = $this->generateMockData('string');
         
@@ -324,7 +381,10 @@ class AwdApiTest extends TestCase
 
     public function testupdateInboundShipmentTransportDetails()
     {
-        $this->instructBackendMock('awd', 'updateInboundShipmentTransportDetails', '204');
+        $operationId = 'updateInboundShipmentTransportDetails';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '204');
         
         $shipment_id = $this->generateMockData('string');
         
@@ -338,7 +398,10 @@ class AwdApiTest extends TestCase
 
     public function testupdateOutbound()
     {
-        $this->instructBackendMock('awd', 'updateOutbound', '200');
+        $operationId = 'updateOutbound';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('awd', $mockOperationId, '200');
         
         $order_id = $this->generateMockData('string');
         
@@ -373,7 +436,7 @@ class AwdApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -398,6 +461,6 @@ class AwdApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }
