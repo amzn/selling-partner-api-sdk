@@ -74,7 +74,10 @@ class TransactionsApiTest extends TestCase
 
     public function testcreateTransaction()
     {
-        $this->instructBackendMock('Transactions', 'createTransaction', '200');
+        $operationId = 'createTransaction';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('Transactions', $mockOperationId, '200');
         
         $dest_account_digital_signature = $this->generateMockData('string');
         
@@ -94,7 +97,10 @@ class TransactionsApiTest extends TestCase
 
     public function testgetTransaction()
     {
-        $this->instructBackendMock('Transactions', 'getTransaction', '200');
+        $operationId = 'getTransaction';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('Transactions', $mockOperationId, '200');
         
         $transaction_id = $this->generateMockData('string');
         
@@ -110,7 +116,10 @@ class TransactionsApiTest extends TestCase
 
     public function testlistAccountTransactions()
     {
-        $this->instructBackendMock('Transactions', 'listAccountTransactions', '200');
+        $operationId = 'listAccountTransactions';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('Transactions', $mockOperationId, '200');
         
         $account_id = $this->generateMockData('string');
         
@@ -145,7 +154,7 @@ class TransactionsApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -170,6 +179,6 @@ class TransactionsApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

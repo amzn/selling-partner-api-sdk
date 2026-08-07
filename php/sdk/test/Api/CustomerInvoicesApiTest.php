@@ -74,7 +74,10 @@ class CustomerInvoicesApiTest extends TestCase
 
     public function testgetCustomerInvoice()
     {
-        $this->instructBackendMock('customerInvoices', 'getCustomerInvoice', '200');
+        $operationId = 'getCustomerInvoice';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('customerInvoices', $mockOperationId, '200');
         
         $purchase_order_number = $this->generateMockData('string');
         
@@ -88,7 +91,10 @@ class CustomerInvoicesApiTest extends TestCase
 
     public function testgetCustomerInvoices()
     {
-        $this->instructBackendMock('customerInvoices', 'getCustomerInvoices', '200');
+        $operationId = 'getCustomerInvoices';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('customerInvoices', $mockOperationId, '200');
         
         $created_after = $this->generateMockData('\DateTime');
         
@@ -123,7 +129,7 @@ class CustomerInvoicesApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -148,6 +154,6 @@ class CustomerInvoicesApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

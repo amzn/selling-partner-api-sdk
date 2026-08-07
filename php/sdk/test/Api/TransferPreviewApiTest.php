@@ -74,7 +74,10 @@ class TransferPreviewApiTest extends TestCase
 
     public function testgetTransferPreview()
     {
-        $this->instructBackendMock('Transfer Preview', 'getTransferPreview', '200');
+        $operationId = 'getTransferPreview';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('Transfer Preview', $mockOperationId, '200');
         
         $source_country_code = $this->generateMockData('string');
         
@@ -117,7 +120,7 @@ class TransferPreviewApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -142,6 +145,6 @@ class TransferPreviewApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

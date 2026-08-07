@@ -74,7 +74,10 @@ class InvoicesApiTest extends TestCase
 
     public function testcreateGovernmentInvoice()
     {
-        $this->instructBackendMock('invoices', 'createGovernmentInvoice', '204');
+        $operationId = 'createGovernmentInvoice';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('invoices', $mockOperationId, '204');
         
         $body = $this->generateMockData('\SpApi\Model\invoices\v2024_06_19\GovernmentInvoiceRequest');
         
@@ -86,7 +89,10 @@ class InvoicesApiTest extends TestCase
 
     public function testcreateInvoicesExport()
     {
-        $this->instructBackendMock('invoices', 'createInvoicesExport', '202');
+        $operationId = 'createInvoicesExport';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('invoices', $mockOperationId, '202');
         
         $body = $this->generateMockData('\SpApi\Model\invoices\v2024_06_19\ExportInvoicesRequest');
         
@@ -100,7 +106,10 @@ class InvoicesApiTest extends TestCase
 
     public function testgetGovernmentInvoiceDocument()
     {
-        $this->instructBackendMock('invoices', 'getGovernmentInvoiceDocument', '200');
+        $operationId = 'getGovernmentInvoiceDocument';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('invoices', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -120,7 +129,10 @@ class InvoicesApiTest extends TestCase
 
     public function testgetGovernmentInvoiceStatus()
     {
-        $this->instructBackendMock('invoices', 'getGovernmentInvoiceStatus', '200');
+        $operationId = 'getGovernmentInvoiceStatus';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('invoices', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -140,7 +152,10 @@ class InvoicesApiTest extends TestCase
 
     public function testgetInvoice()
     {
-        $this->instructBackendMock('invoices', 'getInvoice', '200');
+        $operationId = 'getInvoice';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('invoices', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -156,7 +171,10 @@ class InvoicesApiTest extends TestCase
 
     public function testgetInvoices()
     {
-        $this->instructBackendMock('invoices', 'getInvoices', '200');
+        $operationId = 'getInvoices';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('invoices', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -170,7 +188,10 @@ class InvoicesApiTest extends TestCase
 
     public function testgetInvoicesAttributes()
     {
-        $this->instructBackendMock('invoices', 'getInvoicesAttributes', '200');
+        $operationId = 'getInvoicesAttributes';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('invoices', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -184,7 +205,10 @@ class InvoicesApiTest extends TestCase
 
     public function testgetInvoicesDocument()
     {
-        $this->instructBackendMock('invoices', 'getInvoicesDocument', '200');
+        $operationId = 'getInvoicesDocument';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('invoices', $mockOperationId, '200');
         
         $invoices_document_id = $this->generateMockData('string');
         
@@ -198,7 +222,10 @@ class InvoicesApiTest extends TestCase
 
     public function testgetInvoicesExport()
     {
-        $this->instructBackendMock('invoices', 'getInvoicesExport', '200');
+        $operationId = 'getInvoicesExport';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('invoices', $mockOperationId, '200');
         
         $export_id = $this->generateMockData('string');
         
@@ -212,7 +239,10 @@ class InvoicesApiTest extends TestCase
 
     public function testgetInvoicesExports()
     {
-        $this->instructBackendMock('invoices', 'getInvoicesExports', '200');
+        $operationId = 'getInvoicesExports';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('invoices', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -245,7 +275,7 @@ class InvoicesApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -270,6 +300,6 @@ class InvoicesApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

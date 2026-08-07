@@ -74,7 +74,10 @@ class TrackingApiTest extends TestCase
 
     public function testgetShipmentTracking()
     {
-        $this->instructBackendMock('Tracking', 'getShipmentTracking', '200');
+        $operationId = 'getShipmentTracking';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('Tracking', $mockOperationId, '200');
         
 
         $response = $this->api->getShipmentTrackingWithHttpInfo(null, null, null, null, null, null, null, null);
@@ -105,7 +108,7 @@ class TrackingApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -130,6 +133,6 @@ class TrackingApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

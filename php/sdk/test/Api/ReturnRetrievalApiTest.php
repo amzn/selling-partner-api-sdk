@@ -74,7 +74,10 @@ class ReturnRetrievalApiTest extends TestCase
 
     public function testgetReturn()
     {
-        $this->instructBackendMock('returnRetrieval', 'getReturn', '200');
+        $operationId = 'getReturn';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('returnRetrieval', $mockOperationId, '200');
         
         $return_id = $this->generateMockData('string');
         
@@ -88,7 +91,10 @@ class ReturnRetrievalApiTest extends TestCase
 
     public function testlistReturns()
     {
-        $this->instructBackendMock('returnRetrieval', 'listReturns', '200');
+        $operationId = 'listReturns';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('returnRetrieval', $mockOperationId, '200');
         
 
         $response = $this->api->listReturnsWithHttpInfo(null, null, null, null, null, null, null, null, null, null, null, null);
@@ -119,7 +125,7 @@ class ReturnRetrievalApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -144,6 +150,6 @@ class ReturnRetrievalApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

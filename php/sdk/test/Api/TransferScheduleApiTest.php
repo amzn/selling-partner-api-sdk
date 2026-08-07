@@ -74,7 +74,10 @@ class TransferScheduleApiTest extends TestCase
 
     public function testcreateTransferSchedule()
     {
-        $this->instructBackendMock('Transfer Schedule', 'createTransferSchedule', '200');
+        $operationId = 'createTransferSchedule';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('Transfer Schedule', $mockOperationId, '200');
         
         $dest_account_digital_signature = $this->generateMockData('string');
         
@@ -94,7 +97,10 @@ class TransferScheduleApiTest extends TestCase
 
     public function testdeleteScheduleTransaction()
     {
-        $this->instructBackendMock('Transfer Schedule', 'deleteScheduleTransaction', '200');
+        $operationId = 'deleteScheduleTransaction';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('Transfer Schedule', $mockOperationId, '200');
         
         $transfer_schedule_id = $this->generateMockData('string');
         
@@ -110,7 +116,10 @@ class TransferScheduleApiTest extends TestCase
 
     public function testgetTransferSchedule()
     {
-        $this->instructBackendMock('Transfer Schedule', 'getTransferSchedule', '200');
+        $operationId = 'getTransferSchedule';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('Transfer Schedule', $mockOperationId, '200');
         
         $transfer_schedule_id = $this->generateMockData('string');
         
@@ -126,7 +135,10 @@ class TransferScheduleApiTest extends TestCase
 
     public function testlistTransferSchedules()
     {
-        $this->instructBackendMock('Transfer Schedule', 'listTransferSchedules', '200');
+        $operationId = 'listTransferSchedules';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('Transfer Schedule', $mockOperationId, '200');
         
         $account_id = $this->generateMockData('string');
         
@@ -142,7 +154,10 @@ class TransferScheduleApiTest extends TestCase
 
     public function testupdateTransferSchedule()
     {
-        $this->instructBackendMock('Transfer Schedule', 'updateTransferSchedule', '200');
+        $operationId = 'updateTransferSchedule';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('Transfer Schedule', $mockOperationId, '200');
         
         $dest_account_digital_signature = $this->generateMockData('string');
         
@@ -181,7 +196,7 @@ class TransferScheduleApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -206,6 +221,6 @@ class TransferScheduleApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

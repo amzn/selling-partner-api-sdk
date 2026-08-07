@@ -74,7 +74,10 @@ class CreateContainerLabelApiTest extends TestCase
 
     public function testcreateContainerLabel()
     {
-        $this->instructBackendMock('createContainerLabel', 'createContainerLabel', '200');
+        $operationId = 'createContainerLabel';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('createContainerLabel', $mockOperationId, '200');
         
         $body = $this->generateMockData('\SpApi\Model\vendor\df\shipping\v2021_12_28\CreateContainerLabelRequest');
         
@@ -107,7 +110,7 @@ class CreateContainerLabelApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -132,6 +135,6 @@ class CreateContainerLabelApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

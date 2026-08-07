@@ -74,7 +74,10 @@ class FbaInventoryApiTest extends TestCase
 
     public function testaddInventory()
     {
-        $this->instructBackendMock('fbaInventory', 'addInventory', '200');
+        $operationId = 'addInventory';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaInventory', $mockOperationId, '200');
         
         $x_amzn_idempotency_token = $this->generateMockData('string');
         
@@ -90,7 +93,10 @@ class FbaInventoryApiTest extends TestCase
 
     public function testcreateInventoryItem()
     {
-        $this->instructBackendMock('fbaInventory', 'createInventoryItem', '200');
+        $operationId = 'createInventoryItem';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaInventory', $mockOperationId, '200');
         
         $create_inventory_item_request_body = $this->generateMockData('\SpApi\Model\fba\inventory\v1\CreateInventoryItemRequest');
         
@@ -104,7 +110,10 @@ class FbaInventoryApiTest extends TestCase
 
     public function testdeleteInventoryItem()
     {
-        $this->instructBackendMock('fbaInventory', 'deleteInventoryItem', '200');
+        $operationId = 'deleteInventoryItem';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaInventory', $mockOperationId, '200');
         
         $seller_sku = $this->generateMockData('string');
         
@@ -120,7 +129,10 @@ class FbaInventoryApiTest extends TestCase
 
     public function testgetInventorySummaries()
     {
-        $this->instructBackendMock('fbaInventory', 'getInventorySummaries', '200');
+        $operationId = 'getInventorySummaries';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaInventory', $mockOperationId, '200');
         
         $granularity_type = $this->generateMockData('string');
         
@@ -157,7 +169,7 @@ class FbaInventoryApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -182,6 +194,6 @@ class FbaInventoryApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

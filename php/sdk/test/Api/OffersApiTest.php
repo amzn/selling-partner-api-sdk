@@ -74,7 +74,10 @@ class OffersApiTest extends TestCase
 
     public function testlistOfferMetrics()
     {
-        $this->instructBackendMock('offers', 'listOfferMetrics', '200');
+        $operationId = 'listOfferMetrics';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('offers', $mockOperationId, '200');
         
 
         $response = $this->api->listOfferMetricsWithHttpInfo(null);
@@ -86,7 +89,10 @@ class OffersApiTest extends TestCase
 
     public function testlistOffers()
     {
-        $this->instructBackendMock('offers', 'listOffers', '200');
+        $operationId = 'listOffers';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('offers', $mockOperationId, '200');
         
 
         $response = $this->api->listOffersWithHttpInfo(null);
@@ -117,7 +123,7 @@ class OffersApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -142,6 +148,6 @@ class OffersApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

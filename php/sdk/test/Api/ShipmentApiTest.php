@@ -74,7 +74,10 @@ class ShipmentApiTest extends TestCase
 
     public function testupdateShipmentStatus()
     {
-        $this->instructBackendMock('shipment', 'updateShipmentStatus', '204');
+        $operationId = 'updateShipmentStatus';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('shipment', $mockOperationId, '204');
         
         $order_id = $this->generateMockData('string');
         
@@ -107,7 +110,7 @@ class ShipmentApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -132,6 +135,6 @@ class ShipmentApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

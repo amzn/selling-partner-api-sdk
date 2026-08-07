@@ -74,7 +74,10 @@ class FbaInboundApiTest extends TestCase
 
     public function testgetItemEligibilityPreview()
     {
-        $this->instructBackendMock('fbaInbound', 'getItemEligibilityPreview', '200');
+        $operationId = 'getItemEligibilityPreview';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fbaInbound', $mockOperationId, '200');
         
         $asin = $this->generateMockData('string');
         
@@ -109,7 +112,7 @@ class FbaInboundApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -134,6 +137,6 @@ class FbaInboundApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }
