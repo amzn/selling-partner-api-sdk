@@ -89,7 +89,8 @@ jobs:
           java -jar openapi-generator-cli-7.9.0.jar generate -i ../../selling-partner-api-models/models/external-fulfillment/externalFulfillmentReturns_2024-09-11.json -g csharp -t ../templates/csharp -o sdk -c config/config.json --additional-properties=modelPackage=Model.externalFulfillment.returns.v2024_09_11,apiPackage=Api.externalFulfillment.returns.v2024_09_11 && \
           java -jar openapi-generator-cli-7.9.0.jar generate -i ../../selling-partner-api-models/models/orders-api-model/orders_2026-01-01.json -g csharp -t ../templates/csharp -o sdk -c config/config.json --additional-properties=modelPackage=Model.orders.v2026_01_01,apiPackage=Api.orders.v2026_01_01 && \
           java -jar openapi-generator-cli-7.9.0.jar generate -i ../../selling-partner-api-models/models/finances-api-model/financesInvoices_2026-06-25.json -g csharp -t ../templates/csharp -o sdk -c config/config.json --additional-properties=modelPackage=Model.financesInvoices.v2026_06_25,apiPackage=Api.financesInvoices.v2026_06_25 && \
-          java -jar openapi-generator-cli-7.9.0.jar generate -i ../../selling-partner-api-models/models/fulfillment-outbound-api-model/fulfillmentOutbound_2026-07-04.json -g csharp -t ../templates/csharp -o sdk -c config/config.json --additional-properties=modelPackage=Model.fulfillment.outbound.v2026_07_04,apiPackage=Api.fulfillment.outbound.v2026_07_04
+          java -jar openapi-generator-cli-7.9.0.jar generate -i ../../selling-partner-api-models/models/fulfillment-outbound-api-model/fulfillmentOutbound_2026-07-04.json -g csharp -t ../templates/csharp -o sdk -c config/config.json --additional-properties=modelPackage=Model.fulfillment.outbound.v2026_07_04,apiPackage=Api.fulfillment.outbound.v2026_07_04 && \
+          java -jar openapi-generator-cli-7.9.0.jar generate -i ../../selling-partner-api-models/models/tracking-api-model/tracking_2026-01-30.json -g csharp -t ../templates/csharp -o sdk -c config/config.json --additional-properties=modelPackage=Model.tracking.v2026_01_30,apiPackage=Api.tracking.v2026_01_30
       - name: Print workspace path
         run: echo "$GITHUB_WORKSPACE"
         env:
@@ -118,6 +119,5 @@ jobs:
             Update Csharp SDK with latest changes from upstream.
           branch: feature/update-csharp-sdk
           delete-branch: true  # Overwrite if branch exists
-          assignees: xujiache
           path: ./selling-partner-api-sdk
           token: ${{ secrets.MAFGE_PAT}}
