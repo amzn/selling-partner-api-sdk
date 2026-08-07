@@ -22,6 +22,11 @@ jobs:
           extensions: json, curl, simplexml, spl, pcre
           coverage: xdebug
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
       - name: Validate composer.json and composer.lock
         working-directory: ./php/sdk
         run: composer validate --strict
@@ -30,37 +35,19 @@ jobs:
         working-directory: ./php/sdk
         run: composer install --prefer-dist --no-progress
 
-      - name: Create .env file to test SP-API endpoints
-        working-directory: ./php
-        env:
-          SP_API_CLIENT_ID: ${{ secrets.SP_API_CLIENT_ID }}
-          SP_API_CLIENT_SECRET: ${{ secrets.SP_API_CLIENT_SECRET }}
-          SP_API_REFRESH_TOKEN: ${{ secrets.SP_API_REFRESH_TOKEN }}
-          VENDOR_API_CLIENT_ID: ${{ secrets.VENDOR_API_CLIENT_ID }}
-          VENDOR_API_CLIENT_SECRET: ${{ secrets.VENDOR_API_CLIENT_SECRET }}
-          VENDOR_API_REFRESH_TOKEN: ${{ secrets.VENDOR_API_REFRESH_TOKEN }}
-        run: |
-          echo "SP_API_CLIENT_ID=$SP_API_CLIENT_ID" >> .env
-          echo "SP_API_CLIENT_SECRET=$SP_API_CLIENT_SECRET" >> .env
-          echo "SP_API_REFRESH_TOKEN=$SP_API_REFRESH_TOKEN" >> .env
-          echo "SP_API_ENDPOINT=https://api.amazon.com/auth/o2/token" >> .env
-          echo "SP_API_ENDPOINT_HOST=https://sandbox.sellingpartnerapi-fe.amazon.com" >> .env
-          echo "SP_API_MARKETPLACE=A1VC38T7YXB528" >> .env
-          echo "VENDOR_API_CLIENT_ID=$VENDOR_API_CLIENT_ID" >> .env
-          echo "VENDOR_API_CLIENT_SECRET=$VENDOR_API_CLIENT_SECRET" >> .env
-          echo "VENDOR_API_REFRESH_TOKEN=$VENDOR_API_REFRESH_TOKEN" >> .env
-          echo "VENDOR_API_ENDPOINT=https://api.amazon.com/auth/o2/token" >> .env
-          echo "VENDOR_API_ENDPOINT_HOST=https://sandbox.sellingpartnerapi-na.amazon.com" >> .env
-          echo "VENDOR_API_MARKETPLACE=A2Q3Y263D00KWC" >> .env
+      - name: Install backend mock dependencies
+        working-directory: ./test
+        run: npm install
 
-      - name: Test with PHPUnit and cleanup
+      - name: Start backend mock
+        working-directory: ./test
+        run: node src/index.js &
+
+      - name: Run tests
         working-directory: ./php/sdk
         run: |
           mkdir -p build/reports
-          if ! vendor/bin/phpunit test/Api --testdox --log-junit build/reports/junit.xml; then
-            echo "Tests failed"
-            exit 1
-          fi
+          vendor/bin/phpunit --testdox
 
       - name: Archive reports
         if: always()

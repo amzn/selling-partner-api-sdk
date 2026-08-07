@@ -4,5 +4,5 @@
 git_push.sh
 README.md
 docs/
-phpunit.xml.dist
+phpunit.xml
 .php-cs-fixer.dist.php
