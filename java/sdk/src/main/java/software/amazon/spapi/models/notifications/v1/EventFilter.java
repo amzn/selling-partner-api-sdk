@@ -35,6 +35,9 @@ public class EventFilter extends AggregationFilter {
     @SerializedName("orderChangeTypes")
     private OrderChangeTypes orderChangeTypes = null;
 
+    @SerializedName("trackingIdentifier")
+    private TrackingIdentifier trackingIdentifier = null;
+
     /**
      * An &#x60;eventFilterType&#x60; value that the &#x60;notificationType&#x60; supports. The subscription service
      * uses the &#x60;eventFilterType&#x60; to determine the type of event filter. To determine if a specific
@@ -46,7 +49,9 @@ public class EventFilter extends AggregationFilter {
         @SerializedName("ANY_OFFER_CHANGED")
         ANY_OFFER_CHANGED("ANY_OFFER_CHANGED"),
         @SerializedName("ORDER_CHANGE")
-        ORDER_CHANGE("ORDER_CHANGE");
+        ORDER_CHANGE("ORDER_CHANGE"),
+        @SerializedName("SHIPMENT_TRACKING_MILESTONE_CHANGED")
+        SHIPMENT_TRACKING_MILESTONE_CHANGED("SHIPMENT_TRACKING_MILESTONE_CHANGED");
 
         private String value;
 
@@ -127,6 +132,25 @@ public class EventFilter extends AggregationFilter {
         this.orderChangeTypes = orderChangeTypes;
     }
 
+    public EventFilter trackingIdentifier(TrackingIdentifier trackingIdentifier) {
+        this.trackingIdentifier = trackingIdentifier;
+        return this;
+    }
+
+    /**
+     * Get trackingIdentifier
+     *
+     * @return trackingIdentifier
+     */
+    @Schema(description = "")
+    public TrackingIdentifier getTrackingIdentifier() {
+        return trackingIdentifier;
+    }
+
+    public void setTrackingIdentifier(TrackingIdentifier trackingIdentifier) {
+        this.trackingIdentifier = trackingIdentifier;
+    }
+
     public EventFilter eventFilterType(EventFilterTypeEnum eventFilterType) {
         this.eventFilterType = eventFilterType;
         return this;
@@ -163,13 +187,14 @@ public class EventFilter extends AggregationFilter {
         EventFilter eventFilter = (EventFilter) o;
         return Objects.equals(this.marketplaceIds, eventFilter.marketplaceIds)
                 && Objects.equals(this.orderChangeTypes, eventFilter.orderChangeTypes)
+                && Objects.equals(this.trackingIdentifier, eventFilter.trackingIdentifier)
                 && Objects.equals(this.eventFilterType, eventFilter.eventFilterType)
                 && super.equals(o);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(marketplaceIds, orderChangeTypes, eventFilterType, super.hashCode());
+        return Objects.hash(marketplaceIds, orderChangeTypes, trackingIdentifier, eventFilterType, super.hashCode());
     }
 
     @Override
@@ -182,6 +207,9 @@ public class EventFilter extends AggregationFilter {
                 .append("\n");
         sb.append("    orderChangeTypes: ")
                 .append(toIndentedString(orderChangeTypes))
+                .append("\n");
+        sb.append("    trackingIdentifier: ")
+                .append(toIndentedString(trackingIdentifier))
                 .append("\n");
         sb.append("    eventFilterType: ")
                 .append(toIndentedString(eventFilterType))

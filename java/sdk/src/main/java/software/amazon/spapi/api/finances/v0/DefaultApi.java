@@ -886,13 +886,15 @@ public class DefaultApi {
 
     /**
      * Returns all financial events for the specified financial event group. Orders from the last 48 hours might not be
-     * included in financial events. **Note:** This operation only retrieves a group&#x27;s data for the past two years.
-     * A request for data spanning more than two years produces an empty response. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput can have higher rate and burst values than those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     * included in financial events. **Note:** Deferred events don&#x27;t appear in the
+     * &#x60;listFinancialEventsByGroupId&#x60; response until they are released. **Note:** This operation only
+     * retrieves a group&#x27;s data for the past two years. A request for data spanning more than two years produces an
+     * empty response. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param eventGroupId The identifier of the financial event group to which the events belong. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
@@ -930,13 +932,15 @@ public class DefaultApi {
 
     /**
      * Returns all financial events for the specified financial event group. Orders from the last 48 hours might not be
-     * included in financial events. **Note:** This operation only retrieves a group&#x27;s data for the past two years.
-     * A request for data spanning more than two years produces an empty response. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput can have higher rate and burst values than those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     * included in financial events. **Note:** Deferred events don&#x27;t appear in the
+     * &#x60;listFinancialEventsByGroupId&#x60; response until they are released. **Note:** This operation only
+     * retrieves a group&#x27;s data for the past two years. A request for data spanning more than two years produces an
+     * empty response. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param eventGroupId The identifier of the financial event group to which the events belong. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
@@ -972,13 +976,15 @@ public class DefaultApi {
 
     /**
      * Returns all financial events for the specified financial event group. Orders from the last 48 hours might not be
-     * included in financial events. **Note:** This operation only retrieves a group&#x27;s data for the past two years.
-     * A request for data spanning more than two years produces an empty response. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput can have higher rate and burst values than those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     * included in financial events. **Note:** Deferred events don&#x27;t appear in the
+     * &#x60;listFinancialEventsByGroupId&#x60; response until they are released. **Note:** This operation only
+     * retrieves a group&#x27;s data for the past two years. A request for data spanning more than two years produces an
+     * empty response. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param eventGroupId The identifier of the financial event group to which the events belong. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
@@ -1027,13 +1033,15 @@ public class DefaultApi {
 
     /**
      * Returns all financial events for the specified financial event group. Orders from the last 48 hours might not be
-     * included in financial events. **Note:** This operation only retrieves a group&#x27;s data for the past two years.
-     * A request for data spanning more than two years produces an empty response. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput can have higher rate and burst values than those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     * included in financial events. **Note:** Deferred events don&#x27;t appear in the
+     * &#x60;listFinancialEventsByGroupId&#x60; response until they are released. **Note:** This operation only
+     * retrieves a group&#x27;s data for the past two years. A request for data spanning more than two years produces an
+     * empty response. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param eventGroupId The identifier of the financial event group to which the events belong. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
@@ -1068,13 +1076,14 @@ public class DefaultApi {
 
     /**
      * (asynchronously) Returns all financial events for the specified financial event group. Orders from the last 48
-     * hours might not be included in financial events. **Note:** This operation only retrieves a group&#x27;s data for
-     * the past two years. A request for data spanning more than two years produces an empty response. **Usage Plan:** |
-     * Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
-     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
-     * preceding table contains the default rate and burst values for this operation. Selling partners whose business
-     * demands require higher throughput can have higher rate and burst values than those shown here. For more
-     * information, refer to [Usage Plans and Rate
+     * hours might not be included in financial events. **Note:** Deferred events don&#x27;t appear in the
+     * &#x60;listFinancialEventsByGroupId&#x60; response until they are released. **Note:** This operation only
+     * retrieves a group&#x27;s data for the past two years. A request for data spanning more than two years produces an
+     * empty response. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param eventGroupId The identifier of the financial event group to which the events belong. (required)
@@ -1111,13 +1120,14 @@ public class DefaultApi {
     }
     /**
      * (asynchronously) Returns all financial events for the specified financial event group. Orders from the last 48
-     * hours might not be included in financial events. **Note:** This operation only retrieves a group&#x27;s data for
-     * the past two years. A request for data spanning more than two years produces an empty response. **Usage Plan:** |
-     * Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
-     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
-     * preceding table contains the default rate and burst values for this operation. Selling partners whose business
-     * demands require higher throughput can have higher rate and burst values than those shown here. For more
-     * information, refer to [Usage Plans and Rate
+     * hours might not be included in financial events. **Note:** Deferred events don&#x27;t appear in the
+     * &#x60;listFinancialEventsByGroupId&#x60; response until they are released. **Note:** This operation only
+     * retrieves a group&#x27;s data for the past two years. A request for data spanning more than two years produces an
+     * empty response. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param eventGroupId The identifier of the financial event group to which the events belong. (required)
@@ -1255,10 +1265,11 @@ public class DefaultApi {
 
     /**
      * Returns all financial events for the specified order. Orders from the last 48 hours might not be included in
-     * financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The preceding table contains the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * financial events. **Note:** Deferred events don&#x27;t appear in the &#x60;listFinancialEventsByOrderId&#x60;
+     * response until they are released. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 |
+     * 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied
+     * to the requested operation, when available. The preceding table contains the default rate and burst values for
+     * this operation. Selling partners whose business demands require higher throughput can have higher rate and burst
      * values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
@@ -1284,10 +1295,11 @@ public class DefaultApi {
 
     /**
      * Returns all financial events for the specified order. Orders from the last 48 hours might not be included in
-     * financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The preceding table contains the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * financial events. **Note:** Deferred events don&#x27;t appear in the &#x60;listFinancialEventsByOrderId&#x60;
+     * response until they are released. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 |
+     * 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied
+     * to the requested operation, when available. The preceding table contains the default rate and burst values for
+     * this operation. Selling partners whose business demands require higher throughput can have higher rate and burst
      * values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
@@ -1311,10 +1323,11 @@ public class DefaultApi {
 
     /**
      * Returns all financial events for the specified order. Orders from the last 48 hours might not be included in
-     * financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The preceding table contains the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * financial events. **Note:** Deferred events don&#x27;t appear in the &#x60;listFinancialEventsByOrderId&#x60;
+     * response until they are released. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 |
+     * 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied
+     * to the requested operation, when available. The preceding table contains the default rate and burst values for
+     * this operation. Selling partners whose business demands require higher throughput can have higher rate and burst
      * values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
@@ -1350,10 +1363,11 @@ public class DefaultApi {
 
     /**
      * Returns all financial events for the specified order. Orders from the last 48 hours might not be included in
-     * financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The preceding table contains the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * financial events. **Note:** Deferred events don&#x27;t appear in the &#x60;listFinancialEventsByOrderId&#x60;
+     * response until they are released. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 |
+     * 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied
+     * to the requested operation, when available. The preceding table contains the default rate and burst values for
+     * this operation. Selling partners whose business demands require higher throughput can have higher rate and burst
      * values than those shown here. For more information, refer to [Usage Plans and Rate
      * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
@@ -1375,12 +1389,13 @@ public class DefaultApi {
 
     /**
      * (asynchronously) Returns all financial events for the specified order. Orders from the last 48 hours might not be
-     * included in financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |
-     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
-     * the requested operation, when available. The preceding table contains the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate
-     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     * included in financial events. **Note:** Deferred events don&#x27;t appear in the
+     * &#x60;listFinancialEventsByOrderId&#x60; response until they are released. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput can have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
@@ -1404,12 +1419,13 @@ public class DefaultApi {
     }
     /**
      * (asynchronously) Returns all financial events for the specified order. Orders from the last 48 hours might not be
-     * included in financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |
-     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
-     * the requested operation, when available. The preceding table contains the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate
-     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     * included in financial events. **Note:** Deferred events don&#x27;t appear in the
+     * &#x60;listFinancialEventsByOrderId&#x60; response until they are released. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput can have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
