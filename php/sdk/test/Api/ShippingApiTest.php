@@ -32,6 +32,7 @@
 namespace SpApi\Test\Api;
 
 use GuzzleHttp\Client;
+use ReflectionClass;
 use PHPUnit\Framework\TestCase;
 use SpApi\Api\shipping\v2\ShippingApi;
 use SpApi\Configuration;
@@ -400,8 +401,9 @@ class ShippingApiTest extends TestCase
         $body = $this->generateMockData('\SpApi\Model\shipping\v2\SubmitNdrFeedbackRequest');
         
 
-        $this->api->submitNdrFeedbackWithHttpInfo($body, null);
+        $response = $this->api->submitNdrFeedbackWithHttpInfo($body, null);
 
+        $this->assertEquals(204, $response[1]);
     }
 
 
@@ -440,36 +442,57 @@ class ShippingApiTest extends TestCase
 
     private function generateMockData(string $dataType, bool $isArray = false)
     {
+        // Handle array and specific object types
         if ($isArray) {
+            $elementType = substr($dataType, 0, -2);
             return [$this->generateMockData($dataType)];
         }
-
-        $basicTypes = [
-            'string' => 'TestString123',
-            'int' => 123,
-            'integer' => 123,
-            'float' => 123.45,
-            'bool' => true,
-            'boolean' => true,
-            'object' => new \stdClass(),
-            '\DateTime' => new \DateTime(),
-            '\SplFileObject' => null,
-        ];
-
-        $lowerType = strtolower($dataType);
-        if (isset($basicTypes[$lowerType])) {
-            return $basicTypes[$lowerType];
+        if ($dataType === '\DateTime' || $dataType === 'DateTime') {
+            return new \DateTime();
         }
 
-        // For model objects, try to instantiate them
         if (class_exists($dataType)) {
-            try {
-                return new $dataType();
-            } catch (\Throwable $e) {
-                return null;
+            $reflectionClass = new ReflectionClass($dataType);
+            $instance = $reflectionClass->newInstance();
+            // Enum
+            if (method_exists($instance, 'getAllowableEnumValues')) {
+                $allowableValues = $instance::getAllowableEnumValues();
+                return reset($allowableValues);
             }
+            // Populate object properties recursively
+            $openAPITypes = $instance::openAPITypes();
+            $setters = $dataType::setters();
+
+            foreach ($openAPITypes as $propertyName => $propertyType) {
+                // Skip if the property is nullable
+                if ($dataType::isNullable($propertyName)) {
+                    continue;
+                }
+
+                // Generate dummy value based on the type
+                $dummyValue = self::getDummyValueForType($propertyType, $propertyName);
+
+                // Check if a setter exists for the property
+                if (array_key_exists($propertyName, $setters)) {
+                    $setterMethod = $setters[$propertyName];
+                    if (method_exists($instance, $setterMethod)) {
+                        // Call the setter method with the dummy value
+                        $instance->$setterMethod($dummyValue);
+                    }
+                }
+            }
+
+            return $instance;
         }
 
-        return 'TestString123';
+        // Handle primitive types
+        return match ($dataType) {
+            'int' => 1,
+            'float' => 1.0,
+            'bool' => false,
+            'string' => 'test',
+            'array' => ["1"],
+            default => null,
+        };
     }
 }
