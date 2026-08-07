@@ -80,7 +80,7 @@ class MerchantFulfillmentApiTest extends TestCase
         $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
         $this->instructBackendMock('merchantFulfillment', $mockOperationId, '200');
         
-        $shipment_id = $this->generateMockData('string');
+        $shipment_id = $this->generateMockStringForPattern('/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/');
         
 
         $response = $this->api->cancelShipmentWithHttpInfo($shipment_id);
@@ -148,7 +148,7 @@ class MerchantFulfillmentApiTest extends TestCase
         $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
         $this->instructBackendMock('merchantFulfillment', $mockOperationId, '200');
         
-        $shipment_id = $this->generateMockData('string');
+        $shipment_id = $this->generateMockStringForPattern('/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/');
         
 
         $response = $this->api->getShipmentWithHttpInfo($shipment_id);
@@ -172,12 +172,34 @@ class MerchantFulfillmentApiTest extends TestCase
         }
     }
 
+    private function generateMockStringForPattern(string $pattern): string
+    {
+        // UUID pattern
+        if (str_contains($pattern, '[0-9a-fA-F]{8}')) {
+            return 'be7a0a53-00c3-4f6f-a63a-639f76ee9253';
+        }
+        // Uppercase alphanumeric with underscores
+        if ($pattern === '/^[A-Z0-9_]*$/') {
+            return 'MOCK_VALUE';
+        }
+        // Generic alphanumeric
+        return 'MOCK1234567890';
+    }
+
     private function generateMockData(string $dataType, bool $isArray = false)
     {
-        // Handle array and specific object types
+        // Detect array types by checking for [] suffix
+        if (!$isArray && str_ends_with($dataType, '[]')) {
+            $elementType = substr($dataType, 0, -2);
+            return [$this->generateMockData($elementType)];
+        }
         if ($isArray) {
             $elementType = substr($dataType, 0, -2);
-            return [$this->generateMockData($dataType)];
+            return [$this->generateMockData($elementType)];
+        }
+        // Handle map/generic array types like array<string,object>
+        if (str_starts_with($dataType, 'array<') || $dataType === 'object') {
+            return [];
         }
         if ($dataType === '\DateTime' || $dataType === 'DateTime') {
             return new \DateTime();
@@ -201,15 +223,31 @@ class MerchantFulfillmentApiTest extends TestCase
                     continue;
                 }
 
-                // Generate dummy value based on the type
-                $dummyValue = $this->generateMockData($propertyType, $propertyName);
+                // Check for property-level enum constraints (convert snake_case to PascalCase)
+                $pascalCaseProperty = str_replace('_', '', ucwords($propertyName, '_'));
+                $allowableMethodName = 'get' . $pascalCaseProperty . 'AllowableValues';
+                if (method_exists($instance, $allowableMethodName)) {
+                    $allowableValues = $instance->$allowableMethodName();
+                    if (!empty($allowableValues)) {
+                        $dummyValue = reset($allowableValues);
+                    } else {
+                        $dummyValue = $this->generateMockData($propertyType);
+                    }
+                } else {
+                    // Generate dummy value based on the type
+                    $dummyValue = $this->generateMockData($propertyType);
+                }
 
                 // Check if a setter exists for the property
                 if (array_key_exists($propertyName, $setters)) {
                     $setterMethod = $setters[$propertyName];
                     if (method_exists($instance, $setterMethod)) {
-                        // Call the setter method with the dummy value
-                        $instance->$setterMethod($dummyValue);
+                        try {
+                            $instance->$setterMethod($dummyValue);
+                        } catch (\InvalidArgumentException $e) {
+                            // Bypass validation by setting directly via ArrayAccess
+                            $instance[$propertyName] = $dummyValue;
+                        }
                     }
                 }
             }
@@ -222,7 +260,7 @@ class MerchantFulfillmentApiTest extends TestCase
             'int' => 1,
             'float' => 1.0,
             'bool' => false,
-            'string' => 'test',
+            'string' => 'TEST1234AB',
             'array' => ["1"],
             default => null,
         };
