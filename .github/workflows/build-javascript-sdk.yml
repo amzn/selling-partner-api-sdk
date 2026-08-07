@@ -103,7 +103,8 @@ jobs:
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/external-fulfillment/externalFulfillmentReturns_2024-09-11.json -g javascript -t ../templates/javascript -o sdk -c config/config.json --model-package model --api-package api --invoker-package externalfulfillmentreturns_v2024_09_11 && \
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/orders-api-model/orders_2026-01-01.json -g javascript -t ../templates/javascript -o sdk -c config/config.json --model-package model --api-package api --invoker-package orders_v2026_01_01 && \
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/finances-api-model/financesInvoices_2026-06-25.json -g javascript -t ../templates/javascript -o sdk -c config/config.json --model-package model --api-package api --invoker-package financesinvoices_v2026_06_25  && \
-          openapi-generator-cli generate -i ../../selling-partner-api-models/models/fulfillment-outbound-api-model/fulfillmentOutbound_2026-07-04.json -g javascript -t ../templates/javascript -o sdk -c config/config.json --model-package model --api-package api --invoker-package fulfillmentoutbound_v2026_07_04
+          openapi-generator-cli generate -i ../../selling-partner-api-models/models/fulfillment-outbound-api-model/fulfillmentOutbound_2026-07-04.json -g javascript -t ../templates/javascript -o sdk -c config/config.json --model-package model --api-package api --invoker-package fulfillmentoutbound_v2026_07_04 && \
+          openapi-generator-cli generate -i ../../selling-partner-api-models/models/tracking-api-model/tracking_2026-01-30.json -g javascript -t ../templates/javascript -o sdk -c config/config.json --model-package model --api-package api --invoker-package tracking_v2026_01_30
       - name: Generate consolidated index.js file
         working-directory: ./selling-partner-api-sdk/javascript
         run: |
@@ -124,6 +125,5 @@ jobs:
           body: |
             Update JavaScript SDK with latest changes from upstream.
           branch: feature/update-javascript-sdk
-          assignees: Tong8s
           path: ./selling-partner-api-sdk
           token: ${{ secrets.MAFGE_PAT }}

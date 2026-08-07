@@ -156,6 +156,7 @@ export const defaultRateLimitMap = {
   "MessagingApi-createUnexpectedProblem": [1, 5],
   "MessagingApi-sendInvoice": [1, 5],
   "NotificationsApi-getSubscription": [1, 5],
+  "NotificationsApi-getSubscriptions": [1, 5],
   "NotificationsApi-createSubscription": [1, 5],
   "NotificationsApi-getSubscriptionById": [1, 5],
   "NotificationsApi-deleteSubscriptionById": [1, 5],
@@ -341,6 +342,7 @@ export const defaultRateLimitMap = {
   "FulfillmentOutboundApi-listOrder": [2, 30],
   "FulfillmentOrdersApi-listOrder": [2, 30],
   "FulfillmentOutboundApi-createOrder": [2, 30],
-  "FulfillmentOrdersApi-createOrder": [2, 30]
+  "FulfillmentOrdersApi-createOrder": [2, 30],
+  "TrackingApi-getShipmentTracking": [2, 30]
 }
 

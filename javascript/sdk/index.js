@@ -42,6 +42,7 @@ export * as ShippingSpApi from './src/shipping_v2/index.js';
 export * as SolicitationsSpApi from './src/solicitations_v1/index.js';
 export * as SupplysourcesSpApi from './src/supplysources_v2020_07_01/index.js';
 export * as TokensSpApi from './src/tokens_v2021_03_01/index.js';
+export * as TrackingSpApi from './src/tracking_v2026_01_30/index.js';
 export * as TransfersSpApi from './src/transfers_v2024_06_01/index.js';
 export * as UploadsSpApi from './src/uploads_v2020_11_01/index.js';
 export * as VehiclesSpApi from './src/vehicles_v2024_11_01/index.js';
