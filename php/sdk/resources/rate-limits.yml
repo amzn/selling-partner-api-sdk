@@ -514,6 +514,9 @@ MessagingApi-sendInvoice:
 NotificationsApi-getSubscription:
   - 1
   - 5
+NotificationsApi-getSubscriptions:
+  - 1
+  - 5
 NotificationsApi-createSubscription:
   - 1
   - 5
@@ -1136,5 +1139,9 @@ FulfillmentOutboundApi-createOrder:
   - 2
   - 30
 FulfillmentOrdersApi-createOrder:
+  - 2
+  - 30
+# Tracking API
+TrackingApi-getShipmentTracking:
   - 2
   - 30
