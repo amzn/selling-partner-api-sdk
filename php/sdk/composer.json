@@ -37,6 +37,9 @@
         "squizlabs/php_codesniffer": "^3.7",
         "friendsofphp/php-cs-fixer": "^3.75"
     },
+    "scripts": {
+        "test": "phpunit"
+    },
     "autoload": {
         "psr-4": {
             "SpApi\\AuthAndAuth\\": "src/authandauth",

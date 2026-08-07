@@ -36,6 +36,7 @@ jobs:
           find sdk -mindepth 1 -maxdepth 1 \
               ! -name 'src' \
               ! -name '.*' \
+              ! -name 'phpunit.xml' \
               -exec rm -rf {} +
       - name: Execute openapi codegen
         working-directory: ./selling-partner-api-sdk/php
