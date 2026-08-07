@@ -48,7 +48,13 @@ namespace software.amzn.spapi.Model.notifications.v1
             /// Enum ORDERCHANGE for value: ORDER_CHANGE
             /// </summary>
             [EnumMember(Value = "ORDER_CHANGE")]
-            ORDERCHANGE = 2
+            ORDERCHANGE = 2,
+
+            /// <summary>
+            /// Enum SHIPMENTTRACKINGMILESTONECHANGED for value: SHIPMENT_TRACKING_MILESTONE_CHANGED
+            /// </summary>
+            [EnumMember(Value = "SHIPMENT_TRACKING_MILESTONE_CHANGED")]
+            SHIPMENTTRACKINGMILESTONECHANGED = 3
         }
 
 
@@ -69,13 +75,15 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// <param name="aggregationSettings">aggregationSettings.</param>
         /// <param name="marketplaceIds">A list of marketplace identifiers you can subscribe to (for example, &#x60;ATVPDKIKX0DER&#x60;). To receive notifications in every marketplace, do not provide this list..</param>
         /// <param name="orderChangeTypes">A list of order change types you can subscribe to (for example, &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list..</param>
+        /// <param name="trackingIdentifier">trackingIdentifier.</param>
         /// <param name="eventFilterType">An &#x60;eventFilterType&#x60; value that the &#x60;notificationType&#x60; supports. The subscription service uses the &#x60;eventFilterType&#x60; to determine the type of event filter. To determine if a specific &#x60;notificationType&#x60; supports an &#x60;eventFilterType&#x60;, refer to [Notification Type Values]( https://developer-docs.amazon.com/sp-api/docs/notification-type-values). (required).</param>
-        public EventFilter(AggregationSettings? aggregationSettings = default(AggregationSettings?), List<string>? marketplaceIds = default(List<string>?), List<OrderChangeTypeEnum>? orderChangeTypes = default(List<OrderChangeTypeEnum>?), EventFilterTypeEnum eventFilterType = default(EventFilterTypeEnum))
+        public EventFilter(AggregationSettings? aggregationSettings = default(AggregationSettings?), List<string>? marketplaceIds = default(List<string>?), List<OrderChangeTypeEnum>? orderChangeTypes = default(List<OrderChangeTypeEnum>?), TrackingIdentifier? trackingIdentifier = default(TrackingIdentifier?), EventFilterTypeEnum eventFilterType = default(EventFilterTypeEnum))
         {
             this.EventFilterType = eventFilterType;
             this.AggregationSettings = aggregationSettings;
             this.MarketplaceIds = marketplaceIds;
             this.OrderChangeTypes = orderChangeTypes;
+            this.TrackingIdentifier = trackingIdentifier;
         }
 
         /// <summary>
@@ -99,6 +107,12 @@ namespace software.amzn.spapi.Model.notifications.v1
         public List<OrderChangeTypeEnum>? OrderChangeTypes { get; set; }
 
         /// <summary>
+        /// Gets or Sets TrackingIdentifier
+        /// </summary>
+        [DataMember(Name = "trackingIdentifier", EmitDefaultValue = false)]
+        public TrackingIdentifier? TrackingIdentifier { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -109,6 +123,7 @@ namespace software.amzn.spapi.Model.notifications.v1
             sb.Append("  AggregationSettings: ").Append(AggregationSettings).Append("\n");
             sb.Append("  MarketplaceIds: ").Append(MarketplaceIds).Append("\n");
             sb.Append("  OrderChangeTypes: ").Append(OrderChangeTypes).Append("\n");
+            sb.Append("  TrackingIdentifier: ").Append(TrackingIdentifier).Append("\n");
             sb.Append("  EventFilterType: ").Append(EventFilterType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

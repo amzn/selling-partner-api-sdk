@@ -203,6 +203,33 @@ namespace software.amzn.spapi.Api.notifications.v1
         /// 
         /// </summary>
         /// <remarks>
+        /// Returns information about subscriptions of the specified notification type. You can use this API to retrieve all subscriptions when multiple subscriptions exist for a notification type (for example, when using filter expressions).  The operation returns all subscriptions for the caller&#39;s party.  &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the operation returns subscriptions across all payload versions.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="notificationTypes">A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide).</param>
+        /// <param name="payloadVersion">The version of the payload object to be used in the notification. (optional)</param>
+        /// <param name="pageSize">The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (optional, default to 30)</param>
+        /// <param name="nextToken">A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page. (optional)</param>
+        /// <returns>GetSubscriptionsResponse</returns>
+        GetSubscriptionsResponse GetSubscriptions (List<string> notificationTypes, string? payloadVersion = null, int? pageSize = null, string? nextToken = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns information about subscriptions of the specified notification type. You can use this API to retrieve all subscriptions when multiple subscriptions exist for a notification type (for example, when using filter expressions).  The operation returns all subscriptions for the caller&#39;s party.  &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the operation returns subscriptions across all payload versions.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="notificationTypes">A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide).</param>
+        /// <param name="payloadVersion">The version of the payload object to be used in the notification. (optional)</param>
+        /// <param name="pageSize">The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (optional, default to 30)</param>
+        /// <param name="nextToken">A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page. (optional)</param>
+        /// <returns>ApiResponse of GetSubscriptionsResponse</returns>
+        ApiResponse<GetSubscriptionsResponse> GetSubscriptionsWithHttpInfo (List<string> notificationTypes, string? payloadVersion = null, int? pageSize = null, string? nextToken = null);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Sends a mock notification of the specified type to your SQS. The &#x60;sendTestNotification&#x60; API is grantless. For more information, see \&quot;Grantless operations\&quot; in the Selling Partner API Developer Guide.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -398,6 +425,33 @@ namespace software.amzn.spapi.Api.notifications.v1
         /// <param name="notificationType">The type of notification.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide).</param>
         /// <returns>Task of ApiResponse (GetSubscriptionByIdResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetSubscriptionByIdResponse>> GetSubscriptionByIdAsyncWithHttpInfo (string subscriptionId, string notificationType);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns information about subscriptions of the specified notification type. You can use this API to retrieve all subscriptions when multiple subscriptions exist for a notification type (for example, when using filter expressions).  The operation returns all subscriptions for the caller&#39;s party.  &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the operation returns subscriptions across all payload versions.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="notificationTypes">A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide).</param>
+        /// <param name="payloadVersion">The version of the payload object to be used in the notification. (optional)</param>
+        /// <param name="pageSize">The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (optional, default to 30)</param>
+        /// <param name="nextToken">A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page. (optional)</param>
+        /// <returns>Task of GetSubscriptionsResponse</returns>
+        System.Threading.Tasks.Task<GetSubscriptionsResponse> GetSubscriptionsAsync (List<string> notificationTypes, string? payloadVersion = null, int? pageSize = null, string? nextToken = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns information about subscriptions of the specified notification type. You can use this API to retrieve all subscriptions when multiple subscriptions exist for a notification type (for example, when using filter expressions).  The operation returns all subscriptions for the caller&#39;s party.  &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the operation returns subscriptions across all payload versions.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="notificationTypes">A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide).</param>
+        /// <param name="payloadVersion">The version of the payload object to be used in the notification. (optional)</param>
+        /// <param name="pageSize">The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (optional, default to 30)</param>
+        /// <param name="nextToken">A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page. (optional)</param>
+        /// <returns>Task of ApiResponse (GetSubscriptionsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetSubscriptionsResponse>> GetSubscriptionsAsyncWithHttpInfo (List<string> notificationTypes, string? payloadVersion = null, int? pageSize = null, string? nextToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1612,6 +1666,152 @@ namespace software.amzn.spapi.Api.notifications.v1
             return new ApiResponse<GetSubscriptionByIdResponse>(localVarResponse.StatusCode,
                 ConvertHeadersToMultimap(localVarResponse),
                 (GetSubscriptionByIdResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSubscriptionByIdResponse)));
+        }
+
+        /// <summary>
+        ///  Returns information about subscriptions of the specified notification type. You can use this API to retrieve all subscriptions when multiple subscriptions exist for a notification type (for example, when using filter expressions).  The operation returns all subscriptions for the caller&#39;s party.  &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the operation returns subscriptions across all payload versions.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="notificationTypes">A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide).</param>
+        /// <param name="payloadVersion">The version of the payload object to be used in the notification. (optional)</param>
+        /// <param name="pageSize">The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (optional, default to 30)</param>
+        /// <param name="nextToken">A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page. (optional)</param>
+        /// <returns>GetSubscriptionsResponse</returns>
+        public GetSubscriptionsResponse GetSubscriptions (List<string> notificationTypes, string? payloadVersion = null, int? pageSize = null, string? nextToken = null)
+        {
+             ApiResponse<GetSubscriptionsResponse> localVarResponse = GetSubscriptionsWithHttpInfo(notificationTypes, payloadVersion, pageSize, nextToken);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Returns information about subscriptions of the specified notification type. You can use this API to retrieve all subscriptions when multiple subscriptions exist for a notification type (for example, when using filter expressions).  The operation returns all subscriptions for the caller&#39;s party.  &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the operation returns subscriptions across all payload versions.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="notificationTypes">A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide).</param>
+        /// <param name="payloadVersion">The version of the payload object to be used in the notification. (optional)</param>
+        /// <param name="pageSize">The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (optional, default to 30)</param>
+        /// <param name="nextToken">A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page. (optional)</param>
+        /// <returns>ApiResponse of GetSubscriptionsResponse</returns>
+        public ApiResponse< GetSubscriptionsResponse > GetSubscriptionsWithHttpInfo (List<string> notificationTypes, string? payloadVersion = null, int? pageSize = null, string? nextToken = null)
+        {
+            // verify the required parameter 'notificationTypes' is set
+            if (notificationTypes == null)
+                throw new ApiException(400, "Missing required parameter 'notificationTypes' when calling NotificationsApi->GetSubscriptions");
+
+            var localVarPath = "/notifications/v1/subscriptions";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (notificationTypes != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "notificationTypes", notificationTypes)); // query parameter
+            if (payloadVersion != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "payloadVersion", payloadVersion)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+            if (nextToken != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "nextToken", nextToken)); // query parameter
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath, ChangeHttpMethod("GET"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetSubscriptions", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetSubscriptionsResponse>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (GetSubscriptionsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSubscriptionsResponse)));
+        }
+
+        /// <summary>
+        ///  Returns information about subscriptions of the specified notification type. You can use this API to retrieve all subscriptions when multiple subscriptions exist for a notification type (for example, when using filter expressions).  The operation returns all subscriptions for the caller&#39;s party.  &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the operation returns subscriptions across all payload versions.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="notificationTypes">A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide).</param>
+        /// <param name="payloadVersion">The version of the payload object to be used in the notification. (optional)</param>
+        /// <param name="pageSize">The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (optional, default to 30)</param>
+        /// <param name="nextToken">A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page. (optional)</param>
+        /// <returns>Task of GetSubscriptionsResponse</returns>
+        public async System.Threading.Tasks.Task<GetSubscriptionsResponse> GetSubscriptionsAsync (List<string> notificationTypes, string? payloadVersion = null, int? pageSize = null, string? nextToken = null)
+        {
+             ApiResponse<GetSubscriptionsResponse> localVarResponse = await GetSubscriptionsAsyncWithHttpInfo(notificationTypes, payloadVersion, pageSize, nextToken);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  Returns information about subscriptions of the specified notification type. You can use this API to retrieve all subscriptions when multiple subscriptions exist for a notification type (for example, when using filter expressions).  The operation returns all subscriptions for the caller&#39;s party.  &#x60;payloadVersion&#x60; is an optional parameter. When you do not provide &#x60;payloadVersion&#x60;, the operation returns subscriptions across all payload versions.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="notificationTypes">A list of notification types to retrieve subscriptions for. Currently limited to a single notification type per request.   For more information about notification types, refer to the [Notifications API v1 Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide).</param>
+        /// <param name="payloadVersion">The version of the payload object to be used in the notification. (optional)</param>
+        /// <param name="pageSize">The maximum number of subscriptions to return per page. Minimum value is 30. Maximum value is 100. Default is 30. (optional, default to 30)</param>
+        /// <param name="nextToken">A token to retrieve the next page of results. If this field is not empty in a response, pass its value in the next request to retrieve the next page. (optional)</param>
+        /// <returns>Task of ApiResponse (GetSubscriptionsResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GetSubscriptionsResponse>> GetSubscriptionsAsyncWithHttpInfo (List<string> notificationTypes, string? payloadVersion = null, int? pageSize = null, string? nextToken = null)
+        {
+            // verify the required parameter 'notificationTypes' is set
+            if (notificationTypes == null)
+                throw new ApiException(400, "Missing required parameter 'notificationTypes' when calling NotificationsApi->GetSubscriptions");
+
+            var localVarPath = "/notifications/v1/subscriptions";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (notificationTypes != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "notificationTypes", notificationTypes)); // query parameter
+            if (payloadVersion != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "payloadVersion", payloadVersion)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+            if (nextToken != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "nextToken", nextToken)); // query parameter
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath, ChangeHttpMethod("GET"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetSubscriptions", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetSubscriptionsResponse>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (GetSubscriptionsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetSubscriptionsResponse)));
         }
 
         /// <summary>
