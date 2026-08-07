@@ -181,7 +181,7 @@ class DefaultApiTest extends TestCase
                 }
 
                 // Generate dummy value based on the type
-                $dummyValue = self::getDummyValueForType($propertyType, $propertyName);
+                $dummyValue = $this->generateMockData($propertyType, $propertyName);
 
                 // Check if a setter exists for the property
                 if (array_key_exists($propertyName, $setters)) {
