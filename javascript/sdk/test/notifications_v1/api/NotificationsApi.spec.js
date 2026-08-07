@@ -118,6 +118,19 @@ describe('NotificationsApi', () => {
       assertValidResponsePayload(200, response.data);
     });
   });
+  describe('getSubscriptions', () => {
+    it('should successfully call getSubscriptionsWithHttpInfo', async () => {
+      await instructBackendMock("notifications", "getSubscriptions", "200")
+      const params = [
+        generateMockData('String', true),
+      ];
+      const response = await instance.getSubscriptionsWithHttpInfo(...params);
+
+      expect(response.response).to.have.property('statusCode');
+      expect(response.response.statusCode).to.equal(200)
+      assertValidResponsePayload(200, response.data);
+    });
+  });
   describe('sendTestNotification', () => {
     it('should successfully call sendTestNotificationWithHttpInfo', async () => {
       await instructBackendMock("notifications", "sendTestNotification", "200")

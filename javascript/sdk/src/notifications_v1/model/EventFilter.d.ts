@@ -25,6 +25,7 @@ export declare class EventFilter {
      * @implements module:notifications_v1/model/AggregationFilter
      * @implements module:notifications_v1/model/MarketplaceFilter
      * @implements module:notifications_v1/model/OrderChangeTypeFilter
+     * @implements module:notifications_v1/model/TrackingFilter
      * @param eventFilterType {String} An `eventFilterType` value that the `notificationType` supports. The subscription service uses the `eventFilterType` to determine the type of event filter. To determine if a specific `notificationType` supports an `eventFilterType`, refer to [Notification Type Values]( https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
      */
     constructor(eventFilterType: string);
@@ -49,6 +50,11 @@ export declare namespace EventFilter {
            * @const
            */
         ORDER_CHANGE: string;
+        /**
+           * value: "SHIPMENT_TRACKING_MILESTONE_CHANGED"
+           * @const
+           */
+        SHIPMENT_TRACKING_MILESTONE_CHANGED: string;
     };
 }
 //# sourceMappingURL=EventFilter.d.ts.map

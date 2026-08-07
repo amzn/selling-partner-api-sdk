@@ -17,6 +17,8 @@ import { AggregationSettings } from './AggregationSettings.js'
 import { MarketplaceFilter } from './MarketplaceFilter.js'
 import { OrderChangeTypeEnum } from './OrderChangeTypeEnum.js'
 import { OrderChangeTypeFilter } from './OrderChangeTypeFilter.js'
+import { TrackingFilter } from './TrackingFilter.js'
+import { TrackingIdentifier } from './TrackingIdentifier.js'
 
 /**
  * The EventFilter model module.
@@ -32,6 +34,7 @@ export class EventFilter {
    * @implements module:notifications_v1/model/AggregationFilter
    * @implements module:notifications_v1/model/MarketplaceFilter
    * @implements module:notifications_v1/model/OrderChangeTypeFilter
+   * @implements module:notifications_v1/model/TrackingFilter
    * @param eventFilterType {String} An `eventFilterType` value that the `notificationType` supports. The subscription service uses the `eventFilterType` to determine the type of event filter. To determine if a specific `notificationType` supports an `eventFilterType`, refer to [Notification Type Values]( https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
    */
   constructor (eventFilterType) {
@@ -62,9 +65,11 @@ export class EventFilter {
       AggregationFilter.constructFromObject(data, obj)
       MarketplaceFilter.constructFromObject(data, obj)
       OrderChangeTypeFilter.constructFromObject(data, obj)
+      TrackingFilter.constructFromObject(data, obj)
       if (data.hasOwnProperty('aggregationSettings')) { obj.aggregationSettings = AggregationSettings.constructFromObject(data.aggregationSettings) }
       if (data.hasOwnProperty('marketplaceIds')) { obj.marketplaceIds = ApiClient.convertToType(data.marketplaceIds, ['String']) }
       if (data.hasOwnProperty('orderChangeTypes')) { obj.orderChangeTypes = ApiClient.convertToType(data.orderChangeTypes, [OrderChangeTypeEnum]) }
+      if (data.hasOwnProperty('trackingIdentifier')) { obj.trackingIdentifier = TrackingIdentifier.constructFromObject(data.trackingIdentifier) }
       if (data.hasOwnProperty('eventFilterType')) { obj.eventFilterType = ApiClient.convertToType(data.eventFilterType, 'String') }
     }
     return obj
@@ -92,6 +97,12 @@ EventFilter.prototype.marketplaceIds = undefined
 EventFilter.prototype.orderChangeTypes = undefined
 
 /**
+ * @member {TrackingIdentifier} trackingIdentifier
+ * @type {TrackingIdentifier}
+ */
+EventFilter.prototype.trackingIdentifier = undefined
+
+/**
  * Allowed values for the <code>eventFilterType</code> property.
  * @enum {String}
  * @readonly
@@ -108,7 +119,13 @@ EventFilter.EventFilterTypeEnum = {
      * value: "ORDER_CHANGE"
      * @const
      */
-  ORDER_CHANGE: 'ORDER_CHANGE'
+  ORDER_CHANGE: 'ORDER_CHANGE',
+
+  /**
+     * value: "SHIPMENT_TRACKING_MILESTONE_CHANGED"
+     * @const
+     */
+  SHIPMENT_TRACKING_MILESTONE_CHANGED: 'SHIPMENT_TRACKING_MILESTONE_CHANGED'
 }
 /**
  * An `eventFilterType` value that the `notificationType` supports. The subscription service uses the `eventFilterType` to determine the type of event filter. To determine if a specific `notificationType` supports an `eventFilterType`, refer to [Notification Type Values]( https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
@@ -139,3 +156,10 @@ MarketplaceFilter.prototype.marketplaceIds = undefined
  * @type {OrderChangeTypeEnum[]}
  */
 OrderChangeTypeFilter.prototype.orderChangeTypes = undefined
+
+// Implement TrackingFilter interface:
+/**
+ * @member {TrackingIdentifier} trackingIdentifier
+ * @type {TrackingIdentifier}
+ */
+TrackingFilter.prototype.trackingIdentifier = undefined
