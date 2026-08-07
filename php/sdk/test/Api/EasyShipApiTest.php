@@ -1,7 +1,7 @@
 <?php
 
 /**
- * {{classname}}Test
+ * EasyShipApiTest
  * PHP version 8.3.
  *
  * @category Class
@@ -29,15 +29,15 @@
  * Do not edit the class manually.
  */
 
-namespace {{invokerPackage}}\Test\Api;
+namespace SpApi\Test\Api;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
-use {{apiPackage}}\{{classname}};
-use {{invokerPackage}}\Configuration;
+use SpApi\Api\easyship\v2022_03_23\EasyShipApi;
+use SpApi\Configuration;
 
 /**
- * {{classname}}Test Class Doc Comment.
+ * EasyShipApiTest Class Doc Comment.
  *
  * @category Class
  *
@@ -47,12 +47,12 @@ use {{invokerPackage}}\Configuration;
  *
  * @internal
  */
-class {{classname}}Test extends TestCase
+class EasyShipApiTest extends TestCase
 {
     private static string $endpoint = 'http://localhost:3000';
     private static string $authEndpoint = 'http://localhost:3000/auth/o2/token';
 
-    private {{classname}} $api;
+    private EasyShipApi $api;
     private Client $httpClient;
 
     protected function setUp(): void
@@ -68,29 +68,78 @@ class {{classname}}Test extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new {{classname}}($config, null, false);
+        $this->api = new EasyShipApi($config, null, false);
     }
 
-{{#operations}}{{#operation}}
-    public function test{{operationId}}()
+
+    public function testcreateScheduledPackage()
     {
-        $operationId = '{{operationId}}';
-        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
-        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
-        $this->instructBackendMock('{{tags.0.name}}', $mockOperationId, '{{responses.0.code}}');
-        {{#allParams}}{{#required}}
-        ${{paramName}} = $this->generateMockData('{{dataType}}'{{#isArray}}, true{{/isArray}});
-        {{/required}}{{/allParams}}
+        $this->instructBackendMock('easyShip', 'createScheduledPackage', '200');
+        
+        $create_scheduled_package_request = $this->generateMockData('\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest');
+        
 
-        {{#returnType}}$response = {{/returnType}}$this->api->{{operationId}}WithHttpInfo({{#allParams}}{{#required}}${{paramName}}{{/required}}{{^required}}null{{/required}}{{^-last}}, {{/-last}}{{/allParams}});
+        $response = $this->api->createScheduledPackageWithHttpInfo($create_scheduled_package_request);
 
-        {{#returnType}}
-        $this->assertEquals({{responses.0.code}}, $response[1]);
-        $this->assertValidResponsePayload({{responses.0.code}}, $response[0]);
-        {{/returnType}}
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
     }
 
-{{/operation}}{{/operations}}
+
+    public function testcreateScheduledPackageBulk()
+    {
+        $this->instructBackendMock('easyShip', 'createScheduledPackageBulk', '200');
+        
+        $create_scheduled_packages_request = $this->generateMockData('\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest');
+        
+
+        $response = $this->api->createScheduledPackageBulkWithHttpInfo($create_scheduled_packages_request);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testgetScheduledPackage()
+    {
+        $this->instructBackendMock('easyShip', 'getScheduledPackage', '200');
+        
+        $amazon_order_id = $this->generateMockData('string');
+        
+        $marketplace_id = $this->generateMockData('string');
+        
+
+        $response = $this->api->getScheduledPackageWithHttpInfo($amazon_order_id, $marketplace_id);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testlistHandoverSlots()
+    {
+        $this->instructBackendMock('easyShip', 'listHandoverSlots', '200');
+        
+
+        $response = $this->api->listHandoverSlotsWithHttpInfo(null);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testupdateScheduledPackages()
+    {
+        $this->instructBackendMock('easyShip', 'updateScheduledPackages', '200');
+        
+
+        $response = $this->api->updateScheduledPackagesWithHttpInfo(null);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
     private function instructBackendMock(string $basename, string $response, string $code): void
     {
         $lowerCaseCompressedBasename = strtolower(preg_replace('/[\W\s]/', '', $basename));
@@ -112,7 +161,7 @@ class {{classname}}Test extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'TestString123',
+            'string' => 'test_string',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -137,6 +186,6 @@ class {{classname}}Test extends TestCase
             }
         }
 
-        return 'TestString123';
+        return 'test_string';
     }
 }

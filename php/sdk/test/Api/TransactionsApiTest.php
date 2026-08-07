@@ -1,7 +1,7 @@
 <?php
 
 /**
- * {{classname}}Test
+ * TransactionsApiTest
  * PHP version 8.3.
  *
  * @category Class
@@ -29,15 +29,15 @@
  * Do not edit the class manually.
  */
 
-namespace {{invokerPackage}}\Test\Api;
+namespace SpApi\Test\Api;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
-use {{apiPackage}}\{{classname}};
-use {{invokerPackage}}\Configuration;
+use SpApi\Api\sellerWallet\v2024_03_01\TransactionsApi;
+use SpApi\Configuration;
 
 /**
- * {{classname}}Test Class Doc Comment.
+ * TransactionsApiTest Class Doc Comment.
  *
  * @category Class
  *
@@ -47,12 +47,12 @@ use {{invokerPackage}}\Configuration;
  *
  * @internal
  */
-class {{classname}}Test extends TestCase
+class TransactionsApiTest extends TestCase
 {
     private static string $endpoint = 'http://localhost:3000';
     private static string $authEndpoint = 'http://localhost:3000/auth/o2/token';
 
-    private {{classname}} $api;
+    private TransactionsApi $api;
     private Client $httpClient;
 
     protected function setUp(): void
@@ -68,29 +68,62 @@ class {{classname}}Test extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new {{classname}}($config, null, false);
+        $this->api = new TransactionsApi($config, null, false);
     }
 
-{{#operations}}{{#operation}}
-    public function test{{operationId}}()
+
+    public function testcreateTransaction()
     {
-        $operationId = '{{operationId}}';
-        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
-        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
-        $this->instructBackendMock('{{tags.0.name}}', $mockOperationId, '{{responses.0.code}}');
-        {{#allParams}}{{#required}}
-        ${{paramName}} = $this->generateMockData('{{dataType}}'{{#isArray}}, true{{/isArray}});
-        {{/required}}{{/allParams}}
+        $this->instructBackendMock('Transactions', 'createTransaction', '200');
+        
+        $dest_account_digital_signature = $this->generateMockData('string');
+        
+        $amount_digital_signature = $this->generateMockData('string');
+        
+        $marketplace_id = $this->generateMockData('string');
+        
+        $body = $this->generateMockData('\SpApi\Model\sellerWallet\v2024_03_01\TransactionInitiationRequest');
+        
 
-        {{#returnType}}$response = {{/returnType}}$this->api->{{operationId}}WithHttpInfo({{#allParams}}{{#required}}${{paramName}}{{/required}}{{^required}}null{{/required}}{{^-last}}, {{/-last}}{{/allParams}});
+        $response = $this->api->createTransactionWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $marketplace_id, $body);
 
-        {{#returnType}}
-        $this->assertEquals({{responses.0.code}}, $response[1]);
-        $this->assertValidResponsePayload({{responses.0.code}}, $response[0]);
-        {{/returnType}}
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
     }
 
-{{/operation}}{{/operations}}
+
+    public function testgetTransaction()
+    {
+        $this->instructBackendMock('Transactions', 'getTransaction', '200');
+        
+        $transaction_id = $this->generateMockData('string');
+        
+        $marketplace_id = $this->generateMockData('string');
+        
+
+        $response = $this->api->getTransactionWithHttpInfo($transaction_id, $marketplace_id);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testlistAccountTransactions()
+    {
+        $this->instructBackendMock('Transactions', 'listAccountTransactions', '200');
+        
+        $account_id = $this->generateMockData('string');
+        
+        $marketplace_id = $this->generateMockData('string');
+        
+
+        $response = $this->api->listAccountTransactionsWithHttpInfo($account_id, $marketplace_id, null);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
     private function instructBackendMock(string $basename, string $response, string $code): void
     {
         $lowerCaseCompressedBasename = strtolower(preg_replace('/[\W\s]/', '', $basename));
@@ -112,7 +145,7 @@ class {{classname}}Test extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'TestString123',
+            'string' => 'test_string',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -137,6 +170,6 @@ class {{classname}}Test extends TestCase
             }
         }
 
-        return 'TestString123';
+        return 'test_string';
     }
 }

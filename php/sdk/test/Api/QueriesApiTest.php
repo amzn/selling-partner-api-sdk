@@ -1,7 +1,7 @@
 <?php
 
 /**
- * {{classname}}Test
+ * QueriesApiTest
  * PHP version 8.3.
  *
  * @category Class
@@ -29,15 +29,15 @@
  * Do not edit the class manually.
  */
 
-namespace {{invokerPackage}}\Test\Api;
+namespace SpApi\Test\Api;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
-use {{apiPackage}}\{{classname}};
-use {{invokerPackage}}\Configuration;
+use SpApi\Api\datakiosk\v2023_11_15\QueriesApi;
+use SpApi\Configuration;
 
 /**
- * {{classname}}Test Class Doc Comment.
+ * QueriesApiTest Class Doc Comment.
  *
  * @category Class
  *
@@ -47,12 +47,12 @@ use {{invokerPackage}}\Configuration;
  *
  * @internal
  */
-class {{classname}}Test extends TestCase
+class QueriesApiTest extends TestCase
 {
     private static string $endpoint = 'http://localhost:3000';
     private static string $authEndpoint = 'http://localhost:3000/auth/o2/token';
 
-    private {{classname}} $api;
+    private QueriesApi $api;
     private Client $httpClient;
 
     protected function setUp(): void
@@ -68,29 +68,76 @@ class {{classname}}Test extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new {{classname}}($config, null, false);
+        $this->api = new QueriesApi($config, null, false);
     }
 
-{{#operations}}{{#operation}}
-    public function test{{operationId}}()
+
+    public function testcancelQuery()
     {
-        $operationId = '{{operationId}}';
-        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
-        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
-        $this->instructBackendMock('{{tags.0.name}}', $mockOperationId, '{{responses.0.code}}');
-        {{#allParams}}{{#required}}
-        ${{paramName}} = $this->generateMockData('{{dataType}}'{{#isArray}}, true{{/isArray}});
-        {{/required}}{{/allParams}}
+        $this->instructBackendMock('queries', 'cancelQuery', '204');
+        
+        $query_id = $this->generateMockData('string');
+        
 
-        {{#returnType}}$response = {{/returnType}}$this->api->{{operationId}}WithHttpInfo({{#allParams}}{{#required}}${{paramName}}{{/required}}{{^required}}null{{/required}}{{^-last}}, {{/-last}}{{/allParams}});
+        $this->api->cancelQueryWithHttpInfo($query_id);
 
-        {{#returnType}}
-        $this->assertEquals({{responses.0.code}}, $response[1]);
-        $this->assertValidResponsePayload({{responses.0.code}}, $response[0]);
-        {{/returnType}}
     }
 
-{{/operation}}{{/operations}}
+
+    public function testcreateQuery()
+    {
+        $this->instructBackendMock('queries', 'createQuery', '202');
+        
+        $body = $this->generateMockData('\SpApi\Model\datakiosk\v2023_11_15\CreateQuerySpecification');
+        
+
+        $response = $this->api->createQueryWithHttpInfo($body);
+
+        $this->assertEquals(202, $response[1]);
+        $this->assertValidResponsePayload(202, $response[0]);
+    }
+
+
+    public function testgetDocument()
+    {
+        $this->instructBackendMock('queries', 'getDocument', '200');
+        
+        $document_id = $this->generateMockData('string');
+        
+
+        $response = $this->api->getDocumentWithHttpInfo($document_id);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testgetQueries()
+    {
+        $this->instructBackendMock('queries', 'getQueries', '200');
+        
+
+        $response = $this->api->getQueriesWithHttpInfo(null, null, null, null, null);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testgetQuery()
+    {
+        $this->instructBackendMock('queries', 'getQuery', '200');
+        
+        $query_id = $this->generateMockData('string');
+        
+
+        $response = $this->api->getQueryWithHttpInfo($query_id);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
     private function instructBackendMock(string $basename, string $response, string $code): void
     {
         $lowerCaseCompressedBasename = strtolower(preg_replace('/[\W\s]/', '', $basename));
@@ -112,7 +159,7 @@ class {{classname}}Test extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'TestString123',
+            'string' => 'test_string',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -137,6 +184,6 @@ class {{classname}}Test extends TestCase
             }
         }
 
-        return 'TestString123';
+        return 'test_string';
     }
 }

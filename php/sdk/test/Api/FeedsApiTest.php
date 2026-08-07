@@ -1,7 +1,7 @@
 <?php
 
 /**
- * {{classname}}Test
+ * FeedsApiTest
  * PHP version 8.3.
  *
  * @category Class
@@ -29,15 +29,15 @@
  * Do not edit the class manually.
  */
 
-namespace {{invokerPackage}}\Test\Api;
+namespace SpApi\Test\Api;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
-use {{apiPackage}}\{{classname}};
-use {{invokerPackage}}\Configuration;
+use SpApi\Api\feeds\v2021_06_30\FeedsApi;
+use SpApi\Configuration;
 
 /**
- * {{classname}}Test Class Doc Comment.
+ * FeedsApiTest Class Doc Comment.
  *
  * @category Class
  *
@@ -47,12 +47,12 @@ use {{invokerPackage}}\Configuration;
  *
  * @internal
  */
-class {{classname}}Test extends TestCase
+class FeedsApiTest extends TestCase
 {
     private static string $endpoint = 'http://localhost:3000';
     private static string $authEndpoint = 'http://localhost:3000/auth/o2/token';
 
-    private {{classname}} $api;
+    private FeedsApi $api;
     private Client $httpClient;
 
     protected function setUp(): void
@@ -68,29 +68,90 @@ class {{classname}}Test extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new {{classname}}($config, null, false);
+        $this->api = new FeedsApi($config, null, false);
     }
 
-{{#operations}}{{#operation}}
-    public function test{{operationId}}()
+
+    public function testcancelFeed()
     {
-        $operationId = '{{operationId}}';
-        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
-        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
-        $this->instructBackendMock('{{tags.0.name}}', $mockOperationId, '{{responses.0.code}}');
-        {{#allParams}}{{#required}}
-        ${{paramName}} = $this->generateMockData('{{dataType}}'{{#isArray}}, true{{/isArray}});
-        {{/required}}{{/allParams}}
+        $this->instructBackendMock('feeds', 'cancelFeed', '200');
+        
+        $feed_id = $this->generateMockData('string');
+        
 
-        {{#returnType}}$response = {{/returnType}}$this->api->{{operationId}}WithHttpInfo({{#allParams}}{{#required}}${{paramName}}{{/required}}{{^required}}null{{/required}}{{^-last}}, {{/-last}}{{/allParams}});
+        $this->api->cancelFeedWithHttpInfo($feed_id);
 
-        {{#returnType}}
-        $this->assertEquals({{responses.0.code}}, $response[1]);
-        $this->assertValidResponsePayload({{responses.0.code}}, $response[0]);
-        {{/returnType}}
     }
 
-{{/operation}}{{/operations}}
+
+    public function testcreateFeed()
+    {
+        $this->instructBackendMock('feeds', 'createFeed', '202');
+        
+        $body = $this->generateMockData('\SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification');
+        
+
+        $response = $this->api->createFeedWithHttpInfo($body);
+
+        $this->assertEquals(202, $response[1]);
+        $this->assertValidResponsePayload(202, $response[0]);
+    }
+
+
+    public function testcreateFeedDocument()
+    {
+        $this->instructBackendMock('feeds', 'createFeedDocument', '201');
+        
+        $body = $this->generateMockData('\SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification');
+        
+
+        $response = $this->api->createFeedDocumentWithHttpInfo($body);
+
+        $this->assertEquals(201, $response[1]);
+        $this->assertValidResponsePayload(201, $response[0]);
+    }
+
+
+    public function testgetFeed()
+    {
+        $this->instructBackendMock('feeds', 'getFeed', '200');
+        
+        $feed_id = $this->generateMockData('string');
+        
+
+        $response = $this->api->getFeedWithHttpInfo($feed_id);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testgetFeedDocument()
+    {
+        $this->instructBackendMock('feeds', 'getFeedDocument', '200');
+        
+        $feed_document_id = $this->generateMockData('string');
+        
+
+        $response = $this->api->getFeedDocumentWithHttpInfo($feed_document_id, null);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testgetFeeds()
+    {
+        $this->instructBackendMock('feeds', 'getFeeds', '200');
+        
+
+        $response = $this->api->getFeedsWithHttpInfo(null, null, null, null, null, null, null);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
     private function instructBackendMock(string $basename, string $response, string $code): void
     {
         $lowerCaseCompressedBasename = strtolower(preg_replace('/[\W\s]/', '', $basename));
@@ -112,7 +173,7 @@ class {{classname}}Test extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'TestString123',
+            'string' => 'test_string',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -137,6 +198,6 @@ class {{classname}}Test extends TestCase
             }
         }
 
-        return 'TestString123';
+        return 'test_string';
     }
 }

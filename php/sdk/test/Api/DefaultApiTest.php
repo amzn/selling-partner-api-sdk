@@ -1,7 +1,7 @@
 <?php
 
 /**
- * {{classname}}Test
+ * DefaultApiTest
  * PHP version 8.3.
  *
  * @category Class
@@ -29,15 +29,15 @@
  * Do not edit the class manually.
  */
 
-namespace {{invokerPackage}}\Test\Api;
+namespace SpApi\Test\Api;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
-use {{apiPackage}}\{{classname}};
-use {{invokerPackage}}\Configuration;
+use SpApi\Api\finances\v0\DefaultApi;
+use SpApi\Configuration;
 
 /**
- * {{classname}}Test Class Doc Comment.
+ * DefaultApiTest Class Doc Comment.
  *
  * @category Class
  *
@@ -47,12 +47,12 @@ use {{invokerPackage}}\Configuration;
  *
  * @internal
  */
-class {{classname}}Test extends TestCase
+class DefaultApiTest extends TestCase
 {
     private static string $endpoint = 'http://localhost:3000';
     private static string $authEndpoint = 'http://localhost:3000/auth/o2/token';
 
-    private {{classname}} $api;
+    private DefaultApi $api;
     private Client $httpClient;
 
     protected function setUp(): void
@@ -68,29 +68,62 @@ class {{classname}}Test extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new {{classname}}($config, null, false);
+        $this->api = new DefaultApi($config, null, false);
     }
 
-{{#operations}}{{#operation}}
-    public function test{{operationId}}()
+
+    public function testlistFinancialEventGroups()
     {
-        $operationId = '{{operationId}}';
-        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
-        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
-        $this->instructBackendMock('{{tags.0.name}}', $mockOperationId, '{{responses.0.code}}');
-        {{#allParams}}{{#required}}
-        ${{paramName}} = $this->generateMockData('{{dataType}}'{{#isArray}}, true{{/isArray}});
-        {{/required}}{{/allParams}}
+        $this->instructBackendMock('default', 'listFinancialEventGroups', '200');
+        
 
-        {{#returnType}}$response = {{/returnType}}$this->api->{{operationId}}WithHttpInfo({{#allParams}}{{#required}}${{paramName}}{{/required}}{{^required}}null{{/required}}{{^-last}}, {{/-last}}{{/allParams}});
+        $response = $this->api->listFinancialEventGroupsWithHttpInfo(null, null, null, null);
 
-        {{#returnType}}
-        $this->assertEquals({{responses.0.code}}, $response[1]);
-        $this->assertValidResponsePayload({{responses.0.code}}, $response[0]);
-        {{/returnType}}
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
     }
 
-{{/operation}}{{/operations}}
+
+    public function testlistFinancialEvents()
+    {
+        $this->instructBackendMock('default', 'listFinancialEvents', '200');
+        
+
+        $response = $this->api->listFinancialEventsWithHttpInfo(null, null, null, null);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testlistFinancialEventsByGroupId()
+    {
+        $this->instructBackendMock('default', 'listFinancialEventsByGroupId', '200');
+        
+        $event_group_id = $this->generateMockData('string');
+        
+
+        $response = $this->api->listFinancialEventsByGroupIdWithHttpInfo($event_group_id, null, null, null, null);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testlistFinancialEventsByOrderId()
+    {
+        $this->instructBackendMock('default', 'listFinancialEventsByOrderId', '200');
+        
+        $order_id = $this->generateMockData('string');
+        
+
+        $response = $this->api->listFinancialEventsByOrderIdWithHttpInfo($order_id, null, null);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
     private function instructBackendMock(string $basename, string $response, string $code): void
     {
         $lowerCaseCompressedBasename = strtolower(preg_replace('/[\W\s]/', '', $basename));
@@ -112,7 +145,7 @@ class {{classname}}Test extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'TestString123',
+            'string' => 'test_string',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -137,6 +170,6 @@ class {{classname}}Test extends TestCase
             }
         }
 
-        return 'TestString123';
+        return 'test_string';
     }
 }

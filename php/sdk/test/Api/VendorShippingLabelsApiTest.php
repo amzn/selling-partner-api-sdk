@@ -1,7 +1,7 @@
 <?php
 
 /**
- * {{classname}}Test
+ * VendorShippingLabelsApiTest
  * PHP version 8.3.
  *
  * @category Class
@@ -29,15 +29,15 @@
  * Do not edit the class manually.
  */
 
-namespace {{invokerPackage}}\Test\Api;
+namespace SpApi\Test\Api;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
-use {{apiPackage}}\{{classname}};
-use {{invokerPackage}}\Configuration;
+use SpApi\Api\vendor\df\shipping\v2021_12_28\VendorShippingLabelsApi;
+use SpApi\Configuration;
 
 /**
- * {{classname}}Test Class Doc Comment.
+ * VendorShippingLabelsApiTest Class Doc Comment.
  *
  * @category Class
  *
@@ -47,12 +47,12 @@ use {{invokerPackage}}\Configuration;
  *
  * @internal
  */
-class {{classname}}Test extends TestCase
+class VendorShippingLabelsApiTest extends TestCase
 {
     private static string $endpoint = 'http://localhost:3000';
     private static string $authEndpoint = 'http://localhost:3000/auth/o2/token';
 
-    private {{classname}} $api;
+    private VendorShippingLabelsApi $api;
     private Client $httpClient;
 
     protected function setUp(): void
@@ -68,29 +68,70 @@ class {{classname}}Test extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new {{classname}}($config, null, false);
+        $this->api = new VendorShippingLabelsApi($config, null, false);
     }
 
-{{#operations}}{{#operation}}
-    public function test{{operationId}}()
+
+    public function testcreateShippingLabels()
     {
-        $operationId = '{{operationId}}';
-        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
-        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
-        $this->instructBackendMock('{{tags.0.name}}', $mockOperationId, '{{responses.0.code}}');
-        {{#allParams}}{{#required}}
-        ${{paramName}} = $this->generateMockData('{{dataType}}'{{#isArray}}, true{{/isArray}});
-        {{/required}}{{/allParams}}
+        $this->instructBackendMock('vendorShippingLabels', 'createShippingLabels', '200');
+        
+        $purchase_order_number = $this->generateMockData('string');
+        
+        $body = $this->generateMockData('\SpApi\Model\vendor\df\shipping\v2021_12_28\CreateShippingLabelsRequest');
+        
 
-        {{#returnType}}$response = {{/returnType}}$this->api->{{operationId}}WithHttpInfo({{#allParams}}{{#required}}${{paramName}}{{/required}}{{^required}}null{{/required}}{{^-last}}, {{/-last}}{{/allParams}});
+        $response = $this->api->createShippingLabelsWithHttpInfo($purchase_order_number, $body);
 
-        {{#returnType}}
-        $this->assertEquals({{responses.0.code}}, $response[1]);
-        $this->assertValidResponsePayload({{responses.0.code}}, $response[0]);
-        {{/returnType}}
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
     }
 
-{{/operation}}{{/operations}}
+
+    public function testgetShippingLabel()
+    {
+        $this->instructBackendMock('vendorShippingLabels', 'getShippingLabel', '200');
+        
+        $purchase_order_number = $this->generateMockData('string');
+        
+
+        $response = $this->api->getShippingLabelWithHttpInfo($purchase_order_number);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testgetShippingLabels()
+    {
+        $this->instructBackendMock('vendorShippingLabels', 'getShippingLabels', '200');
+        
+        $created_after = $this->generateMockData('\DateTime');
+        
+        $created_before = $this->generateMockData('\DateTime');
+        
+
+        $response = $this->api->getShippingLabelsWithHttpInfo($created_after, $created_before, null, null, null, null);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testsubmitShippingLabelRequest()
+    {
+        $this->instructBackendMock('vendorShippingLabels', 'submitShippingLabelRequest', '202');
+        
+        $body = $this->generateMockData('\SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShippingLabelsRequest');
+        
+
+        $response = $this->api->submitShippingLabelRequestWithHttpInfo($body);
+
+        $this->assertEquals(202, $response[1]);
+        $this->assertValidResponsePayload(202, $response[0]);
+    }
+
+
     private function instructBackendMock(string $basename, string $response, string $code): void
     {
         $lowerCaseCompressedBasename = strtolower(preg_replace('/[\W\s]/', '', $basename));
@@ -112,7 +153,7 @@ class {{classname}}Test extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'TestString123',
+            'string' => 'test_string',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -137,6 +178,6 @@ class {{classname}}Test extends TestCase
             }
         }
 
-        return 'TestString123';
+        return 'test_string';
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * {{classname}}Test
+ * FbaInventoryApiTest
  * PHP version 8.3.
  *
  * @category Class
@@ -29,15 +29,15 @@
  * Do not edit the class manually.
  */
 
-namespace {{invokerPackage}}\Test\Api;
+namespace SpApi\Test\Api;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
-use {{apiPackage}}\{{classname}};
-use {{invokerPackage}}\Configuration;
+use SpApi\Api\fba\inventory\v1\FbaInventoryApi;
+use SpApi\Configuration;
 
 /**
- * {{classname}}Test Class Doc Comment.
+ * FbaInventoryApiTest Class Doc Comment.
  *
  * @category Class
  *
@@ -47,12 +47,12 @@ use {{invokerPackage}}\Configuration;
  *
  * @internal
  */
-class {{classname}}Test extends TestCase
+class FbaInventoryApiTest extends TestCase
 {
     private static string $endpoint = 'http://localhost:3000';
     private static string $authEndpoint = 'http://localhost:3000/auth/o2/token';
 
-    private {{classname}} $api;
+    private FbaInventoryApi $api;
     private Client $httpClient;
 
     protected function setUp(): void
@@ -68,29 +68,74 @@ class {{classname}}Test extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new {{classname}}($config, null, false);
+        $this->api = new FbaInventoryApi($config, null, false);
     }
 
-{{#operations}}{{#operation}}
-    public function test{{operationId}}()
+
+    public function testaddInventory()
     {
-        $operationId = '{{operationId}}';
-        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
-        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
-        $this->instructBackendMock('{{tags.0.name}}', $mockOperationId, '{{responses.0.code}}');
-        {{#allParams}}{{#required}}
-        ${{paramName}} = $this->generateMockData('{{dataType}}'{{#isArray}}, true{{/isArray}});
-        {{/required}}{{/allParams}}
+        $this->instructBackendMock('fbaInventory', 'addInventory', '200');
+        
+        $x_amzn_idempotency_token = $this->generateMockData('string');
+        
+        $add_inventory_request_body = $this->generateMockData('\SpApi\Model\fba\inventory\v1\AddInventoryRequest');
+        
 
-        {{#returnType}}$response = {{/returnType}}$this->api->{{operationId}}WithHttpInfo({{#allParams}}{{#required}}${{paramName}}{{/required}}{{^required}}null{{/required}}{{^-last}}, {{/-last}}{{/allParams}});
+        $response = $this->api->addInventoryWithHttpInfo($x_amzn_idempotency_token, $add_inventory_request_body);
 
-        {{#returnType}}
-        $this->assertEquals({{responses.0.code}}, $response[1]);
-        $this->assertValidResponsePayload({{responses.0.code}}, $response[0]);
-        {{/returnType}}
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
     }
 
-{{/operation}}{{/operations}}
+
+    public function testcreateInventoryItem()
+    {
+        $this->instructBackendMock('fbaInventory', 'createInventoryItem', '200');
+        
+        $create_inventory_item_request_body = $this->generateMockData('\SpApi\Model\fba\inventory\v1\CreateInventoryItemRequest');
+        
+
+        $response = $this->api->createInventoryItemWithHttpInfo($create_inventory_item_request_body);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testdeleteInventoryItem()
+    {
+        $this->instructBackendMock('fbaInventory', 'deleteInventoryItem', '200');
+        
+        $seller_sku = $this->generateMockData('string');
+        
+        $marketplace_id = $this->generateMockData('string');
+        
+
+        $response = $this->api->deleteInventoryItemWithHttpInfo($seller_sku, $marketplace_id);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testgetInventorySummaries()
+    {
+        $this->instructBackendMock('fbaInventory', 'getInventorySummaries', '200');
+        
+        $granularity_type = $this->generateMockData('string');
+        
+        $granularity_id = $this->generateMockData('string');
+        
+        $marketplace_ids = $this->generateMockData('string[]', true);
+        
+
+        $response = $this->api->getInventorySummariesWithHttpInfo($granularity_type, $granularity_id, $marketplace_ids, null, null, null, null, null);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
     private function instructBackendMock(string $basename, string $response, string $code): void
     {
         $lowerCaseCompressedBasename = strtolower(preg_replace('/[\W\s]/', '', $basename));
@@ -112,7 +157,7 @@ class {{classname}}Test extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'TestString123',
+            'string' => 'test_string',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -137,6 +182,6 @@ class {{classname}}Test extends TestCase
             }
         }
 
-        return 'TestString123';
+        return 'test_string';
     }
 }

@@ -18,6 +18,5 @@ lib/Model/tracking/v2026_01_30/TrackingMilestoneAddress.php
 lib/Model/tracking/v2026_01_30/TrackingMilestoneLocation.php
 lib/Model/tracking/v2026_01_30/TrackingMilestoneStatus.php
 lib/ObjectSerializer.php
-test/Api/BaseTestCase.php
+phpunit.xml.dist
 test/Api/TrackingApiTest.php
-test/TestHelper.php

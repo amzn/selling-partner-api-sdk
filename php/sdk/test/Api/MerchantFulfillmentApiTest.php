@@ -1,7 +1,7 @@
 <?php
 
 /**
- * {{classname}}Test
+ * MerchantFulfillmentApiTest
  * PHP version 8.3.
  *
  * @category Class
@@ -29,15 +29,15 @@
  * Do not edit the class manually.
  */
 
-namespace {{invokerPackage}}\Test\Api;
+namespace SpApi\Test\Api;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
-use {{apiPackage}}\{{classname}};
-use {{invokerPackage}}\Configuration;
+use SpApi\Api\merchantFulfillment\v0\MerchantFulfillmentApi;
+use SpApi\Configuration;
 
 /**
- * {{classname}}Test Class Doc Comment.
+ * MerchantFulfillmentApiTest Class Doc Comment.
  *
  * @category Class
  *
@@ -47,12 +47,12 @@ use {{invokerPackage}}\Configuration;
  *
  * @internal
  */
-class {{classname}}Test extends TestCase
+class MerchantFulfillmentApiTest extends TestCase
 {
     private static string $endpoint = 'http://localhost:3000';
     private static string $authEndpoint = 'http://localhost:3000/auth/o2/token';
 
-    private {{classname}} $api;
+    private MerchantFulfillmentApi $api;
     private Client $httpClient;
 
     protected function setUp(): void
@@ -68,29 +68,80 @@ class {{classname}}Test extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new {{classname}}($config, null, false);
+        $this->api = new MerchantFulfillmentApi($config, null, false);
     }
 
-{{#operations}}{{#operation}}
-    public function test{{operationId}}()
+
+    public function testcancelShipment()
     {
-        $operationId = '{{operationId}}';
-        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
-        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
-        $this->instructBackendMock('{{tags.0.name}}', $mockOperationId, '{{responses.0.code}}');
-        {{#allParams}}{{#required}}
-        ${{paramName}} = $this->generateMockData('{{dataType}}'{{#isArray}}, true{{/isArray}});
-        {{/required}}{{/allParams}}
+        $this->instructBackendMock('merchantFulfillment', 'cancelShipment', '200');
+        
+        $shipment_id = $this->generateMockData('string');
+        
 
-        {{#returnType}}$response = {{/returnType}}$this->api->{{operationId}}WithHttpInfo({{#allParams}}{{#required}}${{paramName}}{{/required}}{{^required}}null{{/required}}{{^-last}}, {{/-last}}{{/allParams}});
+        $response = $this->api->cancelShipmentWithHttpInfo($shipment_id);
 
-        {{#returnType}}
-        $this->assertEquals({{responses.0.code}}, $response[1]);
-        $this->assertValidResponsePayload({{responses.0.code}}, $response[0]);
-        {{/returnType}}
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
     }
 
-{{/operation}}{{/operations}}
+
+    public function testcreateShipment()
+    {
+        $this->instructBackendMock('merchantFulfillment', 'createShipment', '200');
+        
+        $body = $this->generateMockData('\SpApi\Model\merchantFulfillment\v0\CreateShipmentRequest');
+        
+
+        $response = $this->api->createShipmentWithHttpInfo($body);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testgetAdditionalSellerInputs()
+    {
+        $this->instructBackendMock('merchantFulfillment', 'getAdditionalSellerInputs', '200');
+        
+        $body = $this->generateMockData('\SpApi\Model\merchantFulfillment\v0\GetAdditionalSellerInputsRequest');
+        
+
+        $response = $this->api->getAdditionalSellerInputsWithHttpInfo($body);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testgetEligibleShipmentServices()
+    {
+        $this->instructBackendMock('merchantFulfillment', 'getEligibleShipmentServices', '200');
+        
+        $body = $this->generateMockData('\SpApi\Model\merchantFulfillment\v0\GetEligibleShipmentServicesRequest');
+        
+
+        $response = $this->api->getEligibleShipmentServicesWithHttpInfo($body);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
+    public function testgetShipment()
+    {
+        $this->instructBackendMock('merchantFulfillment', 'getShipment', '200');
+        
+        $shipment_id = $this->generateMockData('string');
+        
+
+        $response = $this->api->getShipmentWithHttpInfo($shipment_id);
+
+        $this->assertEquals(200, $response[1]);
+        $this->assertValidResponsePayload(200, $response[0]);
+    }
+
+
     private function instructBackendMock(string $basename, string $response, string $code): void
     {
         $lowerCaseCompressedBasename = strtolower(preg_replace('/[\W\s]/', '', $basename));
@@ -112,7 +163,7 @@ class {{classname}}Test extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'TestString123',
+            'string' => 'test_string',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -137,6 +188,6 @@ class {{classname}}Test extends TestCase
             }
         }
 
-        return 'TestString123';
+        return 'test_string';
     }
 }
