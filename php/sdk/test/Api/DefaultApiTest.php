@@ -74,7 +74,10 @@ class DefaultApiTest extends TestCase
 
     public function testlistFinancialEventGroups()
     {
-        $this->instructBackendMock('default', 'listFinancialEventGroups', '200');
+        $operationId = 'listFinancialEventGroups';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('default', $mockOperationId, '200');
         
 
         $response = $this->api->listFinancialEventGroupsWithHttpInfo(null, null, null, null);
@@ -86,7 +89,10 @@ class DefaultApiTest extends TestCase
 
     public function testlistFinancialEvents()
     {
-        $this->instructBackendMock('default', 'listFinancialEvents', '200');
+        $operationId = 'listFinancialEvents';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('default', $mockOperationId, '200');
         
 
         $response = $this->api->listFinancialEventsWithHttpInfo(null, null, null, null);
@@ -98,7 +104,10 @@ class DefaultApiTest extends TestCase
 
     public function testlistFinancialEventsByGroupId()
     {
-        $this->instructBackendMock('default', 'listFinancialEventsByGroupId', '200');
+        $operationId = 'listFinancialEventsByGroupId';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('default', $mockOperationId, '200');
         
         $event_group_id = $this->generateMockData('string');
         
@@ -112,7 +121,10 @@ class DefaultApiTest extends TestCase
 
     public function testlistFinancialEventsByOrderId()
     {
-        $this->instructBackendMock('default', 'listFinancialEventsByOrderId', '200');
+        $operationId = 'listFinancialEventsByOrderId';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('default', $mockOperationId, '200');
         
         $order_id = $this->generateMockData('string');
         
@@ -145,7 +157,7 @@ class DefaultApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -170,6 +182,6 @@ class DefaultApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

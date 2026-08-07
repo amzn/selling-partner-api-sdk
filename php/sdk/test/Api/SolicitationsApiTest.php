@@ -74,7 +74,10 @@ class SolicitationsApiTest extends TestCase
 
     public function testcreateProductReviewAndSellerFeedbackSolicitation()
     {
-        $this->instructBackendMock('solicitations', 'createProductReviewAndSellerFeedbackSolicitation', '201');
+        $operationId = 'createProductReviewAndSellerFeedbackSolicitation';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('solicitations', $mockOperationId, '201');
         
         $amazon_order_id = $this->generateMockData('string');
         
@@ -90,7 +93,10 @@ class SolicitationsApiTest extends TestCase
 
     public function testgetSolicitationActionsForOrder()
     {
-        $this->instructBackendMock('solicitations', 'getSolicitationActionsForOrder', '200');
+        $operationId = 'getSolicitationActionsForOrder';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('solicitations', $mockOperationId, '200');
         
         $amazon_order_id = $this->generateMockData('string');
         
@@ -125,7 +131,7 @@ class SolicitationsApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -150,6 +156,6 @@ class SolicitationsApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

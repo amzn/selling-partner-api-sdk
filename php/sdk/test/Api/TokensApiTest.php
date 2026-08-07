@@ -74,7 +74,10 @@ class TokensApiTest extends TestCase
 
     public function testcreateRestrictedDataToken()
     {
-        $this->instructBackendMock('tokens', 'createRestrictedDataToken', '200');
+        $operationId = 'createRestrictedDataToken';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('tokens', $mockOperationId, '200');
         
         $body = $this->generateMockData('\SpApi\Model\tokens\v2021_03_01\CreateRestrictedDataTokenRequest');
         
@@ -107,7 +110,7 @@ class TokensApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -132,6 +135,6 @@ class TokensApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

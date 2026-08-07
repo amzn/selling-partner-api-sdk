@@ -74,7 +74,10 @@ class AppIntegrationsApiTest extends TestCase
 
     public function testcreateNotification()
     {
-        $this->instructBackendMock('appIntegrations', 'createNotification', '200');
+        $operationId = 'createNotification';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('appIntegrations', $mockOperationId, '200');
         
         $body = $this->generateMockData('\SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationRequest');
         
@@ -88,7 +91,10 @@ class AppIntegrationsApiTest extends TestCase
 
     public function testdeleteNotifications()
     {
-        $this->instructBackendMock('appIntegrations', 'deleteNotifications', '204');
+        $operationId = 'deleteNotifications';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('appIntegrations', $mockOperationId, '204');
         
         $body = $this->generateMockData('\SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest');
         
@@ -100,7 +106,10 @@ class AppIntegrationsApiTest extends TestCase
 
     public function testrecordActionFeedback()
     {
-        $this->instructBackendMock('appIntegrations', 'recordActionFeedback', '204');
+        $operationId = 'recordActionFeedback';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('appIntegrations', $mockOperationId, '204');
         
         $notification_id = $this->generateMockData('string');
         
@@ -133,7 +142,7 @@ class AppIntegrationsApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -158,6 +167,6 @@ class AppIntegrationsApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

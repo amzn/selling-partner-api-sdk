@@ -74,7 +74,10 @@ class ShipmentProcessingApiTest extends TestCase
 
     public function testcreatePackages()
     {
-        $this->instructBackendMock('shipmentProcessing', 'createPackages', '204');
+        $operationId = 'createPackages';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('shipmentProcessing', $mockOperationId, '204');
         
         $shipment_id = $this->generateMockData('string');
         
@@ -88,7 +91,10 @@ class ShipmentProcessingApiTest extends TestCase
 
     public function testgenerateInvoice()
     {
-        $this->instructBackendMock('shipmentProcessing', 'generateInvoice', '200');
+        $operationId = 'generateInvoice';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('shipmentProcessing', $mockOperationId, '200');
         
         $shipment_id = $this->generateMockData('string');
         
@@ -102,7 +108,10 @@ class ShipmentProcessingApiTest extends TestCase
 
     public function testgenerateShipLabels()
     {
-        $this->instructBackendMock('shipmentProcessing', 'generateShipLabels', '200');
+        $operationId = 'generateShipLabels';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('shipmentProcessing', $mockOperationId, '200');
         
         $shipment_id = $this->generateMockData('string');
         
@@ -118,7 +127,10 @@ class ShipmentProcessingApiTest extends TestCase
 
     public function testprocessShipment()
     {
-        $this->instructBackendMock('shipmentProcessing', 'processShipment', '204');
+        $operationId = 'processShipment';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('shipmentProcessing', $mockOperationId, '204');
         
         $shipment_id = $this->generateMockData('string');
         
@@ -132,7 +144,10 @@ class ShipmentProcessingApiTest extends TestCase
 
     public function testretrieveInvoice()
     {
-        $this->instructBackendMock('shipmentProcessing', 'retrieveInvoice', '200');
+        $operationId = 'retrieveInvoice';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('shipmentProcessing', $mockOperationId, '200');
         
         $shipment_id = $this->generateMockData('string');
         
@@ -146,7 +161,10 @@ class ShipmentProcessingApiTest extends TestCase
 
     public function testretrieveShippingOptions()
     {
-        $this->instructBackendMock('shipmentProcessing', 'retrieveShippingOptions', '200');
+        $operationId = 'retrieveShippingOptions';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('shipmentProcessing', $mockOperationId, '200');
         
         $shipment_id = $this->generateMockData('string');
         
@@ -162,7 +180,10 @@ class ShipmentProcessingApiTest extends TestCase
 
     public function testupdatePackage()
     {
-        $this->instructBackendMock('shipmentProcessing', 'updatePackage', '204');
+        $operationId = 'updatePackage';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('shipmentProcessing', $mockOperationId, '204');
         
         $shipment_id = $this->generateMockData('string');
         
@@ -178,7 +199,10 @@ class ShipmentProcessingApiTest extends TestCase
 
     public function testupdatePackageStatus()
     {
-        $this->instructBackendMock('shipmentProcessing', 'updatePackageStatus', '204');
+        $operationId = 'updatePackageStatus';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('shipmentProcessing', $mockOperationId, '204');
         
         $shipment_id = $this->generateMockData('string');
         
@@ -211,7 +235,7 @@ class ShipmentProcessingApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -236,6 +260,6 @@ class ShipmentProcessingApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

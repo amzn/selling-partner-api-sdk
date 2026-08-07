@@ -74,7 +74,10 @@ class ApplicationsApiTest extends TestCase
 
     public function testrotateApplicationClientSecret()
     {
-        $this->instructBackendMock('Applications', 'rotateApplicationClientSecret', '204');
+        $operationId = 'rotateApplicationClientSecret';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('Applications', $mockOperationId, '204');
         
 
         $this->api->rotateApplicationClientSecretWithHttpInfo();
@@ -103,7 +106,7 @@ class ApplicationsApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -128,6 +131,6 @@ class ApplicationsApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

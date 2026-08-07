@@ -74,7 +74,10 @@ class FeedsApiTest extends TestCase
 
     public function testcancelFeed()
     {
-        $this->instructBackendMock('feeds', 'cancelFeed', '200');
+        $operationId = 'cancelFeed';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('feeds', $mockOperationId, '200');
         
         $feed_id = $this->generateMockData('string');
         
@@ -86,7 +89,10 @@ class FeedsApiTest extends TestCase
 
     public function testcreateFeed()
     {
-        $this->instructBackendMock('feeds', 'createFeed', '202');
+        $operationId = 'createFeed';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('feeds', $mockOperationId, '202');
         
         $body = $this->generateMockData('\SpApi\Model\feeds\v2021_06_30\CreateFeedSpecification');
         
@@ -100,7 +106,10 @@ class FeedsApiTest extends TestCase
 
     public function testcreateFeedDocument()
     {
-        $this->instructBackendMock('feeds', 'createFeedDocument', '201');
+        $operationId = 'createFeedDocument';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('feeds', $mockOperationId, '201');
         
         $body = $this->generateMockData('\SpApi\Model\feeds\v2021_06_30\CreateFeedDocumentSpecification');
         
@@ -114,7 +123,10 @@ class FeedsApiTest extends TestCase
 
     public function testgetFeed()
     {
-        $this->instructBackendMock('feeds', 'getFeed', '200');
+        $operationId = 'getFeed';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('feeds', $mockOperationId, '200');
         
         $feed_id = $this->generateMockData('string');
         
@@ -128,7 +140,10 @@ class FeedsApiTest extends TestCase
 
     public function testgetFeedDocument()
     {
-        $this->instructBackendMock('feeds', 'getFeedDocument', '200');
+        $operationId = 'getFeedDocument';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('feeds', $mockOperationId, '200');
         
         $feed_document_id = $this->generateMockData('string');
         
@@ -142,7 +157,10 @@ class FeedsApiTest extends TestCase
 
     public function testgetFeeds()
     {
-        $this->instructBackendMock('feeds', 'getFeeds', '200');
+        $operationId = 'getFeeds';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('feeds', $mockOperationId, '200');
         
 
         $response = $this->api->getFeedsWithHttpInfo(null, null, null, null, null, null, null);
@@ -173,7 +191,7 @@ class FeedsApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -198,6 +216,6 @@ class FeedsApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

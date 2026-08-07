@@ -74,7 +74,10 @@ class FulfillmentPreviewsApiTest extends TestCase
 
     public function testgetOrderPreview_0()
     {
-        $this->instructBackendMock('fulfillmentOutbound', 'getOrderPreview_0', '200');
+        $operationId = 'getOrderPreview_0';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('fulfillmentOutbound', $mockOperationId, '200');
         
         $body = $this->generateMockData('\SpApi\Model\fulfillment\outbound\v2026_07_04\GetOrderPreviewRequest');
         
@@ -107,7 +110,7 @@ class FulfillmentPreviewsApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -132,6 +135,6 @@ class FulfillmentPreviewsApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

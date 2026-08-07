@@ -74,7 +74,10 @@ class QueriesApiTest extends TestCase
 
     public function testcancelQuery()
     {
-        $this->instructBackendMock('queries', 'cancelQuery', '204');
+        $operationId = 'cancelQuery';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('queries', $mockOperationId, '204');
         
         $query_id = $this->generateMockData('string');
         
@@ -86,7 +89,10 @@ class QueriesApiTest extends TestCase
 
     public function testcreateQuery()
     {
-        $this->instructBackendMock('queries', 'createQuery', '202');
+        $operationId = 'createQuery';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('queries', $mockOperationId, '202');
         
         $body = $this->generateMockData('\SpApi\Model\datakiosk\v2023_11_15\CreateQuerySpecification');
         
@@ -100,7 +106,10 @@ class QueriesApiTest extends TestCase
 
     public function testgetDocument()
     {
-        $this->instructBackendMock('queries', 'getDocument', '200');
+        $operationId = 'getDocument';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('queries', $mockOperationId, '200');
         
         $document_id = $this->generateMockData('string');
         
@@ -114,7 +123,10 @@ class QueriesApiTest extends TestCase
 
     public function testgetQueries()
     {
-        $this->instructBackendMock('queries', 'getQueries', '200');
+        $operationId = 'getQueries';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('queries', $mockOperationId, '200');
         
 
         $response = $this->api->getQueriesWithHttpInfo(null, null, null, null, null);
@@ -126,7 +138,10 @@ class QueriesApiTest extends TestCase
 
     public function testgetQuery()
     {
-        $this->instructBackendMock('queries', 'getQuery', '200');
+        $operationId = 'getQuery';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('queries', $mockOperationId, '200');
         
         $query_id = $this->generateMockData('string');
         
@@ -159,7 +174,7 @@ class QueriesApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -184,6 +199,6 @@ class QueriesApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

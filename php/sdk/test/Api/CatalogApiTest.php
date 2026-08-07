@@ -74,7 +74,10 @@ class CatalogApiTest extends TestCase
 
     public function testgetCatalogItem()
     {
-        $this->instructBackendMock('catalog', 'getCatalogItem', '200');
+        $operationId = 'getCatalogItem';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('catalog', $mockOperationId, '200');
         
         $asin = $this->generateMockData('string');
         
@@ -90,7 +93,10 @@ class CatalogApiTest extends TestCase
 
     public function testsearchCatalogItems()
     {
-        $this->instructBackendMock('catalog', 'searchCatalogItems', '200');
+        $operationId = 'searchCatalogItems';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('catalog', $mockOperationId, '200');
         
         $marketplace_ids = $this->generateMockData('string[]', true);
         
@@ -123,7 +129,7 @@ class CatalogApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -148,6 +154,6 @@ class CatalogApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

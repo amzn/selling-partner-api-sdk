@@ -74,7 +74,10 @@ class SellersApiTest extends TestCase
 
     public function testgetAccount()
     {
-        $this->instructBackendMock('sellers', 'getAccount', '200');
+        $operationId = 'getAccount';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('sellers', $mockOperationId, '200');
         
 
         $response = $this->api->getAccountWithHttpInfo();
@@ -86,7 +89,10 @@ class SellersApiTest extends TestCase
 
     public function testgetMarketplaceParticipations()
     {
-        $this->instructBackendMock('sellers', 'getMarketplaceParticipations', '200');
+        $operationId = 'getMarketplaceParticipations';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('sellers', $mockOperationId, '200');
         
 
         $response = $this->api->getMarketplaceParticipationsWithHttpInfo();
@@ -117,7 +123,7 @@ class SellersApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -142,6 +148,6 @@ class SellersApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

@@ -74,7 +74,10 @@ class VendorInvoiceApiTest extends TestCase
 
     public function testsubmitInvoice()
     {
-        $this->instructBackendMock('vendorInvoice', 'submitInvoice', '202');
+        $operationId = 'submitInvoice';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('vendorInvoice', $mockOperationId, '202');
         
         $body = $this->generateMockData('\SpApi\Model\vendor\df\payments\v1\SubmitInvoiceRequest');
         
@@ -107,7 +110,7 @@ class VendorInvoiceApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -132,6 +135,6 @@ class VendorInvoiceApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

@@ -74,7 +74,10 @@ class EasyShipApiTest extends TestCase
 
     public function testcreateScheduledPackage()
     {
-        $this->instructBackendMock('easyShip', 'createScheduledPackage', '200');
+        $operationId = 'createScheduledPackage';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('easyShip', $mockOperationId, '200');
         
         $create_scheduled_package_request = $this->generateMockData('\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackageRequest');
         
@@ -88,7 +91,10 @@ class EasyShipApiTest extends TestCase
 
     public function testcreateScheduledPackageBulk()
     {
-        $this->instructBackendMock('easyShip', 'createScheduledPackageBulk', '200');
+        $operationId = 'createScheduledPackageBulk';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('easyShip', $mockOperationId, '200');
         
         $create_scheduled_packages_request = $this->generateMockData('\SpApi\Model\easyship\v2022_03_23\CreateScheduledPackagesRequest');
         
@@ -102,7 +108,10 @@ class EasyShipApiTest extends TestCase
 
     public function testgetScheduledPackage()
     {
-        $this->instructBackendMock('easyShip', 'getScheduledPackage', '200');
+        $operationId = 'getScheduledPackage';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('easyShip', $mockOperationId, '200');
         
         $amazon_order_id = $this->generateMockData('string');
         
@@ -118,7 +127,10 @@ class EasyShipApiTest extends TestCase
 
     public function testlistHandoverSlots()
     {
-        $this->instructBackendMock('easyShip', 'listHandoverSlots', '200');
+        $operationId = 'listHandoverSlots';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('easyShip', $mockOperationId, '200');
         
 
         $response = $this->api->listHandoverSlotsWithHttpInfo(null);
@@ -130,7 +142,10 @@ class EasyShipApiTest extends TestCase
 
     public function testupdateScheduledPackages()
     {
-        $this->instructBackendMock('easyShip', 'updateScheduledPackages', '200');
+        $operationId = 'updateScheduledPackages';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('easyShip', $mockOperationId, '200');
         
 
         $response = $this->api->updateScheduledPackagesWithHttpInfo(null);
@@ -161,7 +176,7 @@ class EasyShipApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -186,6 +201,6 @@ class EasyShipApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

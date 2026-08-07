@@ -74,7 +74,10 @@ class NotificationsApiTest extends TestCase
 
     public function testcreateDestination()
     {
-        $this->instructBackendMock('notifications', 'createDestination', '200');
+        $operationId = 'createDestination';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('notifications', $mockOperationId, '200');
         
         $body = $this->generateMockData('\SpApi\Model\notifications\v1\CreateDestinationRequest');
         
@@ -88,7 +91,10 @@ class NotificationsApiTest extends TestCase
 
     public function testcreateSubscription()
     {
-        $this->instructBackendMock('notifications', 'createSubscription', '200');
+        $operationId = 'createSubscription';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('notifications', $mockOperationId, '200');
         
         $notification_type = $this->generateMockData('string');
         
@@ -104,7 +110,10 @@ class NotificationsApiTest extends TestCase
 
     public function testdeleteDestination()
     {
-        $this->instructBackendMock('notifications', 'deleteDestination', '200');
+        $operationId = 'deleteDestination';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('notifications', $mockOperationId, '200');
         
         $destination_id = $this->generateMockData('string');
         
@@ -118,7 +127,10 @@ class NotificationsApiTest extends TestCase
 
     public function testdeleteSubscriptionById()
     {
-        $this->instructBackendMock('notifications', 'deleteSubscriptionById', '200');
+        $operationId = 'deleteSubscriptionById';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('notifications', $mockOperationId, '200');
         
         $subscription_id = $this->generateMockData('string');
         
@@ -134,7 +146,10 @@ class NotificationsApiTest extends TestCase
 
     public function testgetDestination()
     {
-        $this->instructBackendMock('notifications', 'getDestination', '200');
+        $operationId = 'getDestination';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('notifications', $mockOperationId, '200');
         
         $destination_id = $this->generateMockData('string');
         
@@ -148,7 +163,10 @@ class NotificationsApiTest extends TestCase
 
     public function testgetDestinations()
     {
-        $this->instructBackendMock('notifications', 'getDestinations', '200');
+        $operationId = 'getDestinations';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('notifications', $mockOperationId, '200');
         
 
         $response = $this->api->getDestinationsWithHttpInfo();
@@ -160,7 +178,10 @@ class NotificationsApiTest extends TestCase
 
     public function testgetSubscription()
     {
-        $this->instructBackendMock('notifications', 'getSubscription', '200');
+        $operationId = 'getSubscription';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('notifications', $mockOperationId, '200');
         
         $notification_type = $this->generateMockData('string');
         
@@ -174,7 +195,10 @@ class NotificationsApiTest extends TestCase
 
     public function testgetSubscriptionById()
     {
-        $this->instructBackendMock('notifications', 'getSubscriptionById', '200');
+        $operationId = 'getSubscriptionById';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('notifications', $mockOperationId, '200');
         
         $subscription_id = $this->generateMockData('string');
         
@@ -190,7 +214,10 @@ class NotificationsApiTest extends TestCase
 
     public function testgetSubscriptions()
     {
-        $this->instructBackendMock('notifications', 'getSubscriptions', '200');
+        $operationId = 'getSubscriptions';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('notifications', $mockOperationId, '200');
         
         $notification_types = $this->generateMockData('string[]', true);
         
@@ -204,7 +231,10 @@ class NotificationsApiTest extends TestCase
 
     public function testsendTestNotification()
     {
-        $this->instructBackendMock('notifications', 'sendTestNotification', '200');
+        $operationId = 'sendTestNotification';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('notifications', $mockOperationId, '200');
         
         $notification_type = $this->generateMockData('string');
         
@@ -239,7 +269,7 @@ class NotificationsApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -264,6 +294,6 @@ class NotificationsApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

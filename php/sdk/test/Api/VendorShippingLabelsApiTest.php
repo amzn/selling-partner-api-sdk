@@ -74,7 +74,10 @@ class VendorShippingLabelsApiTest extends TestCase
 
     public function testcreateShippingLabels()
     {
-        $this->instructBackendMock('vendorShippingLabels', 'createShippingLabels', '200');
+        $operationId = 'createShippingLabels';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('vendorShippingLabels', $mockOperationId, '200');
         
         $purchase_order_number = $this->generateMockData('string');
         
@@ -90,7 +93,10 @@ class VendorShippingLabelsApiTest extends TestCase
 
     public function testgetShippingLabel()
     {
-        $this->instructBackendMock('vendorShippingLabels', 'getShippingLabel', '200');
+        $operationId = 'getShippingLabel';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('vendorShippingLabels', $mockOperationId, '200');
         
         $purchase_order_number = $this->generateMockData('string');
         
@@ -104,7 +110,10 @@ class VendorShippingLabelsApiTest extends TestCase
 
     public function testgetShippingLabels()
     {
-        $this->instructBackendMock('vendorShippingLabels', 'getShippingLabels', '200');
+        $operationId = 'getShippingLabels';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('vendorShippingLabels', $mockOperationId, '200');
         
         $created_after = $this->generateMockData('\DateTime');
         
@@ -120,7 +129,10 @@ class VendorShippingLabelsApiTest extends TestCase
 
     public function testsubmitShippingLabelRequest()
     {
-        $this->instructBackendMock('vendorShippingLabels', 'submitShippingLabelRequest', '202');
+        $operationId = 'submitShippingLabelRequest';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('vendorShippingLabels', $mockOperationId, '202');
         
         $body = $this->generateMockData('\SpApi\Model\vendor\df\shipping\v2021_12_28\SubmitShippingLabelsRequest');
         
@@ -153,7 +165,7 @@ class VendorShippingLabelsApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -178,6 +190,6 @@ class VendorShippingLabelsApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }

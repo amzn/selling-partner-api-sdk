@@ -74,7 +74,10 @@ class AccountsApiTest extends TestCase
 
     public function testgetAccount()
     {
-        $this->instructBackendMock('Accounts', 'getAccount', '200');
+        $operationId = 'getAccount';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('Accounts', $mockOperationId, '200');
         
         $account_id = $this->generateMockData('string');
         
@@ -90,7 +93,10 @@ class AccountsApiTest extends TestCase
 
     public function testlistAccountBalances()
     {
-        $this->instructBackendMock('Accounts', 'listAccountBalances', '200');
+        $operationId = 'listAccountBalances';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('Accounts', $mockOperationId, '200');
         
         $account_id = $this->generateMockData('string');
         
@@ -106,7 +112,10 @@ class AccountsApiTest extends TestCase
 
     public function testlistAccounts()
     {
-        $this->instructBackendMock('Accounts', 'listAccounts', '200');
+        $operationId = 'listAccounts';
+        // Strip trailing _0 suffix (added by codegen for duplicate operationIds)
+        $mockOperationId = preg_replace('/_\d+$/', '', $operationId);
+        $this->instructBackendMock('Accounts', $mockOperationId, '200');
         
         $marketplace_id = $this->generateMockData('string');
         
@@ -139,7 +148,7 @@ class AccountsApiTest extends TestCase
         }
 
         $basicTypes = [
-            'string' => 'test_string',
+            'string' => 'TestString123',
             'int' => 123,
             'integer' => 123,
             'float' => 123.45,
@@ -164,6 +173,6 @@ class AccountsApiTest extends TestCase
             }
         }
 
-        return 'test_string';
+        return 'TestString123';
     }
 }
