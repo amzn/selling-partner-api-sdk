@@ -63,6 +63,7 @@ from spapi.api.shipping_v2.shipping_api import ShippingApi
 from spapi.api.solicitations_v1.solicitations_api import SolicitationsApi
 from spapi.api.supply_sources_v2020_07_01.supply_sources_api import SupplySourcesApi
 from spapi.api.tokens_v2021_03_01.tokens_api import TokensApi
+from spapi.api.tracking_v2026_01_30.tracking_api import TrackingApi
 from spapi.api.transfers_v2024_06_01.transfers_api import TransfersApi
 from spapi.api.uploads_v2020_11_01.uploads_api import UploadsApi
 from spapi.api.vehicles_v2024_11_01.automotive_api import AutomotiveApi
