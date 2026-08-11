@@ -69,7 +69,7 @@ class VendorShippingApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new VendorShippingApi($config, null, false);
+        $this->api = new VendorShippingApi($config);
     }
 
 

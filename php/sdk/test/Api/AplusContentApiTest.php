@@ -69,7 +69,7 @@ class AplusContentApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new AplusContentApi($config, null, false);
+        $this->api = new AplusContentApi($config);
     }
 
 

@@ -69,7 +69,7 @@ class QueriesApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new QueriesApi($config, null, false);
+        $this->api = new QueriesApi($config);
     }
 
 

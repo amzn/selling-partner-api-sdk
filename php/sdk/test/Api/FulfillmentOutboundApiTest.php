@@ -69,7 +69,7 @@ class FulfillmentOutboundApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new FulfillmentOutboundApi($config, null, false);
+        $this->api = new FulfillmentOutboundApi($config);
     }
 
 

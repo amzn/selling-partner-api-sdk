@@ -69,7 +69,7 @@ class SolicitationsApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new SolicitationsApi($config, null, false);
+        $this->api = new SolicitationsApi($config);
     }
 
 

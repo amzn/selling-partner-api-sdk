@@ -69,7 +69,7 @@ class SupplySourcesApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new SupplySourcesApi($config, null, false);
+        $this->api = new SupplySourcesApi($config);
     }
 
 

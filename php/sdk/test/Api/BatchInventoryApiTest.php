@@ -69,7 +69,7 @@ class BatchInventoryApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new BatchInventoryApi($config, null, false);
+        $this->api = new BatchInventoryApi($config);
     }
 
 

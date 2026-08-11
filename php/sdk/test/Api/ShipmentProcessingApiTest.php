@@ -69,7 +69,7 @@ class ShipmentProcessingApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new ShipmentProcessingApi($config, null, false);
+        $this->api = new ShipmentProcessingApi($config);
     }
 
 
