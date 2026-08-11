@@ -76,7 +76,7 @@ export class CatalogApi {
     return this.apiClient.callApi('CatalogApi-getCatalogItem',
       '/catalog/2022-04-01/items/{asin}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('CatalogApi-getCatalogItem')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -150,7 +150,7 @@ export class CatalogApi {
     return this.apiClient.callApi('CatalogApi-searchCatalogItems',
       '/catalog/2022-04-01/items', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('CatalogApi-searchCatalogItems')
+      contentTypes, accepts, returnType
     )
   }
 

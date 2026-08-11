@@ -66,7 +66,7 @@ export class FulfillmentPreviewsApi {
     return this.apiClient.callApi('FulfillmentPreviewsApi-getOrderPreview',
       '/fulfillment/outbound/2026-07-04/previews', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FulfillmentPreviewsApi-getOrderPreview')
+      contentTypes, accepts, returnType
     )
   }
 

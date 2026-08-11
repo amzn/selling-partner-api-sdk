@@ -62,7 +62,7 @@ export class TokensApi {
     return this.apiClient.callApi('TokensApi-createRestrictedDataToken',
       '/tokens/2021-03-01/restrictedDataToken', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TokensApi-createRestrictedDataToken')
+      contentTypes, accepts, returnType
     )
   }
 

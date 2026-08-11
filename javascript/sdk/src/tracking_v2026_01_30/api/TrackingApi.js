@@ -74,7 +74,7 @@ export class TrackingApi {
     return this.apiClient.callApi('TrackingApi-getShipmentTracking',
       '/tracking/2026-01-30/shipments/track', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TrackingApi-getShipmentTracking')
+      contentTypes, accepts, returnType
     )
   }
 

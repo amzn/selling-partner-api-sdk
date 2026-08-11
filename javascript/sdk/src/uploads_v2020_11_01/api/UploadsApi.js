@@ -79,7 +79,7 @@ export class UploadsApi {
     return this.apiClient.callApi('UploadsApi-createUploadDestinationForResource',
       '/uploads/2020-11-01/uploadDestinations/{resource}', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('UploadsApi-createUploadDestinationForResource')
+      contentTypes, accepts, returnType
     )
   }
 

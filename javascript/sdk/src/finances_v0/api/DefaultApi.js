@@ -65,7 +65,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-listFinancialEventGroups',
       '/finances/v0/financialEventGroups', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listFinancialEventGroups')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -118,7 +118,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-listFinancialEvents',
       '/finances/v0/financialEvents', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listFinancialEvents')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -178,7 +178,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-listFinancialEventsByGroupId',
       '/finances/v0/financialEventGroups/{eventGroupId}/financialEvents', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listFinancialEventsByGroupId')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -235,7 +235,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-listFinancialEventsByOrderId',
       '/finances/v0/orders/{orderId}/financialEvents', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listFinancialEventsByOrderId')
+      contentTypes, accepts, returnType
     )
   }
 

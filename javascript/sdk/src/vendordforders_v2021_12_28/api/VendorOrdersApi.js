@@ -65,7 +65,7 @@ export class VendorOrdersApi {
     return this.apiClient.callApi('VendorOrdersApi-getOrder',
       '/vendor/directFulfillment/orders/2021-12-28/purchaseOrders/{purchaseOrderNumber}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorOrdersApi-getOrder')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -132,7 +132,7 @@ export class VendorOrdersApi {
     return this.apiClient.callApi('VendorOrdersApi-getOrders',
       '/vendor/directFulfillment/orders/2021-12-28/purchaseOrders', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorOrdersApi-getOrders')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -185,7 +185,7 @@ export class VendorOrdersApi {
     return this.apiClient.callApi('VendorOrdersApi-submitAcknowledgement',
       '/vendor/directFulfillment/orders/2021-12-28/acknowledgements', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorOrdersApi-submitAcknowledgement')
+      contentTypes, accepts, returnType
     )
   }
 

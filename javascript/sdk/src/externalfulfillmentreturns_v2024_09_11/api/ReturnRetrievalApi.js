@@ -63,7 +63,7 @@ export class ReturnRetrievalApi {
     return this.apiClient.callApi('ReturnRetrievalApi-getReturn',
       '/externalFulfillment/2024-09-11/returns/{returnId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReturnRetrievalApi-getReturn')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -128,7 +128,7 @@ export class ReturnRetrievalApi {
     return this.apiClient.callApi('ReturnRetrievalApi-listReturns',
       '/externalFulfillment/2024-09-11/returns', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReturnRetrievalApi-listReturns')
+      contentTypes, accepts, returnType
     )
   }
 

@@ -73,7 +73,7 @@ export class VendorShippingLabelsApi {
     return this.apiClient.callApi('VendorShippingLabelsApi-createShippingLabels',
       '/vendor/directFulfillment/shipping/2021-12-28/shippingLabels/{purchaseOrderNumber}', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingLabelsApi-createShippingLabels')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -122,7 +122,7 @@ export class VendorShippingLabelsApi {
     return this.apiClient.callApi('VendorShippingLabelsApi-getShippingLabel',
       '/vendor/directFulfillment/shipping/2021-12-28/shippingLabels/{purchaseOrderNumber}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingLabelsApi-getShippingLabel')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -187,7 +187,7 @@ export class VendorShippingLabelsApi {
     return this.apiClient.callApi('VendorShippingLabelsApi-getShippingLabels',
       '/vendor/directFulfillment/shipping/2021-12-28/shippingLabels', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingLabelsApi-getShippingLabels')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -240,7 +240,7 @@ export class VendorShippingLabelsApi {
     return this.apiClient.callApi('VendorShippingLabelsApi-submitShippingLabelRequest',
       '/vendor/directFulfillment/shipping/2021-12-28/shippingLabels', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingLabelsApi-submitShippingLabelRequest')
+      contentTypes, accepts, returnType
     )
   }
 

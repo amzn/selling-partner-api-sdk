@@ -70,7 +70,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-cancelReport',
       '/reports/2021-06-30/reports/{reportId}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-cancelReport')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -116,7 +116,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-cancelReportSchedule',
       '/reports/2021-06-30/schedules/{reportScheduleId}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-cancelReportSchedule')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -161,7 +161,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-createReport',
       '/reports/2021-06-30/reports', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-createReport')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -206,7 +206,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-createReportSchedule',
       '/reports/2021-06-30/schedules', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-createReportSchedule')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -252,7 +252,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-getReport',
       '/reports/2021-06-30/reports/{reportId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-getReport')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -302,7 +302,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-getReportDocument',
       '/reports/2021-06-30/documents/{reportDocumentId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-getReportDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -350,7 +350,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-getReportSchedule',
       '/reports/2021-06-30/schedules/{reportScheduleId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-getReportSchedule')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -396,7 +396,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-getReportSchedules',
       '/reports/2021-06-30/schedules', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-getReportSchedules')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -451,7 +451,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-getReports',
       '/reports/2021-06-30/reports', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-getReports')
+      contentTypes, accepts, returnType
     )
   }
 

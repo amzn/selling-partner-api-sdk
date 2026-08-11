@@ -66,7 +66,7 @@ export class OffersApi {
     return this.apiClient.callApi('OffersApi-getOffers',
       '/fulfillment/outbound/2026-07-04/offers', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('OffersApi-getOffers')
+      contentTypes, accepts, returnType
     )
   }
 

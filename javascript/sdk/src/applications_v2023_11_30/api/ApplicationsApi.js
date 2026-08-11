@@ -54,7 +54,7 @@ export class ApplicationsApi {
     return this.apiClient.callApi('ApplicationsApi-rotateApplicationClientSecret',
       '/applications/2023-11-30/clientSecret', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ApplicationsApi-rotateApplicationClientSecret')
+      contentTypes, accepts, returnType
     )
   }
 

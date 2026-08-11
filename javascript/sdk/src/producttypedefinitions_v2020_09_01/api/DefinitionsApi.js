@@ -84,7 +84,7 @@ export class DefinitionsApi {
     return this.apiClient.callApi('DefinitionsApi-getDefinitionsProductType',
       '/definitions/2020-09-01/productTypes/{productType}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefinitionsApi-getDefinitionsProductType')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -148,7 +148,7 @@ export class DefinitionsApi {
     return this.apiClient.callApi('DefinitionsApi-searchDefinitionsProductTypes',
       '/definitions/2020-09-01/productTypes', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefinitionsApi-searchDefinitionsProductTypes')
+      contentTypes, accepts, returnType
     )
   }
 

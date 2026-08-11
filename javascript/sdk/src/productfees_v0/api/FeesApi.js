@@ -71,7 +71,7 @@ export class FeesApi {
     return this.apiClient.callApi('FeesApi-getMyFeesEstimateForASIN',
       '/products/fees/v0/items/{Asin}/feesEstimate', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeesApi-getMyFeesEstimateForASIN')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -124,7 +124,7 @@ export class FeesApi {
     return this.apiClient.callApi('FeesApi-getMyFeesEstimateForSKU',
       '/products/fees/v0/listings/{SellerSKU}/feesEstimate', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeesApi-getMyFeesEstimateForSKU')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -170,7 +170,7 @@ export class FeesApi {
     return this.apiClient.callApi('FeesApi-getMyFeesEstimates',
       '/products/fees/v0/feesEstimate', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeesApi-getMyFeesEstimates')
+      contentTypes, accepts, returnType
     )
   }
 

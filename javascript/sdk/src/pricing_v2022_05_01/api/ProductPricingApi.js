@@ -64,7 +64,7 @@ export class ProductPricingApi {
     return this.apiClient.callApi('ProductPricingApi-getCompetitiveSummary',
       '/batches/products/pricing/2022-05-01/items/competitiveSummary', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getCompetitiveSummary')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -109,7 +109,7 @@ export class ProductPricingApi {
     return this.apiClient.callApi('ProductPricingApi-getFeaturedOfferExpectedPriceBatch',
       '/batches/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getFeaturedOfferExpectedPriceBatch')
+      contentTypes, accepts, returnType
     )
   }
 

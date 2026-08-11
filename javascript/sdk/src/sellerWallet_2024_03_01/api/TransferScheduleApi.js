@@ -86,7 +86,7 @@ export class TransferScheduleApi {
     return this.apiClient.callApi('TransferScheduleApi-createTransferSchedule',
       '/finances/transfers/wallet/2024-03-01/transferSchedules', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransferScheduleApi-createTransferSchedule')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -144,7 +144,7 @@ export class TransferScheduleApi {
     return this.apiClient.callApi('TransferScheduleApi-deleteScheduleTransaction',
       '/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransferScheduleApi-deleteScheduleTransaction')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -200,7 +200,7 @@ export class TransferScheduleApi {
     return this.apiClient.callApi('TransferScheduleApi-getTransferSchedule',
       '/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransferScheduleApi-getTransferSchedule')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -260,7 +260,7 @@ export class TransferScheduleApi {
     return this.apiClient.callApi('TransferScheduleApi-listTransferSchedules',
       '/finances/transfers/wallet/2024-03-01/transferSchedules', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransferScheduleApi-listTransferSchedules')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -331,7 +331,7 @@ export class TransferScheduleApi {
     return this.apiClient.callApi('TransferScheduleApi-updateTransferSchedule',
       '/finances/transfers/wallet/2024-03-01/transferSchedules', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransferScheduleApi-updateTransferSchedule')
+      contentTypes, accepts, returnType
     )
   }
 

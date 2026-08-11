@@ -72,7 +72,7 @@ export class AccountsApi {
     return this.apiClient.callApi('AccountsApi-getAccount',
       '/finances/transfers/wallet/2024-03-01/accounts/{accountId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AccountsApi-getAccount')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -128,7 +128,7 @@ export class AccountsApi {
     return this.apiClient.callApi('AccountsApi-listAccountBalances',
       '/finances/transfers/wallet/2024-03-01/accounts/{accountId}/balance', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AccountsApi-listAccountBalances')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -177,7 +177,7 @@ export class AccountsApi {
     return this.apiClient.callApi('AccountsApi-listAccounts',
       '/finances/transfers/wallet/2024-03-01/accounts', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AccountsApi-listAccounts')
+      contentTypes, accepts, returnType
     )
   }
 

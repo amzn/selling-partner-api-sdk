@@ -63,7 +63,7 @@ export class ShipmentRetrievalApi {
     return this.apiClient.callApi('ShipmentRetrievalApi-getShipment',
       '/externalFulfillment/2024-09-11/shipments/{shipmentId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ShipmentRetrievalApi-getShipment')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -125,7 +125,7 @@ export class ShipmentRetrievalApi {
     return this.apiClient.callApi('ShipmentRetrievalApi-getShipments',
       '/externalFulfillment/2024-09-11/shipments', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ShipmentRetrievalApi-getShipments')
+      contentTypes, accepts, returnType
     )
   }
 

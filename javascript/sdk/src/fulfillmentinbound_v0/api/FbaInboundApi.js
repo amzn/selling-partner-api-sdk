@@ -65,7 +65,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getBillOfLading',
       '/fba/inbound/v0/shipments/{shipmentId}/billOfLading', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getBillOfLading')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -137,7 +137,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getLabels',
       '/fba/inbound/v0/shipments/{shipmentId}/labels', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getLabels')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -197,7 +197,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getPrepInstructions',
       '/fba/inbound/v0/prepInstructions', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getPrepInstructions')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -261,7 +261,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getShipmentItems',
       '/fba/inbound/v0/shipmentItems', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getShipmentItems')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -316,7 +316,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getShipmentItemsByShipmentId',
       '/fba/inbound/v0/shipments/{shipmentId}/items', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getShipmentItemsByShipmentId')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -383,7 +383,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getShipments',
       '/fba/inbound/v0/shipments', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getShipments')
+      contentTypes, accepts, returnType
     )
   }
 

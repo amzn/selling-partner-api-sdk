@@ -109,7 +109,7 @@ export class VendorShippingApi {
     return this.apiClient.callApi('VendorShippingApi-getShipmentDetails',
       '/vendor/shipping/v1/shipments', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-getShipmentDetails')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -191,7 +191,7 @@ export class VendorShippingApi {
     return this.apiClient.callApi('VendorShippingApi-getShipmentLabels',
       '/vendor/shipping/v1/transportLabels', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-getShipmentLabels')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -245,7 +245,7 @@ export class VendorShippingApi {
     return this.apiClient.callApi('VendorShippingApi-submitShipmentConfirmations',
       '/vendor/shipping/v1/shipmentConfirmations', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-submitShipmentConfirmations')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -292,7 +292,7 @@ export class VendorShippingApi {
     return this.apiClient.callApi('VendorShippingApi-submitShipments',
       '/vendor/shipping/v1/shipments', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-submitShipments')
+      contentTypes, accepts, returnType
     )
   }
 

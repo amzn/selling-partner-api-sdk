@@ -68,7 +68,7 @@ export class MerchantFulfillmentApi {
     return this.apiClient.callApi('MerchantFulfillmentApi-cancelShipment',
       '/mfn/v0/shipments/{shipmentId}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-cancelShipment')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -113,7 +113,7 @@ export class MerchantFulfillmentApi {
     return this.apiClient.callApi('MerchantFulfillmentApi-createShipment',
       '/mfn/v0/shipments', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-createShipment')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -158,7 +158,7 @@ export class MerchantFulfillmentApi {
     return this.apiClient.callApi('MerchantFulfillmentApi-getAdditionalSellerInputs',
       '/mfn/v0/additionalSellerInputs', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-getAdditionalSellerInputs')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -203,7 +203,7 @@ export class MerchantFulfillmentApi {
     return this.apiClient.callApi('MerchantFulfillmentApi-getEligibleShipmentServices',
       '/mfn/v0/eligibleShippingServices', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-getEligibleShipmentServices')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -249,7 +249,7 @@ export class MerchantFulfillmentApi {
     return this.apiClient.callApi('MerchantFulfillmentApi-getShipment',
       '/mfn/v0/shipments/{shipmentId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-getShipment')
+      contentTypes, accepts, returnType
     )
   }
 

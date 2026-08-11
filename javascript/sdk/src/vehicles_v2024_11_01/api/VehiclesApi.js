@@ -75,7 +75,7 @@ export class VehiclesApi {
     return this.apiClient.callApi('VehiclesApi-getVehicles',
       '/catalog/2024-11-01/automotive/vehicles', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VehiclesApi-getVehicles')
+      contentTypes, accepts, returnType
     )
   }
 

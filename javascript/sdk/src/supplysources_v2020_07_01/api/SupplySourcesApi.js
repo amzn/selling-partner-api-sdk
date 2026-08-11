@@ -67,7 +67,7 @@ export class SupplySourcesApi {
     return this.apiClient.callApi('SupplySourcesApi-archiveSupplySource',
       '/supplySources/2020-07-01/supplySources/{supplySourceId}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('SupplySourcesApi-archiveSupplySource')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -112,7 +112,7 @@ export class SupplySourcesApi {
     return this.apiClient.callApi('SupplySourcesApi-createSupplySource',
       '/supplySources/2020-07-01/supplySources', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('SupplySourcesApi-createSupplySource')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -158,7 +158,7 @@ export class SupplySourcesApi {
     return this.apiClient.callApi('SupplySourcesApi-getSupplySource',
       '/supplySources/2020-07-01/supplySources/{supplySourceId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('SupplySourcesApi-getSupplySource')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -203,7 +203,7 @@ export class SupplySourcesApi {
     return this.apiClient.callApi('SupplySourcesApi-getSupplySources',
       '/supplySources/2020-07-01/supplySources', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('SupplySourcesApi-getSupplySources')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -254,7 +254,7 @@ export class SupplySourcesApi {
     return this.apiClient.callApi('SupplySourcesApi-updateSupplySource',
       '/supplySources/2020-07-01/supplySources/{supplySourceId}', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('SupplySourcesApi-updateSupplySource')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -305,7 +305,7 @@ export class SupplySourcesApi {
     return this.apiClient.callApi('SupplySourcesApi-updateSupplySourceStatus',
       '/supplySources/2020-07-01/supplySources/{supplySourceId}/status', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('SupplySourcesApi-updateSupplySourceStatus')
+      contentTypes, accepts, returnType
     )
   }
 

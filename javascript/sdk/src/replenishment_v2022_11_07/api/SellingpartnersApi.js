@@ -59,7 +59,7 @@ export class SellingpartnersApi {
     return this.apiClient.callApi('SellingpartnersApi-getSellingPartnerMetrics',
       '/replenishment/2022-11-07/sellingPartners/metrics/search', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('SellingpartnersApi-getSellingPartnerMetrics')
+      contentTypes, accepts, returnType
     )
   }
 

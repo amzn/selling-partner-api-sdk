@@ -68,7 +68,7 @@ export class UpdateInventoryApi {
     return this.apiClient.callApi('UpdateInventoryApi-submitInventoryUpdate',
       '/vendor/directFulfillment/inventory/v1/warehouses/{warehouseId}/items', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('UpdateInventoryApi-submitInventoryUpdate')
+      contentTypes, accepts, returnType
     )
   }
 

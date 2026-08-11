@@ -66,7 +66,7 @@ export class QueriesApi {
     return this.apiClient.callApi('QueriesApi-cancelQuery',
       '/dataKiosk/2023-11-15/queries/{queryId}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('QueriesApi-cancelQuery')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -111,7 +111,7 @@ export class QueriesApi {
     return this.apiClient.callApi('QueriesApi-createQuery',
       '/dataKiosk/2023-11-15/queries', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('QueriesApi-createQuery')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -157,7 +157,7 @@ export class QueriesApi {
     return this.apiClient.callApi('QueriesApi-getDocument',
       '/dataKiosk/2023-11-15/documents/{documentId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('QueriesApi-getDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -208,7 +208,7 @@ export class QueriesApi {
     return this.apiClient.callApi('QueriesApi-getQueries',
       '/dataKiosk/2023-11-15/queries', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('QueriesApi-getQueries')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -259,7 +259,7 @@ export class QueriesApi {
     return this.apiClient.callApi('QueriesApi-getQuery',
       '/dataKiosk/2023-11-15/queries/{queryId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('QueriesApi-getQuery')
+      contentTypes, accepts, returnType
     )
   }
 

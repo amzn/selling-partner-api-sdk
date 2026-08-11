@@ -84,7 +84,7 @@ export class ListingsApi {
     return this.apiClient.callApi('ListingsApi-deleteListingsItem',
       '/listings/2021-08-01/items/{sellerId}/{sku}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-deleteListingsItem')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -154,7 +154,7 @@ export class ListingsApi {
     return this.apiClient.callApi('ListingsApi-getListingsItem',
       '/listings/2021-08-01/items/{sellerId}/{sku}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-getListingsItem')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -233,7 +233,7 @@ export class ListingsApi {
     return this.apiClient.callApi('ListingsApi-patchListingsItem',
       '/listings/2021-08-01/items/{sellerId}/{sku}', 'PATCH',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-patchListingsItem')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -314,7 +314,7 @@ export class ListingsApi {
     return this.apiClient.callApi('ListingsApi-putListingsItem',
       '/listings/2021-08-01/items/{sellerId}/{sku}', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-putListingsItem')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -410,7 +410,7 @@ export class ListingsApi {
     return this.apiClient.callApi('ListingsApi-searchListingsItems',
       '/listings/2021-08-01/items/{sellerId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-searchListingsItems')
+      contentTypes, accepts, returnType
     )
   }
 

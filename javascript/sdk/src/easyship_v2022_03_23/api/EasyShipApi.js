@@ -68,7 +68,7 @@ export class EasyShipApi {
     return this.apiClient.callApi('EasyShipApi-createScheduledPackage',
       '/easyShip/2022-03-23/package', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('EasyShipApi-createScheduledPackage')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -113,7 +113,7 @@ export class EasyShipApi {
     return this.apiClient.callApi('EasyShipApi-createScheduledPackageBulk',
       '/easyShip/2022-03-23/packages/bulk', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('EasyShipApi-createScheduledPackageBulk')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -166,7 +166,7 @@ export class EasyShipApi {
     return this.apiClient.callApi('EasyShipApi-getScheduledPackage',
       '/easyShip/2022-03-23/package', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('EasyShipApi-getScheduledPackage')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -209,7 +209,7 @@ export class EasyShipApi {
     return this.apiClient.callApi('EasyShipApi-listHandoverSlots',
       '/easyShip/2022-03-23/timeSlot', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('EasyShipApi-listHandoverSlots')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -252,7 +252,7 @@ export class EasyShipApi {
     return this.apiClient.callApi('EasyShipApi-updateScheduledPackages',
       '/easyShip/2022-03-23/package', 'PATCH',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('EasyShipApi-updateScheduledPackages')
+      contentTypes, accepts, returnType
     )
   }
 

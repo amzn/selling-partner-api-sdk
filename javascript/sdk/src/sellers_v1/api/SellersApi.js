@@ -55,7 +55,7 @@ export class SellersApi {
     return this.apiClient.callApi('SellersApi-getAccount',
       '/sellers/v1/account', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('SellersApi-getAccount')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -93,7 +93,7 @@ export class SellersApi {
     return this.apiClient.callApi('SellersApi-getMarketplaceParticipations',
       '/sellers/v1/marketplaceParticipations', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('SellersApi-getMarketplaceParticipations')
+      contentTypes, accepts, returnType
     )
   }
 

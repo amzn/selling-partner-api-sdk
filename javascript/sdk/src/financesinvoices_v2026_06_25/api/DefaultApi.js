@@ -74,7 +74,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-getInvoice',
       '/finances/invoices/2026-06-25/invoices/{invoiceIdentifier}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-getInvoice')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -133,7 +133,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-getInvoiceHeaders',
       '/finances/invoices/2026-06-25/invoices', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-getInvoiceHeaders')
+      contentTypes, accepts, returnType
     )
   }
 
