@@ -19,8 +19,6 @@ import { GetListingOffersBatchRequest } from '../model/GetListingOffersBatchRequ
 import { GetListingOffersBatchResponse } from '../model/GetListingOffersBatchResponse.js'
 import { GetOffersResponse } from '../model/GetOffersResponse.js'
 import { GetPricingResponse } from '../model/GetPricingResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * ProductPricing service.
@@ -28,9 +26,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v0
 */
 export class ProductPricingApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new ProductPricingApi.
     * @alias module:pricing_v0/api/ProductPricingApi
@@ -40,36 +35,6 @@ export class ProductPricingApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'ProductPricingApi-getCompetitivePricing',
-      'ProductPricingApi-getItemOffers',
-      'ProductPricingApi-getItemOffersBatch',
-      'ProductPricingApi-getListingOffers',
-      'ProductPricingApi-getListingOffersBatch',
-      'ProductPricingApi-getPricing'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -117,7 +82,7 @@ export class ProductPricingApi {
     return this.apiClient.callApi('ProductPricingApi-getCompetitivePricing',
       '/products/pricing/v0/competitivePrice', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getCompetitivePricing')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -186,7 +151,7 @@ export class ProductPricingApi {
     return this.apiClient.callApi('ProductPricingApi-getItemOffers',
       '/products/pricing/v0/items/{Asin}/offers', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getItemOffers')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -235,7 +200,7 @@ export class ProductPricingApi {
     return this.apiClient.callApi('ProductPricingApi-getItemOffersBatch',
       '/batches/products/pricing/v0/itemOffers', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getItemOffersBatch')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -299,7 +264,7 @@ export class ProductPricingApi {
     return this.apiClient.callApi('ProductPricingApi-getListingOffers',
       '/products/pricing/v0/listings/{SellerSKU}/offers', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getListingOffers')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -348,7 +313,7 @@ export class ProductPricingApi {
     return this.apiClient.callApi('ProductPricingApi-getListingOffersBatch',
       '/batches/products/pricing/v0/listingOffers', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getListingOffersBatch')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -411,7 +376,7 @@ export class ProductPricingApi {
     return this.apiClient.callApi('ProductPricingApi-getPricing',
       '/products/pricing/v0/price', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getPricing')
+      contentTypes, accepts, returnType
     )
   }
 

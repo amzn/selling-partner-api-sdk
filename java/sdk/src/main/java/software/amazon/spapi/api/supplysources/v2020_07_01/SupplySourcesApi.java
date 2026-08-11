@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.supplysources.v2020_07_01.CreateSupplySourceRequest;
@@ -43,38 +41,10 @@ import software.amazon.spapi.models.supplysources.v2020_07_01.UpdateSupplySource
 
 public class SupplySourcesApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public SupplySourcesApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public SupplySourcesApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket archiveSupplySourceBucket = Bucket.builder()
-            .addLimit(config.getLimit("SupplySourcesApi-archiveSupplySource"))
-            .build();
-
-    public final Bucket createSupplySourceBucket = Bucket.builder()
-            .addLimit(config.getLimit("SupplySourcesApi-createSupplySource"))
-            .build();
-
-    public final Bucket getSupplySourceBucket = Bucket.builder()
-            .addLimit(config.getLimit("SupplySourcesApi-getSupplySource"))
-            .build();
-
-    public final Bucket getSupplySourcesBucket = Bucket.builder()
-            .addLimit(config.getLimit("SupplySourcesApi-getSupplySources"))
-            .build();
-
-    public final Bucket updateSupplySourceBucket = Bucket.builder()
-            .addLimit(config.getLimit("SupplySourcesApi-updateSupplySource"))
-            .build();
-
-    public final Bucket updateSupplySourceStatusBucket = Bucket.builder()
-            .addLimit(config.getLimit("SupplySourcesApi-updateSupplySourceStatus"))
-            .build();
 
     /**
      * Build call for archiveSupplySource
@@ -187,10 +157,8 @@ public class SupplySourcesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || archiveSupplySourceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("archiveSupplySource operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -248,11 +216,9 @@ public class SupplySourcesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || archiveSupplySourceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("archiveSupplySource operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createSupplySource
@@ -363,10 +329,8 @@ public class SupplySourcesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createSupplySourceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateSupplySourceResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createSupplySource operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateSupplySourceResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -427,11 +391,9 @@ public class SupplySourcesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createSupplySourceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateSupplySourceResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createSupplySource operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateSupplySourceResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getSupplySource
@@ -543,10 +505,8 @@ public class SupplySourcesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getSupplySourceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SupplySource>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getSupplySource operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SupplySource>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -603,11 +563,9 @@ public class SupplySourcesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getSupplySourceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SupplySource>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getSupplySource operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SupplySource>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getSupplySources
@@ -721,10 +679,8 @@ public class SupplySourcesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getSupplySourcesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSupplySourcesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getSupplySources operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetSupplySourcesResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -788,11 +744,9 @@ public class SupplySourcesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getSupplySourcesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSupplySourcesResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getSupplySources operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetSupplySourcesResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for updateSupplySource
@@ -913,10 +867,8 @@ public class SupplySourcesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateSupplySourceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateSupplySource operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -981,11 +933,9 @@ public class SupplySourcesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateSupplySourceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("updateSupplySource operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for updateSupplySourceStatus
@@ -1107,10 +1057,8 @@ public class SupplySourcesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateSupplySourceStatusBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateSupplySourceStatus operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1176,11 +1124,9 @@ public class SupplySourcesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateSupplySourceStatusBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("updateSupplySourceStatus operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ErrorList>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -1188,7 +1134,6 @@ public class SupplySourcesApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -1207,11 +1152,6 @@ public class SupplySourcesApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -1234,11 +1174,9 @@ public class SupplySourcesApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new SupplySourcesApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new SupplySourcesApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

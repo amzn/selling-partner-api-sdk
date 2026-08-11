@@ -69,7 +69,7 @@ class FeedsApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new FeedsApi($config, null, false);
+        $this->api = new FeedsApi($config);
     }
 
 

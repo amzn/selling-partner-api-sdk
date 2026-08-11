@@ -43,9 +43,6 @@ use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\uploads\v2020_11_01\CreateUploadDestinationResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * UploadsApi Class Doc Comment.
@@ -58,7 +55,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class UploadsApi
 {
-    public ?LimiterInterface $createUploadDestinationForResourceRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -70,29 +66,16 @@ class UploadsApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('UploadsApi-createUploadDestinationForResource'), $this->rateLimitStorage);
-            $this->createUploadDestinationForResourceRateLimiter = $factory->create('UploadsApi-createUploadDestinationForResource');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -187,9 +170,6 @@ class UploadsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createUploadDestinationForResourceRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -303,9 +283,6 @@ class UploadsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'UploadsApi-createUploadDestinationForResource');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createUploadDestinationForResourceRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

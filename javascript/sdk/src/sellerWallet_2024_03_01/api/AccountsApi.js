@@ -16,8 +16,6 @@ import { BalanceListing } from '../model/BalanceListing.js'
 import { BankAccount } from '../model/BankAccount.js'
 import { BankAccountListing } from '../model/BankAccountListing.js'
 import { ErrorList } from '../model/ErrorList.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Accounts service.
@@ -25,9 +23,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-03-01
 */
 export class AccountsApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new AccountsApi.
     * @alias module:sellerWallet_2024_03_01/api/AccountsApi
@@ -37,33 +32,6 @@ export class AccountsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'AccountsApi-getAccount',
-      'AccountsApi-listAccountBalances',
-      'AccountsApi-listAccounts'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -104,7 +72,7 @@ export class AccountsApi {
     return this.apiClient.callApi('AccountsApi-getAccount',
       '/finances/transfers/wallet/2024-03-01/accounts/{accountId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AccountsApi-getAccount')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -160,7 +128,7 @@ export class AccountsApi {
     return this.apiClient.callApi('AccountsApi-listAccountBalances',
       '/finances/transfers/wallet/2024-03-01/accounts/{accountId}/balance', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AccountsApi-listAccountBalances')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -209,7 +177,7 @@ export class AccountsApi {
     return this.apiClient.callApi('AccountsApi-listAccounts',
       '/finances/transfers/wallet/2024-03-01/accounts', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AccountsApi-listAccounts')
+      contentTypes, accepts, returnType
     )
   }
 

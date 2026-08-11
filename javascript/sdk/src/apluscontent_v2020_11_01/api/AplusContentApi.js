@@ -24,8 +24,6 @@ import { PostContentDocumentSuspendSubmissionResponse } from '../model/PostConte
 import { SearchContentDocumentsResponse } from '../model/SearchContentDocumentsResponse.js'
 import { SearchContentPublishRecordsResponse } from '../model/SearchContentPublishRecordsResponse.js'
 import { ValidateContentDocumentAsinRelationsResponse } from '../model/ValidateContentDocumentAsinRelationsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * AplusContent service.
@@ -33,9 +31,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2020-11-01
 */
 export class AplusContentApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new AplusContentApi.
     * @alias module:apluscontent_v2020_11_01/api/AplusContentApi
@@ -45,40 +40,6 @@ export class AplusContentApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'AplusContentApi-createContentDocument',
-      'AplusContentApi-getContentDocument',
-      'AplusContentApi-listContentDocumentAsinRelations',
-      'AplusContentApi-postContentDocumentApprovalSubmission',
-      'AplusContentApi-postContentDocumentAsinRelations',
-      'AplusContentApi-postContentDocumentSuspendSubmission',
-      'AplusContentApi-searchContentDocuments',
-      'AplusContentApi-searchContentPublishRecords',
-      'AplusContentApi-updateContentDocument',
-      'AplusContentApi-validateContentDocumentAsinRelations'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -117,7 +78,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-createContentDocument',
       '/aplus/2020-11-01/contentDocuments', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-createContentDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -178,7 +139,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-getContentDocument',
       '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-getContentDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -241,7 +202,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-listContentDocumentAsinRelations',
       '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/asins', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-listContentDocumentAsinRelations')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -299,7 +260,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-postContentDocumentApprovalSubmission',
       '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/approvalSubmissions', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-postContentDocumentApprovalSubmission')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -359,7 +320,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-postContentDocumentAsinRelations',
       '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/asins', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-postContentDocumentAsinRelations')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -414,7 +375,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-postContentDocumentSuspendSubmission',
       '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/suspendSubmissions', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-postContentDocumentSuspendSubmission')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -465,7 +426,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-searchContentDocuments',
       '/aplus/2020-11-01/contentDocuments', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-searchContentDocuments')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -524,7 +485,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-searchContentPublishRecords',
       '/aplus/2020-11-01/contentPublishRecords', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-searchContentPublishRecords')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -586,7 +547,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-updateContentDocument',
       '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-updateContentDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -644,7 +605,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-validateContentDocumentAsinRelations',
       '/aplus/2020-11-01/contentAsinValidations', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-validateContentDocumentAsinRelations')
+      contentTypes, accepts, returnType
     )
   }
 

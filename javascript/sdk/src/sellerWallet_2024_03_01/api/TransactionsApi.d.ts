@@ -21,7 +21,6 @@ import { TransactionListing } from '../model/TransactionListing.js';
 * @version 2024-03-01
 */
 export declare class TransactionsApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new TransactionsApi.
@@ -31,15 +30,6 @@ export declare class TransactionsApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Create a transaction request from Amazon Seller Wallet account to another customer-provided account
        * Create a transaction request from a Seller Wallet account to another customer-provided account.

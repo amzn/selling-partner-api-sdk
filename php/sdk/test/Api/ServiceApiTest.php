@@ -69,7 +69,7 @@ class ServiceApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new ServiceApi($config, null, false);
+        $this->api = new ServiceApi($config);
     }
 
 

@@ -23,8 +23,6 @@ import { GetOrderResponse } from '../model/GetOrderResponse.js'
 import { GetOrdersResponse } from '../model/GetOrdersResponse.js'
 import { UpdateVerificationStatusErrorResponse } from '../model/UpdateVerificationStatusErrorResponse.js'
 import { UpdateVerificationStatusRequest } from '../model/UpdateVerificationStatusRequest.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * OrdersV0 service.
@@ -32,9 +30,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v0
 */
 export class OrdersV0Api {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new OrdersV0Api.
     * @alias module:orders_v0/api/OrdersV0Api
@@ -44,39 +39,6 @@ export class OrdersV0Api {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'OrdersV0Api-confirmShipment',
-      'OrdersV0Api-getOrder',
-      'OrdersV0Api-getOrderAddress',
-      'OrdersV0Api-getOrderBuyerInfo',
-      'OrdersV0Api-getOrderItems',
-      'OrdersV0Api-getOrderItemsBuyerInfo',
-      'OrdersV0Api-getOrderRegulatedInfo',
-      'OrdersV0Api-getOrders',
-      'OrdersV0Api-updateVerificationStatus'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -115,7 +77,7 @@ export class OrdersV0Api {
     return this.apiClient.callApi('OrdersV0Api-confirmShipment',
       '/orders/v0/orders/{orderId}/shipmentConfirmation', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-confirmShipment')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -162,7 +124,7 @@ export class OrdersV0Api {
     return this.apiClient.callApi('OrdersV0Api-getOrder',
       '/orders/v0/orders/{orderId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-getOrder')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -208,7 +170,7 @@ export class OrdersV0Api {
     return this.apiClient.callApi('OrdersV0Api-getOrderAddress',
       '/orders/v0/orders/{orderId}/address', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-getOrderAddress')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -254,7 +216,7 @@ export class OrdersV0Api {
     return this.apiClient.callApi('OrdersV0Api-getOrderBuyerInfo',
       '/orders/v0/orders/{orderId}/buyerInfo', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-getOrderBuyerInfo')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -304,7 +266,7 @@ export class OrdersV0Api {
     return this.apiClient.callApi('OrdersV0Api-getOrderItems',
       '/orders/v0/orders/{orderId}/orderItems', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-getOrderItems')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -356,7 +318,7 @@ export class OrdersV0Api {
     return this.apiClient.callApi('OrdersV0Api-getOrderItemsBuyerInfo',
       '/orders/v0/orders/{orderId}/orderItems/buyerInfo', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-getOrderItemsBuyerInfo')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -404,7 +366,7 @@ export class OrdersV0Api {
     return this.apiClient.callApi('OrdersV0Api-getOrderRegulatedInfo',
       '/orders/v0/orders/{orderId}/regulatedInfo', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-getOrderRegulatedInfo')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -494,7 +456,7 @@ export class OrdersV0Api {
     return this.apiClient.callApi('OrdersV0Api-getOrders',
       '/orders/v0/orders', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-getOrders')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -568,7 +530,7 @@ export class OrdersV0Api {
     return this.apiClient.callApi('OrdersV0Api-updateVerificationStatus',
       '/orders/v0/orders/{orderId}/regulatedInfo', 'PATCH',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('OrdersV0Api-updateVerificationStatus')
+      contentTypes, accepts, returnType
     )
   }
 

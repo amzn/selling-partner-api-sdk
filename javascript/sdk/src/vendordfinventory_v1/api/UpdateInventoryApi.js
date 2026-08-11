@@ -14,8 +14,6 @@
 import { ApiClient } from '../ApiClient.js'
 import { SubmitInventoryUpdateRequest } from '../model/SubmitInventoryUpdateRequest.js'
 import { SubmitInventoryUpdateResponse } from '../model/SubmitInventoryUpdateResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * UpdateInventory service.
@@ -23,9 +21,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class UpdateInventoryApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new UpdateInventoryApi.
     * @alias module:vendordfinventory_v1/api/UpdateInventoryApi
@@ -35,31 +30,6 @@ export class UpdateInventoryApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'UpdateInventoryApi-submitInventoryUpdate'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -98,7 +68,7 @@ export class UpdateInventoryApi {
     return this.apiClient.callApi('UpdateInventoryApi-submitInventoryUpdate',
       '/vendor/directFulfillment/inventory/v1/warehouses/{warehouseId}/items', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('UpdateInventoryApi-submitInventoryUpdate')
+      contentTypes, accepts, returnType
     )
   }
 

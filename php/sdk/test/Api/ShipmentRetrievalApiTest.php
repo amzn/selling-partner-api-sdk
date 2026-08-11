@@ -69,7 +69,7 @@ class ShipmentRetrievalApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new ShipmentRetrievalApi($config, null, false);
+        $this->api = new ShipmentRetrievalApi($config);
     }
 
 

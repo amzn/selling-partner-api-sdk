@@ -2,12 +2,10 @@
 
 package {{package}};
 
-import io.github.bucket4j.Bucket;
 import {{invokerPackage}}.ApiCallback;
 import {{invokerPackage}}.ApiClient;
 import {{invokerPackage}}.ApiException;
 import {{invokerPackage}}.ApiResponse;
-import {{invokerPackage}}.Configuration;
 import {{invokerPackage}}.Pair;
 import {{invokerPackage}}.StringUtil;
 
@@ -35,21 +33,10 @@ import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 {{#operations}}
 public class {{classname}} {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public {{classname}}(ApiClient apiClient, Boolean disableRateLimiting) {
+    public {{classname}}(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    {{#operation}}
-    public final Bucket {{operationId}}Bucket = Bucket.builder()
-        .addLimit(config.getLimit("{{classname}}-{{operationId}}"))
-        .build();
-
-    {{/operation}}
 
     {{#operation}}
     /**
@@ -199,11 +186,9 @@ public class {{classname}} {
             request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "{{classname}}-{{operationId}}");
             call = apiClient.getHttpClient().newCall(request);
         }
-        
-        if (disableRateLimiting || {{operationId}}Bucket.tryConsume(1)) {
-            {{#returnType}}Type localVarReturnType = new TypeToken<{{{returnType}}}>(){}.getType();
-            return apiClient.execute(call, localVarReturnType);{{/returnType}}{{^returnType}}return apiClient.execute(call);{{/returnType}}
-        } else throw new ApiException.RateLimitExceeded("{{operationId}} operation exceeds rate limit");
+
+        {{#returnType}}Type localVarReturnType = new TypeToken<{{{returnType}}}>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);{{/returnType}}{{^returnType}}return apiClient.execute(call);{{/returnType}}
     }
 
     /**
@@ -285,12 +270,10 @@ public class {{classname}} {
             request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "{{classname}}-{{operationId}}");
             call = apiClient.getHttpClient().newCall(request);
         }
-        
-        if (disableRateLimiting || {{operationId}}Bucket.tryConsume(1)) {
-            {{#returnType}}Type localVarReturnType = new TypeToken<{{{returnType}}}>(){}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);{{/returnType}}{{^returnType}}apiClient.executeAsync(call, callback);{{/returnType}}
-            return call;
-        } else throw new ApiException.RateLimitExceeded("{{operationId}} operation exceeds rate limit");
+
+        {{#returnType}}Type localVarReturnType = new TypeToken<{{{returnType}}}>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);{{/returnType}}{{^returnType}}apiClient.executeAsync(call, callback);{{/returnType}}
+        return call;
     }
     {{/operation}}
 
@@ -299,7 +282,6 @@ public class {{classname}} {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -318,11 +300,6 @@ public class {{classname}} {
 		
 	   public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -348,7 +325,7 @@ public class {{classname}} {
 
             return new {{classname}}(new ApiClient()
                 .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                .setBasePath(endpoint), disableRateLimiting);
+                .setBasePath(endpoint));
         }
     }
 }

@@ -15,8 +15,6 @@ import { ApiClient } from '../ApiClient.js'
 import { BatchInventoryRequest } from '../model/BatchInventoryRequest.js'
 import { BatchInventoryResponse } from '../model/BatchInventoryResponse.js'
 import { ErrorList } from '../model/ErrorList.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * BatchInventory service.
@@ -24,9 +22,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-09-11
 */
 export class BatchInventoryApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new BatchInventoryApi.
     * @alias module:externalfulfillmentinventory_v2024_09_11/api/BatchInventoryApi
@@ -36,31 +31,6 @@ export class BatchInventoryApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'BatchInventoryApi-batchInventory'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -92,7 +62,7 @@ export class BatchInventoryApi {
     return this.apiClient.callApi('BatchInventoryApi-batchInventory',
       '/externalFulfillment/inventory/2024-09-11/inventories', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('BatchInventoryApi-batchInventory')
+      contentTypes, accepts, returnType
     )
   }
 

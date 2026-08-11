@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.customerfeedback.v2024_06_01.BrowseNodeResponse;
@@ -42,42 +40,10 @@ import software.amazon.spapi.models.customerfeedback.v2024_06_01.ItemReviewTrend
 
 public class CustomerFeedbackApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public CustomerFeedbackApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public CustomerFeedbackApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket getBrowseNodeReturnTopicsBucket = Bucket.builder()
-            .addLimit(config.getLimit("CustomerFeedbackApi-getBrowseNodeReturnTopics"))
-            .build();
-
-    public final Bucket getBrowseNodeReturnTrendsBucket = Bucket.builder()
-            .addLimit(config.getLimit("CustomerFeedbackApi-getBrowseNodeReturnTrends"))
-            .build();
-
-    public final Bucket getBrowseNodeReviewTopicsBucket = Bucket.builder()
-            .addLimit(config.getLimit("CustomerFeedbackApi-getBrowseNodeReviewTopics"))
-            .build();
-
-    public final Bucket getBrowseNodeReviewTrendsBucket = Bucket.builder()
-            .addLimit(config.getLimit("CustomerFeedbackApi-getBrowseNodeReviewTrends"))
-            .build();
-
-    public final Bucket getItemBrowseNodeBucket = Bucket.builder()
-            .addLimit(config.getLimit("CustomerFeedbackApi-getItemBrowseNode"))
-            .build();
-
-    public final Bucket getItemReviewTopicsBucket = Bucket.builder()
-            .addLimit(config.getLimit("CustomerFeedbackApi-getItemReviewTopics"))
-            .build();
-
-    public final Bucket getItemReviewTrendsBucket = Bucket.builder()
-            .addLimit(config.getLimit("CustomerFeedbackApi-getItemReviewTrends"))
-            .build();
 
     /**
      * Build call for getBrowseNodeReturnTopics
@@ -215,10 +181,8 @@ public class CustomerFeedbackApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getBrowseNodeReturnTopicsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BrowseNodeReturnTopicsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getBrowseNodeReturnTopics operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<BrowseNodeReturnTopicsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -290,11 +254,9 @@ public class CustomerFeedbackApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getBrowseNodeReturnTopicsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BrowseNodeReturnTopicsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getBrowseNodeReturnTopics operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<BrowseNodeReturnTopicsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getBrowseNodeReturnTrends
@@ -432,10 +394,8 @@ public class CustomerFeedbackApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getBrowseNodeReturnTrendsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BrowseNodeReturnTrendsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getBrowseNodeReturnTrends operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<BrowseNodeReturnTrendsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -507,11 +467,9 @@ public class CustomerFeedbackApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getBrowseNodeReturnTrendsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BrowseNodeReturnTrendsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getBrowseNodeReturnTrends operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<BrowseNodeReturnTrendsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getBrowseNodeReviewTopics
@@ -662,10 +620,8 @@ public class CustomerFeedbackApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getBrowseNodeReviewTopicsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BrowseNodeReviewTopicsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getBrowseNodeReviewTopics operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<BrowseNodeReviewTopicsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -744,11 +700,9 @@ public class CustomerFeedbackApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getBrowseNodeReviewTopicsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BrowseNodeReviewTopicsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getBrowseNodeReviewTopics operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<BrowseNodeReviewTopicsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getBrowseNodeReviewTrends
@@ -886,10 +840,8 @@ public class CustomerFeedbackApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getBrowseNodeReviewTrendsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BrowseNodeReviewTrendsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getBrowseNodeReviewTrends operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<BrowseNodeReviewTrendsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -963,11 +915,9 @@ public class CustomerFeedbackApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getBrowseNodeReviewTrendsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BrowseNodeReviewTrendsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getBrowseNodeReviewTrends operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<BrowseNodeReviewTrendsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getItemBrowseNode
@@ -1104,10 +1054,8 @@ public class CustomerFeedbackApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getItemBrowseNodeBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BrowseNodeResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getItemBrowseNode operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<BrowseNodeResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1183,11 +1131,9 @@ public class CustomerFeedbackApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getItemBrowseNodeBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BrowseNodeResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getItemBrowseNode operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<BrowseNodeResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getItemReviewTopics
@@ -1335,10 +1281,8 @@ public class CustomerFeedbackApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getItemReviewTopicsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ItemReviewTopicsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getItemReviewTopics operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ItemReviewTopicsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1413,11 +1357,9 @@ public class CustomerFeedbackApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getItemReviewTopicsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ItemReviewTopicsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getItemReviewTopics operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ItemReviewTopicsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getItemReviewTrends
@@ -1553,10 +1495,8 @@ public class CustomerFeedbackApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getItemReviewTrendsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ItemReviewTrendsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getItemReviewTrends operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ItemReviewTrendsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1627,11 +1567,9 @@ public class CustomerFeedbackApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getItemReviewTrendsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ItemReviewTrendsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getItemReviewTrends operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ItemReviewTrendsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -1639,7 +1577,6 @@ public class CustomerFeedbackApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -1658,11 +1595,6 @@ public class CustomerFeedbackApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -1685,11 +1617,9 @@ public class CustomerFeedbackApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new CustomerFeedbackApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new CustomerFeedbackApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

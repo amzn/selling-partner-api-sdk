@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,25 +28,16 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.fba.eligibility.v1.GetItemEligibilityPreviewResponse;
 
 public class FbaInboundApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public FbaInboundApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public FbaInboundApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket getItemEligibilityPreviewBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaInboundApi-getItemEligibilityPreview"))
-            .build();
 
     /**
      * Build call for getItemEligibilityPreview
@@ -207,10 +197,8 @@ public class FbaInboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getItemEligibilityPreviewBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetItemEligibilityPreviewResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getItemEligibilityPreview operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetItemEligibilityPreviewResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -309,11 +297,9 @@ public class FbaInboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getItemEligibilityPreviewBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetItemEligibilityPreviewResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getItemEligibilityPreview operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetItemEligibilityPreviewResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -321,7 +307,6 @@ public class FbaInboundApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -340,11 +325,6 @@ public class FbaInboundApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -367,11 +347,9 @@ public class FbaInboundApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new FbaInboundApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new FbaInboundApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.easyship.v2022_03_23.CreateScheduledPackageRequest;
@@ -43,34 +41,10 @@ import software.amazon.spapi.models.easyship.v2022_03_23.UpdateScheduledPackages
 
 public class EasyShipApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public EasyShipApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public EasyShipApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket createScheduledPackageBucket = Bucket.builder()
-            .addLimit(config.getLimit("EasyShipApi-createScheduledPackage"))
-            .build();
-
-    public final Bucket createScheduledPackageBulkBucket = Bucket.builder()
-            .addLimit(config.getLimit("EasyShipApi-createScheduledPackageBulk"))
-            .build();
-
-    public final Bucket getScheduledPackageBucket = Bucket.builder()
-            .addLimit(config.getLimit("EasyShipApi-getScheduledPackage"))
-            .build();
-
-    public final Bucket listHandoverSlotsBucket = Bucket.builder()
-            .addLimit(config.getLimit("EasyShipApi-listHandoverSlots"))
-            .build();
-
-    public final Bucket updateScheduledPackagesBucket = Bucket.builder()
-            .addLimit(config.getLimit("EasyShipApi-updateScheduledPackages"))
-            .build();
 
     /**
      * Build call for createScheduledPackage
@@ -231,10 +205,8 @@ public class EasyShipApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createScheduledPackageBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createScheduledPackage operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -343,11 +315,9 @@ public class EasyShipApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createScheduledPackageBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createScheduledPackage operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createScheduledPackageBulk
@@ -521,10 +491,8 @@ public class EasyShipApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createScheduledPackageBulkBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateScheduledPackagesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createScheduledPackageBulk operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateScheduledPackagesResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -644,11 +612,9 @@ public class EasyShipApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createScheduledPackageBulkBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateScheduledPackagesResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createScheduledPackageBulk operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateScheduledPackagesResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getScheduledPackage
@@ -797,10 +763,8 @@ public class EasyShipApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getScheduledPackageBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getScheduledPackage operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -886,11 +850,9 @@ public class EasyShipApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getScheduledPackageBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getScheduledPackage operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ModelPackage>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for listHandoverSlots
@@ -1031,10 +993,8 @@ public class EasyShipApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listHandoverSlotsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListHandoverSlotsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listHandoverSlots operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ListHandoverSlotsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1127,11 +1087,9 @@ public class EasyShipApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listHandoverSlotsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListHandoverSlotsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("listHandoverSlots operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ListHandoverSlotsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for updateScheduledPackages
@@ -1271,10 +1229,8 @@ public class EasyShipApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateScheduledPackagesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Packages>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateScheduledPackages operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<Packages>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1366,11 +1322,9 @@ public class EasyShipApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateScheduledPackagesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Packages>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("updateScheduledPackages operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<Packages>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -1378,7 +1332,6 @@ public class EasyShipApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -1397,11 +1350,6 @@ public class EasyShipApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -1424,11 +1372,9 @@ public class EasyShipApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new EasyShipApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new EasyShipApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

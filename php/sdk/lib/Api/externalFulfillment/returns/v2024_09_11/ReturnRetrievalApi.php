@@ -45,9 +45,6 @@ use SpApi\HeaderSelector;
 use SpApi\Model\externalFulfillment\returns\v2024_09_11\ModelReturn;
 use SpApi\Model\externalFulfillment\returns\v2024_09_11\ReturnsResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * ReturnRetrievalApi Class Doc Comment.
@@ -60,8 +57,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ReturnRetrievalApi
 {
-    public ?LimiterInterface $getReturnRateLimiter;
-    public ?LimiterInterface $listReturnsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -73,31 +68,16 @@ class ReturnRetrievalApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReturnRetrievalApi-getReturn'), $this->rateLimitStorage);
-            $this->getReturnRateLimiter = $factory->create('ReturnRetrievalApi-getReturn');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReturnRetrievalApi-listReturns'), $this->rateLimitStorage);
-            $this->listReturnsRateLimiter = $factory->create('ReturnRetrievalApi-listReturns');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -174,9 +154,6 @@ class ReturnRetrievalApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getReturnRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -272,9 +249,6 @@ class ReturnRetrievalApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReturnRetrievalApi-getReturn');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getReturnRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -511,9 +485,6 @@ class ReturnRetrievalApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listReturnsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -675,9 +646,6 @@ class ReturnRetrievalApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReturnRetrievalApi-listReturns');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listReturnsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

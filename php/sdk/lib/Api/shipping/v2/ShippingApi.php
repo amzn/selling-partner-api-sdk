@@ -73,9 +73,6 @@ use SpApi\Model\shipping\v2\SubmitNdrFeedbackRequest;
 use SpApi\Model\shipping\v2\UnlinkCarrierAccountRequest;
 use SpApi\Model\shipping\v2\UnlinkCarrierAccountResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * ShippingApi Class Doc Comment.
@@ -88,26 +85,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ShippingApi
 {
-    public ?LimiterInterface $cancelShipmentRateLimiter;
-    public ?LimiterInterface $createClaimRateLimiter;
-    public ?LimiterInterface $directPurchaseShipmentRateLimiter;
-    public ?LimiterInterface $generateCollectionFormRateLimiter;
-    public ?LimiterInterface $getAccessPointsRateLimiter;
-    public ?LimiterInterface $getAdditionalInputsRateLimiter;
-    public ?LimiterInterface $getCarrierAccountFormInputsRateLimiter;
-    public ?LimiterInterface $getCarrierAccountsRateLimiter;
-    public ?LimiterInterface $getCollectionFormRateLimiter;
-    public ?LimiterInterface $getCollectionFormHistoryRateLimiter;
-    public ?LimiterInterface $getRatesRateLimiter;
-    public ?LimiterInterface $getShipmentDocumentsRateLimiter;
-    public ?LimiterInterface $getTrackingRateLimiter;
-    public ?LimiterInterface $getUnmanifestedShipmentsRateLimiter;
-    public ?LimiterInterface $linkCarrierAccountRateLimiter;
-    public ?LimiterInterface $linkCarrierAccount_0RateLimiter;
-    public ?LimiterInterface $oneClickShipmentRateLimiter;
-    public ?LimiterInterface $purchaseShipmentRateLimiter;
-    public ?LimiterInterface $submitNdrFeedbackRateLimiter;
-    public ?LimiterInterface $unlinkCarrierAccountRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -119,67 +96,16 @@ class ShippingApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-cancelShipment'), $this->rateLimitStorage);
-            $this->cancelShipmentRateLimiter = $factory->create('ShippingApi-cancelShipment');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-createClaim'), $this->rateLimitStorage);
-            $this->createClaimRateLimiter = $factory->create('ShippingApi-createClaim');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-directPurchaseShipment'), $this->rateLimitStorage);
-            $this->directPurchaseShipmentRateLimiter = $factory->create('ShippingApi-directPurchaseShipment');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-generateCollectionForm'), $this->rateLimitStorage);
-            $this->generateCollectionFormRateLimiter = $factory->create('ShippingApi-generateCollectionForm');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getAccessPoints'), $this->rateLimitStorage);
-            $this->getAccessPointsRateLimiter = $factory->create('ShippingApi-getAccessPoints');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getAdditionalInputs'), $this->rateLimitStorage);
-            $this->getAdditionalInputsRateLimiter = $factory->create('ShippingApi-getAdditionalInputs');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getCarrierAccountFormInputs'), $this->rateLimitStorage);
-            $this->getCarrierAccountFormInputsRateLimiter = $factory->create('ShippingApi-getCarrierAccountFormInputs');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getCarrierAccounts'), $this->rateLimitStorage);
-            $this->getCarrierAccountsRateLimiter = $factory->create('ShippingApi-getCarrierAccounts');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getCollectionForm'), $this->rateLimitStorage);
-            $this->getCollectionFormRateLimiter = $factory->create('ShippingApi-getCollectionForm');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getCollectionFormHistory'), $this->rateLimitStorage);
-            $this->getCollectionFormHistoryRateLimiter = $factory->create('ShippingApi-getCollectionFormHistory');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getRates'), $this->rateLimitStorage);
-            $this->getRatesRateLimiter = $factory->create('ShippingApi-getRates');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getShipmentDocuments'), $this->rateLimitStorage);
-            $this->getShipmentDocumentsRateLimiter = $factory->create('ShippingApi-getShipmentDocuments');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getTracking'), $this->rateLimitStorage);
-            $this->getTrackingRateLimiter = $factory->create('ShippingApi-getTracking');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-getUnmanifestedShipments'), $this->rateLimitStorage);
-            $this->getUnmanifestedShipmentsRateLimiter = $factory->create('ShippingApi-getUnmanifestedShipments');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-linkCarrierAccount'), $this->rateLimitStorage);
-            $this->linkCarrierAccountRateLimiter = $factory->create('ShippingApi-linkCarrierAccount');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-linkCarrierAccount_0'), $this->rateLimitStorage);
-            $this->linkCarrierAccount_0RateLimiter = $factory->create('ShippingApi-linkCarrierAccount_0');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-oneClickShipment'), $this->rateLimitStorage);
-            $this->oneClickShipmentRateLimiter = $factory->create('ShippingApi-oneClickShipment');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-purchaseShipment'), $this->rateLimitStorage);
-            $this->purchaseShipmentRateLimiter = $factory->create('ShippingApi-purchaseShipment');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-submitNdrFeedback'), $this->rateLimitStorage);
-            $this->submitNdrFeedbackRateLimiter = $factory->create('ShippingApi-submitNdrFeedback');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShippingApi-unlinkCarrierAccount'), $this->rateLimitStorage);
-            $this->unlinkCarrierAccountRateLimiter = $factory->create('ShippingApi-unlinkCarrierAccount');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -262,9 +188,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->cancelShipmentRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -366,9 +289,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-cancelShipment');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->cancelShipmentRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -553,9 +473,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createClaimRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -657,9 +574,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-createClaim');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createClaimRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -853,9 +767,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->directPurchaseShipmentRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -969,9 +880,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-directPurchaseShipment');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->directPurchaseShipmentRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1173,9 +1081,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->generateCollectionFormRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1283,9 +1188,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-generateCollectionForm');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->generateCollectionFormRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1486,9 +1388,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getAccessPointsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1602,9 +1501,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-getAccessPoints');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getAccessPointsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1835,9 +1731,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getAdditionalInputsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1945,9 +1838,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-getAdditionalInputs');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getAdditionalInputsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2147,9 +2037,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getCarrierAccountFormInputsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2245,9 +2132,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-getCarrierAccountFormInputs');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getCarrierAccountFormInputsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2413,9 +2297,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getCarrierAccountsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2517,9 +2398,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-getCarrierAccounts');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getCarrierAccountsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2701,9 +2579,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getCollectionFormRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2805,9 +2680,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-getCollectionForm');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getCollectionFormRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2992,9 +2864,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getCollectionFormHistoryRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3096,9 +2965,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-getCollectionFormHistory');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getCollectionFormHistoryRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -3280,9 +3146,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getRatesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3384,9 +3247,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-getRates');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getRatesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -3586,9 +3446,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getShipmentDocumentsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3708,9 +3565,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-getShipmentDocuments');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getShipmentDocumentsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -3947,9 +3801,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getTrackingRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -4057,9 +3908,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-getTracking');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getTrackingRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -4265,9 +4113,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getUnmanifestedShipmentsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -4369,9 +4214,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-getUnmanifestedShipments');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getUnmanifestedShipmentsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -4559,9 +4401,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->linkCarrierAccountRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -4669,9 +4508,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-linkCarrierAccount');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->linkCarrierAccountRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -4877,9 +4713,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->linkCarrierAccount_0RateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -4987,9 +4820,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-linkCarrierAccount_0');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->linkCarrierAccount_0RateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -5189,9 +5019,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->oneClickShipmentRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -5293,9 +5120,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-oneClickShipment');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->oneClickShipmentRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -5483,9 +5307,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->purchaseShipmentRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -5593,9 +5414,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-purchaseShipment');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->purchaseShipmentRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -5782,9 +5600,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->submitNdrFeedbackRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -5874,9 +5689,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-submitNdrFeedback');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->submitNdrFeedbackRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -6051,9 +5863,6 @@ class ShippingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->unlinkCarrierAccountRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -6161,9 +5970,6 @@ class ShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShippingApi-unlinkCarrierAccount');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->unlinkCarrierAccountRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

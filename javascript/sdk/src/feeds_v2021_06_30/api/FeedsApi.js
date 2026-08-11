@@ -20,8 +20,6 @@ import { ErrorList } from '../model/ErrorList.js'
 import { Feed } from '../model/Feed.js'
 import { FeedDocument } from '../model/FeedDocument.js'
 import { GetFeedsResponse } from '../model/GetFeedsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Feeds service.
@@ -29,9 +27,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2021-06-30
 */
 export class FeedsApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new FeedsApi.
     * @alias module:feeds_v2021_06_30/api/FeedsApi
@@ -41,36 +36,6 @@ export class FeedsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'FeedsApi-cancelFeed',
-      'FeedsApi-createFeed',
-      'FeedsApi-createFeedDocument',
-      'FeedsApi-getFeed',
-      'FeedsApi-getFeedDocument',
-      'FeedsApi-getFeeds'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -103,7 +68,7 @@ export class FeedsApi {
     return this.apiClient.callApi('FeedsApi-cancelFeed',
       '/feeds/2021-06-30/feeds/{feedId}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeedsApi-cancelFeed')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -148,7 +113,7 @@ export class FeedsApi {
     return this.apiClient.callApi('FeedsApi-createFeed',
       '/feeds/2021-06-30/feeds', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeedsApi-createFeed')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -193,7 +158,7 @@ export class FeedsApi {
     return this.apiClient.callApi('FeedsApi-createFeedDocument',
       '/feeds/2021-06-30/documents', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeedsApi-createFeedDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -239,7 +204,7 @@ export class FeedsApi {
     return this.apiClient.callApi('FeedsApi-getFeed',
       '/feeds/2021-06-30/feeds/{feedId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeedsApi-getFeed')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -289,7 +254,7 @@ export class FeedsApi {
     return this.apiClient.callApi('FeedsApi-getFeedDocument',
       '/feeds/2021-06-30/documents/{feedDocumentId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeedsApi-getFeedDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -346,7 +311,7 @@ export class FeedsApi {
     return this.apiClient.callApi('FeedsApi-getFeeds',
       '/feeds/2021-06-30/feeds', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeedsApi-getFeeds')
+      contentTypes, accepts, returnType
     )
   }
 

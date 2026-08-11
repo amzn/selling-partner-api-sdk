@@ -15,8 +15,6 @@ import { ApiClient } from '../ApiClient.js'
 import { ErrorList } from '../model/ErrorList.js'
 import { GetOrderPreviewRequest } from '../model/GetOrderPreviewRequest.js'
 import { GetOrderPreviewResponse } from '../model/GetOrderPreviewResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * FulfillmentPreviews service.
@@ -24,9 +22,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2026-07-04
 */
 export class FulfillmentPreviewsApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new FulfillmentPreviewsApi.
     * @alias module:fulfillmentoutbound_v2026_07_04/api/FulfillmentPreviewsApi
@@ -36,31 +31,6 @@ export class FulfillmentPreviewsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'FulfillmentPreviewsApi-getOrderPreview'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -96,7 +66,7 @@ export class FulfillmentPreviewsApi {
     return this.apiClient.callApi('FulfillmentPreviewsApi-getOrderPreview',
       '/fulfillment/outbound/2026-07-04/previews', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FulfillmentPreviewsApi-getOrderPreview')
+      contentTypes, accepts, returnType
     )
   }
 

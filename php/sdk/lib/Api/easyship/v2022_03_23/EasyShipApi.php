@@ -50,9 +50,6 @@ use SpApi\Model\easyship\v2022_03_23\Package;
 use SpApi\Model\easyship\v2022_03_23\Packages;
 use SpApi\Model\easyship\v2022_03_23\UpdateScheduledPackagesRequest;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * EasyShipApi Class Doc Comment.
@@ -65,11 +62,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class EasyShipApi
 {
-    public ?LimiterInterface $createScheduledPackageRateLimiter;
-    public ?LimiterInterface $createScheduledPackageBulkRateLimiter;
-    public ?LimiterInterface $getScheduledPackageRateLimiter;
-    public ?LimiterInterface $listHandoverSlotsRateLimiter;
-    public ?LimiterInterface $updateScheduledPackagesRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -81,37 +73,16 @@ class EasyShipApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-createScheduledPackage'), $this->rateLimitStorage);
-            $this->createScheduledPackageRateLimiter = $factory->create('EasyShipApi-createScheduledPackage');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-createScheduledPackageBulk'), $this->rateLimitStorage);
-            $this->createScheduledPackageBulkRateLimiter = $factory->create('EasyShipApi-createScheduledPackageBulk');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-getScheduledPackage'), $this->rateLimitStorage);
-            $this->getScheduledPackageRateLimiter = $factory->create('EasyShipApi-getScheduledPackage');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-listHandoverSlots'), $this->rateLimitStorage);
-            $this->listHandoverSlotsRateLimiter = $factory->create('EasyShipApi-listHandoverSlots');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('EasyShipApi-updateScheduledPackages'), $this->rateLimitStorage);
-            $this->updateScheduledPackagesRateLimiter = $factory->create('EasyShipApi-updateScheduledPackages');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -188,9 +159,6 @@ class EasyShipApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createScheduledPackageRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -286,9 +254,6 @@ class EasyShipApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-createScheduledPackage');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createScheduledPackageRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -456,9 +421,6 @@ class EasyShipApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createScheduledPackageBulkRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -554,9 +516,6 @@ class EasyShipApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-createScheduledPackageBulk');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createScheduledPackageBulkRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -730,9 +689,6 @@ class EasyShipApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getScheduledPackageRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -834,9 +790,6 @@ class EasyShipApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-getScheduledPackage');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getScheduledPackageRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1041,9 +994,6 @@ class EasyShipApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listHandoverSlotsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1139,9 +1089,6 @@ class EasyShipApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-listHandoverSlots');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listHandoverSlotsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1302,9 +1249,6 @@ class EasyShipApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateScheduledPackagesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1400,9 +1344,6 @@ class EasyShipApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'EasyShipApi-updateScheduledPackages');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateScheduledPackagesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

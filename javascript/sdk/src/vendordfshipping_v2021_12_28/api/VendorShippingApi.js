@@ -18,8 +18,6 @@ import { PackingSlipList } from '../model/PackingSlipList.js'
 import { SubmitShipmentConfirmationsRequest } from '../model/SubmitShipmentConfirmationsRequest.js'
 import { SubmitShipmentStatusUpdatesRequest } from '../model/SubmitShipmentStatusUpdatesRequest.js'
 import { TransactionReference } from '../model/TransactionReference.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * VendorShipping service.
@@ -27,9 +25,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2021-12-28
 */
 export class VendorShippingApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new VendorShippingApi.
     * @alias module:vendordfshipping_v2021_12_28/api/VendorShippingApi
@@ -39,34 +34,6 @@ export class VendorShippingApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'VendorShippingApi-getPackingSlip',
-      'VendorShippingApi-getPackingSlips',
-      'VendorShippingApi-submitShipmentConfirmations',
-      'VendorShippingApi-submitShipmentStatusUpdates'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -100,7 +67,7 @@ export class VendorShippingApi {
     return this.apiClient.callApi('VendorShippingApi-getPackingSlip',
       '/vendor/directFulfillment/shipping/2021-12-28/packingSlips/{purchaseOrderNumber}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-getPackingSlip')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -165,7 +132,7 @@ export class VendorShippingApi {
     return this.apiClient.callApi('VendorShippingApi-getPackingSlips',
       '/vendor/directFulfillment/shipping/2021-12-28/packingSlips', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-getPackingSlips')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -218,7 +185,7 @@ export class VendorShippingApi {
     return this.apiClient.callApi('VendorShippingApi-submitShipmentConfirmations',
       '/vendor/directFulfillment/shipping/2021-12-28/shipmentConfirmations', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-submitShipmentConfirmations')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -265,7 +232,7 @@ export class VendorShippingApi {
     return this.apiClient.callApi('VendorShippingApi-submitShipmentStatusUpdates',
       '/vendor/directFulfillment/shipping/2021-12-28/shipmentStatusUpdates', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-submitShipmentStatusUpdates')
+      contentTypes, accepts, returnType
     )
   }
 

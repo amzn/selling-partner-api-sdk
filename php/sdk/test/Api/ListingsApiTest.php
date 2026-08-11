@@ -69,7 +69,7 @@ class ListingsApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new ListingsApi($config, null, false);
+        $this->api = new ListingsApi($config);
     }
 
 

@@ -17,8 +17,6 @@ import { ErrorList } from '../model/ErrorList.js'
 import { Transaction } from '../model/Transaction.js'
 import { TransactionInitiationRequest } from '../model/TransactionInitiationRequest.js'
 import { TransactionListing } from '../model/TransactionListing.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Transactions service.
@@ -26,9 +24,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-03-01
 */
 export class TransactionsApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new TransactionsApi.
     * @alias module:sellerWallet_2024_03_01/api/TransactionsApi
@@ -38,33 +33,6 @@ export class TransactionsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'TransactionsApi-createTransaction',
-      'TransactionsApi-getTransaction',
-      'TransactionsApi-listAccountTransactions'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -118,7 +86,7 @@ export class TransactionsApi {
     return this.apiClient.callApi('TransactionsApi-createTransaction',
       '/finances/transfers/wallet/2024-03-01/transactions', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransactionsApi-createTransaction')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -176,7 +144,7 @@ export class TransactionsApi {
     return this.apiClient.callApi('TransactionsApi-getTransaction',
       '/finances/transfers/wallet/2024-03-01/transactions/{transactionId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransactionsApi-getTransaction')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -236,7 +204,7 @@ export class TransactionsApi {
     return this.apiClient.callApi('TransactionsApi-listAccountTransactions',
       '/finances/transfers/wallet/2024-03-01/transactions', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransactionsApi-listAccountTransactions')
+      contentTypes, accepts, returnType
     )
   }
 

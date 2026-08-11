@@ -69,7 +69,7 @@ class FbaInboundApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new FbaInboundApi($config, null, false);
+        $this->api = new FbaInboundApi($config);
     }
 
 

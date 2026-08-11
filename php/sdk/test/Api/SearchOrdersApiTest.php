@@ -69,7 +69,7 @@ class SearchOrdersApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new SearchOrdersApi($config, null, false);
+        $this->api = new SearchOrdersApi($config);
     }
 
 

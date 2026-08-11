@@ -43,9 +43,6 @@ use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\listings\restrictions\v2021_08_01\RestrictionList;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * ListingsApi Class Doc Comment.
@@ -58,7 +55,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ListingsApi
 {
-    public ?LimiterInterface $getListingsRestrictionsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -70,29 +66,16 @@ class ListingsApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-getListingsRestrictions'), $this->rateLimitStorage);
-            $this->getListingsRestrictionsRateLimiter = $factory->create('ListingsApi-getListingsRestrictions');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -199,9 +182,6 @@ class ListingsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getListingsRestrictionsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -327,9 +307,6 @@ class ListingsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-getListingsRestrictions');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getListingsRestrictionsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

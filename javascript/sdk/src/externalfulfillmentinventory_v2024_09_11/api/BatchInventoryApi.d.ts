@@ -19,7 +19,6 @@ import { BatchInventoryResponse } from '../model/BatchInventoryResponse.js';
 * @version 2024-09-11
 */
 export declare class BatchInventoryApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new BatchInventoryApi.
@@ -29,15 +28,6 @@ export declare class BatchInventoryApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Make up to 10 inventory requests. The response includes the set of responses that correspond to requests. The response for each successful request in the set includes the  inventory count for the provided &#x60;sku&#x60; and &#x60;locationId&#x60; pair.
        * @param {BatchInventoryRequest} body A list of inventory requests.

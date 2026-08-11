@@ -69,7 +69,7 @@ class CustomerFeedbackApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new CustomerFeedbackApi($config, null, false);
+        $this->api = new CustomerFeedbackApi($config);
     }
 
 

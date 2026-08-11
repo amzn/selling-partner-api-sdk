@@ -17,8 +17,6 @@ import { GetPurchaseOrdersResponse } from '../model/GetPurchaseOrdersResponse.js
 import { GetPurchaseOrdersStatusResponse } from '../model/GetPurchaseOrdersStatusResponse.js'
 import { SubmitAcknowledgementRequest } from '../model/SubmitAcknowledgementRequest.js'
 import { SubmitAcknowledgementResponse } from '../model/SubmitAcknowledgementResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * VendorOrders service.
@@ -26,9 +24,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class VendorOrdersApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new VendorOrdersApi.
     * @alias module:vendororders_v1/api/VendorOrdersApi
@@ -38,34 +33,6 @@ export class VendorOrdersApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'VendorOrdersApi-getPurchaseOrder',
-      'VendorOrdersApi-getPurchaseOrders',
-      'VendorOrdersApi-getPurchaseOrdersStatus',
-      'VendorOrdersApi-submitAcknowledgement'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -98,7 +65,7 @@ export class VendorOrdersApi {
     return this.apiClient.callApi('VendorOrdersApi-getPurchaseOrder',
       '/vendor/orders/v1/purchaseOrders/{purchaseOrderNumber}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorOrdersApi-getPurchaseOrder')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -163,7 +130,7 @@ export class VendorOrdersApi {
     return this.apiClient.callApi('VendorOrdersApi-getPurchaseOrders',
       '/vendor/orders/v1/purchaseOrders', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorOrdersApi-getPurchaseOrders')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -242,7 +209,7 @@ export class VendorOrdersApi {
     return this.apiClient.callApi('VendorOrdersApi-getPurchaseOrdersStatus',
       '/vendor/orders/v1/purchaseOrdersStatus', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorOrdersApi-getPurchaseOrdersStatus')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -300,7 +267,7 @@ export class VendorOrdersApi {
     return this.apiClient.callApi('VendorOrdersApi-submitAcknowledgement',
       '/vendor/orders/v1/acknowledgements', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorOrdersApi-submitAcknowledgement')
+      contentTypes, accepts, returnType
     )
   }
 

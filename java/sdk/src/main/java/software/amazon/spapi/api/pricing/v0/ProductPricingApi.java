@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.pricing.v0.GetItemOffersBatchRequest;
@@ -41,38 +39,10 @@ import software.amazon.spapi.models.pricing.v0.GetPricingResponse;
 
 public class ProductPricingApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public ProductPricingApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public ProductPricingApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket getCompetitivePricingBucket = Bucket.builder()
-            .addLimit(config.getLimit("ProductPricingApi-getCompetitivePricing"))
-            .build();
-
-    public final Bucket getItemOffersBucket = Bucket.builder()
-            .addLimit(config.getLimit("ProductPricingApi-getItemOffers"))
-            .build();
-
-    public final Bucket getItemOffersBatchBucket = Bucket.builder()
-            .addLimit(config.getLimit("ProductPricingApi-getItemOffersBatch"))
-            .build();
-
-    public final Bucket getListingOffersBucket = Bucket.builder()
-            .addLimit(config.getLimit("ProductPricingApi-getListingOffers"))
-            .build();
-
-    public final Bucket getListingOffersBatchBucket = Bucket.builder()
-            .addLimit(config.getLimit("ProductPricingApi-getListingOffersBatch"))
-            .build();
-
-    public final Bucket getPricingBucket = Bucket.builder()
-            .addLimit(config.getLimit("ProductPricingApi-getPricing"))
-            .build();
 
     /**
      * Build call for getCompetitivePricing
@@ -287,10 +257,8 @@ public class ProductPricingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getCompetitivePricingBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getCompetitivePricing operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -416,11 +384,9 @@ public class ProductPricingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getCompetitivePricingBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getCompetitivePricing operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getItemOffers
@@ -595,10 +561,8 @@ public class ProductPricingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getItemOffersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getItemOffers operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -697,11 +661,9 @@ public class ProductPricingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getItemOffersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getItemOffers operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getItemOffersBatch
@@ -839,10 +801,8 @@ public class ProductPricingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getItemOffersBatchBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetItemOffersBatchResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getItemOffersBatch operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetItemOffersBatchResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -926,11 +886,9 @@ public class ProductPricingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getItemOffersBatchBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetItemOffersBatchResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getItemOffersBatch operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetItemOffersBatchResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getListingOffers
@@ -1132,10 +1090,8 @@ public class ProductPricingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getListingOffersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getListingOffers operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1247,11 +1203,9 @@ public class ProductPricingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getListingOffersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getListingOffers operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOffersResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getListingOffersBatch
@@ -1386,10 +1340,8 @@ public class ProductPricingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getListingOffersBatchBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetListingOffersBatchResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getListingOffersBatch operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetListingOffersBatchResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1470,11 +1422,9 @@ public class ProductPricingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getListingOffersBatchBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetListingOffersBatchResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getListingOffersBatch operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetListingOffersBatchResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getPricing
@@ -1705,10 +1655,8 @@ public class ProductPricingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getPricingBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getPricing operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1846,11 +1794,9 @@ public class ProductPricingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getPricingBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getPricing operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetPricingResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -1858,7 +1804,6 @@ public class ProductPricingApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -1877,11 +1822,6 @@ public class ProductPricingApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -1904,11 +1844,9 @@ public class ProductPricingApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new ProductPricingApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new ProductPricingApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

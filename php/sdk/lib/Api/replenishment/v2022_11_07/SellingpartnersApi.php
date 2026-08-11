@@ -44,9 +44,6 @@ use SpApi\HeaderSelector;
 use SpApi\Model\replenishment\v2022_11_07\GetSellingPartnerMetricsRequest;
 use SpApi\Model\replenishment\v2022_11_07\GetSellingPartnerMetricsResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * SellingpartnersApi Class Doc Comment.
@@ -59,7 +56,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class SellingpartnersApi
 {
-    public ?LimiterInterface $getSellingPartnerMetricsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -71,29 +67,16 @@ class SellingpartnersApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SellingpartnersApi-getSellingPartnerMetrics'), $this->rateLimitStorage);
-            $this->getSellingPartnerMetricsRateLimiter = $factory->create('SellingpartnersApi-getSellingPartnerMetrics');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -170,9 +153,6 @@ class SellingpartnersApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getSellingPartnerMetricsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -268,9 +248,6 @@ class SellingpartnersApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SellingpartnersApi-getSellingPartnerMetrics');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getSellingPartnerMetricsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

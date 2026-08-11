@@ -55,9 +55,6 @@ use SpApi\Model\notifications\v1\GetSubscriptionsResponse;
 use SpApi\Model\notifications\v1\SendTestNotificationRequest;
 use SpApi\Model\notifications\v1\SendTestNotificationResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * NotificationsApi Class Doc Comment.
@@ -70,16 +67,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class NotificationsApi
 {
-    public ?LimiterInterface $createDestinationRateLimiter;
-    public ?LimiterInterface $createSubscriptionRateLimiter;
-    public ?LimiterInterface $deleteDestinationRateLimiter;
-    public ?LimiterInterface $deleteSubscriptionByIdRateLimiter;
-    public ?LimiterInterface $getDestinationRateLimiter;
-    public ?LimiterInterface $getDestinationsRateLimiter;
-    public ?LimiterInterface $getSubscriptionRateLimiter;
-    public ?LimiterInterface $getSubscriptionByIdRateLimiter;
-    public ?LimiterInterface $getSubscriptionsRateLimiter;
-    public ?LimiterInterface $sendTestNotificationRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -91,47 +78,16 @@ class NotificationsApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-createDestination'), $this->rateLimitStorage);
-            $this->createDestinationRateLimiter = $factory->create('NotificationsApi-createDestination');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-createSubscription'), $this->rateLimitStorage);
-            $this->createSubscriptionRateLimiter = $factory->create('NotificationsApi-createSubscription');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-deleteDestination'), $this->rateLimitStorage);
-            $this->deleteDestinationRateLimiter = $factory->create('NotificationsApi-deleteDestination');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-deleteSubscriptionById'), $this->rateLimitStorage);
-            $this->deleteSubscriptionByIdRateLimiter = $factory->create('NotificationsApi-deleteSubscriptionById');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-getDestination'), $this->rateLimitStorage);
-            $this->getDestinationRateLimiter = $factory->create('NotificationsApi-getDestination');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-getDestinations'), $this->rateLimitStorage);
-            $this->getDestinationsRateLimiter = $factory->create('NotificationsApi-getDestinations');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-getSubscription'), $this->rateLimitStorage);
-            $this->getSubscriptionRateLimiter = $factory->create('NotificationsApi-getSubscription');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-getSubscriptionById'), $this->rateLimitStorage);
-            $this->getSubscriptionByIdRateLimiter = $factory->create('NotificationsApi-getSubscriptionById');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-getSubscriptions'), $this->rateLimitStorage);
-            $this->getSubscriptionsRateLimiter = $factory->create('NotificationsApi-getSubscriptions');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('NotificationsApi-sendTestNotification'), $this->rateLimitStorage);
-            $this->sendTestNotificationRateLimiter = $factory->create('NotificationsApi-sendTestNotification');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -208,9 +164,6 @@ class NotificationsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createDestinationRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -306,9 +259,6 @@ class NotificationsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-createDestination');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createDestinationRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -482,9 +432,6 @@ class NotificationsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createSubscriptionRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -586,9 +533,6 @@ class NotificationsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-createSubscription');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createSubscriptionRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -774,9 +718,6 @@ class NotificationsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->deleteDestinationRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -872,9 +813,6 @@ class NotificationsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-deleteDestination');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->deleteDestinationRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1051,9 +989,6 @@ class NotificationsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->deleteSubscriptionByIdRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1155,9 +1090,6 @@ class NotificationsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-deleteSubscriptionById');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->deleteSubscriptionByIdRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1345,9 +1277,6 @@ class NotificationsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getDestinationRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1443,9 +1372,6 @@ class NotificationsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-getDestination');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getDestinationRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1610,9 +1536,6 @@ class NotificationsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getDestinationsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1700,9 +1623,6 @@ class NotificationsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-getDestinations');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getDestinationsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1859,9 +1779,6 @@ class NotificationsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getSubscriptionRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1963,9 +1880,6 @@ class NotificationsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-getSubscription');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getSubscriptionRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2156,9 +2070,6 @@ class NotificationsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getSubscriptionByIdRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2260,9 +2171,6 @@ class NotificationsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-getSubscriptionById');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getSubscriptionByIdRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2468,9 +2376,6 @@ class NotificationsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getSubscriptionsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2584,9 +2489,6 @@ class NotificationsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-getSubscriptions');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getSubscriptionsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2817,9 +2719,6 @@ class NotificationsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->sendTestNotificationRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2921,9 +2820,6 @@ class NotificationsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'NotificationsApi-sendTestNotification');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->sendTestNotificationRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

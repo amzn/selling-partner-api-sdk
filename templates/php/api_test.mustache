@@ -69,7 +69,7 @@ class {{classname}}Test extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new {{classname}}($config, null, false);
+        $this->api = new {{classname}}($config);
     }
 
 {{#operations}}{{#operation}}

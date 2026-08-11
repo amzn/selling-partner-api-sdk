@@ -3,8 +3,6 @@
 import {ApiClient} from '../ApiClient.js';
 <#imports>import {<import>} from '../<#modelPackage><&modelPackage>/</modelPackage><import>.js';
 </imports>
-import {SuperagentRateLimiter} from '../../../helper/SuperagentRateLimiter.mjs';
-import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.mjs';
 
 <#emitJSDoc>/**
 * <baseName> service.
@@ -12,9 +10,6 @@ import {DefaultRateLimitFetcher} from '../../../helper/DefaultRateLimitFetcher.m
 * @version <projectVersion>
 */</emitJSDoc>
 export class <classname> {
-
-    // Private member stores the default rate limiters
-    #defaultRateLimiterMap;
 
     <#emitJSDoc>/**
     * Constructs a new <&classname>. <#description>
@@ -26,31 +21,6 @@ export class <classname> {
     */</emitJSDoc>
     constructor(apiClient) {
         this.apiClient = apiClient || ApiClient.instance;
-        this.initializeDefaultRateLimiterMap();
-    }
-
-    /**
-     * Initialize rate limiters for API operations
-     */
-    initializeDefaultRateLimiterMap() {
-        this.#defaultRateLimiterMap = new Map()
-        const defaultRateLimitFetcher = new DefaultRateLimitFetcher();
-        const operations = [
-<#operations><#operation>            '<classname>-<operationId>',
-</operation></operations>        ];
-
-        for (const operation of operations) {
-            const config = defaultRateLimitFetcher.getLimit(operation);
-            this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config));
-        }
-    }
-
-    /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-    getRateLimiter(operation) {
-        return this.#defaultRateLimiterMap.get(operation);
     }
 
 <#operations><#operation><#emitJSDoc><^usePromises>
@@ -102,7 +72,7 @@ export class <classname> {
       return this.apiClient.callApi( '<classname>-<operationId>',
         '<&path>', '<httpMethod>',
         pathParams, queryParams, headerParams, formParams, postBody,
-        contentTypes, accepts, returnType, this.getRateLimiter('<classname>-<operationId>')<^usePromises>, callback</usePromises>
+        contentTypes, accepts, returnType<^usePromises>, callback</usePromises>
       );
     }
 <#usePromises>

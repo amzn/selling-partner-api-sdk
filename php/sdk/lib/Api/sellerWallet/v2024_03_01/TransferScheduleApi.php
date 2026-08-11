@@ -46,9 +46,6 @@ use SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule;
 use SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing;
 use SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleRequest;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * TransferScheduleApi Class Doc Comment.
@@ -61,11 +58,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class TransferScheduleApi
 {
-    public ?LimiterInterface $createTransferScheduleRateLimiter;
-    public ?LimiterInterface $deleteScheduleTransactionRateLimiter;
-    public ?LimiterInterface $getTransferScheduleRateLimiter;
-    public ?LimiterInterface $listTransferSchedulesRateLimiter;
-    public ?LimiterInterface $updateTransferScheduleRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -77,37 +69,16 @@ class TransferScheduleApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransferScheduleApi-createTransferSchedule'), $this->rateLimitStorage);
-            $this->createTransferScheduleRateLimiter = $factory->create('TransferScheduleApi-createTransferSchedule');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransferScheduleApi-deleteScheduleTransaction'), $this->rateLimitStorage);
-            $this->deleteScheduleTransactionRateLimiter = $factory->create('TransferScheduleApi-deleteScheduleTransaction');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransferScheduleApi-getTransferSchedule'), $this->rateLimitStorage);
-            $this->getTransferScheduleRateLimiter = $factory->create('TransferScheduleApi-getTransferSchedule');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransferScheduleApi-listTransferSchedules'), $this->rateLimitStorage);
-            $this->listTransferSchedulesRateLimiter = $factory->create('TransferScheduleApi-listTransferSchedules');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransferScheduleApi-updateTransferSchedule'), $this->rateLimitStorage);
-            $this->updateTransferScheduleRateLimiter = $factory->create('TransferScheduleApi-updateTransferSchedule');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -206,9 +177,6 @@ class TransferScheduleApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createTransferScheduleRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -326,9 +294,6 @@ class TransferScheduleApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-createTransferSchedule');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createTransferScheduleRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -553,9 +518,6 @@ class TransferScheduleApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->deleteScheduleTransactionRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -661,9 +623,6 @@ class TransferScheduleApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-deleteScheduleTransaction');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->deleteScheduleTransactionRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -864,9 +823,6 @@ class TransferScheduleApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getTransferScheduleRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -972,9 +928,6 @@ class TransferScheduleApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-getTransferSchedule');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getTransferScheduleRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1181,9 +1134,6 @@ class TransferScheduleApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listTransferSchedulesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1295,9 +1245,6 @@ class TransferScheduleApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-listTransferSchedules');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listTransferSchedulesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1524,9 +1471,6 @@ class TransferScheduleApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateTransferScheduleRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1644,9 +1588,6 @@ class TransferScheduleApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-updateTransferSchedule');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateTransferScheduleRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

@@ -18,8 +18,6 @@ import { ErrorList } from '../model/ErrorList.js'
 import { GetDocumentResponse } from '../model/GetDocumentResponse.js'
 import { GetQueriesResponse } from '../model/GetQueriesResponse.js'
 import { Query } from '../model/Query.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Queries service.
@@ -27,9 +25,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2023-11-15
 */
 export class QueriesApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new QueriesApi.
     * @alias module:datakiosk_v2023_11_15/api/QueriesApi
@@ -39,35 +34,6 @@ export class QueriesApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'QueriesApi-cancelQuery',
-      'QueriesApi-createQuery',
-      'QueriesApi-getDocument',
-      'QueriesApi-getQueries',
-      'QueriesApi-getQuery'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -100,7 +66,7 @@ export class QueriesApi {
     return this.apiClient.callApi('QueriesApi-cancelQuery',
       '/dataKiosk/2023-11-15/queries/{queryId}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('QueriesApi-cancelQuery')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -145,7 +111,7 @@ export class QueriesApi {
     return this.apiClient.callApi('QueriesApi-createQuery',
       '/dataKiosk/2023-11-15/queries', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('QueriesApi-createQuery')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -191,7 +157,7 @@ export class QueriesApi {
     return this.apiClient.callApi('QueriesApi-getDocument',
       '/dataKiosk/2023-11-15/documents/{documentId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('QueriesApi-getDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -242,7 +208,7 @@ export class QueriesApi {
     return this.apiClient.callApi('QueriesApi-getQueries',
       '/dataKiosk/2023-11-15/queries', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('QueriesApi-getQueries')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -293,7 +259,7 @@ export class QueriesApi {
     return this.apiClient.callApi('QueriesApi-getQuery',
       '/dataKiosk/2023-11-15/queries/{queryId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('QueriesApi-getQuery')
+      contentTypes, accepts, returnType
     )
   }
 

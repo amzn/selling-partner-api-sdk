@@ -69,7 +69,7 @@ class OrdersV0ApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new OrdersV0Api($config, null, false);
+        $this->api = new OrdersV0Api($config);
     }
 
 

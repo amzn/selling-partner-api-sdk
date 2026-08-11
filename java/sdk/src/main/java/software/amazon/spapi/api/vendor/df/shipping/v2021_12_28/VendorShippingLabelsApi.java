@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.CreateShippingLabelsRequest;
@@ -41,30 +39,10 @@ import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.TransactionRe
 
 public class VendorShippingLabelsApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public VendorShippingLabelsApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public VendorShippingLabelsApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket createShippingLabelsBucket = Bucket.builder()
-            .addLimit(config.getLimit("VendorShippingLabelsApi-createShippingLabels"))
-            .build();
-
-    public final Bucket getShippingLabelBucket = Bucket.builder()
-            .addLimit(config.getLimit("VendorShippingLabelsApi-getShippingLabel"))
-            .build();
-
-    public final Bucket getShippingLabelsBucket = Bucket.builder()
-            .addLimit(config.getLimit("VendorShippingLabelsApi-getShippingLabels"))
-            .build();
-
-    public final Bucket submitShippingLabelRequestBucket = Bucket.builder()
-            .addLimit(config.getLimit("VendorShippingLabelsApi-submitShippingLabelRequest"))
-            .build();
 
     /**
      * Build call for createShippingLabels
@@ -215,10 +193,8 @@ public class VendorShippingLabelsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createShippingLabelsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createShippingLabels operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -304,11 +280,9 @@ public class VendorShippingLabelsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createShippingLabelsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createShippingLabels operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getShippingLabel
@@ -445,10 +419,8 @@ public class VendorShippingLabelsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getShippingLabelBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getShippingLabel operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -527,11 +499,9 @@ public class VendorShippingLabelsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getShippingLabelBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getShippingLabel operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ShippingLabel>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getShippingLabels
@@ -767,10 +737,8 @@ public class VendorShippingLabelsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getShippingLabelsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ShippingLabelList>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getShippingLabels operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ShippingLabelList>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -911,11 +879,9 @@ public class VendorShippingLabelsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getShippingLabelsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ShippingLabelList>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getShippingLabels operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ShippingLabelList>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for submitShippingLabelRequest
@@ -1046,10 +1012,8 @@ public class VendorShippingLabelsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || submitShippingLabelRequestBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("submitShippingLabelRequest operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1128,11 +1092,9 @@ public class VendorShippingLabelsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || submitShippingLabelRequestBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("submitShippingLabelRequest operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<TransactionReference>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -1140,7 +1102,6 @@ public class VendorShippingLabelsApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -1159,11 +1120,6 @@ public class VendorShippingLabelsApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -1186,11 +1142,9 @@ public class VendorShippingLabelsApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new VendorShippingLabelsApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new VendorShippingLabelsApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

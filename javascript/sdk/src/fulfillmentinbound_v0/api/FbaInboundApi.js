@@ -17,8 +17,6 @@ import { GetLabelsResponse } from '../model/GetLabelsResponse.js'
 import { GetPrepInstructionsResponse } from '../model/GetPrepInstructionsResponse.js'
 import { GetShipmentItemsResponse } from '../model/GetShipmentItemsResponse.js'
 import { GetShipmentsResponse } from '../model/GetShipmentsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * FbaInbound service.
@@ -26,9 +24,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v0
 */
 export class FbaInboundApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new FbaInboundApi.
     * @alias module:fulfillmentinbound_v0/api/FbaInboundApi
@@ -38,36 +33,6 @@ export class FbaInboundApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'FbaInboundApi-getBillOfLading',
-      'FbaInboundApi-getLabels',
-      'FbaInboundApi-getPrepInstructions',
-      'FbaInboundApi-getShipmentItems',
-      'FbaInboundApi-getShipmentItemsByShipmentId',
-      'FbaInboundApi-getShipments'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -100,7 +65,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getBillOfLading',
       '/fba/inbound/v0/shipments/{shipmentId}/billOfLading', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getBillOfLading')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -172,7 +137,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getLabels',
       '/fba/inbound/v0/shipments/{shipmentId}/labels', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getLabels')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -232,7 +197,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getPrepInstructions',
       '/fba/inbound/v0/prepInstructions', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getPrepInstructions')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -296,7 +261,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getShipmentItems',
       '/fba/inbound/v0/shipmentItems', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getShipmentItems')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -351,7 +316,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getShipmentItemsByShipmentId',
       '/fba/inbound/v0/shipments/{shipmentId}/items', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getShipmentItemsByShipmentId')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -418,7 +383,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getShipments',
       '/fba/inbound/v0/shipments', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getShipments')
+      contentTypes, accepts, returnType
     )
   }
 

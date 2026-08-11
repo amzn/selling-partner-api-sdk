@@ -19,7 +19,6 @@ import { ShipmentsResponse } from '../model/ShipmentsResponse.js';
 * @version 2024-09-11
 */
 export declare class ShipmentRetrievalApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new ShipmentRetrievalApi.
@@ -29,15 +28,6 @@ export declare class ShipmentRetrievalApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Get a single shipment with the ID you specify.
        * @param {String} shipmentId The ID of the shipment you want to retrieve.

@@ -25,7 +25,6 @@ import { ShippingOptionsResponse } from '../model/ShippingOptionsResponse.js';
 * @version 2024-09-11
 */
 export declare class ShipmentProcessingApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new ShipmentProcessingApi.
@@ -35,15 +34,6 @@ export declare class ShipmentProcessingApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Provide details about the packages in the specified shipment.
        * @param {String} shipmentId The ID of the shipment.

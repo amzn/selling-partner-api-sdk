@@ -46,9 +46,6 @@ use SpApi\Model\invoicing\v0\GetShipmentDetailsResponse;
 use SpApi\Model\invoicing\v0\SubmitInvoiceRequest;
 use SpApi\Model\invoicing\v0\SubmitInvoiceResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * ShipmentInvoiceApi Class Doc Comment.
@@ -61,9 +58,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ShipmentInvoiceApi
 {
-    public ?LimiterInterface $getInvoiceStatusRateLimiter;
-    public ?LimiterInterface $getShipmentDetailsRateLimiter;
-    public ?LimiterInterface $submitInvoiceRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -75,33 +69,16 @@ class ShipmentInvoiceApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShipmentInvoiceApi-getInvoiceStatus'), $this->rateLimitStorage);
-            $this->getInvoiceStatusRateLimiter = $factory->create('ShipmentInvoiceApi-getInvoiceStatus');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShipmentInvoiceApi-getShipmentDetails'), $this->rateLimitStorage);
-            $this->getShipmentDetailsRateLimiter = $factory->create('ShipmentInvoiceApi-getShipmentDetails');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShipmentInvoiceApi-submitInvoice'), $this->rateLimitStorage);
-            $this->submitInvoiceRateLimiter = $factory->create('ShipmentInvoiceApi-submitInvoice');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -178,9 +155,6 @@ class ShipmentInvoiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getInvoiceStatusRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -276,9 +250,6 @@ class ShipmentInvoiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShipmentInvoiceApi-getInvoiceStatus');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getInvoiceStatusRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -449,9 +420,6 @@ class ShipmentInvoiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getShipmentDetailsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -547,9 +515,6 @@ class ShipmentInvoiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShipmentInvoiceApi-getShipmentDetails');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getShipmentDetailsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -726,9 +691,6 @@ class ShipmentInvoiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->submitInvoiceRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -830,9 +792,6 @@ class ShipmentInvoiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShipmentInvoiceApi-submitInvoice');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->submitInvoiceRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

@@ -66,9 +66,6 @@ use SpApi\Model\services\v1\UpdateReservationResponse;
 use SpApi\Model\services\v1\UpdateScheduleRequest;
 use SpApi\Model\services\v1\UpdateScheduleResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * ServiceApi Class Doc Comment.
@@ -81,23 +78,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ServiceApi
 {
-    public ?LimiterInterface $addAppointmentForServiceJobByServiceJobIdRateLimiter;
-    public ?LimiterInterface $assignAppointmentResourcesRateLimiter;
-    public ?LimiterInterface $cancelReservationRateLimiter;
-    public ?LimiterInterface $cancelServiceJobByServiceJobIdRateLimiter;
-    public ?LimiterInterface $completeServiceJobByServiceJobIdRateLimiter;
-    public ?LimiterInterface $createReservationRateLimiter;
-    public ?LimiterInterface $createServiceDocumentUploadDestinationRateLimiter;
-    public ?LimiterInterface $getAppointmentSlotsRateLimiter;
-    public ?LimiterInterface $getAppointmmentSlotsByJobIdRateLimiter;
-    public ?LimiterInterface $getFixedSlotCapacityRateLimiter;
-    public ?LimiterInterface $getRangeSlotCapacityRateLimiter;
-    public ?LimiterInterface $getServiceJobByServiceJobIdRateLimiter;
-    public ?LimiterInterface $getServiceJobsRateLimiter;
-    public ?LimiterInterface $rescheduleAppointmentForServiceJobByServiceJobIdRateLimiter;
-    public ?LimiterInterface $setAppointmentFulfillmentDataRateLimiter;
-    public ?LimiterInterface $updateReservationRateLimiter;
-    public ?LimiterInterface $updateScheduleRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -109,61 +89,16 @@ class ServiceApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-addAppointmentForServiceJobByServiceJobId'), $this->rateLimitStorage);
-            $this->addAppointmentForServiceJobByServiceJobIdRateLimiter = $factory->create('ServiceApi-addAppointmentForServiceJobByServiceJobId');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-assignAppointmentResources'), $this->rateLimitStorage);
-            $this->assignAppointmentResourcesRateLimiter = $factory->create('ServiceApi-assignAppointmentResources');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-cancelReservation'), $this->rateLimitStorage);
-            $this->cancelReservationRateLimiter = $factory->create('ServiceApi-cancelReservation');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-cancelServiceJobByServiceJobId'), $this->rateLimitStorage);
-            $this->cancelServiceJobByServiceJobIdRateLimiter = $factory->create('ServiceApi-cancelServiceJobByServiceJobId');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-completeServiceJobByServiceJobId'), $this->rateLimitStorage);
-            $this->completeServiceJobByServiceJobIdRateLimiter = $factory->create('ServiceApi-completeServiceJobByServiceJobId');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-createReservation'), $this->rateLimitStorage);
-            $this->createReservationRateLimiter = $factory->create('ServiceApi-createReservation');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-createServiceDocumentUploadDestination'), $this->rateLimitStorage);
-            $this->createServiceDocumentUploadDestinationRateLimiter = $factory->create('ServiceApi-createServiceDocumentUploadDestination');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getAppointmentSlots'), $this->rateLimitStorage);
-            $this->getAppointmentSlotsRateLimiter = $factory->create('ServiceApi-getAppointmentSlots');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getAppointmmentSlotsByJobId'), $this->rateLimitStorage);
-            $this->getAppointmmentSlotsByJobIdRateLimiter = $factory->create('ServiceApi-getAppointmmentSlotsByJobId');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getFixedSlotCapacity'), $this->rateLimitStorage);
-            $this->getFixedSlotCapacityRateLimiter = $factory->create('ServiceApi-getFixedSlotCapacity');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getRangeSlotCapacity'), $this->rateLimitStorage);
-            $this->getRangeSlotCapacityRateLimiter = $factory->create('ServiceApi-getRangeSlotCapacity');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getServiceJobByServiceJobId'), $this->rateLimitStorage);
-            $this->getServiceJobByServiceJobIdRateLimiter = $factory->create('ServiceApi-getServiceJobByServiceJobId');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-getServiceJobs'), $this->rateLimitStorage);
-            $this->getServiceJobsRateLimiter = $factory->create('ServiceApi-getServiceJobs');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId'), $this->rateLimitStorage);
-            $this->rescheduleAppointmentForServiceJobByServiceJobIdRateLimiter = $factory->create('ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-setAppointmentFulfillmentData'), $this->rateLimitStorage);
-            $this->setAppointmentFulfillmentDataRateLimiter = $factory->create('ServiceApi-setAppointmentFulfillmentData');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-updateReservation'), $this->rateLimitStorage);
-            $this->updateReservationRateLimiter = $factory->create('ServiceApi-updateReservation');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ServiceApi-updateSchedule'), $this->rateLimitStorage);
-            $this->updateScheduleRateLimiter = $factory->create('ServiceApi-updateSchedule');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -246,9 +181,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->addAppointmentForServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -350,9 +282,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-addAppointmentForServiceJobByServiceJobId');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->addAppointmentForServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -557,9 +486,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->assignAppointmentResourcesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -667,9 +593,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-assignAppointmentResources');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->assignAppointmentResourcesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -892,9 +815,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->cancelReservationRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -996,9 +916,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-cancelReservation');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->cancelReservationRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1205,9 +1122,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->cancelServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1309,9 +1223,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-cancelServiceJobByServiceJobId');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->cancelServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1518,9 +1429,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->completeServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1616,9 +1524,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-completeServiceJobByServiceJobId');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->completeServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1801,9 +1706,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createReservationRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1905,9 +1807,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-createReservation');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createReservationRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2099,9 +1998,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createServiceDocumentUploadDestinationRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2197,9 +2093,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-createServiceDocumentUploadDestination');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createServiceDocumentUploadDestinationRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2391,9 +2284,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getAppointmentSlotsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2513,9 +2403,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getAppointmentSlots');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getAppointmentSlotsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2780,9 +2667,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getAppointmmentSlotsByJobIdRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2896,9 +2780,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getAppointmmentSlotsByJobId');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getAppointmmentSlotsByJobIdRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -3143,9 +3024,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getFixedSlotCapacityRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3259,9 +3137,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getFixedSlotCapacity');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getFixedSlotCapacityRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -3509,9 +3384,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getRangeSlotCapacityRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3625,9 +3497,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getRangeSlotCapacity');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getRangeSlotCapacityRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -3857,9 +3726,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3955,9 +3821,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getServiceJobByServiceJobId');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -4236,9 +4099,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getServiceJobsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -4436,9 +4296,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-getServiceJobs');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getServiceJobsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -4896,9 +4753,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->rescheduleAppointmentForServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -5006,9 +4860,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->rescheduleAppointmentForServiceJobByServiceJobIdRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -5237,9 +5088,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->setAppointmentFulfillmentDataRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -5347,9 +5195,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-setAppointmentFulfillmentData');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->setAppointmentFulfillmentDataRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -5578,9 +5423,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateReservationRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -5688,9 +5530,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-updateReservation');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateReservationRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -5919,9 +5758,6 @@ class ServiceApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateScheduleRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -6029,9 +5865,6 @@ class ServiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ServiceApi-updateSchedule');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateScheduleRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

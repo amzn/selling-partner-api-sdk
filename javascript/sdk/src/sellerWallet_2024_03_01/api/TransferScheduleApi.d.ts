@@ -21,7 +21,6 @@ import { TransferScheduleRequest } from '../model/TransferScheduleRequest.js';
 * @version 2024-03-01
 */
 export declare class TransferScheduleApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new TransferScheduleApi.
@@ -31,15 +30,6 @@ export declare class TransferScheduleApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
        * Create a transfer schedule request from a Seller Wallet account to another customer-provided account.

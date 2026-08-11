@@ -69,7 +69,7 @@ class CatalogApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new CatalogApi($config, null, false);
+        $this->api = new CatalogApi($config);
     }
 
 

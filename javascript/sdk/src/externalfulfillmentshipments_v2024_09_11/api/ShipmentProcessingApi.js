@@ -21,8 +21,6 @@ import { ShipLabelsInput } from '../model/ShipLabelsInput.js'
 import { ShipLabelsResponse } from '../model/ShipLabelsResponse.js'
 import { ShipmentAcknowledgementRequest } from '../model/ShipmentAcknowledgementRequest.js'
 import { ShippingOptionsResponse } from '../model/ShippingOptionsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * ShipmentProcessing service.
@@ -30,9 +28,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-09-11
 */
 export class ShipmentProcessingApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new ShipmentProcessingApi.
     * @alias module:externalfulfillmentshipments_v2024_09_11/api/ShipmentProcessingApi
@@ -42,38 +37,6 @@ export class ShipmentProcessingApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'ShipmentProcessingApi-createPackages',
-      'ShipmentProcessingApi-generateInvoice',
-      'ShipmentProcessingApi-generateShipLabels',
-      'ShipmentProcessingApi-processShipment',
-      'ShipmentProcessingApi-retrieveInvoice',
-      'ShipmentProcessingApi-retrieveShippingOptions',
-      'ShipmentProcessingApi-updatePackage',
-      'ShipmentProcessingApi-updatePackageStatus'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -112,7 +75,7 @@ export class ShipmentProcessingApi {
     return this.apiClient.callApi('ShipmentProcessingApi-createPackages',
       '/externalFulfillment/2024-09-11/shipments/{shipmentId}/packages', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ShipmentProcessingApi-createPackages')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -159,7 +122,7 @@ export class ShipmentProcessingApi {
     return this.apiClient.callApi('ShipmentProcessingApi-generateInvoice',
       '/externalFulfillment/2024-09-11/shipments/{shipmentId}/invoice', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ShipmentProcessingApi-generateInvoice')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -217,7 +180,7 @@ export class ShipmentProcessingApi {
     return this.apiClient.callApi('ShipmentProcessingApi-generateShipLabels',
       '/externalFulfillment/2024-09-11/shipments/{shipmentId}/shipLabels', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ShipmentProcessingApi-generateShipLabels')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -277,7 +240,7 @@ export class ShipmentProcessingApi {
     return this.apiClient.callApi('ShipmentProcessingApi-processShipment',
       '/externalFulfillment/2024-09-11/shipments/{shipmentId}', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ShipmentProcessingApi-processShipment')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -326,7 +289,7 @@ export class ShipmentProcessingApi {
     return this.apiClient.callApi('ShipmentProcessingApi-retrieveInvoice',
       '/externalFulfillment/2024-09-11/shipments/{shipmentId}/invoice', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ShipmentProcessingApi-retrieveInvoice')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -379,7 +342,7 @@ export class ShipmentProcessingApi {
     return this.apiClient.callApi('ShipmentProcessingApi-retrieveShippingOptions',
       '/externalFulfillment/2024-09-11/shipments/{shipmentId}/shippingOptions', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ShipmentProcessingApi-retrieveShippingOptions')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -439,7 +402,7 @@ export class ShipmentProcessingApi {
     return this.apiClient.callApi('ShipmentProcessingApi-updatePackage',
       '/externalFulfillment/2024-09-11/shipments/{shipmentId}/packages/{packageId}', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ShipmentProcessingApi-updatePackage')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -499,7 +462,7 @@ export class ShipmentProcessingApi {
     return this.apiClient.callApi('ShipmentProcessingApi-updatePackageStatus',
       '/externalFulfillment/2024-09-11/shipments/{shipmentId}/packages/{packageId}', 'PATCH',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ShipmentProcessingApi-updatePackageStatus')
+      contentTypes, accepts, returnType
     )
   }
 

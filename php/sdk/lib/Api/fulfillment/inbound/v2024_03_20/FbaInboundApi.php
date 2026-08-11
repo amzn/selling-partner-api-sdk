@@ -101,9 +101,6 @@ use SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentSourceAddressRespo
 use SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsRequest;
 use SpApi\Model\fulfillment\inbound\v2024_03_20\UpdateShipmentTrackingDetailsResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * FbaInboundApi Class Doc Comment.
@@ -116,51 +113,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class FbaInboundApi
 {
-    public ?LimiterInterface $cancelInboundPlanRateLimiter;
-    public ?LimiterInterface $cancelSelfShipAppointmentRateLimiter;
-    public ?LimiterInterface $confirmDeliveryWindowOptionsRateLimiter;
-    public ?LimiterInterface $confirmPackingOptionRateLimiter;
-    public ?LimiterInterface $confirmPlacementOptionRateLimiter;
-    public ?LimiterInterface $confirmShipmentContentUpdatePreviewRateLimiter;
-    public ?LimiterInterface $confirmTransportationOptionsRateLimiter;
-    public ?LimiterInterface $createInboundPlanRateLimiter;
-    public ?LimiterInterface $createMarketplaceItemLabelsRateLimiter;
-    public ?LimiterInterface $generateDeliveryWindowOptionsRateLimiter;
-    public ?LimiterInterface $generatePackingOptionsRateLimiter;
-    public ?LimiterInterface $generatePlacementOptionsRateLimiter;
-    public ?LimiterInterface $generateSelfShipAppointmentSlotsRateLimiter;
-    public ?LimiterInterface $generateShipmentContentUpdatePreviewsRateLimiter;
-    public ?LimiterInterface $generateTransportationOptionsRateLimiter;
-    public ?LimiterInterface $getDeliveryChallanDocumentRateLimiter;
-    public ?LimiterInterface $getInboundOperationStatusRateLimiter;
-    public ?LimiterInterface $getInboundPlanRateLimiter;
-    public ?LimiterInterface $getSelfShipAppointmentSlotsRateLimiter;
-    public ?LimiterInterface $getShipmentRateLimiter;
-    public ?LimiterInterface $getShipmentContentUpdatePreviewRateLimiter;
-    public ?LimiterInterface $listDeliveryWindowOptionsRateLimiter;
-    public ?LimiterInterface $listInboundPlanBoxesRateLimiter;
-    public ?LimiterInterface $listInboundPlanItemsRateLimiter;
-    public ?LimiterInterface $listInboundPlanPalletsRateLimiter;
-    public ?LimiterInterface $listInboundPlansRateLimiter;
-    public ?LimiterInterface $listItemComplianceDetailsRateLimiter;
-    public ?LimiterInterface $listPackingGroupBoxesRateLimiter;
-    public ?LimiterInterface $listPackingGroupItemsRateLimiter;
-    public ?LimiterInterface $listPackingOptionsRateLimiter;
-    public ?LimiterInterface $listPlacementOptionsRateLimiter;
-    public ?LimiterInterface $listPrepDetailsRateLimiter;
-    public ?LimiterInterface $listShipmentBoxesRateLimiter;
-    public ?LimiterInterface $listShipmentContentUpdatePreviewsRateLimiter;
-    public ?LimiterInterface $listShipmentItemsRateLimiter;
-    public ?LimiterInterface $listShipmentPalletsRateLimiter;
-    public ?LimiterInterface $listTransportationOptionsRateLimiter;
-    public ?LimiterInterface $scheduleSelfShipAppointmentRateLimiter;
-    public ?LimiterInterface $setPackingInformationRateLimiter;
-    public ?LimiterInterface $setPrepDetailsRateLimiter;
-    public ?LimiterInterface $updateInboundPlanNameRateLimiter;
-    public ?LimiterInterface $updateItemComplianceDetailsRateLimiter;
-    public ?LimiterInterface $updateShipmentNameRateLimiter;
-    public ?LimiterInterface $updateShipmentSourceAddressRateLimiter;
-    public ?LimiterInterface $updateShipmentTrackingDetailsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -172,117 +124,16 @@ class FbaInboundApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-cancelInboundPlan'), $this->rateLimitStorage);
-            $this->cancelInboundPlanRateLimiter = $factory->create('FbaInboundApi-cancelInboundPlan');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-cancelSelfShipAppointment'), $this->rateLimitStorage);
-            $this->cancelSelfShipAppointmentRateLimiter = $factory->create('FbaInboundApi-cancelSelfShipAppointment');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-confirmDeliveryWindowOptions'), $this->rateLimitStorage);
-            $this->confirmDeliveryWindowOptionsRateLimiter = $factory->create('FbaInboundApi-confirmDeliveryWindowOptions');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-confirmPackingOption'), $this->rateLimitStorage);
-            $this->confirmPackingOptionRateLimiter = $factory->create('FbaInboundApi-confirmPackingOption');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-confirmPlacementOption'), $this->rateLimitStorage);
-            $this->confirmPlacementOptionRateLimiter = $factory->create('FbaInboundApi-confirmPlacementOption');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-confirmShipmentContentUpdatePreview'), $this->rateLimitStorage);
-            $this->confirmShipmentContentUpdatePreviewRateLimiter = $factory->create('FbaInboundApi-confirmShipmentContentUpdatePreview');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-confirmTransportationOptions'), $this->rateLimitStorage);
-            $this->confirmTransportationOptionsRateLimiter = $factory->create('FbaInboundApi-confirmTransportationOptions');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-createInboundPlan'), $this->rateLimitStorage);
-            $this->createInboundPlanRateLimiter = $factory->create('FbaInboundApi-createInboundPlan');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-createMarketplaceItemLabels'), $this->rateLimitStorage);
-            $this->createMarketplaceItemLabelsRateLimiter = $factory->create('FbaInboundApi-createMarketplaceItemLabels');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-generateDeliveryWindowOptions'), $this->rateLimitStorage);
-            $this->generateDeliveryWindowOptionsRateLimiter = $factory->create('FbaInboundApi-generateDeliveryWindowOptions');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-generatePackingOptions'), $this->rateLimitStorage);
-            $this->generatePackingOptionsRateLimiter = $factory->create('FbaInboundApi-generatePackingOptions');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-generatePlacementOptions'), $this->rateLimitStorage);
-            $this->generatePlacementOptionsRateLimiter = $factory->create('FbaInboundApi-generatePlacementOptions');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-generateSelfShipAppointmentSlots'), $this->rateLimitStorage);
-            $this->generateSelfShipAppointmentSlotsRateLimiter = $factory->create('FbaInboundApi-generateSelfShipAppointmentSlots');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-generateShipmentContentUpdatePreviews'), $this->rateLimitStorage);
-            $this->generateShipmentContentUpdatePreviewsRateLimiter = $factory->create('FbaInboundApi-generateShipmentContentUpdatePreviews');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-generateTransportationOptions'), $this->rateLimitStorage);
-            $this->generateTransportationOptionsRateLimiter = $factory->create('FbaInboundApi-generateTransportationOptions');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getDeliveryChallanDocument'), $this->rateLimitStorage);
-            $this->getDeliveryChallanDocumentRateLimiter = $factory->create('FbaInboundApi-getDeliveryChallanDocument');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getInboundOperationStatus'), $this->rateLimitStorage);
-            $this->getInboundOperationStatusRateLimiter = $factory->create('FbaInboundApi-getInboundOperationStatus');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getInboundPlan'), $this->rateLimitStorage);
-            $this->getInboundPlanRateLimiter = $factory->create('FbaInboundApi-getInboundPlan');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getSelfShipAppointmentSlots'), $this->rateLimitStorage);
-            $this->getSelfShipAppointmentSlotsRateLimiter = $factory->create('FbaInboundApi-getSelfShipAppointmentSlots');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getShipment'), $this->rateLimitStorage);
-            $this->getShipmentRateLimiter = $factory->create('FbaInboundApi-getShipment');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getShipmentContentUpdatePreview'), $this->rateLimitStorage);
-            $this->getShipmentContentUpdatePreviewRateLimiter = $factory->create('FbaInboundApi-getShipmentContentUpdatePreview');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listDeliveryWindowOptions'), $this->rateLimitStorage);
-            $this->listDeliveryWindowOptionsRateLimiter = $factory->create('FbaInboundApi-listDeliveryWindowOptions');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listInboundPlanBoxes'), $this->rateLimitStorage);
-            $this->listInboundPlanBoxesRateLimiter = $factory->create('FbaInboundApi-listInboundPlanBoxes');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listInboundPlanItems'), $this->rateLimitStorage);
-            $this->listInboundPlanItemsRateLimiter = $factory->create('FbaInboundApi-listInboundPlanItems');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listInboundPlanPallets'), $this->rateLimitStorage);
-            $this->listInboundPlanPalletsRateLimiter = $factory->create('FbaInboundApi-listInboundPlanPallets');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listInboundPlans'), $this->rateLimitStorage);
-            $this->listInboundPlansRateLimiter = $factory->create('FbaInboundApi-listInboundPlans');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listItemComplianceDetails'), $this->rateLimitStorage);
-            $this->listItemComplianceDetailsRateLimiter = $factory->create('FbaInboundApi-listItemComplianceDetails');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listPackingGroupBoxes'), $this->rateLimitStorage);
-            $this->listPackingGroupBoxesRateLimiter = $factory->create('FbaInboundApi-listPackingGroupBoxes');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listPackingGroupItems'), $this->rateLimitStorage);
-            $this->listPackingGroupItemsRateLimiter = $factory->create('FbaInboundApi-listPackingGroupItems');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listPackingOptions'), $this->rateLimitStorage);
-            $this->listPackingOptionsRateLimiter = $factory->create('FbaInboundApi-listPackingOptions');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listPlacementOptions'), $this->rateLimitStorage);
-            $this->listPlacementOptionsRateLimiter = $factory->create('FbaInboundApi-listPlacementOptions');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listPrepDetails'), $this->rateLimitStorage);
-            $this->listPrepDetailsRateLimiter = $factory->create('FbaInboundApi-listPrepDetails');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listShipmentBoxes'), $this->rateLimitStorage);
-            $this->listShipmentBoxesRateLimiter = $factory->create('FbaInboundApi-listShipmentBoxes');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listShipmentContentUpdatePreviews'), $this->rateLimitStorage);
-            $this->listShipmentContentUpdatePreviewsRateLimiter = $factory->create('FbaInboundApi-listShipmentContentUpdatePreviews');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listShipmentItems'), $this->rateLimitStorage);
-            $this->listShipmentItemsRateLimiter = $factory->create('FbaInboundApi-listShipmentItems');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listShipmentPallets'), $this->rateLimitStorage);
-            $this->listShipmentPalletsRateLimiter = $factory->create('FbaInboundApi-listShipmentPallets');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-listTransportationOptions'), $this->rateLimitStorage);
-            $this->listTransportationOptionsRateLimiter = $factory->create('FbaInboundApi-listTransportationOptions');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-scheduleSelfShipAppointment'), $this->rateLimitStorage);
-            $this->scheduleSelfShipAppointmentRateLimiter = $factory->create('FbaInboundApi-scheduleSelfShipAppointment');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-setPackingInformation'), $this->rateLimitStorage);
-            $this->setPackingInformationRateLimiter = $factory->create('FbaInboundApi-setPackingInformation');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-setPrepDetails'), $this->rateLimitStorage);
-            $this->setPrepDetailsRateLimiter = $factory->create('FbaInboundApi-setPrepDetails');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-updateInboundPlanName'), $this->rateLimitStorage);
-            $this->updateInboundPlanNameRateLimiter = $factory->create('FbaInboundApi-updateInboundPlanName');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-updateItemComplianceDetails'), $this->rateLimitStorage);
-            $this->updateItemComplianceDetailsRateLimiter = $factory->create('FbaInboundApi-updateItemComplianceDetails');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-updateShipmentName'), $this->rateLimitStorage);
-            $this->updateShipmentNameRateLimiter = $factory->create('FbaInboundApi-updateShipmentName');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-updateShipmentSourceAddress'), $this->rateLimitStorage);
-            $this->updateShipmentSourceAddressRateLimiter = $factory->create('FbaInboundApi-updateShipmentSourceAddress');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-updateShipmentTrackingDetails'), $this->rateLimitStorage);
-            $this->updateShipmentTrackingDetailsRateLimiter = $factory->create('FbaInboundApi-updateShipmentTrackingDetails');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -359,9 +210,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->cancelInboundPlanRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -457,9 +305,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-cancelInboundPlan');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->cancelInboundPlanRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -651,9 +496,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->cancelSelfShipAppointmentRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -761,9 +603,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-cancelSelfShipAppointment');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->cancelSelfShipAppointmentRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -998,9 +837,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->confirmDeliveryWindowOptionsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1108,9 +944,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmDeliveryWindowOptions');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->confirmDeliveryWindowOptionsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1350,9 +1183,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->confirmPackingOptionRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1454,9 +1284,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmPackingOption');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->confirmPackingOptionRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1669,9 +1496,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->confirmPlacementOptionRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1773,9 +1597,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmPlacementOption');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->confirmPlacementOptionRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1994,9 +1815,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->confirmShipmentContentUpdatePreviewRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2104,9 +1922,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmShipmentContentUpdatePreview');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->confirmShipmentContentUpdatePreviewRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2346,9 +2161,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->confirmTransportationOptionsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2450,9 +2262,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-confirmTransportationOptions');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->confirmTransportationOptionsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2648,9 +2457,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createInboundPlanRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2746,9 +2552,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-createInboundPlan');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createInboundPlanRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2916,9 +2719,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createMarketplaceItemLabelsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3014,9 +2814,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-createMarketplaceItemLabels');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createMarketplaceItemLabelsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -3190,9 +2987,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->generateDeliveryWindowOptionsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3294,9 +3088,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateDeliveryWindowOptions');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->generateDeliveryWindowOptionsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -3503,9 +3294,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->generatePackingOptionsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3601,9 +3389,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generatePackingOptions');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->generatePackingOptionsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -3789,9 +3574,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->generatePlacementOptionsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3893,9 +3675,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generatePlacementOptions');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->generatePlacementOptionsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -4103,9 +3882,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->generateSelfShipAppointmentSlotsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -4213,9 +3989,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateSelfShipAppointmentSlots');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->generateSelfShipAppointmentSlotsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -4450,9 +4223,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->generateShipmentContentUpdatePreviewsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -4560,9 +4330,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateShipmentContentUpdatePreviews');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->generateShipmentContentUpdatePreviewsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -4791,9 +4558,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->generateTransportationOptionsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -4895,9 +4659,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-generateTransportationOptions');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->generateTransportationOptionsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -5099,9 +4860,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getDeliveryChallanDocumentRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -5203,9 +4961,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getDeliveryChallanDocument');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getDeliveryChallanDocumentRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -5412,9 +5167,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getInboundOperationStatusRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -5510,9 +5262,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getInboundOperationStatus');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getInboundOperationStatusRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -5692,9 +5441,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getInboundPlanRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -5790,9 +5536,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getInboundPlan');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getInboundPlanRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -5990,9 +5733,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getSelfShipAppointmentSlotsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -6106,9 +5846,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getSelfShipAppointmentSlots');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getSelfShipAppointmentSlotsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -6362,9 +6099,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getShipmentRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -6466,9 +6200,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipment');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getShipmentRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -6687,9 +6418,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getShipmentContentUpdatePreviewRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -6797,9 +6525,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipmentContentUpdatePreview');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getShipmentContentUpdatePreviewRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -7051,9 +6776,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listDeliveryWindowOptionsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -7167,9 +6889,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listDeliveryWindowOptions');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listDeliveryWindowOptionsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -7429,9 +7148,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listInboundPlanBoxesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -7539,9 +7255,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlanBoxes');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listInboundPlanBoxesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -7774,9 +7487,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listInboundPlanItemsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -7884,9 +7594,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlanItems');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listInboundPlanItemsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -8119,9 +7826,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listInboundPlanPalletsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -8229,9 +7933,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlanPallets');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listInboundPlanPalletsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -8476,9 +8177,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listInboundPlansRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -8598,9 +8296,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listInboundPlans');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listInboundPlansRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -8838,9 +8533,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listItemComplianceDetailsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -8942,9 +8634,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listItemComplianceDetails');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listItemComplianceDetailsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -9167,9 +8856,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listPackingGroupBoxesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -9283,9 +8969,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPackingGroupBoxes');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listPackingGroupBoxesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -9551,9 +9234,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listPackingGroupItemsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -9667,9 +9347,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPackingGroupItems');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listPackingGroupItemsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -9929,9 +9606,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listPackingOptionsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -10039,9 +9713,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPackingOptions');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listPackingOptionsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -10274,9 +9945,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listPlacementOptionsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -10384,9 +10052,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPlacementOptions');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listPlacementOptionsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -10613,9 +10278,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listPrepDetailsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -10717,9 +10379,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listPrepDetails');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listPrepDetailsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -10942,9 +10601,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listShipmentBoxesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -11058,9 +10714,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentBoxes');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listShipmentBoxesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -11326,9 +10979,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listShipmentContentUpdatePreviewsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -11442,9 +11092,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentContentUpdatePreviews');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listShipmentContentUpdatePreviewsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -11710,9 +11357,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listShipmentItemsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -11826,9 +11470,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentItems');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listShipmentItemsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -12094,9 +11735,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listShipmentPalletsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -12210,9 +11848,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listShipmentPallets');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listShipmentPalletsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -12484,9 +12119,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listTransportationOptionsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -12606,9 +12238,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-listTransportationOptions');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listTransportationOptionsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -12893,9 +12522,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->scheduleSelfShipAppointmentRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -13009,9 +12635,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-scheduleSelfShipAppointment');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->scheduleSelfShipAppointmentRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -13267,9 +12890,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->setPackingInformationRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -13371,9 +12991,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-setPackingInformation');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->setPackingInformationRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -13569,9 +13186,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->setPrepDetailsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -13667,9 +13281,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-setPrepDetails');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->setPrepDetailsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -13841,9 +13452,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateInboundPlanNameRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -13933,9 +13541,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateInboundPlanName');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateInboundPlanNameRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -14124,9 +13729,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateItemComplianceDetailsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -14228,9 +13830,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateItemComplianceDetails');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateItemComplianceDetailsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -14435,9 +14034,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateShipmentNameRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -14533,9 +14129,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateShipmentName');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateShipmentNameRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -14757,9 +14350,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateShipmentSourceAddressRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -14867,9 +14457,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateShipmentSourceAddress');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateShipmentSourceAddressRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -15104,9 +14691,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateShipmentTrackingDetailsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -15214,9 +14798,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-updateShipmentTrackingDetails');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateShipmentTrackingDetailsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

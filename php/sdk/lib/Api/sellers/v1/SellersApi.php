@@ -44,9 +44,6 @@ use SpApi\HeaderSelector;
 use SpApi\Model\sellers\v1\GetAccountResponse;
 use SpApi\Model\sellers\v1\GetMarketplaceParticipationsResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * SellersApi Class Doc Comment.
@@ -59,8 +56,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class SellersApi
 {
-    public ?LimiterInterface $getAccountRateLimiter;
-    public ?LimiterInterface $getMarketplaceParticipationsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -72,31 +67,16 @@ class SellersApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SellersApi-getAccount'), $this->rateLimitStorage);
-            $this->getAccountRateLimiter = $factory->create('SellersApi-getAccount');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SellersApi-getMarketplaceParticipations'), $this->rateLimitStorage);
-            $this->getMarketplaceParticipationsRateLimiter = $factory->create('SellersApi-getMarketplaceParticipations');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -167,9 +147,6 @@ class SellersApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getAccountRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -257,9 +234,6 @@ class SellersApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SellersApi-getAccount');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getAccountRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -404,9 +378,6 @@ class SellersApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getMarketplaceParticipationsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -494,9 +465,6 @@ class SellersApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SellersApi-getMarketplaceParticipations');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getMarketplaceParticipationsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

@@ -69,7 +69,7 @@ class NotificationsApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new NotificationsApi($config, null, false);
+        $this->api = new NotificationsApi($config);
     }
 
 

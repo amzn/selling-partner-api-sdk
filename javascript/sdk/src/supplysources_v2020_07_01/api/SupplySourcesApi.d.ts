@@ -24,7 +24,6 @@ import { UpdateSupplySourceStatusRequest } from '../model/UpdateSupplySourceStat
 * @version 2020-07-01
 */
 export declare class SupplySourcesApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new SupplySourcesApi.
@@ -34,15 +33,6 @@ export declare class SupplySourcesApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Archive a supply source, making it inactive. Cannot be undone.
        * @param {String} supplySourceId The unique identifier of a supply source.

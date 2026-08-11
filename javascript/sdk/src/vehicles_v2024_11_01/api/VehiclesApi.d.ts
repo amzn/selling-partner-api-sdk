@@ -18,7 +18,6 @@ import { VehiclesResponse } from '../model/VehiclesResponse.js';
 * @version 2024-11-01
 */
 export declare class VehiclesApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new VehiclesApi.
@@ -28,15 +27,6 @@ export declare class VehiclesApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Get the latest collection of vehicles
        * @param {String} marketplaceId An identifier for the marketplace in which the resource operates.

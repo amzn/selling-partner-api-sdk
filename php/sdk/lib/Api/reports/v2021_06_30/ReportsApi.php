@@ -51,9 +51,6 @@ use SpApi\Model\reports\v2021_06_30\ReportDocument;
 use SpApi\Model\reports\v2021_06_30\ReportSchedule;
 use SpApi\Model\reports\v2021_06_30\ReportScheduleList;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * ReportsApi Class Doc Comment.
@@ -66,15 +63,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ReportsApi
 {
-    public ?LimiterInterface $cancelReportRateLimiter;
-    public ?LimiterInterface $cancelReportScheduleRateLimiter;
-    public ?LimiterInterface $createReportRateLimiter;
-    public ?LimiterInterface $createReportScheduleRateLimiter;
-    public ?LimiterInterface $getReportRateLimiter;
-    public ?LimiterInterface $getReportDocumentRateLimiter;
-    public ?LimiterInterface $getReportScheduleRateLimiter;
-    public ?LimiterInterface $getReportSchedulesRateLimiter;
-    public ?LimiterInterface $getReportsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -86,45 +74,16 @@ class ReportsApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-cancelReport'), $this->rateLimitStorage);
-            $this->cancelReportRateLimiter = $factory->create('ReportsApi-cancelReport');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-cancelReportSchedule'), $this->rateLimitStorage);
-            $this->cancelReportScheduleRateLimiter = $factory->create('ReportsApi-cancelReportSchedule');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-createReport'), $this->rateLimitStorage);
-            $this->createReportRateLimiter = $factory->create('ReportsApi-createReport');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-createReportSchedule'), $this->rateLimitStorage);
-            $this->createReportScheduleRateLimiter = $factory->create('ReportsApi-createReportSchedule');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-getReport'), $this->rateLimitStorage);
-            $this->getReportRateLimiter = $factory->create('ReportsApi-getReport');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-getReportDocument'), $this->rateLimitStorage);
-            $this->getReportDocumentRateLimiter = $factory->create('ReportsApi-getReportDocument');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-getReportSchedule'), $this->rateLimitStorage);
-            $this->getReportScheduleRateLimiter = $factory->create('ReportsApi-getReportSchedule');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-getReportSchedules'), $this->rateLimitStorage);
-            $this->getReportSchedulesRateLimiter = $factory->create('ReportsApi-getReportSchedules');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ReportsApi-getReports'), $this->rateLimitStorage);
-            $this->getReportsRateLimiter = $factory->create('ReportsApi-getReports');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -199,9 +158,6 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->cancelReportRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -285,9 +241,6 @@ class ReportsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-cancelReport');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->cancelReportRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -443,9 +396,6 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->cancelReportScheduleRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -529,9 +479,6 @@ class ReportsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-cancelReportSchedule');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->cancelReportScheduleRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -689,9 +636,6 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createReportRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -787,9 +731,6 @@ class ReportsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-createReport');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createReportRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -957,9 +898,6 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createReportScheduleRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1055,9 +993,6 @@ class ReportsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-createReportSchedule');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createReportScheduleRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1225,9 +1160,6 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getReportRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1323,9 +1255,6 @@ class ReportsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReport');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getReportRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1502,9 +1431,6 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getReportDocumentRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1606,9 +1532,6 @@ class ReportsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportDocument');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getReportDocumentRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1793,9 +1716,6 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getReportScheduleRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1891,9 +1811,6 @@ class ReportsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportSchedule');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getReportScheduleRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2064,9 +1981,6 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getReportSchedulesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2162,9 +2076,6 @@ class ReportsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReportSchedules');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getReportSchedulesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2379,9 +2290,6 @@ class ReportsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getReportsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2513,9 +2421,6 @@ class ReportsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ReportsApi-getReports');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getReportsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

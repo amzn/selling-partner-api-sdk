@@ -46,9 +46,6 @@ use SpApi\Model\sellerWallet\v2024_03_01\Transaction;
 use SpApi\Model\sellerWallet\v2024_03_01\TransactionInitiationRequest;
 use SpApi\Model\sellerWallet\v2024_03_01\TransactionListing;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * TransactionsApi Class Doc Comment.
@@ -61,9 +58,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class TransactionsApi
 {
-    public ?LimiterInterface $createTransactionRateLimiter;
-    public ?LimiterInterface $getTransactionRateLimiter;
-    public ?LimiterInterface $listAccountTransactionsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -75,33 +69,16 @@ class TransactionsApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransactionsApi-createTransaction'), $this->rateLimitStorage);
-            $this->createTransactionRateLimiter = $factory->create('TransactionsApi-createTransaction');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransactionsApi-getTransaction'), $this->rateLimitStorage);
-            $this->getTransactionRateLimiter = $factory->create('TransactionsApi-getTransaction');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('TransactionsApi-listAccountTransactions'), $this->rateLimitStorage);
-            $this->listAccountTransactionsRateLimiter = $factory->create('TransactionsApi-listAccountTransactions');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -200,9 +177,6 @@ class TransactionsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createTransactionRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -320,9 +294,6 @@ class TransactionsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-createTransaction');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createTransactionRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -547,9 +518,6 @@ class TransactionsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getTransactionRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -655,9 +623,6 @@ class TransactionsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-getTransaction');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getTransactionRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -864,9 +829,6 @@ class TransactionsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listAccountTransactionsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -978,9 +940,6 @@ class TransactionsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-listAccountTransactions');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listAccountTransactionsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

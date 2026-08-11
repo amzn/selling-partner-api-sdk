@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.replenishment.v2022_11_07.GetSellingPartnerMetricsRequest;
@@ -37,18 +35,10 @@ import software.amazon.spapi.models.replenishment.v2022_11_07.GetSellingPartnerM
 
 public class SellingpartnersApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public SellingpartnersApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public SellingpartnersApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket getSellingPartnerMetricsBucket = Bucket.builder()
-            .addLimit(config.getLimit("SellingpartnersApi-getSellingPartnerMetrics"))
-            .build();
 
     /**
      * Build call for getSellingPartnerMetrics
@@ -174,10 +164,8 @@ public class SellingpartnersApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getSellingPartnerMetricsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSellingPartnerMetricsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getSellingPartnerMetrics operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetSellingPartnerMetricsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -256,11 +244,9 @@ public class SellingpartnersApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getSellingPartnerMetricsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSellingPartnerMetricsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getSellingPartnerMetrics operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetSellingPartnerMetricsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -268,7 +254,6 @@ public class SellingpartnersApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -287,11 +272,6 @@ public class SellingpartnersApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -314,11 +294,9 @@ public class SellingpartnersApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new SellingpartnersApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new SellingpartnersApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

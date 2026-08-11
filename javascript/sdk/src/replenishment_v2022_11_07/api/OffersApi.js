@@ -17,8 +17,6 @@ import { ListOfferMetricsRequest } from '../model/ListOfferMetricsRequest.js'
 import { ListOfferMetricsResponse } from '../model/ListOfferMetricsResponse.js'
 import { ListOffersRequest } from '../model/ListOffersRequest.js'
 import { ListOffersResponse } from '../model/ListOffersResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Offers service.
@@ -26,9 +24,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2022-11-07
 */
 export class OffersApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new OffersApi.
     * @alias module:replenishment_v2022_11_07/api/OffersApi
@@ -38,32 +33,6 @@ export class OffersApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'OffersApi-listOfferMetrics',
-      'OffersApi-listOffers'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -92,7 +61,7 @@ export class OffersApi {
     return this.apiClient.callApi('OffersApi-listOfferMetrics',
       '/replenishment/2022-11-07/offers/metrics/search', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('OffersApi-listOfferMetrics')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -135,7 +104,7 @@ export class OffersApi {
     return this.apiClient.callApi('OffersApi-listOffers',
       '/replenishment/2022-11-07/offers/search', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('OffersApi-listOffers')
+      contentTypes, accepts, returnType
     )
   }
 

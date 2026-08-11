@@ -13,8 +13,6 @@
 
 import { ApiClient } from '../ApiClient.js'
 import { CreateUploadDestinationResponse } from '../model/CreateUploadDestinationResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Uploads service.
@@ -22,9 +20,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2020-11-01
 */
 export class UploadsApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new UploadsApi.
     * @alias module:uploads_v2020_11_01/api/UploadsApi
@@ -34,31 +29,6 @@ export class UploadsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'UploadsApi-createUploadDestinationForResource'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -109,7 +79,7 @@ export class UploadsApi {
     return this.apiClient.callApi('UploadsApi-createUploadDestinationForResource',
       '/uploads/2020-11-01/uploadDestinations/{resource}', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('UploadsApi-createUploadDestinationForResource')
+      contentTypes, accepts, returnType
     )
   }
 

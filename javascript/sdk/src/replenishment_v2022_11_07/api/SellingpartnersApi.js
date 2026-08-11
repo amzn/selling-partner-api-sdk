@@ -15,8 +15,6 @@ import { ApiClient } from '../ApiClient.js'
 import { ErrorList } from '../model/ErrorList.js'
 import { GetSellingPartnerMetricsRequest } from '../model/GetSellingPartnerMetricsRequest.js'
 import { GetSellingPartnerMetricsResponse } from '../model/GetSellingPartnerMetricsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Sellingpartners service.
@@ -24,9 +22,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2022-11-07
 */
 export class SellingpartnersApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new SellingpartnersApi.
     * @alias module:replenishment_v2022_11_07/api/SellingpartnersApi
@@ -36,31 +31,6 @@ export class SellingpartnersApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'SellingpartnersApi-getSellingPartnerMetrics'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -89,7 +59,7 @@ export class SellingpartnersApi {
     return this.apiClient.callApi('SellingpartnersApi-getSellingPartnerMetrics',
       '/replenishment/2022-11-07/sellingPartners/metrics/search', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('SellingpartnersApi-getSellingPartnerMetrics')
+      contentTypes, accepts, returnType
     )
   }
 

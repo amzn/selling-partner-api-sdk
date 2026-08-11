@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.reports.v2021_06_30.CreateReportResponse;
@@ -45,48 +43,10 @@ import software.amazon.spapi.models.reports.v2021_06_30.ReportScheduleList;
 
 public class ReportsApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public ReportsApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public ReportsApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket cancelReportBucket = Bucket.builder()
-            .addLimit(config.getLimit("ReportsApi-cancelReport"))
-            .build();
-
-    public final Bucket cancelReportScheduleBucket = Bucket.builder()
-            .addLimit(config.getLimit("ReportsApi-cancelReportSchedule"))
-            .build();
-
-    public final Bucket createReportBucket = Bucket.builder()
-            .addLimit(config.getLimit("ReportsApi-createReport"))
-            .build();
-
-    public final Bucket createReportScheduleBucket = Bucket.builder()
-            .addLimit(config.getLimit("ReportsApi-createReportSchedule"))
-            .build();
-
-    public final Bucket getReportBucket =
-            Bucket.builder().addLimit(config.getLimit("ReportsApi-getReport")).build();
-
-    public final Bucket getReportDocumentBucket = Bucket.builder()
-            .addLimit(config.getLimit("ReportsApi-getReportDocument"))
-            .build();
-
-    public final Bucket getReportScheduleBucket = Bucket.builder()
-            .addLimit(config.getLimit("ReportsApi-getReportSchedule"))
-            .build();
-
-    public final Bucket getReportSchedulesBucket = Bucket.builder()
-            .addLimit(config.getLimit("ReportsApi-getReportSchedules"))
-            .build();
-
-    public final Bucket getReportsBucket =
-            Bucket.builder().addLimit(config.getLimit("ReportsApi-getReports")).build();
 
     /**
      * Build call for cancelReport
@@ -216,9 +176,7 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelReportBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("cancelReport operation exceeds rate limit");
+        return apiClient.execute(call);
     }
 
     /**
@@ -299,10 +257,8 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelReportBucket.tryConsume(1)) {
-            apiClient.executeAsync(call, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("cancelReport operation exceeds rate limit");
+        apiClient.executeAsync(call, callback);
+        return call;
     }
     /**
      * Build call for cancelReportSchedule
@@ -430,9 +386,7 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelReportScheduleBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("cancelReportSchedule operation exceeds rate limit");
+        return apiClient.execute(call);
     }
 
     /**
@@ -509,10 +463,8 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelReportScheduleBucket.tryConsume(1)) {
-            apiClient.executeAsync(call, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("cancelReportSchedule operation exceeds rate limit");
+        apiClient.executeAsync(call, callback);
+        return call;
     }
     /**
      * Build call for createReport
@@ -635,10 +587,8 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createReportBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateReportResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createReport operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateReportResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -713,11 +663,9 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createReportBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateReportResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createReport operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateReportResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createReportSchedule
@@ -845,10 +793,8 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createReportScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateReportScheduleResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createReportSchedule operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateReportScheduleResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -928,11 +874,9 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createReportScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateReportScheduleResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createReportSchedule operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateReportScheduleResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getReport
@@ -1063,10 +1007,8 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getReportBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Report>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getReport operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<Report>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1142,11 +1084,9 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getReportBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Report>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getReport operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<Report>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getReportDocument
@@ -1299,10 +1239,8 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getReportDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ReportDocument>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getReportDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ReportDocument>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1391,11 +1329,9 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getReportDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ReportDocument>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getReportDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ReportDocument>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getReportSchedule
@@ -1530,10 +1466,8 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getReportScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ReportSchedule>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getReportSchedule operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ReportSchedule>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1611,11 +1545,9 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getReportScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ReportSchedule>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getReportSchedule operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ReportSchedule>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getReportSchedules
@@ -1748,10 +1680,8 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getReportSchedulesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ReportScheduleList>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getReportSchedules operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ReportScheduleList>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1830,11 +1760,9 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getReportSchedulesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ReportScheduleList>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getReportSchedules operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ReportScheduleList>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getReports
@@ -2092,10 +2020,8 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getReportsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetReportsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getReports operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetReportsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2262,11 +2188,9 @@ public class ReportsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getReportsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetReportsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getReports operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetReportsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -2274,7 +2198,6 @@ public class ReportsApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -2293,11 +2216,6 @@ public class ReportsApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -2320,11 +2238,9 @@ public class ReportsApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new ReportsApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new ReportsApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

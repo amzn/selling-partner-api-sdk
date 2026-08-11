@@ -21,8 +21,6 @@ import { ListOrdersResponse } from '../model/ListOrdersResponse.js'
 import { UpdateOrderRequest } from '../model/UpdateOrderRequest.js'
 import { UpdateOrderStatusRequest } from '../model/UpdateOrderStatusRequest.js'
 import { UpdatePackageRequest } from '../model/UpdatePackageRequest.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * FulfillmentOrders service.
@@ -30,9 +28,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2026-07-04
 */
 export class FulfillmentOrdersApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new FulfillmentOrdersApi.
     * @alias module:fulfillmentoutbound_v2026_07_04/api/FulfillmentOrdersApi
@@ -42,37 +37,6 @@ export class FulfillmentOrdersApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'FulfillmentOrdersApi-cancelOrder',
-      'FulfillmentOrdersApi-createOrder',
-      'FulfillmentOrdersApi-getOrder',
-      'FulfillmentOrdersApi-listOrders',
-      'FulfillmentOrdersApi-updateOrder',
-      'FulfillmentOrdersApi-updateOrderStatus',
-      'FulfillmentOrdersApi-updatePackage'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -109,7 +73,7 @@ export class FulfillmentOrdersApi {
     return this.apiClient.callApi('FulfillmentOrdersApi-cancelOrder',
       '/fulfillment/outbound/2026-07-04/orders/{orderId}/cancel', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FulfillmentOrdersApi-cancelOrder')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -160,7 +124,7 @@ export class FulfillmentOrdersApi {
     return this.apiClient.callApi('FulfillmentOrdersApi-createOrder',
       '/fulfillment/outbound/2026-07-04/orders', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FulfillmentOrdersApi-createOrder')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -214,7 +178,7 @@ export class FulfillmentOrdersApi {
     return this.apiClient.callApi('FulfillmentOrdersApi-getOrder',
       '/fulfillment/outbound/2026-07-04/orders/{orderId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FulfillmentOrdersApi-getOrder')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -266,7 +230,7 @@ export class FulfillmentOrdersApi {
     return this.apiClient.callApi('FulfillmentOrdersApi-listOrders',
       '/fulfillment/outbound/2026-07-04/orders', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FulfillmentOrdersApi-listOrders')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -326,7 +290,7 @@ export class FulfillmentOrdersApi {
     return this.apiClient.callApi('FulfillmentOrdersApi-updateOrder',
       '/fulfillment/outbound/2026-07-04/orders/{orderId}', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FulfillmentOrdersApi-updateOrder')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -385,7 +349,7 @@ export class FulfillmentOrdersApi {
     return this.apiClient.callApi('FulfillmentOrdersApi-updateOrderStatus',
       '/fulfillment/outbound/2026-07-04/orders/{orderId}/status', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FulfillmentOrdersApi-updateOrderStatus')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -451,7 +415,7 @@ export class FulfillmentOrdersApi {
     return this.apiClient.callApi('FulfillmentOrdersApi-updatePackage',
       '/fulfillment/outbound/2026-07-04/orders/{orderId}/packages/{packageId}', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FulfillmentOrdersApi-updatePackage')
+      contentTypes, accepts, returnType
     )
   }
 

@@ -44,9 +44,6 @@ use SpApi\HeaderSelector;
 use SpApi\Model\finances\v0\ListFinancialEventGroupsResponse;
 use SpApi\Model\finances\v0\ListFinancialEventsResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * DefaultApi Class Doc Comment.
@@ -59,10 +56,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class DefaultApi
 {
-    public ?LimiterInterface $listFinancialEventGroupsRateLimiter;
-    public ?LimiterInterface $listFinancialEventsRateLimiter;
-    public ?LimiterInterface $listFinancialEventsByGroupIdRateLimiter;
-    public ?LimiterInterface $listFinancialEventsByOrderIdRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -74,35 +67,16 @@ class DefaultApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listFinancialEventGroups'), $this->rateLimitStorage);
-            $this->listFinancialEventGroupsRateLimiter = $factory->create('DefaultApi-listFinancialEventGroups');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listFinancialEvents'), $this->rateLimitStorage);
-            $this->listFinancialEventsRateLimiter = $factory->create('DefaultApi-listFinancialEvents');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listFinancialEventsByGroupId'), $this->rateLimitStorage);
-            $this->listFinancialEventsByGroupIdRateLimiter = $factory->create('DefaultApi-listFinancialEventsByGroupId');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefaultApi-listFinancialEventsByOrderId'), $this->rateLimitStorage);
-            $this->listFinancialEventsByOrderIdRateLimiter = $factory->create('DefaultApi-listFinancialEventsByOrderId');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -197,9 +171,6 @@ class DefaultApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listFinancialEventGroupsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -313,9 +284,6 @@ class DefaultApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listFinancialEventGroups');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listFinancialEventGroupsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -545,9 +513,6 @@ class DefaultApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listFinancialEventsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -661,9 +626,6 @@ class DefaultApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listFinancialEvents');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listFinancialEventsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -899,9 +861,6 @@ class DefaultApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listFinancialEventsByGroupIdRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1021,9 +980,6 @@ class DefaultApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listFinancialEventsByGroupId');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listFinancialEventsByGroupIdRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1265,9 +1221,6 @@ class DefaultApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listFinancialEventsByOrderIdRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1375,9 +1328,6 @@ class DefaultApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefaultApi-listFinancialEventsByOrderId');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listFinancialEventsByOrderIdRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

@@ -20,8 +20,6 @@ import { BrowseNodeReviewTrendsResponse } from '../model/BrowseNodeReviewTrendsR
 import { ErrorList } from '../model/ErrorList.js'
 import { ItemReviewTopicsResponse } from '../model/ItemReviewTopicsResponse.js'
 import { ItemReviewTrendsResponse } from '../model/ItemReviewTrendsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * CustomerFeedback service.
@@ -29,9 +27,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-06-01
 */
 export class CustomerFeedbackApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new CustomerFeedbackApi.
     * @alias module:customerFeedback_2024_06_01/api/CustomerFeedbackApi
@@ -41,37 +36,6 @@ export class CustomerFeedbackApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'CustomerFeedbackApi-getBrowseNodeReturnTopics',
-      'CustomerFeedbackApi-getBrowseNodeReturnTrends',
-      'CustomerFeedbackApi-getBrowseNodeReviewTopics',
-      'CustomerFeedbackApi-getBrowseNodeReviewTrends',
-      'CustomerFeedbackApi-getItemBrowseNode',
-      'CustomerFeedbackApi-getItemReviewTopics',
-      'CustomerFeedbackApi-getItemReviewTrends'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -111,7 +75,7 @@ export class CustomerFeedbackApi {
     return this.apiClient.callApi('CustomerFeedbackApi-getBrowseNodeReturnTopics',
       '/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/returns/topics', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('CustomerFeedbackApi-getBrowseNodeReturnTopics')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -165,7 +129,7 @@ export class CustomerFeedbackApi {
     return this.apiClient.callApi('CustomerFeedbackApi-getBrowseNodeReturnTrends',
       '/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/returns/trends', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('CustomerFeedbackApi-getBrowseNodeReturnTrends')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -226,7 +190,7 @@ export class CustomerFeedbackApi {
     return this.apiClient.callApi('CustomerFeedbackApi-getBrowseNodeReviewTopics',
       '/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/reviews/topics', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('CustomerFeedbackApi-getBrowseNodeReviewTopics')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -281,7 +245,7 @@ export class CustomerFeedbackApi {
     return this.apiClient.callApi('CustomerFeedbackApi-getBrowseNodeReviewTrends',
       '/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/reviews/trends', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('CustomerFeedbackApi-getBrowseNodeReviewTrends')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -335,7 +299,7 @@ export class CustomerFeedbackApi {
     return this.apiClient.callApi('CustomerFeedbackApi-getItemBrowseNode',
       '/customerFeedback/2024-06-01/items/{asin}/browseNode', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('CustomerFeedbackApi-getItemBrowseNode')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -396,7 +360,7 @@ export class CustomerFeedbackApi {
     return this.apiClient.callApi('CustomerFeedbackApi-getItemReviewTopics',
       '/customerFeedback/2024-06-01/items/{asin}/reviews/topics', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('CustomerFeedbackApi-getItemReviewTopics')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -451,7 +415,7 @@ export class CustomerFeedbackApi {
     return this.apiClient.callApi('CustomerFeedbackApi-getItemReviewTrends',
       '/customerFeedback/2024-06-01/items/{asin}/reviews/trends', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('CustomerFeedbackApi-getItemReviewTrends')
+      contentTypes, accepts, returnType
     )
   }
 

@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.fulfillment.outbound.v2026_07_04.GetOrderPreviewRequest;
@@ -37,18 +35,10 @@ import software.amazon.spapi.models.fulfillment.outbound.v2026_07_04.GetOrderPre
 
 public class FulfillmentPreviewsApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public FulfillmentPreviewsApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public FulfillmentPreviewsApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket getOrderPreview_0Bucket = Bucket.builder()
-            .addLimit(config.getLimit("FulfillmentPreviewsApi-getOrderPreview_0"))
-            .build();
 
     /**
      * Build call for getOrderPreview_0
@@ -188,10 +178,8 @@ public class FulfillmentPreviewsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrderPreview_0Bucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOrderPreviewResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getOrderPreview_0 operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOrderPreviewResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -277,11 +265,9 @@ public class FulfillmentPreviewsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrderPreview_0Bucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOrderPreviewResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getOrderPreview_0 operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOrderPreviewResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -289,7 +275,6 @@ public class FulfillmentPreviewsApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -308,11 +293,6 @@ public class FulfillmentPreviewsApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -335,11 +315,9 @@ public class FulfillmentPreviewsApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new FulfillmentPreviewsApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new FulfillmentPreviewsApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

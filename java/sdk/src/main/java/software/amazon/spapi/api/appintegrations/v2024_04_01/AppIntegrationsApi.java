@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.appintegrations.v2024_04_01.CreateNotificationRequest;
@@ -39,26 +37,10 @@ import software.amazon.spapi.models.appintegrations.v2024_04_01.RecordActionFeed
 
 public class AppIntegrationsApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public AppIntegrationsApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public AppIntegrationsApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket createNotificationBucket = Bucket.builder()
-            .addLimit(config.getLimit("AppIntegrationsApi-createNotification"))
-            .build();
-
-    public final Bucket deleteNotificationsBucket = Bucket.builder()
-            .addLimit(config.getLimit("AppIntegrationsApi-deleteNotifications"))
-            .build();
-
-    public final Bucket recordActionFeedbackBucket = Bucket.builder()
-            .addLimit(config.getLimit("AppIntegrationsApi-recordActionFeedback"))
-            .build();
 
     /**
      * Build call for createNotification
@@ -184,10 +166,8 @@ public class AppIntegrationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createNotificationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateNotificationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createNotification operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateNotificationResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -265,11 +245,9 @@ public class AppIntegrationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createNotificationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateNotificationResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createNotification operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateNotificationResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for deleteNotifications
@@ -394,9 +372,7 @@ public class AppIntegrationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || deleteNotificationsBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("deleteNotifications operation exceeds rate limit");
+        return apiClient.execute(call);
     }
 
     /**
@@ -472,10 +448,8 @@ public class AppIntegrationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || deleteNotificationsBucket.tryConsume(1)) {
-            apiClient.executeAsync(call, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("deleteNotifications operation exceeds rate limit");
+        apiClient.executeAsync(call, callback);
+        return call;
     }
     /**
      * Build call for recordActionFeedback
@@ -612,9 +586,7 @@ public class AppIntegrationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || recordActionFeedbackBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("recordActionFeedback operation exceeds rate limit");
+        return apiClient.execute(call);
     }
 
     /**
@@ -696,10 +668,8 @@ public class AppIntegrationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || recordActionFeedbackBucket.tryConsume(1)) {
-            apiClient.executeAsync(call, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("recordActionFeedback operation exceeds rate limit");
+        apiClient.executeAsync(call, callback);
+        return call;
     }
 
     public static class Builder {
@@ -707,7 +677,6 @@ public class AppIntegrationsApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -726,11 +695,6 @@ public class AppIntegrationsApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -753,11 +717,9 @@ public class AppIntegrationsApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new AppIntegrationsApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new AppIntegrationsApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

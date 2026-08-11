@@ -17,8 +17,6 @@ import { FeesEstimateResult } from '../model/FeesEstimateResult.js'
 import { GetMyFeesEstimateRequest } from '../model/GetMyFeesEstimateRequest.js'
 import { GetMyFeesEstimateResponse } from '../model/GetMyFeesEstimateResponse.js'
 import { GetMyFeesEstimatesErrorList } from '../model/GetMyFeesEstimatesErrorList.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Fees service.
@@ -26,9 +24,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v0
 */
 export class FeesApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new FeesApi.
     * @alias module:productfees_v0/api/FeesApi
@@ -38,33 +33,6 @@ export class FeesApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'FeesApi-getMyFeesEstimateForASIN',
-      'FeesApi-getMyFeesEstimateForSKU',
-      'FeesApi-getMyFeesEstimates'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -103,7 +71,7 @@ export class FeesApi {
     return this.apiClient.callApi('FeesApi-getMyFeesEstimateForASIN',
       '/products/fees/v0/items/{Asin}/feesEstimate', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeesApi-getMyFeesEstimateForASIN')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -156,7 +124,7 @@ export class FeesApi {
     return this.apiClient.callApi('FeesApi-getMyFeesEstimateForSKU',
       '/products/fees/v0/listings/{SellerSKU}/feesEstimate', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeesApi-getMyFeesEstimateForSKU')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -202,7 +170,7 @@ export class FeesApi {
     return this.apiClient.callApi('FeesApi-getMyFeesEstimates',
       '/products/fees/v0/feesEstimate', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeesApi-getMyFeesEstimates')
+      contentTypes, accepts, returnType
     )
   }
 

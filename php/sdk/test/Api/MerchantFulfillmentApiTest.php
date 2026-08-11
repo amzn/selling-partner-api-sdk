@@ -69,7 +69,7 @@ class MerchantFulfillmentApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new MerchantFulfillmentApi($config, null, false);
+        $this->api = new MerchantFulfillmentApi($config);
     }
 
 

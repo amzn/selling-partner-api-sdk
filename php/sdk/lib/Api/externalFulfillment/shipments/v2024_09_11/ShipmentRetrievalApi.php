@@ -45,9 +45,6 @@ use SpApi\HeaderSelector;
 use SpApi\Model\externalFulfillment\shipments\v2024_09_11\Shipment;
 use SpApi\Model\externalFulfillment\shipments\v2024_09_11\ShipmentsResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * ShipmentRetrievalApi Class Doc Comment.
@@ -60,8 +57,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ShipmentRetrievalApi
 {
-    public ?LimiterInterface $getShipmentRateLimiter;
-    public ?LimiterInterface $getShipmentsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -73,31 +68,16 @@ class ShipmentRetrievalApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShipmentRetrievalApi-getShipment'), $this->rateLimitStorage);
-            $this->getShipmentRateLimiter = $factory->create('ShipmentRetrievalApi-getShipment');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShipmentRetrievalApi-getShipments'), $this->rateLimitStorage);
-            $this->getShipmentsRateLimiter = $factory->create('ShipmentRetrievalApi-getShipments');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -174,9 +154,6 @@ class ShipmentRetrievalApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getShipmentRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -272,9 +249,6 @@ class ShipmentRetrievalApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShipmentRetrievalApi-getShipment');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getShipmentRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -487,9 +461,6 @@ class ShipmentRetrievalApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getShipmentsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -627,9 +598,6 @@ class ShipmentRetrievalApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShipmentRetrievalApi-getShipments');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getShipmentsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

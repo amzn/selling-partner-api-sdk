@@ -43,9 +43,6 @@ use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\orders\v0\UpdateShipmentStatusRequest;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * ShipmentApi Class Doc Comment.
@@ -58,7 +55,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ShipmentApi
 {
-    public ?LimiterInterface $updateShipmentStatusRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -70,29 +66,16 @@ class ShipmentApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ShipmentApi-updateShipmentStatus'), $this->rateLimitStorage);
-            $this->updateShipmentStatusRateLimiter = $factory->create('ShipmentApi-updateShipmentStatus');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -173,9 +156,6 @@ class ShipmentApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateShipmentStatusRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -265,9 +245,6 @@ class ShipmentApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ShipmentApi-updateShipmentStatus');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateShipmentStatusRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
