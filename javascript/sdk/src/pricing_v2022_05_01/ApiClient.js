@@ -15,8 +15,6 @@ import superagent from 'superagent'
 import querystring from 'querystring'
 import { readFileSync } from 'node:fs'
 import { URL } from 'node:url'
-import { RateLimitConfiguration } from '../../helper/RateLimitConfiguration.mjs'
-import { SuperagentRateLimiter } from '../../helper/SuperagentRateLimiter.mjs'
 
 /**
 * @module pricing_v2022_05_01/ApiClient
