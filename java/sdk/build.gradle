@@ -149,11 +149,9 @@ dependencies {
 	implementation 'io.gsonfire:gson-fire:1.8.5'
 	implementation 'io.swagger.core.v3:swagger-annotations:2.2.16'
 	implementation 'com.squareup.okio:okio:3.9.1'
-	implementation 'org.apache.commons:commons-lang3:3.17.0'
 	implementation 'com.bucket4j:bucket4j_jdk11-core:8.14.0'
 	implementation 'org.yaml:snakeyaml:2.4'
-	compileOnly 'org.projectlombok:lombok:1.18.34'
-	annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
 	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.3'
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.11.3'
 	testImplementation 'org.jeasy:easy-random-core:5.0.0'

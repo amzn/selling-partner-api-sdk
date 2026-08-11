@@ -3,16 +3,12 @@ package com.amazon.SellingPartnerAPIAA;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
-import org.apache.commons.lang3.EnumUtils;
 import software.amazon.spapi.Configuration;
 
 class LWAClient {
@@ -20,13 +16,19 @@ class LWAClient {
     private static final String ACCESS_TOKEN_EXPIRES_IN = "expires_in";
     private static final MediaType JSON_MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
 
-    @Getter
     private String endpoint;
 
-    @Setter(AccessLevel.PACKAGE)
     private OkHttpClient okHttpClient;
 
     private LWAAccessTokenCache lwaAccessTokenCache;
+
+    public String getEndpoint() {
+        return endpoint;
+    }
+
+    void setOkHttpClient(OkHttpClient okHttpClient) {
+        this.okHttpClient = okHttpClient;
+    }
 
     /** Sets cache to store access token until token is expired */
     public void setLWAAccessTokenCache(LWAAccessTokenCache tokenCache) {
@@ -71,7 +73,7 @@ class LWAClient {
             if (!response.isSuccessful()) {
                 // Check if response has element error and is a known LWA error code
                 if (responseJson.has("error")
-                        && EnumUtils.isValidEnum(
+                        && isValidEnum(
                                 LWAExceptionErrorCode.class,
                                 responseJson.get("error").getAsString())) {
                     throw new LWAException(
@@ -95,5 +97,17 @@ class LWAClient {
             throw new RuntimeException("Error getting LWA Token");
         }
         return accessToken;
+    }
+
+    private static <E extends Enum<E>> boolean isValidEnum(Class<E> enumClass, String enumName) {
+        if (enumName == null) {
+            return false;
+        }
+        try {
+            Enum.valueOf(enumClass, enumName);
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
     }
 }

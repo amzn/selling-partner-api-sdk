@@ -1,19 +1,22 @@
 package com.amazon.SellingPartnerAPIAA;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
 import okhttp3.Request;
 
 /** LWA Authorization Signer */
 public class LWAAuthorizationSigner {
     public static final String SIGNED_ACCESS_TOKEN_HEADER_NAME = "x-amz-access-token";
 
-    @Getter(AccessLevel.PACKAGE)
-    @Setter(AccessLevel.PACKAGE)
     private LWAClient lwaClient;
 
     private LWAAccessTokenRequestMeta lwaAccessTokenRequestMeta;
+
+    LWAClient getLwaClient() {
+        return lwaClient;
+    }
+
+    void setLwaClient(LWAClient lwaClient) {
+        this.lwaClient = lwaClient;
+    }
 
     private void buildLWAAccessTokenRequestMeta(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
         String tokenRequestGrantType;
