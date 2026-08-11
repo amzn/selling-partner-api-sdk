@@ -26,9 +26,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-03-01
 */
 export class TransactionsApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new TransactionsApi.
     * @alias module:sellerWallet_2024_03_01/api/TransactionsApi
@@ -39,32 +36,6 @@ export class TransactionsApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'TransactionsApi-createTransaction',
-      'TransactionsApi-getTransaction',
-      'TransactionsApi-listAccountTransactions'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**

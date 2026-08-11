@@ -29,9 +29,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2021-06-30
 */
 export class FeedsApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new FeedsApi.
     * @alias module:feeds_v2021_06_30/api/FeedsApi
@@ -42,35 +39,6 @@ export class FeedsApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'FeedsApi-cancelFeed',
-      'FeedsApi-createFeed',
-      'FeedsApi-createFeedDocument',
-      'FeedsApi-getFeed',
-      'FeedsApi-getFeedDocument',
-      'FeedsApi-getFeeds'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**

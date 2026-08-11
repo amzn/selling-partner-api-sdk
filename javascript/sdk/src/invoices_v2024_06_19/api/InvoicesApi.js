@@ -33,9 +33,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-06-19
 */
 export class InvoicesApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new InvoicesApi.
     * @alias module:invoices_v2024_06_19/api/InvoicesApi
@@ -46,39 +43,6 @@ export class InvoicesApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'InvoicesApi-createGovernmentInvoice',
-      'InvoicesApi-createInvoicesExport',
-      'InvoicesApi-getGovernmentInvoiceDocument',
-      'InvoicesApi-getGovernmentInvoiceStatus',
-      'InvoicesApi-getInvoice',
-      'InvoicesApi-getInvoices',
-      'InvoicesApi-getInvoicesAttributes',
-      'InvoicesApi-getInvoicesDocument',
-      'InvoicesApi-getInvoicesExport',
-      'InvoicesApi-getInvoicesExports'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**

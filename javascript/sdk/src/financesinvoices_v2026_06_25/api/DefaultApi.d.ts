@@ -19,7 +19,6 @@ import { GetInvoicesResponse } from '../model/GetInvoicesResponse.js';
 * @version 2026-06-25
 */
 export declare class DefaultApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new DefaultApi.
@@ -29,15 +28,6 @@ export declare class DefaultApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Returns invoice details, including header and line items, for the specified invoice.
        * @param {String} marketplaceId The marketplace ID of the marketplace of the invoice. The marketplace ID is a globally unique identifier used to specify an Amazon marketplace. For more information, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).

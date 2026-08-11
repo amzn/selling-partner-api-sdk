@@ -22,7 +22,6 @@ import { ListPayoutsResponse } from '../model/ListPayoutsResponse.js';
 * @version 2024-06-01
 */
 export declare class DefaultApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new DefaultApi.
@@ -32,15 +31,6 @@ export declare class DefaultApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Returns the list of payment methods for the seller, which can be filtered by method type.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | .5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} marketplaceId The identifier of the Amazon store from which you want to retrieve payment methods. For the list of store identifiers, refer to [Store Identifiers](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).

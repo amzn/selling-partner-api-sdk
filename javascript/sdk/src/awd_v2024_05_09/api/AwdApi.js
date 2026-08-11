@@ -41,9 +41,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-05-09
 */
 export class AwdApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new AwdApi.
     * @alias module:awd_v2024_05_09/api/AwdApi
@@ -54,50 +51,6 @@ export class AwdApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'AwdApi-cancelInbound',
-      'AwdApi-checkInboundEligibility',
-      'AwdApi-confirmInbound',
-      'AwdApi-confirmOutbound',
-      'AwdApi-confirmReplenishmentOrder',
-      'AwdApi-createInbound',
-      'AwdApi-createOutbound',
-      'AwdApi-createReplenishmentOrder',
-      'AwdApi-getInbound',
-      'AwdApi-getInboundShipment',
-      'AwdApi-getInboundShipmentLabels',
-      'AwdApi-getLabelPageTypes',
-      'AwdApi-getOutbound',
-      'AwdApi-getReplenishmentOrder',
-      'AwdApi-listInboundShipments',
-      'AwdApi-listInventory',
-      'AwdApi-listOutbounds',
-      'AwdApi-listReplenishmentOrders',
-      'AwdApi-updateInbound',
-      'AwdApi-updateInboundShipmentTransportDetails',
-      'AwdApi-updateOutbound'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**

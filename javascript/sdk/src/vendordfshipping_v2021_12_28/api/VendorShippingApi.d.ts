@@ -22,7 +22,6 @@ import { TransactionReference } from '../model/TransactionReference.js';
 * @version 2021-12-28
 */
 export declare class VendorShippingApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new VendorShippingApi.
@@ -32,15 +31,6 @@ export declare class VendorShippingApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * getPackingSlip
        * Returns a packing slip based on the purchaseOrderNumber that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).

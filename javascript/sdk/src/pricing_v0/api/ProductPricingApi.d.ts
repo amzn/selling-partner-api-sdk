@@ -23,7 +23,6 @@ import { GetPricingResponse } from '../model/GetPricingResponse.js';
 * @version v0
 */
 export declare class ProductPricingApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new ProductPricingApi.
@@ -33,15 +32,6 @@ export declare class ProductPricingApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Returns competitive pricing information for a seller&#39;s offer listings based on seller SKU or ASIN.  **Note:** The parameters associated with this operation may contain special characters that require URL encoding to call the API. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.

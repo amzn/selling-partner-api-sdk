@@ -33,9 +33,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2020-11-01
 */
 export class AplusContentApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new AplusContentApi.
     * @alias module:apluscontent_v2020_11_01/api/AplusContentApi
@@ -46,39 +43,6 @@ export class AplusContentApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'AplusContentApi-createContentDocument',
-      'AplusContentApi-getContentDocument',
-      'AplusContentApi-listContentDocumentAsinRelations',
-      'AplusContentApi-postContentDocumentApprovalSubmission',
-      'AplusContentApi-postContentDocumentAsinRelations',
-      'AplusContentApi-postContentDocumentSuspendSubmission',
-      'AplusContentApi-searchContentDocuments',
-      'AplusContentApi-searchContentPublishRecords',
-      'AplusContentApi-updateContentDocument',
-      'AplusContentApi-validateContentDocumentAsinRelations'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**

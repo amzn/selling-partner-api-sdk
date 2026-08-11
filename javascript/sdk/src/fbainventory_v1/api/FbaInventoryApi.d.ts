@@ -23,7 +23,6 @@ import { GetInventorySummariesResponse } from '../model/GetInventorySummariesRes
 * @version v1
 */
 export declare class FbaInventoryApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new FbaInventoryApi.
@@ -33,15 +32,6 @@ export declare class FbaInventoryApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Requests that Amazon add items to the Sandbox Inventory with desired amount of quantity in the sandbox environment. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
        * @param {String} xAmznIdempotencyToken A unique token/requestId provided with each call to ensure idempotency.

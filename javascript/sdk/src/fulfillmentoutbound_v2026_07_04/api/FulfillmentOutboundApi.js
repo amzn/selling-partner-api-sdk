@@ -34,9 +34,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2026-07-04
 */
 export class FulfillmentOutboundApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new FulfillmentOutboundApi.
     * @alias module:fulfillmentoutbound_v2026_07_04/api/FulfillmentOutboundApi
@@ -47,38 +44,6 @@ export class FulfillmentOutboundApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'FulfillmentOutboundApi-cancelOrder',
-      'FulfillmentOutboundApi-createOrder',
-      'FulfillmentOutboundApi-getOffers',
-      'FulfillmentOutboundApi-getOrder',
-      'FulfillmentOutboundApi-getOrderPreview',
-      'FulfillmentOutboundApi-listOrders',
-      'FulfillmentOutboundApi-updateOrder',
-      'FulfillmentOutboundApi-updateOrderStatus',
-      'FulfillmentOutboundApi-updatePackage'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**

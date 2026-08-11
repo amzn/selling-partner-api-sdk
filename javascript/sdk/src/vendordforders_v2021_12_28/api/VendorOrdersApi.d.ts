@@ -21,7 +21,6 @@ import { TransactionId } from '../model/TransactionId.js';
 * @version 2021-12-28
 */
 export declare class VendorOrdersApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new VendorOrdersApi.
@@ -31,15 +30,6 @@ export declare class VendorOrdersApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Returns purchase order information for the purchaseOrderNumber that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} purchaseOrderNumber The order identifier for the purchase order that you want. Formatting Notes: alpha-numeric code.

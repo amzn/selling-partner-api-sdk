@@ -28,9 +28,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v0
 */
 export class ProductPricingApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new ProductPricingApi.
     * @alias module:pricing_v0/api/ProductPricingApi
@@ -41,35 +38,6 @@ export class ProductPricingApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'ProductPricingApi-getCompetitivePricing',
-      'ProductPricingApi-getItemOffers',
-      'ProductPricingApi-getItemOffersBatch',
-      'ProductPricingApi-getListingOffers',
-      'ProductPricingApi-getListingOffersBatch',
-      'ProductPricingApi-getPricing'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**

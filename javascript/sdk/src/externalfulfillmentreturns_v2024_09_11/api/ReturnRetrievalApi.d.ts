@@ -19,7 +19,6 @@ import { ReturnsResponse } from '../model/ReturnsResponse.js';
 * @version 2024-09-11
 */
 export declare class ReturnRetrievalApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new ReturnRetrievalApi.
@@ -29,15 +28,6 @@ export declare class ReturnRetrievalApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Retrieve the return item with the specified ID.
        * @param {String} returnId The ID of the return item you want.

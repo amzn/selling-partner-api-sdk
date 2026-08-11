@@ -20,7 +20,6 @@ import { BankAccountListing } from '../model/BankAccountListing.js';
 * @version 2024-03-01
 */
 export declare class AccountsApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new AccountsApi.
@@ -30,15 +29,6 @@ export declare class AccountsApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Find particular Amazon Seller Wallet account by Amazon account identifier
        * Retrieve a Seller Wallet bank account by Amazon account identifier.

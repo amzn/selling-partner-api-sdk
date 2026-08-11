@@ -25,7 +25,6 @@ import { GetShipmentResponse } from '../model/GetShipmentResponse.js';
 * @version v0
 */
 export declare class MerchantFulfillmentApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new MerchantFulfillmentApi.
@@ -35,15 +34,6 @@ export declare class MerchantFulfillmentApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Cancel the shipment indicated by the specified shipment identifier.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the requested operation when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} shipmentId The Amazon-defined shipment identifier for the shipment to cancel.

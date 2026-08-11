@@ -48,9 +48,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class ServiceApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new ServiceApi.
     * @alias module:services_v1/api/ServiceApi
@@ -61,46 +58,6 @@ export class ServiceApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'ServiceApi-addAppointmentForServiceJobByServiceJobId',
-      'ServiceApi-assignAppointmentResources',
-      'ServiceApi-cancelReservation',
-      'ServiceApi-cancelServiceJobByServiceJobId',
-      'ServiceApi-completeServiceJobByServiceJobId',
-      'ServiceApi-createReservation',
-      'ServiceApi-createServiceDocumentUploadDestination',
-      'ServiceApi-getAppointmentSlots',
-      'ServiceApi-getAppointmmentSlotsByJobId',
-      'ServiceApi-getFixedSlotCapacity',
-      'ServiceApi-getRangeSlotCapacity',
-      'ServiceApi-getServiceJobByServiceJobId',
-      'ServiceApi-getServiceJobs',
-      'ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId',
-      'ServiceApi-setAppointmentFulfillmentData',
-      'ServiceApi-updateReservation',
-      'ServiceApi-updateSchedule'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
