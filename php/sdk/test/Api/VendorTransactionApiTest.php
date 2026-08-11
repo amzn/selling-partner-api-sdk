@@ -69,7 +69,7 @@ class VendorTransactionApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new VendorTransactionApi($config, null, false);
+        $this->api = new VendorTransactionApi($config);
     }
 
 

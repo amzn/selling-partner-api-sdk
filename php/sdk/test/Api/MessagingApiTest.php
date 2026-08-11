@@ -69,7 +69,7 @@ class MessagingApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new MessagingApi($config, null, false);
+        $this->api = new MessagingApi($config);
     }
 
 

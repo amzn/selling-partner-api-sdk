@@ -69,7 +69,7 @@ class FeesApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new FeesApi($config, null, false);
+        $this->api = new FeesApi($config);
     }
 
 

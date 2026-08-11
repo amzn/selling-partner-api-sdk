@@ -69,7 +69,7 @@ class DefaultApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new DefaultApi($config, null, false);
+        $this->api = new DefaultApi($config);
     }
 
 

@@ -69,7 +69,7 @@ class AppIntegrationsApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new AppIntegrationsApi($config, null, false);
+        $this->api = new AppIntegrationsApi($config);
     }
 
 

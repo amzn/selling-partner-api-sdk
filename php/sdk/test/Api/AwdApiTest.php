@@ -69,7 +69,7 @@ class AwdApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new AwdApi($config, null, false);
+        $this->api = new AwdApi($config);
     }
 
 

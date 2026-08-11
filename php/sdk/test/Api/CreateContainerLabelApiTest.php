@@ -69,7 +69,7 @@ class CreateContainerLabelApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new CreateContainerLabelApi($config, null, false);
+        $this->api = new CreateContainerLabelApi($config);
     }
 
 

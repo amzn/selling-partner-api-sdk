@@ -69,7 +69,7 @@ class GetOrderApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new GetOrderApi($config, null, false);
+        $this->api = new GetOrderApi($config);
     }
 
 

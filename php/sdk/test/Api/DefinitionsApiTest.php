@@ -69,7 +69,7 @@ class DefinitionsApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new DefinitionsApi($config, null, false);
+        $this->api = new DefinitionsApi($config);
     }
 
 

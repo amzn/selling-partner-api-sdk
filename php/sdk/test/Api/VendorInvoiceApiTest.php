@@ -69,7 +69,7 @@ class VendorInvoiceApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new VendorInvoiceApi($config, null, false);
+        $this->api = new VendorInvoiceApi($config);
     }
 
 

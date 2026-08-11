@@ -69,7 +69,7 @@ class FulfillmentOrdersApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new FulfillmentOrdersApi($config, null, false);
+        $this->api = new FulfillmentOrdersApi($config);
     }
 
 

@@ -69,7 +69,7 @@ class UploadsApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new UploadsApi($config, null, false);
+        $this->api = new UploadsApi($config);
     }
 
 

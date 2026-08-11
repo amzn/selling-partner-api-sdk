@@ -69,7 +69,7 @@ class TransferScheduleApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new TransferScheduleApi($config, null, false);
+        $this->api = new TransferScheduleApi($config);
     }
 
 
