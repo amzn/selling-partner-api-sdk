@@ -18,7 +18,6 @@ import { GetShipmentTrackingResponse } from '../model/GetShipmentTrackingRespons
 * @version 2026-01-30
 */
 export declare class TrackingApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new TrackingApi.
@@ -28,15 +27,6 @@ export declare class TrackingApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Get tracking information for the shipment.
        * Returns tracking information for a shipment.

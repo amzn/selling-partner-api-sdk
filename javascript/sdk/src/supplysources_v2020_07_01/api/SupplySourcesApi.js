@@ -28,9 +28,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2020-07-01
 */
 export class SupplySourcesApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new SupplySourcesApi.
     * @alias module:supplysources_v2020_07_01/api/SupplySourcesApi
@@ -41,35 +38,6 @@ export class SupplySourcesApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'SupplySourcesApi-archiveSupplySource',
-      'SupplySourcesApi-createSupplySource',
-      'SupplySourcesApi-getSupplySource',
-      'SupplySourcesApi-getSupplySources',
-      'SupplySourcesApi-updateSupplySource',
-      'SupplySourcesApi-updateSupplySourceStatus'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**

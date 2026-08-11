@@ -37,7 +37,6 @@ import { UpdateFulfillmentOrderResponse } from '../model/UpdateFulfillmentOrderR
 * @version 2020-07-01
 */
 export declare class FbaOutboundApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new FbaOutboundApi.
@@ -47,15 +46,6 @@ export declare class FbaOutboundApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Requests that Amazon stop attempting to fulfill the fulfillment order indicated by the specified order identifier.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was created.

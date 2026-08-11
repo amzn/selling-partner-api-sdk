@@ -26,9 +26,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v0
 */
 export class FbaInboundApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new FbaInboundApi.
     * @alias module:fulfillmentinbound_v0/api/FbaInboundApi
@@ -39,35 +36,6 @@ export class FbaInboundApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'FbaInboundApi-getBillOfLading',
-      'FbaInboundApi-getLabels',
-      'FbaInboundApi-getPrepInstructions',
-      'FbaInboundApi-getShipmentItems',
-      'FbaInboundApi-getShipmentItemsByShipmentId',
-      'FbaInboundApi-getShipments'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**

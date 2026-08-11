@@ -24,7 +24,6 @@ import { ItemReviewTrendsResponse } from '../model/ItemReviewTrendsResponse.js';
 * @version 2024-06-01
 */
 export declare class CustomerFeedbackApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new CustomerFeedbackApi.
@@ -34,15 +33,6 @@ export declare class CustomerFeedbackApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Retrieve the topics that customers mention when they return items in a browse node.
        * @param {String} browseNodeId A browse node ID is a unique identifier for a browse node. A browse node is a named location in a browse tree that is used for navigation, product classification, and website content.

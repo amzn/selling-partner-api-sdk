@@ -81,9 +81,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-03-20
 */
 export class FbaInboundApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new FbaInboundApi.
     * @alias module:fulfillmentinbound_v2024_03_20/api/FbaInboundApi
@@ -94,74 +91,6 @@ export class FbaInboundApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'FbaInboundApi-cancelInboundPlan',
-      'FbaInboundApi-cancelSelfShipAppointment',
-      'FbaInboundApi-confirmDeliveryWindowOptions',
-      'FbaInboundApi-confirmPackingOption',
-      'FbaInboundApi-confirmPlacementOption',
-      'FbaInboundApi-confirmShipmentContentUpdatePreview',
-      'FbaInboundApi-confirmTransportationOptions',
-      'FbaInboundApi-createInboundPlan',
-      'FbaInboundApi-createMarketplaceItemLabels',
-      'FbaInboundApi-generateDeliveryWindowOptions',
-      'FbaInboundApi-generatePackingOptions',
-      'FbaInboundApi-generatePlacementOptions',
-      'FbaInboundApi-generateSelfShipAppointmentSlots',
-      'FbaInboundApi-generateShipmentContentUpdatePreviews',
-      'FbaInboundApi-generateTransportationOptions',
-      'FbaInboundApi-getDeliveryChallanDocument',
-      'FbaInboundApi-getInboundOperationStatus',
-      'FbaInboundApi-getInboundPlan',
-      'FbaInboundApi-getSelfShipAppointmentSlots',
-      'FbaInboundApi-getShipment',
-      'FbaInboundApi-getShipmentContentUpdatePreview',
-      'FbaInboundApi-listDeliveryWindowOptions',
-      'FbaInboundApi-listInboundPlanBoxes',
-      'FbaInboundApi-listInboundPlanItems',
-      'FbaInboundApi-listInboundPlanPallets',
-      'FbaInboundApi-listInboundPlans',
-      'FbaInboundApi-listItemComplianceDetails',
-      'FbaInboundApi-listPackingGroupBoxes',
-      'FbaInboundApi-listPackingGroupItems',
-      'FbaInboundApi-listPackingOptions',
-      'FbaInboundApi-listPlacementOptions',
-      'FbaInboundApi-listPrepDetails',
-      'FbaInboundApi-listShipmentBoxes',
-      'FbaInboundApi-listShipmentContentUpdatePreviews',
-      'FbaInboundApi-listShipmentItems',
-      'FbaInboundApi-listShipmentPallets',
-      'FbaInboundApi-listTransportationOptions',
-      'FbaInboundApi-scheduleSelfShipAppointment',
-      'FbaInboundApi-setPackingInformation',
-      'FbaInboundApi-setPrepDetails',
-      'FbaInboundApi-updateInboundPlanName',
-      'FbaInboundApi-updateItemComplianceDetails',
-      'FbaInboundApi-updateShipmentName',
-      'FbaInboundApi-updateShipmentSourceAddress',
-      'FbaInboundApi-updateShipmentTrackingDetails'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**

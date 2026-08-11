@@ -28,7 +28,6 @@ import { GovtInvoiceDocumentResponse } from '../model/GovtInvoiceDocumentRespons
 * @version 2024-06-19
 */
 export declare class InvoicesApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new InvoicesApi.
@@ -38,15 +37,6 @@ export declare class InvoicesApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Submit an asynchronous request to create a government invoice.
        * @param {GovernmentInvoiceRequest} body Information required to create the government invoice.

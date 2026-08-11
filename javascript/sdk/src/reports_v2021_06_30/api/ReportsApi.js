@@ -31,9 +31,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2021-06-30
 */
 export class ReportsApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new ReportsApi.
     * @alias module:reports_v2021_06_30/api/ReportsApi
@@ -44,38 +41,6 @@ export class ReportsApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'ReportsApi-cancelReport',
-      'ReportsApi-cancelReportSchedule',
-      'ReportsApi-createReport',
-      'ReportsApi-createReportSchedule',
-      'ReportsApi-getReport',
-      'ReportsApi-getReportDocument',
-      'ReportsApi-getReportSchedule',
-      'ReportsApi-getReportSchedules',
-      'ReportsApi-getReports'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**

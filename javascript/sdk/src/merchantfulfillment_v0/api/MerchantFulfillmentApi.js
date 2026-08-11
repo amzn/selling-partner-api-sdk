@@ -29,9 +29,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v0
 */
 export class MerchantFulfillmentApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new MerchantFulfillmentApi.
     * @alias module:merchantfulfillment_v0/api/MerchantFulfillmentApi
@@ -42,34 +39,6 @@ export class MerchantFulfillmentApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'MerchantFulfillmentApi-cancelShipment',
-      'MerchantFulfillmentApi-createShipment',
-      'MerchantFulfillmentApi-getAdditionalSellerInputs',
-      'MerchantFulfillmentApi-getEligibleShipmentServices',
-      'MerchantFulfillmentApi-getShipment'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**

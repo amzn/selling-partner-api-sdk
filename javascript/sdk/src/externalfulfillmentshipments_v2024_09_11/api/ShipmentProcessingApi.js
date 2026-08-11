@@ -30,9 +30,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-09-11
 */
 export class ShipmentProcessingApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new ShipmentProcessingApi.
     * @alias module:externalfulfillmentshipments_v2024_09_11/api/ShipmentProcessingApi
@@ -43,37 +40,6 @@ export class ShipmentProcessingApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'ShipmentProcessingApi-createPackages',
-      'ShipmentProcessingApi-generateInvoice',
-      'ShipmentProcessingApi-generateShipLabels',
-      'ShipmentProcessingApi-processShipment',
-      'ShipmentProcessingApi-retrieveInvoice',
-      'ShipmentProcessingApi-retrieveShippingOptions',
-      'ShipmentProcessingApi-updatePackage',
-      'ShipmentProcessingApi-updatePackageStatus'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**

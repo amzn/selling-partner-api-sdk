@@ -29,9 +29,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-06-01
 */
 export class CustomerFeedbackApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new CustomerFeedbackApi.
     * @alias module:customerFeedback_2024_06_01/api/CustomerFeedbackApi
@@ -42,36 +39,6 @@ export class CustomerFeedbackApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'CustomerFeedbackApi-getBrowseNodeReturnTopics',
-      'CustomerFeedbackApi-getBrowseNodeReturnTrends',
-      'CustomerFeedbackApi-getBrowseNodeReviewTopics',
-      'CustomerFeedbackApi-getBrowseNodeReviewTrends',
-      'CustomerFeedbackApi-getItemBrowseNode',
-      'CustomerFeedbackApi-getItemReviewTopics',
-      'CustomerFeedbackApi-getItemReviewTrends'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**

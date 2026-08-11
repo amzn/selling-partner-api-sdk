@@ -52,9 +52,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v2
 */
 export class ShippingApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new ShippingApi.
     * @alias module:shipping_v2/api/ShippingApi
@@ -65,49 +62,6 @@ export class ShippingApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'ShippingApi-cancelShipment',
-      'ShippingApi-createClaim',
-      'ShippingApi-directPurchaseShipment',
-      'ShippingApi-generateCollectionForm',
-      'ShippingApi-getAccessPoints',
-      'ShippingApi-getAdditionalInputs',
-      'ShippingApi-getCarrierAccountFormInputs',
-      'ShippingApi-getCarrierAccounts',
-      'ShippingApi-getCollectionForm',
-      'ShippingApi-getCollectionFormHistory',
-      'ShippingApi-getRates',
-      'ShippingApi-getShipmentDocuments',
-      'ShippingApi-getTracking',
-      'ShippingApi-getUnmanifestedShipments',
-      'ShippingApi-linkCarrierAccount',
-      'ShippingApi-linkCarrierAccount_0',
-      'ShippingApi-oneClickShipment',
-      'ShippingApi-purchaseShipment',
-      'ShippingApi-submitNdrFeedback',
-      'ShippingApi-unlinkCarrierAccount'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**

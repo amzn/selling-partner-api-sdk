@@ -27,9 +27,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2021-12-28
 */
 export class VendorShippingLabelsApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new VendorShippingLabelsApi.
     * @alias module:vendordfshipping_v2021_12_28/api/VendorShippingLabelsApi
@@ -40,33 +37,6 @@ export class VendorShippingLabelsApi {
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
     this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'VendorShippingLabelsApi-createShippingLabels',
-      'VendorShippingLabelsApi-getShippingLabel',
-      'VendorShippingLabelsApi-getShippingLabels',
-      'VendorShippingLabelsApi-submitShippingLabelRequest'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
