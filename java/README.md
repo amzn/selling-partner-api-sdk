@@ -79,28 +79,6 @@ SellersApi sellersApi = new SellersApi.Builder()
 GetMarketplaceParticipationsResponse result = sellersApi.getMarketplaceParticipations();
 ```
 
-### Built-in rate limiter
-
-The SDK comes with a built-in rate limiter. In case you hit a certain rate limit, calling an operation will throw `ApiException.RateLimitExceeded`. Catch this exception and handle it appropriately.
-By default, a standard rate limit configuration is applied. You can find the current rate limit configuration for each API on a dedicated page in the documention (e.g. for [Listings Items API](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-rate-limits)).
-
-It is possible to disable the built-in rate limiter by calling `disableRateLimiting` when building a API instance:
-```java
-SellersApi sellersApi = new SellersApi.Builder()
-    .disableRateLimiting()
-    .build();
-```
-
-It is also possible to override the default rate limit configuration. This has to be done after the API instance has been created and for each operation separately:
-```java
-BucketConfiguration newConfiguration = BucketConfiguration.builder()
-        // Capacity: Overall number of tokens, refill: Number of tokens refilled per second
-        .addLimit(limit -> limit.capacity(10).refillGreedy(1, Duration.ofSeconds(1)))
-        .build();
-
-// Each API exposes a bucket for each operation
-sellersApi.getMarketplaceParticipationsBucket.replaceConfiguration(newConfiguration, TokensInheritanceStrategy.RESET);
-```
 ### Restricted Data Token (RDT) Support
 
 The SDK provides built-in support for working with Restricted Data Tokens (RDTs), which are required to access personally identifiable information (PII) in [certain API operations](https://developer-docs.amazon.com/sp-api/docs/tokens-api-use-case-guide#restricted-operations).

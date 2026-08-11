@@ -26,9 +26,6 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use {{invokerPackage}}\ApiException;
 use {{invokerPackage}}\Configuration;
@@ -65,15 +62,8 @@ use {{invokerPackage}}\ObjectSerializer;
      */
     protected int $hostIndex;
 
-    private Bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-    {{#operation}}
-    public ?LimiterInterface ${{operationId}}RateLimiter;
-    {{/operation}}
-
     /**
      * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
      * @param ClientInterface|null $client
      * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -81,22 +71,10 @@ use {{invokerPackage}}\ObjectSerializer;
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            {{#operation}}
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("{{classname}}-{{operationId}}"), $this->rateLimitStorage);
-            $this->{{operationId}}RateLimiter = $factory->create("{{classname}}-{{operationId}}");
-            {{/operation}}
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -227,9 +205,6 @@ use {{invokerPackage}}\ObjectSerializer;
         try {
             $options = $this->createHttpClientOption();
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->{{operationId}}RateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -397,9 +372,6 @@ use {{invokerPackage}}\ObjectSerializer;
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "{{classname}}-{{operationId}}");
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->{{operationId}}RateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
