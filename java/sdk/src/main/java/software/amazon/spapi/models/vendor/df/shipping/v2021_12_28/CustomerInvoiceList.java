@@ -53,7 +53,7 @@ public class CustomerInvoiceList {
 
     public CustomerInvoiceList addCustomerInvoicesItem(CustomerInvoice customerInvoicesItem) {
         if (this.customerInvoices == null) {
-            this.customerInvoices = new ArrayList<CustomerInvoice>();
+            this.customerInvoices = new ArrayList<>();
         }
         this.customerInvoices.add(customerInvoicesItem);
         return this;

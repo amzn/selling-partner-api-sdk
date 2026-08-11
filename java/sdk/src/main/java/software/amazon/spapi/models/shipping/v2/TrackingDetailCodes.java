@@ -24,10 +24,10 @@ import java.util.Objects;
                 "Contains detail codes that provide additional details related to the forward and return leg of the shipment.")
 public class TrackingDetailCodes {
     @SerializedName("forward")
-    private List<DetailCodes> forward = new ArrayList<DetailCodes>();
+    private List<DetailCodes> forward = new ArrayList<>();
 
     @SerializedName("returns")
-    private List<DetailCodes> returns = new ArrayList<DetailCodes>();
+    private List<DetailCodes> returns = new ArrayList<>();
 
     public TrackingDetailCodes forward(List<DetailCodes> forward) {
         this.forward = forward;

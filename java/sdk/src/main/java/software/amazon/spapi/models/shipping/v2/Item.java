@@ -254,7 +254,7 @@ public class Item {
 
     public Item addSerialNumbersItem(String serialNumbersItem) {
         if (this.serialNumbers == null) {
-            this.serialNumbers = new ArrayList<String>();
+            this.serialNumbers = new ArrayList<>();
         }
         this.serialNumbers.add(serialNumbersItem);
         return this;

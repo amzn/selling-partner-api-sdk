@@ -22,10 +22,10 @@ import java.util.Objects;
 @Schema(description = "The `GenerateShipmentContentUpdatePreviews` request.")
 public class GenerateShipmentContentUpdatePreviewsRequest {
     @SerializedName("boxes")
-    private List<BoxUpdateInput> boxes = new ArrayList<BoxUpdateInput>();
+    private List<BoxUpdateInput> boxes = new ArrayList<>();
 
     @SerializedName("items")
-    private List<ItemInput> items = new ArrayList<ItemInput>();
+    private List<ItemInput> items = new ArrayList<>();
 
     public GenerateShipmentContentUpdatePreviewsRequest boxes(List<BoxUpdateInput> boxes) {
         this.boxes = boxes;

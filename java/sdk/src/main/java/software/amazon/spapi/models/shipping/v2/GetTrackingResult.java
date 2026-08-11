@@ -14,10 +14,10 @@ package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** The payload for the getTracking operation. */
 @Schema(description = "The payload for the getTracking operation.")
@@ -29,7 +29,7 @@ public class GetTrackingResult {
     private String alternateLegTrackingId = null;
 
     @SerializedName("eventHistory")
-    private List<Event> eventHistory = new ArrayList<Event>();
+    private List<Event> eventHistory = new ArrayList<>();
 
     @SerializedName("promisedDeliveryDate")
     private OffsetDateTime promisedDeliveryDate = null;

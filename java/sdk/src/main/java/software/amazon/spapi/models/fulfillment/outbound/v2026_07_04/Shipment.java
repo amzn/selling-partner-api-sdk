@@ -14,10 +14,10 @@ package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Delivery and item information for a shipment in a fulfillment order. */
 @Schema(description = "Delivery and item information for a shipment in a fulfillment order.")
@@ -41,7 +41,7 @@ public class Shipment {
     private List<String> shippingNotes = null;
 
     @SerializedName("items")
-    private List<ShipmentItem> items = new ArrayList<ShipmentItem>();
+    private List<ShipmentItem> items = new ArrayList<>();
 
     @SerializedName("packages")
     private List<ModelPackage> packages = null;
@@ -151,7 +151,7 @@ public class Shipment {
 
     public Shipment addShippingNotesItem(String shippingNotesItem) {
         if (this.shippingNotes == null) {
-            this.shippingNotes = new ArrayList<String>();
+            this.shippingNotes = new ArrayList<>();
         }
         this.shippingNotes.add(shippingNotesItem);
         return this;
@@ -205,7 +205,7 @@ public class Shipment {
 
     public Shipment addPackagesItem(ModelPackage packagesItem) {
         if (this.packages == null) {
-            this.packages = new ArrayList<ModelPackage>();
+            this.packages = new ArrayList<>();
         }
         this.packages.add(packagesItem);
         return this;

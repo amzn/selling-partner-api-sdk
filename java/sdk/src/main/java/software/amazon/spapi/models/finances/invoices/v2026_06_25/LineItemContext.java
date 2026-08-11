@@ -168,7 +168,7 @@ public class LineItemContext {
 
     public LineItemContext addItemIdentifiersItem(ItemIdentifier itemIdentifiersItem) {
         if (this.itemIdentifiers == null) {
-            this.itemIdentifiers = new ArrayList<ItemIdentifier>();
+            this.itemIdentifiers = new ArrayList<>();
         }
         this.itemIdentifiers.add(itemIdentifiersItem);
         return this;

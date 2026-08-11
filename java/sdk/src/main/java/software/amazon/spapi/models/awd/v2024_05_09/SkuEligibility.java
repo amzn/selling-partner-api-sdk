@@ -37,7 +37,7 @@ public class SkuEligibility {
 
     public SkuEligibility addIneligibilityReasonsItem(SkuIneligibilityReason ineligibilityReasonsItem) {
         if (this.ineligibilityReasons == null) {
-            this.ineligibilityReasons = new ArrayList<SkuIneligibilityReason>();
+            this.ineligibilityReasons = new ArrayList<>();
         }
         this.ineligibilityReasons.add(ineligibilityReasonsItem);
         return this;

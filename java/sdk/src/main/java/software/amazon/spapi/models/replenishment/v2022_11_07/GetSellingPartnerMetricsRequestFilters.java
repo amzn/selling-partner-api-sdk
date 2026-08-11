@@ -48,7 +48,7 @@ public class GetSellingPartnerMetricsRequestFilters {
 
     public GetSellingPartnerMetricsRequestFilters addAsinsItem(String asinsItem) {
         if (this.asins == null) {
-            this.asins = new ArrayList<String>();
+            this.asins = new ArrayList<>();
         }
         this.asins.add(asinsItem);
         return this;
@@ -79,7 +79,7 @@ public class GetSellingPartnerMetricsRequestFilters {
 
     public GetSellingPartnerMetricsRequestFilters addSkusItem(String skusItem) {
         if (this.skus == null) {
-            this.skus = new ArrayList<String>();
+            this.skus = new ArrayList<>();
         }
         this.skus.add(skusItem);
         return this;
@@ -112,7 +112,7 @@ public class GetSellingPartnerMetricsRequestFilters {
     public GetSellingPartnerMetricsRequestFilters addFulfillmentChannelTypesItem(
             FulfillmentChannelType fulfillmentChannelTypesItem) {
         if (this.fulfillmentChannelTypes == null) {
-            this.fulfillmentChannelTypes = new ArrayList<FulfillmentChannelType>();
+            this.fulfillmentChannelTypes = new ArrayList<>();
         }
         this.fulfillmentChannelTypes.add(fulfillmentChannelTypesItem);
         return this;
@@ -144,7 +144,7 @@ public class GetSellingPartnerMetricsRequestFilters {
 
     public GetSellingPartnerMetricsRequestFilters addBrandNamesItem(String brandNamesItem) {
         if (this.brandNames == null) {
-            this.brandNames = new ArrayList<String>();
+            this.brandNames = new ArrayList<>();
         }
         this.brandNames.add(brandNamesItem);
         return this;
@@ -178,7 +178,7 @@ public class GetSellingPartnerMetricsRequestFilters {
 
     public GetSellingPartnerMetricsRequestFilters addProductGroupsItem(String productGroupsItem) {
         if (this.productGroups == null) {
-            this.productGroups = new ArrayList<String>();
+            this.productGroups = new ArrayList<>();
         }
         this.productGroups.add(productGroupsItem);
         return this;

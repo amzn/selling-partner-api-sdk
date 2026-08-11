@@ -156,7 +156,7 @@ public class AllowanceDetails {
 
     public AllowanceDetails addTaxDetailsItem(TaxDetails taxDetailsItem) {
         if (this.taxDetails == null) {
-            this.taxDetails = new ArrayList<TaxDetails>();
+            this.taxDetails = new ArrayList<>();
         }
         this.taxDetails.add(taxDetailsItem);
         return this;

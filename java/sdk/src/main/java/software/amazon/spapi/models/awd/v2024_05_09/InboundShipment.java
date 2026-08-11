@@ -14,10 +14,10 @@ package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Represents an AWD inbound shipment. */
 @Schema(description = "Represents an AWD inbound shipment.")
@@ -47,8 +47,7 @@ public class InboundShipment {
     private OffsetDateTime shipBy = null;
 
     @SerializedName("shipmentContainerQuantities")
-    private List<DistributionPackageQuantity> shipmentContainerQuantities =
-            new ArrayList<DistributionPackageQuantity>();
+    private List<DistributionPackageQuantity> shipmentContainerQuantities = new ArrayList<>();
 
     @SerializedName("shipmentId")
     private String shipmentId = null;
@@ -199,7 +198,7 @@ public class InboundShipment {
 
     public InboundShipment addReceivedQuantityItem(InventoryQuantity receivedQuantityItem) {
         if (this.receivedQuantity == null) {
-            this.receivedQuantity = new ArrayList<InventoryQuantity>();
+            this.receivedQuantity = new ArrayList<>();
         }
         this.receivedQuantity.add(receivedQuantityItem);
         return this;
@@ -289,7 +288,7 @@ public class InboundShipment {
 
     public InboundShipment addShipmentSkuQuantitiesItem(SkuQuantity shipmentSkuQuantitiesItem) {
         if (this.shipmentSkuQuantities == null) {
-            this.shipmentSkuQuantities = new ArrayList<SkuQuantity>();
+            this.shipmentSkuQuantities = new ArrayList<>();
         }
         this.shipmentSkuQuantities.add(shipmentSkuQuantitiesItem);
         return this;

@@ -14,10 +14,10 @@ package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Represents an AWD outbound shipment. */
 @Schema(description = "Represents an AWD outbound shipment.")
@@ -133,7 +133,7 @@ public class OutboundShipment {
     public OutboundShipment addShipmentPackageQuantitiesItem(
             DistributionPackageQuantity shipmentPackageQuantitiesItem) {
         if (this.shipmentPackageQuantities == null) {
-            this.shipmentPackageQuantities = new ArrayList<DistributionPackageQuantity>();
+            this.shipmentPackageQuantities = new ArrayList<>();
         }
         this.shipmentPackageQuantities.add(shipmentPackageQuantitiesItem);
         return this;
@@ -179,7 +179,7 @@ public class OutboundShipment {
 
     public OutboundShipment addShipmentProductQuantitiesItem(ProductQuantity shipmentProductQuantitiesItem) {
         if (this.shipmentProductQuantities == null) {
-            this.shipmentProductQuantities = new ArrayList<ProductQuantity>();
+            this.shipmentProductQuantities = new ArrayList<>();
         }
         this.shipmentProductQuantities.add(shipmentProductQuantitiesItem);
         return this;

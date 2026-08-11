@@ -14,10 +14,10 @@ package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** The self ship appointment time slots availability and an expiration date for which the slots can be scheduled. */
 @Schema(
@@ -59,7 +59,7 @@ public class SelfShipAppointmentSlotsAvailability {
 
     public SelfShipAppointmentSlotsAvailability addSlotsItem(AppointmentSlot slotsItem) {
         if (this.slots == null) {
-            this.slots = new ArrayList<AppointmentSlot>();
+            this.slots = new ArrayList<>();
         }
         this.slots.add(slotsItem);
         return this;

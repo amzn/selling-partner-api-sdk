@@ -87,7 +87,7 @@ public class GetSellingPartnerMetricsRequest {
 
     public GetSellingPartnerMetricsRequest addMetricsItem(Metric metricsItem) {
         if (this.metrics == null) {
-            this.metrics = new ArrayList<Metric>();
+            this.metrics = new ArrayList<>();
         }
         this.metrics.add(metricsItem);
         return this;

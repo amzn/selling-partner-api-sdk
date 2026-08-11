@@ -150,7 +150,7 @@ public class OrderTaxRegistration {
     public OrderTaxRegistration addTaxRegistrationAttributesItem(
             TaxRegistrationAttribute taxRegistrationAttributesItem) {
         if (this.taxRegistrationAttributes == null) {
-            this.taxRegistrationAttributes = new ArrayList<TaxRegistrationAttribute>();
+            this.taxRegistrationAttributes = new ArrayList<>();
         }
         this.taxRegistrationAttributes.add(taxRegistrationAttributesItem);
         return this;

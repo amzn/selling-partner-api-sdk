@@ -43,7 +43,7 @@ public class InventorySummary {
 
     public InventorySummary addExpirationDetailsItem(ExpirationDetails expirationDetailsItem) {
         if (this.expirationDetails == null) {
-            this.expirationDetails = new ArrayList<ExpirationDetails>();
+            this.expirationDetails = new ArrayList<>();
         }
         this.expirationDetails.add(expirationDetailsItem);
         return this;

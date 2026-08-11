@@ -19,8 +19,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Contractual or operational port or point relevant to the movement of the cargo. */
 @Schema(description = "Contractual or operational port or point relevant to the movement of the cargo.")

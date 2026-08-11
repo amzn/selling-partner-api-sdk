@@ -37,7 +37,7 @@ public class OutboundOrderCreationData {
 
     public OutboundOrderCreationData addOrderPreferencesItem(OrderAttribute orderPreferencesItem) {
         if (this.orderPreferences == null) {
-            this.orderPreferences = new ArrayList<OrderAttribute>();
+            this.orderPreferences = new ArrayList<>();
         }
         this.orderPreferences.add(orderPreferencesItem);
         return this;
@@ -66,7 +66,7 @@ public class OutboundOrderCreationData {
 
     public OutboundOrderCreationData addPackagesToOutboundItem(DistributionPackageQuantity packagesToOutboundItem) {
         if (this.packagesToOutbound == null) {
-            this.packagesToOutbound = new ArrayList<DistributionPackageQuantity>();
+            this.packagesToOutbound = new ArrayList<>();
         }
         this.packagesToOutbound.add(packagesToOutboundItem);
         return this;
@@ -96,7 +96,7 @@ public class OutboundOrderCreationData {
 
     public OutboundOrderCreationData addProductsToOutboundItem(ProductQuantity productsToOutboundItem) {
         if (this.productsToOutbound == null) {
-            this.productsToOutbound = new ArrayList<ProductQuantity>();
+            this.productsToOutbound = new ArrayList<>();
         }
         this.productsToOutbound.add(productsToOutboundItem);
         return this;

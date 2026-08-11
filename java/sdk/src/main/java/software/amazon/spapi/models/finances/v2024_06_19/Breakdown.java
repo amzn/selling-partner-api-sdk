@@ -75,7 +75,7 @@ public class Breakdown {
 
     public Breakdown addBreakdownsItem(Breakdown breakdownsItem) {
         if (this.breakdowns == null) {
-            this.breakdowns = new ArrayList<Breakdown>();
+            this.breakdowns = new ArrayList<>();
         }
         this.breakdowns.add(breakdownsItem);
         return this;

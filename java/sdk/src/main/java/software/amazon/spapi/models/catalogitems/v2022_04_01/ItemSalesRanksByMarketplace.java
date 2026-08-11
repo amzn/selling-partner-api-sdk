@@ -60,7 +60,7 @@ public class ItemSalesRanksByMarketplace {
 
     public ItemSalesRanksByMarketplace addClassificationRanksItem(ItemClassificationSalesRank classificationRanksItem) {
         if (this.classificationRanks == null) {
-            this.classificationRanks = new ArrayList<ItemClassificationSalesRank>();
+            this.classificationRanks = new ArrayList<>();
         }
         this.classificationRanks.add(classificationRanksItem);
         return this;
@@ -87,7 +87,7 @@ public class ItemSalesRanksByMarketplace {
 
     public ItemSalesRanksByMarketplace addDisplayGroupRanksItem(ItemDisplayGroupSalesRank displayGroupRanksItem) {
         if (this.displayGroupRanks == null) {
-            this.displayGroupRanks = new ArrayList<ItemDisplayGroupSalesRank>();
+            this.displayGroupRanks = new ArrayList<>();
         }
         this.displayGroupRanks.add(displayGroupRanksItem);
         return this;

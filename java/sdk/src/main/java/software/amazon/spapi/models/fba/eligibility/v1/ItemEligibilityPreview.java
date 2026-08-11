@@ -301,7 +301,7 @@ public class ItemEligibilityPreview {
     public ItemEligibilityPreview addIneligibilityReasonListItem(
             IneligibilityReasonListEnum ineligibilityReasonListItem) {
         if (this.ineligibilityReasonList == null) {
-            this.ineligibilityReasonList = new ArrayList<IneligibilityReasonListEnum>();
+            this.ineligibilityReasonList = new ArrayList<>();
         }
         this.ineligibilityReasonList.add(ineligibilityReasonListItem);
         return this;

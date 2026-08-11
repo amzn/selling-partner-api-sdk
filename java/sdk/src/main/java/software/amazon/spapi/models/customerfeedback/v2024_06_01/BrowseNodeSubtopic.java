@@ -75,7 +75,7 @@ public class BrowseNodeSubtopic {
 
     public BrowseNodeSubtopic addReviewSnippetsItem(String reviewSnippetsItem) {
         if (this.reviewSnippets == null) {
-            this.reviewSnippets = new ArrayList<String>();
+            this.reviewSnippets = new ArrayList<>();
         }
         this.reviewSnippets.add(reviewSnippetsItem);
         return this;

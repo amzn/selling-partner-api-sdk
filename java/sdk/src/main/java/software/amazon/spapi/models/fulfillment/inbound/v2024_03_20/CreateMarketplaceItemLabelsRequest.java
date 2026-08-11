@@ -35,7 +35,7 @@ public class CreateMarketplaceItemLabelsRequest {
     private String marketplaceId = null;
 
     @SerializedName("mskuQuantities")
-    private List<MskuQuantity> mskuQuantities = new ArrayList<MskuQuantity>();
+    private List<MskuQuantity> mskuQuantities = new ArrayList<>();
 
     @SerializedName("pageType")
     private ItemLabelPageType pageType = null;

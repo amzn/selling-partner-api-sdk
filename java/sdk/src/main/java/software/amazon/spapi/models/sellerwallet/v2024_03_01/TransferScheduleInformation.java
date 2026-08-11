@@ -14,8 +14,8 @@ package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Mandatory information for initiating a schedule transfer. */
 @Schema(description = "Mandatory information for initiating a schedule transfer.")

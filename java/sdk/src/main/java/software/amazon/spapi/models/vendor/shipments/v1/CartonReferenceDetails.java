@@ -25,7 +25,7 @@ public class CartonReferenceDetails {
     private Integer cartonCount = null;
 
     @SerializedName("cartonReferenceNumbers")
-    private List<String> cartonReferenceNumbers = new ArrayList<String>();
+    private List<String> cartonReferenceNumbers = new ArrayList<>();
 
     public CartonReferenceDetails cartonCount(Integer cartonCount) {
         this.cartonCount = cartonCount;

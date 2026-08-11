@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "AWD inventory payload.")
 public class InventoryListing {
     @SerializedName("inventory")
-    private List<InventorySummary> inventory = new ArrayList<InventorySummary>();
+    private List<InventorySummary> inventory = new ArrayList<>();
 
     @SerializedName("nextToken")
     private String nextToken = null;

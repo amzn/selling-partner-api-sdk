@@ -146,13 +146,13 @@ public class ProductTypeDefinition {
     private RequirementsEnforcedEnum requirementsEnforced = null;
 
     @SerializedName("propertyGroups")
-    private Map<String, PropertyGroup> propertyGroups = new HashMap<String, PropertyGroup>();
+    private Map<String, PropertyGroup> propertyGroups = new HashMap<>();
 
     @SerializedName("locale")
     private String locale = null;
 
     @SerializedName("marketplaceIds")
-    private List<String> marketplaceIds = new ArrayList<String>();
+    private List<String> marketplaceIds = new ArrayList<>();
 
     @SerializedName("productType")
     private String productType = null;

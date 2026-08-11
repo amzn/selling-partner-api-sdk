@@ -37,7 +37,7 @@ public class DistributionProduct {
 
     public DistributionProduct addAttributesItem(ProductAttribute attributesItem) {
         if (this.attributes == null) {
-            this.attributes = new ArrayList<ProductAttribute>();
+            this.attributes = new ArrayList<>();
         }
         this.attributes.add(attributesItem);
         return this;

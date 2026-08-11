@@ -82,7 +82,7 @@ public class FixedSlotCapacity {
 
     public FixedSlotCapacity addCapacitiesItem(FixedSlot capacitiesItem) {
         if (this.capacities == null) {
-            this.capacities = new ArrayList<FixedSlot>();
+            this.capacities = new ArrayList<>();
         }
         this.capacities.add(capacitiesItem);
         return this;

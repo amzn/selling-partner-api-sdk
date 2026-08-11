@@ -25,7 +25,7 @@ public class SetPrepDetailsRequest {
     private String marketplaceId = null;
 
     @SerializedName("mskuPrepDetails")
-    private List<MskuPrepDetailInput> mskuPrepDetails = new ArrayList<MskuPrepDetailInput>();
+    private List<MskuPrepDetailInput> mskuPrepDetails = new ArrayList<>();
 
     public SetPrepDetailsRequest marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;

@@ -40,7 +40,7 @@ public class InvoicesAttributes {
 
     public InvoicesAttributes addInvoiceStatusOptionsItem(AttributeOption invoiceStatusOptionsItem) {
         if (this.invoiceStatusOptions == null) {
-            this.invoiceStatusOptions = new ArrayList<AttributeOption>();
+            this.invoiceStatusOptions = new ArrayList<>();
         }
         this.invoiceStatusOptions.add(invoiceStatusOptionsItem);
         return this;
@@ -67,7 +67,7 @@ public class InvoicesAttributes {
 
     public InvoicesAttributes addInvoiceTypeOptionsItem(AttributeOption invoiceTypeOptionsItem) {
         if (this.invoiceTypeOptions == null) {
-            this.invoiceTypeOptions = new ArrayList<AttributeOption>();
+            this.invoiceTypeOptions = new ArrayList<>();
         }
         this.invoiceTypeOptions.add(invoiceTypeOptionsItem);
         return this;
@@ -95,7 +95,7 @@ public class InvoicesAttributes {
     public InvoicesAttributes addTransactionIdentifierNameOptionsItem(
             AttributeOption transactionIdentifierNameOptionsItem) {
         if (this.transactionIdentifierNameOptions == null) {
-            this.transactionIdentifierNameOptions = new ArrayList<AttributeOption>();
+            this.transactionIdentifierNameOptions = new ArrayList<>();
         }
         this.transactionIdentifierNameOptions.add(transactionIdentifierNameOptionsItem);
         return this;
@@ -122,7 +122,7 @@ public class InvoicesAttributes {
 
     public InvoicesAttributes addTransactionTypeOptionsItem(AttributeOption transactionTypeOptionsItem) {
         if (this.transactionTypeOptions == null) {
-            this.transactionTypeOptions = new ArrayList<AttributeOption>();
+            this.transactionTypeOptions = new ArrayList<>();
         }
         this.transactionTypeOptions.add(transactionTypeOptionsItem);
         return this;

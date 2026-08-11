@@ -22,10 +22,10 @@ import java.util.Objects;
 @Schema(description = "The `createInboundPlan` request.")
 public class CreateInboundPlanRequest {
     @SerializedName("destinationMarketplaces")
-    private List<String> destinationMarketplaces = new ArrayList<String>();
+    private List<String> destinationMarketplaces = new ArrayList<>();
 
     @SerializedName("items")
-    private List<ItemInput> items = new ArrayList<ItemInput>();
+    private List<ItemInput> items = new ArrayList<>();
 
     @SerializedName("name")
     private String name = null;

@@ -32,7 +32,7 @@ public class SubmitShipmentConfirmationsRequest {
     public SubmitShipmentConfirmationsRequest addShipmentConfirmationsItem(
             ShipmentConfirmation shipmentConfirmationsItem) {
         if (this.shipmentConfirmations == null) {
-            this.shipmentConfirmations = new ArrayList<ShipmentConfirmation>();
+            this.shipmentConfirmations = new ArrayList<>();
         }
         this.shipmentConfirmations.add(shipmentConfirmationsItem);
         return this;

@@ -25,7 +25,7 @@ public class ShipmentAcknowledgementRequest {
     private String referenceId = null;
 
     @SerializedName("lineItems")
-    private List<LineItemWithReason> lineItems = new ArrayList<LineItemWithReason>();
+    private List<LineItemWithReason> lineItems = new ArrayList<>();
 
     public ShipmentAcknowledgementRequest referenceId(String referenceId) {
         this.referenceId = referenceId;

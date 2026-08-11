@@ -14,8 +14,8 @@ package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** An adjustment to the seller&#x27;s account. */
 @Schema(description = "An adjustment to the seller's account.")

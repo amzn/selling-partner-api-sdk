@@ -232,7 +232,7 @@ public class OfferDetail {
 
     public OfferDetail addQuantityDiscountPricesItem(QuantityDiscountPriceType quantityDiscountPricesItem) {
         if (this.quantityDiscountPrices == null) {
-            this.quantityDiscountPrices = new ArrayList<QuantityDiscountPriceType>();
+            this.quantityDiscountPrices = new ArrayList<>();
         }
         this.quantityDiscountPrices.add(quantityDiscountPricesItem);
         return this;

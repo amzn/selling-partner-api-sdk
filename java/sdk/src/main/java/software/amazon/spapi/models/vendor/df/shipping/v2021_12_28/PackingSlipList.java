@@ -53,7 +53,7 @@ public class PackingSlipList {
 
     public PackingSlipList addPackingSlipsItem(PackingSlip packingSlipsItem) {
         if (this.packingSlips == null) {
-            this.packingSlips = new ArrayList<PackingSlip>();
+            this.packingSlips = new ArrayList<>();
         }
         this.packingSlips.add(packingSlipsItem);
         return this;

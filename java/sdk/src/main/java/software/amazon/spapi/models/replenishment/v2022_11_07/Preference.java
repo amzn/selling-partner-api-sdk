@@ -31,7 +31,7 @@ public class Preference {
 
     public Preference addAutoEnrollmentItem(AutoEnrollmentPreference autoEnrollmentItem) {
         if (this.autoEnrollment == null) {
-            this.autoEnrollment = new ArrayList<AutoEnrollmentPreference>();
+            this.autoEnrollment = new ArrayList<>();
         }
         this.autoEnrollment.add(autoEnrollmentItem);
         return this;

@@ -134,7 +134,7 @@ public class ListOffersRequestFilters {
 
     public ListOffersRequestFilters addSkusItem(String skusItem) {
         if (this.skus == null) {
-            this.skus = new ArrayList<String>();
+            this.skus = new ArrayList<>();
         }
         this.skus.add(skusItem);
         return this;
@@ -161,7 +161,7 @@ public class ListOffersRequestFilters {
 
     public ListOffersRequestFilters addAsinsItem(String asinsItem) {
         if (this.asins == null) {
-            this.asins = new ArrayList<String>();
+            this.asins = new ArrayList<>();
         }
         this.asins.add(asinsItem);
         return this;
@@ -188,7 +188,7 @@ public class ListOffersRequestFilters {
 
     public ListOffersRequestFilters addEligibilitiesItem(EligibilityStatus eligibilitiesItem) {
         if (this.eligibilities == null) {
-            this.eligibilities = new ArrayList<EligibilityStatus>();
+            this.eligibilities = new ArrayList<>();
         }
         this.eligibilities.add(eligibilitiesItem);
         return this;
@@ -272,7 +272,7 @@ public class ListOffersRequestFilters {
 
     public ListOffersRequestFilters addDeliveriesConditionsItem(DeliveriesConditionsEnum deliveriesConditionsItem) {
         if (this.deliveriesConditions == null) {
-            this.deliveriesConditions = new ArrayList<DeliveriesConditionsEnum>();
+            this.deliveriesConditions = new ArrayList<>();
         }
         this.deliveriesConditions.add(deliveriesConditionsItem);
         return this;

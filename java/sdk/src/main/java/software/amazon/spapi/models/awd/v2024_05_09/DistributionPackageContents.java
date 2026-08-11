@@ -34,7 +34,7 @@ public class DistributionPackageContents {
 
     public DistributionPackageContents addPackagesItem(DistributionPackageQuantity packagesItem) {
         if (this.packages == null) {
-            this.packages = new ArrayList<DistributionPackageQuantity>();
+            this.packages = new ArrayList<>();
         }
         this.packages.add(packagesItem);
         return this;
@@ -61,7 +61,7 @@ public class DistributionPackageContents {
 
     public DistributionPackageContents addProductsItem(ProductQuantity productsItem) {
         if (this.products == null) {
-            this.products = new ArrayList<ProductQuantity>();
+            this.products = new ArrayList<>();
         }
         this.products.add(productsItem);
         return this;

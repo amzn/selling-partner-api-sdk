@@ -3,5 +3,6 @@
   "invokerPackage": "software.amazon.spapi",
   "artifactId": "spapi-sdk",
   "library": "okhttp4-gson",
-  "hideGenerationTimestamp": "true"
+  "hideGenerationTimestamp": "true",
+  "dateLibrary": "java8"
 }

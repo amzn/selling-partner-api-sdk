@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "This is used only for direct import shipment confirmations.")
 public class Route {
     @SerializedName("stops")
-    private List<Stop> stops = new ArrayList<Stop>();
+    private List<Stop> stops = new ArrayList<>();
 
     public Route stops(List<Stop> stops) {
         this.stops = stops;

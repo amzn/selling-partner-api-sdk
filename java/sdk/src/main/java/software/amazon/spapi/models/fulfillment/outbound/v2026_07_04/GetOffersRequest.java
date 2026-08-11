@@ -31,7 +31,7 @@ public class GetOffersRequest {
     private OfferDestination destination = null;
 
     @SerializedName("items")
-    private List<OfferItem> items = new ArrayList<OfferItem>();
+    private List<OfferItem> items = new ArrayList<>();
 
     public GetOffersRequest fulfillmentConfiguration(OfferFulfillmentConfiguration fulfillmentConfiguration) {
         this.fulfillmentConfiguration = fulfillmentConfiguration;

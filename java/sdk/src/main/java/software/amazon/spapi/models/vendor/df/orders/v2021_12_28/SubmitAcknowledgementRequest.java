@@ -32,7 +32,7 @@ public class SubmitAcknowledgementRequest {
     public SubmitAcknowledgementRequest addOrderAcknowledgementsItem(
             OrderAcknowledgementItem orderAcknowledgementsItem) {
         if (this.orderAcknowledgements == null) {
-            this.orderAcknowledgements = new ArrayList<OrderAcknowledgementItem>();
+            this.orderAcknowledgements = new ArrayList<>();
         }
         this.orderAcknowledgements.add(orderAcknowledgementsItem);
         return this;

@@ -15,8 +15,8 @@ package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** The balance amount in the Amazon Seller Wallet bank account. */
 @Schema(description = "The balance amount in the Amazon Seller Wallet bank account.")

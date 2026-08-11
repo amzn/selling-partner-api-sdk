@@ -31,7 +31,7 @@ public class GeneratePlacementOptionsRequest {
 
     public GeneratePlacementOptionsRequest addCustomPlacementItem(CustomPlacementInput customPlacementItem) {
         if (this.customPlacement == null) {
-            this.customPlacement = new ArrayList<CustomPlacementInput>();
+            this.customPlacement = new ArrayList<>();
         }
         this.customPlacement.add(customPlacementItem);
         return this;

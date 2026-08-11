@@ -14,10 +14,10 @@ package software.amazon.spapi.models.invoices.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Provides detailed information about an invoice. */
 @Schema(description = "Provides detailed information about an invoice.")
@@ -227,7 +227,7 @@ public class Invoice {
 
     public Invoice addTransactionIdsItem(TransactionIdentifier transactionIdsItem) {
         if (this.transactionIds == null) {
-            this.transactionIds = new ArrayList<TransactionIdentifier>();
+            this.transactionIds = new ArrayList<>();
         }
         this.transactionIds.add(transactionIdsItem);
         return this;

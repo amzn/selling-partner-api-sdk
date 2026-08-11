@@ -153,7 +153,7 @@ public class ListingsItemSubmissionResponse {
 
     public ListingsItemSubmissionResponse addIssuesItem(Issue issuesItem) {
         if (this.issues == null) {
-            this.issues = new ArrayList<Issue>();
+            this.issues = new ArrayList<>();
         }
         this.issues.add(issuesItem);
         return this;

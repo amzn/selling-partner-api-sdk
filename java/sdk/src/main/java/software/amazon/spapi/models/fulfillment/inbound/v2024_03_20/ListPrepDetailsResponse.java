@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "The response to the `listPrepDetails` operation.")
 public class ListPrepDetailsResponse {
     @SerializedName("mskuPrepDetails")
-    private List<MskuPrepDetail> mskuPrepDetails = new ArrayList<MskuPrepDetail>();
+    private List<MskuPrepDetail> mskuPrepDetails = new ArrayList<>();
 
     public ListPrepDetailsResponse mskuPrepDetails(List<MskuPrepDetail> mskuPrepDetails) {
         this.mskuPrepDetails = mskuPrepDetails;

@@ -116,7 +116,7 @@ public class DropOffLocation {
 
     public DropOffLocation putAttributesItem(String key, String attributesItem) {
         if (this.attributes == null) {
-            this.attributes = new HashMap<String, String>();
+            this.attributes = new HashMap<>();
         }
         this.attributes.put(key, attributesItem);
         return this;

@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "A list of restrictions for the specified Amazon catalog item.")
 public class RestrictionList {
     @SerializedName("restrictions")
-    private List<Restriction> restrictions = new ArrayList<Restriction>();
+    private List<Restriction> restrictions = new ArrayList<>();
 
     public RestrictionList restrictions(List<Restriction> restrictions) {
         this.restrictions = restrictions;

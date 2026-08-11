@@ -34,7 +34,7 @@ public class TrackingDetail {
     private TrackingMilestone latestMilestone = null;
 
     @SerializedName("milestoneHistory")
-    private List<TrackingMilestone> milestoneHistory = new ArrayList<TrackingMilestone>();
+    private List<TrackingMilestone> milestoneHistory = new ArrayList<>();
 
     public TrackingDetail identifier(TrackingIdentifier identifier) {
         this.identifier = identifier;
@@ -83,7 +83,7 @@ public class TrackingDetail {
 
     public TrackingDetail addTrackingEstimatesItem(TrackingEstimate trackingEstimatesItem) {
         if (this.trackingEstimates == null) {
-            this.trackingEstimates = new ArrayList<TrackingEstimate>();
+            this.trackingEstimates = new ArrayList<>();
         }
         this.trackingEstimates.add(trackingEstimatesItem);
         return this;

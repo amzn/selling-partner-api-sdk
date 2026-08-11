@@ -14,8 +14,8 @@ package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** The &#x60;generateSelfShipAppointmentSlots&#x60; request. */
 @Schema(description = "The `generateSelfShipAppointmentSlots` request.")

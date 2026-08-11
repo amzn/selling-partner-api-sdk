@@ -19,10 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** A list of one or more shipments with respective details. */
 @Schema(description = "A list of one or more shipments with respective details.")
@@ -366,7 +366,7 @@ public class Shipment {
 
     public Shipment addShipmentStatusDetailsItem(ShipmentStatusDetails shipmentStatusDetailsItem) {
         if (this.shipmentStatusDetails == null) {
-            this.shipmentStatusDetails = new ArrayList<ShipmentStatusDetails>();
+            this.shipmentStatusDetails = new ArrayList<>();
         }
         this.shipmentStatusDetails.add(shipmentStatusDetailsItem);
         return this;
@@ -572,7 +572,7 @@ public class Shipment {
 
     public Shipment addPurchaseOrdersItem(PurchaseOrders purchaseOrdersItem) {
         if (this.purchaseOrders == null) {
-            this.purchaseOrders = new ArrayList<PurchaseOrders>();
+            this.purchaseOrders = new ArrayList<>();
         }
         this.purchaseOrders.add(purchaseOrdersItem);
         return this;
@@ -623,7 +623,7 @@ public class Shipment {
 
     public Shipment addContainersItem(Containers containersItem) {
         if (this.containers == null) {
-            this.containers = new ArrayList<Containers>();
+            this.containers = new ArrayList<>();
         }
         this.containers.add(containersItem);
         return this;

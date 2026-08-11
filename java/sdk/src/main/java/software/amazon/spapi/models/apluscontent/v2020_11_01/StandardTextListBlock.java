@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "The A+ Content standard fixed-length list of text, usually presented as bullet points.")
 public class StandardTextListBlock {
     @SerializedName("textList")
-    private List<TextItem> textList = new ArrayList<TextItem>();
+    private List<TextItem> textList = new ArrayList<>();
 
     public StandardTextListBlock textList(List<TextItem> textList) {
         this.textList = textList;

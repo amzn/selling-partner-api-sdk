@@ -14,8 +14,8 @@ package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** The period during which tax withholding on a seller&#x27;s account is calculated. */
 @Schema(description = "The period during which tax withholding on a seller's account is calculated.")

@@ -14,10 +14,10 @@ package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Transport Request pickup date */
 @Schema(description = "Transport Request pickup date")
@@ -102,7 +102,7 @@ public class PurchaseOrders {
 
     public PurchaseOrders addItemsItem(PurchaseOrderItems itemsItem) {
         if (this.items == null) {
-            this.items = new ArrayList<PurchaseOrderItems>();
+            this.items = new ArrayList<>();
         }
         this.items.add(itemsItem);
         return this;

@@ -143,7 +143,7 @@ public class RestrictedResource {
 
     public RestrictedResource addDataElementsItem(String dataElementsItem) {
         if (this.dataElements == null) {
-            this.dataElements = new ArrayList<String>();
+            this.dataElements = new ArrayList<>();
         }
         this.dataElements.add(dataElementsItem);
         return this;

@@ -119,7 +119,7 @@ public class Charge {
 
     public Charge addTaxBreakupItem(Tax taxBreakupItem) {
         if (this.taxBreakup == null) {
-            this.taxBreakup = new ArrayList<Tax>();
+            this.taxBreakup = new ArrayList<>();
         }
         this.taxBreakup.add(taxBreakupItem);
         return this;

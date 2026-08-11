@@ -31,7 +31,7 @@ public class BalanceListing {
 
     public BalanceListing addBalancesItem(Balance balancesItem) {
         if (this.balances == null) {
-            this.balances = new ArrayList<Balance>();
+            this.balances = new ArrayList<>();
         }
         this.balances.add(balancesItem);
         return this;

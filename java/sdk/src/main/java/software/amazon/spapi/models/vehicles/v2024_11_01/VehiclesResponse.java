@@ -25,7 +25,7 @@ public class VehiclesResponse {
     private Pagination pagination = null;
 
     @SerializedName("vehicles")
-    private List<Vehicle> vehicles = new ArrayList<Vehicle>();
+    private List<Vehicle> vehicles = new ArrayList<>();
 
     public VehiclesResponse pagination(Pagination pagination) {
         this.pagination = pagination;

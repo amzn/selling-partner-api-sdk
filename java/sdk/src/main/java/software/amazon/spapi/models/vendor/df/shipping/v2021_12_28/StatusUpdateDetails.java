@@ -14,8 +14,8 @@ package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Details for the shipment status update given by the vendor for the specific package. */
 @Schema(description = "Details for the shipment status update given by the vendor for the specific package.")

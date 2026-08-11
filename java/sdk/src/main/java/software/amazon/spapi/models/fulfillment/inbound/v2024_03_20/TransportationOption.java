@@ -28,7 +28,7 @@ public class TransportationOption {
     private CarrierAppointment carrierAppointment = null;
 
     @SerializedName("preconditions")
-    private List<String> preconditions = new ArrayList<String>();
+    private List<String> preconditions = new ArrayList<>();
 
     @SerializedName("quote")
     private Quote quote = null;

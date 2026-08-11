@@ -34,7 +34,7 @@ public class GetInvoicesExportsResponse {
 
     public GetInvoicesExportsResponse addExportsItem(Export exportsItem) {
         if (this.exports == null) {
-            this.exports = new ArrayList<Export>();
+            this.exports = new ArrayList<>();
         }
         this.exports.add(exportsItem);
         return this;

@@ -21,7 +21,7 @@ import java.util.Objects;
 /** ValidateContentDocumentAsinRelationsResponse */
 public class ValidateContentDocumentAsinRelationsResponse extends AplusResponse {
     @SerializedName("errors")
-    private List<Error> errors = new ArrayList<Error>();
+    private List<Error> errors = new ArrayList<>();
 
     public ValidateContentDocumentAsinRelationsResponse errors(List<Error> errors) {
         this.errors = errors;

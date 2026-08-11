@@ -75,7 +75,7 @@ public class PackageItem {
 
     public PackageItem addTransparencyCodesItem(String transparencyCodesItem) {
         if (this.transparencyCodes == null) {
-            this.transparencyCodes = new ArrayList<String>();
+            this.transparencyCodes = new ArrayList<>();
         }
         this.transparencyCodes.add(transparencyCodesItem);
         return this;

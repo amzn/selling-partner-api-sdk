@@ -46,7 +46,7 @@ public class GovernmentInvoiceRequest {
 
     public GovernmentInvoiceRequest addContextsItem(CarrierDetailsContext contextsItem) {
         if (this.contexts == null) {
-            this.contexts = new ArrayList<CarrierDetailsContext>();
+            this.contexts = new ArrayList<>();
         }
         this.contexts.add(contextsItem);
         return this;

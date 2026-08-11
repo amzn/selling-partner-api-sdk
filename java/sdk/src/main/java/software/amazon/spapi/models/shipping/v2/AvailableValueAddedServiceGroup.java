@@ -99,7 +99,7 @@ public class AvailableValueAddedServiceGroup {
 
     public AvailableValueAddedServiceGroup addValueAddedServicesItem(ValueAddedService valueAddedServicesItem) {
         if (this.valueAddedServices == null) {
-            this.valueAddedServices = new ArrayList<ValueAddedService>();
+            this.valueAddedServices = new ArrayList<>();
         }
         this.valueAddedServices.add(valueAddedServicesItem);
         return this;

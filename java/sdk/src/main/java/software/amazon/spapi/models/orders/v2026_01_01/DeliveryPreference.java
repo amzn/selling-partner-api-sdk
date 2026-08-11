@@ -97,7 +97,7 @@ public class DeliveryPreference {
 
     public DeliveryPreference addDeliveryCapabilitiesItem(String deliveryCapabilitiesItem) {
         if (this.deliveryCapabilities == null) {
-            this.deliveryCapabilities = new ArrayList<String>();
+            this.deliveryCapabilities = new ArrayList<>();
         }
         this.deliveryCapabilities.add(deliveryCapabilitiesItem);
         return this;

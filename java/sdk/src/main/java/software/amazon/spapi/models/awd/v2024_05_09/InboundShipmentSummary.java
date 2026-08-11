@@ -14,8 +14,8 @@ package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * Summary for an AWD inbound shipment containing the shipment ID, which can be used to retrieve the actual shipment.

@@ -37,7 +37,7 @@ public class GovernmentInvoiceStatusResponse {
 
     public GovernmentInvoiceStatusResponse addInvoiceErrorsItem(InvoiceError invoiceErrorsItem) {
         if (this.invoiceErrors == null) {
-            this.invoiceErrors = new ArrayList<InvoiceError>();
+            this.invoiceErrors = new ArrayList<>();
         }
         this.invoiceErrors.add(invoiceErrorsItem);
         return this;

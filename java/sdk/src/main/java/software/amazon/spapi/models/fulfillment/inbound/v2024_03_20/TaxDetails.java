@@ -75,7 +75,7 @@ public class TaxDetails {
 
     public TaxDetails addTaxRatesItem(TaxRate taxRatesItem) {
         if (this.taxRates == null) {
-            this.taxRates = new ArrayList<TaxRate>();
+            this.taxRates = new ArrayList<>();
         }
         this.taxRates.add(taxRatesItem);
         return this;

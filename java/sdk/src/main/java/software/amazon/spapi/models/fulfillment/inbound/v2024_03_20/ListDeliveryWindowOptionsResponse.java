@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "The `listDeliveryWindowOptions` response.")
 public class ListDeliveryWindowOptionsResponse {
     @SerializedName("deliveryWindowOptions")
-    private List<DeliveryWindowOption> deliveryWindowOptions = new ArrayList<DeliveryWindowOption>();
+    private List<DeliveryWindowOption> deliveryWindowOptions = new ArrayList<>();
 
     @SerializedName("pagination")
     private Pagination pagination = null;

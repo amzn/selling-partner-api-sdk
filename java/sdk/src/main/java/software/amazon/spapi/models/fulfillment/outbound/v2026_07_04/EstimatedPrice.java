@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "The estimated price information for the fulfillment order.")
 public class EstimatedPrice {
     @SerializedName("rollupPrices")
-    private List<RollupPrice> rollupPrices = new ArrayList<RollupPrice>();
+    private List<RollupPrice> rollupPrices = new ArrayList<>();
 
     @SerializedName("totalPrice")
     private Money totalPrice = null;

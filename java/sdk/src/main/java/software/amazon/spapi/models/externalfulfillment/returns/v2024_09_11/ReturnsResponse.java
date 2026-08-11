@@ -34,7 +34,7 @@ public class ReturnsResponse {
 
     public ReturnsResponse addReturnsItem(ModelReturn returnsItem) {
         if (this.returns == null) {
-            this.returns = new ArrayList<ModelReturn>();
+            this.returns = new ArrayList<>();
         }
         this.returns.add(returnsItem);
         return this;

@@ -43,7 +43,7 @@ public class TransferSchedule {
     private PaymentPreference paymentPreference = null;
 
     @SerializedName("transferScheduleFailures")
-    private List<TransferScheduleFailures> transferScheduleFailures = new ArrayList<TransferScheduleFailures>();
+    private List<TransferScheduleFailures> transferScheduleFailures = new ArrayList<>();
 
     public TransferSchedule transferScheduleId(String transferScheduleId) {
         this.transferScheduleId = transferScheduleId;

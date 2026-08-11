@@ -14,10 +14,10 @@ package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Comprehensive information about a customer order. */
 @Schema(description = "Comprehensive information about a customer order.")
@@ -62,7 +62,7 @@ public class Order {
     private OrderFulfillment fulfillment = null;
 
     @SerializedName("orderItems")
-    private List<OrderItem> orderItems = new ArrayList<OrderItem>();
+    private List<OrderItem> orderItems = new ArrayList<>();
 
     @SerializedName("packages")
     private List<OrderPackage> packages = null;
@@ -96,7 +96,7 @@ public class Order {
 
     public Order addOrderAliasesItem(Alias orderAliasesItem) {
         if (this.orderAliases == null) {
-            this.orderAliases = new ArrayList<Alias>();
+            this.orderAliases = new ArrayList<>();
         }
         this.orderAliases.add(orderAliasesItem);
         return this;
@@ -171,7 +171,7 @@ public class Order {
 
     public Order addProgramsItem(String programsItem) {
         if (this.programs == null) {
-            this.programs = new ArrayList<String>();
+            this.programs = new ArrayList<>();
         }
         this.programs.add(programsItem);
         return this;
@@ -204,7 +204,7 @@ public class Order {
 
     public Order addAssociatedOrdersItem(AssociatedOrder associatedOrdersItem) {
         if (this.associatedOrders == null) {
-            this.associatedOrders = new ArrayList<AssociatedOrder>();
+            this.associatedOrders = new ArrayList<>();
         }
         this.associatedOrders.add(associatedOrdersItem);
         return this;
@@ -390,7 +390,7 @@ public class Order {
 
     public Order addPackagesItem(OrderPackage packagesItem) {
         if (this.packages == null) {
-            this.packages = new ArrayList<OrderPackage>();
+            this.packages = new ArrayList<>();
         }
         this.packages.add(packagesItem);
         return this;
@@ -420,7 +420,7 @@ public class Order {
 
     public Order addFulfillmentOrdersItem(FulfillmentOrder fulfillmentOrdersItem) {
         if (this.fulfillmentOrders == null) {
-            this.fulfillmentOrders = new ArrayList<FulfillmentOrder>();
+            this.fulfillmentOrders = new ArrayList<>();
         }
         this.fulfillmentOrders.add(fulfillmentOrdersItem);
         return this;

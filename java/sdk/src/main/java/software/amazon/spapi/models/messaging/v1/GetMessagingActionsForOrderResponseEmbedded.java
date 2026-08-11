@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "The messaging actions response that is associated with the specified `amazonOrderId`.")
 public class GetMessagingActionsForOrderResponseEmbedded {
     @SerializedName("actions")
-    private List<GetMessagingActionResponse> actions = new ArrayList<GetMessagingActionResponse>();
+    private List<GetMessagingActionResponse> actions = new ArrayList<>();
 
     public GetMessagingActionsForOrderResponseEmbedded actions(List<GetMessagingActionResponse> actions) {
         this.actions = actions;

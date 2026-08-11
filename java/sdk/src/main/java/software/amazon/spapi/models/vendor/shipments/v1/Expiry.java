@@ -14,8 +14,8 @@ package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * Expiry refers to the collection of dates required for certain items. These could be either expiryDate or mfgDate and

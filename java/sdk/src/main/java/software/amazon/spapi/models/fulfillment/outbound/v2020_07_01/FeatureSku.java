@@ -128,7 +128,7 @@ public class FeatureSku {
 
     public FeatureSku addOverlappingSkusItem(String overlappingSkusItem) {
         if (this.overlappingSkus == null) {
-            this.overlappingSkus = new ArrayList<String>();
+            this.overlappingSkus = new ArrayList<>();
         }
         this.overlappingSkus.add(overlappingSkusItem);
         return this;

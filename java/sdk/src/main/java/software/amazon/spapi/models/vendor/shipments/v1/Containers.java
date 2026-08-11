@@ -84,7 +84,7 @@ public class Containers {
     private String containerSequenceNumber = null;
 
     @SerializedName("containerIdentifiers")
-    private List<ContainerIdentification> containerIdentifiers = new ArrayList<ContainerIdentification>();
+    private List<ContainerIdentification> containerIdentifiers = new ArrayList<>();
 
     @SerializedName("trackingNumber")
     private String trackingNumber = null;
@@ -292,7 +292,7 @@ public class Containers {
 
     public Containers addPackedItemsItem(PackedItems packedItemsItem) {
         if (this.packedItems == null) {
-            this.packedItems = new ArrayList<PackedItems>();
+            this.packedItems = new ArrayList<>();
         }
         this.packedItems.add(packedItemsItem);
         return this;

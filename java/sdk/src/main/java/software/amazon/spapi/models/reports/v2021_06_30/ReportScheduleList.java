@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "A list of report schedules.")
 public class ReportScheduleList {
     @SerializedName("reportSchedules")
-    private List<ReportSchedule> reportSchedules = new ArrayList<ReportSchedule>();
+    private List<ReportSchedule> reportSchedules = new ArrayList<>();
 
     public ReportScheduleList reportSchedules(List<ReportSchedule> reportSchedules) {
         this.reportSchedules = reportSchedules;

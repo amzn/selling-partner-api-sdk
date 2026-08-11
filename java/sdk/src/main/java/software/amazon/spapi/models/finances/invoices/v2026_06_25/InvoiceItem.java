@@ -114,7 +114,7 @@ public class InvoiceItem {
 
     public InvoiceItem addTaxRateCodesItem(String taxRateCodesItem) {
         if (this.taxRateCodes == null) {
-            this.taxRateCodes = new ArrayList<String>();
+            this.taxRateCodes = new ArrayList<>();
         }
         this.taxRateCodes.add(taxRateCodesItem);
         return this;
@@ -160,7 +160,7 @@ public class InvoiceItem {
 
     public InvoiceItem addTotalAmountBreakdownItem(Breakdown totalAmountBreakdownItem) {
         if (this.totalAmountBreakdown == null) {
-            this.totalAmountBreakdown = new ArrayList<Breakdown>();
+            this.totalAmountBreakdown = new ArrayList<>();
         }
         this.totalAmountBreakdown.add(totalAmountBreakdownItem);
         return this;
@@ -210,7 +210,7 @@ public class InvoiceItem {
 
     public InvoiceItem addRelatedItemIdentifiersItem(RelatedIdentifier relatedItemIdentifiersItem) {
         if (this.relatedItemIdentifiers == null) {
-            this.relatedItemIdentifiers = new ArrayList<RelatedIdentifier>();
+            this.relatedItemIdentifiers = new ArrayList<>();
         }
         this.relatedItemIdentifiers.add(relatedItemIdentifiersItem);
         return this;

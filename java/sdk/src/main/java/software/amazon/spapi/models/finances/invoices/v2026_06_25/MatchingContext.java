@@ -168,7 +168,7 @@ public class MatchingContext {
 
     public MatchingContext addVarianceReasonsItem(VarianceReason varianceReasonsItem) {
         if (this.varianceReasons == null) {
-            this.varianceReasons = new ArrayList<VarianceReason>();
+            this.varianceReasons = new ArrayList<>();
         }
         this.varianceReasons.add(varianceReasonsItem);
         return this;

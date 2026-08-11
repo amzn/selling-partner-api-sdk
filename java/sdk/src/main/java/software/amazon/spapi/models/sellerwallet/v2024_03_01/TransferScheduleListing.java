@@ -25,7 +25,7 @@ public class TransferScheduleListing {
     private String nextPageToken = null;
 
     @SerializedName("transferSchedules")
-    private List<TransferSchedule> transferSchedules = new ArrayList<TransferSchedule>();
+    private List<TransferSchedule> transferSchedules = new ArrayList<>();
 
     public TransferScheduleListing nextPageToken(String nextPageToken) {
         this.nextPageToken = nextPageToken;

@@ -56,7 +56,7 @@ public class GetInvoiceResponse {
 
     public GetInvoiceResponse addInvoiceItemsItem(InvoiceItem invoiceItemsItem) {
         if (this.invoiceItems == null) {
-            this.invoiceItems = new ArrayList<InvoiceItem>();
+            this.invoiceItems = new ArrayList<>();
         }
         this.invoiceItems.add(invoiceItemsItem);
         return this;

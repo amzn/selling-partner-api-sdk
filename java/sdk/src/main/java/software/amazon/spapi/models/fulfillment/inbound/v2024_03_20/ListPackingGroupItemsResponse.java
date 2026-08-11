@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "The `listPackingGroupItems` response.")
 public class ListPackingGroupItemsResponse {
     @SerializedName("items")
-    private List<Item> items = new ArrayList<Item>();
+    private List<Item> items = new ArrayList<>();
 
     @SerializedName("pagination")
     private Pagination pagination = null;

@@ -25,7 +25,7 @@ public class BrowseNodeReviewTrend {
     private String topic = null;
 
     @SerializedName("trendMetrics")
-    private List<BrowseNodeReviewTrendPoint> trendMetrics = new ArrayList<BrowseNodeReviewTrendPoint>();
+    private List<BrowseNodeReviewTrendPoint> trendMetrics = new ArrayList<>();
 
     public BrowseNodeReviewTrend topic(String topic) {
         this.topic = topic;

@@ -137,7 +137,7 @@ public class ShipmentLineItem {
 
     public ShipmentLineItem addSerialNumbersItem(String serialNumbersItem) {
         if (this.serialNumbers == null) {
-            this.serialNumbers = new ArrayList<String>();
+            this.serialNumbers = new ArrayList<>();
         }
         this.serialNumbers.add(serialNumbersItem);
         return this;
@@ -183,7 +183,7 @@ public class ShipmentLineItem {
 
     public ShipmentLineItem addHazmatLabelsItem(String hazmatLabelsItem) {
         if (this.hazmatLabels == null) {
-            this.hazmatLabels = new ArrayList<String>();
+            this.hazmatLabels = new ArrayList<>();
         }
         this.hazmatLabels.add(hazmatLabelsItem);
         return this;
@@ -383,7 +383,7 @@ public class ShipmentLineItem {
 
     public ShipmentLineItem addCustomAttributesItem(CustomAttribute customAttributesItem) {
         if (this.customAttributes == null) {
-            this.customAttributes = new ArrayList<CustomAttribute>();
+            this.customAttributes = new ArrayList<>();
         }
         this.customAttributes.add(customAttributesItem);
         return this;

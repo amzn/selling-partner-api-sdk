@@ -14,8 +14,8 @@ package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** The A+ Content document&#x27;s metadata. */
 @Schema(description = "The A+ Content document's metadata.")

@@ -14,10 +14,10 @@ package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Contains information pertaining to a delivery window option. */
 @Schema(description = "Contains information pertaining to a delivery window option.")
@@ -93,7 +93,7 @@ public class DeliveryWindowOption {
 
     public DeliveryWindowOption addDiscountsItem(Incentive discountsItem) {
         if (this.discounts == null) {
-            this.discounts = new ArrayList<Incentive>();
+            this.discounts = new ArrayList<>();
         }
         this.discounts.add(discountsItem);
         return this;

@@ -14,10 +14,10 @@ package software.amazon.spapi.models.invoices.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.LocalDate;
 
 /** The information required to create the export request. */
 @Schema(description = "The information required to create the export request.")
@@ -203,7 +203,7 @@ public class ExportInvoicesRequest {
 
     public ExportInvoicesRequest addStatusesItem(String statusesItem) {
         if (this.statuses == null) {
-            this.statuses = new ArrayList<String>();
+            this.statuses = new ArrayList<>();
         }
         this.statuses.add(statusesItem);
         return this;

@@ -27,7 +27,7 @@ public class ItemIdentifiersByMarketplace {
     private String marketplaceId = null;
 
     @SerializedName("identifiers")
-    private List<ItemIdentifier> identifiers = new ArrayList<ItemIdentifier>();
+    private List<ItemIdentifier> identifiers = new ArrayList<>();
 
     public ItemIdentifiersByMarketplace marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;

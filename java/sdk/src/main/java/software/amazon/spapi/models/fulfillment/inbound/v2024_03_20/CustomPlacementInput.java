@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "Provide units going to the warehouse.")
 public class CustomPlacementInput {
     @SerializedName("items")
-    private List<ItemInput> items = new ArrayList<ItemInput>();
+    private List<ItemInput> items = new ArrayList<>();
 
     @SerializedName("warehouseId")
     private String warehouseId = null;

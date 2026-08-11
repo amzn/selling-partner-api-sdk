@@ -14,10 +14,10 @@ package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Represents an AWD outbound order. */
 @Schema(description = "Represents an AWD outbound order.")
@@ -47,7 +47,7 @@ public class OutboundOrder {
     private OutboundStatus orderStatus = null;
 
     @SerializedName("outboundShipments")
-    private List<OutboundShipment> outboundShipments = new ArrayList<OutboundShipment>();
+    private List<OutboundShipment> outboundShipments = new ArrayList<>();
 
     @SerializedName("packagesToOutbound")
     private List<DistributionPackageQuantity> packagesToOutbound = null;
@@ -109,7 +109,7 @@ public class OutboundOrder {
 
     public OutboundOrder addEligiblePackagesToOutboundItem(DistributionPackageQuantity eligiblePackagesToOutboundItem) {
         if (this.eligiblePackagesToOutbound == null) {
-            this.eligiblePackagesToOutbound = new ArrayList<DistributionPackageQuantity>();
+            this.eligiblePackagesToOutbound = new ArrayList<>();
         }
         this.eligiblePackagesToOutbound.add(eligiblePackagesToOutboundItem);
         return this;
@@ -136,7 +136,7 @@ public class OutboundOrder {
 
     public OutboundOrder addEligibleProductsToOutboundItem(ProductQuantity eligibleProductsToOutboundItem) {
         if (this.eligibleProductsToOutbound == null) {
-            this.eligibleProductsToOutbound = new ArrayList<ProductQuantity>();
+            this.eligibleProductsToOutbound = new ArrayList<>();
         }
         this.eligibleProductsToOutbound.add(eligibleProductsToOutboundItem);
         return this;
@@ -163,7 +163,7 @@ public class OutboundOrder {
 
     public OutboundOrder addExecutionErrorsItem(OutboundExecutionError executionErrorsItem) {
         if (this.executionErrors == null) {
-            this.executionErrors = new ArrayList<OutboundExecutionError>();
+            this.executionErrors = new ArrayList<>();
         }
         this.executionErrors.add(executionErrorsItem);
         return this;
@@ -211,7 +211,7 @@ public class OutboundOrder {
 
     public OutboundOrder addOrderPreferencesItem(OrderAttribute orderPreferencesItem) {
         if (this.orderPreferences == null) {
-            this.orderPreferences = new ArrayList<OrderAttribute>();
+            this.orderPreferences = new ArrayList<>();
         }
         this.orderPreferences.add(orderPreferencesItem);
         return this;
@@ -281,7 +281,7 @@ public class OutboundOrder {
 
     public OutboundOrder addPackagesToOutboundItem(DistributionPackageQuantity packagesToOutboundItem) {
         if (this.packagesToOutbound == null) {
-            this.packagesToOutbound = new ArrayList<DistributionPackageQuantity>();
+            this.packagesToOutbound = new ArrayList<>();
         }
         this.packagesToOutbound.add(packagesToOutboundItem);
         return this;
@@ -308,7 +308,7 @@ public class OutboundOrder {
 
     public OutboundOrder addProductsToOutboundItem(ProductQuantity productsToOutboundItem) {
         if (this.productsToOutbound == null) {
-            this.productsToOutbound = new ArrayList<ProductQuantity>();
+            this.productsToOutbound = new ArrayList<>();
         }
         this.productsToOutbound.add(productsToOutboundItem);
         return this;
@@ -335,7 +335,7 @@ public class OutboundOrder {
 
     public OutboundOrder addShippedOutboundPackagesItem(DistributionPackageQuantity shippedOutboundPackagesItem) {
         if (this.shippedOutboundPackages == null) {
-            this.shippedOutboundPackages = new ArrayList<DistributionPackageQuantity>();
+            this.shippedOutboundPackages = new ArrayList<>();
         }
         this.shippedOutboundPackages.add(shippedOutboundPackagesItem);
         return this;
@@ -362,7 +362,7 @@ public class OutboundOrder {
 
     public OutboundOrder addShippedOutboundProductsItem(ProductQuantity shippedOutboundProductsItem) {
         if (this.shippedOutboundProducts == null) {
-            this.shippedOutboundProducts = new ArrayList<ProductQuantity>();
+            this.shippedOutboundProducts = new ArrayList<>();
         }
         this.shippedOutboundProducts.add(shippedOutboundProductsItem);
         return this;

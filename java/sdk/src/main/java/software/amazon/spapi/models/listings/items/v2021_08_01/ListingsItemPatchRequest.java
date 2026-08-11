@@ -25,7 +25,7 @@ public class ListingsItemPatchRequest {
     private String productType = null;
 
     @SerializedName("patches")
-    private List<PatchOperation> patches = new ArrayList<PatchOperation>();
+    private List<PatchOperation> patches = new ArrayList<>();
 
     public ListingsItemPatchRequest productType(String productType) {
         this.productType = productType;

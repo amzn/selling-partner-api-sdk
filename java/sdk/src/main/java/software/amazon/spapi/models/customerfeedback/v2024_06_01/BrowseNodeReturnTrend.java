@@ -25,7 +25,7 @@ public class BrowseNodeReturnTrend {
     private String topic = null;
 
     @SerializedName("trendMetrics")
-    private List<BrowseNodeReturnTrendPoint> trendMetrics = new ArrayList<BrowseNodeReturnTrendPoint>();
+    private List<BrowseNodeReturnTrendPoint> trendMetrics = new ArrayList<>();
 
     public BrowseNodeReturnTrend topic(String topic) {
         this.topic = topic;

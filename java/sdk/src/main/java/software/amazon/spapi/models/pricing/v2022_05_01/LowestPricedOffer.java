@@ -25,7 +25,7 @@ public class LowestPricedOffer {
     private LowestPricedOffersInput lowestPricedOffersInput = null;
 
     @SerializedName("offers")
-    private List<Offer> offers = new ArrayList<Offer>();
+    private List<Offer> offers = new ArrayList<>();
 
     public LowestPricedOffer lowestPricedOffersInput(LowestPricedOffersInput lowestPricedOffersInput) {
         this.lowestPricedOffersInput = lowestPricedOffersInput;

@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "A list of rich text content that is typically presented in a text box.")
 public class ParagraphComponent {
     @SerializedName("textList")
-    private List<TextComponent> textList = new ArrayList<TextComponent>();
+    private List<TextComponent> textList = new ArrayList<>();
 
     public ParagraphComponent textList(List<TextComponent> textList) {
         this.textList = textList;

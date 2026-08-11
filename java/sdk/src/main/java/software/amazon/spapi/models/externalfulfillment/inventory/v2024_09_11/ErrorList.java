@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "An object containing a list of error responses returned when a request is unsuccessful.")
 public class ErrorList {
     @SerializedName("errors")
-    private List<Error> errors = new ArrayList<Error>();
+    private List<Error> errors = new ArrayList<>();
 
     public ErrorList errors(List<Error> errors) {
         this.errors = errors;

@@ -28,7 +28,7 @@ public class CompetitiveSummaryRequest {
     private String marketplaceId = null;
 
     @SerializedName("includedData")
-    private List<CompetitiveSummaryIncludedData> includedData = new ArrayList<CompetitiveSummaryIncludedData>();
+    private List<CompetitiveSummaryIncludedData> includedData = new ArrayList<>();
 
     @SerializedName("lowestPricedOffersInputs")
     private List<LowestPricedOffersInput> lowestPricedOffersInputs = null;
@@ -109,7 +109,7 @@ public class CompetitiveSummaryRequest {
     public CompetitiveSummaryRequest addLowestPricedOffersInputsItem(
             LowestPricedOffersInput lowestPricedOffersInputsItem) {
         if (this.lowestPricedOffersInputs == null) {
-            this.lowestPricedOffersInputs = new ArrayList<LowestPricedOffersInput>();
+            this.lowestPricedOffersInputs = new ArrayList<>();
         }
         this.lowestPricedOffersInputs.add(lowestPricedOffersInputsItem);
         return this;

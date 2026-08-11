@@ -34,7 +34,7 @@ public class BrowseNodeReviewTopics {
 
     public BrowseNodeReviewTopics addPositiveTopicsItem(BrowseNodeReviewTopic positiveTopicsItem) {
         if (this.positiveTopics == null) {
-            this.positiveTopics = new ArrayList<BrowseNodeReviewTopic>();
+            this.positiveTopics = new ArrayList<>();
         }
         this.positiveTopics.add(positiveTopicsItem);
         return this;
@@ -68,7 +68,7 @@ public class BrowseNodeReviewTopics {
 
     public BrowseNodeReviewTopics addNegativeTopicsItem(BrowseNodeReviewTopic negativeTopicsItem) {
         if (this.negativeTopics == null) {
-            this.negativeTopics = new ArrayList<BrowseNodeReviewTopic>();
+            this.negativeTopics = new ArrayList<>();
         }
         this.negativeTopics.add(negativeTopicsItem);
         return this;

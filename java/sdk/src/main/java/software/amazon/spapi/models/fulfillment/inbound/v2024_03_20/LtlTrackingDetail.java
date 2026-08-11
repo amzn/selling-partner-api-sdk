@@ -53,7 +53,7 @@ public class LtlTrackingDetail {
 
     public LtlTrackingDetail addFreightBillNumberItem(String freightBillNumberItem) {
         if (this.freightBillNumber == null) {
-            this.freightBillNumber = new ArrayList<String>();
+            this.freightBillNumber = new ArrayList<>();
         }
         this.freightBillNumber.add(freightBillNumberItem);
         return this;

@@ -28,7 +28,7 @@ public class ItemSearchResults {
     private Pagination pagination = null;
 
     @SerializedName("items")
-    private List<Item> items = new ArrayList<Item>();
+    private List<Item> items = new ArrayList<>();
 
     public ItemSearchResults numberOfResults(Integer numberOfResults) {
         this.numberOfResults = numberOfResults;

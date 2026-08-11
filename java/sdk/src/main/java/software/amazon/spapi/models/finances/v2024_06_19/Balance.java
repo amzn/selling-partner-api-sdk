@@ -19,10 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** All information relevant to a balance. */
 @Schema(description = "All information relevant to a balance.")
@@ -161,7 +161,7 @@ public class Balance {
 
     public Balance addBalancesItem(Balance balancesItem) {
         if (this.balances == null) {
-            this.balances = new ArrayList<Balance>();
+            this.balances = new ArrayList<>();
         }
         this.balances.add(balancesItem);
         return this;

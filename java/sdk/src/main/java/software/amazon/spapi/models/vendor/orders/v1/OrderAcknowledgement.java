@@ -14,10 +14,10 @@ package software.amazon.spapi.models.vendor.orders.v1;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * Represents an acknowledgement for an order, including the purchase order number, selling party details,
@@ -37,7 +37,7 @@ public class OrderAcknowledgement {
     private OffsetDateTime acknowledgementDate = null;
 
     @SerializedName("items")
-    private List<OrderAcknowledgementItem> items = new ArrayList<OrderAcknowledgementItem>();
+    private List<OrderAcknowledgementItem> items = new ArrayList<>();
 
     public OrderAcknowledgement purchaseOrderNumber(String purchaseOrderNumber) {
         this.purchaseOrderNumber = purchaseOrderNumber;

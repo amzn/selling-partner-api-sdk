@@ -187,7 +187,7 @@ public class ListOffersResponseOffer {
 
     public ListOffersResponseOffer addVendorCodesItem(String vendorCodesItem) {
         if (this.vendorCodes == null) {
-            this.vendorCodes = new ArrayList<String>();
+            this.vendorCodes = new ArrayList<>();
         }
         this.vendorCodes.add(vendorCodesItem);
         return this;
@@ -290,7 +290,7 @@ public class ListOffersResponseOffer {
 
     public ListOffersResponseOffer addDeliveriesConditionsItem(DeliveriesCondition deliveriesConditionsItem) {
         if (this.deliveriesConditions == null) {
-            this.deliveriesConditions = new ArrayList<DeliveriesCondition>();
+            this.deliveriesConditions = new ArrayList<>();
         }
         this.deliveriesConditions.add(deliveriesConditionsItem);
         return this;

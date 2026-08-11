@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "The `listPlacementOptions` response.")
 public class ListPackingOptionsResponse {
     @SerializedName("packingOptions")
-    private List<PackingOption> packingOptions = new ArrayList<PackingOption>();
+    private List<PackingOption> packingOptions = new ArrayList<>();
 
     @SerializedName("pagination")
     private Pagination pagination = null;

@@ -53,7 +53,7 @@ public class RangeCapacity {
 
     public RangeCapacity addSlotsItem(RangeSlot slotsItem) {
         if (this.slots == null) {
-            this.slots = new ArrayList<RangeSlot>();
+            this.slots = new ArrayList<>();
         }
         this.slots.add(slotsItem);
         return this;

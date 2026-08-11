@@ -25,7 +25,7 @@ public class ItemImagesByMarketplace {
     private String marketplaceId = null;
 
     @SerializedName("images")
-    private List<ItemImage> images = new ArrayList<ItemImage>();
+    private List<ItemImage> images = new ArrayList<>();
 
     public ItemImagesByMarketplace marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;

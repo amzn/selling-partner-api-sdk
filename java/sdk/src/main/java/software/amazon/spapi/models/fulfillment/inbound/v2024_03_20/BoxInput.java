@@ -81,7 +81,7 @@ public class BoxInput {
 
     public BoxInput addItemsItem(ItemInput itemsItem) {
         if (this.items == null) {
-            this.items = new ArrayList<ItemInput>();
+            this.items = new ArrayList<>();
         }
         this.items.add(itemsItem);
         return this;

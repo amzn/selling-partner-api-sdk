@@ -43,7 +43,7 @@ public class CreateScheduledPackagesResponse {
 
     public CreateScheduledPackagesResponse addScheduledPackagesItem(ModelPackage scheduledPackagesItem) {
         if (this.scheduledPackages == null) {
-            this.scheduledPackages = new ArrayList<ModelPackage>();
+            this.scheduledPackages = new ArrayList<>();
         }
         this.scheduledPackages.add(scheduledPackagesItem);
         return this;
@@ -70,7 +70,7 @@ public class CreateScheduledPackagesResponse {
 
     public CreateScheduledPackagesResponse addRejectedOrdersItem(RejectedOrder rejectedOrdersItem) {
         if (this.rejectedOrders == null) {
-            this.rejectedOrders = new ArrayList<RejectedOrder>();
+            this.rejectedOrders = new ArrayList<>();
         }
         this.rejectedOrders.add(rejectedOrdersItem);
         return this;

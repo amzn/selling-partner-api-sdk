@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "Represents the packages to inbound.")
 public class InboundPackages {
     @SerializedName("packagesToInbound")
-    private List<DistributionPackageQuantity> packagesToInbound = new ArrayList<DistributionPackageQuantity>();
+    private List<DistributionPackageQuantity> packagesToInbound = new ArrayList<>();
 
     public InboundPackages packagesToInbound(List<DistributionPackageQuantity> packagesToInbound) {
         this.packagesToInbound = packagesToInbound;

@@ -31,7 +31,7 @@ public class ErrorList {
 
     public ErrorList addErrorsItem(Error errorsItem) {
         if (this.errors == null) {
-            this.errors = new ArrayList<Error>();
+            this.errors = new ArrayList<>();
         }
         this.errors.add(errorsItem);
         return this;

@@ -14,10 +14,10 @@ package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Repeated occurrence of an event in a time range. */
 @Schema(description = "Repeated occurrence of an event in a time range.")
@@ -57,7 +57,7 @@ public class Recurrence {
 
     public Recurrence addDaysOfWeekItem(DayOfWeek daysOfWeekItem) {
         if (this.daysOfWeek == null) {
-            this.daysOfWeek = new ArrayList<DayOfWeek>();
+            this.daysOfWeek = new ArrayList<>();
         }
         this.daysOfWeek.add(daysOfWeekItem);
         return this;
@@ -87,7 +87,7 @@ public class Recurrence {
 
     public Recurrence addDaysOfMonthItem(Integer daysOfMonthItem) {
         if (this.daysOfMonth == null) {
-            this.daysOfMonth = new ArrayList<Integer>();
+            this.daysOfMonth = new ArrayList<>();
         }
         this.daysOfMonth.add(daysOfMonthItem);
         return this;

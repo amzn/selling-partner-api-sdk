@@ -25,7 +25,7 @@ public class StandardTechSpecsModule {
     private TextComponent headline = null;
 
     @SerializedName("specificationList")
-    private List<StandardTextPairBlock> specificationList = new ArrayList<StandardTextPairBlock>();
+    private List<StandardTextPairBlock> specificationList = new ArrayList<>();
 
     @SerializedName("tableCount")
     private Integer tableCount = null;

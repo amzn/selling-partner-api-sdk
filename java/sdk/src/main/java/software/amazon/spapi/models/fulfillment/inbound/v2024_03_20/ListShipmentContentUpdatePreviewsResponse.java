@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "The `ListShipmentContentUpdatePreviews` response.")
 public class ListShipmentContentUpdatePreviewsResponse {
     @SerializedName("contentUpdatePreviews")
-    private List<ContentUpdatePreview> contentUpdatePreviews = new ArrayList<ContentUpdatePreview>();
+    private List<ContentUpdatePreview> contentUpdatePreviews = new ArrayList<>();
 
     @SerializedName("pagination")
     private Pagination pagination = null;

@@ -53,7 +53,7 @@ public class OrderList {
 
     public OrderList addOrdersItem(Order ordersItem) {
         if (this.orders == null) {
-            this.orders = new ArrayList<Order>();
+            this.orders = new ArrayList<>();
         }
         this.orders.add(ordersItem);
         return this;

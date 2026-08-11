@@ -28,7 +28,7 @@ public class InboundOrderCreationData {
     private Address originAddress = null;
 
     @SerializedName("packagesToInbound")
-    private List<DistributionPackageQuantity> packagesToInbound = new ArrayList<DistributionPackageQuantity>();
+    private List<DistributionPackageQuantity> packagesToInbound = new ArrayList<>();
 
     @SerializedName("preferences")
     private InboundPreferences preferences = null;

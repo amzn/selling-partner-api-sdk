@@ -24,8 +24,6 @@ import java.util.stream.Collectors;
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 import org.junit.jupiter.api.Test;
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.models.uploads.v2020_11_01.CreateUploadDestinationResponse;
 
@@ -45,11 +43,8 @@ public class UploadsApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .randomize(OffsetDateTime.class, OffsetDateTime::now)
-            .randomize(LocalDate.class, LocalDate::now)
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void createUploadDestinationForResourceTest() throws Exception {

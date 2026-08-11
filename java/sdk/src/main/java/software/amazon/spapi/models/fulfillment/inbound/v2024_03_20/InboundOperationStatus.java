@@ -28,7 +28,7 @@ public class InboundOperationStatus {
     private String operationId = null;
 
     @SerializedName("operationProblems")
-    private List<OperationProblem> operationProblems = new ArrayList<OperationProblem>();
+    private List<OperationProblem> operationProblems = new ArrayList<>();
 
     @SerializedName("operationStatus")
     private OperationStatus operationStatus = null;

@@ -81,7 +81,7 @@ public class ListingsItemPutRequest {
     private RequirementsEnum requirements = null;
 
     @SerializedName("attributes")
-    private Map<String, Object> attributes = new HashMap<String, Object>();
+    private Map<String, Object> attributes = new HashMap<>();
 
     public ListingsItemPutRequest productType(String productType) {
         this.productType = productType;

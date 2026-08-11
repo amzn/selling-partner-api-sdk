@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "The `createMarketplaceItemLabels` response.")
 public class CreateMarketplaceItemLabelsResponse {
     @SerializedName("documentDownloads")
-    private List<DocumentDownload> documentDownloads = new ArrayList<DocumentDownload>();
+    private List<DocumentDownload> documentDownloads = new ArrayList<>();
 
     public CreateMarketplaceItemLabelsResponse documentDownloads(List<DocumentDownload> documentDownloads) {
         this.documentDownloads = documentDownloads;

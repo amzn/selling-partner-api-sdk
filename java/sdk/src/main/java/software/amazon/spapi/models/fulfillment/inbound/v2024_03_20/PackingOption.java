@@ -14,10 +14,10 @@ package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * A packing option contains a set of pack groups plus additional information about the packing option, such as any
@@ -28,16 +28,16 @@ import org.threeten.bp.OffsetDateTime;
                 "A packing option contains a set of pack groups plus additional information about the packing option, such as any discounts or fees if it's selected.")
 public class PackingOption {
     @SerializedName("discounts")
-    private List<Incentive> discounts = new ArrayList<Incentive>();
+    private List<Incentive> discounts = new ArrayList<>();
 
     @SerializedName("expiration")
     private OffsetDateTime expiration = null;
 
     @SerializedName("fees")
-    private List<Incentive> fees = new ArrayList<Incentive>();
+    private List<Incentive> fees = new ArrayList<>();
 
     @SerializedName("packingGroups")
-    private List<String> packingGroups = new ArrayList<String>();
+    private List<String> packingGroups = new ArrayList<>();
 
     @SerializedName("packingOptionId")
     private String packingOptionId = null;
@@ -46,10 +46,10 @@ public class PackingOption {
     private String status = null;
 
     @SerializedName("supportedConfigurations")
-    private List<PackingConfiguration> supportedConfigurations = new ArrayList<PackingConfiguration>();
+    private List<PackingConfiguration> supportedConfigurations = new ArrayList<>();
 
     @SerializedName("supportedShippingConfigurations")
-    private List<ShippingConfiguration> supportedShippingConfigurations = new ArrayList<ShippingConfiguration>();
+    private List<ShippingConfiguration> supportedShippingConfigurations = new ArrayList<>();
 
     public PackingOption discounts(List<Incentive> discounts) {
         this.discounts = discounts;

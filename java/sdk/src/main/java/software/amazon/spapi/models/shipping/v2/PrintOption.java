@@ -25,13 +25,13 @@ public class PrintOption {
     private List<Integer> supportedDPIs = null;
 
     @SerializedName("supportedPageLayouts")
-    private List<String> supportedPageLayouts = new ArrayList<String>();
+    private List<String> supportedPageLayouts = new ArrayList<>();
 
     @SerializedName("supportedFileJoiningOptions")
-    private List<Boolean> supportedFileJoiningOptions = new ArrayList<Boolean>();
+    private List<Boolean> supportedFileJoiningOptions = new ArrayList<>();
 
     @SerializedName("supportedDocumentDetails")
-    private List<SupportedDocumentDetail> supportedDocumentDetails = new ArrayList<SupportedDocumentDetail>();
+    private List<SupportedDocumentDetail> supportedDocumentDetails = new ArrayList<>();
 
     public PrintOption supportedDPIs(List<Integer> supportedDPIs) {
         this.supportedDPIs = supportedDPIs;
@@ -40,7 +40,7 @@ public class PrintOption {
 
     public PrintOption addSupportedDPIsItem(Integer supportedDPIsItem) {
         if (this.supportedDPIs == null) {
-            this.supportedDPIs = new ArrayList<Integer>();
+            this.supportedDPIs = new ArrayList<>();
         }
         this.supportedDPIs.add(supportedDPIsItem);
         return this;

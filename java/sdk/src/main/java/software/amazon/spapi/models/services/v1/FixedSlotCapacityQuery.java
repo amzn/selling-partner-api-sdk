@@ -15,10 +15,10 @@ package software.amazon.spapi.models.services.v1;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * Request schema for the &#x60;getFixedSlotCapacity&#x60; operation. This schema is used to define the time range,
@@ -47,7 +47,7 @@ public class FixedSlotCapacityQuery {
 
     public FixedSlotCapacityQuery addCapacityTypesItem(CapacityType capacityTypesItem) {
         if (this.capacityTypes == null) {
-            this.capacityTypes = new ArrayList<CapacityType>();
+            this.capacityTypes = new ArrayList<>();
         }
         this.capacityTypes.add(capacityTypesItem);
         return this;

@@ -28,7 +28,7 @@ public class ProductType {
     private String displayName = null;
 
     @SerializedName("marketplaceIds")
-    private List<String> marketplaceIds = new ArrayList<String>();
+    private List<String> marketplaceIds = new ArrayList<>();
 
     public ProductType name(String name) {
         this.name = name;

@@ -36,7 +36,7 @@ public class PreferredDeliveryTime {
 
     public PreferredDeliveryTime addBusinessHoursItem(BusinessHour businessHoursItem) {
         if (this.businessHours == null) {
-            this.businessHours = new ArrayList<BusinessHour>();
+            this.businessHours = new ArrayList<>();
         }
         this.businessHours.add(businessHoursItem);
         return this;
@@ -63,7 +63,7 @@ public class PreferredDeliveryTime {
 
     public PreferredDeliveryTime addExceptionDatesItem(ExceptionDate exceptionDatesItem) {
         if (this.exceptionDates == null) {
-            this.exceptionDates = new ArrayList<ExceptionDate>();
+            this.exceptionDates = new ArrayList<>();
         }
         this.exceptionDates.add(exceptionDatesItem);
         return this;

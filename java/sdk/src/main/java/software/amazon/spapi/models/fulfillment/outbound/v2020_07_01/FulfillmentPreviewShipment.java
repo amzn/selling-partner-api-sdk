@@ -14,10 +14,10 @@ package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Delivery and item information for a shipment in a fulfillment order preview. */
 @Schema(description = "Delivery and item information for a shipment in a fulfillment order preview.")
@@ -123,7 +123,7 @@ public class FulfillmentPreviewShipment {
 
     public FulfillmentPreviewShipment addShippingNotesItem(String shippingNotesItem) {
         if (this.shippingNotes == null) {
-            this.shippingNotes = new ArrayList<String>();
+            this.shippingNotes = new ArrayList<>();
         }
         this.shippingNotes.add(shippingNotesItem);
         return this;
