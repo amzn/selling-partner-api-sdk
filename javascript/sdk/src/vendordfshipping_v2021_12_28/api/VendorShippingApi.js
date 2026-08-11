@@ -18,8 +18,6 @@ import { PackingSlipList } from '../model/PackingSlipList.js'
 import { SubmitShipmentConfirmationsRequest } from '../model/SubmitShipmentConfirmationsRequest.js'
 import { SubmitShipmentStatusUpdatesRequest } from '../model/SubmitShipmentStatusUpdatesRequest.js'
 import { TransactionReference } from '../model/TransactionReference.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * VendorShipping service.
@@ -36,7 +34,6 @@ export class VendorShippingApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

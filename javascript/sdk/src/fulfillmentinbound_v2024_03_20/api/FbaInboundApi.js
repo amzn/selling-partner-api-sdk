@@ -72,8 +72,6 @@ import { UpdateShipmentSourceAddressRequest } from '../model/UpdateShipmentSourc
 import { UpdateShipmentSourceAddressResponse } from '../model/UpdateShipmentSourceAddressResponse.js'
 import { UpdateShipmentTrackingDetailsRequest } from '../model/UpdateShipmentTrackingDetailsRequest.js'
 import { UpdateShipmentTrackingDetailsResponse } from '../model/UpdateShipmentTrackingDetailsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * FbaInbound service.
@@ -90,7 +88,6 @@ export class FbaInboundApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

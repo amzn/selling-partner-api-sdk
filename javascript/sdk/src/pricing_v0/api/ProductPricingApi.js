@@ -19,8 +19,6 @@ import { GetListingOffersBatchRequest } from '../model/GetListingOffersBatchRequ
 import { GetListingOffersBatchResponse } from '../model/GetListingOffersBatchResponse.js'
 import { GetOffersResponse } from '../model/GetOffersResponse.js'
 import { GetPricingResponse } from '../model/GetPricingResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * ProductPricing service.
@@ -37,7 +35,6 @@ export class ProductPricingApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

@@ -22,8 +22,6 @@ import { Report } from '../model/Report.js'
 import { ReportDocument } from '../model/ReportDocument.js'
 import { ReportSchedule } from '../model/ReportSchedule.js'
 import { ReportScheduleList } from '../model/ReportScheduleList.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Reports service.
@@ -40,7 +38,6 @@ export class ReportsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

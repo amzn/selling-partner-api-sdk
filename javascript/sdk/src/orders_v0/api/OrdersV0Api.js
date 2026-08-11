@@ -23,8 +23,6 @@ import { GetOrderResponse } from '../model/GetOrderResponse.js'
 import { GetOrdersResponse } from '../model/GetOrdersResponse.js'
 import { UpdateVerificationStatusErrorResponse } from '../model/UpdateVerificationStatusErrorResponse.js'
 import { UpdateVerificationStatusRequest } from '../model/UpdateVerificationStatusRequest.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * OrdersV0 service.
@@ -41,7 +39,6 @@ export class OrdersV0Api {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

@@ -24,8 +24,6 @@ import { PostContentDocumentSuspendSubmissionResponse } from '../model/PostConte
 import { SearchContentDocumentsResponse } from '../model/SearchContentDocumentsResponse.js'
 import { SearchContentPublishRecordsResponse } from '../model/SearchContentPublishRecordsResponse.js'
 import { ValidateContentDocumentAsinRelationsResponse } from '../model/ValidateContentDocumentAsinRelationsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * AplusContent service.
@@ -42,7 +40,6 @@ export class AplusContentApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

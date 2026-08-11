@@ -39,8 +39,6 @@ import { UpdateReservationRequest } from '../model/UpdateReservationRequest.js'
 import { UpdateReservationResponse } from '../model/UpdateReservationResponse.js'
 import { UpdateScheduleRequest } from '../model/UpdateScheduleRequest.js'
 import { UpdateScheduleResponse } from '../model/UpdateScheduleResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Service service.
@@ -57,7 +55,6 @@ export class ServiceApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

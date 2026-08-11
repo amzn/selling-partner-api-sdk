@@ -17,8 +17,6 @@ import { GetLabelsResponse } from '../model/GetLabelsResponse.js'
 import { GetPrepInstructionsResponse } from '../model/GetPrepInstructionsResponse.js'
 import { GetShipmentItemsResponse } from '../model/GetShipmentItemsResponse.js'
 import { GetShipmentsResponse } from '../model/GetShipmentsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * FbaInbound service.
@@ -35,7 +33,6 @@ export class FbaInboundApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

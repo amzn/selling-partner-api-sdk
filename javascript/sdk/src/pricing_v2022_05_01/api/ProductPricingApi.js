@@ -17,8 +17,6 @@ import { CompetitiveSummaryBatchResponse } from '../model/CompetitiveSummaryBatc
 import { Errors } from '../model/Errors.js'
 import { GetFeaturedOfferExpectedPriceBatchRequest } from '../model/GetFeaturedOfferExpectedPriceBatchRequest.js'
 import { GetFeaturedOfferExpectedPriceBatchResponse } from '../model/GetFeaturedOfferExpectedPriceBatchResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * ProductPricing service.
@@ -35,7 +33,6 @@ export class ProductPricingApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

@@ -25,8 +25,6 @@ import { GetSubscriptionResponse } from '../model/GetSubscriptionResponse.js'
 import { GetSubscriptionsResponse } from '../model/GetSubscriptionsResponse.js'
 import { SendTestNotificationRequest } from '../model/SendTestNotificationRequest.js'
 import { SendTestNotificationResponse } from '../model/SendTestNotificationResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Notifications service.
@@ -43,7 +41,6 @@ export class NotificationsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

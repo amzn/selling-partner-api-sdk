@@ -43,8 +43,6 @@ import { PurchaseShipmentResponse } from '../model/PurchaseShipmentResponse.js'
 import { SubmitNdrFeedbackRequest } from '../model/SubmitNdrFeedbackRequest.js'
 import { UnlinkCarrierAccountRequest } from '../model/UnlinkCarrierAccountRequest.js'
 import { UnlinkCarrierAccountResponse } from '../model/UnlinkCarrierAccountResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Shipping service.
@@ -61,7 +59,6 @@ export class ShippingApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

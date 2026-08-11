@@ -17,8 +17,6 @@ import { FeesEstimateResult } from '../model/FeesEstimateResult.js'
 import { GetMyFeesEstimateRequest } from '../model/GetMyFeesEstimateRequest.js'
 import { GetMyFeesEstimateResponse } from '../model/GetMyFeesEstimateResponse.js'
 import { GetMyFeesEstimatesErrorList } from '../model/GetMyFeesEstimatesErrorList.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Fees service.
@@ -35,7 +33,6 @@ export class FeesApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

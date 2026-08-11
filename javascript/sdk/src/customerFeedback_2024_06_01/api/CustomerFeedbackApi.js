@@ -20,8 +20,6 @@ import { BrowseNodeReviewTrendsResponse } from '../model/BrowseNodeReviewTrendsR
 import { ErrorList } from '../model/ErrorList.js'
 import { ItemReviewTopicsResponse } from '../model/ItemReviewTopicsResponse.js'
 import { ItemReviewTrendsResponse } from '../model/ItemReviewTrendsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * CustomerFeedback service.
@@ -38,7 +36,6 @@ export class CustomerFeedbackApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

@@ -25,8 +25,6 @@ import { ListOrdersResponse } from '../model/ListOrdersResponse.js'
 import { UpdateOrderRequest } from '../model/UpdateOrderRequest.js'
 import { UpdateOrderStatusRequest } from '../model/UpdateOrderStatusRequest.js'
 import { UpdatePackageRequest } from '../model/UpdatePackageRequest.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * FulfillmentOutbound service.
@@ -43,7 +41,6 @@ export class FulfillmentOutboundApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

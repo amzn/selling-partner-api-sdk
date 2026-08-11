@@ -17,8 +17,6 @@ import { GetPurchaseOrdersResponse } from '../model/GetPurchaseOrdersResponse.js
 import { GetPurchaseOrdersStatusResponse } from '../model/GetPurchaseOrdersStatusResponse.js'
 import { SubmitAcknowledgementRequest } from '../model/SubmitAcknowledgementRequest.js'
 import { SubmitAcknowledgementResponse } from '../model/SubmitAcknowledgementResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * VendorOrders service.
@@ -35,7 +33,6 @@ export class VendorOrdersApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

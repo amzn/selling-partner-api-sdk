@@ -17,8 +17,6 @@ import { ErrorList } from '../model/ErrorList.js'
 import { TransferSchedule } from '../model/TransferSchedule.js'
 import { TransferScheduleListing } from '../model/TransferScheduleListing.js'
 import { TransferScheduleRequest } from '../model/TransferScheduleRequest.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * TransferSchedule service.
@@ -35,7 +33,6 @@ export class TransferScheduleApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

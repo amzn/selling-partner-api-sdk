@@ -21,8 +21,6 @@ import { ShipLabelsInput } from '../model/ShipLabelsInput.js'
 import { ShipLabelsResponse } from '../model/ShipLabelsResponse.js'
 import { ShipmentAcknowledgementRequest } from '../model/ShipmentAcknowledgementRequest.js'
 import { ShippingOptionsResponse } from '../model/ShippingOptionsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * ShipmentProcessing service.
@@ -39,7 +37,6 @@ export class ShipmentProcessingApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

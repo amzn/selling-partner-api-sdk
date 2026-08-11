@@ -13,8 +13,6 @@
 
 import { ApiClient } from '../ApiClient.js'
 import { GetItemEligibilityPreviewResponse } from '../model/GetItemEligibilityPreviewResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * FbaInbound service.
@@ -31,7 +29,6 @@ export class FbaInboundApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

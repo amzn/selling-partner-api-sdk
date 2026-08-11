@@ -16,8 +16,6 @@ import { BalanceListing } from '../model/BalanceListing.js'
 import { BankAccount } from '../model/BankAccount.js'
 import { BankAccountListing } from '../model/BankAccountListing.js'
 import { ErrorList } from '../model/ErrorList.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Accounts service.
@@ -34,7 +32,6 @@ export class AccountsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**
