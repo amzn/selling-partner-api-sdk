@@ -43,7 +43,7 @@ jobs:
       - name: Make deployment visible in Central Portal
         uses: fjogeleit/http-request-action@v1
         with:
-          url: 'https://ossrh-staging-api.central.sonatype.com/manual/upload/defaultRepository/software.amazon'
+          url: 'https://ossrh-staging-api.central.sonatype.com/manual/upload/defaultRepository/software.amazon?publishing_type=automatic'
           method: 'POST'
           bearerToken: ${{ secrets.JAVA_OSSHR_USR_PW_B64 }}
           timeout: '30000'
