@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
@@ -38,21 +36,10 @@ import software.amazon.spapi.models.sellers.v1.GetMarketplaceParticipationsRespo
 
 public class SellersApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public SellersApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public SellersApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket getAccountBucket =
-            Bucket.builder().addLimit(config.getLimit("SellersApi-getAccount")).build();
-
-    public final Bucket getMarketplaceParticipationsBucket = Bucket.builder()
-            .addLimit(config.getLimit("SellersApi-getMarketplaceParticipations"))
-            .build();
 
     /**
      * Build call for getAccount
@@ -169,10 +156,8 @@ public class SellersApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getAccountBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAccountResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getAccount operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetAccountResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -242,11 +227,9 @@ public class SellersApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getAccountBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAccountResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getAccount operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetAccountResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getMarketplaceParticipations
@@ -367,10 +350,8 @@ public class SellersApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getMarketplaceParticipationsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetMarketplaceParticipationsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getMarketplaceParticipations operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetMarketplaceParticipationsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -445,11 +426,9 @@ public class SellersApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getMarketplaceParticipationsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetMarketplaceParticipationsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getMarketplaceParticipations operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetMarketplaceParticipationsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -457,7 +436,6 @@ public class SellersApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -476,11 +454,6 @@ public class SellersApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -503,11 +476,9 @@ public class SellersApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new SellersApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new SellersApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

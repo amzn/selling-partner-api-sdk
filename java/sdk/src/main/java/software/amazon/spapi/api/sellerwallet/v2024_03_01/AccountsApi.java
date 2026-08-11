@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
@@ -39,25 +37,10 @@ import software.amazon.spapi.models.sellerwallet.v2024_03_01.BankAccountListing;
 
 public class AccountsApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public AccountsApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public AccountsApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket getAccountBucket =
-            Bucket.builder().addLimit(config.getLimit("AccountsApi-getAccount")).build();
-
-    public final Bucket listAccountBalancesBucket = Bucket.builder()
-            .addLimit(config.getLimit("AccountsApi-listAccountBalances"))
-            .build();
-
-    public final Bucket listAccountsBucket = Bucket.builder()
-            .addLimit(config.getLimit("AccountsApi-listAccounts"))
-            .build();
 
     /**
      * Build call for getAccount
@@ -194,10 +177,8 @@ public class AccountsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getAccountBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BankAccount>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getAccount operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<BankAccount>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -266,11 +247,9 @@ public class AccountsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getAccountBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BankAccount>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getAccount operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<BankAccount>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for listAccountBalances
@@ -411,10 +390,8 @@ public class AccountsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listAccountBalancesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BalanceListing>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listAccountBalances operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<BalanceListing>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -487,11 +464,9 @@ public class AccountsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listAccountBalancesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BalanceListing>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("listAccountBalances operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<BalanceListing>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for listAccounts
@@ -611,10 +586,8 @@ public class AccountsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listAccountsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BankAccountListing>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listAccounts operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<BankAccountListing>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -677,11 +650,9 @@ public class AccountsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listAccountsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<BankAccountListing>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("listAccounts operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<BankAccountListing>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -689,7 +660,6 @@ public class AccountsApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -708,11 +678,6 @@ public class AccountsApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -735,11 +700,9 @@ public class AccountsApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new AccountsApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new AccountsApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

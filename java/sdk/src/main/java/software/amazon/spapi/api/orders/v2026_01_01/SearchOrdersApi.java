@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
@@ -38,18 +36,10 @@ import software.amazon.spapi.models.orders.v2026_01_01.SearchOrdersResponse;
 
 public class SearchOrdersApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public SearchOrdersApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public SearchOrdersApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket searchOrdersBucket = Bucket.builder()
-            .addLimit(config.getLimit("SearchOrdersApi-searchOrders"))
-            .build();
 
     /**
      * Build call for searchOrders
@@ -432,10 +422,8 @@ public class SearchOrdersApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || searchOrdersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SearchOrdersResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("searchOrders operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SearchOrdersResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -684,11 +672,9 @@ public class SearchOrdersApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || searchOrdersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SearchOrdersResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("searchOrders operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SearchOrdersResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -696,7 +682,6 @@ public class SearchOrdersApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -715,11 +700,6 @@ public class SearchOrdersApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -742,11 +722,9 @@ public class SearchOrdersApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new SearchOrdersApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new SearchOrdersApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

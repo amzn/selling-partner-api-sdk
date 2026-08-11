@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
@@ -45,48 +43,10 @@ import software.amazon.spapi.models.orders.v0.UpdateVerificationStatusRequest;
 
 public class OrdersV0Api {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public OrdersV0Api(ApiClient apiClient, Boolean disableRateLimiting) {
+    public OrdersV0Api(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket confirmShipmentBucket = Bucket.builder()
-            .addLimit(config.getLimit("OrdersV0Api-confirmShipment"))
-            .build();
-
-    public final Bucket getOrderBucket =
-            Bucket.builder().addLimit(config.getLimit("OrdersV0Api-getOrder")).build();
-
-    public final Bucket getOrderAddressBucket = Bucket.builder()
-            .addLimit(config.getLimit("OrdersV0Api-getOrderAddress"))
-            .build();
-
-    public final Bucket getOrderBuyerInfoBucket = Bucket.builder()
-            .addLimit(config.getLimit("OrdersV0Api-getOrderBuyerInfo"))
-            .build();
-
-    public final Bucket getOrderItemsBucket = Bucket.builder()
-            .addLimit(config.getLimit("OrdersV0Api-getOrderItems"))
-            .build();
-
-    public final Bucket getOrderItemsBuyerInfoBucket = Bucket.builder()
-            .addLimit(config.getLimit("OrdersV0Api-getOrderItemsBuyerInfo"))
-            .build();
-
-    public final Bucket getOrderRegulatedInfoBucket = Bucket.builder()
-            .addLimit(config.getLimit("OrdersV0Api-getOrderRegulatedInfo"))
-            .build();
-
-    public final Bucket getOrdersBucket =
-            Bucket.builder().addLimit(config.getLimit("OrdersV0Api-getOrders")).build();
-
-    public final Bucket updateVerificationStatusBucket = Bucket.builder()
-            .addLimit(config.getLimit("OrdersV0Api-updateVerificationStatus"))
-            .build();
 
     /**
      * Build call for confirmShipment
@@ -220,9 +180,7 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || confirmShipmentBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("confirmShipment operation exceeds rate limit");
+        return apiClient.execute(call);
     }
 
     /**
@@ -298,10 +256,8 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || confirmShipmentBucket.tryConsume(1)) {
-            apiClient.executeAsync(call, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("confirmShipment operation exceeds rate limit");
+        apiClient.executeAsync(call, callback);
+        return call;
     }
     /**
      * Build call for getOrder
@@ -434,10 +390,8 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrderBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOrderResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getOrder operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOrderResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -514,11 +468,9 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrderBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOrderResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getOrder operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOrderResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getOrderAddress
@@ -653,10 +605,8 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrderAddressBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOrderAddressResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getOrderAddress operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOrderAddressResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -734,11 +684,9 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrderAddressBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOrderAddressResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getOrderAddress operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOrderAddressResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getOrderBuyerInfo
@@ -873,10 +821,8 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrderBuyerInfoBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOrderBuyerInfoResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getOrderBuyerInfo operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOrderBuyerInfoResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -954,11 +900,9 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrderBuyerInfoBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOrderBuyerInfoResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getOrderBuyerInfo operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOrderBuyerInfoResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getOrderItems
@@ -1116,10 +1060,8 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrderItemsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOrderItemsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getOrderItems operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOrderItemsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1222,11 +1164,9 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrderItemsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOrderItemsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getOrderItems operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOrderItemsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getOrderItemsBuyerInfo
@@ -1371,10 +1311,8 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrderItemsBuyerInfoBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOrderItemsBuyerInfoResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getOrderItemsBuyerInfo operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOrderItemsBuyerInfoResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1460,11 +1398,9 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrderItemsBuyerInfoBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOrderItemsBuyerInfoResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getOrderItemsBuyerInfo operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOrderItemsBuyerInfoResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getOrderRegulatedInfo
@@ -1592,10 +1528,8 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrderRegulatedInfoBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOrderRegulatedInfoResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getOrderRegulatedInfo operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOrderRegulatedInfoResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1668,11 +1602,9 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrderRegulatedInfoBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOrderRegulatedInfoResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getOrderRegulatedInfo operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOrderRegulatedInfoResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getOrders
@@ -2430,10 +2362,8 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrdersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOrdersResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getOrders operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOrdersResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2933,11 +2863,9 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getOrdersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetOrdersResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getOrders operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetOrdersResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for updateVerificationStatus
@@ -3079,9 +3007,7 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateVerificationStatusBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("updateVerificationStatus operation exceeds rate limit");
+        return apiClient.execute(call);
     }
 
     /**
@@ -3164,10 +3090,8 @@ public class OrdersV0Api {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateVerificationStatusBucket.tryConsume(1)) {
-            apiClient.executeAsync(call, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("updateVerificationStatus operation exceeds rate limit");
+        apiClient.executeAsync(call, callback);
+        return call;
     }
 
     public static class Builder {
@@ -3175,7 +3099,6 @@ public class OrdersV0Api {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -3194,11 +3117,6 @@ public class OrdersV0Api {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -3221,11 +3139,9 @@ public class OrdersV0Api {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new OrdersV0Api(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new OrdersV0Api(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

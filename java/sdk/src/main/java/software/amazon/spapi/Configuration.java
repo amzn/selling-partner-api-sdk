@@ -12,18 +12,9 @@
 
 package software.amazon.spapi;
 
-import io.github.bucket4j.BandwidthBuilder.BandwidthBuilderBuildStage;
-import io.github.bucket4j.BandwidthBuilder.BandwidthBuilderCapacityStage;
-import java.time.Duration;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
 import okhttp3.OkHttpClient;
-import org.yaml.snakeyaml.Yaml;
 
 public class Configuration {
-    private final Map<String, List<Integer>> rateLimitConfiguration =
-            new Yaml().load(this.getClass().getClassLoader().getResourceAsStream("rate-limits.yml"));
     private OkHttpClient okHttpClient;
     private static Configuration instance;
 
@@ -32,21 +23,6 @@ public class Configuration {
     public OkHttpClient getOkHttpClient() {
         if (okHttpClient == null) okHttpClient = new OkHttpClient();
         return okHttpClient;
-    }
-
-    public Function<BandwidthBuilderCapacityStage, BandwidthBuilderBuildStage> getLimit(String operation) {
-        return limit -> limit.capacity(getValue(operation, 1))
-                .refillGreedy(getValue(operation, 0), Duration.ofSeconds(getValue(operation, 2)));
-    }
-
-    private Integer getValue(String operation, Integer position) {
-        if (rateLimitConfiguration.containsKey(operation)) {
-            if (rateLimitConfiguration.get(operation).size() > position) {
-                return rateLimitConfiguration.get(operation).get(position);
-            }
-        }
-
-        return 1;
     }
 
     public static Configuration get() {
