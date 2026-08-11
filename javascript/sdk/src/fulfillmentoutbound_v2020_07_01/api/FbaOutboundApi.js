@@ -32,8 +32,6 @@ import { SubmitFulfillmentOrderStatusUpdateRequest } from '../model/SubmitFulfil
 import { SubmitFulfillmentOrderStatusUpdateResponse } from '../model/SubmitFulfillmentOrderStatusUpdateResponse.js'
 import { UpdateFulfillmentOrderRequest } from '../model/UpdateFulfillmentOrderRequest.js'
 import { UpdateFulfillmentOrderResponse } from '../model/UpdateFulfillmentOrderResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * FbaOutbound service.
@@ -50,7 +48,6 @@ export class FbaOutboundApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

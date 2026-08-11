@@ -15,8 +15,6 @@ import { ApiClient } from '../ApiClient.js'
 import { ErrorList } from '../model/ErrorList.js'
 import { Shipment } from '../model/Shipment.js'
 import { ShipmentsResponse } from '../model/ShipmentsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * ShipmentRetrieval service.
@@ -33,7 +31,6 @@ export class ShipmentRetrievalApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

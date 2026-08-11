@@ -17,8 +17,6 @@ import { ListOfferMetricsRequest } from '../model/ListOfferMetricsRequest.js'
 import { ListOfferMetricsResponse } from '../model/ListOfferMetricsResponse.js'
 import { ListOffersRequest } from '../model/ListOffersRequest.js'
 import { ListOffersResponse } from '../model/ListOffersResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Offers service.
@@ -35,7 +33,6 @@ export class OffersApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

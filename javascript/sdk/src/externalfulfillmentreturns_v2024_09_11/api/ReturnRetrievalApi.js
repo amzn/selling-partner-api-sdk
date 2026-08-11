@@ -15,8 +15,6 @@ import { ApiClient } from '../ApiClient.js'
 import { ErrorList } from '../model/ErrorList.js'
 import { Return } from '../model/Return.js'
 import { ReturnsResponse } from '../model/ReturnsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * ReturnRetrieval service.
@@ -33,7 +31,6 @@ export class ReturnRetrievalApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

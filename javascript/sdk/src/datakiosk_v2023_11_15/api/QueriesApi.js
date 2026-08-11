@@ -18,8 +18,6 @@ import { ErrorList } from '../model/ErrorList.js'
 import { GetDocumentResponse } from '../model/GetDocumentResponse.js'
 import { GetQueriesResponse } from '../model/GetQueriesResponse.js'
 import { Query } from '../model/Query.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Queries service.
@@ -36,7 +34,6 @@ export class QueriesApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

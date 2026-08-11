@@ -14,8 +14,6 @@
 import { ApiClient } from '../ApiClient.js'
 import { SubmitInvoicesRequest } from '../model/SubmitInvoicesRequest.js'
 import { SubmitInvoicesResponse } from '../model/SubmitInvoicesResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * VendorPayments service.
@@ -32,7 +30,6 @@ export class VendorPaymentsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

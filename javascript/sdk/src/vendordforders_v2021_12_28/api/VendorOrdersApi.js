@@ -17,8 +17,6 @@ import { Order } from '../model/Order.js'
 import { OrderList } from '../model/OrderList.js'
 import { SubmitAcknowledgementRequest } from '../model/SubmitAcknowledgementRequest.js'
 import { TransactionId } from '../model/TransactionId.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * VendorOrders service.
@@ -35,7 +33,6 @@ export class VendorOrdersApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

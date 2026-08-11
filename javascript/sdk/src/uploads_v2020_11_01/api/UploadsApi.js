@@ -13,8 +13,6 @@
 
 import { ApiClient } from '../ApiClient.js'
 import { CreateUploadDestinationResponse } from '../model/CreateUploadDestinationResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Uploads service.
@@ -31,7 +29,6 @@ export class UploadsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

@@ -13,8 +13,6 @@
 
 import { ApiClient } from '../ApiClient.js'
 import { GetOrderMetricsResponse } from '../model/GetOrderMetricsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Sales service.
@@ -31,7 +29,6 @@ export class SalesApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

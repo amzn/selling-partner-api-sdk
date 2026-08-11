@@ -17,8 +17,6 @@ import { CreateNotificationResponse } from '../model/CreateNotificationResponse.
 import { DeleteNotificationsRequest } from '../model/DeleteNotificationsRequest.js'
 import { ErrorList } from '../model/ErrorList.js'
 import { RecordActionFeedbackRequest } from '../model/RecordActionFeedbackRequest.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * AppIntegrations service.
@@ -35,7 +33,6 @@ export class AppIntegrationsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

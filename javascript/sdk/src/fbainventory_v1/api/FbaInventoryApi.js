@@ -18,8 +18,6 @@ import { CreateInventoryItemRequest } from '../model/CreateInventoryItemRequest.
 import { CreateInventoryItemResponse } from '../model/CreateInventoryItemResponse.js'
 import { DeleteInventoryItemResponse } from '../model/DeleteInventoryItemResponse.js'
 import { GetInventorySummariesResponse } from '../model/GetInventorySummariesResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * FbaInventory service.
@@ -36,7 +34,6 @@ export class FbaInventoryApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

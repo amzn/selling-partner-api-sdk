@@ -15,8 +15,6 @@ import { ApiClient } from '../ApiClient.js'
 import { ErrorList } from '../model/ErrorList.js'
 import { GetOrderPreviewRequest } from '../model/GetOrderPreviewRequest.js'
 import { GetOrderPreviewResponse } from '../model/GetOrderPreviewResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * FulfillmentPreviews service.
@@ -33,7 +31,6 @@ export class FulfillmentPreviewsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

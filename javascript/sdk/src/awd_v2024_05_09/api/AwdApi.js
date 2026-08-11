@@ -32,8 +32,6 @@ import { ShipmentLabelPageTypes } from '../model/ShipmentLabelPageTypes.js'
 import { ShipmentLabels } from '../model/ShipmentLabels.js'
 import { ShipmentListing } from '../model/ShipmentListing.js'
 import { TransportationDetails } from '../model/TransportationDetails.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Awd service.
@@ -50,7 +48,6 @@ export class AwdApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

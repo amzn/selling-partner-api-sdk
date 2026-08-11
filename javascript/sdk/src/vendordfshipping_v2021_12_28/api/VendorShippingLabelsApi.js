@@ -18,8 +18,6 @@ import { ShippingLabel } from '../model/ShippingLabel.js'
 import { ShippingLabelList } from '../model/ShippingLabelList.js'
 import { SubmitShippingLabelsRequest } from '../model/SubmitShippingLabelsRequest.js'
 import { TransactionReference } from '../model/TransactionReference.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * VendorShippingLabels service.
@@ -36,7 +34,6 @@ export class VendorShippingLabelsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

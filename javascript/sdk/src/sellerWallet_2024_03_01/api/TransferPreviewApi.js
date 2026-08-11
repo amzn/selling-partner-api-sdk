@@ -14,8 +14,6 @@
 import { ApiClient } from '../ApiClient.js'
 import { ErrorList } from '../model/ErrorList.js'
 import { TransferRatePreview } from '../model/TransferRatePreview.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * TransferPreview service.
@@ -32,7 +30,6 @@ export class TransferPreviewApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

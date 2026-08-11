@@ -15,8 +15,6 @@ import { ApiClient } from '../ApiClient.js'
 import { ErrorList } from '../model/ErrorList.js'
 import { GetInvoiceResponse } from '../model/GetInvoiceResponse.js'
 import { GetInvoicesResponse } from '../model/GetInvoicesResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Default service.
@@ -33,7 +31,6 @@ export class DefaultApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

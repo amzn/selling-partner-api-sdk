@@ -20,8 +20,6 @@ import { GetAdditionalSellerInputsResponse } from '../model/GetAdditionalSellerI
 import { GetEligibleShipmentServicesRequest } from '../model/GetEligibleShipmentServicesRequest.js'
 import { GetEligibleShipmentServicesResponse } from '../model/GetEligibleShipmentServicesResponse.js'
 import { GetShipmentResponse } from '../model/GetShipmentResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * MerchantFulfillment service.
@@ -38,7 +36,6 @@ export class MerchantFulfillmentApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

@@ -16,8 +16,6 @@ import { GetInvoiceStatusResponse } from '../model/GetInvoiceStatusResponse.js'
 import { GetShipmentDetailsResponse } from '../model/GetShipmentDetailsResponse.js'
 import { SubmitInvoiceRequest } from '../model/SubmitInvoiceRequest.js'
 import { SubmitInvoiceResponse } from '../model/SubmitInvoiceResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * ShipmentInvoice service.
@@ -34,7 +32,6 @@ export class ShipmentInvoiceApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

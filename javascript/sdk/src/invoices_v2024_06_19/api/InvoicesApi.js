@@ -24,8 +24,6 @@ import { GetInvoicesResponse } from '../model/GetInvoicesResponse.js'
 import { GovernmentInvoiceRequest } from '../model/GovernmentInvoiceRequest.js'
 import { GovernmentInvoiceStatusResponse } from '../model/GovernmentInvoiceStatusResponse.js'
 import { GovtInvoiceDocumentResponse } from '../model/GovtInvoiceDocumentResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Invoices service.
@@ -42,7 +40,6 @@ export class InvoicesApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

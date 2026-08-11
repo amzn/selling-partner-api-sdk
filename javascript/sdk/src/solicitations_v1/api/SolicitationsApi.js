@@ -14,8 +14,6 @@
 import { ApiClient } from '../ApiClient.js'
 import { CreateProductReviewAndSellerFeedbackSolicitationResponse } from '../model/CreateProductReviewAndSellerFeedbackSolicitationResponse.js'
 import { GetSolicitationActionsForOrderResponse } from '../model/GetSolicitationActionsForOrderResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Solicitations service.
@@ -32,7 +30,6 @@ export class SolicitationsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

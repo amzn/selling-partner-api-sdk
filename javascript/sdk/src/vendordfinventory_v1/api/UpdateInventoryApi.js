@@ -14,8 +14,6 @@
 import { ApiClient } from '../ApiClient.js'
 import { SubmitInventoryUpdateRequest } from '../model/SubmitInventoryUpdateRequest.js'
 import { SubmitInventoryUpdateResponse } from '../model/SubmitInventoryUpdateResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * UpdateInventory service.
@@ -32,7 +30,6 @@ export class UpdateInventoryApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

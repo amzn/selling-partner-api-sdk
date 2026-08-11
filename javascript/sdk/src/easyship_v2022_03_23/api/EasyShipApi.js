@@ -21,8 +21,6 @@ import { ListHandoverSlotsResponse } from '../model/ListHandoverSlotsResponse.js
 import { Package } from '../model/Package.js'
 import { Packages } from '../model/Packages.js'
 import { UpdateScheduledPackagesRequest } from '../model/UpdateScheduledPackagesRequest.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * EasyShip service.
@@ -39,7 +37,6 @@ export class EasyShipApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

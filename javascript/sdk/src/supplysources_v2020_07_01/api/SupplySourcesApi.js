@@ -19,8 +19,6 @@ import { GetSupplySourcesResponse } from '../model/GetSupplySourcesResponse.js'
 import { SupplySource } from '../model/SupplySource.js'
 import { UpdateSupplySourceRequest } from '../model/UpdateSupplySourceRequest.js'
 import { UpdateSupplySourceStatusRequest } from '../model/UpdateSupplySourceStatusRequest.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * SupplySources service.
@@ -37,7 +35,6 @@ export class SupplySourcesApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

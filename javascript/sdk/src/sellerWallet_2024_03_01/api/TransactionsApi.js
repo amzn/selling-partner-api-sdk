@@ -17,8 +17,6 @@ import { ErrorList } from '../model/ErrorList.js'
 import { Transaction } from '../model/Transaction.js'
 import { TransactionInitiationRequest } from '../model/TransactionInitiationRequest.js'
 import { TransactionListing } from '../model/TransactionListing.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Transactions service.
@@ -35,7 +33,6 @@ export class TransactionsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

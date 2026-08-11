@@ -17,8 +17,6 @@ import { GetShipmentLabels } from '../model/GetShipmentLabels.js'
 import { SubmitShipmentConfirmationsRequest } from '../model/SubmitShipmentConfirmationsRequest.js'
 import { SubmitShipmentConfirmationsResponse } from '../model/SubmitShipmentConfirmationsResponse.js'
 import { SubmitShipments } from '../model/SubmitShipments.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * VendorShipping service.
@@ -35,7 +33,6 @@ export class VendorShippingApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

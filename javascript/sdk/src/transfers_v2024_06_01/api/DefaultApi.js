@@ -18,8 +18,6 @@ import { InitiatePayoutRequest } from '../model/InitiatePayoutRequest.js'
 import { InitiatePayoutResponse } from '../model/InitiatePayoutResponse.js'
 import { ListExpectedPayoutsResponse } from '../model/ListExpectedPayoutsResponse.js'
 import { ListPayoutsResponse } from '../model/ListPayoutsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Default service.
@@ -36,7 +34,6 @@ export class DefaultApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

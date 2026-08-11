@@ -18,8 +18,6 @@ import { ItemSearchResults } from '../model/ItemSearchResults.js'
 import { ListingsItemPatchRequest } from '../model/ListingsItemPatchRequest.js'
 import { ListingsItemPutRequest } from '../model/ListingsItemPutRequest.js'
 import { ListingsItemSubmissionResponse } from '../model/ListingsItemSubmissionResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Listings service.
@@ -36,7 +34,6 @@ export class ListingsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

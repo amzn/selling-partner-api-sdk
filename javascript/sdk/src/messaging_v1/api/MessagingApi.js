@@ -32,8 +32,6 @@ import { GetAttributesResponse } from '../model/GetAttributesResponse.js'
 import { GetMessagingActionsForOrderResponse } from '../model/GetMessagingActionsForOrderResponse.js'
 import { InvoiceRequest } from '../model/InvoiceRequest.js'
 import { InvoiceResponse } from '../model/InvoiceResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Messaging service.
@@ -50,7 +48,6 @@ export class MessagingApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

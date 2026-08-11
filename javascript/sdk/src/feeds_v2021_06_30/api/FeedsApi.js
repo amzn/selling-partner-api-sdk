@@ -20,8 +20,6 @@ import { ErrorList } from '../model/ErrorList.js'
 import { Feed } from '../model/Feed.js'
 import { FeedDocument } from '../model/FeedDocument.js'
 import { GetFeedsResponse } from '../model/GetFeedsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Feeds service.
@@ -38,7 +36,6 @@ export class FeedsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**

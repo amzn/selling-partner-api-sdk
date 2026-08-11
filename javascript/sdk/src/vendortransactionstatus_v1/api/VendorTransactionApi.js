@@ -13,8 +13,6 @@
 
 import { ApiClient } from '../ApiClient.js'
 import { GetTransactionResponse } from '../model/GetTransactionResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * VendorTransaction service.
@@ -31,7 +29,6 @@ export class VendorTransactionApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
   }
 
   /**
