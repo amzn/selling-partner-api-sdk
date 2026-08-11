@@ -14,8 +14,6 @@
 import { ApiClient } from '../ApiClient.js'
 import { GetAccountResponse } from '../model/GetAccountResponse.js'
 import { GetMarketplaceParticipationsResponse } from '../model/GetMarketplaceParticipationsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Sellers service.
@@ -23,9 +21,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class SellersApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new SellersApi.
     * @alias module:sellers_v1/api/SellersApi
@@ -35,32 +30,6 @@ export class SellersApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'SellersApi-getAccount',
-      'SellersApi-getMarketplaceParticipations'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -86,7 +55,7 @@ export class SellersApi {
     return this.apiClient.callApi('SellersApi-getAccount',
       '/sellers/v1/account', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('SellersApi-getAccount')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -124,7 +93,7 @@ export class SellersApi {
     return this.apiClient.callApi('SellersApi-getMarketplaceParticipations',
       '/sellers/v1/marketplaceParticipations', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('SellersApi-getMarketplaceParticipations')
+      contentTypes, accepts, returnType
     )
   }
 

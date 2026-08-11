@@ -18,8 +18,6 @@ import { ItemSearchResults } from '../model/ItemSearchResults.js'
 import { ListingsItemPatchRequest } from '../model/ListingsItemPatchRequest.js'
 import { ListingsItemPutRequest } from '../model/ListingsItemPutRequest.js'
 import { ListingsItemSubmissionResponse } from '../model/ListingsItemSubmissionResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Listings service.
@@ -27,9 +25,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2021-08-01
 */
 export class ListingsApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new ListingsApi.
     * @alias module:listingsitems_v2021_08_01/api/ListingsApi
@@ -39,35 +34,6 @@ export class ListingsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'ListingsApi-deleteListingsItem',
-      'ListingsApi-getListingsItem',
-      'ListingsApi-patchListingsItem',
-      'ListingsApi-putListingsItem',
-      'ListingsApi-searchListingsItems'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -118,7 +84,7 @@ export class ListingsApi {
     return this.apiClient.callApi('ListingsApi-deleteListingsItem',
       '/listings/2021-08-01/items/{sellerId}/{sku}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-deleteListingsItem')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -188,7 +154,7 @@ export class ListingsApi {
     return this.apiClient.callApi('ListingsApi-getListingsItem',
       '/listings/2021-08-01/items/{sellerId}/{sku}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-getListingsItem')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -267,7 +233,7 @@ export class ListingsApi {
     return this.apiClient.callApi('ListingsApi-patchListingsItem',
       '/listings/2021-08-01/items/{sellerId}/{sku}', 'PATCH',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-patchListingsItem')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -348,7 +314,7 @@ export class ListingsApi {
     return this.apiClient.callApi('ListingsApi-putListingsItem',
       '/listings/2021-08-01/items/{sellerId}/{sku}', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-putListingsItem')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -444,7 +410,7 @@ export class ListingsApi {
     return this.apiClient.callApi('ListingsApi-searchListingsItems',
       '/listings/2021-08-01/items/{sellerId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-searchListingsItems')
+      contentTypes, accepts, returnType
     )
   }
 

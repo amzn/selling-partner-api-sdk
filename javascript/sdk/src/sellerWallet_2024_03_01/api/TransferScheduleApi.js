@@ -17,8 +17,6 @@ import { ErrorList } from '../model/ErrorList.js'
 import { TransferSchedule } from '../model/TransferSchedule.js'
 import { TransferScheduleListing } from '../model/TransferScheduleListing.js'
 import { TransferScheduleRequest } from '../model/TransferScheduleRequest.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * TransferSchedule service.
@@ -26,9 +24,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-03-01
 */
 export class TransferScheduleApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new TransferScheduleApi.
     * @alias module:sellerWallet_2024_03_01/api/TransferScheduleApi
@@ -38,35 +33,6 @@ export class TransferScheduleApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'TransferScheduleApi-createTransferSchedule',
-      'TransferScheduleApi-deleteScheduleTransaction',
-      'TransferScheduleApi-getTransferSchedule',
-      'TransferScheduleApi-listTransferSchedules',
-      'TransferScheduleApi-updateTransferSchedule'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -120,7 +86,7 @@ export class TransferScheduleApi {
     return this.apiClient.callApi('TransferScheduleApi-createTransferSchedule',
       '/finances/transfers/wallet/2024-03-01/transferSchedules', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransferScheduleApi-createTransferSchedule')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -178,7 +144,7 @@ export class TransferScheduleApi {
     return this.apiClient.callApi('TransferScheduleApi-deleteScheduleTransaction',
       '/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransferScheduleApi-deleteScheduleTransaction')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -234,7 +200,7 @@ export class TransferScheduleApi {
     return this.apiClient.callApi('TransferScheduleApi-getTransferSchedule',
       '/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransferScheduleApi-getTransferSchedule')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -294,7 +260,7 @@ export class TransferScheduleApi {
     return this.apiClient.callApi('TransferScheduleApi-listTransferSchedules',
       '/finances/transfers/wallet/2024-03-01/transferSchedules', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransferScheduleApi-listTransferSchedules')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -365,7 +331,7 @@ export class TransferScheduleApi {
     return this.apiClient.callApi('TransferScheduleApi-updateTransferSchedule',
       '/finances/transfers/wallet/2024-03-01/transferSchedules', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransferScheduleApi-updateTransferSchedule')
+      contentTypes, accepts, returnType
     )
   }
 

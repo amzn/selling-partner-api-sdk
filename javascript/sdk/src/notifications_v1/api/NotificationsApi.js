@@ -25,8 +25,6 @@ import { GetSubscriptionResponse } from '../model/GetSubscriptionResponse.js'
 import { GetSubscriptionsResponse } from '../model/GetSubscriptionsResponse.js'
 import { SendTestNotificationRequest } from '../model/SendTestNotificationRequest.js'
 import { SendTestNotificationResponse } from '../model/SendTestNotificationResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Notifications service.
@@ -34,9 +32,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class NotificationsApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new NotificationsApi.
     * @alias module:notifications_v1/api/NotificationsApi
@@ -46,40 +41,6 @@ export class NotificationsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'NotificationsApi-createDestination',
-      'NotificationsApi-createSubscription',
-      'NotificationsApi-deleteDestination',
-      'NotificationsApi-deleteSubscriptionById',
-      'NotificationsApi-getDestination',
-      'NotificationsApi-getDestinations',
-      'NotificationsApi-getSubscription',
-      'NotificationsApi-getSubscriptionById',
-      'NotificationsApi-getSubscriptions',
-      'NotificationsApi-sendTestNotification'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -111,7 +72,7 @@ export class NotificationsApi {
     return this.apiClient.callApi('NotificationsApi-createDestination',
       '/notifications/v1/destinations', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-createDestination')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -163,7 +124,7 @@ export class NotificationsApi {
     return this.apiClient.callApi('NotificationsApi-createSubscription',
       '/notifications/v1/subscriptions/{notificationType}', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-createSubscription')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -210,7 +171,7 @@ export class NotificationsApi {
     return this.apiClient.callApi('NotificationsApi-deleteDestination',
       '/notifications/v1/destinations/{destinationId}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-deleteDestination')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -263,7 +224,7 @@ export class NotificationsApi {
     return this.apiClient.callApi('NotificationsApi-deleteSubscriptionById',
       '/notifications/v1/subscriptions/{notificationType}/{subscriptionId}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-deleteSubscriptionById')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -310,7 +271,7 @@ export class NotificationsApi {
     return this.apiClient.callApi('NotificationsApi-getDestination',
       '/notifications/v1/destinations/{destinationId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-getDestination')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -349,7 +310,7 @@ export class NotificationsApi {
     return this.apiClient.callApi('NotificationsApi-getDestinations',
       '/notifications/v1/destinations', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-getDestinations')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -398,7 +359,7 @@ export class NotificationsApi {
     return this.apiClient.callApi('NotificationsApi-getSubscription',
       '/notifications/v1/subscriptions/{notificationType}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-getSubscription')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -453,7 +414,7 @@ export class NotificationsApi {
     return this.apiClient.callApi('NotificationsApi-getSubscriptionById',
       '/notifications/v1/subscriptions/{notificationType}/{subscriptionId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-getSubscriptionById')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -508,7 +469,7 @@ export class NotificationsApi {
     return this.apiClient.callApi('NotificationsApi-getSubscriptions',
       '/notifications/v1/subscriptions', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-getSubscriptions')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -564,7 +525,7 @@ export class NotificationsApi {
     return this.apiClient.callApi('NotificationsApi-sendTestNotification',
       '/notifications/v1/subscriptions/{notificationType}/testNotification', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('NotificationsApi-sendTestNotification')
+      contentTypes, accepts, returnType
     )
   }
 

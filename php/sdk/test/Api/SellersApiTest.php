@@ -69,7 +69,7 @@ class SellersApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new SellersApi($config, null, false);
+        $this->api = new SellersApi($config);
     }
 
 

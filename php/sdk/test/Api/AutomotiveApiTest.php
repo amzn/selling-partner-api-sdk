@@ -69,7 +69,7 @@ class AutomotiveApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new AutomotiveApi($config, null, false);
+        $this->api = new AutomotiveApi($config);
     }
 
 

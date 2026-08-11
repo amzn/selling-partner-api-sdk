@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.merchantfulfillment.v0.CancelShipmentResponse;
@@ -43,34 +41,10 @@ import software.amazon.spapi.models.merchantfulfillment.v0.GetShipmentResponse;
 
 public class MerchantFulfillmentApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public MerchantFulfillmentApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public MerchantFulfillmentApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket cancelShipmentBucket = Bucket.builder()
-            .addLimit(config.getLimit("MerchantFulfillmentApi-cancelShipment"))
-            .build();
-
-    public final Bucket createShipmentBucket = Bucket.builder()
-            .addLimit(config.getLimit("MerchantFulfillmentApi-createShipment"))
-            .build();
-
-    public final Bucket getAdditionalSellerInputsBucket = Bucket.builder()
-            .addLimit(config.getLimit("MerchantFulfillmentApi-getAdditionalSellerInputs"))
-            .build();
-
-    public final Bucket getEligibleShipmentServicesBucket = Bucket.builder()
-            .addLimit(config.getLimit("MerchantFulfillmentApi-getEligibleShipmentServices"))
-            .build();
-
-    public final Bucket getShipmentBucket = Bucket.builder()
-            .addLimit(config.getLimit("MerchantFulfillmentApi-getShipment"))
-            .build();
 
     /**
      * Build call for cancelShipment
@@ -196,10 +170,8 @@ public class MerchantFulfillmentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelShipmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CancelShipmentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("cancelShipment operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CancelShipmentResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -274,11 +246,9 @@ public class MerchantFulfillmentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelShipmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CancelShipmentResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("cancelShipment operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CancelShipmentResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createShipment
@@ -401,10 +371,8 @@ public class MerchantFulfillmentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createShipmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateShipmentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createShipment operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateShipmentResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -478,11 +446,9 @@ public class MerchantFulfillmentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createShipmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateShipmentResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createShipment operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateShipmentResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getAdditionalSellerInputs
@@ -613,10 +579,8 @@ public class MerchantFulfillmentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getAdditionalSellerInputsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAdditionalSellerInputsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getAdditionalSellerInputs operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetAdditionalSellerInputsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -695,11 +659,9 @@ public class MerchantFulfillmentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getAdditionalSellerInputsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAdditionalSellerInputsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getAdditionalSellerInputs operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetAdditionalSellerInputsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getEligibleShipmentServices
@@ -830,10 +792,8 @@ public class MerchantFulfillmentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getEligibleShipmentServicesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetEligibleShipmentServicesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getEligibleShipmentServices operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetEligibleShipmentServicesResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -912,11 +872,9 @@ public class MerchantFulfillmentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getEligibleShipmentServicesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetEligibleShipmentServicesResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getEligibleShipmentServices operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetEligibleShipmentServicesResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getShipment
@@ -1042,10 +1000,8 @@ public class MerchantFulfillmentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getShipmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetShipmentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getShipment operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetShipmentResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1120,11 +1076,9 @@ public class MerchantFulfillmentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getShipmentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetShipmentResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getShipment operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetShipmentResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -1132,7 +1086,6 @@ public class MerchantFulfillmentApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -1151,11 +1104,6 @@ public class MerchantFulfillmentApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -1178,11 +1126,9 @@ public class MerchantFulfillmentApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new MerchantFulfillmentApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new MerchantFulfillmentApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

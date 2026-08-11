@@ -18,7 +18,6 @@ import { TransferRatePreview } from '../model/TransferRatePreview.js';
 * @version 2024-03-01
 */
 export declare class TransferPreviewApi {
-    #private;
     apiClient: any;
     /**
       * Constructs a new TransferPreviewApi.
@@ -28,15 +27,6 @@ export declare class TransferPreviewApi {
       * default to {@link ApiClient#instance} if unspecified.
       */
     constructor(apiClient?: ApiClient);
-    /**
-       * Initialize rate limiters for API operations
-       */
-    initializeDefaultRateLimiterMap(): void;
-    /**
-       * Get rate limiter for a specific operation
-       * @param {String} operation name
-       */
-    getRateLimiter(operation: string): any;
     /**
        * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
        * Retrieve a list of potential fees on a transaction.

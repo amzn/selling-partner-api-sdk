@@ -46,9 +46,6 @@ use SpApi\Model\appIntegrations\v2024_04_01\CreateNotificationResponse;
 use SpApi\Model\appIntegrations\v2024_04_01\DeleteNotificationsRequest;
 use SpApi\Model\appIntegrations\v2024_04_01\RecordActionFeedbackRequest;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * AppIntegrationsApi Class Doc Comment.
@@ -61,9 +58,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class AppIntegrationsApi
 {
-    public ?LimiterInterface $createNotificationRateLimiter;
-    public ?LimiterInterface $deleteNotificationsRateLimiter;
-    public ?LimiterInterface $recordActionFeedbackRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -75,33 +69,16 @@ class AppIntegrationsApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AppIntegrationsApi-createNotification'), $this->rateLimitStorage);
-            $this->createNotificationRateLimiter = $factory->create('AppIntegrationsApi-createNotification');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AppIntegrationsApi-deleteNotifications'), $this->rateLimitStorage);
-            $this->deleteNotificationsRateLimiter = $factory->create('AppIntegrationsApi-deleteNotifications');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AppIntegrationsApi-recordActionFeedback'), $this->rateLimitStorage);
-            $this->recordActionFeedbackRateLimiter = $factory->create('AppIntegrationsApi-recordActionFeedback');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -178,9 +155,6 @@ class AppIntegrationsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createNotificationRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -276,9 +250,6 @@ class AppIntegrationsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AppIntegrationsApi-createNotification');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createNotificationRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -444,9 +415,6 @@ class AppIntegrationsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->deleteNotificationsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -530,9 +498,6 @@ class AppIntegrationsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AppIntegrationsApi-deleteNotifications');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->deleteNotificationsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -691,9 +656,6 @@ class AppIntegrationsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->recordActionFeedbackRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -783,9 +745,6 @@ class AppIntegrationsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AppIntegrationsApi-recordActionFeedback');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->recordActionFeedbackRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

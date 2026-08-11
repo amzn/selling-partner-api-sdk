@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.replenishment.v2022_11_07.ListOfferMetricsRequest;
@@ -39,21 +37,10 @@ import software.amazon.spapi.models.replenishment.v2022_11_07.ListOffersResponse
 
 public class OffersApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public OffersApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public OffersApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket listOfferMetricsBucket = Bucket.builder()
-            .addLimit(config.getLimit("OffersApi-listOfferMetrics"))
-            .build();
-
-    public final Bucket listOffersBucket =
-            Bucket.builder().addLimit(config.getLimit("OffersApi-listOffers")).build();
 
     /**
      * Build call for listOfferMetrics
@@ -174,10 +161,8 @@ public class OffersApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listOfferMetricsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListOfferMetricsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listOfferMetrics operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ListOfferMetricsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -255,11 +240,9 @@ public class OffersApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listOfferMetricsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListOfferMetricsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("listOfferMetrics operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ListOfferMetricsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for listOffers
@@ -379,10 +362,8 @@ public class OffersApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listOffersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListOffersResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listOffers operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ListOffersResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -457,11 +438,9 @@ public class OffersApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listOffersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListOffersResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("listOffers operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ListOffersResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -469,7 +448,6 @@ public class OffersApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -488,11 +466,6 @@ public class OffersApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -515,11 +488,9 @@ public class OffersApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new OffersApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new OffersApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

@@ -13,8 +13,6 @@
 
 import { ApiClient } from '../ApiClient.js'
 import { GetTransactionResponse } from '../model/GetTransactionResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * VendorTransaction service.
@@ -22,9 +20,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class VendorTransactionApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new VendorTransactionApi.
     * @alias module:vendortransactionstatus_v1/api/VendorTransactionApi
@@ -34,31 +29,6 @@ export class VendorTransactionApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'VendorTransactionApi-getTransaction'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -91,7 +61,7 @@ export class VendorTransactionApi {
     return this.apiClient.callApi('VendorTransactionApi-getTransaction',
       '/vendor/transactions/v1/transactions/{transactionId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorTransactionApi-getTransaction')
+      contentTypes, accepts, returnType
     )
   }
 

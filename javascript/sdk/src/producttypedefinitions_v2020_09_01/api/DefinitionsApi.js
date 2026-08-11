@@ -15,8 +15,6 @@ import { ApiClient } from '../ApiClient.js'
 import { ErrorList } from '../model/ErrorList.js'
 import { ProductTypeDefinition } from '../model/ProductTypeDefinition.js'
 import { ProductTypeList } from '../model/ProductTypeList.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Definitions service.
@@ -24,9 +22,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2020-09-01
 */
 export class DefinitionsApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new DefinitionsApi.
     * @alias module:producttypedefinitions_v2020_09_01/api/DefinitionsApi
@@ -36,32 +31,6 @@ export class DefinitionsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'DefinitionsApi-getDefinitionsProductType',
-      'DefinitionsApi-searchDefinitionsProductTypes'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -115,7 +84,7 @@ export class DefinitionsApi {
     return this.apiClient.callApi('DefinitionsApi-getDefinitionsProductType',
       '/definitions/2020-09-01/productTypes/{productType}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefinitionsApi-getDefinitionsProductType')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -179,7 +148,7 @@ export class DefinitionsApi {
     return this.apiClient.callApi('DefinitionsApi-searchDefinitionsProductTypes',
       '/definitions/2020-09-01/productTypes', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefinitionsApi-searchDefinitionsProductTypes')
+      contentTypes, accepts, returnType
     )
   }
 

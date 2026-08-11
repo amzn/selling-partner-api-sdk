@@ -18,8 +18,6 @@ import { CreateInventoryItemRequest } from '../model/CreateInventoryItemRequest.
 import { CreateInventoryItemResponse } from '../model/CreateInventoryItemResponse.js'
 import { DeleteInventoryItemResponse } from '../model/DeleteInventoryItemResponse.js'
 import { GetInventorySummariesResponse } from '../model/GetInventorySummariesResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * FbaInventory service.
@@ -27,9 +25,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class FbaInventoryApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new FbaInventoryApi.
     * @alias module:fbainventory_v1/api/FbaInventoryApi
@@ -39,34 +34,6 @@ export class FbaInventoryApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'FbaInventoryApi-addInventory',
-      'FbaInventoryApi-createInventoryItem',
-      'FbaInventoryApi-deleteInventoryItem',
-      'FbaInventoryApi-getInventorySummaries'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -105,7 +72,7 @@ export class FbaInventoryApi {
     return this.apiClient.callApi('FbaInventoryApi-addInventory',
       '/fba/inventory/v1/items/inventory', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInventoryApi-addInventory')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -151,7 +118,7 @@ export class FbaInventoryApi {
     return this.apiClient.callApi('FbaInventoryApi-createInventoryItem',
       '/fba/inventory/v1/items', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInventoryApi-createInventoryItem')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -204,7 +171,7 @@ export class FbaInventoryApi {
     return this.apiClient.callApi('FbaInventoryApi-deleteInventoryItem',
       '/fba/inventory/v1/items/{sellerSku}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInventoryApi-deleteInventoryItem')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -277,7 +244,7 @@ export class FbaInventoryApi {
     return this.apiClient.callApi('FbaInventoryApi-getInventorySummaries',
       '/fba/inventory/v1/summaries', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInventoryApi-getInventorySummaries')
+      contentTypes, accepts, returnType
     )
   }
 

@@ -72,8 +72,6 @@ import { UpdateShipmentSourceAddressRequest } from '../model/UpdateShipmentSourc
 import { UpdateShipmentSourceAddressResponse } from '../model/UpdateShipmentSourceAddressResponse.js'
 import { UpdateShipmentTrackingDetailsRequest } from '../model/UpdateShipmentTrackingDetailsRequest.js'
 import { UpdateShipmentTrackingDetailsResponse } from '../model/UpdateShipmentTrackingDetailsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * FbaInbound service.
@@ -81,9 +79,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-03-20
 */
 export class FbaInboundApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new FbaInboundApi.
     * @alias module:fulfillmentinbound_v2024_03_20/api/FbaInboundApi
@@ -93,75 +88,6 @@ export class FbaInboundApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'FbaInboundApi-cancelInboundPlan',
-      'FbaInboundApi-cancelSelfShipAppointment',
-      'FbaInboundApi-confirmDeliveryWindowOptions',
-      'FbaInboundApi-confirmPackingOption',
-      'FbaInboundApi-confirmPlacementOption',
-      'FbaInboundApi-confirmShipmentContentUpdatePreview',
-      'FbaInboundApi-confirmTransportationOptions',
-      'FbaInboundApi-createInboundPlan',
-      'FbaInboundApi-createMarketplaceItemLabels',
-      'FbaInboundApi-generateDeliveryWindowOptions',
-      'FbaInboundApi-generatePackingOptions',
-      'FbaInboundApi-generatePlacementOptions',
-      'FbaInboundApi-generateSelfShipAppointmentSlots',
-      'FbaInboundApi-generateShipmentContentUpdatePreviews',
-      'FbaInboundApi-generateTransportationOptions',
-      'FbaInboundApi-getDeliveryChallanDocument',
-      'FbaInboundApi-getInboundOperationStatus',
-      'FbaInboundApi-getInboundPlan',
-      'FbaInboundApi-getSelfShipAppointmentSlots',
-      'FbaInboundApi-getShipment',
-      'FbaInboundApi-getShipmentContentUpdatePreview',
-      'FbaInboundApi-listDeliveryWindowOptions',
-      'FbaInboundApi-listInboundPlanBoxes',
-      'FbaInboundApi-listInboundPlanItems',
-      'FbaInboundApi-listInboundPlanPallets',
-      'FbaInboundApi-listInboundPlans',
-      'FbaInboundApi-listItemComplianceDetails',
-      'FbaInboundApi-listPackingGroupBoxes',
-      'FbaInboundApi-listPackingGroupItems',
-      'FbaInboundApi-listPackingOptions',
-      'FbaInboundApi-listPlacementOptions',
-      'FbaInboundApi-listPrepDetails',
-      'FbaInboundApi-listShipmentBoxes',
-      'FbaInboundApi-listShipmentContentUpdatePreviews',
-      'FbaInboundApi-listShipmentItems',
-      'FbaInboundApi-listShipmentPallets',
-      'FbaInboundApi-listTransportationOptions',
-      'FbaInboundApi-scheduleSelfShipAppointment',
-      'FbaInboundApi-setPackingInformation',
-      'FbaInboundApi-setPrepDetails',
-      'FbaInboundApi-updateInboundPlanName',
-      'FbaInboundApi-updateItemComplianceDetails',
-      'FbaInboundApi-updateShipmentName',
-      'FbaInboundApi-updateShipmentSourceAddress',
-      'FbaInboundApi-updateShipmentTrackingDetails'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -194,7 +120,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-cancelInboundPlan',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/cancellation', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-cancelInboundPlan')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -253,7 +179,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-cancelSelfShipAppointment',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentCancellation', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-cancelSelfShipAppointment')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -315,7 +241,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-confirmDeliveryWindowOptions',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions/{deliveryWindowOptionId}/confirmation', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-confirmDeliveryWindowOptions')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -370,7 +296,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-confirmPackingOption',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions/{packingOptionId}/confirmation', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-confirmPackingOption')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -424,7 +350,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-confirmPlacementOption',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions/{placementOptionId}/confirmation', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-confirmPlacementOption')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -485,7 +411,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-confirmShipmentContentUpdatePreview',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews/{contentUpdatePreviewId}/confirmation', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-confirmShipmentContentUpdatePreview')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -539,7 +465,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-confirmTransportationOptions',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions/confirmation', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-confirmTransportationOptions')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -585,7 +511,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-createInboundPlan',
       '/inbound/fba/2024-03-20/inboundPlans', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-createInboundPlan')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -630,7 +556,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-createMarketplaceItemLabels',
       '/inbound/fba/2024-03-20/items/labels', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-createMarketplaceItemLabels')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -683,7 +609,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-generateDeliveryWindowOptions',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-generateDeliveryWindowOptions')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -730,7 +656,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-generatePackingOptions',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-generatePackingOptions')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -782,7 +708,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-generatePlacementOptions',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-generatePlacementOptions')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -842,7 +768,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-generateSelfShipAppointmentSlots',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-generateSelfShipAppointmentSlots')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -903,7 +829,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-generateShipmentContentUpdatePreviews',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-generateShipmentContentUpdatePreviews')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -957,7 +883,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-generateTransportationOptions',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-generateTransportationOptions')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1011,7 +937,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getDeliveryChallanDocument',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryChallanDocument', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getDeliveryChallanDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1058,7 +984,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getInboundOperationStatus',
       '/inbound/fba/2024-03-20/operations/{operationId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getInboundOperationStatus')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1104,7 +1030,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getInboundPlan',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getInboundPlan')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1163,7 +1089,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getSelfShipAppointmentSlots',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getSelfShipAppointmentSlots')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1220,7 +1146,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getShipment',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getShipment')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1281,7 +1207,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getShipmentContentUpdatePreview',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews/{contentUpdatePreviewId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getShipmentContentUpdatePreview')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1342,7 +1268,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-listDeliveryWindowOptions',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-listDeliveryWindowOptions')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1398,7 +1324,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-listInboundPlanBoxes',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/boxes', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-listInboundPlanBoxes')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1453,7 +1379,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-listInboundPlanItems',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/items', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-listInboundPlanItems')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1508,7 +1434,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-listInboundPlanPallets',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/pallets', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-listInboundPlanPallets')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1562,7 +1488,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-listInboundPlans',
       '/inbound/fba/2024-03-20/inboundPlans', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-listInboundPlans')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1620,7 +1546,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-listItemComplianceDetails',
       '/inbound/fba/2024-03-20/items/compliance', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-listItemComplianceDetails')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1680,7 +1606,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-listPackingGroupBoxes',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingGroups/{packingGroupId}/boxes', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-listPackingGroupBoxes')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1743,7 +1669,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-listPackingGroupItems',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingGroups/{packingGroupId}/items', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-listPackingGroupItems')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1799,7 +1725,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-listPackingOptions',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-listPackingOptions')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1854,7 +1780,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-listPlacementOptions',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-listPlacementOptions')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1910,7 +1836,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-listPrepDetails',
       '/inbound/fba/2024-03-20/items/prepDetails', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-listPrepDetails')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1970,7 +1896,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-listShipmentBoxes',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/boxes', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-listShipmentBoxes')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -2033,7 +1959,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-listShipmentContentUpdatePreviews',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-listShipmentContentUpdatePreviews')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -2096,7 +2022,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-listShipmentItems',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/items', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-listShipmentItems')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -2159,7 +2085,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-listShipmentPallets',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/pallets', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-listShipmentPallets')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -2219,7 +2145,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-listTransportationOptions',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-listTransportationOptions')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -2290,7 +2216,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-scheduleSelfShipAppointment',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots/{slotId}/schedule', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-scheduleSelfShipAppointment')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -2345,7 +2271,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-setPackingInformation',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingInformation', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-setPackingInformation')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -2391,7 +2317,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-setPrepDetails',
       '/inbound/fba/2024-03-20/items/prepDetails', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-setPrepDetails')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -2443,7 +2369,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-updateInboundPlanName',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/name', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-updateInboundPlanName')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -2496,7 +2422,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-updateItemComplianceDetails',
       '/inbound/fba/2024-03-20/items/compliance', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-updateItemComplianceDetails')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -2556,7 +2482,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-updateShipmentName',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/name', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-updateShipmentName')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -2617,7 +2543,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-updateShipmentSourceAddress',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/sourceAddress', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-updateShipmentSourceAddress')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -2678,7 +2604,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-updateShipmentTrackingDetails',
       '/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/trackingDetails', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-updateShipmentTrackingDetails')
+      contentTypes, accepts, returnType
     )
   }
 

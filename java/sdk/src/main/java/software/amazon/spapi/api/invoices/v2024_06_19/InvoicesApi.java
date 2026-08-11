@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.invoices.v2024_06_19.ExportInvoicesRequest;
@@ -47,53 +45,10 @@ import software.amazon.spapi.models.invoices.v2024_06_19.GovtInvoiceDocumentResp
 
 public class InvoicesApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public InvoicesApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public InvoicesApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket createGovernmentInvoiceBucket = Bucket.builder()
-            .addLimit(config.getLimit("InvoicesApi-createGovernmentInvoice"))
-            .build();
-
-    public final Bucket createInvoicesExportBucket = Bucket.builder()
-            .addLimit(config.getLimit("InvoicesApi-createInvoicesExport"))
-            .build();
-
-    public final Bucket getGovernmentInvoiceDocumentBucket = Bucket.builder()
-            .addLimit(config.getLimit("InvoicesApi-getGovernmentInvoiceDocument"))
-            .build();
-
-    public final Bucket getGovernmentInvoiceStatusBucket = Bucket.builder()
-            .addLimit(config.getLimit("InvoicesApi-getGovernmentInvoiceStatus"))
-            .build();
-
-    public final Bucket getInvoiceBucket =
-            Bucket.builder().addLimit(config.getLimit("InvoicesApi-getInvoice")).build();
-
-    public final Bucket getInvoicesBucket = Bucket.builder()
-            .addLimit(config.getLimit("InvoicesApi-getInvoices"))
-            .build();
-
-    public final Bucket getInvoicesAttributesBucket = Bucket.builder()
-            .addLimit(config.getLimit("InvoicesApi-getInvoicesAttributes"))
-            .build();
-
-    public final Bucket getInvoicesDocumentBucket = Bucket.builder()
-            .addLimit(config.getLimit("InvoicesApi-getInvoicesDocument"))
-            .build();
-
-    public final Bucket getInvoicesExportBucket = Bucket.builder()
-            .addLimit(config.getLimit("InvoicesApi-getInvoicesExport"))
-            .build();
-
-    public final Bucket getInvoicesExportsBucket = Bucket.builder()
-            .addLimit(config.getLimit("InvoicesApi-getInvoicesExports"))
-            .build();
 
     /**
      * Build call for createGovernmentInvoice
@@ -200,9 +155,7 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createGovernmentInvoiceBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("createGovernmentInvoice operation exceeds rate limit");
+        return apiClient.execute(call);
     }
 
     /**
@@ -260,10 +213,8 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createGovernmentInvoiceBucket.tryConsume(1)) {
-            apiClient.executeAsync(call, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createGovernmentInvoice operation exceeds rate limit");
+        apiClient.executeAsync(call, callback);
+        return call;
     }
     /**
      * Build call for createInvoicesExport
@@ -370,10 +321,8 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createInvoicesExportBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ExportInvoicesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createInvoicesExport operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ExportInvoicesResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -431,11 +380,9 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createInvoicesExportBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ExportInvoicesResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createInvoicesExport operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ExportInvoicesResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getGovernmentInvoiceDocument
@@ -661,10 +608,8 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getGovernmentInvoiceDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GovtInvoiceDocumentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getGovernmentInvoiceDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GovtInvoiceDocumentResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -778,11 +723,9 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getGovernmentInvoiceDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GovtInvoiceDocumentResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getGovernmentInvoiceDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GovtInvoiceDocumentResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getGovernmentInvoiceStatus
@@ -981,10 +924,8 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getGovernmentInvoiceStatusBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GovernmentInvoiceStatusResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getGovernmentInvoiceStatus operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GovernmentInvoiceStatusResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1082,11 +1023,9 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getGovernmentInvoiceStatusBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GovernmentInvoiceStatusResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getGovernmentInvoiceStatus operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GovernmentInvoiceStatusResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getInvoice
@@ -1216,10 +1155,8 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInvoiceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoiceResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getInvoice operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInvoiceResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1289,11 +1226,9 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInvoiceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoiceResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getInvoice operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInvoiceResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getInvoices
@@ -1677,10 +1612,8 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInvoicesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoicesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getInvoices operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInvoicesResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1917,11 +1850,9 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInvoicesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoicesResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getInvoices operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInvoicesResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getInvoicesAttributes
@@ -2033,10 +1964,8 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInvoicesAttributesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoicesAttributesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getInvoicesAttributes operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInvoicesAttributesResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2094,11 +2023,9 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInvoicesAttributesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoicesAttributesResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getInvoicesAttributes operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInvoicesAttributesResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getInvoicesDocument
@@ -2217,10 +2144,8 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInvoicesDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoicesDocumentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getInvoicesDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInvoicesDocumentResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2283,11 +2208,9 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInvoicesDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoicesDocumentResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getInvoicesDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInvoicesDocumentResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getInvoicesExport
@@ -2400,10 +2323,8 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInvoicesExportBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoicesExportResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getInvoicesExport operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInvoicesExportResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2463,11 +2384,9 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInvoicesExportBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoicesExportResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getInvoicesExport operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInvoicesExportResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getInvoicesExports
@@ -2670,10 +2589,8 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInvoicesExportsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoicesExportsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getInvoicesExports operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInvoicesExportsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2787,11 +2704,9 @@ public class InvoicesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInvoicesExportsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoicesExportsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getInvoicesExports operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInvoicesExportsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -2799,7 +2714,6 @@ public class InvoicesApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -2818,11 +2732,6 @@ public class InvoicesApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -2845,11 +2754,9 @@ public class InvoicesApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new InvoicesApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new InvoicesApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

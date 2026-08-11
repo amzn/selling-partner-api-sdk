@@ -69,7 +69,7 @@ class VendorShippingLabelsApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new VendorShippingLabelsApi($config, null, false);
+        $this->api = new VendorShippingLabelsApi($config);
     }
 
 

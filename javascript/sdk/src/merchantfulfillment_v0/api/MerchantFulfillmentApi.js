@@ -20,8 +20,6 @@ import { GetAdditionalSellerInputsResponse } from '../model/GetAdditionalSellerI
 import { GetEligibleShipmentServicesRequest } from '../model/GetEligibleShipmentServicesRequest.js'
 import { GetEligibleShipmentServicesResponse } from '../model/GetEligibleShipmentServicesResponse.js'
 import { GetShipmentResponse } from '../model/GetShipmentResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * MerchantFulfillment service.
@@ -29,9 +27,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v0
 */
 export class MerchantFulfillmentApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new MerchantFulfillmentApi.
     * @alias module:merchantfulfillment_v0/api/MerchantFulfillmentApi
@@ -41,35 +36,6 @@ export class MerchantFulfillmentApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'MerchantFulfillmentApi-cancelShipment',
-      'MerchantFulfillmentApi-createShipment',
-      'MerchantFulfillmentApi-getAdditionalSellerInputs',
-      'MerchantFulfillmentApi-getEligibleShipmentServices',
-      'MerchantFulfillmentApi-getShipment'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -102,7 +68,7 @@ export class MerchantFulfillmentApi {
     return this.apiClient.callApi('MerchantFulfillmentApi-cancelShipment',
       '/mfn/v0/shipments/{shipmentId}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-cancelShipment')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -147,7 +113,7 @@ export class MerchantFulfillmentApi {
     return this.apiClient.callApi('MerchantFulfillmentApi-createShipment',
       '/mfn/v0/shipments', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-createShipment')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -192,7 +158,7 @@ export class MerchantFulfillmentApi {
     return this.apiClient.callApi('MerchantFulfillmentApi-getAdditionalSellerInputs',
       '/mfn/v0/additionalSellerInputs', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-getAdditionalSellerInputs')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -237,7 +203,7 @@ export class MerchantFulfillmentApi {
     return this.apiClient.callApi('MerchantFulfillmentApi-getEligibleShipmentServices',
       '/mfn/v0/eligibleShippingServices', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-getEligibleShipmentServices')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -283,7 +249,7 @@ export class MerchantFulfillmentApi {
     return this.apiClient.callApi('MerchantFulfillmentApi-getShipment',
       '/mfn/v0/shipments/{shipmentId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('MerchantFulfillmentApi-getShipment')
+      contentTypes, accepts, returnType
     )
   }
 

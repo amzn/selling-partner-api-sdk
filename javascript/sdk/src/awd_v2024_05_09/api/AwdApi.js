@@ -32,8 +32,6 @@ import { ShipmentLabelPageTypes } from '../model/ShipmentLabelPageTypes.js'
 import { ShipmentLabels } from '../model/ShipmentLabels.js'
 import { ShipmentListing } from '../model/ShipmentListing.js'
 import { TransportationDetails } from '../model/TransportationDetails.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Awd service.
@@ -41,9 +39,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-05-09
 */
 export class AwdApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new AwdApi.
     * @alias module:awd_v2024_05_09/api/AwdApi
@@ -53,51 +48,6 @@ export class AwdApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'AwdApi-cancelInbound',
-      'AwdApi-checkInboundEligibility',
-      'AwdApi-confirmInbound',
-      'AwdApi-confirmOutbound',
-      'AwdApi-confirmReplenishmentOrder',
-      'AwdApi-createInbound',
-      'AwdApi-createOutbound',
-      'AwdApi-createReplenishmentOrder',
-      'AwdApi-getInbound',
-      'AwdApi-getInboundShipment',
-      'AwdApi-getInboundShipmentLabels',
-      'AwdApi-getLabelPageTypes',
-      'AwdApi-getOutbound',
-      'AwdApi-getReplenishmentOrder',
-      'AwdApi-listInboundShipments',
-      'AwdApi-listInventory',
-      'AwdApi-listOutbounds',
-      'AwdApi-listReplenishmentOrders',
-      'AwdApi-updateInbound',
-      'AwdApi-updateInboundShipmentTransportDetails',
-      'AwdApi-updateOutbound'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -130,7 +80,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-cancelInbound',
       '/awd/2024-05-09/inboundOrders/{orderId}/cancellation', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-cancelInbound')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -175,7 +125,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-checkInboundEligibility',
       '/awd/2024-05-09/inboundEligibility', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-checkInboundEligibility')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -221,7 +171,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-confirmInbound',
       '/awd/2024-05-09/inboundOrders/{orderId}/confirmation', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-confirmInbound')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -267,7 +217,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-confirmOutbound',
       '/awd/2024-05-09/outboundOrders/{orderId}/confirmation', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-confirmOutbound')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -313,7 +263,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-confirmReplenishmentOrder',
       '/awd/2024-05-09/replenishmentOrders/{orderId}/confirmation', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-confirmReplenishmentOrder')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -358,7 +308,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-createInbound',
       '/awd/2024-05-09/inboundOrders', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-createInbound')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -403,7 +353,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-createOutbound',
       '/awd/2024-05-09/outboundOrders', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-createOutbound')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -448,7 +398,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-createReplenishmentOrder',
       '/awd/2024-05-09/replenishmentOrders', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-createReplenishmentOrder')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -494,7 +444,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-getInbound',
       '/awd/2024-05-09/inboundOrders/{orderId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-getInbound')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -544,7 +494,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-getInboundShipment',
       '/awd/2024-05-09/inboundShipments/{shipmentId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-getInboundShipment')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -598,7 +548,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-getInboundShipmentLabels',
       '/awd/2024-05-09/inboundShipments/{shipmentId}/labels', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-getInboundShipmentLabels')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -647,7 +597,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-getLabelPageTypes',
       '/awd/2024-05-09/inboundShipments/{shipmentId}/labelPageTypes', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-getLabelPageTypes')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -693,7 +643,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-getOutbound',
       '/awd/2024-05-09/outboundOrders/{orderId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-getOutbound')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -739,7 +689,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-getReplenishmentOrder',
       '/awd/2024-05-09/replenishmentOrders/{orderId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-getReplenishmentOrder')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -794,7 +744,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-listInboundShipments',
       '/awd/2024-05-09/inboundShipments', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-listInboundShipments')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -852,7 +802,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-listInventory',
       '/awd/2024-05-09/inventory', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-listInventory')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -908,7 +858,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-listOutbounds',
       '/awd/2024-05-09/outboundOrders', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-listOutbounds')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -964,7 +914,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-listReplenishmentOrders',
       '/awd/2024-05-09/replenishmentOrders', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-listReplenishmentOrders')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1021,7 +971,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-updateInbound',
       '/awd/2024-05-09/inboundOrders/{orderId}', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-updateInbound')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1074,7 +1024,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-updateInboundShipmentTransportDetails',
       '/awd/2024-05-09/inboundShipments/{shipmentId}/transport', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-updateInboundShipmentTransportDetails')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -1127,7 +1077,7 @@ export class AwdApi {
     return this.apiClient.callApi('AwdApi-updateOutbound',
       '/awd/2024-05-09/outboundOrders/{orderId}', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-updateOutbound')
+      contentTypes, accepts, returnType
     )
   }
 

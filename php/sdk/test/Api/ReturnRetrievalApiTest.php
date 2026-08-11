@@ -69,7 +69,7 @@ class ReturnRetrievalApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new ReturnRetrievalApi($config, null, false);
+        $this->api = new ReturnRetrievalApi($config);
     }
 
 

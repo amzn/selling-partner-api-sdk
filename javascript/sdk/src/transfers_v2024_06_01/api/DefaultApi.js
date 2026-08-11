@@ -18,8 +18,6 @@ import { InitiatePayoutRequest } from '../model/InitiatePayoutRequest.js'
 import { InitiatePayoutResponse } from '../model/InitiatePayoutResponse.js'
 import { ListExpectedPayoutsResponse } from '../model/ListExpectedPayoutsResponse.js'
 import { ListPayoutsResponse } from '../model/ListPayoutsResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Default service.
@@ -27,9 +25,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-06-01
 */
 export class DefaultApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new DefaultApi.
     * @alias module:transfers_v2024_06_01/api/DefaultApi
@@ -39,34 +34,6 @@ export class DefaultApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'DefaultApi-getPaymentMethods',
-      'DefaultApi-initiatePayout',
-      'DefaultApi-listExpectedPayouts',
-      'DefaultApi-listPayouts'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -103,7 +70,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-getPaymentMethods',
       '/finances/transfers/2024-06-01/paymentMethods', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-getPaymentMethods')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -150,7 +117,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-initiatePayout',
       '/finances/transfers/2024-06-01/payouts', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-initiatePayout')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -197,7 +164,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-listExpectedPayouts',
       '/finances/transfers/2024-06-01/payouts/expected', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listExpectedPayouts')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -253,7 +220,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-listPayouts',
       '/finances/transfers/2024-06-01/payouts', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listPayouts')
+      contentTypes, accepts, returnType
     )
   }
 

@@ -43,9 +43,6 @@ use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\orders\v2026_01_01\GetOrderResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * GetOrderApi Class Doc Comment.
@@ -58,7 +55,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class GetOrderApi
 {
-    public ?LimiterInterface $getOrderRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -70,29 +66,16 @@ class GetOrderApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('GetOrderApi-getOrder'), $this->rateLimitStorage);
-            $this->getOrderRateLimiter = $factory->create('GetOrderApi-getOrder');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -175,9 +158,6 @@ class GetOrderApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getOrderRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -279,9 +259,6 @@ class GetOrderApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'GetOrderApi-getOrder');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getOrderRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

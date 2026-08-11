@@ -44,9 +44,6 @@ use SpApi\HeaderSelector;
 use SpApi\Model\externalFulfillment\inventory\v2024_09_11\BatchInventoryRequest;
 use SpApi\Model\externalFulfillment\inventory\v2024_09_11\BatchInventoryResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * BatchInventoryApi Class Doc Comment.
@@ -59,7 +56,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class BatchInventoryApi
 {
-    public ?LimiterInterface $batchInventoryRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -71,29 +67,16 @@ class BatchInventoryApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('BatchInventoryApi-batchInventory'), $this->rateLimitStorage);
-            $this->batchInventoryRateLimiter = $factory->create('BatchInventoryApi-batchInventory');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -170,9 +153,6 @@ class BatchInventoryApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->batchInventoryRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -268,9 +248,6 @@ class BatchInventoryApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'BatchInventoryApi-batchInventory');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->batchInventoryRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

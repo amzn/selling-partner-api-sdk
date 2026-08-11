@@ -17,8 +17,6 @@ import { GetShipmentLabels } from '../model/GetShipmentLabels.js'
 import { SubmitShipmentConfirmationsRequest } from '../model/SubmitShipmentConfirmationsRequest.js'
 import { SubmitShipmentConfirmationsResponse } from '../model/SubmitShipmentConfirmationsResponse.js'
 import { SubmitShipments } from '../model/SubmitShipments.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * VendorShipping service.
@@ -26,9 +24,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class VendorShippingApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new VendorShippingApi.
     * @alias module:vendorshipments_v1/api/VendorShippingApi
@@ -38,34 +33,6 @@ export class VendorShippingApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'VendorShippingApi-getShipmentDetails',
-      'VendorShippingApi-getShipmentLabels',
-      'VendorShippingApi-submitShipmentConfirmations',
-      'VendorShippingApi-submitShipments'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -142,7 +109,7 @@ export class VendorShippingApi {
     return this.apiClient.callApi('VendorShippingApi-getShipmentDetails',
       '/vendor/shipping/v1/shipments', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-getShipmentDetails')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -224,7 +191,7 @@ export class VendorShippingApi {
     return this.apiClient.callApi('VendorShippingApi-getShipmentLabels',
       '/vendor/shipping/v1/transportLabels', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-getShipmentLabels')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -278,7 +245,7 @@ export class VendorShippingApi {
     return this.apiClient.callApi('VendorShippingApi-submitShipmentConfirmations',
       '/vendor/shipping/v1/shipmentConfirmations', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-submitShipmentConfirmations')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -325,7 +292,7 @@ export class VendorShippingApi {
     return this.apiClient.callApi('VendorShippingApi-submitShipments',
       '/vendor/shipping/v1/shipments', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-submitShipments')
+      contentTypes, accepts, returnType
     )
   }
 

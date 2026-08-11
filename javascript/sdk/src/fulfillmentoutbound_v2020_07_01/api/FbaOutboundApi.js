@@ -32,8 +32,6 @@ import { SubmitFulfillmentOrderStatusUpdateRequest } from '../model/SubmitFulfil
 import { SubmitFulfillmentOrderStatusUpdateResponse } from '../model/SubmitFulfillmentOrderStatusUpdateResponse.js'
 import { UpdateFulfillmentOrderRequest } from '../model/UpdateFulfillmentOrderRequest.js'
 import { UpdateFulfillmentOrderResponse } from '../model/UpdateFulfillmentOrderResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * FbaOutbound service.
@@ -41,9 +39,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2020-07-01
 */
 export class FbaOutboundApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new FbaOutboundApi.
     * @alias module:fulfillmentoutbound_v2020_07_01/api/FbaOutboundApi
@@ -53,44 +48,6 @@ export class FbaOutboundApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'FbaOutboundApi-cancelFulfillmentOrder',
-      'FbaOutboundApi-createFulfillmentOrder',
-      'FbaOutboundApi-createFulfillmentReturn',
-      'FbaOutboundApi-deliveryOffers',
-      'FbaOutboundApi-getFeatureInventory',
-      'FbaOutboundApi-getFeatureSKU',
-      'FbaOutboundApi-getFeatures',
-      'FbaOutboundApi-getFulfillmentOrder',
-      'FbaOutboundApi-getFulfillmentPreview',
-      'FbaOutboundApi-getPackageTrackingDetails',
-      'FbaOutboundApi-listAllFulfillmentOrders',
-      'FbaOutboundApi-listReturnReasonCodes',
-      'FbaOutboundApi-submitFulfillmentOrderStatusUpdate',
-      'FbaOutboundApi-updateFulfillmentOrder'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -123,7 +80,7 @@ export class FbaOutboundApi {
     return this.apiClient.callApi('FbaOutboundApi-cancelFulfillmentOrder',
       '/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/cancel', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaOutboundApi-cancelFulfillmentOrder')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -168,7 +125,7 @@ export class FbaOutboundApi {
     return this.apiClient.callApi('FbaOutboundApi-createFulfillmentOrder',
       '/fba/outbound/2020-07-01/fulfillmentOrders', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaOutboundApi-createFulfillmentOrder')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -220,7 +177,7 @@ export class FbaOutboundApi {
     return this.apiClient.callApi('FbaOutboundApi-createFulfillmentReturn',
       '/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/return', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaOutboundApi-createFulfillmentReturn')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -266,7 +223,7 @@ export class FbaOutboundApi {
     return this.apiClient.callApi('FbaOutboundApi-deliveryOffers',
       '/fba/outbound/2020-07-01/deliveryOffers', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaOutboundApi-deliveryOffers')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -325,7 +282,7 @@ export class FbaOutboundApi {
     return this.apiClient.callApi('FbaOutboundApi-getFeatureInventory',
       '/fba/outbound/2020-07-01/features/inventory/{featureName}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaOutboundApi-getFeatureInventory')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -389,7 +346,7 @@ export class FbaOutboundApi {
     return this.apiClient.callApi('FbaOutboundApi-getFeatureSKU',
       '/fba/outbound/2020-07-01/features/inventory/{featureName}/{sellerSku}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaOutboundApi-getFeatureSKU')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -437,7 +394,7 @@ export class FbaOutboundApi {
     return this.apiClient.callApi('FbaOutboundApi-getFeatures',
       '/fba/outbound/2020-07-01/features', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaOutboundApi-getFeatures')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -483,7 +440,7 @@ export class FbaOutboundApi {
     return this.apiClient.callApi('FbaOutboundApi-getFulfillmentOrder',
       '/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaOutboundApi-getFulfillmentOrder')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -528,7 +485,7 @@ export class FbaOutboundApi {
     return this.apiClient.callApi('FbaOutboundApi-getFulfillmentPreview',
       '/fba/outbound/2020-07-01/fulfillmentOrders/preview', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaOutboundApi-getFulfillmentPreview')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -574,7 +531,7 @@ export class FbaOutboundApi {
     return this.apiClient.callApi('FbaOutboundApi-getPackageTrackingDetails',
       '/fba/outbound/2020-07-01/tracking', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaOutboundApi-getPackageTrackingDetails')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -619,7 +576,7 @@ export class FbaOutboundApi {
     return this.apiClient.callApi('FbaOutboundApi-listAllFulfillmentOrders',
       '/fba/outbound/2020-07-01/fulfillmentOrders', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaOutboundApi-listAllFulfillmentOrders')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -675,7 +632,7 @@ export class FbaOutboundApi {
     return this.apiClient.callApi('FbaOutboundApi-listReturnReasonCodes',
       '/fba/outbound/2020-07-01/returnReasonCodes', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaOutboundApi-listReturnReasonCodes')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -731,7 +688,7 @@ export class FbaOutboundApi {
     return this.apiClient.callApi('FbaOutboundApi-submitFulfillmentOrderStatusUpdate',
       '/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/status', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaOutboundApi-submitFulfillmentOrderStatusUpdate')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -784,7 +741,7 @@ export class FbaOutboundApi {
     return this.apiClient.callApi('FbaOutboundApi-updateFulfillmentOrder',
       '/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}', 'PUT',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaOutboundApi-updateFulfillmentOrder')
+      contentTypes, accepts, returnType
     )
   }
 

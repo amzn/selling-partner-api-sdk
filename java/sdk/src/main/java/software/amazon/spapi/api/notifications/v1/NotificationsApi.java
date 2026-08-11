@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.notifications.v1.CreateDestinationRequest;
@@ -48,54 +46,10 @@ import software.amazon.spapi.models.notifications.v1.SendTestNotificationRespons
 
 public class NotificationsApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public NotificationsApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public NotificationsApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket createDestinationBucket = Bucket.builder()
-            .addLimit(config.getLimit("NotificationsApi-createDestination"))
-            .build();
-
-    public final Bucket createSubscriptionBucket = Bucket.builder()
-            .addLimit(config.getLimit("NotificationsApi-createSubscription"))
-            .build();
-
-    public final Bucket deleteDestinationBucket = Bucket.builder()
-            .addLimit(config.getLimit("NotificationsApi-deleteDestination"))
-            .build();
-
-    public final Bucket deleteSubscriptionByIdBucket = Bucket.builder()
-            .addLimit(config.getLimit("NotificationsApi-deleteSubscriptionById"))
-            .build();
-
-    public final Bucket getDestinationBucket = Bucket.builder()
-            .addLimit(config.getLimit("NotificationsApi-getDestination"))
-            .build();
-
-    public final Bucket getDestinationsBucket = Bucket.builder()
-            .addLimit(config.getLimit("NotificationsApi-getDestinations"))
-            .build();
-
-    public final Bucket getSubscriptionBucket = Bucket.builder()
-            .addLimit(config.getLimit("NotificationsApi-getSubscription"))
-            .build();
-
-    public final Bucket getSubscriptionByIdBucket = Bucket.builder()
-            .addLimit(config.getLimit("NotificationsApi-getSubscriptionById"))
-            .build();
-
-    public final Bucket getSubscriptionsBucket = Bucket.builder()
-            .addLimit(config.getLimit("NotificationsApi-getSubscriptions"))
-            .build();
-
-    public final Bucket sendTestNotificationBucket = Bucket.builder()
-            .addLimit(config.getLimit("NotificationsApi-sendTestNotification"))
-            .build();
 
     /**
      * Build call for createDestination
@@ -229,10 +183,8 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createDestinationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateDestinationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createDestination operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateDestinationResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -317,11 +269,9 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createDestinationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateDestinationResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createDestination operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateDestinationResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createSubscription
@@ -484,10 +434,8 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createSubscriptionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateSubscriptionResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createSubscription operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateSubscriptionResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -587,11 +535,9 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createSubscriptionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateSubscriptionResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createSubscription operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateSubscriptionResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for deleteDestination
@@ -725,10 +671,8 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || deleteDestinationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<DeleteDestinationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("deleteDestination operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<DeleteDestinationResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -810,11 +754,9 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || deleteDestinationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<DeleteDestinationResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("deleteDestination operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<DeleteDestinationResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for deleteSubscriptionById
@@ -985,10 +927,8 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || deleteSubscriptionByIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<DeleteSubscriptionByIdResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("deleteSubscriptionById operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<DeleteSubscriptionByIdResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1090,11 +1030,9 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || deleteSubscriptionByIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<DeleteSubscriptionByIdResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("deleteSubscriptionById operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<DeleteSubscriptionByIdResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getDestination
@@ -1229,10 +1167,8 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getDestinationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetDestinationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getDestination operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetDestinationResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1313,11 +1249,9 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getDestinationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetDestinationResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getDestination operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetDestinationResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getDestinations
@@ -1436,10 +1370,8 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getDestinationsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetDestinationsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getDestinations operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetDestinationsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1515,11 +1447,9 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getDestinationsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetDestinationsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getDestinations operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetDestinationsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getSubscription
@@ -1676,10 +1606,8 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getSubscriptionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSubscriptionResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getSubscription operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetSubscriptionResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1774,11 +1702,9 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getSubscriptionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSubscriptionResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getSubscription operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetSubscriptionResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getSubscriptionById
@@ -1943,10 +1869,8 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getSubscriptionByIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSubscriptionByIdResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getSubscriptionById operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetSubscriptionByIdResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2042,11 +1966,9 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getSubscriptionByIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSubscriptionByIdResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getSubscriptionById operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetSubscriptionByIdResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getSubscriptions
@@ -2246,10 +2168,8 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getSubscriptionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSubscriptionsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getSubscriptions operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetSubscriptionsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2369,11 +2289,9 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getSubscriptionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetSubscriptionsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getSubscriptions operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetSubscriptionsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for sendTestNotification
@@ -2524,10 +2442,8 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || sendTestNotificationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SendTestNotificationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("sendTestNotification operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SendTestNotificationResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2617,11 +2533,9 @@ public class NotificationsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || sendTestNotificationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SendTestNotificationResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("sendTestNotification operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SendTestNotificationResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -2629,7 +2543,6 @@ public class NotificationsApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -2648,11 +2561,6 @@ public class NotificationsApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -2675,11 +2583,9 @@ public class NotificationsApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new NotificationsApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new NotificationsApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

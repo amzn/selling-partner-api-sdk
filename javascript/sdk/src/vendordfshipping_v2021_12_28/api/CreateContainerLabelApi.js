@@ -15,8 +15,6 @@ import { ApiClient } from '../ApiClient.js'
 import { CreateContainerLabelRequest } from '../model/CreateContainerLabelRequest.js'
 import { CreateContainerLabelResponse } from '../model/CreateContainerLabelResponse.js'
 import { ErrorList } from '../model/ErrorList.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * CreateContainerLabel service.
@@ -24,9 +22,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2021-12-28
 */
 export class CreateContainerLabelApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new CreateContainerLabelApi.
     * @alias module:vendordfshipping_v2021_12_28/api/CreateContainerLabelApi
@@ -36,31 +31,6 @@ export class CreateContainerLabelApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'CreateContainerLabelApi-createContainerLabel'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -93,7 +63,7 @@ export class CreateContainerLabelApi {
     return this.apiClient.callApi('CreateContainerLabelApi-createContainerLabel',
       '/vendor/directFulfillment/shipping/2021-12-28/containerLabel', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('CreateContainerLabelApi-createContainerLabel')
+      contentTypes, accepts, returnType
     )
   }
 

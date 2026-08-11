@@ -69,7 +69,7 @@ class UpdateInventoryApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new UpdateInventoryApi($config, null, false);
+        $this->api = new UpdateInventoryApi($config);
     }
 
 

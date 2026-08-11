@@ -69,7 +69,7 @@ class CustomerInvoicesApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new CustomerInvoicesApi($config, null, false);
+        $this->api = new CustomerInvoicesApi($config);
     }
 
 

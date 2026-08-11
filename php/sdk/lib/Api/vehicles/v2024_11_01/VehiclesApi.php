@@ -43,9 +43,6 @@ use SpApi\Configuration;
 use SpApi\HeaderSelector;
 use SpApi\Model\vehicles\v2024_11_01\VehiclesResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * VehiclesApi Class Doc Comment.
@@ -58,7 +55,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class VehiclesApi
 {
-    public ?LimiterInterface $getVehiclesRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -70,29 +66,16 @@ class VehiclesApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('VehiclesApi-getVehicles'), $this->rateLimitStorage);
-            $this->getVehiclesRateLimiter = $factory->create('VehiclesApi-getVehicles');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -187,9 +170,6 @@ class VehiclesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getVehiclesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -303,9 +283,6 @@ class VehiclesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'VehiclesApi-getVehicles');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getVehiclesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

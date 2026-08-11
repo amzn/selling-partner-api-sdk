@@ -22,8 +22,6 @@ import { Report } from '../model/Report.js'
 import { ReportDocument } from '../model/ReportDocument.js'
 import { ReportSchedule } from '../model/ReportSchedule.js'
 import { ReportScheduleList } from '../model/ReportScheduleList.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Reports service.
@@ -31,9 +29,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2021-06-30
 */
 export class ReportsApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new ReportsApi.
     * @alias module:reports_v2021_06_30/api/ReportsApi
@@ -43,39 +38,6 @@ export class ReportsApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'ReportsApi-cancelReport',
-      'ReportsApi-cancelReportSchedule',
-      'ReportsApi-createReport',
-      'ReportsApi-createReportSchedule',
-      'ReportsApi-getReport',
-      'ReportsApi-getReportDocument',
-      'ReportsApi-getReportSchedule',
-      'ReportsApi-getReportSchedules',
-      'ReportsApi-getReports'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -108,7 +70,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-cancelReport',
       '/reports/2021-06-30/reports/{reportId}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-cancelReport')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -154,7 +116,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-cancelReportSchedule',
       '/reports/2021-06-30/schedules/{reportScheduleId}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-cancelReportSchedule')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -199,7 +161,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-createReport',
       '/reports/2021-06-30/reports', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-createReport')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -244,7 +206,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-createReportSchedule',
       '/reports/2021-06-30/schedules', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-createReportSchedule')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -290,7 +252,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-getReport',
       '/reports/2021-06-30/reports/{reportId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-getReport')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -340,7 +302,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-getReportDocument',
       '/reports/2021-06-30/documents/{reportDocumentId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-getReportDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -388,7 +350,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-getReportSchedule',
       '/reports/2021-06-30/schedules/{reportScheduleId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-getReportSchedule')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -434,7 +396,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-getReportSchedules',
       '/reports/2021-06-30/schedules', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-getReportSchedules')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -489,7 +451,7 @@ export class ReportsApi {
     return this.apiClient.callApi('ReportsApi-getReports',
       '/reports/2021-06-30/reports', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ReportsApi-getReports')
+      contentTypes, accepts, returnType
     )
   }
 

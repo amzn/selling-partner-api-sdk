@@ -69,7 +69,7 @@ class TransferPreviewApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new TransferPreviewApi($config, null, false);
+        $this->api = new TransferPreviewApi($config);
     }
 
 

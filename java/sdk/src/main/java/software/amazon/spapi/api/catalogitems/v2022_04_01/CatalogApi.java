@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.catalogitems.v2022_04_01.Item;
@@ -37,22 +35,10 @@ import software.amazon.spapi.models.catalogitems.v2022_04_01.ItemSearchResults;
 
 public class CatalogApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public CatalogApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public CatalogApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket getCatalogItemBucket = Bucket.builder()
-            .addLimit(config.getLimit("CatalogApi-getCatalogItem"))
-            .build();
-
-    public final Bucket searchCatalogItemsBucket = Bucket.builder()
-            .addLimit(config.getLimit("CatalogApi-searchCatalogItems"))
-            .build();
 
     /**
      * Build call for getCatalogItem
@@ -237,10 +223,8 @@ public class CatalogApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getCatalogItemBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Item>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getCatalogItem operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<Item>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -345,11 +329,9 @@ public class CatalogApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getCatalogItemBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Item>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getCatalogItem operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<Item>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for searchCatalogItems
@@ -714,10 +696,8 @@ public class CatalogApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || searchCatalogItemsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("searchCatalogItems operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -945,11 +925,9 @@ public class CatalogApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || searchCatalogItemsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("searchCatalogItems operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ItemSearchResults>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -957,7 +935,6 @@ public class CatalogApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -976,11 +953,6 @@ public class CatalogApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -1003,11 +975,9 @@ public class CatalogApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new CatalogApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new CatalogApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

@@ -91,31 +91,6 @@ try {
 }
 ```
 
-### Built-in rate limiter
-
-The SDK comes with a built-in rate limiter. In case you hit a certain rate limit, calling an operation will throw `RateLimitExceededException`. Catch this exception and handle it appropriately.
-By default, a standard rate limit configuration is applied. You can find the current rate limit configuration for each API on a dedicated page in the documention (e.g. for [Listings Items API](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-rate-limits)).
-
-It is possible to disable the built-in rate limiter by setting `rateLimiterEnabled` to `false` when instantiating a API instance:
-```php
-$api = new OrdersV0Api($config, $client, false);
-```
-
-It is also possible to override the default rate limit configuration. This has to be done after the API instance has been created and for each operation separately:
-```php
-$rateLimitConfiguration = [
-    'id' => 'spApi',
-    'policy' => 'token_bucket',
-    'limit' => 5, // capacity of bucket
-    'rate' => [ // refill rate
-        'interval' => '1 second',
-        'amount' => 50
-    ],
-];
-
-$factory = new RateLimiterFactory($rateLimitConfiguration, new InMemoryStorage());
-$api->getOrderRateLimiter = $factory->create("<insert-unique-id>"); // Use unique id in create-method
-```
 ### Restricted Data Token (RDT) Support
 
 The SDK provides built-in support for working with Restricted Data Tokens (RDTs), which are required to access personally identifiable information (PII) in [certain API operations](https://developer-docs.amazon.com/sp-api/docs/tokens-api-use-case-guide#restricted-operations).

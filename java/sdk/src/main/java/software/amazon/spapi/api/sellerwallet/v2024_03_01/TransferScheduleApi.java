@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.sellerwallet.v2024_03_01.DeleteTransferSchedule;
@@ -39,34 +37,10 @@ import software.amazon.spapi.models.sellerwallet.v2024_03_01.TransferScheduleReq
 
 public class TransferScheduleApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public TransferScheduleApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public TransferScheduleApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket createTransferScheduleBucket = Bucket.builder()
-            .addLimit(config.getLimit("TransferScheduleApi-createTransferSchedule"))
-            .build();
-
-    public final Bucket deleteScheduleTransactionBucket = Bucket.builder()
-            .addLimit(config.getLimit("TransferScheduleApi-deleteScheduleTransaction"))
-            .build();
-
-    public final Bucket getTransferScheduleBucket = Bucket.builder()
-            .addLimit(config.getLimit("TransferScheduleApi-getTransferSchedule"))
-            .build();
-
-    public final Bucket listTransferSchedulesBucket = Bucket.builder()
-            .addLimit(config.getLimit("TransferScheduleApi-listTransferSchedules"))
-            .build();
-
-    public final Bucket updateTransferScheduleBucket = Bucket.builder()
-            .addLimit(config.getLimit("TransferScheduleApi-updateTransferSchedule"))
-            .build();
 
     /**
      * Build call for createTransferSchedule
@@ -252,10 +226,8 @@ public class TransferScheduleApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createTransferScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createTransferSchedule operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -350,11 +322,9 @@ public class TransferScheduleApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createTransferScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createTransferSchedule operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for deleteScheduleTransaction
@@ -502,10 +472,8 @@ public class TransferScheduleApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || deleteScheduleTransactionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<DeleteTransferSchedule>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("deleteScheduleTransaction operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<DeleteTransferSchedule>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -583,11 +551,9 @@ public class TransferScheduleApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || deleteScheduleTransactionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<DeleteTransferSchedule>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("deleteScheduleTransaction operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<DeleteTransferSchedule>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getTransferSchedule
@@ -731,10 +697,8 @@ public class TransferScheduleApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getTransferScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getTransferSchedule operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -809,11 +773,9 @@ public class TransferScheduleApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getTransferScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getTransferSchedule operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for listTransferSchedules
@@ -977,10 +939,8 @@ public class TransferScheduleApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listTransferSchedulesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransferScheduleListing>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listTransferSchedules operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<TransferScheduleListing>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1074,11 +1034,9 @@ public class TransferScheduleApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listTransferSchedulesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransferScheduleListing>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("listTransferSchedules operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<TransferScheduleListing>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for updateTransferSchedule
@@ -1267,10 +1225,8 @@ public class TransferScheduleApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateTransferScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateTransferSchedule operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1366,11 +1322,9 @@ public class TransferScheduleApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateTransferScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("updateTransferSchedule operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<TransferSchedule>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -1378,7 +1332,6 @@ public class TransferScheduleApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -1397,11 +1350,6 @@ public class TransferScheduleApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -1424,11 +1372,9 @@ public class TransferScheduleApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new TransferScheduleApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new TransferScheduleApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

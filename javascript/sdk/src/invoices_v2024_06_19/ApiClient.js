@@ -15,8 +15,6 @@ import superagent from 'superagent'
 import querystring from 'querystring'
 import { readFileSync } from 'node:fs'
 import { URL } from 'node:url'
-import { RateLimitConfiguration } from '../../helper/RateLimitConfiguration.mjs'
-import { SuperagentRateLimiter } from '../../helper/SuperagentRateLimiter.mjs'
 
 /**
 * @module invoices_v2024_06_19/ApiClient
@@ -193,8 +191,6 @@ export class ApiClient {
   #tokenForApiCall = null
   #lwaClient = null
   #rdtClient = null
-  #customizedRateLimiterMap = null
-  #useRateLimiter = true
 
   /**
     * Constructs a new ApiClient.
@@ -261,54 +257,6 @@ export class ApiClient {
          * Allow user to override superagent agent
          */
     this.requestAgent = null
-
-    /*
-         * Initialize customized rate limiter map
-         */
-    this.#customizedRateLimiterMap = new Map()
-  }
-
-  /**
-    * Set customized rate limiter for one operation
-    * For operations that customized rate limiter are not set
-    * Will use default rate limiter
-    * @param {String} operationName
-    * @param {RateLimitConfiguration} config
-    */
-  setCustomizedRateLimiterForOperation (operationName, config) {
-    this.#customizedRateLimiterMap.set(operationName, new SuperagentRateLimiter(config))
-  }
-
-  /**
-    * Disable customized rate limiter for one operation
-    * Fall back to default rate limiter
-    * @param {String} operationName
-    */
-  disableCustomizedRatelimiterForOperation (operationName) {
-    this.#customizedRateLimiterMap.delete(operationName)
-  }
-
-  /**
-    * Clear customized rate limiter for all operations
-    * All operations will fall back to default rate limiter
-    * @param {String} operationName
-    */
-  disableCustomizedRatelimiterForAll () {
-    this.#customizedRateLimiterMap.clear()
-  }
-
-  /**
-    * Disable both default and customized rate limiter for all operations
-    */
-  disableRateLimiter () {
-    this.#useRateLimiter = false
-  }
-
-  /**
-    * Enable default or customized rate limiter for all operations
-    */
-  enableRateLimiter () {
-    this.#useRateLimiter = true
   }
 
   /**
@@ -609,25 +557,15 @@ export class ApiClient {
     * @param {Array<String>} accepts An array of acceptable response MIME types.
     * @param {(String|Array|ObjectFunction)} returnType The required type to return; can be a string for simple types or the
     * constructor for a complex type.
-    * @param {SuperagentRateLimiter} defaultRateLimiter The default rate limiter.
     * @returns {Promise} A {@link https://www.promisejs.org/|Promise} object.
     */
   async callApi (operation, path, httpMethod, pathParams,
     queryParams, headerParams, formParams, bodyParam, contentTypes, accepts,
-    returnType, defaultRateLimiter) {
+    returnType) {
     const url = this.buildUrl(path, pathParams)
     const request = superagent(httpMethod, url)
     if (!this.#tokenForApiCall && !this.#lwaClient && !this.#rdtClient) {
       throw new Error('none of accessToken, RDT token and auto-retrieval is set.')
-    }
-
-    if (this.#useRateLimiter) {
-      // Set rate limiter
-      if (this.#customizedRateLimiterMap.get(operation)) {
-        request.use(this.#customizedRateLimiterMap.get(operation).getPlugin())
-      } else if (defaultRateLimiter) {
-        request.use(defaultRateLimiter.getPlugin())
-      }
     }
 
     // set query parameters

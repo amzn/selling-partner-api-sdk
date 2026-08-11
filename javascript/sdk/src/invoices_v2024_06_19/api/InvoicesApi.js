@@ -24,8 +24,6 @@ import { GetInvoicesResponse } from '../model/GetInvoicesResponse.js'
 import { GovernmentInvoiceRequest } from '../model/GovernmentInvoiceRequest.js'
 import { GovernmentInvoiceStatusResponse } from '../model/GovernmentInvoiceStatusResponse.js'
 import { GovtInvoiceDocumentResponse } from '../model/GovtInvoiceDocumentResponse.js'
-import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
-import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
 /**
 * Invoices service.
@@ -33,9 +31,6 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-06-19
 */
 export class InvoicesApi {
-  // Private member stores the default rate limiters
-  #defaultRateLimiterMap
-
   /**
     * Constructs a new InvoicesApi.
     * @alias module:invoices_v2024_06_19/api/InvoicesApi
@@ -45,40 +40,6 @@ export class InvoicesApi {
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
-    this.initializeDefaultRateLimiterMap()
-  }
-
-  /**
-     * Initialize rate limiters for API operations
-     */
-  initializeDefaultRateLimiterMap () {
-    this.#defaultRateLimiterMap = new Map()
-    const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
-    const operations = [
-      'InvoicesApi-createGovernmentInvoice',
-      'InvoicesApi-createInvoicesExport',
-      'InvoicesApi-getGovernmentInvoiceDocument',
-      'InvoicesApi-getGovernmentInvoiceStatus',
-      'InvoicesApi-getInvoice',
-      'InvoicesApi-getInvoices',
-      'InvoicesApi-getInvoicesAttributes',
-      'InvoicesApi-getInvoicesDocument',
-      'InvoicesApi-getInvoicesExport',
-      'InvoicesApi-getInvoicesExports'
-    ]
-
-    for (const operation of operations) {
-      const config = defaultRateLimitFetcher.getLimit(operation)
-      this.#defaultRateLimiterMap.set(operation, new SuperagentRateLimiter(config))
-    }
-  }
-
-  /**
-     * Get rate limiter for a specific operation
-     * @param {String} operation name
-     */
-  getRateLimiter (operation) {
-    return this.#defaultRateLimiterMap.get(operation)
   }
 
   /**
@@ -110,7 +71,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-createGovernmentInvoice',
       '/tax/invoices/2024-06-19/governmentInvoiceRequests', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-createGovernmentInvoice')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -155,7 +116,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-createInvoicesExport',
       '/tax/invoices/2024-06-19/exports', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-createInvoicesExport')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -228,7 +189,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-getGovernmentInvoiceDocument',
       '/tax/invoices/2024-06-19/governmentInvoiceRequests/{shipmentId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getGovernmentInvoiceDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -305,7 +266,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-getGovernmentInvoiceStatus',
       '/tax/invoices/2024-06-19/governmentInvoiceRequests', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getGovernmentInvoiceStatus')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -363,7 +324,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-getInvoice',
       '/tax/invoices/2024-06-19/invoices/{invoiceId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoice')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -438,7 +399,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-getInvoices',
       '/tax/invoices/2024-06-19/invoices', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoices')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -498,7 +459,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-getInvoicesAttributes',
       '/tax/invoices/2024-06-19/attributes', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoicesAttributes')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -544,7 +505,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-getInvoicesDocument',
       '/tax/invoices/2024-06-19/documents/{invoicesDocumentId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoicesDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -590,7 +551,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-getInvoicesExport',
       '/tax/invoices/2024-06-19/exports/{exportId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoicesExport')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -648,7 +609,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-getInvoicesExports',
       '/tax/invoices/2024-06-19/exports', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoicesExports')
+      contentTypes, accepts, returnType
     )
   }
 

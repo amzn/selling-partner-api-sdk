@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.fba.inventory.v1.AddInventoryRequest;
@@ -42,30 +40,10 @@ import software.amazon.spapi.models.fba.inventory.v1.GetInventorySummariesRespon
 
 public class FbaInventoryApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public FbaInventoryApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public FbaInventoryApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket addInventoryBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaInventoryApi-addInventory"))
-            .build();
-
-    public final Bucket createInventoryItemBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaInventoryApi-createInventoryItem"))
-            .build();
-
-    public final Bucket deleteInventoryItemBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaInventoryApi-deleteInventoryItem"))
-            .build();
-
-    public final Bucket getInventorySummariesBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaInventoryApi-getInventorySummaries"))
-            .build();
 
     /**
      * Build call for addInventory
@@ -205,10 +183,8 @@ public class FbaInventoryApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || addInventoryBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<AddInventoryResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("addInventory operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<AddInventoryResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -285,11 +261,9 @@ public class FbaInventoryApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || addInventoryBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<AddInventoryResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("addInventory operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<AddInventoryResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createInventoryItem
@@ -411,10 +385,8 @@ public class FbaInventoryApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createInventoryItemBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateInventoryItemResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createInventoryItem operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateInventoryItemResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -483,11 +455,9 @@ public class FbaInventoryApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createInventoryItemBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateInventoryItemResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createInventoryItem operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateInventoryItemResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for deleteInventoryItem
@@ -621,10 +591,8 @@ public class FbaInventoryApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || deleteInventoryItemBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<DeleteInventoryItemResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("deleteInventoryItem operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<DeleteInventoryItemResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -695,11 +663,9 @@ public class FbaInventoryApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || deleteInventoryItemBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<DeleteInventoryItemResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("deleteInventoryItem operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<DeleteInventoryItemResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getInventorySummaries
@@ -1012,10 +978,8 @@ public class FbaInventoryApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInventorySummariesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInventorySummariesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getInventorySummaries operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInventorySummariesResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1213,11 +1177,9 @@ public class FbaInventoryApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInventorySummariesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInventorySummariesResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getInventorySummaries operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInventorySummariesResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -1225,7 +1187,6 @@ public class FbaInventoryApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -1244,11 +1205,6 @@ public class FbaInventoryApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -1271,11 +1227,9 @@ public class FbaInventoryApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new FbaInventoryApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new FbaInventoryApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

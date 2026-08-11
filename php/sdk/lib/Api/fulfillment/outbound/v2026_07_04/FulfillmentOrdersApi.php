@@ -49,9 +49,6 @@ use SpApi\Model\fulfillment\outbound\v2026_07_04\UpdateOrderRequest;
 use SpApi\Model\fulfillment\outbound\v2026_07_04\UpdateOrderStatusRequest;
 use SpApi\Model\fulfillment\outbound\v2026_07_04\UpdatePackageRequest;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * FulfillmentOrdersApi Class Doc Comment.
@@ -64,13 +61,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class FulfillmentOrdersApi
 {
-    public ?LimiterInterface $cancelOrder_0RateLimiter;
-    public ?LimiterInterface $createOrder_0RateLimiter;
-    public ?LimiterInterface $getOrder_0RateLimiter;
-    public ?LimiterInterface $listOrders_0RateLimiter;
-    public ?LimiterInterface $updateOrderStatus_0RateLimiter;
-    public ?LimiterInterface $updateOrder_0RateLimiter;
-    public ?LimiterInterface $updatePackage_0RateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -82,41 +72,16 @@ class FulfillmentOrdersApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FulfillmentOrdersApi-cancelOrder_0'), $this->rateLimitStorage);
-            $this->cancelOrder_0RateLimiter = $factory->create('FulfillmentOrdersApi-cancelOrder_0');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FulfillmentOrdersApi-createOrder_0'), $this->rateLimitStorage);
-            $this->createOrder_0RateLimiter = $factory->create('FulfillmentOrdersApi-createOrder_0');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FulfillmentOrdersApi-getOrder_0'), $this->rateLimitStorage);
-            $this->getOrder_0RateLimiter = $factory->create('FulfillmentOrdersApi-getOrder_0');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FulfillmentOrdersApi-listOrders_0'), $this->rateLimitStorage);
-            $this->listOrders_0RateLimiter = $factory->create('FulfillmentOrdersApi-listOrders_0');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FulfillmentOrdersApi-updateOrderStatus_0'), $this->rateLimitStorage);
-            $this->updateOrderStatus_0RateLimiter = $factory->create('FulfillmentOrdersApi-updateOrderStatus_0');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FulfillmentOrdersApi-updateOrder_0'), $this->rateLimitStorage);
-            $this->updateOrder_0RateLimiter = $factory->create('FulfillmentOrdersApi-updateOrder_0');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FulfillmentOrdersApi-updatePackage_0'), $this->rateLimitStorage);
-            $this->updatePackage_0RateLimiter = $factory->create('FulfillmentOrdersApi-updatePackage_0');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -199,9 +164,6 @@ class FulfillmentOrdersApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->cancelOrder_0RateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -303,9 +265,6 @@ class FulfillmentOrdersApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FulfillmentOrdersApi-cancelOrder_0');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->cancelOrder_0RateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -497,9 +456,6 @@ class FulfillmentOrdersApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createOrder_0RateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -601,9 +557,6 @@ class FulfillmentOrdersApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FulfillmentOrdersApi-createOrder_0');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createOrder_0RateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -794,9 +747,6 @@ class FulfillmentOrdersApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getOrder_0RateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -904,9 +854,6 @@ class FulfillmentOrdersApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FulfillmentOrdersApi-getOrder_0');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getOrder_0RateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1124,9 +1071,6 @@ class FulfillmentOrdersApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listOrders_0RateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1240,9 +1184,6 @@ class FulfillmentOrdersApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FulfillmentOrdersApi-listOrders_0');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listOrders_0RateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1456,9 +1397,6 @@ class FulfillmentOrdersApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateOrderStatus_0RateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1554,9 +1492,6 @@ class FulfillmentOrdersApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FulfillmentOrdersApi-updateOrderStatus_0');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateOrderStatus_0RateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1756,9 +1691,6 @@ class FulfillmentOrdersApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateOrder_0RateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1866,9 +1798,6 @@ class FulfillmentOrdersApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FulfillmentOrdersApi-updateOrder_0');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateOrder_0RateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2085,9 +2014,6 @@ class FulfillmentOrdersApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updatePackage_0RateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2189,9 +2115,6 @@ class FulfillmentOrdersApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FulfillmentOrdersApi-updatePackage_0');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updatePackage_0RateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

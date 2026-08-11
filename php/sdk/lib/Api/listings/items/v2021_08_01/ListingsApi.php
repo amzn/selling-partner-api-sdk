@@ -47,9 +47,6 @@ use SpApi\Model\listings\items\v2021_08_01\ListingsItemPatchRequest;
 use SpApi\Model\listings\items\v2021_08_01\ListingsItemPutRequest;
 use SpApi\Model\listings\items\v2021_08_01\ListingsItemSubmissionResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * ListingsApi Class Doc Comment.
@@ -62,11 +59,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ListingsApi
 {
-    public ?LimiterInterface $deleteListingsItemRateLimiter;
-    public ?LimiterInterface $getListingsItemRateLimiter;
-    public ?LimiterInterface $patchListingsItemRateLimiter;
-    public ?LimiterInterface $putListingsItemRateLimiter;
-    public ?LimiterInterface $searchListingsItemsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -78,37 +70,16 @@ class ListingsApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-deleteListingsItem'), $this->rateLimitStorage);
-            $this->deleteListingsItemRateLimiter = $factory->create('ListingsApi-deleteListingsItem');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-getListingsItem'), $this->rateLimitStorage);
-            $this->getListingsItemRateLimiter = $factory->create('ListingsApi-getListingsItem');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-patchListingsItem'), $this->rateLimitStorage);
-            $this->patchListingsItemRateLimiter = $factory->create('ListingsApi-patchListingsItem');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-putListingsItem'), $this->rateLimitStorage);
-            $this->putListingsItemRateLimiter = $factory->create('ListingsApi-putListingsItem');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ListingsApi-searchListingsItems'), $this->rateLimitStorage);
-            $this->searchListingsItemsRateLimiter = $factory->create('ListingsApi-searchListingsItems');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -203,9 +174,6 @@ class ListingsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->deleteListingsItemRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -319,9 +287,6 @@ class ListingsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-deleteListingsItem');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->deleteListingsItemRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -569,9 +534,6 @@ class ListingsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getListingsItemRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -691,9 +653,6 @@ class ListingsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-getListingsItem');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getListingsItemRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -963,9 +922,6 @@ class ListingsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->patchListingsItemRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1097,9 +1053,6 @@ class ListingsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-patchListingsItem');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->patchListingsItemRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1397,9 +1350,6 @@ class ListingsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->putListingsItemRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1531,9 +1481,6 @@ class ListingsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-putListingsItem');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->putListingsItemRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1907,9 +1854,6 @@ class ListingsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->searchListingsItemsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2113,9 +2057,6 @@ class ListingsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ListingsApi-searchListingsItems');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->searchListingsItemsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

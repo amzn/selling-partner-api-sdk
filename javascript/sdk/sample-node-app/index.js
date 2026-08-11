@@ -3,8 +3,7 @@ import {
   SellersSpApi,
   NotificationsSpApi,
   LwaAuthClient,
-  ScopeConstants,
-  RateLimitConfiguration
+  ScopeConstants
 } from '@amazon-sp-api-release/amazon-sp-api-sdk-js';
 import { AppConfig } from './app.config.mjs';
 
@@ -100,73 +99,7 @@ async function getOrders() {
   }
 }
 
-/**
- * We support a built in rate limiter.
- * Here is a sample SDK usage of calling Orders getOrders API with a rate limiter and retry logic.
- */
-async function getOrdersWithRateLimiterAndRetry(retryCount) {
-  const ordersApiClient = new OrdersSpApi.ApiClient(AppConfig.spApiNAEndpoint);
-  const ordersApi = new OrdersSpApi.OrdersV0Api(ordersApiClient);
-
-  ordersApiClient.enableAutoRetrievalAccessToken(AppConfig.lwaClientId, AppConfig.lwaClientSecret, AppConfig.lwaRefreshToken);
-
-  /**
-   * [Recommended] Option1: Use our default rate limiter. Our rate limiter uses the rate limit and burst values in our official document.
-   * It is turned on by default.
-   * /
-
-  /**
-   * Option2: Use your customized rate limiter, you need to replace <RateLimit> and <BurstValue> with actual numbers.
-   * Then call setCustomizedRateLimiterForOperation(), please refer to 'helper/DefaultRateLimitMap.mjs' when specifying operation name.
-   * Note that for other operations that you did not configure customized rate limiter, they still use default rate limiter.
-   */
-
-  // const rateLimitConfig = new RateLimitConfiguration(<RateLimit>, <BurstValue>);
-  // ordersApiClient.setCustomizedRateLimiterForOperation('OrdersV0Api-getOrders', rateLimitConfig);
-
-  /**
-   * [For dynamic usage plan APIs] Option3: Disable rate limiter. By calling this function, you are disabling both default and customized rate limiter.
-   */
-
-  // ordersApiClient.disableRatelimiter();
-
-  const marketPlaceIds = ['ATVPDKIKX0DER'];
-  const opts = {
-    createdAfter: '2024-01-01'
-  };
-
-  for (let attempt = 1; attempt <= retryCount; attempt++) {
-    try {
-      const response = await ordersApi.getOrders(marketPlaceIds, opts);
-      console.log(
-        JSON.stringify(response, null, ' ') + 
-          '\n**********************************'
-      )        
-      return response.body;
-    } catch (error) {
-      const isRateLimit = error.message.includes('Rate limit');
-      const isLastAttempt = attempt === retryCount;
-
-      if (isRateLimit) {
-          console.log(`Rate limit reached (Attempt ${attempt}/${retryCount})`);
-          
-          if (!isLastAttempt) {
-              // Wait 60 seconds before retry (SP-API getOrders requirement)
-              console.log('Waiting 5 seconds before retry...');
-              await new Promise(resolve => 
-                  setTimeout(resolve, 5000)
-              );
-              continue;
-          }
-      }
-
-      throw error;
-   } 
- }
-}
-
 // Uncomment to execute the functions
 // getMarketplaceParticipations();
 // createDestination();
 // getOrders();
-// getOrdersWithRateLimiterAndRetry(3);

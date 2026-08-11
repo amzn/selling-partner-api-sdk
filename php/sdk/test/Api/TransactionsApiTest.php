@@ -69,7 +69,7 @@ class TransactionsApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new TransactionsApi($config, null, false);
+        $this->api = new TransactionsApi($config);
     }
 
 

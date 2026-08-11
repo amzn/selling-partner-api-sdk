@@ -69,7 +69,7 @@ class EasyShipApiTest extends TestCase
         ]);
         $config->setHost(self::$endpoint);
 
-        $this->api = new EasyShipApi($config, null, false);
+        $this->api = new EasyShipApi($config);
     }
 
 

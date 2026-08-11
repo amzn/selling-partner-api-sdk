@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -30,25 +29,16 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.sellerwallet.v2024_03_01.TransferRatePreview;
 
 public class TransferPreviewApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public TransferPreviewApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public TransferPreviewApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket getTransferPreviewBucket = Bucket.builder()
-            .addLimit(config.getLimit("TransferPreviewApi-getTransferPreview"))
-            .build();
 
     /**
      * Build call for getTransferPreview
@@ -298,10 +288,8 @@ public class TransferPreviewApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getTransferPreviewBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransferRatePreview>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getTransferPreview operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<TransferRatePreview>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -428,11 +416,9 @@ public class TransferPreviewApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getTransferPreviewBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<TransferRatePreview>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getTransferPreview operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<TransferRatePreview>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -440,7 +426,6 @@ public class TransferPreviewApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -459,11 +444,6 @@ public class TransferPreviewApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -486,11 +466,9 @@ public class TransferPreviewApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new TransferPreviewApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new TransferPreviewApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }
