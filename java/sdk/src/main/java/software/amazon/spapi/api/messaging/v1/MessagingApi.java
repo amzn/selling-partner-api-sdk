@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
@@ -56,58 +54,10 @@ import software.amazon.spapi.models.messaging.v1.InvoiceResponse;
 
 public class MessagingApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public MessagingApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public MessagingApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket confirmCustomizationDetailsBucket = Bucket.builder()
-            .addLimit(config.getLimit("MessagingApi-confirmCustomizationDetails"))
-            .build();
-
-    public final Bucket createConfirmDeliveryDetailsBucket = Bucket.builder()
-            .addLimit(config.getLimit("MessagingApi-createConfirmDeliveryDetails"))
-            .build();
-
-    public final Bucket createConfirmOrderDetailsBucket = Bucket.builder()
-            .addLimit(config.getLimit("MessagingApi-createConfirmOrderDetails"))
-            .build();
-
-    public final Bucket createConfirmServiceDetailsBucket = Bucket.builder()
-            .addLimit(config.getLimit("MessagingApi-createConfirmServiceDetails"))
-            .build();
-
-    public final Bucket createDigitalAccessKeyBucket = Bucket.builder()
-            .addLimit(config.getLimit("MessagingApi-createDigitalAccessKey"))
-            .build();
-
-    public final Bucket createLegalDisclosureBucket = Bucket.builder()
-            .addLimit(config.getLimit("MessagingApi-createLegalDisclosure"))
-            .build();
-
-    public final Bucket createUnexpectedProblemBucket = Bucket.builder()
-            .addLimit(config.getLimit("MessagingApi-createUnexpectedProblem"))
-            .build();
-
-    public final Bucket createWarrantyBucket = Bucket.builder()
-            .addLimit(config.getLimit("MessagingApi-createWarranty"))
-            .build();
-
-    public final Bucket getAttributesBucket = Bucket.builder()
-            .addLimit(config.getLimit("MessagingApi-getAttributes"))
-            .build();
-
-    public final Bucket getMessagingActionsForOrderBucket = Bucket.builder()
-            .addLimit(config.getLimit("MessagingApi-getMessagingActionsForOrder"))
-            .build();
-
-    public final Bucket sendInvoiceBucket = Bucket.builder()
-            .addLimit(config.getLimit("MessagingApi-sendInvoice"))
-            .build();
 
     /**
      * Build call for confirmCustomizationDetails
@@ -284,10 +234,8 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || confirmCustomizationDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateConfirmCustomizationDetailsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("confirmCustomizationDetails operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateConfirmCustomizationDetailsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -385,11 +333,9 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || confirmCustomizationDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateConfirmCustomizationDetailsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("confirmCustomizationDetails operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateConfirmCustomizationDetailsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createConfirmDeliveryDetails
@@ -566,10 +512,8 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createConfirmDeliveryDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateConfirmDeliveryDetailsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createConfirmDeliveryDetails operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateConfirmDeliveryDetailsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -667,11 +611,9 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createConfirmDeliveryDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateConfirmDeliveryDetailsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createConfirmDeliveryDetails operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateConfirmDeliveryDetailsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createConfirmOrderDetails
@@ -845,10 +787,8 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createConfirmOrderDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateConfirmOrderDetailsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createConfirmOrderDetails operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateConfirmOrderDetailsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -945,11 +885,9 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createConfirmOrderDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateConfirmOrderDetailsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createConfirmOrderDetails operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateConfirmOrderDetailsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createConfirmServiceDetails
@@ -1126,10 +1064,8 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createConfirmServiceDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateConfirmServiceDetailsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createConfirmServiceDetails operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateConfirmServiceDetailsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1227,11 +1163,9 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createConfirmServiceDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateConfirmServiceDetailsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createConfirmServiceDetails operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateConfirmServiceDetailsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createDigitalAccessKey
@@ -1407,10 +1341,8 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createDigitalAccessKeyBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateDigitalAccessKeyResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createDigitalAccessKey operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateDigitalAccessKeyResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1508,11 +1440,9 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createDigitalAccessKeyBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateDigitalAccessKeyResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createDigitalAccessKey operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateDigitalAccessKeyResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createLegalDisclosure
@@ -1688,10 +1618,8 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createLegalDisclosureBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateLegalDisclosureResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createLegalDisclosure operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateLegalDisclosureResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1789,11 +1717,9 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createLegalDisclosureBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateLegalDisclosureResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createLegalDisclosure operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateLegalDisclosureResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createUnexpectedProblem
@@ -1969,10 +1895,8 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createUnexpectedProblemBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateUnexpectedProblemResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createUnexpectedProblem operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateUnexpectedProblemResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2070,11 +1994,9 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createUnexpectedProblemBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateUnexpectedProblemResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createUnexpectedProblem operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateUnexpectedProblemResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createWarranty
@@ -2242,10 +2164,8 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createWarrantyBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateWarrantyResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createWarranty operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateWarrantyResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2342,11 +2262,9 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createWarrantyBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateWarrantyResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createWarranty operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateWarrantyResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getAttributes
@@ -2487,10 +2405,8 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getAttributesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAttributesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getAttributes operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetAttributesResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2563,11 +2479,9 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getAttributesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAttributesResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getAttributes operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetAttributesResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getMessagingActionsForOrder
@@ -2729,10 +2643,8 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getMessagingActionsForOrderBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetMessagingActionsForOrderResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getMessagingActionsForOrder operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetMessagingActionsForOrderResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2827,11 +2739,9 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getMessagingActionsForOrderBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetMessagingActionsForOrderResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getMessagingActionsForOrder operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetMessagingActionsForOrderResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for sendInvoice
@@ -2978,10 +2888,8 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || sendInvoiceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<InvoiceResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("sendInvoice operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<InvoiceResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -3058,11 +2966,9 @@ public class MessagingApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || sendInvoiceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<InvoiceResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("sendInvoice operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<InvoiceResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -3070,7 +2976,6 @@ public class MessagingApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -3089,11 +2994,6 @@ public class MessagingApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -3116,11 +3016,9 @@ public class MessagingApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new MessagingApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new MessagingApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

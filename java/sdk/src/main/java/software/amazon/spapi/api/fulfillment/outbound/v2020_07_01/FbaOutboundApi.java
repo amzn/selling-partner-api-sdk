@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
@@ -57,70 +55,10 @@ import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.UpdateFulfi
 
 public class FbaOutboundApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public FbaOutboundApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public FbaOutboundApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket cancelFulfillmentOrderBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaOutboundApi-cancelFulfillmentOrder"))
-            .build();
-
-    public final Bucket createFulfillmentOrderBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaOutboundApi-createFulfillmentOrder"))
-            .build();
-
-    public final Bucket createFulfillmentReturnBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaOutboundApi-createFulfillmentReturn"))
-            .build();
-
-    public final Bucket deliveryOffersBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaOutboundApi-deliveryOffers"))
-            .build();
-
-    public final Bucket getFeatureInventoryBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaOutboundApi-getFeatureInventory"))
-            .build();
-
-    public final Bucket getFeatureSKUBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaOutboundApi-getFeatureSKU"))
-            .build();
-
-    public final Bucket getFeaturesBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaOutboundApi-getFeatures"))
-            .build();
-
-    public final Bucket getFulfillmentOrderBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaOutboundApi-getFulfillmentOrder"))
-            .build();
-
-    public final Bucket getFulfillmentPreviewBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaOutboundApi-getFulfillmentPreview"))
-            .build();
-
-    public final Bucket getPackageTrackingDetailsBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaOutboundApi-getPackageTrackingDetails"))
-            .build();
-
-    public final Bucket listAllFulfillmentOrdersBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaOutboundApi-listAllFulfillmentOrders"))
-            .build();
-
-    public final Bucket listReturnReasonCodesBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaOutboundApi-listReturnReasonCodes"))
-            .build();
-
-    public final Bucket submitFulfillmentOrderStatusUpdateBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaOutboundApi-submitFulfillmentOrderStatusUpdate"))
-            .build();
-
-    public final Bucket updateFulfillmentOrderBucket = Bucket.builder()
-            .addLimit(config.getLimit("FbaOutboundApi-updateFulfillmentOrder"))
-            .build();
 
     /**
      * Build call for cancelFulfillmentOrder
@@ -261,10 +199,8 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelFulfillmentOrderBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CancelFulfillmentOrderResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("cancelFulfillmentOrder operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CancelFulfillmentOrderResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -346,11 +282,9 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelFulfillmentOrderBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CancelFulfillmentOrderResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("cancelFulfillmentOrder operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CancelFulfillmentOrderResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createFulfillmentOrder
@@ -481,10 +415,8 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createFulfillmentOrderBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateFulfillmentOrderResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createFulfillmentOrder operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateFulfillmentOrderResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -563,11 +495,9 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createFulfillmentOrderBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateFulfillmentOrderResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createFulfillmentOrder operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateFulfillmentOrderResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createFulfillmentReturn
@@ -722,10 +652,8 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createFulfillmentReturnBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateFulfillmentReturnResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createFulfillmentReturn operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateFulfillmentReturnResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -814,11 +742,9 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createFulfillmentReturnBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateFulfillmentReturnResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createFulfillmentReturn operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateFulfillmentReturnResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for deliveryOffers
@@ -944,10 +870,8 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || deliveryOffersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetDeliveryOffersResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("deliveryOffers operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetDeliveryOffersResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1025,11 +949,9 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || deliveryOffersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetDeliveryOffersResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("deliveryOffers operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetDeliveryOffersResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getFeatureInventory
@@ -1222,10 +1144,8 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFeatureInventoryBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetFeatureInventoryResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getFeatureInventory operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetFeatureInventoryResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1334,11 +1254,9 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFeatureInventoryBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetFeatureInventoryResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getFeatureInventory operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetFeatureInventoryResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getFeatureSKU
@@ -1515,10 +1433,8 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFeatureSKUBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetFeatureSkuResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getFeatureSKU operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetFeatureSkuResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1623,11 +1539,9 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFeatureSKUBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetFeatureSkuResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getFeatureSKU operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetFeatureSkuResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getFeatures
@@ -1759,10 +1673,8 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFeaturesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetFeaturesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getFeatures operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetFeaturesResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1840,11 +1752,9 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFeaturesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetFeaturesResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getFeatures operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetFeaturesResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getFulfillmentOrder
@@ -1984,10 +1894,8 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFulfillmentOrderBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetFulfillmentOrderResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getFulfillmentOrder operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetFulfillmentOrderResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2069,11 +1977,9 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFulfillmentOrderBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetFulfillmentOrderResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getFulfillmentOrder operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetFulfillmentOrderResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getFulfillmentPreview
@@ -2204,10 +2110,8 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFulfillmentPreviewBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetFulfillmentPreviewResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getFulfillmentPreview operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetFulfillmentPreviewResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2286,11 +2190,9 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFulfillmentPreviewBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetFulfillmentPreviewResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getFulfillmentPreview operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetFulfillmentPreviewResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getPackageTrackingDetails
@@ -2428,10 +2330,8 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getPackageTrackingDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetPackageTrackingDetailsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getPackageTrackingDetails operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetPackageTrackingDetailsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2513,11 +2413,9 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getPackageTrackingDetailsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetPackageTrackingDetailsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getPackageTrackingDetails operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetPackageTrackingDetailsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for listAllFulfillmentOrders
@@ -2665,10 +2563,8 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listAllFulfillmentOrdersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListAllFulfillmentOrdersResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listAllFulfillmentOrders operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ListAllFulfillmentOrdersResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2760,11 +2656,9 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listAllFulfillmentOrdersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListAllFulfillmentOrdersResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("listAllFulfillmentOrders operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ListAllFulfillmentOrdersResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for listReturnReasonCodes
@@ -2953,10 +2847,8 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listReturnReasonCodesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListReturnReasonCodesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listReturnReasonCodes operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ListReturnReasonCodesResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -3068,11 +2960,9 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listReturnReasonCodesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListReturnReasonCodesResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("listReturnReasonCodes operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ListReturnReasonCodesResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for submitFulfillmentOrderStatusUpdate
@@ -3222,11 +3112,8 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || submitFulfillmentOrderStatusUpdateBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SubmitFulfillmentOrderStatusUpdateResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded("submitFulfillmentOrderStatusUpdate operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SubmitFulfillmentOrderStatusUpdateResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -3310,12 +3197,9 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || submitFulfillmentOrderStatusUpdateBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SubmitFulfillmentOrderStatusUpdateResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else
-            throw new ApiException.RateLimitExceeded("submitFulfillmentOrderStatusUpdate operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SubmitFulfillmentOrderStatusUpdateResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for updateFulfillmentOrder
@@ -3469,10 +3353,8 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateFulfillmentOrderBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<UpdateFulfillmentOrderResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateFulfillmentOrder operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<UpdateFulfillmentOrderResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -3561,11 +3443,9 @@ public class FbaOutboundApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateFulfillmentOrderBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<UpdateFulfillmentOrderResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("updateFulfillmentOrder operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<UpdateFulfillmentOrderResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -3573,7 +3453,6 @@ public class FbaOutboundApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -3592,11 +3471,6 @@ public class FbaOutboundApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -3619,11 +3493,9 @@ public class FbaOutboundApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new FbaOutboundApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new FbaOutboundApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

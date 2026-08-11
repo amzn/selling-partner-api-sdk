@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
@@ -39,21 +37,10 @@ import software.amazon.spapi.models.finances.invoices.v2026_06_25.GetInvoicesRes
 
 public class DefaultApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public DefaultApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public DefaultApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket getInvoiceBucket =
-            Bucket.builder().addLimit(config.getLimit("DefaultApi-getInvoice")).build();
-
-    public final Bucket getInvoiceHeadersBucket = Bucket.builder()
-            .addLimit(config.getLimit("DefaultApi-getInvoiceHeaders"))
-            .build();
 
     /**
      * Build call for getInvoice
@@ -217,10 +204,8 @@ public class DefaultApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInvoiceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoiceResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getInvoice operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInvoiceResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -311,11 +296,9 @@ public class DefaultApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInvoiceBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoiceResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getInvoice operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInvoiceResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getInvoiceHeaders
@@ -533,10 +516,8 @@ public class DefaultApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInvoiceHeadersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoicesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getInvoiceHeaders operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInvoicesResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -664,11 +645,9 @@ public class DefaultApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getInvoiceHeadersBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetInvoicesResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getInvoiceHeaders operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetInvoicesResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -676,7 +655,6 @@ public class DefaultApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -695,11 +673,6 @@ public class DefaultApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -722,11 +695,9 @@ public class DefaultApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new DefaultApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new DefaultApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

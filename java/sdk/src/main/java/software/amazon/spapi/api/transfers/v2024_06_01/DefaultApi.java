@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
@@ -42,29 +40,10 @@ import software.amazon.spapi.models.transfers.v2024_06_01.ListPayoutsResponse;
 
 public class DefaultApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public DefaultApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public DefaultApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket getPaymentMethodsBucket = Bucket.builder()
-            .addLimit(config.getLimit("DefaultApi-getPaymentMethods"))
-            .build();
-
-    public final Bucket initiatePayoutBucket = Bucket.builder()
-            .addLimit(config.getLimit("DefaultApi-initiatePayout"))
-            .build();
-
-    public final Bucket listExpectedPayoutsBucket = Bucket.builder()
-            .addLimit(config.getLimit("DefaultApi-listExpectedPayouts"))
-            .build();
-
-    public final Bucket listPayoutsBucket =
-            Bucket.builder().addLimit(config.getLimit("DefaultApi-listPayouts")).build();
 
     /**
      * Build call for getPaymentMethods
@@ -220,10 +199,8 @@ public class DefaultApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getPaymentMethodsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetPaymentMethodsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getPaymentMethods operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetPaymentMethodsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -316,11 +293,9 @@ public class DefaultApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getPaymentMethodsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetPaymentMethodsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getPaymentMethods operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetPaymentMethodsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for initiatePayout
@@ -449,10 +424,8 @@ public class DefaultApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || initiatePayoutBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<InitiatePayoutResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("initiatePayout operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<InitiatePayoutResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -531,11 +504,9 @@ public class DefaultApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || initiatePayoutBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<InitiatePayoutResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("initiatePayout operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<InitiatePayoutResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for listExpectedPayouts
@@ -706,10 +677,8 @@ public class DefaultApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listExpectedPayoutsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListExpectedPayoutsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listExpectedPayouts operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ListExpectedPayoutsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -817,11 +786,9 @@ public class DefaultApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listExpectedPayoutsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListExpectedPayoutsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("listExpectedPayouts operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ListExpectedPayoutsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for listPayouts
@@ -1058,10 +1025,8 @@ public class DefaultApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listPayoutsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListPayoutsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("listPayouts operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ListPayoutsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1213,11 +1178,9 @@ public class DefaultApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listPayoutsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListPayoutsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("listPayouts operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ListPayoutsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -1225,7 +1188,6 @@ public class DefaultApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -1244,11 +1206,6 @@ public class DefaultApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -1271,11 +1228,9 @@ public class DefaultApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new DefaultApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new DefaultApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

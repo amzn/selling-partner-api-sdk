@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
@@ -47,54 +45,10 @@ import software.amazon.spapi.models.apluscontent.v2020_11_01.ValidateContentDocu
 
 public class AplusContentApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public AplusContentApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public AplusContentApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket createContentDocumentBucket = Bucket.builder()
-            .addLimit(config.getLimit("AplusContentApi-createContentDocument"))
-            .build();
-
-    public final Bucket getContentDocumentBucket = Bucket.builder()
-            .addLimit(config.getLimit("AplusContentApi-getContentDocument"))
-            .build();
-
-    public final Bucket listContentDocumentAsinRelationsBucket = Bucket.builder()
-            .addLimit(config.getLimit("AplusContentApi-listContentDocumentAsinRelations"))
-            .build();
-
-    public final Bucket postContentDocumentApprovalSubmissionBucket = Bucket.builder()
-            .addLimit(config.getLimit("AplusContentApi-postContentDocumentApprovalSubmission"))
-            .build();
-
-    public final Bucket postContentDocumentAsinRelationsBucket = Bucket.builder()
-            .addLimit(config.getLimit("AplusContentApi-postContentDocumentAsinRelations"))
-            .build();
-
-    public final Bucket postContentDocumentSuspendSubmissionBucket = Bucket.builder()
-            .addLimit(config.getLimit("AplusContentApi-postContentDocumentSuspendSubmission"))
-            .build();
-
-    public final Bucket searchContentDocumentsBucket = Bucket.builder()
-            .addLimit(config.getLimit("AplusContentApi-searchContentDocuments"))
-            .build();
-
-    public final Bucket searchContentPublishRecordsBucket = Bucket.builder()
-            .addLimit(config.getLimit("AplusContentApi-searchContentPublishRecords"))
-            .build();
-
-    public final Bucket updateContentDocumentBucket = Bucket.builder()
-            .addLimit(config.getLimit("AplusContentApi-updateContentDocument"))
-            .build();
-
-    public final Bucket validateContentDocumentAsinRelationsBucket = Bucket.builder()
-            .addLimit(config.getLimit("AplusContentApi-validateContentDocumentAsinRelations"))
-            .build();
 
     /**
      * Build call for createContentDocument
@@ -245,10 +199,8 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createContentDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createContentDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -336,11 +288,9 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createContentDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createContentDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getContentDocument
@@ -522,10 +472,8 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getContentDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetContentDocumentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getContentDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetContentDocumentResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -626,11 +574,9 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getContentDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetContentDocumentResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getContentDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetContentDocumentResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for listContentDocumentAsinRelations
@@ -851,11 +797,8 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listContentDocumentAsinRelationsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListContentDocumentAsinRelationsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded("listContentDocumentAsinRelations operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ListContentDocumentAsinRelationsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -984,12 +927,9 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || listContentDocumentAsinRelationsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ListContentDocumentAsinRelationsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else
-            throw new ApiException.RateLimitExceeded("listContentDocumentAsinRelations operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ListContentDocumentAsinRelationsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for postContentDocumentApprovalSubmission
@@ -1158,12 +1098,8 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || postContentDocumentApprovalSubmissionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PostContentDocumentApprovalSubmissionResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "postContentDocumentApprovalSubmission operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<PostContentDocumentApprovalSubmissionResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1258,13 +1194,9 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || postContentDocumentApprovalSubmissionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PostContentDocumentApprovalSubmissionResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "postContentDocumentApprovalSubmission operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<PostContentDocumentApprovalSubmissionResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for postContentDocumentAsinRelations
@@ -1455,11 +1387,8 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || postContentDocumentAsinRelationsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PostContentDocumentAsinRelationsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded("postContentDocumentAsinRelations operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<PostContentDocumentAsinRelationsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1566,12 +1495,9 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || postContentDocumentAsinRelationsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PostContentDocumentAsinRelationsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else
-            throw new ApiException.RateLimitExceeded("postContentDocumentAsinRelations operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<PostContentDocumentAsinRelationsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for postContentDocumentSuspendSubmission
@@ -1743,12 +1669,8 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || postContentDocumentSuspendSubmissionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PostContentDocumentSuspendSubmissionResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "postContentDocumentSuspendSubmission operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<PostContentDocumentSuspendSubmissionResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1846,13 +1768,9 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || postContentDocumentSuspendSubmissionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PostContentDocumentSuspendSubmissionResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "postContentDocumentSuspendSubmission operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<PostContentDocumentSuspendSubmissionResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for searchContentDocuments
@@ -2010,10 +1928,8 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || searchContentDocumentsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SearchContentDocumentsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("searchContentDocuments operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SearchContentDocumentsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2108,11 +2024,9 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || searchContentDocumentsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SearchContentDocumentsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("searchContentDocuments operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SearchContentDocumentsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for searchContentPublishRecords
@@ -2282,10 +2196,8 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || searchContentPublishRecordsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SearchContentPublishRecordsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("searchContentPublishRecords operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SearchContentPublishRecordsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2385,11 +2297,9 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || searchContentPublishRecordsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SearchContentPublishRecordsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("searchContentPublishRecords operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SearchContentPublishRecordsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for updateContentDocument
@@ -2572,10 +2482,8 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateContentDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateContentDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2676,11 +2584,9 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateContentDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("updateContentDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<PostContentDocumentResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for validateContentDocumentAsinRelations
@@ -2842,12 +2748,8 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || validateContentDocumentAsinRelationsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ValidateContentDocumentAsinRelationsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "validateContentDocumentAsinRelations operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ValidateContentDocumentAsinRelationsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2942,13 +2844,9 @@ public class AplusContentApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || validateContentDocumentAsinRelationsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<ValidateContentDocumentAsinRelationsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "validateContentDocumentAsinRelations operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<ValidateContentDocumentAsinRelationsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -2956,7 +2854,6 @@ public class AplusContentApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -2975,11 +2872,6 @@ public class AplusContentApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -3002,11 +2894,9 @@ public class AplusContentApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new AplusContentApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new AplusContentApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

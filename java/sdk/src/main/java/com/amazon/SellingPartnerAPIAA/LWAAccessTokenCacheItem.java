@@ -28,8 +28,7 @@ class LWAAccessTokenCacheItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LWAAccessTokenCacheItem that = (LWAAccessTokenCacheItem) o;
-        return accessTokenExpiredTime == that.accessTokenExpiredTime
-                && Objects.equals(accessToken, that.accessToken);
+        return accessTokenExpiredTime == that.accessTokenExpiredTime && Objects.equals(accessToken, that.accessToken);
     }
 
     @Override

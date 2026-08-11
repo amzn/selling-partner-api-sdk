@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
@@ -42,29 +40,10 @@ import software.amazon.spapi.models.datakiosk.v2023_11_15.Query;
 
 public class QueriesApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public QueriesApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public QueriesApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket cancelQueryBucket =
-            Bucket.builder().addLimit(config.getLimit("QueriesApi-cancelQuery")).build();
-
-    public final Bucket createQueryBucket =
-            Bucket.builder().addLimit(config.getLimit("QueriesApi-createQuery")).build();
-
-    public final Bucket getDocumentBucket =
-            Bucket.builder().addLimit(config.getLimit("QueriesApi-getDocument")).build();
-
-    public final Bucket getQueriesBucket =
-            Bucket.builder().addLimit(config.getLimit("QueriesApi-getQueries")).build();
-
-    public final Bucket getQueryBucket =
-            Bucket.builder().addLimit(config.getLimit("QueriesApi-getQuery")).build();
 
     /**
      * Build call for cancelQuery
@@ -201,9 +180,7 @@ public class QueriesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelQueryBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("cancelQuery operation exceeds rate limit");
+        return apiClient.execute(call);
     }
 
     /**
@@ -288,10 +265,8 @@ public class QueriesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelQueryBucket.tryConsume(1)) {
-            apiClient.executeAsync(call, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("cancelQuery operation exceeds rate limit");
+        apiClient.executeAsync(call, callback);
+        return call;
     }
     /**
      * Build call for createQuery
@@ -426,10 +401,8 @@ public class QueriesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createQueryBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateQueryResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createQuery operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateQueryResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -515,11 +488,9 @@ public class QueriesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createQueryBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateQueryResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createQuery operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateQueryResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getDocument
@@ -652,10 +623,8 @@ public class QueriesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetDocumentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetDocumentResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -733,11 +702,9 @@ public class QueriesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetDocumentResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetDocumentResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getQueries
@@ -944,10 +911,8 @@ public class QueriesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getQueriesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetQueriesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getQueries operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetQueriesResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1076,11 +1041,9 @@ public class QueriesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getQueriesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetQueriesResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getQueries operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetQueriesResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getQuery
@@ -1211,10 +1174,8 @@ public class QueriesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getQueryBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Query>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getQuery operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<Query>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1290,11 +1251,9 @@ public class QueriesApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getQueryBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Query>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getQuery operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<Query>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -1302,7 +1261,6 @@ public class QueriesApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -1321,11 +1279,6 @@ public class QueriesApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -1348,11 +1301,9 @@ public class QueriesApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new QueriesApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new QueriesApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

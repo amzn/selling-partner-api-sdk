@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
@@ -60,82 +58,10 @@ import software.amazon.spapi.models.services.v1.UpdateScheduleResponse;
 
 public class ServiceApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public ServiceApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public ServiceApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket addAppointmentForServiceJobByServiceJobIdBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-addAppointmentForServiceJobByServiceJobId"))
-            .build();
-
-    public final Bucket assignAppointmentResourcesBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-assignAppointmentResources"))
-            .build();
-
-    public final Bucket cancelReservationBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-cancelReservation"))
-            .build();
-
-    public final Bucket cancelServiceJobByServiceJobIdBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-cancelServiceJobByServiceJobId"))
-            .build();
-
-    public final Bucket completeServiceJobByServiceJobIdBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-completeServiceJobByServiceJobId"))
-            .build();
-
-    public final Bucket createReservationBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-createReservation"))
-            .build();
-
-    public final Bucket createServiceDocumentUploadDestinationBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-createServiceDocumentUploadDestination"))
-            .build();
-
-    public final Bucket getAppointmentSlotsBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-getAppointmentSlots"))
-            .build();
-
-    public final Bucket getAppointmmentSlotsByJobIdBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-getAppointmmentSlotsByJobId"))
-            .build();
-
-    public final Bucket getFixedSlotCapacityBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-getFixedSlotCapacity"))
-            .build();
-
-    public final Bucket getRangeSlotCapacityBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-getRangeSlotCapacity"))
-            .build();
-
-    public final Bucket getServiceJobByServiceJobIdBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-getServiceJobByServiceJobId"))
-            .build();
-
-    public final Bucket getServiceJobsBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-getServiceJobs"))
-            .build();
-
-    public final Bucket rescheduleAppointmentForServiceJobByServiceJobIdBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-rescheduleAppointmentForServiceJobByServiceJobId"))
-            .build();
-
-    public final Bucket setAppointmentFulfillmentDataBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-setAppointmentFulfillmentData"))
-            .build();
-
-    public final Bucket updateReservationBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-updateReservation"))
-            .build();
-
-    public final Bucket updateScheduleBucket = Bucket.builder()
-            .addLimit(config.getLimit("ServiceApi-updateSchedule"))
-            .build();
 
     /**
      * Build call for addAppointmentForServiceJobByServiceJobId
@@ -281,12 +207,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || addAppointmentForServiceJobByServiceJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "addAppointmentForServiceJobByServiceJobId operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -369,13 +291,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || addAppointmentForServiceJobByServiceJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "addAppointmentForServiceJobByServiceJobId operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for assignAppointmentResources
@@ -545,10 +463,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || assignAppointmentResourcesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<AssignAppointmentResourcesResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("assignAppointmentResources operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<AssignAppointmentResourcesResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -642,11 +558,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || assignAppointmentResourcesBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<AssignAppointmentResourcesResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("assignAppointmentResources operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<AssignAppointmentResourcesResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for cancelReservation
@@ -793,10 +707,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelReservationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CancelReservationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("cancelReservation operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CancelReservationResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -875,11 +787,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelReservationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CancelReservationResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("cancelReservation operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CancelReservationResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for cancelServiceJobByServiceJobId
@@ -1033,10 +943,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelServiceJobByServiceJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CancelServiceJobByServiceJobIdResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("cancelServiceJobByServiceJobId operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CancelServiceJobByServiceJobIdResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1122,11 +1030,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelServiceJobByServiceJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CancelServiceJobByServiceJobIdResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("cancelServiceJobByServiceJobId operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CancelServiceJobByServiceJobIdResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for completeServiceJobByServiceJobId
@@ -1258,11 +1164,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || completeServiceJobByServiceJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CompleteServiceJobByServiceJobIdResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded("completeServiceJobByServiceJobId operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CompleteServiceJobByServiceJobIdResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1338,12 +1241,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || completeServiceJobByServiceJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CompleteServiceJobByServiceJobIdResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else
-            throw new ApiException.RateLimitExceeded("completeServiceJobByServiceJobId operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CompleteServiceJobByServiceJobIdResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createReservation
@@ -1485,10 +1385,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createReservationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateReservationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createReservation operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateReservationResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1569,11 +1467,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createReservationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateReservationResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createReservation operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateReservationResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createServiceDocumentUploadDestination
@@ -1701,12 +1597,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createServiceDocumentUploadDestinationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateServiceDocumentUploadDestination>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "createServiceDocumentUploadDestination operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateServiceDocumentUploadDestination>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1782,13 +1674,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createServiceDocumentUploadDestinationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateServiceDocumentUploadDestination>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "createServiceDocumentUploadDestination operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateServiceDocumentUploadDestination>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getAppointmentSlots
@@ -1986,10 +1874,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getAppointmentSlotsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getAppointmentSlots operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2099,11 +1985,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getAppointmentSlotsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getAppointmentSlots operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getAppointmmentSlotsByJobId
@@ -2293,10 +2177,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getAppointmmentSlotsByJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getAppointmmentSlotsByJobId operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2404,11 +2286,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getAppointmmentSlotsByJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getAppointmmentSlotsByJobId operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetAppointmentSlotsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getFixedSlotCapacity
@@ -2583,10 +2463,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFixedSlotCapacityBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<FixedSlotCapacity>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getFixedSlotCapacity operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<FixedSlotCapacity>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2679,11 +2557,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFixedSlotCapacityBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<FixedSlotCapacity>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getFixedSlotCapacity operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<FixedSlotCapacity>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getRangeSlotCapacity
@@ -2858,10 +2734,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getRangeSlotCapacityBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<RangeSlotCapacity>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getRangeSlotCapacity operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<RangeSlotCapacity>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2954,11 +2828,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getRangeSlotCapacityBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<RangeSlotCapacity>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getRangeSlotCapacity operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<RangeSlotCapacity>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getServiceJobByServiceJobId
@@ -3089,10 +2961,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getServiceJobByServiceJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetServiceJobByServiceJobIdResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getServiceJobByServiceJobId operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetServiceJobByServiceJobIdResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -3170,11 +3040,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getServiceJobByServiceJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetServiceJobByServiceJobIdResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getServiceJobByServiceJobId operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetServiceJobByServiceJobIdResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getServiceJobs
@@ -3627,10 +3495,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getServiceJobsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetServiceJobsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getServiceJobs operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetServiceJobsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -3912,11 +3778,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getServiceJobsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetServiceJobsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getServiceJobs operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetServiceJobsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for rescheduleAppointmentForServiceJobByServiceJobId
@@ -4078,12 +3942,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || rescheduleAppointmentForServiceJobByServiceJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "rescheduleAppointmentForServiceJobByServiceJobId operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -4174,13 +4034,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || rescheduleAppointmentForServiceJobByServiceJobIdBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else
-            throw new ApiException.RateLimitExceeded(
-                    "rescheduleAppointmentForServiceJobByServiceJobId operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<SetAppointmentResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for setAppointmentFulfillmentData
@@ -4352,10 +4208,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || setAppointmentFulfillmentDataBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<String>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("setAppointmentFulfillmentData operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<String>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -4450,11 +4304,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || setAppointmentFulfillmentDataBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<String>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("setAppointmentFulfillmentData operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<String>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for updateReservation
@@ -4617,10 +4469,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateReservationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<UpdateReservationResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateReservation operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<UpdateReservationResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -4708,11 +4558,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateReservationBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<UpdateReservationResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("updateReservation operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<UpdateReservationResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for updateSchedule
@@ -4868,10 +4716,8 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<UpdateScheduleResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("updateSchedule operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<UpdateScheduleResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -4958,11 +4804,9 @@ public class ServiceApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || updateScheduleBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<UpdateScheduleResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("updateSchedule operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<UpdateScheduleResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -4970,7 +4814,6 @@ public class ServiceApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -4989,11 +4832,6 @@ public class ServiceApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -5016,11 +4854,9 @@ public class ServiceApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new ServiceApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new ServiceApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

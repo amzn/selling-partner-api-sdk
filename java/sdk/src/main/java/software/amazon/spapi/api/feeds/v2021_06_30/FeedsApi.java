@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
@@ -44,34 +42,10 @@ import software.amazon.spapi.models.feeds.v2021_06_30.GetFeedsResponse;
 
 public class FeedsApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public FeedsApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public FeedsApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket cancelFeedBucket =
-            Bucket.builder().addLimit(config.getLimit("FeedsApi-cancelFeed")).build();
-
-    public final Bucket createFeedBucket =
-            Bucket.builder().addLimit(config.getLimit("FeedsApi-createFeed")).build();
-
-    public final Bucket createFeedDocumentBucket = Bucket.builder()
-            .addLimit(config.getLimit("FeedsApi-createFeedDocument"))
-            .build();
-
-    public final Bucket getFeedBucket =
-            Bucket.builder().addLimit(config.getLimit("FeedsApi-getFeed")).build();
-
-    public final Bucket getFeedDocumentBucket = Bucket.builder()
-            .addLimit(config.getLimit("FeedsApi-getFeedDocument"))
-            .build();
-
-    public final Bucket getFeedsBucket =
-            Bucket.builder().addLimit(config.getLimit("FeedsApi-getFeeds")).build();
 
     /**
      * Build call for cancelFeed
@@ -207,9 +181,7 @@ public class FeedsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelFeedBucket.tryConsume(1)) {
-            return apiClient.execute(call);
-        } else throw new ApiException.RateLimitExceeded("cancelFeed operation exceeds rate limit");
+        return apiClient.execute(call);
     }
 
     /**
@@ -294,10 +266,8 @@ public class FeedsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || cancelFeedBucket.tryConsume(1)) {
-            apiClient.executeAsync(call, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("cancelFeed operation exceeds rate limit");
+        apiClient.executeAsync(call, callback);
+        return call;
     }
     /**
      * Build call for createFeed
@@ -441,10 +411,8 @@ public class FeedsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createFeedBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateFeedResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createFeed operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateFeedResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -537,11 +505,9 @@ public class FeedsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createFeedBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateFeedResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createFeed operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateFeedResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for createFeedDocument
@@ -676,10 +642,8 @@ public class FeedsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createFeedDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateFeedDocumentResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("createFeedDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateFeedDocumentResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -765,11 +729,9 @@ public class FeedsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || createFeedDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<CreateFeedDocumentResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("createFeedDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<CreateFeedDocumentResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getFeed
@@ -900,10 +862,8 @@ public class FeedsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFeedBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Feed>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getFeed operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<Feed>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -979,11 +939,9 @@ public class FeedsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFeedBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Feed>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getFeed operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<Feed>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getFeedDocument
@@ -1138,10 +1096,8 @@ public class FeedsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFeedDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<FeedDocument>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getFeedDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<FeedDocument>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1230,11 +1186,9 @@ public class FeedsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFeedDocumentBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<FeedDocument>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getFeedDocument operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<FeedDocument>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
     /**
      * Build call for getFeeds
@@ -1480,10 +1434,8 @@ public class FeedsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFeedsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetFeedsResponse>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getFeeds operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetFeedsResponse>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1641,11 +1593,9 @@ public class FeedsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getFeedsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<GetFeedsResponse>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getFeeds operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<GetFeedsResponse>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -1653,7 +1603,6 @@ public class FeedsApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -1672,11 +1621,6 @@ public class FeedsApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -1699,11 +1643,9 @@ public class FeedsApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new FeedsApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new FeedsApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }

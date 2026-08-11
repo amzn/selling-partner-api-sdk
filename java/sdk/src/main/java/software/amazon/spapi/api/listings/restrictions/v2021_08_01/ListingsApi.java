@@ -19,7 +19,6 @@ import com.amazon.SellingPartnerAPIAA.LWAAuthorizationSigner;
 import com.amazon.SellingPartnerAPIAA.LWAException;
 import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 import com.google.gson.reflect.TypeToken;
-import io.github.bucket4j.Bucket;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +28,6 @@ import software.amazon.spapi.ApiCallback;
 import software.amazon.spapi.ApiClient;
 import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
@@ -37,18 +35,10 @@ import software.amazon.spapi.models.listings.restrictions.v2021_08_01.Restrictio
 
 public class ListingsApi {
     private ApiClient apiClient;
-    private Boolean disableRateLimiting;
 
-    public ListingsApi(ApiClient apiClient, Boolean disableRateLimiting) {
+    public ListingsApi(ApiClient apiClient) {
         this.apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    public final Bucket getListingsRestrictionsBucket = Bucket.builder()
-            .addLimit(config.getLimit("ListingsApi-getListingsRestrictions"))
-            .build();
 
     /**
      * Build call for getListingsRestrictions
@@ -264,10 +254,8 @@ public class ListingsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getListingsRestrictionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<RestrictionList>() {}.getType();
-            return apiClient.execute(call, localVarReturnType);
-        } else throw new ApiException.RateLimitExceeded("getListingsRestrictions operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<RestrictionList>() {}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -390,11 +378,9 @@ public class ListingsApi {
             call = apiClient.getHttpClient().newCall(request);
         }
 
-        if (disableRateLimiting || getListingsRestrictionsBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<RestrictionList>() {}.getType();
-            apiClient.executeAsync(call, localVarReturnType, callback);
-            return call;
-        } else throw new ApiException.RateLimitExceeded("getListingsRestrictions operation exceeds rate limit");
+        Type localVarReturnType = new TypeToken<RestrictionList>() {}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
     }
 
     public static class Builder {
@@ -402,7 +388,6 @@ public class ListingsApi {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -421,11 +406,6 @@ public class ListingsApi {
 
         public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -448,11 +428,9 @@ public class ListingsApi {
                 lwaAuthorizationSigner = new LWAAuthorizationSigner(lwaAuthorizationCredentials, lwaAccessTokenCache);
             }
 
-            return new ListingsApi(
-                    new ApiClient()
-                            .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                            .setBasePath(endpoint),
-                    disableRateLimiting);
+            return new ListingsApi(new ApiClient()
+                    .setLWAAuthorizationSigner(lwaAuthorizationSigner)
+                    .setBasePath(endpoint));
         }
     }
 }
