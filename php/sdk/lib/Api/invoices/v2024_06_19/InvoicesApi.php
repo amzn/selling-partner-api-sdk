@@ -53,9 +53,6 @@ use SpApi\Model\invoices\v2024_06_19\GovernmentInvoiceRequest;
 use SpApi\Model\invoices\v2024_06_19\GovernmentInvoiceStatusResponse;
 use SpApi\Model\invoices\v2024_06_19\GovtInvoiceDocumentResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * InvoicesApi Class Doc Comment.
@@ -68,16 +65,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class InvoicesApi
 {
-    public ?LimiterInterface $createGovernmentInvoiceRateLimiter;
-    public ?LimiterInterface $createInvoicesExportRateLimiter;
-    public ?LimiterInterface $getGovernmentInvoiceDocumentRateLimiter;
-    public ?LimiterInterface $getGovernmentInvoiceStatusRateLimiter;
-    public ?LimiterInterface $getInvoiceRateLimiter;
-    public ?LimiterInterface $getInvoicesRateLimiter;
-    public ?LimiterInterface $getInvoicesAttributesRateLimiter;
-    public ?LimiterInterface $getInvoicesDocumentRateLimiter;
-    public ?LimiterInterface $getInvoicesExportRateLimiter;
-    public ?LimiterInterface $getInvoicesExportsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -89,47 +76,16 @@ class InvoicesApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-createGovernmentInvoice'), $this->rateLimitStorage);
-            $this->createGovernmentInvoiceRateLimiter = $factory->create('InvoicesApi-createGovernmentInvoice');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-createInvoicesExport'), $this->rateLimitStorage);
-            $this->createInvoicesExportRateLimiter = $factory->create('InvoicesApi-createInvoicesExport');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-getGovernmentInvoiceDocument'), $this->rateLimitStorage);
-            $this->getGovernmentInvoiceDocumentRateLimiter = $factory->create('InvoicesApi-getGovernmentInvoiceDocument');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-getGovernmentInvoiceStatus'), $this->rateLimitStorage);
-            $this->getGovernmentInvoiceStatusRateLimiter = $factory->create('InvoicesApi-getGovernmentInvoiceStatus');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-getInvoice'), $this->rateLimitStorage);
-            $this->getInvoiceRateLimiter = $factory->create('InvoicesApi-getInvoice');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-getInvoices'), $this->rateLimitStorage);
-            $this->getInvoicesRateLimiter = $factory->create('InvoicesApi-getInvoices');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-getInvoicesAttributes'), $this->rateLimitStorage);
-            $this->getInvoicesAttributesRateLimiter = $factory->create('InvoicesApi-getInvoicesAttributes');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-getInvoicesDocument'), $this->rateLimitStorage);
-            $this->getInvoicesDocumentRateLimiter = $factory->create('InvoicesApi-getInvoicesDocument');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-getInvoicesExport'), $this->rateLimitStorage);
-            $this->getInvoicesExportRateLimiter = $factory->create('InvoicesApi-getInvoicesExport');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('InvoicesApi-getInvoicesExports'), $this->rateLimitStorage);
-            $this->getInvoicesExportsRateLimiter = $factory->create('InvoicesApi-getInvoicesExports');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -204,9 +160,6 @@ class InvoicesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createGovernmentInvoiceRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -290,9 +243,6 @@ class InvoicesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-createGovernmentInvoice');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createGovernmentInvoiceRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -447,9 +397,6 @@ class InvoicesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createInvoicesExportRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -545,9 +492,6 @@ class InvoicesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-createInvoicesExport');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createInvoicesExportRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -745,9 +689,6 @@ class InvoicesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getGovernmentInvoiceDocumentRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -873,9 +814,6 @@ class InvoicesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getGovernmentInvoiceDocument');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getGovernmentInvoiceDocumentRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1154,9 +1092,6 @@ class InvoicesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getGovernmentInvoiceStatusRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1276,9 +1211,6 @@ class InvoicesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getGovernmentInvoiceStatus');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getGovernmentInvoiceStatusRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1527,9 +1459,6 @@ class InvoicesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getInvoiceRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1631,9 +1560,6 @@ class InvoicesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoice');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getInvoiceRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1902,9 +1828,6 @@ class InvoicesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getInvoicesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2078,9 +2001,6 @@ class InvoicesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoices');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getInvoicesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2425,9 +2345,6 @@ class InvoicesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getInvoicesAttributesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2523,9 +2440,6 @@ class InvoicesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesAttributes');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getInvoicesAttributesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2698,9 +2612,6 @@ class InvoicesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getInvoicesDocumentRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2796,9 +2707,6 @@ class InvoicesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesDocument');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getInvoicesDocumentRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2969,9 +2877,6 @@ class InvoicesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getInvoicesExportRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3067,9 +2972,6 @@ class InvoicesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesExport');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getInvoicesExportRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -3270,9 +3172,6 @@ class InvoicesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getInvoicesExportsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3398,9 +3297,6 @@ class InvoicesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'InvoicesApi-getInvoicesExports');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getInvoicesExportsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

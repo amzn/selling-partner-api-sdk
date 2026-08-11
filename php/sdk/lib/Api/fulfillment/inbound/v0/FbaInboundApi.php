@@ -47,9 +47,6 @@ use SpApi\Model\fulfillment\inbound\v0\GetPrepInstructionsResponse;
 use SpApi\Model\fulfillment\inbound\v0\GetShipmentItemsResponse;
 use SpApi\Model\fulfillment\inbound\v0\GetShipmentsResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * FbaInboundApi Class Doc Comment.
@@ -62,12 +59,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class FbaInboundApi
 {
-    public ?LimiterInterface $getBillOfLadingRateLimiter;
-    public ?LimiterInterface $getLabelsRateLimiter;
-    public ?LimiterInterface $getPrepInstructionsRateLimiter;
-    public ?LimiterInterface $getShipmentItemsRateLimiter;
-    public ?LimiterInterface $getShipmentItemsByShipmentIdRateLimiter;
-    public ?LimiterInterface $getShipmentsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -79,39 +70,16 @@ class FbaInboundApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getBillOfLading'), $this->rateLimitStorage);
-            $this->getBillOfLadingRateLimiter = $factory->create('FbaInboundApi-getBillOfLading');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getLabels'), $this->rateLimitStorage);
-            $this->getLabelsRateLimiter = $factory->create('FbaInboundApi-getLabels');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getPrepInstructions'), $this->rateLimitStorage);
-            $this->getPrepInstructionsRateLimiter = $factory->create('FbaInboundApi-getPrepInstructions');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getShipmentItems'), $this->rateLimitStorage);
-            $this->getShipmentItemsRateLimiter = $factory->create('FbaInboundApi-getShipmentItems');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getShipmentItemsByShipmentId'), $this->rateLimitStorage);
-            $this->getShipmentItemsByShipmentIdRateLimiter = $factory->create('FbaInboundApi-getShipmentItemsByShipmentId');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInboundApi-getShipments'), $this->rateLimitStorage);
-            $this->getShipmentsRateLimiter = $factory->create('FbaInboundApi-getShipments');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -188,9 +156,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getBillOfLadingRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -286,9 +251,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getBillOfLading');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getBillOfLadingRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -501,9 +463,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getLabelsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -641,9 +600,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getLabels');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getLabelsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -930,9 +886,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getPrepInstructionsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1040,9 +993,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getPrepInstructions');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getPrepInstructionsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1272,9 +1222,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getShipmentItemsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1394,9 +1341,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipmentItems');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getShipmentItemsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1633,9 +1577,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getShipmentItemsByShipmentIdRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1737,9 +1678,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipmentItemsByShipmentId');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getShipmentItemsByShipmentIdRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1960,9 +1898,6 @@ class FbaInboundApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getShipmentsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2094,9 +2029,6 @@ class FbaInboundApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInboundApi-getShipments');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getShipmentsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

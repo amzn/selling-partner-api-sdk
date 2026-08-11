@@ -44,9 +44,6 @@ use SpApi\HeaderSelector;
 use SpApi\Model\fulfillment\outbound\v2026_07_04\GetOrderPreviewRequest;
 use SpApi\Model\fulfillment\outbound\v2026_07_04\GetOrderPreviewResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * FulfillmentPreviewsApi Class Doc Comment.
@@ -59,7 +56,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class FulfillmentPreviewsApi
 {
-    public ?LimiterInterface $getOrderPreview_0RateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -71,29 +67,16 @@ class FulfillmentPreviewsApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FulfillmentPreviewsApi-getOrderPreview_0'), $this->rateLimitStorage);
-            $this->getOrderPreview_0RateLimiter = $factory->create('FulfillmentPreviewsApi-getOrderPreview_0');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -176,9 +159,6 @@ class FulfillmentPreviewsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getOrderPreview_0RateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -280,9 +260,6 @@ class FulfillmentPreviewsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FulfillmentPreviewsApi-getOrderPreview_0');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getOrderPreview_0RateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

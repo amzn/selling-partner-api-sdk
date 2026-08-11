@@ -49,9 +49,6 @@ use SpApi\Model\supplySources\v2020_07_01\SupplySource;
 use SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceRequest;
 use SpApi\Model\supplySources\v2020_07_01\UpdateSupplySourceStatusRequest;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * SupplySourcesApi Class Doc Comment.
@@ -64,12 +61,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class SupplySourcesApi
 {
-    public ?LimiterInterface $archiveSupplySourceRateLimiter;
-    public ?LimiterInterface $createSupplySourceRateLimiter;
-    public ?LimiterInterface $getSupplySourceRateLimiter;
-    public ?LimiterInterface $getSupplySourcesRateLimiter;
-    public ?LimiterInterface $updateSupplySourceRateLimiter;
-    public ?LimiterInterface $updateSupplySourceStatusRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -81,39 +72,16 @@ class SupplySourcesApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SupplySourcesApi-archiveSupplySource'), $this->rateLimitStorage);
-            $this->archiveSupplySourceRateLimiter = $factory->create('SupplySourcesApi-archiveSupplySource');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SupplySourcesApi-createSupplySource'), $this->rateLimitStorage);
-            $this->createSupplySourceRateLimiter = $factory->create('SupplySourcesApi-createSupplySource');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SupplySourcesApi-getSupplySource'), $this->rateLimitStorage);
-            $this->getSupplySourceRateLimiter = $factory->create('SupplySourcesApi-getSupplySource');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SupplySourcesApi-getSupplySources'), $this->rateLimitStorage);
-            $this->getSupplySourcesRateLimiter = $factory->create('SupplySourcesApi-getSupplySources');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SupplySourcesApi-updateSupplySource'), $this->rateLimitStorage);
-            $this->updateSupplySourceRateLimiter = $factory->create('SupplySourcesApi-updateSupplySource');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('SupplySourcesApi-updateSupplySourceStatus'), $this->rateLimitStorage);
-            $this->updateSupplySourceStatusRateLimiter = $factory->create('SupplySourcesApi-updateSupplySourceStatus');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -190,9 +158,6 @@ class SupplySourcesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->archiveSupplySourceRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -288,9 +253,6 @@ class SupplySourcesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-archiveSupplySource');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->archiveSupplySourceRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -461,9 +423,6 @@ class SupplySourcesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createSupplySourceRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -559,9 +518,6 @@ class SupplySourcesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-createSupplySource');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createSupplySourceRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -729,9 +685,6 @@ class SupplySourcesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getSupplySourceRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -827,9 +780,6 @@ class SupplySourcesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-getSupplySource');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getSupplySourceRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1006,9 +956,6 @@ class SupplySourcesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getSupplySourcesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1110,9 +1057,6 @@ class SupplySourcesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-getSupplySources');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getSupplySourcesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1297,9 +1241,6 @@ class SupplySourcesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateSupplySourceRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1401,9 +1342,6 @@ class SupplySourcesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-updateSupplySource');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateSupplySourceRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1589,9 +1527,6 @@ class SupplySourcesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateSupplySourceStatusRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1693,9 +1628,6 @@ class SupplySourcesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'SupplySourcesApi-updateSupplySourceStatus');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateSupplySourceStatusRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

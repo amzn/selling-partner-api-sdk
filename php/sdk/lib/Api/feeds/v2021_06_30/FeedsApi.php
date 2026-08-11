@@ -49,9 +49,6 @@ use SpApi\Model\feeds\v2021_06_30\Feed;
 use SpApi\Model\feeds\v2021_06_30\FeedDocument;
 use SpApi\Model\feeds\v2021_06_30\GetFeedsResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * FeedsApi Class Doc Comment.
@@ -64,12 +61,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class FeedsApi
 {
-    public ?LimiterInterface $cancelFeedRateLimiter;
-    public ?LimiterInterface $createFeedRateLimiter;
-    public ?LimiterInterface $createFeedDocumentRateLimiter;
-    public ?LimiterInterface $getFeedRateLimiter;
-    public ?LimiterInterface $getFeedDocumentRateLimiter;
-    public ?LimiterInterface $getFeedsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -81,39 +72,16 @@ class FeedsApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-cancelFeed'), $this->rateLimitStorage);
-            $this->cancelFeedRateLimiter = $factory->create('FeedsApi-cancelFeed');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-createFeed'), $this->rateLimitStorage);
-            $this->createFeedRateLimiter = $factory->create('FeedsApi-createFeed');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-createFeedDocument'), $this->rateLimitStorage);
-            $this->createFeedDocumentRateLimiter = $factory->create('FeedsApi-createFeedDocument');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-getFeed'), $this->rateLimitStorage);
-            $this->getFeedRateLimiter = $factory->create('FeedsApi-getFeed');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-getFeedDocument'), $this->rateLimitStorage);
-            $this->getFeedDocumentRateLimiter = $factory->create('FeedsApi-getFeedDocument');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FeedsApi-getFeeds'), $this->rateLimitStorage);
-            $this->getFeedsRateLimiter = $factory->create('FeedsApi-getFeeds');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -188,9 +156,6 @@ class FeedsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->cancelFeedRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -274,9 +239,6 @@ class FeedsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-cancelFeed');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->cancelFeedRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -434,9 +396,6 @@ class FeedsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createFeedRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -532,9 +491,6 @@ class FeedsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-createFeed');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createFeedRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -702,9 +658,6 @@ class FeedsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createFeedDocumentRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -800,9 +753,6 @@ class FeedsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-createFeedDocument');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createFeedDocumentRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -970,9 +920,6 @@ class FeedsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getFeedRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1068,9 +1015,6 @@ class FeedsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeed');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getFeedRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1247,9 +1191,6 @@ class FeedsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getFeedDocumentRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1351,9 +1292,6 @@ class FeedsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeedDocument');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getFeedDocumentRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1574,9 +1512,6 @@ class FeedsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getFeedsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1708,9 +1643,6 @@ class FeedsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FeedsApi-getFeeds');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getFeedsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

@@ -48,9 +48,6 @@ use SpApi\Model\fba\inventory\v1\CreateInventoryItemResponse;
 use SpApi\Model\fba\inventory\v1\DeleteInventoryItemResponse;
 use SpApi\Model\fba\inventory\v1\GetInventorySummariesResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * FbaInventoryApi Class Doc Comment.
@@ -63,10 +60,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class FbaInventoryApi
 {
-    public ?LimiterInterface $addInventoryRateLimiter;
-    public ?LimiterInterface $createInventoryItemRateLimiter;
-    public ?LimiterInterface $deleteInventoryItemRateLimiter;
-    public ?LimiterInterface $getInventorySummariesRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -78,35 +71,16 @@ class FbaInventoryApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-addInventory'), $this->rateLimitStorage);
-            $this->addInventoryRateLimiter = $factory->create('FbaInventoryApi-addInventory');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-createInventoryItem'), $this->rateLimitStorage);
-            $this->createInventoryItemRateLimiter = $factory->create('FbaInventoryApi-createInventoryItem');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-deleteInventoryItem'), $this->rateLimitStorage);
-            $this->deleteInventoryItemRateLimiter = $factory->create('FbaInventoryApi-deleteInventoryItem');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaInventoryApi-getInventorySummaries'), $this->rateLimitStorage);
-            $this->getInventorySummariesRateLimiter = $factory->create('FbaInventoryApi-getInventorySummaries');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -189,9 +163,6 @@ class FbaInventoryApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->addInventoryRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -293,9 +264,6 @@ class FbaInventoryApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-addInventory');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->addInventoryRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -477,9 +445,6 @@ class FbaInventoryApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createInventoryItemRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -575,9 +540,6 @@ class FbaInventoryApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-createInventoryItem');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createInventoryItemRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -751,9 +713,6 @@ class FbaInventoryApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->deleteInventoryItemRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -855,9 +814,6 @@ class FbaInventoryApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-deleteInventoryItem');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->deleteInventoryItemRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1090,9 +1046,6 @@ class FbaInventoryApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getInventorySummariesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1230,9 +1183,6 @@ class FbaInventoryApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaInventoryApi-getInventorySummaries');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getInventorySummariesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

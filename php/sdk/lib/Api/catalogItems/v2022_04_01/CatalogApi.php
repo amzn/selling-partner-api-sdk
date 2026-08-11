@@ -44,9 +44,6 @@ use SpApi\HeaderSelector;
 use SpApi\Model\catalogItems\v2022_04_01\Item;
 use SpApi\Model\catalogItems\v2022_04_01\ItemSearchResults;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * CatalogApi Class Doc Comment.
@@ -59,8 +56,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class CatalogApi
 {
-    public ?LimiterInterface $getCatalogItemRateLimiter;
-    public ?LimiterInterface $searchCatalogItemsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -72,31 +67,16 @@ class CatalogApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('CatalogApi-getCatalogItem'), $this->rateLimitStorage);
-            $this->getCatalogItemRateLimiter = $factory->create('CatalogApi-getCatalogItem');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('CatalogApi-searchCatalogItems'), $this->rateLimitStorage);
-            $this->searchCatalogItemsRateLimiter = $factory->create('CatalogApi-searchCatalogItems');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -191,9 +171,6 @@ class CatalogApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getCatalogItemRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -307,9 +284,6 @@ class CatalogApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'CatalogApi-getCatalogItem');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getCatalogItemRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -592,9 +566,6 @@ class CatalogApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->searchCatalogItemsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -756,9 +727,6 @@ class CatalogApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'CatalogApi-searchCatalogItems');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->searchCatalogItemsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

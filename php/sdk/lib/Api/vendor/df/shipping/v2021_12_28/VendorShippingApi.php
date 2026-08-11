@@ -35,9 +35,6 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
 use SpApi\Configuration;
@@ -74,16 +71,8 @@ class VendorShippingApi
      */
     protected int $hostIndex;
 
-    private Bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-    public ?LimiterInterface $getPackingSlipRateLimiter;
-    public ?LimiterInterface $getPackingSlipsRateLimiter;
-    public ?LimiterInterface $submitShipmentConfirmationsRateLimiter;
-    public ?LimiterInterface $submitShipmentStatusUpdatesRateLimiter;
-
     /**
      * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
      * @param ClientInterface|null $client
      * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -91,26 +80,10 @@ class VendorShippingApi
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingApi-getPackingSlip"), $this->rateLimitStorage);
-            $this->getPackingSlipRateLimiter = $factory->create("VendorShippingApi-getPackingSlip");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingApi-getPackingSlips"), $this->rateLimitStorage);
-            $this->getPackingSlipsRateLimiter = $factory->create("VendorShippingApi-getPackingSlips");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingApi-submitShipmentConfirmations"), $this->rateLimitStorage);
-            $this->submitShipmentConfirmationsRateLimiter = $factory->create("VendorShippingApi-submitShipmentConfirmations");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingApi-submitShipmentStatusUpdates"), $this->rateLimitStorage);
-            $this->submitShipmentStatusUpdatesRateLimiter = $factory->create("VendorShippingApi-submitShipmentStatusUpdates");
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -190,9 +163,6 @@ class VendorShippingApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getPackingSlipRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -292,9 +262,6 @@ class VendorShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingApi-getPackingSlip");
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getPackingSlipRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -505,9 +472,6 @@ class VendorShippingApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getPackingSlipsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -637,9 +601,6 @@ class VendorShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingApi-getPackingSlips");
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getPackingSlipsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -896,9 +857,6 @@ class VendorShippingApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->submitShipmentConfirmationsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -998,9 +956,6 @@ class VendorShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingApi-submitShipmentConfirmations");
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->submitShipmentConfirmationsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1175,9 +1130,6 @@ class VendorShippingApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->submitShipmentStatusUpdatesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1277,9 +1229,6 @@ class VendorShippingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingApi-submitShipmentStatusUpdates");
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->submitShipmentStatusUpdatesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
