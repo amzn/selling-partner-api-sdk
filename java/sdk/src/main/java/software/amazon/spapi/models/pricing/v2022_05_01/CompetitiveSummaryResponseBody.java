@@ -87,7 +87,7 @@ public class CompetitiveSummaryResponseBody {
 
     public CompetitiveSummaryResponseBody addFeaturedBuyingOptionsItem(FeaturedBuyingOption featuredBuyingOptionsItem) {
         if (this.featuredBuyingOptions == null) {
-            this.featuredBuyingOptions = new ArrayList<FeaturedBuyingOption>();
+            this.featuredBuyingOptions = new ArrayList<>();
         }
         this.featuredBuyingOptions.add(featuredBuyingOptionsItem);
         return this;
@@ -114,7 +114,7 @@ public class CompetitiveSummaryResponseBody {
 
     public CompetitiveSummaryResponseBody addLowestPricedOffersItem(LowestPricedOffer lowestPricedOffersItem) {
         if (this.lowestPricedOffers == null) {
-            this.lowestPricedOffers = new ArrayList<LowestPricedOffer>();
+            this.lowestPricedOffers = new ArrayList<>();
         }
         this.lowestPricedOffers.add(lowestPricedOffersItem);
         return this;
@@ -141,7 +141,7 @@ public class CompetitiveSummaryResponseBody {
 
     public CompetitiveSummaryResponseBody addReferencePricesItem(ReferencePrice referencePricesItem) {
         if (this.referencePrices == null) {
-            this.referencePrices = new ArrayList<ReferencePrice>();
+            this.referencePrices = new ArrayList<>();
         }
         this.referencePrices.add(referencePricesItem);
         return this;
@@ -168,7 +168,7 @@ public class CompetitiveSummaryResponseBody {
 
     public CompetitiveSummaryResponseBody addSimilarItemsItem(SimilarItems similarItemsItem) {
         if (this.similarItems == null) {
-            this.similarItems = new ArrayList<SimilarItems>();
+            this.similarItems = new ArrayList<>();
         }
         this.similarItems.add(similarItemsItem);
         return this;

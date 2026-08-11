@@ -252,7 +252,7 @@ public class Shipment {
 
     public Shipment addSelfShipAppointmentDetailsItem(SelfShipAppointmentDetails selfShipAppointmentDetailsItem) {
         if (this.selfShipAppointmentDetails == null) {
-            this.selfShipAppointmentDetails = new ArrayList<SelfShipAppointmentDetails>();
+            this.selfShipAppointmentDetails = new ArrayList<>();
         }
         this.selfShipAppointmentDetails.add(selfShipAppointmentDetailsItem);
         return this;

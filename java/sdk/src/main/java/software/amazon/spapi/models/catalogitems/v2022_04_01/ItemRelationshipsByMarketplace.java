@@ -25,7 +25,7 @@ public class ItemRelationshipsByMarketplace {
     private String marketplaceId = null;
 
     @SerializedName("relationships")
-    private List<ItemRelationship> relationships = new ArrayList<ItemRelationship>();
+    private List<ItemRelationship> relationships = new ArrayList<>();
 
     public ItemRelationshipsByMarketplace marketplaceId(String marketplaceId) {
         this.marketplaceId = marketplaceId;

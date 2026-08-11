@@ -25,8 +25,7 @@ public class GenerateTransportationOptionsRequest {
     private String placementOptionId = null;
 
     @SerializedName("shipmentTransportationConfigurations")
-    private List<ShipmentTransportationConfiguration> shipmentTransportationConfigurations =
-            new ArrayList<ShipmentTransportationConfiguration>();
+    private List<ShipmentTransportationConfiguration> shipmentTransportationConfigurations = new ArrayList<>();
 
     public GenerateTransportationOptionsRequest placementOptionId(String placementOptionId) {
         this.placementOptionId = placementOptionId;

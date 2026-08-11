@@ -114,7 +114,7 @@ public class BusinessHour {
 
     public BusinessHour addTimeWindowsItem(TimeWindow timeWindowsItem) {
         if (this.timeWindows == null) {
-            this.timeWindows = new ArrayList<TimeWindow>();
+            this.timeWindows = new ArrayList<>();
         }
         this.timeWindows.add(timeWindowsItem);
         return this;

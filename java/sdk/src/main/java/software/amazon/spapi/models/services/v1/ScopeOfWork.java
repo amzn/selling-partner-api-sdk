@@ -97,7 +97,7 @@ public class ScopeOfWork {
 
     public ScopeOfWork addRequiredSkillsItem(String requiredSkillsItem) {
         if (this.requiredSkills == null) {
-            this.requiredSkills = new ArrayList<String>();
+            this.requiredSkills = new ArrayList<>();
         }
         this.requiredSkills.add(requiredSkillsItem);
         return this;

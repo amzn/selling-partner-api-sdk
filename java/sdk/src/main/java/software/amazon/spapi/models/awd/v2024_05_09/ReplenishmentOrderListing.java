@@ -59,7 +59,7 @@ public class ReplenishmentOrderListing {
 
     public ReplenishmentOrderListing addOrdersItem(ReplenishmentOrder ordersItem) {
         if (this.orders == null) {
-            this.orders = new ArrayList<ReplenishmentOrder>();
+            this.orders = new ArrayList<>();
         }
         this.orders.add(ordersItem);
         return this;

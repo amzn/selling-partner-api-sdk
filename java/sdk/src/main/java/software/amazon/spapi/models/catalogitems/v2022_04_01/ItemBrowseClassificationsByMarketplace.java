@@ -62,7 +62,7 @@ public class ItemBrowseClassificationsByMarketplace {
 
     public ItemBrowseClassificationsByMarketplace addClassificationsItem(ItemBrowseClassification classificationsItem) {
         if (this.classifications == null) {
-            this.classifications = new ArrayList<ItemBrowseClassification>();
+            this.classifications = new ArrayList<>();
         }
         this.classifications.add(classificationsItem);
         return this;

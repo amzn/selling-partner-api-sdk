@@ -91,7 +91,7 @@ public class ItemRelationship {
 
     public ItemRelationship addChildAsinsItem(String childAsinsItem) {
         if (this.childAsins == null) {
-            this.childAsins = new ArrayList<String>();
+            this.childAsins = new ArrayList<>();
         }
         this.childAsins.add(childAsinsItem);
         return this;
@@ -118,7 +118,7 @@ public class ItemRelationship {
 
     public ItemRelationship addParentAsinsItem(String parentAsinsItem) {
         if (this.parentAsins == null) {
-            this.parentAsins = new ArrayList<String>();
+            this.parentAsins = new ArrayList<>();
         }
         this.parentAsins.add(parentAsinsItem);
         return this;

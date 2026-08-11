@@ -59,7 +59,7 @@ public class OutboundListing {
 
     public OutboundListing addOutboundOrdersItem(OutboundOrder outboundOrdersItem) {
         if (this.outboundOrders == null) {
-            this.outboundOrders = new ArrayList<OutboundOrder>();
+            this.outboundOrders = new ArrayList<>();
         }
         this.outboundOrders.add(outboundOrdersItem);
         return this;

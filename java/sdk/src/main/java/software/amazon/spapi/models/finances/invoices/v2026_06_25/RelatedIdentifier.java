@@ -93,7 +93,7 @@ public class RelatedIdentifier {
     private RelatedIdentifierNameEnum relatedIdentifierName = null;
 
     @SerializedName("relatedIdentifierValue")
-    private List<String> relatedIdentifierValue = new ArrayList<String>();
+    private List<String> relatedIdentifierValue = new ArrayList<>();
 
     public RelatedIdentifier relatedIdentifierName(RelatedIdentifierNameEnum relatedIdentifierName) {
         this.relatedIdentifierName = relatedIdentifierName;

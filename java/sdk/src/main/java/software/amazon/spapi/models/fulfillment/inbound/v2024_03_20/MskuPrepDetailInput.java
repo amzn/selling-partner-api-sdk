@@ -28,7 +28,7 @@ public class MskuPrepDetailInput {
     private PrepCategory prepCategory = null;
 
     @SerializedName("prepTypes")
-    private List<PrepType> prepTypes = new ArrayList<PrepType>();
+    private List<PrepType> prepTypes = new ArrayList<>();
 
     public MskuPrepDetailInput msku(String msku) {
         this.msku = msku;

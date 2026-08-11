@@ -25,7 +25,7 @@ public class GetMessagingActionsForOrderResponseLinks {
     private LinkObject self = null;
 
     @SerializedName("actions")
-    private List<LinkObject> actions = new ArrayList<LinkObject>();
+    private List<LinkObject> actions = new ArrayList<>();
 
     public GetMessagingActionsForOrderResponseLinks self(LinkObject self) {
         this.self = self;

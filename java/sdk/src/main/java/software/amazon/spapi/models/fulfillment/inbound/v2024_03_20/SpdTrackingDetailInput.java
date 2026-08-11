@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "Contains input information to update Small Parcel Delivery (SPD) tracking information.")
 public class SpdTrackingDetailInput {
     @SerializedName("spdTrackingItems")
-    private List<SpdTrackingItemInput> spdTrackingItems = new ArrayList<SpdTrackingItemInput>();
+    private List<SpdTrackingItemInput> spdTrackingItems = new ArrayList<>();
 
     public SpdTrackingDetailInput spdTrackingItems(List<SpdTrackingItemInput> spdTrackingItems) {
         this.spdTrackingItems = spdTrackingItems;

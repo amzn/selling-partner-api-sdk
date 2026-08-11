@@ -31,7 +31,7 @@ public class SimilarItems {
 
     public SimilarItems addItemsItem(Item itemsItem) {
         if (this.items == null) {
-            this.items = new ArrayList<Item>();
+            this.items = new ArrayList<>();
         }
         this.items.add(itemsItem);
         return this;

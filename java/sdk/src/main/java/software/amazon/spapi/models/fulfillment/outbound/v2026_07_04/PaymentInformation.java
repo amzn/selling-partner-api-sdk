@@ -31,7 +31,7 @@ public class PaymentInformation {
 
     public PaymentInformation addPaymentsItem(Payment paymentsItem) {
         if (this.payments == null) {
-            this.payments = new ArrayList<Payment>();
+            this.payments = new ArrayList<>();
         }
         this.payments.add(paymentsItem);
         return this;

@@ -19,12 +19,11 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.time.OffsetDateTime;
 import java.util.*;
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 import org.junit.jupiter.api.Test;
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.CreateShippingLabelsRequest;
 import software.amazon.spapi.models.vendor.df.shipping.v2021_12_28.ShippingLabel;
@@ -48,11 +47,8 @@ public class VendorShippingLabelsApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .randomize(OffsetDateTime.class, OffsetDateTime::now)
-            .randomize(LocalDate.class, LocalDate::now)
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void createShippingLabelsTest() throws Exception {

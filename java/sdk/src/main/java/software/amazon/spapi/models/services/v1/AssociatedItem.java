@@ -240,7 +240,7 @@ public class AssociatedItem {
 
     public AssociatedItem addLinkedAssetsItem(LinkedAsset linkedAssetsItem) {
         if (this.linkedAssets == null) {
-            this.linkedAssets = new ArrayList<LinkedAsset>();
+            this.linkedAssets = new ArrayList<>();
         }
         this.linkedAssets.add(linkedAssetsItem);
         return this;

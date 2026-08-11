@@ -55,7 +55,7 @@ public class Vehicle {
     private VehicleStatusInCatalog status = null;
 
     @SerializedName("identifiers")
-    private List<VehicleIdentifiers> identifiers = new ArrayList<VehicleIdentifiers>();
+    private List<VehicleIdentifiers> identifiers = new ArrayList<>();
 
     public Vehicle make(String make) {
         this.make = make;
@@ -178,7 +178,7 @@ public class Vehicle {
 
     public Vehicle addEngineOutputItem(EngineOutput engineOutputItem) {
         if (this.engineOutput == null) {
-            this.engineOutput = new ArrayList<EngineOutput>();
+            this.engineOutput = new ArrayList<>();
         }
         this.engineOutput.add(engineOutputItem);
         return this;

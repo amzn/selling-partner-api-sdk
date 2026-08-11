@@ -19,8 +19,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Provide these fields only if this shipment is a direct import. */
 @Schema(description = "Provide these fields only if this shipment is a direct import.")

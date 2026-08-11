@@ -40,7 +40,7 @@ public class ShippingOptionsResponse {
 
     public ShippingOptionsResponse addShippingOptionsItem(ShippingOptions shippingOptionsItem) {
         if (this.shippingOptions == null) {
-            this.shippingOptions = new ArrayList<ShippingOptions>();
+            this.shippingOptions = new ArrayList<>();
         }
         this.shippingOptions.add(shippingOptionsItem);
         return this;

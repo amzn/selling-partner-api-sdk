@@ -25,7 +25,7 @@ public class ListShipmentPalletsResponse {
     private Pagination pagination = null;
 
     @SerializedName("pallets")
-    private List<Pallet> pallets = new ArrayList<Pallet>();
+    private List<Pallet> pallets = new ArrayList<>();
 
     public ListShipmentPalletsResponse pagination(Pagination pagination) {
         this.pagination = pagination;

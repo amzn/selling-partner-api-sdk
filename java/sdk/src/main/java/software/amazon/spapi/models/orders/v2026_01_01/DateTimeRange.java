@@ -14,8 +14,8 @@ package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** A time period with start and end boundaries. */
 @Schema(description = "A time period with start and end boundaries.")

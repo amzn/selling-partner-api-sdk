@@ -260,7 +260,7 @@ public class OrderItem {
 
     public OrderItem addAssociatedItemsItem(AssociatedItem associatedItemsItem) {
         if (this.associatedItems == null) {
-            this.associatedItems = new ArrayList<AssociatedItem>();
+            this.associatedItems = new ArrayList<>();
         }
         this.associatedItems.add(associatedItemsItem);
         return this;
@@ -912,7 +912,7 @@ public class OrderItem {
 
     public OrderItem addSerialNumbersItem(String serialNumbersItem) {
         if (this.serialNumbers == null) {
-            this.serialNumbers = new ArrayList<String>();
+            this.serialNumbers = new ArrayList<>();
         }
         this.serialNumbers.add(serialNumbersItem);
         return this;

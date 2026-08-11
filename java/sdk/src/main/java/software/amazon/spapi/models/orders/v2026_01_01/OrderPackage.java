@@ -14,10 +14,10 @@ package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * Information about a physical shipping package, including tracking details. **Note:** Only available for
@@ -221,7 +221,7 @@ public class OrderPackage {
 
     public OrderPackage addPackageItemsItem(PackageItem packageItemsItem) {
         if (this.packageItems == null) {
-            this.packageItems = new ArrayList<PackageItem>();
+            this.packageItems = new ArrayList<>();
         }
         this.packageItems.add(packageItemsItem);
         return this;

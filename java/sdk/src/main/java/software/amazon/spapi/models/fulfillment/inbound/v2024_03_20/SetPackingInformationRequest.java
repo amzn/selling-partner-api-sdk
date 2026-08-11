@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "The `setPackingInformation` request.")
 public class SetPackingInformationRequest {
     @SerializedName("packageGroupings")
-    private List<PackageGroupingInput> packageGroupings = new ArrayList<PackageGroupingInput>();
+    private List<PackageGroupingInput> packageGroupings = new ArrayList<>();
 
     public SetPackingInformationRequest packageGroupings(List<PackageGroupingInput> packageGroupings) {
         this.packageGroupings = packageGroupings;

@@ -14,10 +14,10 @@ package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** All the information related to a transaction. */
 @Schema(description = "All the information related to a transaction.")
@@ -279,7 +279,7 @@ public class Transaction {
 
     public Transaction addBreakdownsItem(Breakdown breakdownsItem) {
         if (this.breakdowns == null) {
-            this.breakdowns = new ArrayList<Breakdown>();
+            this.breakdowns = new ArrayList<>();
         }
         this.breakdowns.add(breakdownsItem);
         return this;

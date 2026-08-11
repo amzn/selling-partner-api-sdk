@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "Packing information for the inbound plan.")
 public class PackageGroupingInput {
     @SerializedName("boxes")
-    private List<BoxInput> boxes = new ArrayList<BoxInput>();
+    private List<BoxInput> boxes = new ArrayList<>();
 
     @SerializedName("packingGroupId")
     private String packingGroupId = null;

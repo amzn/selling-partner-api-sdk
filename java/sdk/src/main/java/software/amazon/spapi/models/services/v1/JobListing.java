@@ -103,7 +103,7 @@ public class JobListing {
 
     public JobListing addJobsItem(ServiceJob jobsItem) {
         if (this.jobs == null) {
-            this.jobs = new ArrayList<ServiceJob>();
+            this.jobs = new ArrayList<>();
         }
         this.jobs.add(jobsItem);
         return this;

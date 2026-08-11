@@ -142,7 +142,7 @@ public class PatchOperation {
 
     public PatchOperation addValueItem(Map<String, Object> valueItem) {
         if (this.value == null) {
-            this.value = new ArrayList<Map<String, Object>>();
+            this.value = new ArrayList<>();
         }
         this.value.add(valueItem);
         return this;

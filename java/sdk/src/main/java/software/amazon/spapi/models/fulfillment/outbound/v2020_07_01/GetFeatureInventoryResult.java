@@ -99,7 +99,7 @@ public class GetFeatureInventoryResult {
 
     public GetFeatureInventoryResult addFeatureSkusItem(FeatureSku featureSkusItem) {
         if (this.featureSkus == null) {
-            this.featureSkus = new ArrayList<FeatureSku>();
+            this.featureSkus = new ArrayList<>();
         }
         this.featureSkus.add(featureSkusItem);
         return this;

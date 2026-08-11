@@ -25,7 +25,7 @@ public class ListPlacementOptionsResponse {
     private Pagination pagination = null;
 
     @SerializedName("placementOptions")
-    private List<PlacementOption> placementOptions = new ArrayList<PlacementOption>();
+    private List<PlacementOption> placementOptions = new ArrayList<>();
 
     public ListPlacementOptionsResponse pagination(Pagination pagination) {
         this.pagination = pagination;

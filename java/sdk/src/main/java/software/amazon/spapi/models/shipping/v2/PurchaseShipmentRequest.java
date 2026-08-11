@@ -121,7 +121,7 @@ public class PurchaseShipmentRequest {
 
     public PurchaseShipmentRequest putAdditionalInputsItem(String key, Object additionalInputsItem) {
         if (this.additionalInputs == null) {
-            this.additionalInputs = new HashMap<String, Object>();
+            this.additionalInputs = new HashMap<>();
         }
         this.additionalInputs.put(key, additionalInputsItem);
         return this;

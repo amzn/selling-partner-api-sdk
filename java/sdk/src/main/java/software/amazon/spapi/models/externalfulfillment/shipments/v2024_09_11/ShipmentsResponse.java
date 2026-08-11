@@ -34,7 +34,7 @@ public class ShipmentsResponse {
 
     public ShipmentsResponse addShipmentsItem(Shipment shipmentsItem) {
         if (this.shipments == null) {
-            this.shipments = new ArrayList<Shipment>();
+            this.shipments = new ArrayList<>();
         }
         this.shipments.add(shipmentsItem);
         return this;

@@ -153,7 +153,7 @@ public class Restriction {
 
     public Restriction addReasonsItem(Reason reasonsItem) {
         if (this.reasons == null) {
-            this.reasons = new ArrayList<Reason>();
+            this.reasons = new ArrayList<>();
         }
         this.reasons.add(reasonsItem);
         return this;

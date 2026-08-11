@@ -24,7 +24,7 @@ public class GetSolicitationActionsForOrderResponseLinks {
     private LinkObject self = null;
 
     @SerializedName("actions")
-    private List<LinkObject> actions = new ArrayList<LinkObject>();
+    private List<LinkObject> actions = new ArrayList<>();
 
     public GetSolicitationActionsForOrderResponseLinks self(LinkObject self) {
         this.self = self;

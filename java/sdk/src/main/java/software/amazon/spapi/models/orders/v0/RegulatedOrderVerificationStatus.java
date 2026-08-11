@@ -28,7 +28,7 @@ public class RegulatedOrderVerificationStatus {
     private Boolean requiresMerchantAction = null;
 
     @SerializedName("ValidRejectionReasons")
-    private List<RejectionReason> validRejectionReasons = new ArrayList<RejectionReason>();
+    private List<RejectionReason> validRejectionReasons = new ArrayList<>();
 
     @SerializedName("RejectionReason")
     private RejectionReason rejectionReason = null;
@@ -182,7 +182,7 @@ public class RegulatedOrderVerificationStatus {
     public RegulatedOrderVerificationStatus addValidVerificationDetailsItem(
             ValidVerificationDetail validVerificationDetailsItem) {
         if (this.validVerificationDetails == null) {
-            this.validVerificationDetails = new ArrayList<ValidVerificationDetail>();
+            this.validVerificationDetails = new ArrayList<>();
         }
         this.validVerificationDetails.add(validVerificationDetailsItem);
         return this;
@@ -214,7 +214,7 @@ public class RegulatedOrderVerificationStatus {
     public RegulatedOrderVerificationStatus addValidInterimStatusCodesItem(
             ValidInterimStatusCode validInterimStatusCodesItem) {
         if (this.validInterimStatusCodes == null) {
-            this.validInterimStatusCodes = new ArrayList<ValidInterimStatusCode>();
+            this.validInterimStatusCodes = new ArrayList<>();
         }
         this.validInterimStatusCodes.add(validInterimStatusCodesItem);
         return this;

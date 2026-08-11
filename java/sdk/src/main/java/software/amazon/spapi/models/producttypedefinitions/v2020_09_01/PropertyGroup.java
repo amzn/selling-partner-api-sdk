@@ -80,7 +80,7 @@ public class PropertyGroup {
 
     public PropertyGroup addPropertyNamesItem(String propertyNamesItem) {
         if (this.propertyNames == null) {
-            this.propertyNames = new ArrayList<String>();
+            this.propertyNames = new ArrayList<>();
         }
         this.propertyNames.add(propertyNamesItem);
         return this;

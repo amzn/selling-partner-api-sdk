@@ -31,7 +31,7 @@ public class SubmitInvoiceRequest {
 
     public SubmitInvoiceRequest addInvoicesItem(InvoiceDetail invoicesItem) {
         if (this.invoices == null) {
-            this.invoices = new ArrayList<InvoiceDetail>();
+            this.invoices = new ArrayList<>();
         }
         this.invoices.add(invoicesItem);
         return this;

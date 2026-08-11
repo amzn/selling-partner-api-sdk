@@ -31,7 +31,7 @@ public class ListItemComplianceDetailsResponse {
 
     public ListItemComplianceDetailsResponse addComplianceDetailsItem(ComplianceDetail complianceDetailsItem) {
         if (this.complianceDetails == null) {
-            this.complianceDetails = new ArrayList<ComplianceDetail>();
+            this.complianceDetails = new ArrayList<>();
         }
         this.complianceDetails.add(complianceDetailsItem);
         return this;

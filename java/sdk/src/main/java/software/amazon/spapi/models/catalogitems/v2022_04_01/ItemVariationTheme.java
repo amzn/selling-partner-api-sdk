@@ -36,7 +36,7 @@ public class ItemVariationTheme {
 
     public ItemVariationTheme addAttributesItem(String attributesItem) {
         if (this.attributes == null) {
-            this.attributes = new ArrayList<String>();
+            this.attributes = new ArrayList<>();
         }
         this.attributes.add(attributesItem);
         return this;

@@ -121,7 +121,7 @@ public class OrderItem {
 
     public OrderItem addAssociatedOrderItemsItem(AssociatedOrderItem associatedOrderItemsItem) {
         if (this.associatedOrderItems == null) {
-            this.associatedOrderItems = new ArrayList<AssociatedOrderItem>();
+            this.associatedOrderItems = new ArrayList<>();
         }
         this.associatedOrderItems.add(associatedOrderItemsItem);
         return this;
@@ -150,7 +150,7 @@ public class OrderItem {
 
     public OrderItem addProgramsItem(String programsItem) {
         if (this.programs == null) {
-            this.programs = new ArrayList<String>();
+            this.programs = new ArrayList<>();
         }
         this.programs.add(programsItem);
         return this;

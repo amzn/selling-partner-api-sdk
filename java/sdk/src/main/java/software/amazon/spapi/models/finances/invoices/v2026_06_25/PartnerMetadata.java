@@ -141,7 +141,7 @@ public class PartnerMetadata {
 
     public PartnerMetadata addPartnerEntitiesItem(String partnerEntitiesItem) {
         if (this.partnerEntities == null) {
-            this.partnerEntities = new ArrayList<String>();
+            this.partnerEntities = new ArrayList<>();
         }
         this.partnerEntities.add(partnerEntitiesItem);
         return this;

@@ -14,8 +14,8 @@ package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Additional information required to purchase shipping. */
 @Schema(description = "Additional information required to purchase shipping.")

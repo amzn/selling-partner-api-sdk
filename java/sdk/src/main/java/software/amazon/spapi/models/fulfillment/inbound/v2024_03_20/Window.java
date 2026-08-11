@@ -14,8 +14,8 @@ package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Contains a start and end DateTime representing a time range. */
 @Schema(description = "Contains a start and end DateTime representing a time range.")

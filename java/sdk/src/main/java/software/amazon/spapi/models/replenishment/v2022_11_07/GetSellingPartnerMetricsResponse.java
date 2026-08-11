@@ -31,7 +31,7 @@ public class GetSellingPartnerMetricsResponse {
 
     public GetSellingPartnerMetricsResponse addMetricsItem(GetSellingPartnerMetricsResponseMetric metricsItem) {
         if (this.metrics == null) {
-            this.metrics = new ArrayList<GetSellingPartnerMetricsResponseMetric>();
+            this.metrics = new ArrayList<>();
         }
         this.metrics.add(metricsItem);
         return this;

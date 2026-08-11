@@ -32,7 +32,7 @@ public class SubmitShipmentStatusUpdatesRequest {
     public SubmitShipmentStatusUpdatesRequest addShipmentStatusUpdatesItem(
             ShipmentStatusUpdate shipmentStatusUpdatesItem) {
         if (this.shipmentStatusUpdates == null) {
-            this.shipmentStatusUpdates = new ArrayList<ShipmentStatusUpdate>();
+            this.shipmentStatusUpdates = new ArrayList<>();
         }
         this.shipmentStatusUpdates.add(shipmentStatusUpdatesItem);
         return this;

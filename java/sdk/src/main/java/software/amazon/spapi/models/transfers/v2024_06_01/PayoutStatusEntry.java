@@ -14,8 +14,8 @@ package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** A record of a payout&#x27;s status at a specific point in time. */
 @Schema(description = "A record of a payout's status at a specific point in time.")

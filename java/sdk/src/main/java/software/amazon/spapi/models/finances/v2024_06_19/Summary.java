@@ -14,8 +14,8 @@ package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Contains all information related to the financial summary. */
 @Schema(description = "Contains all information related to the financial summary.")

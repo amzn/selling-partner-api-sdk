@@ -31,7 +31,7 @@ public class ReplanningDetails {
 
     public ReplanningDetails addPreviousTrackingInfoItem(TrackingInfo previousTrackingInfoItem) {
         if (this.previousTrackingInfo == null) {
-            this.previousTrackingInfo = new ArrayList<TrackingInfo>();
+            this.previousTrackingInfo = new ArrayList<>();
         }
         this.previousTrackingInfo.add(previousTrackingInfoItem);
         return this;

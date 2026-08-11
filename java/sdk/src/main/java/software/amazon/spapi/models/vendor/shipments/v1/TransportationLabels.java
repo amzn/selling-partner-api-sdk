@@ -53,7 +53,7 @@ public class TransportationLabels {
 
     public TransportationLabels addTransportLabelsItem(TransportLabel transportLabelsItem) {
         if (this.transportLabels == null) {
-            this.transportLabels = new ArrayList<TransportLabel>();
+            this.transportLabels = new ArrayList<>();
         }
         this.transportLabels.add(transportLabelsItem);
         return this;

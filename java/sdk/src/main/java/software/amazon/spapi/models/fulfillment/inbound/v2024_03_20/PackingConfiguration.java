@@ -42,7 +42,7 @@ public class PackingConfiguration {
 
     public PackingConfiguration addBoxPackingMethodsItem(BoxContentInformationSource boxPackingMethodsItem) {
         if (this.boxPackingMethods == null) {
-            this.boxPackingMethods = new ArrayList<BoxContentInformationSource>();
+            this.boxPackingMethods = new ArrayList<>();
         }
         this.boxPackingMethods.add(boxPackingMethodsItem);
         return this;
@@ -88,7 +88,7 @@ public class PackingConfiguration {
 
     public PackingConfiguration addShippingRequirementsItem(ShippingRequirements shippingRequirementsItem) {
         if (this.shippingRequirements == null) {
-            this.shippingRequirements = new ArrayList<ShippingRequirements>();
+            this.shippingRequirements = new ArrayList<>();
         }
         this.shippingRequirements.add(shippingRequirementsItem);
         return this;

@@ -14,8 +14,8 @@ package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** The start and end time that specifies the time interval of an event. */
 @Schema(description = "The start and end time that specifies the time interval of an event.")

@@ -34,7 +34,7 @@ public class GetOrderPreviewRequest {
     private PreviewDestination destination = null;
 
     @SerializedName("lineItems")
-    private List<PreviewLineItem> lineItems = new ArrayList<PreviewLineItem>();
+    private List<PreviewLineItem> lineItems = new ArrayList<>();
 
     @SerializedName("excludeEstimatedFees")
     private Boolean excludeEstimatedFees = null;

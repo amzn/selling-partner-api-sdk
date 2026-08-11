@@ -54,7 +54,7 @@ public class OrderItemStatusOrderedQuantity {
     public OrderItemStatusOrderedQuantity addOrderedQuantityDetailsItem(
             OrderedQuantityDetails orderedQuantityDetailsItem) {
         if (this.orderedQuantityDetails == null) {
-            this.orderedQuantityDetails = new ArrayList<OrderedQuantityDetails>();
+            this.orderedQuantityDetails = new ArrayList<>();
         }
         this.orderedQuantityDetails.add(orderedQuantityDetailsItem);
         return this;

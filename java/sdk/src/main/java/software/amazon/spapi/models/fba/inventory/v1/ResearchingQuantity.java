@@ -57,7 +57,7 @@ public class ResearchingQuantity {
     public ResearchingQuantity addResearchingQuantityBreakdownItem(
             ResearchingQuantityEntry researchingQuantityBreakdownItem) {
         if (this.researchingQuantityBreakdown == null) {
-            this.researchingQuantityBreakdown = new ArrayList<ResearchingQuantityEntry>();
+            this.researchingQuantityBreakdown = new ArrayList<>();
         }
         this.researchingQuantityBreakdown.add(researchingQuantityBreakdownItem);
         return this;

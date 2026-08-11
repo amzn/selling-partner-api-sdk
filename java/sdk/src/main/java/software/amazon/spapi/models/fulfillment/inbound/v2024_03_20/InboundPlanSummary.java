@@ -14,10 +14,10 @@ package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** A light-weight inbound plan. */
 @Schema(description = "A light-weight inbound plan.")
@@ -32,7 +32,7 @@ public class InboundPlanSummary {
     private OffsetDateTime lastUpdatedAt = null;
 
     @SerializedName("marketplaceIds")
-    private List<String> marketplaceIds = new ArrayList<String>();
+    private List<String> marketplaceIds = new ArrayList<>();
 
     @SerializedName("name")
     private String name = null;

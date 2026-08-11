@@ -36,7 +36,7 @@ public class PreviewServiceLevel {
 
     public PreviewServiceLevel addServiceTiersItem(String serviceTiersItem) {
         if (this.serviceTiers == null) {
-            this.serviceTiers = new ArrayList<String>();
+            this.serviceTiers = new ArrayList<>();
         }
         this.serviceTiers.add(serviceTiersItem);
         return this;

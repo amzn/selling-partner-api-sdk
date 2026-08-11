@@ -83,7 +83,7 @@ public class FeaturedBuyingOption {
     private BuyingOptionTypeEnum buyingOptionType = null;
 
     @SerializedName("segmentedFeaturedOffers")
-    private List<SegmentedFeaturedOffer> segmentedFeaturedOffers = new ArrayList<SegmentedFeaturedOffer>();
+    private List<SegmentedFeaturedOffer> segmentedFeaturedOffers = new ArrayList<>();
 
     public FeaturedBuyingOption buyingOptionType(BuyingOptionTypeEnum buyingOptionType) {
         this.buyingOptionType = buyingOptionType;

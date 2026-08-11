@@ -58,7 +58,7 @@ public class ReplenishmentOrderCreationData {
 
     public ReplenishmentOrderCreationData addProductsItem(DistributionProduct productsItem) {
         if (this.products == null) {
-            this.products = new ArrayList<DistributionProduct>();
+            this.products = new ArrayList<>();
         }
         this.products.add(productsItem);
         return this;

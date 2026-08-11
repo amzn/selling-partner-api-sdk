@@ -91,7 +91,7 @@ public class ItemRelationship {
 
     public ItemRelationship addChildSkusItem(String childSkusItem) {
         if (this.childSkus == null) {
-            this.childSkus = new ArrayList<String>();
+            this.childSkus = new ArrayList<>();
         }
         this.childSkus.add(childSkusItem);
         return this;
@@ -118,7 +118,7 @@ public class ItemRelationship {
 
     public ItemRelationship addParentSkusItem(String parentSkusItem) {
         if (this.parentSkus == null) {
-            this.parentSkus = new ArrayList<String>();
+            this.parentSkus = new ArrayList<>();
         }
         this.parentSkus.add(parentSkusItem);
         return this;

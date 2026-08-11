@@ -39,7 +39,7 @@ public class ServiceLevel {
 
     public ServiceLevel addServiceTiersItem(String serviceTiersItem) {
         if (this.serviceTiers == null) {
-            this.serviceTiers = new ArrayList<String>();
+            this.serviceTiers = new ArrayList<>();
         }
         this.serviceTiers.add(serviceTiersItem);
         return this;

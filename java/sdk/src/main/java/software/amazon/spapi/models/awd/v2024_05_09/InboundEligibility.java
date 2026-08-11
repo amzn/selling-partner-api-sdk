@@ -14,10 +14,10 @@ package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Represents the eligibility status of the inbound packages. */
 @Schema(description = "Represents the eligibility status of the inbound packages.")
@@ -26,7 +26,7 @@ public class InboundEligibility {
     private List<OrderIneligibilityReason> ineligibilityReasons = null;
 
     @SerializedName("packagesToInbound")
-    private List<SkuEligibility> packagesToInbound = new ArrayList<SkuEligibility>();
+    private List<SkuEligibility> packagesToInbound = new ArrayList<>();
 
     @SerializedName("previewedAt")
     private OffsetDateTime previewedAt = null;
@@ -41,7 +41,7 @@ public class InboundEligibility {
 
     public InboundEligibility addIneligibilityReasonsItem(OrderIneligibilityReason ineligibilityReasonsItem) {
         if (this.ineligibilityReasons == null) {
-            this.ineligibilityReasons = new ArrayList<OrderIneligibilityReason>();
+            this.ineligibilityReasons = new ArrayList<>();
         }
         this.ineligibilityReasons.add(ineligibilityReasonsItem);
         return this;

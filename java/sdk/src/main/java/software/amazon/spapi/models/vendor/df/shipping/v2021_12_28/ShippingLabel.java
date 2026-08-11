@@ -90,7 +90,7 @@ public class ShippingLabel {
     private LabelFormatEnum labelFormat = null;
 
     @SerializedName("labelData")
-    private List<LabelData> labelData = new ArrayList<LabelData>();
+    private List<LabelData> labelData = new ArrayList<>();
 
     public ShippingLabel purchaseOrderNumber(String purchaseOrderNumber) {
         this.purchaseOrderNumber = purchaseOrderNumber;

@@ -169,7 +169,7 @@ public class InventoryResponseBody {
 
     public InventoryResponseBody addActionableErrorsItem(ActionableError actionableErrorsItem) {
         if (this.actionableErrors == null) {
-            this.actionableErrors = new ArrayList<ActionableError>();
+            this.actionableErrors = new ArrayList<>();
         }
         this.actionableErrors.add(actionableErrorsItem);
         return this;

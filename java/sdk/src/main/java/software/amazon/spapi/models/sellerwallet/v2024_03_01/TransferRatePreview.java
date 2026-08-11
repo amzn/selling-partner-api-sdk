@@ -40,7 +40,7 @@ public class TransferRatePreview {
     private Currency transferAmount = null;
 
     @SerializedName("fees")
-    private List<Fee> fees = new ArrayList<Fee>();
+    private List<Fee> fees = new ArrayList<>();
 
     public TransferRatePreview baseAmount(Currency baseAmount) {
         this.baseAmount = baseAmount;

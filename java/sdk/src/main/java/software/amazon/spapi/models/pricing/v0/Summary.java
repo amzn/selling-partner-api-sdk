@@ -14,8 +14,8 @@ package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * Contains price information about the product, including the LowestPrices and BuyBoxPrices, the ListPrice, the

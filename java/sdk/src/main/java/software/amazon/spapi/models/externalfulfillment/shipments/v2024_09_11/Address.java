@@ -286,7 +286,7 @@ public class Address {
 
     public Address addCopyEmailsItem(String copyEmailsItem) {
         if (this.copyEmails == null) {
-            this.copyEmails = new ArrayList<String>();
+            this.copyEmails = new ArrayList<>();
         }
         this.copyEmails.add(copyEmailsItem);
         return this;

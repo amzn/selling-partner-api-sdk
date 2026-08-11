@@ -253,7 +253,7 @@ public class FulfillmentPreview {
 
     public FulfillmentPreview addFeatureConstraintsItem(FeatureSettings featureConstraintsItem) {
         if (this.featureConstraints == null) {
-            this.featureConstraints = new ArrayList<FeatureSettings>();
+            this.featureConstraints = new ArrayList<>();
         }
         this.featureConstraints.add(featureConstraintsItem);
         return this;

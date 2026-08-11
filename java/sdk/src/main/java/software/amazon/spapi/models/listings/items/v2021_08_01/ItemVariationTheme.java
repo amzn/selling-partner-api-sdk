@@ -24,7 +24,7 @@ import java.util.Objects;
                 "A variation theme that indicates the combination of listing item attributes that define the variation family.")
 public class ItemVariationTheme {
     @SerializedName("attributes")
-    private List<String> attributes = new ArrayList<String>();
+    private List<String> attributes = new ArrayList<>();
 
     @SerializedName("theme")
     private String theme = null;

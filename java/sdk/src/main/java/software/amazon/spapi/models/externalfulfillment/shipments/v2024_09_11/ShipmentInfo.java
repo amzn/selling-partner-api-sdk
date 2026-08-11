@@ -295,7 +295,7 @@ public class ShipmentInfo {
 
     public ShipmentInfo addOrderStatesEligibleForRejectionItem(String orderStatesEligibleForRejectionItem) {
         if (this.orderStatesEligibleForRejection == null) {
-            this.orderStatesEligibleForRejection = new ArrayList<String>();
+            this.orderStatesEligibleForRejection = new ArrayList<>();
         }
         this.orderStatesEligibleForRejection.add(orderStatesEligibleForRejectionItem);
         return this;

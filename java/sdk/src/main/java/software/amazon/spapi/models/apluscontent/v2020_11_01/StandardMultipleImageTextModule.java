@@ -33,7 +33,7 @@ public class StandardMultipleImageTextModule {
 
     public StandardMultipleImageTextModule addBlocksItem(StandardImageTextCaptionBlock blocksItem) {
         if (this.blocks == null) {
-            this.blocks = new ArrayList<StandardImageTextCaptionBlock>();
+            this.blocks = new ArrayList<>();
         }
         this.blocks.add(blocksItem);
         return this;

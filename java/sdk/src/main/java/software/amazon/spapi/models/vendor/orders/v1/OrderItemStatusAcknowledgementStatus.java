@@ -155,7 +155,7 @@ public class OrderItemStatusAcknowledgementStatus {
     public OrderItemStatusAcknowledgementStatus addAcknowledgementStatusDetailsItem(
             AcknowledgementStatusDetails acknowledgementStatusDetailsItem) {
         if (this.acknowledgementStatusDetails == null) {
-            this.acknowledgementStatusDetails = new ArrayList<AcknowledgementStatusDetails>();
+            this.acknowledgementStatusDetails = new ArrayList<>();
         }
         this.acknowledgementStatusDetails.add(acknowledgementStatusDetailsItem);
         return this;

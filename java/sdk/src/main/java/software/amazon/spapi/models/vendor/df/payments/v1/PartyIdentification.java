@@ -75,7 +75,7 @@ public class PartyIdentification {
 
     public PartyIdentification addTaxRegistrationDetailsItem(TaxRegistrationDetail taxRegistrationDetailsItem) {
         if (this.taxRegistrationDetails == null) {
-            this.taxRegistrationDetails = new ArrayList<TaxRegistrationDetail>();
+            this.taxRegistrationDetails = new ArrayList<>();
         }
         this.taxRegistrationDetails.add(taxRegistrationDetailsItem);
         return this;

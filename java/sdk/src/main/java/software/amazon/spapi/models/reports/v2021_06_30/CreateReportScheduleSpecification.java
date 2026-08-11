@@ -19,10 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Information required to create the report schedule. */
 @Schema(description = "Information required to create the report schedule.")
@@ -31,7 +31,7 @@ public class CreateReportScheduleSpecification {
     private String reportType = null;
 
     @SerializedName("marketplaceIds")
-    private List<String> marketplaceIds = new ArrayList<String>();
+    private List<String> marketplaceIds = new ArrayList<>();
 
     @SerializedName("reportOptions")
     private ReportOptions reportOptions = null;

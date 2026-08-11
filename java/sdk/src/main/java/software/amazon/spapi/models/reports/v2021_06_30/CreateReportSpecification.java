@@ -14,10 +14,10 @@ package software.amazon.spapi.models.reports.v2021_06_30;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Information required to create the report. */
 @Schema(description = "Information required to create the report.")
@@ -35,7 +35,7 @@ public class CreateReportSpecification {
     private OffsetDateTime dataEndTime = null;
 
     @SerializedName("marketplaceIds")
-    private List<String> marketplaceIds = new ArrayList<String>();
+    private List<String> marketplaceIds = new ArrayList<>();
 
     public CreateReportSpecification reportOptions(ReportOptions reportOptions) {
         this.reportOptions = reportOptions;

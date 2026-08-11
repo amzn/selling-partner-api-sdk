@@ -31,7 +31,7 @@ public class InvoiceRequest {
 
     public InvoiceRequest addAttachmentsItem(Attachment attachmentsItem) {
         if (this.attachments == null) {
-            this.attachments = new ArrayList<Attachment>();
+            this.attachments = new ArrayList<>();
         }
         this.attachments.add(attachmentsItem);
         return this;

@@ -14,10 +14,10 @@ package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Contains information pertaining to the placement of the contents of an inbound plan and the related costs. */
 @Schema(
@@ -25,19 +25,19 @@ import org.threeten.bp.OffsetDateTime;
                 "Contains information pertaining to the placement of the contents of an inbound plan and the related costs.")
 public class PlacementOption {
     @SerializedName("discounts")
-    private List<Incentive> discounts = new ArrayList<Incentive>();
+    private List<Incentive> discounts = new ArrayList<>();
 
     @SerializedName("expiration")
     private OffsetDateTime expiration = null;
 
     @SerializedName("fees")
-    private List<Incentive> fees = new ArrayList<Incentive>();
+    private List<Incentive> fees = new ArrayList<>();
 
     @SerializedName("placementOptionId")
     private String placementOptionId = null;
 
     @SerializedName("shipmentIds")
-    private List<String> shipmentIds = new ArrayList<String>();
+    private List<String> shipmentIds = new ArrayList<>();
 
     @SerializedName("status")
     private String status = null;

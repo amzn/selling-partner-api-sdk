@@ -34,7 +34,7 @@ public class StandardComparisonTableModule {
 
     public StandardComparisonTableModule addProductColumnsItem(StandardComparisonProductBlock productColumnsItem) {
         if (this.productColumns == null) {
-            this.productColumns = new ArrayList<StandardComparisonProductBlock>();
+            this.productColumns = new ArrayList<>();
         }
         this.productColumns.add(productColumnsItem);
         return this;
@@ -61,7 +61,7 @@ public class StandardComparisonTableModule {
 
     public StandardComparisonTableModule addMetricRowLabelsItem(PlainTextItem metricRowLabelsItem) {
         if (this.metricRowLabels == null) {
-            this.metricRowLabels = new ArrayList<PlainTextItem>();
+            this.metricRowLabels = new ArrayList<>();
         }
         this.metricRowLabels.add(metricRowLabelsItem);
         return this;

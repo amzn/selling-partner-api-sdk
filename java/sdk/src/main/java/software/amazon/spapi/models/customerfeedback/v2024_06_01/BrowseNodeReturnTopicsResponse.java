@@ -37,7 +37,7 @@ public class BrowseNodeReturnTopicsResponse {
     private DateRange dateRange = null;
 
     @SerializedName("topics")
-    private List<BrowseNodeReturnTopics> topics = new ArrayList<BrowseNodeReturnTopics>();
+    private List<BrowseNodeReturnTopics> topics = new ArrayList<>();
 
     public BrowseNodeReturnTopicsResponse browseNodeId(String browseNodeId) {
         this.browseNodeId = browseNodeId;

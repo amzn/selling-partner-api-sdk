@@ -83,7 +83,7 @@ public class PrepDetails {
 
     public PrepDetails addPrepInstructionsItem(PrepInstruction prepInstructionsItem) {
         if (this.prepInstructions == null) {
-            this.prepInstructions = new ArrayList<PrepInstruction>();
+            this.prepInstructions = new ArrayList<>();
         }
         this.prepInstructions.add(prepInstructionsItem);
         return this;

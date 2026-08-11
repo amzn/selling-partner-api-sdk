@@ -75,7 +75,7 @@ public class BuyerTaxInfo {
 
     public BuyerTaxInfo addTaxClassificationsItem(TaxClassification taxClassificationsItem) {
         if (this.taxClassifications == null) {
-            this.taxClassifications = new ArrayList<TaxClassification>();
+            this.taxClassifications = new ArrayList<>();
         }
         this.taxClassifications.add(taxClassificationsItem);
         return this;

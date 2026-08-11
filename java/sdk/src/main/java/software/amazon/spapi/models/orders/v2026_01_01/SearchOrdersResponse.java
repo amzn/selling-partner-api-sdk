@@ -14,16 +14,16 @@ package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** A list of orders. */
 @Schema(description = "A list of orders.")
 public class SearchOrdersResponse {
     @SerializedName("orders")
-    private List<Order> orders = new ArrayList<Order>();
+    private List<Order> orders = new ArrayList<>();
 
     @SerializedName("pagination")
     private Pagination pagination = null;

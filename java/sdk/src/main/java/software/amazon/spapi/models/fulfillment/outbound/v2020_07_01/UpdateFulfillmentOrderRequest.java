@@ -14,10 +14,10 @@ package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** The request body schema for the &#x60;updateFulfillmentOrder&#x60; operation. */
 @Schema(description = "The request body schema for the `updateFulfillmentOrder` operation.")
@@ -266,7 +266,7 @@ public class UpdateFulfillmentOrderRequest {
 
     public UpdateFulfillmentOrderRequest addFeatureConstraintsItem(FeatureSettings featureConstraintsItem) {
         if (this.featureConstraints == null) {
-            this.featureConstraints = new ArrayList<FeatureSettings>();
+            this.featureConstraints = new ArrayList<>();
         }
         this.featureConstraints.add(featureConstraintsItem);
         return this;

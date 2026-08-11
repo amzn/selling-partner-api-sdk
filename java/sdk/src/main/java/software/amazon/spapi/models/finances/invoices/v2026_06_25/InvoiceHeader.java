@@ -19,10 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * Represents the header-level information for an invoice, including parties involved (payer/payee), financial amounts,
@@ -401,7 +401,7 @@ public class InvoiceHeader {
 
     public InvoiceHeader addInvoiceAmountBreakdownsItem(Breakdown invoiceAmountBreakdownsItem) {
         if (this.invoiceAmountBreakdowns == null) {
-            this.invoiceAmountBreakdowns = new ArrayList<Breakdown>();
+            this.invoiceAmountBreakdowns = new ArrayList<>();
         }
         this.invoiceAmountBreakdowns.add(invoiceAmountBreakdownsItem);
         return this;
@@ -433,7 +433,7 @@ public class InvoiceHeader {
 
     public InvoiceHeader addInvoiceSettlementBreakdownsItem(Breakdown invoiceSettlementBreakdownsItem) {
         if (this.invoiceSettlementBreakdowns == null) {
-            this.invoiceSettlementBreakdowns = new ArrayList<Breakdown>();
+            this.invoiceSettlementBreakdowns = new ArrayList<>();
         }
         this.invoiceSettlementBreakdowns.add(invoiceSettlementBreakdownsItem);
         return this;
@@ -466,7 +466,7 @@ public class InvoiceHeader {
 
     public InvoiceHeader addRelatedIdentifiersItem(RelatedIdentifier relatedIdentifiersItem) {
         if (this.relatedIdentifiers == null) {
-            this.relatedIdentifiers = new ArrayList<RelatedIdentifier>();
+            this.relatedIdentifiers = new ArrayList<>();
         }
         this.relatedIdentifiers.add(relatedIdentifiersItem);
         return this;

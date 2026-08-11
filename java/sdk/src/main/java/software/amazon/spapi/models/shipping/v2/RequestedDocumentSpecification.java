@@ -42,7 +42,7 @@ public class RequestedDocumentSpecification {
     private Boolean needFileJoining = null;
 
     @SerializedName("requestedDocumentTypes")
-    private List<DocumentType> requestedDocumentTypes = new ArrayList<DocumentType>();
+    private List<DocumentType> requestedDocumentTypes = new ArrayList<>();
 
     @SerializedName("requestedLabelCustomization")
     private RequestedLabelCustomization requestedLabelCustomization = null;

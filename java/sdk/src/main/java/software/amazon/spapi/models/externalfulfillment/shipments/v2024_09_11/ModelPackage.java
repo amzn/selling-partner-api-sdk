@@ -214,7 +214,7 @@ public class ModelPackage {
 
     public ModelPackage addHazmatLabelsItem(String hazmatLabelsItem) {
         if (this.hazmatLabels == null) {
-            this.hazmatLabels = new ArrayList<String>();
+            this.hazmatLabels = new ArrayList<>();
         }
         this.hazmatLabels.add(hazmatLabelsItem);
         return this;

@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "A product offer with segment information indicating where it's featured.")
 public class SegmentedFeaturedOffer extends Offer {
     @SerializedName("featuredOfferSegments")
-    private List<FeaturedOfferSegment> featuredOfferSegments = new ArrayList<FeaturedOfferSegment>();
+    private List<FeaturedOfferSegment> featuredOfferSegments = new ArrayList<>();
 
     public SegmentedFeaturedOffer featuredOfferSegments(List<FeaturedOfferSegment> featuredOfferSegments) {
         this.featuredOfferSegments = featuredOfferSegments;

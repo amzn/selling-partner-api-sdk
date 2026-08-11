@@ -14,8 +14,8 @@ package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** The invoice details for charges associated with the goods in the package. Only applies to certain regions. */
 @Schema(

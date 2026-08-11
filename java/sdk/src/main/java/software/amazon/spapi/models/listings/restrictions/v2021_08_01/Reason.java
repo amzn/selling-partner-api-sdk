@@ -133,7 +133,7 @@ public class Reason {
 
     public Reason addLinksItem(Link linksItem) {
         if (this.links == null) {
-            this.links = new ArrayList<Link>();
+            this.links = new ArrayList<>();
         }
         this.links.add(linksItem);
         return this;

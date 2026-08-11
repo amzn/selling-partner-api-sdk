@@ -19,10 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.LocalDate;
 
 /** Special dates when normal business hours are modified or suspended, requiring different delivery scheduling. */
 @Schema(
@@ -132,7 +132,7 @@ public class ExceptionDate {
 
     public ExceptionDate addTimeWindowsItem(TimeWindow timeWindowsItem) {
         if (this.timeWindows == null) {
-            this.timeWindows = new ArrayList<TimeWindow>();
+            this.timeWindows = new ArrayList<>();
         }
         this.timeWindows.add(timeWindowsItem);
         return this;

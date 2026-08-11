@@ -53,7 +53,7 @@ public class ShippingLabelList {
 
     public ShippingLabelList addShippingLabelsItem(ShippingLabel shippingLabelsItem) {
         if (this.shippingLabels == null) {
-            this.shippingLabels = new ArrayList<ShippingLabel>();
+            this.shippingLabels = new ArrayList<>();
         }
         this.shippingLabels.add(shippingLabelsItem);
         return this;

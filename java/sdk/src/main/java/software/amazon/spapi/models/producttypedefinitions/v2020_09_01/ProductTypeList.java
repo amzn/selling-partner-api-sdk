@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "A list of Amazon product types with definitions available.")
 public class ProductTypeList {
     @SerializedName("productTypes")
-    private List<ProductType> productTypes = new ArrayList<ProductType>();
+    private List<ProductType> productTypes = new ArrayList<>();
 
     @SerializedName("productTypeVersion")
     private String productTypeVersion = null;

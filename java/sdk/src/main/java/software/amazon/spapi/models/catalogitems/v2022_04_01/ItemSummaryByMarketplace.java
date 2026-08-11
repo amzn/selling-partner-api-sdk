@@ -19,10 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.LocalDate;
 
 /** Information about an Amazon catalog item for the indicated &#x60;marketplaceId&#x60;. */
 @Schema(description = "Information about an Amazon catalog item for the indicated `marketplaceId`.")
@@ -265,7 +265,7 @@ public class ItemSummaryByMarketplace {
 
     public ItemSummaryByMarketplace addContributorsItem(ItemContributor contributorsItem) {
         if (this.contributors == null) {
-            this.contributors = new ArrayList<ItemContributor>();
+            this.contributors = new ArrayList<>();
         }
         this.contributors.add(contributorsItem);
         return this;

@@ -19,10 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Availability information as per the service context queried. */
 @Schema(description = "Availability information as per the service context queried.")
@@ -149,7 +149,7 @@ public class AppointmentSlotReport {
 
     public AppointmentSlotReport addAppointmentSlotsItem(AppointmentSlot appointmentSlotsItem) {
         if (this.appointmentSlots == null) {
-            this.appointmentSlots = new ArrayList<AppointmentSlot>();
+            this.appointmentSlots = new ArrayList<>();
         }
         this.appointmentSlots.add(appointmentSlotsItem);
         return this;

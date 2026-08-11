@@ -55,7 +55,7 @@ public class ListAllFulfillmentOrdersResult {
 
     public ListAllFulfillmentOrdersResult addFulfillmentOrdersItem(FulfillmentOrder fulfillmentOrdersItem) {
         if (this.fulfillmentOrders == null) {
-            this.fulfillmentOrders = new ArrayList<FulfillmentOrder>();
+            this.fulfillmentOrders = new ArrayList<>();
         }
         this.fulfillmentOrders.add(fulfillmentOrdersItem);
         return this;

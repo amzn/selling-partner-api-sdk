@@ -81,7 +81,7 @@ public class ShipmentTransportationConfiguration {
 
     public ShipmentTransportationConfiguration addPalletsItem(PalletInput palletsItem) {
         if (this.pallets == null) {
-            this.pallets = new ArrayList<PalletInput>();
+            this.pallets = new ArrayList<>();
         }
         this.pallets.add(palletsItem);
         return this;

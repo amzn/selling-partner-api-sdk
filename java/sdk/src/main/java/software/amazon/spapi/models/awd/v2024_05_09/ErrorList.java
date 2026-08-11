@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "This exception is thrown when client inputs are invalid.")
 public class ErrorList {
     @SerializedName("errors")
-    private List<Error> errors = new ArrayList<Error>();
+    private List<Error> errors = new ArrayList<>();
 
     public ErrorList errors(List<Error> errors) {
         this.errors = errors;

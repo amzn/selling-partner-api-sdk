@@ -14,10 +14,10 @@ package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Package information for a shipment in a fulfillment order. */
 @Schema(description = "Package information for a shipment in a fulfillment order.")
@@ -120,7 +120,7 @@ public class ModelPackage {
 
     public ModelPackage addShipmentItemIdsItem(String shipmentItemIdsItem) {
         if (this.shipmentItemIds == null) {
-            this.shipmentItemIds = new ArrayList<String>();
+            this.shipmentItemIds = new ArrayList<>();
         }
         this.shipmentItemIds.add(shipmentItemIdsItem);
         return this;
