@@ -66,7 +66,7 @@ export class GetOrderApi {
     return this.apiClient.callApi('GetOrderApi-getOrder',
       '/orders/2026-01-01/orders/{orderId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('GetOrderApi-getOrder')
+      contentTypes, accepts, returnType
     )
   }
 

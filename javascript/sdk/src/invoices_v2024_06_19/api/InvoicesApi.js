@@ -71,7 +71,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-createGovernmentInvoice',
       '/tax/invoices/2024-06-19/governmentInvoiceRequests', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-createGovernmentInvoice')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -116,7 +116,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-createInvoicesExport',
       '/tax/invoices/2024-06-19/exports', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-createInvoicesExport')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -189,7 +189,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-getGovernmentInvoiceDocument',
       '/tax/invoices/2024-06-19/governmentInvoiceRequests/{shipmentId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getGovernmentInvoiceDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -266,7 +266,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-getGovernmentInvoiceStatus',
       '/tax/invoices/2024-06-19/governmentInvoiceRequests', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getGovernmentInvoiceStatus')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -324,7 +324,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-getInvoice',
       '/tax/invoices/2024-06-19/invoices/{invoiceId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoice')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -399,7 +399,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-getInvoices',
       '/tax/invoices/2024-06-19/invoices', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoices')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -459,7 +459,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-getInvoicesAttributes',
       '/tax/invoices/2024-06-19/attributes', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoicesAttributes')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -505,7 +505,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-getInvoicesDocument',
       '/tax/invoices/2024-06-19/documents/{invoicesDocumentId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoicesDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -551,7 +551,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-getInvoicesExport',
       '/tax/invoices/2024-06-19/exports/{exportId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoicesExport')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -609,7 +609,7 @@ export class InvoicesApi {
     return this.apiClient.callApi('InvoicesApi-getInvoicesExports',
       '/tax/invoices/2024-06-19/exports', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getInvoicesExports')
+      contentTypes, accepts, returnType
     )
   }
 

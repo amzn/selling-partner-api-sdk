@@ -82,7 +82,7 @@ export class ProductPricingApi {
     return this.apiClient.callApi('ProductPricingApi-getCompetitivePricing',
       '/products/pricing/v0/competitivePrice', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getCompetitivePricing')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -151,7 +151,7 @@ export class ProductPricingApi {
     return this.apiClient.callApi('ProductPricingApi-getItemOffers',
       '/products/pricing/v0/items/{Asin}/offers', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getItemOffers')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -200,7 +200,7 @@ export class ProductPricingApi {
     return this.apiClient.callApi('ProductPricingApi-getItemOffersBatch',
       '/batches/products/pricing/v0/itemOffers', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getItemOffersBatch')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -264,7 +264,7 @@ export class ProductPricingApi {
     return this.apiClient.callApi('ProductPricingApi-getListingOffers',
       '/products/pricing/v0/listings/{SellerSKU}/offers', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getListingOffers')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -313,7 +313,7 @@ export class ProductPricingApi {
     return this.apiClient.callApi('ProductPricingApi-getListingOffersBatch',
       '/batches/products/pricing/v0/listingOffers', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getListingOffersBatch')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -376,7 +376,7 @@ export class ProductPricingApi {
     return this.apiClient.callApi('ProductPricingApi-getPricing',
       '/products/pricing/v0/price', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ProductPricingApi-getPricing')
+      contentTypes, accepts, returnType
     )
   }
 

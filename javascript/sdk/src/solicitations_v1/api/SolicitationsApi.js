@@ -69,7 +69,7 @@ export class SolicitationsApi {
     return this.apiClient.callApi('SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation',
       '/solicitations/v1/orders/{amazonOrderId}/solicitations/productReviewAndSellerFeedback', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('SolicitationsApi-createProductReviewAndSellerFeedbackSolicitation')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -123,7 +123,7 @@ export class SolicitationsApi {
     return this.apiClient.callApi('SolicitationsApi-getSolicitationActionsForOrder',
       '/solicitations/v1/orders/{amazonOrderId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('SolicitationsApi-getSolicitationActionsForOrder')
+      contentTypes, accepts, returnType
     )
   }
 

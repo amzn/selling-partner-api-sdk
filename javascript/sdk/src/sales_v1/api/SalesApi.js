@@ -91,7 +91,7 @@ export class SalesApi {
     return this.apiClient.callApi('SalesApi-getOrderMetrics',
       '/sales/v1/orderMetrics', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('SalesApi-getOrderMetrics')
+      contentTypes, accepts, returnType
     )
   }
 

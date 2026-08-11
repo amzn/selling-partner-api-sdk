@@ -67,7 +67,7 @@ export class VendorShippingApi {
     return this.apiClient.callApi('VendorShippingApi-getPackingSlip',
       '/vendor/directFulfillment/shipping/2021-12-28/packingSlips/{purchaseOrderNumber}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-getPackingSlip')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -132,7 +132,7 @@ export class VendorShippingApi {
     return this.apiClient.callApi('VendorShippingApi-getPackingSlips',
       '/vendor/directFulfillment/shipping/2021-12-28/packingSlips', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-getPackingSlips')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -185,7 +185,7 @@ export class VendorShippingApi {
     return this.apiClient.callApi('VendorShippingApi-submitShipmentConfirmations',
       '/vendor/directFulfillment/shipping/2021-12-28/shipmentConfirmations', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-submitShipmentConfirmations')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -232,7 +232,7 @@ export class VendorShippingApi {
     return this.apiClient.callApi('VendorShippingApi-submitShipmentStatusUpdates',
       '/vendor/directFulfillment/shipping/2021-12-28/shipmentStatusUpdates', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorShippingApi-submitShipmentStatusUpdates')
+      contentTypes, accepts, returnType
     )
   }
 

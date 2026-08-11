@@ -62,7 +62,7 @@ export class BatchInventoryApi {
     return this.apiClient.callApi('BatchInventoryApi-batchInventory',
       '/externalFulfillment/inventory/2024-09-11/inventories', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('BatchInventoryApi-batchInventory')
+      contentTypes, accepts, returnType
     )
   }
 

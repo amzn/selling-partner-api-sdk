@@ -86,7 +86,7 @@ export class TransactionsApi {
     return this.apiClient.callApi('TransactionsApi-createTransaction',
       '/finances/transfers/wallet/2024-03-01/transactions', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransactionsApi-createTransaction')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -144,7 +144,7 @@ export class TransactionsApi {
     return this.apiClient.callApi('TransactionsApi-getTransaction',
       '/finances/transfers/wallet/2024-03-01/transactions/{transactionId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransactionsApi-getTransaction')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -204,7 +204,7 @@ export class TransactionsApi {
     return this.apiClient.callApi('TransactionsApi-listAccountTransactions',
       '/finances/transfers/wallet/2024-03-01/transactions', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransactionsApi-listAccountTransactions')
+      contentTypes, accepts, returnType
     )
   }
 

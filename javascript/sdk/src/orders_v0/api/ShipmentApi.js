@@ -68,7 +68,7 @@ export class ShipmentApi {
     return this.apiClient.callApi('ShipmentApi-updateShipmentStatus',
       '/orders/v0/orders/{orderId}/shipment', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ShipmentApi-updateShipmentStatus')
+      contentTypes, accepts, returnType
     )
   }
 

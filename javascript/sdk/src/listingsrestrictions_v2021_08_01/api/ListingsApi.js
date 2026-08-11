@@ -84,7 +84,7 @@ export class ListingsApi {
     return this.apiClient.callApi('ListingsApi-getListingsRestrictions',
       '/listings/2021-08-01/restrictions', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ListingsApi-getListingsRestrictions')
+      contentTypes, accepts, returnType
     )
   }
 

@@ -70,7 +70,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-getPaymentMethods',
       '/finances/transfers/2024-06-01/paymentMethods', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-getPaymentMethods')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -117,7 +117,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-initiatePayout',
       '/finances/transfers/2024-06-01/payouts', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-initiatePayout')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -164,7 +164,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-listExpectedPayouts',
       '/finances/transfers/2024-06-01/payouts/expected', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listExpectedPayouts')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -220,7 +220,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-listPayouts',
       '/finances/transfers/2024-06-01/payouts', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listPayouts')
+      contentTypes, accepts, returnType
     )
   }
 

@@ -68,7 +68,7 @@ export class FeedsApi {
     return this.apiClient.callApi('FeedsApi-cancelFeed',
       '/feeds/2021-06-30/feeds/{feedId}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeedsApi-cancelFeed')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -113,7 +113,7 @@ export class FeedsApi {
     return this.apiClient.callApi('FeedsApi-createFeed',
       '/feeds/2021-06-30/feeds', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeedsApi-createFeed')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -158,7 +158,7 @@ export class FeedsApi {
     return this.apiClient.callApi('FeedsApi-createFeedDocument',
       '/feeds/2021-06-30/documents', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeedsApi-createFeedDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -204,7 +204,7 @@ export class FeedsApi {
     return this.apiClient.callApi('FeedsApi-getFeed',
       '/feeds/2021-06-30/feeds/{feedId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeedsApi-getFeed')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -254,7 +254,7 @@ export class FeedsApi {
     return this.apiClient.callApi('FeedsApi-getFeedDocument',
       '/feeds/2021-06-30/documents/{feedDocumentId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeedsApi-getFeedDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -311,7 +311,7 @@ export class FeedsApi {
     return this.apiClient.callApi('FeedsApi-getFeeds',
       '/feeds/2021-06-30/feeds', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FeedsApi-getFeeds')
+      contentTypes, accepts, returnType
     )
   }
 

@@ -61,7 +61,7 @@ export class VendorInvoiceApi {
     return this.apiClient.callApi('VendorInvoiceApi-submitInvoice',
       '/vendor/directFulfillment/payments/v1/invoices', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorInvoiceApi-submitInvoice')
+      contentTypes, accepts, returnType
     )
   }
 

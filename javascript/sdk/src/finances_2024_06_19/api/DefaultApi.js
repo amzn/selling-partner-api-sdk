@@ -69,7 +69,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-listBalances',
       '/finances/2024-06-19/balances', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listBalances')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -129,7 +129,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-listSummary',
       '/finances/2024-06-19/summary', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listSummary')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -191,7 +191,7 @@ export class DefaultApi {
     return this.apiClient.callApi('DefaultApi-listTransactions',
       '/finances/2024-06-19/transactions', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('DefaultApi-listTransactions')
+      contentTypes, accepts, returnType
     )
   }
 

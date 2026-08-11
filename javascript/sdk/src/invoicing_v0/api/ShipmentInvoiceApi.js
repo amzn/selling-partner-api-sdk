@@ -64,7 +64,7 @@ export class ShipmentInvoiceApi {
     return this.apiClient.callApi('ShipmentInvoiceApi-getInvoiceStatus',
       '/fba/outbound/brazil/v0/shipments/{shipmentId}/invoice/status', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ShipmentInvoiceApi-getInvoiceStatus')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -110,7 +110,7 @@ export class ShipmentInvoiceApi {
     return this.apiClient.callApi('ShipmentInvoiceApi-getShipmentDetails',
       '/fba/outbound/brazil/v0/shipments/{shipmentId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ShipmentInvoiceApi-getShipmentDetails')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -162,7 +162,7 @@ export class ShipmentInvoiceApi {
     return this.apiClient.callApi('ShipmentInvoiceApi-submitInvoice',
       '/fba/outbound/brazil/v0/shipments/{shipmentId}/invoice', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('ShipmentInvoiceApi-submitInvoice')
+      contentTypes, accepts, returnType
     )
   }
 

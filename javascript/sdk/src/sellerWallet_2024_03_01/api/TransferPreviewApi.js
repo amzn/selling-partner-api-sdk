@@ -98,7 +98,7 @@ export class TransferPreviewApi {
     return this.apiClient.callApi('TransferPreviewApi-getTransferPreview',
       '/finances/transfers/wallet/2024-03-01/transferPreview', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('TransferPreviewApi-getTransferPreview')
+      contentTypes, accepts, returnType
     )
   }
 

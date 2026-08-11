@@ -77,7 +77,7 @@ export class SearchOrdersApi {
     return this.apiClient.callApi('SearchOrdersApi-searchOrders',
       '/orders/2026-01-01/orders', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('SearchOrdersApi-searchOrders')
+      contentTypes, accepts, returnType
     )
   }
 

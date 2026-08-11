@@ -65,7 +65,7 @@ export class VendorOrdersApi {
     return this.apiClient.callApi('VendorOrdersApi-getPurchaseOrder',
       '/vendor/orders/v1/purchaseOrders/{purchaseOrderNumber}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorOrdersApi-getPurchaseOrder')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -130,7 +130,7 @@ export class VendorOrdersApi {
     return this.apiClient.callApi('VendorOrdersApi-getPurchaseOrders',
       '/vendor/orders/v1/purchaseOrders', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorOrdersApi-getPurchaseOrders')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -209,7 +209,7 @@ export class VendorOrdersApi {
     return this.apiClient.callApi('VendorOrdersApi-getPurchaseOrdersStatus',
       '/vendor/orders/v1/purchaseOrdersStatus', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorOrdersApi-getPurchaseOrdersStatus')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -267,7 +267,7 @@ export class VendorOrdersApi {
     return this.apiClient.callApi('VendorOrdersApi-submitAcknowledgement',
       '/vendor/orders/v1/acknowledgements', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorOrdersApi-submitAcknowledgement')
+      contentTypes, accepts, returnType
     )
   }
 

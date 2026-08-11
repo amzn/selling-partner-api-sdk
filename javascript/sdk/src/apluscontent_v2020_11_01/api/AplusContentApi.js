@@ -78,7 +78,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-createContentDocument',
       '/aplus/2020-11-01/contentDocuments', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-createContentDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -139,7 +139,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-getContentDocument',
       '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-getContentDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -202,7 +202,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-listContentDocumentAsinRelations',
       '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/asins', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-listContentDocumentAsinRelations')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -260,7 +260,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-postContentDocumentApprovalSubmission',
       '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/approvalSubmissions', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-postContentDocumentApprovalSubmission')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -320,7 +320,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-postContentDocumentAsinRelations',
       '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/asins', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-postContentDocumentAsinRelations')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -375,7 +375,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-postContentDocumentSuspendSubmission',
       '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/suspendSubmissions', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-postContentDocumentSuspendSubmission')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -426,7 +426,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-searchContentDocuments',
       '/aplus/2020-11-01/contentDocuments', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-searchContentDocuments')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -485,7 +485,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-searchContentPublishRecords',
       '/aplus/2020-11-01/contentPublishRecords', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-searchContentPublishRecords')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -547,7 +547,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-updateContentDocument',
       '/aplus/2020-11-01/contentDocuments/{contentReferenceKey}', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-updateContentDocument')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -605,7 +605,7 @@ export class AplusContentApi {
     return this.apiClient.callApi('AplusContentApi-validateContentDocumentAsinRelations',
       '/aplus/2020-11-01/contentAsinValidations', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AplusContentApi-validateContentDocumentAsinRelations')
+      contentTypes, accepts, returnType
     )
   }
 

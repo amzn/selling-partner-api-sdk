@@ -191,8 +191,6 @@ export class ApiClient {
   #tokenForApiCall = null
   #lwaClient = null
   #rdtClient = null
-  #customizedRateLimiterMap = null
-  #useRateLimiter = true
 
   /**
     * Constructs a new ApiClient.

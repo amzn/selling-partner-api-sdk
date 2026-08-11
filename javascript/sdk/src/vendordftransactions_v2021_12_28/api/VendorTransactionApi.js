@@ -63,7 +63,7 @@ export class VendorTransactionApi {
     return this.apiClient.callApi('VendorTransactionApi-getTransactionStatus',
       '/vendor/directFulfillment/transactions/2021-12-28/transactions/{transactionId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorTransactionApi-getTransactionStatus')
+      contentTypes, accepts, returnType
     )
   }
 

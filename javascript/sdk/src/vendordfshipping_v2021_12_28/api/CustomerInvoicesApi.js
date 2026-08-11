@@ -64,7 +64,7 @@ export class CustomerInvoicesApi {
     return this.apiClient.callApi('CustomerInvoicesApi-getCustomerInvoice',
       '/vendor/directFulfillment/shipping/2021-12-28/customerInvoices/{purchaseOrderNumber}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('CustomerInvoicesApi-getCustomerInvoice')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -129,7 +129,7 @@ export class CustomerInvoicesApi {
     return this.apiClient.callApi('CustomerInvoicesApi-getCustomerInvoices',
       '/vendor/directFulfillment/shipping/2021-12-28/customerInvoices', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('CustomerInvoicesApi-getCustomerInvoices')
+      contentTypes, accepts, returnType
     )
   }
 

@@ -72,7 +72,7 @@ export class FbaInboundApi {
     return this.apiClient.callApi('FbaInboundApi-getItemEligibilityPreview',
       '/fba/inbound/v1/eligibility/itemPreview', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaInboundApi-getItemEligibilityPreview')
+      contentTypes, accepts, returnType
     )
   }
 

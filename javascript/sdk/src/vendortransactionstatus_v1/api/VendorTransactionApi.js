@@ -61,7 +61,7 @@ export class VendorTransactionApi {
     return this.apiClient.callApi('VendorTransactionApi-getTransaction',
       '/vendor/transactions/v1/transactions/{transactionId}', 'GET',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('VendorTransactionApi-getTransaction')
+      contentTypes, accepts, returnType
     )
   }
 

@@ -64,7 +64,7 @@ export class AppIntegrationsApi {
     return this.apiClient.callApi('AppIntegrationsApi-createNotification',
       '/appIntegrations/2024-04-01/notifications', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AppIntegrationsApi-createNotification')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -109,7 +109,7 @@ export class AppIntegrationsApi {
     return this.apiClient.callApi('AppIntegrationsApi-deleteNotifications',
       '/appIntegrations/2024-04-01/notifications/deletion', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AppIntegrationsApi-deleteNotifications')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -161,7 +161,7 @@ export class AppIntegrationsApi {
     return this.apiClient.callApi('AppIntegrationsApi-recordActionFeedback',
       '/appIntegrations/2024-04-01/notifications/{notificationId}/feedback', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('AppIntegrationsApi-recordActionFeedback')
+      contentTypes, accepts, returnType
     )
   }
 

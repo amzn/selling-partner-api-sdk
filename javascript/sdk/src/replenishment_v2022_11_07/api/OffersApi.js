@@ -61,7 +61,7 @@ export class OffersApi {
     return this.apiClient.callApi('OffersApi-listOfferMetrics',
       '/replenishment/2022-11-07/offers/metrics/search', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('OffersApi-listOfferMetrics')
+      contentTypes, accepts, returnType
     )
   }
 
@@ -104,7 +104,7 @@ export class OffersApi {
     return this.apiClient.callApi('OffersApi-listOffers',
       '/replenishment/2022-11-07/offers/search', 'POST',
       pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('OffersApi-listOffers')
+      contentTypes, accepts, returnType
     )
   }
 
