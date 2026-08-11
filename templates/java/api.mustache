@@ -2,12 +2,10 @@
 
 package {{package}};
 
-import io.github.bucket4j.Bucket;
 import {{invokerPackage}}.ApiCallback;
 import {{invokerPackage}}.ApiClient;
 import {{invokerPackage}}.ApiException;
 import {{invokerPackage}}.ApiResponse;
-import {{invokerPackage}}.Configuration;
 import {{invokerPackage}}.Pair;
 import {{invokerPackage}}.ProgressRequestBody;
 import {{invokerPackage}}.ProgressResponseBody;
@@ -39,21 +37,10 @@ import com.amazon.SellingPartnerAPIAA.RestrictedDataTokenSigner;
 {{#operations}}
 public class {{classname}} {
     private ApiClient {{localVariablePrefix}}apiClient;
-    private Boolean disableRateLimiting;
 
-    public {{classname}}(ApiClient apiClient, Boolean disableRateLimiting) {
+    public {{classname}}(ApiClient apiClient) {
         this.{{localVariablePrefix}}apiClient = apiClient;
-        this.disableRateLimiting = disableRateLimiting;
     }
-
-    private final Configuration config = Configuration.get();
-
-    {{#operation}}
-    public final Bucket {{operationId}}Bucket = Bucket.builder()
-        .addLimit(config.getLimit("{{classname}}-{{operationId}}"))
-        .build();
-
-    {{/operation}}
 
     {{#operation}}
     /**
@@ -203,11 +190,9 @@ public class {{classname}} {
             {{localVariablePrefix}}request = RestrictedDataTokenSigner.sign({{localVariablePrefix}}request, restrictedDataToken, "{{classname}}-{{operationId}}");
             {{localVariablePrefix}}call = {{localVariablePrefix}}apiClient.getHttpClient().newCall({{localVariablePrefix}}request);
         }
-        
-        if (disableRateLimiting || {{operationId}}Bucket.tryConsume(1)) {
-            {{#returnType}}Type {{localVariablePrefix}}localVarReturnType = new TypeToken<{{{returnType}}}>(){}.getType();
-            return {{localVariablePrefix}}apiClient.execute({{localVariablePrefix}}call, {{localVariablePrefix}}localVarReturnType);{{/returnType}}{{^returnType}}return {{localVariablePrefix}}apiClient.execute({{localVariablePrefix}}call);{{/returnType}}
-        } else throw new ApiException.RateLimitExceeded("{{operationId}} operation exceeds rate limit");
+
+        {{#returnType}}Type {{localVariablePrefix}}localVarReturnType = new TypeToken<{{{returnType}}}>(){}.getType();
+        return {{localVariablePrefix}}apiClient.execute({{localVariablePrefix}}call, {{localVariablePrefix}}localVarReturnType);{{/returnType}}{{^returnType}}return {{localVariablePrefix}}apiClient.execute({{localVariablePrefix}}call);{{/returnType}}
     }
 
     /**
@@ -289,12 +274,10 @@ public class {{classname}} {
             {{localVariablePrefix}}request = RestrictedDataTokenSigner.sign({{localVariablePrefix}}request, restrictedDataToken, "{{classname}}-{{operationId}}");
             {{localVariablePrefix}}call = {{localVariablePrefix}}apiClient.getHttpClient().newCall({{localVariablePrefix}}request);
         }
-        
-        if (disableRateLimiting || {{operationId}}Bucket.tryConsume(1)) {
-            {{#returnType}}Type {{localVariablePrefix}}localVarReturnType = new TypeToken<{{{returnType}}}>(){}.getType();
-            {{localVariablePrefix}}apiClient.executeAsync({{localVariablePrefix}}call, {{localVariablePrefix}}localVarReturnType, {{localVariablePrefix}}callback);{{/returnType}}{{^returnType}}{{localVariablePrefix}}apiClient.executeAsync({{localVariablePrefix}}call, {{localVariablePrefix}}callback);{{/returnType}}
-            return {{localVariablePrefix}}call;
-        } else throw new ApiException.RateLimitExceeded("{{operationId}} operation exceeds rate limit");
+
+        {{#returnType}}Type {{localVariablePrefix}}localVarReturnType = new TypeToken<{{{returnType}}}>(){}.getType();
+        {{localVariablePrefix}}apiClient.executeAsync({{localVariablePrefix}}call, {{localVariablePrefix}}localVarReturnType, {{localVariablePrefix}}callback);{{/returnType}}{{^returnType}}{{localVariablePrefix}}apiClient.executeAsync({{localVariablePrefix}}call, {{localVariablePrefix}}callback);{{/returnType}}
+        return {{localVariablePrefix}}call;
     }
     {{/operation}}
 
@@ -303,7 +286,6 @@ public class {{classname}} {
         private String endpoint;
         private LWAAccessTokenCache lwaAccessTokenCache;
         private Boolean disableAccessTokenCache = false;
-        private Boolean disableRateLimiting = false;
 
         public Builder lwaAuthorizationCredentials(LWAAuthorizationCredentials lwaAuthorizationCredentials) {
             this.lwaAuthorizationCredentials = lwaAuthorizationCredentials;
@@ -322,11 +304,6 @@ public class {{classname}} {
 		
 	   public Builder disableAccessTokenCache() {
             this.disableAccessTokenCache = true;
-            return this;
-        }
-
-        public Builder disableRateLimiting() {
-            this.disableRateLimiting = true;
             return this;
         }
 
@@ -352,7 +329,7 @@ public class {{classname}} {
 
             return new {{classname}}(new ApiClient()
                 .setLWAAuthorizationSigner(lwaAuthorizationSigner)
-                .setBasePath(endpoint), disableRateLimiting);
+                .setBasePath(endpoint));
         }
     }
 }
