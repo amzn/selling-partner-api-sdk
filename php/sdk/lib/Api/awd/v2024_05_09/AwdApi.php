@@ -61,9 +61,6 @@ use SpApi\Model\awd\v2024_05_09\ShipmentLabels;
 use SpApi\Model\awd\v2024_05_09\ShipmentListing;
 use SpApi\Model\awd\v2024_05_09\TransportationDetails;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * AwdApi Class Doc Comment.
@@ -76,27 +73,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class AwdApi
 {
-    public ?LimiterInterface $cancelInboundRateLimiter;
-    public ?LimiterInterface $checkInboundEligibilityRateLimiter;
-    public ?LimiterInterface $confirmInboundRateLimiter;
-    public ?LimiterInterface $confirmOutboundRateLimiter;
-    public ?LimiterInterface $confirmReplenishmentOrderRateLimiter;
-    public ?LimiterInterface $createInboundRateLimiter;
-    public ?LimiterInterface $createOutboundRateLimiter;
-    public ?LimiterInterface $createReplenishmentOrderRateLimiter;
-    public ?LimiterInterface $getInboundRateLimiter;
-    public ?LimiterInterface $getInboundShipmentRateLimiter;
-    public ?LimiterInterface $getInboundShipmentLabelsRateLimiter;
-    public ?LimiterInterface $getLabelPageTypesRateLimiter;
-    public ?LimiterInterface $getOutboundRateLimiter;
-    public ?LimiterInterface $getReplenishmentOrderRateLimiter;
-    public ?LimiterInterface $listInboundShipmentsRateLimiter;
-    public ?LimiterInterface $listInventoryRateLimiter;
-    public ?LimiterInterface $listOutboundsRateLimiter;
-    public ?LimiterInterface $listReplenishmentOrdersRateLimiter;
-    public ?LimiterInterface $updateInboundRateLimiter;
-    public ?LimiterInterface $updateInboundShipmentTransportDetailsRateLimiter;
-    public ?LimiterInterface $updateOutboundRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -108,69 +84,16 @@ class AwdApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-cancelInbound'), $this->rateLimitStorage);
-            $this->cancelInboundRateLimiter = $factory->create('AwdApi-cancelInbound');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-checkInboundEligibility'), $this->rateLimitStorage);
-            $this->checkInboundEligibilityRateLimiter = $factory->create('AwdApi-checkInboundEligibility');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-confirmInbound'), $this->rateLimitStorage);
-            $this->confirmInboundRateLimiter = $factory->create('AwdApi-confirmInbound');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-confirmOutbound'), $this->rateLimitStorage);
-            $this->confirmOutboundRateLimiter = $factory->create('AwdApi-confirmOutbound');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-confirmReplenishmentOrder'), $this->rateLimitStorage);
-            $this->confirmReplenishmentOrderRateLimiter = $factory->create('AwdApi-confirmReplenishmentOrder');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-createInbound'), $this->rateLimitStorage);
-            $this->createInboundRateLimiter = $factory->create('AwdApi-createInbound');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-createOutbound'), $this->rateLimitStorage);
-            $this->createOutboundRateLimiter = $factory->create('AwdApi-createOutbound');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-createReplenishmentOrder'), $this->rateLimitStorage);
-            $this->createReplenishmentOrderRateLimiter = $factory->create('AwdApi-createReplenishmentOrder');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-getInbound'), $this->rateLimitStorage);
-            $this->getInboundRateLimiter = $factory->create('AwdApi-getInbound');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-getInboundShipment'), $this->rateLimitStorage);
-            $this->getInboundShipmentRateLimiter = $factory->create('AwdApi-getInboundShipment');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-getInboundShipmentLabels'), $this->rateLimitStorage);
-            $this->getInboundShipmentLabelsRateLimiter = $factory->create('AwdApi-getInboundShipmentLabels');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-getLabelPageTypes'), $this->rateLimitStorage);
-            $this->getLabelPageTypesRateLimiter = $factory->create('AwdApi-getLabelPageTypes');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-getOutbound'), $this->rateLimitStorage);
-            $this->getOutboundRateLimiter = $factory->create('AwdApi-getOutbound');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-getReplenishmentOrder'), $this->rateLimitStorage);
-            $this->getReplenishmentOrderRateLimiter = $factory->create('AwdApi-getReplenishmentOrder');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-listInboundShipments'), $this->rateLimitStorage);
-            $this->listInboundShipmentsRateLimiter = $factory->create('AwdApi-listInboundShipments');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-listInventory'), $this->rateLimitStorage);
-            $this->listInventoryRateLimiter = $factory->create('AwdApi-listInventory');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-listOutbounds'), $this->rateLimitStorage);
-            $this->listOutboundsRateLimiter = $factory->create('AwdApi-listOutbounds');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-listReplenishmentOrders'), $this->rateLimitStorage);
-            $this->listReplenishmentOrdersRateLimiter = $factory->create('AwdApi-listReplenishmentOrders');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-updateInbound'), $this->rateLimitStorage);
-            $this->updateInboundRateLimiter = $factory->create('AwdApi-updateInbound');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-updateInboundShipmentTransportDetails'), $this->rateLimitStorage);
-            $this->updateInboundShipmentTransportDetailsRateLimiter = $factory->create('AwdApi-updateInboundShipmentTransportDetails');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('AwdApi-updateOutbound'), $this->rateLimitStorage);
-            $this->updateOutboundRateLimiter = $factory->create('AwdApi-updateOutbound');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -245,9 +168,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->cancelInboundRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -331,9 +251,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-cancelInbound');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->cancelInboundRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -491,9 +408,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->checkInboundEligibilityRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -589,9 +503,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-checkInboundEligibility');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->checkInboundEligibilityRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -757,9 +668,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->confirmInboundRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -843,9 +751,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-confirmInbound');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->confirmInboundRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1001,9 +906,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->confirmOutboundRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1087,9 +989,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-confirmOutbound');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->confirmOutboundRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1245,9 +1144,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->confirmReplenishmentOrderRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1331,9 +1227,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-confirmReplenishmentOrder');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->confirmReplenishmentOrderRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1491,9 +1384,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createInboundRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1589,9 +1479,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-createInbound');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createInboundRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1759,9 +1646,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createOutboundRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1857,9 +1741,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-createOutbound');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createOutboundRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2027,9 +1908,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createReplenishmentOrderRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2125,9 +2003,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-createReplenishmentOrder');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createReplenishmentOrderRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2295,9 +2170,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getInboundRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2393,9 +2265,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-getInbound');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getInboundRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2572,9 +2441,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getInboundShipmentRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2676,9 +2542,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-getInboundShipment');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getInboundShipmentRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2878,9 +2741,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getInboundShipmentLabelsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2988,9 +2848,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-getInboundShipmentLabels');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getInboundShipmentLabelsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -3191,9 +3048,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getLabelPageTypesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3289,9 +3143,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-getLabelPageTypes');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getLabelPageTypesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -3465,9 +3316,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getOutboundRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3563,9 +3411,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-getOutbound');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getOutboundRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -3736,9 +3581,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getReplenishmentOrderRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3834,9 +3676,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-getReplenishmentOrder');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getReplenishmentOrderRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -4043,9 +3882,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listInboundShipmentsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -4177,9 +4013,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-listInboundShipments');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listInboundShipmentsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -4454,9 +4287,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listInventoryRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -4576,9 +4406,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-listInventory');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listInventoryRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -4827,9 +4654,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listOutboundsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -4949,9 +4773,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-listOutbounds');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listOutboundsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -5200,9 +5021,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->listReplenishmentOrdersRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -5322,9 +5140,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-listReplenishmentOrders');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->listReplenishmentOrdersRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -5553,9 +5368,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateInboundRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -5645,9 +5457,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-updateInbound');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateInboundRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -5824,9 +5633,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateInboundShipmentTransportDetailsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -5916,9 +5722,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-updateInboundShipmentTransportDetails');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateInboundShipmentTransportDetailsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -6101,9 +5904,6 @@ class AwdApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->updateOutboundRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -6205,9 +6005,6 @@ class AwdApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AwdApi-updateOutbound');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->updateOutboundRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

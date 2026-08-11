@@ -35,9 +35,6 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
 use SpApi\Configuration;
@@ -74,16 +71,8 @@ class VendorOrdersApi
      */
     protected int $hostIndex;
 
-    private Bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-    public ?LimiterInterface $getPurchaseOrderRateLimiter;
-    public ?LimiterInterface $getPurchaseOrdersRateLimiter;
-    public ?LimiterInterface $getPurchaseOrdersStatusRateLimiter;
-    public ?LimiterInterface $submitAcknowledgementRateLimiter;
-
     /**
      * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
      * @param ClientInterface|null $client
      * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -91,26 +80,10 @@ class VendorOrdersApi
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-getPurchaseOrder"), $this->rateLimitStorage);
-            $this->getPurchaseOrderRateLimiter = $factory->create("VendorOrdersApi-getPurchaseOrder");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-getPurchaseOrders"), $this->rateLimitStorage);
-            $this->getPurchaseOrdersRateLimiter = $factory->create("VendorOrdersApi-getPurchaseOrders");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-getPurchaseOrdersStatus"), $this->rateLimitStorage);
-            $this->getPurchaseOrdersStatusRateLimiter = $factory->create("VendorOrdersApi-getPurchaseOrdersStatus");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorOrdersApi-submitAcknowledgement"), $this->rateLimitStorage);
-            $this->submitAcknowledgementRateLimiter = $factory->create("VendorOrdersApi-submitAcknowledgement");
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -186,9 +159,6 @@ class VendorOrdersApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getPurchaseOrderRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -284,9 +254,6 @@ class VendorOrdersApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorOrdersApi-getPurchaseOrder");
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getPurchaseOrderRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -525,9 +492,6 @@ class VendorOrdersApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getPurchaseOrdersRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -689,9 +653,6 @@ class VendorOrdersApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorOrdersApi-getPurchaseOrders");
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getPurchaseOrdersRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1082,9 +1043,6 @@ class VendorOrdersApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getPurchaseOrdersStatusRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1252,9 +1210,6 @@ class VendorOrdersApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorOrdersApi-getPurchaseOrdersStatus");
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getPurchaseOrdersStatusRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1586,9 +1541,6 @@ class VendorOrdersApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->submitAcknowledgementRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1684,9 +1636,6 @@ class VendorOrdersApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorOrdersApi-submitAcknowledgement");
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->submitAcknowledgementRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

@@ -35,9 +35,6 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
 use SpApi\Configuration;
@@ -74,16 +71,8 @@ class VendorShippingLabelsApi
      */
     protected int $hostIndex;
 
-    private Bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-    public ?LimiterInterface $createShippingLabelsRateLimiter;
-    public ?LimiterInterface $getShippingLabelRateLimiter;
-    public ?LimiterInterface $getShippingLabelsRateLimiter;
-    public ?LimiterInterface $submitShippingLabelRequestRateLimiter;
-
     /**
      * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
      * @param ClientInterface|null $client
      * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -91,26 +80,10 @@ class VendorShippingLabelsApi
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingLabelsApi-createShippingLabels"), $this->rateLimitStorage);
-            $this->createShippingLabelsRateLimiter = $factory->create("VendorShippingLabelsApi-createShippingLabels");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingLabelsApi-getShippingLabel"), $this->rateLimitStorage);
-            $this->getShippingLabelRateLimiter = $factory->create("VendorShippingLabelsApi-getShippingLabel");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingLabelsApi-getShippingLabels"), $this->rateLimitStorage);
-            $this->getShippingLabelsRateLimiter = $factory->create("VendorShippingLabelsApi-getShippingLabels");
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorShippingLabelsApi-submitShippingLabelRequest"), $this->rateLimitStorage);
-            $this->submitShippingLabelRequestRateLimiter = $factory->create("VendorShippingLabelsApi-submitShippingLabelRequest");
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -196,9 +169,6 @@ class VendorShippingLabelsApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createShippingLabelsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -304,9 +274,6 @@ class VendorShippingLabelsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingLabelsApi-createShippingLabels");
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createShippingLabelsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -502,9 +469,6 @@ class VendorShippingLabelsApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getShippingLabelRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -604,9 +568,6 @@ class VendorShippingLabelsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingLabelsApi-getShippingLabel");
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getShippingLabelRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -817,9 +778,6 @@ class VendorShippingLabelsApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getShippingLabelsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -949,9 +907,6 @@ class VendorShippingLabelsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingLabelsApi-getShippingLabels");
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getShippingLabelsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1208,9 +1163,6 @@ class VendorShippingLabelsApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->submitShippingLabelRequestRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1310,9 +1262,6 @@ class VendorShippingLabelsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorShippingLabelsApi-submitShippingLabelRequest");
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->submitShippingLabelRequestRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

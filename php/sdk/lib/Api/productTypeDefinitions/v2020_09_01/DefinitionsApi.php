@@ -44,9 +44,6 @@ use SpApi\HeaderSelector;
 use SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeDefinition;
 use SpApi\Model\productTypeDefinitions\v2020_09_01\ProductTypeList;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * DefinitionsApi Class Doc Comment.
@@ -59,8 +56,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class DefinitionsApi
 {
-    public ?LimiterInterface $getDefinitionsProductTypeRateLimiter;
-    public ?LimiterInterface $searchDefinitionsProductTypesRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -72,31 +67,16 @@ class DefinitionsApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefinitionsApi-getDefinitionsProductType'), $this->rateLimitStorage);
-            $this->getDefinitionsProductTypeRateLimiter = $factory->create('DefinitionsApi-getDefinitionsProductType');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('DefinitionsApi-searchDefinitionsProductTypes'), $this->rateLimitStorage);
-            $this->searchDefinitionsProductTypesRateLimiter = $factory->create('DefinitionsApi-searchDefinitionsProductTypes');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -215,9 +195,6 @@ class DefinitionsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getDefinitionsProductTypeRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -355,9 +332,6 @@ class DefinitionsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefinitionsApi-getDefinitionsProductType');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getDefinitionsProductTypeRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -650,9 +624,6 @@ class DefinitionsApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->searchDefinitionsProductTypesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -772,9 +743,6 @@ class DefinitionsApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'DefinitionsApi-searchDefinitionsProductTypes');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->searchDefinitionsProductTypesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

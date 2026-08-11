@@ -48,9 +48,6 @@ use SpApi\Model\pricing\v0\GetListingOffersBatchResponse;
 use SpApi\Model\pricing\v0\GetOffersResponse;
 use SpApi\Model\pricing\v0\GetPricingResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * ProductPricingApi Class Doc Comment.
@@ -63,12 +60,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class ProductPricingApi
 {
-    public ?LimiterInterface $getCompetitivePricingRateLimiter;
-    public ?LimiterInterface $getItemOffersRateLimiter;
-    public ?LimiterInterface $getItemOffersBatchRateLimiter;
-    public ?LimiterInterface $getListingOffersRateLimiter;
-    public ?LimiterInterface $getListingOffersBatchRateLimiter;
-    public ?LimiterInterface $getPricingRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -80,39 +71,16 @@ class ProductPricingApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getCompetitivePricing'), $this->rateLimitStorage);
-            $this->getCompetitivePricingRateLimiter = $factory->create('ProductPricingApi-getCompetitivePricing');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getItemOffers'), $this->rateLimitStorage);
-            $this->getItemOffersRateLimiter = $factory->create('ProductPricingApi-getItemOffers');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getItemOffersBatch'), $this->rateLimitStorage);
-            $this->getItemOffersBatchRateLimiter = $factory->create('ProductPricingApi-getItemOffersBatch');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getListingOffers'), $this->rateLimitStorage);
-            $this->getListingOffersRateLimiter = $factory->create('ProductPricingApi-getListingOffers');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getListingOffersBatch'), $this->rateLimitStorage);
-            $this->getListingOffersBatchRateLimiter = $factory->create('ProductPricingApi-getListingOffersBatch');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('ProductPricingApi-getPricing'), $this->rateLimitStorage);
-            $this->getPricingRateLimiter = $factory->create('ProductPricingApi-getPricing');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -213,9 +181,6 @@ class ProductPricingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getCompetitivePricingRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -335,9 +300,6 @@ class ProductPricingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getCompetitivePricing');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getCompetitivePricingRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -593,9 +555,6 @@ class ProductPricingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getItemOffersRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -709,9 +668,6 @@ class ProductPricingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getItemOffers');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getItemOffersRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -934,9 +890,6 @@ class ProductPricingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getItemOffersBatchRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1032,9 +985,6 @@ class ProductPricingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getItemOffersBatch');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getItemOffersBatchRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1220,9 +1170,6 @@ class ProductPricingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getListingOffersRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1336,9 +1283,6 @@ class ProductPricingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getListingOffers');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getListingOffersRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1561,9 +1505,6 @@ class ProductPricingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getListingOffersBatchRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1659,9 +1600,6 @@ class ProductPricingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getListingOffersBatch');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getListingOffersBatchRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1859,9 +1797,6 @@ class ProductPricingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getPricingRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1987,9 +1922,6 @@ class ProductPricingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'ProductPricingApi-getPricing');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getPricingRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

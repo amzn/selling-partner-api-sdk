@@ -62,9 +62,6 @@ use SpApi\Model\messaging\v1\GetMessagingActionsForOrderResponse;
 use SpApi\Model\messaging\v1\InvoiceRequest;
 use SpApi\Model\messaging\v1\InvoiceResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * MessagingApi Class Doc Comment.
@@ -77,17 +74,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class MessagingApi
 {
-    public ?LimiterInterface $confirmCustomizationDetailsRateLimiter;
-    public ?LimiterInterface $createConfirmDeliveryDetailsRateLimiter;
-    public ?LimiterInterface $createConfirmOrderDetailsRateLimiter;
-    public ?LimiterInterface $createConfirmServiceDetailsRateLimiter;
-    public ?LimiterInterface $createDigitalAccessKeyRateLimiter;
-    public ?LimiterInterface $createLegalDisclosureRateLimiter;
-    public ?LimiterInterface $createUnexpectedProblemRateLimiter;
-    public ?LimiterInterface $createWarrantyRateLimiter;
-    public ?LimiterInterface $getAttributesRateLimiter;
-    public ?LimiterInterface $getMessagingActionsForOrderRateLimiter;
-    public ?LimiterInterface $sendInvoiceRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -99,49 +85,16 @@ class MessagingApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-confirmCustomizationDetails'), $this->rateLimitStorage);
-            $this->confirmCustomizationDetailsRateLimiter = $factory->create('MessagingApi-confirmCustomizationDetails');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createConfirmDeliveryDetails'), $this->rateLimitStorage);
-            $this->createConfirmDeliveryDetailsRateLimiter = $factory->create('MessagingApi-createConfirmDeliveryDetails');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createConfirmOrderDetails'), $this->rateLimitStorage);
-            $this->createConfirmOrderDetailsRateLimiter = $factory->create('MessagingApi-createConfirmOrderDetails');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createConfirmServiceDetails'), $this->rateLimitStorage);
-            $this->createConfirmServiceDetailsRateLimiter = $factory->create('MessagingApi-createConfirmServiceDetails');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createDigitalAccessKey'), $this->rateLimitStorage);
-            $this->createDigitalAccessKeyRateLimiter = $factory->create('MessagingApi-createDigitalAccessKey');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createLegalDisclosure'), $this->rateLimitStorage);
-            $this->createLegalDisclosureRateLimiter = $factory->create('MessagingApi-createLegalDisclosure');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createUnexpectedProblem'), $this->rateLimitStorage);
-            $this->createUnexpectedProblemRateLimiter = $factory->create('MessagingApi-createUnexpectedProblem');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-createWarranty'), $this->rateLimitStorage);
-            $this->createWarrantyRateLimiter = $factory->create('MessagingApi-createWarranty');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-getAttributes'), $this->rateLimitStorage);
-            $this->getAttributesRateLimiter = $factory->create('MessagingApi-getAttributes');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-getMessagingActionsForOrder'), $this->rateLimitStorage);
-            $this->getMessagingActionsForOrderRateLimiter = $factory->create('MessagingApi-getMessagingActionsForOrder');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('MessagingApi-sendInvoice'), $this->rateLimitStorage);
-            $this->sendInvoiceRateLimiter = $factory->create('MessagingApi-sendInvoice');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -230,9 +183,6 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->confirmCustomizationDetailsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -340,9 +290,6 @@ class MessagingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-confirmCustomizationDetails');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->confirmCustomizationDetailsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -564,9 +511,6 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createConfirmDeliveryDetailsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -674,9 +618,6 @@ class MessagingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createConfirmDeliveryDetails');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createConfirmDeliveryDetailsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -898,9 +839,6 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createConfirmOrderDetailsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1008,9 +946,6 @@ class MessagingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createConfirmOrderDetails');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createConfirmOrderDetailsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1232,9 +1167,6 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createConfirmServiceDetailsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1342,9 +1274,6 @@ class MessagingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createConfirmServiceDetails');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createConfirmServiceDetailsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1566,9 +1495,6 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createDigitalAccessKeyRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1676,9 +1602,6 @@ class MessagingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createDigitalAccessKey');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createDigitalAccessKeyRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1900,9 +1823,6 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createLegalDisclosureRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2010,9 +1930,6 @@ class MessagingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createLegalDisclosure');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createLegalDisclosureRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2234,9 +2151,6 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createUnexpectedProblemRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2344,9 +2258,6 @@ class MessagingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createUnexpectedProblem');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createUnexpectedProblemRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2568,9 +2479,6 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createWarrantyRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2678,9 +2586,6 @@ class MessagingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-createWarranty');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createWarrantyRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2896,9 +2801,6 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getAttributesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3000,9 +2902,6 @@ class MessagingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-getAttributes');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getAttributesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -3202,9 +3101,6 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getMessagingActionsForOrderRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3306,9 +3202,6 @@ class MessagingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-getMessagingActionsForOrder');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getMessagingActionsForOrderRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -3514,9 +3407,6 @@ class MessagingApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->sendInvoiceRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -3624,9 +3514,6 @@ class MessagingApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'MessagingApi-sendInvoice');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->sendInvoiceRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

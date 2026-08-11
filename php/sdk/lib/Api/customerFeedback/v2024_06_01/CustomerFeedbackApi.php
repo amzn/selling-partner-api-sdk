@@ -49,9 +49,6 @@ use SpApi\Model\customerFeedback\v2024_06_01\BrowseNodeReviewTrendsResponse;
 use SpApi\Model\customerFeedback\v2024_06_01\ItemReviewTopicsResponse;
 use SpApi\Model\customerFeedback\v2024_06_01\ItemReviewTrendsResponse;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * CustomerFeedbackApi Class Doc Comment.
@@ -64,13 +61,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class CustomerFeedbackApi
 {
-    public ?LimiterInterface $getBrowseNodeReturnTopicsRateLimiter;
-    public ?LimiterInterface $getBrowseNodeReturnTrendsRateLimiter;
-    public ?LimiterInterface $getBrowseNodeReviewTopicsRateLimiter;
-    public ?LimiterInterface $getBrowseNodeReviewTrendsRateLimiter;
-    public ?LimiterInterface $getItemBrowseNodeRateLimiter;
-    public ?LimiterInterface $getItemReviewTopicsRateLimiter;
-    public ?LimiterInterface $getItemReviewTrendsRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -82,41 +72,16 @@ class CustomerFeedbackApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('CustomerFeedbackApi-getBrowseNodeReturnTopics'), $this->rateLimitStorage);
-            $this->getBrowseNodeReturnTopicsRateLimiter = $factory->create('CustomerFeedbackApi-getBrowseNodeReturnTopics');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('CustomerFeedbackApi-getBrowseNodeReturnTrends'), $this->rateLimitStorage);
-            $this->getBrowseNodeReturnTrendsRateLimiter = $factory->create('CustomerFeedbackApi-getBrowseNodeReturnTrends');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('CustomerFeedbackApi-getBrowseNodeReviewTopics'), $this->rateLimitStorage);
-            $this->getBrowseNodeReviewTopicsRateLimiter = $factory->create('CustomerFeedbackApi-getBrowseNodeReviewTopics');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('CustomerFeedbackApi-getBrowseNodeReviewTrends'), $this->rateLimitStorage);
-            $this->getBrowseNodeReviewTrendsRateLimiter = $factory->create('CustomerFeedbackApi-getBrowseNodeReviewTrends');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('CustomerFeedbackApi-getItemBrowseNode'), $this->rateLimitStorage);
-            $this->getItemBrowseNodeRateLimiter = $factory->create('CustomerFeedbackApi-getItemBrowseNode');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('CustomerFeedbackApi-getItemReviewTopics'), $this->rateLimitStorage);
-            $this->getItemReviewTopicsRateLimiter = $factory->create('CustomerFeedbackApi-getItemReviewTopics');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('CustomerFeedbackApi-getItemReviewTrends'), $this->rateLimitStorage);
-            $this->getItemReviewTrendsRateLimiter = $factory->create('CustomerFeedbackApi-getItemReviewTrends');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -199,9 +164,6 @@ class CustomerFeedbackApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getBrowseNodeReturnTopicsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -303,9 +265,6 @@ class CustomerFeedbackApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'CustomerFeedbackApi-getBrowseNodeReturnTopics');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getBrowseNodeReturnTopicsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -502,9 +461,6 @@ class CustomerFeedbackApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getBrowseNodeReturnTrendsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -606,9 +562,6 @@ class CustomerFeedbackApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'CustomerFeedbackApi-getBrowseNodeReturnTrends');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getBrowseNodeReturnTrendsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -811,9 +764,6 @@ class CustomerFeedbackApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getBrowseNodeReviewTopicsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -921,9 +871,6 @@ class CustomerFeedbackApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'CustomerFeedbackApi-getBrowseNodeReviewTopics');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getBrowseNodeReviewTopicsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1139,9 +1086,6 @@ class CustomerFeedbackApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getBrowseNodeReviewTrendsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1243,9 +1187,6 @@ class CustomerFeedbackApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'CustomerFeedbackApi-getBrowseNodeReviewTrends');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getBrowseNodeReviewTrendsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1442,9 +1383,6 @@ class CustomerFeedbackApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getItemBrowseNodeRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1546,9 +1484,6 @@ class CustomerFeedbackApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'CustomerFeedbackApi-getItemBrowseNode');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getItemBrowseNodeRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1751,9 +1686,6 @@ class CustomerFeedbackApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getItemReviewTopicsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1861,9 +1793,6 @@ class CustomerFeedbackApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'CustomerFeedbackApi-getItemReviewTopics');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getItemReviewTopicsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -2079,9 +2008,6 @@ class CustomerFeedbackApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getItemReviewTrendsRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -2183,9 +2109,6 @@ class CustomerFeedbackApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'CustomerFeedbackApi-getItemReviewTrends');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getItemReviewTrendsRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

@@ -47,9 +47,6 @@ use SpApi\Model\datakiosk\v2023_11_15\GetDocumentResponse;
 use SpApi\Model\datakiosk\v2023_11_15\GetQueriesResponse;
 use SpApi\Model\datakiosk\v2023_11_15\Query;
 use SpApi\ObjectSerializer;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
 
 /**
  * QueriesApi Class Doc Comment.
@@ -62,11 +59,6 @@ use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
  */
 class QueriesApi
 {
-    public ?LimiterInterface $cancelQueryRateLimiter;
-    public ?LimiterInterface $createQueryRateLimiter;
-    public ?LimiterInterface $getDocumentRateLimiter;
-    public ?LimiterInterface $getQueriesRateLimiter;
-    public ?LimiterInterface $getQueryRateLimiter;
     protected ClientInterface $client;
 
     protected Configuration $config;
@@ -78,37 +70,16 @@ class QueriesApi
      */
     protected int $hostIndex;
 
-    private bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-
     /**
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
      */
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-cancelQuery'), $this->rateLimitStorage);
-            $this->cancelQueryRateLimiter = $factory->create('QueriesApi-cancelQuery');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-createQuery'), $this->rateLimitStorage);
-            $this->createQueryRateLimiter = $factory->create('QueriesApi-createQuery');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-getDocument'), $this->rateLimitStorage);
-            $this->getDocumentRateLimiter = $factory->create('QueriesApi-getDocument');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-getQueries'), $this->rateLimitStorage);
-            $this->getQueriesRateLimiter = $factory->create('QueriesApi-getQueries');
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('QueriesApi-getQuery'), $this->rateLimitStorage);
-            $this->getQueryRateLimiter = $factory->create('QueriesApi-getQuery');
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -183,9 +154,6 @@ class QueriesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->cancelQueryRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -269,9 +237,6 @@ class QueriesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'QueriesApi-cancelQuery');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->cancelQueryRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -429,9 +394,6 @@ class QueriesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->createQueryRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -527,9 +489,6 @@ class QueriesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'QueriesApi-createQuery');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->createQueryRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -697,9 +656,6 @@ class QueriesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getDocumentRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -795,9 +751,6 @@ class QueriesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'QueriesApi-getDocument');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getDocumentRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -992,9 +945,6 @@ class QueriesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getQueriesRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1114,9 +1064,6 @@ class QueriesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'QueriesApi-getQueries');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getQueriesRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
@@ -1345,9 +1292,6 @@ class QueriesApi
             $options = $this->createHttpClientOption();
 
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->getQueryRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -1443,9 +1387,6 @@ class QueriesApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'QueriesApi-getQuery');
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->getQueryRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client

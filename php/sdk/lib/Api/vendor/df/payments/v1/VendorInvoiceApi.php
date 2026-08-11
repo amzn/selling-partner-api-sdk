@@ -35,9 +35,6 @@ use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Symfony\Component\RateLimiter\LimiterInterface;
-use Symfony\Component\RateLimiter\Storage\InMemoryStorage;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
 use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\ApiException;
 use SpApi\Configuration;
@@ -74,13 +71,8 @@ class VendorInvoiceApi
      */
     protected int $hostIndex;
 
-    private Bool $rateLimiterEnabled;
-    private InMemoryStorage $rateLimitStorage;
-    public ?LimiterInterface $submitInvoiceRateLimiter;
-
     /**
      * @param Configuration   $config
-     * @param RateLimitConfiguration|null $rateLimitConfig
      * @param ClientInterface|null $client
      * @param HeaderSelector|null $selector
      * @param int $hostIndex (Optional) host index to select the list of hosts if defined in the OpenAPI spec
@@ -88,20 +80,10 @@ class VendorInvoiceApi
     public function __construct(
         Configuration $config,
         ?ClientInterface $client = null,
-        ?Bool $rateLimiterEnabled = true,
         ?HeaderSelector $selector = null,
         int $hostIndex = 0
     ) {
         $this->config = $config;
-        $this->rateLimiterEnabled = $rateLimiterEnabled;
-
-        if ($rateLimiterEnabled) {
-            $this->rateLimitStorage = new InMemoryStorage();
-
-            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions("VendorInvoiceApi-submitInvoice"), $this->rateLimitStorage);
-            $this->submitInvoiceRateLimiter = $factory->create("VendorInvoiceApi-submitInvoice");
-        }
-
         $this->client = $client ?: new Client();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;
@@ -177,9 +159,6 @@ class VendorInvoiceApi
         try {
             $options = $this->createHttpClientOption();
             try {
-                if ($this->rateLimiterEnabled) {
-                    $this->submitInvoiceRateLimiter->consume()->ensureAccepted();
-                }
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException(
@@ -275,9 +254,6 @@ class VendorInvoiceApi
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, "VendorInvoiceApi-submitInvoice");
         } else {
             $request = $this->config->sign($request);
-        }
-        if ($this->rateLimiterEnabled) {
-            $this->submitInvoiceRateLimiter->consume()->ensureAccepted();
         }
 
         return $this->client
