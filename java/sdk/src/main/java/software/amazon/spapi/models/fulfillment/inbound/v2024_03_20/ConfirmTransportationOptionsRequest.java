@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "The `confirmTransportationOptions` request.")
 public class ConfirmTransportationOptionsRequest {
     @SerializedName("transportationSelections")
-    private List<TransportationSelection> transportationSelections = new ArrayList<TransportationSelection>();
+    private List<TransportationSelection> transportationSelections = new ArrayList<>();
 
     public ConfirmTransportationOptionsRequest transportationSelections(
             List<TransportationSelection> transportationSelections) {

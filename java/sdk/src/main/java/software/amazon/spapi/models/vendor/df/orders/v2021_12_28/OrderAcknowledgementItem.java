@@ -14,10 +14,10 @@ package software.amazon.spapi.models.vendor.df.orders.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Details of an individual order being acknowledged. */
 @Schema(description = "Details of an individual order being acknowledged.")
@@ -41,7 +41,7 @@ public class OrderAcknowledgementItem {
     private PartyIdentification shipFromParty = null;
 
     @SerializedName("itemAcknowledgements")
-    private List<OrderItemAcknowledgement> itemAcknowledgements = new ArrayList<OrderItemAcknowledgement>();
+    private List<OrderItemAcknowledgement> itemAcknowledgements = new ArrayList<>();
 
     public OrderAcknowledgementItem purchaseOrderNumber(String purchaseOrderNumber) {
         this.purchaseOrderNumber = purchaseOrderNumber;

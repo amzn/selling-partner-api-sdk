@@ -34,7 +34,7 @@ public class OrderTax {
 
     public OrderTax addTaxRegistrationsItem(OrderTaxRegistration taxRegistrationsItem) {
         if (this.taxRegistrations == null) {
-            this.taxRegistrations = new ArrayList<OrderTaxRegistration>();
+            this.taxRegistrations = new ArrayList<>();
         }
         this.taxRegistrations.add(taxRegistrationsItem);
         return this;

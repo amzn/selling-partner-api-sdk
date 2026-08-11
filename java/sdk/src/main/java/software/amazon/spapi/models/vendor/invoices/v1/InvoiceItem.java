@@ -240,7 +240,7 @@ public class InvoiceItem {
 
     public InvoiceItem addTaxDetailsItem(TaxDetails taxDetailsItem) {
         if (this.taxDetails == null) {
-            this.taxDetails = new ArrayList<TaxDetails>();
+            this.taxDetails = new ArrayList<>();
         }
         this.taxDetails.add(taxDetailsItem);
         return this;
@@ -267,7 +267,7 @@ public class InvoiceItem {
 
     public InvoiceItem addChargeDetailsItem(ChargeDetails chargeDetailsItem) {
         if (this.chargeDetails == null) {
-            this.chargeDetails = new ArrayList<ChargeDetails>();
+            this.chargeDetails = new ArrayList<>();
         }
         this.chargeDetails.add(chargeDetailsItem);
         return this;
@@ -294,7 +294,7 @@ public class InvoiceItem {
 
     public InvoiceItem addAllowanceDetailsItem(AllowanceDetails allowanceDetailsItem) {
         if (this.allowanceDetails == null) {
-            this.allowanceDetails = new ArrayList<AllowanceDetails>();
+            this.allowanceDetails = new ArrayList<>();
         }
         this.allowanceDetails.add(allowanceDetailsItem);
         return this;

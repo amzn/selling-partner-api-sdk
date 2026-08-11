@@ -53,7 +53,7 @@ public class ItemProceeds {
 
     public ItemProceeds addBreakdownsItem(ItemProceedsBreakdown breakdownsItem) {
         if (this.breakdowns == null) {
-            this.breakdowns = new ArrayList<ItemProceedsBreakdown>();
+            this.breakdowns = new ArrayList<>();
         }
         this.breakdowns.add(breakdownsItem);
         return this;

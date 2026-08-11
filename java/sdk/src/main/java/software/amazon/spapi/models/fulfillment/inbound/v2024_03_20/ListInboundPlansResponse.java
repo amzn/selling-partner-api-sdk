@@ -34,7 +34,7 @@ public class ListInboundPlansResponse {
 
     public ListInboundPlansResponse addInboundPlansItem(InboundPlanSummary inboundPlansItem) {
         if (this.inboundPlans == null) {
-            this.inboundPlans = new ArrayList<InboundPlanSummary>();
+            this.inboundPlans = new ArrayList<>();
         }
         this.inboundPlans.add(inboundPlansItem);
         return this;

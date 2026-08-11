@@ -104,7 +104,7 @@ public class ShippingLabelRequest {
 
     public ShippingLabelRequest addContainersItem(Container containersItem) {
         if (this.containers == null) {
-            this.containers = new ArrayList<Container>();
+            this.containers = new ArrayList<>();
         }
         this.containers.add(containersItem);
         return this;

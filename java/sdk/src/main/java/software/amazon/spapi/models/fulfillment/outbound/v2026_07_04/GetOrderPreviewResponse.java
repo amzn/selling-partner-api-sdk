@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "The response schema for `getOrderPreview`.")
 public class GetOrderPreviewResponse {
     @SerializedName("plannedShipments")
-    private List<PreviewPlannedShipment> plannedShipments = new ArrayList<PreviewPlannedShipment>();
+    private List<PreviewPlannedShipment> plannedShipments = new ArrayList<>();
 
     @SerializedName("constraints")
     private List<Constraint> constraints = null;
@@ -58,7 +58,7 @@ public class GetOrderPreviewResponse {
 
     public GetOrderPreviewResponse addConstraintsItem(Constraint constraintsItem) {
         if (this.constraints == null) {
-            this.constraints = new ArrayList<Constraint>();
+            this.constraints = new ArrayList<>();
         }
         this.constraints.add(constraintsItem);
         return this;

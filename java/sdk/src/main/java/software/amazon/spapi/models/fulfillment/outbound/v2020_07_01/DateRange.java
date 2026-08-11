@@ -14,8 +14,8 @@ package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** The time range within which something (for example, a delivery) will occur. */
 @Schema(description = "The time range within which something (for example, a delivery) will occur.")

@@ -37,7 +37,7 @@ public class Carton {
     private String trackingNumber = null;
 
     @SerializedName("items")
-    private List<ContainerItem> items = new ArrayList<ContainerItem>();
+    private List<ContainerItem> items = new ArrayList<>();
 
     public Carton cartonIdentifiers(List<ContainerIdentification> cartonIdentifiers) {
         this.cartonIdentifiers = cartonIdentifiers;
@@ -46,7 +46,7 @@ public class Carton {
 
     public Carton addCartonIdentifiersItem(ContainerIdentification cartonIdentifiersItem) {
         if (this.cartonIdentifiers == null) {
-            this.cartonIdentifiers = new ArrayList<ContainerIdentification>();
+            this.cartonIdentifiers = new ArrayList<>();
         }
         this.cartonIdentifiers.add(cartonIdentifiersItem);
         return this;

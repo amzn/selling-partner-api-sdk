@@ -14,8 +14,8 @@ package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.LocalDate;
 import java.util.Objects;
-import org.threeten.bp.LocalDate;
 
 /**
  * Item information for an inbound shipment. Submitted with a call to the createInboundShipment or updateInboundShipment

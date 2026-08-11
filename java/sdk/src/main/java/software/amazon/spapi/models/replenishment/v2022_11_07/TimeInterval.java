@@ -14,8 +14,8 @@ package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * A date-time interval in ISO 8601 format used to compute metrics. Only the date is required, but you must pass the

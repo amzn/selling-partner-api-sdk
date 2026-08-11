@@ -100,7 +100,7 @@ public class Item {
 
     public Item addBreakdownsItem(Breakdown breakdownsItem) {
         if (this.breakdowns == null) {
-            this.breakdowns = new ArrayList<Breakdown>();
+            this.breakdowns = new ArrayList<>();
         }
         this.breakdowns.add(breakdownsItem);
         return this;

@@ -54,7 +54,7 @@ public class InnerContainersDetails {
     public InnerContainersDetails addContainerSequenceNumbersItem(
             ContainerSequenceNumbers containerSequenceNumbersItem) {
         if (this.containerSequenceNumbers == null) {
-            this.containerSequenceNumbers = new ArrayList<ContainerSequenceNumbers>();
+            this.containerSequenceNumbers = new ArrayList<>();
         }
         this.containerSequenceNumbers.add(containerSequenceNumbersItem);
         return this;

@@ -34,7 +34,7 @@ public class RequestedUpdates {
 
     public RequestedUpdates addBoxesItem(BoxUpdateInput boxesItem) {
         if (this.boxes == null) {
-            this.boxes = new ArrayList<BoxUpdateInput>();
+            this.boxes = new ArrayList<>();
         }
         this.boxes.add(boxesItem);
         return this;
@@ -61,7 +61,7 @@ public class RequestedUpdates {
 
     public RequestedUpdates addItemsItem(ItemInput itemsItem) {
         if (this.items == null) {
-            this.items = new ArrayList<ItemInput>();
+            this.items = new ArrayList<>();
         }
         this.items.add(itemsItem);
         return this;

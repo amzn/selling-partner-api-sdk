@@ -14,8 +14,8 @@ package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** A time window along with associated capacity in which the service can be performed. */
 @Schema(description = "A time window along with associated capacity in which the service can be performed.")

@@ -37,7 +37,7 @@ public class BrowseNodeReturnTrendsResponse {
     private DateRange dateRange = null;
 
     @SerializedName("returnTrends")
-    private List<BrowseNodeReturnTrend> returnTrends = new ArrayList<BrowseNodeReturnTrend>();
+    private List<BrowseNodeReturnTrend> returnTrends = new ArrayList<>();
 
     public BrowseNodeReturnTrendsResponse browseNodeId(String browseNodeId) {
         this.browseNodeId = browseNodeId;

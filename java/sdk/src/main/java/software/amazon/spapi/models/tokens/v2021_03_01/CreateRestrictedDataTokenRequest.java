@@ -25,7 +25,7 @@ public class CreateRestrictedDataTokenRequest {
     private String targetApplication = null;
 
     @SerializedName("restrictedResources")
-    private List<RestrictedResource> restrictedResources = new ArrayList<RestrictedResource>();
+    private List<RestrictedResource> restrictedResources = new ArrayList<>();
 
     public CreateRestrictedDataTokenRequest targetApplication(String targetApplication) {
         this.targetApplication = targetApplication;

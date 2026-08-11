@@ -79,7 +79,7 @@ public class ItemProceedsBreakdown {
 
     public ItemProceedsBreakdown addDetailedBreakdownsItem(ItemProceedsDetailedBreakdown detailedBreakdownsItem) {
         if (this.detailedBreakdowns == null) {
-            this.detailedBreakdowns = new ArrayList<ItemProceedsDetailedBreakdown>();
+            this.detailedBreakdowns = new ArrayList<>();
         }
         this.detailedBreakdowns.add(detailedBreakdownsItem);
         return this;

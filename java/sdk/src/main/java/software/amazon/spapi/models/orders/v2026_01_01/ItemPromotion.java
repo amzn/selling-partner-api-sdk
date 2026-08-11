@@ -31,7 +31,7 @@ public class ItemPromotion {
 
     public ItemPromotion addBreakdownsItem(ItemPromotionBreakdown breakdownsItem) {
         if (this.breakdowns == null) {
-            this.breakdowns = new ArrayList<ItemPromotionBreakdown>();
+            this.breakdowns = new ArrayList<>();
         }
         this.breakdowns.add(breakdownsItem);
         return this;

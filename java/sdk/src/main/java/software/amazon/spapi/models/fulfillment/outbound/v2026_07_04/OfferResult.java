@@ -56,7 +56,7 @@ public class OfferResult {
 
     public OfferResult addOffersItem(OfferOption offersItem) {
         if (this.offers == null) {
-            this.offers = new ArrayList<OfferOption>();
+            this.offers = new ArrayList<>();
         }
         this.offers.add(offersItem);
         return this;
@@ -83,7 +83,7 @@ public class OfferResult {
 
     public OfferResult addConstraintsItem(Constraint constraintsItem) {
         if (this.constraints == null) {
-            this.constraints = new ArrayList<Constraint>();
+            this.constraints = new ArrayList<>();
         }
         this.constraints.add(constraintsItem);
         return this;

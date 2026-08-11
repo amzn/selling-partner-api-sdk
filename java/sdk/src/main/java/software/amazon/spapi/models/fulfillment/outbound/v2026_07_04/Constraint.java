@@ -100,7 +100,7 @@ public class Constraint {
 
     public Constraint addDetailsItem(ConstraintDetail detailsItem) {
         if (this.details == null) {
-            this.details = new ArrayList<ConstraintDetail>();
+            this.details = new ArrayList<>();
         }
         this.details.add(detailsItem);
         return this;

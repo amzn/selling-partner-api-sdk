@@ -29,7 +29,7 @@ import java.util.Objects;
                 "The possible shipping modes for the packing option for a given shipping solution or program. Available solutions are Amazon-Partnered Carrier and Use Your Own Carrier. Available modes are ground small parcel, freight less-than-truckload (LTL), freight full-truckload (FTL) palletized, freight FTL non-palletized, ocean less-than-container-load (LCL), ocean full-container load (FCL), air small parcel, and air small parcel express.")
 public class ShippingRequirements {
     @SerializedName("modes")
-    private List<String> modes = new ArrayList<String>();
+    private List<String> modes = new ArrayList<>();
 
     @SerializedName("solution")
     private String solution = null;

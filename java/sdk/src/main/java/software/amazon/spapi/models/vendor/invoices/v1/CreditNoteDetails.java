@@ -14,8 +14,8 @@ package software.amazon.spapi.models.vendor.invoices.v1;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * References required in order to process a credit note. This information is required only if InvoiceType is

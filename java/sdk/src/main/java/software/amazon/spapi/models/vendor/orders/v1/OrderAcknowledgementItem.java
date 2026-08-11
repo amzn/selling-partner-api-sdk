@@ -43,7 +43,7 @@ public class OrderAcknowledgementItem {
     private String discountMultiplier = null;
 
     @SerializedName("itemAcknowledgements")
-    private List<OrderItemAcknowledgement> itemAcknowledgements = new ArrayList<OrderItemAcknowledgement>();
+    private List<OrderItemAcknowledgement> itemAcknowledgements = new ArrayList<>();
 
     public OrderAcknowledgementItem itemSequenceNumber(String itemSequenceNumber) {
         this.itemSequenceNumber = itemSequenceNumber;

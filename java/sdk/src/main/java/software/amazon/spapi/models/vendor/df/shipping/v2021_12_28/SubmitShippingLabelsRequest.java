@@ -31,7 +31,7 @@ public class SubmitShippingLabelsRequest {
 
     public SubmitShippingLabelsRequest addShippingLabelRequestsItem(ShippingLabelRequest shippingLabelRequestsItem) {
         if (this.shippingLabelRequests == null) {
-            this.shippingLabelRequests = new ArrayList<ShippingLabelRequest>();
+            this.shippingLabelRequests = new ArrayList<>();
         }
         this.shippingLabelRequests.add(shippingLabelRequestsItem);
         return this;

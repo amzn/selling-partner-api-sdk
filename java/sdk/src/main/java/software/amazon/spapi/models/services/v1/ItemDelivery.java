@@ -14,8 +14,8 @@ package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Delivery information for the item. */
 @Schema(description = "Delivery information for the item.")

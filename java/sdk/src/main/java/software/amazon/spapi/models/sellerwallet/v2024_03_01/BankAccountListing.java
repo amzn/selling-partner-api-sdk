@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "A list of bank accounts.")
 public class BankAccountListing {
     @SerializedName("accounts")
-    private List<BankAccount> accounts = new ArrayList<BankAccount>();
+    private List<BankAccount> accounts = new ArrayList<>();
 
     public BankAccountListing accounts(List<BankAccount> accounts) {
         this.accounts = accounts;

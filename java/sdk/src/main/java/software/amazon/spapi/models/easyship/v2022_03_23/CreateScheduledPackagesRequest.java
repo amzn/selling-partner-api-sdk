@@ -25,7 +25,7 @@ public class CreateScheduledPackagesRequest {
     private String marketplaceId = null;
 
     @SerializedName("orderScheduleDetailsList")
-    private List<OrderScheduleDetails> orderScheduleDetailsList = new ArrayList<OrderScheduleDetails>();
+    private List<OrderScheduleDetails> orderScheduleDetailsList = new ArrayList<>();
 
     @SerializedName("labelFormat")
     private LabelFormat labelFormat = null;

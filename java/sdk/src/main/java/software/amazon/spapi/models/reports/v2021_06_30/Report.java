@@ -19,10 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Detailed information about the report. */
 @Schema(description = "Detailed information about the report.")
@@ -119,7 +119,7 @@ public class Report {
 
     public Report addMarketplaceIdsItem(String marketplaceIdsItem) {
         if (this.marketplaceIds == null) {
-            this.marketplaceIds = new ArrayList<String>();
+            this.marketplaceIds = new ArrayList<>();
         }
         this.marketplaceIds.add(marketplaceIdsItem);
         return this;

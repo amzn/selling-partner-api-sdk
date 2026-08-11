@@ -110,7 +110,7 @@ public class VarianceReason {
 
     public VarianceReason addDefectTypesItem(String defectTypesItem) {
         if (this.defectTypes == null) {
-            this.defectTypes = new ArrayList<String>();
+            this.defectTypes = new ArrayList<>();
         }
         this.defectTypes.add(defectTypesItem);
         return this;

@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "Tracking details for multiple packages.")
 public class ShipLabelsInput {
     @SerializedName("packageIds")
-    private List<String> packageIds = new ArrayList<String>();
+    private List<String> packageIds = new ArrayList<>();
 
     @SerializedName("courierSupportedAttributes")
     private CourierSupportedAttributes courierSupportedAttributes = null;

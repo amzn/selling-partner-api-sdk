@@ -78,7 +78,7 @@ public class BrowseNodeReviewTopic {
 
     public BrowseNodeReviewTopic addReviewSnippetsItem(String reviewSnippetsItem) {
         if (this.reviewSnippets == null) {
-            this.reviewSnippets = new ArrayList<String>();
+            this.reviewSnippets = new ArrayList<>();
         }
         this.reviewSnippets.add(reviewSnippetsItem);
         return this;
@@ -108,7 +108,7 @@ public class BrowseNodeReviewTopic {
 
     public BrowseNodeReviewTopic addSubtopicsItem(BrowseNodeSubtopic subtopicsItem) {
         if (this.subtopics == null) {
-            this.subtopics = new ArrayList<BrowseNodeSubtopic>();
+            this.subtopics = new ArrayList<>();
         }
         this.subtopics.add(subtopicsItem);
         return this;

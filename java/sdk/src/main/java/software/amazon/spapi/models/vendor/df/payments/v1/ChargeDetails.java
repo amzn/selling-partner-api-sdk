@@ -136,7 +136,7 @@ public class ChargeDetails {
 
     public ChargeDetails addTaxDetailsItem(TaxDetail taxDetailsItem) {
         if (this.taxDetails == null) {
-            this.taxDetails = new ArrayList<TaxDetail>();
+            this.taxDetails = new ArrayList<>();
         }
         this.taxDetails.add(taxDetailsItem);
         return this;

@@ -38,7 +38,7 @@ public class ShipmentConfirmation {
     private PartyIdentification shipFromParty = null;
 
     @SerializedName("items")
-    private List<Item> items = new ArrayList<Item>();
+    private List<Item> items = new ArrayList<>();
 
     @SerializedName("containers")
     private List<Container> containers = null;
@@ -154,7 +154,7 @@ public class ShipmentConfirmation {
 
     public ShipmentConfirmation addContainersItem(Container containersItem) {
         if (this.containers == null) {
-            this.containers = new ArrayList<Container>();
+            this.containers = new ArrayList<>();
         }
         this.containers.add(containersItem);
         return this;

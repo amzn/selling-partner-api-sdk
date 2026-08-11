@@ -77,7 +77,7 @@ public class LinkedAsset {
 
     public LinkedAsset putAdditionalAttributesItem(String key, String additionalAttributesItem) {
         if (this.additionalAttributes == null) {
-            this.additionalAttributes = new HashMap<String, String>();
+            this.additionalAttributes = new HashMap<>();
         }
         this.additionalAttributes.put(key, additionalAttributesItem);
         return this;

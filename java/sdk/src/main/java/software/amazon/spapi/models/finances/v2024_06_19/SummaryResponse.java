@@ -34,7 +34,7 @@ public class SummaryResponse {
 
     public SummaryResponse addSummariesItem(Summary summariesItem) {
         if (this.summaries == null) {
-            this.summaries = new ArrayList<Summary>();
+            this.summaries = new ArrayList<>();
         }
         this.summaries.add(summariesItem);
         return this;

@@ -34,7 +34,7 @@ public class ItemTax {
 
     public ItemTax addTaxCalculationBreakdownsItem(ItemTaxCalculationBreakdown taxCalculationBreakdownsItem) {
         if (this.taxCalculationBreakdowns == null) {
-            this.taxCalculationBreakdowns = new ArrayList<ItemTaxCalculationBreakdown>();
+            this.taxCalculationBreakdowns = new ArrayList<>();
         }
         this.taxCalculationBreakdowns.add(taxCalculationBreakdownsItem);
         return this;
@@ -61,7 +61,7 @@ public class ItemTax {
 
     public ItemTax addTaxCollectionsItem(ItemTaxCollection taxCollectionsItem) {
         if (this.taxCollections == null) {
-            this.taxCollections = new ArrayList<ItemTaxCollection>();
+            this.taxCollections = new ArrayList<>();
         }
         this.taxCollections.add(taxCollectionsItem);
         return this;

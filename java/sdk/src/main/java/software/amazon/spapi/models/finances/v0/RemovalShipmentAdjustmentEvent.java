@@ -14,10 +14,10 @@ package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * A financial adjustment event for FBA liquidated inventory. A positive value indicates money owed to Amazon by the
@@ -151,7 +151,7 @@ public class RemovalShipmentAdjustmentEvent {
     public RemovalShipmentAdjustmentEvent addRemovalShipmentItemAdjustmentListItem(
             RemovalShipmentItemAdjustment removalShipmentItemAdjustmentListItem) {
         if (this.removalShipmentItemAdjustmentList == null) {
-            this.removalShipmentItemAdjustmentList = new ArrayList<RemovalShipmentItemAdjustment>();
+            this.removalShipmentItemAdjustmentList = new ArrayList<>();
         }
         this.removalShipmentItemAdjustmentList.add(removalShipmentItemAdjustmentListItem);
         return this;

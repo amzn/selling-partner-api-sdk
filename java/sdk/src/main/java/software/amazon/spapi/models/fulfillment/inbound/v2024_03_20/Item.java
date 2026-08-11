@@ -40,7 +40,7 @@ public class Item {
     private String msku = null;
 
     @SerializedName("prepInstructions")
-    private List<PrepInstruction> prepInstructions = new ArrayList<PrepInstruction>();
+    private List<PrepInstruction> prepInstructions = new ArrayList<>();
 
     @SerializedName("quantity")
     private Integer quantity = null;

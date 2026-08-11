@@ -150,7 +150,7 @@ public class Item {
 
     public Item addFulfillmentAvailabilityItem(FulfillmentAvailability fulfillmentAvailabilityItem) {
         if (this.fulfillmentAvailability == null) {
-            this.fulfillmentAvailability = new ArrayList<FulfillmentAvailability>();
+            this.fulfillmentAvailability = new ArrayList<>();
         }
         this.fulfillmentAvailability.add(fulfillmentAvailabilityItem);
         return this;
@@ -177,7 +177,7 @@ public class Item {
 
     public Item addProcurementItem(ItemProcurement procurementItem) {
         if (this.procurement == null) {
-            this.procurement = new ArrayList<ItemProcurement>();
+            this.procurement = new ArrayList<>();
         }
         this.procurement.add(procurementItem);
         return this;

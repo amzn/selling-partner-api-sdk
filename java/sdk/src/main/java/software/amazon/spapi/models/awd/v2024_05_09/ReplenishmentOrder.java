@@ -14,10 +14,10 @@ package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Represents an AWD replenishment order. */
 @Schema(description = "Represents an AWD replenishment order.")
@@ -41,7 +41,7 @@ public class ReplenishmentOrder {
     private ReplenishmentOrderStatus status = null;
 
     @SerializedName("outboundShipments")
-    private List<OutboundShipmentSummary> outboundShipments = new ArrayList<OutboundShipmentSummary>();
+    private List<OutboundShipmentSummary> outboundShipments = new ArrayList<>();
 
     @SerializedName("products")
     private List<DistributionProduct> products = null;
@@ -99,7 +99,7 @@ public class ReplenishmentOrder {
     public ReplenishmentOrder addDistributionIneligibleReasonsItem(
             DistributionIneligibleReason distributionIneligibleReasonsItem) {
         if (this.distributionIneligibleReasons == null) {
-            this.distributionIneligibleReasons = new ArrayList<DistributionIneligibleReason>();
+            this.distributionIneligibleReasons = new ArrayList<>();
         }
         this.distributionIneligibleReasons.add(distributionIneligibleReasonsItem);
         return this;
@@ -129,7 +129,7 @@ public class ReplenishmentOrder {
 
     public ReplenishmentOrder addEligibleProductsItem(DistributionProduct eligibleProductsItem) {
         if (this.eligibleProducts == null) {
-            this.eligibleProducts = new ArrayList<DistributionProduct>();
+            this.eligibleProducts = new ArrayList<>();
         }
         this.eligibleProducts.add(eligibleProductsItem);
         return this;
@@ -218,7 +218,7 @@ public class ReplenishmentOrder {
 
     public ReplenishmentOrder addProductsItem(DistributionProduct productsItem) {
         if (this.products == null) {
-            this.products = new ArrayList<DistributionProduct>();
+            this.products = new ArrayList<>();
         }
         this.products.add(productsItem);
         return this;
@@ -245,7 +245,7 @@ public class ReplenishmentOrder {
 
     public ReplenishmentOrder addShippedProductsItem(DistributionProduct shippedProductsItem) {
         if (this.shippedProducts == null) {
-            this.shippedProducts = new ArrayList<DistributionProduct>();
+            this.shippedProducts = new ArrayList<>();
         }
         this.shippedProducts.add(shippedProductsItem);
         return this;

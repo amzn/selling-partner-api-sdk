@@ -106,7 +106,7 @@ public class Container {
     private Weight weight = null;
 
     @SerializedName("packedItems")
-    private List<PackedItem> packedItems = new ArrayList<PackedItem>();
+    private List<PackedItem> packedItems = new ArrayList<>();
 
     public Container containerType(ContainerTypeEnum containerType) {
         this.containerType = containerType;

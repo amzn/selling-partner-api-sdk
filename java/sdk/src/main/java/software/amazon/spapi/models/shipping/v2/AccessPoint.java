@@ -223,7 +223,7 @@ public class AccessPoint {
 
     public AccessPoint addExceptionOperatingHoursItem(ExceptionOperatingHours exceptionOperatingHoursItem) {
         if (this.exceptionOperatingHours == null) {
-            this.exceptionOperatingHours = new ArrayList<ExceptionOperatingHours>();
+            this.exceptionOperatingHours = new ArrayList<>();
         }
         this.exceptionOperatingHours.add(exceptionOperatingHoursItem);
         return this;

@@ -14,8 +14,8 @@ package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** &#x60;AvailabilityRecord&#x60; to represent the capacity of a resource over a time range. */
 @Schema(description = "`AvailabilityRecord` to represent the capacity of a resource over a time range.")

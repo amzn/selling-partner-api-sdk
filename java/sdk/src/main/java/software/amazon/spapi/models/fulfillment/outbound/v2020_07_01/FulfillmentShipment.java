@@ -19,10 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Delivery and item information for a shipment in a fulfillment order. */
 @Schema(description = "Delivery and item information for a shipment in a fulfillment order.")
@@ -204,7 +204,7 @@ public class FulfillmentShipment {
 
     public FulfillmentShipment addShippingNotesItem(String shippingNotesItem) {
         if (this.shippingNotes == null) {
-            this.shippingNotes = new ArrayList<String>();
+            this.shippingNotes = new ArrayList<>();
         }
         this.shippingNotes.add(shippingNotesItem);
         return this;

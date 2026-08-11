@@ -14,8 +14,8 @@ package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** A time window to hand over an Easy Ship package to Amazon Logistics. */
 @Schema(description = "A time window to hand over an Easy Ship package to Amazon Logistics.")

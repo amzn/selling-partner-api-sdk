@@ -34,7 +34,7 @@ public class ListOfferMetricsResponse {
 
     public ListOfferMetricsResponse addOffersItem(ListOfferMetricsResponseOffer offersItem) {
         if (this.offers == null) {
-            this.offers = new ArrayList<ListOfferMetricsResponseOffer>();
+            this.offers = new ArrayList<>();
         }
         this.offers.add(offersItem);
         return this;

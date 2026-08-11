@@ -22,10 +22,10 @@ import java.util.Objects;
 @Schema(description = "Optional fields that you can use to refine your search results.")
 public class Refinements {
     @SerializedName("brands")
-    private List<BrandRefinement> brands = new ArrayList<BrandRefinement>();
+    private List<BrandRefinement> brands = new ArrayList<>();
 
     @SerializedName("classifications")
-    private List<ClassificationRefinement> classifications = new ArrayList<ClassificationRefinement>();
+    private List<ClassificationRefinement> classifications = new ArrayList<>();
 
     public Refinements brands(List<BrandRefinement> brands) {
         this.brands = brands;

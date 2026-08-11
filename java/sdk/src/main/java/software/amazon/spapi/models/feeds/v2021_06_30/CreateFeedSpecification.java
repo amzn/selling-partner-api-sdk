@@ -25,7 +25,7 @@ public class CreateFeedSpecification {
     private String feedType = null;
 
     @SerializedName("marketplaceIds")
-    private List<String> marketplaceIds = new ArrayList<String>();
+    private List<String> marketplaceIds = new ArrayList<>();
 
     @SerializedName("inputFeedDocumentId")
     private String inputFeedDocumentId = null;

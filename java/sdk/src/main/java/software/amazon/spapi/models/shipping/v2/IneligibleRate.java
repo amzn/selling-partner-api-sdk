@@ -34,7 +34,7 @@ public class IneligibleRate {
     private String carrierId = null;
 
     @SerializedName("ineligibilityReasons")
-    private List<IneligibilityReason> ineligibilityReasons = new ArrayList<IneligibilityReason>();
+    private List<IneligibilityReason> ineligibilityReasons = new ArrayList<>();
 
     public IneligibleRate serviceId(String serviceId) {
         this.serviceId = serviceId;

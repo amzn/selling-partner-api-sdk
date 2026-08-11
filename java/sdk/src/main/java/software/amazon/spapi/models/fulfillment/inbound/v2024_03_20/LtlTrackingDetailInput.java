@@ -25,7 +25,7 @@ public class LtlTrackingDetailInput {
     private String billOfLadingNumber = null;
 
     @SerializedName("freightBillNumber")
-    private List<String> freightBillNumber = new ArrayList<String>();
+    private List<String> freightBillNumber = new ArrayList<>();
 
     public LtlTrackingDetailInput billOfLadingNumber(String billOfLadingNumber) {
         this.billOfLadingNumber = billOfLadingNumber;

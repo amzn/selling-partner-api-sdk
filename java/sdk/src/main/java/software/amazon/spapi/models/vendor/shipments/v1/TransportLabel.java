@@ -14,10 +14,10 @@ package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** A list of one or more ShipmentLabels. */
 @Schema(description = "A list of one or more ShipmentLabels.")
@@ -76,7 +76,7 @@ public class TransportLabel {
 
     public TransportLabel addLabelDataItem(LabelData labelDataItem) {
         if (this.labelData == null) {
-            this.labelData = new ArrayList<LabelData>();
+            this.labelData = new ArrayList<>();
         }
         this.labelData.add(labelDataItem);
         return this;

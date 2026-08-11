@@ -37,7 +37,7 @@ public class CreateOrderRequest {
     private OrderDestination destination = null;
 
     @SerializedName("lineItems")
-    private List<CreateOrderLineItem> lineItems = new ArrayList<CreateOrderLineItem>();
+    private List<CreateOrderLineItem> lineItems = new ArrayList<>();
 
     @SerializedName("paymentInformation")
     private PaymentInformation paymentInformation = null;

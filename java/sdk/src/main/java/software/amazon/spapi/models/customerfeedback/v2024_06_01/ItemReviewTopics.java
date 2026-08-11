@@ -34,7 +34,7 @@ public class ItemReviewTopics {
 
     public ItemReviewTopics addPositiveTopicsItem(ItemReviewTopic positiveTopicsItem) {
         if (this.positiveTopics == null) {
-            this.positiveTopics = new ArrayList<ItemReviewTopic>();
+            this.positiveTopics = new ArrayList<>();
         }
         this.positiveTopics.add(positiveTopicsItem);
         return this;
@@ -67,7 +67,7 @@ public class ItemReviewTopics {
 
     public ItemReviewTopics addNegativeTopicsItem(ItemReviewTopic negativeTopicsItem) {
         if (this.negativeTopics == null) {
-            this.negativeTopics = new ArrayList<ItemReviewTopic>();
+            this.negativeTopics = new ArrayList<>();
         }
         this.negativeTopics.add(negativeTopicsItem);
         return this;

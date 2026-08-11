@@ -25,7 +25,7 @@ public class TransactionListing {
     private String nextPageToken = null;
 
     @SerializedName("transactions")
-    private List<Transaction> transactions = new ArrayList<Transaction>();
+    private List<Transaction> transactions = new ArrayList<>();
 
     public TransactionListing nextPageToken(String nextPageToken) {
         this.nextPageToken = nextPageToken;

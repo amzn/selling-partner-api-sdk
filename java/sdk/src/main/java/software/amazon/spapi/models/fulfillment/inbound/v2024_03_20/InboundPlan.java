@@ -14,10 +14,10 @@ package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Inbound plan containing details of the inbound workflow. */
 @Schema(description = "Inbound plan containing details of the inbound workflow.")
@@ -32,7 +32,7 @@ public class InboundPlan {
     private OffsetDateTime lastUpdatedAt = null;
 
     @SerializedName("marketplaceIds")
-    private List<String> marketplaceIds = new ArrayList<String>();
+    private List<String> marketplaceIds = new ArrayList<>();
 
     @SerializedName("name")
     private String name = null;
@@ -169,7 +169,7 @@ public class InboundPlan {
 
     public InboundPlan addPackingOptionsItem(PackingOptionSummary packingOptionsItem) {
         if (this.packingOptions == null) {
-            this.packingOptions = new ArrayList<PackingOptionSummary>();
+            this.packingOptions = new ArrayList<>();
         }
         this.packingOptions.add(packingOptionsItem);
         return this;
@@ -201,7 +201,7 @@ public class InboundPlan {
 
     public InboundPlan addPlacementOptionsItem(PlacementOptionSummary placementOptionsItem) {
         if (this.placementOptions == null) {
-            this.placementOptions = new ArrayList<PlacementOptionSummary>();
+            this.placementOptions = new ArrayList<>();
         }
         this.placementOptions.add(placementOptionsItem);
         return this;
@@ -232,7 +232,7 @@ public class InboundPlan {
 
     public InboundPlan addShipmentsItem(ShipmentSummary shipmentsItem) {
         if (this.shipments == null) {
-            this.shipments = new ArrayList<ShipmentSummary>();
+            this.shipments = new ArrayList<>();
         }
         this.shipments.add(shipmentsItem);
         return this;

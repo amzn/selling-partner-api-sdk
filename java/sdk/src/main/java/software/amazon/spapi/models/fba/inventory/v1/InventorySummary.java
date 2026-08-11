@@ -14,10 +14,10 @@ package software.amazon.spapi.models.fba.inventory.v1;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Inventory summary for a specific item. */
 @Schema(description = "Inventory summary for a specific item.")
@@ -208,7 +208,7 @@ public class InventorySummary {
 
     public InventorySummary addStoresItem(String storesItem) {
         if (this.stores == null) {
-            this.stores = new ArrayList<String>();
+            this.stores = new ArrayList<>();
         }
         this.stores.add(storesItem);
         return this;

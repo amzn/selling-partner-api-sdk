@@ -53,7 +53,7 @@ public class ShipmentLabelPageTypes {
 
     public ShipmentLabelPageTypes addPageTypesItem(PageType pageTypesItem) {
         if (this.pageTypes == null) {
-            this.pageTypes = new ArrayList<PageType>();
+            this.pageTypes = new ArrayList<>();
         }
         this.pageTypes.add(pageTypesItem);
         return this;

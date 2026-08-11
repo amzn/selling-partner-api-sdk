@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "The response schema for the `listOrders` operation.")
 public class ListOrdersResponse {
     @SerializedName("orders")
-    private List<FulfillmentOrder> orders = new ArrayList<FulfillmentOrder>();
+    private List<FulfillmentOrder> orders = new ArrayList<>();
 
     @SerializedName("pagination")
     private Pagination pagination = null;

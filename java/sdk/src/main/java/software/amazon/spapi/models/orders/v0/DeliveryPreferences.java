@@ -78,7 +78,7 @@ public class DeliveryPreferences {
 
     public DeliveryPreferences addOtherAttributesItem(OtherDeliveryAttributes otherAttributesItem) {
         if (this.otherAttributes == null) {
-            this.otherAttributes = new ArrayList<OtherDeliveryAttributes>();
+            this.otherAttributes = new ArrayList<>();
         }
         this.otherAttributes.add(otherAttributesItem);
         return this;

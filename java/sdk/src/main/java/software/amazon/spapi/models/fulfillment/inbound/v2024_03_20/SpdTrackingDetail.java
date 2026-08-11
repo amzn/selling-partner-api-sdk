@@ -31,7 +31,7 @@ public class SpdTrackingDetail {
 
     public SpdTrackingDetail addSpdTrackingItemsItem(SpdTrackingItem spdTrackingItemsItem) {
         if (this.spdTrackingItems == null) {
-            this.spdTrackingItems = new ArrayList<SpdTrackingItem>();
+            this.spdTrackingItems = new ArrayList<>();
         }
         this.spdTrackingItems.add(spdTrackingItemsItem);
         return this;

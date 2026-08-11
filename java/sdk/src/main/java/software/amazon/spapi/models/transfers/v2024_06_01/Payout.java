@@ -14,10 +14,10 @@ package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** All the information related to a payout. */
 @Schema(description = "All the information related to a payout.")
@@ -32,7 +32,7 @@ public class Payout {
     private PayoutStatusName currentStatus = null;
 
     @SerializedName("statusHistory")
-    private List<PayoutStatusEntry> statusHistory = new ArrayList<PayoutStatusEntry>();
+    private List<PayoutStatusEntry> statusHistory = new ArrayList<>();
 
     @SerializedName("type")
     private PayoutTypeName type = null;

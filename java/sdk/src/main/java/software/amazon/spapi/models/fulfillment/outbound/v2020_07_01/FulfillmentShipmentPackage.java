@@ -14,8 +14,8 @@ package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Package information for a shipment in a fulfillment order. */
 @Schema(description = "Package information for a shipment in a fulfillment order.")

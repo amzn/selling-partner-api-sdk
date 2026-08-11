@@ -34,7 +34,7 @@ public class BrowseNodeReviewTrends {
 
     public BrowseNodeReviewTrends addPositiveTopicsItem(BrowseNodeReviewTrend positiveTopicsItem) {
         if (this.positiveTopics == null) {
-            this.positiveTopics = new ArrayList<BrowseNodeReviewTrend>();
+            this.positiveTopics = new ArrayList<>();
         }
         this.positiveTopics.add(positiveTopicsItem);
         return this;
@@ -65,7 +65,7 @@ public class BrowseNodeReviewTrends {
 
     public BrowseNodeReviewTrends addNegativeTopicsItem(BrowseNodeReviewTrend negativeTopicsItem) {
         if (this.negativeTopics == null) {
-            this.negativeTopics = new ArrayList<BrowseNodeReviewTrend>();
+            this.negativeTopics = new ArrayList<>();
         }
         this.negativeTopics.add(negativeTopicsItem);
         return this;

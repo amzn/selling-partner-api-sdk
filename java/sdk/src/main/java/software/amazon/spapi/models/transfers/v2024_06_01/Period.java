@@ -14,8 +14,8 @@ package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** The time interval for calculating the payout amount. */
 @Schema(description = "The time interval for calculating the payout amount.")

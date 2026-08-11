@@ -106,7 +106,7 @@ public class ItemSubstitutionPreference {
 
     public ItemSubstitutionPreference addSubstitutionOptionsItem(ItemSubstitutionOption substitutionOptionsItem) {
         if (this.substitutionOptions == null) {
-            this.substitutionOptions = new ArrayList<ItemSubstitutionOption>();
+            this.substitutionOptions = new ArrayList<>();
         }
         this.substitutionOptions.add(substitutionOptionsItem);
         return this;

@@ -32,7 +32,7 @@ public class DiscountFunding {
 
     public DiscountFunding addPercentageItem(BigDecimal percentageItem) {
         if (this.percentage == null) {
-            this.percentage = new ArrayList<BigDecimal>();
+            this.percentage = new ArrayList<>();
         }
         this.percentage.add(percentageItem);
         return this;

@@ -14,10 +14,10 @@ package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Represents a product with the SKU details and the corresponding quantity. */
 @Schema(description = "Represents a product with the SKU details and the corresponding quantity.")
@@ -44,7 +44,7 @@ public class ProductQuantity {
 
     public ProductQuantity addAttributesItem(ProductAttribute attributesItem) {
         if (this.attributes == null) {
-            this.attributes = new ArrayList<ProductAttribute>();
+            this.attributes = new ArrayList<>();
         }
         this.attributes.add(attributesItem);
         return this;

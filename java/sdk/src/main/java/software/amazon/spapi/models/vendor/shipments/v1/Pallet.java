@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "Details of the Pallet/Tare being shipped.")
 public class Pallet {
     @SerializedName("palletIdentifiers")
-    private List<ContainerIdentification> palletIdentifiers = new ArrayList<ContainerIdentification>();
+    private List<ContainerIdentification> palletIdentifiers = new ArrayList<>();
 
     @SerializedName("tier")
     private Integer tier = null;
@@ -168,7 +168,7 @@ public class Pallet {
 
     public Pallet addItemsItem(ContainerItem itemsItem) {
         if (this.items == null) {
-            this.items = new ArrayList<ContainerItem>();
+            this.items = new ArrayList<>();
         }
         this.items.add(itemsItem);
         return this;

@@ -19,10 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * Represents an invoice or credit note document with details about the transaction, parties involved, and line items.
@@ -324,7 +324,7 @@ public class Invoice {
 
     public Invoice addTaxDetailsItem(TaxDetails taxDetailsItem) {
         if (this.taxDetails == null) {
-            this.taxDetails = new ArrayList<TaxDetails>();
+            this.taxDetails = new ArrayList<>();
         }
         this.taxDetails.add(taxDetailsItem);
         return this;
@@ -351,7 +351,7 @@ public class Invoice {
 
     public Invoice addAdditionalDetailsItem(AdditionalDetails additionalDetailsItem) {
         if (this.additionalDetails == null) {
-            this.additionalDetails = new ArrayList<AdditionalDetails>();
+            this.additionalDetails = new ArrayList<>();
         }
         this.additionalDetails.add(additionalDetailsItem);
         return this;
@@ -378,7 +378,7 @@ public class Invoice {
 
     public Invoice addChargeDetailsItem(ChargeDetails chargeDetailsItem) {
         if (this.chargeDetails == null) {
-            this.chargeDetails = new ArrayList<ChargeDetails>();
+            this.chargeDetails = new ArrayList<>();
         }
         this.chargeDetails.add(chargeDetailsItem);
         return this;
@@ -405,7 +405,7 @@ public class Invoice {
 
     public Invoice addAllowanceDetailsItem(AllowanceDetails allowanceDetailsItem) {
         if (this.allowanceDetails == null) {
-            this.allowanceDetails = new ArrayList<AllowanceDetails>();
+            this.allowanceDetails = new ArrayList<>();
         }
         this.allowanceDetails.add(allowanceDetailsItem);
         return this;
@@ -432,7 +432,7 @@ public class Invoice {
 
     public Invoice addItemsItem(InvoiceItem itemsItem) {
         if (this.items == null) {
-            this.items = new ArrayList<InvoiceItem>();
+            this.items = new ArrayList<>();
         }
         this.items.add(itemsItem);
         return this;

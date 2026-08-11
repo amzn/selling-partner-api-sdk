@@ -24,8 +24,6 @@ import java.util.stream.Collectors;
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 import org.junit.jupiter.api.Test;
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.models.messaging.v1.CreateConfirmCustomizationDetailsRequest;
 import software.amazon.spapi.models.messaging.v1.CreateConfirmCustomizationDetailsResponse;
@@ -64,11 +62,8 @@ public class MessagingApiTest {
             .endpoint(endpoint)
             .build();
 
-    private final EasyRandom easyRandom = new EasyRandom(new EasyRandomParameters()
-            .randomize(OffsetDateTime.class, OffsetDateTime::now)
-            .randomize(LocalDate.class, LocalDate::now)
-            .collectionSizeRange(1, 2)
-            .randomizationDepth(10));
+    private final EasyRandom easyRandom =
+            new EasyRandom(new EasyRandomParameters().collectionSizeRange(1, 2).randomizationDepth(10));
 
     @Test
     public void confirmCustomizationDetailsTest() throws Exception {

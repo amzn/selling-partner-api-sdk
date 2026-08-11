@@ -14,10 +14,10 @@ package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** The request schema for the createWarranty operation. */
 @Schema(description = "The request schema for the createWarranty operation.")
@@ -38,7 +38,7 @@ public class CreateWarrantyRequest {
 
     public CreateWarrantyRequest addAttachmentsItem(Attachment attachmentsItem) {
         if (this.attachments == null) {
-            this.attachments = new ArrayList<Attachment>();
+            this.attachments = new ArrayList<>();
         }
         this.attachments.add(attachmentsItem);
         return this;

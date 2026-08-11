@@ -37,7 +37,7 @@ public class GetInvoicesResponse {
 
     public GetInvoicesResponse addInvoicesItem(InvoiceHeader invoicesItem) {
         if (this.invoices == null) {
-            this.invoices = new ArrayList<InvoiceHeader>();
+            this.invoices = new ArrayList<>();
         }
         this.invoices.add(invoicesItem);
         return this;

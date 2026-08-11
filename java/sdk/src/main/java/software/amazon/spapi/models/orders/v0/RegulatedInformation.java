@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "The regulated information collected during purchase and used to verify the order.")
 public class RegulatedInformation {
     @SerializedName("Fields")
-    private List<RegulatedInformationField> fields = new ArrayList<RegulatedInformationField>();
+    private List<RegulatedInformationField> fields = new ArrayList<>();
 
     public RegulatedInformation fields(List<RegulatedInformationField> fields) {
         this.fields = fields;

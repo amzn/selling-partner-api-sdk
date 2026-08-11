@@ -75,7 +75,7 @@ public class CreateShippingLabelsRequest {
 
     public CreateShippingLabelsRequest addContainersItem(Container containersItem) {
         if (this.containers == null) {
-            this.containers = new ArrayList<Container>();
+            this.containers = new ArrayList<>();
         }
         this.containers.add(containersItem);
         return this;

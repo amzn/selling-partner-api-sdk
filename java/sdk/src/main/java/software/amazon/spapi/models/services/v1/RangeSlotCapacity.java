@@ -56,7 +56,7 @@ public class RangeSlotCapacity {
 
     public RangeSlotCapacity addCapacitiesItem(RangeCapacity capacitiesItem) {
         if (this.capacities == null) {
-            this.capacities = new ArrayList<RangeCapacity>();
+            this.capacities = new ArrayList<>();
         }
         this.capacities.add(capacitiesItem);
         return this;

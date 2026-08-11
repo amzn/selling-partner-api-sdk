@@ -75,7 +75,7 @@ public class OperatingHours {
 
     public OperatingHours addMidDayClosuresItem(TimeOfDay midDayClosuresItem) {
         if (this.midDayClosures == null) {
-            this.midDayClosures = new ArrayList<TimeOfDay>();
+            this.midDayClosures = new ArrayList<>();
         }
         this.midDayClosures.add(midDayClosuresItem);
         return this;

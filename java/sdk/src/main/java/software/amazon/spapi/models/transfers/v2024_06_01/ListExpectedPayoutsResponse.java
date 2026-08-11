@@ -34,7 +34,7 @@ public class ListExpectedPayoutsResponse {
 
     public ListExpectedPayoutsResponse addExpectedPayoutsItem(ExpectedPayout expectedPayoutsItem) {
         if (this.expectedPayouts == null) {
-            this.expectedPayouts = new ArrayList<ExpectedPayout>();
+            this.expectedPayouts = new ArrayList<>();
         }
         this.expectedPayouts.add(expectedPayoutsItem);
         return this;

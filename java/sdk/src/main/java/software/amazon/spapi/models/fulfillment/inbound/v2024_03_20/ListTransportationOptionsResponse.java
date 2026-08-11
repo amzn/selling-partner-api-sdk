@@ -25,7 +25,7 @@ public class ListTransportationOptionsResponse {
     private Pagination pagination = null;
 
     @SerializedName("transportationOptions")
-    private List<TransportationOption> transportationOptions = new ArrayList<TransportationOption>();
+    private List<TransportationOption> transportationOptions = new ArrayList<>();
 
     public ListTransportationOptionsResponse pagination(Pagination pagination) {
         this.pagination = pagination;

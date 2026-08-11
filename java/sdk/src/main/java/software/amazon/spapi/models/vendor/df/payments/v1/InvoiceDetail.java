@@ -14,10 +14,10 @@ package software.amazon.spapi.models.vendor.df.payments.v1;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /**
  * Represents the details of an invoice, including invoice number, date, parties involved, payment terms, totals, taxes,
@@ -64,7 +64,7 @@ public class InvoiceDetail {
     private List<ChargeDetails> chargeDetails = null;
 
     @SerializedName("items")
-    private List<InvoiceItem> items = new ArrayList<InvoiceItem>();
+    private List<InvoiceItem> items = new ArrayList<>();
 
     public InvoiceDetail invoiceNumber(String invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
@@ -244,7 +244,7 @@ public class InvoiceDetail {
 
     public InvoiceDetail addTaxTotalsItem(TaxDetail taxTotalsItem) {
         if (this.taxTotals == null) {
-            this.taxTotals = new ArrayList<TaxDetail>();
+            this.taxTotals = new ArrayList<>();
         }
         this.taxTotals.add(taxTotalsItem);
         return this;
@@ -271,7 +271,7 @@ public class InvoiceDetail {
 
     public InvoiceDetail addAdditionalDetailsItem(AdditionalDetails additionalDetailsItem) {
         if (this.additionalDetails == null) {
-            this.additionalDetails = new ArrayList<AdditionalDetails>();
+            this.additionalDetails = new ArrayList<>();
         }
         this.additionalDetails.add(additionalDetailsItem);
         return this;
@@ -298,7 +298,7 @@ public class InvoiceDetail {
 
     public InvoiceDetail addChargeDetailsItem(ChargeDetails chargeDetailsItem) {
         if (this.chargeDetails == null) {
-            this.chargeDetails = new ArrayList<ChargeDetails>();
+            this.chargeDetails = new ArrayList<>();
         }
         this.chargeDetails.add(chargeDetailsItem);
         return this;

@@ -22,7 +22,7 @@ import java.util.Objects;
 @Schema(description = "The request schema of the `createPackages` operation.")
 public class Packages {
     @SerializedName("packages")
-    private List<ModelPackage> packages = new ArrayList<ModelPackage>();
+    private List<ModelPackage> packages = new ArrayList<>();
 
     public Packages packages(List<ModelPackage> packages) {
         this.packages = packages;

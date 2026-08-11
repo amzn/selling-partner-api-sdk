@@ -14,10 +14,10 @@ package software.amazon.spapi.models.reports.v2021_06_30;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Detailed information about a report schedule. */
 @Schema(description = "Detailed information about a report schedule.")
@@ -92,7 +92,7 @@ public class ReportSchedule {
 
     public ReportSchedule addMarketplaceIdsItem(String marketplaceIdsItem) {
         if (this.marketplaceIds == null) {
-            this.marketplaceIds = new ArrayList<String>();
+            this.marketplaceIds = new ArrayList<>();
         }
         this.marketplaceIds.add(marketplaceIdsItem);
         return this;

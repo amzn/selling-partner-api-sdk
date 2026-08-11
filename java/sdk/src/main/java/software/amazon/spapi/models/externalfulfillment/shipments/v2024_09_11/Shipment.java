@@ -192,7 +192,7 @@ public class Shipment {
     private String reason = null;
 
     @SerializedName("lineItems")
-    private List<ShipmentLineItem> lineItems = new ArrayList<ShipmentLineItem>();
+    private List<ShipmentLineItem> lineItems = new ArrayList<>();
 
     @SerializedName("shippingInfo")
     private ShippingInfo shippingInfo = null;
@@ -472,7 +472,7 @@ public class Shipment {
 
     public Shipment addPackagesItem(ModelPackage packagesItem) {
         if (this.packages == null) {
-            this.packages = new ArrayList<ModelPackage>();
+            this.packages = new ArrayList<>();
         }
         this.packages.add(packagesItem);
         return this;

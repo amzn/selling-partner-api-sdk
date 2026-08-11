@@ -114,7 +114,7 @@ public class BusinessHours {
 
     public BusinessHours addOpenIntervalsItem(OpenInterval openIntervalsItem) {
         if (this.openIntervals == null) {
-            this.openIntervals = new ArrayList<OpenInterval>();
+            this.openIntervals = new ArrayList<>();
         }
         this.openIntervals.add(openIntervalsItem);
         return this;

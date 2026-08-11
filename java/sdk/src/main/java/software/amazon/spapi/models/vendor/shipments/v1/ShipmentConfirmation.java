@@ -19,10 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** A list of one or more shipment confirmations. */
 @Schema(description = "A list of one or more shipment confirmations.")
@@ -225,7 +225,7 @@ public class ShipmentConfirmation {
     private ImportDetails importDetails = null;
 
     @SerializedName("shippedItems")
-    private List<Item> shippedItems = new ArrayList<Item>();
+    private List<Item> shippedItems = new ArrayList<>();
 
     @SerializedName("cartons")
     private List<Carton> cartons = null;
@@ -552,7 +552,7 @@ public class ShipmentConfirmation {
 
     public ShipmentConfirmation addCartonsItem(Carton cartonsItem) {
         if (this.cartons == null) {
-            this.cartons = new ArrayList<Carton>();
+            this.cartons = new ArrayList<>();
         }
         this.cartons.add(cartonsItem);
         return this;
@@ -579,7 +579,7 @@ public class ShipmentConfirmation {
 
     public ShipmentConfirmation addPalletsItem(Pallet palletsItem) {
         if (this.pallets == null) {
-            this.pallets = new ArrayList<Pallet>();
+            this.pallets = new ArrayList<>();
         }
         this.pallets.add(palletsItem);
         return this;

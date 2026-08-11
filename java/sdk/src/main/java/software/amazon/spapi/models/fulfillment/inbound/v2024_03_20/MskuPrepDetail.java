@@ -37,7 +37,7 @@ public class MskuPrepDetail {
     private OwnerConstraint prepOwnerConstraint = null;
 
     @SerializedName("prepTypes")
-    private List<PrepType> prepTypes = new ArrayList<PrepType>();
+    private List<PrepType> prepTypes = new ArrayList<>();
 
     public MskuPrepDetail allOwnersConstraint(AllOwnersConstraint allOwnersConstraint) {
         this.allOwnersConstraint = allOwnersConstraint;

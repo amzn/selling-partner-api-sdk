@@ -31,7 +31,7 @@ public class ValidVerificationDetail {
     private String verificationDetailType = null;
 
     @SerializedName("ValidVerificationStatuses")
-    private List<VerificationStatus> validVerificationStatuses = new ArrayList<VerificationStatus>();
+    private List<VerificationStatus> validVerificationStatuses = new ArrayList<>();
 
     public ValidVerificationDetail verificationDetailType(String verificationDetailType) {
         this.verificationDetailType = verificationDetailType;

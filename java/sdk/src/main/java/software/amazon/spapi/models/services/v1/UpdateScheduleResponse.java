@@ -34,7 +34,7 @@ public class UpdateScheduleResponse {
 
     public UpdateScheduleResponse addPayloadItem(UpdateScheduleRecord payloadItem) {
         if (this.payload == null) {
-            this.payload = new ArrayList<UpdateScheduleRecord>();
+            this.payload = new ArrayList<>();
         }
         this.payload.add(payloadItem);
         return this;

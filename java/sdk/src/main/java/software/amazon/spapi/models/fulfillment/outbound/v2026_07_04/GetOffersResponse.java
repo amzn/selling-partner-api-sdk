@@ -31,7 +31,7 @@ public class GetOffersResponse {
 
     public GetOffersResponse addOfferResultsItem(OfferResult offerResultsItem) {
         if (this.offerResults == null) {
-            this.offerResults = new ArrayList<OfferResult>();
+            this.offerResults = new ArrayList<>();
         }
         this.offerResults.add(offerResultsItem);
         return this;

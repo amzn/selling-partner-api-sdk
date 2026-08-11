@@ -27,7 +27,7 @@ import java.util.Objects;
                 "Provides information about the enforcement actions taken by Amazon that affect the publishing or status of a listing. It also includes details about any associated exemptions.")
 public class IssueEnforcements {
     @SerializedName("actions")
-    private List<IssueEnforcementAction> actions = new ArrayList<IssueEnforcementAction>();
+    private List<IssueEnforcementAction> actions = new ArrayList<>();
 
     @SerializedName("exemption")
     private IssueExemption exemption = null;

@@ -30,7 +30,7 @@ public class DistributionIneligibleReason {
     private String failureCode = null;
 
     @SerializedName("failureReasons")
-    private List<String> failureReasons = new ArrayList<String>();
+    private List<String> failureReasons = new ArrayList<>();
 
     @SerializedName("sku")
     private String sku = null;

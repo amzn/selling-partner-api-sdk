@@ -31,7 +31,7 @@ public class SubmitAcknowledgementRequest {
 
     public SubmitAcknowledgementRequest addAcknowledgementsItem(OrderAcknowledgement acknowledgementsItem) {
         if (this.acknowledgements == null) {
-            this.acknowledgements = new ArrayList<OrderAcknowledgement>();
+            this.acknowledgements = new ArrayList<>();
         }
         this.acknowledgements.add(acknowledgementsItem);
         return this;

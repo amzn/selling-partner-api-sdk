@@ -25,7 +25,7 @@ public class PreviewPlannedShipment {
     private Weight estimatedShippingWeight = null;
 
     @SerializedName("items")
-    private List<PreviewPlannedShipmentItem> items = new ArrayList<PreviewPlannedShipmentItem>();
+    private List<PreviewPlannedShipmentItem> items = new ArrayList<>();
 
     @SerializedName("offers")
     private List<PreviewDeliveryOffer> offers = null;
@@ -84,7 +84,7 @@ public class PreviewPlannedShipment {
 
     public PreviewPlannedShipment addOffersItem(PreviewDeliveryOffer offersItem) {
         if (this.offers == null) {
-            this.offers = new ArrayList<PreviewDeliveryOffer>();
+            this.offers = new ArrayList<>();
         }
         this.offers.add(offersItem);
         return this;

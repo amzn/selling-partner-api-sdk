@@ -19,10 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** The job details of a service. */
 @Schema(description = "The job details of a service.")
@@ -255,7 +255,7 @@ public class ServiceJob {
 
     public ServiceJob addPreferredAppointmentTimesItem(AppointmentTime preferredAppointmentTimesItem) {
         if (this.preferredAppointmentTimes == null) {
-            this.preferredAppointmentTimes = new ArrayList<AppointmentTime>();
+            this.preferredAppointmentTimes = new ArrayList<>();
         }
         this.preferredAppointmentTimes.add(preferredAppointmentTimesItem);
         return this;
@@ -285,7 +285,7 @@ public class ServiceJob {
 
     public ServiceJob addAppointmentsItem(Appointment appointmentsItem) {
         if (this.appointments == null) {
-            this.appointments = new ArrayList<Appointment>();
+            this.appointments = new ArrayList<>();
         }
         this.appointments.add(appointmentsItem);
         return this;
@@ -331,7 +331,7 @@ public class ServiceJob {
 
     public ServiceJob addProductOrderIdsItem(String productOrderIdsItem) {
         if (this.productOrderIds == null) {
-            this.productOrderIds = new ArrayList<String>();
+            this.productOrderIds = new ArrayList<>();
         }
         this.productOrderIds.add(productOrderIdsItem);
         return this;
@@ -358,7 +358,7 @@ public class ServiceJob {
 
     public ServiceJob addTrackingIdsItem(String trackingIdsItem) {
         if (this.trackingIds == null) {
-            this.trackingIds = new ArrayList<String>();
+            this.trackingIds = new ArrayList<>();
         }
         this.trackingIds.add(trackingIdsItem);
         return this;
@@ -442,7 +442,7 @@ public class ServiceJob {
 
     public ServiceJob addAssociatedItemsItem(AssociatedItem associatedItemsItem) {
         if (this.associatedItems == null) {
-            this.associatedItems = new ArrayList<AssociatedItem>();
+            this.associatedItems = new ArrayList<>();
         }
         this.associatedItems.add(associatedItemsItem);
         return this;
@@ -488,7 +488,7 @@ public class ServiceJob {
 
     public ServiceJob addPaymentsItem(Payment paymentsItem) {
         if (this.payments == null) {
-            this.payments = new ArrayList<Payment>();
+            this.payments = new ArrayList<>();
         }
         this.payments.add(paymentsItem);
         return this;

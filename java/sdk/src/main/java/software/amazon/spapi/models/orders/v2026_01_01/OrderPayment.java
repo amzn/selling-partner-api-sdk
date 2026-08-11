@@ -31,7 +31,7 @@ public class OrderPayment {
 
     public OrderPayment addPaymentExecutionsItem(PaymentExecution paymentExecutionsItem) {
         if (this.paymentExecutions == null) {
-            this.paymentExecutions = new ArrayList<PaymentExecution>();
+            this.paymentExecutions = new ArrayList<>();
         }
         this.paymentExecutions.add(paymentExecutionsItem);
         return this;

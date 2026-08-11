@@ -21,7 +21,7 @@ import java.util.Objects;
 /** GetSolicitationActionsForOrderResponseEmbedded */
 public class GetSolicitationActionsForOrderResponseEmbedded {
     @SerializedName("actions")
-    private List<GetSolicitationActionResponse> actions = new ArrayList<GetSolicitationActionResponse>();
+    private List<GetSolicitationActionResponse> actions = new ArrayList<>();
 
     public GetSolicitationActionsForOrderResponseEmbedded actions(List<GetSolicitationActionResponse> actions) {
         this.actions = actions;

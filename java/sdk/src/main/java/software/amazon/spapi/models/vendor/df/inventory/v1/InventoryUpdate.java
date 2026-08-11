@@ -28,7 +28,7 @@ public class InventoryUpdate {
     private Boolean isFullUpdate = null;
 
     @SerializedName("items")
-    private List<ItemDetails> items = new ArrayList<ItemDetails>();
+    private List<ItemDetails> items = new ArrayList<>();
 
     public InventoryUpdate sellingParty(PartyIdentification sellingParty) {
         this.sellingParty = sellingParty;

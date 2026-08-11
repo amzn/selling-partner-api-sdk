@@ -223,7 +223,7 @@ public class Offer {
 
     public Offer addShippingOptionsItem(ShippingOption shippingOptionsItem) {
         if (this.shippingOptions == null) {
-            this.shippingOptions = new ArrayList<ShippingOption>();
+            this.shippingOptions = new ArrayList<>();
         }
         this.shippingOptions.add(shippingOptionsItem);
         return this;

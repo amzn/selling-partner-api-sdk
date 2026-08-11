@@ -156,7 +156,7 @@ public class Appointment {
 
     public Appointment addAssignedTechniciansItem(Technician assignedTechniciansItem) {
         if (this.assignedTechnicians == null) {
-            this.assignedTechnicians = new ArrayList<Technician>();
+            this.assignedTechnicians = new ArrayList<>();
         }
         this.assignedTechnicians.add(assignedTechniciansItem);
         return this;

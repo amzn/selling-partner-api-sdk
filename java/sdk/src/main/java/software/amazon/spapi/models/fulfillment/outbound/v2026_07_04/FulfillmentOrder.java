@@ -14,10 +14,10 @@ package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** General information about a fulfillment order, including its status. */
 @Schema(description = "General information about a fulfillment order, including its status.")
@@ -47,7 +47,7 @@ public class FulfillmentOrder {
     private OrderDestination destination = null;
 
     @SerializedName("lineItems")
-    private List<OrderLineItem> lineItems = new ArrayList<OrderLineItem>();
+    private List<OrderLineItem> lineItems = new ArrayList<>();
 
     @SerializedName("shipments")
     private List<Shipment> shipments = null;
@@ -240,7 +240,7 @@ public class FulfillmentOrder {
 
     public FulfillmentOrder addShipmentsItem(Shipment shipmentsItem) {
         if (this.shipments == null) {
-            this.shipments = new ArrayList<Shipment>();
+            this.shipments = new ArrayList<>();
         }
         this.shipments.add(shipmentsItem);
         return this;

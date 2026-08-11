@@ -144,7 +144,7 @@ public class ItemReviewTopic {
 
     public ItemReviewTopic addReviewSnippetsItem(String reviewSnippetsItem) {
         if (this.reviewSnippets == null) {
-            this.reviewSnippets = new ArrayList<String>();
+            this.reviewSnippets = new ArrayList<>();
         }
         this.reviewSnippets.add(reviewSnippetsItem);
         return this;
@@ -174,7 +174,7 @@ public class ItemReviewTopic {
 
     public ItemReviewTopic addSubtopicsItem(ItemReviewSubtopic subtopicsItem) {
         if (this.subtopics == null) {
-            this.subtopics = new ArrayList<ItemReviewSubtopic>();
+            this.subtopics = new ArrayList<>();
         }
         this.subtopics.add(subtopicsItem);
         return this;

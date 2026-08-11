@@ -19,10 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.threeten.bp.OffsetDateTime;
 
 /** Proof of Appointment (POA) details. */
 @Schema(description = "Proof of Appointment (POA) details.")
@@ -118,7 +118,7 @@ public class Poa {
 
     public Poa addTechniciansItem(Technician techniciansItem) {
         if (this.technicians == null) {
-            this.technicians = new ArrayList<Technician>();
+            this.technicians = new ArrayList<>();
         }
         this.technicians.add(techniciansItem);
         return this;

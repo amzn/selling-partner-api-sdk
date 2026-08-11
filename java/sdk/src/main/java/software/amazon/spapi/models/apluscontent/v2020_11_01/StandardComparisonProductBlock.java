@@ -145,7 +145,7 @@ public class StandardComparisonProductBlock {
 
     public StandardComparisonProductBlock addMetricsItem(PlainTextItem metricsItem) {
         if (this.metrics == null) {
-            this.metrics = new ArrayList<PlainTextItem>();
+            this.metrics = new ArrayList<>();
         }
         this.metrics.add(metricsItem);
         return this;
