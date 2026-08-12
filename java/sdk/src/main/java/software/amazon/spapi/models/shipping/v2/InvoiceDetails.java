@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** The invoice details for charges associated with the goods in the package. Only applies to certain regions. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The invoice details for charges associated with the goods in the package. Only applies to certain regions.")
 public class InvoiceDetails {
@@ -37,7 +37,7 @@ public class InvoiceDetails {
      *
      * @return invoiceNumber
      */
-    @Schema(description = "The invoice number of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The invoice number of the item.")
     public String getInvoiceNumber() {
         return invoiceNumber;
     }
@@ -56,7 +56,7 @@ public class InvoiceDetails {
      *
      * @return invoiceDate
      */
-    @Schema(description = "The invoice date of the item in ISO 8061 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The invoice date of the item in ISO 8061 format.")
     public OffsetDateTime getInvoiceDate() {
         return invoiceDate;
     }

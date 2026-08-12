@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** The &#x60;generateSelfShipAppointmentSlots&#x60; request. */
-@Schema(description = "The `generateSelfShipAppointmentSlots` request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `generateSelfShipAppointmentSlots` request.")
 public class GenerateSelfShipAppointmentSlotsRequest {
     @SerializedName("desiredEndDate")
     private OffsetDateTime desiredEndDate = null;
@@ -35,7 +35,7 @@ public class GenerateSelfShipAppointmentSlotsRequest {
      *
      * @return desiredEndDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The desired end date. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.")
     public OffsetDateTime getDesiredEndDate() {
@@ -56,7 +56,7 @@ public class GenerateSelfShipAppointmentSlotsRequest {
      *
      * @return desiredStartDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The desired start date. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.")
     public OffsetDateTime getDesiredStartDate() {

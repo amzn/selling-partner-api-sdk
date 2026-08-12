@@ -13,14 +13,14 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
  * Interim status information provided during the verification process to share granular progress updates while an order
  * is pending verification (for example, vet contacted through email).
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Interim status information provided during the verification process to share granular progress updates while an order is pending verification (for example, vet contacted through email).")
 public class InterimStatusDetail {
@@ -41,7 +41,7 @@ public class InterimStatusDetail {
      *
      * @return statusCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier for the interim status type. Must be one of the `ValidInterimStatusCodes` values returned by the `getOrderRegulatedInfo` operation.")
@@ -64,7 +64,7 @@ public class InterimStatusDetail {
      *
      * @return statusDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The date and time when this interim status was set, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date and time format.")

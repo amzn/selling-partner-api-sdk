@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** An expense related to an affordability promotion. */
-@Schema(description = "An expense related to an affordability promotion.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An expense related to an affordability promotion.")
 public class AffordabilityExpenseEvent {
     @SerializedName("AmazonOrderId")
     private String amazonOrderId = null;
@@ -56,7 +56,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return amazonOrderId
      */
-    @Schema(description = "An Amazon-defined identifier for an order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon-defined identifier for an order.")
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -75,7 +75,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -96,7 +96,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return marketplaceId
      */
-    @Schema(description = "The Amazon-defined marketplace identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon-defined marketplace identifier.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -116,7 +116,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return transactionType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The type of transaction.   Possible values:  * `Charge`: an affordability promotion expense. * `Refund`: an affordability promotion expense reversal.")
     public String getTransactionType() {
@@ -137,7 +137,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return baseExpense
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getBaseExpense() {
         return baseExpense;
     }
@@ -156,7 +156,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return taxTypeCGST
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getTaxTypeCGST() {
         return taxTypeCGST;
     }
@@ -175,7 +175,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return taxTypeSGST
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getTaxTypeSGST() {
         return taxTypeSGST;
     }
@@ -194,7 +194,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return taxTypeIGST
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getTaxTypeIGST() {
         return taxTypeIGST;
     }
@@ -213,7 +213,7 @@ public class AffordabilityExpenseEvent {
      *
      * @return totalExpense
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTotalExpense() {
         return totalExpense;
     }

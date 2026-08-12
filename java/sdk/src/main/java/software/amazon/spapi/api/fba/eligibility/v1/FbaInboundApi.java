@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.fba.eligibility.v1.GetItemEligibilityPreviewResponse;
 
@@ -63,10 +62,7 @@ public class FbaInboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getItemEligibilityPreviewCall(
-            String asin,
-            String program,
-            List<String> marketplaceIds,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String asin, String program, List<String> marketplaceIds, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -110,10 +106,7 @@ public class FbaInboundApi {
     }
 
     private okhttp3.Call getItemEligibilityPreviewValidateBeforeCall(
-            String asin,
-            String program,
-            List<String> marketplaceIds,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String asin, String program, List<String> marketplaceIds, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'asin' is set
@@ -300,10 +293,10 @@ public class FbaInboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =

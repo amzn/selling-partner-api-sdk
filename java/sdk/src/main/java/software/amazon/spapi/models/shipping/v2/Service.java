@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Service Related Info */
-@Schema(description = "Service Related Info")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Service Related Info")
 public class Service {
     @SerializedName("id")
     private String id = null;
@@ -35,7 +34,9 @@ public class Service {
      *
      * @return id
      */
-    @Schema(required = true, description = "An identifier for the shipping service.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An identifier for the shipping service.")
     public String getId() {
         return id;
     }
@@ -54,7 +55,7 @@ public class Service {
      *
      * @return name
      */
-    @Schema(required = true, description = "The name of the shipping service.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the shipping service.")
     public String getName() {
         return name;
     }

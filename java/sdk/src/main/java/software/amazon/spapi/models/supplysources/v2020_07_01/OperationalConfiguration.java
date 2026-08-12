@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The operational configuration of &#x60;supplySources&#x60;. */
-@Schema(description = "The operational configuration of `supplySources`.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The operational configuration of `supplySources`.")
 public class OperationalConfiguration {
     @SerializedName("contactDetails")
     private ContactDetails contactDetails = null;
@@ -41,7 +40,7 @@ public class OperationalConfiguration {
      *
      * @return contactDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ContactDetails getContactDetails() {
         return contactDetails;
     }
@@ -60,7 +59,7 @@ public class OperationalConfiguration {
      *
      * @return throughputConfig
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ThroughputConfig getThroughputConfig() {
         return throughputConfig;
     }
@@ -79,7 +78,7 @@ public class OperationalConfiguration {
      *
      * @return operatingHoursByDay
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OperatingHoursByDay getOperatingHoursByDay() {
         return operatingHoursByDay;
     }
@@ -98,7 +97,7 @@ public class OperationalConfiguration {
      *
      * @return handlingTime
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Duration getHandlingTime() {
         return handlingTime;
     }

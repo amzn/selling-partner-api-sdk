@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The charge refund transaction. */
-@Schema(description = "The charge refund transaction.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The charge refund transaction.")
 public class ChargeRefundTransaction {
     @SerializedName("ChargeAmount")
     private Currency chargeAmount = null;
@@ -35,7 +34,7 @@ public class ChargeRefundTransaction {
      *
      * @return chargeAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getChargeAmount() {
         return chargeAmount;
     }
@@ -54,7 +53,7 @@ public class ChargeRefundTransaction {
      *
      * @return chargeType
      */
-    @Schema(description = "The type of charge.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of charge.")
     public String getChargeType() {
         return chargeType;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.tracking.v2026_01_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A time-based estimate for the shipment, such as estimated delivery date. */
-@Schema(description = "A time-based estimate for the shipment, such as estimated delivery date.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A time-based estimate for the shipment, such as estimated delivery date.")
 public class TrackingEstimate {
     @SerializedName("type")
     private String type = null;
@@ -39,7 +39,7 @@ public class TrackingEstimate {
      *
      * @return type
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The type of estimate. For example, `ESTIMATED_DELIVERY_DATE` or `ESTIMATED_TIME_OF_DEPARTURE`.")
@@ -61,7 +61,7 @@ public class TrackingEstimate {
      *
      * @return estimatedInterval
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public BoundedInterval getEstimatedInterval() {
         return estimatedInterval;
     }
@@ -80,7 +80,9 @@ public class TrackingEstimate {
      *
      * @return lastUpdatedTime
      */
-    @Schema(required = true, description = "A timestamp in UTC RFC 3339 date-time format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A timestamp in UTC RFC 3339 date-time format.")
     public String getLastUpdatedTime() {
         return lastUpdatedTime;
     }

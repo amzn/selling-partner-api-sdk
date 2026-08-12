@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A Sponsored Products payment event. */
-@Schema(description = "A Sponsored Products payment event.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A Sponsored Products payment event.")
 public class ProductAdsPaymentEvent {
     @SerializedName("postedDate")
     private OffsetDateTime postedDate = null;
@@ -47,7 +47,7 @@ public class ProductAdsPaymentEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -69,7 +69,7 @@ public class ProductAdsPaymentEvent {
      *
      * @return transactionType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Indicates if the transaction is for a charge or a refund.  Possible values:  * `charge`  * `refund`")
     public String getTransactionType() {
@@ -90,7 +90,8 @@ public class ProductAdsPaymentEvent {
      *
      * @return invoiceId
      */
-    @Schema(description = "The identifier for the invoice that includes the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The identifier for the invoice that includes the transaction.")
     public String getInvoiceId() {
         return invoiceId;
     }
@@ -109,7 +110,7 @@ public class ProductAdsPaymentEvent {
      *
      * @return baseValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getBaseValue() {
         return baseValue;
     }
@@ -128,7 +129,7 @@ public class ProductAdsPaymentEvent {
      *
      * @return taxValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTaxValue() {
         return taxValue;
     }
@@ -147,7 +148,7 @@ public class ProductAdsPaymentEvent {
      *
      * @return transactionValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTransactionValue() {
         return transactionValue;
     }

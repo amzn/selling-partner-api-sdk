@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** PostContentDocumentRequest */
@@ -31,7 +30,7 @@ public class PostContentDocumentRequest {
      *
      * @return contentDocument
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ContentDocument getContentDocument() {
         return contentDocument;
     }

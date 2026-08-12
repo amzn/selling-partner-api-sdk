@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * An item that is associated with an order item. For example, a tire installation service that is purchased with tires.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "An item that is associated with an order item. For example, a tire installation service that is purchased with tires.")
 public class AssociatedItem {
@@ -42,7 +41,7 @@ public class AssociatedItem {
      *
      * @return orderId
      */
-    @Schema(description = "The order item's order identifier, in 3-7-7 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The order item's order identifier, in 3-7-7 format.")
     public String getOrderId() {
         return orderId;
     }
@@ -61,7 +60,8 @@ public class AssociatedItem {
      *
      * @return orderItemId
      */
-    @Schema(description = "An Amazon-defined item identifier for the associated item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "An Amazon-defined item identifier for the associated item.")
     public String getOrderItemId() {
         return orderItemId;
     }
@@ -80,7 +80,7 @@ public class AssociatedItem {
      *
      * @return associationType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AssociationType getAssociationType() {
         return associationType;
     }

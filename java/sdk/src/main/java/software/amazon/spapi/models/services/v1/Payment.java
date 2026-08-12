@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Payment information for the service job. */
-@Schema(description = "Payment information for the service job.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Payment information for the service job.")
 public class Payment {
     @SerializedName("amount")
     private MoneyAmount amount = null;
@@ -35,7 +34,7 @@ public class Payment {
      *
      * @return amount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MoneyAmount getAmount() {
         return amount;
     }
@@ -54,7 +53,7 @@ public class Payment {
      *
      * @return instrument
      */
-    @Schema(description = "The payment instrument used for the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The payment instrument used for the transaction.")
     public String getInstrument() {
         return instrument;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Tracking information for a package. */
-@Schema(description = "Tracking information for a package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Tracking information for a package.")
 public class Tracking {
     @SerializedName("carrier")
     private CarrierTracking carrier = null;
@@ -41,7 +40,7 @@ public class Tracking {
      *
      * @return carrier
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CarrierTracking getCarrier() {
         return carrier;
     }
@@ -60,7 +59,7 @@ public class Tracking {
      *
      * @return amazon
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AmazonTracking getAmazon() {
         return amazon;
     }
@@ -79,7 +78,7 @@ public class Tracking {
      *
      * @return dropOffLocation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderDropOffLocation getDropOffLocation() {
         return dropOffLocation;
     }
@@ -98,7 +97,7 @@ public class Tracking {
      *
      * @return proofOfDelivery
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ProofOfDelivery getProofOfDelivery() {
         return proofOfDelivery;
     }

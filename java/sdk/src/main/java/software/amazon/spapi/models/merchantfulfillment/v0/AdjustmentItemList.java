@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** List of adjustments. */
-@Schema(description = "List of adjustments.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "List of adjustments.")
 public class AdjustmentItemList extends ArrayList<RateItem> {
 
     @Override

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The number of offer listings with the specified condition. */
-@Schema(description = "The number of offer listings with the specified condition.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The number of offer listings with the specified condition.")
 public class OfferListingCountType {
     @SerializedName("Count")
     private Integer count = null;
@@ -35,7 +34,7 @@ public class OfferListingCountType {
      *
      * @return count
      */
-    @Schema(required = true, description = "The number of offer listings.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The number of offer listings.")
     public Integer getCount() {
         return count;
     }
@@ -54,7 +53,7 @@ public class OfferListingCountType {
      *
      * @return condition
      */
-    @Schema(required = true, description = "The condition of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The condition of the item.")
     public String getCondition() {
         return condition;
     }

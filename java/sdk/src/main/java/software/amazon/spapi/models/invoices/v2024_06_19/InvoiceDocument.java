@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The &#x60;documentId&#x60; and an S3 pre-signed URL that you can use to download the specified document file. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The `documentId` and an S3 pre-signed URL that you can use to download the specified document file.")
 public class InvoiceDocument {
@@ -35,7 +34,7 @@ public class InvoiceDocument {
      *
      * @return invoiceDocumentUrl
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A pre-signed URL that you can use to download the invoice document in its original format. This URL expires after 30 seconds.")
     public String getInvoiceDocumentUrl() {

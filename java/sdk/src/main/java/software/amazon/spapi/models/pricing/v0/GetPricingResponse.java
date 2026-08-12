@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the &#x60;getPricing&#x60; and &#x60;getCompetitivePricing&#x60; operations. */
-@Schema(description = "The response schema for the `getPricing` and `getCompetitivePricing` operations.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the `getPricing` and `getCompetitivePricing` operations.")
 public class GetPricingResponse {
     @SerializedName("payload")
     private PriceList payload = null;
@@ -35,7 +35,7 @@ public class GetPricingResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PriceList getPayload() {
         return payload;
     }
@@ -54,7 +54,7 @@ public class GetPricingResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

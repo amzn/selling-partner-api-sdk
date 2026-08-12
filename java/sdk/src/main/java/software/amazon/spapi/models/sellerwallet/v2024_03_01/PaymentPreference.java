@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** The type of payment preference in which the transfer is being scheduled. */
-@Schema(description = "The type of payment preference in which the transfer is being scheduled.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The type of payment preference in which the transfer is being scheduled.")
 public class PaymentPreference {
     @SerializedName("paymentPreferencePaymentType")
     private PaymentPreferencePaymentType paymentPreferencePaymentType = null;
@@ -35,7 +36,7 @@ public class PaymentPreference {
      *
      * @return paymentPreferencePaymentType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PaymentPreferencePaymentType getPaymentPreferencePaymentType() {
         return paymentPreferencePaymentType;
     }
@@ -54,7 +55,9 @@ public class PaymentPreference {
      *
      * @return value
      */
-    @Schema(required = true, description = "A decimal number, such as an amount or FX rate.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A decimal number, such as an amount or FX rate.")
     public BigDecimal getValue() {
         return value;
     }

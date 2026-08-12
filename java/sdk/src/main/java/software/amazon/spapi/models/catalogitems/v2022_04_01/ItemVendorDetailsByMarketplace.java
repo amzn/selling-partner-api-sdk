@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** The vendor details that are associated with an Amazon catalog item for the specified &#x60;marketplaceId&#x60;. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The vendor details that are associated with an Amazon catalog item for the specified `marketplaceId`.")
 public class ItemVendorDetailsByMarketplace {
@@ -124,7 +123,7 @@ public class ItemVendorDetailsByMarketplace {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -146,7 +145,8 @@ public class ItemVendorDetailsByMarketplace {
      *
      * @return brandCode
      */
-    @Schema(description = "The brand code that is associated with an Amazon catalog item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The brand code that is associated with an Amazon catalog item.")
     public String getBrandCode() {
         return brandCode;
     }
@@ -165,7 +165,8 @@ public class ItemVendorDetailsByMarketplace {
      *
      * @return manufacturerCode
      */
-    @Schema(description = "The manufacturer code that is associated with an Amazon catalog item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The manufacturer code that is associated with an Amazon catalog item.")
     public String getManufacturerCode() {
         return manufacturerCode;
     }
@@ -184,7 +185,7 @@ public class ItemVendorDetailsByMarketplace {
      *
      * @return manufacturerCodeParent
      */
-    @Schema(description = "The parent vendor code of the manufacturer code.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The parent vendor code of the manufacturer code.")
     public String getManufacturerCodeParent() {
         return manufacturerCodeParent;
     }
@@ -203,7 +204,7 @@ public class ItemVendorDetailsByMarketplace {
      *
      * @return productCategory
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemVendorDetailsCategory getProductCategory() {
         return productCategory;
     }
@@ -222,7 +223,8 @@ public class ItemVendorDetailsByMarketplace {
      *
      * @return productGroup
      */
-    @Schema(description = "The product group that is associated with an Amazon catalog item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The product group that is associated with an Amazon catalog item.")
     public String getProductGroup() {
         return productGroup;
     }
@@ -241,7 +243,7 @@ public class ItemVendorDetailsByMarketplace {
      *
      * @return productSubcategory
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemVendorDetailsCategory getProductSubcategory() {
         return productSubcategory;
     }
@@ -260,7 +262,8 @@ public class ItemVendorDetailsByMarketplace {
      *
      * @return replenishmentCategory
      */
-    @Schema(description = "The replenishment category that is associated with an Amazon catalog item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The replenishment category that is associated with an Amazon catalog item.")
     public ReplenishmentCategoryEnum getReplenishmentCategory() {
         return replenishmentCategory;
     }

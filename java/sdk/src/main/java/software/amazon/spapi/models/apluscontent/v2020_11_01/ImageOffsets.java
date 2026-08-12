@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The top left corner of the cropped image, specified in the original image&#39;s coordinate space. */
-@Schema(description = "The top left corner of the cropped image, specified in the original image's coordinate space.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The top left corner of the cropped image, specified in the original image's coordinate space.")
 public class ImageOffsets {
     @SerializedName("x")
     private IntegerWithUnits x = null;
@@ -35,7 +35,7 @@ public class ImageOffsets {
      *
      * @return x
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public IntegerWithUnits getX() {
         return x;
     }
@@ -54,7 +54,7 @@ public class ImageOffsets {
      *
      * @return y
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public IntegerWithUnits getY() {
         return y;
     }

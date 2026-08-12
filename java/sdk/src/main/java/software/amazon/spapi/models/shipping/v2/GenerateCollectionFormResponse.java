@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The Response for the GenerateCollectionFormResponse operation. */
-@Schema(description = "The Response  for the GenerateCollectionFormResponse operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The Response  for the GenerateCollectionFormResponse operation.")
 public class GenerateCollectionFormResponse {
     @SerializedName("collectionsFormDocument")
     private CollectionsFormDocument collectionsFormDocument = null;
@@ -32,7 +32,7 @@ public class GenerateCollectionFormResponse {
      *
      * @return collectionsFormDocument
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CollectionsFormDocument getCollectionsFormDocument() {
         return collectionsFormDocument;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The A+ Content standard text box block, which contains a paragraph and a headline. */
-@Schema(description = "The A+ Content standard text box block, which contains a paragraph and a headline.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The A+ Content standard text box block, which contains a paragraph and a headline.")
 public class StandardTextBlock {
     @SerializedName("headline")
     private TextComponent headline = null;
@@ -35,7 +35,7 @@ public class StandardTextBlock {
      *
      * @return headline
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TextComponent getHeadline() {
         return headline;
     }
@@ -54,7 +54,7 @@ public class StandardTextBlock {
      *
      * @return body
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ParagraphComponent getBody() {
         return body;
     }

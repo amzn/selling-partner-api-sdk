@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The standard table of technical feature names and definitions. */
-@Schema(description = "The standard table of technical feature names and definitions.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The standard table of technical feature names and definitions.")
 public class StandardTechSpecsModule {
     @SerializedName("headline")
     private TextComponent headline = null;
@@ -40,7 +40,7 @@ public class StandardTechSpecsModule {
      *
      * @return headline
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TextComponent getHeadline() {
         return headline;
     }
@@ -67,7 +67,7 @@ public class StandardTechSpecsModule {
      *
      * @return specificationList
      */
-    @Schema(required = true, description = "The specification list.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The specification list.")
     public List<StandardTextPairBlock> getSpecificationList() {
         return specificationList;
     }
@@ -86,7 +86,8 @@ public class StandardTechSpecsModule {
      *
      * @return tableCount
      */
-    @Schema(description = "The number of tables you want present. Features are evenly divided between the tables.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The number of tables you want present. Features are evenly divided between the tables.")
     public Integer getTableCount() {
         return tableCount;
     }

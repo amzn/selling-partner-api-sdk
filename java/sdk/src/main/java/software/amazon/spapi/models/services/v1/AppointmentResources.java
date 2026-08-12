@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.services.v1;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** List of resources that performs or performed job appointment fulfillment. */
-@Schema(description = "List of resources that performs or performed job appointment fulfillment.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "List of resources that performs or performed job appointment fulfillment.")
 public class AppointmentResources extends ArrayList<AppointmentResource> {
 
     @Override

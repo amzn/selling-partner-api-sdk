@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Labeling requirements and item preparation instructions to help you prepare items for shipment to Amazon&#39;s
  * fulfillment network.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Labeling requirements and item preparation instructions to help you prepare items for shipment to Amazon's fulfillment network.")
 public class SKUPrepInstructions {
@@ -52,7 +51,7 @@ public class SKUPrepInstructions {
      *
      * @return sellerSKU
      */
-    @Schema(description = "The seller SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller SKU of the item.")
     public String getSellerSKU() {
         return sellerSKU;
     }
@@ -71,7 +70,8 @@ public class SKUPrepInstructions {
      *
      * @return ASIN
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getASIN() {
         return ASIN;
     }
@@ -90,7 +90,7 @@ public class SKUPrepInstructions {
      *
      * @return barcodeInstruction
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BarcodeInstruction getBarcodeInstruction() {
         return barcodeInstruction;
     }
@@ -109,7 +109,7 @@ public class SKUPrepInstructions {
      *
      * @return prepGuidance
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PrepGuidance getPrepGuidance() {
         return prepGuidance;
     }
@@ -128,7 +128,7 @@ public class SKUPrepInstructions {
      *
      * @return prepInstructionList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PrepInstructionList getPrepInstructionList() {
         return prepInstructionList;
     }
@@ -147,7 +147,7 @@ public class SKUPrepInstructions {
      *
      * @return amazonPrepFeesDetailsList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AmazonPrepFeesDetailsList getAmazonPrepFeesDetailsList() {
         return amazonPrepFeesDetailsList;
     }

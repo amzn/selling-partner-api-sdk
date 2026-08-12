@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The payload for the &#x60;getEligibleInventory&#x60; operation. */
-@Schema(description = "The payload for the `getEligibleInventory` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the `getEligibleInventory` operation.")
 public class GetFeatureInventoryResult {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -43,7 +42,7 @@ public class GetFeatureInventoryResult {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "The requested marketplace.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The requested marketplace.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -62,7 +61,7 @@ public class GetFeatureInventoryResult {
      *
      * @return featureName
      */
-    @Schema(required = true, description = "The name of the feature.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the feature.")
     public String getFeatureName() {
         return featureName;
     }
@@ -81,7 +80,7 @@ public class GetFeatureInventoryResult {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When present and not empty, pass this string token in the next request to return the next response page.")
     public String getNextToken() {
@@ -110,7 +109,8 @@ public class GetFeatureInventoryResult {
      *
      * @return featureSkus
      */
-    @Schema(description = "An array of SKUs eligible for this feature and the quantity available.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "An array of SKUs eligible for this feature and the quantity available.")
     public List<FeatureSku> getFeatureSkus() {
         return featureSkus;
     }

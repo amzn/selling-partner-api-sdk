@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Common request parameters that can be accepted by &#x60;ItemOffersRequest&#x60; and &#x60;ListingOffersRequest&#x60;
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Common request parameters that can be accepted by `ItemOffersRequest` and `ListingOffersRequest`")
 public class BatchOffersRequestParams {
@@ -42,7 +41,7 @@ public class BatchOffersRequestParams {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "A marketplace identifier. Specifies the marketplace for which prices are returned.")
     public String getMarketplaceId() {
@@ -63,7 +62,7 @@ public class BatchOffersRequestParams {
      *
      * @return itemCondition
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemCondition getItemCondition() {
         return itemCondition;
     }
@@ -82,7 +81,7 @@ public class BatchOffersRequestParams {
      *
      * @return customerType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CustomerType getCustomerType() {
         return customerType;
     }

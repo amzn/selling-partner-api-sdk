@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Contains the business invoice tax information. Available only in the TR marketplace. */
-@Schema(description = "Contains the business invoice tax information. Available only in the TR marketplace.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Contains the business invoice tax information. Available only in the TR marketplace.")
 public class BuyerTaxInformation {
     @SerializedName("BuyerLegalCompanyName")
     private String buyerLegalCompanyName = null;
@@ -41,7 +41,7 @@ public class BuyerTaxInformation {
      *
      * @return buyerLegalCompanyName
      */
-    @Schema(description = "Business buyer's company legal name.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Business buyer's company legal name.")
     public String getBuyerLegalCompanyName() {
         return buyerLegalCompanyName;
     }
@@ -60,7 +60,7 @@ public class BuyerTaxInformation {
      *
      * @return buyerBusinessAddress
      */
-    @Schema(description = "Business buyer's address.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Business buyer's address.")
     public String getBuyerBusinessAddress() {
         return buyerBusinessAddress;
     }
@@ -79,7 +79,7 @@ public class BuyerTaxInformation {
      *
      * @return buyerTaxRegistrationId
      */
-    @Schema(description = "Business buyer's tax registration ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Business buyer's tax registration ID.")
     public String getBuyerTaxRegistrationId() {
         return buyerTaxRegistrationId;
     }
@@ -98,7 +98,7 @@ public class BuyerTaxInformation {
      *
      * @return buyerTaxOffice
      */
-    @Schema(description = "Business buyer's tax office.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Business buyer's tax office.")
     public String getBuyerTaxOffice() {
         return buyerTaxOffice;
     }

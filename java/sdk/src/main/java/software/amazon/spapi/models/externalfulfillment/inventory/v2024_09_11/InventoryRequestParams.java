@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The parameters for an individual request. */
-@Schema(description = "The parameters for an individual request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The parameters for an individual request.")
 public class InventoryRequestParams {
     @SerializedName("clientSequenceNumber")
     private Integer clientSequenceNumber = null;
@@ -39,7 +38,7 @@ public class InventoryRequestParams {
      *
      * @return clientSequenceNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The latest sequence number for the inventory update operation. You find this value in the `clientSequenceNumber` property in the response to the `batchInventory` operation.")
     public Integer getClientSequenceNumber() {
@@ -60,7 +59,7 @@ public class InventoryRequestParams {
      *
      * @return quantity
      */
-    @Schema(description = "The absolute inventory quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The absolute inventory quantity.")
     public Integer getQuantity() {
         return quantity;
     }
@@ -79,7 +78,7 @@ public class InventoryRequestParams {
      *
      * @return marketplaceAttributes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MarketplaceAttributes getMarketplaceAttributes() {
         return marketplaceAttributes;
     }

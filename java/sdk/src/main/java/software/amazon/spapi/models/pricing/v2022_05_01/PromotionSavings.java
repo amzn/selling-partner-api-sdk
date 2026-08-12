@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Details about the savings applied by the promotion. */
-@Schema(description = "Details about the savings applied by the promotion.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details about the savings applied by the promotion.")
 public class PromotionSavings {
     @SerializedName("discount")
     private PromotionDiscount discount = null;
@@ -35,7 +34,7 @@ public class PromotionSavings {
      *
      * @return discount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PromotionDiscount getDiscount() {
         return discount;
     }
@@ -54,7 +53,7 @@ public class PromotionSavings {
      *
      * @return discountedPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MoneyType getDiscountedPrice() {
         return discountedPrice;
     }

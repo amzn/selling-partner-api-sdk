@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Indicates the tax specifications associated with the shipment for customs compliance purposes in certain regions. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Indicates the tax specifications associated with the shipment for customs compliance purposes in certain regions.")
 public class TaxDetail {
@@ -37,7 +36,7 @@ public class TaxDetail {
      *
      * @return taxType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TaxType getTaxType() {
         return taxType;
     }
@@ -57,7 +56,7 @@ public class TaxDetail {
      *
      * @return taxRegistrationNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The shipper's tax registration number associated with the shipment for customs compliance purposes in certain regions.")

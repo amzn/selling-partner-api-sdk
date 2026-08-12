@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The payload for the getListingOffers and getItemOffers operations. */
-@Schema(description = "The payload for the getListingOffers and getItemOffers operations.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The payload for the getListingOffers and getItemOffers operations.")
 public class GetOffersResult {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -53,7 +53,7 @@ public class GetOffersResult {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "A marketplace identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A marketplace identifier.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -72,7 +72,8 @@ public class GetOffersResult {
      *
      * @return ASIN
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getASIN() {
         return ASIN;
     }
@@ -91,7 +92,7 @@ public class GetOffersResult {
      *
      * @return SKU
      */
-    @Schema(description = "The stock keeping unit (SKU) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The stock keeping unit (SKU) of the item.")
     public String getSKU() {
         return SKU;
     }
@@ -110,7 +111,7 @@ public class GetOffersResult {
      *
      * @return itemCondition
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ConditionType getItemCondition() {
         return itemCondition;
     }
@@ -129,7 +130,7 @@ public class GetOffersResult {
      *
      * @return status
      */
-    @Schema(required = true, description = "The status of the operation.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The status of the operation.")
     public String getStatus() {
         return status;
     }
@@ -148,7 +149,7 @@ public class GetOffersResult {
      *
      * @return identifier
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemIdentifier getIdentifier() {
         return identifier;
     }
@@ -167,7 +168,7 @@ public class GetOffersResult {
      *
      * @return summary
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Summary getSummary() {
         return summary;
     }
@@ -186,7 +187,7 @@ public class GetOffersResult {
      *
      * @return offers
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public OfferDetailList getOffers() {
         return offers;
     }

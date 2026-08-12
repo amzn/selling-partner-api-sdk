@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Item identifier and serial number information. */
-@Schema(description = "Item identifier and serial number information.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Item identifier and serial number information.")
 public class Item {
     @SerializedName("orderItemId")
     private String orderItemId = null;
@@ -35,7 +34,7 @@ public class Item {
      *
      * @return orderItemId
      */
-    @Schema(description = "The Amazon-defined order item identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon-defined order item identifier.")
     public String getOrderItemId() {
         return orderItemId;
     }
@@ -54,7 +53,7 @@ public class Item {
      *
      * @return orderItemSerialNumbers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderItemSerialNumbers getOrderItemSerialNumbers() {
         return orderItemSerialNumbers;
     }

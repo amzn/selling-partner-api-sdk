@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * A valid interim status code and its customer-facing description. Available with the &#x60;getOrderRegulatedInfo&#x60;
  * operation to indicate which status codes can populate the &#x60;InterimStatusDetail&#x60; field.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A valid interim status code and its customer-facing description. Available with the `getOrderRegulatedInfo` operation to indicate which status codes can populate the `InterimStatusDetail` field.")
 public class ValidInterimStatusCode {
@@ -40,7 +39,9 @@ public class ValidInterimStatusCode {
      *
      * @return statusCode
      */
-    @Schema(required = true, description = "The identifier for the interim status type.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The identifier for the interim status type.")
     public String getStatusCode() {
         return statusCode;
     }
@@ -59,7 +60,9 @@ public class ValidInterimStatusCode {
      *
      * @return statusDescription
      */
-    @Schema(required = true, description = "A customer-facing description of the interim status.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A customer-facing description of the interim status.")
     public String getStatusDescription() {
         return statusDescription;
     }

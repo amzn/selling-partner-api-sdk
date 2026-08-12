@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.datakiosk.v2023_11_15;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information required to create the query. */
-@Schema(description = "Information required to create the query.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information required to create the query.")
 public class CreateQuerySpecification {
     @SerializedName("query")
     private String query = null;
@@ -35,7 +34,7 @@ public class CreateQuerySpecification {
      *
      * @return query
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The GraphQL query to submit. A query must be at most 8000 characters after unnecessary whitespace is removed.")
@@ -62,7 +61,7 @@ public class CreateQuerySpecification {
      *
      * @return paginationToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A token to fetch a certain page of query results when there are multiple pages of query results available. The value of this token must be fetched from the `pagination.nextToken` field of the `Query` object, and the `query` field for this object must also be set to the `query` field of the same `Query` object. A `Query` object can be retrieved from either the `getQueries` or `getQuery` operation. In the absence of this token value, the first page of query results will be requested.")
     public String getPaginationToken() {

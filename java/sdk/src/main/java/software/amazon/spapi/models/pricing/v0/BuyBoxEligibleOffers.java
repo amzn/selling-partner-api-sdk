@@ -12,7 +12,6 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -20,7 +19,7 @@ import java.util.Objects;
  * A list that contains the total number of offers that are eligible for the Buy Box for the given conditions and
  * fulfillment channels.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A list that contains the total number of offers that are eligible for the Buy Box for the given conditions and fulfillment channels.")
 public class BuyBoxEligibleOffers extends ArrayList<OfferCountType> {

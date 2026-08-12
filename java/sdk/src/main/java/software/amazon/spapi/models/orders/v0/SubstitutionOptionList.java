@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.orders.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A collection of substitution options. */
-@Schema(description = "A collection of substitution options.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A collection of substitution options.")
 public class SubstitutionOptionList extends ArrayList<SubstitutionOption> {
 
     @Override

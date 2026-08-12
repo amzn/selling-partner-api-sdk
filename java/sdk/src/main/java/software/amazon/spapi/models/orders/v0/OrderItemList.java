@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.orders.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of order items. */
-@Schema(description = "A list of order items.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of order items.")
 public class OrderItemList extends ArrayList<OrderItem> {
 
     @Override

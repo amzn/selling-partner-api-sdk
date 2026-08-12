@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about how the order item should be processed, packed, and shipped to the customer. */
-@Schema(description = "Information about how the order item should be processed, packed, and shipped to the customer.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information about how the order item should be processed, packed, and shipped to the customer.")
 public class ItemFulfillment {
     @SerializedName("quantityFulfilled")
     private Integer quantityFulfilled = null;
@@ -44,7 +44,8 @@ public class ItemFulfillment {
      *
      * @return quantityFulfilled
      */
-    @Schema(description = "The number of units of this item that have been successfully processed and shipped.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The number of units of this item that have been successfully processed and shipped.")
     public Integer getQuantityFulfilled() {
         return quantityFulfilled;
     }
@@ -63,7 +64,8 @@ public class ItemFulfillment {
      *
      * @return quantityUnfulfilled
      */
-    @Schema(description = "The number of units of this item that remain to be processed and shipped.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The number of units of this item that remain to be processed and shipped.")
     public Integer getQuantityUnfulfilled() {
         return quantityUnfulfilled;
     }
@@ -82,7 +84,7 @@ public class ItemFulfillment {
      *
      * @return picking
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemPicking getPicking() {
         return picking;
     }
@@ -101,7 +103,7 @@ public class ItemFulfillment {
      *
      * @return packing
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemPacking getPacking() {
         return packing;
     }
@@ -120,7 +122,7 @@ public class ItemFulfillment {
      *
      * @return shipping
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemShipping getShipping() {
         return shipping;
     }

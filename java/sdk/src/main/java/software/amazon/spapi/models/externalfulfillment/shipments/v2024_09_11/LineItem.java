@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about the line item being confirmed or rejected. */
-@Schema(description = "Information about the line item being confirmed or rejected.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information about the line item being confirmed or rejected.")
 public class LineItem {
     @SerializedName("id")
     private String id = null;
@@ -35,7 +35,7 @@ public class LineItem {
      *
      * @return id
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier of the line item from the shipment that is being confirmed or rejected by the seller.")
@@ -57,7 +57,7 @@ public class LineItem {
      *
      * @return quantity
      */
-    @Schema(description = "The quantity of the line item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The quantity of the line item.")
     public Integer getQuantity() {
         return quantity;
     }

@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** An amount of money. Includes the currency code and an optional unit of measure for items priced by weight. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "An amount of money. Includes the currency code and an optional unit of measure for items priced by weight.")
 public class Money {
@@ -95,7 +94,8 @@ public class Money {
      *
      * @return currencyCode
      */
-    @Schema(description = "Three digit currency code in ISO 4217 format. String of length 3.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Three digit currency code in ISO 4217 format. String of length 3.")
     public String getCurrencyCode() {
         return currencyCode;
     }
@@ -116,7 +116,7 @@ public class Money {
      *
      * @return amount
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.")
     public String getAmount() {
@@ -137,7 +137,7 @@ public class Money {
      *
      * @return unitOfMeasure
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The unit of measure for prices of items sold by weight. If this field is absent, the item is sold by eaches.")
     public UnitOfMeasureEnum getUnitOfMeasure() {

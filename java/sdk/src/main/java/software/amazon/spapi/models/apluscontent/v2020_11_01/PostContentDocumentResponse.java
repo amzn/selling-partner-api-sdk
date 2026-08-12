@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** PostContentDocumentResponse */
@@ -34,7 +33,7 @@ public class PostContentDocumentResponse {
      *
      * @return warnings
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MessageSet getWarnings() {
         return warnings;
     }
@@ -54,7 +53,7 @@ public class PostContentDocumentResponse {
      *
      * @return contentReferenceKey
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.")

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The identifier that is associated with the item in the Amazon catalog, such as a UPC or EAN identifier. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The identifier that is associated with the item in the Amazon catalog, such as a UPC or EAN identifier.")
 public class ItemIdentifier {
@@ -37,7 +36,9 @@ public class ItemIdentifier {
      *
      * @return identifierType
      */
-    @Schema(required = true, description = "Type of identifier, such as UPC, EAN, or ISBN.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Type of identifier, such as UPC, EAN, or ISBN.")
     public String getIdentifierType() {
         return identifierType;
     }
@@ -56,7 +57,7 @@ public class ItemIdentifier {
      *
      * @return identifier
      */
-    @Schema(required = true, description = "Identifier of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Identifier of the item.")
     public String getIdentifier() {
         return identifier;
     }

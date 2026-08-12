@@ -13,13 +13,14 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Represents a product with the SKU details and the corresponding quantity. */
-@Schema(description = "Represents a product with the SKU details and the corresponding quantity.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Represents a product with the SKU details and the corresponding quantity.")
 public class ProductQuantity {
     @SerializedName("attributes")
     private List<ProductAttribute> attributes = null;
@@ -55,7 +56,7 @@ public class ProductQuantity {
      *
      * @return attributes
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Contains attributes for this instance of the product. For example, item color, or other attributes that distinguish the product beyond the SKU. This is metadata for the product and Amazon does not process this data.")
     public List<ProductAttribute> getAttributes() {
@@ -76,7 +77,7 @@ public class ProductQuantity {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "Product quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Product quantity.")
     public Integer getQuantity() {
         return quantity;
     }
@@ -95,7 +96,7 @@ public class ProductQuantity {
      *
      * @return sku
      */
-    @Schema(required = true, description = "The seller or merchant SKU.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller or merchant SKU.")
     public String getSku() {
         return sku;
     }
@@ -115,7 +116,7 @@ public class ProductQuantity {
      *
      * @return expiration
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The expiration date for the SKU. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getExpiration() {
@@ -136,7 +137,7 @@ public class ProductQuantity {
      *
      * @return prepDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PrepDetails getPrepDetails() {
         return prepDetails;
     }

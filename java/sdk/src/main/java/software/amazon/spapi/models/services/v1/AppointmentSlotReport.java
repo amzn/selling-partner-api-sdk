@@ -17,14 +17,15 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Availability information as per the service context queried. */
-@Schema(description = "Availability information as per the service context queried.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Availability information as per the service context queried.")
 public class AppointmentSlotReport {
     /** Defines the type of slots. */
     @JsonAdapter(SchedulingTypeEnum.Adapter.class)
@@ -94,7 +95,7 @@ public class AppointmentSlotReport {
      *
      * @return schedulingType
      */
-    @Schema(description = "Defines the type of slots.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Defines the type of slots.")
     public SchedulingTypeEnum getSchedulingType() {
         return schedulingType;
     }
@@ -113,7 +114,8 @@ public class AppointmentSlotReport {
      *
      * @return startTime
      */
-    @Schema(description = "Start Time from which the appointment slots are generated in ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Start Time from which the appointment slots are generated in ISO 8601 format.")
     public OffsetDateTime getStartTime() {
         return startTime;
     }
@@ -132,7 +134,8 @@ public class AppointmentSlotReport {
      *
      * @return endTime
      */
-    @Schema(description = "End Time up to which the appointment slots are generated in ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "End Time up to which the appointment slots are generated in ISO 8601 format.")
     public OffsetDateTime getEndTime() {
         return endTime;
     }
@@ -159,7 +162,7 @@ public class AppointmentSlotReport {
      *
      * @return appointmentSlots
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of time windows along with associated capacity in which the service can be performed.")
     public List<AppointmentSlot> getAppointmentSlots() {

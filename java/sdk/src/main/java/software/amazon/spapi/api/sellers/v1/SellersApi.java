@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.sellers.v1.GetAccountResponse;
 import software.amazon.spapi.models.sellers.v1.GetMarketplaceParticipationsResponse;
@@ -62,8 +61,7 @@ public class SellersApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getAccountCall(final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+    private okhttp3.Call getAccountCall(final ApiCallback progressRequestListener) throws ApiException, LWAException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -101,8 +99,7 @@ public class SellersApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call getAccountValidateBeforeCall(
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getAccountValidateBeforeCall(final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return getAccountCall(progressRequestListener);
@@ -228,10 +225,10 @@ public class SellersApi {
     public okhttp3.Call getAccountAsync(final ApiCallback<GetAccountResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getAccountValidateBeforeCall(progressRequestListener);
@@ -256,8 +253,7 @@ public class SellersApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getMarketplaceParticipationsCall(
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getMarketplaceParticipationsCall(final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -296,8 +292,7 @@ public class SellersApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call getMarketplaceParticipationsValidateBeforeCall(
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getMarketplaceParticipationsValidateBeforeCall(final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return getMarketplaceParticipationsCall(progressRequestListener);
@@ -430,10 +425,10 @@ public class SellersApi {
             final ApiCallback<GetMarketplaceParticipationsResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getMarketplaceParticipationsValidateBeforeCall(progressRequestListener);

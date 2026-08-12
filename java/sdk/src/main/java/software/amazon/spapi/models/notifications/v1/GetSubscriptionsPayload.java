@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The payload for the &#x60;getSubscriptions&#x60; operation. */
-@Schema(description = "The payload for the `getSubscriptions` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the `getSubscriptions` operation.")
 public class GetSubscriptionsPayload {
     @SerializedName("subscriptions")
     private Subscriptions subscriptions = null;
@@ -35,7 +34,7 @@ public class GetSubscriptionsPayload {
      *
      * @return subscriptions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Subscriptions getSubscriptions() {
         return subscriptions;
     }
@@ -55,7 +54,7 @@ public class GetSubscriptionsPayload {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A token that you can use to retrieve the next page of results. When this field is not empty, pass its value in the `nextToken` query parameter of the next request.")
     public String getNextToken() {

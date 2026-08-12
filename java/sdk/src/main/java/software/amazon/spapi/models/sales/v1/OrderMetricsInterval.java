@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.sales.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Contains order metrics. */
-@Schema(description = "Contains order metrics.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Contains order metrics.")
 public class OrderMetricsInterval {
     @SerializedName("interval")
     private String interval = null;
@@ -50,7 +49,7 @@ public class OrderMetricsInterval {
      *
      * @return interval
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The interval of time based on requested granularity (ex. Hour, Day, etc.) If this is the first or the last interval from the list, it might contain incomplete data if the requested interval doesn't align with the requested granularity (ex. request interval 2018-09-01T02:00:00Z--2018-09-04T19:00:00Z and granularity day will result in Sept 1st UTC day and Sept 4th UTC days having partial data).")
@@ -72,7 +71,9 @@ public class OrderMetricsInterval {
      *
      * @return unitCount
      */
-    @Schema(required = true, description = "The number of units in orders based on the specified filters.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The number of units in orders based on the specified filters.")
     public Integer getUnitCount() {
         return unitCount;
     }
@@ -91,7 +92,9 @@ public class OrderMetricsInterval {
      *
      * @return orderItemCount
      */
-    @Schema(required = true, description = "The number of order items based on the specified filters.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The number of order items based on the specified filters.")
     public Integer getOrderItemCount() {
         return orderItemCount;
     }
@@ -110,7 +113,9 @@ public class OrderMetricsInterval {
      *
      * @return orderCount
      */
-    @Schema(required = true, description = "The number of orders based on the specified filters.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The number of orders based on the specified filters.")
     public Integer getOrderCount() {
         return orderCount;
     }
@@ -129,7 +134,7 @@ public class OrderMetricsInterval {
      *
      * @return averageUnitPrice
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getAverageUnitPrice() {
         return averageUnitPrice;
     }
@@ -148,7 +153,7 @@ public class OrderMetricsInterval {
      *
      * @return totalSales
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getTotalSales() {
         return totalSales;
     }

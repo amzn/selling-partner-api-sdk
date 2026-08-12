@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.sellers.v1;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** List of marketplace participations. */
-@Schema(description = "List of marketplace participations.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "List of marketplace participations.")
 public class MarketplaceParticipationList extends ArrayList<MarketplaceParticipation> {
 
     @Override

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Fulfillment configuration for an order request. */
-@Schema(description = "Fulfillment configuration for an order request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Fulfillment configuration for an order request.")
 public class OrderFulfillmentConfiguration {
     @SerializedName("serviceLevel")
     private ServiceLevel serviceLevel = null;
@@ -41,7 +40,7 @@ public class OrderFulfillmentConfiguration {
      *
      * @return serviceLevel
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ServiceLevel getServiceLevel() {
         return serviceLevel;
     }
@@ -60,7 +59,8 @@ public class OrderFulfillmentConfiguration {
      *
      * @return action
      */
-    @Schema(description = "Specifies whether the fulfillment order should ship now or have an order hold put on it.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Specifies whether the fulfillment order should ship now or have an order hold put on it.")
     public String getAction() {
         return action;
     }
@@ -79,7 +79,8 @@ public class OrderFulfillmentConfiguration {
      *
      * @return policy
      */
-    @Schema(description = "The policy value specified when you submitted the `createOrder` request.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The policy value specified when you submitted the `createOrder` request.")
     public String getPolicy() {
         return policy;
     }
@@ -98,7 +99,7 @@ public class OrderFulfillmentConfiguration {
      *
      * @return services
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderServices getServices() {
         return services;
     }

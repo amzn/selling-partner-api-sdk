@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Schema for item&#39;s price information, including listing price, shipping price, and Amazon points. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Schema for item's price information, including listing price, shipping price, and Amazon points.")
 public class PriceType {
@@ -43,7 +42,7 @@ public class PriceType {
      *
      * @return landedPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MoneyType getLandedPrice() {
         return landedPrice;
     }
@@ -62,7 +61,7 @@ public class PriceType {
      *
      * @return listingPrice
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MoneyType getListingPrice() {
         return listingPrice;
     }
@@ -81,7 +80,7 @@ public class PriceType {
      *
      * @return shipping
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MoneyType getShipping() {
         return shipping;
     }
@@ -100,7 +99,7 @@ public class PriceType {
      *
      * @return points
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Points getPoints() {
         return points;
     }

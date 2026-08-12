@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A group of items to be delivered together. */
-@Schema(description = "A group of items to be delivered together.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A group of items to be delivered together.")
 public class PreviewPlannedShipment {
     @SerializedName("estimatedShippingWeight")
     private Weight estimatedShippingWeight = null;
@@ -40,7 +39,7 @@ public class PreviewPlannedShipment {
      *
      * @return estimatedShippingWeight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Weight getEstimatedShippingWeight() {
         return estimatedShippingWeight;
     }
@@ -68,7 +67,7 @@ public class PreviewPlannedShipment {
      *
      * @return items
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The items in this planned shipment. These can be a subset of lineItems from the request depending on how shipments are planned.")
@@ -98,7 +97,7 @@ public class PreviewPlannedShipment {
      *
      * @return offers
      */
-    @Schema(description = "An array of offers for this planned shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An array of offers for this planned shipment.")
     public List<PreviewDeliveryOffer> getOffers() {
         return offers;
     }

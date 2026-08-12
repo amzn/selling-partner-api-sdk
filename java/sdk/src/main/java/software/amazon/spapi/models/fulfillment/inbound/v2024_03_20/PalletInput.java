@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Contains input information about a pallet to be used in the inbound plan. */
-@Schema(description = "Contains input information about a pallet to be used in the inbound plan.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Contains input information about a pallet to be used in the inbound plan.")
 public class PalletInput {
     @SerializedName("dimensions")
     private Dimensions dimensions = null;
@@ -41,7 +41,7 @@ public class PalletInput {
      *
      * @return dimensions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Dimensions getDimensions() {
         return dimensions;
     }
@@ -60,7 +60,7 @@ public class PalletInput {
      *
      * @return quantity
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The number of containers where all other properties like weight or dimensions are identical.")
@@ -82,7 +82,7 @@ public class PalletInput {
      *
      * @return stackability
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Stackability getStackability() {
         return stackability;
     }
@@ -101,7 +101,7 @@ public class PalletInput {
      *
      * @return weight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Weight getWeight() {
         return weight;
     }

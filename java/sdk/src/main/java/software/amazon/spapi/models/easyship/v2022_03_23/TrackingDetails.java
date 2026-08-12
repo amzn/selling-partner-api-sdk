@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Representation of tracking metadata. */
-@Schema(description = "Representation of tracking metadata.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Representation of tracking metadata.")
 public class TrackingDetails {
     @SerializedName("trackingId")
     private String trackingId = null;
@@ -32,7 +31,7 @@ public class TrackingDetails {
      *
      * @return trackingId
      */
-    @Schema(description = "A string of up to 255 characters.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A string of up to 255 characters.")
     public String getTrackingId() {
         return trackingId;
     }

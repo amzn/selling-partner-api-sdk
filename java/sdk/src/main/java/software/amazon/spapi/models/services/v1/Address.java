@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The shipping address for the service job. */
-@Schema(description = "The shipping address for the service job.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The shipping address for the service job.")
 public class Address {
     @SerializedName("name")
     private String name = null;
@@ -62,7 +61,9 @@ public class Address {
      *
      * @return name
      */
-    @Schema(required = true, description = "The name of the person, business, or institution.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The name of the person, business, or institution.")
     public String getName() {
         return name;
     }
@@ -81,7 +82,7 @@ public class Address {
      *
      * @return addressLine1
      */
-    @Schema(required = true, description = "The first line of the address.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The first line of the address.")
     public String getAddressLine1() {
         return addressLine1;
     }
@@ -100,7 +101,7 @@ public class Address {
      *
      * @return addressLine2
      */
-    @Schema(description = "Additional address information, if required.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Additional address information, if required.")
     public String getAddressLine2() {
         return addressLine2;
     }
@@ -119,7 +120,7 @@ public class Address {
      *
      * @return addressLine3
      */
-    @Schema(description = "Additional address information, if required.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Additional address information, if required.")
     public String getAddressLine3() {
         return addressLine3;
     }
@@ -138,7 +139,7 @@ public class Address {
      *
      * @return city
      */
-    @Schema(description = "The city.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The city.")
     public String getCity() {
         return city;
     }
@@ -157,7 +158,7 @@ public class Address {
      *
      * @return county
      */
-    @Schema(description = "The county.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The county.")
     public String getCounty() {
         return county;
     }
@@ -176,7 +177,7 @@ public class Address {
      *
      * @return district
      */
-    @Schema(description = "The district.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The district.")
     public String getDistrict() {
         return district;
     }
@@ -195,7 +196,7 @@ public class Address {
      *
      * @return stateOrRegion
      */
-    @Schema(description = "The state or region.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The state or region.")
     public String getStateOrRegion() {
         return stateOrRegion;
     }
@@ -214,7 +215,8 @@ public class Address {
      *
      * @return postalCode
      */
-    @Schema(description = "The postal code. This can contain letters, digits, spaces, and/or punctuation.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The postal code. This can contain letters, digits, spaces, and/or punctuation.")
     public String getPostalCode() {
         return postalCode;
     }
@@ -233,7 +235,8 @@ public class Address {
      *
      * @return countryCode
      */
-    @Schema(description = "The two digit country code, in ISO 3166-1 alpha-2 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The two digit country code, in ISO 3166-1 alpha-2 format.")
     public String getCountryCode() {
         return countryCode;
     }
@@ -252,7 +255,7 @@ public class Address {
      *
      * @return phone
      */
-    @Schema(description = "The phone number.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The phone number.")
     public String getPhone() {
         return phone;
     }

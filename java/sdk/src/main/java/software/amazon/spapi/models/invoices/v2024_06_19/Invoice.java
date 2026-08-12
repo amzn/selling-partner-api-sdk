@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Provides detailed information about an invoice. */
-@Schema(description = "Provides detailed information about an invoice.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Provides detailed information about an invoice.")
 public class Invoice {
     @SerializedName("date")
     private OffsetDateTime date = null;
@@ -62,7 +62,7 @@ public class Invoice {
      *
      * @return date
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date and time the invoice is issued. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getDate() {
@@ -83,7 +83,8 @@ public class Invoice {
      *
      * @return errorCode
      */
-    @Schema(description = "If the invoice is in an error state, this attribute displays the error code.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "If the invoice is in an error state, this attribute displays the error code.")
     public String getErrorCode() {
         return errorCode;
     }
@@ -103,7 +104,7 @@ public class Invoice {
      *
      * @return externalInvoiceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The invoice identifier that is used by an external party. This is typically the government agency that authorized the invoice.")
     public String getExternalInvoiceId() {
@@ -124,7 +125,7 @@ public class Invoice {
      *
      * @return govResponse
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The response message from the government authority when there is an error during invoice issuance.")
     public String getGovResponse() {
@@ -145,7 +146,7 @@ public class Invoice {
      *
      * @return id
      */
-    @Schema(description = "The invoice identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The invoice identifier.")
     public String getId() {
         return id;
     }
@@ -165,7 +166,7 @@ public class Invoice {
      *
      * @return invoiceType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The classification of the invoice type. This varies across marketplaces. Use the `getInvoicesAttributes` operation to check `invoiceType` options.")
     public String getInvoiceType() {
@@ -186,7 +187,7 @@ public class Invoice {
      *
      * @return series
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Use this identifier in conjunction with `externalInvoiceId` to identify invoices from the same seller.")
     public String getSeries() {
@@ -208,7 +209,7 @@ public class Invoice {
      *
      * @return status
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The invoice status classification. Use the `getInvoicesAttributes` operation to check invoice status options.")
     public String getStatus() {
@@ -237,7 +238,8 @@ public class Invoice {
      *
      * @return transactionIds
      */
-    @Schema(description = "List with identifiers for the transactions associated to the invoice.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "List with identifiers for the transactions associated to the invoice.")
     public List<TransactionIdentifier> getTransactionIds() {
         return transactionIds;
     }
@@ -257,7 +259,7 @@ public class Invoice {
      *
      * @return transactionType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Classification of the transaction that originated this invoice. Use the `getInvoicesAttributes` operation to check `transactionType` options.")
     public String getTransactionType() {

@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Monetary and tax details of the charge. */
-@Schema(description = "Monetary and tax details of the charge.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Monetary and tax details of the charge.")
 public class ChargeDetails {
     /** Type of the charge applied. */
     @JsonAdapter(TypeEnum.Adapter.class)
@@ -112,7 +111,7 @@ public class ChargeDetails {
      *
      * @return type
      */
-    @Schema(required = true, description = "Type of the charge applied.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Type of the charge applied.")
     public TypeEnum getType() {
         return type;
     }
@@ -131,7 +130,7 @@ public class ChargeDetails {
      *
      * @return description
      */
-    @Schema(description = "Description of the charge.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Description of the charge.")
     public String getDescription() {
         return description;
     }
@@ -150,7 +149,7 @@ public class ChargeDetails {
      *
      * @return chargeAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getChargeAmount() {
         return chargeAmount;
     }
@@ -177,7 +176,7 @@ public class ChargeDetails {
      *
      * @return taxDetails
      */
-    @Schema(description = "Tax amount details applied on this charge.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Tax amount details applied on this charge.")
     public List<TaxDetails> getTaxDetails() {
         return taxDetails;
     }

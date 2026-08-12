@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A time window along with associated capacity in which the service can be performed. */
-@Schema(description = "A time window along with associated capacity in which the service can be performed.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A time window along with associated capacity in which the service can be performed.")
 public class AppointmentSlot {
     @SerializedName("startTime")
     private OffsetDateTime startTime = null;
@@ -38,7 +39,7 @@ public class AppointmentSlot {
      *
      * @return startTime
      */
-    @Schema(description = "Time window start time in ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Time window start time in ISO 8601 format.")
     public OffsetDateTime getStartTime() {
         return startTime;
     }
@@ -57,7 +58,7 @@ public class AppointmentSlot {
      *
      * @return endTime
      */
-    @Schema(description = "Time window end time in ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Time window end time in ISO 8601 format.")
     public OffsetDateTime getEndTime() {
         return endTime;
     }
@@ -76,7 +77,7 @@ public class AppointmentSlot {
      *
      * @return capacity
      */
-    @Schema(description = "Number of resources for which a slot can be reserved.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Number of resources for which a slot can be reserved.")
     public Integer getCapacity() {
         return capacity;
     }

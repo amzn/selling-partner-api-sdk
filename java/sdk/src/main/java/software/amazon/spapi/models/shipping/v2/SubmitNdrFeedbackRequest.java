@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request schema for the NdrFeedback operation */
-@Schema(description = "The request schema for the NdrFeedback operation")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the NdrFeedback operation")
 public class SubmitNdrFeedbackRequest {
     @SerializedName("trackingId")
     private String trackingId = null;
@@ -38,7 +37,9 @@ public class SubmitNdrFeedbackRequest {
      *
      * @return trackingId
      */
-    @Schema(required = true, description = "The carrier generated identifier for a package in a purchased shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The carrier generated identifier for a package in a purchased shipment.")
     public String getTrackingId() {
         return trackingId;
     }
@@ -57,7 +58,7 @@ public class SubmitNdrFeedbackRequest {
      *
      * @return ndrAction
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public NdrAction getNdrAction() {
         return ndrAction;
     }
@@ -76,7 +77,7 @@ public class SubmitNdrFeedbackRequest {
      *
      * @return ndrRequestData
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public NdrRequestData getNdrRequestData() {
         return ndrRequestData;
     }

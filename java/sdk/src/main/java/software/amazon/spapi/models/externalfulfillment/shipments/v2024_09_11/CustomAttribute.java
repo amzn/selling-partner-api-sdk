@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A custom attribute that is loosely typed, modeled through a key-value pair and its data type. */
-@Schema(description = "A custom attribute that is loosely typed, modeled through a key-value pair and its data type.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A custom attribute that is loosely typed, modeled through a key-value pair and its data type.")
 public class CustomAttribute {
     @SerializedName("key")
     private String key = null;
@@ -38,7 +38,7 @@ public class CustomAttribute {
      *
      * @return key
      */
-    @Schema(description = "The key of the custom attribute. Must be unique.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The key of the custom attribute. Must be unique.")
     public String getKey() {
         return key;
     }
@@ -57,7 +57,7 @@ public class CustomAttribute {
      *
      * @return type
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CustomAttributeType getType() {
         return type;
     }
@@ -76,7 +76,7 @@ public class CustomAttribute {
      *
      * @return value
      */
-    @Schema(description = "The value of the custom attribute.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The value of the custom attribute.")
     public String getValue() {
         return value;
     }

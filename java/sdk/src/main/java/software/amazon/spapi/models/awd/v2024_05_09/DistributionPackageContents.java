@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Represents the contents inside a package, which can be products or a nested package. */
-@Schema(description = "Represents the contents inside a package, which can be products or a nested package.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Represents the contents inside a package, which can be products or a nested package.")
 public class DistributionPackageContents {
     @SerializedName("packages")
     private List<DistributionPackageQuantity> packages = null;
@@ -45,7 +45,8 @@ public class DistributionPackageContents {
      *
      * @return packages
      */
-    @Schema(description = "This is required only when `DistributionPackageType=PALLET`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "This is required only when `DistributionPackageType=PALLET`.")
     public List<DistributionPackageQuantity> getPackages() {
         return packages;
     }
@@ -72,7 +73,8 @@ public class DistributionPackageContents {
      *
      * @return products
      */
-    @Schema(description = "This is required only when `DistributionPackageType=CASE`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "This is required only when `DistributionPackageType=CASE`.")
     public List<ProductQuantity> getProducts() {
         return products;
     }

@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The relationship details for a listing item. */
-@Schema(description = "The relationship details for a listing item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The relationship details for a listing item.")
 public class ItemRelationship {
     @SerializedName("childSkus")
     private List<String> childSkus = null;
@@ -102,7 +101,8 @@ public class ItemRelationship {
      *
      * @return childSkus
      */
-    @Schema(description = "Identifiers (SKUs) of the related items that are children of this listing item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Identifiers (SKUs) of the related items that are children of this listing item.")
     public List<String> getChildSkus() {
         return childSkus;
     }
@@ -129,7 +129,8 @@ public class ItemRelationship {
      *
      * @return parentSkus
      */
-    @Schema(description = "Identifiers (SKUs) of the related items that are parents of this listing item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Identifiers (SKUs) of the related items that are parents of this listing item.")
     public List<String> getParentSkus() {
         return parentSkus;
     }
@@ -148,7 +149,7 @@ public class ItemRelationship {
      *
      * @return variationTheme
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemVariationTheme getVariationTheme() {
         return variationTheme;
     }
@@ -167,7 +168,7 @@ public class ItemRelationship {
      *
      * @return type
      */
-    @Schema(required = true, description = "The type of relationship.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of relationship.")
     public TypeEnum getType() {
         return type;
     }

@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The hours in which the access point shall remain operational */
-@Schema(description = "The hours in which the access point shall remain operational")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The hours in which the access point shall remain operational")
 public class OperatingHours {
     @SerializedName("closingTime")
     private TimeOfDay closingTime = null;
@@ -40,7 +40,7 @@ public class OperatingHours {
      *
      * @return closingTime
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TimeOfDay getClosingTime() {
         return closingTime;
     }
@@ -59,7 +59,7 @@ public class OperatingHours {
      *
      * @return openingTime
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TimeOfDay getOpeningTime() {
         return openingTime;
     }
@@ -86,7 +86,7 @@ public class OperatingHours {
      *
      * @return midDayClosures
      */
-    @Schema(description = "midDayClosures operating hours array")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "midDayClosures operating hours array")
     public List<TimeOfDay> getMidDayClosures() {
         return midDayClosures;
     }

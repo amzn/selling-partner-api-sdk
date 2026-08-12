@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The duration of time. */
-@Schema(description = "The duration of time.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The duration of time.")
 public class Duration {
     @SerializedName("value")
     private Integer value = null;
@@ -35,7 +34,7 @@ public class Duration {
      *
      * @return value
      */
-    @Schema(description = "An unsigned integer that can be only positive or zero.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An unsigned integer that can be only positive or zero.")
     public Integer getValue() {
         return value;
     }
@@ -54,7 +53,7 @@ public class Duration {
      *
      * @return timeUnit
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TimeUnit getTimeUnit() {
         return timeUnit;
     }

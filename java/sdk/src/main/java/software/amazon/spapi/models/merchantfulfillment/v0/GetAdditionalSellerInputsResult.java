@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The payload for the &#x60;getAdditionalSellerInputs&#x60; operation. */
-@Schema(description = "The payload for the `getAdditionalSellerInputs` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the `getAdditionalSellerInputs` operation.")
 public class GetAdditionalSellerInputsResult {
     @SerializedName("ShipmentLevelFields")
     private AdditionalInputsList shipmentLevelFields = null;
@@ -35,7 +34,7 @@ public class GetAdditionalSellerInputsResult {
      *
      * @return shipmentLevelFields
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AdditionalInputsList getShipmentLevelFields() {
         return shipmentLevelFields;
     }
@@ -54,7 +53,7 @@ public class GetAdditionalSellerInputsResult {
      *
      * @return itemLevelFieldsList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemLevelFieldsList getItemLevelFieldsList() {
         return itemLevelFieldsList;
     }

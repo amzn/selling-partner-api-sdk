@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** All the information related to a payout. */
-@Schema(description = "All the information related to a payout.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "All the information related to a payout.")
 public class Payout {
     @SerializedName("id")
     private String id = null;
@@ -70,7 +70,7 @@ public class Payout {
      *
      * @return id
      */
-    @Schema(required = true, description = "The unique identifier of the payout.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The unique identifier of the payout.")
     public String getId() {
         return id;
     }
@@ -89,7 +89,7 @@ public class Payout {
      *
      * @return partnerMetadata
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartnerMetadata getPartnerMetadata() {
         return partnerMetadata;
     }
@@ -108,7 +108,7 @@ public class Payout {
      *
      * @return currentStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PayoutStatusName getCurrentStatus() {
         return currentStatus;
     }
@@ -135,7 +135,9 @@ public class Payout {
      *
      * @return statusHistory
      */
-    @Schema(required = true, description = "A chronological list of payout status updates.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A chronological list of payout status updates.")
     public List<PayoutStatusEntry> getStatusHistory() {
         return statusHistory;
     }
@@ -154,7 +156,7 @@ public class Payout {
      *
      * @return type
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PayoutTypeName getType() {
         return type;
     }
@@ -173,7 +175,7 @@ public class Payout {
      *
      * @return amount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getAmount() {
         return amount;
     }
@@ -192,7 +194,7 @@ public class Payout {
      *
      * @return accountTail
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The last few digits of the payment instrument. May be omitted when the configured payment instrument is invalid.")
     public String getAccountTail() {
@@ -213,7 +215,7 @@ public class Payout {
      *
      * @return paymentMethod
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PaymentMethodName getPaymentMethod() {
         return paymentMethod;
     }
@@ -232,7 +234,7 @@ public class Payout {
      *
      * @return creationDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getCreationDate() {
@@ -253,7 +255,8 @@ public class Payout {
      *
      * @return paymentRail
      */
-    @Schema(description = "The underlying payment network or clearing system used to transmit the payout.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The underlying payment network or clearing system used to transmit the payout.")
     public String getPaymentRail() {
         return paymentRail;
     }
@@ -272,7 +275,8 @@ public class Payout {
      *
      * @return traceId
      */
-    @Schema(description = "The banking network's unique identifier for a fund transfer request.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The banking network's unique identifier for a fund transfer request.")
     public String getTraceId() {
         return traceId;
     }
@@ -291,7 +295,7 @@ public class Payout {
      *
      * @return period
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Period getPeriod() {
         return period;
     }
@@ -310,7 +314,7 @@ public class Payout {
      *
      * @return relatedIdentifiers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RelatedIdentifiers getRelatedIdentifiers() {
         return relatedIdentifiers;
     }

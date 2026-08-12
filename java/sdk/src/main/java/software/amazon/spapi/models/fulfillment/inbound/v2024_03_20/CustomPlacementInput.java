@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Provide units going to the warehouse. */
-@Schema(description = "Provide units going to the warehouse.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Provide units going to the warehouse.")
 public class CustomPlacementInput {
     @SerializedName("items")
     private List<ItemInput> items = null;
@@ -45,7 +44,9 @@ public class CustomPlacementInput {
      *
      * @return items
      */
-    @Schema(required = true, description = "Items included while creating Inbound Plan.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Items included while creating Inbound Plan.")
     public List<ItemInput> getItems() {
         return items;
     }
@@ -64,7 +65,7 @@ public class CustomPlacementInput {
      *
      * @return warehouseId
      */
-    @Schema(required = true, description = "Warehouse Id.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Warehouse Id.")
     public String getWarehouseId() {
         return warehouseId;
     }

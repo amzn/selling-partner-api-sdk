@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.replenishment.v2022_11_07.GetSellingPartnerMetricsRequest;
 import software.amazon.spapi.models.replenishment.v2022_11_07.GetSellingPartnerMetricsResponse;
@@ -61,8 +60,7 @@ public class SellingpartnersApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getSellingPartnerMetricsCall(
-            GetSellingPartnerMetricsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            GetSellingPartnerMetricsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -102,8 +100,7 @@ public class SellingpartnersApi {
     }
 
     private okhttp3.Call getSellingPartnerMetricsValidateBeforeCall(
-            GetSellingPartnerMetricsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            GetSellingPartnerMetricsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return getSellingPartnerMetricsCall(body, progressRequestListener);
@@ -244,10 +241,10 @@ public class SellingpartnersApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getSellingPartnerMetricsValidateBeforeCall(body, progressRequestListener);

@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * The request schema for the directPurchaseShipment operation. When the channel type is Amazon, the shipTo address is
  * not required and will be ignored.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The request schema for the directPurchaseShipment operation. When the channel type is Amazon, the shipTo address is not required and will be ignored.")
 public class DirectPurchaseRequest {
@@ -52,7 +51,7 @@ public class DirectPurchaseRequest {
      *
      * @return shipTo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getShipTo() {
         return shipTo;
     }
@@ -71,7 +70,7 @@ public class DirectPurchaseRequest {
      *
      * @return shipFrom
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getShipFrom() {
         return shipFrom;
     }
@@ -90,7 +89,7 @@ public class DirectPurchaseRequest {
      *
      * @return returnTo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getReturnTo() {
         return returnTo;
     }
@@ -109,7 +108,7 @@ public class DirectPurchaseRequest {
      *
      * @return packages
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PackageList getPackages() {
         return packages;
     }
@@ -128,7 +127,7 @@ public class DirectPurchaseRequest {
      *
      * @return channelDetails
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ChannelDetails getChannelDetails() {
         return channelDetails;
     }
@@ -147,7 +146,7 @@ public class DirectPurchaseRequest {
      *
      * @return labelSpecifications
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RequestedDocumentSpecification getLabelSpecifications() {
         return labelSpecifications;
     }

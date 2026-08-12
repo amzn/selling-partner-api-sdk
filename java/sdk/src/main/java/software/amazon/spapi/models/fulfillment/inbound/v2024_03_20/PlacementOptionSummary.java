@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Summary information about a placement option. */
-@Schema(description = "Summary information about a placement option.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Summary information about a placement option.")
 public class PlacementOptionSummary {
     @SerializedName("placementOptionId")
     private String placementOptionId = null;
@@ -35,7 +34,7 @@ public class PlacementOptionSummary {
      *
      * @return placementOptionId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs.")
@@ -57,7 +56,9 @@ public class PlacementOptionSummary {
      *
      * @return status
      */
-    @Schema(required = true, description = "The status of a placement option. Possible values: `OFFERED`, `ACCEPTED`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The status of a placement option. Possible values: `OFFERED`, `ACCEPTED`.")
     public String getStatus() {
         return status;
     }

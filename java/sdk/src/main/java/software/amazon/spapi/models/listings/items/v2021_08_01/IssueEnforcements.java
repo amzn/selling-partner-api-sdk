@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +21,7 @@ import java.util.Objects;
  * Provides information about the enforcement actions taken by Amazon that affect the publishing or status of a listing.
  * It also includes details about any associated exemptions.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Provides information about the enforcement actions taken by Amazon that affect the publishing or status of a listing. It also includes details about any associated exemptions.")
 public class IssueEnforcements {
@@ -50,7 +49,7 @@ public class IssueEnforcements {
      *
      * @return actions
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "List of enforcement actions taken by Amazon that affect the publishing or status of a listing.")
@@ -72,7 +71,7 @@ public class IssueEnforcements {
      *
      * @return exemption
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public IssueExemption getExemption() {
         return exemption;
     }

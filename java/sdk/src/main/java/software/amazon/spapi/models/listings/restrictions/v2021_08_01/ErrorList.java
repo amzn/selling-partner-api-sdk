@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.listings.restrictions.v2021_08_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of error responses returned when a request is unsuccessful. */
-@Schema(description = "A list of error responses returned when a request is unsuccessful.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of error responses returned when a request is unsuccessful.")
 public class ErrorList extends ArrayList<Error> {
 
     @Override

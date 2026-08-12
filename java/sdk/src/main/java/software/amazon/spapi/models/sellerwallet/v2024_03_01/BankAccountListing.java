@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A list of bank accounts. */
-@Schema(description = "A list of bank accounts.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of bank accounts.")
 public class BankAccountListing {
     @SerializedName("accounts")
     private List<BankAccount> accounts = null;
@@ -42,7 +41,7 @@ public class BankAccountListing {
      *
      * @return accounts
      */
-    @Schema(required = true, description = "A list of bank accounts.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of bank accounts.")
     public List<BankAccount> getAccounts() {
         return accounts;
     }

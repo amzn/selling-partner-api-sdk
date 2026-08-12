@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.finances.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of sponsored products payment events. */
-@Schema(description = "A list of sponsored products payment events.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of sponsored products payment events.")
 public class ProductAdsPaymentEventList extends ArrayList<ProductAdsPaymentEvent> {
 
     @Override

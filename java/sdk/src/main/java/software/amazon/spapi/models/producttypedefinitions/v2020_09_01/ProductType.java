@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.producttypedefinitions.v2020_09_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** An Amazon product type with a definition available. */
-@Schema(description = "An Amazon product type with a definition available.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon product type with a definition available.")
 public class ProductType {
     @SerializedName("name")
     private String name = null;
@@ -40,7 +39,7 @@ public class ProductType {
      *
      * @return name
      */
-    @Schema(required = true, description = "The name of the Amazon product type.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the Amazon product type.")
     public String getName() {
         return name;
     }
@@ -59,7 +58,9 @@ public class ProductType {
      *
      * @return displayName
      */
-    @Schema(required = true, description = "Human-readable and localized description of the Amazon product type.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Human-readable and localized description of the Amazon product type.")
     public String getDisplayName() {
         return displayName;
     }
@@ -86,7 +87,7 @@ public class ProductType {
      *
      * @return marketplaceIds
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The Amazon marketplace identifiers for which the product type definition is available.")
     public List<String> getMarketplaceIds() {

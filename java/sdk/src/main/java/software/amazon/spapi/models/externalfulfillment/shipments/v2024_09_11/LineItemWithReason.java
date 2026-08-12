@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Information about the line item being confirmed or rejected and the reason for the rejection. */
-@Schema(description = "Information about the line item being confirmed or rejected and the reason for the rejection.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information about the line item being confirmed or rejected and the reason for the rejection.")
 public class LineItemWithReason {
     @SerializedName("lineItem")
     private LineItem lineItem = null;
@@ -86,7 +86,7 @@ public class LineItemWithReason {
      *
      * @return lineItem
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public LineItem getLineItem() {
         return lineItem;
     }
@@ -105,7 +105,7 @@ public class LineItemWithReason {
      *
      * @return reason
      */
-    @Schema(description = "The reason for the rejection of the line item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The reason for the rejection of the line item.")
     public ReasonEnum getReason() {
         return reason;
     }

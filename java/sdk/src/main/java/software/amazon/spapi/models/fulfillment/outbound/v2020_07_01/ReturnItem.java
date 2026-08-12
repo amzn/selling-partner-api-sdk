@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** An item that Amazon accepted for return. */
-@Schema(description = "An item that Amazon accepted for return.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An item that Amazon accepted for return.")
 public class ReturnItem {
     @SerializedName("sellerReturnItemId")
     private String sellerReturnItemId = null;
@@ -62,7 +62,9 @@ public class ReturnItem {
      *
      * @return sellerReturnItemId
      */
-    @Schema(required = true, description = "An identifier the seller assigns to the return item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An identifier the seller assigns to the return item.")
     public String getSellerReturnItemId() {
         return sellerReturnItemId;
     }
@@ -81,7 +83,7 @@ public class ReturnItem {
      *
      * @return sellerFulfillmentOrderItemId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The identifier assigned to the item by the seller when the fulfillment order was created.")
     public String getSellerFulfillmentOrderItemId() {
@@ -102,7 +104,9 @@ public class ReturnItem {
      *
      * @return amazonShipmentId
      */
-    @Schema(required = true, description = "The identifier for the shipment that is associated with the return item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The identifier for the shipment that is associated with the return item.")
     public String getAmazonShipmentId() {
         return amazonShipmentId;
     }
@@ -121,7 +125,9 @@ public class ReturnItem {
      *
      * @return sellerReturnReasonCode
      */
-    @Schema(required = true, description = "The return reason code assigned to the return item by the seller.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The return reason code assigned to the return item by the seller.")
     public String getSellerReturnReasonCode() {
         return sellerReturnReasonCode;
     }
@@ -140,7 +146,7 @@ public class ReturnItem {
      *
      * @return returnComment
      */
-    @Schema(description = "An optional comment about the return item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An optional comment about the return item.")
     public String getReturnComment() {
         return returnComment;
     }
@@ -159,7 +165,8 @@ public class ReturnItem {
      *
      * @return amazonReturnReasonCode
      */
-    @Schema(description = "The return reason code that the Amazon fulfillment center assigned to the return item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The return reason code that the Amazon fulfillment center assigned to the return item.")
     public String getAmazonReturnReasonCode() {
         return amazonReturnReasonCode;
     }
@@ -178,7 +185,7 @@ public class ReturnItem {
      *
      * @return status
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public FulfillmentReturnItemStatus getStatus() {
         return status;
     }
@@ -197,7 +204,7 @@ public class ReturnItem {
      *
      * @return statusChangedDate
      */
-    @Schema(required = true, description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date timestamp")
     public OffsetDateTime getStatusChangedDate() {
         return statusChangedDate;
     }
@@ -216,7 +223,7 @@ public class ReturnItem {
      *
      * @return returnAuthorizationId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Identifies the return authorization used to return this item. Refer to `ReturnAuthorization`.")
     public String getReturnAuthorizationId() {
@@ -237,7 +244,7 @@ public class ReturnItem {
      *
      * @return returnReceivedCondition
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ReturnItemDisposition getReturnReceivedCondition() {
         return returnReceivedCondition;
     }
@@ -256,7 +263,8 @@ public class ReturnItem {
      *
      * @return fulfillmentCenterId
      */
-    @Schema(description = "The identifier for the Amazon fulfillment center that processed the return item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The identifier for the Amazon fulfillment center that processed the return item.")
     public String getFulfillmentCenterId() {
         return fulfillmentCenterId;
     }

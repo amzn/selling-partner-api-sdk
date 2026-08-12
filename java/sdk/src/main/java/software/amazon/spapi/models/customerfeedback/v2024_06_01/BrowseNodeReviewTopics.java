@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The 10 most positive and most negative review topics for all items in a browse node. */
-@Schema(description = "The 10 most positive and most negative review topics for all items in a browse node.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The 10 most positive and most negative review topics for all items in a browse node.")
 public class BrowseNodeReviewTopics {
     @SerializedName("positiveTopics")
     private List<BrowseNodeReviewTopic> positiveTopics = null;
@@ -50,7 +50,7 @@ public class BrowseNodeReviewTopics {
      *
      * @return positiveTopics
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of the most positive review topics. When the `sortBy` query parameter is set to `MENTIONS`, the number of reviews of items within the requested browse node that mention the topic determine the topic's placement in the list. When `sortBy` is set to `STAR_RATING_IMPACT`, the effect that the topic has on the star rating of items within the requested browse node determine placement in the list. This value is `null` if there are not enough positive reviews for the requested browse node.  **Max length:** 10")
     public List<BrowseNodeReviewTopic> getPositiveTopics() {
@@ -84,7 +84,7 @@ public class BrowseNodeReviewTopics {
      *
      * @return negativeTopics
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of the most negative review topics. When the `sortBy` query parameter is set to `MENTIONS`, the number of reviews of items within the requested browse node that mention the topic determine the topic's placement in the list. When `sortBy` is set to `STAR_RATING_IMPACT`, the effect that the topic has on the star rating of items within the requested browse node determine placement in the list. This value is `null` if there are not enough negative reviews for the requested browse node.  **Max length:** 10")
     public List<BrowseNodeReviewTopic> getNegativeTopics() {

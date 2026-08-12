@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** An appointment slot time with start and end. */
-@Schema(description = "An appointment slot time with start and end.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An appointment slot time with start and end.")
 public class AppointmentSlotTime {
     @SerializedName("endTime")
     private OffsetDateTime endTime = null;
@@ -35,7 +35,9 @@ public class AppointmentSlotTime {
      *
      * @return endTime
      */
-    @Schema(required = true, description = "The end timestamp of the appointment in UTC.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The end timestamp of the appointment in UTC.")
     public OffsetDateTime getEndTime() {
         return endTime;
     }
@@ -54,7 +56,9 @@ public class AppointmentSlotTime {
      *
      * @return startTime
      */
-    @Schema(required = true, description = "The start timestamp of the appointment in UTC.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The start timestamp of the appointment in UTC.")
     public OffsetDateTime getStartTime() {
         return startTime;
     }

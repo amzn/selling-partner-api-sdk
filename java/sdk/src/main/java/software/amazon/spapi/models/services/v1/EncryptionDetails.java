@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Encryption details for required client-side encryption and decryption of document contents. */
-@Schema(description = "Encryption details for required client-side encryption and decryption of document contents.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Encryption details for required client-side encryption and decryption of document contents.")
 public class EncryptionDetails {
     /** The encryption standard required to encrypt or decrypt the document contents. */
     @JsonAdapter(StandardEnum.Adapter.class)
@@ -87,7 +87,7 @@ public class EncryptionDetails {
      *
      * @return standard
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The encryption standard required to encrypt or decrypt the document contents.")
     public StandardEnum getStandard() {
@@ -108,7 +108,7 @@ public class EncryptionDetails {
      *
      * @return initializationVector
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The vector to encrypt or decrypt the document contents using Cipher Block Chaining (CBC).")
     public String getInitializationVector() {
@@ -129,7 +129,9 @@ public class EncryptionDetails {
      *
      * @return key
      */
-    @Schema(required = true, description = "The encryption key used to encrypt or decrypt the document contents.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The encryption key used to encrypt or decrypt the document contents.")
     public String getKey() {
         return key;
     }

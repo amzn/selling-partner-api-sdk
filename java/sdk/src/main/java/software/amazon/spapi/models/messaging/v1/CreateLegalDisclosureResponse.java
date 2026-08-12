@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the createLegalDisclosure operation. */
-@Schema(description = "The response schema for the createLegalDisclosure operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the createLegalDisclosure operation.")
 public class CreateLegalDisclosureResponse {
     @SerializedName("errors")
     private ErrorList errors = null;
@@ -32,7 +32,7 @@ public class CreateLegalDisclosureResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

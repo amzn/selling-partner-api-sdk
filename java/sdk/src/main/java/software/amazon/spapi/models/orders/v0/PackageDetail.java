@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Properties of packages */
-@Schema(description = "Properties of packages")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Properties of packages")
 public class PackageDetail {
     @SerializedName("packageReferenceId")
     private String packageReferenceId = null;
@@ -54,7 +54,7 @@ public class PackageDetail {
      *
      * @return packageReferenceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A seller-supplied identifier that uniquely identifies a package within the scope of an order. Only positive numeric values are supported.")
@@ -78,7 +78,7 @@ public class PackageDetail {
      *
      * @return carrierCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Identifies the carrier that will deliver the package. This field is required for all marketplaces. For more information, refer to the [`CarrierCode` announcement](https://developer-docs.amazon.com/sp-api/changelog/carriercode-value-required-in-shipment-confirmations-for-br-mx-ca-sg-au-in-jp-marketplaces).")
@@ -100,7 +100,8 @@ public class PackageDetail {
      *
      * @return carrierName
      */
-    @Schema(description = "Carrier name that will deliver the package. Required when `carrierCode` is \"Other\" ")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Carrier name that will deliver the package. Required when `carrierCode` is \"Other\" ")
     public String getCarrierName() {
         return carrierName;
     }
@@ -119,7 +120,7 @@ public class PackageDetail {
      *
      * @return shippingMethod
      */
-    @Schema(description = "Ship method to be used for shipping the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Ship method to be used for shipping the order.")
     public String getShippingMethod() {
         return shippingMethod;
     }
@@ -138,7 +139,9 @@ public class PackageDetail {
      *
      * @return trackingNumber
      */
-    @Schema(required = true, description = "The tracking number used to obtain tracking and delivery information.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The tracking number used to obtain tracking and delivery information.")
     public String getTrackingNumber() {
         return trackingNumber;
     }
@@ -159,7 +162,7 @@ public class PackageDetail {
      *
      * @return shipDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The shipping date for the package. Must be in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date/time format.")
@@ -181,7 +184,7 @@ public class PackageDetail {
      *
      * @return shipFromSupplySourceId
      */
-    @Schema(description = "The unique identifier for the supply source.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The unique identifier for the supply source.")
     public String getShipFromSupplySourceId() {
         return shipFromSupplySourceId;
     }
@@ -200,7 +203,7 @@ public class PackageDetail {
      *
      * @return orderItems
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ConfirmShipmentOrderItemsList getOrderItems() {
         return orderItems;
     }

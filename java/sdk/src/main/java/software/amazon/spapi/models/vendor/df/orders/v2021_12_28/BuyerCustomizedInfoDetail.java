@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vendor.df.orders.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The details of the products the vendor has configured as customizable. */
-@Schema(description = "The details of the products the vendor has configured as customizable.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The details of the products the vendor has configured as customizable.")
 public class BuyerCustomizedInfoDetail {
     @SerializedName("customizedUrl")
     private String customizedUrl = null;
@@ -34,7 +34,7 @@ public class BuyerCustomizedInfoDetail {
      *
      * @return customizedUrl
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A [Base 64](https://datatracker.ietf.org/doc/html/rfc4648#section-4) encoded URL using the UTF-8 character set. The URL provides the location of the zip file that specifies the types of customizations or configurations allowed by the vendor, along with types and ranges for the attributes of their products.")
     public String getCustomizedUrl() {

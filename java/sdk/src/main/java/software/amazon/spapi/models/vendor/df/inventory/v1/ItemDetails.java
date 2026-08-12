@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.inventory.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Updated inventory details for an item. */
-@Schema(description = "Updated inventory details for an item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Updated inventory details for an item.")
 public class ItemDetails {
     @SerializedName("buyerProductIdentifier")
     private String buyerProductIdentifier = null;
@@ -42,7 +41,7 @@ public class ItemDetails {
      *
      * @return buyerProductIdentifier
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The buyer selected product identification of the item. Either buyerProductIdentifier or vendorProductIdentifier should be submitted.")
     public String getBuyerProductIdentifier() {
@@ -64,7 +63,7 @@ public class ItemDetails {
      *
      * @return vendorProductIdentifier
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The vendor selected product identification of the item. Either buyerProductIdentifier or vendorProductIdentifier should be submitted.")
     public String getVendorProductIdentifier() {
@@ -85,7 +84,7 @@ public class ItemDetails {
      *
      * @return availableQuantity
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemQuantity getAvailableQuantity() {
         return availableQuantity;
     }
@@ -104,7 +103,7 @@ public class ItemDetails {
      *
      * @return isObsolete
      */
-    @Schema(description = "When true, the item is permanently unavailable.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, the item is permanently unavailable.")
     public Boolean getIsObsolete() {
         return isObsolete;
     }

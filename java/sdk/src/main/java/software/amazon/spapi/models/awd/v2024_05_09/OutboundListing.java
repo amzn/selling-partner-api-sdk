@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A list of paginated outbound orders filtered by the attributes passed in the request. */
-@Schema(description = "A list of paginated outbound orders filtered by the attributes passed in the request.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of paginated outbound orders filtered by the attributes passed in the request.")
 public class OutboundListing {
     @SerializedName("nextToken")
     private String nextToken = null;
@@ -40,7 +40,7 @@ public class OutboundListing {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "TA token that is used to retrieve the next page of results. The response includes `nextToken` when the number of results exceeds the specified `maxResults` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.")
     public String getNextToken() {
@@ -69,7 +69,7 @@ public class OutboundListing {
      *
      * @return outboundOrders
      */
-    @Schema(description = "List of outbound orders.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "List of outbound orders.")
     public List<OutboundOrder> getOutboundOrders() {
         return outboundOrders;
     }

@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.invoices.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request schema for the submitInvoices operation. */
-@Schema(description = "The request schema for the submitInvoices operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the submitInvoices operation.")
 public class SubmitInvoicesRequest {
     @SerializedName("invoices")
     private List<Invoice> invoices = null;
@@ -42,7 +41,8 @@ public class SubmitInvoicesRequest {
      *
      * @return invoices
      */
-    @Schema(description = "An array of Invoice objects representing the invoices or credit notes to be submitted.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "An array of Invoice objects representing the invoices or credit notes to be submitted.")
     public List<Invoice> getInvoices() {
         return invoices;
     }

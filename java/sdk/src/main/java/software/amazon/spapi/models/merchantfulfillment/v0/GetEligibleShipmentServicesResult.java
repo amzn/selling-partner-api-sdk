@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The payload for the &#x60;getEligibleShipmentServices&#x60; operation. */
-@Schema(description = "The payload for the `getEligibleShipmentServices` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The payload for the `getEligibleShipmentServices` operation.")
 public class GetEligibleShipmentServicesResult {
     @SerializedName("ShippingServiceList")
     private ShippingServiceList shippingServiceList = null;
@@ -41,7 +41,7 @@ public class GetEligibleShipmentServicesResult {
      *
      * @return shippingServiceList
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShippingServiceList getShippingServiceList() {
         return shippingServiceList;
     }
@@ -61,7 +61,7 @@ public class GetEligibleShipmentServicesResult {
      *
      * @return rejectedShippingServiceList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RejectedShippingServiceList getRejectedShippingServiceList() {
         return rejectedShippingServiceList;
     }
@@ -81,7 +81,7 @@ public class GetEligibleShipmentServicesResult {
      *
      * @return temporarilyUnavailableCarrierList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TemporarilyUnavailableCarrierList getTemporarilyUnavailableCarrierList() {
         return temporarilyUnavailableCarrierList;
     }
@@ -102,7 +102,7 @@ public class GetEligibleShipmentServicesResult {
      *
      * @return termsAndConditionsNotAcceptedCarrierList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TermsAndConditionsNotAcceptedCarrierList getTermsAndConditionsNotAcceptedCarrierList() {
         return termsAndConditionsNotAcceptedCarrierList;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Fulfillment configuration for a &#x60;getOffers&#x60; response offer. Contains only service level (no services). */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Fulfillment configuration for a `getOffers` response offer. Contains only service level (no services).")
 public class OfferOptionFulfillmentConfiguration {
@@ -34,7 +33,7 @@ public class OfferOptionFulfillmentConfiguration {
      *
      * @return serviceLevel
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferServiceLevel getServiceLevel() {
         return serviceLevel;
     }

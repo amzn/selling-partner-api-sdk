@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request for the &#x60;listReturnReasonCodes&#x60; operation. */
-@Schema(description = "The request for the `listReturnReasonCodes` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request for the `listReturnReasonCodes` operation.")
 public class ListReturnReasonCodesResult {
     @SerializedName("reasonCodeDetails")
     private ReasonCodeDetailsList reasonCodeDetails = null;
@@ -32,7 +31,7 @@ public class ListReturnReasonCodesResult {
      *
      * @return reasonCodeDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ReasonCodeDetailsList getReasonCodeDetails() {
         return reasonCodeDetails;
     }

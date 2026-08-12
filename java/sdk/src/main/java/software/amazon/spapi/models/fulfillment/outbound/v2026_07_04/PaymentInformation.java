@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Payment information for the order. Currently only available in India. */
-@Schema(description = "Payment information for the order. Currently only available in India.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Payment information for the order. Currently only available in India.")
 public class PaymentInformation {
     @SerializedName("payments")
     private List<Payment> payments = null;
@@ -42,7 +42,7 @@ public class PaymentInformation {
      *
      * @return payments
      */
-    @Schema(description = "A list of payments associated with the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of payments associated with the order.")
     public List<Payment> getPayments() {
         return payments;
     }

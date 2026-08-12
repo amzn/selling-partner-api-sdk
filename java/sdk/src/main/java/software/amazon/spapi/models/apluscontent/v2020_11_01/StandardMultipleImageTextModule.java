@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Standard images with text, presented one at a time. The user clicks on thumbnails to view each block. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Standard images with text, presented one at a time. The user clicks on thumbnails to view each block.")
 public class StandardMultipleImageTextModule {
@@ -44,7 +43,7 @@ public class StandardMultipleImageTextModule {
      *
      * @return blocks
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public List<StandardImageTextCaptionBlock> getBlocks() {
         return blocks;
     }

@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Additional information about a constraint violation, providing the specific type of detail and its corresponding
  * value that caused the violation.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Additional information about a constraint violation, providing the specific type of detail and its corresponding value that caused the violation.")
 public class ConstraintDetail {
@@ -40,7 +39,7 @@ public class ConstraintDetail {
      *
      * @return type
      */
-    @Schema(required = true, description = "The type of the constraint detail.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of the constraint detail.")
     public String getType() {
         return type;
     }
@@ -59,7 +58,7 @@ public class ConstraintDetail {
      *
      * @return value
      */
-    @Schema(required = true, description = "The value of the constraint detail.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The value of the constraint detail.")
     public String getValue() {
         return value;
     }

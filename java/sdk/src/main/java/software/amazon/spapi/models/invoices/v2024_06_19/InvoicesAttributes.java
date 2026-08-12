@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** An object that contains the invoice attributes definition. */
-@Schema(description = "An object that contains the invoice attributes definition.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An object that contains the invoice attributes definition.")
 public class InvoicesAttributes {
     @SerializedName("invoiceStatusOptions")
     private List<AttributeOption> invoiceStatusOptions = null;
@@ -51,7 +50,8 @@ public class InvoicesAttributes {
      *
      * @return invoiceStatusOptions
      */
-    @Schema(description = "A list of all the options that are available for the invoice status attribute.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of all the options that are available for the invoice status attribute.")
     public List<AttributeOption> getInvoiceStatusOptions() {
         return invoiceStatusOptions;
     }
@@ -78,7 +78,8 @@ public class InvoicesAttributes {
      *
      * @return invoiceTypeOptions
      */
-    @Schema(description = "A list of all the options that are available for the invoice type attribute.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of all the options that are available for the invoice type attribute.")
     public List<AttributeOption> getInvoiceTypeOptions() {
         return invoiceTypeOptions;
     }
@@ -106,7 +107,8 @@ public class InvoicesAttributes {
      *
      * @return transactionIdentifierNameOptions
      */
-    @Schema(description = "A list of all the options that are available for the transaction identifier name attribute.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of all the options that are available for the transaction identifier name attribute.")
     public List<AttributeOption> getTransactionIdentifierNameOptions() {
         return transactionIdentifierNameOptions;
     }
@@ -133,7 +135,8 @@ public class InvoicesAttributes {
      *
      * @return transactionTypeOptions
      */
-    @Schema(description = "A list of all the options that are available for the transaction type attribute.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of all the options that are available for the transaction type attribute.")
     public List<AttributeOption> getTransactionTypeOptions() {
         return transactionTypeOptions;
     }

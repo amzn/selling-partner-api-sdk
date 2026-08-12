@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.datakiosk.v2023_11_15;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response for the &#x60;getQueries&#x60; operation. */
-@Schema(description = "The response for the `getQueries` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response for the `getQueries` operation.")
 public class GetQueriesResponse {
     @SerializedName("queries")
     private QueryList queries = null;
@@ -35,7 +34,7 @@ public class GetQueriesResponse {
      *
      * @return queries
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public QueryList getQueries() {
         return queries;
     }
@@ -54,7 +53,7 @@ public class GetQueriesResponse {
      *
      * @return pagination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetQueriesResponsePagination getPagination() {
         return pagination;
     }

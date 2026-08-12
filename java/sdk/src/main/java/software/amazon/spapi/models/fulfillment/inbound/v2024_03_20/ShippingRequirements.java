@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -24,7 +23,7 @@ import java.util.Objects;
  * less-than-truckload (LTL), freight full-truckload (FTL) palletized, freight FTL non-palletized, ocean
  * less-than-container-load (LCL), ocean full-container load (FCL), air small parcel, and air small parcel express.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The possible shipping modes for the packing option for a given shipping solution or program. Available solutions are Amazon-Partnered Carrier and Use Your Own Carrier. Available modes are ground small parcel, freight less-than-truckload (LTL), freight full-truckload (FTL) palletized, freight FTL non-palletized, ocean less-than-container-load (LCL), ocean full-container load (FCL), air small parcel, and air small parcel express.")
 public class ShippingRequirements {
@@ -52,7 +51,9 @@ public class ShippingRequirements {
      *
      * @return modes
      */
-    @Schema(required = true, description = "Available shipment modes for this shipping program.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Available shipment modes for this shipping program.")
     public List<String> getModes() {
         return modes;
     }
@@ -71,7 +72,7 @@ public class ShippingRequirements {
      *
      * @return solution
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Shipping program for the option. Can be: `AMAZON_PARTNERED_CARRIER`, `USE_YOUR_OWN_CARRIER`.")

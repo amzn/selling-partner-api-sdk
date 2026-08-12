@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The payload for the getTracking operation. */
-@Schema(description = "The payload for the getTracking operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the getTracking operation.")
 public class GetTrackingResult {
     @SerializedName("trackingId")
     private String trackingId = null;
@@ -46,7 +46,9 @@ public class GetTrackingResult {
      *
      * @return trackingId
      */
-    @Schema(required = true, description = "The carrier generated identifier for a package in a purchased shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The carrier generated identifier for a package in a purchased shipment.")
     public String getTrackingId() {
         return trackingId;
     }
@@ -65,7 +67,7 @@ public class GetTrackingResult {
      *
      * @return alternateLegTrackingId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The carrier generated reverse identifier for a returned package in a purchased shipment.")
     public String getAlternateLegTrackingId() {
@@ -94,7 +96,7 @@ public class GetTrackingResult {
      *
      * @return eventHistory
      */
-    @Schema(required = true, description = "A list of tracking events.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of tracking events.")
     public List<Event> getEventHistory() {
         return eventHistory;
     }
@@ -113,7 +115,9 @@ public class GetTrackingResult {
      *
      * @return promisedDeliveryDate
      */
-    @Schema(required = true, description = "The date and time by which the shipment is promised to be delivered.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The date and time by which the shipment is promised to be delivered.")
     public OffsetDateTime getPromisedDeliveryDate() {
         return promisedDeliveryDate;
     }
@@ -132,7 +136,7 @@ public class GetTrackingResult {
      *
      * @return summary
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TrackingSummary getSummary() {
         return summary;
     }

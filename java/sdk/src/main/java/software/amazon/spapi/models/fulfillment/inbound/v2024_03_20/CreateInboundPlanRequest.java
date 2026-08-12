@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The &#x60;createInboundPlan&#x60; request. */
-@Schema(description = "The `createInboundPlan` request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `createInboundPlan` request.")
 public class CreateInboundPlanRequest {
     @SerializedName("destinationMarketplaces")
     private List<String> destinationMarketplaces = null;
@@ -52,7 +51,7 @@ public class CreateInboundPlanRequest {
      *
      * @return destinationMarketplaces
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Marketplaces where the items need to be shipped to. Currently only one marketplace can be selected in this request.")
@@ -82,7 +81,7 @@ public class CreateInboundPlanRequest {
      *
      * @return items
      */
-    @Schema(required = true, description = "Items included in this plan.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Items included in this plan.")
     public List<ItemInput> getItems() {
         return items;
     }
@@ -101,7 +100,8 @@ public class CreateInboundPlanRequest {
      *
      * @return name
      */
-    @Schema(description = "Name for the Inbound Plan. If one isn't provided, a default name will be provided.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Name for the Inbound Plan. If one isn't provided, a default name will be provided.")
     public String getName() {
         return name;
     }
@@ -120,7 +120,7 @@ public class CreateInboundPlanRequest {
      *
      * @return sourceAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public AddressInput getSourceAddress() {
         return sourceAddress;
     }

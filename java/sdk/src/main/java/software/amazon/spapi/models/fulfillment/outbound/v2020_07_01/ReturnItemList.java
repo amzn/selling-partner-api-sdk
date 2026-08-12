@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** An array of items that Amazon accepted for return. Returns empty if no items were accepted for return. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.")
 public class ReturnItemList extends ArrayList<ReturnItem> {

@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail")
 public class ClientReferenceDetails extends ArrayList<ClientReferenceDetail> {

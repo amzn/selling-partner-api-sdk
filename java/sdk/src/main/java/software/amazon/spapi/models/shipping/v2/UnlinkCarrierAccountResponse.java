@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The Response for the UnlinkCarrierAccountResponse operation. */
-@Schema(description = "The Response  for the UnlinkCarrierAccountResponse operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The Response  for the UnlinkCarrierAccountResponse operation.")
 public class UnlinkCarrierAccountResponse {
     @SerializedName("isUnlinked")
     private Boolean isUnlinked = null;
@@ -32,7 +32,7 @@ public class UnlinkCarrierAccountResponse {
      *
      * @return isUnlinked
      */
-    @Schema(description = "Is Carrier unlinked from Merchant")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Is Carrier unlinked from Merchant")
     public Boolean getIsUnlinked() {
         return isUnlinked;
     }

@@ -12,7 +12,6 @@
 
 package software.amazon.spapi.models.notifications.v1;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -20,7 +19,7 @@ import java.util.Objects;
  * A list of order change types you can subscribe to (for example, &#x60;BuyerRequestedChange&#x60;). To receive
  * notifications of all change types, do not provide this list.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A list of order change types you can subscribe to (for example, `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.")
 public class OrderChangeTypes extends ArrayList<OrderChangeTypeEnum> {

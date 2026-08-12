@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Order details. */
-@Schema(description = "Order details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Order details.")
 public class GetOrderResponse {
     @SerializedName("order")
     private Order order = null;
@@ -32,7 +31,7 @@ public class GetOrderResponse {
      *
      * @return order
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Order getOrder() {
         return order;
     }

@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The response to the &#x60;listPrepDetails&#x60; operation. */
-@Schema(description = "The response to the `listPrepDetails` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response to the `listPrepDetails` operation.")
 public class ListPrepDetailsResponse {
     @SerializedName("mskuPrepDetails")
     private List<MskuPrepDetail> mskuPrepDetails = null;
@@ -42,7 +41,9 @@ public class ListPrepDetailsResponse {
      *
      * @return mskuPrepDetails
      */
-    @Schema(required = true, description = "A list of MSKUs and related prep details.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of MSKUs and related prep details.")
     public List<MskuPrepDetail> getMskuPrepDetails() {
         return mskuPrepDetails;
     }

@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** The request for the &#x60;recordActionFeedback&#x60; operation. */
-@Schema(description = "The request for the `recordActionFeedback` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request for the `recordActionFeedback` operation.")
 public class RecordActionFeedbackRequest {
     /** The unique identifier for each notification status. */
     @JsonAdapter(FeedbackActionCodeEnum.Adapter.class)
@@ -82,7 +81,9 @@ public class RecordActionFeedbackRequest {
      *
      * @return feedbackActionCode
      */
-    @Schema(required = true, description = "The unique identifier for each notification status.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unique identifier for each notification status.")
     public FeedbackActionCodeEnum getFeedbackActionCode() {
         return feedbackActionCode;
     }

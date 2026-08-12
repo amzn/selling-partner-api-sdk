@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The &#x60;competitiveSummaryResponse&#x60; body for a requested ASIN and &#x60;marketplaceId&#x60;. */
-@Schema(description = "The `competitiveSummaryResponse` body for a requested ASIN and `marketplaceId`.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The `competitiveSummaryResponse` body for a requested ASIN and `marketplaceId`.")
 public class CompetitiveSummaryResponseBody {
     @SerializedName("asin")
     private String asin = null;
@@ -52,7 +52,7 @@ public class CompetitiveSummaryResponseBody {
      *
      * @return asin
      */
-    @Schema(required = true, description = "The ASIN of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The ASIN of the item.")
     public String getAsin() {
         return asin;
     }
@@ -72,7 +72,7 @@ public class CompetitiveSummaryResponseBody {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The `MarketplaceID` is the globally unique identifier of an Amazon store. To find the ID for your Amazon store, refer to [Amazon store IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -102,7 +102,8 @@ public class CompetitiveSummaryResponseBody {
      *
      * @return featuredBuyingOptions
      */
-    @Schema(description = "A list of featured buying options for the specified ASIN `marketplaceId` combination.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of featured buying options for the specified ASIN `marketplaceId` combination.")
     public List<FeaturedBuyingOption> getFeaturedBuyingOptions() {
         return featuredBuyingOptions;
     }
@@ -129,7 +130,8 @@ public class CompetitiveSummaryResponseBody {
      *
      * @return lowestPricedOffers
      */
-    @Schema(description = "A list of lowest priced offers for the specified ASIN `marketplaceId` combination.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of lowest priced offers for the specified ASIN `marketplaceId` combination.")
     public List<LowestPricedOffer> getLowestPricedOffers() {
         return lowestPricedOffers;
     }
@@ -156,7 +158,8 @@ public class CompetitiveSummaryResponseBody {
      *
      * @return referencePrices
      */
-    @Schema(description = "A list of reference prices for the specified ASIN `marketplaceId` combination.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of reference prices for the specified ASIN `marketplaceId` combination.")
     public List<ReferencePrice> getReferencePrices() {
         return referencePrices;
     }
@@ -183,7 +186,8 @@ public class CompetitiveSummaryResponseBody {
      *
      * @return similarItems
      */
-    @Schema(description = "A list of similar items for the specified ASIN `marketplaceId` combination.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of similar items for the specified ASIN `marketplaceId` combination.")
     public List<SimilarItems> getSimilarItems() {
         return similarItems;
     }
@@ -202,7 +206,7 @@ public class CompetitiveSummaryResponseBody {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

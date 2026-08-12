@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of &#x60;getItemOffers&#x60; batched responses. */
-@Schema(description = "A list of `getItemOffers` batched responses.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of `getItemOffers` batched responses.")
 public class ItemOffersResponseList extends ArrayList<ItemOffersResponse> {
 
     @Override

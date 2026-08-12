@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Schema for price info in &#x60;getPricing&#x60; response */
-@Schema(description = "Schema for price info in `getPricing` response")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Schema for price info in `getPricing` response")
 public class Price {
     @SerializedName("status")
     private String status = null;
@@ -41,7 +40,7 @@ public class Price {
      *
      * @return status
      */
-    @Schema(required = true, description = "The status of the operation.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The status of the operation.")
     public String getStatus() {
         return status;
     }
@@ -60,7 +59,7 @@ public class Price {
      *
      * @return sellerSKU
      */
-    @Schema(description = "The seller stock keeping unit (SKU) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller stock keeping unit (SKU) of the item.")
     public String getSellerSKU() {
         return sellerSKU;
     }
@@ -79,7 +78,8 @@ public class Price {
      *
      * @return ASIN
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getASIN() {
         return ASIN;
     }
@@ -98,7 +98,7 @@ public class Price {
      *
      * @return product
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Product getProduct() {
         return product;
     }

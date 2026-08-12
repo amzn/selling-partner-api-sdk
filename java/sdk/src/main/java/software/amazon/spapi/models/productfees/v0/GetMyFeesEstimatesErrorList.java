@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.productfees.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A list of error responses returned when a request is unsuccessful. */
-@Schema(description = "A list of error responses returned when a request is unsuccessful.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of error responses returned when a request is unsuccessful.")
 public class GetMyFeesEstimatesErrorList {
     @SerializedName("errors")
     private List<Error> errors = null;
@@ -42,7 +42,9 @@ public class GetMyFeesEstimatesErrorList {
      *
      * @return errors
      */
-    @Schema(required = true, description = "A list of error responses returned when a request is unsuccessful.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of error responses returned when a request is unsuccessful.")
     public List<Error> getErrors() {
         return errors;
     }

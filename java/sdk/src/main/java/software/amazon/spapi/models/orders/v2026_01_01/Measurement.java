@@ -17,15 +17,15 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
  * Specifies the unit of measure and quantity for items that are sold by weight, volume, length, or other measurements
  * rather than simple count.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Specifies the unit of measure and quantity for items that are sold by weight, volume, length, or other measurements rather than simple count.")
 public class Measurement {
@@ -135,7 +135,9 @@ public class Measurement {
      *
      * @return unit
      */
-    @Schema(required = true, description = "The specific unit of measurement used to quantify this item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The specific unit of measurement used to quantify this item.")
     public UnitEnum getUnit() {
         return unit;
     }
@@ -154,7 +156,9 @@ public class Measurement {
      *
      * @return value
      */
-    @Schema(required = true, description = "The numerical quantity or amount being measured in the specified unit.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The numerical quantity or amount being measured in the specified unit.")
     public BigDecimal getValue() {
         return value;
     }

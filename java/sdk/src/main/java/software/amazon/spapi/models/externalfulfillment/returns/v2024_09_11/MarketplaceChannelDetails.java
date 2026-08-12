@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Marketplace channel-specific attributes for the return. These attributes are not mandatory and each channel can
  * provide them differently.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Marketplace channel-specific attributes for the return. These attributes are not mandatory and each channel can provide them differently.")
 public class MarketplaceChannelDetails {
@@ -55,7 +54,7 @@ public class MarketplaceChannelDetails {
      *
      * @return marketplaceChannel
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MarketplaceChannel getMarketplaceChannel() {
         return marketplaceChannel;
     }
@@ -74,7 +73,8 @@ public class MarketplaceChannelDetails {
      *
      * @return merchantId
      */
-    @Schema(description = "The ID of the merchant or seller to whom this return is created in the marketplace.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The ID of the merchant or seller to whom this return is created in the marketplace.")
     public String getMerchantId() {
         return merchantId;
     }
@@ -93,7 +93,7 @@ public class MarketplaceChannelDetails {
      *
      * @return shipmentId
      */
-    @Schema(description = "The marketplace-specific shipment ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The marketplace-specific shipment ID.")
     public String getShipmentId() {
         return shipmentId;
     }
@@ -112,7 +112,7 @@ public class MarketplaceChannelDetails {
      *
      * @return customerOrderId
      */
-    @Schema(description = "The marketplace-specific customer order ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The marketplace-specific customer order ID.")
     public String getCustomerOrderId() {
         return customerOrderId;
     }
@@ -131,7 +131,8 @@ public class MarketplaceChannelDetails {
      *
      * @return returnLocationId
      */
-    @Schema(description = "The Amazon SmartConnect ID of the location to which this return is created.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon SmartConnect ID of the location to which this return is created.")
     public String getReturnLocationId() {
         return returnLocationId;
     }
@@ -150,7 +151,7 @@ public class MarketplaceChannelDetails {
      *
      * @return channelSku
      */
-    @Schema(description = "The Amazon SmartConnect SKU of the channel.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon SmartConnect SKU of the channel.")
     public String getChannelSku() {
         return channelSku;
     }
@@ -169,7 +170,7 @@ public class MarketplaceChannelDetails {
      *
      * @return exchangeOrderId
      */
-    @Schema(description = "The Amazon SmartConnect ID of the exchange order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon SmartConnect ID of the exchange order.")
     public String getExchangeOrderId() {
         return exchangeOrderId;
     }

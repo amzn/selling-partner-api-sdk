@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the &#x60;getFulfillmentPreview&#x60; operation. */
-@Schema(description = "The response schema for the `getFulfillmentPreview` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the `getFulfillmentPreview` operation.")
 public class GetFulfillmentPreviewResponse {
     @SerializedName("payload")
     private GetFulfillmentPreviewResult payload = null;
@@ -35,7 +35,7 @@ public class GetFulfillmentPreviewResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetFulfillmentPreviewResult getPayload() {
         return payload;
     }
@@ -54,7 +54,7 @@ public class GetFulfillmentPreviewResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

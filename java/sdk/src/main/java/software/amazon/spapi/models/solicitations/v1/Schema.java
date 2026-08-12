@@ -12,7 +12,6 @@
 
 package software.amazon.spapi.models.solicitations.v1;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -20,7 +19,7 @@ import java.util.Objects;
  * A JSON schema document describing the expected payload of the action. This object can be validated against &lt;a
  * href&#x3D;http://json-schema.org/draft-04/schema&gt;http://json-schema.org/draft-04/schema&lt;/a&gt;.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A JSON schema document describing the expected payload of the action. This object can be validated against <a href=http://json-schema.org/draft-04/schema>http://json-schema.org/draft-04/schema</a>.")
 public class Schema extends HashMap<String, Object> {

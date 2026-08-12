@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of Operating Hours. */
-@Schema(description = "A list of Operating Hours.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of Operating Hours.")
 public class OperatingHours extends ArrayList<OperatingHour> {
 
     @Override

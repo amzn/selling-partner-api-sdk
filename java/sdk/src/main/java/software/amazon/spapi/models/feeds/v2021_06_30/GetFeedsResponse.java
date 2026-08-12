@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.feeds.v2021_06_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Response schema. */
-@Schema(description = "Response schema.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Response schema.")
 public class GetFeedsResponse {
     @SerializedName("feeds")
     private FeedList feeds = null;
@@ -35,7 +34,7 @@ public class GetFeedsResponse {
      *
      * @return feeds
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public FeedList getFeeds() {
         return feeds;
     }
@@ -55,7 +54,7 @@ public class GetFeedsResponse {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Returned when the number of results exceeds pageSize. To get the next page of results, call the getFeeds operation with this token as the only parameter.")
     public String getNextToken() {

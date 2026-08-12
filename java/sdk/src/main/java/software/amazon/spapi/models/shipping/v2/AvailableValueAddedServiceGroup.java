@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The value-added services available for purchase with a shipping service offering. */
-@Schema(description = "The value-added services available for purchase with a shipping service offering.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The value-added services available for purchase with a shipping service offering.")
 public class AvailableValueAddedServiceGroup {
     @SerializedName("groupId")
     private String groupId = null;
@@ -43,7 +43,9 @@ public class AvailableValueAddedServiceGroup {
      *
      * @return groupId
      */
-    @Schema(required = true, description = "The type of the value-added service group.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The type of the value-added service group.")
     public String getGroupId() {
         return groupId;
     }
@@ -62,7 +64,9 @@ public class AvailableValueAddedServiceGroup {
      *
      * @return groupDescription
      */
-    @Schema(required = true, description = "The name of the value-added service group.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The name of the value-added service group.")
     public String getGroupDescription() {
         return groupDescription;
     }
@@ -81,7 +85,7 @@ public class AvailableValueAddedServiceGroup {
      *
      * @return isRequired
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "When true, one or more of the value-added services listed must be specified.")
     public Boolean getIsRequired() {
@@ -110,7 +114,7 @@ public class AvailableValueAddedServiceGroup {
      *
      * @return valueAddedServices
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of optional value-added services available for purchase with a shipping service offering.")
     public List<ValueAddedService> getValueAddedServices() {

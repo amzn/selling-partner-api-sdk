@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
@@ -22,7 +21,7 @@ import java.util.Objects;
  * include the same arguments as the call that produced the token. To get a complete list, call this operation until
  * &#x60;nextToken&#x60; is &#x60;null&#x60;.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A token that you use to retrieve the next page of results. The response includes `nextToken` when the number of results exceeds the page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is `null`.")
 public class Pagination {
@@ -39,7 +38,8 @@ public class Pagination {
      *
      * @return nextToken
      */
-    @Schema(description = "A token that can be used to fetch the next page of results.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A token that can be used to fetch the next page of results.")
     public String getNextToken() {
         return nextToken;
     }

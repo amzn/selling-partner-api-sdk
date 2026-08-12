@@ -12,11 +12,11 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.LinkedHashSet;
 import java.util.Objects;
 
 /** The set of ASIN metadata. */
-@Schema(description = "The set of ASIN metadata.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The set of ASIN metadata.")
 public class AsinMetadataSet extends LinkedHashSet<AsinMetadata> {
 
     @Override

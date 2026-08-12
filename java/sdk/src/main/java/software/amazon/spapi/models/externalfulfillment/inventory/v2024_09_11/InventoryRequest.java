@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An inventory request. */
-@Schema(description = "An inventory request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An inventory request.")
 public class InventoryRequest {
     @SerializedName("uri")
     private String uri = null;
@@ -39,7 +38,7 @@ public class InventoryRequest {
      *
      * @return uri
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The URI associated with the individual APIs from the batch request. The user must provide the resource identifier for the operation they want to use. ")
@@ -61,7 +60,7 @@ public class InventoryRequest {
      *
      * @return method
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public HttpMethod getMethod() {
         return method;
     }
@@ -80,7 +79,7 @@ public class InventoryRequest {
      *
      * @return body
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InventoryRequestParams getBody() {
         return body;
     }

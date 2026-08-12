@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The links response that is associated with the specified &#x60;amazonOrderId&#x60;. */
-@Schema(description = "The links response that is associated with the specified `amazonOrderId`.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The links response that is associated with the specified `amazonOrderId`.")
 public class GetMessagingActionsForOrderResponseLinks {
     @SerializedName("self")
     private LinkObject self = null;
@@ -37,7 +37,7 @@ public class GetMessagingActionsForOrderResponseLinks {
      *
      * @return self
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public LinkObject getSelf() {
         return self;
     }
@@ -64,7 +64,9 @@ public class GetMessagingActionsForOrderResponseLinks {
      *
      * @return actions
      */
-    @Schema(required = true, description = "Eligible actions for the specified amazonOrderId.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Eligible actions for the specified amazonOrderId.")
     public List<LinkObject> getActions() {
         return actions;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Additional information required to purchase shipping. */
-@Schema(description = "Additional information required to purchase shipping.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Additional information required to purchase shipping.")
 public class AdditionalSellerInput {
     @SerializedName("DataType")
     private String dataType = null;
@@ -56,7 +56,7 @@ public class AdditionalSellerInput {
      *
      * @return dataType
      */
-    @Schema(description = "The data type of the additional information.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The data type of the additional information.")
     public String getDataType() {
         return dataType;
     }
@@ -75,7 +75,7 @@ public class AdditionalSellerInput {
      *
      * @return valueAsString
      */
-    @Schema(description = "The value when the data type is string.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The value when the data type is string.")
     public String getValueAsString() {
         return valueAsString;
     }
@@ -94,7 +94,7 @@ public class AdditionalSellerInput {
      *
      * @return valueAsBoolean
      */
-    @Schema(description = "The value when the data type is boolean.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The value when the data type is boolean.")
     public Boolean getValueAsBoolean() {
         return valueAsBoolean;
     }
@@ -113,7 +113,7 @@ public class AdditionalSellerInput {
      *
      * @return valueAsInteger
      */
-    @Schema(description = "The value when the data type is integer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The value when the data type is integer.")
     public Integer getValueAsInteger() {
         return valueAsInteger;
     }
@@ -132,7 +132,7 @@ public class AdditionalSellerInput {
      *
      * @return valueAsTimestamp
      */
-    @Schema(description = "Date-time formatted timestamp.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date-time formatted timestamp.")
     public OffsetDateTime getValueAsTimestamp() {
         return valueAsTimestamp;
     }
@@ -151,7 +151,7 @@ public class AdditionalSellerInput {
      *
      * @return valueAsAddress
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getValueAsAddress() {
         return valueAsAddress;
     }
@@ -170,7 +170,7 @@ public class AdditionalSellerInput {
      *
      * @return valueAsWeight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Weight getValueAsWeight() {
         return valueAsWeight;
     }
@@ -189,7 +189,7 @@ public class AdditionalSellerInput {
      *
      * @return valueAsDimension
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Length getValueAsDimension() {
         return valueAsDimension;
     }
@@ -208,7 +208,7 @@ public class AdditionalSellerInput {
      *
      * @return valueAsCurrency
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CurrencyAmount getValueAsCurrency() {
         return valueAsCurrency;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A standard image with several paragraphs and a bulleted list. */
-@Schema(description = "A standard image with several paragraphs and a bulleted list.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A standard image with several paragraphs and a bulleted list.")
 public class StandardSingleImageHighlightsModule {
     @SerializedName("image")
     private ImageComponent image = null;
@@ -47,7 +47,7 @@ public class StandardSingleImageHighlightsModule {
      *
      * @return image
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ImageComponent getImage() {
         return image;
     }
@@ -66,7 +66,7 @@ public class StandardSingleImageHighlightsModule {
      *
      * @return headline
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TextComponent getHeadline() {
         return headline;
     }
@@ -85,7 +85,7 @@ public class StandardSingleImageHighlightsModule {
      *
      * @return textBlock1
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardTextBlock getTextBlock1() {
         return textBlock1;
     }
@@ -104,7 +104,7 @@ public class StandardSingleImageHighlightsModule {
      *
      * @return textBlock2
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardTextBlock getTextBlock2() {
         return textBlock2;
     }
@@ -123,7 +123,7 @@ public class StandardSingleImageHighlightsModule {
      *
      * @return textBlock3
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardTextBlock getTextBlock3() {
         return textBlock3;
     }
@@ -142,7 +142,7 @@ public class StandardSingleImageHighlightsModule {
      *
      * @return bulletedListBlock
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardHeaderTextListBlock getBulletedListBlock() {
         return bulletedListBlock;
     }

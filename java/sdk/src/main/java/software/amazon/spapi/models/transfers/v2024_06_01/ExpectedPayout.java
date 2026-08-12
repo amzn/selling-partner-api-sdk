@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** All the information related to an expected payout. */
-@Schema(description = "All the information related to an expected payout.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "All the information related to an expected payout.")
 public class ExpectedPayout {
     @SerializedName("partnerMetadata")
     private PartnerMetadata partnerMetadata = null;
@@ -53,7 +53,7 @@ public class ExpectedPayout {
      *
      * @return partnerMetadata
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartnerMetadata getPartnerMetadata() {
         return partnerMetadata;
     }
@@ -72,7 +72,7 @@ public class ExpectedPayout {
      *
      * @return amount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getAmount() {
         return amount;
     }
@@ -91,7 +91,7 @@ public class ExpectedPayout {
      *
      * @return status
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ExpectedPayoutStatusName getStatus() {
         return status;
     }
@@ -110,7 +110,7 @@ public class ExpectedPayout {
      *
      * @return period
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Period getPeriod() {
         return period;
     }
@@ -129,7 +129,7 @@ public class ExpectedPayout {
      *
      * @return scheduledDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getScheduledDate() {
@@ -150,7 +150,7 @@ public class ExpectedPayout {
      *
      * @return accountTail
      */
-    @Schema(description = "The last few digits of the payment instrument.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The last few digits of the payment instrument.")
     public String getAccountTail() {
         return accountTail;
     }
@@ -169,7 +169,7 @@ public class ExpectedPayout {
      *
      * @return paymentMethod
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PaymentMethodName getPaymentMethod() {
         return paymentMethod;
     }
@@ -188,7 +188,7 @@ public class ExpectedPayout {
      *
      * @return relatedIdentifiers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RelatedIdentifiers getRelatedIdentifiers() {
         return relatedIdentifiers;
     }

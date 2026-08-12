@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Defines the accessibility details of the access point. */
-@Schema(description = "Defines the accessibility details of the access point.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Defines the accessibility details of the access point.")
 public class AccessibilityAttributes {
     @SerializedName("distance")
     private String distance = null;
@@ -35,7 +34,8 @@ public class AccessibilityAttributes {
      *
      * @return distance
      */
-    @Schema(description = "The approximate distance of access point from input postalCode's centroid.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The approximate distance of access point from input postalCode's centroid.")
     public String getDistance() {
         return distance;
     }
@@ -54,7 +54,8 @@ public class AccessibilityAttributes {
      *
      * @return driveTime
      */
-    @Schema(description = "The approximate (static) drive time from input postal code's centroid.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The approximate (static) drive time from input postal code's centroid.")
     public Integer getDriveTime() {
         return driveTime;
     }

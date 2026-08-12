@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.transactionstatus.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the getTransaction operation. */
-@Schema(description = "The response schema for the getTransaction operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the getTransaction operation.")
 public class GetTransactionResponse {
     @SerializedName("payload")
     private TransactionStatus payload = null;
@@ -35,7 +34,7 @@ public class GetTransactionResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TransactionStatus getPayload() {
         return payload;
     }
@@ -54,7 +53,7 @@ public class GetTransactionResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

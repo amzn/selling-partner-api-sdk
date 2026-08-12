@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Amazon Prime details. */
-@Schema(description = "Amazon Prime details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Amazon Prime details.")
 public class PrimeDetails {
     /** Indicates whether the offer is an Amazon Prime offer. */
     @JsonAdapter(EligibilityEnum.Adapter.class)
@@ -85,7 +84,9 @@ public class PrimeDetails {
      *
      * @return eligibility
      */
-    @Schema(required = true, description = "Indicates whether the offer is an Amazon Prime offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Indicates whether the offer is an Amazon Prime offer.")
     public EligibilityEnum getEligibility() {
         return eligibility;
     }

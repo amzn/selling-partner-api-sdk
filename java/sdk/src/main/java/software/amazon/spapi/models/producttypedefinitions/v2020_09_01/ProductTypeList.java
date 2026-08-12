@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.producttypedefinitions.v2020_09_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A list of Amazon product types with definitions available. */
-@Schema(description = "A list of Amazon product types with definitions available.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of Amazon product types with definitions available.")
 public class ProductTypeList {
     @SerializedName("productTypes")
     private List<ProductType> productTypes = null;
@@ -45,7 +44,7 @@ public class ProductTypeList {
      *
      * @return productTypes
      */
-    @Schema(required = true, description = "A list of product types.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of product types.")
     public List<ProductType> getProductTypes() {
         return productTypes;
     }
@@ -64,7 +63,9 @@ public class ProductTypeList {
      *
      * @return productTypeVersion
      */
-    @Schema(required = true, description = "Amazon product type version identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Amazon product type version identifier.")
     public String getProductTypeVersion() {
         return productTypeVersion;
     }

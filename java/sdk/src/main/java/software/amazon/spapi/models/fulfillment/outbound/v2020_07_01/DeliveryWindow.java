@@ -13,14 +13,14 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
  * The time range within which a Scheduled Delivery fulfillment order should be delivered. This is only available in the
  * JP marketplace.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The time range within which a Scheduled Delivery fulfillment order should be delivered. This is only available in the JP marketplace.")
 public class DeliveryWindow {
@@ -40,7 +40,7 @@ public class DeliveryWindow {
      *
      * @return startDate
      */
-    @Schema(required = true, description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date timestamp")
     public OffsetDateTime getStartDate() {
         return startDate;
     }
@@ -59,7 +59,7 @@ public class DeliveryWindow {
      *
      * @return endDate
      */
-    @Schema(required = true, description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date timestamp")
     public OffsetDateTime getEndDate() {
         return endDate;
     }

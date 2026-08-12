@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The regulated information collected during purchase and used to verify the order. */
-@Schema(description = "The regulated information collected during purchase and used to verify the order.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The regulated information collected during purchase and used to verify the order.")
 public class RegulatedInformation {
     @SerializedName("Fields")
     private List<RegulatedInformationField> fields = null;
@@ -42,7 +42,7 @@ public class RegulatedInformation {
      *
      * @return fields
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "A list of regulated information fields as collected from the regulatory form.")
     public List<RegulatedInformationField> getFields() {

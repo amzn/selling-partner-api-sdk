@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Additional information about the item. */
-@Schema(description = "Additional information about the item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Additional information about the item.")
 public class Context {
     /** The store name associated with the transaction. */
     @JsonAdapter(StoreNameEnum.Adapter.class)
@@ -126,7 +126,7 @@ public class Context {
      *
      * @return storeName
      */
-    @Schema(description = "The store name associated with the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The store name associated with the transaction.")
     public StoreNameEnum getStoreName() {
         return storeName;
     }
@@ -145,7 +145,7 @@ public class Context {
      *
      * @return orderType
      */
-    @Schema(description = "The order type of the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The order type of the transaction.")
     public String getOrderType() {
         return orderType;
     }
@@ -164,7 +164,7 @@ public class Context {
      *
      * @return channel
      */
-    @Schema(description = "The channel of the transaction. For example: `MFN`.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The channel of the transaction. For example: `MFN`.")
     public String getChannel() {
         return channel;
     }
@@ -183,7 +183,8 @@ public class Context {
      *
      * @return asin
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getAsin() {
         return asin;
     }
@@ -202,7 +203,7 @@ public class Context {
      *
      * @return sku
      */
-    @Schema(description = "The Stock Keeping Unit (SKU) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Stock Keeping Unit (SKU) of the item.")
     public String getSku() {
         return sku;
     }
@@ -221,7 +222,7 @@ public class Context {
      *
      * @return quantityShipped
      */
-    @Schema(description = "The quantity of the item shipped.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The quantity of the item shipped.")
     public Integer getQuantityShipped() {
         return quantityShipped;
     }
@@ -240,7 +241,7 @@ public class Context {
      *
      * @return fulfillmentNetwork
      */
-    @Schema(description = "The fulfillment network of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The fulfillment network of the item.")
     public String getFulfillmentNetwork() {
         return fulfillmentNetwork;
     }
@@ -259,7 +260,7 @@ public class Context {
      *
      * @return paymentType
      */
-    @Schema(description = "The type of payment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of payment.")
     public String getPaymentType() {
         return paymentType;
     }
@@ -278,7 +279,7 @@ public class Context {
      *
      * @return paymentMethod
      */
-    @Schema(description = "The method of payment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The method of payment.")
     public String getPaymentMethod() {
         return paymentMethod;
     }
@@ -297,7 +298,7 @@ public class Context {
      *
      * @return paymentReference
      */
-    @Schema(description = "The reference number of the payment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The reference number of the payment.")
     public String getPaymentReference() {
         return paymentReference;
     }
@@ -316,7 +317,7 @@ public class Context {
      *
      * @return paymentDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPaymentDate() {
@@ -338,7 +339,7 @@ public class Context {
      *
      * @return deferralReason
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The deferral policy applied to the transaction.  **Examples:** `B2B` (invoiced orders), `DD7` (delivery date policy)")
     public String getDeferralReason() {
@@ -359,7 +360,7 @@ public class Context {
      *
      * @return maturityDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getMaturityDate() {
@@ -380,7 +381,7 @@ public class Context {
      *
      * @return startTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getStartTime() {
@@ -401,7 +402,7 @@ public class Context {
      *
      * @return endTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getEndTime() {
@@ -422,7 +423,7 @@ public class Context {
      *
      * @return contextType
      */
-    @Schema(required = true, description = "The type of context.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of context.")
     public String getContextType() {
         return contextType;
     }

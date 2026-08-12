@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of value-added services available for a shipping service offering. */
-@Schema(description = "A list of value-added services available for a shipping service offering.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of value-added services available for a shipping service offering.")
 public class AvailableValueAddedServiceGroupList extends ArrayList<AvailableValueAddedServiceGroup> {
 
     @Override

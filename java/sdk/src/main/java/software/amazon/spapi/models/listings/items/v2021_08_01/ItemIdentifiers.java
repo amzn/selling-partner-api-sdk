@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** Identity attributes associated with the item in the Amazon catalog, such as the ASIN. */
-@Schema(description = "Identity attributes associated with the item in the Amazon catalog, such as the ASIN.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Identity attributes associated with the item in the Amazon catalog, such as the ASIN.")
 public class ItemIdentifiers extends ArrayList<ItemIdentifiersByMarketplace> {
 
     @Override

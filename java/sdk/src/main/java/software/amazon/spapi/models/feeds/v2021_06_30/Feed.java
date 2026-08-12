@@ -17,14 +17,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Detailed information about the feed. */
-@Schema(description = "Detailed information about the feed.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Detailed information about the feed.")
 public class Feed {
     @SerializedName("feedId")
     private String feedId = null;
@@ -112,7 +112,7 @@ public class Feed {
      *
      * @return feedId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier for the feed. This identifier is unique only in combination with a seller ID.")
@@ -134,7 +134,7 @@ public class Feed {
      *
      * @return feedType
      */
-    @Schema(required = true, description = "The feed type.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The feed type.")
     public String getFeedType() {
         return feedType;
     }
@@ -161,7 +161,8 @@ public class Feed {
      *
      * @return marketplaceIds
      */
-    @Schema(description = "A list of identifiers for the marketplaces that the feed is applied to.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of identifiers for the marketplaces that the feed is applied to.")
     public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }
@@ -180,7 +181,9 @@ public class Feed {
      *
      * @return createdTime
      */
-    @Schema(required = true, description = "The date and time when the feed was created, in ISO 8601 date time format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The date and time when the feed was created, in ISO 8601 date time format.")
     public OffsetDateTime getCreatedTime() {
         return createdTime;
     }
@@ -199,7 +202,7 @@ public class Feed {
      *
      * @return processingStatus
      */
-    @Schema(required = true, description = "The processing status of the feed.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The processing status of the feed.")
     public ProcessingStatusEnum getProcessingStatus() {
         return processingStatus;
     }
@@ -218,7 +221,8 @@ public class Feed {
      *
      * @return processingStartTime
      */
-    @Schema(description = "The date and time when feed processing started, in ISO 8601 date time format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The date and time when feed processing started, in ISO 8601 date time format.")
     public OffsetDateTime getProcessingStartTime() {
         return processingStartTime;
     }
@@ -237,7 +241,8 @@ public class Feed {
      *
      * @return processingEndTime
      */
-    @Schema(description = "The date and time when feed processing completed, in ISO 8601 date time format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The date and time when feed processing completed, in ISO 8601 date time format.")
     public OffsetDateTime getProcessingEndTime() {
         return processingEndTime;
     }
@@ -256,7 +261,7 @@ public class Feed {
      *
      * @return resultFeedDocumentId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The identifier for the feed document. This identifier is unique only in combination with a seller ID.")
     public String getResultFeedDocumentId() {

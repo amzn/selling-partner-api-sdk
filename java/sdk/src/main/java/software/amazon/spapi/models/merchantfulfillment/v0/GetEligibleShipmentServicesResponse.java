@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Response schema. */
-@Schema(description = "Response schema.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Response schema.")
 public class GetEligibleShipmentServicesResponse {
     @SerializedName("payload")
     private GetEligibleShipmentServicesResult payload = null;
@@ -35,7 +34,7 @@ public class GetEligibleShipmentServicesResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetEligibleShipmentServicesResult getPayload() {
         return payload;
     }
@@ -54,7 +53,7 @@ public class GetEligibleShipmentServicesResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.sellers.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** MarketplaceParticipation */
@@ -37,7 +36,7 @@ public class MarketplaceParticipation {
      *
      * @return marketplace
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Marketplace getMarketplace() {
         return marketplace;
     }
@@ -56,7 +55,7 @@ public class MarketplaceParticipation {
      *
      * @return participation
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Participation getParticipation() {
         return participation;
     }
@@ -75,7 +74,9 @@ public class MarketplaceParticipation {
      *
      * @return storeName
      */
-    @Schema(required = true, description = "The name of the seller's store as displayed in the marketplace.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The name of the seller's store as displayed in the marketplace.")
     public String getStoreName() {
         return storeName;
     }

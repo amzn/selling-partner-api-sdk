@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The fees for Amazon to prep goods for shipment. */
-@Schema(description = "The fees for Amazon to prep goods for shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The fees for Amazon to prep goods for shipment.")
 public class AmazonPrepFeesDetails {
     @SerializedName("PrepInstruction")
     private PrepInstruction prepInstruction = null;
@@ -35,7 +34,7 @@ public class AmazonPrepFeesDetails {
      *
      * @return prepInstruction
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PrepInstruction getPrepInstruction() {
         return prepInstruction;
     }
@@ -54,7 +53,7 @@ public class AmazonPrepFeesDetails {
      *
      * @return feePerUnit
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Amount getFeePerUnit() {
         return feePerUnit;
     }

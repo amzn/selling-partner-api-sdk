@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Result for the get shipments operation */
-@Schema(description = "Result for the get shipments operation")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Result for the get shipments operation")
 public class GetShipmentsResult {
     @SerializedName("ShipmentData")
     private InboundShipmentList shipmentData = null;
@@ -35,7 +34,7 @@ public class GetShipmentsResult {
      *
      * @return shipmentData
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InboundShipmentList getShipmentData() {
         return shipmentData;
     }
@@ -54,7 +53,7 @@ public class GetShipmentsResult {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When present and not empty, pass this string token in the next request to return the next response page.")
     public String getNextToken() {

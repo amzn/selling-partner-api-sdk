@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Input segment for featured offer expected price. The segment contains the location information for which featured
  * offer expected price is requested.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Input segment for featured offer expected price. The segment contains the location information for which featured offer expected price is requested.")
 public class Segment {
@@ -37,7 +36,7 @@ public class Segment {
      *
      * @return segmentDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SegmentDetails getSegmentDetails() {
         return segmentDetails;
     }

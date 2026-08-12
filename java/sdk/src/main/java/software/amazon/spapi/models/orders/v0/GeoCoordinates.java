@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The latitude and longitude coordinates of the shipping address using the WGS84 coordinate system. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The latitude and longitude coordinates of the shipping address using the WGS84 coordinate system.")
 public class GeoCoordinates {
@@ -37,7 +36,8 @@ public class GeoCoordinates {
      *
      * @return latitude
      */
-    @Schema(description = "The latitude coordinate of the shipping address using the WGS84 coordinate system.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The latitude coordinate of the shipping address using the WGS84 coordinate system.")
     public Double getLatitude() {
         return latitude;
     }
@@ -56,7 +56,8 @@ public class GeoCoordinates {
      *
      * @return longitude
      */
-    @Schema(description = "The longitude coordinate of the shipping address using the WGS84 coordinate system.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The longitude coordinate of the shipping address using the WGS84 coordinate system.")
     public Double getLongitude() {
         return longitude;
     }

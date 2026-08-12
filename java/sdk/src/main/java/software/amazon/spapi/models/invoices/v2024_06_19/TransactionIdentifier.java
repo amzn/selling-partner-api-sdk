@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The identifier for a transaction. */
-@Schema(description = "The identifier for a transaction.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The identifier for a transaction.")
 public class TransactionIdentifier {
     @SerializedName("name")
     private String name = null;
@@ -36,7 +35,7 @@ public class TransactionIdentifier {
      *
      * @return name
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The transaction identifier name. Use the `getInvoicesAttributes` operation to check `transactionIdentifierName` options.")
     public String getName() {
@@ -57,7 +56,7 @@ public class TransactionIdentifier {
      *
      * @return id
      */
-    @Schema(description = "The transaction identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The transaction identifier.")
     public String getId() {
         return id;
     }

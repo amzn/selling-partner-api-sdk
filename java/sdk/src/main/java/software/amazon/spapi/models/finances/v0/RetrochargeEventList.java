@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.finances.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of information about &#x60;Retrocharge&#x60; or &#x60;RetrochargeReversal&#x60; events. */
-@Schema(description = "A list of information about `Retrocharge` or `RetrochargeReversal` events.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of information about `Retrocharge` or `RetrochargeReversal` events.")
 public class RetrochargeEventList extends ArrayList<RetrochargeEvent> {
 
     @Override

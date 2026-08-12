@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Extended address fields for additional address components including the street name or number. Note: Available for
  * grocery sellers and Brazil shipping addresses.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Extended address fields for additional address components including the street name or number.   Note: Available for grocery sellers and Brazil shipping addresses.")
 public class AddressExtendedFields {
@@ -49,7 +48,7 @@ public class AddressExtendedFields {
      *
      * @return streetName
      */
-    @Schema(description = "The street name.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The street name.")
     public String getStreetName() {
         return streetName;
     }
@@ -68,7 +67,8 @@ public class AddressExtendedFields {
      *
      * @return streetNumber
      */
-    @Schema(description = "The house, building, or property number associated with the location's street address.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The house, building, or property number associated with the location's street address.")
     public String getStreetNumber() {
         return streetNumber;
     }
@@ -87,7 +87,8 @@ public class AddressExtendedFields {
      *
      * @return complement
      */
-    @Schema(description = "The floor number/unit number in the building/private house number.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The floor number/unit number in the building/private house number.")
     public String getComplement() {
         return complement;
     }
@@ -106,7 +107,8 @@ public class AddressExtendedFields {
      *
      * @return neighborhood
      */
-    @Schema(description = "The neighborhood. This value is only used in some countries (such as Brazil).")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The neighborhood. This value is only used in some countries (such as Brazil).")
     public String getNeighborhood() {
         return neighborhood;
     }
@@ -125,7 +127,7 @@ public class AddressExtendedFields {
      *
      * @return geoCoordinates
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GeoCoordinates getGeoCoordinates() {
         return geoCoordinates;
     }

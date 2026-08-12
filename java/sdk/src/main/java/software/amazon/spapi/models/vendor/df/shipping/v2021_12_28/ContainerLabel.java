@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The details of the container label. */
-@Schema(description = "The details of the container label.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The details of the container label.")
 public class ContainerLabel {
     @SerializedName("containerTrackingNumber")
     private String containerTrackingNumber = null;
@@ -38,7 +37,8 @@ public class ContainerLabel {
      *
      * @return containerTrackingNumber
      */
-    @Schema(description = "The container (pallet) tracking identifier from the shipping carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The container (pallet) tracking identifier from the shipping carrier.")
     public String getContainerTrackingNumber() {
         return containerTrackingNumber;
     }
@@ -57,7 +57,9 @@ public class ContainerLabel {
      *
      * @return content
      */
-    @Schema(required = true, description = "The container label content encoded into a Base64 string.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The container label content encoded into a Base64 string.")
     public String getContent() {
         return content;
     }
@@ -76,7 +78,7 @@ public class ContainerLabel {
      *
      * @return format
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ContainerLabelFormat getFormat() {
         return format;
     }

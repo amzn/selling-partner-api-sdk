@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The full context for an A+ Content publishing event. */
-@Schema(description = "The full context for an A+ Content publishing event.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The full context for an A+ Content publishing event.")
 public class PublishRecord {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -48,7 +47,7 @@ public class PublishRecord {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -72,7 +71,7 @@ public class PublishRecord {
      *
      * @return locale
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The IETF language tag, which supports the primary language subtag and one secondary language subtag. The secondary language subtag is usually a regional designation. This doesn't support subtags other than the primary and secondary subtags. **Pattern:** ^[a-z]{2,}-[A-Z0-9]{2,}$")
@@ -94,7 +93,9 @@ public class PublishRecord {
      *
      * @return asin
      */
-    @Schema(required = true, description = "The Amazon Standard Identification Number (ASIN).")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The Amazon Standard Identification Number (ASIN).")
     public String getAsin() {
         return asin;
     }
@@ -113,7 +114,7 @@ public class PublishRecord {
      *
      * @return contentType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ContentType getContentType() {
         return contentType;
     }
@@ -133,7 +134,7 @@ public class PublishRecord {
      *
      * @return contentSubType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The A+ Content document subtype. This represents a special-purpose type of an A+ Content document. Not every A+ Content document type has a subtype, and subtypes can change at any time.")
     public String getContentSubType() {
@@ -155,7 +156,7 @@ public class PublishRecord {
      *
      * @return contentReferenceKey
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.")

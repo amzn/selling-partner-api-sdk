@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An amount of money, including units in the form of currency. */
-@Schema(description = "An amount of money, including units in the form of currency.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "An amount of money, including units in the form of currency.")
 public class Money {
     @SerializedName("amount")
     private String amount = null;
@@ -35,7 +35,7 @@ public class Money {
      *
      * @return amount
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "A decimal number with no loss of precision. Follows RFC 7159 for number representation.")
     public String getAmount() {
@@ -56,7 +56,7 @@ public class Money {
      *
      * @return currencyCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The three-letter currency code that identifies the currency type, following ISO 4217 international standards.")

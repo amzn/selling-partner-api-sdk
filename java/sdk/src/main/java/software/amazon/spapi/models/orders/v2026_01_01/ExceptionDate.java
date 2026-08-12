@@ -17,14 +17,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Special dates when normal business hours are modified or suspended, requiring different delivery scheduling. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Special dates when normal business hours are modified or suspended, requiring different delivery scheduling.")
 public class ExceptionDate {
@@ -94,7 +94,7 @@ public class ExceptionDate {
      *
      * @return exceptionDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Specific calendar date when normal operating hours do not apply. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format at day granularity.")
     public LocalDate getExceptionDate() {
@@ -115,7 +115,8 @@ public class ExceptionDate {
      *
      * @return exceptionDateType
      */
-    @Schema(description = "Operational status of the business on the specified exception date.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Operational status of the business on the specified exception date.")
     public ExceptionDateTypeEnum getExceptionDateType() {
         return exceptionDateType;
     }
@@ -142,7 +143,8 @@ public class ExceptionDate {
      *
      * @return timeWindows
      */
-    @Schema(description = "Alternative operating hours that apply specifically to this exception date.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Alternative operating hours that apply specifically to this exception date.")
     public List<TimeWindow> getTimeWindows() {
         return timeWindows;
     }

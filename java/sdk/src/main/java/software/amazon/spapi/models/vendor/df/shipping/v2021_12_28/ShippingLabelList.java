@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Response payload with the list of shipping labels. */
-@Schema(description = "Response payload with the list of shipping labels.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Response payload with the list of shipping labels.")
 public class ShippingLabelList {
     @SerializedName("pagination")
     private Pagination pagination = null;
@@ -37,7 +36,7 @@ public class ShippingLabelList {
      *
      * @return pagination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Pagination getPagination() {
         return pagination;
     }
@@ -64,7 +63,8 @@ public class ShippingLabelList {
      *
      * @return shippingLabels
      */
-    @Schema(description = "An array containing the details of the generated shipping labels.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "An array containing the details of the generated shipping labels.")
     public List<ShippingLabel> getShippingLabels() {
         return shippingLabels;
     }

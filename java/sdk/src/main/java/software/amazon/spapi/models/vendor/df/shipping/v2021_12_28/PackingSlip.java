@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Packing slip information. */
-@Schema(description = "Packing slip information.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Packing slip information.")
 public class PackingSlip {
     @SerializedName("purchaseOrderNumber")
     private String purchaseOrderNumber = null;
@@ -87,7 +86,9 @@ public class PackingSlip {
      *
      * @return purchaseOrderNumber
      */
-    @Schema(required = true, description = "Purchase order number of the shipment that the packing slip is for.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Purchase order number of the shipment that the packing slip is for.")
     public String getPurchaseOrderNumber() {
         return purchaseOrderNumber;
     }
@@ -106,7 +107,9 @@ public class PackingSlip {
      *
      * @return content
      */
-    @Schema(required = true, description = "A Base64 string of the packing slip PDF.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A Base64 string of the packing slip PDF.")
     public String getContent() {
         return content;
     }
@@ -125,7 +128,7 @@ public class PackingSlip {
      *
      * @return contentType
      */
-    @Schema(description = "The format of the file such as PDF, JPEG etc.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The format of the file such as PDF, JPEG etc.")
     public ContentTypeEnum getContentType() {
         return contentType;
     }

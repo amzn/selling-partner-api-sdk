@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A standard headline and body text with an image on the side. */
-@Schema(description = "A standard headline and body text with an image on the side.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A standard headline and body text with an image on the side.")
 public class StandardSingleSideImageModule {
     @SerializedName("imagePositionType")
     private PositionType imagePositionType = null;
@@ -35,7 +35,7 @@ public class StandardSingleSideImageModule {
      *
      * @return imagePositionType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PositionType getImagePositionType() {
         return imagePositionType;
     }
@@ -54,7 +54,7 @@ public class StandardSingleSideImageModule {
      *
      * @return block
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardImageTextBlock getBlock() {
         return block;
     }

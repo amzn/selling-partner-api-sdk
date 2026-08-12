@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Represents an AWD replenishment order. */
-@Schema(description = "Represents an AWD replenishment order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Represents an AWD replenishment order.")
 public class ReplenishmentOrder {
     @SerializedName("confirmedOn")
     private OffsetDateTime confirmedOn = null;
@@ -61,7 +61,7 @@ public class ReplenishmentOrder {
      *
      * @return confirmedOn
      */
-    @Schema(description = "Date on which this replenishment order was confirmed.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date on which this replenishment order was confirmed.")
     public OffsetDateTime getConfirmedOn() {
         return confirmedOn;
     }
@@ -80,7 +80,7 @@ public class ReplenishmentOrder {
      *
      * @return createdAt
      */
-    @Schema(description = "Date on which this replenishment order was created.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date on which this replenishment order was created.")
     public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
@@ -110,7 +110,7 @@ public class ReplenishmentOrder {
      *
      * @return distributionIneligibleReasons
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Distribution errors associated with the order related to the products or packages to replenish. This field will be populated if the order has products or packages which failed validation.")
     public List<DistributionIneligibleReason> getDistributionIneligibleReasons() {
@@ -139,7 +139,8 @@ public class ReplenishmentOrder {
      *
      * @return eligibleProducts
      */
-    @Schema(description = "List of product units that are eligible for replenishment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "List of product units that are eligible for replenishment.")
     public List<DistributionProduct> getEligibleProducts() {
         return eligibleProducts;
     }
@@ -158,7 +159,7 @@ public class ReplenishmentOrder {
      *
      * @return orderId
      */
-    @Schema(required = true, description = "Order Id of the replenishment order.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Order Id of the replenishment order.")
     public String getOrderId() {
         return orderId;
     }
@@ -177,7 +178,7 @@ public class ReplenishmentOrder {
      *
      * @return status
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ReplenishmentOrderStatus getStatus() {
         return status;
     }
@@ -204,7 +205,9 @@ public class ReplenishmentOrder {
      *
      * @return outboundShipments
      */
-    @Schema(required = true, description = "List of outbound shipments that are part of this order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "List of outbound shipments that are part of this order.")
     public List<OutboundShipmentSummary> getOutboundShipments() {
         return outboundShipments;
     }
@@ -231,7 +234,8 @@ public class ReplenishmentOrder {
      *
      * @return products
      */
-    @Schema(description = "Requested amount of single product units to be replenished.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Requested amount of single product units to be replenished.")
     public List<DistributionProduct> getProducts() {
         return products;
     }
@@ -258,7 +262,7 @@ public class ReplenishmentOrder {
      *
      * @return shippedProducts
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Outbound product units that are shipped after the execution has completed post confirmation.")
     public List<DistributionProduct> getShippedProducts() {
@@ -279,7 +283,8 @@ public class ReplenishmentOrder {
      *
      * @return updatedAt
      */
-    @Schema(description = "Date on which this replenishment order was last updated.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Date on which this replenishment order was last updated.")
     public OffsetDateTime getUpdatedAt() {
         return updatedAt;
     }

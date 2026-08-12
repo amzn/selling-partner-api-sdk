@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimateRequest;
 import software.amazon.spapi.models.productfees.v0.GetMyFeesEstimateResponse;
@@ -72,9 +71,7 @@ public class FeesApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getMyFeesEstimateForASINCall(
-            String asin,
-            GetMyFeesEstimateRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String asin, GetMyFeesEstimateRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -115,9 +112,7 @@ public class FeesApi {
     }
 
     private okhttp3.Call getMyFeesEstimateForASINValidateBeforeCall(
-            String asin,
-            GetMyFeesEstimateRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String asin, GetMyFeesEstimateRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'asin' is set
@@ -324,10 +319,10 @@ public class FeesApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getMyFeesEstimateForASINValidateBeforeCall(asin, body, progressRequestListener);
@@ -356,9 +351,7 @@ public class FeesApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getMyFeesEstimateForSKUCall(
-            String sellerSKU,
-            GetMyFeesEstimateRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String sellerSKU, GetMyFeesEstimateRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -400,9 +393,7 @@ public class FeesApi {
     }
 
     private okhttp3.Call getMyFeesEstimateForSKUValidateBeforeCall(
-            String sellerSKU,
-            GetMyFeesEstimateRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String sellerSKU, GetMyFeesEstimateRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'sellerSKU' is set
@@ -628,10 +619,10 @@ public class FeesApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getMyFeesEstimateForSKUValidateBeforeCall(sellerSKU, body, progressRequestListener);
@@ -658,7 +649,7 @@ public class FeesApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getMyFeesEstimatesCall(
-            GetMyFeesEstimatesRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            GetMyFeesEstimatesRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -697,7 +688,7 @@ public class FeesApi {
     }
 
     private okhttp3.Call getMyFeesEstimatesValidateBeforeCall(
-            GetMyFeesEstimatesRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            GetMyFeesEstimatesRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -835,10 +826,10 @@ public class FeesApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getMyFeesEstimatesValidateBeforeCall(body, progressRequestListener);

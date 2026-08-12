@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The response schema for &#x60;getOrderPreview&#x60;. */
-@Schema(description = "The response schema for `getOrderPreview`.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for `getOrderPreview`.")
 public class GetOrderPreviewResponse {
     @SerializedName("plannedShipments")
     private List<PreviewPlannedShipment> plannedShipments = null;
@@ -45,7 +44,9 @@ public class GetOrderPreviewResponse {
      *
      * @return plannedShipments
      */
-    @Schema(required = true, description = "An array of planned shipment information.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An array of planned shipment information.")
     public List<PreviewPlannedShipment> getPlannedShipments() {
         return plannedShipments;
     }
@@ -72,7 +73,8 @@ public class GetOrderPreviewResponse {
      *
      * @return constraints
      */
-    @Schema(description = "An array of constraints that may affect the fulfillment order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "An array of constraints that may affect the fulfillment order.")
     public List<Constraint> getConstraints() {
         return constraints;
     }

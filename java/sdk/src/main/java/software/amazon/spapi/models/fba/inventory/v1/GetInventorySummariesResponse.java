@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fba.inventory.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The Response schema. */
-@Schema(description = "The Response schema.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The Response schema.")
 public class GetInventorySummariesResponse {
     @SerializedName("payload")
     private GetInventorySummariesResult payload = null;
@@ -38,7 +37,7 @@ public class GetInventorySummariesResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetInventorySummariesResult getPayload() {
         return payload;
     }
@@ -57,7 +56,7 @@ public class GetInventorySummariesResponse {
      *
      * @return pagination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Pagination getPagination() {
         return pagination;
     }
@@ -76,7 +75,7 @@ public class GetInventorySummariesResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

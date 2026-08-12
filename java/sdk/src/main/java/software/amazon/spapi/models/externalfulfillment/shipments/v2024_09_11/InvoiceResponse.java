@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response of the &#x60;generateInvoice&#x60; operation. */
-@Schema(description = "The response of the `generateInvoice` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response of the `generateInvoice` operation.")
 public class InvoiceResponse {
     @SerializedName("document")
     private Document document = null;
@@ -32,7 +31,7 @@ public class InvoiceResponse {
      *
      * @return document
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Document getDocument() {
         return document;
     }

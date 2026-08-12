@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Delivery settings for a fulfillment preview. */
-@Schema(description = "Delivery settings for a fulfillment preview.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Delivery settings for a fulfillment preview.")
 public class PreviewDeliveryService {
     @SerializedName("paymentOnDelivery")
     private String paymentOnDelivery = null;
@@ -34,7 +33,7 @@ public class PreviewDeliveryService {
      *
      * @return paymentOnDelivery
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Indicates whether to include payment on delivery pricing in the preview. Only present when `includePaymentOnDelivery` is `true` on the request. Possible values: `ENABLED`, `DISABLED`.")
     public String getPaymentOnDelivery() {

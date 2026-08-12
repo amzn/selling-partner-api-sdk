@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** The estimated shipping cost associated with the transportation option. */
-@Schema(description = "The estimated shipping cost associated with the transportation option.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The estimated shipping cost associated with the transportation option.")
 public class Quote {
     @SerializedName("cost")
     private Currency cost = null;
@@ -38,7 +39,7 @@ public class Quote {
      *
      * @return cost
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getCost() {
         return cost;
     }
@@ -59,7 +60,7 @@ public class Quote {
      *
      * @return expiration
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The time at which this transportation option quote expires. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.")
     public OffsetDateTime getExpiration() {
@@ -80,7 +81,7 @@ public class Quote {
      *
      * @return voidableUntil
      */
-    @Schema(description = "Voidable until timestamp.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Voidable until timestamp.")
     public OffsetDateTime getVoidableUntil() {
         return voidableUntil;
     }

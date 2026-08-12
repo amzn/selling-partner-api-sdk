@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Objects;
 
 /** Drop-off location attributes. */
-@Schema(description = "Drop-off location attributes.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Drop-off location attributes.")
 public class OrderDropOffLocationAttributes extends HashMap<String, Object> {
 
     @Override

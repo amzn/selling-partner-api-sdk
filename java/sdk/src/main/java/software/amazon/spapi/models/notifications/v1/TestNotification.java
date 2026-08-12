@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The describer for the test notification that will be delivered. */
-@Schema(description = "The describer for the test notification that will be delivered.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The describer for the test notification that will be delivered.")
 public class TestNotification {
     @SerializedName("payloadVersion")
     private String payloadVersion = null;
@@ -35,7 +35,9 @@ public class TestNotification {
      *
      * @return payloadVersion
      */
-    @Schema(required = true, description = "The version of the payload object to be used in the notification.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The version of the payload object to be used in the notification.")
     public String getPayloadVersion() {
         return payloadVersion;
     }
@@ -56,7 +58,7 @@ public class TestNotification {
      *
      * @return testScenario
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The scenario of the specified notification to be used in the notification payload. If testScenario is empty, a 400 response will be returned back to the developer. The scenarios supported for each notification type can be found in the Selling Partner API Developer Guide.")
     public String getTestScenario() {

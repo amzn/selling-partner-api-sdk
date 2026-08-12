@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Appointment details for carrier pickup or fulfillment center appointments. */
-@Schema(description = "Appointment details for carrier pickup or fulfillment center appointments.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Appointment details for carrier pickup or fulfillment center appointments.")
 public class SelfShipAppointmentDetails {
     @SerializedName("appointmentId")
     private BigDecimal appointmentId = null;
@@ -38,7 +39,7 @@ public class SelfShipAppointmentDetails {
      *
      * @return appointmentId
      */
-    @Schema(description = "Identifier for appointment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Identifier for appointment.")
     public BigDecimal getAppointmentId() {
         return appointmentId;
     }
@@ -57,7 +58,7 @@ public class SelfShipAppointmentDetails {
      *
      * @return appointmentSlotTime
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AppointmentSlotTime getAppointmentSlotTime() {
         return appointmentSlotTime;
     }
@@ -76,7 +77,7 @@ public class SelfShipAppointmentDetails {
      *
      * @return appointmentStatus
      */
-    @Schema(description = "Status of the appointment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Status of the appointment.")
     public String getAppointmentStatus() {
         return appointmentStatus;
     }

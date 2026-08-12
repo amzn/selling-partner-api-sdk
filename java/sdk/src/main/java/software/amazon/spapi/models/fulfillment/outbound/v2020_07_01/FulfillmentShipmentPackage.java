@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Package information for a shipment in a fulfillment order. */
-@Schema(description = "Package information for a shipment in a fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Package information for a shipment in a fulfillment order.")
 public class FulfillmentShipmentPackage {
     @SerializedName("packageNumber")
     private Integer packageNumber = null;
@@ -50,7 +50,7 @@ public class FulfillmentShipmentPackage {
      *
      * @return packageNumber
      */
-    @Schema(required = true, description = "Identifies a package in a shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Identifies a package in a shipment.")
     public Integer getPackageNumber() {
         return packageNumber;
     }
@@ -69,7 +69,9 @@ public class FulfillmentShipmentPackage {
      *
      * @return carrierCode
      */
-    @Schema(required = true, description = "Identifies the carrier who will deliver the shipment to the recipient.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Identifies the carrier who will deliver the shipment to the recipient.")
     public String getCarrierCode() {
         return carrierCode;
     }
@@ -88,7 +90,8 @@ public class FulfillmentShipmentPackage {
      *
      * @return trackingNumber
      */
-    @Schema(description = "The tracking number, if provided, can be used to obtain tracking and delivery information.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The tracking number, if provided, can be used to obtain tracking and delivery information.")
     public String getTrackingNumber() {
         return trackingNumber;
     }
@@ -107,7 +110,7 @@ public class FulfillmentShipmentPackage {
      *
      * @return amazonFulfillmentTrackingNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The Amazon fulfillment tracking number, if provided, can be used to obtain tracking and delivery information.")
     public String getAmazonFulfillmentTrackingNumber() {
@@ -128,7 +131,7 @@ public class FulfillmentShipmentPackage {
      *
      * @return estimatedArrivalDate
      */
-    @Schema(description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
     public OffsetDateTime getEstimatedArrivalDate() {
         return estimatedArrivalDate;
     }
@@ -147,7 +150,7 @@ public class FulfillmentShipmentPackage {
      *
      * @return lockerDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public LockerDetails getLockerDetails() {
         return lockerDetails;
     }
@@ -166,7 +169,7 @@ public class FulfillmentShipmentPackage {
      *
      * @return deliveryInformation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DeliveryInformation getDeliveryInformation() {
         return deliveryInformation;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The Response for the GetCarrierAccountsResponse operation. */
-@Schema(description = "The Response  for the GetCarrierAccountsResponse operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The Response  for the GetCarrierAccountsResponse operation.")
 public class GetCarrierAccountsResponse {
     @SerializedName("activeAccounts")
     private ActiveAccounts activeAccounts = null;
@@ -32,7 +31,7 @@ public class GetCarrierAccountsResponse {
      *
      * @return activeAccounts
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ActiveAccounts getActiveAccounts() {
         return activeAccounts;
     }

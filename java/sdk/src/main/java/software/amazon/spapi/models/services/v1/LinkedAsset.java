@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 /** Information about an asset linked to an associated item, such as vehicle information for Ship-to-Store orders. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Information about an asset linked to an associated item, such as vehicle information for Ship-to-Store orders.")
 public class LinkedAsset {
@@ -42,7 +41,7 @@ public class LinkedAsset {
      *
      * @return assetType
      */
-    @Schema(description = "The type of the linked asset. For example: `VEHICLE`. ")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of the linked asset. For example: `VEHICLE`. ")
     public String getAssetType() {
         return assetType;
     }
@@ -61,7 +60,8 @@ public class LinkedAsset {
      *
      * @return assetName
      */
-    @Schema(description = "The name of the linked asset. For example: `2024 Polaris Slingshot SLR AutoDrive`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The name of the linked asset. For example: `2024 Polaris Slingshot SLR AutoDrive`.")
     public String getAssetName() {
         return assetName;
     }
@@ -88,7 +88,7 @@ public class LinkedAsset {
      *
      * @return additionalAttributes
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Additional attributes of the linked asset, such as vehicle make, model, year, and engine details.")
     public Map<String, String> getAdditionalAttributes() {

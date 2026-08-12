@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the &#x60;createOrder&#x60; operation when the request is accepted for async processing. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The response schema for the `createOrder` operation when the request is accepted for async processing.")
 public class CreateOrderAcceptedResponse {
@@ -37,7 +36,7 @@ public class CreateOrderAcceptedResponse {
      *
      * @return orderId
      */
-    @Schema(required = true, description = "The fulfillment order identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The fulfillment order identifier.")
     public String getOrderId() {
         return orderId;
     }
@@ -56,7 +55,9 @@ public class CreateOrderAcceptedResponse {
      *
      * @return status
      */
-    @Schema(required = true, description = "The current status of the fulfillment order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The current status of the fulfillment order.")
     public String getStatus() {
         return status;
     }

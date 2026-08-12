@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** An event related to a trial shipment. */
-@Schema(description = "An event related to a trial shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An event related to a trial shipment.")
 public class TrialShipmentEvent {
     @SerializedName("AmazonOrderId")
     private String amazonOrderId = null;
@@ -44,7 +44,7 @@ public class TrialShipmentEvent {
      *
      * @return amazonOrderId
      */
-    @Schema(description = "An Amazon-defined identifier for an order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon-defined identifier for an order.")
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -63,7 +63,7 @@ public class TrialShipmentEvent {
      *
      * @return financialEventGroupId
      */
-    @Schema(description = "The identifier of the financial event group.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The identifier of the financial event group.")
     public String getFinancialEventGroupId() {
         return financialEventGroupId;
     }
@@ -82,7 +82,7 @@ public class TrialShipmentEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -104,7 +104,7 @@ public class TrialShipmentEvent {
      *
      * @return SKU
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.")
     public String getSKU() {
@@ -125,7 +125,7 @@ public class TrialShipmentEvent {
      *
      * @return feeList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeeComponentList getFeeList() {
         return feeList;
     }

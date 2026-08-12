@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The child ASIN review topic mention metrics. */
-@Schema(description = "The child ASIN review topic mention metrics.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The child ASIN review topic mention metrics.")
 public class ChildAsinMentionMetrics {
     @SerializedName("asin")
     private String asin = null;
@@ -35,7 +34,7 @@ public class ChildAsinMentionMetrics {
      *
      * @return asin
      */
-    @Schema(required = true, description = "The child ASIN of the requested item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The child ASIN of the requested item.")
     public String getAsin() {
         return asin;
     }
@@ -54,7 +53,9 @@ public class ChildAsinMentionMetrics {
      *
      * @return numberOfMentions
      */
-    @Schema(required = true, description = "The number of times reviews of the child ASIN mention the topic.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The number of times reviews of the child ASIN mention the topic.")
     public Integer getNumberOfMentions() {
         return numberOfMentions;
     }

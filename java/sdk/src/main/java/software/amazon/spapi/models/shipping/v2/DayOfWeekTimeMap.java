@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Objects;
 
 /** Map of day of the week to operating hours of that day */
-@Schema(description = "Map of day of the week to operating hours of that day")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Map of day of the week to operating hours of that day")
 public class DayOfWeekTimeMap extends HashMap<String, OperatingHours> {
 
     @Override

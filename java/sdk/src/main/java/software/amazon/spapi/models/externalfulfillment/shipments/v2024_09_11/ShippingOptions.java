@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Shipping options for a single package. */
-@Schema(description = "Shipping options for a single package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Shipping options for a single package.")
 public class ShippingOptions {
     @SerializedName("shippingOptionId")
     private String shippingOptionId = null;
@@ -102,7 +101,7 @@ public class ShippingOptions {
      *
      * @return shippingOptionId
      */
-    @Schema(required = true, description = "An identifier for the shipping option.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "An identifier for the shipping option.")
     public String getShippingOptionId() {
         return shippingOptionId;
     }
@@ -121,7 +120,7 @@ public class ShippingOptions {
      *
      * @return shipBy
      */
-    @Schema(required = true, description = "The shipper type.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The shipper type.")
     public ShipByEnum getShipBy() {
         return shipBy;
     }
@@ -140,7 +139,7 @@ public class ShippingOptions {
      *
      * @return carrierName
      */
-    @Schema(description = "The carrier name for the offering.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The carrier name for the offering.")
     public String getCarrierName() {
         return carrierName;
     }
@@ -159,7 +158,7 @@ public class ShippingOptions {
      *
      * @return pickupWindow
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TimeWindow getPickupWindow() {
         return pickupWindow;
     }
@@ -178,7 +177,7 @@ public class ShippingOptions {
      *
      * @return timeSlot
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TimeWindow getTimeSlot() {
         return timeSlot;
     }
@@ -197,7 +196,7 @@ public class ShippingOptions {
      *
      * @return handoverLocation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public HandoverLocation getHandoverLocation() {
         return handoverLocation;
     }

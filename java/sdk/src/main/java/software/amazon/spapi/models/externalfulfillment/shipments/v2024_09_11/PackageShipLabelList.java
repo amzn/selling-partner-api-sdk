@@ -12,7 +12,6 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -20,7 +19,7 @@ import java.util.Objects;
  * A list of label documents for each package specified in the request. In case of partial failures when generating
  * labels, the &#x60;isErrored&#x60; and &#x60;errorDetails&#x60; attributes detail the cause of failure.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A list of label documents for each package specified in the request. In case of partial failures when generating labels, the `isErrored` and `errorDetails` attributes detail the cause of failure.")
 public class PackageShipLabelList extends ArrayList<PackageShipLabel> {

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The payload for the getRates operation. */
-@Schema(description = "The payload for the getRates operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the getRates operation.")
 public class GetRatesResult {
     @SerializedName("requestToken")
     private String requestToken = null;
@@ -38,7 +37,9 @@ public class GetRatesResult {
      *
      * @return requestToken
      */
-    @Schema(required = true, description = "A unique token generated to identify a getRates operation.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A unique token generated to identify a getRates operation.")
     public String getRequestToken() {
         return requestToken;
     }
@@ -57,7 +58,7 @@ public class GetRatesResult {
      *
      * @return rates
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public RateList getRates() {
         return rates;
     }
@@ -76,7 +77,7 @@ public class GetRatesResult {
      *
      * @return ineligibleRates
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public IneligibleRateList getIneligibleRates() {
         return ineligibleRates;
     }

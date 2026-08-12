@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about the shipping of the return packages. */
-@Schema(description = "Information about the shipping of the return packages.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about the shipping of the return packages.")
 public class ReturnShippingInfo {
     @SerializedName("deliveryDateTime")
     private String deliveryDateTime = null;
@@ -41,7 +40,7 @@ public class ReturnShippingInfo {
      *
      * @return deliveryDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
     public String getDeliveryDateTime() {
@@ -62,7 +61,7 @@ public class ReturnShippingInfo {
      *
      * @return pickupDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
     public String getPickupDateTime() {
@@ -83,7 +82,7 @@ public class ReturnShippingInfo {
      *
      * @return forwardTrackingInfo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TrackingInfo getForwardTrackingInfo() {
         return forwardTrackingInfo;
     }
@@ -102,7 +101,7 @@ public class ReturnShippingInfo {
      *
      * @return reverseTrackingInfo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TrackingInfo getReverseTrackingInfo() {
         return reverseTrackingInfo;
     }

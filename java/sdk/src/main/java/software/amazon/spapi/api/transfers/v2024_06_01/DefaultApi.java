@@ -33,7 +33,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.transfers.v2024_06_01.GetPaymentMethodsResponse;
 import software.amazon.spapi.models.transfers.v2024_06_01.InitiatePayoutRequest;
@@ -81,9 +80,7 @@ public class DefaultApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getPaymentMethodsCall(
-            String marketplaceId,
-            Set<String> paymentMethodTypes,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String marketplaceId, Set<String> paymentMethodTypes, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -129,9 +126,7 @@ public class DefaultApi {
     }
 
     private okhttp3.Call getPaymentMethodsValidateBeforeCall(
-            String marketplaceId,
-            Set<String> paymentMethodTypes,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String marketplaceId, Set<String> paymentMethodTypes, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceId' is set
@@ -301,10 +296,10 @@ public class DefaultApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -331,8 +326,7 @@ public class DefaultApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call initiatePayoutCall(
-            InitiatePayoutRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call initiatePayoutCall(InitiatePayoutRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -371,8 +365,7 @@ public class DefaultApi {
     }
 
     private okhttp3.Call initiatePayoutValidateBeforeCall(
-            InitiatePayoutRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            InitiatePayoutRequest body, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -518,10 +511,10 @@ public class DefaultApi {
             InitiatePayoutRequest body, final ApiCallback<InitiatePayoutResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = initiatePayoutValidateBeforeCall(body, progressRequestListener);
@@ -559,7 +552,7 @@ public class DefaultApi {
             List<String> marketplaceIds,
             String accountType,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -607,7 +600,7 @@ public class DefaultApi {
             List<String> marketplaceIds,
             String accountType,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return listExpectedPayoutsCall(marketplaceIds, accountType, nextToken, progressRequestListener);
@@ -803,10 +796,10 @@ public class DefaultApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -855,7 +848,7 @@ public class DefaultApi {
             String payoutId,
             String accountType,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -909,7 +902,7 @@ public class DefaultApi {
             String payoutId,
             String accountType,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return listPayoutsCall(
@@ -1199,10 +1192,10 @@ public class DefaultApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listPayoutsValidateBeforeCall(

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Gift wrapping and personalization options selected by the customer for an order item. */
-@Schema(description = "Gift wrapping and personalization options selected by the customer for an order item.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Gift wrapping and personalization options selected by the customer for an order item.")
 public class GiftOption {
     @SerializedName("giftMessage")
     private String giftMessage = null;
@@ -35,7 +35,8 @@ public class GiftOption {
      *
      * @return giftMessage
      */
-    @Schema(description = "Personal message from the buyer to be included with the gift-wrapped item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Personal message from the buyer to be included with the gift-wrapped item.")
     public String getGiftMessage() {
         return giftMessage;
     }
@@ -54,7 +55,8 @@ public class GiftOption {
      *
      * @return giftWrapLevel
      */
-    @Schema(description = "Type or quality level of gift wrapping service selected by the customer.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Type or quality level of gift wrapping service selected by the customer.")
     public String getGiftWrapLevel() {
         return giftWrapLevel;
     }

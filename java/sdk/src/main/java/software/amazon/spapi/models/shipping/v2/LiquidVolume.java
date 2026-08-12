@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Liquid Volume. */
-@Schema(description = "Liquid Volume.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Liquid Volume.")
 public class LiquidVolume {
     /** The unit of measurement. */
     @JsonAdapter(UnitEnum.Adapter.class)
@@ -96,7 +96,7 @@ public class LiquidVolume {
      *
      * @return unit
      */
-    @Schema(required = true, description = "The unit of measurement.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The unit of measurement.")
     public UnitEnum getUnit() {
         return unit;
     }
@@ -115,7 +115,7 @@ public class LiquidVolume {
      *
      * @return value
      */
-    @Schema(required = true, description = "The measurement value.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The measurement value.")
     public BigDecimal getValue() {
         return value;
     }

@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Detailed information for an ineligible shipping service offering. */
-@Schema(description = "Detailed information for an ineligible shipping service offering.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Detailed information for an ineligible shipping service offering.")
 public class IneligibleRate {
     @SerializedName("serviceId")
     private String serviceId = null;
@@ -46,7 +46,9 @@ public class IneligibleRate {
      *
      * @return serviceId
      */
-    @Schema(required = true, description = "An identifier for the shipping service.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An identifier for the shipping service.")
     public String getServiceId() {
         return serviceId;
     }
@@ -65,7 +67,7 @@ public class IneligibleRate {
      *
      * @return serviceName
      */
-    @Schema(required = true, description = "The name of the shipping service.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the shipping service.")
     public String getServiceName() {
         return serviceName;
     }
@@ -84,7 +86,7 @@ public class IneligibleRate {
      *
      * @return carrierName
      */
-    @Schema(required = true, description = "The carrier name for the offering.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The carrier name for the offering.")
     public String getCarrierName() {
         return carrierName;
     }
@@ -103,7 +105,9 @@ public class IneligibleRate {
      *
      * @return carrierId
      */
-    @Schema(required = true, description = "The carrier identifier for the offering, provided by the carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The carrier identifier for the offering, provided by the carrier.")
     public String getCarrierId() {
         return carrierId;
     }
@@ -130,7 +134,9 @@ public class IneligibleRate {
      *
      * @return ineligibilityReasons
      */
-    @Schema(required = true, description = "A list of reasons why a shipping service offering is ineligible.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of reasons why a shipping service offering is ineligible.")
     public List<IneligibilityReason> getIneligibilityReasons() {
         return ineligibilityReasons;
     }

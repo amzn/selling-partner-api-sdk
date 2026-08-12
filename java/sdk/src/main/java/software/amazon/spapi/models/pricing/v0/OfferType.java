@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Schema for an individual offer. */
-@Schema(description = "Schema for an individual offer.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Schema for an individual offer.")
 public class OfferType {
     @SerializedName("offerType")
     private OfferCustomerType offerType = null;
@@ -58,7 +57,7 @@ public class OfferType {
      *
      * @return offerType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferCustomerType getOfferType() {
         return offerType;
     }
@@ -77,7 +76,7 @@ public class OfferType {
      *
      * @return buyingPrice
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PriceType getBuyingPrice() {
         return buyingPrice;
     }
@@ -96,7 +95,7 @@ public class OfferType {
      *
      * @return regularPrice
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MoneyType getRegularPrice() {
         return regularPrice;
     }
@@ -115,7 +114,7 @@ public class OfferType {
      *
      * @return businessPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MoneyType getBusinessPrice() {
         return businessPrice;
     }
@@ -142,7 +141,8 @@ public class OfferType {
      *
      * @return quantityDiscountPrices
      */
-    @Schema(description = "List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.")
     public List<QuantityDiscountPriceType> getQuantityDiscountPrices() {
         return quantityDiscountPrices;
     }
@@ -162,7 +162,7 @@ public class OfferType {
      *
      * @return fulfillmentChannel
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The fulfillment channel for the offer listing. Possible values:  * Amazon - Fulfilled by Amazon. * Merchant - Fulfilled by the seller.")
@@ -184,7 +184,7 @@ public class OfferType {
      *
      * @return itemCondition
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The item condition for the offer listing. Possible values: New, Used, Collectible, Refurbished, or Club.")
@@ -207,7 +207,7 @@ public class OfferType {
      *
      * @return itemSubCondition
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The item subcondition for the offer listing. Possible values: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.")
@@ -229,7 +229,9 @@ public class OfferType {
      *
      * @return sellerSKU
      */
-    @Schema(required = true, description = "The seller stock keeping unit (SKU) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The seller stock keeping unit (SKU) of the item.")
     public String getSellerSKU() {
         return sellerSKU;
     }

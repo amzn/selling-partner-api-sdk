@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.datakiosk.v2023_11_15;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response for the &#x60;getDocument&#x60; operation. */
-@Schema(description = "The response for the `getDocument` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response for the `getDocument` operation.")
 public class GetDocumentResponse {
     @SerializedName("documentId")
     private String documentId = null;
@@ -36,7 +35,7 @@ public class GetDocumentResponse {
      *
      * @return documentId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier for the Data Kiosk document. This identifier is unique only in combination with a selling partner account ID.")
@@ -61,7 +60,7 @@ public class GetDocumentResponse {
      *
      * @return documentUrl
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A presigned URL that can be used to retrieve the Data Kiosk document. This URL expires after 5 minutes. If the Data Kiosk document is compressed, the `Content-Encoding` header will indicate the compression algorithm.  **Note:** Most HTTP clients are capable of automatically decompressing downloaded files based on the `Content-Encoding` header.")

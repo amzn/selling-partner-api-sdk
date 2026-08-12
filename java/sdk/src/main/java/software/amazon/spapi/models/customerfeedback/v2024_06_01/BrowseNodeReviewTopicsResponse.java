@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response for the &#x60;getBrowseNodeReviewTopics&#x60; operation. */
-@Schema(description = "The response for the `getBrowseNodeReviewTopics` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response for the `getBrowseNodeReviewTopics` operation.")
 public class BrowseNodeReviewTopicsResponse {
     @SerializedName("browseNodeId")
     private String browseNodeId = null;
@@ -47,7 +46,7 @@ public class BrowseNodeReviewTopicsResponse {
      *
      * @return browseNodeId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The requested browse node id. A browse node id is the unique identifier of a given browse node.")
@@ -70,7 +69,7 @@ public class BrowseNodeReviewTopicsResponse {
      *
      * @return displayName
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The display name of the requested browse node id. The display name of the browse node as visible on the Amazon retail website.")
@@ -92,7 +91,7 @@ public class BrowseNodeReviewTopicsResponse {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "The requested marketplace id.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The requested marketplace id.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -111,7 +110,7 @@ public class BrowseNodeReviewTopicsResponse {
      *
      * @return countryCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The two digit country code of requested marketplace id, in ISO 3166-1 alpha-2 format.")
     public String getCountryCode() {
@@ -132,7 +131,7 @@ public class BrowseNodeReviewTopicsResponse {
      *
      * @return dateRange
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DateRange getDateRange() {
         return dateRange;
     }
@@ -151,7 +150,7 @@ public class BrowseNodeReviewTopicsResponse {
      *
      * @return topics
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public BrowseNodeReviewTopics getTopics() {
         return topics;
     }

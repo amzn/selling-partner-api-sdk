@@ -45,7 +45,7 @@ public class {{classname}}Test {
     public void {{operationId}}Test() throws Exception {
         instructBackendMock("{{tags.0.name}}", "{{operationId}}", "{{responses.0.code}}");
         {{#allParams}}{{#required}}
-        {{{dataType}}} {{paramName}} = {{#isArray}}easyRandom.objects({{items.dataType}}.class, 2).collect(Collectors.toList()){{/isArray}}{{^isArray}}easyRandom.nextObject({{{dataType}}}.class){{/isArray}};
+        {{{dataType}}} {{paramName}} = {{#isArray}}easyRandom.objects({{items.dataType}}.class, 2).collect(Collectors.to{{#uniqueItems}}Set{{/uniqueItems}}{{^uniqueItems}}List{{/uniqueItems}}()){{/isArray}}{{^isArray}}easyRandom.nextObject({{{dataType}}}.class){{/isArray}};
         {{/required}}{{/allParams}}
 
         {{#returnType}}ApiResponse<{{{returnType}}}> response = {{/returnType}}api.{{operationId}}WithHttpInfo({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^required}}null{{/required}}{{^-last}}, {{/-last}}{{/allParams}});

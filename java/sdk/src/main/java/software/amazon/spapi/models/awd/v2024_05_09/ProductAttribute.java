@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Product instance attribute that is not described at the SKU level in the catalog. */
-@Schema(description = "Product instance attribute that is not described at the SKU level in the catalog.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Product instance attribute that is not described at the SKU level in the catalog.")
 public class ProductAttribute {
     @SerializedName("name")
     private String name = null;
@@ -35,7 +35,7 @@ public class ProductAttribute {
      *
      * @return name
      */
-    @Schema(description = "Product attribute name.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Product attribute name.")
     public String getName() {
         return name;
     }
@@ -54,7 +54,7 @@ public class ProductAttribute {
      *
      * @return value
      */
-    @Schema(description = "Product attribute value.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Product attribute value.")
     public String getValue() {
         return value;
     }

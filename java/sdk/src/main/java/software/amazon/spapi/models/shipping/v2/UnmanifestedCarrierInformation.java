@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** UnmanifestedCarrierInformation like carrierId CarrierName and Location */
-@Schema(description = "UnmanifestedCarrierInformation like carrierId CarrierName and Location")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "UnmanifestedCarrierInformation like carrierId CarrierName and Location")
 public class UnmanifestedCarrierInformation {
     @SerializedName("carrierId")
     private String carrierId = null;
@@ -38,7 +38,8 @@ public class UnmanifestedCarrierInformation {
      *
      * @return carrierId
      */
-    @Schema(description = "The carrier identifier for the offering, provided by the carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The carrier identifier for the offering, provided by the carrier.")
     public String getCarrierId() {
         return carrierId;
     }
@@ -57,7 +58,7 @@ public class UnmanifestedCarrierInformation {
      *
      * @return carrierName
      */
-    @Schema(description = "The carrier name for the offering.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The carrier name for the offering.")
     public String getCarrierName() {
         return carrierName;
     }
@@ -77,7 +78,7 @@ public class UnmanifestedCarrierInformation {
      *
      * @return unmanifestedShipmentLocationList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public UnmanifestedShipmentLocationList getUnmanifestedShipmentLocationList() {
         return unmanifestedShipmentLocationList;
     }

@@ -17,7 +17,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -25,7 +24,7 @@ import java.util.Objects;
  * An object which contains the delivery condition and the quantity of upcoming deliveries associated with that
  * condition for an offer.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "An object which contains the delivery condition and the quantity of upcoming deliveries associated with that condition for an offer.")
 public class DeliveriesCondition {
@@ -97,7 +96,8 @@ public class DeliveriesCondition {
      *
      * @return condition
      */
-    @Schema(description = "The condition type of upcoming deliveries for the offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The condition type of upcoming deliveries for the offer.")
     public ConditionEnum getCondition() {
         return condition;
     }
@@ -116,7 +116,7 @@ public class DeliveriesCondition {
      *
      * @return next30DaysDeliveries
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The number of upcoming deliveries in the next 30 days associated with this delivery condition.")
     public Long getNext30DaysDeliveries() {

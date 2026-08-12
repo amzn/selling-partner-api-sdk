@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.vendor.orders.v1;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** Detailed description of items order status. */
-@Schema(description = "Detailed description of items order status.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Detailed description of items order status.")
 public class ItemStatus extends ArrayList<OrderItemStatus> {
 
     @Override

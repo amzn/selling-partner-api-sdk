@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request schema for the &#x60;initiatePayout&#x60; operation. */
-@Schema(description = "The request schema for the `initiatePayout` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the `initiatePayout` operation.")
 public class InitiatePayoutRequest {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -36,7 +35,7 @@ public class InitiatePayoutRequest {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier of the Amazon marketplace. For the list of all marketplace IDs, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -59,7 +58,7 @@ public class InitiatePayoutRequest {
      *
      * @return accountType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The account type in the selected marketplace for which a payout must be initiated. For supported EU marketplaces, the only account type is `Standard Orders`.")

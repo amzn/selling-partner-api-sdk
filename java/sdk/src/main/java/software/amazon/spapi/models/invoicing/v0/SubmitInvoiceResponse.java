@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.invoicing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the submitInvoice operation. */
-@Schema(description = "The response schema for the submitInvoice operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the submitInvoice operation.")
 public class SubmitInvoiceResponse {
     @SerializedName("errors")
     private ErrorList errors = null;
@@ -32,7 +31,7 @@ public class SubmitInvoiceResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

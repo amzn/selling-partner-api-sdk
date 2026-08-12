@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Localized messaging for a delivery offering. */
-@Schema(description = "Localized messaging for a delivery offering.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Localized messaging for a delivery offering.")
 public class DeliveryMessage {
     @SerializedName("text")
     private String text = null;
@@ -35,7 +34,7 @@ public class DeliveryMessage {
      *
      * @return text
      */
-    @Schema(description = "The message content for a delivery offering.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The message content for a delivery offering.")
     public String getText() {
         return text;
     }
@@ -54,7 +53,7 @@ public class DeliveryMessage {
      *
      * @return locale
      */
-    @Schema(description = "The locale for the message (e.g., `en_US`).")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The locale for the message (e.g., `en_US`).")
     public String getLocale() {
         return locale;
     }

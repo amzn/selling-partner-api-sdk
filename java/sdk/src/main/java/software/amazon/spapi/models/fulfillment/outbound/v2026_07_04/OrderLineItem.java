@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Line Item information for a fulfillment order. */
-@Schema(description = "Line Item information for a fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Line Item information for a fulfillment order.")
 public class OrderLineItem {
     @SerializedName("lineItemId")
     private String lineItemId = null;
@@ -47,7 +46,9 @@ public class OrderLineItem {
      *
      * @return lineItemId
      */
-    @Schema(required = true, description = "The line item identifier for the fulfillment order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The line item identifier for the fulfillment order.")
     public String getLineItemId() {
         return lineItemId;
     }
@@ -66,7 +67,7 @@ public class OrderLineItem {
      *
      * @return product
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public OrderProduct getProduct() {
         return product;
     }
@@ -85,7 +86,7 @@ public class OrderLineItem {
      *
      * @return amount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Amount getAmount() {
         return amount;
     }
@@ -104,7 +105,7 @@ public class OrderLineItem {
      *
      * @return cancelledAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Amount getCancelledAmount() {
         return cancelledAmount;
     }
@@ -123,7 +124,7 @@ public class OrderLineItem {
      *
      * @return unfulfillableAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Amount getUnfulfillableAmount() {
         return unfulfillableAmount;
     }
@@ -142,7 +143,7 @@ public class OrderLineItem {
      *
      * @return fulfillmentConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public LineItemFulfillmentConfiguration getFulfillmentConfiguration() {
         return fulfillmentConfiguration;
     }

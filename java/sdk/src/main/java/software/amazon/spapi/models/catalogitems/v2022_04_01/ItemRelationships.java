@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** Relationships grouped by &#x60;marketplaceId&#x60; for an Amazon catalog item (for example, variations). */
-@Schema(description = "Relationships grouped by `marketplaceId` for an Amazon catalog item (for example, variations).")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Relationships grouped by `marketplaceId` for an Amazon catalog item (for example, variations).")
 public class ItemRelationships extends ArrayList<ItemRelationshipsByMarketplace> {
 
     @Override

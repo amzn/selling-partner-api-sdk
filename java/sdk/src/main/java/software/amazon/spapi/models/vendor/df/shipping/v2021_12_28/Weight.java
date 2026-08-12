@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** The weight. */
-@Schema(description = "The weight.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The weight.")
 public class Weight {
     /** The unit of measurement. */
     @JsonAdapter(UnitOfMeasureEnum.Adapter.class)
@@ -86,7 +85,7 @@ public class Weight {
      *
      * @return unitOfMeasure
      */
-    @Schema(required = true, description = "The unit of measurement.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The unit of measurement.")
     public UnitOfMeasureEnum getUnitOfMeasure() {
         return unitOfMeasure;
     }
@@ -107,7 +106,7 @@ public class Weight {
      *
      * @return value
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation.  <br>**Pattern** : `^-?(0|([1-9]\\\\d*))(\\\\.\\\\d+)?([eE][+-]?\\\\d+)?$`.")

@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.customerfeedback.v2024_06_01.BrowseNodeResponse;
 import software.amazon.spapi.models.customerfeedback.v2024_06_01.BrowseNodeReturnTopicsResponse;
@@ -93,9 +92,7 @@ public class CustomerFeedbackApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getBrowseNodeReturnTopicsCall(
-            String browseNodeId,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String browseNodeId, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -140,9 +137,7 @@ public class CustomerFeedbackApi {
     }
 
     private okhttp3.Call getBrowseNodeReturnTopicsValidateBeforeCall(
-            String browseNodeId,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String browseNodeId, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'browseNodeId' is set
@@ -279,10 +274,10 @@ public class CustomerFeedbackApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -314,9 +309,7 @@ public class CustomerFeedbackApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getBrowseNodeReturnTrendsCall(
-            String browseNodeId,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String browseNodeId, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -361,9 +354,7 @@ public class CustomerFeedbackApi {
     }
 
     private okhttp3.Call getBrowseNodeReturnTrendsValidateBeforeCall(
-            String browseNodeId,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String browseNodeId, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'browseNodeId' is set
@@ -500,10 +491,10 @@ public class CustomerFeedbackApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -536,10 +527,7 @@ public class CustomerFeedbackApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getBrowseNodeReviewTopicsCall(
-            String browseNodeId,
-            String marketplaceId,
-            String sortBy,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String browseNodeId, String marketplaceId, String sortBy, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -585,10 +573,7 @@ public class CustomerFeedbackApi {
     }
 
     private okhttp3.Call getBrowseNodeReviewTopicsValidateBeforeCall(
-            String browseNodeId,
-            String marketplaceId,
-            String sortBy,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String browseNodeId, String marketplaceId, String sortBy, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'browseNodeId' is set
@@ -743,10 +728,10 @@ public class CustomerFeedbackApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getBrowseNodeReviewTopicsValidateBeforeCall(
@@ -778,9 +763,7 @@ public class CustomerFeedbackApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getBrowseNodeReviewTrendsCall(
-            String browseNodeId,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String browseNodeId, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -825,9 +808,7 @@ public class CustomerFeedbackApi {
     }
 
     private okhttp3.Call getBrowseNodeReviewTrendsValidateBeforeCall(
-            String browseNodeId,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String browseNodeId, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'browseNodeId' is set
@@ -966,10 +947,10 @@ public class CustomerFeedbackApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -1001,9 +982,7 @@ public class CustomerFeedbackApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getItemBrowseNodeCall(
-            String asin,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String asin, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1048,9 +1027,7 @@ public class CustomerFeedbackApi {
     }
 
     private okhttp3.Call getItemBrowseNodeValidateBeforeCall(
-            String asin,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String asin, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'asin' is set
@@ -1191,10 +1168,10 @@ public class CustomerFeedbackApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getItemBrowseNodeValidateBeforeCall(asin, marketplaceId, progressRequestListener);
@@ -1226,10 +1203,7 @@ public class CustomerFeedbackApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getItemReviewTopicsCall(
-            String asin,
-            String marketplaceId,
-            String sortBy,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String asin, String marketplaceId, String sortBy, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1275,10 +1249,7 @@ public class CustomerFeedbackApi {
     }
 
     private okhttp3.Call getItemReviewTopicsValidateBeforeCall(
-            String asin,
-            String marketplaceId,
-            String sortBy,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String asin, String marketplaceId, String sortBy, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'asin' is set
@@ -1427,10 +1398,10 @@ public class CustomerFeedbackApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getItemReviewTopicsValidateBeforeCall(asin, marketplaceId, sortBy, progressRequestListener);
@@ -1461,9 +1432,7 @@ public class CustomerFeedbackApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getItemReviewTrendsCall(
-            String asin,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String asin, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1508,9 +1477,7 @@ public class CustomerFeedbackApi {
     }
 
     private okhttp3.Call getItemReviewTrendsValidateBeforeCall(
-            String asin,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String asin, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'asin' is set
@@ -1645,10 +1612,10 @@ public class CustomerFeedbackApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getItemReviewTrendsValidateBeforeCall(asin, marketplaceId, progressRequestListener);

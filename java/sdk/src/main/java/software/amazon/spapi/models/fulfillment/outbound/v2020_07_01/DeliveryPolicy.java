@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The policy for a delivery offering. */
-@Schema(description = "The policy for a delivery offering.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The policy for a delivery offering.")
 public class DeliveryPolicy {
     @SerializedName("message")
     private DeliveryMessage message = null;
@@ -32,7 +31,7 @@ public class DeliveryPolicy {
      *
      * @return message
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DeliveryMessage getMessage() {
         return message;
     }

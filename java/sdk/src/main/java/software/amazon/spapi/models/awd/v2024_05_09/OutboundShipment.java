@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Represents an AWD outbound shipment. */
-@Schema(description = "Represents an AWD outbound shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Represents an AWD outbound shipment.")
 public class OutboundShipment {
     @SerializedName("createdAt")
     private OffsetDateTime createdAt = null;
@@ -58,7 +58,7 @@ public class OutboundShipment {
      *
      * @return createdAt
      */
-    @Schema(description = "Timestamp when the shipment was created.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Timestamp when the shipment was created.")
     public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
@@ -77,7 +77,7 @@ public class OutboundShipment {
      *
      * @return destinationAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getDestinationAddress() {
         return destinationAddress;
     }
@@ -96,7 +96,9 @@ public class OutboundShipment {
      *
      * @return orderId
      */
-    @Schema(required = true, description = "Outbound order ID this outbound shipment belongs to.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Outbound order ID this outbound shipment belongs to.")
     public String getOrderId() {
         return orderId;
     }
@@ -115,7 +117,7 @@ public class OutboundShipment {
      *
      * @return originAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getOriginAddress() {
         return originAddress;
     }
@@ -143,7 +145,8 @@ public class OutboundShipment {
      *
      * @return shipmentPackageQuantities
      */
-    @Schema(description = "Specific distribution packages that are included in the context of this shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Specific distribution packages that are included in the context of this shipment.")
     public List<DistributionPackageQuantity> getShipmentPackageQuantities() {
         return shipmentPackageQuantities;
     }
@@ -162,7 +165,7 @@ public class OutboundShipment {
      *
      * @return shipmentId
      */
-    @Schema(required = true, description = "Unique shipment ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Unique shipment ID.")
     public String getShipmentId() {
         return shipmentId;
     }
@@ -189,7 +192,8 @@ public class OutboundShipment {
      *
      * @return shipmentProductQuantities
      */
-    @Schema(description = "Specific product units that are included in the context of this shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Specific product units that are included in the context of this shipment.")
     public List<ProductQuantity> getShipmentProductQuantities() {
         return shipmentProductQuantities;
     }
@@ -208,7 +212,7 @@ public class OutboundShipment {
      *
      * @return shipmentStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public OutboundShipmentStatus getShipmentStatus() {
         return shipmentStatus;
     }
@@ -227,7 +231,7 @@ public class OutboundShipment {
      *
      * @return updatedAt
      */
-    @Schema(description = "Timestamp when the shipment was updated.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Timestamp when the shipment was updated.")
     public OffsetDateTime getUpdatedAt() {
         return updatedAt;
     }

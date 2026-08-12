@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Buyer information for custom orders from the Amazon Custom program. */
-@Schema(description = "Buyer information for custom orders from the Amazon Custom program.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Buyer information for custom orders from the Amazon Custom program.")
 public class BuyerCustomizedInfoDetail {
     @SerializedName("CustomizedURL")
     private String customizedURL = null;
@@ -32,7 +32,8 @@ public class BuyerCustomizedInfoDetail {
      *
      * @return customizedURL
      */
-    @Schema(description = "The location of a ZIP file containing Amazon Custom data.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The location of a ZIP file containing Amazon Custom data.")
     public String getCustomizedURL() {
         return customizedURL;
     }

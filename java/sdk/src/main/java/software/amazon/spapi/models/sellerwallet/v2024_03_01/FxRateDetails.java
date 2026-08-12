@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Foreign exchange rate details. */
-@Schema(description = "Foreign exchange rate details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Foreign exchange rate details.")
 public class FxRateDetails {
     @SerializedName("fxRateId")
     private String fxRateId = null;
@@ -41,7 +41,7 @@ public class FxRateDetails {
      *
      * @return fxRateId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The unique identifier assigned to the fees / foreign exchange rate of a transaction.")
     public String getFxRateId() {
@@ -62,7 +62,9 @@ public class FxRateDetails {
      *
      * @return baseRate
      */
-    @Schema(required = true, description = "A decimal number, such as an amount or FX rate.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A decimal number, such as an amount or FX rate.")
     public BigDecimal getBaseRate() {
         return baseRate;
     }
@@ -81,7 +83,9 @@ public class FxRateDetails {
      *
      * @return effectiveFxRate
      */
-    @Schema(required = true, description = "A decimal number, such as an amount or FX rate.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A decimal number, such as an amount or FX rate.")
     public BigDecimal getEffectiveFxRate() {
         return effectiveFxRate;
     }
@@ -100,7 +104,7 @@ public class FxRateDetails {
      *
      * @return rateDirection
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public RateDirection getRateDirection() {
         return rateDirection;
     }

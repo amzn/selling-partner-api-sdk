@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.orders.v2026_01_01.GetOrderResponse;
 
@@ -60,9 +59,7 @@ public class GetOrderApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getOrderCall(
-            String orderId,
-            List<String> includedData,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, List<String> includedData, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -106,9 +103,7 @@ public class GetOrderApi {
     }
 
     private okhttp3.Call getOrderValidateBeforeCall(
-            String orderId,
-            List<String> includedData,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, List<String> includedData, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
@@ -258,10 +253,10 @@ public class GetOrderApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getOrderValidateBeforeCall(orderId, includedData, progressRequestListener);

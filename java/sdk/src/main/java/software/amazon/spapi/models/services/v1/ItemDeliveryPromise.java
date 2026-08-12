@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Promised delivery information for the item. */
-@Schema(description = "Promised delivery information for the item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Promised delivery information for the item.")
 public class ItemDeliveryPromise {
     @SerializedName("startTime")
     private OffsetDateTime startTime = null;
@@ -35,7 +35,8 @@ public class ItemDeliveryPromise {
      *
      * @return startTime
      */
-    @Schema(description = "The date and time of the start of the promised delivery window in ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The date and time of the start of the promised delivery window in ISO 8601 format.")
     public OffsetDateTime getStartTime() {
         return startTime;
     }
@@ -54,7 +55,8 @@ public class ItemDeliveryPromise {
      *
      * @return endTime
      */
-    @Schema(description = "The date and time of the end of the promised delivery window in ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The date and time of the end of the promised delivery window in ISO 8601 format.")
     public OffsetDateTime getEndTime() {
         return endTime;
     }

@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.invoicing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** The information required by a selling partner to issue a shipment invoice. */
-@Schema(description = "The information required by a selling partner to issue a shipment invoice.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The information required by a selling partner to issue a shipment invoice.")
 public class ShipmentDetail {
     @SerializedName("WarehouseId")
     private String warehouseId = null;
@@ -74,7 +75,7 @@ public class ShipmentDetail {
      *
      * @return warehouseId
      */
-    @Schema(description = "The Amazon-defined identifier for the warehouse.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon-defined identifier for the warehouse.")
     public String getWarehouseId() {
         return warehouseId;
     }
@@ -93,7 +94,7 @@ public class ShipmentDetail {
      *
      * @return amazonOrderId
      */
-    @Schema(description = "The Amazon-defined identifier for the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon-defined identifier for the order.")
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -112,7 +113,7 @@ public class ShipmentDetail {
      *
      * @return amazonShipmentId
      */
-    @Schema(description = "The Amazon-defined identifier for the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon-defined identifier for the shipment.")
     public String getAmazonShipmentId() {
         return amazonShipmentId;
     }
@@ -131,7 +132,7 @@ public class ShipmentDetail {
      *
      * @return purchaseDate
      */
-    @Schema(description = "The date and time when the order was created.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The date and time when the order was created.")
     public OffsetDateTime getPurchaseDate() {
         return purchaseDate;
     }
@@ -150,7 +151,7 @@ public class ShipmentDetail {
      *
      * @return shippingAddress
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getShippingAddress() {
         return shippingAddress;
     }
@@ -169,7 +170,7 @@ public class ShipmentDetail {
      *
      * @return paymentMethodDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PaymentMethodDetailItemList getPaymentMethodDetails() {
         return paymentMethodDetails;
     }
@@ -188,7 +189,7 @@ public class ShipmentDetail {
      *
      * @return payments
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PaymentInformationList getPayments() {
         return payments;
     }
@@ -207,7 +208,8 @@ public class ShipmentDetail {
      *
      * @return marketplaceId
      */
-    @Schema(description = "The identifier for the marketplace where the order was placed.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The identifier for the marketplace where the order was placed.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -226,7 +228,7 @@ public class ShipmentDetail {
      *
      * @return sellerId
      */
-    @Schema(description = "The seller identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller identifier.")
     public String getSellerId() {
         return sellerId;
     }
@@ -245,7 +247,7 @@ public class ShipmentDetail {
      *
      * @return buyerName
      */
-    @Schema(description = "The name of the buyer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the buyer.")
     public String getBuyerName() {
         return buyerName;
     }
@@ -264,7 +266,7 @@ public class ShipmentDetail {
      *
      * @return buyerCounty
      */
-    @Schema(description = "The county of the buyer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The county of the buyer.")
     public String getBuyerCounty() {
         return buyerCounty;
     }
@@ -283,7 +285,7 @@ public class ShipmentDetail {
      *
      * @return buyerTaxInfo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BuyerTaxInfo getBuyerTaxInfo() {
         return buyerTaxInfo;
     }
@@ -302,7 +304,7 @@ public class ShipmentDetail {
      *
      * @return marketplaceTaxInfo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MarketplaceTaxInfo getMarketplaceTaxInfo() {
         return marketplaceTaxInfo;
     }
@@ -321,7 +323,8 @@ public class ShipmentDetail {
      *
      * @return sellerDisplayName
      */
-    @Schema(description = "The seller’s friendly name registered in the marketplace.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The seller’s friendly name registered in the marketplace.")
     public String getSellerDisplayName() {
         return sellerDisplayName;
     }
@@ -340,7 +343,7 @@ public class ShipmentDetail {
      *
      * @return shipmentItems
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipmentItems getShipmentItems() {
         return shipmentItems;
     }

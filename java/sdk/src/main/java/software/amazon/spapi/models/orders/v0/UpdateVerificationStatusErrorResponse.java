@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The error response schema for the &#x60;UpdateVerificationStatus&#x60; operation. */
-@Schema(description = "The error response schema for the `UpdateVerificationStatus` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The error response schema for the `UpdateVerificationStatus` operation.")
 public class UpdateVerificationStatusErrorResponse {
     @SerializedName("errors")
     private ErrorList errors = null;
@@ -32,7 +32,7 @@ public class UpdateVerificationStatusErrorResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

@@ -32,7 +32,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.fulfillment.outbound.v2026_07_04.CreateOrderRequest;
 import software.amazon.spapi.models.fulfillment.outbound.v2026_07_04.CreateOrderResponse;
@@ -104,9 +103,7 @@ public class FulfillmentOutboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call cancelOrderCall(
-            String orderId,
-            String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -152,9 +149,7 @@ public class FulfillmentOutboundApi {
     }
 
     private okhttp3.Call cancelOrderValidateBeforeCall(
-            String orderId,
-            String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
@@ -306,10 +301,10 @@ public class FulfillmentOutboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = cancelOrderValidateBeforeCall(orderId, xAmznFulfillmentServiceId, progressRequestListener);
@@ -338,9 +333,7 @@ public class FulfillmentOutboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call createOrderCall(
-            CreateOrderRequest body,
-            String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateOrderRequest body, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -382,9 +375,7 @@ public class FulfillmentOutboundApi {
     }
 
     private okhttp3.Call createOrderValidateBeforeCall(
-            CreateOrderRequest body,
-            String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateOrderRequest body, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -539,10 +530,10 @@ public class FulfillmentOutboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createOrderValidateBeforeCall(body, xAmznFulfillmentServiceId, progressRequestListener);
@@ -571,9 +562,7 @@ public class FulfillmentOutboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getOffersCall(
-            GetOffersRequest body,
-            String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            GetOffersRequest body, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -615,9 +604,7 @@ public class FulfillmentOutboundApi {
     }
 
     private okhttp3.Call getOffersValidateBeforeCall(
-            GetOffersRequest body,
-            String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            GetOffersRequest body, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -771,10 +758,10 @@ public class FulfillmentOutboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getOffersValidateBeforeCall(body, xAmznFulfillmentServiceId, progressRequestListener);
@@ -806,7 +793,7 @@ public class FulfillmentOutboundApi {
             String orderId,
             String xAmznFulfillmentServiceId,
             String shipments,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -856,7 +843,7 @@ public class FulfillmentOutboundApi {
             String orderId,
             String xAmznFulfillmentServiceId,
             String shipments,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
@@ -1014,10 +1001,10 @@ public class FulfillmentOutboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -1046,9 +1033,7 @@ public class FulfillmentOutboundApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getOrderPreviewCall(
-            GetOrderPreviewRequest body,
-            String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            GetOrderPreviewRequest body, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1090,9 +1075,7 @@ public class FulfillmentOutboundApi {
     }
 
     private okhttp3.Call getOrderPreviewValidateBeforeCall(
-            GetOrderPreviewRequest body,
-            String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            GetOrderPreviewRequest body, String xAmznFulfillmentServiceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -1249,10 +1232,10 @@ public class FulfillmentOutboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getOrderPreviewValidateBeforeCall(body, xAmznFulfillmentServiceId, progressRequestListener);
@@ -1291,7 +1274,7 @@ public class FulfillmentOutboundApi {
             OffsetDateTime updatedAfter,
             String pageToken,
             String shipments,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1341,7 +1324,7 @@ public class FulfillmentOutboundApi {
             OffsetDateTime updatedAfter,
             String pageToken,
             String shipments,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return listOrdersCall(xAmznFulfillmentServiceId, updatedAfter, pageToken, shipments, progressRequestListener);
@@ -1544,10 +1527,10 @@ public class FulfillmentOutboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listOrdersValidateBeforeCall(
@@ -1580,7 +1563,7 @@ public class FulfillmentOutboundApi {
             String orderId,
             UpdateOrderRequest body,
             String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1628,7 +1611,7 @@ public class FulfillmentOutboundApi {
             String orderId,
             UpdateOrderRequest body,
             String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
@@ -1799,10 +1782,10 @@ public class FulfillmentOutboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -1836,7 +1819,7 @@ public class FulfillmentOutboundApi {
             String orderId,
             UpdateOrderStatusRequest body,
             String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1884,7 +1867,7 @@ public class FulfillmentOutboundApi {
             String orderId,
             UpdateOrderStatusRequest body,
             String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
@@ -2037,10 +2020,10 @@ public class FulfillmentOutboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -2075,7 +2058,7 @@ public class FulfillmentOutboundApi {
             String packageId,
             UpdatePackageRequest body,
             String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -2126,7 +2109,7 @@ public class FulfillmentOutboundApi {
             String packageId,
             UpdatePackageRequest body,
             String xAmznFulfillmentServiceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
@@ -2301,10 +2284,10 @@ public class FulfillmentOutboundApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = updatePackageValidateBeforeCall(

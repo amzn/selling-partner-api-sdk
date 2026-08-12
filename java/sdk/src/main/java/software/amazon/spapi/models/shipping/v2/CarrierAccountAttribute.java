@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Attribute Properties required by carrier */
-@Schema(description = "Attribute Properties required by carrier")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Attribute Properties required by carrier")
 public class CarrierAccountAttribute {
     @SerializedName("attributeName")
     private String attributeName = null;
@@ -38,7 +37,7 @@ public class CarrierAccountAttribute {
      *
      * @return attributeName
      */
-    @Schema(description = "Attribute Name .")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Attribute Name .")
     public String getAttributeName() {
         return attributeName;
     }
@@ -57,7 +56,7 @@ public class CarrierAccountAttribute {
      *
      * @return propertyGroup
      */
-    @Schema(description = "Property Group.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Property Group.")
     public String getPropertyGroup() {
         return propertyGroup;
     }
@@ -76,7 +75,7 @@ public class CarrierAccountAttribute {
      *
      * @return value
      */
-    @Schema(description = "Value .")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Value .")
     public String getValue() {
         return value;
     }

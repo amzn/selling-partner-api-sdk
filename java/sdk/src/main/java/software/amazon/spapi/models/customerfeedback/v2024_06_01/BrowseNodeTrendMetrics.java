@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A single browse node review or return trend metric. */
-@Schema(description = "A single browse node review or return trend metric.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A single browse node review or return trend metric.")
 public class BrowseNodeTrendMetrics {
     @SerializedName("occurrencePercentage")
     private BrowseNodeOccurrence occurrencePercentage = null;
@@ -32,7 +31,7 @@ public class BrowseNodeTrendMetrics {
      *
      * @return occurrencePercentage
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public BrowseNodeOccurrence getOccurrencePercentage() {
         return occurrencePercentage;
     }

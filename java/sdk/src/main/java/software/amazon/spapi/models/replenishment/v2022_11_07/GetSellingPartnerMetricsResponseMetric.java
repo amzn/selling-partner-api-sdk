@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** An object which contains metric data for a selling partner. */
-@Schema(description = "An object which contains metric data for a selling partner.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An object which contains metric data for a selling partner.")
 public class GetSellingPartnerMetricsResponseMetric {
     @SerializedName("notDeliveredDueToOOS")
     private Double notDeliveredDueToOOS = null;
@@ -132,7 +132,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return notDeliveredDueToOOS
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getNotDeliveredDueToOOS() {
@@ -154,7 +154,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return totalSubscriptionsRevenue
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The revenue generated from subscriptions over a period of time. Applicable for both the `PERFORMANCE` and `FORECAST` `timePeriodType`.")
     public Double getTotalSubscriptionsRevenue() {
@@ -176,7 +176,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return shippedSubscriptionUnits
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The number of units shipped to the subscribers over a period of time. Applicable for both the `PERFORMANCE` and `FORECAST` `timePeriodType`.")
     public BigDecimal getShippedSubscriptionUnits() {
@@ -198,7 +198,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return activeSubscriptions
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The number of active subscriptions present at the end of the period. Applicable to `PERFORMANCE` `timePeriodType`.")
     public BigDecimal getActiveSubscriptions() {
@@ -220,7 +220,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return subscriberAverageRevenue
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The average revenue per subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getSubscriberAverageRevenue() {
@@ -242,7 +242,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return nonSubscriberAverageRevenue
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The average revenue per non-subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getNonSubscriberAverageRevenue() {
@@ -264,7 +264,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return lostRevenueDueToOOS
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The revenue that would have been generated had there not been out of stock. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getLostRevenueDueToOOS() {
@@ -286,7 +286,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return subscriberAverageReorders
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The average reorders per subscriber of the program over a period of 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getSubscriberAverageReorders() {
@@ -308,7 +308,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return nonSubscriberAverageReorders
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The average reorders per non-subscriber of the program over a period of past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getNonSubscriberAverageReorders() {
@@ -330,7 +330,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return couponsRevenuePenetration
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getCouponsRevenuePenetration() {
@@ -353,7 +353,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return revenueFromSubscriptionsWithMultipleDeliveries
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The subscription revenue generated from subscriptions with over two deliveries over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getRevenueFromSubscriptionsWithMultipleDeliveries() {
@@ -377,7 +377,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return revenueFromActiveSubscriptionsWithSingleDelivery
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The subscription revenue generated from active subscriptions with one delivery over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getRevenueFromActiveSubscriptionsWithSingleDelivery() {
@@ -402,7 +402,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return revenueFromCancelledSubscriptionsAfterSingleDelivery
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The subscription revenue generated from subscriptions which are cancelled after one delivery over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getRevenueFromCancelledSubscriptionsAfterSingleDelivery() {
@@ -426,7 +426,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return subscriberRetentionFor30Days
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The percentage of subscriptions retained after 30 days of subscription creation. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getSubscriberRetentionFor30Days() {
@@ -448,7 +448,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return subscriberRetentionFor90Days
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The percentage of subscriptions retained after 90 days of subscription creation. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getSubscriberRetentionFor90Days() {
@@ -471,7 +471,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return revenuePenetrationFor0PercentSellerFunding
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The percentage of subscription revenue generated by offers with 0% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getRevenuePenetrationFor0PercentSellerFunding() {
@@ -494,7 +494,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return revenuePenetrationFor5PercentSellerFunding
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "[Applicable only for Sellers] The percentage of subscription revenue generated by offers with 5% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getRevenuePenetrationFor5PercentSellerFunding() {
@@ -517,7 +517,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return revenuePenetrationFor10PercentSellerFunding
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "[Applicable only for Sellers] The percentage of subscription revenue generated by offers with 10% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getRevenuePenetrationFor10PercentSellerFunding() {
@@ -540,7 +540,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return revenuePenetrationFor5PlusPercentSellerFunding
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "[Applicable only for vendors] The percentage of subscription revenue generated by offers with 5% or above seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getRevenuePenetrationFor5PlusPercentSellerFunding() {
@@ -563,7 +563,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return shareOfCouponSubscriptions
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The percentage of new subscriptions from coupons. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getShareOfCouponSubscriptions() {
@@ -585,7 +585,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return nonSubscriberLifeTimeValueFromOTP
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Total revenue from customers who have made purchases from your catalog but have never subscribed to any products.")
     public Double getNonSubscriberLifeTimeValueFromOTP() {
@@ -608,7 +608,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return lostSubscriberLifeTimeValueFromOTP
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Revenue from one-time purchase orders placed by customers who previously had subscriptions but currently have none active in your catalog.")
     public Double getLostSubscriberLifeTimeValueFromOTP() {
@@ -631,7 +631,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return lostSubscriberLifeTimeValueFromSNS
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Revenue from Subscribe & Save orders placed by customers who previously had subscriptions but currently have none active in your catalog.")
     public Double getLostSubscriberLifeTimeValueFromSNS() {
@@ -654,7 +654,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return growingSubscriberLifeTimeValueFromOTP
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Revenue from one-time purchase orders placed by customers who started their first subscription with your catalog within the past 12 months.")
     public Double getGrowingSubscriberLifeTimeValueFromOTP() {
@@ -677,7 +677,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return growingSubscriberLifeTimeValueFromSNS
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Revenue from Subscribe & Save orders placed by customers who started their first subscription with your catalog within the past 12 months.")
     public Double getGrowingSubscriberLifeTimeValueFromSNS() {
@@ -700,7 +700,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return establishedSubscriberLifeTimeValueFromOTP
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Revenue from one-time purchase orders placed by customers who have maintained an active subscription with your catalog for more than 12 months.")
     public Double getEstablishedSubscriberLifeTimeValueFromOTP() {
@@ -723,7 +723,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return establishedSubscriberLifeTimeValueFromSNS
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Revenue from Subscribe & Save orders placed by customers who have maintained an active subscription with your catalog for more than 12 months.")
     public Double getEstablishedSubscriberLifeTimeValueFromSNS() {
@@ -746,7 +746,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return signupConversionFor0PercentSellerFunding
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Percentage of subscriptions from offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months.")
     public Double getSignupConversionFor0PercentSellerFunding() {
@@ -769,7 +769,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return signupConversionFor5PercentSellerFunding
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "[Applicable only for Sellers] Percentage of subscriptions from offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months.")
     public Double getSignupConversionFor5PercentSellerFunding() {
@@ -792,7 +792,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return signupConversionFor10PercentSellerFunding
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "[Applicable only for Sellers] Percentage of subscriptions from offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months.")
     public Double getSignupConversionFor10PercentSellerFunding() {
@@ -815,7 +815,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return signupConversionFor5PlusPercentSellerFunding
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "[Applicable only for Vendors] Percentage of subscriptions from offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months.")
     public Double getSignupConversionFor5PlusPercentSellerFunding() {
@@ -837,7 +837,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return revenuePenetration
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The percentage of total program revenue out of total product revenue over a period of time. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getRevenuePenetration() {
@@ -858,7 +858,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return timeInterval
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TimeInterval getTimeInterval() {
         return timeInterval;
     }
@@ -877,7 +877,7 @@ public class GetSellingPartnerMetricsResponseMetric {
      *
      * @return currencyCode
      */
-    @Schema(description = "The currency code in ISO 4217 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The currency code in ISO 4217 format.")
     public String getCurrencyCode() {
         return currencyCode;
     }

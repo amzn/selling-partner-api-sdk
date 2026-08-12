@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Delivery information for a scheduled delivery. This is only available in the JP marketplace. */
-@Schema(description = "Delivery information for a scheduled delivery. This is only available in the JP marketplace.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Delivery information for a scheduled delivery. This is only available in the JP marketplace.")
 public class ScheduledDeliveryInfo {
     @SerializedName("deliveryTimeZone")
     private String deliveryTimeZone = null;
@@ -36,7 +36,7 @@ public class ScheduledDeliveryInfo {
      *
      * @return deliveryTimeZone
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The time zone of the destination address for the fulfillment order preview. Must be an IANA time zone name. Example: Asia/Tokyo.")
@@ -58,7 +58,7 @@ public class ScheduledDeliveryInfo {
      *
      * @return deliveryWindows
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DeliveryWindowList getDeliveryWindows() {
         return deliveryWindows;
     }

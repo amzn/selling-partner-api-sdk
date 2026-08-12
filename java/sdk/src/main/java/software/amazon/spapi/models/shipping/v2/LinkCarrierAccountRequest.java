@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request schema for verify and add the merchant&#39;s account with a certain carrier. */
-@Schema(description = "The request schema for verify and add the merchant's account with a certain carrier.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request schema for verify and add the merchant's account with a certain carrier.")
 public class LinkCarrierAccountRequest {
     @SerializedName("clientReferenceDetails")
     private ClientReferenceDetails clientReferenceDetails = null;
@@ -41,7 +41,7 @@ public class LinkCarrierAccountRequest {
      *
      * @return clientReferenceDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ClientReferenceDetails getClientReferenceDetails() {
         return clientReferenceDetails;
     }
@@ -60,7 +60,9 @@ public class LinkCarrierAccountRequest {
      *
      * @return carrierAccountType
      */
-    @Schema(required = true, description = "CarrierAccountType  associated with account.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "CarrierAccountType  associated with account.")
     public String getCarrierAccountType() {
         return carrierAccountType;
     }
@@ -79,7 +81,7 @@ public class LinkCarrierAccountRequest {
      *
      * @return carrierAccountAttributes
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public CarrierAccountAttributes getCarrierAccountAttributes() {
         return carrierAccountAttributes;
     }
@@ -99,7 +101,7 @@ public class LinkCarrierAccountRequest {
      *
      * @return encryptedCarrierAccountAttributes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CarrierAccountAttributes getEncryptedCarrierAccountAttributes() {
         return encryptedCarrierAccountAttributes;
     }

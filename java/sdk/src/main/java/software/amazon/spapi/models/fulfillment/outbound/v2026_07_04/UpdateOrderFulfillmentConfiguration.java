@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Fulfillment configuration for update order request. Only action can be updated. */
-@Schema(description = "Fulfillment configuration for update order request. Only action can be updated.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Fulfillment configuration for update order request. Only action can be updated.")
 public class UpdateOrderFulfillmentConfiguration {
     @SerializedName("action")
     private String action = null;
@@ -32,7 +32,8 @@ public class UpdateOrderFulfillmentConfiguration {
      *
      * @return action
      */
-    @Schema(description = "Specifies whether the fulfillment order should ship now or have an order hold put on it.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Specifies whether the fulfillment order should ship now or have an order hold put on it.")
     public String getAction() {
         return action;
     }

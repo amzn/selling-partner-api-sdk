@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A single order item&#39;s buyer information list with the order ID. */
-@Schema(description = "A single order item's buyer information list with the order ID.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A single order item's buyer information list with the order ID.")
 public class OrderItemsBuyerInfoList {
     @SerializedName("OrderItems")
     private OrderItemBuyerInfoList orderItems = null;
@@ -38,7 +38,7 @@ public class OrderItemsBuyerInfoList {
      *
      * @return orderItems
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public OrderItemBuyerInfoList getOrderItems() {
         return orderItems;
     }
@@ -57,7 +57,7 @@ public class OrderItemsBuyerInfoList {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When present and not empty, pass this string token in the next request to return the next response page.")
     public String getNextToken() {
@@ -78,7 +78,9 @@ public class OrderItemsBuyerInfoList {
      *
      * @return amazonOrderId
      */
-    @Schema(required = true, description = "An Amazon-defined order identifier, in 3-7-7 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An Amazon-defined order identifier, in 3-7-7 format.")
     public String getAmazonOrderId() {
         return amazonOrderId;
     }

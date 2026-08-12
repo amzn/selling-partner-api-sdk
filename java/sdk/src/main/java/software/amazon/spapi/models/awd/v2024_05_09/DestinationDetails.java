@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Destination details of an inbound order based on the assigned region and DC for the order. */
-@Schema(description = "Destination details of an inbound order based on the assigned region and DC for the order.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Destination details of an inbound order based on the assigned region and DC for the order.")
 public class DestinationDetails {
     @SerializedName("destinationAddress")
     private Address destinationAddress = null;
@@ -38,7 +38,7 @@ public class DestinationDetails {
      *
      * @return destinationAddress
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getDestinationAddress() {
         return destinationAddress;
     }
@@ -58,7 +58,7 @@ public class DestinationDetails {
      *
      * @return destinationRegion
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Assigned region where the order will be shipped. This can differ from what was passed as preference. AWD currently supports following region IDs: [us-west, us-east, us-southcentral, us-southeast]")
     public String getDestinationRegion() {
@@ -80,7 +80,7 @@ public class DestinationDetails {
      *
      * @return shipmentId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Unique ID of the confirmed shipment being shipped to the assigned destination. This will be available only after an inbound order is confirmed and can be used to track the shipment.")
     public String getShipmentId() {

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The listings item&#39;s vendor procurement information. */
-@Schema(description = "The listings item's vendor procurement information.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The listings item's vendor procurement information.")
 public class ItemProcurement {
     @SerializedName("costPrice")
     private Money costPrice = null;
@@ -32,7 +31,7 @@ public class ItemProcurement {
      *
      * @return costPrice
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getCostPrice() {
         return costPrice;
     }

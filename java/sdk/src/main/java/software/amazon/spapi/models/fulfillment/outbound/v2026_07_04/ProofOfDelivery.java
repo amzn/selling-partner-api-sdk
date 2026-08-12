@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Proof of delivery information for a package. */
-@Schema(description = "Proof of delivery information for a package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Proof of delivery information for a package.")
 public class ProofOfDelivery {
     @SerializedName("deliveryPhotoUrl")
     private String deliveryPhotoUrl = null;
@@ -35,7 +34,7 @@ public class ProofOfDelivery {
      *
      * @return deliveryPhotoUrl
      */
-    @Schema(description = "URL of the delivery photo.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "URL of the delivery photo.")
     public String getDeliveryPhotoUrl() {
         return deliveryPhotoUrl;
     }
@@ -54,7 +53,7 @@ public class ProofOfDelivery {
      *
      * @return receivedBy
      */
-    @Schema(description = "The name of the person who received the package.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the person who received the package.")
     public String getReceivedBy() {
         return receivedBy;
     }

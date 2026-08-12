@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Regulatory requirements and compliance information for the item, including reference numbers, verification codes, and
  * exemption codes. Use this field to specify applicable regulations such as EU Deforestation Regulation (EUDR).
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Regulatory requirements and compliance information for the item, including reference numbers, verification codes, and exemption codes. Use this field to specify applicable regulations such as EU Deforestation Regulation (EUDR).")
 public class RegulationReferences {
@@ -47,7 +46,7 @@ public class RegulationReferences {
      *
      * @return dueDiligenceReference
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The reference number from the vendor's EUDR Due Diligence Statement (DDS) submitted to the EU Commission portal or provided to Amazon through ONIX feed.")
     public String getDueDiligenceReference() {
@@ -68,7 +67,7 @@ public class RegulationReferences {
      *
      * @return dueDiligenceVerification
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The EUDR Due Diligence verification number provided by the EU Commission for the submitted DDS.")
     public String getDueDiligenceVerification() {
@@ -89,7 +88,8 @@ public class RegulationReferences {
      *
      * @return dueDiligenceInformation
      */
-    @Schema(description = "The EUDR Due Diligence information pre-loaded in Vendor Central.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The EUDR Due Diligence information pre-loaded in Vendor Central.")
     public String getDueDiligenceInformation() {
         return dueDiligenceInformation;
     }
@@ -108,7 +108,8 @@ public class RegulationReferences {
      *
      * @return dueDiligenceExemptionCode
      */
-    @Schema(description = "The exemption code for EUDR products exempt from due diligence requirements.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The exemption code for EUDR products exempt from due diligence requirements.")
     public String getDueDiligenceExemptionCode() {
         return dueDiligenceExemptionCode;
     }

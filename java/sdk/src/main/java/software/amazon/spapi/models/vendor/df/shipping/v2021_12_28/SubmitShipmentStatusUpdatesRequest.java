@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request schema for the &#x60;submitShipmentStatusUpdates&#x60; operation. */
-@Schema(description = "The request schema for the `submitShipmentStatusUpdates` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request schema for the `submitShipmentStatusUpdates` operation.")
 public class SubmitShipmentStatusUpdatesRequest {
     @SerializedName("shipmentStatusUpdates")
     private List<ShipmentStatusUpdate> shipmentStatusUpdates = null;
@@ -44,7 +44,7 @@ public class SubmitShipmentStatusUpdatesRequest {
      *
      * @return shipmentStatusUpdates
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Contains a list of one or more `ShipmentStatusUpdate` objects. Each `ShipmentStatusUpdate` object represents an update to the status of a specific shipment.")
     public List<ShipmentStatusUpdate> getShipmentStatusUpdates() {

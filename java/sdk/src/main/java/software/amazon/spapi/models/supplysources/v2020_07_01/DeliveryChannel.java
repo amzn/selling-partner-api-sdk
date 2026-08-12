@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The delivery channel of a supply source. */
-@Schema(description = "The delivery channel of a supply source.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The delivery channel of a supply source.")
 public class DeliveryChannel {
     @SerializedName("isSupported")
     private Boolean isSupported = null;
@@ -35,7 +34,7 @@ public class DeliveryChannel {
      *
      * @return isSupported
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Boolean getIsSupported() {
         return isSupported;
     }
@@ -54,7 +53,7 @@ public class DeliveryChannel {
      *
      * @return operationalConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OperationalConfiguration getOperationalConfiguration() {
         return operationalConfiguration;
     }

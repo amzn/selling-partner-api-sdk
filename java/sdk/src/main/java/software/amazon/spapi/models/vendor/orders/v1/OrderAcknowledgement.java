@@ -13,7 +13,7 @@
 package software.amazon.spapi.models.vendor.orders.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +22,7 @@ import java.util.Objects;
  * Represents an acknowledgement for an order, including the purchase order number, selling party details,
  * acknowledgement date, and a list of acknowledged items.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Represents an acknowledgement for an order, including the purchase order number, selling party details, acknowledgement date, and a list of acknowledged items.")
 public class OrderAcknowledgement {
@@ -48,7 +48,7 @@ public class OrderAcknowledgement {
      *
      * @return purchaseOrderNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The purchase order number. Formatting Notes: 8-character alpha-numeric code.")
     public String getPurchaseOrderNumber() {
@@ -69,7 +69,7 @@ public class OrderAcknowledgement {
      *
      * @return sellingParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -88,7 +88,7 @@ public class OrderAcknowledgement {
      *
      * @return acknowledgementDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The date and time when the purchase order is acknowledged, in ISO-8601 date/time format.")
     public OffsetDateTime getAcknowledgementDate() {
@@ -117,7 +117,9 @@ public class OrderAcknowledgement {
      *
      * @return items
      */
-    @Schema(required = true, description = "A list of the items being acknowledged with associated details.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of the items being acknowledged with associated details.")
     public List<OrderAcknowledgementItem> getItems() {
         return items;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vendor.df.payments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An amount of money, including units in the form of currency. */
-@Schema(description = "An amount of money, including units in the form of currency.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "An amount of money, including units in the form of currency.")
 public class Money {
     @SerializedName("currencyCode")
     private String currencyCode = null;
@@ -35,7 +35,9 @@ public class Money {
      *
      * @return currencyCode
      */
-    @Schema(required = true, description = "Three digit currency code in ISO 4217 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Three digit currency code in ISO 4217 format.")
     public String getCurrencyCode() {
         return currencyCode;
     }
@@ -56,7 +58,7 @@ public class Money {
      *
      * @return amount
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.")

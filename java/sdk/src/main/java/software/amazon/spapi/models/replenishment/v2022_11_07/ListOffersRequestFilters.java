@@ -17,15 +17,16 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept
  * multiple values (arrays), the API returns results that match at least one value in the array.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept multiple values (arrays), the API returns results that match at least one value in the array.")
 public class ListOffersRequestFilters {
@@ -118,7 +119,7 @@ public class ListOffersRequestFilters {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.")
@@ -148,7 +149,8 @@ public class ListOffersRequestFilters {
      *
      * @return skus
      */
-    @Schema(description = "A list of SKUs to filter. This filter is only supported for sellers and not for vendors.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of SKUs to filter. This filter is only supported for sellers and not for vendors.")
     public Set<String> getSkus() {
         return skus;
     }
@@ -175,7 +177,8 @@ public class ListOffersRequestFilters {
      *
      * @return asins
      */
-    @Schema(description = "A list of Amazon Standard Identification Numbers (ASINs).")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of Amazon Standard Identification Numbers (ASINs).")
     public Set<String> getAsins() {
         return asins;
     }
@@ -202,7 +205,7 @@ public class ListOffersRequestFilters {
      *
      * @return eligibilities
      */
-    @Schema(description = "A list of eligibilities associated with an offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of eligibilities associated with an offer.")
     public Set<EligibilityStatus> getEligibilities() {
         return eligibilities;
     }
@@ -221,7 +224,7 @@ public class ListOffersRequestFilters {
      *
      * @return preferences
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Preference getPreferences() {
         return preferences;
     }
@@ -240,7 +243,7 @@ public class ListOffersRequestFilters {
      *
      * @return promotions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Promotion getPromotions() {
         return promotions;
     }
@@ -259,7 +262,7 @@ public class ListOffersRequestFilters {
      *
      * @return programTypes
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ProgramTypes getProgramTypes() {
         return programTypes;
     }
@@ -287,7 +290,7 @@ public class ListOffersRequestFilters {
      *
      * @return deliveriesConditions
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of delivery condition types to filter the results by. Results are filtered to only include offers with the specified delivery conditions.")
     public Set<DeliveriesConditionsEnum> getDeliveriesConditions() {

@@ -13,14 +13,14 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
  * Contains price information about the product, including the LowestPrices and BuyBoxPrices, the ListPrice, the
  * SuggestedLowerPricePlusShipping, and NumberOfOffers and NumberOfBuyBoxEligibleOffers.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Contains price information about the product, including the LowestPrices and BuyBoxPrices, the ListPrice, the SuggestedLowerPricePlusShipping, and NumberOfOffers and NumberOfBuyBoxEligibleOffers.")
 public class Summary {
@@ -64,7 +64,9 @@ public class Summary {
      *
      * @return totalOfferCount
      */
-    @Schema(required = true, description = "The number of unique offers contained in NumberOfOffers.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The number of unique offers contained in NumberOfOffers.")
     public Integer getTotalOfferCount() {
         return totalOfferCount;
     }
@@ -83,7 +85,7 @@ public class Summary {
      *
      * @return numberOfOffers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public NumberOfOffers getNumberOfOffers() {
         return numberOfOffers;
     }
@@ -102,7 +104,7 @@ public class Summary {
      *
      * @return lowestPrices
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public LowestPrices getLowestPrices() {
         return lowestPrices;
     }
@@ -121,7 +123,7 @@ public class Summary {
      *
      * @return buyBoxPrices
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BuyBoxPrices getBuyBoxPrices() {
         return buyBoxPrices;
     }
@@ -140,7 +142,7 @@ public class Summary {
      *
      * @return listPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MoneyType getListPrice() {
         return listPrice;
     }
@@ -159,7 +161,7 @@ public class Summary {
      *
      * @return competitivePriceThreshold
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MoneyType getCompetitivePriceThreshold() {
         return competitivePriceThreshold;
     }
@@ -178,7 +180,7 @@ public class Summary {
      *
      * @return suggestedLowerPricePlusShipping
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MoneyType getSuggestedLowerPricePlusShipping() {
         return suggestedLowerPricePlusShipping;
     }
@@ -197,7 +199,7 @@ public class Summary {
      *
      * @return salesRankings
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SalesRankList getSalesRankings() {
         return salesRankings;
     }
@@ -216,7 +218,7 @@ public class Summary {
      *
      * @return buyBoxEligibleOffers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BuyBoxEligibleOffers getBuyBoxEligibleOffers() {
         return buyBoxEligibleOffers;
     }
@@ -236,7 +238,7 @@ public class Summary {
      *
      * @return offersAvailableTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When the status is ActiveButTooSoonForProcessing, this is the time when the offers will be available for processing.")
     public OffsetDateTime getOffersAvailableTime() {

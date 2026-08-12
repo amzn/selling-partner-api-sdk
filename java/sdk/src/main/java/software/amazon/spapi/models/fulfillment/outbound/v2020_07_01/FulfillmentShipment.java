@@ -17,14 +17,15 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Delivery and item information for a shipment in a fulfillment order. */
-@Schema(description = "Delivery and item information for a shipment in a fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Delivery and item information for a shipment in a fulfillment order.")
 public class FulfillmentShipment {
     @SerializedName("amazonShipmentId")
     private String amazonShipmentId = null;
@@ -111,7 +112,9 @@ public class FulfillmentShipment {
      *
      * @return amazonShipmentId
      */
-    @Schema(required = true, description = "A shipment identifier assigned by Amazon.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A shipment identifier assigned by Amazon.")
     public String getAmazonShipmentId() {
         return amazonShipmentId;
     }
@@ -130,7 +133,9 @@ public class FulfillmentShipment {
      *
      * @return fulfillmentCenterId
      */
-    @Schema(required = true, description = "An identifier for the fulfillment center from which the shipment is sent.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An identifier for the fulfillment center from which the shipment is sent.")
     public String getFulfillmentCenterId() {
         return fulfillmentCenterId;
     }
@@ -149,7 +154,7 @@ public class FulfillmentShipment {
      *
      * @return fulfillmentShipmentStatus
      */
-    @Schema(required = true, description = "The current status of the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The current status of the shipment.")
     public FulfillmentShipmentStatusEnum getFulfillmentShipmentStatus() {
         return fulfillmentShipmentStatus;
     }
@@ -168,7 +173,7 @@ public class FulfillmentShipment {
      *
      * @return shippingDate
      */
-    @Schema(description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
     public OffsetDateTime getShippingDate() {
         return shippingDate;
     }
@@ -187,7 +192,7 @@ public class FulfillmentShipment {
      *
      * @return estimatedArrivalDate
      */
-    @Schema(description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
     public OffsetDateTime getEstimatedArrivalDate() {
         return estimatedArrivalDate;
     }
@@ -215,7 +220,7 @@ public class FulfillmentShipment {
      *
      * @return shippingNotes
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Provides additional insight into shipment timeline. Primarily used to communicate that actual delivery dates aren't available.")
     public List<String> getShippingNotes() {
@@ -236,7 +241,7 @@ public class FulfillmentShipment {
      *
      * @return fulfillmentShipmentItem
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public FulfillmentShipmentItemList getFulfillmentShipmentItem() {
         return fulfillmentShipmentItem;
     }
@@ -255,7 +260,7 @@ public class FulfillmentShipment {
      *
      * @return fulfillmentShipmentPackage
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FulfillmentShipmentPackageList getFulfillmentShipmentPackage() {
         return fulfillmentShipmentPackage;
     }

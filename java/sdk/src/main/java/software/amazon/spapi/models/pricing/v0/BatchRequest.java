@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Common properties of batch requests against individual APIs. */
-@Schema(description = "Common properties of batch requests against individual APIs.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Common properties of batch requests against individual APIs.")
 public class BatchRequest {
     @SerializedName("uri")
     private String uri = null;
@@ -42,7 +42,7 @@ public class BatchRequest {
      *
      * @return uri
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The resource path of the operation you are calling in batch without any query parameters.  If you are calling `getItemOffersBatch`, supply the path of `getItemOffers`.  **Example:** `/products/pricing/v0/items/B000P6Q7MY/offers`  If you are calling `getListingOffersBatch`, supply the path of `getListingOffers`.  **Example:** `/products/pricing/v0/listings/B000P6Q7MY/offers`")
@@ -64,7 +64,7 @@ public class BatchRequest {
      *
      * @return method
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public HttpMethod getMethod() {
         return method;
     }
@@ -83,7 +83,7 @@ public class BatchRequest {
      *
      * @return headers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public HttpRequestHeaders getHeaders() {
         return headers;
     }

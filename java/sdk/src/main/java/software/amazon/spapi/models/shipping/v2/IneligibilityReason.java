@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The reason why a shipping service offering is ineligible. */
-@Schema(description = "The reason why a shipping service offering is ineligible.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The reason why a shipping service offering is ineligible.")
 public class IneligibilityReason {
     @SerializedName("code")
     private IneligibilityReasonCode code = null;
@@ -35,7 +34,7 @@ public class IneligibilityReason {
      *
      * @return code
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public IneligibilityReasonCode getCode() {
         return code;
     }
@@ -54,7 +53,7 @@ public class IneligibilityReason {
      *
      * @return message
      */
-    @Schema(required = true, description = "The ineligibility reason.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The ineligibility reason.")
     public String getMessage() {
         return message;
     }

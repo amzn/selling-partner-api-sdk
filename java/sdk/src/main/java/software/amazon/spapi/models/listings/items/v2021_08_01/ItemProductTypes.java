@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** Product types for a listing item, by Amazon store. */
-@Schema(description = "Product types for a listing item, by Amazon store.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Product types for a listing item, by Amazon store.")
 public class ItemProductTypes extends ArrayList<ItemProductTypeByMarketplace> {
 
     @Override

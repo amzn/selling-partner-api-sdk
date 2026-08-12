@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Vendor Details as part of Label response. */
-@Schema(description = "Vendor Details as part of Label response.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Vendor Details as part of Label response.")
 public class VendorDetails {
     @SerializedName("sellingParty")
     private PartyIdentification sellingParty = null;
@@ -35,7 +34,7 @@ public class VendorDetails {
      *
      * @return sellingParty
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -54,7 +53,8 @@ public class VendorDetails {
      *
      * @return vendorShipmentIdentifier
      */
-    @Schema(description = "Unique vendor shipment id which is not used in last 365 days")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Unique vendor shipment id which is not used in last 365 days")
     public String getVendorShipmentIdentifier() {
         return vendorShipmentIdentifier;
     }

@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Details related to any dangerous goods or items that are shipped. */
-@Schema(description = "Details related to any dangerous goods or items that are shipped.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Details related to any dangerous goods or items that are shipped.")
 public class DangerousGoodsDetails {
     @SerializedName("UnitedNationsRegulatoryId")
     private String unitedNationsRegulatoryId = null;
@@ -163,7 +163,7 @@ public class DangerousGoodsDetails {
      *
      * @return unitedNationsRegulatoryId
      */
-    @Schema(description = "The specific UNID of the item being shipped.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The specific UNID of the item being shipped.")
     public String getUnitedNationsRegulatoryId() {
         return unitedNationsRegulatoryId;
     }
@@ -182,7 +182,7 @@ public class DangerousGoodsDetails {
      *
      * @return transportationRegulatoryClass
      */
-    @Schema(description = "The specific regulatory class of the shipped item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The specific regulatory class of the shipped item.")
     public String getTransportationRegulatoryClass() {
         return transportationRegulatoryClass;
     }
@@ -201,7 +201,7 @@ public class DangerousGoodsDetails {
      *
      * @return packingGroup
      */
-    @Schema(description = "The specific packaging group of the item being shipped.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The specific packaging group of the item being shipped.")
     public PackingGroupEnum getPackingGroup() {
         return packingGroup;
     }
@@ -220,7 +220,8 @@ public class DangerousGoodsDetails {
      *
      * @return packingInstruction
      */
-    @Schema(description = "The specific packing instruction of the item being shipped.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The specific packing instruction of the item being shipped.")
     public PackingInstructionEnum getPackingInstruction() {
         return packingInstruction;
     }

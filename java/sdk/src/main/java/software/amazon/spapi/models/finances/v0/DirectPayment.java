@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A payment made directly to a seller. */
-@Schema(description = "A payment made directly to a seller.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A payment made directly to a seller.")
 public class DirectPayment {
     @SerializedName("DirectPaymentType")
     private String directPaymentType = null;
@@ -44,7 +43,7 @@ public class DirectPayment {
      *
      * @return directPaymentType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The type of payment.  Possible values:  * `StoredValueCardRevenue` - The amount that is deducted from the seller's account because the seller received money through a stored value card.  * `StoredValueCardRefund` - The amount that Amazon returns to the seller if the order that is purchased using a stored value card is refunded.  * `PrivateLabelCreditCardRevenue` - The amount that is deducted from the seller's account because the seller received money through a private label credit card offered by Amazon.  * `PrivateLabelCreditCardRefund` - The amount that Amazon returns to the seller if the order that is purchased using a private label credit card offered by Amazon is refunded.  * `CollectOnDeliveryRevenue` - The COD amount that the seller collected directly from the buyer.  * `CollectOnDeliveryRefund` - The amount that Amazon refunds to the buyer if an order paid for by COD is refunded.")
     public String getDirectPaymentType() {
@@ -65,7 +64,7 @@ public class DirectPayment {
      *
      * @return directPaymentAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getDirectPaymentAmount() {
         return directPaymentAmount;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The expense information related to this specific item. */
-@Schema(description = "The expense information related to this specific item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The expense information related to this specific item.")
 public class ItemExpense {
     @SerializedName("pointsCost")
     private ItemPointsCost pointsCost = null;
@@ -32,7 +31,7 @@ public class ItemExpense {
      *
      * @return pointsCost
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemPointsCost getPointsCost() {
         return pointsCost;
     }

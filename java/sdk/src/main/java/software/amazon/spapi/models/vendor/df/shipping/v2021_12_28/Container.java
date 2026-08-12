@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A container used for shipping and packing items. */
-@Schema(description = "A container used for shipping and packing items.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A container used for shipping and packing items.")
 public class Container {
     /** The type of container. */
     @JsonAdapter(ContainerTypeEnum.Adapter.class)
@@ -118,7 +117,7 @@ public class Container {
      *
      * @return containerType
      */
-    @Schema(required = true, description = "The type of container.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of container.")
     public ContainerTypeEnum getContainerType() {
         return containerType;
     }
@@ -137,7 +136,7 @@ public class Container {
      *
      * @return containerIdentifier
      */
-    @Schema(required = true, description = "The container identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The container identifier.")
     public String getContainerIdentifier() {
         return containerIdentifier;
     }
@@ -156,7 +155,7 @@ public class Container {
      *
      * @return trackingNumber
      */
-    @Schema(description = "The tracking number.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The tracking number.")
     public String getTrackingNumber() {
         return trackingNumber;
     }
@@ -175,7 +174,7 @@ public class Container {
      *
      * @return manifestId
      */
-    @Schema(description = "The manifest identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The manifest identifier.")
     public String getManifestId() {
         return manifestId;
     }
@@ -194,7 +193,7 @@ public class Container {
      *
      * @return manifestDate
      */
-    @Schema(description = "The date of the manifest.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The date of the manifest.")
     public String getManifestDate() {
         return manifestDate;
     }
@@ -214,7 +213,7 @@ public class Container {
      *
      * @return shipMethod
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The shipment method. This property is required when calling the `submitShipmentConfirmations` operation, and optional otherwise.")
     public String getShipMethod() {
@@ -235,7 +234,7 @@ public class Container {
      *
      * @return scacCode
      */
-    @Schema(description = "SCAC code required for NA VOC vendors only.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "SCAC code required for NA VOC vendors only.")
     public String getScacCode() {
         return scacCode;
     }
@@ -254,7 +253,7 @@ public class Container {
      *
      * @return carrier
      */
-    @Schema(description = "Carrier required for EU VOC vendors only.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Carrier required for EU VOC vendors only.")
     public String getCarrier() {
         return carrier;
     }
@@ -273,7 +272,7 @@ public class Container {
      *
      * @return containerSequenceNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "An integer that must be submitted for multi-box shipments only, where one item may come in separate packages.")
     public Integer getContainerSequenceNumber() {
@@ -294,7 +293,7 @@ public class Container {
      *
      * @return dimensions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Dimensions getDimensions() {
         return dimensions;
     }
@@ -313,7 +312,7 @@ public class Container {
      *
      * @return weight
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Weight getWeight() {
         return weight;
     }
@@ -340,7 +339,7 @@ public class Container {
      *
      * @return packedItems
      */
-    @Schema(required = true, description = "A list of packed items.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of packed items.")
     public List<PackedItem> getPackedItems() {
         return packedItems;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Metadata that describes the seller. */
-@Schema(description = "Metadata that describes the seller.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Metadata that describes the seller.")
 public class SellingPartnerMetadata {
     @SerializedName("sellingPartnerId")
     private String sellingPartnerId = null;
@@ -38,7 +37,7 @@ public class SellingPartnerMetadata {
      *
      * @return sellingPartnerId
      */
-    @Schema(description = "The unique seller identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The unique seller identifier.")
     public String getSellingPartnerId() {
         return sellingPartnerId;
     }
@@ -57,7 +56,7 @@ public class SellingPartnerMetadata {
      *
      * @return accountType
      */
-    @Schema(description = "The type of account in the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of account in the transaction.")
     public String getAccountType() {
         return accountType;
     }
@@ -78,7 +77,7 @@ public class SellingPartnerMetadata {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for a marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
     public String getMarketplaceId() {

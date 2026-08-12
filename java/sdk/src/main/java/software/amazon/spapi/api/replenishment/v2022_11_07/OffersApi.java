@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.replenishment.v2022_11_07.ListOfferMetricsRequest;
 import software.amazon.spapi.models.replenishment.v2022_11_07.ListOfferMetricsResponse;
@@ -65,8 +64,7 @@ public class OffersApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call listOfferMetricsCall(
-            ListOfferMetricsRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call listOfferMetricsCall(ListOfferMetricsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -106,8 +104,7 @@ public class OffersApi {
     }
 
     private okhttp3.Call listOfferMetricsValidateBeforeCall(
-            ListOfferMetricsRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            ListOfferMetricsRequest body, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         return listOfferMetricsCall(body, progressRequestListener);
     }
@@ -244,10 +241,10 @@ public class OffersApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listOfferMetricsValidateBeforeCall(body, progressRequestListener);
@@ -273,8 +270,7 @@ public class OffersApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call listOffersCall(
-            ListOffersRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call listOffersCall(ListOffersRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -312,8 +308,7 @@ public class OffersApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call listOffersValidateBeforeCall(
-            ListOffersRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call listOffersValidateBeforeCall(ListOffersRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return listOffersCall(body, progressRequestListener);
@@ -448,10 +443,10 @@ public class OffersApi {
             ListOffersRequest body, final ApiCallback<ListOffersResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listOffersValidateBeforeCall(body, progressRequestListener);

@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The verification status of the order, along with associated approval or rejection metadata. */
-@Schema(description = "The verification status of the order, along with associated approval or rejection metadata.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The verification status of the order, along with associated approval or rejection metadata.")
 public class RegulatedOrderVerificationStatus {
     @SerializedName("Status")
     private VerificationStatus status = null;
@@ -55,7 +55,7 @@ public class RegulatedOrderVerificationStatus {
      *
      * @return status
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public VerificationStatus getStatus() {
         return status;
     }
@@ -74,7 +74,7 @@ public class RegulatedOrderVerificationStatus {
      *
      * @return requiresMerchantAction
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "When true, the regulated information provided in the order requires a review by the merchant.")
@@ -104,7 +104,7 @@ public class RegulatedOrderVerificationStatus {
      *
      * @return validRejectionReasons
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A list of valid rejection reasons that may be used to reject the order's regulated information.")
@@ -126,7 +126,7 @@ public class RegulatedOrderVerificationStatus {
      *
      * @return rejectionReason
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RejectionReason getRejectionReason() {
         return rejectionReason;
     }
@@ -146,7 +146,7 @@ public class RegulatedOrderVerificationStatus {
      *
      * @return reviewDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date the order was reviewed. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.")
     public String getReviewDate() {
@@ -167,7 +167,8 @@ public class RegulatedOrderVerificationStatus {
      *
      * @return externalReviewerId
      */
-    @Schema(description = "The identifier for the order's regulated information reviewer.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The identifier for the order's regulated information reviewer.")
     public String getExternalReviewerId() {
         return externalReviewerId;
     }
@@ -197,7 +198,7 @@ public class RegulatedOrderVerificationStatus {
      *
      * @return validVerificationDetails
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of valid verification details that may be provided and the criteria required for when the verification detail can be provided.")
     public List<ValidVerificationDetail> getValidVerificationDetails() {
@@ -229,7 +230,7 @@ public class RegulatedOrderVerificationStatus {
      *
      * @return validInterimStatusCodes
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Valid interim status codes that may be used when populating `InterimStatusDetail`. Each element contains a `StatusCode` identifier and its customer-facing `StatusDescription`.")
     public List<ValidInterimStatusCode> getValidInterimStatusCodes() {

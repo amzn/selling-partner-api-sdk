@@ -17,8 +17,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -27,7 +27,7 @@ import java.util.Objects;
  * Represents the header-level information for an invoice, including parties involved (payer/payee), financial amounts,
  * status, dates, and related business identifiers.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Represents the header-level information for an invoice, including parties involved (payer/payee), financial amounts, status, dates, and related business identifiers.")
 public class InvoiceHeader {
@@ -189,7 +189,9 @@ public class InvoiceHeader {
      *
      * @return invoiceNumber
      */
-    @Schema(required = true, description = "The invoice number provided when the invoice was created.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The invoice number provided when the invoice was created.")
     public String getInvoiceNumber() {
         return invoiceNumber;
     }
@@ -208,7 +210,7 @@ public class InvoiceHeader {
      *
      * @return invoiceStatus
      */
-    @Schema(required = true, description = "The current state of the invoice.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The current state of the invoice.")
     public InvoiceStatusEnum getInvoiceStatus() {
         return invoiceStatus;
     }
@@ -227,7 +229,7 @@ public class InvoiceHeader {
      *
      * @return invoiceType
      */
-    @Schema(required = true, description = "The type of invoice.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of invoice.")
     public InvoiceTypeEnum getInvoiceType() {
         return invoiceType;
     }
@@ -246,7 +248,7 @@ public class InvoiceHeader {
      *
      * @return billingPeriod
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BillingPeriod getBillingPeriod() {
         return billingPeriod;
     }
@@ -265,7 +267,7 @@ public class InvoiceHeader {
      *
      * @return payer
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartnerMetadata getPayer() {
         return payer;
     }
@@ -284,7 +286,7 @@ public class InvoiceHeader {
      *
      * @return payee
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartnerMetadata getPayee() {
         return payee;
     }
@@ -305,7 +307,7 @@ public class InvoiceHeader {
      *
      * @return invoiceIdentifier
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The unique identifier for an invoice. For AP-Inventory invoices, this is formatted as `InvoiceNumber~PayeeCode`. This field can be used as an input to the `getInvoice` operation to fetch invoice details.")
@@ -327,7 +329,9 @@ public class InvoiceHeader {
      *
      * @return issueDate
      */
-    @Schema(required = true, description = "When the invoice was issued. In ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "When the invoice was issued. In ISO 8601 format.")
     public OffsetDateTime getIssueDate() {
         return issueDate;
     }
@@ -346,7 +350,7 @@ public class InvoiceHeader {
      *
      * @return dueDate
      */
-    @Schema(description = "The due date of the invoice. In ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The due date of the invoice. In ISO 8601 format.")
     public OffsetDateTime getDueDate() {
         return dueDate;
     }
@@ -365,7 +369,7 @@ public class InvoiceHeader {
      *
      * @return paymentTerms
      */
-    @Schema(description = "Payment terms associated with the invoice.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Payment terms associated with the invoice.")
     public String getPaymentTerms() {
         return paymentTerms;
     }
@@ -384,7 +388,7 @@ public class InvoiceHeader {
      *
      * @return invoiceAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getInvoiceAmount() {
         return invoiceAmount;
     }
@@ -414,7 +418,7 @@ public class InvoiceHeader {
      *
      * @return invoiceAmountBreakdowns
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The breakdown of the invoice amount into sub-components.  **Possible `breakdownType` values:**  * `Total`: Total invoice amount. * `InvoiceAmountWithoutTax`: Invoice amount excluding tax. * `TaxAmount`: Tax amount on the invoice. * `MiscCharges`: Miscellaneous charges on the invoice. * `Other`: Other breakdown type.")
     public List<Breakdown> getInvoiceAmountBreakdowns() {
@@ -447,7 +451,7 @@ public class InvoiceHeader {
      *
      * @return invoiceSettlementBreakdowns
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The breakdown of the invoice settlement amount into sub-components.  **Possible `breakdownType` values:**  * `AmountPaid`: Amount that has been paid. * `QueuedForPayment`: Amount queued for payment. * `QuickPayDiscount`: Quick pay discount amount. * `QuantityVarianceAmount`: Quantity variance amount. * `PriceVariance`: Price variance amount. * `Other`: Other settlement breakdown type.")
     public List<Breakdown> getInvoiceSettlementBreakdowns() {
@@ -476,7 +480,8 @@ public class InvoiceHeader {
      *
      * @return relatedIdentifiers
      */
-    @Schema(description = "A list of related business identifiers associated with the invoice.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of related business identifiers associated with the invoice.")
     public List<RelatedIdentifier> getRelatedIdentifiers() {
         return relatedIdentifiers;
     }
@@ -495,7 +500,9 @@ public class InvoiceHeader {
      *
      * @return creationDate
      */
-    @Schema(required = true, description = "When the invoice was created. In ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "When the invoice was created. In ISO 8601 format.")
     public OffsetDateTime getCreationDate() {
         return creationDate;
     }
@@ -514,7 +521,9 @@ public class InvoiceHeader {
      *
      * @return lastUpdatedDate
      */
-    @Schema(required = true, description = "When the invoice was last updated. In ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "When the invoice was last updated. In ISO 8601 format.")
     public OffsetDateTime getLastUpdatedDate() {
         return lastUpdatedDate;
     }

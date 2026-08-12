@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Shipment Status details. */
-@Schema(description = "Shipment Status details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Shipment Status details.")
 public class ShipmentStatusDetails {
     /** Current status of the shipment on whether it is picked up or scheduled. */
     @JsonAdapter(ShipmentStatusEnum.Adapter.class)
@@ -90,7 +90,8 @@ public class ShipmentStatusDetails {
      *
      * @return shipmentStatus
      */
-    @Schema(description = "Current status of the shipment on whether it is picked up or scheduled.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Current status of the shipment on whether it is picked up or scheduled.")
     public ShipmentStatusEnum getShipmentStatus() {
         return shipmentStatus;
     }
@@ -109,7 +110,8 @@ public class ShipmentStatusDetails {
      *
      * @return shipmentStatusDate
      */
-    @Schema(description = "Date and time on last status update received for the shipment")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Date and time on last status update received for the shipment")
     public OffsetDateTime getShipmentStatusDate() {
         return shipmentStatusDate;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A similar item for the specified ASIN &#x60;marketplaceId&#x60; combination. */
-@Schema(description = "A similar item for the specified ASIN `marketplaceId` combination.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A similar item for the specified ASIN `marketplaceId` combination.")
 public class Item {
     @SerializedName("asin")
     private String asin = null;
@@ -32,7 +32,7 @@ public class Item {
      *
      * @return asin
      */
-    @Schema(required = true, description = "The ASIN of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The ASIN of the item.")
     public String getAsin() {
         return asin;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The links response that is associated with the object. */
-@Schema(description = "The links response that is associated with the object.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The links response that is associated with the object.")
 public class GetSchemaResponseLinks {
     @SerializedName("self")
     private LinkObject self = null;
@@ -32,7 +31,7 @@ public class GetSchemaResponseLinks {
      *
      * @return self
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public LinkObject getSelf() {
         return self;
     }

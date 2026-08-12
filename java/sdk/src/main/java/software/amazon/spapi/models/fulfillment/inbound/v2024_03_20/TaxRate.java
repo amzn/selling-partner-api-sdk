@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Contains the type and rate of tax. */
-@Schema(description = "Contains the type and rate of tax.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Contains the type and rate of tax.")
 public class TaxRate {
     @SerializedName("cessRate")
     private BigDecimal cessRate = null;
@@ -38,7 +38,7 @@ public class TaxRate {
      *
      * @return cessRate
      */
-    @Schema(description = "Rate of cess tax.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Rate of cess tax.")
     public BigDecimal getCessRate() {
         return cessRate;
     }
@@ -57,7 +57,7 @@ public class TaxRate {
      *
      * @return gstRate
      */
-    @Schema(description = "Rate of gst tax.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Rate of gst tax.")
     public BigDecimal getGstRate() {
         return gstRate;
     }
@@ -76,7 +76,8 @@ public class TaxRate {
      *
      * @return taxType
      */
-    @Schema(description = "Type of tax. Possible values: `CGST`, `SGST`, `IGST`, `TOTAL_TAX`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Type of tax. Possible values: `CGST`, `SGST`, `IGST`, `TOTAL_TAX`.")
     public String getTaxType() {
         return taxType;
     }

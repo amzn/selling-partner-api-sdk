@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** A promotional percentage discount applied to the offer. */
-@Schema(description = "A promotional percentage discount applied to the offer.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A promotional percentage discount applied to the offer.")
 public class OfferProgramConfigurationPromotionsDiscountFunding {
     @SerializedName("percentage")
     private BigDecimal percentage = null;
@@ -32,7 +32,7 @@ public class OfferProgramConfigurationPromotionsDiscountFunding {
      *
      * @return percentage
      */
-    @Schema(description = "The percentage discount on the offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The percentage discount on the offer.")
     public BigDecimal getPercentage() {
         return percentage;
     }

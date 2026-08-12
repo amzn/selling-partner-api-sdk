@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request body for the &#x60;updateVerificationStatus&#x60; operation. */
-@Schema(description = "The request body for the `updateVerificationStatus` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request body for the `updateVerificationStatus` operation.")
 public class UpdateVerificationStatusRequest {
     @SerializedName("regulatedOrderVerificationStatus")
     private UpdateVerificationStatusRequestBody regulatedOrderVerificationStatus = null;
@@ -33,7 +33,7 @@ public class UpdateVerificationStatusRequest {
      *
      * @return regulatedOrderVerificationStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public UpdateVerificationStatusRequestBody getRegulatedOrderVerificationStatus() {
         return regulatedOrderVerificationStatus;
     }

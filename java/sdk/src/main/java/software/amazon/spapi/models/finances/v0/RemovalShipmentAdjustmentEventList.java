@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.finances.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A comma-delimited list of &#x60;RemovalShipmentAdjustment&#x60; details for FBA inventory. */
-@Schema(description = "A comma-delimited list of `RemovalShipmentAdjustment` details for FBA inventory.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A comma-delimited list of `RemovalShipmentAdjustment` details for FBA inventory.")
 public class RemovalShipmentAdjustmentEventList extends ArrayList<RemovalShipmentAdjustmentEvent> {
 
     @Override

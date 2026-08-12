@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Customer-specified time preferences for when deliveries should be attempted at the destination address. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Customer-specified time preferences for when deliveries should be attempted at the destination address.")
 public class PreferredDeliveryTime {
@@ -47,7 +46,8 @@ public class PreferredDeliveryTime {
      *
      * @return businessHours
      */
-    @Schema(description = "Business hours when the business is open for deliveries.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Business hours when the business is open for deliveries.")
     public List<BusinessHour> getBusinessHours() {
         return businessHours;
     }
@@ -74,7 +74,8 @@ public class PreferredDeliveryTime {
      *
      * @return exceptionDates
      */
-    @Schema(description = "Specific dates within the next 30 days when normal business hours do not apply.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Specific dates within the next 30 days when normal business hours do not apply.")
     public List<ExceptionDate> getExceptionDates() {
         return exceptionDates;
     }

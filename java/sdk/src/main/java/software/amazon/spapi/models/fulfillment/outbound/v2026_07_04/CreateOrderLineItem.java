@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Line item information for a create order request. */
-@Schema(description = "Line item information for a create order request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Line item information for a create order request.")
 public class CreateOrderLineItem {
     @SerializedName("lineItemId")
     private String lineItemId = null;
@@ -41,7 +40,9 @@ public class CreateOrderLineItem {
      *
      * @return lineItemId
      */
-    @Schema(required = true, description = "The line item identifier for the fulfillment order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The line item identifier for the fulfillment order.")
     public String getLineItemId() {
         return lineItemId;
     }
@@ -60,7 +61,7 @@ public class CreateOrderLineItem {
      *
      * @return product
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public OrderProduct getProduct() {
         return product;
     }
@@ -79,7 +80,7 @@ public class CreateOrderLineItem {
      *
      * @return amount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Amount getAmount() {
         return amount;
     }
@@ -98,7 +99,7 @@ public class CreateOrderLineItem {
      *
      * @return fulfillmentConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public LineItemFulfillmentConfiguration getFulfillmentConfiguration() {
         return fulfillmentConfiguration;
     }

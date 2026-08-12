@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * The tracking details of the package if it is shipped by a third party courier. This attribute should only be provided
  * when the value of &#x60;shipBy&#x60; is &#x60;THIRD_PARTY_CARRIER&#x60;.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The tracking details of the package if it is shipped by a third party courier. This attribute should only be provided when the value of `shipBy` is `THIRD_PARTY_CARRIER`.")
 public class CourierSupportedAttributes {
@@ -40,7 +39,9 @@ public class CourierSupportedAttributes {
      *
      * @return carrierName
      */
-    @Schema(required = true, description = "The name of the courier service used to ship the package")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The name of the courier service used to ship the package")
     public String getCarrierName() {
         return carrierName;
     }
@@ -59,7 +60,7 @@ public class CourierSupportedAttributes {
      *
      * @return trackingId
      */
-    @Schema(required = true, description = "The tracking number of the package.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The tracking number of the package.")
     public String getTrackingId() {
         return trackingId;
     }

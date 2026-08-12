@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The information required to create an Amazon Simple Queue Service (Amazon SQS) queue destination. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The information required to create an Amazon Simple Queue Service (Amazon SQS) queue destination.")
 public class SqsResource {
@@ -34,7 +33,9 @@ public class SqsResource {
      *
      * @return arn
      */
-    @Schema(required = true, description = "The Amazon Resource Name (ARN) associated with the SQS queue.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The Amazon Resource Name (ARN) associated with the SQS queue.")
     public String getArn() {
         return arn;
     }

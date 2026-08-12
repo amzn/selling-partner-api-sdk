@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** The time of the appointment window. */
-@Schema(description = "The time of the appointment window.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The time of the appointment window.")
 public class AppointmentTime {
     @SerializedName("startTime")
     private OffsetDateTime startTime = null;
@@ -35,7 +35,7 @@ public class AppointmentTime {
      *
      * @return startTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The date and time of the start of the appointment window in ISO 8601 format.")
     public OffsetDateTime getStartTime() {
@@ -56,7 +56,9 @@ public class AppointmentTime {
      *
      * @return durationInMinutes
      */
-    @Schema(required = true, description = "The duration of the appointment window, in minutes.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The duration of the appointment window, in minutes.")
     public Integer getDurationInMinutes() {
         return durationInMinutes;
     }

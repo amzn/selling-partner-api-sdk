@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Current status of a purchase order. */
-@Schema(description = "Current status of a purchase order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Current status of a purchase order.")
 public class OrderStatus {
     @SerializedName("purchaseOrderNumber")
     private String purchaseOrderNumber = null;
@@ -102,7 +102,7 @@ public class OrderStatus {
      *
      * @return purchaseOrderNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The buyer's purchase order number for this order. Formatting Notes: 8-character alpha-numeric code.")
@@ -124,7 +124,9 @@ public class OrderStatus {
      *
      * @return purchaseOrderStatus
      */
-    @Schema(required = true, description = "The status of the buyer's purchase order for this order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The status of the buyer's purchase order for this order.")
     public PurchaseOrderStatusEnum getPurchaseOrderStatus() {
         return purchaseOrderStatus;
     }
@@ -143,7 +145,7 @@ public class OrderStatus {
      *
      * @return purchaseOrderDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The date the purchase order was placed. Must be in ISO-8601 date/time format.")
     public OffsetDateTime getPurchaseOrderDate() {
@@ -164,7 +166,8 @@ public class OrderStatus {
      *
      * @return lastUpdatedDate
      */
-    @Schema(description = "The date when the purchase order was last updated. Must be in ISO-8601 date/time format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The date when the purchase order was last updated. Must be in ISO-8601 date/time format.")
     public OffsetDateTime getLastUpdatedDate() {
         return lastUpdatedDate;
     }
@@ -183,7 +186,7 @@ public class OrderStatus {
      *
      * @return sellingParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -202,7 +205,7 @@ public class OrderStatus {
      *
      * @return shipToParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getShipToParty() {
         return shipToParty;
     }
@@ -221,7 +224,7 @@ public class OrderStatus {
      *
      * @return itemStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemStatus getItemStatus() {
         return itemStatus;
     }

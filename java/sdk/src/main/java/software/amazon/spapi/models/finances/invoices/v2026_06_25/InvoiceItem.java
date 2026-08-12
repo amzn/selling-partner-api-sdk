@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.finances.invoices.v2026_06_25;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +21,7 @@ import java.util.Objects;
  * A line item within an invoice, including unit costs, quantities, tax information, and contextual details about the
  * goods or services being invoiced.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A line item within an invoice, including unit costs, quantities, tax information, and contextual details about the goods or services being invoiced.")
 public class InvoiceItem {
@@ -60,7 +59,9 @@ public class InvoiceItem {
      *
      * @return lineItemId
      */
-    @Schema(required = true, description = "The unique identifier for the line item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unique identifier for the line item.")
     public String getLineItemId() {
         return lineItemId;
     }
@@ -79,7 +80,7 @@ public class InvoiceItem {
      *
      * @return unitCost
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getUnitCost() {
         return unitCost;
     }
@@ -98,7 +99,7 @@ public class InvoiceItem {
      *
      * @return quantity
      */
-    @Schema(description = "The number of units for the line item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units for the line item.")
     public Integer getQuantity() {
         return quantity;
     }
@@ -125,7 +126,8 @@ public class InvoiceItem {
      *
      * @return taxRateCodes
      */
-    @Schema(description = "A list of country code and tax rate combinations applied to the line item. Example: `DE 19`")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of country code and tax rate combinations applied to the line item. Example: `DE 19`")
     public List<String> getTaxRateCodes() {
         return taxRateCodes;
     }
@@ -144,7 +146,7 @@ public class InvoiceItem {
      *
      * @return totalAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getTotalAmount() {
         return totalAmount;
     }
@@ -173,7 +175,7 @@ public class InvoiceItem {
      *
      * @return totalAmountBreakdown
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The breakdown of the total amount into sub-components.  **Possible `breakdownType` values:**  * `ItemCostWithoutTax`: Line item cost excluding tax. * `ItemTaxAmount`: Tax amount on the line item. * `Other`: Other line item breakdown type.")
     public List<Breakdown> getTotalAmountBreakdown() {
@@ -194,7 +196,7 @@ public class InvoiceItem {
      *
      * @return lineItemContext
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public LineItemContext getLineItemContext() {
         return lineItemContext;
     }
@@ -221,7 +223,7 @@ public class InvoiceItem {
      *
      * @return relatedItemIdentifiers
      */
-    @Schema(description = "List of related item identifiers for the line item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "List of related item identifiers for the line item.")
     public List<RelatedIdentifier> getRelatedItemIdentifiers() {
         return relatedItemIdentifiers;
     }

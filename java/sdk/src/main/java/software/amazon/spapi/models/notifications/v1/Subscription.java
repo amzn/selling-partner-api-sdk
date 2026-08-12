@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about the subscription. */
-@Schema(description = "Information about the subscription.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about the subscription.")
 public class Subscription {
     @SerializedName("subscriptionId")
     private String subscriptionId = null;
@@ -41,7 +40,9 @@ public class Subscription {
      *
      * @return subscriptionId
      */
-    @Schema(required = true, description = "The subscription identifier generated when the subscription is created.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The subscription identifier generated when the subscription is created.")
     public String getSubscriptionId() {
         return subscriptionId;
     }
@@ -60,7 +61,9 @@ public class Subscription {
      *
      * @return payloadVersion
      */
-    @Schema(required = true, description = "The version of the payload object to be used in the notification.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The version of the payload object to be used in the notification.")
     public String getPayloadVersion() {
         return payloadVersion;
     }
@@ -79,7 +82,9 @@ public class Subscription {
      *
      * @return destinationId
      */
-    @Schema(required = true, description = "The identifier for the destination where notifications will be delivered.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The identifier for the destination where notifications will be delivered.")
     public String getDestinationId() {
         return destinationId;
     }
@@ -98,7 +103,7 @@ public class Subscription {
      *
      * @return processingDirective
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ProcessingDirective getProcessingDirective() {
         return processingDirective;
     }

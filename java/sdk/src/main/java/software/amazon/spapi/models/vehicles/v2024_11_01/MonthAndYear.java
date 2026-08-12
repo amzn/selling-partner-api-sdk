@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vehicles.v2024_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Represents a month in a specific year. */
-@Schema(description = "Represents a month in a specific year.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Represents a month in a specific year.")
 public class MonthAndYear {
     @SerializedName("year")
     private BigDecimal year = null;
@@ -35,7 +35,7 @@ public class MonthAndYear {
      *
      * @return year
      */
-    @Schema(description = "Year in YYYY format")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Year in YYYY format")
     public BigDecimal getYear() {
         return year;
     }
@@ -54,7 +54,7 @@ public class MonthAndYear {
      *
      * @return month
      */
-    @Schema(description = "Month in MM format")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Month in MM format")
     public BigDecimal getMonth() {
         return month;
     }

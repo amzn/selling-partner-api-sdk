@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The money that the seller receives from the sale of the order. */
-@Schema(description = "The money that the seller receives from the sale of the order.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The money that the seller receives from the sale of the order.")
 public class OrderProceeds {
     @SerializedName("grandTotal")
     private Money grandTotal = null;
@@ -37,7 +37,7 @@ public class OrderProceeds {
      *
      * @return grandTotal
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getGrandTotal() {
         return grandTotal;
     }
@@ -66,7 +66,7 @@ public class OrderProceeds {
      *
      * @return breakdowns
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Categorized proceeds for the order. Proceed categories are either aggregated across all order items (such as `ITEM`, `SHIPPING`, and `TAX`) or applied at the order level (such as `DELIVERY_TIP`).")
     public List<OrderProceedsBreakdown> getBreakdowns() {

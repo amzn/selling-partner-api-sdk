@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * The base response data for all A+ Content operations when a request is successful or partially successful. Individual
  * operations can extend this with additional data.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The base response data for all A+ Content operations when a request is successful or partially successful. Individual operations can extend this with additional data.")
 public class AplusResponse {
@@ -37,7 +36,7 @@ public class AplusResponse {
      *
      * @return warnings
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MessageSet getWarnings() {
         return warnings;
     }

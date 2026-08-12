@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The package that is associated with the container. */
-@Schema(description = "The package that is associated with the container.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The package that is associated with the container.")
 public class ModelPackage {
     @SerializedName("packageTrackingNumber")
     private String packageTrackingNumber = null;
@@ -33,7 +32,7 @@ public class ModelPackage {
      *
      * @return packageTrackingNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The tracking number on the label of shipment package, that you can fetch from the `shippingLabels` response. You can also scan the bar code on the shipping label to get the tracking number.")

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.productfees.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An item identifier and the estimated fees for the item. */
-@Schema(description = "An item identifier and the estimated fees for the item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An item identifier and the estimated fees for the item.")
 public class FeesEstimateResult {
     @SerializedName("Status")
     private String status = null;
@@ -41,7 +40,8 @@ public class FeesEstimateResult {
      *
      * @return status
      */
-    @Schema(description = "The status of the fee request. Possible values: Success, ClientError, ServiceError.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The status of the fee request. Possible values: Success, ClientError, ServiceError.")
     public String getStatus() {
         return status;
     }
@@ -60,7 +60,7 @@ public class FeesEstimateResult {
      *
      * @return feesEstimateIdentifier
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeesEstimateIdentifier getFeesEstimateIdentifier() {
         return feesEstimateIdentifier;
     }
@@ -79,7 +79,7 @@ public class FeesEstimateResult {
      *
      * @return feesEstimate
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeesEstimate getFeesEstimate() {
         return feesEstimate;
     }
@@ -98,7 +98,7 @@ public class FeesEstimateResult {
      *
      * @return error
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeesEstimateError getError() {
         return error;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Custom text for shipping labels. */
-@Schema(description = "Custom text for shipping labels.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Custom text for shipping labels.")
 public class LabelCustomization {
     @SerializedName("CustomTextForLabel")
     private String customTextForLabel = null;
@@ -36,7 +35,7 @@ public class LabelCustomization {
      *
      * @return customTextForLabel
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Custom text to print on the label. Note: Custom text is only included on labels that are in ZPL format (ZPL203). FedEx does not support `CustomTextForLabel`.")
     public String getCustomTextForLabel() {
@@ -57,7 +56,7 @@ public class LabelCustomization {
      *
      * @return standardIdForLabel
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardIdForLabel getStandardIdForLabel() {
         return standardIdForLabel;
     }

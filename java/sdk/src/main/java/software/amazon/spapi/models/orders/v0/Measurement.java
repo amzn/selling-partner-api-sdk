@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Measurement information for an order item. */
-@Schema(description = "Measurement information for an order item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Measurement information for an order item.")
 public class Measurement {
     /** The unit of measure. */
     @JsonAdapter(UnitEnum.Adapter.class)
@@ -130,7 +130,7 @@ public class Measurement {
      *
      * @return unit
      */
-    @Schema(required = true, description = "The unit of measure.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The unit of measure.")
     public UnitEnum getUnit() {
         return unit;
     }
@@ -149,7 +149,7 @@ public class Measurement {
      *
      * @return value
      */
-    @Schema(required = true, description = "The measurement value.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The measurement value.")
     public BigDecimal getValue() {
         return value;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response to the &#x60;listTransactions&#x60; operation. */
-@Schema(description = "The response to the `listTransactions` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response to the `listTransactions` operation.")
 public class ListTransactionsResponse {
     @SerializedName("payload")
     private TransactionsPayload payload = null;
@@ -32,7 +31,7 @@ public class ListTransactionsResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TransactionsPayload getPayload() {
         return payload;
     }

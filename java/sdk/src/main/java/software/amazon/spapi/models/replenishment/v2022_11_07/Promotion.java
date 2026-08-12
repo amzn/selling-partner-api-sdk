@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Offer promotions to include in the result filter criteria. */
-@Schema(description = "Offer promotions to include in the result filter criteria.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Offer promotions to include in the result filter criteria.")
 public class Promotion {
     @SerializedName("sellingPartnerFundedBaseDiscount")
     private DiscountFunding sellingPartnerFundedBaseDiscount = null;
@@ -41,7 +40,7 @@ public class Promotion {
      *
      * @return sellingPartnerFundedBaseDiscount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DiscountFunding getSellingPartnerFundedBaseDiscount() {
         return sellingPartnerFundedBaseDiscount;
     }
@@ -60,7 +59,7 @@ public class Promotion {
      *
      * @return sellingPartnerFundedTieredDiscount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DiscountFunding getSellingPartnerFundedTieredDiscount() {
         return sellingPartnerFundedTieredDiscount;
     }
@@ -79,7 +78,7 @@ public class Promotion {
      *
      * @return amazonFundedBaseDiscount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DiscountFunding getAmazonFundedBaseDiscount() {
         return amazonFundedBaseDiscount;
     }
@@ -98,7 +97,7 @@ public class Promotion {
      *
      * @return amazonFundedTieredDiscount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DiscountFunding getAmazonFundedTieredDiscount() {
         return amazonFundedTieredDiscount;
     }

@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The payload for the &#x60;getFeatureSKU&#x60; operation. */
-@Schema(description = "The payload for the `getFeatureSKU` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the `getFeatureSKU` operation.")
 public class GetFeatureSkuResult {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -55,7 +55,7 @@ public class GetFeatureSkuResult {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "The requested marketplace.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The requested marketplace.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -74,7 +74,7 @@ public class GetFeatureSkuResult {
      *
      * @return featureName
      */
-    @Schema(required = true, description = "The name of the feature.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the feature.")
     public String getFeatureName() {
         return featureName;
     }
@@ -93,7 +93,9 @@ public class GetFeatureSkuResult {
      *
      * @return isEligible
      */
-    @Schema(required = true, description = "When true, the seller SKU is eligible for the requested feature.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "When true, the seller SKU is eligible for the requested feature.")
     public Boolean getIsEligible() {
         return isEligible;
     }
@@ -123,7 +125,7 @@ public class GetFeatureSkuResult {
      *
      * @return ineligibleReasons
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of one or more reasons that the seller SKU is ineligible for the feature.  Possible values: * `MERCHANT_NOT_ENROLLED`: The merchant isn't enrolled for the feature. * `SKU_NOT_ELIGIBLE`: The SKU doesn't reside in a warehouse that supports the feature. * `INVALID_SKU`: There is an issue with the SKU provided.")
     public List<String> getIneligibleReasons() {
@@ -145,7 +147,7 @@ public class GetFeatureSkuResult {
      *
      * @return sellerSku
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.")
     public String getSellerSku() {
@@ -166,7 +168,7 @@ public class GetFeatureSkuResult {
      *
      * @return fnSku
      */
-    @Schema(description = "The unique SKU used by Amazon's fulfillment network.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The unique SKU used by Amazon's fulfillment network.")
     public String getFnSku() {
         return fnSku;
     }
@@ -185,7 +187,8 @@ public class GetFeatureSkuResult {
      *
      * @return asin
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getAsin() {
         return asin;
     }
@@ -204,7 +207,7 @@ public class GetFeatureSkuResult {
      *
      * @return skuCount
      */
-    @Schema(description = "The number of SKUs available for this service.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of SKUs available for this service.")
     public BigDecimal getSkuCount() {
         return skuCount;
     }

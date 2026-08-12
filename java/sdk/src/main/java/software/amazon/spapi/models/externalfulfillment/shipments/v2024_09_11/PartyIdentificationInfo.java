@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Party identification details for the shipment, applicable to direct fulfillment shipments. */
-@Schema(description = "Party identification details for the shipment, applicable to direct fulfillment shipments.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Party identification details for the shipment, applicable to direct fulfillment shipments.")
 public class PartyIdentificationInfo {
     @SerializedName("partyId")
     private String partyId = null;
@@ -96,7 +96,7 @@ public class PartyIdentificationInfo {
      *
      * @return partyId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "Assigned identification for the party. For example, a warehouse code or vendor code.")
     public String getPartyId() {
@@ -117,7 +117,7 @@ public class PartyIdentificationInfo {
      *
      * @return partyType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "Assigned identification for the party. For example, a warehouse code or vendor code.")
     public PartyTypeEnum getPartyType() {
@@ -138,7 +138,7 @@ public class PartyIdentificationInfo {
      *
      * @return address
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getAddress() {
         return address;
     }
@@ -157,7 +157,7 @@ public class PartyIdentificationInfo {
      *
      * @return taxInfo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TaxRegistrationInfo getTaxInfo() {
         return taxInfo;
     }

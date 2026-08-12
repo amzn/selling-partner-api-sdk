@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The &#x60;setPackingInformation&#x60; request. */
-@Schema(description = "The `setPackingInformation` request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `setPackingInformation` request.")
 public class SetPackingInformationRequest {
     @SerializedName("packageGroupings")
     private List<PackageGroupingInput> packageGroupings = null;
@@ -42,7 +41,9 @@ public class SetPackingInformationRequest {
      *
      * @return packageGroupings
      */
-    @Schema(required = true, description = "List of packing information for the inbound plan.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "List of packing information for the inbound plan.")
     public List<PackageGroupingInput> getPackageGroupings() {
         return packageGroupings;
     }

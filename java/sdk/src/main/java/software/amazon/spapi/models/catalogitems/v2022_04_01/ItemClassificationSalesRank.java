@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Sales rank of an Amazon catalog item. */
-@Schema(description = "Sales rank of an Amazon catalog item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Sales rank of an Amazon catalog item.")
 public class ItemClassificationSalesRank {
     @SerializedName("classificationId")
     private String classificationId = null;
@@ -41,7 +40,9 @@ public class ItemClassificationSalesRank {
      *
      * @return classificationId
      */
-    @Schema(required = true, description = "Identifier of the classification that is associated with the sales rank.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Identifier of the classification that is associated with the sales rank.")
     public String getClassificationId() {
         return classificationId;
     }
@@ -60,7 +61,7 @@ public class ItemClassificationSalesRank {
      *
      * @return title
      */
-    @Schema(required = true, description = "Name of the sales rank.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Name of the sales rank.")
     public String getTitle() {
         return title;
     }
@@ -79,7 +80,8 @@ public class ItemClassificationSalesRank {
      *
      * @return link
      */
-    @Schema(description = "Corresponding Amazon retail website URL for the sales category.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Corresponding Amazon retail website URL for the sales category.")
     public String getLink() {
         return link;
     }
@@ -98,7 +100,7 @@ public class ItemClassificationSalesRank {
      *
      * @return rank
      */
-    @Schema(required = true, description = "Sales rank.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Sales rank.")
     public Integer getRank() {
         return rank;
     }

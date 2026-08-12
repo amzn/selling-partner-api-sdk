@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fba.eligibility.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the getItemEligibilityPreview operation. */
-@Schema(description = "The response schema for the getItemEligibilityPreview operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the getItemEligibilityPreview operation.")
 public class GetItemEligibilityPreviewResponse {
     @SerializedName("payload")
     private ItemEligibilityPreview payload = null;
@@ -35,7 +35,7 @@ public class GetItemEligibilityPreviewResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemEligibilityPreview getPayload() {
         return payload;
     }
@@ -54,7 +54,7 @@ public class GetItemEligibilityPreviewResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

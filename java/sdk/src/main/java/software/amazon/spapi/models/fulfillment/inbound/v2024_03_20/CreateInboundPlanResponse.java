@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The &#x60;createInboundPlan&#x60; response. */
-@Schema(description = "The `createInboundPlan` response.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `createInboundPlan` response.")
 public class CreateInboundPlanResponse {
     @SerializedName("inboundPlanId")
     private String inboundPlanId = null;
@@ -35,7 +34,7 @@ public class CreateInboundPlanResponse {
      *
      * @return inboundPlanId
      */
-    @Schema(required = true, description = "Identifier of an inbound plan.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Identifier of an inbound plan.")
     public String getInboundPlanId() {
         return inboundPlanId;
     }
@@ -54,7 +53,7 @@ public class CreateInboundPlanResponse {
      *
      * @return operationId
      */
-    @Schema(required = true, description = "UUID for the given operation.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "UUID for the given operation.")
     public String getOperationId() {
         return operationId;
     }

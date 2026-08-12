@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** Related business identifiers of the payout. */
-@Schema(description = "Related business identifiers of the payout.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Related business identifiers of the payout.")
 public class RelatedIdentifiers extends ArrayList<RelatedIdentifier> {
 
     @Override

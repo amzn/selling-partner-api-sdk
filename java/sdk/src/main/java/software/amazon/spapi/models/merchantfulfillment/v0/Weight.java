@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The weight. */
-@Schema(description = "The weight.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The weight.")
 public class Weight {
     @SerializedName("Value")
     private Double value = null;
@@ -35,7 +34,7 @@ public class Weight {
      *
      * @return value
      */
-    @Schema(required = true, description = "The weight value.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The weight value.")
     public Double getValue() {
         return value;
     }
@@ -54,7 +53,7 @@ public class Weight {
      *
      * @return unit
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public UnitOfWeight getUnit() {
         return unit;
     }

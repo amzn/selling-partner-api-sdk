@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Represents a customer invoice associated with a purchase order. */
-@Schema(description = "Represents a customer invoice associated with a purchase order.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Represents a customer invoice associated with a purchase order.")
 public class CustomerInvoice {
     @SerializedName("purchaseOrderNumber")
     private String purchaseOrderNumber = null;
@@ -35,7 +35,9 @@ public class CustomerInvoice {
      *
      * @return purchaseOrderNumber
      */
-    @Schema(required = true, description = "The purchase order number for this order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The purchase order number for this order.")
     public String getPurchaseOrderNumber() {
         return purchaseOrderNumber;
     }
@@ -54,7 +56,7 @@ public class CustomerInvoice {
      *
      * @return content
      */
-    @Schema(required = true, description = "The Base64 customer invoice.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The Base64 customer invoice.")
     public String getContent() {
         return content;
     }

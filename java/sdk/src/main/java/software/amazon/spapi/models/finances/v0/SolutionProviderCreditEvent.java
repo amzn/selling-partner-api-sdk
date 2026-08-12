@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A credit given to a solution provider. */
-@Schema(description = "A credit given to a solution provider.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A credit given to a solution provider.")
 public class SolutionProviderCreditEvent {
     @SerializedName("ProviderTransactionType")
     private String providerTransactionType = null;
@@ -59,7 +59,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return providerTransactionType
      */
-    @Schema(description = "The transaction type.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The transaction type.")
     public String getProviderTransactionType() {
         return providerTransactionType;
     }
@@ -78,7 +78,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return sellerOrderId
      */
-    @Schema(description = "A seller-defined identifier for an order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A seller-defined identifier for an order.")
     public String getSellerOrderId() {
         return sellerOrderId;
     }
@@ -97,7 +97,8 @@ public class SolutionProviderCreditEvent {
      *
      * @return marketplaceId
      */
-    @Schema(description = "The identifier of the marketplace where the order was placed.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The identifier of the marketplace where the order was placed.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -116,7 +117,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return marketplaceCountryCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The two-letter country code of the country associated with the marketplace where the order was placed.")
     public String getMarketplaceCountryCode() {
@@ -137,7 +138,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return sellerId
      */
-    @Schema(description = "The Amazon-defined identifier of the seller.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon-defined identifier of the seller.")
     public String getSellerId() {
         return sellerId;
     }
@@ -156,7 +157,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return sellerStoreName
      */
-    @Schema(description = "The store name where the payment event occurred.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The store name where the payment event occurred.")
     public String getSellerStoreName() {
         return sellerStoreName;
     }
@@ -175,7 +176,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return providerId
      */
-    @Schema(description = "The Amazon-defined identifier of the solution provider.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon-defined identifier of the solution provider.")
     public String getProviderId() {
         return providerId;
     }
@@ -194,7 +195,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return providerStoreName
      */
-    @Schema(description = "The store name where the payment event occurred.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The store name where the payment event occurred.")
     public String getProviderStoreName() {
         return providerStoreName;
     }
@@ -213,7 +214,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return transactionAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTransactionAmount() {
         return transactionAmount;
     }
@@ -232,7 +233,7 @@ public class SolutionProviderCreditEvent {
      *
      * @return transactionCreationDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getTransactionCreationDate() {

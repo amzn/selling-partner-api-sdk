@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.finances.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of expense information related to an affordability promotion. */
-@Schema(description = "A list of expense information related to an affordability promotion.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of expense information related to an affordability promotion.")
 public class AffordabilityExpenseEventList extends ArrayList<AffordabilityExpenseEvent> {
 
     @Override

@@ -13,11 +13,13 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /** Offer preferences that you can include in the result filter criteria. */
-@Schema(description = "Offer preferences that you can include in the result filter criteria.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Offer preferences that you can include in the result filter criteria.")
 public class Preference {
     @SerializedName("autoEnrollment")
     private Set<AutoEnrollmentPreference> autoEnrollment = null;
@@ -40,7 +42,8 @@ public class Preference {
      *
      * @return autoEnrollment
      */
-    @Schema(description = "Filters the results to only include offers with the auto-enrollment preference specified.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Filters the results to only include offers with the auto-enrollment preference specified.")
     public Set<AutoEnrollmentPreference> getAutoEnrollment() {
         return autoEnrollment;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the &#x60;getPaymentMethods&#x60; operation. */
-@Schema(description = "The response schema for the `getPaymentMethods` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the `getPaymentMethods` operation.")
 public class GetPaymentMethodsResponse {
     @SerializedName("paymentMethods")
     private PaymentMethodList paymentMethods = null;
@@ -32,7 +31,7 @@ public class GetPaymentMethodsResponse {
      *
      * @return paymentMethods
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PaymentMethodList getPaymentMethods() {
         return paymentMethods;
     }

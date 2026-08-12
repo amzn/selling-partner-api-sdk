@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.tracking.v2026_01_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A single milestone event in a shipment&#39;s journey. */
-@Schema(description = "A single milestone event in a shipment's journey.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A single milestone event in a shipment's journey.")
 public class TrackingMilestone {
     @SerializedName("status")
     private TrackingMilestoneStatus status = null;
@@ -38,7 +37,7 @@ public class TrackingMilestone {
      *
      * @return status
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TrackingMilestoneStatus getStatus() {
         return status;
     }
@@ -57,7 +56,7 @@ public class TrackingMilestone {
      *
      * @return location
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TrackingMilestoneLocation getLocation() {
         return location;
     }
@@ -76,7 +75,9 @@ public class TrackingMilestone {
      *
      * @return occurredAt
      */
-    @Schema(required = true, description = "A timestamp in UTC RFC 3339 date-time format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A timestamp in UTC RFC 3339 date-time format.")
     public String getOccurredAt() {
         return occurredAt;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Contains the instructions about the fulfillment, such as the location from where you want the order filled. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Contains the instructions about the fulfillment, such as the location from where you want the order filled.")
 public class FulfillmentInstruction {
@@ -34,7 +33,8 @@ public class FulfillmentInstruction {
      *
      * @return fulfillmentSupplySourceId
      */
-    @Schema(description = "The `sourceId` of the location from where you want the order fulfilled.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The `sourceId` of the location from where you want the order fulfilled.")
     public String getFulfillmentSupplySourceId() {
         return fulfillmentSupplySourceId;
     }

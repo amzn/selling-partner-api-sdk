@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the createClaim operation. */
-@Schema(description = "The response schema for the createClaim operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the createClaim operation.")
 public class CreateClaimResponse {
     @SerializedName("claimId")
     private String claimId = null;
@@ -32,7 +31,8 @@ public class CreateClaimResponse {
      *
      * @return claimId
      */
-    @Schema(description = "The claim identifier originally returned by the createClaim operation.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The claim identifier originally returned by the createClaim operation.")
     public String getClaimId() {
         return claimId;
     }

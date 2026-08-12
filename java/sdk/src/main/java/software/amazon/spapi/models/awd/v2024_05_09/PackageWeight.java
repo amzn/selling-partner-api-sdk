@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Represents the weight of the package with a unit of measurement. */
-@Schema(description = "Represents the weight of the package with a unit of measurement.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Represents the weight of the package with a unit of measurement.")
 public class PackageWeight {
     @SerializedName("unitOfMeasurement")
     private WeightUnitOfMeasurement unitOfMeasurement = null;
@@ -35,7 +35,7 @@ public class PackageWeight {
      *
      * @return unitOfMeasurement
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public WeightUnitOfMeasurement getUnitOfMeasurement() {
         return unitOfMeasurement;
     }
@@ -54,7 +54,7 @@ public class PackageWeight {
      *
      * @return weight
      */
-    @Schema(required = true, description = "The package weight value.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The package weight value.")
     public Double getWeight() {
         return weight;
     }

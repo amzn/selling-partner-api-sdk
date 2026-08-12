@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.sellers.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the &#x60;getAccount&#x60; operation. */
-@Schema(description = "The response schema for the `getAccount` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the `getAccount` operation.")
 public class GetAccountResponse {
     @SerializedName("payload")
     private Account payload = null;
@@ -35,7 +34,7 @@ public class GetAccountResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Account getPayload() {
         return payload;
     }
@@ -54,7 +53,7 @@ public class GetAccountResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

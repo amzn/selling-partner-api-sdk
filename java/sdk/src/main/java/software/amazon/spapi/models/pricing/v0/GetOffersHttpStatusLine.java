@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * The HTTP status line associated with the response. For more information, consult [RFC
  * 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html).
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The HTTP status line associated with the response.  For more information, consult [RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html).")
 public class GetOffersHttpStatusLine {
@@ -40,7 +39,7 @@ public class GetOffersHttpStatusLine {
      *
      * @return statusCode
      */
-    @Schema(description = "The HTTP response Status Code.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The HTTP response Status Code.")
     public Integer getStatusCode() {
         return statusCode;
     }
@@ -59,7 +58,7 @@ public class GetOffersHttpStatusLine {
      *
      * @return reasonPhrase
      */
-    @Schema(description = "The HTTP response Reason-Phase.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The HTTP response Reason-Phase.")
     public String getReasonPhrase() {
         return reasonPhrase;
     }

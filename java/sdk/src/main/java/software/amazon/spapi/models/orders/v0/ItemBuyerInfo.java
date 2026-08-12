@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A single item&#39;s buyer information. */
-@Schema(description = "A single item's buyer information.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A single item's buyer information.")
 public class ItemBuyerInfo {
     @SerializedName("BuyerCustomizedInfo")
     private BuyerCustomizedInfoDetail buyerCustomizedInfo = null;
@@ -44,7 +43,7 @@ public class ItemBuyerInfo {
      *
      * @return buyerCustomizedInfo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BuyerCustomizedInfoDetail getBuyerCustomizedInfo() {
         return buyerCustomizedInfo;
     }
@@ -63,7 +62,7 @@ public class ItemBuyerInfo {
      *
      * @return giftWrapPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getGiftWrapPrice() {
         return giftWrapPrice;
     }
@@ -82,7 +81,7 @@ public class ItemBuyerInfo {
      *
      * @return giftWrapTax
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getGiftWrapTax() {
         return giftWrapTax;
     }
@@ -102,7 +101,7 @@ public class ItemBuyerInfo {
      *
      * @return giftMessageText
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A gift message provided by the buyer.  **Note**: This attribute is only available for MFN (fulfilled by seller) orders.")
     public String getGiftMessageText() {
@@ -123,7 +122,7 @@ public class ItemBuyerInfo {
      *
      * @return giftWrapLevel
      */
-    @Schema(description = "The gift wrap level specified by the buyer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The gift wrap level specified by the buyer.")
     public String getGiftWrapLevel() {
         return giftWrapLevel;
     }

@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The &#x60;generatePlacementOptions&#x60; request. */
-@Schema(description = "The `generatePlacementOptions` request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `generatePlacementOptions` request.")
 public class GeneratePlacementOptionsRequest {
     @SerializedName("customPlacement")
     private List<CustomPlacementInput> customPlacement = null;
@@ -43,7 +42,7 @@ public class GeneratePlacementOptionsRequest {
      *
      * @return customPlacement
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Custom placement options you want to add to the plan. This is only used for the India (IN - A21TJRUUN4KGV) marketplace.")
     public List<CustomPlacementInput> getCustomPlacement() {

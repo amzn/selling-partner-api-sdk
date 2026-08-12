@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An order attribute with its original value and the pre-approved alternative value suggested by the vet. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "An order attribute with its original value and the pre-approved alternative value suggested by the vet.")
 public class ApprovedAttribute {
@@ -40,7 +39,7 @@ public class ApprovedAttribute {
      *
      * @return attributeName
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The name of the attribute requiring correction (for example, `asin`, `petWeight`).")
     public String getAttributeName() {
@@ -61,7 +60,9 @@ public class ApprovedAttribute {
      *
      * @return originalValue
      */
-    @Schema(required = true, description = "The original value of the attribute in the rejected order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The original value of the attribute in the rejected order.")
     public String getOriginalValue() {
         return originalValue;
     }
@@ -80,7 +81,9 @@ public class ApprovedAttribute {
      *
      * @return approvedValue
      */
-    @Schema(required = true, description = "The pre-approved value that would result in order approval.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The pre-approved value that would result in order approval.")
     public String getApprovedValue() {
         return approvedValue;
     }

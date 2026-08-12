@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The resource that performs or performed appointment fulfillment. */
-@Schema(description = "The resource that performs or performed appointment fulfillment.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The resource that performs or performed appointment fulfillment.")
 public class AppointmentResource {
     @SerializedName("resourceId")
     private String resourceId = null;
@@ -32,7 +32,7 @@ public class AppointmentResource {
      *
      * @return resourceId
      */
-    @Schema(description = "The resource identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The resource identifier.")
     public String getResourceId() {
         return resourceId;
     }

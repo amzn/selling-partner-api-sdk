@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Discount details applied by the promotion. */
-@Schema(description = "Discount details applied by the promotion.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Discount details applied by the promotion.")
 public class PromotionDiscount {
     @SerializedName("type")
     private String type = null;
@@ -39,7 +39,7 @@ public class PromotionDiscount {
      *
      * @return type
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Method used to calculate the discount amount. Supported values: PERCENTAGE_OFF (discount applied as a percentage off the original price), AMOUNT_OFF (discount applied as a fixed amount off the original price).")
     public String getType() {
@@ -60,7 +60,7 @@ public class PromotionDiscount {
      *
      * @return amountOff
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MoneyType getAmountOff() {
         return amountOff;
     }
@@ -79,7 +79,7 @@ public class PromotionDiscount {
      *
      * @return percentOff
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The percentage discount applied to the original price (1-100). Only valid when type is PERCENTAGE_OFF.")
     public BigDecimal getPercentOff() {

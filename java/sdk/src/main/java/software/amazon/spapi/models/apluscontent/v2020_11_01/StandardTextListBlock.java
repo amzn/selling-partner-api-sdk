@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The A+ Content standard fixed-length list of text, usually presented as bullet points. */
-@Schema(description = "The A+ Content standard fixed-length list of text, usually presented as bullet points.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The A+ Content standard fixed-length list of text, usually presented as bullet points.")
 public class StandardTextListBlock {
     @SerializedName("textList")
     private List<TextItem> textList = null;
@@ -42,7 +42,7 @@ public class StandardTextListBlock {
      *
      * @return textList
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public List<TextItem> getTextList() {
         return textList;
     }

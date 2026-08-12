@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The marketplace attributes associated with the location. */
-@Schema(description = "The marketplace attributes associated with the location.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The marketplace attributes associated with the location.")
 public class MarketplaceAttributes {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -42,7 +41,7 @@ public class MarketplaceAttributes {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The marketplace ID associated with the location. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -64,7 +63,9 @@ public class MarketplaceAttributes {
      *
      * @return channelName
      */
-    @Schema(required = true, description = "The channel name associated with the location.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The channel name associated with the location.")
     public String getChannelName() {
         return channelName;
     }
@@ -83,7 +84,8 @@ public class MarketplaceAttributes {
      *
      * @return merchantId
      */
-    @Schema(description = "The ID of the merchant or seller to whom this order is created.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The ID of the merchant or seller to whom this order is created.")
     public String getMerchantId() {
         return merchantId;
     }
@@ -102,7 +104,7 @@ public class MarketplaceAttributes {
      *
      * @return customAttributes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CustomChannelAttribute getCustomAttributes() {
         return customAttributes;
     }

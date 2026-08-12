@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +21,7 @@ import java.util.Objects;
  * Service level configuration for data-plane requests (&#x60;getOffers&#x60;, &#x60;getOrderPreview&#x60;). Specifies
  * the tiers for which to get offers or previews.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Service level configuration for data-plane requests (`getOffers`, `getOrderPreview`). Specifies the tiers for which to get offers or previews.")
 public class PreviewServiceLevel {
@@ -49,7 +48,7 @@ public class PreviewServiceLevel {
      *
      * @return serviceTiers
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The service tiers to retrieve offers for. Available values: `STANDARD`, `EXPEDITED`, `PRIORITY` (only available in Canada, India, and Mexico), `SCHEDULED` (only available in Japan). Multiple values can be provided to receive offers across different tiers.")
     public List<String> getServiceTiers() {

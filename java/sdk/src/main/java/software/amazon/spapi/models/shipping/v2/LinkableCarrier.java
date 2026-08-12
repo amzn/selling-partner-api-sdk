@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Info About Linkable Carrier */
-@Schema(description = "Info About Linkable Carrier")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Info About Linkable Carrier")
 public class LinkableCarrier {
     @SerializedName("carrierId")
     private String carrierId = null;
@@ -35,7 +34,8 @@ public class LinkableCarrier {
      *
      * @return carrierId
      */
-    @Schema(description = "The carrier identifier for the offering, provided by the carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The carrier identifier for the offering, provided by the carrier.")
     public String getCarrierId() {
         return carrierId;
     }
@@ -54,7 +54,7 @@ public class LinkableCarrier {
      *
      * @return linkableAccountTypes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public LinkableAccountTypeList getLinkableAccountTypes() {
         return linkableAccountTypes;
     }

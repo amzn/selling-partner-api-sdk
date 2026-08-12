@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A removal shipment event for a removal order. */
-@Schema(description = "A removal shipment event for a removal order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A removal shipment event for a removal order.")
 public class RemovalShipmentEvent {
     @SerializedName("PostedDate")
     private OffsetDateTime postedDate = null;
@@ -47,7 +47,7 @@ public class RemovalShipmentEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -68,7 +68,7 @@ public class RemovalShipmentEvent {
      *
      * @return merchantOrderId
      */
-    @Schema(description = "The merchant removal `orderId`.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The merchant removal `orderId`.")
     public String getMerchantOrderId() {
         return merchantOrderId;
     }
@@ -87,7 +87,7 @@ public class RemovalShipmentEvent {
      *
      * @return orderId
      */
-    @Schema(description = "The identifier for the removal shipment order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The identifier for the removal shipment order.")
     public String getOrderId() {
         return orderId;
     }
@@ -106,7 +106,8 @@ public class RemovalShipmentEvent {
      *
      * @return transactionType
      */
-    @Schema(description = "The type of removal order.  Possible values:  * `WHOLESALE_LIQUIDATION`")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The type of removal order.  Possible values:  * `WHOLESALE_LIQUIDATION`")
     public String getTransactionType() {
         return transactionType;
     }
@@ -125,7 +126,7 @@ public class RemovalShipmentEvent {
      *
      * @return storeName
      */
-    @Schema(description = "The name of the store where the event occurred.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the store where the event occurred.")
     public String getStoreName() {
         return storeName;
     }
@@ -144,7 +145,7 @@ public class RemovalShipmentEvent {
      *
      * @return removalShipmentItemList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RemovalShipmentItemList getRemovalShipmentItemList() {
         return removalShipmentItemList;
     }

@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request body for the POST /easyShip/2022-03-23/packages/bulk API. */
-@Schema(description = "The request body for the POST /easyShip/2022-03-23/packages/bulk API.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request body for the POST /easyShip/2022-03-23/packages/bulk API.")
 public class CreateScheduledPackagesRequest {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -40,7 +40,7 @@ public class CreateScheduledPackagesRequest {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "A string of up to 255 characters.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A string of up to 255 characters.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -69,7 +69,9 @@ public class CreateScheduledPackagesRequest {
      *
      * @return orderScheduleDetailsList
      */
-    @Schema(required = true, description = "An array allowing users to specify orders to be scheduled.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An array allowing users to specify orders to be scheduled.")
     public List<OrderScheduleDetails> getOrderScheduleDetailsList() {
         return orderScheduleDetailsList;
     }
@@ -88,7 +90,7 @@ public class CreateScheduledPackagesRequest {
      *
      * @return labelFormat
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public LabelFormat getLabelFormat() {
         return labelFormat;
     }

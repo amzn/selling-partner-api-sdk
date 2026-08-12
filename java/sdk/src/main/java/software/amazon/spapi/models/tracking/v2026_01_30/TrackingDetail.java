@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.tracking.v2026_01_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Tracking information for the shipment identifier. */
-@Schema(description = "Tracking information for the shipment identifier.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Tracking information for the shipment identifier.")
 public class TrackingDetail {
     @SerializedName("identifier")
     private TrackingIdentifier identifier = null;
@@ -46,7 +45,7 @@ public class TrackingDetail {
      *
      * @return identifier
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TrackingIdentifier getIdentifier() {
         return identifier;
     }
@@ -65,7 +64,7 @@ public class TrackingDetail {
      *
      * @return trackingUrl
      */
-    @Schema(description = "The URL to view the shipment's tracking information.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The URL to view the shipment's tracking information.")
     public String getTrackingUrl() {
         return trackingUrl;
     }
@@ -92,7 +91,8 @@ public class TrackingDetail {
      *
      * @return trackingEstimates
      */
-    @Schema(description = "A list of time-based estimated intervals for the shipment, such as estimated delivery date.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of time-based estimated intervals for the shipment, such as estimated delivery date.")
     public List<TrackingEstimate> getTrackingEstimates() {
         return trackingEstimates;
     }
@@ -111,7 +111,7 @@ public class TrackingDetail {
      *
      * @return latestMilestone
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TrackingMilestone getLatestMilestone() {
         return latestMilestone;
     }
@@ -138,7 +138,7 @@ public class TrackingDetail {
      *
      * @return milestoneHistory
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "A chronological list of all milestone events for the shipment, from most recent to oldest.")
     public List<TrackingMilestone> getMilestoneHistory() {

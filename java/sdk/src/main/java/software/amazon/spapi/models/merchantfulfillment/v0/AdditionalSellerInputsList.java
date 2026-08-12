@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of additional seller input pairs required to purchase shipping. */
-@Schema(description = "A list of additional seller input pairs required to purchase shipping.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of additional seller input pairs required to purchase shipping.")
 public class AdditionalSellerInputsList extends ArrayList<AdditionalSellerInputs> {
 
     @Override

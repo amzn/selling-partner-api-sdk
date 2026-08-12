@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Metadata that describes the selling partner. */
-@Schema(description = "Metadata that describes the selling partner.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Metadata that describes the selling partner.")
 public class PartnerMetadata {
     @SerializedName("partnerId")
     private String partnerId = null;
@@ -38,7 +37,7 @@ public class PartnerMetadata {
      *
      * @return partnerId
      */
-    @Schema(required = true, description = "A unique selling partner identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A unique selling partner identifier.")
     public String getPartnerId() {
         return partnerId;
     }
@@ -57,7 +56,9 @@ public class PartnerMetadata {
      *
      * @return accountType
      */
-    @Schema(required = true, description = "The type of the selling partner's account in the payout.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The type of the selling partner's account in the payout.")
     public String getAccountType() {
         return accountType;
     }
@@ -77,7 +78,7 @@ public class PartnerMetadata {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier of the store associated with the payout. To find the ID for your store, refer to [Store Identifiers](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")

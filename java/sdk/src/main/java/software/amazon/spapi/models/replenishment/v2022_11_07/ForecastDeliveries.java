@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An object which contains the projected subscriber demand for the offer over different time horizons. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "An object which contains the projected subscriber demand for the offer over different time horizons.")
 public class ForecastDeliveries {
@@ -43,7 +42,8 @@ public class ForecastDeliveries {
      *
      * @return next15DaysDeliveries
      */
-    @Schema(description = "The projected number of subscriber deliveries in the next 15 days.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The projected number of subscriber deliveries in the next 15 days.")
     public Long getNext15DaysDeliveries() {
         return next15DaysDeliveries;
     }
@@ -62,7 +62,8 @@ public class ForecastDeliveries {
      *
      * @return next30DaysDeliveries
      */
-    @Schema(description = "The projected number of subscriber deliveries in the next 30 days.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The projected number of subscriber deliveries in the next 30 days.")
     public Long getNext30DaysDeliveries() {
         return next30DaysDeliveries;
     }
@@ -81,7 +82,8 @@ public class ForecastDeliveries {
      *
      * @return next60DaysDeliveries
      */
-    @Schema(description = "The projected number of subscriber deliveries in the next 60 days.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The projected number of subscriber deliveries in the next 60 days.")
     public Long getNext60DaysDeliveries() {
         return next60DaysDeliveries;
     }
@@ -100,7 +102,8 @@ public class ForecastDeliveries {
      *
      * @return next90DaysDeliveries
      */
-    @Schema(description = "The projected number of subscriber deliveries in the next 90 days.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The projected number of subscriber deliveries in the next 90 days.")
     public Long getNext90DaysDeliveries() {
         return next90DaysDeliveries;
     }

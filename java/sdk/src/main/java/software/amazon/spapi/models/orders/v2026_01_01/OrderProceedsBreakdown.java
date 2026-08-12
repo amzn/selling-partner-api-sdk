@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An entry detailing proceeds information. */
-@Schema(description = "An entry detailing proceeds information.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An entry detailing proceeds information.")
 public class OrderProceedsBreakdown {
     @SerializedName("type")
     private String type = null;
@@ -41,7 +40,7 @@ public class OrderProceedsBreakdown {
      *
      * @return type
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The proceeds category.   **Possible values**: `ITEM`, `SHIPPING`, `GIFT_WRAP`, `COD_FEE`, `TAX`, `DISCOUNT`, `DELIVERY_TIP`, `OTHER`. **Note:** `DELIVERY_TIP` is charged separately and not attributed to a specific item. The remaining categories are aggregated across all order items.")
@@ -64,7 +63,7 @@ public class OrderProceedsBreakdown {
      *
      * @return status
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The processing status of the charge. Only present for categories processed separately after checkout, such as `DELIVERY_TIP`.  **Possible values**: `PENDING`, `FINALIZED`.")
     public String getStatus() {
@@ -85,7 +84,7 @@ public class OrderProceedsBreakdown {
      *
      * @return subtotal
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getSubtotal() {
         return subtotal;
     }

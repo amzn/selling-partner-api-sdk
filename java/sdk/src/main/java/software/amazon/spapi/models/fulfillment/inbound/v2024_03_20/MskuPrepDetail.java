@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** An MSKU and its related prep details. */
-@Schema(description = "An MSKU and its related prep details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An MSKU and its related prep details.")
 public class MskuPrepDetail {
     @SerializedName("allOwnersConstraint")
     private AllOwnersConstraint allOwnersConstraint = null;
@@ -49,7 +48,7 @@ public class MskuPrepDetail {
      *
      * @return allOwnersConstraint
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AllOwnersConstraint getAllOwnersConstraint() {
         return allOwnersConstraint;
     }
@@ -68,7 +67,7 @@ public class MskuPrepDetail {
      *
      * @return labelOwnerConstraint
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OwnerConstraint getLabelOwnerConstraint() {
         return labelOwnerConstraint;
     }
@@ -87,7 +86,9 @@ public class MskuPrepDetail {
      *
      * @return msku
      */
-    @Schema(required = true, description = "The merchant SKU, a merchant-supplied identifier for a specific SKU.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The merchant SKU, a merchant-supplied identifier for a specific SKU.")
     public String getMsku() {
         return msku;
     }
@@ -106,7 +107,7 @@ public class MskuPrepDetail {
      *
      * @return prepCategory
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PrepCategory getPrepCategory() {
         return prepCategory;
     }
@@ -125,7 +126,7 @@ public class MskuPrepDetail {
      *
      * @return prepOwnerConstraint
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OwnerConstraint getPrepOwnerConstraint() {
         return prepOwnerConstraint;
     }
@@ -152,7 +153,9 @@ public class MskuPrepDetail {
      *
      * @return prepTypes
      */
-    @Schema(required = true, description = "A list of preparation types associated with a preparation category.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of preparation types associated with a preparation category.")
     public List<PrepType> getPrepTypes() {
         return prepTypes;
     }

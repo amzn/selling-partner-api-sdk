@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Information associated with a single SKU in the seller&#39;s catalog. */
-@Schema(description = "Information associated with a single SKU in the seller's catalog.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information associated with a single SKU in the seller's catalog.")
 public class Item {
     @SerializedName("asin")
     private String asin = null;
@@ -55,7 +55,9 @@ public class Item {
      *
      * @return asin
      */
-    @Schema(required = true, description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getAsin() {
         return asin;
     }
@@ -76,7 +78,7 @@ public class Item {
      *
      * @return expiration
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The expiration date of the MSKU. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern`YYYY-MM-DD`. The same MSKU with different expiration dates cannot go into the same box.")
     public String getExpiration() {
@@ -97,7 +99,7 @@ public class Item {
      *
      * @return fnsku
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center.")
@@ -120,7 +122,7 @@ public class Item {
      *
      * @return labelOwner
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Specifies who will label the items. Options include `AMAZON`, `SELLER`, and `NONE`. `AMAZON` is not an accepted value in the US marketplace.")
@@ -142,7 +144,7 @@ public class Item {
      *
      * @return manufacturingLotCode
      */
-    @Schema(description = "The manufacturing lot code.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The manufacturing lot code.")
     public String getManufacturingLotCode() {
         return manufacturingLotCode;
     }
@@ -161,7 +163,7 @@ public class Item {
      *
      * @return msku
      */
-    @Schema(required = true, description = "The merchant-defined SKU ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The merchant-defined SKU ID.")
     public String getMsku() {
         return msku;
     }
@@ -188,7 +190,9 @@ public class Item {
      *
      * @return prepInstructions
      */
-    @Schema(required = true, description = "Special preparations that are required for an item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Special preparations that are required for an item.")
     public List<PrepInstruction> getPrepInstructions() {
         return prepInstructions;
     }
@@ -207,7 +211,7 @@ public class Item {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "The number of the specified MSKU.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The number of the specified MSKU.")
     public Integer getQuantity() {
         return quantity;
     }

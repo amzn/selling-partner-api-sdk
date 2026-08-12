@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Shipping information for the packages in a shipment. */
-@Schema(description = "Shipping information for the packages in a shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Shipping information for the packages in a shipment.")
 public class ShippingInfo {
     @SerializedName("recommendedShipMethod")
     private String recommendedShipMethod = null;
@@ -95,7 +94,7 @@ public class ShippingInfo {
      *
      * @return recommendedShipMethod
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The ship method recommended by the Amazon Fulfillment Network for the packages in this shipment.")
     public String getRecommendedShipMethod() {
@@ -116,7 +115,7 @@ public class ShippingInfo {
      *
      * @return expectedShippingDateTimeInUTC
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
@@ -138,7 +137,7 @@ public class ShippingInfo {
      *
      * @return shipToAddress
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getShipToAddress() {
         return shipToAddress;
     }
@@ -157,7 +156,8 @@ public class ShippingInfo {
      *
      * @return shippingType
      */
-    @Schema(description = "The type of shipping that the seller uses to deliver a customer order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The type of shipping that the seller uses to deliver a customer order.")
     public ShippingTypeEnum getShippingType() {
         return shippingType;
     }
@@ -176,7 +176,7 @@ public class ShippingInfo {
      *
      * @return recommendedPackages
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RecommendedPackages getRecommendedPackages() {
         return recommendedPackages;
     }

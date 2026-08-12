@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the &#x60;createDigitalAccessKey&#x60; operation. */
-@Schema(description = "The response schema for the `createDigitalAccessKey` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the `createDigitalAccessKey` operation.")
 public class CreateDigitalAccessKeyResponse {
     @SerializedName("errors")
     private ErrorList errors = null;
@@ -32,7 +32,7 @@ public class CreateDigitalAccessKeyResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

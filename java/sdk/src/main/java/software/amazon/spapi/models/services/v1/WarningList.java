@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.services.v1;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of warnings returned in the sucessful execution response of an API request. */
-@Schema(description = "A list of warnings returned in the sucessful execution response of an API request.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of warnings returned in the sucessful execution response of an API request.")
 public class WarningList extends ArrayList<Warning> {
 
     @Override

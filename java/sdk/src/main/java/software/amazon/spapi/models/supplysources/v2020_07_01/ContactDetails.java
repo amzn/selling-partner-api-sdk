@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The contact details */
-@Schema(description = "The contact details")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The contact details")
 public class ContactDetails {
     @SerializedName("primary")
     private ContactDetailsPrimary primary = null;
@@ -32,7 +31,7 @@ public class ContactDetails {
      *
      * @return primary
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ContactDetailsPrimary getPrimary() {
         return primary;
     }

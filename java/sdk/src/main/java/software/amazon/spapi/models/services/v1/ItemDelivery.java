@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Delivery information for the item. */
-@Schema(description = "Delivery information for the item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Delivery information for the item.")
 public class ItemDelivery {
     @SerializedName("estimatedDeliveryDate")
     private OffsetDateTime estimatedDeliveryDate = null;
@@ -35,7 +35,7 @@ public class ItemDelivery {
      *
      * @return estimatedDeliveryDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date and time of the latest Estimated Delivery Date (EDD) of all the items with an EDD. In ISO 8601 format.")
     public OffsetDateTime getEstimatedDeliveryDate() {
@@ -56,7 +56,7 @@ public class ItemDelivery {
      *
      * @return itemDeliveryPromise
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemDeliveryPromise getItemDeliveryPromise() {
         return itemDeliveryPromise;
     }

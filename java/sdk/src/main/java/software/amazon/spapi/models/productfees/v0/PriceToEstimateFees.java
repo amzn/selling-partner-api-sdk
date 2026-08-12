@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.productfees.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Price information for an item, used to estimate fees. */
-@Schema(description = "Price information for an item, used to estimate fees.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Price information for an item, used to estimate fees.")
 public class PriceToEstimateFees {
     @SerializedName("ListingPrice")
     private MoneyType listingPrice = null;
@@ -38,7 +37,7 @@ public class PriceToEstimateFees {
      *
      * @return listingPrice
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MoneyType getListingPrice() {
         return listingPrice;
     }
@@ -57,7 +56,7 @@ public class PriceToEstimateFees {
      *
      * @return shipping
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MoneyType getShipping() {
         return shipping;
     }
@@ -76,7 +75,7 @@ public class PriceToEstimateFees {
      *
      * @return points
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Points getPoints() {
         return points;
     }

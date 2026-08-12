@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The response schema for the &#x60;getSellingPartnerMetrics&#x60; operation. */
-@Schema(description = "The response schema for the `getSellingPartnerMetrics` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the `getSellingPartnerMetrics` operation.")
 public class GetSellingPartnerMetricsResponse {
     @SerializedName("metrics")
     private List<GetSellingPartnerMetricsResponseMetric> metrics = null;
@@ -42,7 +42,7 @@ public class GetSellingPartnerMetricsResponse {
      *
      * @return metrics
      */
-    @Schema(description = "A list of metrics data for the selling partner.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of metrics data for the selling partner.")
     public List<GetSellingPartnerMetricsResponseMetric> getMetrics() {
         return metrics;
     }

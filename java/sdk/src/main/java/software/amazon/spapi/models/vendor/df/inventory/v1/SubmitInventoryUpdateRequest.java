@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.inventory.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request body for the submitInventoryUpdate operation. */
-@Schema(description = "The request body for the submitInventoryUpdate operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request body for the submitInventoryUpdate operation.")
 public class SubmitInventoryUpdateRequest {
     @SerializedName("inventory")
     private InventoryUpdate inventory = null;
@@ -32,7 +31,7 @@ public class SubmitInventoryUpdateRequest {
      *
      * @return inventory
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InventoryUpdate getInventory() {
         return inventory;
     }

@@ -17,14 +17,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Metadata about a partner (payer or payee) associated with the invoice. */
-@Schema(description = "Metadata about a partner (payer or payee) associated with the invoice.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Metadata about a partner (payer or payee) associated with the invoice.")
 public class PartnerMetadata {
     @SerializedName("partnerId")
     private String partnerId = null;
@@ -103,7 +103,7 @@ public class PartnerMetadata {
      *
      * @return partnerId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The unique identifier for the partner. If the partner is a vendor, then this value is the `vendorGroupID`.")
@@ -125,7 +125,7 @@ public class PartnerMetadata {
      *
      * @return partnerType
      */
-    @Schema(required = true, description = "The type of partner.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of partner.")
     public PartnerTypeEnum getPartnerType() {
         return partnerType;
     }
@@ -152,7 +152,7 @@ public class PartnerMetadata {
      *
      * @return partnerEntities
      */
-    @Schema(description = "The list of entities associated with a partner.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The list of entities associated with a partner.")
     public List<String> getPartnerEntities() {
         return partnerEntities;
     }
@@ -171,7 +171,7 @@ public class PartnerMetadata {
      *
      * @return partnerName
      */
-    @Schema(description = "The name of the partner.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the partner.")
     public String getPartnerName() {
         return partnerName;
     }
@@ -190,7 +190,7 @@ public class PartnerMetadata {
      *
      * @return partnerAddress
      */
-    @Schema(description = "The address of the partner.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The address of the partner.")
     public String getPartnerAddress() {
         return partnerAddress;
     }
@@ -209,7 +209,7 @@ public class PartnerMetadata {
      *
      * @return taxRegistrationNumber
      */
-    @Schema(description = "The tax registration number of the partner.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The tax registration number of the partner.")
     public String getTaxRegistrationNumber() {
         return taxRegistrationNumber;
     }

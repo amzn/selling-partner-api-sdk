@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +21,7 @@ import java.util.Objects;
  * Execution errors associated with the replenishment order. This field will be populated if the order failed
  * validation.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Execution errors associated with the replenishment order. This field will be populated if the order failed validation.")
 public class DistributionIneligibleReason {
@@ -45,7 +44,7 @@ public class DistributionIneligibleReason {
      *
      * @return failureCode
      */
-    @Schema(required = true, description = "Failure code details of the error.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Failure code details of the error.")
     public String getFailureCode() {
         return failureCode;
     }
@@ -72,7 +71,7 @@ public class DistributionIneligibleReason {
      *
      * @return failureReasons
      */
-    @Schema(required = true, description = "Failure reasons of the error.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Failure reasons of the error.")
     public List<String> getFailureReasons() {
         return failureReasons;
     }
@@ -91,7 +90,7 @@ public class DistributionIneligibleReason {
      *
      * @return sku
      */
-    @Schema(description = "SKU associated with the error.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "SKU associated with the error.")
     public String getSku() {
         return sku;
     }

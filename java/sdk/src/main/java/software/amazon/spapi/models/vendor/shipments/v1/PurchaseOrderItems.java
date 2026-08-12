@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Details of the item being shipped. */
-@Schema(description = "Details of the item being shipped.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of the item being shipped.")
 public class PurchaseOrderItems {
     @SerializedName("itemSequenceNumber")
     private String itemSequenceNumber = null;
@@ -45,7 +44,7 @@ public class PurchaseOrderItems {
      *
      * @return itemSequenceNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Item sequence number for the item. The first item will be 001, the second 002, and so on. This number is used as a reference to refer to this item from the carton or pallet level.")
@@ -67,7 +66,7 @@ public class PurchaseOrderItems {
      *
      * @return buyerProductIdentifier
      */
-    @Schema(description = "Amazon Standard Identification Number (ASIN) for a SKU")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Amazon Standard Identification Number (ASIN) for a SKU")
     public String getBuyerProductIdentifier() {
         return buyerProductIdentifier;
     }
@@ -86,7 +85,7 @@ public class PurchaseOrderItems {
      *
      * @return vendorProductIdentifier
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The vendor selected product identification of the item. Should be the same as was sent in the purchase order.")
     public String getVendorProductIdentifier() {
@@ -107,7 +106,7 @@ public class PurchaseOrderItems {
      *
      * @return shippedQuantity
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemQuantity getShippedQuantity() {
         return shippedQuantity;
     }
@@ -126,7 +125,7 @@ public class PurchaseOrderItems {
      *
      * @return maximumRetailPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getMaximumRetailPrice() {
         return maximumRetailPrice;
     }

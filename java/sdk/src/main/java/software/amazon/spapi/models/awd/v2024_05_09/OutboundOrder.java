@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Represents an AWD outbound order. */
-@Schema(description = "Represents an AWD outbound order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Represents an AWD outbound order.")
 public class OutboundOrder {
     @SerializedName("confirmedOn")
     private OffsetDateTime confirmedOn = null;
@@ -73,7 +73,7 @@ public class OutboundOrder {
      *
      * @return confirmedOn
      */
-    @Schema(description = "Date on which this outbound order was confirmed.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date on which this outbound order was confirmed.")
     public OffsetDateTime getConfirmedOn() {
         return confirmedOn;
     }
@@ -92,7 +92,7 @@ public class OutboundOrder {
      *
      * @return createdAt
      */
-    @Schema(description = "Date on which this outbound order was created.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date on which this outbound order was created.")
     public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
@@ -119,7 +119,7 @@ public class OutboundOrder {
      *
      * @return eligiblePackagesToOutbound
      */
-    @Schema(description = "List of packages that are eligible for outbound.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "List of packages that are eligible for outbound.")
     public List<DistributionPackageQuantity> getEligiblePackagesToOutbound() {
         return eligiblePackagesToOutbound;
     }
@@ -146,7 +146,7 @@ public class OutboundOrder {
      *
      * @return eligibleProductsToOutbound
      */
-    @Schema(description = "List of product units that are eligible for outbound.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "List of product units that are eligible for outbound.")
     public List<ProductQuantity> getEligibleProductsToOutbound() {
         return eligibleProductsToOutbound;
     }
@@ -173,7 +173,7 @@ public class OutboundOrder {
      *
      * @return executionErrors
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Execution errors associated with the outbound order. This field will be populated if the order failed validation.")
     public List<OutboundExecutionError> getExecutionErrors() {
@@ -194,7 +194,7 @@ public class OutboundOrder {
      *
      * @return orderId
      */
-    @Schema(required = true, description = "Order ID for the outbound order.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Order ID for the outbound order.")
     public String getOrderId() {
         return orderId;
     }
@@ -221,7 +221,7 @@ public class OutboundOrder {
      *
      * @return orderPreferences
      */
-    @Schema(description = "Order preferences for this outbound order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Order preferences for this outbound order.")
     public List<OrderAttribute> getOrderPreferences() {
         return orderPreferences;
     }
@@ -240,7 +240,7 @@ public class OutboundOrder {
      *
      * @return orderStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public OutboundStatus getOrderStatus() {
         return orderStatus;
     }
@@ -267,7 +267,9 @@ public class OutboundOrder {
      *
      * @return outboundShipments
      */
-    @Schema(required = true, description = "List of outbound shipments that are part of this order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "List of outbound shipments that are part of this order.")
     public List<OutboundShipment> getOutboundShipments() {
         return outboundShipments;
     }
@@ -294,7 +296,7 @@ public class OutboundOrder {
      *
      * @return packagesToOutbound
      */
-    @Schema(description = "List of packages to be outbound.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "List of packages to be outbound.")
     public List<DistributionPackageQuantity> getPackagesToOutbound() {
         return packagesToOutbound;
     }
@@ -321,7 +323,7 @@ public class OutboundOrder {
      *
      * @return productsToOutbound
      */
-    @Schema(description = "List of product units to be outbound.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "List of product units to be outbound.")
     public List<ProductQuantity> getProductsToOutbound() {
         return productsToOutbound;
     }
@@ -348,7 +350,8 @@ public class OutboundOrder {
      *
      * @return shippedOutboundPackages
      */
-    @Schema(description = "Outbound packages that are shipped after the execution has completed post confirmation.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Outbound packages that are shipped after the execution has completed post confirmation.")
     public List<DistributionPackageQuantity> getShippedOutboundPackages() {
         return shippedOutboundPackages;
     }
@@ -375,7 +378,7 @@ public class OutboundOrder {
      *
      * @return shippedOutboundProducts
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Outbound product units that are shipped after the execution has completed post confirmation.")
     public List<ProductQuantity> getShippedOutboundProducts() {
@@ -396,7 +399,7 @@ public class OutboundOrder {
      *
      * @return updatedAt
      */
-    @Schema(description = "Date on which this outbound order was last updated.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date on which this outbound order was last updated.")
     public OffsetDateTime getUpdatedAt() {
         return updatedAt;
     }

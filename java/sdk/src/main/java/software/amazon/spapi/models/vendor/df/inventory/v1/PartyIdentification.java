@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.inventory.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Name, address and tax details of a party. */
-@Schema(description = "Name, address and tax details of a party.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Name, address and tax details of a party.")
 public class PartyIdentification {
     @SerializedName("partyId")
     private String partyId = null;
@@ -32,7 +31,7 @@ public class PartyIdentification {
      *
      * @return partyId
      */
-    @Schema(required = true, description = "Assigned identification for the party.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Assigned identification for the party.")
     public String getPartyId() {
         return partyId;
     }

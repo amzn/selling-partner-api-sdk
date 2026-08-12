@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Information about a shipment. */
-@Schema(description = "Information about a shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about a shipment.")
 public class Shipment {
     @SerializedName("id")
     private String id = null;
@@ -219,7 +218,7 @@ public class Shipment {
      *
      * @return id
      */
-    @Schema(required = true, description = "The shipment's ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The shipment's ID.")
     public String getId() {
         return id;
     }
@@ -239,7 +238,7 @@ public class Shipment {
      *
      * @return locationId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The location identifier of the seller's location in the marketplace channel to which the shipment has been created for fulfillment.")
@@ -261,7 +260,7 @@ public class Shipment {
      *
      * @return marketplaceAttributes
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MarketplaceAttributes getMarketplaceAttributes() {
         return marketplaceAttributes;
     }
@@ -280,7 +279,7 @@ public class Shipment {
      *
      * @return shipmentInfo
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShipmentInfo getShipmentInfo() {
         return shipmentInfo;
     }
@@ -299,7 +298,7 @@ public class Shipment {
      *
      * @return invoiceInfo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InvoiceInfo getInvoiceInfo() {
         return invoiceInfo;
     }
@@ -318,7 +317,7 @@ public class Shipment {
      *
      * @return partyInfoList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PartyIdentificationInfoList getPartyInfoList() {
         return partyInfoList;
     }
@@ -337,7 +336,7 @@ public class Shipment {
      *
      * @return shipmentRequirements
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShipmentRequirements getShipmentRequirements() {
         return shipmentRequirements;
     }
@@ -356,7 +355,7 @@ public class Shipment {
      *
      * @return charges
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Charges getCharges() {
         return charges;
     }
@@ -375,7 +374,7 @@ public class Shipment {
      *
      * @return status
      */
-    @Schema(required = true, description = "The current status of the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The current status of the shipment.")
     public StatusEnum getStatus() {
         return status;
     }
@@ -394,7 +393,7 @@ public class Shipment {
      *
      * @return subStatus
      */
-    @Schema(description = "The sub status of the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The sub status of the shipment.")
     public SubStatusEnum getSubStatus() {
         return subStatus;
     }
@@ -413,7 +412,7 @@ public class Shipment {
      *
      * @return reason
      */
-    @Schema(description = "The reason for the sub-status.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The reason for the sub-status.")
     public String getReason() {
         return reason;
     }
@@ -440,7 +439,7 @@ public class Shipment {
      *
      * @return lineItems
      */
-    @Schema(required = true, description = "The line items in the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The line items in the shipment.")
     public List<ShipmentLineItem> getLineItems() {
         return lineItems;
     }
@@ -459,7 +458,7 @@ public class Shipment {
      *
      * @return shippingInfo
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShippingInfo getShippingInfo() {
         return shippingInfo;
     }
@@ -486,7 +485,7 @@ public class Shipment {
      *
      * @return packages
      */
-    @Schema(description = "The list of packages in the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The list of packages in the shipment.")
     public List<ModelPackage> getPackages() {
         return packages;
     }
@@ -505,7 +504,7 @@ public class Shipment {
      *
      * @return creationDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
@@ -527,7 +526,7 @@ public class Shipment {
      *
      * @return lastUpdatedDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
@@ -549,7 +548,7 @@ public class Shipment {
      *
      * @return earliestPackDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
     public String getEarliestPackDateTime() {

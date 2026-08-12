@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Information about a fulfillment order associated with a customer order. A fulfillment order represents a unit of
  * fulfillment created by Amazon for the order. **Note:** Only available for EasyShip orders at present.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Information about a fulfillment order associated with a customer order. A fulfillment order represents a unit of fulfillment created by Amazon for the order. **Note:** Only available for EasyShip orders at present.")
 public class FulfillmentOrder {
@@ -38,7 +37,7 @@ public class FulfillmentOrder {
      *
      * @return fulfillmentOrderId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The Fulfillment Order ID assigned by Amazon after fulfillment planning. This identifier is identical to the Shipment ID required by External Fulfillment APIs.")

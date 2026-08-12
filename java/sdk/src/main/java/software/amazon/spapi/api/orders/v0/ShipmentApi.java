@@ -29,7 +29,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.orders.v0.UpdateShipmentStatusRequest;
 
@@ -59,9 +58,7 @@ public class ShipmentApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call updateShipmentStatusCall(
-            String orderId,
-            UpdateShipmentStatusRequest payload,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, UpdateShipmentStatusRequest payload, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = payload;
 
@@ -102,9 +99,7 @@ public class ShipmentApi {
     }
 
     private okhttp3.Call updateShipmentStatusValidateBeforeCall(
-            String orderId,
-            UpdateShipmentStatusRequest payload,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, UpdateShipmentStatusRequest payload, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
@@ -250,10 +245,10 @@ public class ShipmentApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = updateShipmentStatusValidateBeforeCall(orderId, payload, progressRequestListener);

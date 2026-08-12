@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The browse node&#39;s review metrics for a certain month. */
-@Schema(description = "The browse node's review metrics for a certain month.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The browse node's review metrics for a certain month.")
 public class BrowseNodeReviewTrendPoint {
     @SerializedName("dateRange")
     private DateRange dateRange = null;
@@ -35,7 +34,7 @@ public class BrowseNodeReviewTrendPoint {
      *
      * @return dateRange
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DateRange getDateRange() {
         return dateRange;
     }
@@ -54,7 +53,7 @@ public class BrowseNodeReviewTrendPoint {
      *
      * @return browseNodeMetrics
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public BrowseNodeReviewTrendMetrics getBrowseNodeMetrics() {
         return browseNodeMetrics;
     }

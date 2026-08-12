@@ -17,14 +17,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Information required to create the report schedule. */
-@Schema(description = "Information required to create the report schedule.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information required to create the report schedule.")
 public class CreateReportScheduleSpecification {
     @SerializedName("reportType")
     private String reportType = null;
@@ -134,7 +134,7 @@ public class CreateReportScheduleSpecification {
      *
      * @return reportType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.")
@@ -164,7 +164,9 @@ public class CreateReportScheduleSpecification {
      *
      * @return marketplaceIds
      */
-    @Schema(required = true, description = "A list of marketplace identifiers for the report schedule.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of marketplace identifiers for the report schedule.")
     public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }
@@ -183,7 +185,7 @@ public class CreateReportScheduleSpecification {
      *
      * @return reportOptions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ReportOptions getReportOptions() {
         return reportOptions;
     }
@@ -204,7 +206,7 @@ public class CreateReportScheduleSpecification {
      *
      * @return period
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "One of a set of predefined <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> periods that specifies how often a report should be created.")
@@ -228,7 +230,7 @@ public class CreateReportScheduleSpecification {
      *
      * @return nextReportCreationTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date and time when the schedule will create its next report, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format.")
     public OffsetDateTime getNextReportCreationTime() {

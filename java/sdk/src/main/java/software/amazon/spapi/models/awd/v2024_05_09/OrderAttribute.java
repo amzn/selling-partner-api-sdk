@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Consists of the order preference and corresponding preference value. */
-@Schema(description = "Consists of the order preference and corresponding preference value.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Consists of the order preference and corresponding preference value.")
 public class OrderAttribute {
     @SerializedName("orderPreference")
     private OrderPreference orderPreference = null;
@@ -35,7 +35,7 @@ public class OrderAttribute {
      *
      * @return orderPreference
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public OrderPreference getOrderPreference() {
         return orderPreference;
     }
@@ -54,7 +54,7 @@ public class OrderAttribute {
      *
      * @return orderPreferenceValue
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public OrderPreferenceValue getOrderPreferenceValue() {
         return orderPreferenceValue;
     }

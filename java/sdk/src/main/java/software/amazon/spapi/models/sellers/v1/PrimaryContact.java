@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.sellers.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about the seller&#39;s primary contact. */
-@Schema(description = "Information about the seller's primary contact.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about the seller's primary contact.")
 public class PrimaryContact {
     @SerializedName("name")
     private String name = null;
@@ -38,7 +37,9 @@ public class PrimaryContact {
      *
      * @return name
      */
-    @Schema(required = true, description = "The full name of the seller's primary contact.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The full name of the seller's primary contact.")
     public String getName() {
         return name;
     }
@@ -57,7 +58,7 @@ public class PrimaryContact {
      *
      * @return address
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getAddress() {
         return address;
     }
@@ -76,7 +77,8 @@ public class PrimaryContact {
      *
      * @return nonLatinName
      */
-    @Schema(description = "The non-Latin script version of the primary contact's name, if applicable.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The non-Latin script version of the primary contact's name, if applicable.")
     public String getNonLatinName() {
         return nonLatinName;
     }

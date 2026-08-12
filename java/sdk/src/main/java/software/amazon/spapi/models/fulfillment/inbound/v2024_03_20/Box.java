@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -21,7 +20,7 @@ import java.util.Objects;
 /**
  * Contains information about a box that is used in the inbound plan. The box is a container that holds multiple items.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Contains information about a box that is used in the inbound plan. The box is a container that holds multiple items.")
 public class Box {
@@ -69,7 +68,7 @@ public class Box {
      *
      * @return boxId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The ID provided by Amazon that identifies a given box. This ID is comprised of the external shipment ID (which is generated after transportation has been confirmed) and the index of the box.")
     public String getBoxId() {
@@ -90,7 +89,7 @@ public class Box {
      *
      * @return contentInformationSource
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BoxContentInformationSource getContentInformationSource() {
         return contentInformationSource;
     }
@@ -109,7 +108,7 @@ public class Box {
      *
      * @return destinationRegion
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Region getDestinationRegion() {
         return destinationRegion;
     }
@@ -128,7 +127,7 @@ public class Box {
      *
      * @return dimensions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Dimensions getDimensions() {
         return dimensions;
     }
@@ -147,7 +146,7 @@ public class Box {
      *
      * @return externalContainerIdentifier
      */
-    @Schema(description = "The external identifier for this container / box.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The external identifier for this container / box.")
     public String getExternalContainerIdentifier() {
         return externalContainerIdentifier;
     }
@@ -166,7 +165,8 @@ public class Box {
      *
      * @return externalContainerIdentifierType
      */
-    @Schema(description = "Type of the external identifier used. Can be: `AMAZON`, `SSCC`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Type of the external identifier used. Can be: `AMAZON`, `SSCC`.")
     public String getExternalContainerIdentifierType() {
         return externalContainerIdentifierType;
     }
@@ -193,7 +193,7 @@ public class Box {
      *
      * @return items
      */
-    @Schema(description = "Items contained within the box.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Items contained within the box.")
     public List<Item> getItems() {
         return items;
     }
@@ -212,7 +212,9 @@ public class Box {
      *
      * @return packageId
      */
-    @Schema(required = true, description = "Primary key to uniquely identify a Package (Box or Pallet).")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Primary key to uniquely identify a Package (Box or Pallet).")
     public String getPackageId() {
         return packageId;
     }
@@ -231,7 +233,7 @@ public class Box {
      *
      * @return quantity
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The number of containers where all other properties like weight or dimensions are identical.")
     public Integer getQuantity() {
@@ -252,7 +254,7 @@ public class Box {
      *
      * @return templateName
      */
-    @Schema(description = "Template name of the box.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Template name of the box.")
     public String getTemplateName() {
         return templateName;
     }
@@ -271,7 +273,7 @@ public class Box {
      *
      * @return weight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Weight getWeight() {
         return weight;
     }

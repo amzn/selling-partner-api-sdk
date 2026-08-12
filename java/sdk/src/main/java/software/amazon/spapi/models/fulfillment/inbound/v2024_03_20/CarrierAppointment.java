@@ -13,14 +13,14 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
  * Contains details for a transportation carrier appointment. This appointment is vended out by Amazon and is an
  * indicator for when a transportation carrier is accepting shipments to be picked up.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Contains details for a transportation carrier appointment. This appointment is vended out by Amazon and is an indicator for when a transportation carrier is accepting shipments to be picked up.")
 public class CarrierAppointment {
@@ -40,7 +40,9 @@ public class CarrierAppointment {
      *
      * @return endTime
      */
-    @Schema(required = true, description = "The end timestamp of the appointment in UTC.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The end timestamp of the appointment in UTC.")
     public OffsetDateTime getEndTime() {
         return endTime;
     }
@@ -59,7 +61,9 @@ public class CarrierAppointment {
      *
      * @return startTime
      */
-    @Schema(required = true, description = "The start timestamp of the appointment in UTC.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The start timestamp of the appointment in UTC.")
     public OffsetDateTime getStartTime() {
         return startTime;
     }

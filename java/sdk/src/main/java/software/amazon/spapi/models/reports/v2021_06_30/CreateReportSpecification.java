@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.reports.v2021_06_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Information required to create the report. */
-@Schema(description = "Information required to create the report.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information required to create the report.")
 public class CreateReportSpecification {
     @SerializedName("reportOptions")
     private ReportOptions reportOptions = null;
@@ -46,7 +46,7 @@ public class CreateReportSpecification {
      *
      * @return reportOptions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ReportOptions getReportOptions() {
         return reportOptions;
     }
@@ -66,7 +66,7 @@ public class CreateReportSpecification {
      *
      * @return reportType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.")
@@ -91,7 +91,7 @@ public class CreateReportSpecification {
      *
      * @return dataStartTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The start of a date and time range, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.")
     public OffsetDateTime getDataStartTime() {
@@ -115,7 +115,7 @@ public class CreateReportSpecification {
      *
      * @return dataEndTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The end of a date and time range, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.")
     public OffsetDateTime getDataEndTime() {
@@ -145,7 +145,7 @@ public class CreateReportSpecification {
      *
      * @return marketplaceIds
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.")

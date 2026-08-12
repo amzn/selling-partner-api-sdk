@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** The status codes and description of the milestone event. */
-@Schema(description = "The status codes and description of the milestone event.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The status codes and description of the milestone event.")
 public class TrackingMilestoneStatus {
     /**
      * A status code that identifies the milestone event (for example, &#x60;DELIVERED&#x60;,
@@ -764,7 +763,7 @@ public class TrackingMilestoneStatus {
      *
      * @return code
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A status code that identifies the milestone event (for example, `DELIVERED`, `CUSTOMS_CLEARED`, `DEPARTED`).")
@@ -787,7 +786,7 @@ public class TrackingMilestoneStatus {
      *
      * @return subCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Status subcode that provides additional details about the milestone status. Valid values vary by milestone (for example, a `DELIVERED` milestone might include a `subCode` for the delivery location).")
     public SubCodeEnum getSubCode() {
@@ -808,7 +807,9 @@ public class TrackingMilestoneStatus {
      *
      * @return description
      */
-    @Schema(required = true, description = "A human-readable explanation of the milestone event.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A human-readable explanation of the milestone event.")
     public String getDescription() {
         return description;
     }

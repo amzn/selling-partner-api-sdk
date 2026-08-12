@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Contains information used to track and identify a Small Parcel Delivery (SPD) item. */
-@Schema(description = "Contains information used to track and identify a Small Parcel Delivery (SPD) item.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Contains information used to track and identify a Small Parcel Delivery (SPD) item.")
 public class SpdTrackingItem {
     @SerializedName("boxId")
     private String boxId = null;
@@ -39,7 +39,7 @@ public class SpdTrackingItem {
      *
      * @return boxId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The ID provided by Amazon that identifies a given box. This ID is comprised of the external shipment ID (which is generated after transportation has been confirmed) and the index of the box.")
     public String getBoxId() {
@@ -60,7 +60,7 @@ public class SpdTrackingItem {
      *
      * @return trackingId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The tracking ID associated with each box in a non-Amazon partnered Small Parcel Delivery (SPD) shipment.")
     public String getTrackingId() {
@@ -85,7 +85,7 @@ public class SpdTrackingItem {
      *
      * @return trackingNumberValidationStatus
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Indicates whether Amazon has validated the tracking number. Because shipment validation is asynchronous, tracking IDs might not be validated immediately, and the status might change after a few hours. If more than 24 hours have passed and the status is not yet 'VALIDATED' or `NOT_SUPPORTED`, verify the number and update it if necessary. **Possible values:** `VALIDATED`, `NOT_VALIDATED`, `NOT_SUPPORTED` (Amazon is unable to find tracking information for the provided tracking ID).")
     public String getTrackingNumberValidationStatus() {

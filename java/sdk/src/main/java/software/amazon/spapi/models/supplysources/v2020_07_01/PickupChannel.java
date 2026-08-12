@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The pick up channel of a supply source. */
-@Schema(description = "The pick up channel of a supply source.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The pick up channel of a supply source.")
 public class PickupChannel {
     @SerializedName("inventoryHoldPeriod")
     private Duration inventoryHoldPeriod = null;
@@ -44,7 +43,7 @@ public class PickupChannel {
      *
      * @return inventoryHoldPeriod
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Duration getInventoryHoldPeriod() {
         return inventoryHoldPeriod;
     }
@@ -63,7 +62,7 @@ public class PickupChannel {
      *
      * @return isSupported
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Boolean getIsSupported() {
         return isSupported;
     }
@@ -82,7 +81,7 @@ public class PickupChannel {
      *
      * @return operationalConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OperationalConfiguration getOperationalConfiguration() {
         return operationalConfiguration;
     }
@@ -101,7 +100,7 @@ public class PickupChannel {
      *
      * @return inStorePickupConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InStorePickupConfiguration getInStorePickupConfiguration() {
         return inStorePickupConfiguration;
     }
@@ -120,7 +119,7 @@ public class PickupChannel {
      *
      * @return curbsidePickupConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CurbsidePickupConfiguration getCurbsidePickupConfiguration() {
         return curbsidePickupConfiguration;
     }

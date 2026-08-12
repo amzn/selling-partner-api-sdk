@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Information required to create the government invoice. */
-@Schema(description = "Information required to create the government invoice.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information required to create the government invoice.")
 public class GovernmentInvoiceRequest {
     @SerializedName("contexts")
     private List<CarrierDetailsContext> contexts = null;
@@ -57,7 +56,7 @@ public class GovernmentInvoiceRequest {
      *
      * @return contexts
      */
-    @Schema(description = "Additional information for invoice creation.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Additional information for invoice creation.")
     public List<CarrierDetailsContext> getContexts() {
         return contexts;
     }
@@ -76,7 +75,7 @@ public class GovernmentInvoiceRequest {
      *
      * @return inboundPlanId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The unique inbound plan identifier in which the shipment is contained and for which the invoice will be created.")
     public String getInboundPlanId() {
@@ -98,7 +97,7 @@ public class GovernmentInvoiceRequest {
      *
      * @return invoiceType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The marketplace-specific classification of the invoice type. Check `invoiceType` options using the `getInvoicesAttributes` operation.")
@@ -120,7 +119,7 @@ public class GovernmentInvoiceRequest {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The marketplace of the national authoritative source that will be on the government invoice creation request.")
@@ -142,7 +141,9 @@ public class GovernmentInvoiceRequest {
      *
      * @return shipmentId
      */
-    @Schema(required = true, description = "The unique shipment identifier for which to get an invoice.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unique shipment identifier for which to get an invoice.")
     public String getShipmentId() {
         return shipmentId;
     }
@@ -162,7 +163,7 @@ public class GovernmentInvoiceRequest {
      *
      * @return transactionType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The marketplace-specific classification of the transaction type that originated the invoice. Check `transactionType` options using the `getInvoicesAttributes` operation.")

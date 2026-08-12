@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.vendor.df.transactions.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A list of error responses returned when a request is unsuccessful. */
-@Schema(description = "A list of error responses returned when a request is unsuccessful.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of error responses returned when a request is unsuccessful.")
 public class ErrorList {
     @SerializedName("errors")
     private List<Error> errors = null;
@@ -42,7 +42,9 @@ public class ErrorList {
      *
      * @return errors
      */
-    @Schema(required = true, description = "An array of individual error objects containing error details.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An array of individual error objects containing error details.")
     public List<Error> getErrors() {
         return errors;
     }

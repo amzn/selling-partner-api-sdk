@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Product types that are associated with the listing item for the specified Amazon store. */
-@Schema(description = "Product types that are associated with the listing item for the specified Amazon store.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Product types that are associated with the listing item for the specified Amazon store.")
 public class ItemProductTypeByMarketplace {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -35,7 +35,7 @@ public class ItemProductTypeByMarketplace {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "Amazon store identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Amazon store identifier.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -54,7 +54,9 @@ public class ItemProductTypeByMarketplace {
      *
      * @return productType
      */
-    @Schema(required = true, description = "The name of the product type that is submitted by the Selling Partner.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The name of the product type that is submitted by the Selling Partner.")
     public String getProductType() {
         return productType;
     }

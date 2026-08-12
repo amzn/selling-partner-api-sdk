@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Tax registration details of the entity. */
-@Schema(description = "Tax registration details of the entity.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Tax registration details of the entity.")
 public class TaxRegistrationDetails {
     /** Tax registration type for the entity. */
     @JsonAdapter(TaxRegistrationTypeEnum.Adapter.class)
@@ -87,7 +86,7 @@ public class TaxRegistrationDetails {
      *
      * @return taxRegistrationType
      */
-    @Schema(required = true, description = "Tax registration type for the entity.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Tax registration type for the entity.")
     public TaxRegistrationTypeEnum getTaxRegistrationType() {
         return taxRegistrationType;
     }
@@ -106,7 +105,9 @@ public class TaxRegistrationDetails {
      *
      * @return taxRegistrationNumber
      */
-    @Schema(required = true, description = "Tax registration number for the entity. For example, VAT ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Tax registration number for the entity. For example, VAT ID.")
     public String getTaxRegistrationNumber() {
         return taxRegistrationNumber;
     }

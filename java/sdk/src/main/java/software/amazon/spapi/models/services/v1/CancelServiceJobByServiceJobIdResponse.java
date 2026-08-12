@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Response schema for the &#x60;cancelServiceJobByServiceJobId&#x60; operation. */
-@Schema(description = "Response schema for the `cancelServiceJobByServiceJobId` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Response schema for the `cancelServiceJobByServiceJobId` operation.")
 public class CancelServiceJobByServiceJobIdResponse {
     @SerializedName("errors")
     private ErrorList errors = null;
@@ -32,7 +32,7 @@ public class CancelServiceJobByServiceJobIdResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

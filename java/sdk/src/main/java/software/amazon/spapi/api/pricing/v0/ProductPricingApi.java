@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.pricing.v0.GetItemOffersBatchRequest;
 import software.amazon.spapi.models.pricing.v0.GetItemOffersBatchResponse;
@@ -100,7 +99,7 @@ public class ProductPricingApi {
             List<String> asins,
             List<String> skus,
             String customerType,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -151,7 +150,7 @@ public class ProductPricingApi {
             List<String> asins,
             List<String> skus,
             String customerType,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceId' is set
@@ -401,10 +400,10 @@ public class ProductPricingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getCompetitivePricingValidateBeforeCall(
@@ -442,7 +441,7 @@ public class ProductPricingApi {
             String itemCondition,
             String asin,
             String customerType,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -493,7 +492,7 @@ public class ProductPricingApi {
             String itemCondition,
             String asin,
             String customerType,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceId' is set
@@ -683,10 +682,10 @@ public class ProductPricingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getItemOffersValidateBeforeCall(
@@ -715,8 +714,7 @@ public class ProductPricingApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getItemOffersBatchCall(
-            GetItemOffersBatchRequest getItemOffersBatchRequestBody,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            GetItemOffersBatchRequest getItemOffersBatchRequestBody, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = getItemOffersBatchRequestBody;
 
@@ -755,8 +753,7 @@ public class ProductPricingApi {
     }
 
     private okhttp3.Call getItemOffersBatchValidateBeforeCall(
-            GetItemOffersBatchRequest getItemOffersBatchRequestBody,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            GetItemOffersBatchRequest getItemOffersBatchRequestBody, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'getItemOffersBatchRequestBody' is set
@@ -913,10 +910,10 @@ public class ProductPricingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -955,7 +952,7 @@ public class ProductPricingApi {
             String itemCondition,
             String sellerSKU,
             String customerType,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1007,7 +1004,7 @@ public class ProductPricingApi {
             String itemCondition,
             String sellerSKU,
             String customerType,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceId' is set
@@ -1234,10 +1231,10 @@ public class ProductPricingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getListingOffersValidateBeforeCall(
@@ -1267,8 +1264,7 @@ public class ProductPricingApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getListingOffersBatchCall(
-            GetListingOffersBatchRequest getListingOffersBatchRequestBody,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            GetListingOffersBatchRequest getListingOffersBatchRequestBody, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = getListingOffersBatchRequestBody;
 
@@ -1307,8 +1303,7 @@ public class ProductPricingApi {
     }
 
     private okhttp3.Call getListingOffersBatchValidateBeforeCall(
-            GetListingOffersBatchRequest getListingOffersBatchRequestBody,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            GetListingOffersBatchRequest getListingOffersBatchRequestBody, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'getListingOffersBatchRequestBody' is set
@@ -1459,10 +1454,10 @@ public class ProductPricingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -1509,7 +1504,7 @@ public class ProductPricingApi {
             List<String> skus,
             String itemCondition,
             String offerType,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1563,7 +1558,7 @@ public class ProductPricingApi {
             List<String> skus,
             String itemCondition,
             String offerType,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'marketplaceId' is set
@@ -1836,10 +1831,10 @@ public class ProductPricingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getPricingValidateBeforeCall(

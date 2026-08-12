@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Time duration used to specify the interval of an event, such as pick up and delivery. */
-@Schema(description = "Time duration used to specify the interval of an event, such as pick up and delivery.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Time duration used to specify the interval of an event, such as pick up and delivery.")
 public class TimeWindow {
     @SerializedName("startTime")
     private Long startTime = null;
@@ -89,7 +89,7 @@ public class TimeWindow {
      *
      * @return startTime
      */
-    @Schema(required = true, description = "The start time of the window.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The start time of the window.")
     public Long getStartTime() {
         return startTime;
     }
@@ -108,7 +108,7 @@ public class TimeWindow {
      *
      * @return endTime
      */
-    @Schema(required = true, description = "The end time of the window.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The end time of the window.")
     public Long getEndTime() {
         return endTime;
     }
@@ -127,7 +127,8 @@ public class TimeWindow {
      *
      * @return handoverMethod
      */
-    @Schema(description = "Whether the seller picks up from Amazon Logistics or drops off to Amazon Logistics.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Whether the seller picks up from Amazon Logistics or drops off to Amazon Logistics.")
     public HandoverMethodEnum getHandoverMethod() {
         return handoverMethod;
     }

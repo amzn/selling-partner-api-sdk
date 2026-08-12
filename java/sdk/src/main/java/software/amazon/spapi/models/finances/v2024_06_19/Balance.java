@@ -17,14 +17,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** All information relevant to a balance. */
-@Schema(description = "All information relevant to a balance.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "All information relevant to a balance.")
 public class Balance {
     @SerializedName("partnerMetadata")
     private PartnerMetadata partnerMetadata = null;
@@ -106,7 +106,7 @@ public class Balance {
      *
      * @return partnerMetadata
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PartnerMetadata getPartnerMetadata() {
         return partnerMetadata;
     }
@@ -125,7 +125,7 @@ public class Balance {
      *
      * @return balanceType
      */
-    @Schema(description = "The type of balance.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of balance.")
     public BalanceTypeEnum getBalanceType() {
         return balanceType;
     }
@@ -144,7 +144,7 @@ public class Balance {
      *
      * @return amount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getAmount() {
         return amount;
     }
@@ -171,7 +171,7 @@ public class Balance {
      *
      * @return balances
      */
-    @Schema(description = "A list of balances that comprise this balance.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of balances that comprise this balance.")
     public List<Balance> getBalances() {
         return balances;
     }
@@ -190,7 +190,7 @@ public class Balance {
      *
      * @return asOfDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getAsOfDate() {
@@ -214,7 +214,7 @@ public class Balance {
      *
      * @return lastUpdatedTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date and time when the balance was last updated, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The value is in the marketplace's local time zone. This field is present for point-in-time balance queries (when no `asOfDate` query parameter is provided). Null for ending balance queries.")
     public OffsetDateTime getLastUpdatedTime() {

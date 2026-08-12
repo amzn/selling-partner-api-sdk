@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A SAFE-T claim reimbursement on the seller&#39;s account. */
-@Schema(description = "A SAFE-T claim reimbursement on the seller's account.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A SAFE-T claim reimbursement on the seller's account.")
 public class SAFETReimbursementEvent {
     @SerializedName("PostedDate")
     private OffsetDateTime postedDate = null;
@@ -44,7 +44,7 @@ public class SAFETReimbursementEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -65,7 +65,7 @@ public class SAFETReimbursementEvent {
      *
      * @return saFETClaimId
      */
-    @Schema(description = "A SAFE-T claim identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A SAFE-T claim identifier.")
     public String getSaFETClaimId() {
         return saFETClaimId;
     }
@@ -84,7 +84,7 @@ public class SAFETReimbursementEvent {
      *
      * @return reimbursedAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getReimbursedAmount() {
         return reimbursedAmount;
     }
@@ -103,7 +103,7 @@ public class SAFETReimbursementEvent {
      *
      * @return reasonCode
      */
-    @Schema(description = "Indicates why the seller was reimbursed.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Indicates why the seller was reimbursed.")
     public String getReasonCode() {
         return reasonCode;
     }
@@ -122,7 +122,7 @@ public class SAFETReimbursementEvent {
      *
      * @return saFETReimbursementItemList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SAFETReimbursementItemList getSaFETReimbursementItemList() {
         return saFETReimbursementItemList;
     }

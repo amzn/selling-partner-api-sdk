@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -26,7 +25,7 @@ import java.util.Objects;
  * &#x60;baseAmount&#x60;)**. In the preceding expressions, **fees** is equal to the sum of all
  * &#x60;feeAmount.currencyAmount&#x60; values in the &#x60;fees&#x60; array.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The fees and foreign exchange rates that apply to the transaction.  If the fees are in terms of the `baseAmount` (source account) currency, then the effective rate is equal to **1 - (fees * `baseRate` / `baseAmount`)**.  If the fees are in terms of the `transferAmount` (destination account) currency, then the effective rate is equal to **`baseRate` - (fees / `baseAmount`)**.  In the preceding expressions, **fees** is equal to the sum of all `feeAmount.currencyAmount` values in the `fees` array.")
 public class TransferRatePreview {
@@ -52,7 +51,7 @@ public class TransferRatePreview {
      *
      * @return baseAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getBaseAmount() {
         return baseAmount;
     }
@@ -71,7 +70,7 @@ public class TransferRatePreview {
      *
      * @return fxRateDetails
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public FxRateDetails getFxRateDetails() {
         return fxRateDetails;
     }
@@ -90,7 +89,7 @@ public class TransferRatePreview {
      *
      * @return transferAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getTransferAmount() {
         return transferAmount;
     }
@@ -117,7 +116,7 @@ public class TransferRatePreview {
      *
      * @return fees
      */
-    @Schema(required = true, description = "A list of fees.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of fees.")
     public List<Fee> getFees() {
         return fees;
     }

@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Details of item quantity. */
-@Schema(description = "Details of item quantity.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of item quantity.")
 public class ItemQuantity {
     @SerializedName("amount")
     private Integer amount = null;
@@ -93,7 +92,7 @@ public class ItemQuantity {
      *
      * @return amount
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Amount of units shipped for a specific item at a shipment level. If the item is present only in certain cartons or pallets within the shipment, please provide this at the appropriate carton or pallet level.")
@@ -115,7 +114,9 @@ public class ItemQuantity {
      *
      * @return unitOfMeasure
      */
-    @Schema(required = true, description = "Unit of measure for the shipped quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Unit of measure for the shipped quantity.")
     public UnitOfMeasureEnum getUnitOfMeasure() {
         return unitOfMeasure;
     }
@@ -134,7 +135,8 @@ public class ItemQuantity {
      *
      * @return unitSize
      */
-    @Schema(description = "The case size, in the event that we ordered using cases. Otherwise, 1.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The case size, in the event that we ordered using cases. Otherwise, 1.")
     public Integer getUnitSize() {
         return unitSize;
     }
@@ -153,7 +155,7 @@ public class ItemQuantity {
      *
      * @return totalWeight
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TotalWeight getTotalWeight() {
         return totalWeight;
     }

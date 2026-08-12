@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.uploads.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the createUploadDestination operation. */
-@Schema(description = "The response schema for the createUploadDestination operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the createUploadDestination operation.")
 public class CreateUploadDestinationResponse {
     @SerializedName("payload")
     private UploadDestination payload = null;
@@ -35,7 +35,7 @@ public class CreateUploadDestinationResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public UploadDestination getPayload() {
         return payload;
     }
@@ -54,7 +54,7 @@ public class CreateUploadDestinationResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

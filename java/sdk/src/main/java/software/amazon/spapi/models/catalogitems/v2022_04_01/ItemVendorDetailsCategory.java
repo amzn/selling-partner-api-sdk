@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The product category or subcategory that is associated with an Amazon catalog item. */
-@Schema(description = "The product category or subcategory that is associated with an Amazon catalog item.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The product category or subcategory that is associated with an Amazon catalog item.")
 public class ItemVendorDetailsCategory {
     @SerializedName("displayName")
     private String displayName = null;
@@ -35,7 +35,8 @@ public class ItemVendorDetailsCategory {
      *
      * @return displayName
      */
-    @Schema(description = "The display name of the product category or subcategory.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The display name of the product category or subcategory.")
     public String getDisplayName() {
         return displayName;
     }
@@ -54,7 +55,8 @@ public class ItemVendorDetailsCategory {
      *
      * @return value
      */
-    @Schema(description = "The code that identifies the product category or subcategory.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The code that identifies the product category or subcategory.")
     public String getValue() {
         return value;
     }

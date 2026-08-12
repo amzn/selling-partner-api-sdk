@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** An item of a debt payment or debt adjustment. */
-@Schema(description = "An item of a debt payment or debt adjustment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An item of a debt payment or debt adjustment.")
 public class DebtRecoveryItem {
     @SerializedName("RecoveryAmount")
     private Currency recoveryAmount = null;
@@ -41,7 +41,7 @@ public class DebtRecoveryItem {
      *
      * @return recoveryAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getRecoveryAmount() {
         return recoveryAmount;
     }
@@ -60,7 +60,7 @@ public class DebtRecoveryItem {
      *
      * @return originalAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getOriginalAmount() {
         return originalAmount;
     }
@@ -79,7 +79,7 @@ public class DebtRecoveryItem {
      *
      * @return groupBeginDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getGroupBeginDate() {
@@ -100,7 +100,7 @@ public class DebtRecoveryItem {
      *
      * @return groupEndDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getGroupEndDate() {

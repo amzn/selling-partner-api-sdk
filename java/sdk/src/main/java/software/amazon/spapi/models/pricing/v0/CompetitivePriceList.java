@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of competitive pricing information. */
-@Schema(description = "A list of competitive pricing information.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of competitive pricing information.")
 public class CompetitivePriceList extends ArrayList<CompetitivePriceType> {
 
     @Override

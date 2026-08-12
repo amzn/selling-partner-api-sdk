@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** The listings item&#39;s offer details. */
-@Schema(description = "The listings item's offer details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The listings item's offer details.")
 public class ItemOffers extends ArrayList<ItemOfferByMarketplace> {
 
     @Override

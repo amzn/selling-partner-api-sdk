@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An additional attribute associated with a tax registration. */
-@Schema(description = "An additional attribute associated with a tax registration.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An additional attribute associated with a tax registration.")
 public class TaxRegistrationAttribute {
     @SerializedName("key")
     private String key = null;
@@ -35,7 +34,8 @@ public class TaxRegistrationAttribute {
      *
      * @return key
      */
-    @Schema(description = "The name of the tax registration attribute.  **Possible values**: `TAX_OFFICE`")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The name of the tax registration attribute.  **Possible values**: `TAX_OFFICE`")
     public String getKey() {
         return key;
     }
@@ -54,7 +54,7 @@ public class TaxRegistrationAttribute {
      *
      * @return value
      */
-    @Schema(description = "The value of the tax registration attribute.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The value of the tax registration attribute.")
     public String getValue() {
         return value;
     }

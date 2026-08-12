@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** Relationships for a listing item, by Amazon store (for example, variations). */
-@Schema(description = "Relationships for a listing item, by Amazon store (for example, variations).")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Relationships for a listing item, by Amazon store (for example, variations).")
 public class ItemRelationships extends ArrayList<ItemRelationshipsByMarketplace> {
 
     @Override

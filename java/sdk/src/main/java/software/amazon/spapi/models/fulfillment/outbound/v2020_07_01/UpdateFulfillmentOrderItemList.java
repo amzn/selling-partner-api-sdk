@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** An array of fulfillment order item information for updating a fulfillment order. */
-@Schema(description = "An array of fulfillment order item information for updating a fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "An array of fulfillment order item information for updating a fulfillment order.")
 public class UpdateFulfillmentOrderItemList extends ArrayList<UpdateFulfillmentOrderItem> {
 
     @Override

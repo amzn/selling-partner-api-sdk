@@ -17,14 +17,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A product offer with segment information indicating where it&#39;s featured. */
-@Schema(description = "A product offer with segment information indicating where it's featured.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A product offer with segment information indicating where it's featured.")
 public class SegmentedFeaturedOffer {
     @SerializedName("sellerId")
     private String sellerId = null;
@@ -134,7 +134,7 @@ public class SegmentedFeaturedOffer {
      *
      * @return sellerId
      */
-    @Schema(required = true, description = "The seller identifier for the offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller identifier for the offer.")
     public String getSellerId() {
         return sellerId;
     }
@@ -153,7 +153,7 @@ public class SegmentedFeaturedOffer {
      *
      * @return condition
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Condition getCondition() {
         return condition;
     }
@@ -172,7 +172,7 @@ public class SegmentedFeaturedOffer {
      *
      * @return subCondition
      */
-    @Schema(description = "The item subcondition of the offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The item subcondition of the offer.")
     public SubConditionEnum getSubCondition() {
         return subCondition;
     }
@@ -191,7 +191,7 @@ public class SegmentedFeaturedOffer {
      *
      * @return fulfillmentType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public FulfillmentType getFulfillmentType() {
         return fulfillmentType;
     }
@@ -210,7 +210,7 @@ public class SegmentedFeaturedOffer {
      *
      * @return listingPrice
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MoneyType getListingPrice() {
         return listingPrice;
     }
@@ -237,7 +237,7 @@ public class SegmentedFeaturedOffer {
      *
      * @return shippingOptions
      */
-    @Schema(description = "A list of shipping options associated with this offer")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of shipping options associated with this offer")
     public List<ShippingOption> getShippingOptions() {
         return shippingOptions;
     }
@@ -256,7 +256,7 @@ public class SegmentedFeaturedOffer {
      *
      * @return points
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Points getPoints() {
         return points;
     }
@@ -275,7 +275,7 @@ public class SegmentedFeaturedOffer {
      *
      * @return primeDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PrimeDetails getPrimeDetails() {
         return primeDetails;
     }
@@ -294,7 +294,7 @@ public class SegmentedFeaturedOffer {
      *
      * @return promotions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Promotions getPromotions() {
         return promotions;
     }
@@ -321,7 +321,9 @@ public class SegmentedFeaturedOffer {
      *
      * @return featuredOfferSegments
      */
-    @Schema(required = true, description = "The list of segment information in which the offer is featured.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The list of segment information in which the offer is featured.")
     public List<FeaturedOfferSegment> getFeaturedOfferSegments() {
         return featuredOfferSegments;
     }

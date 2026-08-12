@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Standard product description text. */
-@Schema(description = "Standard product description text.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Standard product description text.")
 public class StandardProductDescriptionModule {
     @SerializedName("body")
     private ParagraphComponent body = null;
@@ -32,7 +31,7 @@ public class StandardProductDescriptionModule {
      *
      * @return body
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ParagraphComponent getBody() {
         return body;
     }

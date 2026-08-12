@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Details for the shipment status update given by the vendor for the specific package. */
-@Schema(description = "Details for the shipment status update given by the vendor for the specific package.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Details for the shipment status update given by the vendor for the specific package.")
 public class StatusUpdateDetails {
     @SerializedName("trackingNumber")
     private String trackingNumber = null;
@@ -48,7 +49,7 @@ public class StatusUpdateDetails {
      *
      * @return trackingNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The shipment tracking number is required for every package and should match the `trackingNumber` sent for the shipment confirmation.")
@@ -72,7 +73,7 @@ public class StatusUpdateDetails {
      *
      * @return statusCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Indicates the shipment status code of the package that provides transportation information for Amazon tracking systems and ultimately for the final customer. For more information, refer to the [Additional Fields Explanation](https://developer-docs.amazon.com/sp-api/docs/vendor-direct-fulfillment-shipping-api-use-case-guide#additional-fields-explanation).")
@@ -96,7 +97,7 @@ public class StatusUpdateDetails {
      *
      * @return reasonCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Provides a reason code for the status of the package that will provide additional information about the transportation status. For more information, refer to the [Additional Fields Explanation](https://developer-docs.amazon.com/sp-api/docs/vendor-direct-fulfillment-shipping-api-use-case-guide#additional-fields-explanation).")
@@ -120,7 +121,7 @@ public class StatusUpdateDetails {
      *
      * @return statusDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The date and time when the shipment status was updated. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00.")
@@ -142,7 +143,7 @@ public class StatusUpdateDetails {
      *
      * @return statusLocationAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getStatusLocationAddress() {
         return statusLocationAddress;
     }
@@ -161,7 +162,7 @@ public class StatusUpdateDetails {
      *
      * @return shipmentSchedule
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipmentSchedule getShipmentSchedule() {
         return shipmentSchedule;
     }

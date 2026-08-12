@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.invoicing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request schema for the submitInvoice operation. */
-@Schema(description = "The request schema for the submitInvoice operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for the submitInvoice operation.")
 public class SubmitInvoiceRequest {
     @SerializedName("InvoiceContent")
     private byte[] invoiceContent = null;
@@ -38,7 +37,7 @@ public class SubmitInvoiceRequest {
      *
      * @return invoiceContent
      */
-    @Schema(required = true, description = "Shipment invoice document content.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Shipment invoice document content.")
     public byte[] getInvoiceContent() {
         return invoiceContent;
     }
@@ -57,7 +56,7 @@ public class SubmitInvoiceRequest {
      *
      * @return marketplaceId
      */
-    @Schema(description = "An Amazon marketplace identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon marketplace identifier.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -77,7 +76,7 @@ public class SubmitInvoiceRequest {
      *
      * @return contentMD5Value
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "MD5 sum for validating the invoice data. For more information about calculating this value, see [Working with Content-MD5 Checksums](https://docs.developer.amazonservices.com/en_US/dev_guide/DG_MD5.html).")

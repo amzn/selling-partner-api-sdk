@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request schema for the &#x60;updateScheduledPackages&#x60; operation. */
-@Schema(description = "The request schema for the `updateScheduledPackages` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request schema for the `updateScheduledPackages` operation.")
 public class UpdateScheduledPackagesRequest {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -35,7 +35,7 @@ public class UpdateScheduledPackagesRequest {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "A string of up to 255 characters.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A string of up to 255 characters.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -54,7 +54,7 @@ public class UpdateScheduledPackagesRequest {
      *
      * @return updatePackageDetailsList
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public UpdatePackageDetailsList getUpdatePackageDetailsList() {
         return updatePackageDetailsList;
     }

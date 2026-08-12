@@ -13,14 +13,14 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
  * Item information for an inbound shipment. Submitted with a call to the createInboundShipment or updateInboundShipment
  * operation.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Item information for an inbound shipment. Submitted with a call to the createInboundShipment or updateInboundShipment operation.")
 public class InboundShipmentItem {
@@ -58,7 +58,8 @@ public class InboundShipmentItem {
      *
      * @return shipmentId
      */
-    @Schema(description = "A shipment identifier originally returned by the createInboundShipmentPlan operation.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A shipment identifier originally returned by the createInboundShipmentPlan operation.")
     public String getShipmentId() {
         return shipmentId;
     }
@@ -77,7 +78,7 @@ public class InboundShipmentItem {
      *
      * @return sellerSKU
      */
-    @Schema(required = true, description = "The seller SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller SKU of the item.")
     public String getSellerSKU() {
         return sellerSKU;
     }
@@ -96,7 +97,7 @@ public class InboundShipmentItem {
      *
      * @return fulfillmentNetworkSKU
      */
-    @Schema(description = "Amazon's fulfillment network SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Amazon's fulfillment network SKU of the item.")
     public String getFulfillmentNetworkSKU() {
         return fulfillmentNetworkSKU;
     }
@@ -115,7 +116,7 @@ public class InboundShipmentItem {
      *
      * @return quantityShipped
      */
-    @Schema(required = true, description = "The item quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The item quantity.")
     public Integer getQuantityShipped() {
         return quantityShipped;
     }
@@ -134,7 +135,7 @@ public class InboundShipmentItem {
      *
      * @return quantityReceived
      */
-    @Schema(description = "The item quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The item quantity.")
     public Integer getQuantityReceived() {
         return quantityReceived;
     }
@@ -153,7 +154,7 @@ public class InboundShipmentItem {
      *
      * @return quantityInCase
      */
-    @Schema(description = "The item quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The item quantity.")
     public Integer getQuantityInCase() {
         return quantityInCase;
     }
@@ -172,7 +173,7 @@ public class InboundShipmentItem {
      *
      * @return releaseDate
      */
-    @Schema(description = "Type containing date in string format")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Type containing date in string format")
     public LocalDate getReleaseDate() {
         return releaseDate;
     }
@@ -191,7 +192,7 @@ public class InboundShipmentItem {
      *
      * @return prepDetailsList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PrepDetailsList getPrepDetailsList() {
         return prepDetailsList;
     }

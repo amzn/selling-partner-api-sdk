@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the directPurchaseShipment operation. */
-@Schema(description = "The response schema for the directPurchaseShipment operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the directPurchaseShipment operation.")
 public class DirectPurchaseResponse {
     @SerializedName("payload")
     private DirectPurchaseResult payload = null;
@@ -32,7 +32,7 @@ public class DirectPurchaseResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DirectPurchaseResult getPayload() {
         return payload;
     }

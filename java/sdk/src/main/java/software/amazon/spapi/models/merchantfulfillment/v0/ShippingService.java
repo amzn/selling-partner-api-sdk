@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A shipping service offer made by a carrier. */
-@Schema(description = "A shipping service offer made by a carrier.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A shipping service offer made by a carrier.")
 public class ShippingService {
     @SerializedName("ShippingServiceName")
     private String shippingServiceName = null;
@@ -78,7 +78,7 @@ public class ShippingService {
      *
      * @return shippingServiceName
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A plain text representation of a carrier's shipping service. For example, \"UPS Ground\" or \"FedEx Standard Overnight\". ")
@@ -100,7 +100,7 @@ public class ShippingService {
      *
      * @return carrierName
      */
-    @Schema(required = true, description = "The name of the carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the carrier.")
     public String getCarrierName() {
         return carrierName;
     }
@@ -119,7 +119,9 @@ public class ShippingService {
      *
      * @return shippingServiceId
      */
-    @Schema(required = true, description = "An Amazon-defined shipping service identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An Amazon-defined shipping service identifier.")
     public String getShippingServiceId() {
         return shippingServiceId;
     }
@@ -138,7 +140,9 @@ public class ShippingService {
      *
      * @return shippingServiceOfferId
      */
-    @Schema(required = true, description = "An Amazon-defined shipping service offer identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An Amazon-defined shipping service offer identifier.")
     public String getShippingServiceOfferId() {
         return shippingServiceOfferId;
     }
@@ -157,7 +161,7 @@ public class ShippingService {
      *
      * @return shipDate
      */
-    @Schema(required = true, description = "Date-time formatted timestamp.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date-time formatted timestamp.")
     public OffsetDateTime getShipDate() {
         return shipDate;
     }
@@ -176,7 +180,7 @@ public class ShippingService {
      *
      * @return earliestEstimatedDeliveryDate
      */
-    @Schema(description = "Date-time formatted timestamp.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date-time formatted timestamp.")
     public OffsetDateTime getEarliestEstimatedDeliveryDate() {
         return earliestEstimatedDeliveryDate;
     }
@@ -195,7 +199,7 @@ public class ShippingService {
      *
      * @return latestEstimatedDeliveryDate
      */
-    @Schema(description = "Date-time formatted timestamp.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date-time formatted timestamp.")
     public OffsetDateTime getLatestEstimatedDeliveryDate() {
         return latestEstimatedDeliveryDate;
     }
@@ -214,7 +218,7 @@ public class ShippingService {
      *
      * @return rate
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public CurrencyAmount getRate() {
         return rate;
     }
@@ -233,7 +237,7 @@ public class ShippingService {
      *
      * @return rateWithAdjustments
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public CurrencyAmount getRateWithAdjustments() {
         return rateWithAdjustments;
     }
@@ -252,7 +256,7 @@ public class ShippingService {
      *
      * @return adjustmentItemList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AdjustmentItemList getAdjustmentItemList() {
         return adjustmentItemList;
     }
@@ -271,7 +275,7 @@ public class ShippingService {
      *
      * @return shippingServiceOptions
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShippingServiceOptions getShippingServiceOptions() {
         return shippingServiceOptions;
     }
@@ -291,7 +295,7 @@ public class ShippingService {
      *
      * @return availableShippingServiceOptions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AvailableShippingServiceOptions getAvailableShippingServiceOptions() {
         return availableShippingServiceOptions;
     }
@@ -310,7 +314,7 @@ public class ShippingService {
      *
      * @return availableLabelFormats
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public LabelFormatList getAvailableLabelFormats() {
         return availableLabelFormats;
     }
@@ -330,7 +334,7 @@ public class ShippingService {
      *
      * @return availableFormatOptionsForLabel
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AvailableFormatOptionsForLabelList getAvailableFormatOptionsForLabel() {
         return availableFormatOptionsForLabel;
     }
@@ -349,7 +353,9 @@ public class ShippingService {
      *
      * @return requiresAdditionalSellerInputs
      */
-    @Schema(required = true, description = "When true, additional seller inputs are required.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "When true, additional seller inputs are required.")
     public Boolean getRequiresAdditionalSellerInputs() {
         return requiresAdditionalSellerInputs;
     }
@@ -368,7 +374,7 @@ public class ShippingService {
      *
      * @return benefits
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Benefits getBenefits() {
         return benefits;
     }

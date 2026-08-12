@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Transportation details for this shipment. */
-@Schema(description = "Transportation details for this shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Transportation details for this shipment.")
 public class TransportationDetailsForShipmentConfirmation {
     @SerializedName("carrierScac")
     private String carrierScac = null;
@@ -97,7 +96,7 @@ public class TransportationDetailsForShipmentConfirmation {
      *
      * @return carrierScac
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Code that identifies the carrier for the shipment. The Standard Carrier Alpha Code (SCAC) is a unique two to four letter code used to identify a carrier. Carrier SCAC codes are assigned and maintained by the NMFTA (National Motor Freight Association). This field is mandatory for US, CA, MX shipment confirmations.")
     public String getCarrierScac() {
@@ -120,7 +119,7 @@ public class TransportationDetailsForShipmentConfirmation {
      *
      * @return carrierShipmentReferenceNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The field also known as PRO number is a unique number assigned by the carrier. It is used to identify and track the shipment that goes out for delivery. This field is mandatory for UA, CA, MX shipment confirmations.")
     public String getCarrierShipmentReferenceNumber() {
@@ -141,7 +140,7 @@ public class TransportationDetailsForShipmentConfirmation {
      *
      * @return transportationMode
      */
-    @Schema(description = "The mode of transportation for this shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The mode of transportation for this shipment.")
     public TransportationModeEnum getTransportationMode() {
         return transportationMode;
     }
@@ -164,7 +163,7 @@ public class TransportationDetailsForShipmentConfirmation {
      *
      * @return billOfLadingNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The Bill of Lading (BOL) number is a unique number assigned to each shipment of goods by the vendor or shipper during the creation of the Bill of Lading. This number must be unique for every shipment and cannot be a date/time or single character. The BOL numer is mandatory in Shipment Confirmation message for FTL and LTL shipments, and must match the paper BOL provided with the shipment. Instead of BOL, an alternative reference number (like Delivery Note Number) for the shipment can also be sent in this field.")
     public String getBillOfLadingNumber() {

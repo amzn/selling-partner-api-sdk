@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Amazon shipment information. */
-@Schema(description = "Amazon shipment information.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Amazon shipment information.")
 public class AmazonShipmentDetails {
     @SerializedName("shipmentId")
     private String shipmentId = null;
@@ -32,7 +31,7 @@ public class AmazonShipmentDetails {
      *
      * @return shipmentId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "This attribute is required only for a Direct Fulfillment shipment. This is the encrypted shipment ID.")

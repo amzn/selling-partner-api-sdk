@@ -13,14 +13,14 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
  * The request schema for the OneClickShipment operation. When the channelType is not Amazon, shipTo is required and
  * when channelType is Amazon shipTo is ignored.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The request schema for the OneClickShipment operation. When the channelType is not Amazon, shipTo is required and when channelType is Amazon shipTo is ignored.")
 public class OneClickShipmentRequest {
@@ -73,7 +73,7 @@ public class OneClickShipmentRequest {
      *
      * @return shipTo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getShipTo() {
         return shipTo;
     }
@@ -92,7 +92,7 @@ public class OneClickShipmentRequest {
      *
      * @return shipFrom
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getShipFrom() {
         return shipFrom;
     }
@@ -111,7 +111,7 @@ public class OneClickShipmentRequest {
      *
      * @return returnTo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getReturnTo() {
         return returnTo;
     }
@@ -130,7 +130,8 @@ public class OneClickShipmentRequest {
      *
      * @return shipDate
      */
-    @Schema(description = "The ship date and time (the requested pickup). This defaults to the current date and time.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The ship date and time (the requested pickup). This defaults to the current date and time.")
     public OffsetDateTime getShipDate() {
         return shipDate;
     }
@@ -149,7 +150,7 @@ public class OneClickShipmentRequest {
      *
      * @return goodsOwner
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GoodsOwner getGoodsOwner() {
         return goodsOwner;
     }
@@ -168,7 +169,7 @@ public class OneClickShipmentRequest {
      *
      * @return packages
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PackageList getPackages() {
         return packages;
     }
@@ -188,7 +189,7 @@ public class OneClickShipmentRequest {
      *
      * @return valueAddedServicesDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OneClickShipmentValueAddedServiceDetails getValueAddedServicesDetails() {
         return valueAddedServicesDetails;
     }
@@ -207,7 +208,7 @@ public class OneClickShipmentRequest {
      *
      * @return taxDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TaxDetailList getTaxDetails() {
         return taxDetails;
     }
@@ -226,7 +227,7 @@ public class OneClickShipmentRequest {
      *
      * @return channelDetails
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ChannelDetails getChannelDetails() {
         return channelDetails;
     }
@@ -245,7 +246,7 @@ public class OneClickShipmentRequest {
      *
      * @return labelSpecifications
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public RequestedDocumentSpecification getLabelSpecifications() {
         return labelSpecifications;
     }
@@ -264,7 +265,7 @@ public class OneClickShipmentRequest {
      *
      * @return serviceSelection
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ServiceSelection getServiceSelection() {
         return serviceSelection;
     }
@@ -283,7 +284,7 @@ public class OneClickShipmentRequest {
      *
      * @return shipperInstruction
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShipperInstruction getShipperInstruction() {
         return shipperInstruction;
     }
@@ -302,7 +303,7 @@ public class OneClickShipmentRequest {
      *
      * @return destinationAccessPointDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AccessPointDetails getDestinationAccessPointDetails() {
         return destinationAccessPointDetails;
     }

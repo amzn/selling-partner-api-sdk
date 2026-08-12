@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.fba.inventory.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Inventory summary for a specific item. */
-@Schema(description = "Inventory summary for a specific item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Inventory summary for a specific item.")
 public class InventorySummary {
     @SerializedName("asin")
     private String asin = null;
@@ -58,7 +58,8 @@ public class InventorySummary {
      *
      * @return asin
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of an item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of an item.")
     public String getAsin() {
         return asin;
     }
@@ -77,7 +78,7 @@ public class InventorySummary {
      *
      * @return fnSku
      */
-    @Schema(description = "Amazon's fulfillment network SKU identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Amazon's fulfillment network SKU identifier.")
     public String getFnSku() {
         return fnSku;
     }
@@ -96,7 +97,7 @@ public class InventorySummary {
      *
      * @return sellerSku
      */
-    @Schema(description = "The seller SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller SKU of the item.")
     public String getSellerSku() {
         return sellerSku;
     }
@@ -115,7 +116,8 @@ public class InventorySummary {
      *
      * @return condition
      */
-    @Schema(description = "The condition of the item as described by the seller (for example, New Item).")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The condition of the item as described by the seller (for example, New Item).")
     public String getCondition() {
         return condition;
     }
@@ -134,7 +136,7 @@ public class InventorySummary {
      *
      * @return inventoryDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InventoryDetails getInventoryDetails() {
         return inventoryDetails;
     }
@@ -153,7 +155,7 @@ public class InventorySummary {
      *
      * @return lastUpdatedTime
      */
-    @Schema(description = "The date and time that any quantity was last updated.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The date and time that any quantity was last updated.")
     public OffsetDateTime getLastUpdatedTime() {
         return lastUpdatedTime;
     }
@@ -172,7 +174,8 @@ public class InventorySummary {
      *
      * @return productName
      */
-    @Schema(description = "The localized language product title of the item within the specific marketplace.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The localized language product title of the item within the specific marketplace.")
     public String getProductName() {
         return productName;
     }
@@ -191,7 +194,8 @@ public class InventorySummary {
      *
      * @return totalQuantity
      */
-    @Schema(description = "The total number of units in an inbound shipment or in Amazon fulfillment centers.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The total number of units in an inbound shipment or in Amazon fulfillment centers.")
     public Integer getTotalQuantity() {
         return totalQuantity;
     }
@@ -218,7 +222,8 @@ public class InventorySummary {
      *
      * @return stores
      */
-    @Schema(description = "A list of seller-enrolled stores that apply to this seller SKU.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of seller-enrolled stores that apply to this seller SKU.")
     public List<String> getStores() {
         return stores;
     }

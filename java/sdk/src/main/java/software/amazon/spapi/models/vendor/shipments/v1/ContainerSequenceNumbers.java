@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Container sequence numbers that are involved in this shipment. */
-@Schema(description = "Container sequence numbers that are involved in this shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Container sequence numbers that are involved in this shipment.")
 public class ContainerSequenceNumbers {
     @SerializedName("containerSequenceNumber")
     private String containerSequenceNumber = null;
@@ -32,7 +32,7 @@ public class ContainerSequenceNumbers {
      *
      * @return containerSequenceNumber
      */
-    @Schema(description = "A list of containers shipped")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of containers shipped")
     public String getContainerSequenceNumber() {
         return containerSequenceNumber;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.productfees.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response object for the GetMyFeesEstimate operation. */
-@Schema(description = "The response object for the GetMyFeesEstimate operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response object for the GetMyFeesEstimate operation.")
 public class GetMyFeesEstimateResponse {
     @SerializedName("payload")
     private GetMyFeesEstimateResult payload = null;
@@ -35,7 +34,7 @@ public class GetMyFeesEstimateResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetMyFeesEstimateResult getPayload() {
         return payload;
     }
@@ -54,7 +53,7 @@ public class GetMyFeesEstimateResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

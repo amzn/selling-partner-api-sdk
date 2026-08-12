@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A list of error responses returned when a request is unsuccessful. */
-@Schema(description = "A list of error responses returned when a request is unsuccessful.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of error responses returned when a request is unsuccessful.")
 public class Errors {
     @SerializedName("errors")
     private ErrorList errors = null;
@@ -32,7 +32,7 @@ public class Errors {
      *
      * @return errors
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ErrorList getErrors() {
         return errors;
     }

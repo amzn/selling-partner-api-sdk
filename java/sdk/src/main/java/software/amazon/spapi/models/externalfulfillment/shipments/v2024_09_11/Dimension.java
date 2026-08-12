@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** A dimension of a package. */
-@Schema(description = "A dimension of a package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A dimension of a package.")
 public class Dimension {
     @SerializedName("value")
     private String value = null;
@@ -88,7 +87,7 @@ public class Dimension {
      *
      * @return value
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies.")
@@ -110,7 +109,9 @@ public class Dimension {
      *
      * @return dimensionUnit
      */
-    @Schema(required = true, description = "The unit of measurement of the dimension.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unit of measurement of the dimension.")
     public DimensionUnitEnum getDimensionUnit() {
         return dimensionUnit;
     }

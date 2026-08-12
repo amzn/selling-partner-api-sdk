@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** The request schema for an shipment confirmation. */
-@Schema(description = "The request schema for an shipment confirmation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema for an shipment confirmation.")
 public class ConfirmShipmentRequest {
     @SerializedName("packageDetail")
     private PackageDetail packageDetail = null;
@@ -88,7 +87,7 @@ public class ConfirmShipmentRequest {
      *
      * @return packageDetail
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PackageDetail getPackageDetail() {
         return packageDetail;
     }
@@ -107,7 +106,8 @@ public class ConfirmShipmentRequest {
      *
      * @return codCollectionMethod
      */
-    @Schema(description = "The COD collection method (only supported in the JP marketplace).")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The COD collection method (only supported in the JP marketplace).")
     public CodCollectionMethodEnum getCodCollectionMethod() {
         return codCollectionMethod;
     }
@@ -126,7 +126,9 @@ public class ConfirmShipmentRequest {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "The unobfuscated marketplace identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unobfuscated marketplace identifier.")
     public String getMarketplaceId() {
         return marketplaceId;
     }

@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Represents the packages to inbound. */
-@Schema(description = "Represents the packages to inbound.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Represents the packages to inbound.")
 public class InboundPackages {
     @SerializedName("packagesToInbound")
     private List<DistributionPackageQuantity> packagesToInbound = null;
@@ -42,7 +41,7 @@ public class InboundPackages {
      *
      * @return packagesToInbound
      */
-    @Schema(required = true, description = "List of packages to be inbounded.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "List of packages to be inbounded.")
     public List<DistributionPackageQuantity> getPackagesToInbound() {
         return packagesToInbound;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A standard image with paragraphs, a bulleted list, and extra space for technical details. */
-@Schema(description = "A standard image with paragraphs, a bulleted list, and extra space for technical details.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A standard image with paragraphs, a bulleted list, and extra space for technical details.")
 public class StandardSingleImageSpecsDetailModule {
     @SerializedName("headline")
     private TextComponent headline = null;
@@ -53,7 +53,7 @@ public class StandardSingleImageSpecsDetailModule {
      *
      * @return headline
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TextComponent getHeadline() {
         return headline;
     }
@@ -72,7 +72,7 @@ public class StandardSingleImageSpecsDetailModule {
      *
      * @return image
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ImageComponent getImage() {
         return image;
     }
@@ -91,7 +91,7 @@ public class StandardSingleImageSpecsDetailModule {
      *
      * @return descriptionHeadline
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TextComponent getDescriptionHeadline() {
         return descriptionHeadline;
     }
@@ -110,7 +110,7 @@ public class StandardSingleImageSpecsDetailModule {
      *
      * @return descriptionBlock1
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardTextBlock getDescriptionBlock1() {
         return descriptionBlock1;
     }
@@ -129,7 +129,7 @@ public class StandardSingleImageSpecsDetailModule {
      *
      * @return descriptionBlock2
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardTextBlock getDescriptionBlock2() {
         return descriptionBlock2;
     }
@@ -148,7 +148,7 @@ public class StandardSingleImageSpecsDetailModule {
      *
      * @return specificationHeadline
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TextComponent getSpecificationHeadline() {
         return specificationHeadline;
     }
@@ -168,7 +168,7 @@ public class StandardSingleImageSpecsDetailModule {
      *
      * @return specificationListBlock
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardHeaderTextListBlock getSpecificationListBlock() {
         return specificationListBlock;
     }
@@ -187,7 +187,7 @@ public class StandardSingleImageSpecsDetailModule {
      *
      * @return specificationTextBlock
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardTextBlock getSpecificationTextBlock() {
         return specificationTextBlock;
     }

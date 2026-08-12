@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Represents an AWD inbound order. */
-@Schema(description = "Represents an AWD inbound order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Represents an AWD inbound order.")
 public class InboundOrder {
     @SerializedName("createdAt")
     private OffsetDateTime createdAt = null;
@@ -58,7 +58,7 @@ public class InboundOrder {
      *
      * @return createdAt
      */
-    @Schema(required = true, description = "Date when this order was created.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Date when this order was created.")
     public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
@@ -77,7 +77,7 @@ public class InboundOrder {
      *
      * @return destinationDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DestinationDetails getDestinationDetails() {
         return destinationDetails;
     }
@@ -96,7 +96,8 @@ public class InboundOrder {
      *
      * @return externalReferenceId
      */
-    @Schema(description = "Reference ID that can be used to correlate the order with partner resources.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Reference ID that can be used to correlate the order with partner resources.")
     public String getExternalReferenceId() {
         return externalReferenceId;
     }
@@ -115,7 +116,7 @@ public class InboundOrder {
      *
      * @return orderId
      */
-    @Schema(required = true, description = "Inbound order ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Inbound order ID.")
     public String getOrderId() {
         return orderId;
     }
@@ -134,7 +135,7 @@ public class InboundOrder {
      *
      * @return orderStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public InboundStatus getOrderStatus() {
         return orderStatus;
     }
@@ -153,7 +154,7 @@ public class InboundOrder {
      *
      * @return originAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getOriginAddress() {
         return originAddress;
     }
@@ -180,7 +181,7 @@ public class InboundOrder {
      *
      * @return packagesToInbound
      */
-    @Schema(required = true, description = "List of packages to be inbounded.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "List of packages to be inbounded.")
     public List<DistributionPackageQuantity> getPackagesToInbound() {
         return packagesToInbound;
     }
@@ -199,7 +200,7 @@ public class InboundOrder {
      *
      * @return preferences
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InboundPreferences getPreferences() {
         return preferences;
     }
@@ -218,7 +219,7 @@ public class InboundOrder {
      *
      * @return updatedAt
      */
-    @Schema(description = "Date when this order was last updated.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date when this order was last updated.")
     public OffsetDateTime getUpdatedAt() {
         return updatedAt;
     }

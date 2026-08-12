@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Comprehensive information about a customer order. */
-@Schema(description = "Comprehensive information about a customer order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Comprehensive information about a customer order.")
 public class Order {
     @SerializedName("orderId")
     private String orderId = null;
@@ -79,7 +79,7 @@ public class Order {
      *
      * @return orderId
      */
-    @Schema(required = true, description = "An Amazon-defined order identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "An Amazon-defined order identifier.")
     public String getOrderId() {
         return orderId;
     }
@@ -106,7 +106,7 @@ public class Order {
      *
      * @return orderAliases
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Alternative identifiers that can be used to reference this order, such as seller-defined order numbers.")
     public List<Alias> getOrderAliases() {
@@ -128,7 +128,7 @@ public class Order {
      *
      * @return createdTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The time when the customer placed the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
@@ -151,7 +151,7 @@ public class Order {
      *
      * @return lastUpdatedTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The most recent time when any aspect of this order was modified by Amazon or the seller. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
@@ -185,7 +185,7 @@ public class Order {
      *
      * @return programs
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Special programs associated with this order that may affect fulfillment or customer experience.   **Possible values**: `AMAZON_BAZAAR`, `AMAZON_BUSINESS`, `AMAZON_EASY_SHIP`, `AMAZON_HAUL`, `DELIVERY_BY_AMAZON`, `FBM_SHIP_PLUS`, `INVOICE_BY_AMAZON`, `IN_STORE_PICK_UP`, `PREMIUM`, `PREORDER`, `PRIME`")
     public List<String> getPrograms() {
@@ -214,7 +214,7 @@ public class Order {
      *
      * @return associatedOrders
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Other orders that have a direct relationship to this order, such as replacement or exchange orders.")
     public List<AssociatedOrder> getAssociatedOrders() {
@@ -235,7 +235,7 @@ public class Order {
      *
      * @return salesChannel
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public SalesChannel getSalesChannel() {
         return salesChannel;
     }
@@ -254,7 +254,7 @@ public class Order {
      *
      * @return buyer
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Buyer getBuyer() {
         return buyer;
     }
@@ -273,7 +273,7 @@ public class Order {
      *
      * @return recipient
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Recipient getRecipient() {
         return recipient;
     }
@@ -292,7 +292,7 @@ public class Order {
      *
      * @return proceeds
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderProceeds getProceeds() {
         return proceeds;
     }
@@ -311,7 +311,7 @@ public class Order {
      *
      * @return payment
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderPayment getPayment() {
         return payment;
     }
@@ -330,7 +330,7 @@ public class Order {
      *
      * @return tax
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderTax getTax() {
         return tax;
     }
@@ -349,7 +349,7 @@ public class Order {
      *
      * @return fulfillment
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderFulfillment getFulfillment() {
         return fulfillment;
     }
@@ -376,7 +376,9 @@ public class Order {
      *
      * @return orderItems
      */
-    @Schema(required = true, description = "The list of all order items included in this order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The list of all order items included in this order.")
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
@@ -404,7 +406,7 @@ public class Order {
      *
      * @return packages
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Shipping packages created for this order, including tracking information. **Note:** Only available for merchant-fulfilled (FBM) orders.")
     public List<OrderPackage> getPackages() {
@@ -434,7 +436,7 @@ public class Order {
      *
      * @return fulfillmentOrders
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The list of fulfillment orders associated with this customer order. Each entry corresponds to one fulfillment unit created by Amazon for this order. **Note:** Only available for EasyShip orders at present.")
     public List<FulfillmentOrder> getFulfillmentOrders() {

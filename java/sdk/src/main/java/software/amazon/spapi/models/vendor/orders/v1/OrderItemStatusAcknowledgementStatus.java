@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Acknowledgement status information. */
-@Schema(description = "Acknowledgement status information.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Acknowledgement status information.")
 public class OrderItemStatusAcknowledgementStatus {
     /** Confirmation status of line item. */
     @JsonAdapter(ConfirmationStatusEnum.Adapter.class)
@@ -99,7 +98,7 @@ public class OrderItemStatusAcknowledgementStatus {
      *
      * @return confirmationStatus
      */
-    @Schema(description = "Confirmation status of line item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Confirmation status of line item.")
     public ConfirmationStatusEnum getConfirmationStatus() {
         return confirmationStatus;
     }
@@ -118,7 +117,7 @@ public class OrderItemStatusAcknowledgementStatus {
      *
      * @return acceptedQuantity
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemQuantity getAcceptedQuantity() {
         return acceptedQuantity;
     }
@@ -137,7 +136,7 @@ public class OrderItemStatusAcknowledgementStatus {
      *
      * @return rejectedQuantity
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemQuantity getRejectedQuantity() {
         return rejectedQuantity;
     }
@@ -166,7 +165,7 @@ public class OrderItemStatusAcknowledgementStatus {
      *
      * @return acknowledgementStatusDetails
      */
-    @Schema(description = "Details of item quantity confirmed.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Details of item quantity confirmed.")
     public List<AcknowledgementStatusDetails> getAcknowledgementStatusDetails() {
         return acknowledgementStatusDetails;
     }

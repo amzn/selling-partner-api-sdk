@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Item information for a fulfillment order. */
-@Schema(description = "Item information for a fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Item information for a fulfillment order.")
 public class FulfillmentOrderItem {
     @SerializedName("sellerSku")
     private String sellerSku = null;
@@ -71,7 +71,7 @@ public class FulfillmentOrderItem {
      *
      * @return sellerSku
      */
-    @Schema(required = true, description = "The seller SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller SKU of the item.")
     public String getSellerSku() {
         return sellerSku;
     }
@@ -90,7 +90,7 @@ public class FulfillmentOrderItem {
      *
      * @return sellerFulfillmentOrderItemId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A fulfillment order item identifier submitted with a call to the `createFulfillmentOrder` operation.")
@@ -112,7 +112,7 @@ public class FulfillmentOrderItem {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "The item quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The item quantity.")
     public Integer getQuantity() {
         return quantity;
     }
@@ -131,7 +131,7 @@ public class FulfillmentOrderItem {
      *
      * @return giftMessage
      */
-    @Schema(description = "A message to the gift recipient, if applicable.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A message to the gift recipient, if applicable.")
     public String getGiftMessage() {
         return giftMessage;
     }
@@ -150,7 +150,7 @@ public class FulfillmentOrderItem {
      *
      * @return displayableComment
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Item-specific text that displays in recipient-facing materials such as the outbound shipment packing slip.")
     public String getDisplayableComment() {
@@ -171,7 +171,7 @@ public class FulfillmentOrderItem {
      *
      * @return fulfillmentNetworkSku
      */
-    @Schema(description = "Amazon's fulfillment network SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Amazon's fulfillment network SKU of the item.")
     public String getFulfillmentNetworkSku() {
         return fulfillmentNetworkSku;
     }
@@ -190,7 +190,7 @@ public class FulfillmentOrderItem {
      *
      * @return orderItemDisposition
      */
-    @Schema(description = "Indicates whether the item is sellable or unsellable.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Indicates whether the item is sellable or unsellable.")
     public String getOrderItemDisposition() {
         return orderItemDisposition;
     }
@@ -209,7 +209,7 @@ public class FulfillmentOrderItem {
      *
      * @return cancelledQuantity
      */
-    @Schema(required = true, description = "The item quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The item quantity.")
     public Integer getCancelledQuantity() {
         return cancelledQuantity;
     }
@@ -228,7 +228,7 @@ public class FulfillmentOrderItem {
      *
      * @return unfulfillableQuantity
      */
-    @Schema(required = true, description = "The item quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The item quantity.")
     public Integer getUnfulfillableQuantity() {
         return unfulfillableQuantity;
     }
@@ -247,7 +247,7 @@ public class FulfillmentOrderItem {
      *
      * @return estimatedShipDate
      */
-    @Schema(description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
     public OffsetDateTime getEstimatedShipDate() {
         return estimatedShipDate;
     }
@@ -266,7 +266,7 @@ public class FulfillmentOrderItem {
      *
      * @return estimatedArrivalDate
      */
-    @Schema(description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
     public OffsetDateTime getEstimatedArrivalDate() {
         return estimatedArrivalDate;
     }
@@ -285,7 +285,7 @@ public class FulfillmentOrderItem {
      *
      * @return perUnitPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getPerUnitPrice() {
         return perUnitPrice;
     }
@@ -304,7 +304,7 @@ public class FulfillmentOrderItem {
      *
      * @return perUnitTax
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getPerUnitTax() {
         return perUnitTax;
     }
@@ -323,7 +323,7 @@ public class FulfillmentOrderItem {
      *
      * @return perUnitDeclaredValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getPerUnitDeclaredValue() {
         return perUnitDeclaredValue;
     }

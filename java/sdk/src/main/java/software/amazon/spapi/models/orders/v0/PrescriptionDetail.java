@@ -13,14 +13,14 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
  * Information about the prescription that is used to verify a regulated product. This must be provided once per order
  * and reflect the seller’s own records. Only approved orders can have prescriptions.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Information about the prescription that is used to verify a regulated product. This must be provided once per order and reflect the seller’s own records. Only approved orders can have prescriptions.")
 public class PrescriptionDetail {
@@ -55,7 +55,9 @@ public class PrescriptionDetail {
      *
      * @return prescriptionId
      */
-    @Schema(required = true, description = "The identifier for the prescription used to verify the regulated product.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The identifier for the prescription used to verify the regulated product.")
     public String getPrescriptionId() {
         return prescriptionId;
     }
@@ -75,7 +77,7 @@ public class PrescriptionDetail {
      *
      * @return expirationDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The expiration date of the prescription used to verify the regulated product, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.")
@@ -97,7 +99,9 @@ public class PrescriptionDetail {
      *
      * @return writtenQuantity
      */
-    @Schema(required = true, description = "The number of units in each fill as provided in the prescription.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The number of units in each fill as provided in the prescription.")
     public Integer getWrittenQuantity() {
         return writtenQuantity;
     }
@@ -117,7 +121,7 @@ public class PrescriptionDetail {
      *
      * @return totalRefillsAuthorized
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The total number of refills written in the original prescription used to verify the regulated product. If a prescription originally had no refills, this value must be 0.")
@@ -142,7 +146,7 @@ public class PrescriptionDetail {
      *
      * @return refillsRemaining
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The number of refills remaining for the prescription used to verify the regulated product. If a prescription originally had 10 total refills, this value must be `10` for the first order, `9` for the second order, and `0` for the eleventh order. If a prescription originally had no refills, this value must be 0.")
@@ -164,7 +168,7 @@ public class PrescriptionDetail {
      *
      * @return clinicId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier for the clinic which provided the prescription used to verify the regulated product.")
@@ -186,7 +190,7 @@ public class PrescriptionDetail {
      *
      * @return usageInstructions
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The instructions for the prescription as provided by the approver of the regulated product.")
     public String getUsageInstructions() {

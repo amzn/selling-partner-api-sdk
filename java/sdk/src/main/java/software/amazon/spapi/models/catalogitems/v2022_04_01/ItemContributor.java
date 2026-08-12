@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Individual contributor to the creation of an item, such as an author or actor. */
-@Schema(description = "Individual contributor to the creation of an item, such as an author or actor.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Individual contributor to the creation of an item, such as an author or actor.")
 public class ItemContributor {
     @SerializedName("role")
     private ItemContributorRole role = null;
@@ -35,7 +35,7 @@ public class ItemContributor {
      *
      * @return role
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemContributorRole getRole() {
         return role;
     }
@@ -54,7 +54,9 @@ public class ItemContributor {
      *
      * @return value
      */
-    @Schema(required = true, description = "Name of the contributor, such as `Jane Austen`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Name of the contributor, such as `Jane Austen`.")
     public String getValue() {
         return value;
     }

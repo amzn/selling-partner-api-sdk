@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** An event related to an Adhoc Disbursement. */
-@Schema(description = "An event related to an Adhoc Disbursement.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An event related to an Adhoc Disbursement.")
 public class AdhocDisbursementEvent {
     @SerializedName("TransactionType")
     private String transactionType = null;
@@ -41,7 +41,8 @@ public class AdhocDisbursementEvent {
      *
      * @return transactionType
      */
-    @Schema(description = "The type of transaction. For example, \"Disbursed to Amazon Gift Card balance\".")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The type of transaction. For example, \"Disbursed to Amazon Gift Card balance\".")
     public String getTransactionType() {
         return transactionType;
     }
@@ -60,7 +61,7 @@ public class AdhocDisbursementEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -81,7 +82,7 @@ public class AdhocDisbursementEvent {
      *
      * @return transactionId
      */
-    @Schema(description = "The identifier for the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The identifier for the transaction.")
     public String getTransactionId() {
         return transactionId;
     }
@@ -100,7 +101,7 @@ public class AdhocDisbursementEvent {
      *
      * @return transactionAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTransactionAmount() {
         return transactionAmount;
     }

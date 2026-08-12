@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request schema for the &#x60;submitShippingLabelRequest&#x60; operation. */
-@Schema(description = "The request schema for the `submitShippingLabelRequest` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request schema for the `submitShippingLabelRequest` operation.")
 public class SubmitShippingLabelsRequest {
     @SerializedName("shippingLabelRequests")
     private List<ShippingLabelRequest> shippingLabelRequests = null;
@@ -42,7 +42,7 @@ public class SubmitShippingLabelsRequest {
      *
      * @return shippingLabelRequests
      */
-    @Schema(description = "An array of shipping label requests to be processed.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An array of shipping label requests to be processed.")
     public List<ShippingLabelRequest> getShippingLabelRequests() {
         return shippingLabelRequests;
     }

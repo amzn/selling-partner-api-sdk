@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** The current transaction status and related historical details. */
-@Schema(description = "The current transaction status and related historical details.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The current transaction status and related historical details.")
 public class Transaction {
     @SerializedName("accountId")
     private String accountId = null;
@@ -80,7 +81,7 @@ public class Transaction {
      *
      * @return accountId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The unique identifier of the Amazon Seller Wallet bank account from which the money is debited.")
@@ -102,7 +103,9 @@ public class Transaction {
      *
      * @return transactionId
      */
-    @Schema(required = true, description = "The unique identifier provided by Amazon to the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unique identifier provided by Amazon to the transaction.")
     public String getTransactionId() {
         return transactionId;
     }
@@ -121,7 +124,7 @@ public class Transaction {
      *
      * @return transactionType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TransactionType getTransactionType() {
         return transactionType;
     }
@@ -140,7 +143,7 @@ public class Transaction {
      *
      * @return transactionStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TransactionStatus getTransactionStatus() {
         return transactionStatus;
     }
@@ -159,7 +162,9 @@ public class Transaction {
      *
      * @return transactionRequestDate
      */
-    @Schema(required = true, description = "The date when the transaction was initiated.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The date when the transaction was initiated.")
     public OffsetDateTime getTransactionRequestDate() {
         return transactionRequestDate;
     }
@@ -178,7 +183,7 @@ public class Transaction {
      *
      * @return expectedCompletionDate
      */
-    @Schema(description = "The expected completion date of the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The expected completion date of the transaction.")
     public OffsetDateTime getExpectedCompletionDate() {
         return expectedCompletionDate;
     }
@@ -197,7 +202,7 @@ public class Transaction {
      *
      * @return transactionActualCompletionDate
      */
-    @Schema(description = "The transaction's completion date.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The transaction's completion date.")
     public OffsetDateTime getTransactionActualCompletionDate() {
         return transactionActualCompletionDate;
     }
@@ -216,7 +221,9 @@ public class Transaction {
      *
      * @return lastUpdateDate
      */
-    @Schema(required = true, description = "The date of the most recent account balance update.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The date of the most recent account balance update.")
     public OffsetDateTime getLastUpdateDate() {
         return lastUpdateDate;
     }
@@ -235,7 +242,8 @@ public class Transaction {
      *
      * @return requesterName
      */
-    @Schema(description = "The Amazon Seller Wallet customer who requested the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Seller Wallet customer who requested the transaction.")
     public String getRequesterName() {
         return requesterName;
     }
@@ -255,7 +263,7 @@ public class Transaction {
      *
      * @return transactionRequesterSource
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The transaction initiation source. This value is either the Amazon portal or PISP name that the customer used to start the transaction.")
@@ -277,7 +285,7 @@ public class Transaction {
      *
      * @return transactionDescription
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A description of the transaction that the requester provides when they initiate the transaction.")
@@ -299,7 +307,7 @@ public class Transaction {
      *
      * @return transactionSourceAccount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TransactionAccount getTransactionSourceAccount() {
         return transactionSourceAccount;
     }
@@ -318,7 +326,7 @@ public class Transaction {
      *
      * @return transactionDestinationAccount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TransactionAccount getTransactionDestinationAccount() {
         return transactionDestinationAccount;
     }
@@ -337,7 +345,7 @@ public class Transaction {
      *
      * @return transactionRequestAmount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getTransactionRequestAmount() {
         return transactionRequestAmount;
     }
@@ -356,7 +364,7 @@ public class Transaction {
      *
      * @return transferRateDetails
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TransferRatePreview getTransferRateDetails() {
         return transferRateDetails;
     }
@@ -375,7 +383,7 @@ public class Transaction {
      *
      * @return transactionFinalAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTransactionFinalAmount() {
         return transactionFinalAmount;
     }
@@ -394,7 +402,7 @@ public class Transaction {
      *
      * @return transactionFailureReason
      */
-    @Schema(description = "The reason the transaction failed, if applicable.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The reason the transaction failed, if applicable.")
     public String getTransactionFailureReason() {
         return transactionFailureReason;
     }

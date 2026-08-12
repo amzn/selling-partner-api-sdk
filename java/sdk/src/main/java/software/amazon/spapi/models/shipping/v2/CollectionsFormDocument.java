@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Collection Form Document Details */
-@Schema(description = "Collection Form Document Details")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Collection Form Document Details")
 public class CollectionsFormDocument {
     @SerializedName("base64EncodedContent")
     private String base64EncodedContent = null;
@@ -35,7 +34,7 @@ public class CollectionsFormDocument {
      *
      * @return base64EncodedContent
      */
-    @Schema(description = "Base64 document Value of Collection.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Base64 document Value of Collection.")
     public String getBase64EncodedContent() {
         return base64EncodedContent;
     }
@@ -54,7 +53,7 @@ public class CollectionsFormDocument {
      *
      * @return documentFormat
      */
-    @Schema(description = "Collection Document format is PDF.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Collection Document format is PDF.")
     public String getDocumentFormat() {
         return documentFormat;
     }

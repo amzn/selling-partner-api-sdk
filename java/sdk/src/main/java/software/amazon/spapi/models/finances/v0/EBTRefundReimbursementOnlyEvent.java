@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** An EBT refund reimbursement event. */
-@Schema(description = "An EBT refund reimbursement event.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An EBT refund reimbursement event.")
 public class EBTRefundReimbursementOnlyEvent {
     @SerializedName("OrderId")
     private String orderId = null;
@@ -38,7 +38,7 @@ public class EBTRefundReimbursementOnlyEvent {
      *
      * @return orderId
      */
-    @Schema(description = "The identifier of an order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The identifier of an order.")
     public String getOrderId() {
         return orderId;
     }
@@ -57,7 +57,7 @@ public class EBTRefundReimbursementOnlyEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -78,7 +78,7 @@ public class EBTRefundReimbursementOnlyEvent {
      *
      * @return amount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getAmount() {
         return amount;
     }

@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The browse node review subtopic. */
-@Schema(description = "The browse node review subtopic.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The browse node review subtopic.")
 public class BrowseNodeSubtopic {
     @SerializedName("subtopic")
     private String subtopic = null;
@@ -40,7 +39,9 @@ public class BrowseNodeSubtopic {
      *
      * @return subtopic
      */
-    @Schema(required = true, description = "The name of the browse node review subtopic.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The name of the browse node review subtopic.")
     public String getSubtopic() {
         return subtopic;
     }
@@ -59,7 +60,7 @@ public class BrowseNodeSubtopic {
      *
      * @return metrics
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public BrowseNodeReviewSubtopicMetrics getMetrics() {
         return metrics;
     }
@@ -87,7 +88,7 @@ public class BrowseNodeSubtopic {
      *
      * @return reviewSnippets
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of up to three snippets from reviews that contain the topic. This value is `null` if there aren't enough review snippets for the subtopic.")
     public List<String> getReviewSnippets() {

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Schema for &#x60;currentFeaturedOffer&#x60; or &#x60;competingFeaturedOffer&#x60;. */
-@Schema(description = "Schema for `currentFeaturedOffer` or `competingFeaturedOffer`.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Schema for `currentFeaturedOffer` or `competingFeaturedOffer`.")
 public class FeaturedOffer {
     @SerializedName("offerIdentifier")
     private OfferIdentifier offerIdentifier = null;
@@ -38,7 +38,7 @@ public class FeaturedOffer {
      *
      * @return offerIdentifier
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public OfferIdentifier getOfferIdentifier() {
         return offerIdentifier;
     }
@@ -57,7 +57,7 @@ public class FeaturedOffer {
      *
      * @return condition
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Condition getCondition() {
         return condition;
     }
@@ -76,7 +76,7 @@ public class FeaturedOffer {
      *
      * @return price
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Price getPrice() {
         return price;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The enforcement action taken by Amazon that affect the publishing or status of a listing */
-@Schema(description = "The enforcement action taken by Amazon that affect the publishing or status of a listing")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The enforcement action taken by Amazon that affect the publishing or status of a listing")
 public class IssueEnforcementAction {
     @SerializedName("action")
     private String action = null;
@@ -36,7 +36,7 @@ public class IssueEnforcementAction {
      *
      * @return action
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The enforcement action name.   Possible values:   * `LISTING_SUPPRESSED` - This enforcement takes down the current listing item's buyability.   * `ATTRIBUTE_SUPPRESSED` - An attribute's value on the listing item is invalid, which causes it to be rejected by Amazon.   * `CATALOG_ITEM_REMOVED` - This catalog item is inactive on Amazon, and all offers against it in the applicable Amazon store are non-buyable.   * `SEARCH_SUPPRESSED` - This value indicates that the catalog item is hidden from search results.")

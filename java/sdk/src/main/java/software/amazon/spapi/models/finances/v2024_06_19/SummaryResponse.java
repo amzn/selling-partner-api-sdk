@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The response to the &#x60;listSummary&#x60; operation. */
-@Schema(description = "The response to the `listSummary` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response to the `listSummary` operation.")
 public class SummaryResponse {
     @SerializedName("summaries")
     private List<Summary> summaries = null;
@@ -45,7 +44,7 @@ public class SummaryResponse {
      *
      * @return summaries
      */
-    @Schema(description = "A list of financial summaries.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of financial summaries.")
     public List<Summary> getSummaries() {
         return summaries;
     }
@@ -64,7 +63,8 @@ public class SummaryResponse {
      *
      * @return nextToken
      */
-    @Schema(description = "A token to retrieve the next page of results. If null, no more results are available.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A token to retrieve the next page of results. If null, no more results are available.")
     public String getNextToken() {
         return nextToken;
     }

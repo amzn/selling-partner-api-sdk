@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Current status and detailed tracking information for a shipping package throughout the delivery process. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Current status and detailed tracking information for a shipping package throughout the delivery process.")
 public class PackageStatus {
@@ -96,7 +95,9 @@ public class PackageStatus {
      *
      * @return status
      */
-    @Schema(required = true, description = "Primary status classification of the package in the shipping workflow.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Primary status classification of the package in the shipping workflow.")
     public StatusEnum getStatus() {
         return status;
     }
@@ -127,7 +128,7 @@ public class PackageStatus {
      *
      * @return detailedStatus
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Granular status information providing specific details about the package's current location and handling stage.   **Possible values**: - `PENDING_SCHEDULE` (Package awaiting pickup scheduling) - `PENDING_PICK_UP` (Package ready for carrier collection from seller) - `PENDING_DROP_OFF` (Package awaiting seller delivery to carrier) - `LABEL_CANCELLED` (Shipping label canceled by seller) - `PICKED_UP` (Package collected by carrier from seller location) - `DROPPED_OFF` (Package delivered to carrier by seller) - `AT_ORIGIN_FC` (Package at originating fulfillment center) - `AT_DESTINATION_FC` (Package at destination fulfillment center) - `DELIVERED` (Package successfully delivered to recipient) - `REJECTED_BY_BUYER` (Package refused by intended recipient) - `UNDELIVERABLE` (Package cannot be delivered due to address or access issues) - `RETURNING_TO_SELLER` (Package in transit back to seller) - `RETURNED_TO_SELLER` (Package successfully returned to seller) - `LOST` (Package location unknown or confirmed lost) - `OUT_FOR_DELIVERY` (Package on delivery vehicle for final delivery) - `DAMAGED` (Package damaged during transit) ")
     public String getDetailedStatus() {

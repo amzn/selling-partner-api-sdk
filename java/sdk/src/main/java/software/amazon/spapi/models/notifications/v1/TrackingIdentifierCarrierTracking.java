@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Carrier-provided tracking identifier. */
-@Schema(description = "Carrier-provided tracking identifier.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Carrier-provided tracking identifier.")
 public class TrackingIdentifierCarrierTracking {
     @SerializedName("trackingNumber")
     private String trackingNumber = null;
@@ -35,7 +34,7 @@ public class TrackingIdentifierCarrierTracking {
      *
      * @return trackingNumber
      */
-    @Schema(required = true, description = "Carrier tracking number")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Carrier tracking number")
     public String getTrackingNumber() {
         return trackingNumber;
     }
@@ -54,7 +53,7 @@ public class TrackingIdentifierCarrierTracking {
      *
      * @return carrierCode
      */
-    @Schema(description = "Carrier code")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Carrier code")
     public String getCarrierCode() {
         return carrierCode;
     }

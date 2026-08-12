@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.orders.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Details of the item being acknowledged. */
-@Schema(description = "Details of the item being acknowledged.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of the item being acknowledged.")
 public class OrderAcknowledgementItem {
     @SerializedName("itemSequenceNumber")
     private String itemSequenceNumber = null;
@@ -55,7 +54,7 @@ public class OrderAcknowledgementItem {
      *
      * @return itemSequenceNumber
      */
-    @Schema(description = "Line item sequence number for the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Line item sequence number for the item.")
     public String getItemSequenceNumber() {
         return itemSequenceNumber;
     }
@@ -74,7 +73,8 @@ public class OrderAcknowledgementItem {
      *
      * @return amazonProductIdentifier
      */
-    @Schema(description = "Amazon Standard Identification Number (ASIN) of an item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Amazon Standard Identification Number (ASIN) of an item.")
     public String getAmazonProductIdentifier() {
         return amazonProductIdentifier;
     }
@@ -93,7 +93,7 @@ public class OrderAcknowledgementItem {
      *
      * @return vendorProductIdentifier
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The vendor selected product identification of the item. Should be the same as was sent in the purchase order.")
     public String getVendorProductIdentifier() {
@@ -114,7 +114,7 @@ public class OrderAcknowledgementItem {
      *
      * @return orderedQuantity
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemQuantity getOrderedQuantity() {
         return orderedQuantity;
     }
@@ -133,7 +133,7 @@ public class OrderAcknowledgementItem {
      *
      * @return netCost
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getNetCost() {
         return netCost;
     }
@@ -152,7 +152,7 @@ public class OrderAcknowledgementItem {
      *
      * @return listPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getListPrice() {
         return listPrice;
     }
@@ -173,7 +173,7 @@ public class OrderAcknowledgementItem {
      *
      * @return discountMultiplier
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The discount multiplier that should be applied to the price if a vendor sells books with a list price. This is a multiplier factor to arrive at a final discounted price. A multiplier of .90 would be the factor if a 10% discount is given.")
     public String getDiscountMultiplier() {
@@ -202,7 +202,9 @@ public class OrderAcknowledgementItem {
      *
      * @return itemAcknowledgements
      */
-    @Schema(required = true, description = "This is used to indicate acknowledged quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "This is used to indicate acknowledged quantity.")
     public List<OrderItemAcknowledgement> getItemAcknowledgements() {
         return itemAcknowledgements;
     }

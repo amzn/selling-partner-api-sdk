@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The offer data of a product. */
-@Schema(description = "The offer data of a product.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The offer data of a product.")
 public class Offer {
     @SerializedName("sellerId")
     private String sellerId = null;
@@ -131,7 +130,7 @@ public class Offer {
      *
      * @return sellerId
      */
-    @Schema(required = true, description = "The seller identifier for the offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller identifier for the offer.")
     public String getSellerId() {
         return sellerId;
     }
@@ -150,7 +149,7 @@ public class Offer {
      *
      * @return condition
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Condition getCondition() {
         return condition;
     }
@@ -169,7 +168,7 @@ public class Offer {
      *
      * @return subCondition
      */
-    @Schema(description = "The item subcondition of the offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The item subcondition of the offer.")
     public SubConditionEnum getSubCondition() {
         return subCondition;
     }
@@ -188,7 +187,7 @@ public class Offer {
      *
      * @return fulfillmentType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public FulfillmentType getFulfillmentType() {
         return fulfillmentType;
     }
@@ -207,7 +206,7 @@ public class Offer {
      *
      * @return listingPrice
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MoneyType getListingPrice() {
         return listingPrice;
     }
@@ -234,7 +233,7 @@ public class Offer {
      *
      * @return shippingOptions
      */
-    @Schema(description = "A list of shipping options associated with this offer")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of shipping options associated with this offer")
     public List<ShippingOption> getShippingOptions() {
         return shippingOptions;
     }
@@ -253,7 +252,7 @@ public class Offer {
      *
      * @return points
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Points getPoints() {
         return points;
     }
@@ -272,7 +271,7 @@ public class Offer {
      *
      * @return primeDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PrimeDetails getPrimeDetails() {
         return primeDetails;
     }
@@ -291,7 +290,7 @@ public class Offer {
      *
      * @return promotions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Promotions getPromotions() {
         return promotions;
     }

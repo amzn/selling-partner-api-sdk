@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Represents an MSKU and the related quantity. */
-@Schema(description = "Represents an MSKU and the related quantity.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Represents an MSKU and the related quantity.")
 public class MskuQuantity {
     @SerializedName("msku")
     private String msku = null;
@@ -35,7 +34,9 @@ public class MskuQuantity {
      *
      * @return msku
      */
-    @Schema(required = true, description = "The merchant SKU, a merchant-supplied identifier for a specific SKU.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The merchant SKU, a merchant-supplied identifier for a specific SKU.")
     public String getMsku() {
         return msku;
     }
@@ -54,7 +55,7 @@ public class MskuQuantity {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "A positive integer.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A positive integer.")
     public Integer getQuantity() {
         return quantity;
     }

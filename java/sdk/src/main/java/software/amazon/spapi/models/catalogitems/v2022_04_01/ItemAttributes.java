@@ -12,7 +12,6 @@
 
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -21,7 +20,7 @@ import java.util.Objects;
  * conform to the related Amazon product type definitions that you can get from the [Product Type Definitions
  * API](https://developer-docs.amazon.com/sp-api/reference/product-type-definitions-v2020-09-01).
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A JSON object containing structured item attribute data that is keyed by attribute name. Catalog item attributes conform to the related Amazon product type definitions that you can get from the [Product Type Definitions API](https://developer-docs.amazon.com/sp-api/reference/product-type-definitions-v2020-09-01).")
 public class ItemAttributes extends HashMap<String, Object> {

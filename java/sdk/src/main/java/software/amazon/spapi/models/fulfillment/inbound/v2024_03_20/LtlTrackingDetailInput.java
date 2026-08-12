@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Contains input information to update Less-Than-Truckload (LTL) tracking information. */
-@Schema(description = "Contains input information to update Less-Than-Truckload (LTL) tracking information.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Contains input information to update Less-Than-Truckload (LTL) tracking information.")
 public class LtlTrackingDetailInput {
     @SerializedName("billOfLadingNumber")
     private String billOfLadingNumber = null;
@@ -37,7 +37,8 @@ public class LtlTrackingDetailInput {
      *
      * @return billOfLadingNumber
      */
-    @Schema(description = "The number of the carrier shipment acknowledgement document.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The number of the carrier shipment acknowledgement document.")
     public String getBillOfLadingNumber() {
         return billOfLadingNumber;
     }
@@ -64,7 +65,9 @@ public class LtlTrackingDetailInput {
      *
      * @return freightBillNumber
      */
-    @Schema(required = true, description = "Number associated with the freight bill.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Number associated with the freight bill.")
     public List<String> getFreightBillNumber() {
         return freightBillNumber;
     }

@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Carton reference details. */
-@Schema(description = "Carton reference details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Carton reference details.")
 public class CartonReferenceDetails {
     @SerializedName("cartonCount")
     private Integer cartonCount = null;
@@ -37,7 +36,7 @@ public class CartonReferenceDetails {
      *
      * @return cartonCount
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Pallet level carton count is mandatory for single item pallet and optional for mixed item pallet.")
     public Integer getCartonCount() {
@@ -67,7 +66,7 @@ public class CartonReferenceDetails {
      *
      * @return cartonReferenceNumbers
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Array of reference numbers for the carton that are part of this pallet/shipment. Please provide the cartonSequenceNumber from the 'cartons' segment to refer to that carton's details here.")

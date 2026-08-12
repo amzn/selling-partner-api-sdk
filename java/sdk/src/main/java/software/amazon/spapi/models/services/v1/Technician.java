@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A technician who is assigned to perform the service job in part or in full. */
-@Schema(description = "A technician who is assigned to perform the service job in part or in full.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A technician who is assigned to perform the service job in part or in full.")
 public class Technician {
     @SerializedName("technicianId")
     private String technicianId = null;
@@ -35,7 +35,7 @@ public class Technician {
      *
      * @return technicianId
      */
-    @Schema(description = "The technician identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The technician identifier.")
     public String getTechnicianId() {
         return technicianId;
     }
@@ -54,7 +54,7 @@ public class Technician {
      *
      * @return name
      */
-    @Schema(description = "The name of the technician.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the technician.")
     public String getName() {
         return name;
     }

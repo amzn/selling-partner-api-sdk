@@ -17,14 +17,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Summary details for a listings item for an Amazon store. */
-@Schema(description = "Summary details for a listings item for an Amazon store.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Summary details for a listings item for an Amazon store.")
 public class ItemSummaryByMarketplace {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -180,7 +180,9 @@ public class ItemSummaryByMarketplace {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "A marketplace identifier. Identifies the listings item's Amazon store.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A marketplace identifier. Identifies the listings item's Amazon store.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -199,7 +201,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return asin
      */
-    @Schema(description = "The ASIN of the listings item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The ASIN of the listings item.")
     public String getAsin() {
         return asin;
     }
@@ -218,7 +220,9 @@ public class ItemSummaryByMarketplace {
      *
      * @return productType
      */
-    @Schema(required = true, description = "The listings item's Amazon product type.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The listings item's Amazon product type.")
     public String getProductType() {
         return productType;
     }
@@ -237,7 +241,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return conditionType
      */
-    @Schema(description = "Identifies the condition of the listings item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Identifies the condition of the listings item.")
     public ConditionTypeEnum getConditionType() {
         return conditionType;
     }
@@ -264,7 +268,9 @@ public class ItemSummaryByMarketplace {
      *
      * @return status
      */
-    @Schema(required = true, description = "Statuses that apply to the listings item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Statuses that apply to the listings item.")
     public List<StatusEnum> getStatus() {
         return status;
     }
@@ -284,7 +290,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return fnSku
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Fulfillment network stock keeping unit is an identifier used by Amazon fulfillment centers to identify each unique item.")
     public String getFnSku() {
@@ -305,7 +311,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return itemName
      */
-    @Schema(description = "Name, or title, associated with an Amazon catalog item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Name, or title, associated with an Amazon catalog item.")
     public String getItemName() {
         return itemName;
     }
@@ -324,7 +330,9 @@ public class ItemSummaryByMarketplace {
      *
      * @return createdDate
      */
-    @Schema(required = true, description = "Date the listings item was created, in ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Date the listings item was created, in ISO 8601 format.")
     public OffsetDateTime getCreatedDate() {
         return createdDate;
     }
@@ -343,7 +351,9 @@ public class ItemSummaryByMarketplace {
      *
      * @return lastUpdatedDate
      */
-    @Schema(required = true, description = "Date the listings item was last updated, in ISO 8601 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Date the listings item was last updated, in ISO 8601 format.")
     public OffsetDateTime getLastUpdatedDate() {
         return lastUpdatedDate;
     }
@@ -362,7 +372,7 @@ public class ItemSummaryByMarketplace {
      *
      * @return mainImage
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemImage getMainImage() {
         return mainImage;
     }

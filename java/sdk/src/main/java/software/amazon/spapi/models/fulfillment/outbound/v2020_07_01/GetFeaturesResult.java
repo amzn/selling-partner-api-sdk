@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The payload for the &#x60;getFeatures&#x60; operation. */
-@Schema(description = "The payload for the `getFeatures` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The payload for the `getFeatures` operation.")
 public class GetFeaturesResult {
     @SerializedName("features")
     private Features features = null;
@@ -32,7 +31,7 @@ public class GetFeaturesResult {
      *
      * @return features
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Features getFeatures() {
         return features;
     }

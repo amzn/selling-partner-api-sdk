@@ -13,14 +13,14 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Details of the original shipment if &#x60;shipmentType&#x60; is either &#x60;REPLACEMENT&#x60; or
  * &#x60;EXCHANGE&#x60;.
  */
-@Schema(description = "Details of the original shipment if `shipmentType` is either `REPLACEMENT` or `EXCHANGE`.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Details of the original shipment if `shipmentType` is either `REPLACEMENT` or `EXCHANGE`.")
 public class ReplacedShipmentInfo {
     @SerializedName("id")
     private String id = null;
@@ -44,7 +44,7 @@ public class ReplacedShipmentInfo {
      *
      * @return id
      */
-    @Schema(required = true, description = "The original shipment's ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The original shipment's ID.")
     public String getId() {
         return id;
     }
@@ -63,7 +63,7 @@ public class ReplacedShipmentInfo {
      *
      * @return locationId
      */
-    @Schema(required = true, description = "The original shipment's location ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The original shipment's location ID.")
     public String getLocationId() {
         return locationId;
     }
@@ -82,7 +82,7 @@ public class ReplacedShipmentInfo {
      *
      * @return marketplaceAttributes
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MarketplaceAttributes getMarketplaceAttributes() {
         return marketplaceAttributes;
     }
@@ -101,7 +101,7 @@ public class ReplacedShipmentInfo {
      *
      * @return originalLineItems
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OriginalLineItems getOriginalLineItems() {
         return originalLineItems;
     }

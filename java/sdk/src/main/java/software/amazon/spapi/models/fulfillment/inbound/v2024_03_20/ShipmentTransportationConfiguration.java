@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Details needed to generate the transportation options. */
-@Schema(description = "Details needed to generate the transportation options.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details needed to generate the transportation options.")
 public class ShipmentTransportationConfiguration {
     @SerializedName("contactInformation")
     private ContactInformation contactInformation = null;
@@ -46,7 +45,7 @@ public class ShipmentTransportationConfiguration {
      *
      * @return contactInformation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ContactInformation getContactInformation() {
         return contactInformation;
     }
@@ -65,7 +64,7 @@ public class ShipmentTransportationConfiguration {
      *
      * @return freightInformation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FreightInformation getFreightInformation() {
         return freightInformation;
     }
@@ -92,7 +91,7 @@ public class ShipmentTransportationConfiguration {
      *
      * @return pallets
      */
-    @Schema(description = "List of pallet configuration inputs.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "List of pallet configuration inputs.")
     public List<PalletInput> getPallets() {
         return pallets;
     }
@@ -111,7 +110,7 @@ public class ShipmentTransportationConfiguration {
      *
      * @return readyToShipWindow
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public WindowInput getReadyToShipWindow() {
         return readyToShipWindow;
     }
@@ -130,7 +129,7 @@ public class ShipmentTransportationConfiguration {
      *
      * @return shipmentId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "Identifier of a shipment. A shipment contains the boxes and units being inbounded.")
     public String getShipmentId() {

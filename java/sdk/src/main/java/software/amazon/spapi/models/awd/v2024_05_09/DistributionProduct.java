@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Represents a product with sku details and corresponding quantity */
-@Schema(description = "Represents a product with sku details and corresponding quantity")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Represents a product with sku details and corresponding quantity")
 public class DistributionProduct {
     @SerializedName("attributes")
     private List<ProductAttribute> attributes = null;
@@ -49,7 +49,7 @@ public class DistributionProduct {
      *
      * @return attributes
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Attributes for this instance of the product, i.e. already-prepped, or other attributes that distinguish the product beyond the SKU.")
     public List<ProductAttribute> getAttributes() {
@@ -70,7 +70,7 @@ public class DistributionProduct {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "Quantity of the product")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Quantity of the product")
     public Integer getQuantity() {
         return quantity;
     }
@@ -89,7 +89,9 @@ public class DistributionProduct {
      *
      * @return sku
      */
-    @Schema(required = true, description = "The seller/merchant stock keeping unit (SKU).")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The seller/merchant stock keeping unit (SKU).")
     public String getSku() {
         return sku;
     }

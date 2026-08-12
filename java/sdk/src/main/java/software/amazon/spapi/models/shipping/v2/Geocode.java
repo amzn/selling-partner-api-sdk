@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Defines the latitude and longitude of the access point. */
-@Schema(description = "Defines the latitude and longitude of the access point.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Defines the latitude and longitude of the access point.")
 public class Geocode {
     @SerializedName("latitude")
     private String latitude = null;
@@ -35,7 +34,7 @@ public class Geocode {
      *
      * @return latitude
      */
-    @Schema(description = "The latitude of access point.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The latitude of access point.")
     public String getLatitude() {
         return latitude;
     }
@@ -54,7 +53,7 @@ public class Geocode {
      *
      * @return longitude
      */
-    @Schema(description = "The longitude of access point.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The longitude of access point.")
     public String getLongitude() {
         return longitude;
     }

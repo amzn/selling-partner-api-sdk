@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.invoicing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** The shipment item information required by a seller to issue a shipment invoice. */
-@Schema(description = "The shipment item information required by a seller to issue a shipment invoice.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The shipment item information required by a seller to issue a shipment invoice.")
 public class ShipmentItem {
     @SerializedName("ASIN")
     private String ASIN = null;
@@ -62,7 +63,8 @@ public class ShipmentItem {
      *
      * @return ASIN
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getASIN() {
         return ASIN;
     }
@@ -81,7 +83,7 @@ public class ShipmentItem {
      *
      * @return sellerSKU
      */
-    @Schema(description = "The seller SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller SKU of the item.")
     public String getSellerSKU() {
         return sellerSKU;
     }
@@ -100,7 +102,7 @@ public class ShipmentItem {
      *
      * @return orderItemId
      */
-    @Schema(description = "The Amazon-defined identifier for the order item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon-defined identifier for the order item.")
     public String getOrderItemId() {
         return orderItemId;
     }
@@ -119,7 +121,7 @@ public class ShipmentItem {
      *
      * @return title
      */
-    @Schema(description = "The name of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the item.")
     public String getTitle() {
         return title;
     }
@@ -138,7 +140,7 @@ public class ShipmentItem {
      *
      * @return quantityOrdered
      */
-    @Schema(description = "The number of items ordered.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of items ordered.")
     public BigDecimal getQuantityOrdered() {
         return quantityOrdered;
     }
@@ -157,7 +159,7 @@ public class ShipmentItem {
      *
      * @return itemPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getItemPrice() {
         return itemPrice;
     }
@@ -176,7 +178,7 @@ public class ShipmentItem {
      *
      * @return shippingPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getShippingPrice() {
         return shippingPrice;
     }
@@ -195,7 +197,7 @@ public class ShipmentItem {
      *
      * @return giftWrapPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getGiftWrapPrice() {
         return giftWrapPrice;
     }
@@ -214,7 +216,7 @@ public class ShipmentItem {
      *
      * @return shippingDiscount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getShippingDiscount() {
         return shippingDiscount;
     }
@@ -233,7 +235,7 @@ public class ShipmentItem {
      *
      * @return promotionDiscount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getPromotionDiscount() {
         return promotionDiscount;
     }
@@ -252,7 +254,7 @@ public class ShipmentItem {
      *
      * @return serialNumbers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SerialNumbersList getSerialNumbers() {
         return serialNumbers;
     }

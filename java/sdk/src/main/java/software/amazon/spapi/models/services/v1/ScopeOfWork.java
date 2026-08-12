@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The scope of work for the order. */
-@Schema(description = "The scope of work for the order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The scope of work for the order.")
 public class ScopeOfWork {
     @SerializedName("asin")
     private String asin = null;
@@ -43,7 +42,8 @@ public class ScopeOfWork {
      *
      * @return asin
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the service job.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of the service job.")
     public String getAsin() {
         return asin;
     }
@@ -62,7 +62,7 @@ public class ScopeOfWork {
      *
      * @return title
      */
-    @Schema(description = "The title of the service job.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The title of the service job.")
     public String getTitle() {
         return title;
     }
@@ -81,7 +81,7 @@ public class ScopeOfWork {
      *
      * @return quantity
      */
-    @Schema(description = "The number of service jobs.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of service jobs.")
     public Integer getQuantity() {
         return quantity;
     }
@@ -108,7 +108,7 @@ public class ScopeOfWork {
      *
      * @return requiredSkills
      */
-    @Schema(description = "A list of skills required to perform the job.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of skills required to perform the job.")
     public List<String> getRequiredSkills() {
         return requiredSkills;
     }

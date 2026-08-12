@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Defines an item&#39;s input parameters. */
-@Schema(description = "Defines an item's input parameters.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Defines an item's input parameters.")
 public class ItemInput {
     @SerializedName("expiration")
     private String expiration = null;
@@ -49,7 +48,7 @@ public class ItemInput {
      *
      * @return expiration
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The expiration date of the MSKU. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `YYYY-MM-DD`. Items with the same MSKU but different expiration dates cannot go into the same box.")
     public String getExpiration() {
@@ -70,7 +69,7 @@ public class ItemInput {
      *
      * @return labelOwner
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public LabelOwner getLabelOwner() {
         return labelOwner;
     }
@@ -89,7 +88,7 @@ public class ItemInput {
      *
      * @return manufacturingLotCode
      */
-    @Schema(description = "The manufacturing lot code.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The manufacturing lot code.")
     public String getManufacturingLotCode() {
         return manufacturingLotCode;
     }
@@ -108,7 +107,9 @@ public class ItemInput {
      *
      * @return msku
      */
-    @Schema(required = true, description = "The merchant SKU, a merchant-supplied identifier of a specific SKU.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The merchant SKU, a merchant-supplied identifier of a specific SKU.")
     public String getMsku() {
         return msku;
     }
@@ -127,7 +128,7 @@ public class ItemInput {
      *
      * @return prepOwner
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PrepOwner getPrepOwner() {
         return prepOwner;
     }
@@ -146,7 +147,9 @@ public class ItemInput {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "The number of units of the specified MSKU that will be shipped.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The number of units of the specified MSKU that will be shipped.")
     public Integer getQuantity() {
         return quantity;
     }

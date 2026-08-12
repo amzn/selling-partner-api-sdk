@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** A set of measurements for a three-dimensional object. */
-@Schema(description = "A set of measurements for a three-dimensional object.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A set of measurements for a three-dimensional object.")
 public class Dimensions {
     @SerializedName("length")
     private BigDecimal length = null;
@@ -92,7 +92,7 @@ public class Dimensions {
      *
      * @return length
      */
-    @Schema(required = true, description = "The length of the package.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The length of the package.")
     public BigDecimal getLength() {
         return length;
     }
@@ -111,7 +111,7 @@ public class Dimensions {
      *
      * @return width
      */
-    @Schema(required = true, description = "The width of the package.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The width of the package.")
     public BigDecimal getWidth() {
         return width;
     }
@@ -130,7 +130,7 @@ public class Dimensions {
      *
      * @return height
      */
-    @Schema(required = true, description = "The height of the package.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The height of the package.")
     public BigDecimal getHeight() {
         return height;
     }
@@ -149,7 +149,7 @@ public class Dimensions {
      *
      * @return unit
      */
-    @Schema(required = true, description = "The unit of measurement.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The unit of measurement.")
     public UnitEnum getUnit() {
         return unit;
     }

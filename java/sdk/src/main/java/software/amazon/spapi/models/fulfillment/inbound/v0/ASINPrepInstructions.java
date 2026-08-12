@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Item preparation instructions to help with item sourcing decisions. */
-@Schema(description = "Item preparation instructions to help with item sourcing decisions.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Item preparation instructions to help with item sourcing decisions.")
 public class ASINPrepInstructions {
     @SerializedName("ASIN")
     private String ASIN = null;
@@ -41,7 +41,8 @@ public class ASINPrepInstructions {
      *
      * @return ASIN
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getASIN() {
         return ASIN;
     }
@@ -60,7 +61,7 @@ public class ASINPrepInstructions {
      *
      * @return barcodeInstruction
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BarcodeInstruction getBarcodeInstruction() {
         return barcodeInstruction;
     }
@@ -79,7 +80,7 @@ public class ASINPrepInstructions {
      *
      * @return prepGuidance
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PrepGuidance getPrepGuidance() {
         return prepGuidance;
     }
@@ -98,7 +99,7 @@ public class ASINPrepInstructions {
      *
      * @return prepInstructionList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PrepInstructionList getPrepInstructionList() {
         return prepInstructionList;
     }

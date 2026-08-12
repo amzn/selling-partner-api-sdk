@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The capabilities of a supply source. */
-@Schema(description = "The capabilities of a supply source.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The capabilities of a supply source.")
 public class SupplySourceCapabilities {
     @SerializedName("outbound")
     private OutboundCapability outbound = null;
@@ -35,7 +34,7 @@ public class SupplySourceCapabilities {
      *
      * @return outbound
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OutboundCapability getOutbound() {
         return outbound;
     }
@@ -54,7 +53,7 @@ public class SupplySourceCapabilities {
      *
      * @return services
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ServicesCapability getServices() {
         return services;
     }

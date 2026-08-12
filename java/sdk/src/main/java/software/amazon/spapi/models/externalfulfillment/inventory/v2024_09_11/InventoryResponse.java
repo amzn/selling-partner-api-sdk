@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A response to an individual inventory request. */
-@Schema(description = "A response to an individual inventory request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A response to an individual inventory request.")
 public class InventoryResponse {
     @SerializedName("status")
     private HttpStatusLine status = null;
@@ -35,7 +34,7 @@ public class InventoryResponse {
      *
      * @return status
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public HttpStatusLine getStatus() {
         return status;
     }
@@ -54,7 +53,7 @@ public class InventoryResponse {
      *
      * @return body
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public InventoryResponseBody getBody() {
         return body;
     }

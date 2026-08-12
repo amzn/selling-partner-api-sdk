@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Product information for an order item. */
-@Schema(description = "Product information for an order item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Product information for an order item.")
 public class ItemProduct {
     @SerializedName("asin")
     private String asin = null;
@@ -52,7 +51,7 @@ public class ItemProduct {
      *
      * @return asin
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The Amazon Standard Identification Number (ASIN), which uniquely identifies a product (catalog item).")
     public String getAsin() {
@@ -73,7 +72,8 @@ public class ItemProduct {
      *
      * @return title
      */
-    @Schema(description = "The product name or title as displayed to customers in the marketplace.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The product name or title as displayed to customers in the marketplace.")
     public String getTitle() {
         return title;
     }
@@ -92,7 +92,7 @@ public class ItemProduct {
      *
      * @return sellerSku
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The seller SKU of a product (catalog item). This is a unique number assigned by the seller when listing an item.")
     public String getSellerSku() {
@@ -113,7 +113,7 @@ public class ItemProduct {
      *
      * @return condition
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemCondition getCondition() {
         return condition;
     }
@@ -132,7 +132,7 @@ public class ItemProduct {
      *
      * @return price
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemPrice getPrice() {
         return price;
     }
@@ -159,7 +159,7 @@ public class ItemProduct {
      *
      * @return serialNumbers
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Unique serial numbers for products that require individual tracking, typically provided for FBA orders.")
     public List<String> getSerialNumbers() {
@@ -180,7 +180,7 @@ public class ItemProduct {
      *
      * @return customization
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemCustomization getCustomization() {
         return customization;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A carrier whose terms and conditions have not been accepted by the seller. */
-@Schema(description = "A carrier whose terms and conditions have not been accepted by the seller.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A carrier whose terms and conditions have not been accepted by the seller.")
 public class TermsAndConditionsNotAcceptedCarrier {
     @SerializedName("CarrierName")
     private String carrierName = null;
@@ -32,7 +32,7 @@ public class TermsAndConditionsNotAcceptedCarrier {
      *
      * @return carrierName
      */
-    @Schema(required = true, description = "The name of the carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the carrier.")
     public String getCarrierName() {
         return carrierName;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response payload for the SubmitShipmentConfirmations operation. */
-@Schema(description = "The response payload for the SubmitShipmentConfirmations operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response payload for the SubmitShipmentConfirmations operation.")
 public class TransactionReference {
     @SerializedName("transactionId")
     private String transactionId = null;
@@ -33,7 +33,7 @@ public class TransactionReference {
      *
      * @return transactionId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "GUID assigned by Buyer to identify this transaction. This value can be used with the Transaction Status API to return the status of this transaction.")
     public String getTransactionId() {

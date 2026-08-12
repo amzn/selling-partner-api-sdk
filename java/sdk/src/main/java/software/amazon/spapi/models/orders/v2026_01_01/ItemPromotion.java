@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Details about any discounts, coupons, or promotional offers applied to this item. */
-@Schema(description = "Details about any discounts, coupons, or promotional offers applied to this item.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Details about any discounts, coupons, or promotional offers applied to this item.")
 public class ItemPromotion {
     @SerializedName("breakdowns")
     private List<ItemPromotionBreakdown> breakdowns = null;
@@ -42,7 +42,7 @@ public class ItemPromotion {
      *
      * @return breakdowns
      */
-    @Schema(description = "A list of promotions applied to the order item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of promotions applied to the order item.")
     public List<ItemPromotionBreakdown> getBreakdowns() {
         return breakdowns;
     }

@@ -32,7 +32,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vendor.shipments.v1.GetShipmentDetailsResponse;
 import software.amazon.spapi.models.vendor.shipments.v1.GetShipmentLabels;
@@ -159,7 +158,7 @@ public class VendorShippingApi {
             String buyerReferenceNumber,
             String buyerWarehouseCode,
             String sellerWarehouseCode,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -267,7 +266,7 @@ public class VendorShippingApi {
             String buyerReferenceNumber,
             String buyerWarehouseCode,
             String sellerWarehouseCode,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return getShipmentDetailsCall(
@@ -1057,10 +1056,10 @@ public class VendorShippingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getShipmentDetailsValidateBeforeCall(
@@ -1135,7 +1134,7 @@ public class VendorShippingApi {
             String buyerReferenceNumber,
             String vendorShipmentIdentifier,
             String sellerWarehouseCode,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1196,7 +1195,7 @@ public class VendorShippingApi {
             String buyerReferenceNumber,
             String vendorShipmentIdentifier,
             String sellerWarehouseCode,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return getShipmentLabelsCall(
@@ -1518,10 +1517,10 @@ public class VendorShippingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getShipmentLabelsValidateBeforeCall(
@@ -1558,8 +1557,7 @@ public class VendorShippingApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call submitShipmentConfirmationsCall(
-            SubmitShipmentConfirmationsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            SubmitShipmentConfirmationsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1598,8 +1596,7 @@ public class VendorShippingApi {
     }
 
     private okhttp3.Call submitShipmentConfirmationsValidateBeforeCall(
-            SubmitShipmentConfirmationsRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            SubmitShipmentConfirmationsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -1746,10 +1743,10 @@ public class VendorShippingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = submitShipmentConfirmationsValidateBeforeCall(body, progressRequestListener);
@@ -1776,8 +1773,7 @@ public class VendorShippingApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call submitShipmentsCall(
-            SubmitShipments body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call submitShipmentsCall(SubmitShipments body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1816,8 +1812,7 @@ public class VendorShippingApi {
     }
 
     private okhttp3.Call submitShipmentsValidateBeforeCall(
-            SubmitShipments body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            SubmitShipments body, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -1959,10 +1954,10 @@ public class VendorShippingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = submitShipmentsValidateBeforeCall(body, progressRequestListener);

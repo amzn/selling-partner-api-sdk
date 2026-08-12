@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Package information for a shipment in a fulfillment order. */
-@Schema(description = "Package information for a shipment in a fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Package information for a shipment in a fulfillment order.")
 public class ModelPackage {
     @SerializedName("packageId")
     private String packageId = null;
@@ -46,7 +46,7 @@ public class ModelPackage {
      *
      * @return packageId
      */
-    @Schema(required = true, description = "Identifies a package in a shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Identifies a package in a shipment.")
     public String getPackageId() {
         return packageId;
     }
@@ -65,7 +65,7 @@ public class ModelPackage {
      *
      * @return deliveryTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Date timestamp in [ISO 8601](https://developer-docs.amazon/sp-api/docs/iso-8601) date time format.")
     public OffsetDateTime getDeliveryTime() {
@@ -88,7 +88,7 @@ public class ModelPackage {
      *
      * @return status
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The current status of a package. Possible values: `PROCESSING`, `IN_TRANSIT`, `DELAYED`, `OUT_FOR_DELIVERY`, `DELIVERED`, `UNDELIVERABLE`, `EXPIRED`.")
     public String getStatus() {
@@ -109,7 +109,7 @@ public class ModelPackage {
      *
      * @return tracking
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Tracking getTracking() {
         return tracking;
     }
@@ -136,7 +136,8 @@ public class ModelPackage {
      *
      * @return shipmentItemIds
      */
-    @Schema(description = "The shipment item identifiers contained in this package.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The shipment item identifiers contained in this package.")
     public List<String> getShipmentItemIds() {
         return shipmentItemIds;
     }

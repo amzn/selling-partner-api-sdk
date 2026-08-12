@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.datakiosk.v2023_11_15;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response for the &#x60;createQuery&#x60; operation. */
-@Schema(description = "The response for the `createQuery` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response for the `createQuery` operation.")
 public class CreateQueryResponse {
     @SerializedName("queryId")
     private String queryId = null;
@@ -32,7 +31,7 @@ public class CreateQueryResponse {
      *
      * @return queryId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier for the query. This identifier is unique only in combination with a selling partner account ID.")

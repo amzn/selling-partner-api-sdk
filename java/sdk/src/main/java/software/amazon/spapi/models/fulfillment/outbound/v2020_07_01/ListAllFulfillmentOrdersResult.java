@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request for the &#x60;listAllFulfillmentOrders&#x60; operation. */
-@Schema(description = "The request for the `listAllFulfillmentOrders` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request for the `listAllFulfillmentOrders` operation.")
 public class ListAllFulfillmentOrdersResult {
     @SerializedName("nextToken")
     private String nextToken = null;
@@ -37,7 +36,7 @@ public class ListAllFulfillmentOrdersResult {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When present and not empty, pass this string token in the next request to return the next response page.")
     public String getNextToken() {
@@ -66,7 +65,7 @@ public class ListAllFulfillmentOrdersResult {
      *
      * @return fulfillmentOrders
      */
-    @Schema(description = "An array of fulfillment order information.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An array of fulfillment order information.")
     public List<FulfillmentOrder> getFulfillmentOrders() {
         return fulfillmentOrders;
     }

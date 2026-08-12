@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Contains detail codes that provide additional details related to the forward and return leg of the shipment. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Contains detail codes that provide additional details related to the forward and return leg of the shipment.")
 public class TrackingDetailCodes {
@@ -47,7 +46,7 @@ public class TrackingDetailCodes {
      *
      * @return forward
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Contains detail codes that provide additional details related to the forward leg of the shipment.")
@@ -77,7 +76,7 @@ public class TrackingDetailCodes {
      *
      * @return returns
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Contains detail codes that provide additional details related to the return leg of the shipment.")

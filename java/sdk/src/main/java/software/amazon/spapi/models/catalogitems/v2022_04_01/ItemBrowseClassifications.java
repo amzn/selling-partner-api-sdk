@@ -12,7 +12,6 @@
 
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -20,7 +19,7 @@ import java.util.Objects;
  * An array of classifications (browse nodes) that is associated with the item in the Amazon catalog, grouped by
  * &#x60;marketplaceId&#x60;.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "An array of classifications (browse nodes) that is associated with the item in the Amazon catalog, grouped by `marketplaceId`.")
 public class ItemBrowseClassifications extends ArrayList<ItemBrowseClassificationsByMarketplace> {

@@ -13,14 +13,15 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept
  * multiple values (arrays), the API returns results that match at least one value in the array.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Use these parameters to filter results. Any result must match all provided parameters. For parameters that accept multiple values (arrays), the API returns results that match at least one value in the array.")
 public class ListOfferMetricsRequestFilters {
@@ -64,7 +65,7 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return aggregationFrequency
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AggregationFrequency getAggregationFrequency() {
         return aggregationFrequency;
     }
@@ -83,7 +84,7 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return timeInterval
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TimeInterval getTimeInterval() {
         return timeInterval;
     }
@@ -102,7 +103,7 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return timePeriodType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TimePeriodType getTimePeriodType() {
         return timePeriodType;
     }
@@ -123,7 +124,7 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.")
@@ -145,7 +146,7 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return programTypes
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ProgramTypes getProgramTypes() {
         return programTypes;
     }
@@ -172,7 +173,8 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return asins
      */
-    @Schema(description = "A list of Amazon Standard Identification Numbers (ASINs) to filter by.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of Amazon Standard Identification Numbers (ASINs) to filter by.")
     public Set<String> getAsins() {
         return asins;
     }
@@ -199,7 +201,8 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return skus
      */
-    @Schema(description = "[Applicable only for Sellers] A list of SKUs to filter by.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "[Applicable only for Sellers] A list of SKUs to filter by.")
     public Set<String> getSkus() {
         return skus;
     }
@@ -227,7 +230,8 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return fulfillmentChannelTypes
      */
-    @Schema(description = "[Applicable only for Sellers] The fulfillment channel types to filter by.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "[Applicable only for Sellers] The fulfillment channel types to filter by.")
     public Set<FulfillmentChannelType> getFulfillmentChannelTypes() {
         return fulfillmentChannelTypes;
     }
@@ -254,7 +258,8 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return brandNames
      */
-    @Schema(description = "[Applicable only for US marketplace] A list of brand names to filter by.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "[Applicable only for US marketplace] A list of brand names to filter by.")
     public Set<String> getBrandNames() {
         return brandNames;
     }
@@ -281,7 +286,8 @@ public class ListOfferMetricsRequestFilters {
      *
      * @return productGroups
      */
-    @Schema(description = "[Applicable only for Vendors] A list of product group names to filter by.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "[Applicable only for Vendors] A list of product group names to filter by.")
     public Set<String> getProductGroups() {
         return productGroups;
     }

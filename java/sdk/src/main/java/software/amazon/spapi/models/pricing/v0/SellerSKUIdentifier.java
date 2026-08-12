@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Schema to identify an item by MarketPlaceId, SellerId, and SellerSKU. */
-@Schema(description = "Schema to identify an item by MarketPlaceId, SellerId, and SellerSKU.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Schema to identify an item by MarketPlaceId, SellerId, and SellerSKU.")
 public class SellerSKUIdentifier {
     @SerializedName("MarketplaceId")
     private String marketplaceId = null;
@@ -38,7 +38,7 @@ public class SellerSKUIdentifier {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "A marketplace identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A marketplace identifier.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -57,7 +57,9 @@ public class SellerSKUIdentifier {
      *
      * @return sellerId
      */
-    @Schema(required = true, description = "The seller identifier submitted for the operation.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The seller identifier submitted for the operation.")
     public String getSellerId() {
         return sellerId;
     }
@@ -76,7 +78,9 @@ public class SellerSKUIdentifier {
      *
      * @return sellerSKU
      */
-    @Schema(required = true, description = "The seller stock keeping unit (SKU) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The seller stock keeping unit (SKU) of the item.")
     public String getSellerSKU() {
         return sellerSKU;
     }

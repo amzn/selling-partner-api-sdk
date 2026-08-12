@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Identifies the scheduled package to be updated. */
-@Schema(description = "Identifies the scheduled package to be updated.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Identifies the scheduled package to be updated.")
 public class ScheduledPackageId {
     @SerializedName("amazonOrderId")
     private String amazonOrderId = null;
@@ -35,7 +34,7 @@ public class ScheduledPackageId {
      *
      * @return amazonOrderId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.")
@@ -57,7 +56,7 @@ public class ScheduledPackageId {
      *
      * @return packageId
      */
-    @Schema(description = "An Amazon-defined identifier for the scheduled package.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An Amazon-defined identifier for the scheduled package.")
     public String getPackageId() {
         return packageId;
     }

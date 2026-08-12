@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A Multi-Channel Fulfillment feature. */
-@Schema(description = "A Multi-Channel Fulfillment feature.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A Multi-Channel Fulfillment feature.")
 public class Feature {
     @SerializedName("featureName")
     private String featureName = null;
@@ -38,7 +37,7 @@ public class Feature {
      *
      * @return featureName
      */
-    @Schema(required = true, description = "The feature name.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The feature name.")
     public String getFeatureName() {
         return featureName;
     }
@@ -57,7 +56,7 @@ public class Feature {
      *
      * @return featureDescription
      */
-    @Schema(required = true, description = "The feature description.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The feature description.")
     public String getFeatureDescription() {
         return featureDescription;
     }
@@ -76,7 +75,8 @@ public class Feature {
      *
      * @return sellerEligible
      */
-    @Schema(description = "When true, indicates that the seller is eligible to use the feature.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "When true, indicates that the seller is eligible to use the feature.")
     public Boolean getSellerEligible() {
         return sellerEligible;
     }

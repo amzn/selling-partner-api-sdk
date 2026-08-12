@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** List of request parameters that can be accepted by &#x60;ListingOffersRequest&#x60; */
-@Schema(description = "List of request parameters that can be accepted by `ListingOffersRequest`")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "List of request parameters that can be accepted by `ListingOffersRequest`")
 public class ListingOffersRequestParams {
     @SerializedName("MarketplaceId")
     private String marketplaceId = null;
@@ -41,7 +41,7 @@ public class ListingOffersRequestParams {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "A marketplace identifier. Specifies the marketplace for which prices are returned.")
     public String getMarketplaceId() {
@@ -62,7 +62,7 @@ public class ListingOffersRequestParams {
      *
      * @return itemCondition
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemCondition getItemCondition() {
         return itemCondition;
     }
@@ -81,7 +81,7 @@ public class ListingOffersRequestParams {
      *
      * @return customerType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CustomerType getCustomerType() {
         return customerType;
     }
@@ -100,7 +100,7 @@ public class ListingOffersRequestParams {
      *
      * @return sellerSKU
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The seller stock keeping unit (SKU) of the item. This is the same SKU passed as a path parameter.")

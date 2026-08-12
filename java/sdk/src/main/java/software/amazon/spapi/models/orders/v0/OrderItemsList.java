@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The order items list along with the order ID. */
-@Schema(description = "The order items list along with the order ID.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The order items list along with the order ID.")
 public class OrderItemsList {
     @SerializedName("OrderItems")
     private OrderItemList orderItems = null;
@@ -38,7 +37,7 @@ public class OrderItemsList {
      *
      * @return orderItems
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public OrderItemList getOrderItems() {
         return orderItems;
     }
@@ -57,7 +56,7 @@ public class OrderItemsList {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When present and not empty, pass this string token in the next request to return the next response page.")
     public String getNextToken() {
@@ -78,7 +77,9 @@ public class OrderItemsList {
      *
      * @return amazonOrderId
      */
-    @Schema(required = true, description = "An Amazon-defined order identifier, in 3-7-7 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An Amazon-defined order identifier, in 3-7-7 format.")
     public String getAmazonOrderId() {
         return amazonOrderId;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Whether specific capabilities are enabled or required for the shipment. */
-@Schema(description = "Whether specific capabilities are enabled or required for the shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Whether specific capabilities are enabled or required for the shipment.")
 public class ShipmentRequirements {
     @SerializedName("pSlip")
     private PackingSlipRequirement pSlip = null;
@@ -35,7 +35,7 @@ public class ShipmentRequirements {
      *
      * @return pSlip
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PackingSlipRequirement getpSlip() {
         return pSlip;
     }
@@ -54,7 +54,7 @@ public class ShipmentRequirements {
      *
      * @return invoice
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public InvoiceRequirement getInvoice() {
         return invoice;
     }

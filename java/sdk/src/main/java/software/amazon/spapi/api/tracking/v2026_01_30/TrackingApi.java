@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.tracking.v2026_01_30.GetShipmentTrackingResponse;
 
@@ -76,7 +75,7 @@ public class TrackingApi {
             String carrierTrackingTrackingNumber,
             String carrierTrackingCarrierCode,
             String acceptLanguage,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -139,7 +138,7 @@ public class TrackingApi {
             String carrierTrackingTrackingNumber,
             String carrierTrackingCarrierCode,
             String acceptLanguage,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return getShipmentTrackingCall(
@@ -394,10 +393,10 @@ public class TrackingApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getShipmentTrackingValidateBeforeCall(

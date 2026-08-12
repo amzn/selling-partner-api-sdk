@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Sales rank information for the item, by category */
-@Schema(description = "Sales rank information for the item, by category")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Sales rank information for the item, by category")
 public class SalesRankType {
     @SerializedName("ProductCategoryId")
     private String productCategoryId = null;
@@ -35,7 +34,9 @@ public class SalesRankType {
      *
      * @return productCategoryId
      */
-    @Schema(required = true, description = " Identifies the item category from which the sales rank is taken.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = " Identifies the item category from which the sales rank is taken.")
     public String getProductCategoryId() {
         return productCategoryId;
     }
@@ -54,7 +55,9 @@ public class SalesRankType {
      *
      * @return rank
      */
-    @Schema(required = true, description = "The sales rank of the item within the item category.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The sales rank of the item within the item category.")
     public Integer getRank() {
         return rank;
     }

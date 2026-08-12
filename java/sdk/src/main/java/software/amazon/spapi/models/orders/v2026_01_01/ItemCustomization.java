@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about any personalization, customization, or special modifications applied to this order item. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Information about any personalization, customization, or special modifications applied to this order item.")
 public class ItemCustomization {
@@ -34,7 +33,8 @@ public class ItemCustomization {
      *
      * @return customizedUrl
      */
-    @Schema(description = "The URL of the customized data for custom orders from the Amazon Custom program.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The URL of the customized data for custom orders from the Amazon Custom program.")
     public String getCustomizedUrl() {
         return customizedUrl;
     }

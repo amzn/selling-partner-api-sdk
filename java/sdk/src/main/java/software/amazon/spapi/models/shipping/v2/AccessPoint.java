@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Access point details */
-@Schema(description = "Access point details")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Access point details")
 public class AccessPoint {
     @SerializedName("accessPointId")
     private String accessPointId = null;
@@ -112,7 +111,7 @@ public class AccessPoint {
      *
      * @return accessPointId
      */
-    @Schema(description = "Unique identifier for the access point")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Unique identifier for the access point")
     public String getAccessPointId() {
         return accessPointId;
     }
@@ -131,7 +130,8 @@ public class AccessPoint {
      *
      * @return name
      */
-    @Schema(description = "Name of entity (store/hub etc) where this access point is located")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Name of entity (store/hub etc) where this access point is located")
     public String getName() {
         return name;
     }
@@ -150,7 +150,7 @@ public class AccessPoint {
      *
      * @return timezone
      */
-    @Schema(description = "Timezone of access point")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Timezone of access point")
     public String getTimezone() {
         return timezone;
     }
@@ -169,7 +169,7 @@ public class AccessPoint {
      *
      * @return type
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AccessPointType getType() {
         return type;
     }
@@ -188,7 +188,7 @@ public class AccessPoint {
      *
      * @return accessibilityAttributes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AccessibilityAttributes getAccessibilityAttributes() {
         return accessibilityAttributes;
     }
@@ -207,7 +207,7 @@ public class AccessPoint {
      *
      * @return address
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getAddress() {
         return address;
     }
@@ -234,7 +234,7 @@ public class AccessPoint {
      *
      * @return exceptionOperatingHours
      */
-    @Schema(description = "Exception operating hours for Access Point")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Exception operating hours for Access Point")
     public List<ExceptionOperatingHours> getExceptionOperatingHours() {
         return exceptionOperatingHours;
     }
@@ -253,7 +253,8 @@ public class AccessPoint {
      *
      * @return assistanceType
      */
-    @Schema(description = "Assistance type enum for Access point i.e. STAFF_ASSISTED or SELF_ASSISTED")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Assistance type enum for Access point i.e. STAFF_ASSISTED or SELF_ASSISTED")
     public AssistanceTypeEnum getAssistanceType() {
         return assistanceType;
     }
@@ -273,7 +274,7 @@ public class AccessPoint {
      *
      * @return score
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The score of access point, based on proximity to postal code and sorting preference. This can be used to sort access point results on shipper's end.")
     public String getScore() {
@@ -294,7 +295,7 @@ public class AccessPoint {
      *
      * @return standardOperatingHours
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DayOfWeekTimeMap getStandardOperatingHours() {
         return standardOperatingHours;
     }

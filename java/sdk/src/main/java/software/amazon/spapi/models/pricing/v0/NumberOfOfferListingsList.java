@@ -12,7 +12,6 @@
 
 package software.amazon.spapi.models.pricing.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -20,7 +19,7 @@ import java.util.Objects;
  * The number of active offer listings for the item that was submitted. The listing count is returned by condition, one
  * for each listing condition value that is returned.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The number of active offer listings for the item that was submitted. The listing count is returned by condition, one for each listing condition value that is returned.")
 public class NumberOfOfferListingsList extends ArrayList<OfferListingCountType> {

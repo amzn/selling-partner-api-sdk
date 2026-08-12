@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Related business identifiers of the item. */
-@Schema(description = "Related business identifiers of the item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Related business identifiers of the item.")
 public class ItemRelatedIdentifier {
     /** Enumerated set of related item identifier names for the item. */
     @JsonAdapter(ItemRelatedIdentifierNameEnum.Adapter.class)
@@ -91,7 +90,8 @@ public class ItemRelatedIdentifier {
      *
      * @return itemRelatedIdentifierName
      */
-    @Schema(description = "Enumerated set of related item identifier names for the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Enumerated set of related item identifier names for the item.")
     public ItemRelatedIdentifierNameEnum getItemRelatedIdentifierName() {
         return itemRelatedIdentifierName;
     }
@@ -110,7 +110,7 @@ public class ItemRelatedIdentifier {
      *
      * @return itemRelatedIdentifierValue
      */
-    @Schema(description = "Corresponding value to `ItemRelatedIdentifierName`.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Corresponding value to `ItemRelatedIdentifierName`.")
     public String getItemRelatedIdentifierValue() {
         return itemRelatedIdentifierValue;
     }

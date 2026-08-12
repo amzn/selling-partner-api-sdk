@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Schema for competitive pricing information */
-@Schema(description = "Schema for competitive pricing information")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Schema for competitive pricing information")
 public class CompetitivePriceType {
     @SerializedName("CompetitivePriceId")
     private String competitivePriceId = null;
@@ -57,7 +56,7 @@ public class CompetitivePriceType {
      *
      * @return competitivePriceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The pricing model for each price that is returned.  Possible values:  * 1 - New Buy Box Price. * 2 - Used Buy Box Price.")
@@ -79,7 +78,7 @@ public class CompetitivePriceType {
      *
      * @return price
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PriceType getPrice() {
         return price;
     }
@@ -99,7 +98,7 @@ public class CompetitivePriceType {
      *
      * @return condition
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Indicates the condition of the item whose pricing information is returned. Possible values are: New, Used, Collectible, Refurbished, or Club.")
     public String getCondition() {
@@ -121,7 +120,7 @@ public class CompetitivePriceType {
      *
      * @return subcondition
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Indicates the subcondition of the item whose pricing information is returned. Possible values are: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.")
     public String getSubcondition() {
@@ -142,7 +141,7 @@ public class CompetitivePriceType {
      *
      * @return offerType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferCustomerType getOfferType() {
         return offerType;
     }
@@ -161,7 +160,7 @@ public class CompetitivePriceType {
      *
      * @return quantityTier
      */
-    @Schema(description = "Indicates at what quantity this price becomes active.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Indicates at what quantity this price becomes active.")
     public Integer getQuantityTier() {
         return quantityTier;
     }
@@ -180,7 +179,7 @@ public class CompetitivePriceType {
      *
      * @return quantityDiscountType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public QuantityDiscountType getQuantityDiscountType() {
         return quantityDiscountType;
     }
@@ -199,7 +198,7 @@ public class CompetitivePriceType {
      *
      * @return sellerId
      */
-    @Schema(description = "The seller identifier for the offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller identifier for the offer.")
     public String getSellerId() {
         return sellerId;
     }
@@ -220,7 +219,7 @@ public class CompetitivePriceType {
      *
      * @return belongsToRequester
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     " Indicates whether or not the pricing information is for an offer listing that belongs to the requester. The requester is the seller associated with the SellerId that was submitted with the request. Possible values are: true and false.")
     public Boolean getBelongsToRequester() {

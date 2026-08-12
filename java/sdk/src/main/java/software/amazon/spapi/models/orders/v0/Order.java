@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Order information. */
-@Schema(description = "Order information.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Order information.")
 public class Order {
     @SerializedName("AmazonOrderId")
     private String amazonOrderId = null;
@@ -434,7 +433,9 @@ public class Order {
      *
      * @return amazonOrderId
      */
-    @Schema(required = true, description = "An Amazon-defined order identifier, in 3-7-7 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An Amazon-defined order identifier, in 3-7-7 format.")
     public String getAmazonOrderId() {
         return amazonOrderId;
     }
@@ -453,7 +454,7 @@ public class Order {
      *
      * @return sellerOrderId
      */
-    @Schema(description = "A seller-defined order identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A seller-defined order identifier.")
     public String getSellerOrderId() {
         return sellerOrderId;
     }
@@ -472,7 +473,7 @@ public class Order {
      *
      * @return purchaseDate
      */
-    @Schema(required = true, description = "The date when the order was created.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The date when the order was created.")
     public String getPurchaseDate() {
         return purchaseDate;
     }
@@ -492,7 +493,7 @@ public class Order {
      *
      * @return lastUpdateDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The date when the order was last updated.  __Note__: `LastUpdateDate` is returned with an incorrect date for orders that were last updated before 2009-04-01.")
@@ -514,7 +515,7 @@ public class Order {
      *
      * @return orderStatus
      */
-    @Schema(required = true, description = "The current order status.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The current order status.")
     public OrderStatusEnum getOrderStatus() {
         return orderStatus;
     }
@@ -533,7 +534,8 @@ public class Order {
      *
      * @return fulfillmentChannel
      */
-    @Schema(description = "Whether the order was fulfilled by Amazon (`AFN`) or by the seller (`MFN`).")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Whether the order was fulfilled by Amazon (`AFN`) or by the seller (`MFN`).")
     public FulfillmentChannelEnum getFulfillmentChannel() {
         return fulfillmentChannel;
     }
@@ -552,7 +554,7 @@ public class Order {
      *
      * @return salesChannel
      */
-    @Schema(description = "The sales channel for the first item in the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The sales channel for the first item in the order.")
     public String getSalesChannel() {
         return salesChannel;
     }
@@ -571,7 +573,7 @@ public class Order {
      *
      * @return orderChannel
      */
-    @Schema(description = "The order channel for the first item in the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The order channel for the first item in the order.")
     public String getOrderChannel() {
         return orderChannel;
     }
@@ -590,7 +592,7 @@ public class Order {
      *
      * @return shipServiceLevel
      */
-    @Schema(description = "The order's shipment service level.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The order's shipment service level.")
     public String getShipServiceLevel() {
         return shipServiceLevel;
     }
@@ -609,7 +611,7 @@ public class Order {
      *
      * @return orderTotal
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getOrderTotal() {
         return orderTotal;
     }
@@ -628,7 +630,7 @@ public class Order {
      *
      * @return numberOfItemsShipped
      */
-    @Schema(description = "The number of items shipped.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of items shipped.")
     public Integer getNumberOfItemsShipped() {
         return numberOfItemsShipped;
     }
@@ -647,7 +649,7 @@ public class Order {
      *
      * @return numberOfItemsUnshipped
      */
-    @Schema(description = "The number of items unshipped.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of items unshipped.")
     public Integer getNumberOfItemsUnshipped() {
         return numberOfItemsUnshipped;
     }
@@ -666,7 +668,7 @@ public class Order {
      *
      * @return paymentExecutionDetail
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PaymentExecutionDetailItemList getPaymentExecutionDetail() {
         return paymentExecutionDetail;
     }
@@ -687,7 +689,7 @@ public class Order {
      *
      * @return paymentMethod
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The payment method for the order. This property is limited to COD and CVS payment methods. Unless you need the specific COD payment information provided by the `PaymentExecutionDetailItem` object, we recommend using the `PaymentMethodDetails` property to get payment method information.")
     public PaymentMethodEnum getPaymentMethod() {
@@ -708,7 +710,7 @@ public class Order {
      *
      * @return paymentMethodDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PaymentMethodDetailItemList getPaymentMethodDetails() {
         return paymentMethodDetails;
     }
@@ -727,7 +729,8 @@ public class Order {
      *
      * @return marketplaceId
      */
-    @Schema(description = "The identifier for the marketplace where the order was placed.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The identifier for the marketplace where the order was placed.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -748,7 +751,7 @@ public class Order {
      *
      * @return shipmentServiceLevelCategory
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The shipment service level category for the order.  **Possible values**: `Expedited`, `FreeEconomy`, `NextDay`, `Priority`, `SameDay`, `SecondDay`, `Scheduled`, and `Standard`.")
     public String getShipmentServiceLevelCategory() {
@@ -769,7 +772,7 @@ public class Order {
      *
      * @return easyShipShipmentStatus
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public EasyShipShipmentStatus getEasyShipShipmentStatus() {
         return easyShipShipmentStatus;
     }
@@ -788,7 +791,7 @@ public class Order {
      *
      * @return cbaDisplayableShippingLabel
      */
-    @Schema(description = "Custom ship label for Checkout by Amazon (CBA).")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Custom ship label for Checkout by Amazon (CBA).")
     public String getCbaDisplayableShippingLabel() {
         return cbaDisplayableShippingLabel;
     }
@@ -807,7 +810,7 @@ public class Order {
      *
      * @return orderType
      */
-    @Schema(description = "The order's type.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The order's type.")
     public OrderTypeEnum getOrderType() {
         return orderType;
     }
@@ -829,7 +832,7 @@ public class Order {
      *
      * @return earliestShipDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The start of the time period within which you have committed to ship the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders.  __Note__: `EarliestShipDate` might not be returned for orders placed before February 1, 2013.")
     public String getEarliestShipDate() {
@@ -853,7 +856,7 @@ public class Order {
      *
      * @return latestShipDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The end of the time period within which you have committed to ship the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders.  __Note__: `LatestShipDate` might not be returned for orders placed before February 1, 2013.")
     public String getLatestShipDate() {
@@ -876,7 +879,7 @@ public class Order {
      *
      * @return earliestDeliveryDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The start of the time period within which you have committed to fulfill the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders.")
     public String getEarliestDeliveryDate() {
@@ -900,7 +903,7 @@ public class Order {
      *
      * @return latestDeliveryDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The end of the time period within which you have committed to fulfill the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders that do not have a `PendingAvailability`, `Pending`, or `Canceled` status.")
     public String getLatestDeliveryDate() {
@@ -922,7 +925,7 @@ public class Order {
      *
      * @return isBusinessOrder
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When true, the order is an Amazon Business order. An Amazon Business order is an order where the buyer is a Verified Business Buyer.")
     public Boolean getIsBusinessOrder() {
@@ -943,7 +946,8 @@ public class Order {
      *
      * @return isPrime
      */
-    @Schema(description = "When true, the order is a seller-fulfilled Amazon Prime order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "When true, the order is a seller-fulfilled Amazon Prime order.")
     public Boolean getIsPrime() {
         return isPrime;
     }
@@ -963,7 +967,7 @@ public class Order {
      *
      * @return isPremiumOrder
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When true, the order has a Premium Shipping Service Level Agreement. For more information about Premium Shipping orders, refer to \"Premium Shipping Options\" in the Seller Central Help for your marketplace.")
     public Boolean getIsPremiumOrder() {
@@ -984,7 +988,7 @@ public class Order {
      *
      * @return isGlobalExpressEnabled
      */
-    @Schema(description = "When true, the order is a `GlobalExpress` order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, the order is a `GlobalExpress` order.")
     public Boolean getIsGlobalExpressEnabled() {
         return isGlobalExpressEnabled;
     }
@@ -1003,7 +1007,7 @@ public class Order {
      *
      * @return replacedOrderId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The order ID value for the order that is being replaced. Returned only if IsReplacementOrder = true.")
     public String getReplacedOrderId() {
@@ -1024,7 +1028,7 @@ public class Order {
      *
      * @return isReplacementOrder
      */
-    @Schema(description = "When true, this is a replacement order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, this is a replacement order.")
     public Boolean getIsReplacementOrder() {
         return isReplacementOrder;
     }
@@ -1044,7 +1048,7 @@ public class Order {
      *
      * @return promiseResponseDueDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Indicates the date by which the seller must respond to the buyer with an estimated ship date. Only returned for Sourcing on Demand orders.")
     public String getPromiseResponseDueDate() {
@@ -1065,7 +1069,7 @@ public class Order {
      *
      * @return isEstimatedShipDateSet
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When true, the estimated ship date is set for the order. Only returned for Sourcing on Demand orders.")
     public Boolean getIsEstimatedShipDateSet() {
@@ -1088,7 +1092,7 @@ public class Order {
      *
      * @return isSoldByAB
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When true, the item within this order was bought and re-sold by Amazon Business EU SARL (ABEU). By buying and instantly re-selling your items, ABEU becomes the seller of record, making your inventory available for sale to customers who would not otherwise purchase from a third-party seller.")
     public Boolean getIsSoldByAB() {
@@ -1111,7 +1115,7 @@ public class Order {
      *
      * @return isIBA
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When true, the item within this order was bought and re-sold by Amazon Business EU SARL (ABEU). By buying and instantly re-selling your items, ABEU becomes the seller of record, making your inventory available for sale to customers who would not otherwise purchase from a third-party seller.")
     public Boolean getIsIBA() {
@@ -1132,7 +1136,7 @@ public class Order {
      *
      * @return defaultShipFromLocationAddress
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getDefaultShipFromLocationAddress() {
         return defaultShipFromLocationAddress;
     }
@@ -1152,7 +1156,7 @@ public class Order {
      *
      * @return buyerInvoicePreference
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The buyer's invoicing preference. Sellers can use this data to issue electronic invoices for orders in Turkey.  **Note**: This attribute is only available in the Turkey marketplace.")
     public BuyerInvoicePreferenceEnum getBuyerInvoicePreference() {
@@ -1173,7 +1177,7 @@ public class Order {
      *
      * @return buyerTaxInformation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BuyerTaxInformation getBuyerTaxInformation() {
         return buyerTaxInformation;
     }
@@ -1192,7 +1196,7 @@ public class Order {
      *
      * @return fulfillmentInstruction
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FulfillmentInstruction getFulfillmentInstruction() {
         return fulfillmentInstruction;
     }
@@ -1211,7 +1215,8 @@ public class Order {
      *
      * @return isISPU
      */
-    @Schema(description = "When true, this order is marked to be picked up from a store rather than delivered.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "When true, this order is marked to be picked up from a store rather than delivered.")
     public Boolean getIsISPU() {
         return isISPU;
     }
@@ -1231,7 +1236,7 @@ public class Order {
      *
      * @return isAccessPointOrder
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When true, this order is marked to be delivered to an Access Point. The access location is chosen by the customer. Access Points include Amazon Hub Lockers, Amazon Hub Counters, and pickup points operated by carriers.")
     public Boolean getIsAccessPointOrder() {
@@ -1252,7 +1257,7 @@ public class Order {
      *
      * @return marketplaceTaxInfo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MarketplaceTaxInfo getMarketplaceTaxInfo() {
         return marketplaceTaxInfo;
     }
@@ -1273,7 +1278,7 @@ public class Order {
      *
      * @return sellerDisplayName
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The seller’s friendly name registered in the marketplace where the sale took place. Sellers can use this data to issue electronic invoices for orders in Brazil.  **Note**: This attribute is only available in the Brazil marketplace for the orders with `Pending` or `Unshipped` status.")
     public String getSellerDisplayName() {
@@ -1294,7 +1299,7 @@ public class Order {
      *
      * @return shippingAddress
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getShippingAddress() {
         return shippingAddress;
     }
@@ -1313,7 +1318,7 @@ public class Order {
      *
      * @return buyerInfo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public BuyerInfo getBuyerInfo() {
         return buyerInfo;
     }
@@ -1332,7 +1337,7 @@ public class Order {
      *
      * @return automatedShippingSettings
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AutomatedShippingSettings getAutomatedShippingSettings() {
         return automatedShippingSettings;
     }
@@ -1351,7 +1356,7 @@ public class Order {
      *
      * @return hasRegulatedItems
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Whether the order contains regulated items which may require additional approval steps before being fulfilled.")
     public Boolean getHasRegulatedItems() {
@@ -1372,7 +1377,7 @@ public class Order {
      *
      * @return electronicInvoiceStatus
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ElectronicInvoiceStatus getElectronicInvoiceStatus() {
         return electronicInvoiceStatus;
     }

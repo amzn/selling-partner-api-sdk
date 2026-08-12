@@ -17,8 +17,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -26,7 +26,7 @@ import java.util.Objects;
 /**
  * Represents an invoice or credit note document with details about the transaction, parties involved, and line items.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Represents an invoice or credit note document with details about the transaction, parties involved, and line items.")
 public class Invoice {
@@ -131,7 +131,7 @@ public class Invoice {
      *
      * @return invoiceType
      */
-    @Schema(required = true, description = "Identifies the type of invoice.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Identifies the type of invoice.")
     public InvoiceTypeEnum getInvoiceType() {
         return invoiceType;
     }
@@ -152,7 +152,7 @@ public class Invoice {
      *
      * @return id
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Unique number relating to the charges defined in this document. This will be invoice number if the document type is Invoice or CreditNote number if the document type is Credit Note. Failure to provide this reference will result in a rejection.")
@@ -174,7 +174,8 @@ public class Invoice {
      *
      * @return referenceNumber
      */
-    @Schema(description = "An additional unique reference number used for regulatory or other purposes.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "An additional unique reference number used for regulatory or other purposes.")
     public String getReferenceNumber() {
         return referenceNumber;
     }
@@ -193,7 +194,9 @@ public class Invoice {
      *
      * @return date
      */
-    @Schema(required = true, description = "Defines a date and time according to ISO8601.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Defines a date and time according to ISO8601.")
     public OffsetDateTime getDate() {
         return date;
     }
@@ -212,7 +215,7 @@ public class Invoice {
      *
      * @return remitToParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getRemitToParty() {
         return remitToParty;
     }
@@ -231,7 +234,7 @@ public class Invoice {
      *
      * @return shipToParty
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PartyIdentification getShipToParty() {
         return shipToParty;
     }
@@ -250,7 +253,7 @@ public class Invoice {
      *
      * @return shipFromParty
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PartyIdentification getShipFromParty() {
         return shipFromParty;
     }
@@ -269,7 +272,7 @@ public class Invoice {
      *
      * @return billToParty
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PartyIdentification getBillToParty() {
         return billToParty;
     }
@@ -288,7 +291,7 @@ public class Invoice {
      *
      * @return paymentTerms
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PaymentTerms getPaymentTerms() {
         return paymentTerms;
     }
@@ -307,7 +310,7 @@ public class Invoice {
      *
      * @return invoiceTotal
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getInvoiceTotal() {
         return invoiceTotal;
     }
@@ -334,7 +337,7 @@ public class Invoice {
      *
      * @return taxDetails
      */
-    @Schema(description = "Total tax amount details for all line items.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Total tax amount details for all line items.")
     public List<TaxDetails> getTaxDetails() {
         return taxDetails;
     }
@@ -361,7 +364,8 @@ public class Invoice {
      *
      * @return additionalDetails
      */
-    @Schema(description = "Additional details provided by the selling party, for tax related or other purposes.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Additional details provided by the selling party, for tax related or other purposes.")
     public List<AdditionalDetails> getAdditionalDetails() {
         return additionalDetails;
     }
@@ -388,7 +392,7 @@ public class Invoice {
      *
      * @return chargeDetails
      */
-    @Schema(description = "Total charge amount details for all line items.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Total charge amount details for all line items.")
     public List<ChargeDetails> getChargeDetails() {
         return chargeDetails;
     }
@@ -415,7 +419,7 @@ public class Invoice {
      *
      * @return allowanceDetails
      */
-    @Schema(description = "Total allowance amount details for all line items.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Total allowance amount details for all line items.")
     public List<AllowanceDetails> getAllowanceDetails() {
         return allowanceDetails;
     }
@@ -442,7 +446,7 @@ public class Invoice {
      *
      * @return items
      */
-    @Schema(description = "The list of invoice items.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The list of invoice items.")
     public List<InvoiceItem> getItems() {
         return items;
     }

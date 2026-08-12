@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A request to update the configuration and capabilities of a supply source. */
-@Schema(description = "A request to update the configuration and capabilities of a supply source.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A request to update the configuration and capabilities of a supply source.")
 public class UpdateSupplySourceRequest {
     @SerializedName("alias")
     private String alias = null;
@@ -38,7 +38,7 @@ public class UpdateSupplySourceRequest {
      *
      * @return alias
      */
-    @Schema(description = "The custom alias for this supply source")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The custom alias for this supply source")
     public String getAlias() {
         return alias;
     }
@@ -57,7 +57,7 @@ public class UpdateSupplySourceRequest {
      *
      * @return _configuration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SupplySourceConfiguration getConfiguration() {
         return _configuration;
     }
@@ -76,7 +76,7 @@ public class UpdateSupplySourceRequest {
      *
      * @return capabilities
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SupplySourceCapabilities getCapabilities() {
         return capabilities;
     }

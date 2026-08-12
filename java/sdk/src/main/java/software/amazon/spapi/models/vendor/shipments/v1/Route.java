@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** This is used only for direct import shipment confirmations. */
-@Schema(description = "This is used only for direct import shipment confirmations.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "This is used only for direct import shipment confirmations.")
 public class Route {
     @SerializedName("stops")
     private List<Stop> stops = null;
@@ -43,7 +42,7 @@ public class Route {
      *
      * @return stops
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The port or location involved in transporting the cargo, as specified in transportation contracts or operational plans.")

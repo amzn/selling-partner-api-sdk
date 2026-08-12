@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information for tracking a return. */
-@Schema(description = "Information for tracking a return.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information for tracking a return.")
 public class TrackingInfo {
     @SerializedName("carrierName")
     private String carrierName = null;
@@ -35,7 +34,7 @@ public class TrackingInfo {
      *
      * @return carrierName
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The name of the third party courier service used to ship the return package.")
     public String getCarrierName() {
@@ -56,7 +55,7 @@ public class TrackingInfo {
      *
      * @return trackingId
      */
-    @Schema(required = true, description = "The tracking ID of the return package.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The tracking ID of the return package.")
     public String getTrackingId() {
         return trackingId;
     }

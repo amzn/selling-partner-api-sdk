@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Object representing a benefit that is excluded for a shipping offer or rate. */
-@Schema(description = "Object representing a benefit that is excluded for a shipping offer or rate.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Object representing a benefit that is excluded for a shipping offer or rate.")
 public class ExcludedBenefit {
     @SerializedName("benefit")
     private String benefit = null;
@@ -35,7 +35,7 @@ public class ExcludedBenefit {
      *
      * @return benefit
      */
-    @Schema(required = true, description = "benefit")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "benefit")
     public String getBenefit() {
         return benefit;
     }
@@ -54,7 +54,7 @@ public class ExcludedBenefit {
      *
      * @return reasonCodes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ExcludedBenefitReasonCodes getReasonCodes() {
         return reasonCodes;
     }

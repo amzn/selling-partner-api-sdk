@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** The channel name and marketplace ID. This is required only when multiple channels have the same location ID. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The channel name and marketplace ID. This is required only when multiple channels have the same location ID.")
 public class MarketplaceAttributes {
@@ -90,7 +89,8 @@ public class MarketplaceAttributes {
      *
      * @return channelName
      */
-    @Schema(description = "The name of the fulfillment channel in which to update inventory.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The name of the fulfillment channel in which to update inventory.")
     public ChannelNameEnum getChannelName() {
         return channelName;
     }
@@ -109,7 +109,8 @@ public class MarketplaceAttributes {
      *
      * @return marketplaceId
      */
-    @Schema(description = "The marketplace ID of the marketplace where you want to update inventory.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The marketplace ID of the marketplace where you want to update inventory.")
     public String getMarketplaceId() {
         return marketplaceId;
     }

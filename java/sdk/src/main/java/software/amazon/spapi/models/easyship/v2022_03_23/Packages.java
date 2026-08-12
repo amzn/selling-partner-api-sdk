@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A list of packages. */
-@Schema(description = "A list of packages.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of packages.")
 public class Packages {
     @SerializedName("packages")
     private List<ModelPackage> packages = null;
@@ -42,7 +41,7 @@ public class Packages {
      *
      * @return packages
      */
-    @Schema(required = true, description = "A list of packages.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of packages.")
     public List<ModelPackage> getPackages() {
         return packages;
     }

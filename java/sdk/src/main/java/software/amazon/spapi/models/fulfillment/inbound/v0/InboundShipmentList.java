@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of inbound shipment information. */
-@Schema(description = "A list of inbound shipment information.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of inbound shipment information.")
 public class InboundShipmentList extends ArrayList<InboundShipmentInfo> {
 
     @Override

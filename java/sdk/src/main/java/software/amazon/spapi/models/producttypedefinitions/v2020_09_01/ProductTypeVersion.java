@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.producttypedefinitions.v2020_09_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The version details for an Amazon product type. */
-@Schema(description = "The version details for an Amazon product type.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The version details for an Amazon product type.")
 public class ProductTypeVersion {
     @SerializedName("version")
     private String version = null;
@@ -38,7 +37,7 @@ public class ProductTypeVersion {
      *
      * @return version
      */
-    @Schema(required = true, description = "Version identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Version identifier.")
     public String getVersion() {
         return version;
     }
@@ -57,7 +56,7 @@ public class ProductTypeVersion {
      *
      * @return latest
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "When true, the version indicated by the version identifier is the latest available for the Amazon product type.")
@@ -80,7 +79,7 @@ public class ProductTypeVersion {
      *
      * @return releaseCandidate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "When true, the version indicated by the version identifier is the prerelease (release candidate) for the Amazon product type.")
     public Boolean getReleaseCandidate() {

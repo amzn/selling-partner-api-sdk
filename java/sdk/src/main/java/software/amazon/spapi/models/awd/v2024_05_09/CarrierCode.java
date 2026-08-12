@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Identifies the carrier that will deliver the shipment. */
-@Schema(description = "Identifies the carrier that will deliver the shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Identifies the carrier that will deliver the shipment.")
 public class CarrierCode {
     @SerializedName("carrierCodeType")
     private CarrierCodeType carrierCodeType = null;
@@ -35,7 +34,7 @@ public class CarrierCode {
      *
      * @return carrierCodeType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CarrierCodeType getCarrierCodeType() {
         return carrierCodeType;
     }
@@ -54,7 +53,7 @@ public class CarrierCode {
      *
      * @return carrierCodeValue
      */
-    @Schema(description = "Value of the carrier code.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Value of the carrier code.")
     public String getCarrierCodeValue() {
         return carrierCodeValue;
     }

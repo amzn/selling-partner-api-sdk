@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The address and contact details. */
-@Schema(description = "The address and contact details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The address and contact details.")
 public class AddressWithContact {
     @SerializedName("contactDetails")
     private ContactDetails contactDetails = null;
@@ -35,7 +34,7 @@ public class AddressWithContact {
      *
      * @return contactDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ContactDetails getContactDetails() {
         return contactDetails;
     }
@@ -54,7 +53,7 @@ public class AddressWithContact {
      *
      * @return address
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getAddress() {
         return address;
     }

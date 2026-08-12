@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The available delivery confirmation options, and the fee charged, if any. */
-@Schema(description = "The available delivery confirmation options, and the fee charged, if any.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The available delivery confirmation options, and the fee charged, if any.")
 public class AvailableDeliveryExperienceOption {
     @SerializedName("DeliveryExperienceOption")
     private DeliveryExperienceOption deliveryExperienceOption = null;
@@ -36,7 +36,7 @@ public class AvailableDeliveryExperienceOption {
      *
      * @return deliveryExperienceOption
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DeliveryExperienceOption getDeliveryExperienceOption() {
         return deliveryExperienceOption;
     }
@@ -55,7 +55,7 @@ public class AvailableDeliveryExperienceOption {
      *
      * @return charge
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public CurrencyAmount getCharge() {
         return charge;
     }

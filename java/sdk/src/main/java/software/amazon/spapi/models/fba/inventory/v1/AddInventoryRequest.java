@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fba.inventory.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The object with the list of Inventory to be added */
-@Schema(description = "The object with the list of Inventory to be added")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The object with the list of Inventory to be added")
 public class AddInventoryRequest {
     @SerializedName("inventoryItems")
     private InventoryItems inventoryItems = null;
@@ -32,7 +31,7 @@ public class AddInventoryRequest {
      *
      * @return inventoryItems
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InventoryItems getInventoryItems() {
         return inventoryItems;
     }

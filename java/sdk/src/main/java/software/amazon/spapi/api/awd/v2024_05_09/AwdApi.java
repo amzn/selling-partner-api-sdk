@@ -32,7 +32,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.awd.v2024_05_09.InboundEligibility;
 import software.amazon.spapi.models.awd.v2024_05_09.InboundOrder;
@@ -147,8 +146,7 @@ public class AwdApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call cancelInboundCall(
-            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call cancelInboundCall(String orderId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -190,8 +188,7 @@ public class AwdApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call cancelInboundValidateBeforeCall(
-            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call cancelInboundValidateBeforeCall(String orderId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
@@ -323,10 +320,10 @@ public class AwdApi {
     public okhttp3.Call cancelInboundAsync(String orderId, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = cancelInboundValidateBeforeCall(orderId, progressRequestListener);
@@ -351,8 +348,7 @@ public class AwdApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call checkInboundEligibilityCall(
-            InboundPackages body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call checkInboundEligibilityCall(InboundPackages body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -391,8 +387,7 @@ public class AwdApi {
     }
 
     private okhttp3.Call checkInboundEligibilityValidateBeforeCall(
-            InboundPackages body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            InboundPackages body, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -531,10 +526,10 @@ public class AwdApi {
             InboundPackages body, final ApiCallback<InboundEligibility> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = checkInboundEligibilityValidateBeforeCall(body, progressRequestListener);
@@ -560,8 +555,7 @@ public class AwdApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call confirmInboundCall(
-            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call confirmInboundCall(String orderId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -603,8 +597,7 @@ public class AwdApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call confirmInboundValidateBeforeCall(
-            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call confirmInboundValidateBeforeCall(String orderId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
@@ -737,10 +730,10 @@ public class AwdApi {
             String orderId, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = confirmInboundValidateBeforeCall(orderId, progressRequestListener);
@@ -765,8 +758,7 @@ public class AwdApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call confirmOutboundCall(
-            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call confirmOutboundCall(String orderId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -808,8 +800,7 @@ public class AwdApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call confirmOutboundValidateBeforeCall(
-            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call confirmOutboundValidateBeforeCall(String orderId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
@@ -948,10 +939,10 @@ public class AwdApi {
             String orderId, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = confirmOutboundValidateBeforeCall(orderId, progressRequestListener);
@@ -976,8 +967,7 @@ public class AwdApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call confirmReplenishmentOrderCall(
-            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call confirmReplenishmentOrderCall(String orderId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1020,8 +1010,7 @@ public class AwdApi {
     }
 
     private okhttp3.Call confirmReplenishmentOrderValidateBeforeCall(
-            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String orderId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
@@ -1125,10 +1114,10 @@ public class AwdApi {
             String orderId, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = confirmReplenishmentOrderValidateBeforeCall(orderId, progressRequestListener);
@@ -1153,8 +1142,7 @@ public class AwdApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call createInboundCall(
-            InboundOrderCreationData body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call createInboundCall(InboundOrderCreationData body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1193,7 +1181,7 @@ public class AwdApi {
     }
 
     private okhttp3.Call createInboundValidateBeforeCall(
-            InboundOrderCreationData body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            InboundOrderCreationData body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -1336,10 +1324,10 @@ public class AwdApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createInboundValidateBeforeCall(body, progressRequestListener);
@@ -1365,8 +1353,7 @@ public class AwdApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call createOutboundCall(
-            OutboundOrderCreationData body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call createOutboundCall(OutboundOrderCreationData body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1405,7 +1392,7 @@ public class AwdApi {
     }
 
     private okhttp3.Call createOutboundValidateBeforeCall(
-            OutboundOrderCreationData body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            OutboundOrderCreationData body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -1560,10 +1547,10 @@ public class AwdApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createOutboundValidateBeforeCall(body, progressRequestListener);
@@ -1590,8 +1577,7 @@ public class AwdApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call createReplenishmentOrderCall(
-            ReplenishmentOrderCreationData body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            ReplenishmentOrderCreationData body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1630,8 +1616,7 @@ public class AwdApi {
     }
 
     private okhttp3.Call createReplenishmentOrderValidateBeforeCall(
-            ReplenishmentOrderCreationData body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            ReplenishmentOrderCreationData body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -1752,10 +1737,10 @@ public class AwdApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createReplenishmentOrderValidateBeforeCall(body, progressRequestListener);
@@ -1781,8 +1766,7 @@ public class AwdApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getInboundCall(
-            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getInboundCall(String orderId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1823,8 +1807,7 @@ public class AwdApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call getInboundValidateBeforeCall(
-            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getInboundValidateBeforeCall(String orderId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
@@ -1956,10 +1939,10 @@ public class AwdApi {
             String orderId, final ApiCallback<InboundOrder> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getInboundValidateBeforeCall(orderId, progressRequestListener);
@@ -1988,9 +1971,7 @@ public class AwdApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getInboundShipmentCall(
-            String shipmentId,
-            String skuQuantities,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, String skuQuantities, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -2035,9 +2016,7 @@ public class AwdApi {
     }
 
     private okhttp3.Call getInboundShipmentValidateBeforeCall(
-            String shipmentId,
-            String skuQuantities,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, String skuQuantities, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'shipmentId' is set
@@ -2190,10 +2169,10 @@ public class AwdApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getInboundShipmentValidateBeforeCall(shipmentId, skuQuantities, progressRequestListener);
@@ -2223,10 +2202,7 @@ public class AwdApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getInboundShipmentLabelsCall(
-            String shipmentId,
-            String pageType,
-            String formatType,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, String pageType, String formatType, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -2271,10 +2247,7 @@ public class AwdApi {
     }
 
     private okhttp3.Call getInboundShipmentLabelsValidateBeforeCall(
-            String shipmentId,
-            String pageType,
-            String formatType,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, String pageType, String formatType, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'shipmentId' is set
@@ -2448,10 +2421,10 @@ public class AwdApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -2478,8 +2451,7 @@ public class AwdApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getLabelPageTypesCall(
-            String shipmentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getLabelPageTypesCall(String shipmentId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -2522,8 +2494,7 @@ public class AwdApi {
     }
 
     private okhttp3.Call getLabelPageTypesValidateBeforeCall(
-            String shipmentId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String shipmentId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'shipmentId' is set
         if (shipmentId == null) {
@@ -2668,10 +2639,10 @@ public class AwdApi {
             String shipmentId, final ApiCallback<ShipmentLabelPageTypes> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getLabelPageTypesValidateBeforeCall(shipmentId, progressRequestListener);
@@ -2697,8 +2668,7 @@ public class AwdApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getOutboundCall(
-            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getOutboundCall(String orderId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -2739,8 +2709,7 @@ public class AwdApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call getOutboundValidateBeforeCall(
-            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getOutboundValidateBeforeCall(String orderId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
@@ -2896,10 +2865,10 @@ public class AwdApi {
             String orderId, final ApiCallback<OutboundOrder> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getOutboundValidateBeforeCall(orderId, progressRequestListener);
@@ -2925,8 +2894,7 @@ public class AwdApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getReplenishmentOrderCall(
-            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getReplenishmentOrderCall(String orderId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -2969,8 +2937,7 @@ public class AwdApi {
     }
 
     private okhttp3.Call getReplenishmentOrderValidateBeforeCall(
-            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            String orderId, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
         if (orderId == null) {
@@ -3080,10 +3047,10 @@ public class AwdApi {
             String orderId, final ApiCallback<ReplenishmentOrder> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getReplenishmentOrderValidateBeforeCall(orderId, progressRequestListener);
@@ -3132,7 +3099,7 @@ public class AwdApi {
             OffsetDateTime updatedBefore,
             Integer maxResults,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -3188,7 +3155,7 @@ public class AwdApi {
             OffsetDateTime updatedBefore,
             Integer maxResults,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return listInboundShipmentsCall(
@@ -3480,10 +3447,10 @@ public class AwdApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listInboundShipmentsValidateBeforeCall(
@@ -3532,7 +3499,7 @@ public class AwdApi {
             String details,
             String nextToken,
             Integer maxResults,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -3582,7 +3549,7 @@ public class AwdApi {
             String details,
             String nextToken,
             Integer maxResults,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return listInventoryCall(sku, sortOrder, details, nextToken, maxResults, progressRequestListener);
@@ -3800,10 +3767,10 @@ public class AwdApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listInventoryValidateBeforeCall(
@@ -3848,7 +3815,7 @@ public class AwdApi {
             String sortOrder,
             Integer maxResults,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -3899,7 +3866,7 @@ public class AwdApi {
             String sortOrder,
             Integer maxResults,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return listOutboundsCall(
@@ -4151,10 +4118,10 @@ public class AwdApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listOutboundsValidateBeforeCall(
@@ -4198,7 +4165,7 @@ public class AwdApi {
             String sortOrder,
             Integer maxResults,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -4249,7 +4216,7 @@ public class AwdApi {
             String sortOrder,
             Integer maxResults,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return listReplenishmentOrdersCall(
@@ -4460,10 +4427,10 @@ public class AwdApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listReplenishmentOrdersValidateBeforeCall(
@@ -4491,10 +4458,7 @@ public class AwdApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call updateInboundCall(
-            String orderId,
-            InboundOrder body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call updateInboundCall(String orderId, InboundOrder body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -4535,9 +4499,7 @@ public class AwdApi {
     }
 
     private okhttp3.Call updateInboundValidateBeforeCall(
-            String orderId,
-            InboundOrder body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, InboundOrder body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
@@ -4689,10 +4651,10 @@ public class AwdApi {
             String orderId, InboundOrder body, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = updateInboundValidateBeforeCall(orderId, body, progressRequestListener);
@@ -4719,9 +4681,7 @@ public class AwdApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call updateInboundShipmentTransportDetailsCall(
-            String shipmentId,
-            TransportationDetails body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, TransportationDetails body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -4763,9 +4723,7 @@ public class AwdApi {
     }
 
     private okhttp3.Call updateInboundShipmentTransportDetailsValidateBeforeCall(
-            String shipmentId,
-            TransportationDetails body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String shipmentId, TransportationDetails body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'shipmentId' is set
@@ -4916,10 +4874,10 @@ public class AwdApi {
             String shipmentId, TransportationDetails body, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -4950,9 +4908,7 @@ public class AwdApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call updateOutboundCall(
-            String orderId,
-            OutboundOrder body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, OutboundOrder body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -4993,9 +4949,7 @@ public class AwdApi {
     }
 
     private okhttp3.Call updateOutboundValidateBeforeCall(
-            String orderId,
-            OutboundOrder body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, OutboundOrder body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
@@ -5162,10 +5116,10 @@ public class AwdApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = updateOutboundValidateBeforeCall(orderId, body, progressRequestListener);

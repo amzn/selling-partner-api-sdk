@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Sales ranks of an Amazon catalog item, grouped by &#x60;marketplaceId&#x60;. */
-@Schema(description = "Sales ranks of an Amazon catalog item, grouped by `marketplaceId`.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Sales ranks of an Amazon catalog item, grouped by `marketplaceId`.")
 public class ItemSalesRanksByMarketplace {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -41,7 +41,7 @@ public class ItemSalesRanksByMarketplace {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -71,7 +71,8 @@ public class ItemSalesRanksByMarketplace {
      *
      * @return classificationRanks
      */
-    @Schema(description = "Sales ranks of an Amazon catalog item for a `marketplaceId`, grouped by classification.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Sales ranks of an Amazon catalog item for a `marketplaceId`, grouped by classification.")
     public List<ItemClassificationSalesRank> getClassificationRanks() {
         return classificationRanks;
     }
@@ -98,7 +99,7 @@ public class ItemSalesRanksByMarketplace {
      *
      * @return displayGroupRanks
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Sales ranks of an Amazon catalog item for a `marketplaceId`, grouped by website display group.")
     public List<ItemDisplayGroupSalesRank> getDisplayGroupRanks() {

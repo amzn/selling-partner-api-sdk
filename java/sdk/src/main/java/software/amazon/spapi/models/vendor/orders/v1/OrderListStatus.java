@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.orders.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A list of order statuses. */
-@Schema(description = "A list of order statuses.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of order statuses.")
 public class OrderListStatus {
     @SerializedName("pagination")
     private Pagination pagination = null;
@@ -37,7 +36,7 @@ public class OrderListStatus {
      *
      * @return pagination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Pagination getPagination() {
         return pagination;
     }
@@ -64,7 +63,7 @@ public class OrderListStatus {
      *
      * @return ordersStatus
      */
-    @Schema(description = "Represents an order status within the OrderListStatus.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Represents an order status within the OrderListStatus.")
     public List<OrderStatus> getOrdersStatus() {
         return ordersStatus;
     }

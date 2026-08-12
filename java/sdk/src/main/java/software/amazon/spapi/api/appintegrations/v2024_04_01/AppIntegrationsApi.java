@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.appintegrations.v2024_04_01.CreateNotificationRequest;
 import software.amazon.spapi.models.appintegrations.v2024_04_01.CreateNotificationResponse;
@@ -71,7 +70,7 @@ public class AppIntegrationsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call createNotificationCall(
-            CreateNotificationRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateNotificationRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -110,7 +109,7 @@ public class AppIntegrationsApi {
     }
 
     private okhttp3.Call createNotificationValidateBeforeCall(
-            CreateNotificationRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateNotificationRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -251,10 +250,10 @@ public class AppIntegrationsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createNotificationValidateBeforeCall(body, progressRequestListener);
@@ -282,7 +281,7 @@ public class AppIntegrationsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call deleteNotificationsCall(
-            DeleteNotificationsRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            DeleteNotificationsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -322,7 +321,7 @@ public class AppIntegrationsApi {
     }
 
     private okhttp3.Call deleteNotificationsValidateBeforeCall(
-            DeleteNotificationsRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            DeleteNotificationsRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -458,10 +457,10 @@ public class AppIntegrationsApi {
             DeleteNotificationsRequest body, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = deleteNotificationsValidateBeforeCall(body, progressRequestListener);
@@ -489,9 +488,7 @@ public class AppIntegrationsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call recordActionFeedbackCall(
-            String notificationId,
-            RecordActionFeedbackRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String notificationId, RecordActionFeedbackRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -533,9 +530,7 @@ public class AppIntegrationsApi {
     }
 
     private okhttp3.Call recordActionFeedbackValidateBeforeCall(
-            String notificationId,
-            RecordActionFeedbackRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String notificationId, RecordActionFeedbackRequest body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'notificationId' is set
@@ -686,10 +681,10 @@ public class AppIntegrationsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = recordActionFeedbackValidateBeforeCall(notificationId, body, progressRequestListener);

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Tax calculation breakdowns for an order item. */
-@Schema(description = "Tax calculation breakdowns for an order item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Tax calculation breakdowns for an order item.")
 public class ItemTaxCalculationBreakdown {
     @SerializedName("reportingScheme")
     private String reportingScheme = null;
@@ -34,7 +33,7 @@ public class ItemTaxCalculationBreakdown {
      *
      * @return reportingScheme
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The tax reporting scheme applied to this order item.  **Possible values**: - `UOSS` (Union one stop shop. The item being purchased is held in the EU for shipment) - `IOSS` (Import one stop shop. The item being purchased is not held in the EU for shipment)")
     public String getReportingScheme() {

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** The time interval for calculating the payout amount. */
-@Schema(description = "The time interval for calculating the payout amount.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The time interval for calculating the payout amount.")
 public class Period {
     @SerializedName("startDate")
     private OffsetDateTime startDate = null;
@@ -35,7 +35,7 @@ public class Period {
      *
      * @return startDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
@@ -57,7 +57,7 @@ public class Period {
      *
      * @return endDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getEndDate() {

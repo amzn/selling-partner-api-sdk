@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The effects of a topic on a browse node&#39;s star rating. */
-@Schema(description = "The effects of a topic on a browse node's star rating.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The effects of a topic on a browse node's star rating.")
 public class BrowseNodeStarRatingImpact {
     @SerializedName("allProducts")
     private Float allProducts = null;
@@ -33,7 +32,7 @@ public class BrowseNodeStarRatingImpact {
      *
      * @return allProducts
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The effect of the topic on the star rating for all products in this browse node. This value can be positive or negative.")

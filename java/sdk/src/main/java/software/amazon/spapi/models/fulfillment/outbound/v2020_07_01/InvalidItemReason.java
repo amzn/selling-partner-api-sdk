@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The reason that the item is invalid for return. */
-@Schema(description = "The reason that the item is invalid for return.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The reason that the item is invalid for return.")
 public class InvalidItemReason {
     @SerializedName("invalidItemReasonCode")
     private InvalidItemReasonCode invalidItemReasonCode = null;
@@ -35,7 +34,7 @@ public class InvalidItemReason {
      *
      * @return invalidItemReasonCode
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public InvalidItemReasonCode getInvalidItemReasonCode() {
         return invalidItemReasonCode;
     }
@@ -54,7 +53,9 @@ public class InvalidItemReason {
      *
      * @return description
      */
-    @Schema(required = true, description = "A human readable description of the invalid item reason code.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A human readable description of the invalid item reason code.")
     public String getDescription() {
         return description;
     }

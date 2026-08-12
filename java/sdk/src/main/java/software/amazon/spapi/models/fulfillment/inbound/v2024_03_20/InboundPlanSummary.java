@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A light-weight inbound plan. */
-@Schema(description = "A light-weight inbound plan.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A light-weight inbound plan.")
 public class InboundPlanSummary {
     @SerializedName("createdAt")
     private OffsetDateTime createdAt = null;
@@ -54,7 +54,7 @@ public class InboundPlanSummary {
      *
      * @return createdAt
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The time at which the inbound plan was created. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ssZ`.")
@@ -76,7 +76,7 @@ public class InboundPlanSummary {
      *
      * @return inboundPlanId
      */
-    @Schema(required = true, description = "Identifier of an inbound plan.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Identifier of an inbound plan.")
     public String getInboundPlanId() {
         return inboundPlanId;
     }
@@ -97,7 +97,7 @@ public class InboundPlanSummary {
      *
      * @return lastUpdatedAt
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The time at which the inbound plan was last updated. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ssZ`.")
@@ -127,7 +127,7 @@ public class InboundPlanSummary {
      *
      * @return marketplaceIds
      */
-    @Schema(required = true, description = "A list of marketplace IDs.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of marketplace IDs.")
     public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }
@@ -146,7 +146,9 @@ public class InboundPlanSummary {
      *
      * @return name
      */
-    @Schema(required = true, description = "Human-readable name of the inbound plan.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Human-readable name of the inbound plan.")
     public String getName() {
         return name;
     }
@@ -165,7 +167,7 @@ public class InboundPlanSummary {
      *
      * @return sourceAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getSourceAddress() {
         return sourceAddress;
     }
@@ -185,7 +187,7 @@ public class InboundPlanSummary {
      *
      * @return status
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The current status of the inbound plan. Possible values: `ACTIVE`, `VOIDED`, `SHIPPED`, `ERRORED`.")

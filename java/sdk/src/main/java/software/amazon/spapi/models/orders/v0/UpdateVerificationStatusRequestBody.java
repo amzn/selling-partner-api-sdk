@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The updated values of the &#x60;VerificationStatus&#x60; field. */
-@Schema(description = "The updated values of the `VerificationStatus` field.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The updated values of the `VerificationStatus` field.")
 public class UpdateVerificationStatusRequestBody {
     @SerializedName("status")
     private VerificationStatus status = null;
@@ -41,7 +40,7 @@ public class UpdateVerificationStatusRequestBody {
      *
      * @return status
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public VerificationStatus getStatus() {
         return status;
     }
@@ -60,7 +59,9 @@ public class UpdateVerificationStatusRequestBody {
      *
      * @return externalReviewerId
      */
-    @Schema(required = true, description = "The identifier of the order's regulated information reviewer.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The identifier of the order's regulated information reviewer.")
     public String getExternalReviewerId() {
         return externalReviewerId;
     }
@@ -80,7 +81,7 @@ public class UpdateVerificationStatusRequestBody {
      *
      * @return rejectionReasonId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The unique identifier of the rejection reason used for rejecting the order's regulated information. Only required if the new status is rejected.")
     public String getRejectionReasonId() {
@@ -101,7 +102,7 @@ public class UpdateVerificationStatusRequestBody {
      *
      * @return verificationDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public VerificationDetails getVerificationDetails() {
         return verificationDetails;
     }

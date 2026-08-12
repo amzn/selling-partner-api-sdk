@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Detailed proceeds breakdown for a specific order item. */
-@Schema(description = "Detailed proceeds breakdown for a specific order item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Detailed proceeds breakdown for a specific order item.")
 public class ItemProceedsBreakdown {
     @SerializedName("type")
     private String type = null;
@@ -41,7 +40,7 @@ public class ItemProceedsBreakdown {
      *
      * @return type
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Category classification of the proceeds breakdown.   **Possible values**: `ITEM`, `SHIPPING`, `GIFT_WRAP`, `COD_FEE`, `OTHER`, `TAX`, `DISCOUNT`")
@@ -63,7 +62,7 @@ public class ItemProceedsBreakdown {
      *
      * @return subtotal
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getSubtotal() {
         return subtotal;
     }
@@ -90,7 +89,7 @@ public class ItemProceedsBreakdown {
      *
      * @return detailedBreakdowns
      */
-    @Schema(description = "Further granular breakdown of the subtotal.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Further granular breakdown of the subtotal.")
     public List<ItemProceedsDetailedBreakdown> getDetailedBreakdowns() {
         return detailedBreakdowns;
     }

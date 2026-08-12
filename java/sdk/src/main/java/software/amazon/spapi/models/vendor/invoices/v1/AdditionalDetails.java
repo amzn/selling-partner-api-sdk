@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Additional information provided by the selling party for tax-related or any other purpose. */
-@Schema(description = "Additional information provided by the selling party for tax-related or any other purpose.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Additional information provided by the selling party for tax-related or any other purpose.")
 public class AdditionalDetails {
     /** The type of the additional information provided by the selling party. */
     @JsonAdapter(TypeEnum.Adapter.class)
@@ -91,7 +91,9 @@ public class AdditionalDetails {
      *
      * @return type
      */
-    @Schema(required = true, description = "The type of the additional information provided by the selling party.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The type of the additional information provided by the selling party.")
     public TypeEnum getType() {
         return type;
     }
@@ -110,7 +112,9 @@ public class AdditionalDetails {
      *
      * @return detail
      */
-    @Schema(required = true, description = "The detail of the additional information provided by the selling party.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The detail of the additional information provided by the selling party.")
     public String getDetail() {
         return detail;
     }
@@ -129,7 +133,7 @@ public class AdditionalDetails {
      *
      * @return languageCode
      */
-    @Schema(description = "The language code of the additional information detail.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The language code of the additional information detail.")
     public String getLanguageCode() {
         return languageCode;
     }

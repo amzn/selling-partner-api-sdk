@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Capacity slots represented in a format similar to availability rules. */
-@Schema(description = "Capacity slots represented in a format similar to availability rules.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Capacity slots represented in a format similar to availability rules.")
 public class RangeSlot {
     @SerializedName("startDateTime")
     private OffsetDateTime startDateTime = null;
@@ -38,7 +39,8 @@ public class RangeSlot {
      *
      * @return startDateTime
      */
-    @Schema(description = "Start date time of slot in ISO 8601 format with precision of seconds.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Start date time of slot in ISO 8601 format with precision of seconds.")
     public OffsetDateTime getStartDateTime() {
         return startDateTime;
     }
@@ -57,7 +59,8 @@ public class RangeSlot {
      *
      * @return endDateTime
      */
-    @Schema(description = "End date time of slot in ISO 8601 format with precision of seconds.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "End date time of slot in ISO 8601 format with precision of seconds.")
     public OffsetDateTime getEndDateTime() {
         return endDateTime;
     }
@@ -76,7 +79,7 @@ public class RangeSlot {
      *
      * @return capacity
      */
-    @Schema(description = "Capacity of the slot.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Capacity of the slot.")
     public Integer getCapacity() {
         return capacity;
     }

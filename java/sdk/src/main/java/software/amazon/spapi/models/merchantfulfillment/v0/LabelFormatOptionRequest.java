@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Whether to include a packing slip. */
-@Schema(description = "Whether to include a packing slip.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Whether to include a packing slip.")
 public class LabelFormatOptionRequest {
     @SerializedName("IncludePackingSlipWithLabel")
     private Boolean includePackingSlipWithLabel = null;
@@ -32,7 +31,7 @@ public class LabelFormatOptionRequest {
      *
      * @return includePackingSlipWithLabel
      */
-    @Schema(description = "When true, include a packing slip with the label.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, include a packing slip with the label.")
     public Boolean getIncludePackingSlipWithLabel() {
         return includePackingSlipWithLabel;
     }

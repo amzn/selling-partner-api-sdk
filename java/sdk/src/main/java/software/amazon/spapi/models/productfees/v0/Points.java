@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.productfees.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * The number of Amazon Points offered with the purchase of an item.The Amazon Points program is only available in
  * Japan.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The number of Amazon Points offered with the purchase of an item.The Amazon Points program is only available in Japan.")
 public class Points {
@@ -40,7 +39,7 @@ public class Points {
      *
      * @return pointsNumber
      */
-    @Schema(description = "The number of Amazon Points")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of Amazon Points")
     public Integer getPointsNumber() {
         return pointsNumber;
     }
@@ -59,7 +58,7 @@ public class Points {
      *
      * @return pointsMonetaryValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MoneyType getPointsMonetaryValue() {
         return pointsMonetaryValue;
     }

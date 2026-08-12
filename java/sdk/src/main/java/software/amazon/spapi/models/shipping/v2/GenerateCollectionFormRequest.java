@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request schema Call to generate the collection form. */
-@Schema(description = "The request schema Call to generate the collection form.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request schema Call to generate the collection form.")
 public class GenerateCollectionFormRequest {
     @SerializedName("clientReferenceDetails")
     private ClientReferenceDetails clientReferenceDetails = null;
@@ -38,7 +37,7 @@ public class GenerateCollectionFormRequest {
      *
      * @return clientReferenceDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ClientReferenceDetails getClientReferenceDetails() {
         return clientReferenceDetails;
     }
@@ -57,7 +56,9 @@ public class GenerateCollectionFormRequest {
      *
      * @return carrierId
      */
-    @Schema(required = true, description = "The carrier identifier for the offering, provided by the carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The carrier identifier for the offering, provided by the carrier.")
     public String getCarrierId() {
         return carrierId;
     }
@@ -76,7 +77,7 @@ public class GenerateCollectionFormRequest {
      *
      * @return shipFromAddress
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getShipFromAddress() {
         return shipFromAddress;
     }

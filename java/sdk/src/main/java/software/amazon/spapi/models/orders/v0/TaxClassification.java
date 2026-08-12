@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The tax classification of the order. */
-@Schema(description = "The tax classification of the order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The tax classification of the order.")
 public class TaxClassification {
     @SerializedName("Name")
     private String name = null;
@@ -35,7 +34,7 @@ public class TaxClassification {
      *
      * @return name
      */
-    @Schema(description = "The type of tax.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of tax.")
     public String getName() {
         return name;
     }
@@ -54,7 +53,7 @@ public class TaxClassification {
      *
      * @return value
      */
-    @Schema(description = "The buyer's tax identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The buyer's tax identifier.")
     public String getValue() {
         return value;
     }

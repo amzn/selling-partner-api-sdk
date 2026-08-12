@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** AWD inventory payload. */
-@Schema(description = "AWD inventory payload.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "AWD inventory payload.")
 public class InventoryListing {
     @SerializedName("inventory")
     private List<InventorySummary> inventory = null;
@@ -45,7 +44,7 @@ public class InventoryListing {
      *
      * @return inventory
      */
-    @Schema(required = true, description = "List of inventory summaries.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "List of inventory summaries.")
     public List<InventorySummary> getInventory() {
         return inventory;
     }
@@ -67,7 +66,7 @@ public class InventoryListing {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A token that is used to retrieve the next page of results. The response includes `nextToken` when the number of results exceeds the specified `maxResults` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.")
     public String getNextToken() {

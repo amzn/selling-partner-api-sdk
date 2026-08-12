@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The item review trend metrics. */
-@Schema(description = "The item review trend metrics.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The item review trend metrics.")
 public class ReviewTrendMetrics {
     @SerializedName("occurrencePercentage")
     private Float occurrencePercentage = null;
@@ -32,7 +31,9 @@ public class ReviewTrendMetrics {
      *
      * @return occurrencePercentage
      */
-    @Schema(required = true, description = "The percentage of reviews that mention the topic.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The percentage of reviews that mention the topic.")
     public Float getOccurrencePercentage() {
         return occurrencePercentage;
     }

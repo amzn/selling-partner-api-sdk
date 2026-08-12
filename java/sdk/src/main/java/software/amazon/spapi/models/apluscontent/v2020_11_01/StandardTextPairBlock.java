@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The A+ Content standard label and description block, which contains a pair of text components. */
-@Schema(description = "The A+ Content standard label and description block, which contains a pair of text components.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The A+ Content standard label and description block, which contains a pair of text components.")
 public class StandardTextPairBlock {
     @SerializedName("label")
     private TextComponent label = null;
@@ -35,7 +35,7 @@ public class StandardTextPairBlock {
      *
      * @return label
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TextComponent getLabel() {
         return label;
     }
@@ -54,7 +54,7 @@ public class StandardTextPairBlock {
      *
      * @return description
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TextComponent getDescription() {
         return description;
     }

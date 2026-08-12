@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Object contains customised data requested by a shipper to be printed on a shipping label. */
-@Schema(description = "Object contains customised data requested by a shipper to be printed on a shipping label.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Object contains customised data requested by a shipper to be printed on a shipping label.")
 public class RequestedLabelCustomization {
     @SerializedName("requestAttributes")
     private RequestAttributes requestAttributes = null;
@@ -32,7 +32,7 @@ public class RequestedLabelCustomization {
      *
      * @return requestAttributes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RequestAttributes getRequestAttributes() {
         return requestAttributes;
     }

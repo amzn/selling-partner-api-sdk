@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * A list of delivery offers, including offer expiration, earliest and latest date and time range, and the delivery
  * offer policy.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A list of delivery offers, including offer expiration, earliest and latest date and time range, and the delivery offer policy.")
 public class GetDeliveryOffersResult {
@@ -37,7 +36,7 @@ public class GetDeliveryOffersResult {
      *
      * @return deliveryOffers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DeliveryOffersList getDeliveryOffers() {
         return deliveryOffers;
     }

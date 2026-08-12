@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information that identifies an item. */
-@Schema(description = "Information that identifies an item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information that identifies an item.")
 public class ItemIdentifier {
     @SerializedName("MarketplaceId")
     private String marketplaceId = null;
@@ -41,7 +40,7 @@ public class ItemIdentifier {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "A marketplace identifier. Specifies the marketplace from which prices are returned.")
     public String getMarketplaceId() {
@@ -62,7 +61,8 @@ public class ItemIdentifier {
      *
      * @return ASIN
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getASIN() {
         return ASIN;
     }
@@ -81,7 +81,7 @@ public class ItemIdentifier {
      *
      * @return sellerSKU
      */
-    @Schema(description = "The seller stock keeping unit (SKU) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller stock keeping unit (SKU) of the item.")
     public String getSellerSKU() {
         return sellerSKU;
     }
@@ -100,7 +100,7 @@ public class ItemIdentifier {
      *
      * @return itemCondition
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ConditionType getItemCondition() {
         return itemCondition;
     }

@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request body schema for the &#x60;submitFulfillmentOrderStatusUpdate&#x60; operation. */
-@Schema(description = "The request body schema for the `submitFulfillmentOrderStatusUpdate` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request body schema for the `submitFulfillmentOrderStatusUpdate` operation.")
 public class SubmitFulfillmentOrderStatusUpdateRequest {
     @SerializedName("fulfillmentOrderStatus")
     private FulfillmentOrderStatus fulfillmentOrderStatus = null;
@@ -33,7 +33,7 @@ public class SubmitFulfillmentOrderStatusUpdateRequest {
      *
      * @return fulfillmentOrderStatus
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FulfillmentOrderStatus getFulfillmentOrderStatus() {
         return fulfillmentOrderStatus;
     }

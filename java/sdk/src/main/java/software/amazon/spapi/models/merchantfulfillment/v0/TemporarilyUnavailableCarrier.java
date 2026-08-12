@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A carrier who is temporarily unavailable, most likely due to a service outage experienced by the carrier. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A carrier who is temporarily unavailable, most likely due to a service outage experienced by the carrier.")
 public class TemporarilyUnavailableCarrier {
@@ -34,7 +33,7 @@ public class TemporarilyUnavailableCarrier {
      *
      * @return carrierName
      */
-    @Schema(required = true, description = "The name of the carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the carrier.")
     public String getCarrierName() {
         return carrierName;
     }

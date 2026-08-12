@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Execution errors associated with the outbound order. This field will be populated if the order failed validation. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Execution errors associated with the outbound order. This field will be populated if the order failed validation.")
 public class OutboundExecutionError {
@@ -42,7 +41,7 @@ public class OutboundExecutionError {
      *
      * @return failureCode
      */
-    @Schema(required = true, description = "Failure code details for the error.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Failure code details for the error.")
     public String getFailureCode() {
         return failureCode;
     }
@@ -69,7 +68,7 @@ public class OutboundExecutionError {
      *
      * @return failureReasons
      */
-    @Schema(required = true, description = "Failure reasons for the error.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Failure reasons for the error.")
     public List<String> getFailureReasons() {
         return failureReasons;
     }
@@ -88,7 +87,7 @@ public class OutboundExecutionError {
      *
      * @return sku
      */
-    @Schema(description = "MSKU associated with the error.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "MSKU associated with the error.")
     public String getSku() {
         return sku;
     }

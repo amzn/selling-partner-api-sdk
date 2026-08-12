@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Representation of a location used within the inbounding experience. */
-@Schema(description = "Representation of a location used within the inbounding experience.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Representation of a location used within the inbounding experience.")
 public class Region {
     @SerializedName("countryCode")
     private String countryCode = null;
@@ -38,7 +38,7 @@ public class Region {
      *
      * @return countryCode
      */
-    @Schema(description = "ISO 3166 standard alpha-2 country code.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "ISO 3166 standard alpha-2 country code.")
     public String getCountryCode() {
         return countryCode;
     }
@@ -57,7 +57,7 @@ public class Region {
      *
      * @return state
      */
-    @Schema(description = "State.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "State.")
     public String getState() {
         return state;
     }
@@ -76,7 +76,8 @@ public class Region {
      *
      * @return warehouseId
      */
-    @Schema(description = "An identifier for a warehouse, such as a FC, IXD, upstream storage.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "An identifier for a warehouse, such as a FC, IXD, upstream storage.")
     public String getWarehouseId() {
         return warehouseId;
     }

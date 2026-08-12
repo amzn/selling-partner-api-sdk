@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The reference price for the specified ASIN &#x60;marketplaceId&#x60; combination. */
-@Schema(description = "The reference price for the specified ASIN `marketplaceId` combination.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The reference price for the specified ASIN `marketplaceId` combination.")
 public class ReferencePrice {
     @SerializedName("name")
     private String name = null;
@@ -37,7 +37,7 @@ public class ReferencePrice {
      *
      * @return name
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Reference price type (e.g., `CompetitivePriceThreshold`, `WasPrice`, `CompetitivePrice`). For definitions, refer to the [Product Pricing API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api).")
@@ -59,7 +59,7 @@ public class ReferencePrice {
      *
      * @return price
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public MoneyType getPrice() {
         return price;
     }

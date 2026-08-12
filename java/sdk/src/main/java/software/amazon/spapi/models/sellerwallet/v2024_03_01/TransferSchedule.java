@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Transfer schedule details and related historical details. */
-@Schema(description = "Transfer schedule details and related historical details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Transfer schedule details and related historical details.")
 public class TransferSchedule {
     @SerializedName("transferScheduleId")
     private String transferScheduleId = null;
@@ -55,7 +54,9 @@ public class TransferSchedule {
      *
      * @return transferScheduleId
      */
-    @Schema(required = true, description = "The unique identifier provided by Amazon to the scheduled transfer.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unique identifier provided by Amazon to the scheduled transfer.")
     public String getTransferScheduleId() {
         return transferScheduleId;
     }
@@ -74,7 +75,7 @@ public class TransferSchedule {
      *
      * @return transactionType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TransactionType getTransactionType() {
         return transactionType;
     }
@@ -93,7 +94,7 @@ public class TransferSchedule {
      *
      * @return transactionSourceAccount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TransactionAccount getTransactionSourceAccount() {
         return transactionSourceAccount;
     }
@@ -112,7 +113,7 @@ public class TransferSchedule {
      *
      * @return transactionDestinationAccount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TransactionAccount getTransactionDestinationAccount() {
         return transactionDestinationAccount;
     }
@@ -131,7 +132,7 @@ public class TransferSchedule {
      *
      * @return transferScheduleStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TransferScheduleStatus getTransferScheduleStatus() {
         return transferScheduleStatus;
     }
@@ -150,7 +151,7 @@ public class TransferSchedule {
      *
      * @return transferScheduleInformation
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TransferScheduleInformation getTransferScheduleInformation() {
         return transferScheduleInformation;
     }
@@ -169,7 +170,7 @@ public class TransferSchedule {
      *
      * @return paymentPreference
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PaymentPreference getPaymentPreference() {
         return paymentPreference;
     }
@@ -196,7 +197,7 @@ public class TransferSchedule {
      *
      * @return transferScheduleFailures
      */
-    @Schema(required = true, description = "A list of transfer schedule failures.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A list of transfer schedule failures.")
     public List<TransferScheduleFailures> getTransferScheduleFailures() {
         return transferScheduleFailures;
     }

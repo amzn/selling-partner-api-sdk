@@ -17,7 +17,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ import java.util.Objects;
  * Shipping label information for an order, including the purchase order number, selling party, ship from party, label
  * format, and package details.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Shipping label information for an order, including the purchase order number, selling party, ship from party, label format, and package details.")
 public class ShippingLabel {
@@ -102,7 +101,9 @@ public class ShippingLabel {
      *
      * @return purchaseOrderNumber
      */
-    @Schema(required = true, description = "This field will contain the Purchase Order Number for this order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "This field will contain the Purchase Order Number for this order.")
     public String getPurchaseOrderNumber() {
         return purchaseOrderNumber;
     }
@@ -121,7 +122,7 @@ public class ShippingLabel {
      *
      * @return sellingParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -140,7 +141,7 @@ public class ShippingLabel {
      *
      * @return shipFromParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getShipFromParty() {
         return shipFromParty;
     }
@@ -159,7 +160,7 @@ public class ShippingLabel {
      *
      * @return labelFormat
      */
-    @Schema(required = true, description = "Format of the label.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Format of the label.")
     public LabelFormatEnum getLabelFormat() {
         return labelFormat;
     }
@@ -186,7 +187,9 @@ public class ShippingLabel {
      *
      * @return labelData
      */
-    @Schema(required = true, description = "Provides the details of the packages in this shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Provides the details of the packages in this shipment.")
     public List<LabelData> getLabelData() {
         return labelData;
     }

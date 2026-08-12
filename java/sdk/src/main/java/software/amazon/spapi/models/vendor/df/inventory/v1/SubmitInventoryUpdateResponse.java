@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vendor.df.inventory.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the submitInventoryUpdate operation. */
-@Schema(description = "The response schema for the submitInventoryUpdate operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response schema for the submitInventoryUpdate operation.")
 public class SubmitInventoryUpdateResponse {
     @SerializedName("payload")
     private TransactionReference payload = null;
@@ -35,7 +35,7 @@ public class SubmitInventoryUpdateResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TransactionReference getPayload() {
         return payload;
     }
@@ -54,7 +54,7 @@ public class SubmitInventoryUpdateResponse {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

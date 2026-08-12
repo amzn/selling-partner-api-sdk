@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** A currency type and amount. */
-@Schema(description = "A currency type and amount.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A currency type and amount.")
 public class Currency {
     @SerializedName("currencyCode")
     private String currencyCode = null;
@@ -35,7 +35,7 @@ public class Currency {
      *
      * @return currencyCode
      */
-    @Schema(description = "The three-digit currency code in ISO 4217 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The three-digit currency code in ISO 4217 format.")
     public String getCurrencyCode() {
         return currencyCode;
     }
@@ -54,7 +54,7 @@ public class Currency {
      *
      * @return currencyAmount
      */
-    @Schema(description = "A decimal number, such as an amount or FX rate.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A decimal number, such as an amount or FX rate.")
     public BigDecimal getCurrencyAmount() {
         return currencyAmount;
     }

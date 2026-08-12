@@ -12,11 +12,11 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.LinkedHashSet;
 import java.util.Objects;
 
 /** A set of content decorators. */
-@Schema(description = "A set of content decorators.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A set of content decorators.")
 public class DecoratorSet extends LinkedHashSet<Decorator> {
 
     @Override

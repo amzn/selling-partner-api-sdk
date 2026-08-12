@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of LinkableAccountType */
-@Schema(description = "A list of LinkableAccountType")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of LinkableAccountType")
 public class LinkableAccountTypeList extends ArrayList<LinkableAccountType> {
 
     @Override

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vehicles.v2024_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Combination of vehicle standard and id that can uniquely identify a vehicle from Amazon&#39;s catalog. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Combination of vehicle standard and id that can uniquely identify a vehicle from Amazon's catalog.")
 public class VehicleIdentifiers {
@@ -37,7 +36,7 @@ public class VehicleIdentifiers {
      *
      * @return standard
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public VehicleStandard getStandard() {
         return standard;
     }
@@ -56,7 +55,7 @@ public class VehicleIdentifiers {
      *
      * @return value
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "Id that can uniquely identify a vehicle based the vehicle identification standard.")
     public String getValue() {

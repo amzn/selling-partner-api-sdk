@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Represents an AWD inbound shipment. */
-@Schema(description = "Represents an AWD inbound shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Represents an AWD inbound shipment.")
 public class InboundShipment {
     @SerializedName("carrierCode")
     private CarrierCode carrierCode = null;
@@ -79,7 +79,7 @@ public class InboundShipment {
      *
      * @return carrierCode
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CarrierCode getCarrierCode() {
         return carrierCode;
     }
@@ -99,7 +99,7 @@ public class InboundShipment {
      *
      * @return createdAt
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Timestamp when the shipment was created. The date is returned in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.")
     public OffsetDateTime getCreatedAt() {
@@ -120,7 +120,7 @@ public class InboundShipment {
      *
      * @return destinationAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getDestinationAddress() {
         return destinationAddress;
     }
@@ -140,7 +140,7 @@ public class InboundShipment {
      *
      * @return externalReferenceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Client-provided reference ID that can correlate this shipment to client resources. For example, to map this shipment to an internal bookkeeping order record.")
     public String getExternalReferenceId() {
@@ -161,7 +161,9 @@ public class InboundShipment {
      *
      * @return orderId
      */
-    @Schema(required = true, description = "The AWD inbound order ID that this inbound shipment belongs to.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The AWD inbound order ID that this inbound shipment belongs to.")
     public String getOrderId() {
         return orderId;
     }
@@ -180,7 +182,7 @@ public class InboundShipment {
      *
      * @return originAddress
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getOriginAddress() {
         return originAddress;
     }
@@ -207,7 +209,8 @@ public class InboundShipment {
      *
      * @return receivedQuantity
      */
-    @Schema(description = "Quantity received (at the receiving end) as part of this shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Quantity received (at the receiving end) as part of this shipment.")
     public List<InventoryQuantity> getReceivedQuantity() {
         return receivedQuantity;
     }
@@ -226,7 +229,7 @@ public class InboundShipment {
      *
      * @return shipBy
      */
-    @Schema(description = "Timestamp when the shipment will be shipped.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Timestamp when the shipment will be shipped.")
     public OffsetDateTime getShipBy() {
         return shipBy;
     }
@@ -254,7 +257,9 @@ public class InboundShipment {
      *
      * @return shipmentContainerQuantities
      */
-    @Schema(required = true, description = "Packages that are part of this shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Packages that are part of this shipment.")
     public List<DistributionPackageQuantity> getShipmentContainerQuantities() {
         return shipmentContainerQuantities;
     }
@@ -273,7 +278,7 @@ public class InboundShipment {
      *
      * @return shipmentId
      */
-    @Schema(required = true, description = "Unique shipment ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Unique shipment ID.")
     public String getShipmentId() {
         return shipmentId;
     }
@@ -301,7 +306,7 @@ public class InboundShipment {
      *
      * @return shipmentSkuQuantities
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Quantity details at SKU level for the shipment. This attribute will only appear if the skuQuantities parameter in the request is set to SHOW.")
     public List<SkuQuantity> getShipmentSkuQuantities() {
@@ -323,7 +328,7 @@ public class InboundShipment {
      *
      * @return destinationRegion
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Assigned region where the order will be shipped. This can differ from what was passed as preference. AWD currently supports following region IDs: [us-west, us-east, us-southcentral, us-southeast]")
     public String getDestinationRegion() {
@@ -344,7 +349,7 @@ public class InboundShipment {
      *
      * @return shipmentStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public InboundShipmentStatus getShipmentStatus() {
         return shipmentStatus;
     }
@@ -363,7 +368,7 @@ public class InboundShipment {
      *
      * @return trackingId
      */
-    @Schema(description = "Carrier-unique tracking ID for this shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Carrier-unique tracking ID for this shipment.")
     public String getTrackingId() {
         return trackingId;
     }
@@ -383,7 +388,7 @@ public class InboundShipment {
      *
      * @return updatedAt
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Timestamp when the shipment was updated. The date is returned in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.")
     public OffsetDateTime getUpdatedAt() {
@@ -405,7 +410,7 @@ public class InboundShipment {
      *
      * @return warehouseReferenceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "An AWD-provided reference ID that you can use to interact with the warehouse. For example, a carrier appointment booking.")
     public String getWarehouseReferenceId() {

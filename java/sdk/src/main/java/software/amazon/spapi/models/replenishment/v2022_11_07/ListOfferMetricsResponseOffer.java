@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** An object which contains offer metrics. */
-@Schema(description = "An object which contains offer metrics.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An object which contains offer metrics.")
 public class ListOfferMetricsResponseOffer {
     @SerializedName("asin")
     private String asin = null;
@@ -92,7 +92,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return asin
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN).")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon Standard Identification Number (ASIN).")
     public String getAsin() {
         return asin;
     }
@@ -111,7 +111,8 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return sku
      */
-    @Schema(description = "The SKU. This property is only supported for sellers and not for vendors.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The SKU. This property is only supported for sellers and not for vendors.")
     public String getSku() {
         return sku;
     }
@@ -130,7 +131,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return fulfillmentChannelType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FulfillmentChannelType getFulfillmentChannelType() {
         return fulfillmentChannelType;
     }
@@ -149,7 +150,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return brandName
      */
-    @Schema(description = "The brand name associated with the offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The brand name associated with the offer.")
     public String getBrandName() {
         return brandName;
     }
@@ -168,7 +169,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return productGroup
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The product group associated with the offer. This property is only supported for vendors and not for sellers.")
     public String getProductGroup() {
@@ -190,7 +191,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return notDeliveredDueToOOS
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getNotDeliveredDueToOOS() {
@@ -212,7 +213,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return totalSubscriptionsRevenue
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The revenue generated from subscriptions over a period of time. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getTotalSubscriptionsRevenue() {
@@ -234,7 +235,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return shippedSubscriptionUnits
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The number of units shipped to the subscribers over a period of time. Applicable to `PERFORMANCE` `timePeriodType`.")
     public BigDecimal getShippedSubscriptionUnits() {
@@ -256,7 +257,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return activeSubscriptions
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The number of active subscriptions present at the end of the period. Applicable to `PERFORMANCE` `timePeriodType`.")
     public BigDecimal getActiveSubscriptions() {
@@ -278,7 +279,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return revenuePenetration
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The percentage of total program revenue out of total product revenue. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getRevenuePenetration() {
@@ -300,7 +301,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return lostRevenueDueToOOS
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The revenue that would have been generated had there not been out of stock. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getLostRevenueDueToOOS() {
@@ -322,7 +323,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return couponsRevenuePenetration
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getCouponsRevenuePenetration() {
@@ -344,7 +345,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return shareOfCouponSubscriptions
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The percentage of new subscriptions from coupons. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getShareOfCouponSubscriptions() {
@@ -366,7 +367,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return next30DayTotalSubscriptionsRevenue
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The forecasted total subscription revenue for the next 30 days. Applicable to `FORECAST` `timePeriodType`.")
     public Double getNext30DayTotalSubscriptionsRevenue() {
@@ -388,7 +389,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return next60DayTotalSubscriptionsRevenue
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The forecasted total subscription revenue for the next 60 days. Applicable to `FORECAST` `timePeriodType`.")
     public Double getNext60DayTotalSubscriptionsRevenue() {
@@ -410,7 +411,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return next90DayTotalSubscriptionsRevenue
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The forecasted total subscription revenue for the next 90 days. Applicable to `FORECAST` `timePeriodType`.")
     public Double getNext90DayTotalSubscriptionsRevenue() {
@@ -433,7 +434,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return next30DayShippedSubscriptionUnits
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The forecasted shipped subscription units for the next 30 days. Applicable to `FORECAST` `timePeriodType`.")
     public BigDecimal getNext30DayShippedSubscriptionUnits() {
@@ -456,7 +457,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return next60DayShippedSubscriptionUnits
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The forecasted shipped subscription units for the next 60 days. Applicable to `FORECAST` `timePeriodType`.")
     public BigDecimal getNext60DayShippedSubscriptionUnits() {
@@ -479,7 +480,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return next90DayShippedSubscriptionUnits
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The forecasted shipped subscription units for the next 90 days. Applicable to `FORECAST` `timePeriodType`.")
     public BigDecimal getNext90DayShippedSubscriptionUnits() {
@@ -500,7 +501,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return timeInterval
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TimeInterval getTimeInterval() {
         return timeInterval;
     }
@@ -519,7 +520,7 @@ public class ListOfferMetricsResponseOffer {
      *
      * @return currencyCode
      */
-    @Schema(description = "The currency code in ISO 4217 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The currency code in ISO 4217 format.")
     public String getCurrencyCode() {
         return currencyCode;
     }

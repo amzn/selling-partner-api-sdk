@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.reports.v2021_06_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A list of report schedules. */
-@Schema(description = "A list of report schedules.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of report schedules.")
 public class ReportScheduleList {
     @SerializedName("reportSchedules")
     private List<ReportSchedule> reportSchedules = null;
@@ -42,7 +41,9 @@ public class ReportScheduleList {
      *
      * @return reportSchedules
      */
-    @Schema(required = true, description = "Detailed information about a report schedule.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Detailed information about a report schedule.")
     public List<ReportSchedule> getReportSchedules() {
         return reportSchedules;
     }

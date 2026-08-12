@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about how the order is being processed, packed, and shipped to the customer. */
-@Schema(description = "Information about how the order is being processed, packed, and shipped to the customer.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information about how the order is being processed, packed, and shipped to the customer.")
 public class OrderFulfillment {
     @SerializedName("fulfillmentStatus")
     private FulfillmentStatus fulfillmentStatus = null;
@@ -47,7 +47,7 @@ public class OrderFulfillment {
      *
      * @return fulfillmentStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public FulfillmentStatus getFulfillmentStatus() {
         return fulfillmentStatus;
     }
@@ -67,7 +67,7 @@ public class OrderFulfillment {
      *
      * @return fulfilledBy
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Specifies whether Amazon or the merchant is responsible for fulfilling this order.  **Possible values**: `AMAZON`, `MERCHANT`.")
     public String getFulfilledBy() {
@@ -90,7 +90,7 @@ public class OrderFulfillment {
      *
      * @return fulfillmentServiceLevel
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The category of the shipping speed option selected by the customer at checkout.  **Possible values**: `EXPEDITED`, `FREE_ECONOMY`, `NEXT_DAY`, `PRIORITY`, `SAME_DAY`, `SECOND_DAY`, `SCHEDULED`, `STANDARD`.")
     public String getFulfillmentServiceLevel() {
@@ -111,7 +111,7 @@ public class OrderFulfillment {
      *
      * @return shipByWindow
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DateTimeRange getShipByWindow() {
         return shipByWindow;
     }
@@ -130,7 +130,7 @@ public class OrderFulfillment {
      *
      * @return deliverByWindow
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DateTimeRange getDeliverByWindow() {
         return deliverByWindow;
     }
@@ -149,7 +149,7 @@ public class OrderFulfillment {
      *
      * @return labelPrintingWindow
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DateTimeRange getLabelPrintingWindow() {
         return labelPrintingWindow;
     }

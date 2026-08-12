@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * The information required to create a destination resource. Applications should use one resource type (sqs or
  * eventBridge) per destination.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The information required to create a destination resource. Applications should use one resource type (sqs or eventBridge) per destination.")
 public class DestinationResourceSpecification {
@@ -40,7 +39,7 @@ public class DestinationResourceSpecification {
      *
      * @return sqs
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SqsResource getSqs() {
         return sqs;
     }
@@ -59,7 +58,7 @@ public class DestinationResourceSpecification {
      *
      * @return eventBridge
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public EventBridgeResourceSpecification getEventBridge() {
         return eventBridge;
     }

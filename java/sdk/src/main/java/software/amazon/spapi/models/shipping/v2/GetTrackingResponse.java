@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the getTracking operation. */
-@Schema(description = "The response schema for the getTracking operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the getTracking operation.")
 public class GetTrackingResponse {
     @SerializedName("payload")
     private GetTrackingResult payload = null;
@@ -32,7 +31,7 @@ public class GetTrackingResponse {
      *
      * @return payload
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetTrackingResult getPayload() {
         return payload;
     }

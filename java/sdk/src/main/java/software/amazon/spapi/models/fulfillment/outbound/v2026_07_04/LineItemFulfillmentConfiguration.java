@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Fulfillment service configuration for a line item. */
-@Schema(description = "Fulfillment service configuration for a line item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Fulfillment service configuration for a line item.")
 public class LineItemFulfillmentConfiguration {
     @SerializedName("services")
     private OrderLineItemServices services = null;
@@ -32,7 +31,7 @@ public class LineItemFulfillmentConfiguration {
      *
      * @return services
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderLineItemServices getServices() {
         return services;
     }

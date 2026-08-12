@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Additional information related to payments-related transactions. */
-@Schema(description = "Additional information related to payments-related transactions.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Additional information related to payments-related transactions.")
 public class PaymentsContext {
     @SerializedName("paymentType")
     private String paymentType = null;
@@ -41,7 +42,7 @@ public class PaymentsContext {
      *
      * @return paymentType
      */
-    @Schema(description = "The type of payment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of payment.")
     public String getPaymentType() {
         return paymentType;
     }
@@ -60,7 +61,7 @@ public class PaymentsContext {
      *
      * @return paymentMethod
      */
-    @Schema(description = "The method of payment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The method of payment.")
     public String getPaymentMethod() {
         return paymentMethod;
     }
@@ -79,7 +80,7 @@ public class PaymentsContext {
      *
      * @return paymentReference
      */
-    @Schema(description = "The reference number of the payment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The reference number of the payment.")
     public String getPaymentReference() {
         return paymentReference;
     }
@@ -98,7 +99,7 @@ public class PaymentsContext {
      *
      * @return paymentDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPaymentDate() {

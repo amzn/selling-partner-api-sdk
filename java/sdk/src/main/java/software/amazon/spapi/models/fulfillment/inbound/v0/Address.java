@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Specific details to identify a place. */
-@Schema(description = "Specific details to identify a place.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Specific details to identify a place.")
 public class Address {
     @SerializedName("Name")
     private String name = null;
@@ -53,7 +52,7 @@ public class Address {
      *
      * @return name
      */
-    @Schema(required = true, description = "Name of the individual or business.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Name of the individual or business.")
     public String getName() {
         return name;
     }
@@ -72,7 +71,7 @@ public class Address {
      *
      * @return addressLine1
      */
-    @Schema(required = true, description = "The street address information.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The street address information.")
     public String getAddressLine1() {
         return addressLine1;
     }
@@ -91,7 +90,7 @@ public class Address {
      *
      * @return addressLine2
      */
-    @Schema(description = "Additional street address information, if required.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Additional street address information, if required.")
     public String getAddressLine2() {
         return addressLine2;
     }
@@ -110,7 +109,7 @@ public class Address {
      *
      * @return districtOrCounty
      */
-    @Schema(description = "The district or county.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The district or county.")
     public String getDistrictOrCounty() {
         return districtOrCounty;
     }
@@ -129,7 +128,7 @@ public class Address {
      *
      * @return city
      */
-    @Schema(required = true, description = "The city.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The city.")
     public String getCity() {
         return city;
     }
@@ -150,7 +149,7 @@ public class Address {
      *
      * @return stateOrProvinceCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The state or province code.  If state or province codes are used in your marketplace, it is recommended that you include one with your request. This helps Amazon to select the most appropriate Amazon fulfillment center for your inbound shipment plan.")
@@ -172,7 +171,9 @@ public class Address {
      *
      * @return countryCode
      */
-    @Schema(required = true, description = "The country code in two-character ISO 3166-1 alpha-2 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The country code in two-character ISO 3166-1 alpha-2 format.")
     public String getCountryCode() {
         return countryCode;
     }
@@ -192,7 +193,7 @@ public class Address {
      *
      * @return postalCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The postal code.  If postal codes are used in your marketplace, we recommended that you include one with your request. This helps Amazon select the most appropriate Amazon fulfillment center for the inbound shipment plan.")

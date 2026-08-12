@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Special shipping requirements and restrictions that must be observed when shipping an order item. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Special shipping requirements and restrictions that must be observed when shipping an order item.")
 public class ItemShippingConstraints {
@@ -46,7 +45,7 @@ public class ItemShippingConstraints {
      *
      * @return palletDelivery
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ConstraintType getPalletDelivery() {
         return palletDelivery;
     }
@@ -65,7 +64,7 @@ public class ItemShippingConstraints {
      *
      * @return cashOnDelivery
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ConstraintType getCashOnDelivery() {
         return cashOnDelivery;
     }
@@ -84,7 +83,7 @@ public class ItemShippingConstraints {
      *
      * @return signatureConfirmation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ConstraintType getSignatureConfirmation() {
         return signatureConfirmation;
     }
@@ -103,7 +102,7 @@ public class ItemShippingConstraints {
      *
      * @return recipientIdentityVerification
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ConstraintType getRecipientIdentityVerification() {
         return recipientIdentityVerification;
     }
@@ -122,7 +121,7 @@ public class ItemShippingConstraints {
      *
      * @return recipientAgeVerification
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ConstraintType getRecipientAgeVerification() {
         return recipientAgeVerification;
     }

@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** An array of return reason code details. */
-@Schema(description = "An array of return reason code details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An array of return reason code details.")
 public class ReasonCodeDetailsList extends ArrayList<ReasonCodeDetails> {
 
     @Override

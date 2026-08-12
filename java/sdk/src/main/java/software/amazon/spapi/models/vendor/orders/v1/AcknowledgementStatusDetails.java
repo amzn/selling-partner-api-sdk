@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vendor.orders.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Details of item quantity ordered */
-@Schema(description = "Details of item quantity ordered")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of item quantity ordered")
 public class AcknowledgementStatusDetails {
     @SerializedName("acknowledgementDate")
     private OffsetDateTime acknowledgementDate = null;
@@ -38,7 +38,8 @@ public class AcknowledgementStatusDetails {
      *
      * @return acknowledgementDate
      */
-    @Schema(description = "The date when the line item was confirmed by vendor. Must be in ISO-8601 date/time format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The date when the line item was confirmed by vendor. Must be in ISO-8601 date/time format.")
     public OffsetDateTime getAcknowledgementDate() {
         return acknowledgementDate;
     }
@@ -57,7 +58,7 @@ public class AcknowledgementStatusDetails {
      *
      * @return acceptedQuantity
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemQuantity getAcceptedQuantity() {
         return acceptedQuantity;
     }
@@ -76,7 +77,7 @@ public class AcknowledgementStatusDetails {
      *
      * @return rejectedQuantity
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemQuantity getRejectedQuantity() {
         return rejectedQuantity;
     }

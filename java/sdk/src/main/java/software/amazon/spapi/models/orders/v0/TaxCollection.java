@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Information about withheld taxes. */
-@Schema(description = "Information about withheld taxes.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about withheld taxes.")
 public class TaxCollection {
     /** The tax collection model applied to the item. */
     @JsonAdapter(ModelEnum.Adapter.class)
@@ -128,7 +127,7 @@ public class TaxCollection {
      *
      * @return model
      */
-    @Schema(description = "The tax collection model applied to the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The tax collection model applied to the item.")
     public ModelEnum getModel() {
         return model;
     }
@@ -147,7 +146,8 @@ public class TaxCollection {
      *
      * @return responsibleParty
      */
-    @Schema(description = "The party responsible for withholding the taxes and remitting them to the taxing authority.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The party responsible for withholding the taxes and remitting them to the taxing authority.")
     public ResponsiblePartyEnum getResponsibleParty() {
         return responsibleParty;
     }

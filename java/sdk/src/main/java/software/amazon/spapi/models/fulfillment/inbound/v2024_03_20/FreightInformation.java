@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Freight information describes the SKUs that are in transit. Freight carrier options and quotes will only be returned
  * if the freight information is provided.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Freight information describes the SKUs that are in transit. Freight carrier options and quotes will only be returned if the freight information is provided.")
 public class FreightInformation {
@@ -40,7 +39,7 @@ public class FreightInformation {
      *
      * @return declaredValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getDeclaredValue() {
         return declaredValue;
     }
@@ -62,7 +61,7 @@ public class FreightInformation {
      *
      * @return freightClass
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Freight class.  Possible values: `NONE`, `FC_50`, `FC_55`, `FC_60`, `FC_65`, `FC_70`, `FC_77_5`, `FC_85`, `FC_92_5`, `FC_100`, `FC_110`, `FC_125`, `FC_150`, `FC_175`, `FC_200`, `FC_250`, `FC_300`, `FC_400`, `FC_500`.")
     public String getFreightClass() {

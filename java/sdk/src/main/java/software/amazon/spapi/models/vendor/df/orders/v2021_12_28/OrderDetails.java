@@ -17,14 +17,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Details of an order. */
-@Schema(description = "Details of an order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of an order.")
 public class OrderDetails {
     @SerializedName("customerOrderNumber")
     private String customerOrderNumber = null;
@@ -119,7 +119,7 @@ public class OrderDetails {
      *
      * @return customerOrderNumber
      */
-    @Schema(required = true, description = "The customer order number.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The customer order number.")
     public String getCustomerOrderNumber() {
         return customerOrderNumber;
     }
@@ -140,7 +140,7 @@ public class OrderDetails {
      *
      * @return orderDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The date the order was placed. This  field is expected to be in ISO-8601 date/time format, for example:2018-07-16T23:00:00Z/ 2018-07-16T23:00:00-05:00 /2018-07-16T23:00:00-08:00. If no time zone is specified, UTC should be assumed.")
@@ -162,7 +162,7 @@ public class OrderDetails {
      *
      * @return orderStatus
      */
-    @Schema(description = "Current status of the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Current status of the order.")
     public OrderStatusEnum getOrderStatus() {
         return orderStatus;
     }
@@ -181,7 +181,7 @@ public class OrderDetails {
      *
      * @return shipmentDetails
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShipmentDetails getShipmentDetails() {
         return shipmentDetails;
     }
@@ -200,7 +200,7 @@ public class OrderDetails {
      *
      * @return taxTotal
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TaxItemDetails getTaxTotal() {
         return taxTotal;
     }
@@ -219,7 +219,7 @@ public class OrderDetails {
      *
      * @return sellingParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -238,7 +238,7 @@ public class OrderDetails {
      *
      * @return shipFromParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getShipFromParty() {
         return shipFromParty;
     }
@@ -257,7 +257,7 @@ public class OrderDetails {
      *
      * @return shipToParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Address getShipToParty() {
         return shipToParty;
     }
@@ -276,7 +276,7 @@ public class OrderDetails {
      *
      * @return billToParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getBillToParty() {
         return billToParty;
     }
@@ -295,7 +295,7 @@ public class OrderDetails {
      *
      * @return hasCustomizableItems
      */
-    @Schema(description = "When `true`, the order contains customizable items.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "When `true`, the order contains customizable items.")
     public Boolean getHasCustomizableItems() {
         return hasCustomizableItems;
     }
@@ -322,7 +322,9 @@ public class OrderDetails {
      *
      * @return items
      */
-    @Schema(required = true, description = "A list of items in this purchase order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of items in this purchase order.")
     public List<OrderItem> getItems() {
         return items;
     }

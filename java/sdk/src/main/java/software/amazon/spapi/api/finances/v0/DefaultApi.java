@@ -32,7 +32,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.finances.v0.ListFinancialEventGroupsResponse;
 import software.amazon.spapi.models.finances.v0.ListFinancialEventsResponse;
@@ -92,7 +91,7 @@ public class DefaultApi {
             OffsetDateTime financialEventGroupStartedBefore,
             OffsetDateTime financialEventGroupStartedAfter,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -145,7 +144,7 @@ public class DefaultApi {
             OffsetDateTime financialEventGroupStartedBefore,
             OffsetDateTime financialEventGroupStartedAfter,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return listFinancialEventGroupsCall(
@@ -413,10 +412,10 @@ public class DefaultApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listFinancialEventGroupsValidateBeforeCall(
@@ -467,7 +466,7 @@ public class DefaultApi {
             OffsetDateTime postedAfter,
             OffsetDateTime postedBefore,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -516,7 +515,7 @@ public class DefaultApi {
             OffsetDateTime postedAfter,
             OffsetDateTime postedBefore,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return listFinancialEventsCall(
@@ -768,10 +767,10 @@ public class DefaultApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listFinancialEventsValidateBeforeCall(
@@ -819,7 +818,7 @@ public class DefaultApi {
             OffsetDateTime postedAfter,
             OffsetDateTime postedBefore,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -872,7 +871,7 @@ public class DefaultApi {
             OffsetDateTime postedAfter,
             OffsetDateTime postedBefore,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'eventGroupId' is set
@@ -1163,10 +1162,10 @@ public class DefaultApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listFinancialEventsByGroupIdValidateBeforeCall(
@@ -1201,10 +1200,7 @@ public class DefaultApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call listFinancialEventsByOrderIdCall(
-            String orderId,
-            Integer maxResultsPerPage,
-            String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, Integer maxResultsPerPage, String nextToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1250,10 +1246,7 @@ public class DefaultApi {
     }
 
     private okhttp3.Call listFinancialEventsByOrderIdValidateBeforeCall(
-            String orderId,
-            Integer maxResultsPerPage,
-            String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String orderId, Integer maxResultsPerPage, String nextToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'orderId' is set
@@ -1450,10 +1443,10 @@ public class DefaultApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listFinancialEventsByOrderIdValidateBeforeCall(

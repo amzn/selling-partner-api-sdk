@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.df.payments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Provides the details of the items in this invoice. */
-@Schema(description = "Provides the details of the items in this invoice.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Provides the details of the items in this invoice.")
 public class InvoiceItem {
     @SerializedName("itemSequenceNumber")
     private String itemSequenceNumber = null;
@@ -61,7 +60,7 @@ public class InvoiceItem {
      *
      * @return itemSequenceNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Numbering of the item on the purchase order. The first item will be 1, the second 2, and so on.")
@@ -83,7 +82,8 @@ public class InvoiceItem {
      *
      * @return buyerProductIdentifier
      */
-    @Schema(description = "Buyer's standard identification number (ASIN) of an item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Buyer's standard identification number (ASIN) of an item.")
     public String getBuyerProductIdentifier() {
         return buyerProductIdentifier;
     }
@@ -102,7 +102,7 @@ public class InvoiceItem {
      *
      * @return vendorProductIdentifier
      */
-    @Schema(description = "The vendor selected product identification of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The vendor selected product identification of the item.")
     public String getVendorProductIdentifier() {
         return vendorProductIdentifier;
     }
@@ -121,7 +121,7 @@ public class InvoiceItem {
      *
      * @return invoicedQuantity
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemQuantity getInvoicedQuantity() {
         return invoicedQuantity;
     }
@@ -140,7 +140,7 @@ public class InvoiceItem {
      *
      * @return netCost
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getNetCost() {
         return netCost;
     }
@@ -159,7 +159,7 @@ public class InvoiceItem {
      *
      * @return purchaseOrderNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The purchase order number for this order. Formatting Notes: 8-character alpha-numeric code.")
     public String getPurchaseOrderNumber() {
@@ -180,7 +180,7 @@ public class InvoiceItem {
      *
      * @return vendorOrderNumber
      */
-    @Schema(description = "The vendor's order number for this order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The vendor's order number for this order.")
     public String getVendorOrderNumber() {
         return vendorOrderNumber;
     }
@@ -199,7 +199,8 @@ public class InvoiceItem {
      *
      * @return hsnCode
      */
-    @Schema(description = "Harmonized System of Nomenclature (HSN) tax code. The HSN number cannot contain alphabets.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Harmonized System of Nomenclature (HSN) tax code. The HSN number cannot contain alphabets.")
     public String getHsnCode() {
         return hsnCode;
     }
@@ -226,7 +227,7 @@ public class InvoiceItem {
      *
      * @return taxDetails
      */
-    @Schema(description = "Individual tax details per line item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Individual tax details per line item.")
     public List<TaxDetail> getTaxDetails() {
         return taxDetails;
     }
@@ -253,7 +254,7 @@ public class InvoiceItem {
      *
      * @return chargeDetails
      */
-    @Schema(description = "Individual charge details per line item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Individual charge details per line item.")
     public List<ChargeDetails> getChargeDetails() {
         return chargeDetails;
     }

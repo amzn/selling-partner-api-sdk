@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Failed ad hoc disbursement event list. */
-@Schema(description = "Failed ad hoc disbursement event list.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Failed ad hoc disbursement event list.")
 public class FailedAdhocDisbursementEvent {
     @SerializedName("FundsTransfersType")
     private String fundsTransfersType = null;
@@ -50,7 +50,7 @@ public class FailedAdhocDisbursementEvent {
      *
      * @return fundsTransfersType
      */
-    @Schema(description = "The type of fund transfer. For example, `Refund`.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of fund transfer. For example, `Refund`.")
     public String getFundsTransfersType() {
         return fundsTransfersType;
     }
@@ -69,7 +69,7 @@ public class FailedAdhocDisbursementEvent {
      *
      * @return transferId
      */
-    @Schema(description = "The transfer identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The transfer identifier.")
     public String getTransferId() {
         return transferId;
     }
@@ -88,7 +88,7 @@ public class FailedAdhocDisbursementEvent {
      *
      * @return disbursementId
      */
-    @Schema(description = "The disbursement identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The disbursement identifier.")
     public String getDisbursementId() {
         return disbursementId;
     }
@@ -107,7 +107,8 @@ public class FailedAdhocDisbursementEvent {
      *
      * @return paymentDisbursementType
      */
-    @Schema(description = "The type of payment for disbursement. For example, `CREDIT_CARD`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The type of payment for disbursement. For example, `CREDIT_CARD`.")
     public String getPaymentDisbursementType() {
         return paymentDisbursementType;
     }
@@ -126,7 +127,8 @@ public class FailedAdhocDisbursementEvent {
      *
      * @return status
      */
-    @Schema(description = "The status of the failed `AdhocDisbursement`. For example, `HARD_DECLINED`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The status of the failed `AdhocDisbursement`. For example, `HARD_DECLINED`.")
     public String getStatus() {
         return status;
     }
@@ -145,7 +147,7 @@ public class FailedAdhocDisbursementEvent {
      *
      * @return transferAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTransferAmount() {
         return transferAmount;
     }
@@ -164,7 +166,7 @@ public class FailedAdhocDisbursementEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {

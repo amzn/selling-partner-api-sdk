@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Product type that is associated with the Amazon catalog item, grouped by &#x60;marketplaceId&#x60;. */
-@Schema(description = "Product type that is associated with the Amazon catalog item, grouped by `marketplaceId`.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Product type that is associated with the Amazon catalog item, grouped by `marketplaceId`.")
 public class ItemProductTypeByMarketplace {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -36,7 +36,7 @@ public class ItemProductTypeByMarketplace {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
     public String getMarketplaceId() {
@@ -57,7 +57,8 @@ public class ItemProductTypeByMarketplace {
      *
      * @return productType
      */
-    @Schema(description = "Name of the product type that is associated with the Amazon catalog item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Name of the product type that is associated with the Amazon catalog item.")
     public String getProductType() {
         return productType;
     }

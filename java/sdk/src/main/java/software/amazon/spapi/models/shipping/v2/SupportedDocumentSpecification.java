@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Document specification that is supported for a service offering. */
-@Schema(description = "Document specification that is supported for a service offering.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Document specification that is supported for a service offering.")
 public class SupportedDocumentSpecification {
     @SerializedName("format")
     private DocumentFormat format = null;
@@ -38,7 +38,7 @@ public class SupportedDocumentSpecification {
      *
      * @return format
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DocumentFormat getFormat() {
         return format;
     }
@@ -57,7 +57,7 @@ public class SupportedDocumentSpecification {
      *
      * @return size
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DocumentSize getSize() {
         return size;
     }
@@ -76,7 +76,7 @@ public class SupportedDocumentSpecification {
      *
      * @return printOptions
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PrintOptionList getPrintOptions() {
         return printOptions;
     }

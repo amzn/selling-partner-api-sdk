@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The HTTP status associated with the response for an individual request within a batch. */
-@Schema(description = "The HTTP status associated with the response for an individual request within a batch.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The HTTP status associated with the response for an individual request within a batch.")
 public class HttpStatusLine {
     @SerializedName("statusCode")
     private Integer statusCode = null;
@@ -35,7 +35,7 @@ public class HttpStatusLine {
      *
      * @return statusCode
      */
-    @Schema(description = "The HTTP response status code.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The HTTP response status code.")
     public Integer getStatusCode() {
         return statusCode;
     }
@@ -54,7 +54,7 @@ public class HttpStatusLine {
      *
      * @return reasonPhrase
      */
-    @Schema(description = "The HTTP response reason phrase.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The HTTP response reason phrase.")
     public String getReasonPhrase() {
         return reasonPhrase;
     }

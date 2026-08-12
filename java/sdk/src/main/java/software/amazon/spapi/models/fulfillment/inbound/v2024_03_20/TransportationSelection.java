@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The transportation option selected to confirm. */
-@Schema(description = "The transportation option selected to confirm.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The transportation option selected to confirm.")
 public class TransportationSelection {
     @SerializedName("contactInformation")
     private ContactInformation contactInformation = null;
@@ -38,7 +37,7 @@ public class TransportationSelection {
      *
      * @return contactInformation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ContactInformation getContactInformation() {
         return contactInformation;
     }
@@ -57,7 +56,9 @@ public class TransportationSelection {
      *
      * @return shipmentId
      */
-    @Schema(required = true, description = "Shipment ID that the transportation Option is for.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Shipment ID that the transportation Option is for.")
     public String getShipmentId() {
         return shipmentId;
     }
@@ -76,7 +77,9 @@ public class TransportationSelection {
      *
      * @return transportationOptionId
      */
-    @Schema(required = true, description = "Transportation option being selected for the provided shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Transportation option being selected for the provided shipment.")
     public String getTransportationOptionId() {
         return transportationOptionId;
     }

@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The information required to create the export request. */
-@Schema(description = "The information required to create the export request.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The information required to create the export request.")
 public class ExportInvoicesRequest {
     @SerializedName("dateEnd")
     private LocalDate dateEnd = null;
@@ -63,7 +63,7 @@ public class ExportInvoicesRequest {
      *
      * @return dateEnd
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The latest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is the time of the request.")
     public LocalDate getDateEnd() {
@@ -86,7 +86,7 @@ public class ExportInvoicesRequest {
      *
      * @return dateStart
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The earliest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 24 hours prior to the time of the request.")
     public LocalDate getDateStart() {
@@ -107,7 +107,8 @@ public class ExportInvoicesRequest {
      *
      * @return externalInvoiceId
      */
-    @Schema(description = "The external ID of the invoices you want included in the response.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The external ID of the invoices you want included in the response.")
     public String getExternalInvoiceId() {
         return externalInvoiceId;
     }
@@ -126,7 +127,7 @@ public class ExportInvoicesRequest {
      *
      * @return fileFormat
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FileFormat getFileFormat() {
         return fileFormat;
     }
@@ -146,7 +147,7 @@ public class ExportInvoicesRequest {
      *
      * @return invoiceType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The marketplace-specific classification of the invoice type. Use the `getInvoicesAttributes` operation to check `invoiceType` options.")
     public String getInvoiceType() {
@@ -167,7 +168,9 @@ public class ExportInvoicesRequest {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "The ID of the marketplace from which you want the invoices.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The ID of the marketplace from which you want the invoices.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -186,7 +189,8 @@ public class ExportInvoicesRequest {
      *
      * @return series
      */
-    @Schema(description = "The series number of the invoices you want included in the response.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The series number of the invoices you want included in the response.")
     public String getSeries() {
         return series;
     }
@@ -214,7 +218,7 @@ public class ExportInvoicesRequest {
      *
      * @return statuses
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of statuses that you can use to filter invoices. Use the `getInvoicesAttributes` operation to check invoice status options.  Min count: 1")
     public List<String> getStatuses() {
@@ -235,7 +239,7 @@ public class ExportInvoicesRequest {
      *
      * @return transactionIdentifier
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TransactionIdentifier getTransactionIdentifier() {
         return transactionIdentifier;
     }
@@ -255,7 +259,7 @@ public class ExportInvoicesRequest {
      *
      * @return transactionType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The marketplace-specific classification of the transaction type for which the invoice was created. Use the `getInvoicesAttributes` operation to check `transactionType` options")
     public String getTransactionType() {

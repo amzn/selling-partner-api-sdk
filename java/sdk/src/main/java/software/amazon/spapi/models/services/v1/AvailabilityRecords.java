@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.services.v1;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** List of &#x60;AvailabilityRecord&#x60;s to represent the capacity of a resource over a time range. */
-@Schema(description = "List of `AvailabilityRecord`s to represent the capacity of a resource over a time range.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "List of `AvailabilityRecord`s to represent the capacity of a resource over a time range.")
 public class AvailabilityRecords extends ArrayList<AvailabilityRecord> {
 
     @Override

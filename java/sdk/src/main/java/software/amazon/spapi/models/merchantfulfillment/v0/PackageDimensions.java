@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The dimensions of a package contained in a shipment. */
-@Schema(description = "The dimensions of a package contained in a shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The dimensions of a package contained in a shipment.")
 public class PackageDimensions {
     @SerializedName("Length")
     private Double length = null;
@@ -44,7 +43,7 @@ public class PackageDimensions {
      *
      * @return length
      */
-    @Schema(description = "A number that represents the given package dimension.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A number that represents the given package dimension.")
     public Double getLength() {
         return length;
     }
@@ -63,7 +62,7 @@ public class PackageDimensions {
      *
      * @return width
      */
-    @Schema(description = "A number that represents the given package dimension.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A number that represents the given package dimension.")
     public Double getWidth() {
         return width;
     }
@@ -82,7 +81,7 @@ public class PackageDimensions {
      *
      * @return height
      */
-    @Schema(description = "A number that represents the given package dimension.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A number that represents the given package dimension.")
     public Double getHeight() {
         return height;
     }
@@ -101,7 +100,7 @@ public class PackageDimensions {
      *
      * @return unit
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public UnitOfLength getUnit() {
         return unit;
     }
@@ -120,7 +119,7 @@ public class PackageDimensions {
      *
      * @return predefinedPackageDimensions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PredefinedPackageDimensions getPredefinedPackageDimensions() {
         return predefinedPackageDimensions;
     }

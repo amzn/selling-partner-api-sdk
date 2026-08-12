@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Fulfillment configuration in order response. */
-@Schema(description = "Fulfillment configuration in order response.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Fulfillment configuration in order response.")
 public class OrderResponseFulfillmentConfiguration {
     @SerializedName("serviceLevel")
     private ServiceLevel serviceLevel = null;
@@ -41,7 +40,7 @@ public class OrderResponseFulfillmentConfiguration {
      *
      * @return serviceLevel
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ServiceLevel getServiceLevel() {
         return serviceLevel;
     }
@@ -60,7 +59,8 @@ public class OrderResponseFulfillmentConfiguration {
      *
      * @return action
      */
-    @Schema(description = "Specifies whether the fulfillment order should ship now or have an order hold put on it.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Specifies whether the fulfillment order should ship now or have an order hold put on it.")
     public String getAction() {
         return action;
     }
@@ -79,7 +79,8 @@ public class OrderResponseFulfillmentConfiguration {
      *
      * @return policy
      */
-    @Schema(description = "The policy value specified when you submitted the `createOrder` request.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The policy value specified when you submitted the `createOrder` request.")
     public String getPolicy() {
         return policy;
     }
@@ -98,7 +99,7 @@ public class OrderResponseFulfillmentConfiguration {
      *
      * @return services
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderServices getServices() {
         return services;
     }

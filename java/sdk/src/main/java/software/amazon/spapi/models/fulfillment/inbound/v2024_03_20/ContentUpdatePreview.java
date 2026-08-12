@@ -13,11 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Preview of the changes that will be applied to the shipment. */
-@Schema(description = "Preview of the changes that will be applied to the shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Preview of the changes that will be applied to the shipment.")
 public class ContentUpdatePreview {
     @SerializedName("contentUpdatePreviewId")
     private String contentUpdatePreviewId = null;
@@ -41,7 +42,9 @@ public class ContentUpdatePreview {
      *
      * @return contentUpdatePreviewId
      */
-    @Schema(required = true, description = "Identifier of a content update preview.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Identifier of a content update preview.")
     public String getContentUpdatePreviewId() {
         return contentUpdatePreviewId;
     }
@@ -62,7 +65,7 @@ public class ContentUpdatePreview {
      *
      * @return expiration
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The time at which the content update expires. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.")
@@ -84,7 +87,7 @@ public class ContentUpdatePreview {
      *
      * @return requestedUpdates
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public RequestedUpdates getRequestedUpdates() {
         return requestedUpdates;
     }
@@ -103,7 +106,7 @@ public class ContentUpdatePreview {
      *
      * @return transportationOption
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TransportationOption getTransportationOption() {
         return transportationOption;
     }

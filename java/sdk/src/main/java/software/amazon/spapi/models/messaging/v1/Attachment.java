@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
@@ -21,7 +20,7 @@ import java.util.Objects;
  * [&#x60;createUploadDestinationForResource&#x60;](https://developer-docs.amazon.com/sp-api/reference/createuploaddestinationforresource)
  * operation.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Represents a file that was uploaded to a destination that was created by the Uploads API [`createUploadDestinationForResource`](https://developer-docs.amazon.com/sp-api/reference/createuploaddestinationforresource) operation.")
 public class Attachment {
@@ -43,7 +42,7 @@ public class Attachment {
      *
      * @return uploadDestinationId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier for the upload destination. To retrieve this value, call the Uploads API [`createUploadDestinationForResource`](https://developer-docs.amazon.com/sp-api/reference/createuploaddestinationforresource) operation.")
@@ -66,7 +65,7 @@ public class Attachment {
      *
      * @return fileName
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The name of the file, including the extension. This is the file name that will appear in the message. This does not need to match the file name of the file that you uploaded.")

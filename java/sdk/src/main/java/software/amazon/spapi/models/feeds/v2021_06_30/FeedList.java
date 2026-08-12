@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.feeds.v2021_06_30;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of feeds. */
-@Schema(description = "A list of feeds.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of feeds.")
 public class FeedList extends ArrayList<Feed> {
 
     @Override

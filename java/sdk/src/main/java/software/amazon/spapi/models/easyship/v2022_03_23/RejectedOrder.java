@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A order which we couldn&#39;t schedule on your behalf. It contains its id, and information on the error. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A order which we couldn't schedule on your behalf. It contains its id, and information on the error.")
 public class RejectedOrder {
@@ -37,7 +36,7 @@ public class RejectedOrder {
      *
      * @return amazonOrderId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.")
@@ -59,7 +58,7 @@ public class RejectedOrder {
      *
      * @return error
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Error getError() {
         return error;
     }

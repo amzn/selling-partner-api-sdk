@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** Marketplace channel-specific attribute value. */
-@Schema(description = "Marketplace channel-specific attribute value.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Marketplace channel-specific attribute value.")
 public class CustomChannelAttribute extends ArrayList<String> {
 
     @Override

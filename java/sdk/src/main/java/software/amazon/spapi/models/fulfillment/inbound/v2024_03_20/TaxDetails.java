@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Information used to determine the tax compliance. */
-@Schema(description = "Information used to determine the tax compliance.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information used to determine the tax compliance.")
 public class TaxDetails {
     @SerializedName("declaredValue")
     private Currency declaredValue = null;
@@ -40,7 +39,7 @@ public class TaxDetails {
      *
      * @return declaredValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getDeclaredValue() {
         return declaredValue;
     }
@@ -59,7 +58,7 @@ public class TaxDetails {
      *
      * @return hsnCode
      */
-    @Schema(description = "Harmonized System of Nomenclature code.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Harmonized System of Nomenclature code.")
     public String getHsnCode() {
         return hsnCode;
     }
@@ -86,7 +85,7 @@ public class TaxDetails {
      *
      * @return taxRates
      */
-    @Schema(description = "List of tax rates.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "List of tax rates.")
     public List<TaxRate> getTaxRates() {
         return taxRates;
     }

@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.invoicing.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of payment transactions. */
-@Schema(description = "A list of payment transactions.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of payment transactions.")
 public class PaymentInformationList extends ArrayList<PaymentInformation> {
 
     @Override

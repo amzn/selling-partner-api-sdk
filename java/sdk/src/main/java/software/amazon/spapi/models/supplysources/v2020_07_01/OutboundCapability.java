@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The outbound capability of a supply source. */
-@Schema(description = "The outbound capability of a supply source.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The outbound capability of a supply source.")
 public class OutboundCapability {
     @SerializedName("isSupported")
     private Boolean isSupported = null;
@@ -44,7 +43,7 @@ public class OutboundCapability {
      *
      * @return isSupported
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Boolean getIsSupported() {
         return isSupported;
     }
@@ -63,7 +62,7 @@ public class OutboundCapability {
      *
      * @return operationalConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OperationalConfiguration getOperationalConfiguration() {
         return operationalConfiguration;
     }
@@ -82,7 +81,7 @@ public class OutboundCapability {
      *
      * @return returnLocation
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ReturnLocation getReturnLocation() {
         return returnLocation;
     }
@@ -101,7 +100,7 @@ public class OutboundCapability {
      *
      * @return deliveryChannel
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DeliveryChannel getDeliveryChannel() {
         return deliveryChannel;
     }
@@ -120,7 +119,7 @@ public class OutboundCapability {
      *
      * @return pickupChannel
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PickupChannel getPickupChannel() {
         return pickupChannel;
     }

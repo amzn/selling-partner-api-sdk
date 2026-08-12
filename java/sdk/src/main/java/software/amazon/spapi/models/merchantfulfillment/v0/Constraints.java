@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** List of constraints. */
-@Schema(description = "List of constraints.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "List of constraints.")
 public class Constraints extends ArrayList<Constraint> {
 
     @Override

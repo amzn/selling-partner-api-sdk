@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The standard product comparison table. */
-@Schema(description = "The standard product comparison table.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The standard product comparison table.")
 public class StandardComparisonTableModule {
     @SerializedName("productColumns")
     private List<StandardComparisonProductBlock> productColumns = null;
@@ -45,7 +44,7 @@ public class StandardComparisonTableModule {
      *
      * @return productColumns
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public List<StandardComparisonProductBlock> getProductColumns() {
         return productColumns;
     }
@@ -72,7 +71,7 @@ public class StandardComparisonTableModule {
      *
      * @return metricRowLabels
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public List<PlainTextItem> getMetricRowLabels() {
         return metricRowLabels;
     }

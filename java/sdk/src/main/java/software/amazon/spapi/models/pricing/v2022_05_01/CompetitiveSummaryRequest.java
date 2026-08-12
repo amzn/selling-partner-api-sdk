@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** An individual &#x60;competitiveSummary&#x60; request for an ASIN and &#x60;marketplaceId&#x60;. */
-@Schema(description = "An individual `competitiveSummary` request for an ASIN and `marketplaceId`.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "An individual `competitiveSummary` request for an ASIN and `marketplaceId`.")
 public class CompetitiveSummaryRequest {
     @SerializedName("asin")
     private String asin = null;
@@ -49,7 +49,7 @@ public class CompetitiveSummaryRequest {
      *
      * @return asin
      */
-    @Schema(required = true, description = "The ASIN of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The ASIN of the item.")
     public String getAsin() {
         return asin;
     }
@@ -69,7 +69,7 @@ public class CompetitiveSummaryRequest {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The `MarketplaceID` is the globally unique identifier of an Amazon store. To find the ID for your Amazon store, refer to [Amazon store IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -99,7 +99,9 @@ public class CompetitiveSummaryRequest {
      *
      * @return includedData
      */
-    @Schema(required = true, description = "The list of requested competitive pricing data for the product.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The list of requested competitive pricing data for the product.")
     public List<CompetitiveSummaryIncludedData> getIncludedData() {
         return includedData;
     }
@@ -129,7 +131,7 @@ public class CompetitiveSummaryRequest {
      *
      * @return lowestPricedOffersInputs
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The list of `lowestPricedOffersInput` parameters that are used to build `lowestPricedOffers` in the response. This attribute is only valid if `lowestPricedOffers` is requested in `includedData`")
     public List<LowestPricedOffersInput> getLowestPricedOffersInputs() {
@@ -150,7 +152,7 @@ public class CompetitiveSummaryRequest {
      *
      * @return method
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public HttpMethod getMethod() {
         return method;
     }
@@ -169,7 +171,7 @@ public class CompetitiveSummaryRequest {
      *
      * @return uri
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The URI associated with the individual APIs that are called as part of the batch request.")
     public String getUri() {

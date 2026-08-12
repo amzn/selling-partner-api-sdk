@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.tracking.v2026_01_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The physical address of the location. */
-@Schema(description = "The physical address of the location.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The physical address of the location.")
 public class TrackingMilestoneAddress {
     @SerializedName("city")
     private String city = null;
@@ -38,7 +37,7 @@ public class TrackingMilestoneAddress {
      *
      * @return city
      */
-    @Schema(description = "The city where the milestone occurred.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The city where the milestone occurred.")
     public String getCity() {
         return city;
     }
@@ -57,7 +56,7 @@ public class TrackingMilestoneAddress {
      *
      * @return region
      */
-    @Schema(description = "The state or region where the milestone occurred.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The state or region where the milestone occurred.")
     public String getRegion() {
         return region;
     }
@@ -76,7 +75,8 @@ public class TrackingMilestoneAddress {
      *
      * @return countryCode
      */
-    @Schema(description = "The two-character country code in ISO 3166-1 alpha-2 format (for example, `US`).")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The two-character country code in ISO 3166-1 alpha-2 format (for example, `US`).")
     public String getCountryCode() {
         return countryCode;
     }

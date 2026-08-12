@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Service level configuration for a &#x60;getOffers&#x60; response offer. */
-@Schema(description = "Service level configuration for a `getOffers` response offer.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Service level configuration for a `getOffers` response offer.")
 public class OfferServiceLevel {
     @SerializedName("serviceTier")
     private String serviceTier = null;
@@ -37,7 +37,7 @@ public class OfferServiceLevel {
      *
      * @return serviceTier
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The service tier for this offer. Possible values: `STANDARD`, `EXPEDITED`, `PRIORITY` (only available in Canada, India, and Mexico), `SCHEDULED` (only available in Japan).")
     public String getServiceTier() {
@@ -58,7 +58,7 @@ public class OfferServiceLevel {
      *
      * @return deliveryInterval
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TimeInterval getDeliveryInterval() {
         return deliveryInterval;
     }

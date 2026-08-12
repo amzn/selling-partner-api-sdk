@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information related to the shipping and delivery process for an order item. */
-@Schema(description = "Information related to the shipping and delivery process for an order item.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information related to the shipping and delivery process for an order item.")
 public class ItemShipping {
     @SerializedName("scheduledDeliveryWindow")
     private DateTimeRange scheduledDeliveryWindow = null;
@@ -38,7 +38,7 @@ public class ItemShipping {
      *
      * @return scheduledDeliveryWindow
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DateTimeRange getScheduledDeliveryWindow() {
         return scheduledDeliveryWindow;
     }
@@ -57,7 +57,7 @@ public class ItemShipping {
      *
      * @return shippingConstraints
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemShippingConstraints getShippingConstraints() {
         return shippingConstraints;
     }
@@ -76,7 +76,7 @@ public class ItemShipping {
      *
      * @return internationalShipping
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemInternationalShipping getInternationalShipping() {
         return internationalShipping;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The dimensions of the scheduled package. */
-@Schema(description = "The dimensions of the scheduled package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The dimensions of the scheduled package.")
 public class Dimensions {
     @SerializedName("length")
     private Float length = null;
@@ -44,7 +43,7 @@ public class Dimensions {
      *
      * @return length
      */
-    @Schema(description = "The numerical value of the specified dimension.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The numerical value of the specified dimension.")
     public Float getLength() {
         return length;
     }
@@ -63,7 +62,7 @@ public class Dimensions {
      *
      * @return width
      */
-    @Schema(description = "The numerical value of the specified dimension.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The numerical value of the specified dimension.")
     public Float getWidth() {
         return width;
     }
@@ -82,7 +81,7 @@ public class Dimensions {
      *
      * @return height
      */
-    @Schema(description = "The numerical value of the specified dimension.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The numerical value of the specified dimension.")
     public Float getHeight() {
         return height;
     }
@@ -101,7 +100,7 @@ public class Dimensions {
      *
      * @return unit
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public UnitOfLength getUnit() {
         return unit;
     }
@@ -120,7 +119,7 @@ public class Dimensions {
      *
      * @return identifier
      */
-    @Schema(description = "A string of up to 255 characters.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A string of up to 255 characters.")
     public String getIdentifier() {
         return identifier;
     }

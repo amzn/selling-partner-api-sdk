@@ -12,11 +12,11 @@
 
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.LinkedHashSet;
 import java.util.Objects;
 
 /** The set of content badges. */
-@Schema(description = "The set of content badges.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The set of content badges.")
 public class ContentBadgeSet extends LinkedHashSet<ContentBadge> {
 
     @Override

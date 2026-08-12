@@ -32,7 +32,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.feeds.v2021_06_30.CreateFeedDocumentResponse;
 import software.amazon.spapi.models.feeds.v2021_06_30.CreateFeedDocumentSpecification;
@@ -83,8 +82,7 @@ public class FeedsApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call cancelFeedCall(
-            String feedId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call cancelFeedCall(String feedId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -124,8 +122,7 @@ public class FeedsApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call cancelFeedValidateBeforeCall(
-            String feedId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call cancelFeedValidateBeforeCall(String feedId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'feedId' is set
@@ -281,10 +278,10 @@ public class FeedsApi {
     public okhttp3.Call cancelFeedAsync(String feedId, final ApiCallback<Void> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = cancelFeedValidateBeforeCall(feedId, progressRequestListener);
@@ -309,8 +306,7 @@ public class FeedsApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call createFeedCall(
-            CreateFeedSpecification body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call createFeedCall(CreateFeedSpecification body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -349,8 +345,7 @@ public class FeedsApi {
     }
 
     private okhttp3.Call createFeedValidateBeforeCall(
-            CreateFeedSpecification body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
-            throws ApiException, LWAException {
+            CreateFeedSpecification body, final ApiCallback progressRequestListener) throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
         if (body == null) {
@@ -525,10 +520,10 @@ public class FeedsApi {
             CreateFeedSpecification body, final ApiCallback<CreateFeedResponse> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createFeedValidateBeforeCall(body, progressRequestListener);
@@ -555,8 +550,7 @@ public class FeedsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call createFeedDocumentCall(
-            CreateFeedDocumentSpecification body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateFeedDocumentSpecification body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -595,8 +589,7 @@ public class FeedsApi {
     }
 
     private okhttp3.Call createFeedDocumentValidateBeforeCall(
-            CreateFeedDocumentSpecification body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            CreateFeedDocumentSpecification body, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'body' is set
@@ -754,10 +747,10 @@ public class FeedsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createFeedDocumentValidateBeforeCall(body, progressRequestListener);
@@ -784,8 +777,7 @@ public class FeedsApi {
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    private okhttp3.Call getFeedCall(
-            String feedId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getFeedCall(String feedId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -825,8 +817,7 @@ public class FeedsApi {
                 progressRequestListener);
     }
 
-    private okhttp3.Call getFeedValidateBeforeCall(
-            String feedId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+    private okhttp3.Call getFeedValidateBeforeCall(String feedId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'feedId' is set
@@ -969,10 +960,10 @@ public class FeedsApi {
     public okhttp3.Call getFeedAsync(String feedId, final ApiCallback<Feed> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getFeedValidateBeforeCall(feedId, progressRequestListener);
@@ -1002,9 +993,7 @@ public class FeedsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getFeedDocumentCall(
-            String feedDocumentId,
-            Boolean enableContentEncodingUrlHeader,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String feedDocumentId, Boolean enableContentEncodingUrlHeader, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1050,9 +1039,7 @@ public class FeedsApi {
     }
 
     private okhttp3.Call getFeedDocumentValidateBeforeCall(
-            String feedDocumentId,
-            Boolean enableContentEncodingUrlHeader,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String feedDocumentId, Boolean enableContentEncodingUrlHeader, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'feedDocumentId' is set
@@ -1220,10 +1207,10 @@ public class FeedsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getFeedDocumentValidateBeforeCall(
@@ -1272,7 +1259,7 @@ public class FeedsApi {
             OffsetDateTime createdSince,
             OffsetDateTime createdUntil,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -1330,7 +1317,7 @@ public class FeedsApi {
             OffsetDateTime createdSince,
             OffsetDateTime createdUntil,
             String nextToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         return getFeedsCall(
@@ -1624,10 +1611,10 @@ public class FeedsApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = getFeedsValidateBeforeCall(

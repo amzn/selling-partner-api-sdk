@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The request schema for the confirmCustomizationDetails operation. */
-@Schema(description = "The request schema for the confirmCustomizationDetails operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request schema for the confirmCustomizationDetails operation.")
 public class CreateConfirmCustomizationDetailsRequest {
     @SerializedName("text")
     private String text = null;
@@ -39,7 +39,7 @@ public class CreateConfirmCustomizationDetailsRequest {
      *
      * @return text
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The text to be sent to the buyer. Only links related to customization details are allowed. Do not include HTML or email addresses. The text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.")
     public String getText() {
@@ -68,7 +68,7 @@ public class CreateConfirmCustomizationDetailsRequest {
      *
      * @return attachments
      */
-    @Schema(description = "Attachments to include in the message to the buyer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Attachments to include in the message to the buyer.")
     public List<Attachment> getAttachments() {
         return attachments;
     }

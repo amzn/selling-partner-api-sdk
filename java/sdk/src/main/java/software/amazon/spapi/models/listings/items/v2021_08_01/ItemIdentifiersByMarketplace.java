@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Identity attributes associated with the item in the Amazon catalog for the indicated Amazon store. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Identity attributes associated with the item in the Amazon catalog for the indicated Amazon store.")
 public class ItemIdentifiersByMarketplace {
@@ -37,7 +36,8 @@ public class ItemIdentifiersByMarketplace {
      *
      * @return marketplaceId
      */
-    @Schema(description = "Amazon store identifier. Identifies the listings item's Amazon store.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Amazon store identifier. Identifies the listings item's Amazon store.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -56,7 +56,7 @@ public class ItemIdentifiersByMarketplace {
      *
      * @return asin
      */
-    @Schema(description = "The ASIN of the listings item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The ASIN of the listings item.")
     public String getAsin() {
         return asin;
     }

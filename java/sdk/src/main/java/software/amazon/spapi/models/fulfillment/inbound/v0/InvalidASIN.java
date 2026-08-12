@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Contains details about an invalid ASIN */
-@Schema(description = "Contains details about an invalid ASIN")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Contains details about an invalid ASIN")
 public class InvalidASIN {
     @SerializedName("ASIN")
     private String ASIN = null;
@@ -35,7 +34,8 @@ public class InvalidASIN {
      *
      * @return ASIN
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getASIN() {
         return ASIN;
     }
@@ -54,7 +54,7 @@ public class InvalidASIN {
      *
      * @return errorReason
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorReason getErrorReason() {
         return errorReason;
     }

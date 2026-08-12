@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The embedded response associated with the messaging action. */
-@Schema(description = "The embedded response associated with the messaging action.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The embedded response associated with the messaging action.")
 public class GetMessagingActionResponseEmbedded {
     @SerializedName("schema")
     private GetSchemaResponse schema = null;
@@ -32,7 +31,7 @@ public class GetMessagingActionResponseEmbedded {
      *
      * @return schema
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetSchemaResponse getSchema() {
         return schema;
     }

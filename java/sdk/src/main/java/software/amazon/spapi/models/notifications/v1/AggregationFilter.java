@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * A filter you can use to select the aggregation time period at which to send notifications (for example, limit to one
  * notification every five minutes for high frequency notifications).
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A filter you can use to select the aggregation time period at which to send notifications (for example, limit to one notification every five minutes for high frequency notifications).")
 public class AggregationFilter {
@@ -37,7 +36,7 @@ public class AggregationFilter {
      *
      * @return aggregationSettings
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AggregationSettings getAggregationSettings() {
         return aggregationSettings;
     }

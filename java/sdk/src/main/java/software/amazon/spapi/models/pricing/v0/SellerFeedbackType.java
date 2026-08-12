@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Information about the seller&#39;s feedback, including the percentage of positive feedback, and the total number of
  * ratings received.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Information about the seller's feedback, including the percentage of positive feedback, and the total number of ratings received.")
 public class SellerFeedbackType {
@@ -40,7 +39,8 @@ public class SellerFeedbackType {
      *
      * @return sellerPositiveFeedbackRating
      */
-    @Schema(description = "The percentage of positive feedback for the seller in the past 365 days.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The percentage of positive feedback for the seller in the past 365 days.")
     public Double getSellerPositiveFeedbackRating() {
         return sellerPositiveFeedbackRating;
     }
@@ -59,7 +59,9 @@ public class SellerFeedbackType {
      *
      * @return feedbackCount
      */
-    @Schema(required = true, description = "The number of ratings received about the seller.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The number of ratings received about the seller.")
     public Long getFeedbackCount() {
         return feedbackCount;
     }

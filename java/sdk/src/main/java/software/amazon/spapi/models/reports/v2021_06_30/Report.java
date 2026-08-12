@@ -17,14 +17,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Detailed information about the report. */
-@Schema(description = "Detailed information about the report.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Detailed information about the report.")
 public class Report {
     @SerializedName("marketplaceIds")
     private List<String> marketplaceIds = null;
@@ -129,7 +129,7 @@ public class Report {
      *
      * @return marketplaceIds
      */
-    @Schema(description = "A list of marketplace identifiers for the report.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of marketplace identifiers for the report.")
     public List<String> getMarketplaceIds() {
         return marketplaceIds;
     }
@@ -148,7 +148,7 @@ public class Report {
      *
      * @return reportId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The identifier for the report. This identifier is unique only in combination with a seller ID.")
@@ -171,7 +171,7 @@ public class Report {
      *
      * @return reportType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.")
@@ -193,7 +193,8 @@ public class Report {
      *
      * @return dataStartTime
      */
-    @Schema(description = "The start of a date and time range used for selecting the data to report.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The start of a date and time range used for selecting the data to report.")
     public OffsetDateTime getDataStartTime() {
         return dataStartTime;
     }
@@ -212,7 +213,8 @@ public class Report {
      *
      * @return dataEndTime
      */
-    @Schema(description = "The end of a date and time range used for selecting the data to report.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The end of a date and time range used for selecting the data to report.")
     public OffsetDateTime getDataEndTime() {
         return dataEndTime;
     }
@@ -232,7 +234,7 @@ public class Report {
      *
      * @return reportScheduleId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The identifier of the report schedule that created this report (if any). This identifier is unique only in combination with a seller ID.")
     public String getReportScheduleId() {
@@ -253,7 +255,9 @@ public class Report {
      *
      * @return createdTime
      */
-    @Schema(required = true, description = "The date and time when the report was created.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The date and time when the report was created.")
     public OffsetDateTime getCreatedTime() {
         return createdTime;
     }
@@ -272,7 +276,7 @@ public class Report {
      *
      * @return processingStatus
      */
-    @Schema(required = true, description = "The processing status of the report.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The processing status of the report.")
     public ProcessingStatusEnum getProcessingStatus() {
         return processingStatus;
     }
@@ -293,7 +297,7 @@ public class Report {
      *
      * @return processingStartTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date and time when the report processing started, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format.")
     public OffsetDateTime getProcessingStartTime() {
@@ -316,7 +320,7 @@ public class Report {
      *
      * @return processingEndTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date and time when the report processing completed, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format.")
     public OffsetDateTime getProcessingEndTime() {
@@ -338,7 +342,7 @@ public class Report {
      *
      * @return reportDocumentId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The identifier for the report document. Pass this into the `getReportDocument` operation to get the information you will need to retrieve the report document's contents.")
     public String getReportDocumentId() {

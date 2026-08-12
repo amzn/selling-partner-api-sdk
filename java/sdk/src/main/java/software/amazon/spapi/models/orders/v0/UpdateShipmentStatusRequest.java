@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request body for the &#x60;updateShipmentStatus&#x60; operation. */
-@Schema(description = "The request body for the `updateShipmentStatus` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The request body for the `updateShipmentStatus` operation.")
 public class UpdateShipmentStatusRequest {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -38,7 +37,9 @@ public class UpdateShipmentStatusRequest {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "The unobfuscated marketplace identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unobfuscated marketplace identifier.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -57,7 +58,7 @@ public class UpdateShipmentStatusRequest {
      *
      * @return shipmentStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ShipmentStatus getShipmentStatus() {
         return shipmentStatus;
     }
@@ -76,7 +77,7 @@ public class UpdateShipmentStatusRequest {
      *
      * @return orderItems
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderItems getOrderItems() {
         return orderItems;
     }

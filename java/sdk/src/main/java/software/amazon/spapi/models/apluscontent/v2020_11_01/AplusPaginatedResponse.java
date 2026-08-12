@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
@@ -21,7 +20,7 @@ import java.util.Objects;
  * this token and include the same arguments as the call that produced the token. To get a complete list, call this
  * operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A token that you use to retrieve the next page of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextPageToken` is null. Note that this operation can return empty pages.")
 public class AplusPaginatedResponse {
@@ -41,7 +40,7 @@ public class AplusPaginatedResponse {
      *
      * @return warnings
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MessageSet getWarnings() {
         return warnings;
     }
@@ -60,7 +59,8 @@ public class AplusPaginatedResponse {
      *
      * @return nextPageToken
      */
-    @Schema(description = "A token that you use to fetch a specific page when there are multiple pages of results.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A token that you use to fetch a specific page when there are multiple pages of results.")
     public String getNextPageToken() {
         return nextPageToken;
     }

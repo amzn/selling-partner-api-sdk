@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Item receive status at the buyer&#39;s warehouse. */
-@Schema(description = "Item receive status at the buyer's warehouse.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Item receive status at the buyer's warehouse.")
 public class OrderItemStatusReceivingStatus {
     /** Receive status of the line item. */
     @JsonAdapter(ReceiveStatusEnum.Adapter.class)
@@ -91,7 +91,7 @@ public class OrderItemStatusReceivingStatus {
      *
      * @return receiveStatus
      */
-    @Schema(description = "Receive status of the line item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Receive status of the line item.")
     public ReceiveStatusEnum getReceiveStatus() {
         return receiveStatus;
     }
@@ -110,7 +110,7 @@ public class OrderItemStatusReceivingStatus {
      *
      * @return receivedQuantity
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemQuantity getReceivedQuantity() {
         return receivedQuantity;
     }
@@ -130,7 +130,7 @@ public class OrderItemStatusReceivingStatus {
      *
      * @return lastReceiveDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date when the most recent item was received at the buyer's warehouse. Must be in ISO-8601 date/time format.")
     public OffsetDateTime getLastReceiveDate() {

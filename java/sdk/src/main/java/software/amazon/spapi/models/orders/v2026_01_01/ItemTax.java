@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Tax information for an order item. */
-@Schema(description = "Tax information for an order item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Tax information for an order item.")
 public class ItemTax {
     @SerializedName("taxCalculationBreakdowns")
     private List<ItemTaxCalculationBreakdown> taxCalculationBreakdowns = null;
@@ -45,7 +44,8 @@ public class ItemTax {
      *
      * @return taxCalculationBreakdowns
      */
-    @Schema(description = "A list of tax calculation breakdowns for the order item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of tax calculation breakdowns for the order item.")
     public List<ItemTaxCalculationBreakdown> getTaxCalculationBreakdowns() {
         return taxCalculationBreakdowns;
     }
@@ -72,7 +72,7 @@ public class ItemTax {
      *
      * @return taxCollections
      */
-    @Schema(description = "A list of tax collections for the order item.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of tax collections for the order item.")
     public List<ItemTaxCollection> getTaxCollections() {
         return taxCollections;
     }

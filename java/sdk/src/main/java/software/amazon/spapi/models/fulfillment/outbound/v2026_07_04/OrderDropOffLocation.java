@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Drop-off location for the fulfillment order. */
-@Schema(description = "Drop-off location for the fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Drop-off location for the fulfillment order.")
 public class OrderDropOffLocation {
     @SerializedName("type")
     private String type = null;
@@ -38,7 +37,7 @@ public class OrderDropOffLocation {
      *
      * @return type
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Specifies the preferred location to leave the package at the destination address. Possible values: `FRONT_DOOR`, `DELIVERY_BOX`, `GAS_METER_BOX`, `BICYCLE_BASKET`, `GARAGE`, `RECEPTIONIST`, `FALLBACK_NEIGHBOR_DELIVERY`, `DO_NOT_LEAVE_UNATTENDED`, `LOCKER`.")
     public String getType() {
@@ -59,7 +58,7 @@ public class OrderDropOffLocation {
      *
      * @return attributes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderDropOffLocationAttributes getAttributes() {
         return attributes;
     }

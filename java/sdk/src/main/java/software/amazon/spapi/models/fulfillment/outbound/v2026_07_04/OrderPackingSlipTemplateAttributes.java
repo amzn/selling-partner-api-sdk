@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Objects;
 
 /** Packing slip template attributes. */
-@Schema(description = "Packing slip template attributes.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Packing slip template attributes.")
 public class OrderPackingSlipTemplateAttributes extends HashMap<String, String> {
 
     @Override

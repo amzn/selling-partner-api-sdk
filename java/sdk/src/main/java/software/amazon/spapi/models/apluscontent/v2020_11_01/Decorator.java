@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A decorator that is applied to a content string value in order to create rich text. */
-@Schema(description = "A decorator that is applied to a content string value in order to create rich text.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A decorator that is applied to a content string value in order to create rich text.")
 public class Decorator {
     @SerializedName("type")
     private DecoratorType type = null;
@@ -41,7 +41,7 @@ public class Decorator {
      *
      * @return type
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DecoratorType getType() {
         return type;
     }
@@ -60,7 +60,7 @@ public class Decorator {
      *
      * @return offset
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The starting value of this decorator within the content string. Use zero (`0`) for the first value.")
     public Integer getOffset() {
@@ -82,7 +82,7 @@ public class Decorator {
      *
      * @return length
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The number of content characters to alter with this decorator. Decorators, such as line breaks, can have zero length and fit between characters.")
     public Integer getLength() {
@@ -104,7 +104,7 @@ public class Decorator {
      *
      * @return depth
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The relative intensity or variation of this decorator. Decorators, such as bullet-points, can have multiple indentation depths.")
     public Integer getDepth() {

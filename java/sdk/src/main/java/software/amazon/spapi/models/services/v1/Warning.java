@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Warning returned when the request is successful, but there are important callouts based on which API clients should
  * take defined actions.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Warning returned when the request is successful, but there are important callouts based on which API clients should take defined actions.")
 public class Warning {
@@ -43,7 +42,9 @@ public class Warning {
      *
      * @return code
      */
-    @Schema(required = true, description = "An warning code that identifies the type of warning that occurred.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An warning code that identifies the type of warning that occurred.")
     public String getCode() {
         return code;
     }
@@ -62,7 +63,9 @@ public class Warning {
      *
      * @return message
      */
-    @Schema(required = true, description = "A message that describes the warning condition in a human-readable form.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A message that describes the warning condition in a human-readable form.")
     public String getMessage() {
         return message;
     }
@@ -81,7 +84,8 @@ public class Warning {
      *
      * @return details
      */
-    @Schema(description = "Additional details that can help the caller understand or address the warning.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Additional details that can help the caller understand or address the warning.")
     public String getDetails() {
         return details;
     }

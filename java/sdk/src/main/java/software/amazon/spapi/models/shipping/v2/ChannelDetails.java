@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Shipment source channel related information. */
-@Schema(description = "Shipment source channel related information.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Shipment source channel related information.")
 public class ChannelDetails {
     @SerializedName("channelType")
     private ChannelType channelType = null;
@@ -38,7 +37,7 @@ public class ChannelDetails {
      *
      * @return channelType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ChannelType getChannelType() {
         return channelType;
     }
@@ -57,7 +56,7 @@ public class ChannelDetails {
      *
      * @return amazonOrderDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AmazonOrderDetails getAmazonOrderDetails() {
         return amazonOrderDetails;
     }
@@ -76,7 +75,7 @@ public class ChannelDetails {
      *
      * @return amazonShipmentDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AmazonShipmentDetails getAmazonShipmentDetails() {
         return amazonShipmentDetails;
     }

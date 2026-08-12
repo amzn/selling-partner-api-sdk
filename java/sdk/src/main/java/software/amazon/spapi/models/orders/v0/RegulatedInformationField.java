@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** A field collected from the regulatory form. */
-@Schema(description = "A field collected from the regulatory form.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A field collected from the regulatory form.")
 public class RegulatedInformationField {
     @SerializedName("FieldId")
     private String fieldId = null;
@@ -92,7 +91,7 @@ public class RegulatedInformationField {
      *
      * @return fieldId
      */
-    @Schema(required = true, description = "The unique identifier of the field.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The unique identifier of the field.")
     public String getFieldId() {
         return fieldId;
     }
@@ -111,7 +110,7 @@ public class RegulatedInformationField {
      *
      * @return fieldLabel
      */
-    @Schema(required = true, description = "The name of the field.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the field.")
     public String getFieldLabel() {
         return fieldLabel;
     }
@@ -130,7 +129,7 @@ public class RegulatedInformationField {
      *
      * @return fieldType
      */
-    @Schema(required = true, description = "The type of field.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of field.")
     public FieldTypeEnum getFieldType() {
         return fieldType;
     }
@@ -150,7 +149,7 @@ public class RegulatedInformationField {
      *
      * @return fieldValue
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The content of the field as collected in regulatory form. Note that `FileAttachment` type fields contain a URL where you can download the attachment.")

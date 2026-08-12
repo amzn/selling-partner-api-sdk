@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The &#x60;createMarketplaceItemLabels&#x60; response. */
-@Schema(description = "The `createMarketplaceItemLabels` response.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `createMarketplaceItemLabels` response.")
 public class CreateMarketplaceItemLabelsResponse {
     @SerializedName("documentDownloads")
     private List<DocumentDownload> documentDownloads = null;
@@ -42,7 +41,9 @@ public class CreateMarketplaceItemLabelsResponse {
      *
      * @return documentDownloads
      */
-    @Schema(required = true, description = "Resources to download the requested document.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Resources to download the requested document.")
     public List<DocumentDownload> getDocumentDownloads() {
         return documentDownloads;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The operating hours per day */
-@Schema(description = "The operating hours per day")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The operating hours per day")
 public class OperatingHoursByDay {
     @SerializedName("monday")
     private OperatingHours monday = null;
@@ -50,7 +49,7 @@ public class OperatingHoursByDay {
      *
      * @return monday
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OperatingHours getMonday() {
         return monday;
     }
@@ -69,7 +68,7 @@ public class OperatingHoursByDay {
      *
      * @return tuesday
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OperatingHours getTuesday() {
         return tuesday;
     }
@@ -88,7 +87,7 @@ public class OperatingHoursByDay {
      *
      * @return wednesday
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OperatingHours getWednesday() {
         return wednesday;
     }
@@ -107,7 +106,7 @@ public class OperatingHoursByDay {
      *
      * @return thursday
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OperatingHours getThursday() {
         return thursday;
     }
@@ -126,7 +125,7 @@ public class OperatingHoursByDay {
      *
      * @return friday
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OperatingHours getFriday() {
         return friday;
     }
@@ -145,7 +144,7 @@ public class OperatingHoursByDay {
      *
      * @return saturday
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OperatingHours getSaturday() {
         return saturday;
     }
@@ -164,7 +163,7 @@ public class OperatingHoursByDay {
      *
      * @return sunday
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OperatingHours getSunday() {
         return sunday;
     }

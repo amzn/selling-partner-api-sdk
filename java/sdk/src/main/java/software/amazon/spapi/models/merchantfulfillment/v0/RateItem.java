@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Rate item for shipping costs and adjustments. */
-@Schema(description = "Rate item for shipping costs and adjustments.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Rate item for shipping costs and adjustments.")
 public class RateItem {
     @SerializedName("RateItemID")
     private RateItemID rateItemID = null;
@@ -41,7 +40,7 @@ public class RateItem {
      *
      * @return rateItemID
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public RateItemID getRateItemID() {
         return rateItemID;
     }
@@ -60,7 +59,7 @@ public class RateItem {
      *
      * @return rateItemType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RateItemType getRateItemType() {
         return rateItemType;
     }
@@ -79,7 +78,7 @@ public class RateItem {
      *
      * @return rateItemCharge
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CurrencyAmount getRateItemCharge() {
         return rateItemCharge;
     }
@@ -98,7 +97,7 @@ public class RateItem {
      *
      * @return rateItemNameLocalization
      */
-    @Schema(description = "Localized name for the RateItem.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Localized name for the RateItem.")
     public String getRateItemNameLocalization() {
         return rateItemNameLocalization;
     }

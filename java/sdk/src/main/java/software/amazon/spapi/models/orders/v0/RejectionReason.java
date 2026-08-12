@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The reason for rejecting the order&#39;s regulated information. This is only present if the order is rejected. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The reason for rejecting the order's regulated information. This is only present if the order is rejected.")
 public class RejectionReason {
@@ -37,7 +36,9 @@ public class RejectionReason {
      *
      * @return rejectionReasonId
      */
-    @Schema(required = true, description = "The unique identifier for the rejection reason.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unique identifier for the rejection reason.")
     public String getRejectionReasonId() {
         return rejectionReasonId;
     }
@@ -56,7 +57,9 @@ public class RejectionReason {
      *
      * @return rejectionReasonDescription
      */
-    @Schema(required = true, description = "The description of this rejection reason.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The description of this rejection reason.")
     public String getRejectionReasonDescription() {
         return rejectionReasonDescription;
     }

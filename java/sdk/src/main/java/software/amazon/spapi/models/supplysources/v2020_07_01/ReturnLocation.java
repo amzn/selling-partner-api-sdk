@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.supplysources.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The address or reference to another &#x60;supplySourceId&#x60; to act as a return location. */
-@Schema(description = "The address or reference to another `supplySourceId` to act as a return location.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The address or reference to another `supplySourceId` to act as a return location.")
 public class ReturnLocation {
     @SerializedName("supplySourceId")
     private String supplySourceId = null;
@@ -35,7 +35,8 @@ public class ReturnLocation {
      *
      * @return supplySourceId
      */
-    @Schema(description = "The Amazon provided `supplySourceId` where orders can be returned to.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon provided `supplySourceId` where orders can be returned to.")
     public String getSupplySourceId() {
         return supplySourceId;
     }
@@ -54,7 +55,7 @@ public class ReturnLocation {
      *
      * @return addressWithContact
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AddressWithContact getAddressWithContact() {
         return addressWithContact;
     }

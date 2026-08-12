@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Details of the bank account involved in the transaction. */
-@Schema(description = "Details of the bank account involved in the transaction.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of the bank account involved in the transaction.")
 public class TransactionAccount {
     @SerializedName("accountId")
     private String accountId = null;
@@ -50,7 +49,8 @@ public class TransactionAccount {
      *
      * @return accountId
      */
-    @Schema(description = "The unique identifier provided by Amazon to identify the account.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The unique identifier provided by Amazon to identify the account.")
     public String getAccountId() {
         return accountId;
     }
@@ -69,7 +69,7 @@ public class TransactionAccount {
      *
      * @return bankAccountHolderName
      */
-    @Schema(description = "The account holder's name.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The account holder's name.")
     public String getBankAccountHolderName() {
         return bankAccountHolderName;
     }
@@ -88,7 +88,7 @@ public class TransactionAccount {
      *
      * @return bankName
      */
-    @Schema(required = true, description = "The name of the bank.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The name of the bank.")
     public String getBankName() {
         return bankName;
     }
@@ -107,7 +107,7 @@ public class TransactionAccount {
      *
      * @return bankAccountNumberFormat
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public BankAccountNumberFormat getBankAccountNumberFormat() {
         return bankAccountNumberFormat;
     }
@@ -126,7 +126,7 @@ public class TransactionAccount {
      *
      * @return bankAccountNumberTail
      */
-    @Schema(description = "The last three digits of the bank account number.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The last three digits of the bank account number.")
     public String getBankAccountNumberTail() {
         return bankAccountNumberTail;
     }
@@ -146,7 +146,7 @@ public class TransactionAccount {
      *
      * @return bankAccountCountryCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The two-digit country code, in ISO 3166 format. This field is optional for `transactionSourceAccount`, but is mandatory for `transactionDestinationAccount`.")
     public String getBankAccountCountryCode() {
@@ -167,7 +167,7 @@ public class TransactionAccount {
      *
      * @return bankAccountCurrency
      */
-    @Schema(required = true, description = "The currency code in ISO 4217 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The currency code in ISO 4217 format.")
     public String getBankAccountCurrency() {
         return bankAccountCurrency;
     }

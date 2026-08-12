@@ -13,7 +13,7 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +22,7 @@ import java.util.Objects;
  * Request schema for the &#x60;getRangeSlotCapacity&#x60; operation. This schema is used to define the time range and
  * capacity types that are being queried.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Request schema for the `getRangeSlotCapacity` operation. This schema is used to define the time range and capacity types that are being queried.")
 public class RangeSlotCapacityQuery {
@@ -53,7 +53,7 @@ public class RangeSlotCapacityQuery {
      *
      * @return capacityTypes
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "An array of capacity types which are being requested. Default value is `[SCHEDULED_CAPACITY]`.")
     public List<CapacityType> getCapacityTypes() {
@@ -74,7 +74,7 @@ public class RangeSlotCapacityQuery {
      *
      * @return startDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "Start date time from which the capacity slots are being requested in ISO 8601 format.")
     public OffsetDateTime getStartDateTime() {
@@ -95,7 +95,7 @@ public class RangeSlotCapacityQuery {
      *
      * @return endDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "End date time up to which the capacity slots are being requested in ISO 8601 format.")
     public OffsetDateTime getEndDateTime() {

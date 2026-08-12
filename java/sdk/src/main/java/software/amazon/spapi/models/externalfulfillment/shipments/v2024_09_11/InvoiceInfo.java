@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about the shipment&#39;s invoice. */
-@Schema(description = "Information about the shipment's invoice.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about the shipment's invoice.")
 public class InvoiceInfo {
     @SerializedName("invoiceId")
     private String invoiceId = null;
@@ -35,7 +34,9 @@ public class InvoiceInfo {
      *
      * @return invoiceId
      */
-    @Schema(required = true, description = "The unique ID of the invoice that corresponds to the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unique ID of the invoice that corresponds to the shipment.")
     public String getInvoiceId() {
         return invoiceId;
     }
@@ -54,7 +55,7 @@ public class InvoiceInfo {
      *
      * @return creationDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")

@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Additional information about an item in a transaction. */
-@Schema(description = "Additional information about an item in a transaction.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Additional information about an item in a transaction.")
 public class Item {
     @SerializedName("description")
     private String description = null;
@@ -46,7 +45,7 @@ public class Item {
      *
      * @return description
      */
-    @Schema(description = "A description of the items in a transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A description of the items in a transaction.")
     public String getDescription() {
         return description;
     }
@@ -65,7 +64,7 @@ public class Item {
      *
      * @return relatedIdentifiers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemRelatedIdentifiers getRelatedIdentifiers() {
         return relatedIdentifiers;
     }
@@ -84,7 +83,7 @@ public class Item {
      *
      * @return totalAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTotalAmount() {
         return totalAmount;
     }
@@ -111,7 +110,8 @@ public class Item {
      *
      * @return breakdowns
      */
-    @Schema(description = "A list of breakdowns that detail how the total amount is calculated for the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of breakdowns that detail how the total amount is calculated for the transaction.")
     public List<Breakdown> getBreakdowns() {
         return breakdowns;
     }
@@ -130,7 +130,7 @@ public class Item {
      *
      * @return contexts
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Contexts getContexts() {
         return contexts;
     }

@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.finances.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of network commingling transaction events. */
-@Schema(description = "A list of network commingling transaction events.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of network commingling transaction events.")
 public class NetworkComminglingTransactionEventList extends ArrayList<NetworkComminglingTransactionEvent> {
 
     @Override

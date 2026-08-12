@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** An event related to the seller&#39;s Pay with Amazon account. */
-@Schema(description = "An event related to the seller's Pay with Amazon account.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An event related to the seller's Pay with Amazon account.")
 public class PayWithAmazonEvent {
     @SerializedName("SellerOrderId")
     private String sellerOrderId = null;
@@ -59,7 +59,7 @@ public class PayWithAmazonEvent {
      *
      * @return sellerOrderId
      */
-    @Schema(description = "An order identifier that is specified by the seller.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An order identifier that is specified by the seller.")
     public String getSellerOrderId() {
         return sellerOrderId;
     }
@@ -78,7 +78,7 @@ public class PayWithAmazonEvent {
      *
      * @return transactionPostedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getTransactionPostedDate() {
@@ -99,7 +99,7 @@ public class PayWithAmazonEvent {
      *
      * @return businessObjectType
      */
-    @Schema(description = "The type of business object.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of business object.")
     public String getBusinessObjectType() {
         return businessObjectType;
     }
@@ -118,7 +118,7 @@ public class PayWithAmazonEvent {
      *
      * @return salesChannel
      */
-    @Schema(description = "The sales channel for the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The sales channel for the transaction.")
     public String getSalesChannel() {
         return salesChannel;
     }
@@ -137,7 +137,7 @@ public class PayWithAmazonEvent {
      *
      * @return charge
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ChargeComponent getCharge() {
         return charge;
     }
@@ -156,7 +156,7 @@ public class PayWithAmazonEvent {
      *
      * @return feeList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeeComponentList getFeeList() {
         return feeList;
     }
@@ -175,7 +175,7 @@ public class PayWithAmazonEvent {
      *
      * @return paymentAmountType
      */
-    @Schema(description = "The type of payment.  Possible values:  * `Sales`")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of payment.  Possible values:  * `Sales`")
     public String getPaymentAmountType() {
         return paymentAmountType;
     }
@@ -194,7 +194,7 @@ public class PayWithAmazonEvent {
      *
      * @return amountDescription
      */
-    @Schema(description = "A short description of this payment event.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A short description of this payment event.")
     public String getAmountDescription() {
         return amountDescription;
     }
@@ -214,7 +214,7 @@ public class PayWithAmazonEvent {
      *
      * @return fulfillmentChannel
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The fulfillment channel.  Possible values:  * `AFN`: Amazon Fulfillment Network (Fulfillment by Amazon)  * `MFN`: Merchant Fulfillment Network (self-fulfilled)")
     public String getFulfillmentChannel() {
@@ -235,7 +235,7 @@ public class PayWithAmazonEvent {
      *
      * @return storeName
      */
-    @Schema(description = "The name of the store where the event occurred.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the store where the event occurred.")
     public String getStoreName() {
         return storeName;
     }

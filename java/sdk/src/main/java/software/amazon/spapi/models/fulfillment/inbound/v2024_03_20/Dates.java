@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Specifies the date that the seller expects their shipment will be shipped. */
-@Schema(description = "Specifies the date that the seller expects their shipment will be shipped.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Specifies the date that the seller expects their shipment will be shipped.")
 public class Dates {
     @SerializedName("readyToShipWindow")
     private Window readyToShipWindow = null;
@@ -32,7 +32,7 @@ public class Dates {
      *
      * @return readyToShipWindow
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Window getReadyToShipWindow() {
         return readyToShipWindow;
     }

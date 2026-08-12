@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Name/Address and tax details of the party. */
-@Schema(description = "Name/Address and tax details of the party.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Name/Address and tax details of the party.")
 public class PartyIdentification {
     @SerializedName("address")
     private Address address = null;
@@ -40,7 +39,7 @@ public class PartyIdentification {
      *
      * @return address
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Address getAddress() {
         return address;
     }
@@ -59,7 +58,7 @@ public class PartyIdentification {
      *
      * @return partyId
      */
-    @Schema(required = true, description = "Assigned identification for the party.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Assigned identification for the party.")
     public String getPartyId() {
         return partyId;
     }
@@ -86,7 +85,7 @@ public class PartyIdentification {
      *
      * @return taxRegistrationDetails
      */
-    @Schema(description = "Tax registration details of the entity.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Tax registration details of the entity.")
     public List<TaxRegistrationDetails> getTaxRegistrationDetails() {
         return taxRegistrationDetails;
     }

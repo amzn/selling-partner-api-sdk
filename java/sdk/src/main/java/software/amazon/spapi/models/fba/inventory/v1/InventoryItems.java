@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.fba.inventory.v1;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** List of Inventory to be added */
-@Schema(description = "List of Inventory to be added")
+@io.swagger.v3.oas.annotations.media.Schema(description = "List of Inventory to be added")
 public class InventoryItems extends ArrayList<InventoryItem> {
 
     @Override

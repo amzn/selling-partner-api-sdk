@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Result for the get prep instructions operation */
-@Schema(description = "Result for the get prep instructions operation")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Result for the get prep instructions operation")
 public class GetPrepInstructionsResult {
     @SerializedName("SKUPrepInstructionsList")
     private SKUPrepInstructionsList skUPrepInstructionsList = null;
@@ -41,7 +40,7 @@ public class GetPrepInstructionsResult {
      *
      * @return skUPrepInstructionsList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public SKUPrepInstructionsList getSkUPrepInstructionsList() {
         return skUPrepInstructionsList;
     }
@@ -60,7 +59,7 @@ public class GetPrepInstructionsResult {
      *
      * @return invalidSKUList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InvalidSKUList getInvalidSKUList() {
         return invalidSKUList;
     }
@@ -79,7 +78,7 @@ public class GetPrepInstructionsResult {
      *
      * @return asINPrepInstructionsList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ASINPrepInstructionsList getAsINPrepInstructionsList() {
         return asINPrepInstructionsList;
     }
@@ -98,7 +97,7 @@ public class GetPrepInstructionsResult {
      *
      * @return invalidASINList
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InvalidASINList getInvalidASINList() {
         return invalidASINList;
     }

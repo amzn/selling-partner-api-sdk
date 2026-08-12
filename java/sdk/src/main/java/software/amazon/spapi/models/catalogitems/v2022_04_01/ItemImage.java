@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Image for an item in the Amazon catalog. */
-@Schema(description = "Image for an item in the Amazon catalog.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Image for an item in the Amazon catalog.")
 public class ItemImage {
     /** Variant of the image, such as &#x60;MAIN&#x60; or &#x60;PT01&#x60;. */
     @JsonAdapter(VariantEnum.Adapter.class)
@@ -108,7 +107,9 @@ public class ItemImage {
      *
      * @return variant
      */
-    @Schema(required = true, description = "Variant of the image, such as `MAIN` or `PT01`.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Variant of the image, such as `MAIN` or `PT01`.")
     public VariantEnum getVariant() {
         return variant;
     }
@@ -127,7 +128,7 @@ public class ItemImage {
      *
      * @return link
      */
-    @Schema(required = true, description = "URL for the image.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "URL for the image.")
     public String getLink() {
         return link;
     }
@@ -146,7 +147,7 @@ public class ItemImage {
      *
      * @return height
      */
-    @Schema(required = true, description = "Height of the image in pixels.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Height of the image in pixels.")
     public Integer getHeight() {
         return height;
     }
@@ -165,7 +166,7 @@ public class ItemImage {
      *
      * @return width
      */
-    @Schema(required = true, description = "Width of the image in pixels.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Width of the image in pixels.")
     public Integer getWidth() {
         return width;
     }

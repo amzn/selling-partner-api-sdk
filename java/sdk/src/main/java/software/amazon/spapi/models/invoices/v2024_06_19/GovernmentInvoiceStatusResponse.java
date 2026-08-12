@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.invoices.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Success. */
-@Schema(description = "Success.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Success.")
 public class GovernmentInvoiceStatusResponse {
     @SerializedName("invoiceErrors")
     private List<InvoiceError> invoiceErrors = null;
@@ -48,7 +47,7 @@ public class GovernmentInvoiceStatusResponse {
      *
      * @return invoiceErrors
      */
-    @Schema(description = "The errors that occurred during invoice creation.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The errors that occurred during invoice creation.")
     public List<InvoiceError> getInvoiceErrors() {
         return invoiceErrors;
     }
@@ -67,7 +66,8 @@ public class GovernmentInvoiceStatusResponse {
      *
      * @return invoiceExternalDocumentId
      */
-    @Schema(description = "The Government Invoice ID of a successfully authorized invoice.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Government Invoice ID of a successfully authorized invoice.")
     public String getInvoiceExternalDocumentId() {
         return invoiceExternalDocumentId;
     }
@@ -86,7 +86,7 @@ public class GovernmentInvoiceStatusResponse {
      *
      * @return status
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GovernmentInvoiceCreationStatus getStatus() {
         return status;
     }

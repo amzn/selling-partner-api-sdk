@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.easyship.v2022_03_23;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of serial numbers for the items associated with the &#x60;OrderItemId&#x60; value. */
-@Schema(description = "A list of serial numbers for the items associated with the `OrderItemId` value.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of serial numbers for the items associated with the `OrderItemId` value.")
 public class OrderItemSerialNumbers extends ArrayList<String> {
 
     @Override

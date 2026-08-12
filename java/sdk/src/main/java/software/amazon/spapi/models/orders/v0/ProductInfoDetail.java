@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Product information on the number of items. */
-@Schema(description = "Product information on the number of items.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Product information on the number of items.")
 public class ProductInfoDetail {
     @SerializedName("NumberOfItems")
     private String numberOfItems = null;
@@ -32,7 +31,8 @@ public class ProductInfoDetail {
      *
      * @return numberOfItems
      */
-    @Schema(description = "The total number of items that are included in the ASIN.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The total number of items that are included in the ASIN.")
     public String getNumberOfItems() {
         return numberOfItems;
     }

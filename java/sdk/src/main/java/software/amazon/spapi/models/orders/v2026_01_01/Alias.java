@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An alternative identifier that provides a different way to reference the same order. */
-@Schema(description = "An alternative identifier that provides a different way to reference the same order.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "An alternative identifier that provides a different way to reference the same order.")
 public class Alias {
     @SerializedName("aliasId")
     private String aliasId = null;
@@ -35,7 +35,9 @@ public class Alias {
      *
      * @return aliasId
      */
-    @Schema(required = true, description = "The alternative identifier value that can be used to reference this order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The alternative identifier value that can be used to reference this order.")
     public String getAliasId() {
         return aliasId;
     }
@@ -54,7 +56,7 @@ public class Alias {
      *
      * @return aliasType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The kind of alternative identifier this represents.  **Possible values**: `SELLER_ORDER_ID`")
     public String getAliasType() {

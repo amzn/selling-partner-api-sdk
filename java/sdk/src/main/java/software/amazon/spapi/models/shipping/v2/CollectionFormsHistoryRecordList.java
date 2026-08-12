@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of CollectionFormsHistoryRecord */
-@Schema(description = "A list of CollectionFormsHistoryRecord")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of CollectionFormsHistoryRecord")
 public class CollectionFormsHistoryRecordList extends ArrayList<CollectionFormsHistoryRecord> {
 
     @Override

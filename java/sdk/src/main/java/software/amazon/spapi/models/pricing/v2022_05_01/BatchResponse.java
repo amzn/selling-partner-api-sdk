@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The common properties for responses to individual requests within a batch. */
-@Schema(description = "The common properties for responses to individual requests within a batch.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The common properties for responses to individual requests within a batch.")
 public class BatchResponse {
     @SerializedName("headers")
     private HttpHeaders headers = null;
@@ -35,7 +35,7 @@ public class BatchResponse {
      *
      * @return headers
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public HttpHeaders getHeaders() {
         return headers;
     }
@@ -54,7 +54,7 @@ public class BatchResponse {
      *
      * @return status
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public HttpStatusLine getStatus() {
         return status;
     }

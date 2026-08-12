@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response schema for the &#x60;initiatePayout&#x60; operation. */
-@Schema(description = "The response schema for the `initiatePayout` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the `initiatePayout` operation.")
 public class InitiatePayoutResponse {
     @SerializedName("payoutReferenceId")
     private String payoutReferenceId = null;
@@ -33,7 +32,7 @@ public class InitiatePayoutResponse {
      *
      * @return payoutReferenceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The financial event group ID for a successfully initiated payout. You can use this ID to track payout information.")

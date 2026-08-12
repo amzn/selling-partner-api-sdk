@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.tracking.v2026_01_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Contains tracking details for a requested shipment. */
-@Schema(description = "Contains tracking details for a requested shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Contains tracking details for a requested shipment.")
 public class GetShipmentTrackingResponse {
     @SerializedName("trackingDetail")
     private TrackingDetail trackingDetail = null;
@@ -32,7 +31,7 @@ public class GetShipmentTrackingResponse {
      *
      * @return trackingDetail
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TrackingDetail getTrackingDetail() {
         return trackingDetail;
     }

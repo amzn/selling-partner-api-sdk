@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.vendor.shipments.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Transport Request pickup date */
-@Schema(description = "Transport Request pickup date")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Transport Request pickup date")
 public class PurchaseOrders {
     @SerializedName("purchaseOrderNumber")
     private String purchaseOrderNumber = null;
@@ -43,7 +43,7 @@ public class PurchaseOrders {
      *
      * @return purchaseOrderNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Purchase order numbers involved in this shipment, list all the PO that are involved as part of this shipment.")
     public String getPurchaseOrderNumber() {
@@ -64,7 +64,7 @@ public class PurchaseOrders {
      *
      * @return purchaseOrderDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Purchase order numbers involved in this shipment, list all the PO that are involved as part of this shipment.")
     public OffsetDateTime getPurchaseOrderDate() {
@@ -85,7 +85,8 @@ public class PurchaseOrders {
      *
      * @return shipWindow
      */
-    @Schema(description = "Date range in which shipment is expected for these purchase orders.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Date range in which shipment is expected for these purchase orders.")
     public String getShipWindow() {
         return shipWindow;
     }
@@ -112,7 +113,7 @@ public class PurchaseOrders {
      *
      * @return items
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of the items that are associated to the PO in this transport and their associated details.")
     public List<PurchaseOrderItems> getItems() {

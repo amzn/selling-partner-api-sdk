@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The physical address of the merchant. */
-@Schema(description = "The physical address of the merchant.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The physical address of the merchant.")
 public class MerchantAddress {
     @SerializedName("name")
     private String name = null;
@@ -59,7 +58,7 @@ public class MerchantAddress {
      *
      * @return name
      */
-    @Schema(description = "The name of the business or facility at this address.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the business or facility at this address.")
     public String getName() {
         return name;
     }
@@ -78,7 +77,7 @@ public class MerchantAddress {
      *
      * @return addressLine1
      */
-    @Schema(description = "The primary street address of the merchant's location.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The primary street address of the merchant's location.")
     public String getAddressLine1() {
         return addressLine1;
     }
@@ -97,7 +96,7 @@ public class MerchantAddress {
      *
      * @return addressLine2
      */
-    @Schema(description = "Additional address information.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Additional address information.")
     public String getAddressLine2() {
         return addressLine2;
     }
@@ -116,7 +115,7 @@ public class MerchantAddress {
      *
      * @return addressLine3
      */
-    @Schema(description = "Additional address information.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Additional address information.")
     public String getAddressLine3() {
         return addressLine3;
     }
@@ -135,7 +134,7 @@ public class MerchantAddress {
      *
      * @return city
      */
-    @Schema(description = "The city of the address.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The city of the address.")
     public String getCity() {
         return city;
     }
@@ -154,7 +153,7 @@ public class MerchantAddress {
      *
      * @return districtOrCounty
      */
-    @Schema(description = "The district or county of the address.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The district or county of the address.")
     public String getDistrictOrCounty() {
         return districtOrCounty;
     }
@@ -173,7 +172,7 @@ public class MerchantAddress {
      *
      * @return stateOrRegion
      */
-    @Schema(description = "The state, province, or region of the address.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The state, province, or region of the address.")
     public String getStateOrRegion() {
         return stateOrRegion;
     }
@@ -192,7 +191,7 @@ public class MerchantAddress {
      *
      * @return municipality
      */
-    @Schema(description = "The municipality of the address.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The municipality of the address.")
     public String getMunicipality() {
         return municipality;
     }
@@ -211,7 +210,7 @@ public class MerchantAddress {
      *
      * @return postalCode
      */
-    @Schema(description = "The postal code or ZIP code of the address.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The postal code or ZIP code of the address.")
     public String getPostalCode() {
         return postalCode;
     }
@@ -230,7 +229,8 @@ public class MerchantAddress {
      *
      * @return countryCode
      */
-    @Schema(description = "The two-letter country code for the address, in ISO 3166-1 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The two-letter country code for the address, in ISO 3166-1 format.")
     public String getCountryCode() {
         return countryCode;
     }

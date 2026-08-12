@@ -13,7 +13,7 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +22,7 @@ import java.util.Objects;
  * A packing option contains a set of pack groups plus additional information about the packing option, such as any
  * discounts or fees if it&#39;s selected.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A packing option contains a set of pack groups plus additional information about the packing option, such as any discounts or fees if it's selected.")
 public class PackingOption {
@@ -68,7 +68,7 @@ public class PackingOption {
      *
      * @return discounts
      */
-    @Schema(required = true, description = "Discount for the offered option.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Discount for the offered option.")
     public List<Incentive> getDiscounts() {
         return discounts;
     }
@@ -89,7 +89,7 @@ public class PackingOption {
      *
      * @return expiration
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The time at which this packing option is no longer valid. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.")
     public OffsetDateTime getExpiration() {
@@ -118,7 +118,7 @@ public class PackingOption {
      *
      * @return fees
      */
-    @Schema(required = true, description = "Fee for the offered option.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Fee for the offered option.")
     public List<Incentive> getFees() {
         return fees;
     }
@@ -145,7 +145,7 @@ public class PackingOption {
      *
      * @return packingGroups
      */
-    @Schema(required = true, description = "Packing group IDs.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Packing group IDs.")
     public List<String> getPackingGroups() {
         return packingGroups;
     }
@@ -164,7 +164,7 @@ public class PackingOption {
      *
      * @return packingOptionId
      */
-    @Schema(required = true, description = "Identifier of a packing option.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Identifier of a packing option.")
     public String getPackingOptionId() {
         return packingOptionId;
     }
@@ -184,7 +184,7 @@ public class PackingOption {
      *
      * @return status
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The status of the packing option. Possible values: `OFFERED`, `ACCEPTED`, `EXPIRED`.")
     public String getStatus() {
@@ -213,7 +213,9 @@ public class PackingOption {
      *
      * @return supportedConfigurations
      */
-    @Schema(required = true, description = "A list of possible configurations for this option.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of possible configurations for this option.")
     public List<PackingConfiguration> getSupportedConfigurations() {
         return supportedConfigurations;
     }
@@ -242,7 +244,7 @@ public class PackingOption {
      *
      * @return supportedShippingConfigurations
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "**This field is deprecated**. Use the `shippingRequirements` property under `supportedConfigurations` instead. List of supported shipping modes.")

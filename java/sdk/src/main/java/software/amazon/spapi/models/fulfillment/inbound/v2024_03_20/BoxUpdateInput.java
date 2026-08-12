@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Input information for updating a box */
-@Schema(description = "Input information for updating a box")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Input information for updating a box")
 public class BoxUpdateInput {
     @SerializedName("contentInformationSource")
     private BoxContentInformationSource contentInformationSource = null;
@@ -49,7 +48,7 @@ public class BoxUpdateInput {
      *
      * @return contentInformationSource
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public BoxContentInformationSource getContentInformationSource() {
         return contentInformationSource;
     }
@@ -68,7 +67,7 @@ public class BoxUpdateInput {
      *
      * @return dimensions
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Dimensions getDimensions() {
         return dimensions;
     }
@@ -96,7 +95,7 @@ public class BoxUpdateInput {
      *
      * @return items
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The items and their quantity in the box. This must be empty if the box `contentInformationSource` is `BARCODE_2D` or `MANUAL_PROCESS`.")
     public List<ItemInput> getItems() {
@@ -119,7 +118,7 @@ public class BoxUpdateInput {
      *
      * @return packageId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Primary key to uniquely identify a Box Package. PackageId must be provided if the intent is to update an existing box. Adding a new box will not require providing this value. Any existing PackageIds not provided will be treated as to-be-removed")
     public String getPackageId() {
@@ -140,7 +139,7 @@ public class BoxUpdateInput {
      *
      * @return quantity
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The number of containers where all other properties like weight or dimensions are identical.")
@@ -162,7 +161,7 @@ public class BoxUpdateInput {
      *
      * @return weight
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Weight getWeight() {
         return weight;
     }

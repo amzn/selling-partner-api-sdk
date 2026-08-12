@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Additional information related to the verification of a regulated order. */
-@Schema(description = "Additional information related to the verification of a regulated order.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Additional information related to the verification of a regulated order.")
 public class VerificationDetails {
     @SerializedName("prescriptionDetail")
     private PrescriptionDetail prescriptionDetail = null;
@@ -38,7 +38,7 @@ public class VerificationDetails {
      *
      * @return prescriptionDetail
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PrescriptionDetail getPrescriptionDetail() {
         return prescriptionDetail;
     }
@@ -57,7 +57,7 @@ public class VerificationDetails {
      *
      * @return approvedAlternativeDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ApprovedAlternativeDetails getApprovedAlternativeDetails() {
         return approvedAlternativeDetails;
     }
@@ -76,7 +76,7 @@ public class VerificationDetails {
      *
      * @return interimStatusDetail
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InterimStatusDetail getInterimStatusDetail() {
         return interimStatusDetail;
     }

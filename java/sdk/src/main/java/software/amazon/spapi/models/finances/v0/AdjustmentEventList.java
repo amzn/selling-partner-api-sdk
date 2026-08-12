@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.finances.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of adjustment event information for the seller&#39;s account. */
-@Schema(description = "A list of adjustment event information for the seller's account.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of adjustment event information for the seller's account.")
 public class AdjustmentEventList extends ArrayList<AdjustmentEvent> {
 
     @Override

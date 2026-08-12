@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Sales rank of an Amazon catalog item, grouped by website display group. */
-@Schema(description = "Sales rank of an Amazon catalog item, grouped by website display group.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Sales rank of an Amazon catalog item, grouped by website display group.")
 public class ItemDisplayGroupSalesRank {
     @SerializedName("websiteDisplayGroup")
     private String websiteDisplayGroup = null;
@@ -41,7 +41,9 @@ public class ItemDisplayGroupSalesRank {
      *
      * @return websiteDisplayGroup
      */
-    @Schema(required = true, description = "Name of the website display group that is associated with the sales rank")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Name of the website display group that is associated with the sales rank")
     public String getWebsiteDisplayGroup() {
         return websiteDisplayGroup;
     }
@@ -60,7 +62,7 @@ public class ItemDisplayGroupSalesRank {
      *
      * @return title
      */
-    @Schema(required = true, description = "Name of the sales rank.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Name of the sales rank.")
     public String getTitle() {
         return title;
     }
@@ -79,7 +81,8 @@ public class ItemDisplayGroupSalesRank {
      *
      * @return link
      */
-    @Schema(description = "Corresponding Amazon retail website URL for the sales rank.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Corresponding Amazon retail website URL for the sales rank.")
     public String getLink() {
         return link;
     }
@@ -98,7 +101,7 @@ public class ItemDisplayGroupSalesRank {
      *
      * @return rank
      */
-    @Schema(required = true, description = "Sales rank.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Sales rank.")
     public Integer getRank() {
         return rank;
     }

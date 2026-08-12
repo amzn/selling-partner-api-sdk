@@ -17,14 +17,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Details of an order. */
-@Schema(description = "Details of an order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of an order.")
 public class OrderDetails {
     @SerializedName("purchaseOrderDate")
     private OffsetDateTime purchaseOrderDate = null;
@@ -178,7 +178,7 @@ public class OrderDetails {
      *
      * @return purchaseOrderDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The date the purchase order was placed. Must be in ISO-8601 date/time format.")
     public OffsetDateTime getPurchaseOrderDate() {
@@ -202,7 +202,7 @@ public class OrderDetails {
      *
      * @return purchaseOrderChangedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date when purchase order was last changed by Amazon after the order was placed. This date will be greater than 'purchaseOrderDate'. This means the PO data was changed on that date and vendors are required to fulfill the  updated PO. The PO changes can be related to Item Quantity, Ship to Location, Ship Window etc. This field will not be present in orders that have not changed after creation. Must be in ISO-8601 date/time format.")
     public OffsetDateTime getPurchaseOrderChangedDate() {
@@ -224,7 +224,7 @@ public class OrderDetails {
      *
      * @return purchaseOrderStateChangedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The date when current purchase order state was changed. Current purchase order state is available in the field 'purchaseOrderState'. Must be in ISO-8601 date/time format.")
@@ -246,7 +246,7 @@ public class OrderDetails {
      *
      * @return purchaseOrderType
      */
-    @Schema(description = "Type of purchase order.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Type of purchase order.")
     public PurchaseOrderTypeEnum getPurchaseOrderType() {
         return purchaseOrderType;
     }
@@ -265,7 +265,7 @@ public class OrderDetails {
      *
      * @return importDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ImportDetails getImportDetails() {
         return importDetails;
     }
@@ -285,7 +285,7 @@ public class OrderDetails {
      *
      * @return dealCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "If requested by the recipient, this field will contain a promotional/deal number. The discount code line is optional. It is used to obtain a price discount on items on the order.")
     public String getDealCode() {
@@ -306,7 +306,7 @@ public class OrderDetails {
      *
      * @return paymentMethod
      */
-    @Schema(description = "Payment method used.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Payment method used.")
     public PaymentMethodEnum getPaymentMethod() {
         return paymentMethod;
     }
@@ -325,7 +325,7 @@ public class OrderDetails {
      *
      * @return buyingParty
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PartyIdentification getBuyingParty() {
         return buyingParty;
     }
@@ -344,7 +344,7 @@ public class OrderDetails {
      *
      * @return sellingParty
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -363,7 +363,7 @@ public class OrderDetails {
      *
      * @return shipToParty
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PartyIdentification getShipToParty() {
         return shipToParty;
     }
@@ -382,7 +382,7 @@ public class OrderDetails {
      *
      * @return billToParty
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PartyIdentification getBillToParty() {
         return billToParty;
     }
@@ -401,7 +401,7 @@ public class OrderDetails {
      *
      * @return shipWindow
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Defines a date time interval according to ISO8601. Interval is separated by double hyphen (--).")
     public String getShipWindow() {
@@ -422,7 +422,7 @@ public class OrderDetails {
      *
      * @return deliveryWindow
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Defines a date time interval according to ISO8601. Interval is separated by double hyphen (--).")
     public String getDeliveryWindow() {
@@ -451,7 +451,9 @@ public class OrderDetails {
      *
      * @return items
      */
-    @Schema(required = true, description = "A list of items in this purchase order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of items in this purchase order.")
     public List<OrderItem> getItems() {
         return items;
     }

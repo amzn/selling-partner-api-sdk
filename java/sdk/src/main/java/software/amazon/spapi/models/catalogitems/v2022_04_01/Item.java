@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.catalogitems.v2022_04_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An item in the Amazon catalog. */
-@Schema(description = "An item in the Amazon catalog.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An item in the Amazon catalog.")
 public class Item {
     @SerializedName("asin")
     private String asin = null;
@@ -62,7 +61,9 @@ public class Item {
      *
      * @return asin
      */
-    @Schema(required = true, description = "The unique identifier of an item in the Amazon catalog.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The unique identifier of an item in the Amazon catalog.")
     public String getAsin() {
         return asin;
     }
@@ -81,7 +82,7 @@ public class Item {
      *
      * @return attributes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemAttributes getAttributes() {
         return attributes;
     }
@@ -100,7 +101,7 @@ public class Item {
      *
      * @return classifications
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemBrowseClassifications getClassifications() {
         return classifications;
     }
@@ -119,7 +120,7 @@ public class Item {
      *
      * @return dimensions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemDimensions getDimensions() {
         return dimensions;
     }
@@ -138,7 +139,7 @@ public class Item {
      *
      * @return identifiers
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemIdentifiers getIdentifiers() {
         return identifiers;
     }
@@ -157,7 +158,7 @@ public class Item {
      *
      * @return images
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemImages getImages() {
         return images;
     }
@@ -176,7 +177,7 @@ public class Item {
      *
      * @return productTypes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemProductTypes getProductTypes() {
         return productTypes;
     }
@@ -195,7 +196,7 @@ public class Item {
      *
      * @return relationships
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemRelationships getRelationships() {
         return relationships;
     }
@@ -214,7 +215,7 @@ public class Item {
      *
      * @return salesRanks
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemSalesRanks getSalesRanks() {
         return salesRanks;
     }
@@ -233,7 +234,7 @@ public class Item {
      *
      * @return summaries
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemSummaries getSummaries() {
         return summaries;
     }
@@ -252,7 +253,7 @@ public class Item {
      *
      * @return vendorDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemVendorDetails getVendorDetails() {
         return vendorDetails;
     }

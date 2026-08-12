@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** The weight of a package. */
-@Schema(description = "The weight of a package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The weight of a package.")
 public class Weight {
     @SerializedName("unit")
     private UnitOfWeight unit = null;
@@ -35,7 +35,7 @@ public class Weight {
      *
      * @return unit
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public UnitOfWeight getUnit() {
         return unit;
     }
@@ -54,7 +54,7 @@ public class Weight {
      *
      * @return value
      */
-    @Schema(required = true, description = "Value of a weight.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Value of a weight.")
     public BigDecimal getValue() {
         return value;
     }

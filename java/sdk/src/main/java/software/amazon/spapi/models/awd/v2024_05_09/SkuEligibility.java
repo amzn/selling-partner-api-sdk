@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Represents eligibility of one SKU. */
-@Schema(description = "Represents eligibility of one SKU.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Represents eligibility of one SKU.")
 public class SkuEligibility {
     @SerializedName("ineligibilityReasons")
     private List<SkuIneligibilityReason> ineligibilityReasons = null;
@@ -48,7 +47,8 @@ public class SkuEligibility {
      *
      * @return ineligibilityReasons
      */
-    @Schema(description = "If not eligible, these are list of error codes and descriptions.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "If not eligible, these are list of error codes and descriptions.")
     public List<SkuIneligibilityReason> getIneligibilityReasons() {
         return ineligibilityReasons;
     }
@@ -67,7 +67,7 @@ public class SkuEligibility {
      *
      * @return packageQuantity
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public DistributionPackageQuantity getPackageQuantity() {
         return packageQuantity;
     }
@@ -86,7 +86,7 @@ public class SkuEligibility {
      *
      * @return status
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public InboundEligibilityStatus getStatus() {
         return status;
     }

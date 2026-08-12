@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A container that holds all of the necessary properties to configure the aggregation of notifications. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A container that holds all of the necessary properties to configure the aggregation of notifications.")
 public class AggregationSettings {
@@ -34,7 +33,7 @@ public class AggregationSettings {
      *
      * @return aggregationTimePeriod
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public AggregationTimePeriod getAggregationTimePeriod() {
         return aggregationTimePeriod;
     }

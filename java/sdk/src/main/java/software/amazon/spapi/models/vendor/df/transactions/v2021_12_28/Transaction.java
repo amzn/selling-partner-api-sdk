@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** The transaction status details. */
-@Schema(description = "The transaction status details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The transaction status details.")
 public class Transaction {
     @SerializedName("transactionId")
     private String transactionId = null;
@@ -92,7 +91,7 @@ public class Transaction {
      *
      * @return transactionId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The unique identifier sent in the 'transactionId' field in response to the post request of a specific transaction.")
@@ -114,7 +113,9 @@ public class Transaction {
      *
      * @return status
      */
-    @Schema(required = true, description = "Current processing status of the transaction.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Current processing status of the transaction.")
     public StatusEnum getStatus() {
         return status;
     }
@@ -133,7 +134,7 @@ public class Transaction {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

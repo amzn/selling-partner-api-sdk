@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A time period with start and end boundaries. */
-@Schema(description = "A time period with start and end boundaries.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A time period with start and end boundaries.")
 public class DateTimeRange {
     @SerializedName("earliestDateTime")
     private OffsetDateTime earliestDateTime = null;
@@ -35,7 +35,7 @@ public class DateTimeRange {
      *
      * @return earliestDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The beginning of the time period, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
     public OffsetDateTime getEarliestDateTime() {
@@ -56,7 +56,7 @@ public class DateTimeRange {
      *
      * @return latestDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The end of the time period, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
     public OffsetDateTime getLatestDateTime() {

@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Tracking details for multiple packages. */
-@Schema(description = "Tracking details for multiple packages.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Tracking details for multiple packages.")
 public class ShipLabelsInput {
     @SerializedName("packageIds")
     private List<String> packageIds = null;
@@ -45,7 +44,9 @@ public class ShipLabelsInput {
      *
      * @return packageIds
      */
-    @Schema(required = true, description = "The subset of package IDs used to generate a label.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The subset of package IDs used to generate a label.")
     public List<String> getPackageIds() {
         return packageIds;
     }
@@ -64,7 +65,7 @@ public class ShipLabelsInput {
      *
      * @return courierSupportedAttributes
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CourierSupportedAttributes getCourierSupportedAttributes() {
         return courierSupportedAttributes;
     }

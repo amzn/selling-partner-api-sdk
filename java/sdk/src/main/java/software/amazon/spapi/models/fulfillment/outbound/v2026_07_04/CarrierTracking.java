@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Carrier tracking information for a package. */
-@Schema(description = "Carrier tracking information for a package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Carrier tracking information for a package.")
 public class CarrierTracking {
     @SerializedName("trackingNumber")
     private String trackingNumber = null;
@@ -38,7 +37,8 @@ public class CarrierTracking {
      *
      * @return trackingNumber
      */
-    @Schema(description = "The tracking number, if provided, can be used to obtain tracking and delivery information.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The tracking number, if provided, can be used to obtain tracking and delivery information.")
     public String getTrackingNumber() {
         return trackingNumber;
     }
@@ -57,7 +57,9 @@ public class CarrierTracking {
      *
      * @return carrierCode
      */
-    @Schema(required = true, description = "Identifies the carrier who delivers the shipment to the recipient.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Identifies the carrier who delivers the shipment to the recipient.")
     public String getCarrierCode() {
         return carrierCode;
     }
@@ -76,7 +78,8 @@ public class CarrierTracking {
      *
      * @return trackingUrl
      */
-    @Schema(description = "Represents the tracking URL where package tracking information is shown.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Represents the tracking URL where package tracking information is shown.")
     public String getTrackingUrl() {
         return trackingUrl;
     }

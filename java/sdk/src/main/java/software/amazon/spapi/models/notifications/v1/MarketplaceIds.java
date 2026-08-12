@@ -12,7 +12,6 @@
 
 package software.amazon.spapi.models.notifications.v1;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -20,7 +19,7 @@ import java.util.Objects;
  * A list of marketplace identifiers you can subscribe to (for example, &#x60;ATVPDKIKX0DER&#x60;). To receive
  * notifications in every marketplace, do not provide this list.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A list of marketplace identifiers you can subscribe to (for example, `ATVPDKIKX0DER`). To receive notifications in every marketplace, do not provide this list.")
 public class MarketplaceIds extends ArrayList<String> {

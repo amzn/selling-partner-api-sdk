@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Competitive pricing information for the item. */
-@Schema(description = "Competitive pricing information for the item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Competitive pricing information for the item.")
 public class CompetitivePricingType {
     @SerializedName("CompetitivePrices")
     private CompetitivePriceList competitivePrices = null;
@@ -38,7 +37,7 @@ public class CompetitivePricingType {
      *
      * @return competitivePrices
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public CompetitivePriceList getCompetitivePrices() {
         return competitivePrices;
     }
@@ -57,7 +56,7 @@ public class CompetitivePricingType {
      *
      * @return numberOfOfferListings
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public NumberOfOfferListingsList getNumberOfOfferListings() {
         return numberOfOfferListings;
     }
@@ -76,7 +75,7 @@ public class CompetitivePricingType {
      *
      * @return tradeInValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public MoneyType getTradeInValue() {
         return tradeInValue;
     }

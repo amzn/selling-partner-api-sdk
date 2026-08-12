@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Tax invoicing information for the order. */
-@Schema(description = "Tax invoicing information for the order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Tax invoicing information for the order.")
 public class OrderTaxInvoicing {
     @SerializedName("buyerInvoicePreference")
     private String buyerInvoicePreference = null;
@@ -38,7 +37,7 @@ public class OrderTaxInvoicing {
      *
      * @return buyerInvoicePreference
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The buyer's invoicing preference, which indicates whether the seller should issue an individual or a business invoice to the buyer.    **Note**: This attribute is only available in the Turkey marketplace.   **Possible values**: - `INDIVIDUAL` (Issues an individual invoice to the buyer) - `BUSINESS` (Issues a business invoice to the buyer)")
     public String getBuyerInvoicePreference() {
@@ -63,7 +62,7 @@ public class OrderTaxInvoicing {
      *
      * @return invoiceStatus
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The status of the invoice. Only available for Easy Ship orders and orders in the Brazil marketplace.  **Possible values**: - `NOT_REQUIRED` (The order does not require an electronic invoice to be uploaded) - `NOT_FOUND` (The order requires an electronic invoice but it is not uploaded) - `PROCESSING` (The required electronic invoice was uploaded and is processing) - `ERRORED` (The uploaded electronic invoice was not accepted) - `ACCEPTED` (The uploaded electronic invoice was accepted)")
     public String getInvoiceStatus() {

@@ -31,7 +31,6 @@ import software.amazon.spapi.ApiException;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
-import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.sellerwallet.v2024_03_01.DeleteTransferSchedule;
 import software.amazon.spapi.models.sellerwallet.v2024_03_01.TransferSchedule;
@@ -88,7 +87,7 @@ public class TransferScheduleApi {
             String amountDigitalSignature,
             String marketplaceId,
             TransferScheduleRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -139,7 +138,7 @@ public class TransferScheduleApi {
             String amountDigitalSignature,
             String marketplaceId,
             TransferScheduleRequest body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'destAccountDigitalSignature' is set
@@ -335,10 +334,10 @@ public class TransferScheduleApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = createTransferScheduleValidateBeforeCall(
@@ -370,9 +369,7 @@ public class TransferScheduleApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call deleteScheduleTransactionCall(
-            String transferScheduleId,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String transferScheduleId, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -419,9 +416,7 @@ public class TransferScheduleApi {
     }
 
     private okhttp3.Call deleteScheduleTransactionValidateBeforeCall(
-            String transferScheduleId,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String transferScheduleId, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'transferScheduleId' is set
@@ -572,10 +567,10 @@ public class TransferScheduleApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -607,9 +602,7 @@ public class TransferScheduleApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getTransferScheduleCall(
-            String transferScheduleId,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String transferScheduleId, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -656,9 +649,7 @@ public class TransferScheduleApi {
     }
 
     private okhttp3.Call getTransferScheduleValidateBeforeCall(
-            String transferScheduleId,
-            String marketplaceId,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String transferScheduleId, String marketplaceId, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'transferScheduleId' is set
@@ -802,10 +793,10 @@ public class TransferScheduleApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call =
@@ -842,10 +833,7 @@ public class TransferScheduleApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call listTransferSchedulesCall(
-            String accountId,
-            String marketplaceId,
-            String nextPageToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String accountId, String marketplaceId, String nextPageToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -891,10 +879,7 @@ public class TransferScheduleApi {
     }
 
     private okhttp3.Call listTransferSchedulesValidateBeforeCall(
-            String accountId,
-            String marketplaceId,
-            String nextPageToken,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String accountId, String marketplaceId, String nextPageToken, final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'accountId' is set
@@ -1073,10 +1058,10 @@ public class TransferScheduleApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = listTransferSchedulesValidateBeforeCall(
@@ -1114,7 +1099,7 @@ public class TransferScheduleApi {
             String amountDigitalSignature,
             String marketplaceId,
             TransferSchedule body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
 
@@ -1165,7 +1150,7 @@ public class TransferScheduleApi {
             String amountDigitalSignature,
             String marketplaceId,
             TransferSchedule body,
-            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            final ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         // verify the required parameter 'destAccountDigitalSignature' is set
@@ -1365,10 +1350,10 @@ public class TransferScheduleApi {
             String restrictedDataToken)
             throws ApiException, LWAException {
 
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+        ApiCallback progressRequestListener = null;
 
         if (callback != null) {
-            progressRequestListener = callback::onUploadProgress;
+            progressRequestListener = callback;
         }
 
         okhttp3.Call call = updateTransferScheduleValidateBeforeCall(

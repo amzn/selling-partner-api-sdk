@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
@@ -21,7 +20,7 @@ import java.util.Objects;
  * promotions. Used in purchase requirements to specify conditions within those configurations. Exactly one of
  * quantityThreshold or amountThreshold must be specified.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Specifies minimum purchase requirements using quantity-based or amount-based conditions for basket building promotions. Used in purchase requirements to specify conditions within those configurations. Exactly one of quantityThreshold or amountThreshold must be specified.")
 public class PurchaseCondition {
@@ -41,7 +40,7 @@ public class PurchaseCondition {
      *
      * @return quantityThreshold
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public QuantityThreshold getQuantityThreshold() {
         return quantityThreshold;
     }
@@ -60,7 +59,7 @@ public class PurchaseCondition {
      *
      * @return amountThreshold
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AmountThreshold getAmountThreshold() {
         return amountThreshold;
     }

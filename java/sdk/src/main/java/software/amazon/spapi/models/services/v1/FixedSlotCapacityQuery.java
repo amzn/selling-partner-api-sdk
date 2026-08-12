@@ -13,7 +13,8 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +23,7 @@ import java.util.Objects;
  * Request schema for the &#x60;getFixedSlotCapacity&#x60; operation. This schema is used to define the time range,
  * capacity types and slot duration which are being queried.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Request schema for the `getFixedSlotCapacity` operation. This schema is used to define the time range, capacity types and slot duration which are being queried.")
 public class FixedSlotCapacityQuery {
@@ -56,7 +57,7 @@ public class FixedSlotCapacityQuery {
      *
      * @return capacityTypes
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "An array of capacity types which are being requested. Default value is `[SCHEDULED_CAPACITY]`.")
     public List<CapacityType> getCapacityTypes() {
@@ -78,7 +79,7 @@ public class FixedSlotCapacityQuery {
      *
      * @return slotDuration
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Size in which slots are being requested. This value should be a multiple of 5 and fall in the range: 5 <= `slotDuration` <= 360.")
     public BigDecimal getSlotDuration() {
@@ -99,7 +100,7 @@ public class FixedSlotCapacityQuery {
      *
      * @return startDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "Start date time from which the capacity slots are being requested in ISO 8601 format.")
     public OffsetDateTime getStartDateTime() {
@@ -120,7 +121,7 @@ public class FixedSlotCapacityQuery {
      *
      * @return endDateTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "End date time up to which the capacity slots are being requested in ISO 8601 format.")
     public OffsetDateTime getEndDateTime() {

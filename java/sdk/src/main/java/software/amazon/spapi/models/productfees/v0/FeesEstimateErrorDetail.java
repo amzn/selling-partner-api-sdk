@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.productfees.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** Additional information that can help the caller understand or fix the issue. */
-@Schema(description = "Additional information that can help the caller understand or fix the issue.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Additional information that can help the caller understand or fix the issue.")
 public class FeesEstimateErrorDetail extends ArrayList<Object> {
 
     @Override

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Specifies characteristics that apply to a seller input. */
-@Schema(description = "Specifies characteristics that apply to a seller input.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Specifies characteristics that apply to a seller input.")
 public class SellerInputDefinition {
     @SerializedName("IsRequired")
     private Boolean isRequired = null;
@@ -50,7 +49,9 @@ public class SellerInputDefinition {
      *
      * @return isRequired
      */
-    @Schema(required = true, description = "When true, the additional input field is required.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "When true, the additional input field is required.")
     public Boolean getIsRequired() {
         return isRequired;
     }
@@ -69,7 +70,9 @@ public class SellerInputDefinition {
      *
      * @return dataType
      */
-    @Schema(required = true, description = "The data type of the additional input field.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The data type of the additional input field.")
     public String getDataType() {
         return dataType;
     }
@@ -88,7 +91,7 @@ public class SellerInputDefinition {
      *
      * @return constraints
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Constraints getConstraints() {
         return constraints;
     }
@@ -107,7 +110,9 @@ public class SellerInputDefinition {
      *
      * @return inputDisplayText
      */
-    @Schema(required = true, description = "The display text for the additional input field.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The display text for the additional input field.")
     public String getInputDisplayText() {
         return inputDisplayText;
     }
@@ -126,7 +131,7 @@ public class SellerInputDefinition {
      *
      * @return inputTarget
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public InputTargetType getInputTarget() {
         return inputTarget;
     }
@@ -145,7 +150,7 @@ public class SellerInputDefinition {
      *
      * @return storedValue
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public AdditionalSellerInput getStoredValue() {
         return storedValue;
     }
@@ -164,7 +169,7 @@ public class SellerInputDefinition {
      *
      * @return restrictedSetValues
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RestrictedSetValues getRestrictedSetValues() {
         return restrictedSetValues;
     }

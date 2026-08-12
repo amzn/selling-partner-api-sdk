@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A promotion applied to an item. */
-@Schema(description = "A promotion applied to an item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A promotion applied to an item.")
 public class Promotion {
     @SerializedName("PromotionType")
     private String promotionType = null;
@@ -38,7 +37,7 @@ public class Promotion {
      *
      * @return promotionType
      */
-    @Schema(description = "The type of promotion.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The type of promotion.")
     public String getPromotionType() {
         return promotionType;
     }
@@ -57,7 +56,7 @@ public class Promotion {
      *
      * @return promotionId
      */
-    @Schema(description = "The seller-specified identifier for the promotion.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller-specified identifier for the promotion.")
     public String getPromotionId() {
         return promotionId;
     }
@@ -76,7 +75,7 @@ public class Promotion {
      *
      * @return promotionAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getPromotionAmount() {
         return promotionAmount;
     }

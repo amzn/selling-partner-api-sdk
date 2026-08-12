@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.sales.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The currency type and the amount. */
-@Schema(description = "The currency type and the amount.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The currency type and the amount.")
 public class Money {
     @SerializedName("currencyCode")
     private String currencyCode = null;
@@ -35,7 +34,9 @@ public class Money {
      *
      * @return currencyCode
      */
-    @Schema(required = true, description = "Three-digit currency code. In ISO 4217 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Three-digit currency code. In ISO 4217 format.")
     public String getCurrencyCode() {
         return currencyCode;
     }
@@ -55,7 +56,7 @@ public class Money {
      *
      * @return amount
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A decimal number with no loss of precision. Useful when precision loss is unnaceptable, as with currencies. Follows RFC7159 for number representation.")

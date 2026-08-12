@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Fee type and cost. */
-@Schema(description = "Fee type and cost.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Fee type and cost.")
 public class Fee {
     /** The type of fee. */
     @JsonAdapter(NameEnum.Adapter.class)
@@ -90,7 +89,7 @@ public class Fee {
      *
      * @return name
      */
-    @Schema(required = true, description = "The type of fee.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of fee.")
     public NameEnum getName() {
         return name;
     }
@@ -109,7 +108,7 @@ public class Fee {
      *
      * @return amount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getAmount() {
         return amount;
     }

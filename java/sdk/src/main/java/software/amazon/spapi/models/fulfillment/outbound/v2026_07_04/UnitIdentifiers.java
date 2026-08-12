@@ -12,12 +12,13 @@
 
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 /** A map of unit identifier types to lists of identifier values */
-@Schema(description = "A map of unit identifier types to lists of identifier values")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A map of unit identifier types to lists of identifier values")
 public class UnitIdentifiers extends HashMap<String, List> {
 
     @Override

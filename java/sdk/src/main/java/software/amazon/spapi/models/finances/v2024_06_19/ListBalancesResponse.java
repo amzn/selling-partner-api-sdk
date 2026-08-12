@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response to the &#x60;listBalances&#x60; operation. */
-@Schema(description = "The response to the `listBalances` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response to the `listBalances` operation.")
 public class ListBalancesResponse {
     @SerializedName("balances")
     private Balances balances = null;
@@ -35,7 +34,7 @@ public class ListBalancesResponse {
      *
      * @return balances
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Balances getBalances() {
         return balances;
     }
@@ -54,7 +53,8 @@ public class ListBalancesResponse {
      *
      * @return nextToken
      */
-    @Schema(description = "A token to retrieve the next page of results. If null, no more results are available.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A token to retrieve the next page of results. If null, no more results are available.")
     public String getNextToken() {
         return nextToken;
     }

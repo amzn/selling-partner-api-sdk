@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.vendor.df.orders.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Shipment dates. */
-@Schema(description = "Shipment dates.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Shipment dates.")
 public class ShipmentDates {
     @SerializedName("requiredShipDate")
     private OffsetDateTime requiredShipDate = null;
@@ -35,7 +35,9 @@ public class ShipmentDates {
      *
      * @return requiredShipDate
      */
-    @Schema(required = true, description = "Time by which the vendor is required to ship the order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Time by which the vendor is required to ship the order.")
     public OffsetDateTime getRequiredShipDate() {
         return requiredShipDate;
     }
@@ -54,7 +56,7 @@ public class ShipmentDates {
      *
      * @return promisedDeliveryDate
      */
-    @Schema(description = "Delivery date promised to the Amazon customer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Delivery date promised to the Amazon customer.")
     public OffsetDateTime getPromisedDeliveryDate() {
         return promisedDeliveryDate;
     }

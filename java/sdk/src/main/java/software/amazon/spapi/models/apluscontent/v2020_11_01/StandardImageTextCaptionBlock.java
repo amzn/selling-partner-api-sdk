@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * The A+ Content standard image and text block, with a related caption. The caption might not display on all devices.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The A+ Content standard image and text block, with a related caption. The caption might not display on all devices.")
 public class StandardImageTextCaptionBlock {
@@ -39,7 +38,7 @@ public class StandardImageTextCaptionBlock {
      *
      * @return block
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardImageTextBlock getBlock() {
         return block;
     }
@@ -58,7 +57,7 @@ public class StandardImageTextCaptionBlock {
      *
      * @return caption
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TextComponent getCaption() {
         return caption;
     }

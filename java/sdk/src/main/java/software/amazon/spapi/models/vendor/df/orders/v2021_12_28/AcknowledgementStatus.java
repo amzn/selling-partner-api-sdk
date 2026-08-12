@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.orders.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Status of acknowledgement. */
-@Schema(description = "Status of acknowledgement.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Status of acknowledgement.")
 public class AcknowledgementStatus {
     @SerializedName("code")
     private String code = null;
@@ -36,7 +35,7 @@ public class AcknowledgementStatus {
      *
      * @return code
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Acknowledgement code is a unique two digit value which indicates the status of the acknowledgement. For a list of acknowledgement codes that Amazon supports, see the Vendor Direct Fulfillment APIs Use Case Guide.")
     public String getCode() {
@@ -57,7 +56,7 @@ public class AcknowledgementStatus {
      *
      * @return description
      */
-    @Schema(description = "Reason for the acknowledgement code.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Reason for the acknowledgement code.")
     public String getDescription() {
         return description;
     }

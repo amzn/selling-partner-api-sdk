@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The response schema for &#x60;getOffers&#x60;. */
-@Schema(description = "The response schema for `getOffers`.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for `getOffers`.")
 public class GetOffersResponse {
     @SerializedName("offerResults")
     private List<OfferResult> offerResults = null;
@@ -43,7 +42,7 @@ public class GetOffersResponse {
      *
      * @return offerResults
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Per-item offer results. Each entry contains the item, its available offers, and any constraints that prevented offers.")
     public List<OfferResult> getOfferResults() {

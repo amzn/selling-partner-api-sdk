@@ -17,12 +17,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** A shipment item&#39;s cancellation details. */
-@Schema(description = "A shipment item's cancellation details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A shipment item's cancellation details.")
 public class Cancellation {
     @SerializedName("cancelledQuantity")
     private Integer cancelledQuantity = null;
@@ -94,7 +93,9 @@ public class Cancellation {
      *
      * @return cancelledQuantity
      */
-    @Schema(required = true, description = "The number of items of this particular item which have been cancelled.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The number of items of this particular item which have been cancelled.")
     public Integer getCancelledQuantity() {
         return cancelledQuantity;
     }
@@ -113,7 +114,7 @@ public class Cancellation {
      *
      * @return cancelledTimestamp
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
@@ -135,7 +136,9 @@ public class Cancellation {
      *
      * @return cancellationType
      */
-    @Schema(required = true, description = "The type of cancellation of the item in the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The type of cancellation of the item in the shipment.")
     public CancellationTypeEnum getCancellationType() {
         return cancellationType;
     }
@@ -154,7 +157,7 @@ public class Cancellation {
      *
      * @return cancellationReason
      */
-    @Schema(description = "The reason for the cancellation of the shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The reason for the cancellation of the shipment.")
     public String getCancellationReason() {
         return cancellationReason;
     }

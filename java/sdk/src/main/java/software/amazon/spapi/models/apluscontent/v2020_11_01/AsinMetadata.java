@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
@@ -21,7 +20,7 @@ import java.util.Objects;
  * &#x60;includedDataSet&#x60; parameter in a call to the &#x60;listContentDocumentAsinRelations&#x60; operation, the
  * related ASINs are returned without metadata.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The A+ Content ASIN with additional metadata for content management. If you don't include the `includedDataSet` parameter in a call to the `listContentDocumentAsinRelations` operation, the related ASINs are returned without metadata.")
 public class AsinMetadata {
@@ -53,7 +52,9 @@ public class AsinMetadata {
      *
      * @return asin
      */
-    @Schema(required = true, description = "The Amazon Standard Identification Number (ASIN).")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The Amazon Standard Identification Number (ASIN).")
     public String getAsin() {
         return asin;
     }
@@ -72,7 +73,7 @@ public class AsinMetadata {
      *
      * @return badgeSet
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AsinBadgeSet getBadgeSet() {
         return badgeSet;
     }
@@ -91,7 +92,7 @@ public class AsinMetadata {
      *
      * @return parent
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN).")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon Standard Identification Number (ASIN).")
     public String getParent() {
         return parent;
     }
@@ -110,7 +111,7 @@ public class AsinMetadata {
      *
      * @return title
      */
-    @Schema(description = "The title for the ASIN in the Amazon catalog.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The title for the ASIN in the Amazon catalog.")
     public String getTitle() {
         return title;
     }
@@ -129,7 +130,7 @@ public class AsinMetadata {
      *
      * @return imageUrl
      */
-    @Schema(description = "The default image for the ASIN in the Amazon catalog.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The default image for the ASIN in the Amazon catalog.")
     public String getImageUrl() {
         return imageUrl;
     }
@@ -148,7 +149,7 @@ public class AsinMetadata {
      *
      * @return contentReferenceKeySet
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ContentReferenceKeySet getContentReferenceKeySet() {
         return contentReferenceKeySet;
     }

@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.vendor.df.orders.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Details of an individual order being acknowledged. */
-@Schema(description = "Details of an individual order being acknowledged.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Details of an individual order being acknowledged.")
 public class OrderAcknowledgementItem {
     @SerializedName("purchaseOrderNumber")
     private String purchaseOrderNumber = null;
@@ -52,7 +52,7 @@ public class OrderAcknowledgementItem {
      *
      * @return purchaseOrderNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The purchase order number for this order. Formatting Notes: alpha-numeric code.")
     public String getPurchaseOrderNumber() {
@@ -73,7 +73,9 @@ public class OrderAcknowledgementItem {
      *
      * @return vendorOrderNumber
      */
-    @Schema(required = true, description = "The vendor's order number for this order.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The vendor's order number for this order.")
     public String getVendorOrderNumber() {
         return vendorOrderNumber;
     }
@@ -93,7 +95,7 @@ public class OrderAcknowledgementItem {
      *
      * @return acknowledgementDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The date and time when the order is acknowledged, in ISO-8601 date/time format. For example: 2018-07-16T23:00:00Z / 2018-07-16T23:00:00-05:00 / 2018-07-16T23:00:00-08:00.")
@@ -115,7 +117,7 @@ public class OrderAcknowledgementItem {
      *
      * @return acknowledgementStatus
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public AcknowledgementStatus getAcknowledgementStatus() {
         return acknowledgementStatus;
     }
@@ -134,7 +136,7 @@ public class OrderAcknowledgementItem {
      *
      * @return sellingParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getSellingParty() {
         return sellingParty;
     }
@@ -153,7 +155,7 @@ public class OrderAcknowledgementItem {
      *
      * @return shipFromParty
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PartyIdentification getShipFromParty() {
         return shipFromParty;
     }
@@ -180,7 +182,9 @@ public class OrderAcknowledgementItem {
      *
      * @return itemAcknowledgements
      */
-    @Schema(required = true, description = "Item details including acknowledged quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Item details including acknowledged quantity.")
     public List<OrderItemAcknowledgement> getItemAcknowledgements() {
         return itemAcknowledgements;
     }

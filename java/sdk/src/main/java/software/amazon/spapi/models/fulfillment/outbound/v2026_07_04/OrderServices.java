@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Services selected for a fulfillment order. */
-@Schema(description = "Services selected for a fulfillment order.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Services selected for a fulfillment order.")
 public class OrderServices {
     @SerializedName("packaging")
     private PackagingService packaging = null;
@@ -38,7 +37,7 @@ public class OrderServices {
      *
      * @return packaging
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PackagingService getPackaging() {
         return packaging;
     }
@@ -57,7 +56,7 @@ public class OrderServices {
      *
      * @return delivery
      */
-    @Schema(description = "Specify delivery settings.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Specify delivery settings.")
     public Object getDelivery() {
         return delivery;
     }
@@ -76,7 +75,7 @@ public class OrderServices {
      *
      * @return additional
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AdditionalServices getAdditional() {
         return additional;
     }

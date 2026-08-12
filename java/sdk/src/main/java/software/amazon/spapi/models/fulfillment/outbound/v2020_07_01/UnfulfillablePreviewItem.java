@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about unfulfillable items in a fulfillment order preview. */
-@Schema(description = "Information about unfulfillable items in a fulfillment order preview.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information about unfulfillable items in a fulfillment order preview.")
 public class UnfulfillablePreviewItem {
     @SerializedName("sellerSku")
     private String sellerSku = null;
@@ -41,7 +41,7 @@ public class UnfulfillablePreviewItem {
      *
      * @return sellerSku
      */
-    @Schema(required = true, description = "The seller SKU of the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The seller SKU of the item.")
     public String getSellerSku() {
         return sellerSku;
     }
@@ -60,7 +60,7 @@ public class UnfulfillablePreviewItem {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "The item quantity.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The item quantity.")
     public Integer getQuantity() {
         return quantity;
     }
@@ -79,7 +79,7 @@ public class UnfulfillablePreviewItem {
      *
      * @return sellerFulfillmentOrderItemId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A fulfillment order item identifier created with a call to the `getFulfillmentPreview` operation.")
@@ -101,7 +101,7 @@ public class UnfulfillablePreviewItem {
      *
      * @return itemUnfulfillableReasons
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StringList getItemUnfulfillableReasons() {
         return itemUnfulfillableReasons;
     }

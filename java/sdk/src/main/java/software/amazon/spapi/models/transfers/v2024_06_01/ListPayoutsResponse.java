@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.transfers.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The response schema for the &#x60;listPayouts&#x60; operation. */
-@Schema(description = "The response schema for the `listPayouts` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response schema for the `listPayouts` operation.")
 public class ListPayoutsResponse {
     @SerializedName("payouts")
     private List<Payout> payouts = null;
@@ -45,7 +44,7 @@ public class ListPayoutsResponse {
      *
      * @return payouts
      */
-    @Schema(description = "A list of payouts matching the request criteria.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of payouts matching the request criteria.")
     public List<Payout> getPayouts() {
         return payouts;
     }
@@ -67,7 +66,7 @@ public class ListPayoutsResponse {
      *
      * @return nextToken
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The response includes `nextToken` when the number of results exceeds the specified page size. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.")
     public String getNextToken() {

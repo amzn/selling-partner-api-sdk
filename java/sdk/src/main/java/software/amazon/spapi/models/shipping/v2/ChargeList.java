@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of charges based on the shipping service charges applied on a package. */
-@Schema(description = "A list of charges based on the shipping service charges applied on a package.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "A list of charges based on the shipping service charges applied on a package.")
 public class ChargeList extends ArrayList<ChargeComponent> {
 
     @Override

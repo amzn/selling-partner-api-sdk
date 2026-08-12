@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.invoices.v2026_06_25;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** A monetary amount with a currency code. */
-@Schema(description = "A monetary amount with a currency code.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A monetary amount with a currency code.")
 public class Currency {
     @SerializedName("currencyCode")
     private String currencyCode = null;
@@ -35,7 +35,9 @@ public class Currency {
      *
      * @return currencyCode
      */
-    @Schema(required = true, description = "The three-digit currency code in ISO 4217 format.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The three-digit currency code in ISO 4217 format.")
     public String getCurrencyCode() {
         return currencyCode;
     }
@@ -54,7 +56,7 @@ public class Currency {
      *
      * @return currencyAmount
      */
-    @Schema(required = true, description = "A signed decimal number.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A signed decimal number.")
     public BigDecimal getCurrencyAmount() {
         return currencyAmount;
     }

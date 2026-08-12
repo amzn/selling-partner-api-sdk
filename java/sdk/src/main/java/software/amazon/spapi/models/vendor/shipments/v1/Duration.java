@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Duration after manufacturing date during which the product is valid for consumption. */
-@Schema(description = "Duration after manufacturing date during which the product is valid for consumption.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Duration after manufacturing date during which the product is valid for consumption.")
 public class Duration {
     /** Unit for duration. */
     @JsonAdapter(DurationUnitEnum.Adapter.class)
@@ -86,7 +86,7 @@ public class Duration {
      *
      * @return durationUnit
      */
-    @Schema(required = true, description = "Unit for duration.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Unit for duration.")
     public DurationUnitEnum getDurationUnit() {
         return durationUnit;
     }
@@ -105,7 +105,9 @@ public class Duration {
      *
      * @return durationValue
      */
-    @Schema(required = true, description = "Value for the duration in terms of the durationUnit.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Value for the duration in terms of the durationUnit.")
     public Integer getDurationValue() {
         return durationValue;
     }

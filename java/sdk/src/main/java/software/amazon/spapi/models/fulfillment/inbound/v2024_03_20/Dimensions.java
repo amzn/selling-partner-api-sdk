@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /** Measurement of a package&#39;s dimensions. */
-@Schema(description = "Measurement of a package's dimensions.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Measurement of a package's dimensions.")
 public class Dimensions {
     @SerializedName("height")
     private BigDecimal height = null;
@@ -41,7 +41,7 @@ public class Dimensions {
      *
      * @return height
      */
-    @Schema(required = true, description = "The height of a package.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The height of a package.")
     public BigDecimal getHeight() {
         return height;
     }
@@ -60,7 +60,7 @@ public class Dimensions {
      *
      * @return length
      */
-    @Schema(required = true, description = "The length of a package.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The length of a package.")
     public BigDecimal getLength() {
         return length;
     }
@@ -79,7 +79,7 @@ public class Dimensions {
      *
      * @return unitOfMeasurement
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public UnitOfMeasurement getUnitOfMeasurement() {
         return unitOfMeasurement;
     }
@@ -98,7 +98,7 @@ public class Dimensions {
      *
      * @return width
      */
-    @Schema(required = true, description = "The width of a package.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The width of a package.")
     public BigDecimal getWidth() {
         return width;
     }

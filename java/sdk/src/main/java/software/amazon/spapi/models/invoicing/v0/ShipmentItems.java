@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.invoicing.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of shipment items. */
-@Schema(description = "A list of shipment items.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of shipment items.")
 public class ShipmentItems extends ArrayList<ShipmentItem> {
 
     @Override

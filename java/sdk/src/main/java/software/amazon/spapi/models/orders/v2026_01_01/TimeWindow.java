@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Specific time interval defining the start and end times. */
-@Schema(description = "Specific time interval defining the start and end times.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Specific time interval defining the start and end times.")
 public class TimeWindow {
     @SerializedName("startTime")
     private HourMinute startTime = null;
@@ -35,7 +34,7 @@ public class TimeWindow {
      *
      * @return startTime
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public HourMinute getStartTime() {
         return startTime;
     }
@@ -54,7 +53,7 @@ public class TimeWindow {
      *
      * @return endTime
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public HourMinute getEndTime() {
         return endTime;
     }

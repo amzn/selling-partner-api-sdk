@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2020_07_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Tracking details of package */
-@Schema(description = "Tracking details of package")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Tracking details of package")
 public class PackageTrackingDetails {
     @SerializedName("packageNumber")
     private Integer packageNumber = null;
@@ -74,7 +74,7 @@ public class PackageTrackingDetails {
      *
      * @return packageNumber
      */
-    @Schema(required = true, description = "The package identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The package identifier.")
     public Integer getPackageNumber() {
         return packageNumber;
     }
@@ -93,7 +93,7 @@ public class PackageTrackingDetails {
      *
      * @return trackingNumber
      */
-    @Schema(description = "The tracking number for the package.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The tracking number for the package.")
     public String getTrackingNumber() {
         return trackingNumber;
     }
@@ -112,7 +112,8 @@ public class PackageTrackingDetails {
      *
      * @return customerTrackingLink
      */
-    @Schema(description = "Link on swiship.com that allows customers to track the package.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "Link on swiship.com that allows customers to track the package.")
     public String getCustomerTrackingLink() {
         return customerTrackingLink;
     }
@@ -131,7 +132,7 @@ public class PackageTrackingDetails {
      *
      * @return carrierCode
      */
-    @Schema(description = "The name of the carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the carrier.")
     public String getCarrierCode() {
         return carrierCode;
     }
@@ -150,7 +151,7 @@ public class PackageTrackingDetails {
      *
      * @return carrierPhoneNumber
      */
-    @Schema(description = "The phone number of the carrier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The phone number of the carrier.")
     public String getCarrierPhoneNumber() {
         return carrierPhoneNumber;
     }
@@ -169,7 +170,7 @@ public class PackageTrackingDetails {
      *
      * @return carrierURL
      */
-    @Schema(description = "The URL of the carrier's website.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The URL of the carrier's website.")
     public String getCarrierURL() {
         return carrierURL;
     }
@@ -188,7 +189,7 @@ public class PackageTrackingDetails {
      *
      * @return shipDate
      */
-    @Schema(description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
     public OffsetDateTime getShipDate() {
         return shipDate;
     }
@@ -207,7 +208,7 @@ public class PackageTrackingDetails {
      *
      * @return estimatedArrivalDate
      */
-    @Schema(description = "Date timestamp")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Date timestamp")
     public OffsetDateTime getEstimatedArrivalDate() {
         return estimatedArrivalDate;
     }
@@ -226,7 +227,7 @@ public class PackageTrackingDetails {
      *
      * @return shipToAddress
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TrackingAddress getShipToAddress() {
         return shipToAddress;
     }
@@ -245,7 +246,7 @@ public class PackageTrackingDetails {
      *
      * @return currentStatus
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CurrentStatus getCurrentStatus() {
         return currentStatus;
     }
@@ -264,7 +265,7 @@ public class PackageTrackingDetails {
      *
      * @return currentStatusDescription
      */
-    @Schema(description = "Description corresponding to the `CurrentStatus` value.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Description corresponding to the `CurrentStatus` value.")
     public String getCurrentStatusDescription() {
         return currentStatusDescription;
     }
@@ -283,7 +284,7 @@ public class PackageTrackingDetails {
      *
      * @return deliveryWindow
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public DateRange getDeliveryWindow() {
         return deliveryWindow;
     }
@@ -302,7 +303,7 @@ public class PackageTrackingDetails {
      *
      * @return signedForBy
      */
-    @Schema(description = "The name of the person who signed for the package.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The name of the person who signed for the package.")
     public String getSignedForBy() {
         return signedForBy;
     }
@@ -321,7 +322,7 @@ public class PackageTrackingDetails {
      *
      * @return additionalLocationInfo
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AdditionalLocationInfo getAdditionalLocationInfo() {
         return additionalLocationInfo;
     }
@@ -340,7 +341,7 @@ public class PackageTrackingDetails {
      *
      * @return trackingEvents
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TrackingEventList getTrackingEvents() {
         return trackingEvents;
     }

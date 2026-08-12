@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.shipping.v2;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of included benefits. */
-@Schema(description = "A list of included benefits.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of included benefits.")
 public class IncludedBenefits extends ArrayList<String> {
 
     @Override

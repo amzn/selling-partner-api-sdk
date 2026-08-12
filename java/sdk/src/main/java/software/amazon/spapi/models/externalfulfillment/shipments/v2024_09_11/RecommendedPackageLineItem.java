@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * A line item to be contained in a recommended package. This attribute is provided only for orders that come with a
  * specific recommendation of line-item distribution within the package recommendations.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A line item to be contained in a recommended package. This attribute is provided only for orders that come with a specific recommendation of line-item distribution within the package recommendations.")
 public class RecommendedPackageLineItem {
@@ -38,7 +37,7 @@ public class RecommendedPackageLineItem {
      *
      * @return lineItemId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "An ID for a line item in an order. The line item should be present in the recommended package. This identifier has the same value as the ID of the line item present in the order.")

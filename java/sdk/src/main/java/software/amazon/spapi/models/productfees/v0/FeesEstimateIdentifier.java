@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.productfees.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An item identifier, marketplace, time of request, and other details that identify an estimate. */
-@Schema(description = "An item identifier, marketplace, time of request, and other details that identify an estimate.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "An item identifier, marketplace, time of request, and other details that identify an estimate.")
 public class FeesEstimateIdentifier {
     @SerializedName("MarketplaceId")
     private String marketplaceId = null;
@@ -53,7 +53,7 @@ public class FeesEstimateIdentifier {
      *
      * @return marketplaceId
      */
-    @Schema(description = "A marketplace identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A marketplace identifier.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -72,7 +72,7 @@ public class FeesEstimateIdentifier {
      *
      * @return sellerId
      */
-    @Schema(description = "The seller identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The seller identifier.")
     public String getSellerId() {
         return sellerId;
     }
@@ -91,7 +91,7 @@ public class FeesEstimateIdentifier {
      *
      * @return idType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public IdType getIdType() {
         return idType;
     }
@@ -110,7 +110,7 @@ public class FeesEstimateIdentifier {
      *
      * @return idValue
      */
-    @Schema(description = "The item identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The item identifier.")
     public String getIdValue() {
         return idValue;
     }
@@ -129,7 +129,7 @@ public class FeesEstimateIdentifier {
      *
      * @return isAmazonFulfilled
      */
-    @Schema(description = "When true, the offer is fulfilled by Amazon.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "When true, the offer is fulfilled by Amazon.")
     public Boolean getIsAmazonFulfilled() {
         return isAmazonFulfilled;
     }
@@ -148,7 +148,7 @@ public class FeesEstimateIdentifier {
      *
      * @return priceToEstimateFees
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public PriceToEstimateFees getPriceToEstimateFees() {
         return priceToEstimateFees;
     }
@@ -167,7 +167,8 @@ public class FeesEstimateIdentifier {
      *
      * @return sellerInputIdentifier
      */
-    @Schema(description = "A unique identifier provided by the caller to track this request.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A unique identifier provided by the caller to track this request.")
     public String getSellerInputIdentifier() {
         return sellerInputIdentifier;
     }
@@ -186,7 +187,7 @@ public class FeesEstimateIdentifier {
      *
      * @return optionalFulfillmentProgram
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OptionalFulfillmentProgram getOptionalFulfillmentProgram() {
         return optionalFulfillmentProgram;
     }

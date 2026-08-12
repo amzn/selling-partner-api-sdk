@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The details of an appointment. */
-@Schema(description = "The details of an appointment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The details of an appointment.")
 public class Appointment {
     @SerializedName("appointmentId")
     private String appointmentId = null;
@@ -102,7 +101,7 @@ public class Appointment {
      *
      * @return appointmentId
      */
-    @Schema(description = "The appointment identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The appointment identifier.")
     public String getAppointmentId() {
         return appointmentId;
     }
@@ -121,7 +120,7 @@ public class Appointment {
      *
      * @return appointmentStatus
      */
-    @Schema(description = "The status of the appointment.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The status of the appointment.")
     public AppointmentStatusEnum getAppointmentStatus() {
         return appointmentStatus;
     }
@@ -140,7 +139,7 @@ public class Appointment {
      *
      * @return appointmentTime
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AppointmentTime getAppointmentTime() {
         return appointmentTime;
     }
@@ -167,7 +166,7 @@ public class Appointment {
      *
      * @return assignedTechnicians
      */
-    @Schema(description = "A list of technicians assigned to the service job.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of technicians assigned to the service job.")
     public List<Technician> getAssignedTechnicians() {
         return assignedTechnicians;
     }
@@ -186,7 +185,7 @@ public class Appointment {
      *
      * @return rescheduledAppointmentId
      */
-    @Schema(description = "The appointment identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The appointment identifier.")
     public String getRescheduledAppointmentId() {
         return rescheduledAppointmentId;
     }
@@ -205,7 +204,7 @@ public class Appointment {
      *
      * @return poa
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Poa getPoa() {
         return poa;
     }

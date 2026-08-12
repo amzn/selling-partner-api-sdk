@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** The list of items you want to include in a shipment. */
-@Schema(description = "The list of items you want to include in a shipment.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The list of items you want to include in a shipment.")
 public class ItemList extends ArrayList<Item> {
 
     @Override

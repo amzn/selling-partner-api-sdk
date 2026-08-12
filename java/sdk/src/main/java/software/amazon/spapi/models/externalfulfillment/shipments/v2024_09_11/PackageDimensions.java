@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The dimensions of a package. */
-@Schema(description = "The dimensions of a package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The dimensions of a package.")
 public class PackageDimensions {
     @SerializedName("length")
     private Dimension length = null;
@@ -38,7 +37,7 @@ public class PackageDimensions {
      *
      * @return length
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Dimension getLength() {
         return length;
     }
@@ -57,7 +56,7 @@ public class PackageDimensions {
      *
      * @return width
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Dimension getWidth() {
         return width;
     }
@@ -76,7 +75,7 @@ public class PackageDimensions {
      *
      * @return height
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Dimension getHeight() {
         return height;
     }

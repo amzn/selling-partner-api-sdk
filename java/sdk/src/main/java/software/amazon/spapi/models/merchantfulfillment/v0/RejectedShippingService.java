@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information about a rejected shipping service */
-@Schema(description = "Information about a rejected shipping service")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information about a rejected shipping service")
 public class RejectedShippingService {
     @SerializedName("CarrierName")
     private String carrierName = null;
@@ -44,7 +43,9 @@ public class RejectedShippingService {
      *
      * @return carrierName
      */
-    @Schema(required = true, description = "The rejected shipping carrier name. For example, USPS.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The rejected shipping carrier name. For example, USPS.")
     public String getCarrierName() {
         return carrierName;
     }
@@ -63,7 +64,7 @@ public class RejectedShippingService {
      *
      * @return shippingServiceName
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The rejected shipping service localized name. For example, FedEx Standard Overnight.")
     public String getShippingServiceName() {
@@ -84,7 +85,9 @@ public class RejectedShippingService {
      *
      * @return shippingServiceId
      */
-    @Schema(required = true, description = "An Amazon-defined shipping service identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An Amazon-defined shipping service identifier.")
     public String getShippingServiceId() {
         return shippingServiceId;
     }
@@ -103,7 +106,7 @@ public class RejectedShippingService {
      *
      * @return rejectionReasonCode
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A reason code meant to be consumed programatically. For example, `CARRIER_CANNOT_SHIP_TO_POBOX`.")
@@ -125,7 +128,8 @@ public class RejectedShippingService {
      *
      * @return rejectionReasonMessage
      */
-    @Schema(description = "A localized human readable description of the rejected reason.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A localized human readable description of the rejected reason.")
     public String getRejectionReasonMessage() {
         return rejectionReasonMessage;
     }

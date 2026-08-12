@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Contains item identifiers and related tax information. */
-@Schema(description = "Contains item identifiers and related tax information.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Contains item identifiers and related tax information.")
 public class ComplianceDetail {
     @SerializedName("asin")
     private String asin = null;
@@ -41,7 +40,8 @@ public class ComplianceDetail {
      *
      * @return asin
      */
-    @Schema(description = "The Amazon Standard Identification Number, which identifies the detail page identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The Amazon Standard Identification Number, which identifies the detail page identifier.")
     public String getAsin() {
         return asin;
     }
@@ -60,7 +60,7 @@ public class ComplianceDetail {
      *
      * @return fnsku
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The Fulfillment Network SKU, which identifies a real fulfillable item with catalog data and condition.")
     public String getFnsku() {
@@ -81,7 +81,8 @@ public class ComplianceDetail {
      *
      * @return msku
      */
-    @Schema(description = "The merchant SKU, a merchant-supplied identifier for a specific SKU.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The merchant SKU, a merchant-supplied identifier for a specific SKU.")
     public String getMsku() {
         return msku;
     }
@@ -100,7 +101,7 @@ public class ComplianceDetail {
      *
      * @return taxDetails
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TaxDetails getTaxDetails() {
         return taxDetails;
     }

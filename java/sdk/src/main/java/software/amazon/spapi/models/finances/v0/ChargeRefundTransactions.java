@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.finances.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** A list of &#x60;ChargeRefund&#x60; transactions */
-@Schema(description = "A list of `ChargeRefund` transactions")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A list of `ChargeRefund` transactions")
 public class ChargeRefundTransactions extends ArrayList<ChargeRefundTransaction> {
 
     @Override

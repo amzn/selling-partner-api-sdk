@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The configuration of the schedule. */
-@Schema(description = "The configuration of the schedule.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The configuration of the schedule.")
 public class ScheduleExpression {
     @SerializedName("scheduleExpressionType")
     private ScheduleExpressionType scheduleExpressionType = null;
@@ -35,7 +34,7 @@ public class ScheduleExpression {
      *
      * @return scheduleExpressionType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ScheduleExpressionType getScheduleExpressionType() {
         return scheduleExpressionType;
     }
@@ -54,7 +53,7 @@ public class ScheduleExpression {
      *
      * @return recurringFrequency
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public RecurringFrequency getRecurringFrequency() {
         return recurringFrequency;
     }

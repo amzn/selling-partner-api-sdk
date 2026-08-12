@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The &#x60;setPackingInformation&#x60; response. */
-@Schema(description = "The `setPackingInformation` response.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `setPackingInformation` response.")
 public class SetPackingInformationResponse {
     @SerializedName("operationId")
     private String operationId = null;
@@ -32,7 +31,7 @@ public class SetPackingInformationResponse {
      *
      * @return operationId
      */
-    @Schema(required = true, description = "UUID for the given operation.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "UUID for the given operation.")
     public String getOperationId() {
         return operationId;
     }

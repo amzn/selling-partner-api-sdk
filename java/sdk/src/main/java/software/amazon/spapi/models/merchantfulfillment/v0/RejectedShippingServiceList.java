@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.merchantfulfillment.v0;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** List of services that are for some reason unavailable for this request */
-@Schema(description = "List of services that are for some reason unavailable for this request")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "List of services that are for some reason unavailable for this request")
 public class RejectedShippingServiceList extends ArrayList<RejectedShippingService> {
 
     @Override

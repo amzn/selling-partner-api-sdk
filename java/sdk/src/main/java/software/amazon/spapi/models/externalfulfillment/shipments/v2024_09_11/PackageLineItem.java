@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A line item in a package. */
-@Schema(description = "A line item in a package.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A line item in a package.")
 public class PackageLineItem {
     @SerializedName("packageLineItemId")
     private String packageLineItemId = null;
@@ -49,7 +48,7 @@ public class PackageLineItem {
      *
      * @return packageLineItemId
      */
-    @Schema(required = true, description = "The line item ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The line item ID.")
     public String getPackageLineItemId() {
         return packageLineItemId;
     }
@@ -68,7 +67,7 @@ public class PackageLineItem {
      *
      * @return quantity
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The number of items of a particular line item of a shipment that are packed into the package.")
@@ -98,7 +97,8 @@ public class PackageLineItem {
      *
      * @return serialNumbers
      */
-    @Schema(description = "The list of serial numbers of items in the package, if required to be provided.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The list of serial numbers of items in the package, if required to be provided.")
     public List<String> getSerialNumbers() {
         return serialNumbers;
     }
@@ -118,7 +118,7 @@ public class PackageLineItem {
      *
      * @return pieces
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The number of pieces of a multi-piece item that are in this package. This is applicable only for items that are shipped in multiple pieces.")
     public Integer getPieces() {
@@ -139,7 +139,8 @@ public class PackageLineItem {
      *
      * @return countryOfOrigin
      */
-    @Schema(description = "A two-letter country code, as defined by the ISO-3166 alpha-2 standard.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A two-letter country code, as defined by the ISO-3166 alpha-2 standard.")
     public String getCountryOfOrigin() {
         return countryOfOrigin;
     }
@@ -158,7 +159,7 @@ public class PackageLineItem {
      *
      * @return itemValue
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Amount getItemValue() {
         return itemValue;
     }

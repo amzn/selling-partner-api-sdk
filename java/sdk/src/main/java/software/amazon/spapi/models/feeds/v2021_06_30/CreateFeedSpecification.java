@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.feeds.v2021_06_30;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Information required to create the feed. */
-@Schema(description = "Information required to create the feed.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information required to create the feed.")
 public class CreateFeedSpecification {
     @SerializedName("feedType")
     private String feedType = null;
@@ -43,7 +42,7 @@ public class CreateFeedSpecification {
      *
      * @return feedType
      */
-    @Schema(required = true, description = "The feed type.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The feed type.")
     public String getFeedType() {
         return feedType;
     }
@@ -70,7 +69,7 @@ public class CreateFeedSpecification {
      *
      * @return marketplaceIds
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "A list of identifiers for marketplaces that you want the feed to be applied to.")
     public List<String> getMarketplaceIds() {
@@ -92,7 +91,7 @@ public class CreateFeedSpecification {
      *
      * @return inputFeedDocumentId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The document identifier returned by the createFeedDocument operation. Upload the feed document contents before calling the createFeed operation.")
@@ -114,7 +113,7 @@ public class CreateFeedSpecification {
      *
      * @return feedOptions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public FeedOptions getFeedOptions() {
         return feedOptions;
     }

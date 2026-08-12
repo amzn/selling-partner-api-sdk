@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The listings item&#39;s fulfillment availability details. */
-@Schema(description = "The listings item's fulfillment availability details.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The listings item's fulfillment availability details.")
 public class FulfillmentAvailability {
     @SerializedName("fulfillmentChannelCode")
     private String fulfillmentChannelCode = null;
@@ -35,7 +34,9 @@ public class FulfillmentAvailability {
      *
      * @return fulfillmentChannelCode
      */
-    @Schema(required = true, description = "Designates which fulfillment network is used.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Designates which fulfillment network is used.")
     public String getFulfillmentChannelCode() {
         return fulfillmentChannelCode;
     }
@@ -54,7 +55,8 @@ public class FulfillmentAvailability {
      *
      * @return quantity
      */
-    @Schema(description = "The item quantity that you're making available for sale.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The item quantity that you're making available for sale.")
     public Integer getQuantity() {
         return quantity;
     }

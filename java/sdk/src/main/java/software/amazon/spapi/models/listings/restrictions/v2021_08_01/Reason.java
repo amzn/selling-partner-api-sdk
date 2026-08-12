@@ -17,7 +17,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ import java.util.Objects;
  * A reason for the restriction, including path forward links that may allow Selling Partners to remove the restriction,
  * if available.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A reason for the restriction, including path forward links that may allow Selling Partners to remove the restriction, if available.")
 public class Reason {
@@ -98,7 +97,9 @@ public class Reason {
      *
      * @return message
      */
-    @Schema(required = true, description = "A message describing the reason for the restriction.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A message describing the reason for the restriction.")
     public String getMessage() {
         return message;
     }
@@ -117,7 +118,7 @@ public class Reason {
      *
      * @return reasonCode
      */
-    @Schema(description = "A code indicating why the listing is restricted.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A code indicating why the listing is restricted.")
     public ReasonCodeEnum getReasonCode() {
         return reasonCode;
     }
@@ -144,7 +145,8 @@ public class Reason {
      *
      * @return links
      */
-    @Schema(description = "A list of path forward links that may allow Selling Partners to remove the restriction.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A list of path forward links that may allow Selling Partners to remove the restriction.")
     public List<Link> getLinks() {
         return links;
     }

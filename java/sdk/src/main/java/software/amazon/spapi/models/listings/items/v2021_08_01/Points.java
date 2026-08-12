@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * The number of Amazon Points offered with the purchase of an item, and their monetary value. Note that the
  * &#x60;Points&#x60; element is only returned in Japan (JP).
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The number of Amazon Points offered with the purchase of an item, and their monetary value. Note that the `Points` element is only returned in Japan (JP).")
 public class Points {
@@ -37,7 +36,7 @@ public class Points {
      *
      * @return pointsNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The number of Amazon Points offered with the purchase of an item, and their monetary value.")
     public Integer getPointsNumber() {

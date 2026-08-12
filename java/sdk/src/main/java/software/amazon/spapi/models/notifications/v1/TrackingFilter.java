@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.notifications.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * An event filter you can use to customize your subscription to receive shipment tracking milestone notifications for a
  * specific tracking identifier.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "An event filter you can use to customize your subscription to receive shipment tracking milestone notifications for a specific tracking identifier.")
 public class TrackingFilter {
@@ -37,7 +36,7 @@ public class TrackingFilter {
      *
      * @return trackingIdentifier
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TrackingIdentifier getTrackingIdentifier() {
         return trackingIdentifier;
     }

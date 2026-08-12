@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The A+ standard fixed-length list of text and a related headline. */
-@Schema(description = "The A+ standard fixed-length list of text and a related headline.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The A+ standard fixed-length list of text and a related headline.")
 public class StandardHeaderTextListBlock {
     @SerializedName("headline")
     private TextComponent headline = null;
@@ -35,7 +35,7 @@ public class StandardHeaderTextListBlock {
      *
      * @return headline
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TextComponent getHeadline() {
         return headline;
     }
@@ -54,7 +54,7 @@ public class StandardHeaderTextListBlock {
      *
      * @return block
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public StandardTextListBlock getBlock() {
         return block;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A whole number dimension and its unit of measurement. For example, this can represent 100 pixels. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A whole number dimension and its unit of measurement. For example, this can represent 100 pixels.")
 public class IntegerWithUnits {
@@ -37,7 +36,7 @@ public class IntegerWithUnits {
      *
      * @return value
      */
-    @Schema(required = true, description = "The dimension value.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The dimension value.")
     public Integer getValue() {
         return value;
     }
@@ -56,7 +55,7 @@ public class IntegerWithUnits {
      *
      * @return units
      */
-    @Schema(required = true, description = "The unit of measurement.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The unit of measurement.")
     public String getUnits() {
         return units;
     }

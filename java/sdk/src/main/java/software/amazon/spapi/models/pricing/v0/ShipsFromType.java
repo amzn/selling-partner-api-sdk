@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The state and country from where the item is shipped. */
-@Schema(description = "The state and country from where the item is shipped.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The state and country from where the item is shipped.")
 public class ShipsFromType {
     @SerializedName("State")
     private String state = null;
@@ -35,7 +34,7 @@ public class ShipsFromType {
      *
      * @return state
      */
-    @Schema(description = "The state from where the item is shipped.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The state from where the item is shipped.")
     public String getState() {
         return state;
     }
@@ -54,7 +53,7 @@ public class ShipsFromType {
      *
      * @return country
      */
-    @Schema(description = "The country from where the item is shipped.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The country from where the item is shipped.")
     public String getCountry() {
         return country;
     }

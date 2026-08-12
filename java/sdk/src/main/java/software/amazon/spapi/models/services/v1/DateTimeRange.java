@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** A range of time. */
-@Schema(description = "A range of time.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A range of time.")
 public class DateTimeRange {
     @SerializedName("startTime")
     private OffsetDateTime startTime = null;
@@ -36,7 +36,7 @@ public class DateTimeRange {
      *
      * @return startTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The beginning of the time range. Must be in UTC in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")
@@ -59,7 +59,7 @@ public class DateTimeRange {
      *
      * @return endTime
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The end of the time range. Must be in UTC in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.")

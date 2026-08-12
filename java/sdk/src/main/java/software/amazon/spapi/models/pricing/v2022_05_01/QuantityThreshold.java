@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Quantity-based purchase conditions for basket building promotions. */
-@Schema(description = "Quantity-based purchase conditions for basket building promotions.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Quantity-based purchase conditions for basket building promotions.")
 public class QuantityThreshold {
     @SerializedName("type")
     private String type = null;
@@ -38,7 +38,7 @@ public class QuantityThreshold {
      *
      * @return type
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Indicates how the quantity requirement is evaluated. Possible values include:  - AT_LEAST: The customer must purchase at least the specified quantity of items to qualify for the benefit. - FOR_EACH: The benefit applies for every group of the specified quantity purchased (for example, the discount applies for each set of 2 items purchased).")
@@ -60,7 +60,9 @@ public class QuantityThreshold {
      *
      * @return quantity
      */
-    @Schema(required = true, description = "Number of items required to meet this purchase condition.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Number of items required to meet this purchase condition.")
     public Integer getQuantity() {
         return quantity;
     }

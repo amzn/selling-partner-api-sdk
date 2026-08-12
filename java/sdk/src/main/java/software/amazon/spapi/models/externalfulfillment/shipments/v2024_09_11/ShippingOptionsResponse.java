@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -23,7 +22,7 @@ import java.util.Objects;
  * per-package basis from which the seller has to select one shipping option while they retrieve the shipping label. If
  * the particular marketplace channel does not support scheduled shipping options, then this response will be empty.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The response to the `retrieveShippingOptions` operation. The response contains shipping options on a per-package basis from which the seller has to select one shipping option while they retrieve the shipping label. If the particular marketplace channel does not support scheduled shipping options, then this response will be empty.")
 public class ShippingOptionsResponse {
@@ -51,7 +50,7 @@ public class ShippingOptionsResponse {
      *
      * @return shippingOptions
      */
-    @Schema(description = "A list of shipping options.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of shipping options.")
     public List<ShippingOptions> getShippingOptions() {
         return shippingOptions;
     }
@@ -70,7 +69,7 @@ public class ShippingOptionsResponse {
      *
      * @return recommendedShippingOption
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ShippingOptions getRecommendedShippingOption() {
         return recommendedShippingOption;
     }

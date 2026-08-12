@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.productfees.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An unexpected error occurred during this operation. */
-@Schema(description = "An unexpected error occurred during this operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An unexpected error occurred during this operation.")
 public class FeesEstimateError {
     @SerializedName("Type")
     private String type = null;
@@ -41,7 +40,7 @@ public class FeesEstimateError {
      *
      * @return type
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "An error type, identifying either the receiver or the sender as the originator of the error.")
@@ -63,7 +62,9 @@ public class FeesEstimateError {
      *
      * @return code
      */
-    @Schema(required = true, description = "An error code that identifies the type of error that occurred.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "An error code that identifies the type of error that occurred.")
     public String getCode() {
         return code;
     }
@@ -82,7 +83,9 @@ public class FeesEstimateError {
      *
      * @return message
      */
-    @Schema(required = true, description = "A message that describes the error condition.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A message that describes the error condition.")
     public String getMessage() {
         return message;
     }
@@ -101,7 +104,7 @@ public class FeesEstimateError {
      *
      * @return detail
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public FeesEstimateErrorDetail getDetail() {
         return detail;
     }

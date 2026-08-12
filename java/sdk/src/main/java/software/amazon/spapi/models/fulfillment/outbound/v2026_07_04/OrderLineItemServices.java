@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fulfillment.outbound.v2026_07_04;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Services selected for a line item. */
-@Schema(description = "Services selected for a line item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Services selected for a line item.")
 public class OrderLineItemServices {
     @SerializedName("packaging")
     private OrderLineItemPackagingService packaging = null;
@@ -35,7 +34,7 @@ public class OrderLineItemServices {
      *
      * @return packaging
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderLineItemPackagingService getPackaging() {
         return packaging;
     }
@@ -54,7 +53,7 @@ public class OrderLineItemServices {
      *
      * @return delivery
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OrderLineItemDeliveryService getDelivery() {
         return delivery;
     }

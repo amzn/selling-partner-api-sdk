@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The post-purchase details of a package that will be shipped using a shipping service. */
-@Schema(description = "The post-purchase details of a package that will be shipped using a shipping service.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The post-purchase details of a package that will be shipped using a shipping service.")
 public class PackageDocumentDetail {
     @SerializedName("packageClientReferenceId")
     private String packageClientReferenceId = null;
@@ -39,7 +39,7 @@ public class PackageDocumentDetail {
      *
      * @return packageClientReferenceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation.")
@@ -61,7 +61,7 @@ public class PackageDocumentDetail {
      *
      * @return packageDocuments
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public PackageDocumentList getPackageDocuments() {
         return packageDocuments;
     }
@@ -80,7 +80,8 @@ public class PackageDocumentDetail {
      *
      * @return trackingId
      */
-    @Schema(description = "The carrier generated identifier for a package in a purchased shipment.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The carrier generated identifier for a package in a purchased shipment.")
     public String getTrackingId() {
         return trackingId;
     }

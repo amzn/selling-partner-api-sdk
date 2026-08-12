@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Tax registration information for an entity associated with the order. */
-@Schema(description = "Tax registration information for an entity associated with the order.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Tax registration information for an entity associated with the order.")
 public class OrderTaxRegistration {
     @SerializedName("entityType")
     private String entityType = null;
@@ -52,7 +52,7 @@ public class OrderTaxRegistration {
      *
      * @return entityType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The type of entity that the tax registration belongs to.  **Possible values**: - `BUYER` (Indicates that this is the buyer's tax registration information) - `MERCHANT` (Indicates that this is the merchant's tax registration information) - `MARKETPLACE` (Indicates that this is the marketplace's tax registration information)")
     public String getEntityType() {
@@ -73,7 +73,7 @@ public class OrderTaxRegistration {
      *
      * @return legalName
      */
-    @Schema(description = "The legal name associated with the tax registration.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The legal name associated with the tax registration.")
     public String getLegalName() {
         return legalName;
     }
@@ -93,7 +93,7 @@ public class OrderTaxRegistration {
      *
      * @return taxRegistrationType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The type of the tax registration number.  **Possible values**: `BUSINESS`, `VAT`, `CST`, `CPF`, `CNPJ`")
     public String getTaxRegistrationType() {
@@ -114,7 +114,8 @@ public class OrderTaxRegistration {
      *
      * @return taxRegistrationNumber
      */
-    @Schema(description = "The tax registration number that identifies the entity for tax purposes.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The tax registration number that identifies the entity for tax purposes.")
     public String getTaxRegistrationNumber() {
         return taxRegistrationNumber;
     }
@@ -133,7 +134,7 @@ public class OrderTaxRegistration {
      *
      * @return taxRegistrationAddress
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CustomerAddress getTaxRegistrationAddress() {
         return taxRegistrationAddress;
     }
@@ -161,7 +162,7 @@ public class OrderTaxRegistration {
      *
      * @return taxRegistrationAttributes
      */
-    @Schema(description = "Additional attributes related to the tax registration.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Additional attributes related to the tax registration.")
     public List<TaxRegistrationAttribute> getTaxRegistrationAttributes() {
         return taxRegistrationAttributes;
     }

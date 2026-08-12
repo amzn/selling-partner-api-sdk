@@ -86,34 +86,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter);
         gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
         gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
-        gsonBuilder.registerTypeAdapterFactory(
-                new software.amazon.spapi.models.tracking.v2026_01_30.BoundedInterval.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(
-                new software.amazon.spapi.models.tracking.v2026_01_30.CarrierTracking.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(
-                new software.amazon.spapi.models.tracking.v2026_01_30.Error.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(
-                new software.amazon.spapi.models.tracking.v2026_01_30.ErrorList.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(
-                new software.amazon.spapi.models.tracking.v2026_01_30.GetShipmentTrackingResponse
-                        .CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(
-                new software.amazon.spapi.models.tracking.v2026_01_30.TrackingDetail.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(
-                new software.amazon.spapi.models.tracking.v2026_01_30.TrackingEstimate.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(
-                new software.amazon.spapi.models.tracking.v2026_01_30.TrackingIdentifier.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(
-                new software.amazon.spapi.models.tracking.v2026_01_30.TrackingMilestone.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(
-                new software.amazon.spapi.models.tracking.v2026_01_30.TrackingMilestoneAddress
-                        .CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(
-                new software.amazon.spapi.models.tracking.v2026_01_30.TrackingMilestoneLocation
-                        .CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(
-                new software.amazon.spapi.models.tracking.v2026_01_30.TrackingMilestoneStatus
-                        .CustomTypeAdapterFactory());
         gson = gsonBuilder.create();
     }
 

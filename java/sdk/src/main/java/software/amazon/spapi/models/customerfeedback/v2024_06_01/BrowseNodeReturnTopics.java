@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Topics from returns for all items in a browse node. */
-@Schema(description = "Topics from returns for all items in a browse node.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Topics from returns for all items in a browse node.")
 public class BrowseNodeReturnTopics {
     @SerializedName("topic")
     private String topic = null;
@@ -35,7 +34,9 @@ public class BrowseNodeReturnTopics {
      *
      * @return topic
      */
-    @Schema(required = true, description = "The name of the return feedback topic .")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The name of the return feedback topic .")
     public String getTopic() {
         return topic;
     }
@@ -54,7 +55,7 @@ public class BrowseNodeReturnTopics {
      *
      * @return browseNodeMetrics
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public BrowseNodeTrendMetrics getBrowseNodeMetrics() {
         return browseNodeMetrics;
     }

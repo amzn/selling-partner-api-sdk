@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The &#x60;listTransportationOptions&#x60; response. */
-@Schema(description = "The `listTransportationOptions` response.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `listTransportationOptions` response.")
 public class ListTransportationOptionsResponse {
     @SerializedName("pagination")
     private Pagination pagination = null;
@@ -37,7 +36,7 @@ public class ListTransportationOptionsResponse {
      *
      * @return pagination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Pagination getPagination() {
         return pagination;
     }
@@ -65,7 +64,9 @@ public class ListTransportationOptionsResponse {
      *
      * @return transportationOptions
      */
-    @Schema(required = true, description = "Transportation options generated for the placement option.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Transportation options generated for the placement option.")
     public List<TransportationOption> getTransportationOptions() {
         return transportationOptions;
     }

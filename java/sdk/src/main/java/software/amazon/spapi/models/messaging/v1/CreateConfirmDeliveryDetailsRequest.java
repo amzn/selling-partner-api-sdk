@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.messaging.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The request schema for the createConfirmDeliveryDetails operation. */
-@Schema(description = "The request schema for the createConfirmDeliveryDetails operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request schema for the createConfirmDeliveryDetails operation.")
 public class CreateConfirmDeliveryDetailsRequest {
     @SerializedName("text")
     private String text = null;
@@ -34,7 +34,7 @@ public class CreateConfirmDeliveryDetailsRequest {
      *
      * @return text
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The text to be sent to the buyer. Only links related to order delivery are allowed. Do not include HTML or email addresses. The text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.")
     public String getText() {

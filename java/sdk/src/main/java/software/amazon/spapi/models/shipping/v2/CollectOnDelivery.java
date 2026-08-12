@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The amount to collect on delivery. */
-@Schema(description = "The amount to collect on delivery.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The amount to collect on delivery.")
 public class CollectOnDelivery {
     @SerializedName("amount")
     private Currency amount = null;
@@ -32,7 +31,7 @@ public class CollectOnDelivery {
      *
      * @return amount
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Currency getAmount() {
         return amount;
     }

@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Use these parameters to paginate through the response. */
-@Schema(description = "Use these parameters to paginate through the response.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Use these parameters to paginate through the response.")
 public class ListOfferMetricsRequestPagination {
     @SerializedName("limit")
     private Long limit = null;
@@ -35,7 +34,9 @@ public class ListOfferMetricsRequestPagination {
      *
      * @return limit
      */
-    @Schema(required = true, description = "The maximum number of results to return in the response.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The maximum number of results to return in the response.")
     public Long getLimit() {
         return limit;
     }
@@ -55,7 +56,7 @@ public class ListOfferMetricsRequestPagination {
      *
      * @return offset
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The offset from which to retrieve the number of results specified by the `limit` value. The first result is at offset 0.")

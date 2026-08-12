@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A listing restriction, optionally qualified by a condition, with a list of reasons for the restriction. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A listing restriction, optionally qualified by a condition, with a list of reasons for the restriction.")
 public class Restriction {
@@ -115,7 +114,7 @@ public class Restriction {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A marketplace identifier. Identifies the Amazon marketplace where the restriction is enforced.")
@@ -137,7 +136,7 @@ public class Restriction {
      *
      * @return conditionType
      */
-    @Schema(description = "The condition that applies to the restriction.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The condition that applies to the restriction.")
     public ConditionTypeEnum getConditionType() {
         return conditionType;
     }
@@ -164,7 +163,7 @@ public class Restriction {
      *
      * @return reasons
      */
-    @Schema(description = "A list of reasons for the restriction.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of reasons for the restriction.")
     public List<Reason> getReasons() {
         return reasons;
     }

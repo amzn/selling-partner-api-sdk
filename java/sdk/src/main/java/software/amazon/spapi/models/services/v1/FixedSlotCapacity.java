@@ -13,13 +13,13 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** Response schema for the &#x60;getFixedSlotCapacity&#x60; operation. */
-@Schema(description = "Response schema for the `getFixedSlotCapacity` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Response schema for the `getFixedSlotCapacity` operation.")
 public class FixedSlotCapacity {
     @SerializedName("resourceId")
     private String resourceId = null;
@@ -43,7 +43,7 @@ public class FixedSlotCapacity {
      *
      * @return resourceId
      */
-    @Schema(description = "Resource Identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Resource Identifier.")
     public String getResourceId() {
         return resourceId;
     }
@@ -63,7 +63,7 @@ public class FixedSlotCapacity {
      *
      * @return slotDuration
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The duration of each slot which is returned. This value will be a multiple of 5 and fall in the following range: 5 <= `slotDuration` <= 360.")
     public BigDecimal getSlotDuration() {
@@ -92,7 +92,7 @@ public class FixedSlotCapacity {
      *
      * @return capacities
      */
-    @Schema(description = "Array of capacity slots in fixed slot format.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Array of capacity slots in fixed slot format.")
     public List<FixedSlot> getCapacities() {
         return capacities;
     }
@@ -111,7 +111,7 @@ public class FixedSlotCapacity {
      *
      * @return nextPageToken
      */
-    @Schema(description = "Next page token, if there are more pages.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Next page token, if there are more pages.")
     public String getNextPageToken() {
         return nextPageToken;
     }

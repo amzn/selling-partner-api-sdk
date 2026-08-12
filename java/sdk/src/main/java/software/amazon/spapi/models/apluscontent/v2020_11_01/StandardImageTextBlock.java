@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The A+ Content standard image and text box block. */
-@Schema(description = "The A+ Content standard image and text box block.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The A+ Content standard image and text box block.")
 public class StandardImageTextBlock {
     @SerializedName("image")
     private ImageComponent image = null;
@@ -38,7 +37,7 @@ public class StandardImageTextBlock {
      *
      * @return image
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ImageComponent getImage() {
         return image;
     }
@@ -57,7 +56,7 @@ public class StandardImageTextBlock {
      *
      * @return headline
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TextComponent getHeadline() {
         return headline;
     }
@@ -76,7 +75,7 @@ public class StandardImageTextBlock {
      *
      * @return body
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ParagraphComponent getBody() {
         return body;
     }

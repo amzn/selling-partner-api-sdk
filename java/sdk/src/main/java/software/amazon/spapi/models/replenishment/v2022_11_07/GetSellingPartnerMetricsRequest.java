@@ -13,11 +13,13 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /** The request body for the &#x60;getSellingPartnerMetrics&#x60; operation. */
-@Schema(description = "The request body for the `getSellingPartnerMetrics` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The request body for the `getSellingPartnerMetrics` operation.")
 public class GetSellingPartnerMetricsRequest {
     @SerializedName("aggregationFrequency")
     private AggregationFrequency aggregationFrequency = null;
@@ -50,7 +52,7 @@ public class GetSellingPartnerMetricsRequest {
      *
      * @return aggregationFrequency
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AggregationFrequency getAggregationFrequency() {
         return aggregationFrequency;
     }
@@ -69,7 +71,7 @@ public class GetSellingPartnerMetricsRequest {
      *
      * @return timeInterval
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TimeInterval getTimeInterval() {
         return timeInterval;
     }
@@ -96,7 +98,7 @@ public class GetSellingPartnerMetricsRequest {
      *
      * @return metrics
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The list of metrics requested. If no metric value is provided, data for all metrics will be returned.")
     public Set<Metric> getMetrics() {
@@ -117,7 +119,7 @@ public class GetSellingPartnerMetricsRequest {
      *
      * @return filters
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public GetSellingPartnerMetricsRequestFilters getFilters() {
         return filters;
     }
@@ -136,7 +138,7 @@ public class GetSellingPartnerMetricsRequest {
      *
      * @return timePeriodType
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public TimePeriodType getTimePeriodType() {
         return timePeriodType;
     }
@@ -157,7 +159,7 @@ public class GetSellingPartnerMetricsRequest {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.")
@@ -179,7 +181,7 @@ public class GetSellingPartnerMetricsRequest {
      *
      * @return programTypes
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ProgramTypes getProgramTypes() {
         return programTypes;
     }

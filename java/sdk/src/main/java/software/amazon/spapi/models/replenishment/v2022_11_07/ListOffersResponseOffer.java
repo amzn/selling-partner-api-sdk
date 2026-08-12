@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** An object which contains details about an offer. */
-@Schema(description = "An object which contains details about an offer.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An object which contains details about an offer.")
 public class ListOffersResponseOffer {
     @SerializedName("sku")
     private String sku = null;
@@ -76,7 +75,8 @@ public class ListOffersResponseOffer {
      *
      * @return sku
      */
-    @Schema(description = "The SKU. This property is only supported for sellers and not for vendors.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The SKU. This property is only supported for sellers and not for vendors.")
     public String getSku() {
         return sku;
     }
@@ -95,7 +95,7 @@ public class ListOffersResponseOffer {
      *
      * @return asin
      */
-    @Schema(description = "The Amazon Standard Identification Number (ASIN).")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The Amazon Standard Identification Number (ASIN).")
     public String getAsin() {
         return asin;
     }
@@ -116,7 +116,7 @@ public class ListOffersResponseOffer {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE, and JP. The supported marketplaces for vendors only are BR, AU, MX, AE, and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.")
     public String getMarketplaceId() {
@@ -137,7 +137,7 @@ public class ListOffersResponseOffer {
      *
      * @return eligibility
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public EligibilityStatus getEligibility() {
         return eligibility;
     }
@@ -156,7 +156,7 @@ public class ListOffersResponseOffer {
      *
      * @return offerProgramConfiguration
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferProgramConfiguration getOfferProgramConfiguration() {
         return offerProgramConfiguration;
     }
@@ -175,7 +175,7 @@ public class ListOffersResponseOffer {
      *
      * @return programType
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ProgramType getProgramType() {
         return programType;
     }
@@ -202,7 +202,7 @@ public class ListOffersResponseOffer {
      *
      * @return vendorCodes
      */
-    @Schema(description = "A list of vendor codes associated with the offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of vendor codes associated with the offer.")
     public List<String> getVendorCodes() {
         return vendorCodes;
     }
@@ -221,7 +221,8 @@ public class ListOffersResponseOffer {
      *
      * @return price
      */
-    @Schema(description = "The current price of the offer. This is the listed price amount for the item.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The current price of the offer. This is the listed price amount for the item.")
     public Double getPrice() {
         return price;
     }
@@ -240,7 +241,8 @@ public class ListOffersResponseOffer {
      *
      * @return priceCurrencyCode
      */
-    @Schema(description = "The currency code in ISO 4217 format for the price. For example, `USD` for US dollars.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The currency code in ISO 4217 format for the price. For example, `USD` for US dollars.")
     public String getPriceCurrencyCode() {
         return priceCurrencyCode;
     }
@@ -259,7 +261,7 @@ public class ListOffersResponseOffer {
      *
      * @return inventory
      */
-    @Schema(description = "The available inventory count for the offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The available inventory count for the offer.")
     public Long getInventory() {
         return inventory;
     }
@@ -278,7 +280,8 @@ public class ListOffersResponseOffer {
      *
      * @return stockRisk
      */
-    @Schema(description = "The stock risk level of the offer, indicating the risk of the offer going out of stock.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The stock risk level of the offer, indicating the risk of the offer going out of stock.")
     public String getStockRisk() {
         return stockRisk;
     }
@@ -306,7 +309,7 @@ public class ListOffersResponseOffer {
      *
      * @return deliveriesConditions
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A list of delivery conditions for the offer, indicating the health of upcoming deliveries. Each condition describes the quantity of upcoming deliveries associated with a particular delivery condition type.")
     public List<DeliveriesCondition> getDeliveriesConditions() {
@@ -327,7 +330,7 @@ public class ListOffersResponseOffer {
      *
      * @return subscriptions
      */
-    @Schema(description = "The number of active subscriptions for the offer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of active subscriptions for the offer.")
     public Long getSubscriptions() {
         return subscriptions;
     }
@@ -346,7 +349,7 @@ public class ListOffersResponseOffer {
      *
      * @return fulfillmentNetworkIDType
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The fulfillment network identifier type for the offer, indicating how the offer is fulfilled.")
     public String getFulfillmentNetworkIDType() {
@@ -367,7 +370,7 @@ public class ListOffersResponseOffer {
      *
      * @return forecastDeliveries
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ForecastDeliveries getForecastDeliveries() {
         return forecastDeliveries;
     }

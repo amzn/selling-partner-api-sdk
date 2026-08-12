@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The time windows promised for pickup and delivery events. */
-@Schema(description = "The time windows promised for pickup and delivery events.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The time windows promised for pickup and delivery events.")
 public class Promise {
     @SerializedName("deliveryWindow")
     private TimeWindow deliveryWindow = null;
@@ -35,7 +34,7 @@ public class Promise {
      *
      * @return deliveryWindow
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TimeWindow getDeliveryWindow() {
         return deliveryWindow;
     }
@@ -54,7 +53,7 @@ public class Promise {
      *
      * @return pickupWindow
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public TimeWindow getPickupWindow() {
         return pickupWindow;
     }

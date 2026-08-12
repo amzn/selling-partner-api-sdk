@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.solicitations.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A Link object. */
-@Schema(description = "A Link object.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A Link object.")
 public class LinkObject {
     @SerializedName("href")
     private String href = null;
@@ -35,7 +34,7 @@ public class LinkObject {
      *
      * @return href
      */
-    @Schema(required = true, description = "A URI for this object.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "A URI for this object.")
     public String getHref() {
         return href;
     }
@@ -54,7 +53,7 @@ public class LinkObject {
      *
      * @return name
      */
-    @Schema(description = "An identifier for this object.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "An identifier for this object.")
     public String getName() {
         return name;
     }

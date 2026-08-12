@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Document that captured during service appointment fulfillment that portrays proof of completion */
-@Schema(description = "Document that captured during service appointment fulfillment that portrays proof of completion")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Document that captured during service appointment fulfillment that portrays proof of completion")
 public class FulfillmentDocument {
     @SerializedName("uploadDestinationId")
     private String uploadDestinationId = null;
@@ -36,7 +36,7 @@ public class FulfillmentDocument {
      *
      * @return uploadDestinationId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The identifier of the upload destination. Get this value by calling the `createServiceDocumentUploadDestination` operation of the Services API.")
     public String getUploadDestinationId() {
@@ -58,7 +58,7 @@ public class FulfillmentDocument {
      *
      * @return contentSha256
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Sha256 hash of the file content. This value is used to determine if the file has been corrupted or tampered with during transit.")
     public String getContentSha256() {

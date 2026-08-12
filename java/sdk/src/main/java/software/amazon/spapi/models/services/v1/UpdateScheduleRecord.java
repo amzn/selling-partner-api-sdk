@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * &#x60;UpdateScheduleRecord&#x60; entity contains the &#x60;AvailabilityRecord&#x60; if there is an error/warning
  * while performing the requested operation on it.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "`UpdateScheduleRecord` entity contains the `AvailabilityRecord` if there is an error/warning while performing the requested operation on it.")
 public class UpdateScheduleRecord {
@@ -43,7 +42,7 @@ public class UpdateScheduleRecord {
      *
      * @return availability
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public AvailabilityRecord getAvailability() {
         return availability;
     }
@@ -62,7 +61,7 @@ public class UpdateScheduleRecord {
      *
      * @return warnings
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public WarningList getWarnings() {
         return warnings;
     }
@@ -81,7 +80,7 @@ public class UpdateScheduleRecord {
      *
      * @return errors
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ErrorList getErrors() {
         return errors;
     }

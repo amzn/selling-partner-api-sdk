@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A collection of supported value-added services. */
-@Schema(description = "A collection of supported value-added services.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A collection of supported value-added services.")
 public class ValueAddedServiceDetails {
     @SerializedName("collectOnDelivery")
     private CollectOnDelivery collectOnDelivery = null;
@@ -32,7 +31,7 @@ public class ValueAddedServiceDetails {
      *
      * @return collectOnDelivery
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public CollectOnDelivery getCollectOnDelivery() {
         return collectOnDelivery;
     }

@@ -17,12 +17,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.Objects;
 
 /** Offer details for a listings item for the specified Amazon store. */
-@Schema(description = "Offer details for a listings item for the specified Amazon store.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Offer details for a listings item for the specified Amazon store.")
 public class ItemOfferByMarketplace {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;
@@ -95,7 +95,7 @@ public class ItemOfferByMarketplace {
      *
      * @return marketplaceId
      */
-    @Schema(required = true, description = "Amazon store identifier.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "Amazon store identifier.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -114,7 +114,7 @@ public class ItemOfferByMarketplace {
      *
      * @return offerType
      */
-    @Schema(required = true, description = "The listings item's offer type.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The listings item's offer type.")
     public OfferTypeEnum getOfferType() {
         return offerType;
     }
@@ -133,7 +133,7 @@ public class ItemOfferByMarketplace {
      *
      * @return price
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Money getPrice() {
         return price;
     }
@@ -152,7 +152,7 @@ public class ItemOfferByMarketplace {
      *
      * @return points
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Points getPoints() {
         return points;
     }
@@ -171,7 +171,7 @@ public class ItemOfferByMarketplace {
      *
      * @return audience
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Audience getAudience() {
         return audience;
     }

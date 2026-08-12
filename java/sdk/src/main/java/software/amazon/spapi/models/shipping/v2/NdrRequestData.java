@@ -13,7 +13,7 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /**
@@ -21,7 +21,7 @@ import java.util.Objects;
  * rescheduleDate is a required field. Otherwise, if the NDR Action is REATTEMPT, additionalAddressNotes is a required
  * field.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Additional information required for the NDR action that has been filed. If the NDR Action is RESCHEDULE, rescheduleDate is a required field. Otherwise, if the NDR Action is REATTEMPT, additionalAddressNotes is a required field. ")
 public class NdrRequestData {
@@ -41,7 +41,7 @@ public class NdrRequestData {
      *
      * @return rescheduleDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The date on which the Seller wants to reschedule shipment delivery, in ISO-8601 date/time format")
     public OffsetDateTime getRescheduleDate() {
@@ -62,7 +62,7 @@ public class NdrRequestData {
      *
      * @return additionalAddressNotes
      */
-    @Schema(description = "Address notes to re-attempt delivery with.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Address notes to re-attempt delivery with.")
     public String getAdditionalAddressNotes() {
         return additionalAddressNotes;
     }

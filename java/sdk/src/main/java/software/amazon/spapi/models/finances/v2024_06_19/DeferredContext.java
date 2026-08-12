@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v2024_06_19;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Additional information related to deferred transactions. */
-@Schema(description = "Additional information related to deferred transactions.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Additional information related to deferred transactions.")
 public class DeferredContext {
     @SerializedName("deferralReason")
     private String deferralReason = null;
@@ -36,7 +36,7 @@ public class DeferredContext {
      *
      * @return deferralReason
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The deferral policy applied to the transaction.  **Examples:** `B2B` (invoiced orders), `DD7` (delivery date policy)")
     public String getDeferralReason() {
@@ -57,7 +57,7 @@ public class DeferredContext {
      *
      * @return maturityDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getMaturityDate() {

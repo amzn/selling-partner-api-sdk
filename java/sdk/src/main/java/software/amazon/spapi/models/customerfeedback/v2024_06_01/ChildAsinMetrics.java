@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * The review topic metrics for other child ASINs that have the same parent ASIN. This value is &#x60;null&#x60; if
  * there isn&#39;t any child ASIN metric data.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "The review topic metrics for other child ASINs that have the same parent ASIN. This value is `null` if there isn't any child ASIN metric data.")
 public class ChildAsinMetrics {
@@ -40,7 +39,7 @@ public class ChildAsinMetrics {
      *
      * @return mostMentions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ChildAsinMentionMetrics getMostMentions() {
         return mostMentions;
     }
@@ -59,7 +58,7 @@ public class ChildAsinMetrics {
      *
      * @return leastMentions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ChildAsinMentionMetrics getLeastMentions() {
         return leastMentions;
     }

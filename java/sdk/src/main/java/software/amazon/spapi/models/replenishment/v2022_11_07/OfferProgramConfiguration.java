@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.replenishment.v2022_11_07;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The offer program configuration contains a set of program properties for an offer. */
-@Schema(description = "The offer program configuration contains a set of program properties for an offer.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The offer program configuration contains a set of program properties for an offer.")
 public class OfferProgramConfiguration {
     @SerializedName("preferences")
     private OfferProgramConfigurationPreferences preferences = null;
@@ -38,7 +38,7 @@ public class OfferProgramConfiguration {
      *
      * @return preferences
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferProgramConfigurationPreferences getPreferences() {
         return preferences;
     }
@@ -57,7 +57,7 @@ public class OfferProgramConfiguration {
      *
      * @return promotions
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public OfferProgramConfigurationPromotions getPromotions() {
         return promotions;
     }
@@ -76,7 +76,7 @@ public class OfferProgramConfiguration {
      *
      * @return enrollmentMethod
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public EnrollmentMethod getEnrollmentMethod() {
         return enrollmentMethod;
     }

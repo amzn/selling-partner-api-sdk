@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.listings.items.v2021_08_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A variation theme that indicates the combination of listing item attributes that define the variation family. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A variation theme that indicates the combination of listing item attributes that define the variation family.")
 public class ItemVariationTheme {
@@ -47,7 +46,7 @@ public class ItemVariationTheme {
      *
      * @return attributes
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The names of the listing item attributes that are associated with the variation theme.")
     public List<String> getAttributes() {
@@ -68,7 +67,7 @@ public class ItemVariationTheme {
      *
      * @return theme
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The variation theme that indicates the combination of listing item attributes that define the variation family.")

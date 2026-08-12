@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Pricing information for the order item. */
-@Schema(description = "Pricing information for the order item.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Pricing information for the order item.")
 public class ItemPrice {
     @SerializedName("unitPrice")
     private Money unitPrice = null;
@@ -35,7 +34,7 @@ public class ItemPrice {
      *
      * @return unitPrice
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Money getUnitPrice() {
         return unitPrice;
     }
@@ -56,7 +55,7 @@ public class ItemPrice {
      *
      * @return priceDesignation
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "Indicates that the selling price is a special price that is only available for Amazon Business orders. For more information about the Amazon Business Seller Program, refer to the [Amazon Business website](https://www.amazon.com/b2b/info/amazon-business).  **Possible value**: `BUSINESS_PRICE`")
     public String getPriceDesignation() {

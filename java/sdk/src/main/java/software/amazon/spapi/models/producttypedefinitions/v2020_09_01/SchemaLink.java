@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.producttypedefinitions.v2020_09_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** A link to metadata schema. */
-@Schema(description = "A link to metadata schema.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A link to metadata schema.")
 public class SchemaLink {
     @SerializedName("link")
     private SchemaLinkLink link = null;
@@ -35,7 +34,7 @@ public class SchemaLink {
      *
      * @return link
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public SchemaLinkLink getLink() {
         return link;
     }
@@ -55,7 +54,7 @@ public class SchemaLink {
      *
      * @return checksum
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "Checksum hash of the schema (Base64 MD5). Use this to verify schema contents, identify changes between schema versions, and for caching.")

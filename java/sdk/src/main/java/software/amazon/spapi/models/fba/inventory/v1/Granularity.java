@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.fba.inventory.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * Describes a granularity at which inventory data can be aggregated. For example, if you use Marketplace granularity,
  * the fulfillable quantity will reflect inventory that could be fulfilled in the given marketplace.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Describes a granularity at which inventory data can be aggregated. For example, if you use Marketplace granularity, the fulfillable quantity will reflect inventory that could be fulfilled in the given marketplace.")
 public class Granularity {
@@ -40,7 +39,8 @@ public class Granularity {
      *
      * @return granularityType
      */
-    @Schema(description = "The granularity type for the inventory aggregation level.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The granularity type for the inventory aggregation level.")
     public String getGranularityType() {
         return granularityType;
     }
@@ -60,7 +60,7 @@ public class Granularity {
      *
      * @return granularityId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The granularity ID for the specified granularity type. When granularityType is Marketplace, specify the marketplaceId.")
     public String getGranularityId() {

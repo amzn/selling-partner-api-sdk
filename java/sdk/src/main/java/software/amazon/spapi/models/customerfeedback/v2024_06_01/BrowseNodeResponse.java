@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.customerfeedback.v2024_06_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The response for the &#x60;getItemBrowseNode&#x60; operation. */
-@Schema(description = "The response for the `getItemBrowseNode` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The response for the `getItemBrowseNode` operation.")
 public class BrowseNodeResponse {
     @SerializedName("browseNodeId")
     private String browseNodeId = null;
@@ -36,7 +35,7 @@ public class BrowseNodeResponse {
      *
      * @return browseNodeId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "A browse node id is the unique identifier of a given browse node. A browse node is a location in a browse tree that is used for navigation, product classification, and website content.")
@@ -58,7 +57,7 @@ public class BrowseNodeResponse {
      *
      * @return displayName
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description = "The display name of the browse node as visible on the Amazon retail website.")
     public String getDisplayName() {

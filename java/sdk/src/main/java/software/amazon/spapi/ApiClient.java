@@ -696,7 +696,7 @@ public class ApiClient {
             Object body,
             Map<String, String> headerParams,
             Map<String, Object> formParams,
-            ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            ApiCallback progressRequestListener)
             throws ApiException, LWAException {
         Request request = buildRequest(
                 path,
@@ -734,7 +734,7 @@ public class ApiClient {
             Object body,
             Map<String, String> headerParams,
             Map<String, Object> formParams,
-            ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            ApiCallback progressRequestListener)
             throws ApiException, LWAException {
 
         final String url = buildUrl(path, queryParams, collectionQueryParams);

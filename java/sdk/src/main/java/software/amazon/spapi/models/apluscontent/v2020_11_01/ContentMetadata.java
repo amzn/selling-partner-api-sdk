@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.apluscontent.v2020_11_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** The A+ Content document&#39;s metadata. */
-@Schema(description = "The A+ Content document's metadata.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The A+ Content document's metadata.")
 public class ContentMetadata {
     @SerializedName("name")
     private String name = null;
@@ -44,7 +44,7 @@ public class ContentMetadata {
      *
      * @return name
      */
-    @Schema(required = true, description = "The A+ Content document's name.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The A+ Content document's name.")
     public String getName() {
         return name;
     }
@@ -64,7 +64,7 @@ public class ContentMetadata {
      *
      * @return marketplaceId
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).")
@@ -86,7 +86,7 @@ public class ContentMetadata {
      *
      * @return status
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ContentStatus getStatus() {
         return status;
     }
@@ -105,7 +105,7 @@ public class ContentMetadata {
      *
      * @return badgeSet
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ContentBadgeSet getBadgeSet() {
         return badgeSet;
     }
@@ -124,7 +124,9 @@ public class ContentMetadata {
      *
      * @return updateTime
      */
-    @Schema(required = true, description = "The approximate age of the A+ Content document and metadata.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "The approximate age of the A+ Content document and metadata.")
     public OffsetDateTime getUpdateTime() {
         return updateTime;
     }

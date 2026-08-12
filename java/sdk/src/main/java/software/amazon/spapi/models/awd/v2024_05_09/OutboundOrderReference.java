@@ -13,14 +13,13 @@
 package software.amazon.spapi.models.awd.v2024_05_09;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
  * A response that contains the reference identifier for the newly created or updated outbound order. This includes an
  * order ID.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A response that contains the reference identifier for the newly created or updated outbound order. This includes an order ID.")
 public class OutboundOrderReference {
@@ -37,7 +36,7 @@ public class OutboundOrderReference {
      *
      * @return orderId
      */
-    @Schema(required = true, description = "outbound order ID.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "outbound order ID.")
     public String getOrderId() {
         return orderId;
     }

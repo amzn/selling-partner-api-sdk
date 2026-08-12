@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.services.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Request schema for the &#x60;updateSchedule&#x60; operation. */
-@Schema(description = "Request schema for the `updateSchedule` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Request schema for the `updateSchedule` operation.")
 public class UpdateScheduleRequest {
     @SerializedName("schedules")
     private AvailabilityRecords schedules = null;
@@ -32,7 +31,7 @@ public class UpdateScheduleRequest {
      *
      * @return schedules
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public AvailabilityRecords getSchedules() {
         return schedules;
     }

@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.fulfillment.inbound.v2024_03_20;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The &#x60;listDeliveryWindowOptions&#x60; response. */
-@Schema(description = "The `listDeliveryWindowOptions` response.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The `listDeliveryWindowOptions` response.")
 public class ListDeliveryWindowOptionsResponse {
     @SerializedName("deliveryWindowOptions")
     private List<DeliveryWindowOption> deliveryWindowOptions = null;
@@ -46,7 +45,9 @@ public class ListDeliveryWindowOptionsResponse {
      *
      * @return deliveryWindowOptions
      */
-    @Schema(required = true, description = "Delivery window options generated for the placement option.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "Delivery window options generated for the placement option.")
     public List<DeliveryWindowOption> getDeliveryWindowOptions() {
         return deliveryWindowOptions;
     }
@@ -65,7 +66,7 @@ public class ListDeliveryWindowOptionsResponse {
      *
      * @return pagination
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Pagination getPagination() {
         return pagination;
     }

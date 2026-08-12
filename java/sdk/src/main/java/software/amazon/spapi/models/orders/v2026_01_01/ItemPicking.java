@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.orders.v2026_01_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Information related to the warehouse picking process for an order item. */
-@Schema(description = "Information related to the warehouse picking process for an order item.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "Information related to the warehouse picking process for an order item.")
 public class ItemPicking {
     @SerializedName("substitutionPreference")
     private ItemSubstitutionPreference substitutionPreference = null;
@@ -32,7 +32,7 @@ public class ItemPicking {
      *
      * @return substitutionPreference
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public ItemSubstitutionPreference getSubstitutionPreference() {
         return substitutionPreference;
     }

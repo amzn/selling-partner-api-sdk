@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.vendor.df.shipping.v2021_12_28;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** An item that has been packed into a container for shipping. */
-@Schema(description = "An item that has been packed into a container for shipping.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An item that has been packed into a container for shipping.")
 public class PackedItem {
     @SerializedName("itemSequenceNumber")
     private Integer itemSequenceNumber = null;
@@ -44,7 +43,7 @@ public class PackedItem {
      *
      * @return itemSequenceNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             required = true,
             description =
                     "The sequence number of the item. The number must be the same as the order number of the item.")
@@ -67,7 +66,7 @@ public class PackedItem {
      *
      * @return buyerProductIdentifier
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The buyer's Amazon Standard Identification Number (ASIN) of an item. Either `buyerProductIdentifier` or `vendorProductIdentifier` is required.")
     public String getBuyerProductIdentifier() {
@@ -89,7 +88,7 @@ public class PackedItem {
      *
      * @return pieceNumber
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The piece number of the item in this container. This is required when the item is split across different containers.")
     public Integer getPieceNumber() {
@@ -111,7 +110,7 @@ public class PackedItem {
      *
      * @return vendorProductIdentifier
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "An item's product identifier, which the vendor selects. This identifier should be the same as the identifier, such as a SKU, in the purchase order.")
     public String getVendorProductIdentifier() {
@@ -132,7 +131,7 @@ public class PackedItem {
      *
      * @return packedQuantity
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ItemQuantity getPackedQuantity() {
         return packedQuantity;
     }

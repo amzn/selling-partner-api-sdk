@@ -12,12 +12,11 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.HashMap;
 import java.util.Objects;
 
 /** A mapping of additional HTTP headers to send or receive for an individual request within a batch. */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "A mapping of additional HTTP headers to send or receive for an individual request within a batch.")
 public class HttpHeaders extends HashMap<String, String> {

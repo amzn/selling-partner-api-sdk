@@ -12,12 +12,12 @@
 
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /** The response list for the &#x60;competitiveSummaryBatch&#x60; operation. */
-@Schema(description = "The response list for the `competitiveSummaryBatch` operation.")
+@io.swagger.v3.oas.annotations.media.Schema(
+        description = "The response list for the `competitiveSummaryBatch` operation.")
 public class CompetitiveSummaryResponseList extends ArrayList<CompetitiveSummaryResponse> {
 
     @Override

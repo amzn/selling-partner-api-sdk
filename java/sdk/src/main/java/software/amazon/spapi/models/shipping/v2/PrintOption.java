@@ -13,13 +13,12 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** The format options available for a label. */
-@Schema(description = "The format options available for a label.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The format options available for a label.")
 public class PrintOption {
     @SerializedName("supportedDPIs")
     private List<Integer> supportedDPIs = null;
@@ -51,7 +50,7 @@ public class PrintOption {
      *
      * @return supportedDPIs
      */
-    @Schema(description = "A list of the supported DPI options for a document.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A list of the supported DPI options for a document.")
     public List<Integer> getSupportedDPIs() {
         return supportedDPIs;
     }
@@ -78,7 +77,9 @@ public class PrintOption {
      *
      * @return supportedPageLayouts
      */
-    @Schema(required = true, description = "A list of the supported page layout options for a document.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of the supported page layout options for a document.")
     public List<String> getSupportedPageLayouts() {
         return supportedPageLayouts;
     }
@@ -105,7 +106,9 @@ public class PrintOption {
      *
      * @return supportedFileJoiningOptions
      */
-    @Schema(required = true, description = "A list of the supported needFileJoining boolean values for a document.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of the supported needFileJoining boolean values for a document.")
     public List<Boolean> getSupportedFileJoiningOptions() {
         return supportedFileJoiningOptions;
     }
@@ -132,7 +135,9 @@ public class PrintOption {
      *
      * @return supportedDocumentDetails
      */
-    @Schema(required = true, description = "A list of the supported documented details.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            required = true,
+            description = "A list of the supported documented details.")
     public List<SupportedDocumentDetail> getSupportedDocumentDetails() {
         return supportedDocumentDetails;
     }

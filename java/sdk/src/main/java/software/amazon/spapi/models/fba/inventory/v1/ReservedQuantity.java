@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.fba.inventory.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** The quantity of reserved inventory. */
-@Schema(description = "The quantity of reserved inventory.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "The quantity of reserved inventory.")
 public class ReservedQuantity {
     @SerializedName("totalReservedQuantity")
     private Integer totalReservedQuantity = null;
@@ -42,7 +41,7 @@ public class ReservedQuantity {
      *
      * @return totalReservedQuantity
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The total number of units in Amazon's fulfillment network that are currently being picked, packed, and shipped; or are sidelined for measurement, sampling, or other internal processes.")
     public Integer getTotalReservedQuantity() {
@@ -63,7 +62,7 @@ public class ReservedQuantity {
      *
      * @return pendingCustomerOrderQuantity
      */
-    @Schema(description = "The number of units reserved for customer orders.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The number of units reserved for customer orders.")
     public Integer getPendingCustomerOrderQuantity() {
         return pendingCustomerOrderQuantity;
     }
@@ -82,7 +81,8 @@ public class ReservedQuantity {
      *
      * @return pendingTransshipmentQuantity
      */
-    @Schema(description = "The number of units being transferred from one fulfillment center to another.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The number of units being transferred from one fulfillment center to another.")
     public Integer getPendingTransshipmentQuantity() {
         return pendingTransshipmentQuantity;
     }
@@ -101,7 +101,7 @@ public class ReservedQuantity {
      *
      * @return fcProcessingQuantity
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The number of units that have been sidelined at the fulfillment center for additional processing.")
     public Integer getFcProcessingQuantity() {

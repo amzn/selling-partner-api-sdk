@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** An event related to a capacity reservation billing charge. */
-@Schema(description = "An event related to a capacity reservation billing charge.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "An event related to a capacity reservation billing charge.")
 public class CapacityReservationBillingEvent {
     @SerializedName("TransactionType")
     private String transactionType = null;
@@ -41,7 +41,7 @@ public class CapacityReservationBillingEvent {
      *
      * @return transactionType
      */
-    @Schema(description = "The transaction type. For example, FBA Inventory Fee.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The transaction type. For example, FBA Inventory Fee.")
     public String getTransactionType() {
         return transactionType;
     }
@@ -60,7 +60,7 @@ public class CapacityReservationBillingEvent {
      *
      * @return postedDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getPostedDate() {
@@ -81,7 +81,8 @@ public class CapacityReservationBillingEvent {
      *
      * @return description
      */
-    @Schema(description = "A short description of the capacity reservation billing event.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "A short description of the capacity reservation billing event.")
     public String getDescription() {
         return description;
     }
@@ -100,7 +101,7 @@ public class CapacityReservationBillingEvent {
      *
      * @return transactionAmount
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getTransactionAmount() {
         return transactionAmount;
     }

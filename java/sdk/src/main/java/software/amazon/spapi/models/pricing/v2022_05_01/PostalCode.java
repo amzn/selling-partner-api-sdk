@@ -13,11 +13,10 @@
 package software.amazon.spapi.models.pricing.v2022_05_01;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /** Postal code value with country code */
-@Schema(description = "Postal code value with country code")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Postal code value with country code")
 public class PostalCode {
     @SerializedName("countryCode")
     private String countryCode = null;
@@ -35,7 +34,7 @@ public class PostalCode {
      *
      * @return countryCode
      */
-    @Schema(description = "Country code value")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Country code value")
     public String getCountryCode() {
         return countryCode;
     }
@@ -54,7 +53,7 @@ public class PostalCode {
      *
      * @return value
      */
-    @Schema(description = "Postal code value")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "Postal code value")
     public String getValue() {
         return value;
     }

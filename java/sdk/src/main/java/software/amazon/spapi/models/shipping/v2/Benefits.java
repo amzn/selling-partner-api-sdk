@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.shipping.v2;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
@@ -21,7 +20,7 @@ import java.util.Objects;
  * CLAIMS_PROTECTED, etc.) when sellers purchase shipping through Amazon. Benefit details will be made available for any
  * shipment placed on or after January 1st 2024 00:00 UTC.
  */
-@Schema(
+@io.swagger.v3.oas.annotations.media.Schema(
         description =
                 "Benefits that are included and excluded for each shipping offer. Benefits represents services provided by Amazon (eg. CLAIMS_PROTECTED, etc.) when sellers purchase shipping through Amazon. Benefit details will be made available for any shipment placed on or after January 1st 2024 00:00 UTC.")
 public class Benefits {
@@ -41,7 +40,7 @@ public class Benefits {
      *
      * @return includedBenefits
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public IncludedBenefits getIncludedBenefits() {
         return includedBenefits;
     }
@@ -60,7 +59,7 @@ public class Benefits {
      *
      * @return excludedBenefits
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ExcludedBenefits getExcludedBenefits() {
         return excludedBenefits;
     }

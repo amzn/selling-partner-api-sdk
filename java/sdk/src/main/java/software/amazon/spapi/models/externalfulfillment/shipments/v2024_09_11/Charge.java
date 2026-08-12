@@ -17,14 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /** A shipment&#39;s charge with relevant tax information. */
-@Schema(description = "A shipment's charge with relevant tax information.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "A shipment's charge with relevant tax information.")
 public class Charge {
     @SerializedName("baseCharge")
     private ChargeBreakup baseCharge = null;
@@ -103,7 +102,7 @@ public class Charge {
      *
      * @return baseCharge
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ChargeBreakup getBaseCharge() {
         return baseCharge;
     }
@@ -130,7 +129,7 @@ public class Charge {
      *
      * @return taxBreakup
      */
-    @Schema(description = "The tax charge details.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The tax charge details.")
     public List<Tax> getTaxBreakup() {
         return taxBreakup;
     }
@@ -149,7 +148,7 @@ public class Charge {
      *
      * @return chargeType
      */
-    @Schema(required = true, description = "The type of charge.")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "The type of charge.")
     public ChargeTypeEnum getChargeType() {
         return chargeType;
     }
@@ -168,7 +167,7 @@ public class Charge {
      *
      * @return totalCharge
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public ChargeBreakup getTotalCharge() {
         return totalCharge;
     }
@@ -187,7 +186,7 @@ public class Charge {
      *
      * @return totalTax
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public Tax getTotalTax() {
         return totalTax;
     }

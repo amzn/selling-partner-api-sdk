@@ -13,11 +13,11 @@
 package software.amazon.spapi.models.finances.v0;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 /** Information related to a financial event group. */
-@Schema(description = "Information related to a financial event group.")
+@io.swagger.v3.oas.annotations.media.Schema(description = "Information related to a financial event group.")
 public class FinancialEventGroup {
     @SerializedName("FinancialEventGroupId")
     private String financialEventGroupId = null;
@@ -62,7 +62,7 @@ public class FinancialEventGroup {
      *
      * @return financialEventGroupId
      */
-    @Schema(description = "A unique identifier for the financial event group.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "A unique identifier for the financial event group.")
     public String getFinancialEventGroupId() {
         return financialEventGroupId;
     }
@@ -82,7 +82,7 @@ public class FinancialEventGroup {
      *
      * @return processingStatus
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "The processing status of the financial event group indicates whether the balance of the financial event group is settled.  Possible values:  * `Open` * `Closed`")
     public String getProcessingStatus() {
@@ -103,7 +103,7 @@ public class FinancialEventGroup {
      *
      * @return fundTransferStatus
      */
-    @Schema(description = "The status of the fund transfer.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The status of the fund transfer.")
     public String getFundTransferStatus() {
         return fundTransferStatus;
     }
@@ -122,7 +122,7 @@ public class FinancialEventGroup {
      *
      * @return originalTotal
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getOriginalTotal() {
         return originalTotal;
     }
@@ -141,7 +141,7 @@ public class FinancialEventGroup {
      *
      * @return convertedTotal
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getConvertedTotal() {
         return convertedTotal;
     }
@@ -160,7 +160,7 @@ public class FinancialEventGroup {
      *
      * @return fundTransferDate
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getFundTransferDate() {
@@ -181,7 +181,8 @@ public class FinancialEventGroup {
      *
      * @return traceId
      */
-    @Schema(description = "The trace identifier used by sellers to look up transactions externally.")
+    @io.swagger.v3.oas.annotations.media.Schema(
+            description = "The trace identifier used by sellers to look up transactions externally.")
     public String getTraceId() {
         return traceId;
     }
@@ -200,7 +201,7 @@ public class FinancialEventGroup {
      *
      * @return accountTail
      */
-    @Schema(description = "The account tail of the payment instrument.")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "The account tail of the payment instrument.")
     public String getAccountTail() {
         return accountTail;
     }
@@ -219,7 +220,7 @@ public class FinancialEventGroup {
      *
      * @return beginningBalance
      */
-    @Schema(description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(description = "")
     public Currency getBeginningBalance() {
         return beginningBalance;
     }
@@ -238,7 +239,7 @@ public class FinancialEventGroup {
      *
      * @return financialEventGroupStart
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getFinancialEventGroupStart() {
@@ -259,7 +260,7 @@ public class FinancialEventGroup {
      *
      * @return financialEventGroupEnd
      */
-    @Schema(
+    @io.swagger.v3.oas.annotations.media.Schema(
             description =
                     "A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.")
     public OffsetDateTime getFinancialEventGroupEnd() {

@@ -13,7 +13,6 @@
 package software.amazon.spapi.models.solicitations.v1;
 
 import com.google.gson.annotations.SerializedName;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -41,7 +40,7 @@ public class GetSolicitationActionsForOrderResponseEmbedded {
      *
      * @return actions
      */
-    @Schema(required = true, description = "")
+    @io.swagger.v3.oas.annotations.media.Schema(required = true, description = "")
     public List<GetSolicitationActionResponse> getActions() {
         return actions;
     }
