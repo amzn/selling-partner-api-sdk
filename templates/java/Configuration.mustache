@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-{{>generatedAnnotation}}
 public class Configuration {
     private final Map<String, List<Integer>> rateLimitConfiguration =
             new Yaml().load(this.getClass().getClassLoader().getResourceAsStream("rate-limits.yml"));

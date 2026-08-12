@@ -6,16 +6,9 @@ import okhttp3.*;
 import okhttp3.internal.http.HttpMethod;
 import okio.BufferedSink;
 import okio.Okio;
-{{#joda}}
-import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
-import org.joda.time.format.DateTimeFormatter;
-{{/joda}}
-{{#java8}}
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
-{{/java8}}
 
 import java.io.File;
 import java.io.IOException;
@@ -26,11 +19,6 @@ import java.net.URLEncoder;
 import java.security.GeneralSecurityException;
 import java.security.KeyStore;
 import java.text.DateFormat;
-{{#java8}}
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.time.format.DateTimeFormatter;
-{{/java8}}
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
@@ -55,11 +43,6 @@ public class ApiClient {
     public ApiClient() {
         httpClient = config.getOkHttpClient();
 
-        {{#useGzipFeature}}
-        // Enable gzip request compression
-        httpClient.interceptors().add(new GzipRequestInterceptor());
-        {{/useGzipFeature}}
-
         json = new JSON();
 
         // Set default User-Agent.
@@ -69,11 +52,6 @@ public class ApiClient {
 
     public ApiClient(OkHttpClient httpClient) {
         this.httpClient = httpClient;
-
-        {{#useGzipFeature}}
-        // Enable gzip request compression
-        httpClient.interceptors().add(new GzipRequestInterceptor());
-        {{/useGzipFeature}}
 
         json = new JSON();
 
@@ -152,19 +130,6 @@ public class ApiClient {
         return this;
     }
 
-    {{#joda}}
-    public ApiClient setDateTimeFormat(DateTimeFormatter dateFormat) {
-        this.json.setDateTimeFormat(dateFormat);
-        return this;
-    }
-
-    public ApiClient setLocalDateFormat(DateTimeFormatter dateFormat) {
-        this.json.setLocalDateFormat(dateFormat);
-        return this;
-    }
-
-    {{/joda}}
-    {{#jsr310}}
     public ApiClient setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
         this.json.setOffsetDateTimeFormat(dateFormat);
         return this;
@@ -175,7 +140,6 @@ public class ApiClient {
         return this;
     }
 
-    {{/jsr310}}
     public ApiClient setLenientOnJson(boolean lenientOnJson) {
         this.json.setLenientOnJson(lenientOnJson);
         return this;
@@ -274,7 +238,7 @@ public class ApiClient {
     public String parameterToString(Object param) {
         if (param == null) {
             return "";
-        } else if (param instanceof Date {{#joda}}|| param instanceof DateTime || param instanceof LocalDate{{/joda}}{{#jsr310}}|| param instanceof OffsetDateTime || param instanceof LocalDate{{/jsr310}}) {
+        } else if (param instanceof Date || param instanceof OffsetDateTime || param instanceof LocalDate) {
             //Serialize to json string and remove the " enclosing characters
             String jsonStr = json.serialize(param);
             return jsonStr.substring(1, jsonStr.length() - 1);
@@ -844,8 +808,8 @@ public class ApiClient {
     /**
      * Set header parameters to the request builder, including default headers.
      *
-     * @param headerParams Header parameters in the ofrm of Map
-     * @param reqBuilder Reqeust.Builder
+     * @param headerParams Header parameters in the form of Map
+     * @param reqBuilder Request.Builder
      */
     public void processHeaderParams(Map<String, String> headerParams, Request.Builder reqBuilder) {
         for (Entry<String, String> param : headerParams.entrySet()) {

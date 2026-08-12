@@ -2,7 +2,13 @@
   "groupId": "software.amazon.spapi",
   "invokerPackage": "software.amazon.spapi",
   "artifactId": "spapi-sdk",
-  "library": "okhttp4-gson",
-  "hideGenerationTimestamp": "true",
-  "dateLibrary": "java8"
+  "library": "okhttp-gson",
+  "hideGenerationTimestamp": true,
+  "dateLibrary": "java8",
+  "openApiNullable": false,
+  "globalProperties": {
+    "modelTests": false,
+    "modelDocs": false,
+    "apiDocs": false
+  }
 }

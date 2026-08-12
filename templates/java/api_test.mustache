@@ -45,10 +45,10 @@ public class {{classname}}Test {
     public void {{operationId}}Test() throws Exception {
         instructBackendMock("{{tags.0.name}}", "{{operationId}}", "{{responses.0.code}}");
         {{#allParams}}{{#required}}
-        {{{dataType}}} {{paramName}} = {{#isListContainer}}easyRandom.objects({{baseType}}.class, 2).collect(Collectors.toList()){{/isListContainer}}{{^isListContainer}}easyRandom.nextObject({{{dataType}}}.class){{/isListContainer}};
+        {{{dataType}}} {{paramName}} = {{#isArray}}easyRandom.objects({{items.dataType}}.class, 2).collect(Collectors.toList()){{/isArray}}{{^isArray}}easyRandom.nextObject({{{dataType}}}.class){{/isArray}};
         {{/required}}{{/allParams}}
 
-        {{#returnType}}ApiResponse<{{{returnType}}}> response = {{/returnType}}api.{{operationId}}WithHttpInfo({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^required}}null{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
+        {{#returnType}}ApiResponse<{{{returnType}}}> response = {{/returnType}}api.{{operationId}}WithHttpInfo({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^required}}null{{/required}}{{^-last}}, {{/-last}}{{/allParams}});
 
         {{#returnType}}
         assertEquals({{responses.0.code}}, response.getStatusCode());
@@ -72,3 +72,4 @@ public class {{classname}}Test {
         if(statusCode != 204) assertNotNull(body);
     }
 }
+

@@ -1,0 +1,52 @@
+{{>licenseInfo}}
+
+package {{package}};
+
+{{#models}}
+{{#model}}
+{{#isEnum}}
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+{{/isEnum}}
+{{^isEnum}}
+{{^isArray}}
+{{^isMap}}
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.v3.oas.annotations.media.Schema;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+{{/isMap}}
+{{/isArray}}
+{{#isArray}}
+import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
+{{/isArray}}
+{{#isMap}}
+import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.HashMap;
+import java.util.Map;
+{{/isMap}}
+{{/isEnum}}
+{{#imports}}
+{{#import}}
+import {{{import}}};
+{{/import}}
+{{/imports}}
+{{^isEnum}}
+import java.util.Objects;
+{{/isEnum}}
+
+{{#isEnum}}{{>modelEnum}}{{/isEnum}}{{^isEnum}}{{>pojo}}{{/isEnum}}
+{{/model}}
+{{/models}}
