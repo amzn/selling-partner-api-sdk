@@ -12,3 +12,7 @@ gradlew
 gradlew.bat
 settings.gradle
 gradle/**
+.github/**
+api/**
+src/main/java/software/amazon/spapi/auth/**
+src/main/java/**/AbstractOpenApiSchema.java

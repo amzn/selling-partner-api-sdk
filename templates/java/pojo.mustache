@@ -2,7 +2,7 @@
 /**
  * {{.}}
  */
-@Schema(description = "{{{description}}}")
+@io.swagger.v3.oas.annotations.media.Schema(description = "{{{description}}}")
 {{/description}}
 {{^description}}
 /**
@@ -139,7 +139,7 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{
      * {{description}}{{^description}}Get {{name}}{{/description}}
      * @return {{name}}
      */
-    @Schema({{#required}}required = true, {{/required}}description = "{{{description}}}")
+    @io.swagger.v3.oas.annotations.media.Schema({{#required}}required = true, {{/required}}description = "{{{description}}}")
     public {{{datatypeWithEnum}}} {{getter}}() {
         return {{name}};
     }
