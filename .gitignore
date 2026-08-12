@@ -19,3 +19,4 @@ python/openapitools.json
 **/.openapi-generator/
 **/.idea
 **/Folder.DotSettings.user
+.kiro/**
