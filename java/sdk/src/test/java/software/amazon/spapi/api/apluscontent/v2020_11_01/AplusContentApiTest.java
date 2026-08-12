@@ -80,7 +80,7 @@ public class AplusContentApiTest {
 
         String marketplaceId = easyRandom.nextObject(String.class);
 
-        Set<String> includedDataSet = easyRandom.objects(String.class, 2).collect(Collectors.toList());
+        Set<String> includedDataSet = easyRandom.objects(String.class, 2).collect(Collectors.toSet());
 
         ApiResponse<GetContentDocumentResponse> response =
                 api.getContentDocumentWithHttpInfo(contentReferenceKey, marketplaceId, includedDataSet);
